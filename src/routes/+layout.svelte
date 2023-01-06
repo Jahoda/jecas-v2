@@ -1,54 +1,36 @@
 <script>
-	import Header from './Header.svelte';
-	import './styles.css';
-	 import "../app.css";
+	import Footer from '$lib/footer/Footer.svelte';
+	import Header from '$lib/header/Header.svelte';
+	import '../app.css';
 </script>
 
-<div class="app">
-	<Header />
+<Header />
 
-	<main>
-		<slot />
-	</main>
-
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
+<div class="bg w-full h-72 opacity-20 -mb-72">
+	<div class="bg-gradient-to-b from-white/0 to-white w-full h-full" />
 </div>
 
+<main class="relative">
+	<slot />
+</main>
+<Footer />
+
 <style>
-	.app {
-		display: flex;
-		flex-direction: column;
-		min-height: 100vh;
-	}
-
-	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 64rem;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
+	.bg {
+		background-image: linear-gradient(
+			to right top,
+			#0d6ab7,
+			#0e6ebe,
+			#0e72c5,
+			#0f77cc,
+			#0f7bd3,
+			#3b7ad7,
+			#5578d9,
+			#6b75da,
+			#916ad1,
+			#b05cc1,
+			#c84dad,
+			#da3f94
+		);
 	}
 </style>
