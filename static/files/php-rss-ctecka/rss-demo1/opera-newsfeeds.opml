@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opml version="1.0">
+	<head>
+		<title>Newsfeeds exported from Opera Mail/12.17 (Win32)</title>
+	</head>
+	<body>
+		<outline text="Je čas.cz" title="Je čas.cz" type="rss" xmlUrl="http://jecas.cz/rss" />
+		<outline text="Webylon.info" title="Webylon.info" type="rss" xmlUrl="http://webylon.info/feed" />
+		<outline text="Jokerův web" title="Jokerův web" type="rss" xmlUrl="http://www.it-joker.cz/alt/?typ=rss" />
+		<outline text="Souki.cz" title="Souki.cz" type="rss" xmlUrl="http://www.souki.cz/feed" />
+		<outline text="Zdroják" title="Zdroják" type="rss" xmlUrl="http://www.zdrojak.cz/feed/" />
+		<outline text="Webmistrovinky" title="Webmistrovinky" type="rss" xmlUrl="http://www.webmistrovinky.cz/feed/" />
+	</body>
+</opml>

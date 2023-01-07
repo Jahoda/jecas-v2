@@ -1,0 +1,90 @@
+.objednat {
+	background-color: #e2feeb;
+	padding: 1px 1em;
+}
+.objednat label {
+	width: 8em;
+	display: inline-block;
+}
+.objednat i {
+	display: block;
+}
+form .pripominka {
+	display: none;
+}
+form:checked + label + .pripominka {
+	display: block;
+}
+.prehled {
+	overflow: hidden;
+	margin: 2em 0;
+}
+.prehled .polozka {
+	width: 33%;
+	width: calc(100% / 3);
+	float: left;
+	text-align: center;
+}
+.prehled .popis {
+	font-size: 150%;
+}
+.prehled .nadpis {
+	font-size: 200%;
+	line-height: 120%;
+	padding: 0.5em;
+}
+.prehled .nadpis img {
+	display: inline;
+	vertical-align: bottom;
+	position: relative;
+	bottom: -3px;
+}
+.chci,
+a[class='chci'] {
+	font-size: 170%;
+	background: #18800d url(/files/vytvorit-mobilni-web/round_arrow_right.png) no-repeat 5px center;
+	border-color: #18800d;
+	border-radius: 0.1em;
+	margin: 1em;
+	padding: 1em;
+	padding-left: 65px;
+	display: inline-block;
+	color: #fff;
+}
+ol.kroky {
+	list-style: none;
+	counter-reset: seznam;
+}
+.kroky li {
+	position: relative;
+}
+.kroky li:before {
+	counter-increment: seznam;
+	content: counter(seznam);
+	position: absolute;
+	left: -2.5em;
+	color: #000;
+	background: #e2feeb;
+	width: 1.8em;
+	line-height: 1.8em;
+	text-align: center;
+	border-radius: 50%;
+}
+/* odpočet */
+.odpocet {
+	overflow: hidden;
+	max-width: 15em;
+	background: #fefde2;
+	border: 1px solid #f9f16a;
+	padding: 0.5em;
+}
+.odpocet .popis {
+}
+.odpocet .hodnota {
+	float: left;
+	width: 25%;
+	text-align: center;
+}
+.odpocet .cislo {
+	font-size: 150%;
+}

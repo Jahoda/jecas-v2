@@ -1,0 +1,5 @@
+RewriteEngine On
+ 
+# podstrčení PHP, přepsat pouze na existující skript
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^.]+)$    $1.php    [L]
