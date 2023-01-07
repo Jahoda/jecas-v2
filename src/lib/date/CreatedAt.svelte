@@ -1,6 +1,9 @@
 <script lang="ts">
 	export let date: string;
 	export let small = false;
+
+	const dateFormat = new Date(date);
+	const formatedDate = dateFormat.toLocaleDateString();
 </script>
 
 <div class="flex items-center gap-2 flex-shrink-0">
@@ -19,6 +22,6 @@
 		/>
 	</svg>
 	<time class="{small ? 'text-sm' : ''} whitespace-nowrap">
-		{date}
+		{formatedDate}
 	</time>
 </div>

@@ -1,0 +1,40 @@
+<script lang="ts">
+	import Container from '$lib/container/Container.svelte';
+	import MainPost from '$lib/mainPost/MainPost.svelte';
+	import PostContent from '$lib/post/PostContent.svelte';
+	import PostToc from '$lib/toc/PostToc.svelte';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+
+	const post = data.post;
+	const tags = data.tags;
+</script>
+
+<svelte:head>
+	<title>Archiv ječas.cz</title>
+	<meta
+		name="description"
+		content="Poznámky o moderním webdesignu, hotová řešení, experimenty a návody."
+	/>
+</svelte:head>
+
+<Container verticalSpace>
+	<div class="m-auto max-w-3xl">
+		<div class="grid gap-8">
+			<MainPost
+				title={post.title}
+				description={post.description}
+				date={post.last_modification}
+				background={post.background}
+				href={post.url_slug}
+				{tags}
+				noImage={post.background !== null}
+			/>
+
+			<PostToc slug={post.url_slug} />
+
+			<PostContent content={post.text_html} />
+		</div>
+	</div>
+</Container>

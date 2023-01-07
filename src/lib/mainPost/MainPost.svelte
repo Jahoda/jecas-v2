@@ -5,29 +5,40 @@
 
 	export let title: string;
 	export let description: string;
-	export let date: string;
+	export let date: string | null = null;
 	export let href: string;
-	export let image: string;
-	export let background: string =
-		'background-image: linear-gradient(to right top, #7957b0, #6b5db5, #5b63b9, #4a68bb, #356cbc, #5c6dc1, #7b6dc3, #966dc3, #d466b0, #fc698d, #ff7f65, #ffa23f);';
+	export let background: string | null = null;
 	export let tags: object[] | null = null;
 	export let small = false;
 	export let neutral = false;
+	export let noImage = false;
+
+	$: backgroundGradient = background
+		? `linear-gradient(to right top, ${background}, #000`
+		: `linear-gradient(to right top, #7957b0, #6b5db5, #5b63b9, #4a68bb, #356cbc, #5c6dc1, #7b6dc3, #966dc3, #d466b0, #fc698d, #ff7f65, #ffa23f)`;
 </script>
 
 <div
 	class="rounded-2xl shadow {small ? 'p-4' : 'p-8'} {neutral ? 'bg-gray-50' : 'text-white'}"
-	style={neutral ? '' : background}
+	style={neutral ? '' : `background-image: ${backgroundGradient}`}
 >
 	<div class="flex {small ? 'gap-4' : 'gap-8'}">
-		<a
-			{href}
-			class="flex rounded-lg overflow-hidden flex-shrink-0 shadow {small
-				? 'w-[100px] h-[100px]'
-				: 'w-[200px] h-[200px]'}"
-		>
-			<img src={image} alt="" width="200" height="200" />
-		</a>
+		{#if !noImage}
+			<a
+				{href}
+				class="flex rounded-lg overflow-hidden flex-shrink-0 shadow {small
+					? 'w-[100px] h-[100px]'
+					: 'w-[200px] h-[200px]'}"
+			>
+				<img
+					src={`/files/article/${href}.png`}
+					loading={!neutral && !small ? null : 'lazy'}
+					alt=""
+					width="200"
+					height="200"
+				/>
+			</a>
+		{/if}
 
 		<div class="{small ? 'gap-4' : 'gap-8'} flex flex-col">
 			<a {href} class="hover:underline">
@@ -37,7 +48,7 @@
 			>
 			{#if description}
 				<p class={small ? 'text-sm' : 'text-2xl'}>
-					{description}
+					{@html description}
 				</p>
 			{/if}
 
@@ -45,7 +56,7 @@
 				<CreatedAt {date} {small} />
 			{/if}
 
-			{#if tags}
+			{#if tags && tags.length > 0}
 				<Tags {tags} {small} />
 			{/if}
 		</div>

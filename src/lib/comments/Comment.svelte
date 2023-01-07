@@ -3,11 +3,9 @@
 	import CommentLinkToPost from '$lib/comments/CommentLinkToPost.svelte';
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import Like from '$lib/like/Like.svelte';
+	import type { CommentContent } from './comment';
 
-	export let comment: object;
-
-	const date = new Date(comment.createdAt);
-	const formatedDate = date.toLocaleDateString();
+	export let comment: CommentContent;
 </script>
 
 <div class="flex gap-4 text-sm">
@@ -37,7 +35,7 @@
 			<div class="flex justify-between gap-4 overflow-x-hidden">
 				<CommentLinkToPost title={comment.thread?.clean_title} href={comment.url} />
 
-				<CreatedAt date={formatedDate} small />
+				<CreatedAt date={comment.createdAt} small />
 			</div>
 		</div>
 	</div>

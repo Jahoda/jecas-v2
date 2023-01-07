@@ -1,17 +1,22 @@
 <script lang="ts">
 	export let name: string;
 
-	function stringToColour(str: string) {
+	function hashCode(str: string) {
 		let hash = 0;
 		for (let i = 0; i < str.length; i++) {
 			hash = str.charCodeAt(i) + ((hash << 5) - hash);
 		}
-		let colour = '#';
-		for (let i = 0; i < 3; i++) {
-			const value = (hash >> (i * 8)) & 0xff;
-			colour += ('00' + value.toString(16)).substr(-2);
-		}
-		return colour;
+		return hash;
+	}
+
+	function intToRGB(i: number) {
+		const c = (i & 0x00ffffff).toString(16).toUpperCase();
+
+		return '00000'.substring(0, 6 - c.length) + c;
+	}
+
+	function stringToColor(string: string) {
+		return intToRGB(hashCode(string));
 	}
 
 	const parts = name.split(' ');
@@ -22,7 +27,7 @@
 
 <div
 	class="rounded-full w-full h-full bg-blue-dark text-white flex items-center justify-center"
-	style="background: {stringToColour(name)}"
+	style="background: {stringToColor(name)}"
 >
 	{first}{second}
 </div>
