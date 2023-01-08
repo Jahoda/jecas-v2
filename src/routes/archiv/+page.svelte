@@ -19,7 +19,7 @@
 		{#each data.post as post, index}
 			<div class="grid {index > 9 ? 'col-span-2' : 'col-span-3'}">
 				<MainPost
-					title={post.title}
+					title={post.headline}
 					description={post.description}
 					date={post.last_modification}
 					href={post.url_slug}

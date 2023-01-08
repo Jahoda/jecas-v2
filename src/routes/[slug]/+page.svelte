@@ -12,7 +12,7 @@
 </script>
 
 <svelte:head>
-	<title>Archiv ječas.cz</title>
+	<title>{post.title}</title>
 	<meta
 		name="description"
 		content="Poznámky o moderním webdesignu, hotová řešení, experimenty a návody."
@@ -23,7 +23,7 @@
 	<div class="m-auto max-w-3xl">
 		<div class="grid gap-8">
 			<MainPost
-				title={post.title}
+				title={post.headline}
 				description={post.description}
 				date={post.last_modification}
 				background={post.background}

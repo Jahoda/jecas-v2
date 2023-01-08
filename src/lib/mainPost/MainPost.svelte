@@ -43,7 +43,7 @@
 		<div class="{small ? 'gap-4' : 'gap-8'} flex flex-col">
 			<a {href} class="hover:underline">
 				<h1 class="{small ? 'text-2xl' : 'text-5xl'} font-bold">
-					{title}
+					{@html title}
 				</h1></a
 			>
 			{#if description}

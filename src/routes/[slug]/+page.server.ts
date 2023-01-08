@@ -17,7 +17,7 @@ export const load = (async ({ params }) => {
 	} else {
 		// Try to find tag
 		const tagPageStmt = db.prepare(
-			'select url_slug, name as title, headline, text_html, background, color from tags where url_slug = ?'
+			'select url_slug, name as headline, text_html, background, color from tags where url_slug = ?'
 		);
 		tagResponse = tagPageStmt.get(query);
 	}

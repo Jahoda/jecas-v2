@@ -1,5 +1,5 @@
 <script>
-	import Search from './Search.svelte';
+	import Search from '$lib/search/Search.svelte';
 
 	import Container from '$lib/container/Container.svelte';
 	import Logo from '$lib/logo/Logo.svelte';
