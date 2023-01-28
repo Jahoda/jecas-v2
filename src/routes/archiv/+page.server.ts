@@ -2,10 +2,22 @@ import { db } from '$lib/server/database';
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
-	const stmt = db.prepare('select * from pages where status = 1 order by last_modification desc');
-	const response = stmt.all();
+	const pagesStmt = db.prepare(
+		'SELECT * FROM pages WHERE status = 1 ORDER BY last_modification DESC'
+	);
+	const posts = pagesStmt.all();
+
+	const pagesTagsStmt = db.prepare(`SELECT tag_id, page_id FROM pages_tags`);
+	const pagesTags = pagesTagsStmt.all();
+
+	const tagsStmt = db.prepare(
+		'SELECT COUNT(*) as count, tags.id, tags.name, tags.url_slug, tags.background, tags.color FROM `pages_tags` LEFT JOIN tags ON tags.id = pages_tags.tag_id GROUP BY tags.id ORDER BY count DESC'
+	);
+	const tags = tagsStmt.all();
 
 	return {
-		post: response
+		posts: posts,
+		tags: tags,
+		pagesTags
 	};
 }) satisfies PageServerLoad;

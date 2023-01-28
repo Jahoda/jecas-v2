@@ -1,9 +1,12 @@
 <script lang="ts">
 	import Container from '$lib/container/Container.svelte';
 	import MainPost from '$lib/mainPost/MainPost.svelte';
+	import { groupByPageId } from '$lib/tags/tags';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
+
+	$: pagesTags = groupByPageId(data.pagesTags);
 </script>
 
 <svelte:head>
@@ -16,7 +19,7 @@
 
 <Container verticalSpace>
 	<div class="grid gap-8 grid-cols-6">
-		{#each data.post as post, index}
+		{#each data.posts as post, index}
 			<div class="grid {index > 9 ? 'col-span-2' : 'col-span-3'}">
 				<MainPost
 					title={post.headline}
@@ -25,6 +28,7 @@
 					href={post.url_slug}
 					neutral={index > 0}
 					small={index > 1}
+					tags={data.tags.filter((tag) => pagesTags[post.id]?.includes(tag.id))}
 				/>
 			</div>
 		{/each}

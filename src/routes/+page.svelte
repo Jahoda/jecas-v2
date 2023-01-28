@@ -8,8 +8,11 @@
 	import TagCloud from '$lib/tags/TagCloud.svelte';
 
 	import type { PageData } from './$types';
+	import { groupByPageId } from '$lib/tags/tags';
 
 	export let data: PageData;
+
+	$: pagesTags = groupByPageId(data.pagesTags);
 </script>
 
 <svelte:head>
@@ -28,7 +31,7 @@
 			<div class="col-span-6">
 				<div class="grid gap-8">
 					<div class="grid gap-8 grid-cols-2">
-						{#each data.post as post, index (post.url_slug)}
+						{#each data.posts as post, index (post.url_slug)}
 							<div class="grid {index >= 3 ? 'col-span-1' : 'col-span-2'}">
 								<MainPost
 									title={post.headline}
@@ -37,6 +40,7 @@
 									href={post.url_slug}
 									neutral={index > 1}
 									small={index > 0}
+									tags={data.tags.filter((tag) => pagesTags[post.id]?.includes(tag.id))}
 								/>
 							</div>
 						{/each}
