@@ -9708,7 +9708,7 @@ Copyright (c) 2012 Willow Systems Corporation, willow-systems.com
 					o
 				);
 			});
-	}.call({}, window, document));
+	}).call({}, window, document);
 	var html2canvasNodeAttribute = 'data-html2canvas-node',
 		html2canvasCanvasCloneAttribute = 'data-html2canvas-canvas-clone',
 		html2canvasCanvasCloneIndex = 0;

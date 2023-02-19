@@ -1,21 +1,20 @@
 import { SECRET_ALGOLIA_ADMIN_KEY } from '$env/static/private';
 import { PUBLIC_ALGOLIA_APP_ID, PUBLIC_ALGOLIA_INDEX_NAME } from '$env/static/public';
-import { db } from '$lib/server/database';
+import { connection } from '$lib/server/database';
 import { json } from '@sveltejs/kit';
 
 import algoliasearch from 'algoliasearch';
 
-export function GET() {
-	const stmt = db.prepare(
+export async function GET() {
+	const [pages] = await connection.execute(
 		'select id, url_slug, title, headline, description, text_html from pages where status = 1 order by last_modification desc'
 	);
-	const response = stmt.all();
 
 	// API keys below contain actual values tied to your Algolia account
 	const client = algoliasearch(PUBLIC_ALGOLIA_APP_ID, SECRET_ALGOLIA_ADMIN_KEY);
 	const index = client.initIndex(PUBLIC_ALGOLIA_INDEX_NAME);
 
-	const objects = response.map((item) => {
+	const objects = pages.map((item) => {
 		item.objectID = item.id;
 		return item;
 	});
@@ -28,6 +27,6 @@ export function GET() {
 		.catch((e) => json(e));
 
 	return json({
-		message: `Found ${response.length} posts`
+		message: `Found ${pages.length} posts`
 	});
 }

@@ -7,8 +7,8 @@
 
 	export let data: PageData;
 
-	const post = data.post;
-	const tags = data.tags;
+	$: post = data.post[0];
+	$: tags = data.tags;
 </script>
 
 <svelte:head>

@@ -1,23 +1,21 @@
-import { db } from '$lib/server/database';
+import { connection } from '$lib/server/database';
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
-	const pagesStmt = db.prepare(
-		'SELECT * FROM pages WHERE status = 1 ORDER BY last_modification DESC LIMIT 15'
+	const [posts] = await connection.execute(
+		'SELECT id, headline, url_slug, description, last_modification FROM pages WHERE status = 1 ORDER BY last_modification DESC LIMIT 15'
 	);
-	const posts = pagesStmt.all();
 
-	const pagesTagsStmt = db.prepare(
+	const [pagesTags] = await connection.execute(
 		`SELECT tag_id, page_id FROM pages_tags WHERE page_id IN (${posts
 			.map((_item) => '?')
-			.join(',')})`
+			.join(',')})`,
+		posts.map((post) => post.id)
 	);
-	const pagesTags = pagesTagsStmt.all(posts.map((post) => post.id));
 
-	const tagsStmt = db.prepare(
+	const [tags] = await connection.execute(
 		'SELECT COUNT(*) as count, tags.id, tags.name, tags.url_slug, tags.background, tags.color FROM `pages_tags` LEFT JOIN tags ON tags.id = pages_tags.tag_id GROUP BY tags.id ORDER BY count DESC'
 	);
-	const tags = tagsStmt.all();
 
 	const favoriteSlugs = [
 		'svg',
@@ -34,17 +32,18 @@ export const load = (async () => {
 		'centrovani',
 		'ceska-klavesnice'
 	];
-	const favoritePostsStmt = db.prepare(
+
+	const [favorite] = await connection.execute(
 		`SELECT url_slug, title FROM pages WHERE url_slug IN (${favoriteSlugs
 			.map((_item) => '?')
-			.join(',')})`
+			.join(',')})`,
+		favoriteSlugs
 	);
 
-	const favoritePostsResponse = favoritePostsStmt.all(favoriteSlugs);
 	return {
-		tags: tags,
-		posts: posts,
-		favorite: favoritePostsResponse,
+		tags,
+		posts,
+		favorite,
 		pagesTags
 	};
 }) satisfies PageServerLoad;

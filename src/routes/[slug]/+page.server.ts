@@ -1,35 +1,36 @@
-import { db } from '$lib/server/database';
+import { connection } from '$lib/server/database';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params }) => {
-	const query = params.slug;
-	const stmt = db.prepare('select * from pages where url_slug = ?');
+	const slug = params.slug;
 
-	const response = stmt.get(query);
+	let tags = [];
+	let tag = null;
 
-	let tagResponse = null;
-	if (response?.id) {
-		const tagStmt = db.prepare(
-			'select name, background, url_slug from tags left join pages_tags on (pages_tags.tag_id = tags.id) where page_id = ?'
+	const [page] = await connection.execute('SELECT id, headline, url_slug, description, last_modification, text_html FROM pages WHERE url_slug = ?', [slug]);
+
+	if (page && page[0]?.id) {
+		[tags] = await connection.execute(
+			'SELECT name, background, url_slug FROM tags LEFT JOIN pages_tags ON (pages_tags.tag_id = tags.id) WHERE page_id = ?',
+			[page[0].id]
 		);
-		tagResponse = tagStmt.all(response.id);
 	} else {
 		// Try to find tag
-		const tagPageStmt = db.prepare(
-			'select url_slug, name as headline, text_html, background, color from tags where url_slug = ?'
+		[tag] = await connection.execute(
+			'SELECT url_slug, name as headline, name as title, text_html, background, color FROM tags WHERE url_slug = ?',
+			[slug]
 		);
-		tagResponse = tagPageStmt.get(query);
 	}
 
-	if (!tagResponse) {
+	if (!tag && !page) {
 		throw error(404, {
 			message: 'Not found'
 		});
 	}
 
 	return {
-		post: response || tagResponse,
-		tags: tagResponse
+		post: page.length ? page : tag,
+		tags
 	};
 }) satisfies PageServerLoad;

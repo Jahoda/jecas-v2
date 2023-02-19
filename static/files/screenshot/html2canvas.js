@@ -348,7 +348,7 @@
 			: 'undefined' !== typeof module && module.exports
 			? (module.exports = z)
 			: 'undefined' !== typeof this && (this.ES6Promise = z);
-	}.call(window));
+	}).call(window);
 	if (window) {
 		window.ES6Promise.polyfill();
 	}
@@ -4367,8 +4367,8 @@
 	function hasEntries(array) {
 		return array.length > 0;
 	}
-}.call(
+}).call(
 	{},
 	typeof window !== 'undefined' ? window : undefined,
 	typeof document !== 'undefined' ? document : undefined
-));
+);
