@@ -25,14 +25,14 @@
 		{/if}
 	</div>
 	<div class="flex gap-2 flex-col">
-		<div class="rounded-md shadow bg-slate-50/80 p-3 gap-2 grid">
-			<p>
+		<div class="rounded-md shadow bg-slate-50/80 p-3 gap-2 grid grid-cols-1">
+			<p class="break-words">
 				{@html comment.raw_message}
 
 				— <b>{comment.author.name}</b>
 			</p>
 
-			<div class="flex justify-between gap-4 overflow-x-hidden">
+			<div class="flex flex-wrap justify-between gap-4 overflow-x-hidden">
 				<CommentLinkToPost title={comment.thread?.clean_title} href={comment.url} />
 
 				<CreatedAt date={comment.createdAt} small />

@@ -41,7 +41,7 @@
 <button
 	on:click={() => (isSearchOpen = true)}
 	type="button"
-	class="flex items-center w-72 text-left text-sm space-x-3 px-4 h-10 bg-white ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm rounded-lg text-slate-400"
+	class="max-md:hidden flex items-center w-72 text-left text-sm space-x-3 px-4 h-10 bg-white ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm rounded-lg text-slate-400"
 >
 	<SearchIcon />
 	<span class="flex-auto"> Rychlé hledání </span>

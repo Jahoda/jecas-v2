@@ -24,15 +24,15 @@
 </svelte:head>
 
 <section>
-	<div class="mt-10" />
+	<div class="mt-4 md:mt-8" />
 
 	<Container>
-		<div class="grid grid-cols-11 gap-8">
-			<div class="col-span-6">
-				<div class="grid gap-8">
-					<div class="grid gap-8 grid-cols-2">
+		<div class="grid grid-cols-1 xl:grid-cols-11 gap-8">
+			<div class="xl:col-span-6">
+				<div class="grid grid-cols-1 gap-8">
+					<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
 						{#each data.posts as post, index (post.url_slug)}
-							<div class="grid {index >= 3 ? 'col-span-1' : 'col-span-2'}">
+							<div class="grid {index >= 3 ? 'xl:col-span-1' : 'lg:col-span-2'}">
 								<MainPost
 									title={post.headline}
 									description={post.description}
@@ -54,20 +54,20 @@
 				</div>
 			</div>
 
-			<div class="col-span-3">
-				<div class="grid gap-8">
+			<div class="xl:col-span-3">
+				<div class="grid grid-cols-1 gap-8">
 					<TagCloud tags={data.tags} />
 					<LatestComments />
 				</div>
 			</div>
 
-			<div class="col-span-2">
-				<div class="grid gap-8">
+			<div class="xl:col-span-2">
+				<div class="grid grid-cols-1 gap-8">
 					<TopPosts posts={data.favorite} />
 				</div>
 			</div>
 		</div>
 	</Container>
 
-	<div class="mt-10" />
+	<div class="mt-4 md:mt-8" />
 </section>

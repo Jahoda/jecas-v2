@@ -20,7 +20,7 @@
 
 <Container verticalSpace>
 	<div class="m-auto max-w-3xl">
-		<div class="grid gap-8">
+		<div class="grid grid-cols-1 gap-4 md:gap-8">
 			<MainPost
 				title={post.headline}
 				description={post.description}

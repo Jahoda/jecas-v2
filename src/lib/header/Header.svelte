@@ -6,13 +6,15 @@
 </script>
 
 <div class="bg-blue-light shadow-lg">
-	<Container>
-		<div class="text-white flex items-center py-1 gap-8 justify-between">
-			<a href="/" class="hover:bg-blue-dark px-5 -mx-5 rounded-xl">
+	<Container verticalSpace={false}>
+		<div class="text-white flex items-center py-1 gap-4 md:gap-8 justify-between">
+			<a href="/" class="hover:bg-blue-dark px-3 -mx-3 rounded-xl">
 				<Logo />
 			</a>
 
-			<svelte:element this="h1"> Moderní tvorba webových stránek a aplikací </svelte:element>
+			<svelte:element this="h1" class="max-lg:hidden">
+				Moderní tvorba webových stránek a aplikací
+			</svelte:element>
 
 			<div class="flex-1" />
 

@@ -19,7 +19,7 @@
 </script>
 
 <div
-	class="group relative rounded-2xl shadow {small ? 'p-4' : 'p-8'} {neutral
+	class="relative rounded-2xl shadow {small ? 'p-4' : 'p-8'} {neutral
 		? 'bg-gray-50'
 		: 'text-white'}"
 	style="--image: url({`/files/article/${href}.png`});{neutral
@@ -27,7 +27,7 @@
 		: `background-image: ${backgroundGradient}`}"
 >
 	<div class="bg-blur absolute top-0 left-0 w-full h-full transition-all -z-10 opacity-50" />
-	<div class="flex {small ? 'gap-4' : 'gap-8'}">
+	<div class="flex md:flex-row flex-col {small ? 'gap-4' : 'gap-8'}">
 		{#if !noImage}
 			<a
 				{href}
