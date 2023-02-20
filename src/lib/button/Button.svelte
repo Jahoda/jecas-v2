@@ -5,7 +5,7 @@
 
 <a
 	{href}
-	class="bg-blue-light rounded-lg gap-2 active:translate-y-0.5 transition-transform flex items-center group hover:bg-blue-dark px-5 py-4 leading-5 font-semibold text-white"
+	class="bg-blue-light transition-all rounded-lg gap-2 active:translate-y-0.5 flex items-center group hover:bg-blue-dark px-5 py-4 leading-5 font-semibold text-white"
 >
 	<slot />
 

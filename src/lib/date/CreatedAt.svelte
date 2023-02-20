@@ -3,7 +3,11 @@
 	export let small = false;
 
 	const dateFormat = new Date(date);
-	const formatedDate = dateFormat.toLocaleDateString();
+	const formatedDate = dateFormat.toLocaleDateString('cs-CZ', {
+		year: 'numeric',
+		month: 'long',
+		day: 'numeric'
+	});
 </script>
 
 <div class="flex items-center gap-2 flex-shrink-0">

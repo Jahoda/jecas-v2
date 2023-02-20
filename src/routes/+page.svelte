@@ -47,7 +47,9 @@
 					</div>
 
 					<div class="flex justify-center">
-						<Button href="/archiv" arrow>Dalších cca 646 článků je v archivu</Button>
+						<Button href="/archiv" arrow
+							>Dalších cca {data.postCount[0].count} článků je v archivu</Button
+						>
 					</div>
 				</div>
 			</div>

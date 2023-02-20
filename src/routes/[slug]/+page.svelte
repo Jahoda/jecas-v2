@@ -7,12 +7,11 @@
 
 	export let data: PageData;
 
-	$: post = data.post[0];
-	$: tags = data.tags;
+	$: post = data.page || data.tag;
 </script>
 
 <svelte:head>
-	<title>{post.title}</title>
+	<title>{post?.title}</title>
 	<meta
 		name="description"
 		content="Poznámky o moderním webdesignu, hotová řešení, experimenty a návody."
@@ -28,8 +27,8 @@
 				date={post.last_modification}
 				background={post.background}
 				href={post.url_slug}
-				{tags}
-				noImage={post.background !== null}
+				tags={data.tags}
+				noImage={data.tag}
 			/>
 
 			<PostToc slug={post.url_slug} />

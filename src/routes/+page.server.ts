@@ -2,6 +2,10 @@ import { connection } from '$lib/server/database';
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
+	const [postCount] = await connection.execute(
+		'SELECT COUNT(*) as count FROM `pages` WHERE status = 1'
+	);
+
 	const [posts] = await connection.execute(
 		'SELECT id, headline, url_slug, description, last_modification FROM pages WHERE status = 1 ORDER BY last_modification DESC LIMIT 15'
 	);
@@ -44,6 +48,7 @@ export const load = (async () => {
 		tags,
 		posts,
 		favorite,
-		pagesTags
+		pagesTags,
+		postCount
 	};
 }) satisfies PageServerLoad;

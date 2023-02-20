@@ -2,6 +2,6 @@
 	export let content: string;
 </script>
 
-<div class="prose">
+<div class="prose m-auto">
 	{@html content}
 </div>
