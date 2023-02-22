@@ -69,10 +69,10 @@
 </div>
 
 <style>
-	.bg-blur {
+	/* .bg-blur {
 		background-image: var(--image);
 		background-size: cover;
 		background-position: center;
 		filter: blur(60px);
-	}
+	} */
 </style>

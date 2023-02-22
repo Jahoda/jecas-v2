@@ -7,7 +7,7 @@
 <Header />
 
 <div class="bg w-full h-72 opacity-20 -mb-72">
-	<div class="bg-gradient-to-b from-white/0 to-white w-full h-full" />
+	<div class="bg-gradient-to-t from-white w-full h-full" />
 </div>
 
 <main class="relative">
