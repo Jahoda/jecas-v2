@@ -20,13 +20,14 @@
 
 <div
 	class="relative rounded-2xl shadow {small ? 'p-4' : 'p-8'} {neutral
-		? 'bg-gray-50'
-		: 'text-white'}"
+		? 'bg-gray-50 dark:bg-slate-700 dark:text-white'
+		: 'text-white dark:text-white'}"
 	style="--image: url({`/files/article/${href}.png`});{neutral
 		? ''
 		: `background-image: ${backgroundGradient}`}"
 >
-	<div class="bg-blur absolute top-0 left-0 w-full h-full transition-all -z-10 opacity-50" />
+<div class="bg-slate-900/50 rounded-xl p-2 -m-2">
+	<div class="bg-blur absolute top-0 left-0 w-full h-full transition-all -z-10 opacity-50 hidden" />
 	<div class="flex md:flex-row flex-col {small ? 'gap-4' : 'gap-8'}">
 		{#if !noImage}
 			<a
@@ -67,12 +68,13 @@
 		</div>
 	</div>
 </div>
+</div>
 
 <style>
-	/* .bg-blur {
+	.bg-blur {
 		background-image: var(--image);
 		background-size: cover;
 		background-position: center;
 		filter: blur(60px);
-	} */
+	}
 </style>

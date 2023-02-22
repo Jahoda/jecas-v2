@@ -11,7 +11,7 @@
 <div class="flex gap-4 text-sm">
 	<div class="flex gap-2 flex-col items-center">
 		<div
-			class="w-10 h-10 flex-shrink-0 rounded-full overflow-hidden flex items-center justify-center bg-slate-50 border"
+			class="w-10 h-10 flex-shrink-0 rounded-full overflow-hidden flex items-center justify-center bg-slate-50 dark:bg-slate-900 border dark:border-slate-600"
 		>
 			{#if comment.author.avatar.isCustom}
 				<img src={comment.author.avatar?.large?.cache} alt="" />
@@ -25,7 +25,7 @@
 		{/if}
 	</div>
 	<div class="flex gap-2 flex-col">
-		<div class="rounded-md shadow bg-slate-50/80 p-3 gap-2 grid grid-cols-1">
+		<div class="rounded-md shadow bg-slate-50/80 dark:bg-slate-800 dark:text-white p-3 gap-2 grid grid-cols-1">
 			<p class="break-words">
 				{@html comment.raw_message}
 

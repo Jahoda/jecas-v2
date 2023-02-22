@@ -17,7 +17,7 @@
 	<SearchInput bind:query on:close />
 </div>
 
-<div class="border-t" />
+<div class="border-t dark:border-t-slate-700" />
 
 <div class="overflow-y-auto">
 	<div class="p-3">

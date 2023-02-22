@@ -3,7 +3,7 @@
 	export let href: string;
 </script>
 
-<div class="flex items-center gap-1 min-w-0 text-blue-dark">
+<div class="flex items-center gap-1 min-w-0 text-blue-dark dark:text-blue-light">
 	<a {href} class="underline hover:no-underline truncate">
 		{title}
 	</a>

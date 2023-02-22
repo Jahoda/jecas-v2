@@ -5,10 +5,10 @@
 	import Logo from '$lib/logo/Logo.svelte';
 </script>
 
-<div class="bg-blue-light shadow-lg">
+<div class="bg-blue-light dark:bg-blue-light/30 shadow-lg">
 	<Container verticalSpace={false}>
 		<div class="text-white flex items-center py-1 gap-4 md:gap-8 justify-between">
-			<a href="/" class="hover:bg-blue-dark px-3 -mx-3 rounded-xl">
+			<a href="/" class="hover:bg-blue-dark dark:hover:bg-blue-dark/30 px-3 -mx-3 rounded-xl">
 				<Logo />
 			</a>
 
@@ -20,7 +20,7 @@
 
 			<Search />
 
-			<a href="/kontakt" class="hover:bg-blue-dark py-2 px-4 rounded-md transition-colors">
+			<a href="/kontakt" class="hover:bg-blue-dark dark:hover:bg-blue-dark/30 dark:ho py-2 px-4 rounded-md transition-colors">
 				O webu
 			</a>
 		</div>

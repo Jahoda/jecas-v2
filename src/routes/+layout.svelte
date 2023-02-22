@@ -7,12 +7,17 @@
 <Header />
 
 <div class="bg w-full h-72 opacity-20 -mb-72">
-	<div class="bg-gradient-to-t from-white w-full h-full" />
+	<div class="bg-gradient-to-t dark:from-slate-900 from-white w-full h-full" />
 </div>
 
-<main class="relative">
+<main class="relative z-10">
 	<slot />
 </main>
+
+<div class="bg w-full h-72 opacity-20 -mt-72">
+	<div class="bg-gradient-to-b dark:from-slate-900 from-white w-full h-full" />
+</div>
+
 <Footer />
 
 <style>

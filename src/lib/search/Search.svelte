@@ -31,7 +31,7 @@
 		/>
 
 		<div
-			class="relative flex max-h-[95vh] w-full flex-col md:max-w-lg rounded-t-x overflow-hidden text-gray-800 dark:text-white bg-white dark:bg-gray-800 md:rounded-xl"
+			class="relative flex max-h-[95vh] w-full flex-col md:max-w-lg rounded-t-x overflow-hidden text-gray-800 dark:text-white bg-white dark:bg-slate-800 md:rounded-xl"
 		>
 			<SearchHandler on:close={handleClose} />
 		</div>
@@ -41,7 +41,7 @@
 <button
 	on:click={() => (isSearchOpen = true)}
 	type="button"
-	class="max-md:hidden flex items-center w-72 text-left text-sm space-x-3 px-4 h-10 bg-white ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm rounded-lg text-slate-400"
+	class="max-md:hidden flex items-center w-72 text-left text-sm space-x-3 px-4 h-10 bg-white dark:bg-blue-dark/30 ring-1 ring-slate-900/10 hover:ring-slate-300 dark:hover:ring-blue-700 focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm rounded-lg text-slate-400"
 >
 	<SearchIcon />
 	<span class="flex-auto"> Rychlé hledání </span>

@@ -2,7 +2,7 @@
 	import Container from '$lib/container/Container.svelte';
 </script>
 
-<div class="bg-blue-light text-white py-8 xl:py-16">
+<div class="bg-blue-light dark:bg-blue-light/30 text-white py-8 xl:py-16">
 	<Container>
 		<div class="flex md:flex-row flex-col gap-16 items-center">
 			<a aria-label="Je čas" href="/" class="flex">
