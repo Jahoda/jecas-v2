@@ -25,7 +25,9 @@
 		{/if}
 	</div>
 	<div class="flex gap-2 flex-col">
-		<div class="rounded-md shadow bg-slate-50/80 dark:bg-slate-800 dark:text-white p-3 gap-2 grid grid-cols-1">
+		<div
+			class="rounded-md shadow bg-slate-50/80 dark:bg-slate-800 dark:text-white p-3 gap-2 grid grid-cols-1"
+		>
 			<p class="break-words">
 				{@html comment.raw_message}
 

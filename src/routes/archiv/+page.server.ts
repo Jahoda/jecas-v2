@@ -2,9 +2,18 @@ import { connection } from '$lib/server/database';
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
-	const [posts] = await connection.execute(
-		'SELECT id, headline, url_slug, description, last_modification FROM pages WHERE status = 1 ORDER BY last_modification DESC'
-	);
+	const [posts] = await connection.execute(`
+		SELECT
+			id,
+			headline,
+			url_slug,
+			description,
+			last_modification,
+			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
+		FROM pages 
+		WHERE status = 1
+		ORDER BY last_modification DESC
+	`);
 
 	const [pagesTags] = await connection.execute(
 		`SELECT tag_id, page_id FROM pages_tags WHERE page_id IN (${posts

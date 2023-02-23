@@ -6,9 +6,19 @@ export const load = (async () => {
 		'SELECT COUNT(*) as count FROM `pages` WHERE status = 1'
 	);
 
-	const [posts] = await connection.execute(
-		'SELECT id, headline, url_slug, description, last_modification FROM pages WHERE status = 1 ORDER BY last_modification DESC LIMIT 15'
-	);
+	const [posts] = await connection.execute(`
+		SELECT
+			id,
+			headline,
+			url_slug,
+			description,
+			last_modification,
+			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
+		FROM pages 
+		WHERE status = 1
+		ORDER BY last_modification DESC
+		LIMIT 15
+	`);
 
 	const [pagesTags] = await connection.execute(
 		`SELECT tag_id, page_id FROM pages_tags WHERE page_id IN (${posts

@@ -20,7 +20,10 @@
 
 			<Search />
 
-			<a href="/kontakt" class="hover:bg-blue-dark dark:hover:bg-blue-dark/30 dark:ho py-2 px-4 rounded-md transition-colors">
+			<a
+				href="/kontakt"
+				class="hover:bg-blue-dark dark:hover:bg-blue-dark/30 dark:ho py-2 px-4 rounded-md transition-colors"
+			>
 				O webu
 			</a>
 		</div>

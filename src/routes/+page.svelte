@@ -40,6 +40,7 @@
 									href={post.url_slug}
 									neutral={index > 1}
 									small={index > 0}
+									wordCount={post.word_count}
 									tags={data.tags.filter((tag) => pagesTags[post.id]?.includes(tag.id))}
 								/>
 							</div>

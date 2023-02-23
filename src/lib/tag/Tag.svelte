@@ -8,8 +8,12 @@
 
 <a
 	{href}
-	class="border rounded-md px-2 flex border-white/25 {small ? 'text-xs py-0.5' : 'py-1'}"
+	class="group border bg-slate-600 rounded-md  flex border-white/25 text-white [text-shadow:0_0_1px_rgba(0,0,0,0.4),0_4px_8px_rgba(0,0,0,0.2)]"
 	style="background: {background}; color: {color}"
 >
-	{title}
+	<div
+		class="group-hover:bg-white/20 flex px-2  {small ? 'text-xs py-0.5' : 'py-1'} transition-colors"
+	>
+		{title}
+	</div>
 </a>
