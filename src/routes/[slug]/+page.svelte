@@ -20,22 +20,27 @@
 </svelte:head>
 
 <Container verticalSpace>
-	<div class="m-auto max-w-3xl">
-		<div class="grid grid-cols-1 gap-4 md:gap-8">
-			<MainPost
-				title={post.headline}
-				description={post.description}
-				date={post.last_modification}
-				background={post.background}
-				href={post.url_slug}
-				tags={data.tags}
-				noImage={data.tag}
-			/>
+	<div class="grid grid-cols-1 gap-4 md:gap-8">
+		<div class="m-auto max-w-3xl">
+			<div class="grid grid-cols-1">
+				<MainPost
+					title={post.headline}
+					description={post.description}
+					date={post.last_modification}
+					background={post.background}
+					href={post.url_slug}
+					tags={data.tags}
+					noImage={data.tag}
+				/>
+			</div>
+		</div>
+		<div class="grid grid-cols-post gap-8">
+			<div />
+			<div><PostContent content={post.text_html} /></div>
+			<div class="sticky top-2 max-md:hidden self-start"><PostToc slug={post.url_slug} /></div>
+		</div>
 
-			<PostToc slug={post.url_slug} />
-
-			<PostContent content={post.text_html} />
-
+		<div class="m-auto max-w-3xl grid-cols-1 w-full">
 			<PostComments slug={post.url_slug} />
 		</div>
 	</div>

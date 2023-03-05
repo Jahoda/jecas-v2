@@ -54,20 +54,21 @@
 </script>
 
 {#if headlines?.length > 0}
-	<div class="font-display text-lg font-bold xl:px-2.5">Obsah:</div>
-	<ul>
-		{#each headlines as headline}
-			<li>
-				<a
-					href="#{headline.id}"
-					class="block py-1 text-link underline hover:no-underline xl:pl-2.5 xl:pr-7.5 {headline.id ===
-					intersectingId
-						? 'bg-muted/10'
-						: ''} "
-				>
-					{headline.text}
-				</a>
-			</li>
-		{/each}
-	</ul>
+	<div class="bg-white/10 p-4 rounded-xl inline-flex flex-col">
+		<ul class="space-y-1">
+			{#each headlines as headline}
+				<li>
+					<a
+						href="#{headline.id}"
+						class="block py-1 hover:bg-white/5 transition-colors rounded-md no-underline px-4 {headline.id ===
+						intersectingId
+							? 'bg-white/10 no-underline'
+							: ''} "
+					>
+						{headline.text}
+					</a>
+				</li>
+			{/each}
+		</ul>
+	</div>
 {/if}

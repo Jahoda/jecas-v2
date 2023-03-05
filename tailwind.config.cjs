@@ -12,7 +12,8 @@ module.exports = {
 			gridTemplateColumns: {
 				'homepage-3': '6fr minmax(280px, 2fr) minmax(340px, 3fr)',
 				'homepage-2': '1fr 300px',
-				'repeat-48': `repeat(auto-fill, minmax(300px, 2fr))`
+				'repeat-48': `repeat(auto-fill, minmax(300px, 2fr))`,
+				post: '1fr 37.5rem 1fr'
 			},
 			gridTemplateAreas: {
 				posts: ['main main ', 'rest rest']
