@@ -7,3 +7,9 @@ declare namespace App {
 	// interface PageData {}
 	// interface Platform {}
 }
+
+declare global {
+	interface Window {
+		disqus_url: string;
+	}
+}

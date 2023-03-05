@@ -2,6 +2,7 @@
 	import Container from '$lib/container/Container.svelte';
 	import MainPost from '$lib/mainPost/MainPost.svelte';
 	import PostContent from '$lib/post/PostContent.svelte';
+	import PostComments from '$lib/postComments/PostComments.svelte';
 	import PostToc from '$lib/toc/PostToc.svelte';
 	import type { PageData } from './$types';
 
@@ -34,6 +35,8 @@
 			<PostToc slug={post.url_slug} />
 
 			<PostContent content={post.text_html} />
+
+			<PostComments slug={post.url_slug} />
 		</div>
 	</div>
 </Container>

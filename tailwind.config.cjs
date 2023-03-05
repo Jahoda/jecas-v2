@@ -16,6 +16,28 @@ module.exports = {
 			},
 			gridTemplateAreas: {
 				posts: ['main main ', 'rest rest']
+			},
+			typography: {
+				DEFAULT: {
+					css: {
+						a: {
+							color: '#0D6AB7',
+							'&:hover': {
+								color: '#1081DD'
+							}
+						}
+					}
+				},
+				invert: {
+					css: {
+						a: {
+							color: '#0D6AB7',
+							'&:hover': {
+								color: '#1081DD'
+							}
+						}
+					}
+				}
 			}
 		}
 	},
