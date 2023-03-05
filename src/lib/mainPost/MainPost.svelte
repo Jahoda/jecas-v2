@@ -1,6 +1,7 @@
 <script lang="ts">
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import Date from '$lib/date/CreatedAt.svelte';
+	import { generateGradient } from '$lib/mainPost/gradientGenerator';
 	import ReadingTime from '$lib/readingTime/ReadingTime.svelte';
 	import Tags from '$lib/tags/Tags.svelte';
 
@@ -15,9 +16,17 @@
 	export let noImage = false;
 	export let wordCount: number | null = null;
 
-	$: backgroundGradient = background
-		? `linear-gradient(to right top, ${background}, #000`
-		: `linear-gradient(to right top, #7957b0, #6b5db5, #5b63b9, #4a68bb, #356cbc, #5c6dc1, #7b6dc3, #966dc3, #d466b0, #fc698d, #ff7f65, #ffa23f)`;
+	// $: backgroundGradient = background
+	// 	? `linear-gradient(to right top, ${background}, #000`
+	// 	: `linear-gradient(to right top, #7957b0, #6b5db5, #5b63b9, #4a68bb, #356cbc, #5c6dc1, #7b6dc3, #966dc3, #d466b0, #fc698d, #ff7f65, #ffa23f)`;
+
+	$: tagsColors = tags?.map((tag) => tag.background).filter((color) => color) || [];
+	$: color1 = tagsColors[0] || '#7957b0';
+	$: color2 = tagsColors[1] || '#6b5db5';
+	$: color3 = tagsColors[2] || '#5b63b9';
+
+	$: backgroundGradient = `linear-gradient(to right top, ${tagsColors.join(',')}, #5b63b9)`;
+	// $: backgroundGradient = generateGradient(color1, color2, color3);
 </script>
 
 <div

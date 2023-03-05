@@ -81,7 +81,7 @@
 
 			<div class="xlx:col-span-3">
 				<div class="grid grid-cols-1 gap-8">
-					<TopPosts posts={data.favorite} />
+					<TopPosts tags={data.tags} posts={data.favorite} {pagesTags} />
 				</div>
 			</div>
 		</div>

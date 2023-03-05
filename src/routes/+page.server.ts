@@ -20,13 +20,6 @@ export const load = (async () => {
 		LIMIT 15
 	`);
 
-	const [pagesTags] = await connection.execute(
-		`SELECT tag_id, page_id FROM pages_tags WHERE page_id IN (${posts
-			.map((_item) => '?')
-			.join(',')})`,
-		posts.map((post) => post.id)
-	);
-
 	const [tags] = await connection.execute(
 		'SELECT COUNT(*) as count, tags.id, tags.name, tags.url_slug, tags.background, tags.color FROM `pages_tags` LEFT JOIN tags ON tags.id = pages_tags.tag_id GROUP BY tags.id ORDER BY count DESC'
 	);
@@ -48,10 +41,19 @@ export const load = (async () => {
 	];
 
 	const [favorite] = await connection.execute(
-		`SELECT url_slug, title FROM pages WHERE url_slug IN (${favoriteSlugs
+		`SELECT url_slug, id, title FROM pages WHERE url_slug IN (${favoriteSlugs
 			.map((_item) => '?')
 			.join(',')})`,
 		favoriteSlugs
+	);
+
+	const allPosts = [...posts, ...favorite];
+
+	const [pagesTags] = await connection.execute(
+		`SELECT tag_id, page_id FROM pages_tags WHERE page_id IN (${allPosts
+			.map((_item) => '?')
+			.join(',')})`,
+		allPosts.map((post) => post.id)
 	);
 
 	return {

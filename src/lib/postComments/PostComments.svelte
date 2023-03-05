@@ -29,4 +29,4 @@
 	onMount(mountDisqusComments);
 </script>
 
-<div bind:this={disqusElement} class="dark:bg-gray-800 p-8 rounded-md" />
+<div bind:this={disqusElement} class="dark:bg-gray-800 bg-black/10 p-8 rounded-md" />

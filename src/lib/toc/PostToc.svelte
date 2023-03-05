@@ -54,15 +54,15 @@
 </script>
 
 {#if headlines?.length > 0}
-	<div class="bg-white/10 p-4 rounded-xl inline-flex flex-col">
+	<div class="bg-black/10 dark:bg-white/10 p-4 rounded-xl inline-flex flex-col">
 		<ul class="space-y-1">
 			{#each headlines as headline}
 				<li>
 					<a
 						href="#{headline.id}"
-						class="block py-1 hover:bg-white/5 transition-colors rounded-md no-underline px-4 {headline.id ===
+						class="block py-1 hover:bg-black/5 dark:hover:bg-white/5 transition-colors rounded-md no-underline px-4 {headline.id ===
 						intersectingId
-							? 'bg-white/10 no-underline'
+							? 'bg-black/10 dark:bg-white/10 no-underline'
 							: ''} "
 					>
 						{headline.text}
