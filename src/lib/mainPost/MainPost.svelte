@@ -7,7 +7,7 @@
 	export let title: string;
 	export let description: string;
 	export let date: string | null = null;
-	export let href: string;
+	export let href: string | null = null;
 	export let background: string | null = null;
 	export let tags: object[] | null = null;
 	export let small = false;
@@ -55,11 +55,11 @@
 			{/if}
 
 			<div class="{small ? 'gap-4' : 'gap-8'} flex flex-col">
-				<a {href} class="hover:underline">
+				<svelte:element this={href ? 'a' : 'div'} {href} class={href ? 'hover:underline' : ''}>
 					<h1 class="{small ? 'text-2xl' : 'text-5xl'} font-bold">
 						{@html title}
-					</h1></a
-				>
+					</h1>
+				</svelte:element>
 				{#if description}
 					<p class={small ? 'text-sm' : 'text-2xl'}>
 						{@html description}

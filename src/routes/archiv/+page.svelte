@@ -20,7 +20,11 @@
 <Container verticalSpace>
 	<div class="grid gap-8 grid-cols-6">
 		{#each data.posts as post, index}
-			<div class="grid {index > 9 ? 'col-span-2' : 'col-span-3'}">
+			<div
+				class="grid {index > 9
+					? 'col-span-6 lg:col-span-3 xl:col-span-2'
+					: 'col-span-6 xl:col-span-3'}"
+			>
 				<MainPost
 					title={post.headline}
 					description={post.description}

@@ -9,6 +9,7 @@
 
 	import type { PageData } from './$types';
 	import { groupByPageId } from '$lib/tags/tags';
+	import { slide } from 'svelte/transition';
 
 	export let data: PageData;
 
@@ -27,12 +28,12 @@
 	<div class="mt-4 md:mt-8" />
 
 	<Container>
-		<div class="grid grid-cols-1 xl:grid-cols-11 gap-8">
-			<div class="xl:col-span-6">
+		<div class="grid grid-cols-1 lg:grid-cols-homepage-2 xl:grid-cols-homepage-3 gap-8">
+			<div class="xlx:col-span-6">
 				<div class="grid grid-cols-1 gap-8">
-					<div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-						{#each data.posts as post, index (post.url_slug)}
-							<div class="grid {index >= 3 ? 'xl:col-span-1' : 'lg:col-span-2'}">
+					<div class="grid gap-8 grid-cols-1">
+						{#each data.posts.slice(0, 3) as post, index (post.url_slug)}
+							<div class="grid">
 								<MainPost
 									title={post.headline}
 									description={post.description}
@@ -40,6 +41,22 @@
 									href={post.url_slug}
 									neutral={index > 1}
 									small={index > 0}
+									wordCount={post.word_count}
+									tags={data.tags.filter((tag) => pagesTags[post.id]?.includes(tag.id))}
+								/>
+							</div>
+						{/each}
+					</div>
+					<div class="grid grid-cols-repeat-48 gap-8">
+						{#each data.posts.slice(3) as post (post.url_slug)}
+							<div class="grid">
+								<MainPost
+									title={post.headline}
+									description={post.description}
+									date={post.last_modification}
+									href={post.url_slug}
+									neutral
+									small
 									wordCount={post.word_count}
 									tags={data.tags.filter((tag) => pagesTags[post.id]?.includes(tag.id))}
 								/>
@@ -55,14 +72,14 @@
 				</div>
 			</div>
 
-			<div class="xl:col-span-3">
+			<div class="xlx:col-span-2">
 				<div class="grid grid-cols-1 gap-8">
 					<TagCloud tags={data.tags} />
 					<LatestComments />
 				</div>
 			</div>
 
-			<div class="xl:col-span-2">
+			<div class="xlx:col-span-3">
 				<div class="grid grid-cols-1 gap-8">
 					<TopPosts posts={data.favorite} />
 				</div>

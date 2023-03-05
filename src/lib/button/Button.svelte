@@ -1,12 +1,18 @@
 <script lang="ts">
-	export let href: string;
+	export let href: string | null = null;
 	export let arrow = false;
+	export let small = false;
 </script>
 
 <a
 	{href}
-	class="bg-blue-light transition-all rounded-lg gap-2 active:translate-y-0.5 flex items-center group hover:bg-blue-dark px-5 py-4 leading-5 font-semibold text-white"
+	class="bg-blue-light truncate transition-all rounded-lg gap-2 active:translate-y-0.5 flex items-center group hover:bg-blue-dark {small
+		? 'px-2 py-1'
+		: 'px-5 py-4'} leading-5 font-semibold text-white"
+	on:click
 >
+	<slot name="icon" />
+
 	<slot />
 
 	{#if arrow}
