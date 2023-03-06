@@ -2,7 +2,9 @@
 	import SearchHandler from '$lib/search/SearchHandler.svelte';
 	import SearchIcon from '$lib/search/SearchIcon.svelte';
 
-	import { fade } from 'svelte/transition';
+	import { onMount } from 'svelte';
+	import { navigating } from '$app/stores';
+	import { fade, fly } from 'svelte/transition';
 
 	let isSearchOpen = false;
 
@@ -17,20 +19,41 @@
 	function handleClose() {
 		isSearchOpen = false;
 	}
+
+	let hasMounted = false;
+
+	onMount(() => {
+		hasMounted = true;
+	});
+
+	$: {
+		if (hasMounted) {
+			document.body.classList.toggle('overflow-hidden', isSearchOpen);
+
+			if ($navigating) {
+				handleClose();
+			}
+		}
+	}
+
+	function closeSearchIfUrlChanged() {
+		isSearchOpen = false;
+	}
 </script>
 
 {#if isSearchOpen}
 	<div
-		transition:fade={{ duration: 200 }}
 		class="fixed top-0 left-0 z-20 flex h-screen w-screen items-end justify-center whitespace-normal text-left md:items-center"
 	>
 		<div
+			transition:fade={{ duration: 300 }}
 			aria-hidden="true"
 			class="absolute h-full w-full bg-black/60 backdrop-blur"
 			on:click={handleClose}
 		/>
 
 		<div
+			transition:fly={{ y: 50, duration: 200 }}
 			class="relative flex max-h-[95vh] w-full flex-col md:max-w-lg rounded-t-x overflow-hidden text-gray-800 dark:text-white bg-white dark:bg-slate-800 md:rounded-xl"
 		>
 			<SearchHandler on:close={handleClose} />

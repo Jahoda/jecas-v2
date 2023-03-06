@@ -1,9 +1,8 @@
-<script>
+<script lang="ts">
 	import Search from '$lib/search/Search.svelte';
 
 	import Container from '$lib/container/Container.svelte';
 	import Logo from '$lib/logo/Logo.svelte';
-	import Slogan from './Slogan.svelte';
 </script>
 
 <div class="bg-blue-light dark:bg-blue-light/30 shadow-lg py-2">
@@ -17,7 +16,7 @@
 			</a>
 
 			<svelte:element this="h1" class="max-lg:hidden">
-				<Slogan />
+				Moderní tvorba webových aplikací
 			</svelte:element>
 
 			<div class="flex-1" />

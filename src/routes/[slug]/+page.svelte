@@ -34,10 +34,10 @@
 				/>
 			</div>
 		</div>
-		<div class="grid grid-cols-post gap-8">
+		<div class="grid xl:grid-cols-post gap-8">
 			<div />
 			<div><PostContent content={post.text_html} /></div>
-			<div class="sticky top-2 max-md:hidden self-start"><PostToc slug={post.url_slug} /></div>
+			<div class="sticky top-2 max-xl:hidden self-start"><PostToc slug={post.url_slug} /></div>
 		</div>
 
 		<div class="m-auto max-w-3xl grid-cols-1 w-full">
