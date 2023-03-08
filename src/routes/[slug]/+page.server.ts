@@ -1,4 +1,4 @@
-import { getSinglePostBySlug } from '$lib/post/post';
+import { getPostsByTagId, getSinglePostBySlug, type Post } from '$lib/post/post';
 import { getAllTagsByPageId, getSingleTagBySlug, type Tag } from '$lib/tag/tag';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
@@ -8,6 +8,7 @@ export const load = (async ({ params }) => {
 
 	let tags: Tag[] = [];
 	let tag: Tag | undefined;
+	let tagPosts: Post[] | undefined;
 
 	const page = await getSinglePostBySlug(slug);
 
@@ -16,6 +17,10 @@ export const load = (async ({ params }) => {
 	} else {
 		// Try to find tag
 		tag = await getSingleTagBySlug(slug);
+
+		if (tag?.id) {
+			tagPosts = await getPostsByTagId(tag.id);
+		}
 
 		if (!tag) {
 			throw error(404, {
@@ -27,6 +32,7 @@ export const load = (async ({ params }) => {
 	return {
 		page,
 		tag,
-		tags
+		tags,
+		tagPosts
 	};
 }) satisfies PageServerLoad;

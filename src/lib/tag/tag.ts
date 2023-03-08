@@ -62,11 +62,13 @@ export async function getSingleTagBySlug(slug: string) {
 	const [tag] = await connection.execute<Tag[]>(
 		`
 		SELECT
-			tags.name as headline,
-			tags.url_slug,
-			tags.background,
-			tags.color,
-			tags.text_html
+			id,
+			name,
+			name as headline,
+			url_slug,
+			background,
+			color,
+			text_html
 		FROM
 			tags
 		WHERE tags.url_slug = ?

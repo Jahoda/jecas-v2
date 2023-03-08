@@ -35,7 +35,12 @@ export async function getAllPosts(limit: number | null = null): Promise<Post[]> 
 
 export async function getPostsBySlug(slugs: string[]): Promise<Post[]> {
 	const [posts] = await connection.execute<Post[]>(
-		`SELECT * FROM pages WHERE url_slug IN (${slugs.map((_item) => '?').join(',')})`,
+		`
+		SELECT *
+		FROM
+			pages
+		WHERE url_slug IN (${slugs.map((_item) => '?').join(',')})
+		`,
 		slugs
 	);
 
@@ -72,11 +77,37 @@ export async function getPostsCount(): Promise<number> {
 
 export async function getPagesTags(posts: Post[]): Promise<TagPost[]> {
 	const [pagesTags] = await connection.execute(
-		`SELECT tag_id, page_id FROM pages_tags WHERE page_id IN (${posts
-			.map((_item) => '?')
-			.join(',')})`,
+		`
+		SELECT
+			tag_id,
+			page_id
+		FROM
+			pages_tags
+		WHERE page_id IN (${posts.map((_item) => '?').join(',')})`,
 		posts.map((post) => post.id)
 	);
 
 	return pagesTags as TagPost[];
+}
+
+export async function getPostsByTagId(id: number): Promise<Post[]> {
+	const [posts] = await connection.execute<Post[]>(
+		`
+		SELECT
+			id,
+			headline,
+			url_slug,
+			description,
+			last_modification,
+			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
+		FROM pages
+		WHERE id IN (
+			SELECT page_id FROM pages_tags WHERE tag_id = ?
+		)
+		ORDER BY last_modification DESC
+		`,
+		[id]
+	);
+
+	return posts;
 }

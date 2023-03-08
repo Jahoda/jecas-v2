@@ -2,6 +2,7 @@
 	import Container from '$lib/container/Container.svelte';
 	import MainPost from '$lib/mainPost/MainPost.svelte';
 	import PostContent from '$lib/post/PostContent.svelte';
+	import PostList from '$lib/post/PostList.svelte';
 	import PostComments from '$lib/postComments/PostComments.svelte';
 	import PostToc from '$lib/toc/PostToc.svelte';
 	import type { PageData } from './$types';
@@ -12,10 +13,10 @@
 </script>
 
 <svelte:head>
-	<title>{post?.title}</title>
+	<title>{post?.title || post?.name}</title>
 	<meta
 		name="description"
-		content="Poznámky o moderním webdesignu, hotová řešení, experimenty a návody."
+		content="{post?.description}"
 	/>
 </svelte:head>
 
@@ -40,8 +41,12 @@
 			<div class="sticky top-2 max-xl:hidden self-start"><PostToc slug={post.url_slug} /></div>
 		</div>
 
-		<div class="m-auto max-w-3xl grid-cols-1 w-full">
-			<PostComments slug={post.url_slug} />
-		</div>
+		{#if data.tagPosts}
+			<PostList posts={data.tagPosts} />
+		{:else}
+			<div class="m-auto max-w-3xl grid-cols-1 w-full">
+				<PostComments slug={post.url_slug} />
+			</div>
+		{/if}
 	</div>
 </Container>

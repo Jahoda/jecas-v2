@@ -9,6 +9,7 @@
 
 	import type { PageData } from './$types';
 	import { groupByPageId } from '$lib/tags/tags';
+	import PostList from '$lib/post/PostList.svelte';
 
 	export let data: PageData;
 
@@ -46,22 +47,8 @@
 							</div>
 						{/each}
 					</div>
-					<div class="grid grid-cols-repeat-48 gap-8">
-						{#each data.posts.slice(3) as post (post.url_slug)}
-							<div class="grid">
-								<MainPost
-									title={post.headline}
-									description={post.description}
-									date={post.last_modification}
-									href={post.url_slug}
-									neutral
-									small
-									wordCount={post.word_count}
-									tags={data.tags.filter((tag) => pagesTags[post.id]?.includes(tag.id))}
-								/>
-							</div>
-						{/each}
-					</div>
+
+					<PostList posts={data.posts.slice(3)} />
 
 					<div class="flex justify-center">
 						<Button href="/archiv" arrow>Dalších cca {data.postCount} článků je v archivu</Button>
