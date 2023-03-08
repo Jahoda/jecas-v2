@@ -1,5 +1,5 @@
 <script lang="ts">
-	import AvatarByName from '$lib/AvatarByName.svelte';
+	import AvatarByName from '$lib/avatar/AvatarByName.svelte';
 	import CommentLinkToPost from '$lib/comments/CommentLinkToPost.svelte';
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import Like from '$lib/like/Like.svelte';

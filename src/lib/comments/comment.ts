@@ -26,7 +26,7 @@ export type Thread = {
 export type CommentContent = {
 	author: Author;
 	canVote: boolean;
-	createdAt: string;
+	createdAt: Date;
 	dislikes: number;
 	editableUntil: string;
 	forum: string;

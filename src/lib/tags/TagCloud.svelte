@@ -1,7 +1,8 @@
 <script lang="ts">
+	import type { Tag } from '$lib/tag/tag';
 	import TagCount from './TagCount.svelte';
 
-	export let tags: object[];
+	export let tags: Tag[];
 
 	$: filteredTags = tags.filter((tag) => tag.background).slice(0, 10);
 </script>

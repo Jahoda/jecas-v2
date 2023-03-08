@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import type { SearchHitItem } from '$lib/search/searchQueryAlgolia';
+	import type { HitPost } from '$lib/search/searchQueryAlgolia';
 	import SearchHit from '$lib/search/SearchHit.svelte';
 	import { flip } from 'svelte/animate';
 
-	export let hits: SearchHitItem[] = [];
+	export let hits: HitPost[] = [];
 	export let query: string;
 
 	let currentIndex = 0;

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Container from '$lib/container/Container.svelte';
 </script>
 

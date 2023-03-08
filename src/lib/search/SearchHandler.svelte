@@ -1,10 +1,11 @@
 <script lang="ts">
 	import SearchInput from '$lib/search/SearchInput.svelte';
 
-	import { type SearchHitItem, searchQueryAlgolia } from '$lib/search/searchQueryAlgolia';
+	import { searchQueryAlgolia, type HitPost } from '$lib/search/searchQueryAlgolia';
 	import SearchResults from '$lib/search/SearchResults.svelte';
+
 	let query = '';
-	let result: SearchHitItem[] = [];
+	let result: HitPost[] = [];
 
 	$: {
 		searchQueryAlgolia(query).then(({ hits }) => {

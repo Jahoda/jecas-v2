@@ -9,7 +9,6 @@
 
 	import type { PageData } from './$types';
 	import { groupByPageId } from '$lib/tags/tags';
-	import { slide } from 'svelte/transition';
 
 	export let data: PageData;
 
@@ -65,9 +64,7 @@
 					</div>
 
 					<div class="flex justify-center">
-						<Button href="/archiv" arrow
-							>Dalších cca {data.postCount[0].count} článků je v archivu</Button
-						>
+						<Button href="/archiv" arrow>Dalších cca {data.postCount} článků je v archivu</Button>
 					</div>
 				</div>
 			</div>

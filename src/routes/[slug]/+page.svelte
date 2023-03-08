@@ -30,7 +30,7 @@
 					background={post.background}
 					href={post.url_slug}
 					tags={data.tags}
-					noImage={data.tag}
+					noImage={Boolean(data.tag)}
 				/>
 			</div>
 		</div>

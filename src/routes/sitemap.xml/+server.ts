@@ -1,20 +1,8 @@
-import { connection } from '$lib/server/database';
+import { getAllPosts } from '$lib/post/post';
 import { sanizite } from '$lib/xml/xml';
 
 export async function GET() {
-	const [posts] = await connection.execute(`
-		SELECT
-			id,
-			title,
-			headline,
-			url_slug,
-			description,
-			last_modification,
-			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
-		FROM pages 
-		WHERE status = 1
-		ORDER BY last_modification DESC
-	`);
+	const posts = await getAllPosts();
 
 	return new Response(
 		`
@@ -54,9 +42,6 @@ export async function GET() {
 			)
 			.join('')
 			.trim()}
-
-
-		  	)}
 	  </urlset>`.trim(),
 		{
 			headers: {

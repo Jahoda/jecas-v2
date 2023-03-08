@@ -35,10 +35,6 @@
 			}
 		}
 	}
-
-	function closeSearchIfUrlChanged() {
-		isSearchOpen = false;
-	}
 </script>
 
 {#if isSearchOpen}

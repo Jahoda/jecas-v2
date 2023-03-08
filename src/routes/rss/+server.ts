@@ -1,20 +1,8 @@
-import { connection } from '$lib/server/database';
+import { getAllPosts } from '$lib/post/post';
 import { sanizite } from '$lib/xml/xml';
 
 export async function GET() {
-	const [posts] = await connection.execute(`
-		SELECT
-			id,
-			title,
-			headline,
-			url_slug,
-			description,
-			last_modification,
-			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
-		FROM pages 
-		WHERE status = 1
-		ORDER BY last_modification DESC
-	`);
+	const posts = await getAllPosts();
 
 	const baseUrl = 'https://jecas.cz';
 
@@ -28,22 +16,19 @@ export async function GET() {
 				<atom:link href="${baseUrl}/rss" rel="self" type="application/rss+xml" />
 				<description>Poznámky k webdesignu.</description>
 				<language>cs</language>
-		
 		${posts
 			.map(
 				(post) => `
-
 				<item>
 					<title>${sanizite(post.title)}</title>
 					<link>https://jecas.cz/${post.url_slug}</link>
 					<guid>https://jecas.cz/${post.url_slug}</guid>
 					<description>${sanizite(post.description)}</description>
-				</item>`
+				</item>
+		`
 			)
 			.join('')
-			.trim()}
-		  	)}
-	  
+			.trim()}	  
 			</channel>
 		</rss>
 	`.trim(),

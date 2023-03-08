@@ -1,16 +1,15 @@
 <script lang="ts">
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
-	import Date from '$lib/date/CreatedAt.svelte';
-	import { generateGradient } from '$lib/mainPost/gradientGenerator';
 	import ReadingTime from '$lib/readingTime/ReadingTime.svelte';
+	import type { Tag } from '$lib/tag/tag';
 	import Tags from '$lib/tags/Tags.svelte';
 
 	export let title: string;
 	export let description: string;
-	export let date: string | null = null;
+	export let date: Date | null = null;
 	export let href: string | null = null;
 	export let background: string | null = null;
-	export let tags: object[] | null = null;
+	export let tags: Tag[] | null = null;
 	export let small = false;
 	export let neutral = false;
 	export let noImage = false;
@@ -35,6 +34,8 @@
 		: 'text-white dark:text-white'}"
 	style="--image: url({`/files/article/${href}.png`});{neutral
 		? ''
+		: background
+		? `background: ${background}`
 		: `background-image: ${backgroundGradient}`}"
 >
 	<div

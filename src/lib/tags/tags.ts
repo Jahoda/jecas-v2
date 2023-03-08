@@ -1,9 +1,6 @@
-export type PageTag = {
-	page_id: number;
-	tag_id: number;
-};
+import type { TagPost } from '$lib/tag/tag';
 
-export function groupByPageId(pagesTags: PageTag[]) {
+export function groupByPageId(pagesTags: TagPost[]) {
 	const grouped = pagesTags.reduce<Record<string, number[]>>((acc, pageTag) => {
 		const pageId = pageTag.page_id.toString();
 		if (!acc[pageId]) {

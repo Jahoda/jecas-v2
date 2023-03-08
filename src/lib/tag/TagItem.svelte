@@ -1,8 +1,10 @@
 <script lang="ts">
-	export let title: string;
-	export let background: string;
-	export let color: string;
-	export let href: string;
+	import type { Tag } from '$lib/tag/tag';
+
+	export let title: Tag['name'];
+	export let background: Tag['background'];
+	export let color: Tag['color'];
+	export let href: Tag['url_slug'];
 	export let small = false;
 </script>
 

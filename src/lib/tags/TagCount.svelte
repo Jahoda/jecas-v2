@@ -1,5 +1,7 @@
 <script lang="ts">
-	export let tag: object;
+	import type { Tag } from '$lib/tag/tag';
+
+	export let tag: Tag;
 	export let max: number;
 
 	$: percent = (tag.count / max) * 100;

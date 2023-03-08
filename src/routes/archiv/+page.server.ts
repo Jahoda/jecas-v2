@@ -1,30 +1,13 @@
-import { connection } from '$lib/server/database';
+import { getAllPosts, getPagesTags } from '$lib/post/post';
+import { getAllTags } from '$lib/tag/tag';
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
-	const [posts] = await connection.execute(`
-		SELECT
-			id,
-			headline,
-			url_slug,
-			description,
-			last_modification,
-			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
-		FROM pages 
-		WHERE status = 1
-		ORDER BY last_modification DESC
-	`);
+	const posts = await getAllPosts();
 
-	const [pagesTags] = await connection.execute(
-		`SELECT tag_id, page_id FROM pages_tags WHERE page_id IN (${posts
-			.map((_item) => '?')
-			.join(',')})`,
-		posts.map((post) => post.id)
-	);
+	const pagesTags = await getPagesTags(posts);
 
-	const [tags] = await connection.execute(
-		'SELECT COUNT(*) as count, tags.id, tags.name, tags.url_slug, tags.background, tags.color FROM `pages_tags` LEFT JOIN tags ON tags.id = pages_tags.tag_id GROUP BY tags.id ORDER BY count DESC'
-	);
+	const tags = await getAllTags();
 
 	return {
 		posts: posts,
