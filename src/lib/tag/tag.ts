@@ -44,6 +44,7 @@ export async function getAllTagsByPageId(id: number) {
 	const [tags] = await connection.execute<Tag[]>(
 		`
 		SELECT
+			tags.id,
 			tags.name,
 			tags.url_slug,
 			tags.background,

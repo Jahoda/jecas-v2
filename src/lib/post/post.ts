@@ -111,3 +111,33 @@ export async function getPostsByTagId(id: number): Promise<Post[]> {
 
 	return posts;
 }
+
+export async function getRelatedPostsByMostTags(tagIds: number[], postId: number): Promise<Post[]> {
+	const [posts] = await connection.execute<Post[]>(
+		`
+		SELECT
+			id,
+			headline,
+			url_slug,
+			description,
+			last_modification,
+			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
+		FROM pages
+		WHERE id IN (
+			SELECT
+				page_id
+			FROM
+				pages_tags
+			WHERE tag_id IN (${tagIds.map((_item) => '?').join(',')})
+		)
+		AND id != ?
+		AND status = 1
+		GROUP BY id
+		ORDER BY COUNT(*) DESC, last_modification DESC
+		LIMIT 4
+		`,
+		[...tagIds, postId]
+	);
+
+	return posts;
+}

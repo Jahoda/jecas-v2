@@ -13,7 +13,6 @@
 
 	function mountDisqusComments() {
 		mounted = true;
-		(window as unknown as DisqusConfig).disqus_url = `https://jecas.cz/${slug}`;
 
 		const disqusThread = document.createElement('div');
 		disqusThread.id = 'disqus_thread';
@@ -27,6 +26,12 @@
 	}
 
 	onMount(mountDisqusComments);
+
+	$: {
+		if (mounted) {
+			(window as unknown as DisqusConfig).disqus_url = `https://jecas.cz/${slug}`;
+		}
+	}
 </script>
 
 <div bind:this={disqusElement} class="dark:bg-gray-800 bg-black/10 p-8 rounded-md" />

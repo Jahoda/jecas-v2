@@ -14,10 +14,7 @@
 
 <svelte:head>
 	<title>{post?.title || post?.name}</title>
-	<meta
-		name="description"
-		content="{post?.description}"
-	/>
+	<meta name="description" content={post?.description} />
 </svelte:head>
 
 <Container verticalSpace>
@@ -45,7 +42,15 @@
 			<PostList posts={data.tagPosts} />
 		{:else}
 			<div class="m-auto max-w-3xl grid-cols-1 w-full">
-				<PostComments slug={post.url_slug} />
+				{#key post.url_slug}
+					<PostComments slug={post.url_slug} />
+				{/key}
+			</div>
+		{/if}
+
+		{#if data.relatedPosts}
+			<div class="grid justify-center">
+				<PostList posts={data.relatedPosts} />
 			</div>
 		{/if}
 	</div>
