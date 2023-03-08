@@ -1,3 +1,101 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.prose a[href^='/']:not(.button),
+.prose a[href^='/'] code,
+.prose p a[href^='#']:not([href='#']),
+.inner-link,
+.inner-link code {
+	position: relative;
+	background: #fdf2a8;
+	border-radius: 2px;
+	padding: 0 2px;
+}
+
+.inner-link img {
+	position: absolute;
+	top: 100%;
+	left: 0;
+}
+
+.prose .live a[href^='/'],
+.prose .live a[href^='#'] {
+	background: none;
+}
+
+.prose a[href^='#']:not([href='#']) {
+	border-bottom-style: dotted;
+}
+
+.prose a[href^='http://kod.djpw.cz']:not(.button)
+{
+	padding-left: 20px;
+}
+
+.prose a[href^='http://kod.djpw.cz']:not(.button)
+{
+	background: #e0effc url('http://kod.djpw.cz/favicon.ico') no-repeat;
+	background-size: 1em 100%;
+}
+
+.prose a[href^='http://diskuse.jakpsatweb.cz'],
+.prose a[href^='http://djpw.cz']
+{
+	padding-left: 20px;
+	background: #d3fcab url('https://diskuse.jakpsatweb.cz/favicon.ico') no-repeat;
+	background-size: 1em 100%;
+}
+
+.prose a[href^='https://github.com'],
+.prose a[href^='https://gist.github.com']
+{
+	padding-left: 22px;
+	background: #e4e4f1 url('https://github.com/favicon.ico') 2px no-repeat;
+	background-size: 1em 100%;
+	border-radius: 2px;
+}
+
+.prose a[href^='http://php.net']
+{
+	padding-left: 20px;
+	background: #e4e4f1 url('https://php.net/favicon.ico') no-repeat;
+	background-size: 1em 100%;
+}
+
+.prose a[href^='http://devdocs.io/']
+{
+	padding-left: 20px;
+	background: #e4e4f1 url('https://devdocs.io/favicon.ico') no-repeat;
+	background-size: 1em 100%;
+}
+
+.prose a[href^='http://cs.wikipedia.org/'],
+.prose a[href^='http://en.wikipedia.org/']
+{
+	padding-left: 20px;
+	background: #e4e4f1 url('https://cs.wikipedia.org/favicon.ico') no-repeat;
+	background-size: 1em 100%;
+}
+
+.prose a[href^='https://www.vzhurudolu.cz']
+{
+	padding-left: 1.25rem;
+	background: url('https://www.vzhurudolu.cz/favicon.ico') center left no-repeat;
+	background-size: 1rem 1rem;
+}
+
+.prose a[href^='https://developer.mozilla.org']
+{
+	padding-left: 1.25rem;
+	background: url('https://developer.mozilla.org/favicon.ico') center left no-repeat;
+	background-size: 1rem 1rem;
+}
+
+.prose a[href^='https://www.npmjs.com']
+{
+	padding-left: 1.25rem;
+	background: url('https://static.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png') center left
+		no-repeat;
+	background-size: 1rem 1rem;
+}
