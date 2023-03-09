@@ -15,10 +15,24 @@ export interface Post extends RowDataPacket {
 	status: number;
 }
 
+export interface PostIn {
+	id: number;
+	title: string;
+	url_slug: string;
+	headline: string;
+	text_html: string;
+	description: string;
+	// date: Date;
+	last_modification: Date;
+	// comments: number;
+	status: number;
+}
+
 export async function getAllPosts(limit: number | null = null): Promise<Post[]> {
 	const [posts] = await connection.execute<Post[]>(`
 		SELECT
 			id,
+			title,
 			headline,
 			url_slug,
 			description,
@@ -26,6 +40,25 @@ export async function getAllPosts(limit: number | null = null): Promise<Post[]> 
 			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
 		FROM pages 
 		WHERE status = 1
+		ORDER BY last_modification DESC
+		${limit ? `LIMIT ${limit}` : ''}
+	`);
+
+	return posts;
+}
+
+export async function getAllDrafts(limit: number | null = null): Promise<Post[]> {
+	const [posts] = await connection.execute<Post[]>(`
+		SELECT
+			id,
+			title,
+			headline,
+			url_slug,
+			description,
+			last_modification,
+			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
+		FROM pages 
+		WHERE status = 0
 		ORDER BY last_modification DESC
 		${limit ? `LIMIT ${limit}` : ''}
 	`);
@@ -57,7 +90,8 @@ export async function getSinglePostBySlug(slug: string): Promise<Post> {
 			url_slug,
 			description,
 			last_modification,
-			text_html 
+			text_html,
+			status 
 		FROM pages
 		WHERE url_slug = ?
 		`,
@@ -140,4 +174,61 @@ export async function getRelatedPostsByMostTags(tagIds: number[], postId: number
 	);
 
 	return posts;
+}
+
+export async function createPost(post: PostIn) {
+	return await connection.execute(
+		`
+		INSERT INTO pages (
+			title,
+			url_slug,
+			headline,
+			text_html,
+			description,
+			status,
+			date,
+			last_modification,
+			comments
+		)
+		VALUES
+			(?, ?, ?, ?, ?, ?, ?, ?, 0)
+		`,
+		[
+			post.title,
+			post.url_slug,
+			post.headline,
+			post.text_html,
+			post.description,
+			post.status,
+			new Date(),
+			new Date()
+		]
+	);
+}
+
+export async function updatePost(post: PostIn, id: number) {
+	return await connection.execute(
+		`
+		UPDATE pages
+		SET
+			title = ?,
+			url_slug = ?,
+			headline = ?,
+			text_html = ?,
+			description = ?,
+			status = ?,
+			last_modification = ?
+		WHERE id = ?
+		`,
+		[
+			post.title,
+			post.url_slug,
+			post.headline,
+			post.text_html,
+			post.description,
+			post.status,
+			new Date(post.last_modification),
+			id
+		]
+	);
 }

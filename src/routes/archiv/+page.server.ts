@@ -1,5 +1,5 @@
 import { getAllPosts, getPagesTags } from '$lib/post/post';
-import { getAllTags } from '$lib/tag/tag';
+import { getAllUsedTags } from '$lib/tag/tag';
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
@@ -7,7 +7,7 @@ export const load = (async () => {
 
 	const pagesTags = await getPagesTags(posts);
 
-	const tags = await getAllTags();
+	const tags = await getAllUsedTags();
 
 	return {
 		posts: posts,

@@ -10,7 +10,7 @@
 
 <a
 	{href}
-	class="group border bg-slate-600 rounded-md  flex border-white/25 text-white [text-shadow:0_0_1px_rgba(0,0,0,0.4),0_4px_8px_rgba(0,0,0,0.2)]"
+	class="group border bg-slate-600 rounded-md inline-flex border-white/25 text-white transition-colors"
 	style="background: {background}; color: {color}"
 >
 	<div

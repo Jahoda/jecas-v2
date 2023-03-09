@@ -1,5 +1,5 @@
 import { getAllPosts, getPagesTags, getPostsBySlug, getPostsCount } from '$lib/post/post';
-import { getAllTags } from '$lib/tag/tag';
+import { getAllUsedTags } from '$lib/tag/tag';
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
@@ -7,7 +7,7 @@ export const load = (async () => {
 
 	const posts = await getAllPosts(15);
 
-	const tags = await getAllTags();
+	const tags = await getAllUsedTags();
 
 	const favoriteSlugs = [
 		'svg',

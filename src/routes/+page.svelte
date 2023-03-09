@@ -51,7 +51,9 @@
 					<PostList posts={data.posts.slice(3)} />
 
 					<div class="flex justify-center">
-						<Button href="/archiv" arrow>Dalších cca {data.postCount} článků je v archivu</Button>
+						<Button large href="/archiv" arrow
+							>Dalších cca {data.postCount} článků je v archivu</Button
+						>
 					</div>
 				</div>
 			</div>

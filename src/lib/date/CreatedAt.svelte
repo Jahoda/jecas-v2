@@ -2,8 +2,7 @@
 	export let date: Date;
 	export let small = false;
 
-	const dateFormat = new Date(date);
-	const formatedDate = dateFormat.toLocaleDateString('cs-CZ', {
+	$: formatedDate = new Date(date).toLocaleDateString('cs-CZ', {
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric'

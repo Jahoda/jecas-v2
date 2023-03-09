@@ -12,6 +12,15 @@ export interface Tag extends RowDataPacket {
 	color: string | null;
 }
 
+export interface TagIn {
+	url_slug: string;
+	name: string;
+	headline: string;
+	text_html: string;
+	background: string;
+	color: string;
+}
+
 export interface TagPost extends RowDataPacket {
 	id: number;
 	tag_id: number;
@@ -22,7 +31,7 @@ export interface PostCount extends RowDataPacket {
 	count: number;
 }
 
-export async function getAllTags() {
+export async function getAllUsedTags() {
 	const [tags] = await connection.execute<Tag[]>(`
         SELECT
             COUNT(*) as count,
@@ -37,6 +46,20 @@ export async function getAllTags() {
         GROUP BY tags.id
         ORDER BY count DESC
     `);
+	return tags;
+}
+
+export async function getAllTags() {
+	const [tags] = await connection.execute<Tag[]>(`
+		SELECT
+			id,
+			name,
+			url_slug,
+			background,
+			color
+		FROM
+			tags
+	`);
 	return tags;
 }
 
@@ -77,4 +100,56 @@ export async function getSingleTagBySlug(slug: string) {
 		[slug]
 	);
 	return tag[0];
+}
+
+export function updateTagBySlug(slug: string, data: TagIn) {
+	return connection.execute(
+		`
+		UPDATE
+			tags
+		SET
+			name = ?,
+			url_slug = ?,
+			headline = ?,
+			text_html = ?,
+			background = ?,
+			color = ?
+		WHERE
+			url_slug = ?
+	`,
+		[data.name, slug, data.headline, data.text_html, data.background, data.color, slug]
+	);
+}
+
+export function createTag(data: TagIn) {
+	console.log([
+		data.name,
+		data.url_slug,
+		data.headline,
+		data.text_html,
+		data.background,
+		data.color
+	]);
+	return connection.execute(
+		`
+		INSERT INTO
+			tags
+			(name, url_slug, headline, text_html, background, color)
+		VALUES
+			(?, ?, ?, ?, ?, ?)
+	`,
+		[data.name, data.url_slug, data.headline, data.text_html, data.background, data.color]
+	);
+}
+
+export function deleteTagBySlug(slug: string) {
+	return connection.execute(
+		`
+		DELETE FROM
+			tags
+		WHERE
+			url_slug = ?
+	`,
+		[slug]
+	);
 }
