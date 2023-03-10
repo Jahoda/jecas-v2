@@ -17,6 +17,7 @@
 	import TagItem from '$lib/tag/TagItem.svelte';
 	import type { Tag } from '$lib/tag/tag';
 	import IconXMark from '$lib/icon/IconXMark.svelte';
+	import Editor from '$lib/editor/Editor.svelte';
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -72,6 +73,14 @@
 
 	let asignedTags: Tag[] = [];
 	$: asignedTags = postTags.map((id) => allTags.get(id)) as Tag[];
+
+	function handleSaveOnCtrlS(event: KeyboardEvent) {
+		if ((event.metaKey || event.ctrlKey) && event.key === 's') {
+			event.preventDefault();
+			const form = document.querySelector('form') as HTMLFormElement;
+			form.dispatchEvent(new Event('submit'));
+		}
+	}
 </script>
 
 <svelte:head>
@@ -155,7 +164,9 @@
 
 					<div class="mt-4" />
 
-					<Textarea label="Obsah" name="text_html" bind:value={postForm.text_html} />
+					<Editor name="text_html" bind:value={postForm.text_html} />
+
+					<div class="mt-4" />
 
 					<div class="flex flex-wrap gap-2">
 						{#each postTags as tagId (tagId)}
@@ -232,3 +243,5 @@
 		</div>
 	</div>
 </Container>
+
+<svelte:window on:keydown|capture={handleSaveOnCtrlS} />
