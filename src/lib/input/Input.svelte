@@ -1,9 +1,10 @@
 <script lang="ts">
-	export let value: string;
+	export let value: string | null = null;
 	export let name: string;
 	export let label: string;
 	export let showLabel = true;
 	export let placeholder: string | null = null;
+	export let disabled: boolean = false;
 	export let required: boolean = false;
 	export let full: boolean = false;
 </script>
@@ -27,6 +28,7 @@
 			type="text"
 			bind:value
 			{name}
+			{disabled}
 			id={name}
 			{placeholder}
 			class="border border-slate-300 rounded-md py-2 px-4 shadow dark:bg-slate-600 dark:border-slate-700 {full

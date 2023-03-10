@@ -11,6 +11,8 @@
 	import AdminPostList from '$lib/post/AdminPostList.svelte';
 	import TagItem from '$lib/tag/TagItem.svelte';
 	import type { PageData } from './$types';
+	import { Auth } from '@supabase/auth-ui-svelte';
+	import { ThemeSupa } from '@supabase/auth-ui-shared';
 
 	export let data: PageData;
 </script>
@@ -19,75 +21,12 @@
 	<title>Admin</title>
 </svelte:head>
 
-<Container verticalSpace>
-	<div class="flex items-center gap-4">
-		<Button href="/admin/post/new" large>
-			<IconPlus slot="icon" />
-			Nový článek
-		</Button>
-		<Input
-			name="search"
-			placeholder="Hledaný název článku"
-			showLabel={false}
-			label="Hledat"
-			bind:value={$searchText}
-		>
-			<IconMagnifyingGlass slot="icon" />
-		</Input>
-	</div>
-
-	<div class="mt-8" />
-
-	<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl">
-		<div>
-			<AdminPostList title="Koncepty" posts={data.drafts} />
-		</div>
-		<div>
-			{#await data.optional.posts}
-				<SkeletonLoader />
-			{:then posts}
-				<AdminPostList title="Poslední články" {posts} />
-			{/await}
-		</div>
-		<div>
-			<Box>
-				{#await data.optional.tags}
-					<SkeletonLoader />
-				{:then tags}
-					<div class="flex items-center justify-between">
-						<div class="text-2xl">
-							Tagy ({tags.length})
-						</div>
-
-						<Button href="/admin/tag/new">
-							<IconPlusCircle slot="icon" />
-							Nový tag
-						</Button>
-					</div>
-
-					<div class="mt-8" />
-
-					<div class="space-y-4">
-						{#each tags as tag}
-							<div
-								class="flex justify-between gap-8 items-center bg-slate-100 dark:bg-slate-600 p-2 rounded-lg"
-							>
-								<TagItem
-									title={tag.name}
-									background={tag.background}
-									color={tag.color}
-									href={tag.url_slug}
-								/>
-								<div class="justify-end flex">
-									<div class="inline-flex">
-										<Button href="/admin/tag/{tag.url_slug}">Upravit</Button>
-									</div>
-								</div>
-							</div>
-						{/each}
-					</div>
-				{/await}
-			</Box>
-		</div>
-	</div>
+<Container>
+	<Auth
+		supabaseClient={data.supabase}
+		view="magic_link"
+		redirectTo={`${data.url}/logging-in?redirect=/admin/dashboard`}
+		showLinks={false}
+		appearance={{ theme: ThemeSupa, style: { input: 'color: #fff' } }}
+	/>
 </Container>

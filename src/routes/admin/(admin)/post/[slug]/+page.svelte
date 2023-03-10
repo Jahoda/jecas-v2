@@ -18,6 +18,7 @@
 	import type { Tag } from '$lib/tag/tag';
 	import IconXMark from '$lib/icon/IconXMark.svelte';
 	import Editor from '$lib/editor/Editor.svelte';
+	import FileUplad from '$lib/fileUpload/FileUplad.svelte';
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -140,7 +141,7 @@
 							<Input full label="Nadpis" name="headline" bind:value={postForm.headline} />
 						</div>
 
-						<div>
+						<div class="flex flex-col justify-between">
 							<Input
 								required
 								label="URL"
@@ -148,6 +149,8 @@
 								bind:value={postForm.url_slug}
 								on:input={handleSlugChange}
 							/>
+
+							<FileUplad name="thumbnail" bucket="post-thumbnails" filePath={postForm.url_slug} />
 						</div>
 					</div>
 

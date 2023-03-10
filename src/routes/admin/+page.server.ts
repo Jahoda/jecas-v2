@@ -1,17 +1,13 @@
-import { getAllDrafts, getAllPosts } from '$lib/post/post';
-import { getAllTags } from '$lib/tag/tag';
+import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-export const load = (async () => {
-	const posts = await getAllPosts();
-	const drafts = getAllDrafts();
-	const tags = getAllTags();
+export const load: PageServerLoad = async ({ url, locals: { getSession } }) => {
+	const session = await getSession();
 
-	return {
-		drafts,
-		optional: {
-			posts,
-			tags
-		}
-	};
-}) satisfies PageServerLoad;
+	// if the user is already logged in return them to the account page
+	if (session) {
+		throw redirect(303, '/admin/dashboard');
+	}
+
+	return { url: url.origin };
+};

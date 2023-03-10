@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
+	import PostImage from '$lib/postImage/PostImage.svelte';
 	import ReadingTime from '$lib/readingTime/ReadingTime.svelte';
 	import type { Tag } from '$lib/tag/tag';
 	import Tags from '$lib/tags/Tags.svelte';
@@ -54,13 +55,9 @@
 						? 'w-[100px] h-[100px]'
 						: 'w-[200px] h-[200px]'}"
 				>
-					<img
-						src={`/files/article/${href}.png`}
-						loading={!neutral && !small ? null : 'lazy'}
-						alt=""
-						width="200"
-						height="200"
-					/>
+					{#if href}
+						<PostImage slug={href} lazy={!neutral && !small} />
+					{/if}
 				</a>
 			{/if}
 

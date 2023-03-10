@@ -3,10 +3,12 @@
 	export let arrow = false;
 	export let small = false;
 	export let large = false;
+	export let disabled = false;
 </script>
 
 <svelte:element
 	this={href ? 'a' : 'button'}
+	disabled={href ? null : disabled}
 	{href}
 	class="bg-blue-light truncate transition-all rounded-lg gap-2 active:translate-y-0.5 inline-flex items-center group hover:bg-blue-dark {small
 		? 'px-2 py-1'
