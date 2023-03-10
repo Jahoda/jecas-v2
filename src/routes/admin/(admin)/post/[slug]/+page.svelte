@@ -14,6 +14,9 @@
 	import MainPost from '$lib/mainPost/MainPost.svelte';
 	import PostContent from '$lib/post/PostContent.svelte';
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
+	import TagItem from '$lib/tag/TagItem.svelte';
+	import type { Tag } from '$lib/tag/tag';
+	import IconXMark from '$lib/icon/IconXMark.svelte';
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -22,7 +25,7 @@
 
 	$: originalPost = structuredClone(data.post);
 
-	let postForm: PostIn = {
+	let postForm: PostIn = data.post || {
 		id: 0,
 		title: '',
 		headline: '',
@@ -33,11 +36,9 @@
 		status: 0
 	};
 
-	$: {
-		if (data.post) {
-			postForm = data.post as PostIn;
-		}
-	}
+	let postTags: number[] = data.tags?.map((tag) => tag.id) || [];
+
+	let allTags: Map<number, Tag> = new Map(data.allTags.map((tag) => [tag.id, tag]));
 
 	let isSlugEdited = false;
 
@@ -57,6 +58,20 @@
 			? new Date()
 			: originalPost?.last_modification || new Date();
 	}
+
+	function handleAddTag(event: Event) {
+		const target = event.target as HTMLInputElement;
+
+		postTags.push(Number(target.value));
+		postTags = postTags;
+	}
+
+	function handleRemoveTag(id: number) {
+		postTags = postTags.filter((tag) => tag !== id);
+	}
+
+	let asignedTags: Tag[] = [];
+	$: asignedTags = postTags.map((id) => allTags.get(id)) as Tag[];
 </script>
 
 <svelte:head>
@@ -68,14 +83,21 @@
 <Container verticalSpace>
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 		<div>
+			{#if form?.message}
+				<FlashMessage error>
+					{form?.message}
+				</FlashMessage>
+			{/if}
 			{#if form?.success}
 				<FlashMessage>
 					Článek byl úspěšně uložen.
-
 					<Button small href="/{data.post?.url_slug}">Zobrazit</Button>
 				</FlashMessage>
 			{:else if $page.url.searchParams.has('created')}
-				<FlashMessage>Článek byl úspěšně vytvořen.</FlashMessage>
+				<FlashMessage>
+					Článek byl úspěšně vytvořen.
+					<Button small href="/{data.post?.url_slug}">Zobrazit</Button>
+				</FlashMessage>
 			{/if}
 
 			<Box>
@@ -94,6 +116,7 @@
 				<form method="POST" use:enhance={preserveForm}>
 					<input type="hidden" value={postForm.id} name="id" />
 					<input type="hidden" value={postForm.last_modification} name="last_modification" />
+					<input type="hidden" value={postTags.join(',')} name="postTags" />
 
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 						<div class="col-span-2">
@@ -134,6 +157,36 @@
 
 					<Textarea label="Obsah" name="text_html" bind:value={postForm.text_html} />
 
+					<div class="flex flex-wrap gap-2">
+						{#each postTags as tagId (tagId)}
+							{@const tag = allTags.get(tagId)}
+							{#if tag}
+								<TagItem title={tag.name} background={tag.background} color={tag.color}>
+									<button
+										type="button"
+										on:click={() => handleRemoveTag(tag.id)}
+										class="hover:bg-white/10"
+									>
+										<IconXMark /></button
+									>
+								</TagItem>
+							{/if}
+						{/each}
+
+						<select on:change={handleAddTag} class="rounded-md border py-1 px-2 hover:bg-slate-100">
+							<option value="">Přidat tag</option>
+							{#each data.allTags as tag}
+								<option value={tag.id}>
+									{tag.name}
+								</option>
+							{/each}
+						</select>
+					</div>
+
+					<div class="mt-4" />
+
+					<div class="mt-8" />
+
 					<div class="flex gap-4 items-center">
 						<Button large>Uložit</Button>
 						<div class="flex flex-col">
@@ -169,7 +222,7 @@
 					description={postForm.description}
 					date={postForm.last_modification}
 					href="/{postForm.url_slug}"
-					tags={data.tags}
+					tags={asignedTags}
 				/>
 
 				<div class="mt-8" />

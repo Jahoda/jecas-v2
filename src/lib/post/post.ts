@@ -1,6 +1,6 @@
 import { connection } from '$lib/server/database';
 import type { PostCount, TagPost } from '$lib/tag/tag';
-import type { RowDataPacket } from 'mysql2';
+import type { ResultSetHeader, RowDataPacket } from 'mysql2';
 
 export interface Post extends RowDataPacket {
 	id: number;
@@ -26,6 +26,7 @@ export interface PostIn {
 	last_modification: Date;
 	// comments: number;
 	status: number;
+	postTags?: string;
 }
 
 export async function getAllPosts(limit: number | null = null): Promise<Post[]> {
@@ -177,7 +178,7 @@ export async function getRelatedPostsByMostTags(tagIds: number[], postId: number
 }
 
 export async function createPost(post: PostIn) {
-	return await connection.execute(
+	const [result] = await connection.execute<ResultSetHeader>(
 		`
 		INSERT INTO pages (
 			title,
@@ -204,10 +205,12 @@ export async function createPost(post: PostIn) {
 			new Date()
 		]
 	);
+
+	return result.insertId;
 }
 
 export async function updatePost(post: PostIn, id: number) {
-	return await connection.execute(
+	const [result] = await connection.execute<ResultSetHeader>(
 		`
 		UPDATE pages
 		SET
@@ -231,4 +234,6 @@ export async function updatePost(post: PostIn, id: number) {
 			id
 		]
 	);
+
+	return result.affectedRows;
 }

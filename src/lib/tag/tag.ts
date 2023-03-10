@@ -142,8 +142,8 @@ export function createTag(data: TagIn) {
 	);
 }
 
-export function deleteTagBySlug(slug: string) {
-	return connection.execute(
+export async function deleteTagBySlug(slug: string) {
+	return await connection.execute(
 		`
 		DELETE FROM
 			tags
@@ -151,5 +151,31 @@ export function deleteTagBySlug(slug: string) {
 			url_slug = ?
 	`,
 		[slug]
+	);
+}
+
+export async function removePageTags(pageId: number) {
+	return await connection.execute(
+		`
+		DELETE FROM
+			pages_tags
+		WHERE
+			page_id = ?
+	`,
+		[pageId]
+	);
+}
+
+export async function createPageTags(pageId: number, tags: string[]) {
+	const values = tags.map((tag) => `(${pageId}, ${tag})`).join(', ');
+
+	return await connection.execute(
+		`
+		INSERT INTO
+			pages_tags
+			(page_id, tag_id)
+		VALUES
+			${values}
+	`
 	);
 }
