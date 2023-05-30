@@ -15,7 +15,7 @@
 	style="background: {background}; color: {color}"
 >
 	<div
-		class="{href ? 'group-hover:bg-white/20' : ''} flex px-2  {small
+		class="{href ? 'group-hover:bg-white/20' : ''} flex px-2 {small
 			? 'text-xs py-0.5'
 			: 'py-1'} transition-colors"
 	>

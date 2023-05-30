@@ -19,7 +19,7 @@
 	<div class="relative">
 		{#if $$slots.icon}
 			<div
-				class="absolute inset-y-0  left-0 flex items-center pl-3 pointer-events-none text-gray-400"
+				class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400"
 			>
 				<slot name="icon" />
 			</div>
