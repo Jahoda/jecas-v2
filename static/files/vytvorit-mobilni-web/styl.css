@@ -1,5 +1,5 @@
 .objednat {
-	background-color: #e2feeb;
+	background-color: #E2FEEB;
 	padding: 1px 1em;
 }
 .objednat label {
@@ -31,7 +31,7 @@ form:checked + label + .pripominka {
 .prehled .nadpis {
 	font-size: 200%;
 	line-height: 120%;
-	padding: 0.5em;
+	padding: .5em;
 }
 .prehled .nadpis img {
 	display: inline;
@@ -39,17 +39,16 @@ form:checked + label + .pripominka {
 	position: relative;
 	bottom: -3px;
 }
-.chci,
-a[class='chci'] {
+.chci, a[class="chci"] {
 	font-size: 170%;
-	background: #18800d url(/files/vytvorit-mobilni-web/round_arrow_right.png) no-repeat 5px center;
-	border-color: #18800d;
-	border-radius: 0.1em;
+	background: #18800D url(/files/vytvorit-mobilni-web/round_arrow_right.png) no-repeat 5px center;
+	border-color: #18800D;
+	border-radius: .1em;
 	margin: 1em;
 	padding: 1em;
 	padding-left: 65px;
 	display: inline-block;
-	color: #fff;
+	color: #fff
 }
 ol.kroky {
 	list-style: none;
@@ -64,7 +63,7 @@ ol.kroky {
 	position: absolute;
 	left: -2.5em;
 	color: #000;
-	background: #e2feeb;
+	background: #E2FEEB;
 	width: 1.8em;
 	line-height: 1.8em;
 	text-align: center;
@@ -74,9 +73,9 @@ ol.kroky {
 .odpocet {
 	overflow: hidden;
 	max-width: 15em;
-	background: #fefde2;
-	border: 1px solid #f9f16a;
-	padding: 0.5em;
+	background: #FEFDE2;
+	border: 1px solid #F9F16A;
+	padding: .5em;
 }
 .odpocet .popis {
 }

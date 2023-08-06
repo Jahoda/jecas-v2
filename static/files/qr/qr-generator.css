@@ -1,11 +1,11 @@
 .qr-generator .items > div[data-type] {
-	display: none;
+    display: none;
 }
 
 .qr-generator .controls .active {
-	background: #0d6ab7;
+    background: #0D6AB7;
 }
 
 .qr-generator .items > div.active[data-type] {
-	display: block;
+    display: block;
 }
