@@ -25,9 +25,7 @@
 	class="relative shadow-inner p-4 md:p-16 text-white dark:text-white max-md:text-center"
 	style="--image: url({`/files/article/${href}.png`}); background-image: {backgroundGradient}"
 >
-	<div
-		class="bg-slate-900/50 max-w-[74em] m-auto rounded-xl p-6 h-full"
-	>
+	<div class="bg-slate-900/50 max-w-[74em] m-auto rounded-xl p-6 h-full">
 		<div class="flex md:flex-row max-md:items-center flex-col {small ? 'gap-4' : 'gap-8'}">
 			{#if !noImage}
 				<a

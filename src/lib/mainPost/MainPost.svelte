@@ -30,7 +30,7 @@
 </script>
 
 <div
-	class="relative rounded-2xl shadow p-2 {small ? '' : ''} {neutral
+	class="relative @container rounded-2xl shadow p-2 {small ? '' : ''} {neutral
 		? 'bg-gray-50 dark:bg-slate-700 dark:text-white'
 		: 'text-white dark:text-white'}"
 	style="--image: url({`/files/article/${href}.png`});{neutral
@@ -40,14 +40,18 @@
 		: `background-image: ${backgroundGradient}`}"
 >
 	<div
-		class="{neutral
-			? 'dark:bg-slate-900/50 bg-slate-500/10'
-			: 'bg-slate-900/50'} rounded-xl {small? 'p-3' : 'p-6'} h-full"
+		class="{neutral ? 'dark:bg-slate-900/50 bg-slate-500/10' : 'bg-slate-900/50'} rounded-xl {small
+			? 'p-3'
+			: 'p-6'} h-full"
 	>
 		<div
 			class="bg-blur absolute top-0 left-0 w-full h-full transition-all -z-10 opacity-50 hidden"
 		/>
-		<div class="flex md:flex-row flex-col {small ? 'gap-4' : 'gap-8'}">
+		<div
+			class="flex flex-col items-center text-center {small
+				? 'gap-4 @sm:flex-row @sm:text-left @sm:items-start'
+				: '@xl:flex-row gap-8 @xl:text-left @xl:items-start'}"
+		>
 			{#if !noImage}
 				<a
 					{href}

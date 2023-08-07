@@ -6,7 +6,7 @@
 	import PostComments from '$lib/postComments/PostComments.svelte';
 	import PostToc from '$lib/toc/PostToc.svelte';
 	import type { PageData } from './$types';
-	import HeroPost from "$lib/mainPost/HeroPost.svelte";
+	import HeroPost from '$lib/mainPost/HeroPost.svelte';
 
 	export let data: PageData;
 
@@ -19,21 +19,23 @@
 </svelte:head>
 
 <HeroPost
-		title={post.headline}
-		description={post.description}
-		date={post.last_modification}
-		background={post.background}
-		href={post.url_slug}
-		tags={data.tags}
-		noImage={Boolean(data.tag)}
-		wordCount="{post.word_count}"
+	title={post.headline}
+	description={post.description}
+	date={post.last_modification}
+	background={post.background}
+	href={post.url_slug}
+	tags={data.tags}
+	noImage={Boolean(data.tag)}
+	wordCount={post.word_count}
 />
 <Container verticalSpace>
 	<div class="grid grid-cols-1 gap-8 md:gap-16">
 		<div class="grid xl:grid-cols-post gap-8">
 			<div class="max-md:hidden" />
 			<div><PostContent content={post.text_html} /></div>
-			<div class="sticky top-2 max-xl:hidden self-start w-[14rem] text-sm"><PostToc slug={post.url_slug} /></div>
+			<div class="sticky top-2 max-xl:hidden self-start w-[14rem] text-sm">
+				<PostToc slug={post.url_slug} />
+			</div>
 		</div>
 
 		{#if data.tagPosts}
