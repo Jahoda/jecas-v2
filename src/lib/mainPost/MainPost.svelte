@@ -65,14 +65,18 @@
 				</a>
 			{/if}
 
-			<div class="{small ? 'gap-4' : 'gap-8'} flex flex-col">
+			<div
+				class="{small
+					? 'gap-4 @sm:items-start'
+					: 'gap-8 @xl:items-start'} items-center flex flex-col"
+			>
 				<svelte:element this={href ? 'a' : 'div'} {href} class={href ? 'hover:underline' : ''}>
-					<h1 class="{small ? 'text-2xl' : 'text-5xl'} font-bold">
+					<h1 class="{small ? 'text-2xl' : 'text-3xl md:text-5xl'} font-bold">
 						{@html title}
 					</h1>
 				</svelte:element>
 				{#if description}
-					<p class={small ? 'text-sm' : 'text-2xl'}>
+					<p class={small ? 'text-sm' : 'text-xl md:text-2xl'}>
 						{@html description}
 					</p>
 				{/if}

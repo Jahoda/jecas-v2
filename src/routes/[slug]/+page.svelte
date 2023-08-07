@@ -30,7 +30,7 @@
 />
 <Container verticalSpace>
 	<div class="grid grid-cols-1 gap-8 md:gap-16">
-		<div class="grid xl:grid-cols-post gap-8">
+		<div class="grid grid-cols-1 xl:grid-cols-post gap-8">
 			<div class="max-md:hidden" />
 			<div><PostContent content={post.text_html} /></div>
 			<div class="sticky top-2 max-xl:hidden self-start w-[14rem] text-sm">

@@ -126,11 +126,6 @@ var {
 	@apply !text-pink-600 !bg-gray-100 rounded !font-normal dark:!bg-gray-800 dark:!text-pink-400;
 }
 
-code::before,
-code::after {
-	content: '' !important;
-}
-
 code {
 	@apply px-0.5;
 }
