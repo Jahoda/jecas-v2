@@ -49,6 +49,7 @@ module.exports = {
 	plugins: [
 		require('@tailwindcss/typography'),
 		require('@savvywombat/tailwindcss-grid-areas'),
-		require('@tailwindcss/container-queries')
+		require('@tailwindcss/container-queries'),
+		require('@tailwindcss/forms')
 	]
 };

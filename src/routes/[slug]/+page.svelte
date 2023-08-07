@@ -49,9 +49,7 @@
 		{/if}
 
 		{#if data.relatedPosts}
-			<div class="grid justify-center">
-				<PostList posts={data.relatedPosts} />
-			</div>
+			<PostList posts={data.relatedPosts} />
 		{/if}
 	</div>
 </Container>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let href: string | null = null;
 	export let arrow = false;
+	export let xSmall = false;
 	export let small = false;
 	export let large = false;
 	export let disabled = false;
@@ -10,11 +11,15 @@
 	this={href ? 'a' : 'button'}
 	disabled={href ? null : disabled}
 	{href}
-	class="bg-blue-light truncate transition-all rounded-lg gap-2 active:translate-y-0.5 inline-flex items-center group hover:bg-blue-dark {small
+	class="custom-button bg-blue-light truncate transition-all {xSmall
+		? 'rounded'
+		: 'rounded-lg'} gap-2 active:translate-y-0.5 inline-flex items-center group hover:bg-blue-dark {small
 		? 'px-2 py-1'
+		: xSmall
+		? 'px-2 py-0.5'
 		: large
 		? 'px-5 py-4'
-		: 'px-4 py-2'} leading-5 font-semibold text-white"
+		: 'px-4 py-2'} leading-5 {xSmall ? 'font-normal text-sm' : 'font-semibold'} text-white"
 	on:click
 	on:keypress
 >
