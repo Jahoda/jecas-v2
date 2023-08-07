@@ -16,38 +16,19 @@
 	export let noImage = false;
 	export let wordCount: number | null = null;
 
-	// $: backgroundGradient = background
-	// 	? `linear-gradient(to right top, ${background}, #000`
-	// 	: `linear-gradient(to right top, #7957b0, #6b5db5, #5b63b9, #4a68bb, #356cbc, #5c6dc1, #7b6dc3, #966dc3, #d466b0, #fc698d, #ff7f65, #ffa23f)`;
-
 	$: tagsColors = tags?.map((tag) => tag.background).filter((color) => color) || [];
-	$: color1 = tagsColors[0] || '#7957b0';
-	$: color2 = tagsColors[1] || '#6b5db5';
-	$: color3 = tagsColors[2] || '#5b63b9';
 
 	$: backgroundGradient = `linear-gradient(to right top, ${tagsColors.join(',')}, #5b63b9)`;
-	// $: backgroundGradient = generateGradient(color1, color2, color3);
 </script>
 
 <div
-	class="relative rounded-2xl shadow p-2 {small ? '' : ''} {neutral
-		? 'bg-gray-50 dark:bg-slate-700 dark:text-white'
-		: 'text-white dark:text-white'}"
-	style="--image: url({`/files/article/${href}.png`});{neutral
-		? ''
-		: background
-		? `background: ${background}`
-		: `background-image: ${backgroundGradient}`}"
+	class="relative shadow-inner p-4 md:p-16 text-white dark:text-white max-md:text-center"
+	style="--image: url({`/files/article/${href}.png`}); background-image: {backgroundGradient}"
 >
 	<div
-		class="{neutral
-			? 'dark:bg-slate-900/50 bg-slate-500/10'
-			: 'bg-slate-900/50'} rounded-xl {small? 'p-3' : 'p-6'} h-full"
+		class="bg-slate-900/50 max-w-[74em] m-auto rounded-xl p-6 h-full"
 	>
-		<div
-			class="bg-blur absolute top-0 left-0 w-full h-full transition-all -z-10 opacity-50 hidden"
-		/>
-		<div class="flex md:flex-row flex-col {small ? 'gap-4' : 'gap-8'}">
+		<div class="flex md:flex-row max-md:items-center flex-col {small ? 'gap-4' : 'gap-8'}">
 			{#if !noImage}
 				<a
 					{href}
@@ -61,14 +42,14 @@
 				</a>
 			{/if}
 
-			<div class="{small ? 'gap-4' : 'gap-8'} flex flex-col">
+			<div class="{small ? 'gap-4' : 'gap-8'} flex flex-col max-md:items-center">
 				<svelte:element this={href ? 'a' : 'div'} {href} class={href ? 'hover:underline' : ''}>
-					<h1 class="{small ? 'text-2xl' : 'text-5xl'} font-bold">
+					<h1 class="{small ? 'text-2xl' : 'text-3xl sm:text-5xl'} font-bold">
 						{@html title}
 					</h1>
 				</svelte:element>
 				{#if description}
-					<p class={small ? 'text-sm' : 'text-2xl'}>
+					<p class={small ? 'text-sm' : 'text-xl sm:text-2xl'}>
 						{@html description}
 					</p>
 				{/if}
@@ -88,12 +69,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	.bg-blur {
-		background-image: var(--image);
-		background-size: cover;
-		background-position: center;
-		filter: blur(60px);
-	}
-</style>

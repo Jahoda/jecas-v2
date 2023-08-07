@@ -92,7 +92,8 @@ export async function getSinglePostBySlug(slug: string): Promise<Post> {
 			description,
 			last_modification,
 			text_html,
-			status 
+			status,
+			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
 		FROM pages
 		WHERE url_slug = ?
 		`,
