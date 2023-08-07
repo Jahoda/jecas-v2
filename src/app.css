@@ -7,10 +7,7 @@
 .prose p a[href^='#']:not([href='#']),
 .inner-link,
 .inner-link code {
-	position: relative;
-	background: #fdf2a8;
-	border-radius: 2px;
-	padding: 0 2px;
+	@apply bg-amber-100 rounded py-0.5 px-1 dark:bg-amber-500/20;
 }
 
 .inner-link img {
@@ -30,13 +27,15 @@
 
 .prose a[href^='http://kod.djpw.cz']:not(.button)
 {
-	padding-left: 20px;
+	padding-left: 24px;
 }
 
 .prose a[href^='http://kod.djpw.cz']:not(.button)
 {
-	background: #e0effc url('http://kod.djpw.cz/favicon.ico') no-repeat;
-	background-size: 1em 100%;
+	background: url('/external-favicons/kod.djpw.cz.ico') no-repeat left 2px center;
+	background-size: 1em 1em;
+
+	@apply bg-blue-100 dark:bg-blue-900/50 pr-1 py-0.5 rounded;
 }
 
 .prose a[href^='http://diskuse.jakpsatweb.cz'],
@@ -98,4 +97,38 @@
 	background: url('https://static.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png') center left
 		no-repeat;
 	background-size: 1rem 1rem;
+}
+
+.external-content,
+.internal-content {
+	@apply rounded-md p-2;
+
+	& ul {
+		margin: 0;
+	}
+}
+
+.internal-content {
+	@apply bg-amber-50 dark:bg-amber-500/20
+}
+
+.external-content {
+	@apply bg-blue-50 dark:bg-blue-900/50
+}
+
+.live {
+	@apply p-4 bg-blue-300 border border-blue-400 dark:bg-blue-800 dark:border-blue-700;
+}
+
+code, pre, var {
+	@apply !text-pink-600 !bg-gray-100 rounded !font-normal dark:!bg-gray-800 dark:!text-pink-400;
+}
+
+code::before,
+code::after {
+	content: '' !important;
+}
+
+code {
+	@apply px-0.5
 }
