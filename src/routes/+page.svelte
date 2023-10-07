@@ -28,10 +28,10 @@
 	<div class="mt-4 md:mt-8" />
 
 	<Container>
-		<div class="grid grid-cols-1 lg:grid-cols-homepage-2 xl:grid-cols-homepage-3 gap-8">
+		<div class="grid grid-cols-1 gap-8 lg:grid-cols-homepage-2 xl:grid-cols-homepage-3">
 			<div class="xlx:col-span-6">
 				<div class="grid grid-cols-1 gap-8">
-					<div class="grid gap-8 grid-cols-1">
+					<div class="grid grid-cols-1 gap-8">
 						{#each data.posts.slice(0, 3) as post, index (post.url_slug)}
 							<div class="grid">
 								<MainPost

@@ -7,7 +7,7 @@
 .prose p a[href^='#']:not([href='#']),
 .inner-link,
 .inner-link code {
-	@apply bg-amber-100 rounded py-0.5 px-1 dark:bg-amber-500/20;
+	@apply rounded bg-amber-100 px-1 py-0.5 dark:bg-amber-500/20;
 }
 
 .inner-link img {
@@ -35,7 +35,7 @@
 	background: url('/external-favicons/kod.djpw.cz.ico') no-repeat left 2px center;
 	background-size: 1em 1em;
 
-	@apply bg-blue-100 dark:bg-blue-900/50 pr-1 py-0.5 rounded;
+	@apply rounded bg-blue-100 py-0.5 pr-1 dark:bg-blue-900/50;
 }
 
 .prose a[href^='http://diskuse.jakpsatweb.cz'],
@@ -117,13 +117,13 @@
 }
 
 .live {
-	@apply rounded p-4 bg-blue-300 border border-blue-400 dark:bg-blue-800 dark:border-blue-700 relative;
+	@apply relative rounded border border-blue-400 bg-blue-300 p-4 dark:border-blue-700 dark:bg-blue-800;
 }
 
 code,
 pre,
 var {
-	@apply !text-pink-600 !bg-gray-100 rounded !font-normal dark:!bg-gray-800 dark:!text-pink-400;
+	@apply rounded !bg-gray-100 !font-normal !text-pink-600 dark:!bg-gray-800 dark:!text-pink-400;
 }
 
 code {
@@ -131,5 +131,5 @@ code {
 }
 
 .prose button:not(.custom-button) {
-	@apply bg-blue-light truncate transition-all rounded-lg gap-2 active:translate-y-0.5 inline-flex px-4 py-2 leading-6 font-semibold text-white items-center hover:bg-blue-dark;
+	@apply inline-flex items-center gap-2 truncate rounded-lg bg-blue-light px-4 py-2 font-semibold leading-6 text-white transition-all hover:bg-blue-dark active:translate-y-0.5;
 }

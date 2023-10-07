@@ -91,7 +91,7 @@
 </svelte:head>
 
 <Container verticalSpace>
-	<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+	<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
 		<div>
 			{#if form?.message}
 				<FlashMessage error>
@@ -128,7 +128,7 @@
 					<input type="hidden" value={postForm.last_modification} name="last_modification" />
 					<input type="hidden" value={postTags.join(',')} name="postTags" />
 
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+					<div class="grid grid-cols-1 gap-4 md:grid-cols-3">
 						<div class="col-span-2">
 							<Input
 								full
@@ -187,7 +187,7 @@
 							{/if}
 						{/each}
 
-						<select on:change={handleAddTag} class="rounded-md border py-1 px-2 hover:bg-slate-100">
+						<select on:change={handleAddTag} class="rounded-md border px-2 py-1 hover:bg-slate-100">
 							<option value="">Přidat tag</option>
 							{#each data.allTags as tag}
 								<option value={tag.id}>
@@ -201,7 +201,7 @@
 
 					<div class="mt-8" />
 
-					<div class="flex gap-4 items-center">
+					<div class="flex items-center gap-4">
 						<Button large>Uložit</Button>
 						<div class="flex flex-col">
 							<label for="draft">

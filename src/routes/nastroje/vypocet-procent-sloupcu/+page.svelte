@@ -40,7 +40,7 @@
 	{#each items as item, index}
 		<div style="width: {calcPercent(item)}">
 			<Box>
-				<div class="p-4 grid grid-cols-1 gap-4 max-w-xs">
+				<div class="grid max-w-xs grid-cols-1 gap-4 p-4">
 					<p>
 						{calcPercent(item)}
 					</p>

@@ -24,15 +24,15 @@
 	<div class="space-y-4">
 		{#each filtredPosts as post (post.id)}
 			<div
-				class="flex justify-between gap-8 items-center bg-slate-100 dark:bg-slate-600 p-2 rounded-lg"
+				class="flex items-center justify-between gap-8 rounded-lg bg-slate-100 p-2 dark:bg-slate-600"
 			>
 				<a
 					href="/{post.url_slug}"
-					class="text-blue-dark dark:text-blue-light underline hover:no-underline"
+					class="text-blue-dark underline hover:no-underline dark:text-blue-light"
 				>
 					{post.title}
 				</a>
-				<div class="justify-end flex">
+				<div class="flex justify-end">
 					<div class="inline-flex">
 						<Button href="/admin/post/{post.url_slug}">Upravit</Button>
 					</div>

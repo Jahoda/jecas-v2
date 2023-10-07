@@ -9,14 +9,14 @@
 	});
 </script>
 
-<div class="flex items-center gap-2 flex-shrink-0">
+<div class="flex flex-shrink-0 items-center gap-2">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		fill="none"
 		viewBox="0 0 24 24"
 		stroke-width="1.5"
 		stroke="currentColor"
-		class={small ? 'w-4 h-4' : 'w-6 h-6'}
+		class={small ? 'h-4 w-4' : 'h-6 w-6'}
 	>
 		<path
 			stroke-linecap="round"

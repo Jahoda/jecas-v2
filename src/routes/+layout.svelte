@@ -26,16 +26,16 @@
 
 <Header />
 
-<div class="bg w-full h-72 opacity-20 -mb-72">
-	<div class="bg-gradient-to-t dark:from-slate-900 from-white w-full h-full" />
+<div class="bg -mb-72 h-72 w-full opacity-20">
+	<div class="h-full w-full bg-gradient-to-t from-white dark:from-slate-900" />
 </div>
 
 <main class="relative z-10">
 	<slot />
 </main>
 
-<div class="bg w-full h-72 opacity-20 -mt-72">
-	<div class="bg-gradient-to-b dark:from-slate-900 from-white w-full h-full" />
+<div class="bg -mt-72 h-72 w-full opacity-20">
+	<div class="h-full w-full bg-gradient-to-b from-white dark:from-slate-900" />
 </div>
 
 <Footer />

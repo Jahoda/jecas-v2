@@ -39,7 +39,7 @@
 
 {#if isSearchOpen}
 	<div
-		class="fixed top-0 left-0 z-20 flex h-screen w-screen items-end justify-center whitespace-normal text-left md:items-center"
+		class="fixed left-0 top-0 z-20 flex h-screen w-screen items-end justify-center whitespace-normal text-left md:items-center"
 	>
 		<div
 			transition:fade={{ duration: 300 }}
@@ -50,7 +50,7 @@
 
 		<div
 			transition:fly={{ y: 50, duration: 200 }}
-			class="relative flex max-h-[95vh] w-full flex-col md:max-w-lg rounded-t-x overflow-hidden text-gray-800 dark:text-white bg-white dark:bg-slate-800 md:rounded-xl"
+			class="rounded-t-x relative flex max-h-[95vh] w-full flex-col overflow-hidden bg-white text-gray-800 dark:bg-slate-800 dark:text-white md:max-w-lg md:rounded-xl"
 		>
 			<SearchHandler on:close={handleClose} />
 		</div>
@@ -60,12 +60,12 @@
 <button
 	on:click={() => (isSearchOpen = true)}
 	type="button"
-	class="max-md:hidden flex items-center w-72 text-left text-sm space-x-3 px-4 h-10 bg-white dark:bg-blue-dark/30 ring-1 ring-slate-900/10 hover:ring-slate-300 dark:hover:ring-blue-700 focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm rounded-lg text-slate-400"
+	class="flex h-10 w-72 items-center space-x-3 rounded-lg bg-white px-4 text-left text-sm text-slate-400 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-blue-dark/30 dark:hover:ring-blue-700 max-md:hidden"
 >
 	<SearchIcon />
 	<span class="flex-auto"> Rychlé hledání </span>
 	<kbd class="font-sans font-semibold dark:text-slate-500">
-		<abbr title="Command" class="no-underline text-slate-300 dark:text-slate-500">⌘</abbr> K
+		<abbr title="Command" class="text-slate-300 no-underline dark:text-slate-500">⌘</abbr> K
 	</kbd>
 </button>
 

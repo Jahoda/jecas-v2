@@ -22,7 +22,6 @@
 	title={post.headline}
 	description={post.description}
 	date={post.last_modification}
-	background={post.background}
 	href={post.url_slug}
 	tags={data.tags}
 	noImage={Boolean(data.tag)}
@@ -30,10 +29,10 @@
 />
 <Container verticalSpace>
 	<div class="grid grid-cols-1 gap-8 md:gap-16">
-		<div class="grid grid-cols-1 xl:grid-cols-post gap-8">
+		<div class="grid grid-cols-1 gap-8 xl:grid-cols-post">
 			<div class="max-md:hidden" />
 			<div><PostContent content={post.text_html} /></div>
-			<div class="sticky top-2 max-xl:hidden self-start w-[14rem] text-sm">
+			<div class="sticky top-2 w-[14rem] self-start text-sm max-xl:hidden">
 				<PostToc slug={post.url_slug} />
 			</div>
 		</div>
@@ -41,7 +40,7 @@
 		{#if data.tagPosts}
 			<PostList posts={data.tagPosts} />
 		{:else}
-			<div class="m-auto max-w-3xl grid-cols-1 w-full">
+			<div class="m-auto w-full max-w-3xl grid-cols-1">
 				{#key post.url_slug}
 					<PostComments slug={post.url_slug} />
 				{/key}

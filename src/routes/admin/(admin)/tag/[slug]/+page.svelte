@@ -67,7 +67,7 @@
 	</title>
 </svelte:head>
 
-<div class="max-w-lg m-auto">
+<div class="m-auto max-w-lg">
 	<Container verticalSpace>
 		{#if form?.success}
 			<FlashMessage>Tag byl úspěšně uložen.</FlashMessage>
@@ -84,7 +84,7 @@
 						Nový tag
 					{/if}
 				</Headline>
-				<div class="flex flex-col gap-1 justify-center">
+				<div class="flex flex-col justify-center gap-1">
 					<TagItem
 						title={tagForm.name || 'Nový tag'}
 						background={tagForm.background}
@@ -115,7 +115,7 @@
 					<button
 						on:click={handleRegenerateColor}
 						type="button"
-						class="hover:bg-gray-200 rounded p-1"
+						class="rounded p-1 hover:bg-gray-200"
 					>
 						<IconArrowPath />
 					</button>

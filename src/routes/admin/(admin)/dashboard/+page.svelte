@@ -38,7 +38,7 @@
 
 	<div class="mt-8" />
 
-	<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl">
+	<div class="grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-3">
 		<div>
 			<AdminPostList title="Koncepty" posts={data.drafts} />
 		</div>
@@ -70,7 +70,7 @@
 					<div class="space-y-4">
 						{#each tags as tag}
 							<div
-								class="flex justify-between gap-8 items-center bg-slate-100 dark:bg-slate-600 p-2 rounded-lg"
+								class="flex items-center justify-between gap-8 rounded-lg bg-slate-100 p-2 dark:bg-slate-600"
 							>
 								<TagItem
 									title={tag.name}
@@ -78,7 +78,7 @@
 									color={tag.color}
 									href={tag.url_slug}
 								/>
-								<div class="justify-end flex">
+								<div class="flex justify-end">
 									<div class="inline-flex">
 										<Button href="/admin/tag/{tag.url_slug}">Upravit</Button>
 									</div>

@@ -30,7 +30,7 @@
 </script>
 
 <div
-	class="relative @container rounded-2xl shadow p-2 {small ? '' : ''} {neutral
+	class="relative rounded-2xl p-2 shadow @container {small ? '' : ''} {neutral
 		? 'bg-gray-50 dark:bg-slate-700 dark:text-white'
 		: 'text-white dark:text-white'}"
 	style="--image: url({`/files/article/${href}.png`});{neutral
@@ -40,24 +40,24 @@
 		: `background-image: ${backgroundGradient}`}"
 >
 	<div
-		class="{neutral ? 'dark:bg-slate-900/50 bg-slate-500/10' : 'bg-slate-900/50'} rounded-xl {small
+		class="{neutral ? 'bg-slate-500/10 dark:bg-slate-900/50' : 'bg-slate-900/50'} rounded-xl {small
 			? 'p-3'
 			: 'p-6'} h-full"
 	>
 		<div
-			class="bg-blur absolute top-0 left-0 w-full h-full transition-all -z-10 opacity-50 hidden"
+			class="bg-blur absolute left-0 top-0 -z-10 hidden h-full w-full opacity-50 transition-all"
 		/>
 		<div
 			class="flex flex-col items-center text-center {small
-				? 'gap-4 @sm:flex-row @sm:text-left @sm:items-start'
-				: '@xl:flex-row gap-8 @xl:text-left @xl:items-start'}"
+				? 'gap-4 @sm:flex-row @sm:items-start @sm:text-left'
+				: 'gap-8 @xl:flex-row @xl:items-start @xl:text-left'}"
 		>
 			{#if !noImage}
 				<a
 					{href}
-					class="flex rounded-lg overflow-hidden flex-shrink-0 shadow {small
-						? 'w-[100px] h-[100px]'
-						: 'w-[200px] h-[200px]'}"
+					class="flex flex-shrink-0 overflow-hidden rounded-lg shadow {small
+						? 'h-[100px] w-[100px]'
+						: 'h-[200px] w-[200px]'}"
 				>
 					{#if href}
 						<PostImage slug={href} lazy={!neutral && !small} />
@@ -68,7 +68,7 @@
 			<div
 				class="{small
 					? 'gap-4 @sm:items-start'
-					: 'gap-8 @xl:items-start'} items-center flex flex-col"
+					: 'gap-8 @xl:items-start'} flex flex-col items-center"
 			>
 				<svelte:element this={href ? 'a' : 'div'} {href} class={href ? 'hover:underline' : ''}>
 					<h1 class="{small ? 'text-2xl' : 'text-3xl md:text-5xl'} font-bold">

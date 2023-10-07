@@ -9,9 +9,9 @@
 </script>
 
 <div class="flex gap-4 text-sm">
-	<div class="flex gap-2 flex-col items-center">
+	<div class="flex flex-col items-center gap-2">
 		<div
-			class="w-10 h-10 flex-shrink-0 rounded-full overflow-hidden flex items-center justify-center bg-slate-50 dark:bg-slate-900 border dark:border-slate-600"
+			class="flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border bg-slate-50 dark:border-slate-600 dark:bg-slate-900"
 		>
 			{#if comment.author.avatar.isCustom}
 				<img src={comment.author.avatar?.large?.cache} alt="" />
@@ -24,9 +24,9 @@
 			<Like count={comment.likes} />
 		{/if}
 	</div>
-	<div class="flex gap-2 flex-col">
+	<div class="flex flex-col gap-2">
 		<div
-			class="rounded-md shadow bg-slate-50/80 dark:bg-slate-800 dark:text-white p-3 gap-2 grid grid-cols-1"
+			class="grid grid-cols-1 gap-2 rounded-md bg-slate-50/80 p-3 shadow dark:bg-slate-800 dark:text-white"
 		>
 			<p class="break-words">
 				{@html comment.raw_message}

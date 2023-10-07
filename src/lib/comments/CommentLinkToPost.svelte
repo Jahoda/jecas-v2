@@ -3,8 +3,8 @@
 	export let href: string;
 </script>
 
-<div class="flex items-center gap-1 min-w-0 text-blue-dark dark:text-blue-light">
-	<a {href} class="underline hover:no-underline truncate">
+<div class="flex min-w-0 items-center gap-1 text-blue-dark dark:text-blue-light">
+	<a {href} class="truncate underline hover:no-underline">
 		{title}
 	</a>
 
@@ -12,7 +12,7 @@
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 20 20"
 		fill="currentColor"
-		class="w-4 h-4 flex-shrink-0"
+		class="h-4 w-4 flex-shrink-0"
 	>
 		<path
 			fill-rule="evenodd"

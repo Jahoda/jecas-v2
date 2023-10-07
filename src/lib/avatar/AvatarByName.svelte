@@ -26,7 +26,7 @@
 </script>
 
 <div
-	class="rounded-full w-full h-full bg-blue-dark text-white flex items-center justify-center"
+	class="flex h-full w-full items-center justify-center rounded-full bg-blue-dark text-white"
 	style="background: {stringToColor(name)}"
 >
 	{first}{second}

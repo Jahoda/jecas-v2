@@ -27,7 +27,7 @@
 </script>
 
 <Container verticalSpace>
-	<div class="max-w-md m-auto">
+	<div class="m-auto max-w-md">
 		<Box>
 			<form
 				class="form-widget"

@@ -9,7 +9,6 @@
 	export let description: string;
 	export let date: Date | null = null;
 	export let href: string | null = null;
-	export let background: string | null = null;
 	export let tags: Tag[] | null = null;
 	export let small = false;
 	export let neutral = false;
@@ -22,17 +21,17 @@
 </script>
 
 <div
-	class="relative shadow-inner p-4 md:p-16 text-white dark:text-white max-md:text-center"
+	class="relative p-4 text-white shadow-inner dark:text-white max-md:text-center md:p-16"
 	style="--image: url({`/files/article/${href}.png`}); background-image: {backgroundGradient}"
 >
-	<div class="bg-slate-900/50 max-w-[74em] m-auto rounded-xl p-6 h-full">
-		<div class="flex md:flex-row max-md:items-center flex-col {small ? 'gap-4' : 'gap-8'}">
+	<div class="m-auto h-full max-w-[74em] rounded-xl bg-slate-900/50 p-6">
+		<div class="flex flex-col max-md:items-center md:flex-row {small ? 'gap-4' : 'gap-8'}">
 			{#if !noImage}
 				<a
 					{href}
-					class="flex rounded-lg overflow-hidden flex-shrink-0 shadow {small
-						? 'w-[100px] h-[100px]'
-						: 'w-[200px] h-[200px]'}"
+					class="flex flex-shrink-0 overflow-hidden rounded-lg shadow {small
+						? 'h-[100px] w-[100px]'
+						: 'h-[200px] w-[200px]'}"
 				>
 					{#if href}
 						<PostImage slug={href} lazy={!neutral && !small} />

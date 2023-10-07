@@ -44,7 +44,7 @@
 		type="search"
 		id="search"
 		name="search"
-		class="flex flex-1 h-12 outline-none dark:bg-slate-800"
+		class="flex h-12 flex-1 outline-none dark:bg-slate-800"
 		placeholder={`např. ${getRandomItem(searchExamples)}`}
 		on:input
 	/>

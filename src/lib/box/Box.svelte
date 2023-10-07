@@ -1,3 +1,3 @@
-<div class="rounded-xl p-4 bg-white dark:bg-slate-700 shadow-md">
+<div class="rounded-xl bg-white p-4 shadow-md dark:bg-slate-700">
 	<slot />
 </div>

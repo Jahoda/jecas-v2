@@ -18,7 +18,7 @@
 </svelte:head>
 
 <Container verticalSpace>
-	<div class="grid gap-8 grid-cols-6">
+	<div class="grid grid-cols-6 gap-8">
 		{#each data.posts as post, index}
 			<div
 				class="grid {index > 9

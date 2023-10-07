@@ -24,6 +24,6 @@
 	});
 </script>
 
-<div class="prose dark:prose-invert m-auto w-full max-w-3xl">
+<div class="prose m-auto w-full max-w-3xl dark:prose-invert">
 	{@html content}
 </div>

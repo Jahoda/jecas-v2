@@ -32,7 +32,7 @@
 		}
 	}
 
-	onMount(async () => {
+	onMount(() => {
 		self.MonacoEnvironment = {
 			getWorker: function (_moduleId: any, label: string) {
 				if (label === 'json') {
@@ -90,6 +90,6 @@
 
 <input type="hidden" {name} {value} />
 
-<div class="rounded-md overflow-hidden p-2 bg-white">
+<div class="overflow-hidden rounded-md bg-white p-2">
 	<div bind:this={container} class="" />
 </div>

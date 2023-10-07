@@ -18,8 +18,8 @@
 	<div transition:slide>
 		<div
 			class="rounded-md {error
-				? 'bg-red-200 red-green-800 border-red-500'
-				: 'bg-green-200 text-green-800 border-green-500'} p-4 border flex items-center gap-2 justify-between"
+				? 'red-green-800 border-red-500 bg-red-200'
+				: 'border-green-500 bg-green-200 text-green-800'} flex items-center justify-between gap-2 border p-4"
 			transition:fade
 		>
 			<div class="flex gap-2">

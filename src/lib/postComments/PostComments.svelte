@@ -34,4 +34,4 @@
 	}
 </script>
 
-<div bind:this={disqusElement} class="dark:bg-gray-800 bg-black/10 p-8 rounded-md" />
+<div bind:this={disqusElement} class="rounded-md bg-black/10 p-8 dark:bg-gray-800" />

@@ -1,7 +1,7 @@
 <div
-	class="flex flex-1 bg-red-500/20 items-center justify-center my-10 rounded-3xl max-w-6xl mx-auto"
+	class="mx-auto my-10 flex max-w-6xl flex-1 items-center justify-center rounded-3xl bg-red-500/20"
 >
-	<div class="grid grid-cols-2 gap-16 text-red-500 items-center">
+	<div class="grid grid-cols-2 items-center gap-16 text-red-500">
 		<div class="flex justify-end">
 			{#if Math.random() > 0.5}
 				<svg
@@ -10,7 +10,7 @@
 					viewBox="0 0 934 934"
 					width="934"
 					height="934"
-					class="w-96 h-96"
+					class="h-96 w-96"
 				>
 					<path
 						fill="currentColor"
@@ -32,7 +32,7 @@
 					viewBox="0 0 934 934"
 					width="934"
 					height="934"
-					class="w-96 h-96"
+					class="h-96 w-96"
 				>
 					<path
 						fill="currentColor"
@@ -62,7 +62,7 @@
 					viewBox="0 0 934 934"
 					width="934"
 					height="934"
-					class="w-96 h-96"
+					class="h-96 w-96"
 				>
 					<g fill="currentColor" clip-path="url(#a)">
 						<path
