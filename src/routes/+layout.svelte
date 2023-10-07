@@ -12,6 +12,19 @@
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 
+	import { onNavigate } from '$app/navigation';
+
+	onNavigate((navigation) => {
+		if (!document.startViewTransition) return;
+
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve();
+				await navigation.complete;
+			});
+		});
+	});
+
 	inject({ mode: dev ? 'development' : 'production' });
 
 	$: ({ supabase } = data);
