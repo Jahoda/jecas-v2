@@ -1,29 +1,37 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { afterUpdate } from 'svelte';
 	import { toggle, toggleClass } from '$lib/post/utils';
 	import LiveDemo from '$lib/liveDemo/LiveDemo.svelte';
 
 	export let content: string;
 
-	onMount(() => {
+	let postContent: HTMLDivElement;
+
+	function attachLiveCode() {
+		if (postContent) {
+			const liveElements = postContent.querySelectorAll('.live');
+
+			liveElements.forEach((element) => {
+				const content = element.innerHTML;
+				element.innerHTML = '';
+				new LiveDemo({
+					target: element,
+					props: {
+						content: content
+					}
+				});
+			});
+		}
+	}
+
+	afterUpdate(() => {
 		window.toggleClass = toggleClass;
 		window.toggle = toggle;
 
-		const liveElements = document.querySelectorAll('.live');
-
-		liveElements.forEach((element) => {
-			const content = element.innerHTML;
-			element.innerHTML = '';
-			new LiveDemo({
-				target: element,
-				props: {
-					content: content
-				}
-			});
-		});
+		attachLiveCode();
 	});
 </script>
 
-<div class="prose m-auto w-full max-w-3xl dark:prose-invert">
+<div class="prose m-auto w-full max-w-3xl dark:prose-invert" bind:this={postContent}>
 	{@html content}
 </div>

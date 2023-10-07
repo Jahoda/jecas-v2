@@ -13,18 +13,32 @@
 	export let small = false;
 	export let neutral = false;
 	export let noImage = false;
+	export let background: string | null = null;
+	export let isTag = false;
 	export let wordCount: number | null = null;
 
-	$: tagsColors = tags?.map((tag) => tag.background).filter((color) => color) || [];
+	let backgroundGradient: string | null = null;
 
-	$: backgroundGradient = `linear-gradient(to right top, ${tagsColors.join(',')}, #5b63b9)`;
+	$: {
+		if (isTag) {
+			backgroundGradient = `linear-gradient(to right top, ${background}, #5b63b9)`;
+		} else {
+			const tagsColors = tags?.map((tag) => tag.background).filter((color) => color) || [];
+			backgroundGradient = `linear-gradient(to right top, ${tagsColors.join(',')}, #5b63b9)`;
+		}
+	}
 </script>
 
 <div
-	class="relative p-4 text-white shadow-inner dark:text-white max-md:text-center md:p-16"
+	class="relative overflow-hidden p-4 text-white shadow-inner dark:text-white max-md:text-center md:p-16"
 	style="--image: url({`/files/article/${href}.png`}); background-image: {backgroundGradient}"
 >
-	<div class="m-auto h-full max-w-[74em] rounded-xl bg-slate-900/50 p-6">
+	{#if !isTag}
+		<div
+			class="bg-blur pointer-events-none absolute left-0 top-0 h-full w-full opacity-50 transition-all"
+		/>
+	{/if}
+	<div class="relative m-auto h-full max-w-[74em] rounded-xl bg-slate-900/50 p-6">
 		<div class="flex flex-col max-md:items-center md:flex-row {small ? 'gap-4' : 'gap-8'}">
 			{#if !noImage}
 				<a
@@ -66,3 +80,12 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.bg-blur {
+		background-image: var(--image);
+		background-size: cover;
+		background-position: center;
+		filter: blur(30px);
+	}
+</style>

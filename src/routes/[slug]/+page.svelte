@@ -23,6 +23,8 @@
 	description={post.description}
 	date={post.last_modification}
 	href={post.url_slug}
+	isTag={Boolean(data.tag)}
+	background={post.background}
 	tags={data.tags}
 	noImage={Boolean(data.tag)}
 	wordCount={post.word_count}

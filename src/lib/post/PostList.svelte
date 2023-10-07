@@ -7,7 +7,7 @@
 
 <div class="grid grid-cols-repeat-48 gap-8">
 	{#each posts as post (post.url_slug)}
-		<div class="grid">
+		<div class="grid grid-cols-1">
 			<MainPost
 				title={post.headline}
 				description={post.description}

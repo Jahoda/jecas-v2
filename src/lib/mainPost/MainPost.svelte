@@ -16,17 +16,9 @@
 	export let noImage = false;
 	export let wordCount: number | null = null;
 
-	// $: backgroundGradient = background
-	// 	? `linear-gradient(to right top, ${background}, #000`
-	// 	: `linear-gradient(to right top, #7957b0, #6b5db5, #5b63b9, #4a68bb, #356cbc, #5c6dc1, #7b6dc3, #966dc3, #d466b0, #fc698d, #ff7f65, #ffa23f)`;
-
 	$: tagsColors = tags?.map((tag) => tag.background).filter((color) => color) || [];
-	$: color1 = tagsColors[0] || '#7957b0';
-	$: color2 = tagsColors[1] || '#6b5db5';
-	$: color3 = tagsColors[2] || '#5b63b9';
 
 	$: backgroundGradient = `linear-gradient(to right top, ${tagsColors.join(',')}, #5b63b9)`;
-	// $: backgroundGradient = generateGradient(color1, color2, color3);
 </script>
 
 <div
@@ -45,7 +37,7 @@
 			: 'p-6'} h-full"
 	>
 		<div
-			class="bg-blur absolute left-0 top-0 -z-10 hidden h-full w-full opacity-50 transition-all"
+			class="bg-blur pointer-events-none absolute left-0 top-0 -z-10 hidden h-full w-full opacity-50 transition-all"
 		/>
 		<div
 			class="flex flex-col items-center text-center {small
