@@ -5,33 +5,45 @@
 
 	let mounted = false;
 
-	let disqusElement: HTMLDivElement;
-
-	interface DisqusConfig extends Window {
-		disqus_url: string;
+	interface Disqus extends Window {
+		DISQUS: {
+			reset: (options: {
+				reload: boolean;
+				config: (this: { page: { identifier: string; url: string } }) => void;
+			}) => void;
+		};
 	}
 
-	function mountDisqusComments() {
-		mounted = true;
-
-		const disqusThread = document.createElement('div');
-		disqusThread.id = 'disqus_thread';
-		disqusElement.appendChild(disqusThread);
-
+	onMount(() => {
 		const script = document.createElement('script');
 		script.src = 'https://jecas.disqus.com/embed.js';
-		script.async = true;
-		script.defer = true;
-		document.body.appendChild(script);
+		document.documentElement.appendChild(script);
+		script.onload = handleLoadDisqus;
+
+		return () => {
+			script.remove();
+		};
+	});
+
+	function handleLoadDisqus() {
+		mounted = true;
 	}
 
-	onMount(mountDisqusComments);
+	function resetDisqus(slug: string) {
+		(window as unknown as Disqus)['DISQUS'].reset({
+			reload: true,
+			config: function () {
+				this.page.identifier = slug;
+				this.page.url = `https://jecas.cz/${slug}`;
+			}
+		});
+	}
 
 	$: {
 		if (mounted) {
-			(window as unknown as DisqusConfig).disqus_url = `https://jecas.cz/${slug}`;
+			resetDisqus(slug);
 		}
 	}
 </script>
 
-<div bind:this={disqusElement} class="rounded-md bg-black/10 p-8 dark:bg-gray-800" />
+<div class="rounded-md bg-black/10 p-8 dark:bg-gray-800" id="disqus_thread" />

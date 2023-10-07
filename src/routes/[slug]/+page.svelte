@@ -43,9 +43,7 @@
 			<PostList posts={data.tagPosts} />
 		{:else}
 			<div class="m-auto w-full max-w-3xl grid-cols-1">
-				{#key post.url_slug}
-					<PostComments slug={post.url_slug} />
-				{/key}
+				<PostComments slug={post.url_slug} />
 			</div>
 		{/if}
 
