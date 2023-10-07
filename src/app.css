@@ -133,3 +133,50 @@ code {
 .prose button:not(.custom-button) {
 	@apply inline-flex items-center gap-2 truncate rounded-lg bg-blue-light px-4 py-2 font-semibold leading-6 text-white transition-all hover:bg-blue-dark active:translate-y-0.5;
 }
+
+/* Light theme scrollbar styles */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	@apply bg-slate-50;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply rounded-md bg-slate-400/75 transition-colors;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	@apply bg-slate-400;
+}
+
+@media (prefers-color-scheme: dark) {
+	/* Dark theme scrollbar styles */
+	::-webkit-scrollbar-track {
+		@apply bg-slate-800;
+	}
+
+	::-webkit-scrollbar-thumb {
+		@apply rounded-md bg-slate-600/75;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		@apply bg-slate-600;
+	}
+}
+
+/* Light theme scrollbar styles for Firefox */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(156, 163, 175, 0.75) #f9fafb;
+}
+
+/* Dark theme scrollbar styles for Firefox */
+@media (prefers-color-scheme: dark) {
+	* {
+		scrollbar-width: thin;
+		scrollbar-color: rgba(55, 65, 81, 0.75) #1f2937;
+	}
+}

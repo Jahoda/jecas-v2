@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ScrollbarWidthSetter from '$lib/scrollbarWidthSetter/ScrollbarWidthSetter.svelte';
 	import Footer from '$lib/footer/Footer.svelte';
 	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
@@ -23,6 +24,8 @@
 		return () => data.subscription.unsubscribe();
 	});
 </script>
+
+<ScrollbarWidthSetter />
 
 <Header />
 

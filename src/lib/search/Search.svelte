@@ -29,6 +29,7 @@
 	$: {
 		if (hasMounted) {
 			document.body.classList.toggle('overflow-hidden', isSearchOpen);
+			document.body.classList.toggle('is-modal-open', isSearchOpen);
 
 			if ($navigating) {
 				handleClose();
@@ -70,3 +71,9 @@
 </button>
 
 <svelte:window on:keydown={handleKeydown} />
+
+<style>
+	:global(.is-modal-open) {
+		border-right: var(--scrollbar-width) solid transparent;
+	}
+</style>
