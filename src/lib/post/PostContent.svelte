@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { toggle, toggleClass } from '$lib/post/utils';
-	import { showSourceCode } from '$lib/post/sourceCode';
 	import LiveDemo from '$lib/liveDemo/LiveDemo.svelte';
 
 	export let content: string;
