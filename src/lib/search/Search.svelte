@@ -40,12 +40,12 @@
 
 {#if isSearchOpen}
 	<div
-		class="fixed left-0 top-0 z-20 flex h-screen w-screen items-end justify-center whitespace-normal text-left md:items-center"
+		class="fixed left-0 top-0 z-20 flex h-screen w-screen items-end justify-center whitespace-normal py-8 text-left md:items-start"
 	>
 		<div
 			transition:fade={{ duration: 300 }}
 			aria-hidden="true"
-			class="absolute h-full w-full bg-black/60 backdrop-blur"
+			class="absolute inset-0 bg-black/60 backdrop-blur"
 			on:click={handleClose}
 		/>
 
