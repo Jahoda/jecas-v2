@@ -35,10 +35,10 @@
 		: `background-image: ${backgroundGradient}`}"
 >
 	<div
-		class="{neutral
+		class="{selected
+			? 'bg-blue-light/30'
+			: neutral
 			? 'bg-slate-500/10 dark:bg-slate-900/50'
-			: selected
-			? 'bg-slate-700/50'
 			: 'bg-slate-900/50'} rounded-xl {small ? 'p-3' : 'p-6'} h-full"
 	>
 		<div

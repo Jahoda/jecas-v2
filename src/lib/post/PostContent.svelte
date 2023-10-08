@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { afterUpdate } from 'svelte';
-	import { toggle, toggleClass } from '$lib/post/utils';
+	import { toggle, toggleClass, zkopirovat } from '$lib/post/utils';
 	import LiveDemo from '$lib/liveDemo/LiveDemo.svelte';
 
 	export let content: string;
@@ -27,6 +27,7 @@
 	afterUpdate(() => {
 		window.toggleClass = toggleClass;
 		window.toggle = toggle;
+		window.zkopirovat = zkopirovat;
 
 		attachLiveCode();
 	});

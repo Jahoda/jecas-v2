@@ -9,4 +9,4 @@
 	$: description = hit._snippetResult?.description?.value || hit.description;
 </script>
 
-<MainPost {title} {description} href={hit.url_slug} {selected} small />
+<MainPost neutral {title} {description} href={hit.url_slug} {selected} small />

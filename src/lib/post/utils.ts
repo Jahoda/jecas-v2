@@ -11,3 +11,18 @@ export function toggle(el: HTMLElement, cname: string) {
 		el.className += ' ' + cname;
 	}
 }
+
+export async function zkopirovat(text: string) {
+	if (!navigator.clipboard) {
+		alert('Prohlížeč neumí kopírovat');
+		return;
+	}
+
+	try {
+		await navigator.clipboard.writeText(text);
+		alert('Zkopírováno');
+	} catch (err) {
+		alert('Nepodařilo se zkopírovat');
+	}
+}
+

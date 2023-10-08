@@ -7,7 +7,7 @@
 
 <div class="bg-blue-light py-2 shadow-lg dark:bg-blue-light/30">
 	<Container verticalSpace={false}>
-		<div class="-mx-3 flex items-center justify-between gap-4 py-1 text-white md:gap-8">
+		<div class="-mx-3 flex items-center justify-between gap-2 py-1 text-white md:gap-8">
 			<a
 				href="/"
 				class="flex h-10 items-center rounded-xl px-3 hover:bg-blue-dark dark:hover:bg-blue-dark/30"

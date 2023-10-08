@@ -134,6 +134,10 @@ code {
 	@apply inline-flex items-center gap-2 truncate rounded-lg bg-blue-light px-4 py-2 font-semibold leading-6 text-white transition-all hover:bg-blue-dark active:translate-y-0.5;
 }
 
+.prose button img {
+	margin: 0;
+}
+
 /* Light theme scrollbar styles */
 ::-webkit-scrollbar {
 	width: 8px;
