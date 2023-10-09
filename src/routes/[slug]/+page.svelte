@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Container from '$lib/container/Container.svelte';
-	import MainPost from '$lib/mainPost/MainPost.svelte';
 	import PostContent from '$lib/post/PostContent.svelte';
 	import PostList from '$lib/post/PostList.svelte';
 	import PostComments from '$lib/postComments/PostComments.svelte';
@@ -16,6 +15,9 @@
 <svelte:head>
 	<title>{post?.title || post?.name}</title>
 	<meta name="description" content={post?.description} />
+	{#if !data.tag}
+		<meta property="og:image" content="/api/og?slug={post.url_slug}" />
+	{/if}
 </svelte:head>
 
 <HeroPost

@@ -1,29 +1,46 @@
 <script lang="ts">
-	import MainPost from '$lib/mainPost/MainPost.svelte';
+	import Logo from '$lib/logo/Logo.svelte';
+	import { postGradient } from '$lib/mainPost/postGradient';
 	import type { Post } from '$lib/post/post';
 	import type { Tag } from '$lib/tag/tag';
 
 	export let post: Post;
 	export let tags: Tag[];
+
+	function stripTags(str: string) {
+		return str.replace(/(<([^>]+)>)/gi, '');
+	}
+
+	function decodeHtmlEntities(str: string) {
+		return str.replace('&lt;', '').replace('>', '');
+	}
 </script>
 
 <div
-	tw="flex flex-col w-full h-full items-center justify-center rounded-2xl p-2"
-	style="background: linear-gradient(to right top, #7957b0, #6b5db5, #5b63b9)"
+	class="flex h-full w-full flex-col items-center justify-center p-8"
+	style="background-image: {postGradient(tags)}"
 >
-	<div tw="bg-slate-900/50 rounded-xl p-3 h-full flex">
-		<div tw="flex gap-8">
-			<div tw="flex">
-				<img width="200" height="200" src="https://jecas.cz/files/article/ai-programovani.png" />
-			</div>
-			<div tw="flex">
-				<h1>{post.headline}</h1>
-				<p>{post.description}</p>
-				<p>{post.last_modification}</p>
-				<p>{post.background}</p>
-				<p>{post.url_slug}</p>
-				<p>{tags}</p>
-			</div>
+	<div class="mb-8 flex w-full flex-col items-center rounded-xl bg-slate-900/50 p-6 text-center">
+		<div class="flex h-[200px] w-[200px] flex-shrink-0 overflow-hidden rounded-lg shadow">
+			<img
+				class="rounded"
+				alt=""
+				width="200"
+				height="200"
+				src="https://jecas.cz/files/article/{post.url_slug}.png"
+			/>
+		</div>
+
+		<div class="flex w-full flex-col text-center">
+			<h2 class="mx-auto mt-8 text-5xl font-bold tracking-tight text-white">
+				{post.title}
+			</h2>
+
+			<p class="mx-auto mt-4 text-2xl text-white">
+				{decodeHtmlEntities(stripTags(post.description))}
+			</p>
 		</div>
 	</div>
+
+	<Logo fill="#fff" />
 </div>

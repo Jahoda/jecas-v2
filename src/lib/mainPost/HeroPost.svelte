@@ -4,6 +4,7 @@
 	import ReadingTime from '$lib/readingTime/ReadingTime.svelte';
 	import type { Tag } from '$lib/tag/tag';
 	import Tags from '$lib/tags/Tags.svelte';
+	import { postGradient } from './postGradient';
 
 	export let title: string;
 	export let description: string;
@@ -22,9 +23,8 @@
 	$: {
 		if (isTag) {
 			backgroundGradient = `linear-gradient(to right top, ${background}, #5b63b9)`;
-		} else {
-			const tagsColors = tags?.map((tag) => tag.background).filter((color) => color) || [];
-			backgroundGradient = `linear-gradient(to right top, ${tagsColors.join(',')}, #5b63b9)`;
+		} else if (tags) {
+			backgroundGradient = postGradient(tags);
 		}
 	}
 </script>
