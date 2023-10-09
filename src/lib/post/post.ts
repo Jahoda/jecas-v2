@@ -29,7 +29,7 @@ export interface PostIn {
 	postTags?: string;
 }
 
-export async function getAllPosts(limit: number | null = null): Promise<Post[]> {
+export async function getAllPosts(limit: number | null = null, status = 1): Promise<Post[]> {
 	const [posts] = await connection.execute<Post[]>(`
 		SELECT
 			id,
@@ -40,7 +40,8 @@ export async function getAllPosts(limit: number | null = null): Promise<Post[]> 
 			last_modification,
 			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
 		FROM pages 
-		WHERE status = 1
+		WHERE status = ${status}
+			AND url_slug != 'home'
 		ORDER BY last_modification DESC
 		${limit ? `LIMIT ${limit}` : ''}
 	`);
@@ -49,22 +50,7 @@ export async function getAllPosts(limit: number | null = null): Promise<Post[]> 
 }
 
 export async function getAllDrafts(limit: number | null = null): Promise<Post[]> {
-	const [posts] = await connection.execute<Post[]>(`
-		SELECT
-			id,
-			title,
-			headline,
-			url_slug,
-			description,
-			last_modification,
-			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
-		FROM pages 
-		WHERE status = 0
-		ORDER BY last_modification DESC
-		${limit ? `LIMIT ${limit}` : ''}
-	`);
-
-	return posts;
+	return getAllPosts(limit, 0);
 }
 
 export async function getPostsBySlug(slugs: string[]): Promise<Post[]> {

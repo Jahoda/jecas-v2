@@ -40,7 +40,7 @@
 
 <ScrollbarWidthSetter />
 
-<Header />
+<Header user={data?.session?.user} />
 
 <div class="bg -mb-72 h-72 w-full opacity-20">
 	<div class="h-full w-full bg-gradient-to-t from-white dark:from-slate-900" />

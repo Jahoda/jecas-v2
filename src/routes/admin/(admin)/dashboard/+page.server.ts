@@ -3,8 +3,8 @@ import { getAllTags } from '$lib/tag/tag';
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
-	const posts = await getAllPosts();
-	const drafts = getAllDrafts();
+	const posts = getAllPosts();
+	const drafts = await getAllDrafts();
 	const tags = getAllTags();
 
 	return {

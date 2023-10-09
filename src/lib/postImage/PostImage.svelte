@@ -5,7 +5,7 @@
 	let postImageUrl: string | null = null;
 
 	//$: postImageUrl = `https://upipiocepvscgharpdkz.supabase.co/storage/v1/object/public/post-thumbnails/${slug}.png`;
-	$: postImageUrl = `files/article/${slug}.png`;
+	$: postImageUrl = `/files/article/${slug}.png`;
 </script>
 
 <img src={postImageUrl} loading={lazy ? 'lazy' : null} alt="" width="200" height="200" />
