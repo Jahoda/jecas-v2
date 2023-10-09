@@ -25,4 +25,3 @@ export async function zkopirovat(text: string) {
 		alert('Nepodařilo se zkopírovat');
 	}
 }
-
