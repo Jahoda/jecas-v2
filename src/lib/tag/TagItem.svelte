@@ -10,7 +10,7 @@
 
 <svelte:element
 	this={href ? 'a' : 'div'}
-	{href}
+	href={href ? `/${href}` : null}
 	class="group inline-flex rounded-md border border-white/25 bg-slate-600 text-white transition-colors"
 	style="background: {background}; color: {color}"
 >

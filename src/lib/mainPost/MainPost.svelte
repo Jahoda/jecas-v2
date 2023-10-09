@@ -51,7 +51,7 @@
 		>
 			{#if !noImage}
 				<a
-					{href}
+					href={href ? `/${href}` : null}
 					class="flex flex-shrink-0 overflow-hidden rounded-lg shadow {small
 						? 'h-[100px] w-[100px]'
 						: 'h-[200px] w-[200px]'}"
@@ -67,7 +67,11 @@
 					? 'gap-4 @sm:items-start'
 					: 'gap-8 @xl:items-start'} flex flex-col items-center"
 			>
-				<svelte:element this={href ? 'a' : 'div'} {href} class={href ? 'hover:underline' : ''}>
+				<svelte:element
+					this={href ? 'a' : 'div'}
+					href={href ? `/${href}` : null}
+					class={href ? 'hover:underline' : ''}
+				>
 					<h1 class="{small ? 'text-2xl' : 'text-3xl md:text-5xl'} font-bold">
 						{@html title}
 					</h1>
