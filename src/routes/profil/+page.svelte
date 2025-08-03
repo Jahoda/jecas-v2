@@ -49,7 +49,7 @@
 				</Button>
 			</form>
 
-			<div class="mt-4" />
+			<div class="mt-4"></div>
 
 			<form method="post" action="?/signout" use:enhance={handleSubmit}>
 				<div>

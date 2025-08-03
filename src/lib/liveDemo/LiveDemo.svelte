@@ -28,7 +28,7 @@
 	let isCopied = false;
 </script>
 
-<div class="absolute right-0 top-0">
+<div class="absolute top-0 right-0">
 	<Button xSmall on:click={handleToggleSource}>
 		<IconCode slot="icon" />
 		{#if isShowSource}
@@ -43,7 +43,7 @@
 
 {#if isShowSource}
 	<div class="relative pt-4" transition:slide={{ duration: 200 }}>
-		<div class="absolute right-0 top-10 m-1">
+		<div class="absolute top-10 right-0 m-1">
 			<Button xSmall on:click={handleCopyToClipboard}>
 				<svelte:fragment slot="icon">
 					{#if isCopied}

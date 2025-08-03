@@ -1,8 +1,11 @@
 import { sveltekit } from '@sveltejs/kit/vite';
+import tailwindcss from '@tailwindcss/vite';
+import devtoolsJson from 'vite-plugin-devtools-json';
+import { kitRoutes } from 'vite-plugin-kit-routes';
 
 /** @type {import('vite').UserConfig} */
 const config = {
-	plugins: [sveltekit()]
+	plugins: [sveltekit(), kitRoutes(), tailwindcss(), devtoolsJson()]
 };
 
 export default config;

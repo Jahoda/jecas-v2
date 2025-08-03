@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	export let slug: string;
+	interface Props {
+		slug: string;
+	}
+	let { slug }: Props = $props();
 
-	let mounted = false;
+	let mounted = $state(false);
 
 	interface Disqus extends Window {
 		DISQUS: {
@@ -39,11 +42,11 @@
 		});
 	}
 
-	$: {
+	$effect(() => {
 		if (mounted) {
 			resetDisqus(slug);
 		}
-	}
+	});
 </script>
 
-<div class="rounded-md bg-black/10 p-8 dark:bg-gray-800" id="disqus_thread" />
+<div class="rounded-md bg-black/10 p-8 dark:bg-gray-800" id="disqus_thread"></div>

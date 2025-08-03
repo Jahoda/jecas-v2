@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { afterUpdate } from 'svelte';
+	import { mount } from 'svelte';
 	import { toggle, toggleClass, zkopirovat } from '$lib/post/utils';
 	import LiveDemo from '$lib/liveDemo/LiveDemo.svelte';
 
@@ -14,7 +15,7 @@
 			liveElements.forEach((element) => {
 				const content = element.innerHTML;
 				element.innerHTML = '';
-				new LiveDemo({
+				mount(LiveDemo, {
 					target: element,
 					props: {
 						content: content
@@ -33,6 +34,9 @@
 	});
 </script>
 
-<div class="prose m-auto w-full max-w-3xl dark:prose-invert" bind:this={postContent}>
+<div
+	class="prose dark:prose-invert prose-code:before:hidden prose-code:after:hidden prose-a:text-blue-dark prose-a:hover:no-underline m-auto w-full max-w-3xl"
+	bind:this={postContent}
+>
 	{@html content}
 </div>

@@ -36,7 +36,7 @@
 		</Input>
 	</div>
 
-	<div class="mt-8" />
+	<div class="mt-8"></div>
 
 	<div class="grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-3">
 		<div>
@@ -65,7 +65,7 @@
 						</Button>
 					</div>
 
-					<div class="mt-8" />
+					<div class="mt-8"></div>
 
 					<div class="space-y-4">
 						{#each tags as tag}

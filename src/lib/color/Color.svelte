@@ -7,7 +7,7 @@
 <div>
 	<label for={name}>{label}</label>
 
-	<div class="mt-1" />
+	<div class="mt-1"></div>
 	<div class="flex items-center gap-2">
 		<input type="color" id={name} {name} class="h-10" bind:value />
 
@@ -15,4 +15,4 @@
 	</div>
 </div>
 
-<div class="mt-4" />
+<div class="mt-4"></div>

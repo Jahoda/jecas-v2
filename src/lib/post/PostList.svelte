@@ -5,7 +5,7 @@
 	export let posts: Post[];
 </script>
 
-<div class="grid grid-cols-repeat-48 gap-8">
+<div class="grid-cols-repeat-48 grid gap-8">
 	{#each posts as post (post.url_slug)}
 		<div class="grid grid-cols-1">
 			<MainPost

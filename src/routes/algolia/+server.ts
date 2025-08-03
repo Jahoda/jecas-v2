@@ -4,7 +4,7 @@ import type { Post } from '$lib/post/post';
 import { connection } from '$lib/server/database';
 import { json } from '@sveltejs/kit';
 
-import algoliasearch from 'algoliasearch';
+import { algoliasearch } from 'algoliasearch';
 
 export async function GET() {
 	const [pages] = await connection.execute<Post[]>(`
@@ -22,19 +22,21 @@ export async function GET() {
 
 	// API keys below contain actual values tied to your Algolia account
 	const client = algoliasearch(PUBLIC_ALGOLIA_APP_ID, SECRET_ALGOLIA_ADMIN_KEY);
-	const index = client.initIndex(PUBLIC_ALGOLIA_INDEX_NAME);
 
 	const objects = pages.map((item) => {
 		item.objectID = item.id;
 		return item;
 	});
 
-	index
-		.saveObjects(objects)
-		.then(({ objectIDs }) => {
-			console.log(`Saved ${objectIDs.length} items to Algolia`);
+	client
+		.saveObjects({
+			indexName: PUBLIC_ALGOLIA_INDEX_NAME,
+			objects
 		})
-		.catch((e) => json(e));
+		.then((response: any) => {
+			console.log(`Saved ${response.objectIDs?.length || 0} items to Algolia`);
+		})
+		.catch((e: Error) => json(e));
 
 	return json({
 		message: `Found ${pages.length} posts`

@@ -5,8 +5,8 @@
 	export let hit: HitPost;
 	export let selected = false;
 
-	$: title = hit._snippetResult?.headline?.value || hit.headline;
-	$: description = hit._snippetResult?.description?.value || hit.description;
+	$: title = (hit._highlightResult?.headline as any)?.value || hit.headline;
+	$: description = (hit._highlightResult?.description as any)?.value || hit.description;
 </script>
 
 <MainPost neutral {title} {description} href={hit.url_slug} {selected} small />

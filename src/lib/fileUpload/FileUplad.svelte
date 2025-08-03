@@ -35,5 +35,5 @@
 <div>
 	<input type="file" {name} on:change={handleFileUpload} disabled={uploading} />
 
-	<div class="mt-4" />
+	<div class="mt-4"></div>
 </div>

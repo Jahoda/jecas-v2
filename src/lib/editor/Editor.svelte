@@ -91,5 +91,5 @@
 <input type="hidden" {name} {value} />
 
 <div class="overflow-hidden rounded-md bg-white p-2">
-	<div bind:this={container} class="" />
+	<div bind:this={container} class=""></div>
 </div>

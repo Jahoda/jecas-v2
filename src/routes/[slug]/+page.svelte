@@ -33,8 +33,8 @@
 />
 <Container verticalSpace>
 	<div class="grid grid-cols-1 gap-8 md:gap-16">
-		<div class="grid grid-cols-1 gap-8 xl:grid-cols-post">
-			<div class="max-md:hidden" />
+		<div class="xl:grid-cols-post grid grid-cols-1 gap-8">
+			<div class="max-md:hidden"></div>
 			<div><PostContent content={post.text_html} /></div>
 			<div class="sticky top-2 w-[14rem] self-start text-sm max-xl:hidden">
 				<PostToc slug={post.url_slug} />

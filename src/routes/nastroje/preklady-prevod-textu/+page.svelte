@@ -47,7 +47,8 @@
 
 <MainPost noImage {title} {description} />
 
-<textarea bind:value bind:this={textarea} on:focus={() => textarea.select()} rows="10" cols="50" />
+<textarea bind:value bind:this={textarea} on:focus={() => textarea.select()} rows="10" cols="50"
+></textarea>
 
 <div class="inline-flex">
 	<Button on:click={() => navigator.clipboard.writeText(lines.join('\n'))}>

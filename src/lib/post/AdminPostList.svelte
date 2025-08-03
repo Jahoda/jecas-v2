@@ -19,7 +19,7 @@
 		{title} ({filtredPosts.length})
 	</div>
 
-	<div class="mt-8" />
+	<div class="mt-8"></div>
 
 	<div class="space-y-4">
 		{#each filtredPosts as post (post.id)}
@@ -28,7 +28,7 @@
 			>
 				<a
 					href="/{post.url_slug}"
-					class="text-blue-dark underline hover:no-underline dark:text-blue-light"
+					class="text-blue-dark dark:text-blue-light underline hover:no-underline"
 				>
 					{post.title}
 				</a>

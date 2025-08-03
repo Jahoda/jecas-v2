@@ -8,8 +8,8 @@
 	let result: HitPost[] = [];
 
 	$: {
-		searchQueryAlgolia(query).then(({ hits }) => {
-			result = hits;
+		searchQueryAlgolia(query).then((response: any) => {
+			result = response.results?.[0]?.hits || response.hits || [];
 		});
 	}
 </script>
@@ -18,7 +18,7 @@
 	<SearchInput bind:query on:close />
 </div>
 
-<div class="border-t dark:border-t-slate-700" />
+<div class="border-t dark:border-t-slate-700"></div>
 
 <div class="overflow-y-auto">
 	<div class="p-3">

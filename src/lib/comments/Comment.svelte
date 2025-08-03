@@ -3,6 +3,7 @@
 	import CommentLinkToPost from '$lib/comments/CommentLinkToPost.svelte';
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import Like from '$lib/like/Like.svelte';
+	import ShowAll from '$lib/showAll/ShowAll.svelte';
 	import type { CommentContent } from './comment';
 
 	export let comment: CommentContent;
@@ -28,11 +29,13 @@
 		<div
 			class="grid grid-cols-1 gap-2 rounded-md bg-slate-50/80 p-3 shadow dark:bg-slate-800 dark:text-white"
 		>
-			<p class="break-words">
-				{@html comment.raw_message}
+			<div class="break-words">
+				<ShowAll>
+					{@html comment.raw_message}
+				</ShowAll>
 
 				— <b>{comment.author.name}</b>
-			</p>
+			</div>
 
 			<div class="flex flex-wrap justify-between gap-4 overflow-x-hidden">
 				<CommentLinkToPost title={comment.thread?.clean_title} href={comment.url} />

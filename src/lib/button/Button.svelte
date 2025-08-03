@@ -13,15 +13,15 @@
 	tabindex="0"
 	disabled={href ? null : disabled}
 	{href}
-	class="custom-button truncate bg-blue-light transition-all {xSmall
+	class="custom-button bg-blue-light truncate transition-all {xSmall
 		? 'rounded'
-		: 'rounded-lg'} group inline-flex items-center gap-2 hover:bg-blue-dark active:translate-y-0.5 {small
+		: 'rounded-lg'} group hover:bg-blue-dark inline-flex items-center gap-2 active:translate-y-0.5 {small
 		? 'px-2 py-1'
 		: xSmall
-		? 'px-2 py-0.5'
-		: large
-		? 'px-5 py-4'
-		: 'px-4 py-2'} leading-5 {xSmall ? 'text-sm font-normal' : 'font-semibold'} text-white"
+			? 'px-2 py-0.5'
+			: large
+				? 'px-5 py-4'
+				: 'px-4 py-2'} leading-5 {xSmall ? 'text-sm font-normal' : 'font-semibold'} text-white"
 	on:click
 	on:keypress
 >

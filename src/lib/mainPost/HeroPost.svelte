@@ -30,13 +30,13 @@
 </script>
 
 <div
-	class="relative overflow-hidden p-4 text-white shadow-inner dark:text-white max-md:text-center md:p-16"
+	class="relative overflow-hidden p-4 text-white shadow-inner max-md:text-center md:p-16 dark:text-white"
 	style="--image: url({`/files/article/${href}.png`}); background-image: {backgroundGradient}"
 >
 	{#if !isTag}
 		<div
-			class="bg-blur pointer-events-none absolute left-0 top-0 h-full w-full opacity-50 transition-all"
-		/>
+			class="bg-blur pointer-events-none absolute top-0 left-0 h-full w-full opacity-50 transition-all"
+		></div>
 	{/if}
 	<div class="relative m-auto h-full max-w-[74em] rounded-xl bg-slate-900/50 p-6">
 		<div class="flex flex-col max-md:items-center md:flex-row {small ? 'gap-4' : 'gap-8'}">

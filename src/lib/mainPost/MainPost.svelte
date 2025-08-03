@@ -25,25 +25,25 @@
 <div
 	class="relative rounded-2xl {selected
 		? 'shadow-2xl shadow-blue-500/30'
-		: ''} p-2 shadow @container {small ? '' : ''} {neutral
+		: ''} @container p-2 shadow {small ? '' : ''} {neutral
 		? 'bg-gray-50 dark:bg-slate-700 dark:text-white'
 		: 'text-white dark:text-white'}"
 	style="--image: url({`/files/article/${href}.png`});{neutral
 		? ''
 		: background
-		? `background: ${background}`
-		: `background-image: ${backgroundGradient}`}"
+			? `background: ${background}`
+			: `background-image: ${backgroundGradient}`}"
 >
 	<div
 		class="{selected
 			? 'bg-blue-light/30'
 			: neutral
-			? 'bg-slate-500/10 dark:bg-slate-900/50'
-			: 'bg-slate-900/50'} rounded-xl {small ? 'p-3' : 'p-6'} h-full"
+				? 'bg-slate-500/10 dark:bg-slate-900/50'
+				: 'bg-slate-900/50'} rounded-xl {small ? 'p-3' : 'p-6'} h-full"
 	>
 		<div
-			class="bg-blur pointer-events-none absolute left-0 top-0 -z-10 hidden h-full w-full opacity-50 transition-all"
-		/>
+			class="bg-blur pointer-events-none absolute top-0 left-0 -z-10 hidden h-full w-full opacity-50 transition-all"
+		></div>
 		<div
 			class="flex flex-col items-center text-center {small
 				? 'gap-4 @sm:flex-row @sm:items-start @sm:text-left'

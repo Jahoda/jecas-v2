@@ -13,7 +13,7 @@
 	{#if showLabel}
 		<label for={name}>{label}</label>
 
-		<div class="mt-1" />
+		<div class="mt-1"></div>
 	{/if}
 
 	<div class="relative">
@@ -41,4 +41,4 @@
 	</div>
 </div>
 
-<div class="mt-4" />
+<div class="mt-4"></div>

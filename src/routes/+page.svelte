@@ -25,10 +25,10 @@
 </svelte:head>
 
 <section>
-	<div class="mt-4 md:mt-8" />
+	<div class="mt-4 md:mt-8"></div>
 
 	<Container>
-		<div class="grid grid-cols-1 gap-8 lg:grid-cols-homepage-2 xl:grid-cols-homepage-3">
+		<div class="lg:grid-cols-homepage-2 xl:grid-cols-homepage-3 grid grid-cols-1 gap-8">
 			<div class="xlx:col-span-6">
 				<div class="grid grid-cols-1 gap-8">
 					<div class="grid grid-cols-1 gap-8">
@@ -73,5 +73,5 @@
 		</div>
 	</Container>
 
-	<div class="mt-4 md:mt-8" />
+	<div class="mt-4 md:mt-8"></div>
 </section>

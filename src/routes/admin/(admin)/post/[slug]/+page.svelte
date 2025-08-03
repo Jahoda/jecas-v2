@@ -121,7 +121,7 @@
 					</Headline>
 				</div>
 
-				<div class="mt-4" />
+				<div class="mt-4"></div>
 
 				<form method="POST" use:enhance={preserveForm}>
 					<input type="hidden" value={postForm.id} name="id" />
@@ -165,11 +165,11 @@
 						</label>
 					</div>
 
-					<div class="mt-4" />
+					<div class="mt-4"></div>
 
 					<Editor name="text_html" bind:value={postForm.text_html} />
 
-					<div class="mt-4" />
+					<div class="mt-4"></div>
 
 					<div class="flex flex-wrap gap-2">
 						{#each postTags as tagId (tagId)}
@@ -197,9 +197,9 @@
 						</select>
 					</div>
 
-					<div class="mt-4" />
+					<div class="mt-4"></div>
 
-					<div class="mt-8" />
+					<div class="mt-8"></div>
 
 					<div class="flex items-center gap-4">
 						<Button large>Uložit</Button>
@@ -239,7 +239,7 @@
 					tags={asignedTags}
 				/>
 
-				<div class="mt-8" />
+				<div class="mt-8"></div>
 
 				<PostContent content={postForm.text_html} />
 			</Box>

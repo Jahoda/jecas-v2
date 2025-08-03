@@ -36,6 +36,6 @@
 			</button>
 		</div>
 
-		<div class="pt-8" />
+		<div class="pt-8"></div>
 	</div>
 {/if}

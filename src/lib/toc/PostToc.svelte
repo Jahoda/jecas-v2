@@ -48,7 +48,7 @@
 
 	$: {
 		if (loaded) {
-			slug, (headlines = getHeadlinesFromPage());
+			(slug, (headlines = getHeadlinesFromPage()));
 		}
 	}
 </script>

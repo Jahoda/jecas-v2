@@ -1,6 +1,74 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@theme {
+	/* Custom Colors - Lochmara */
+	--color-lochmara-50: #f0f7ff;
+	--color-lochmara-100: #e0eefe;
+	--color-lochmara-200: #bbddfc;
+	--color-lochmara-300: #7fc1fa;
+	--color-lochmara-400: #3aa2f6;
+	--color-lochmara-500: #1081dd;
+	--color-lochmara-600: #0468c5;
+	--color-lochmara-700: #05539f;
+	--color-lochmara-800: #094883;
+	--color-lochmara-900: #0d3d6d;
+	--color-lochmara-950: #092648;
+
+	/* Custom Colors - Cerise */
+	--color-cerise-50: #fdf2f9;
+	--color-cerise-100: #fbe8f5;
+	--color-cerise-200: #fad0ec;
+	--color-cerise-300: #f7aadc;
+	--color-cerise-400: #f175c3;
+	--color-cerise-500: #e84ca9;
+	--color-cerise-600: #da3f94;
+	--color-cerise-700: #ba1c6e;
+	--color-cerise-800: #991b5b;
+	--color-cerise-900: #801b4e;
+	--color-cerise-950: #4e092b;
+
+	/* Custom Blue Colors */
+	--color-blue-dark: #0d6ab7;
+	--color-blue-light: #1081dd;
+
+	/* Grid Template Columns */
+	--grid-template-columns-homepage-3: 6fr minmax(280px, 2fr) minmax(340px, 3fr);
+	--grid-template-columns-homepage-2: 1fr 300px;
+	--grid-template-columns-repeat-48: repeat(auto-fill, minmax(300px, 2fr));
+	--grid-template-columns-post: 1fr 42rem 1fr;
+
+	/* Grid Template Areas */
+	--grid-template-areas-posts: 'main main' 'rest rest';
+}
+
+/* Typography Configuration for prose elements */
+@layer components {
+	.prose {
+		--tw-prose-links: var(--color-blue-dark);
+	}
+
+	.prose a {
+		color: var(--color-blue-dark);
+	}
+
+	.prose a:hover {
+		color: var(--color-blue-light);
+	}
+
+	.prose blockquote p:first-of-type::before,
+	.prose blockquote p:last-of-type::after {
+		content: none;
+	}
+
+	.prose-invert a {
+		color: var(--color-blue-dark);
+	}
+
+	.prose-invert a:hover {
+		color: var(--color-blue-light);
+	}
+}
 
 .prose a[href^='/']:not(.button),
 .prose a[href^='/'] code,
@@ -131,7 +199,7 @@ code {
 }
 
 .prose button:not(.custom-button) {
-	@apply inline-flex items-center gap-2 truncate rounded-lg bg-blue-light px-4 py-2 font-semibold leading-6 text-white transition-all hover:bg-blue-dark active:translate-y-0.5;
+	@apply bg-blue-light hover:bg-blue-dark inline-flex items-center gap-2 truncate rounded-lg px-4 py-2 leading-6 font-semibold text-white transition-all active:translate-y-0.5;
 }
 
 .prose button img {
@@ -183,4 +251,18 @@ code {
 		scrollbar-width: thin;
 		scrollbar-color: rgba(55, 65, 81, 0.75) #1f2937;
 	}
+}
+
+#disqus_thread {
+	/* force light mode */
+	color-scheme: light !important;
+	filter: none;
+	background-color: white;
+}
+
+/* If you switch your site to dark mode, keep forcing “light” inside the iframe */
+[data-theme='dark'] #disqus_thread {
+	color-scheme: light !important;
+	color: white !important;
+	background-color: black !important;
 }

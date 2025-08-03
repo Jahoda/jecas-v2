@@ -1,4 +1,4 @@
-import algoliasearch from 'algoliasearch';
+import { algoliasearch } from 'algoliasearch';
 import type { Hit } from '@algolia/client-search';
 
 import {
@@ -12,7 +12,9 @@ export type HitPost = Hit<Post>;
 
 export function searchQueryAlgolia(query: string) {
 	const client = algoliasearch(PUBLIC_ALGOLIA_APP_ID, PUBLIC_ALGOLIA_SEARCH_ONLY_KEY);
-	const index = client.initIndex(PUBLIC_ALGOLIA_INDEX_NAME);
 
-	return index.search<Post>(query);
+	return client.searchSingleIndex({
+		indexName: PUBLIC_ALGOLIA_INDEX_NAME,
+		searchParams: { query }
+	});
 }
