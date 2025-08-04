@@ -48,7 +48,7 @@ async function parseMarkdownFile(fileName: string): Promise<MarkdownPost> {
 	const text_html = await marked(content);
 	const wordCount = (content.match(/\b\w+\b/g) || []).length;
 
-	return {
+	const parsedPost = {
 		id: url_slug,
 		title: frontmatter.title,
 		url_slug,
@@ -60,10 +60,14 @@ async function parseMarkdownFile(fileName: string): Promise<MarkdownPost> {
 			? new Date(frontmatter.last_modification)
 			: new Date(frontmatter.date),
 		comments: 0,
-		status: frontmatter.status || 1,
+		status: frontmatter.status !== undefined ? frontmatter.status : 1,
 		tags: frontmatter.tags || [],
 		word_count: wordCount
 	};
+	
+	console.log(`Parsing ${fileName}: status from frontmatter = ${frontmatter.status}, final status = ${parsedPost.status}`);
+	
+	return parsedPost;
 }
 
 export async function getAllPosts(
@@ -75,7 +79,10 @@ export async function getAllPosts(
 	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
 
 	const filteredPosts = posts
-		.filter((post) => post.status === status && post.url_slug !== 'home')
+		.filter((post) => {
+			console.log(`Post ${post.url_slug}: status=${post.status}, expected=${status}`);
+			return post.status === status && post.url_slug !== 'home';
+		})
 		.sort((a, b) => b.last_modification.getTime() - a.last_modification.getTime());
 
 	return limit ? filteredPosts.slice(0, limit) : filteredPosts;
@@ -93,7 +100,11 @@ export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
 		const filePath = path.join(POSTS_DIRECTORY, fileName);
 
 		if (fs.existsSync(filePath)) {
-			posts.push(await parseMarkdownFile(fileName));
+			const post = await parseMarkdownFile(fileName);
+			// Only include published posts in lists
+			if (post.status === 1) {
+				posts.push(post);
+			}
 		}
 	}
 
@@ -152,7 +163,8 @@ export async function getAllUsedTags(): Promise<string[]> {
 
 	for (const fileName of postFiles) {
 		const post = await parseMarkdownFile(fileName);
-		if (post.tags) {
+		// Only include tags from published posts
+		if (post.status === 1 && post.tags) {
 			post.tags.forEach((tag) => allTags.add(tag));
 		}
 	}

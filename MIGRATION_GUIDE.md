@@ -119,7 +119,15 @@ The `status` field controls post visibility:
 - **`status: 1`** = Published (visible on website)
 - **`status: 0`** = Draft (hidden from public, only visible in admin/development)
 
-To create draft posts, set `status: 0` in the frontmatter. Drafts won't appear in public post listings but can still be accessed directly by URL if needed.
+#### Draft Post Behavior
+
+Draft posts (`status: 0`) are:
+- ❌ **Hidden from all listings** (homepage, archive, tag pages, related posts, etc.)
+- ❌ **Excluded from tag clouds** (their tags won't appear in public tag lists)
+- ❌ **Not included in search results** (Algolia indexing)
+- ✅ **Accessible by direct URL** (for preview/review purposes)
+
+To create draft posts, set `status: 0` in the frontmatter.
 
 ## Important Notes
 
