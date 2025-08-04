@@ -1,4 +1,4 @@
-import { convertFormDataToData } from '$lib/server/database';
+import { convertFormDataToData } from '$lib/server/utils';
 import { createPageTags, getAllTags, getAllTagsByPageId, removePageTags } from '$lib/tag/tag';
 import type { PageServerLoad } from './$types';
 import { fail, redirect } from '@sveltejs/kit';
@@ -12,7 +12,7 @@ export const load = (async ({ params }) => {
 
 	const post = slug === 'new' ? null : await getSinglePostBySlug(slug);
 
-	const tags = post ? await getAllTagsByPageId(post.id) : null;
+	const tags = post ? await getAllTagsByPageId(post.url_slug) : null;
 
 	return {
 		post,

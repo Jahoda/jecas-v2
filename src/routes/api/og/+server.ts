@@ -10,8 +10,8 @@ export const GET: RequestHandler = async ({ url }) => {
 
 	let tags: Tag[] = [];
 	const post = await getSinglePostBySlug(slug);
-	if (post?.id) {
-		tags = await getAllTagsByPageId(post.id);
+	if (post?.url_slug) {
+		tags = await getAllTagsByPageId(post.url_slug);
 	}
 
 	if (!post) return new Response('Not found', { status: 404 });

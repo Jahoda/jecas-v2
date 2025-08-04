@@ -1,8 +1,13 @@
-import { connection } from '$lib/server/database';
-import type { RowDataPacket } from 'mysql2';
+import {
+	getAllUsedTags as getMarkdownUsedTags,
+	getAllTags as getMarkdownAllTags,
+	getAllTagsByPageId as getMarkdownTagsByPageId,
+	getSingleTagBySlug as getMarkdownSingleTagBySlug,
+	type MarkdownTag
+} from './markdown';
 
-export interface Tag extends RowDataPacket {
-	id: number;
+export interface Tag {
+	id: string | number;
 	url_slug: string;
 	name: string;
 	headline: string | null;
@@ -10,6 +15,7 @@ export interface Tag extends RowDataPacket {
 	status: number | null;
 	background: string | null;
 	color: string | null;
+	count?: number;
 }
 
 export interface TagIn {
@@ -21,161 +27,60 @@ export interface TagIn {
 	color: string;
 }
 
-export interface TagPost extends RowDataPacket {
-	id: number;
-	tag_id: number;
-	page_id: number;
+export interface TagPost {
+	tag_id: string;
+	page_id: string;
 }
 
-export interface PostCount extends RowDataPacket {
+export interface PostCount {
 	count: number;
 }
 
-export async function getAllUsedTags() {
-	const [tags] = await connection.execute<Tag[]>(`
-        SELECT
-            COUNT(*) as count,
-            tags.id,
-			tags.name,
-            tags.url_slug,
-            tags.background,
-            tags.color
-        FROM
-            pages_tags
-        LEFT JOIN tags ON tags.id = pages_tags.tag_id
-        GROUP BY tags.id
-        ORDER BY count DESC
-    `);
-	return tags;
+export async function getAllUsedTags(): Promise<Tag[]> {
+	return await getMarkdownUsedTags();
 }
 
-export async function getAllTags() {
-	const [tags] = await connection.execute<Tag[]>(`
-		SELECT
-			id,
-			name,
-			url_slug,
-			background,
-			color
-		FROM
-			tags
-	`);
-	return tags;
+export async function getAllTags(): Promise<Tag[]> {
+	return await getMarkdownAllTags();
 }
 
-export async function getAllTagsByPageId(id: number) {
-	const [tags] = await connection.execute<Tag[]>(
-		`
-		SELECT
-			tags.id,
-			tags.name,
-			tags.url_slug,
-			tags.background,
-			tags.color
-		FROM
-			pages_tags
-		LEFT JOIN tags ON tags.id = pages_tags.tag_id
-		WHERE pages_tags.page_id = ?
-	`,
-		[id]
-	);
-	return tags;
+export async function getAllTagsByPageId(pageSlug: string): Promise<Tag[]> {
+	return await getMarkdownTagsByPageId(pageSlug);
 }
 
-export async function getSingleTagBySlug(slug: string) {
-	const [tag] = await connection.execute<Tag[]>(
-		`
-		SELECT
-			id,
-			name,
-			name as headline,
-			url_slug,
-			background,
-			color,
-			text_html
-		FROM
-			tags
-		WHERE tags.url_slug = ?
-	`,
-		[slug]
-	);
-	return tag[0];
+export async function getSingleTagBySlug(slug: string): Promise<Tag | undefined> {
+	return await getMarkdownSingleTagBySlug(slug);
 }
+
+// Database-based tag operations are not needed for markdown files
+// Tags are managed through frontmatter in markdown files
 
 export function updateTagBySlug(slug: string, data: TagIn) {
-	return connection.execute(
-		`
-		UPDATE
-			tags
-		SET
-			name = ?,
-			url_slug = ?,
-			headline = ?,
-			text_html = ?,
-			background = ?,
-			color = ?
-		WHERE
-			url_slug = ?
-	`,
-		[data.name, slug, data.headline, data.text_html, data.background, data.color, slug]
+	throw new Error(
+		'updateTagBySlug not implemented for markdown files - tags are managed through frontmatter'
 	);
 }
 
 export function createTag(data: TagIn) {
-	console.log([
-		data.name,
-		data.url_slug,
-		data.headline,
-		data.text_html,
-		data.background,
-		data.color
-	]);
-	return connection.execute(
-		`
-		INSERT INTO
-			tags
-			(name, url_slug, headline, text_html, background, color)
-		VALUES
-			(?, ?, ?, ?, ?, ?)
-	`,
-		[data.name, data.url_slug, data.headline, data.text_html, data.background, data.color]
+	throw new Error(
+		'createTag not implemented for markdown files - tags are managed through frontmatter'
 	);
 }
 
 export async function deleteTagBySlug(slug: string) {
-	return await connection.execute(
-		`
-		DELETE FROM
-			tags
-		WHERE
-			url_slug = ?
-	`,
-		[slug]
+	throw new Error(
+		'deleteTagBySlug not implemented for markdown files - tags are managed through frontmatter'
 	);
 }
 
 export async function removePageTags(pageId: number) {
-	return await connection.execute(
-		`
-		DELETE FROM
-			pages_tags
-		WHERE
-			page_id = ?
-	`,
-		[pageId]
+	throw new Error(
+		'removePageTags not implemented for markdown files - tags are managed through frontmatter'
 	);
 }
 
 export async function createPageTags(pageId: number, tags: string[]) {
-	const values = tags.map((tag) => `(${pageId}, ${tag})`).join(', ');
-
-	return await connection.execute(
-		`
-		INSERT INTO
-			pages_tags
-			(page_id, tag_id)
-		VALUES
-			${values}
-	`
+	throw new Error(
+		'createPageTags not implemented for markdown files - tags are managed through frontmatter'
 	);
 }

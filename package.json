@@ -19,12 +19,12 @@
 		"@tailwindcss/forms": "0.5.10",
 		"@tailwindcss/typography": "0.5.16",
 		"@tailwindcss/vite": "4.1.11",
+		"@types/marked": "^6.0.0",
 		"@vercel/analytics": "1.5.0",
 		"algoliasearch": "5.35.0",
 		"autoprefixer": "10.4.21",
 		"emmet-monaco-es": "5.5.0",
 		"monaco-editor": "0.52.2",
-		"mysql2": "3.14.3",
 		"postcss": "8.5.6",
 		"postcss-nesting": "13.0.2",
 		"prettier": "3.6.2",
@@ -48,6 +48,8 @@
 		"@supabase/supabase-js": "2.53.0",
 		"@sveltejs/vite-plugin-svelte": "6.1.0",
 		"@tailwindcss/container-queries": "0.1.1",
-		"@tailwindcss/postcss": "4.1.11"
+		"@tailwindcss/postcss": "4.1.11",
+		"gray-matter": "^4.0.3",
+		"marked": "^16.1.2"
 	}
 }

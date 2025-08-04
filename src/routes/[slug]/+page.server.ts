@@ -18,21 +18,21 @@ export const load = (async ({ params }) => {
 
 	const page = await getSinglePostBySlug(slug);
 
-	if (page?.id) {
-		tags = await getAllTagsByPageId(page.id);
+	if (page?.url_slug) {
+		tags = await getAllTagsByPageId(page.url_slug);
 
 		if (tags.length > 0) {
 			relatedPosts = await getRelatedPostsByMostTags(
-				tags.map((tag) => tag.id),
-				page.id
+				tags.map((tag) => tag.name),
+				page.url_slug
 			);
 		}
 	} else {
 		// Try to find tag
 		tag = await getSingleTagBySlug(slug);
 
-		if (tag?.id) {
-			tagPosts = await getPostsByTagId(tag.id);
+		if (tag?.name) {
+			tagPosts = await getPostsByTagId(tag.url_slug);
 		}
 
 		if (!tag) {

@@ -21,17 +21,12 @@ const config = {
 		]
 	},
 	optimizeDeps: {
-		exclude: [
-			'@resvg/resvg-js',
-			'@ethercorps/sveltekit-og'
-		]
+		exclude: ['@resvg/resvg-js', '@ethercorps/sveltekit-og']
 	},
 	build: {
 		rollupOptions: {
 			external: (id) => {
-				return id.includes('.node') || 
-					   id.includes('@resvg/resvg-js') ||
-					   id.includes('resvgjs.');
+				return id.includes('.node') || id.includes('@resvg/resvg-js') || id.includes('resvgjs.');
 			}
 		}
 	}
