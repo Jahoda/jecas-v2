@@ -5,7 +5,13 @@ import { kitRoutes } from 'vite-plugin-kit-routes';
 
 /** @type {import('vite').UserConfig} */
 const config = {
-	plugins: [sveltekit(), kitRoutes(), tailwindcss(), devtoolsJson()]
+	plugins: [sveltekit(), kitRoutes(), tailwindcss(), devtoolsJson()],
+	ssr: {
+		noExternal: ['@ethercorps/sveltekit-og']
+	},
+	optimizeDeps: {
+		exclude: ['@resvg/resvg-js']
+	}
 };
 
 export default config;
