@@ -91,7 +91,7 @@ title: 'New Post Title'
 headline: 'Your headline here'
 description: 'SEO description'
 date: '2024-01-20'
-status: 1
+status: 1  # 1 = published, 0 = draft
 tags: ['tag1', 'tag2']
 ---
 
@@ -112,9 +112,14 @@ Tags are managed through the `tags` array in the frontmatter. The system automat
 - Creates tag relationships and counts
 - Provides related posts functionality
 
-### Draft Posts
+### Post Status
 
-Set `status: 0` in the frontmatter to create draft posts that won't appear in the public listing.
+The `status` field controls post visibility:
+
+- **`status: 1`** = Published (visible on website)
+- **`status: 0`** = Draft (hidden from public, only visible in admin/development)
+
+To create draft posts, set `status: 0` in the frontmatter. Drafts won't appear in public post listings but can still be accessed directly by URL if needed.
 
 ## Important Notes
 
