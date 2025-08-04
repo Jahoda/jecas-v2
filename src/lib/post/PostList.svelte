@@ -19,7 +19,7 @@
 				neutral
 				small
 				wordCount={post.word_count}
-				tags={tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.id.toString()))}
+				tags={tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
 			/>
 		</div>
 	{/each}

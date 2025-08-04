@@ -33,7 +33,7 @@
 					neutral={index > 0}
 					small={index > 1}
 					wordCount={post.word_count}
-					tags={data.tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.id.toString()))}
+					tags={data.tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
 				/>
 			</div>
 		{/each}

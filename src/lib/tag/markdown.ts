@@ -1,13 +1,14 @@
 import {
-	getAllPowerfulTags,
-	getPowerfulTagBySlug,
-	getTagsByPostSlug,
-	getPostsByTagSlug,
-	type PowerfulTag
-} from './powerfulTags';
+	getAllMarkdownTags,
+	getMarkdownTagBySlug,
+	getMarkdownTagsByPostSlug,
+	getMarkdownPostsForTag,
+	type MarkdownTagFile
+} from './markdownTags';
+import { getTagUsageCount } from './powerfulTags';
+import type { MarkdownPost } from '../post/markdown';
 
 export interface MarkdownTag {
-	id: string;
 	url_slug: string;
 	name: string;
 	headline: string | null;
@@ -19,8 +20,8 @@ export interface MarkdownTag {
 }
 
 export interface TagPost {
-	tag_id: string;
-	page_id: string;
+	tag_slug: string;
+	page_slug: string;
 }
 
 const TAG_COLORS = [
@@ -37,10 +38,14 @@ const TAG_COLORS = [
 ];
 
 export async function getAllUsedTags(): Promise<MarkdownTag[]> {
-	const powerfulTags = getAllPowerfulTags();
+	const markdownTags = await getAllMarkdownTags();
 	
-	return powerfulTags.map(tag => ({
-		id: tag.id,
+	// Get all usage counts efficiently (cached and batch-calculated)
+	const { calculateAllUsageCounts } = await import('./powerfulTags');
+	const allCounts = await calculateAllUsageCounts();
+	
+	// Map to MarkdownTag format with counts
+	return markdownTags.map(tag => ({
 		url_slug: tag.url_slug,
 		name: tag.name,
 		headline: tag.headline,
@@ -48,7 +53,7 @@ export async function getAllUsedTags(): Promise<MarkdownTag[]> {
 		status: tag.status,
 		background: tag.background,
 		color: tag.color,
-		count: tag.usage_count
+		count: allCounts.get(tag.url_slug) || 0
 	}));
 }
 
@@ -57,10 +62,14 @@ export async function getAllTags(): Promise<MarkdownTag[]> {
 }
 
 export async function getAllTagsByPageId(postSlug: string): Promise<MarkdownTag[]> {
-	const powerfulTags = getTagsByPostSlug(postSlug);
+	const markdownTags = await getMarkdownTagsByPostSlug(postSlug);
 	
-	return powerfulTags.map(tag => ({
-		id: tag.id,
+	// Get all usage counts efficiently (cached and batch-calculated)
+	const { calculateAllUsageCounts } = await import('./powerfulTags');
+	const allCounts = await calculateAllUsageCounts();
+	
+	// Map to MarkdownTag format with counts
+	return markdownTags.map(tag => ({
 		url_slug: tag.url_slug,
 		name: tag.name,
 		headline: tag.headline,
@@ -68,34 +77,35 @@ export async function getAllTagsByPageId(postSlug: string): Promise<MarkdownTag[
 		status: tag.status,
 		background: tag.background,
 		color: tag.color,
-		count: tag.usage_count
+		count: allCounts.get(tag.url_slug) || 0
 	}));
 }
 
 export async function getSingleTagBySlug(slug: string): Promise<MarkdownTag | undefined> {
-	const powerfulTag = getPowerfulTagBySlug(slug);
+	const markdownTag = await getMarkdownTagBySlug(slug);
 	
-	if (!powerfulTag) return undefined;
+	if (!markdownTag) return undefined;
+	
+	// Get usage count efficiently (cached)
+	const count = await getTagUsageCount(markdownTag.url_slug);
 	
 	return {
-		id: powerfulTag.id,
-		url_slug: powerfulTag.url_slug,
-		name: powerfulTag.name,
-		headline: powerfulTag.headline,
-		text_html: powerfulTag.text_html,
-		status: powerfulTag.status,
-		background: powerfulTag.background,
-		color: powerfulTag.color,
-		count: powerfulTag.usage_count
+		url_slug: markdownTag.url_slug,
+		name: markdownTag.name,
+		headline: markdownTag.headline,
+		text_html: markdownTag.text_html,
+		status: markdownTag.status,
+		background: markdownTag.background,
+		color: markdownTag.color,
+		count
 	};
 }
 
 export async function getPagesTags(posts: MarkdownPost[]): Promise<TagPost[]> {
-	const { getAllPowerfulTags } = await import('$lib/tag/powerfulTags');
 	const pagesTags: TagPost[] = [];
 	
-	// Get all tags for lookup
-	const allTags = getAllPowerfulTags();
+	// Get all tags for lookup from the new markdown system
+	const allTags = await getAllMarkdownTags();
 	const tagsByName = new Map();
 	const tagsBySlug = new Map();
 	
@@ -118,8 +128,8 @@ export async function getPagesTags(posts: MarkdownPost[]): Promise<TagPost[]> {
 				
 				if (tag) {
 					pagesTags.push({
-						tag_id: tag.id.toString(),
-						page_id: post.url_slug  // Use slug as the primary identifier
+						tag_slug: tag.url_slug,
+						page_slug: post.url_slug  // Use slug as the primary identifier
 					});
 				} else {
 					console.warn(`Tag not found for: "${tagName}" in post: ${post.url_slug}`);

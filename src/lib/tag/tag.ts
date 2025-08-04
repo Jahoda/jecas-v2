@@ -7,7 +7,6 @@ import {
 } from './markdown';
 
 export interface Tag {
-	id: string | number;
 	url_slug: string;
 	name: string;
 	headline: string | null;
@@ -28,8 +27,8 @@ export interface TagIn {
 }
 
 export interface TagPost {
-	tag_id: string;
-	page_id: string;
+	tag_slug: string;
+	page_slug: string;
 }
 
 export interface PostCount {

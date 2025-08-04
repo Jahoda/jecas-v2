@@ -100,7 +100,7 @@
 											/{tag.url_slug}
 										</span>
 										<span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-											{tag.usage_count || 0} posts
+											{tag.count || 0} posts
 										</span>
 										{#if tag.status === 0}
 											<span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded">
@@ -123,7 +123,7 @@
 								<div class="flex gap-2 ml-4">
 									<button 
 										class="text-blue-600 hover:text-blue-800 text-sm"
-										on:click={() => window.location.href = `/admin/tags/edit/${tag.id}`}
+										on:click={() => window.location.href = `/admin/tags/edit/${tag.url_slug}`}
 									>
 										Edit
 									</button>

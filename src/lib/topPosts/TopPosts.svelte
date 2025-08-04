@@ -15,7 +15,7 @@
 			title={post.title}
 			description={post.description}
 			href={post.url_slug}
-			tags={tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.id.toString()))}
+			tags={tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
 		/>
 	{/each}
 </div>

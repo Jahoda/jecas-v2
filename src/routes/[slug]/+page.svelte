@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-	<title>{post?.title || post?.name}</title>
+	<title>{post?.headline || post?.title || post?.name}</title>
 	<meta name="description" content={post?.description} />
 	{#if !data.tag}
 		<meta property="og:image" content="/api/og?slug={post.url_slug}" />
@@ -21,7 +21,7 @@
 </svelte:head>
 
 <HeroPost
-	title={post.headline}
+	title={post.headline || post.name}
 	description={post.description}
 	date={post.last_modification}
 	href={post.url_slug}
