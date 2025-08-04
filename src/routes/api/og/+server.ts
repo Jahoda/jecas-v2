@@ -1,8 +1,6 @@
-// /routes/og/+server.ts
 import OgPreview from '$lib/ogPreview/OgPreview.svelte';
 import { getSinglePostBySlug } from '$lib/post/post';
 import { getAllTagsByPageId, type Tag } from '$lib/tag/tag';
-import { ImageResponse } from '@ethercorps/sveltekit-og';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ url }) => {
@@ -18,6 +16,12 @@ export const GET: RequestHandler = async ({ url }) => {
 
 	if (!post) return new Response('Not found', { status: 404 });
 
-	// @ts-ignore
-	return await ImageResponse(OgPreview, { post, tags });
+	try {
+		const { ImageResponse } = await import('@ethercorps/sveltekit-og');
+		// @ts-ignore
+		return await ImageResponse(OgPreview, { post, tags });
+	} catch (error) {
+		console.error('Failed to generate OG image:', error);
+		return new Response('Failed to generate image', { status: 500 });
+	}
 };
