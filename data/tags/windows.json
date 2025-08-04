@@ -1,0 +1,18 @@
+{
+  "id": 72,
+  "name": "Windows",
+  "url_slug": "windows",
+  "headline": null,
+  "text_html": "<p>Operační systém <b>Windows</b> od <b>Microsoftu</b> je nejpoužívanější na desktopech.</p>",
+  "background": "#0078D6",
+  "color": null,
+  "status": 1,
+  "usage_count": 5,
+  "posts": [
+    "instalace-windows-10",
+    "vypnuti-disku",
+    "windows-10",
+    "windows-programy",
+    "wp-aplikace"
+  ]
+}

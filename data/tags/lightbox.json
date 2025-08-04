@@ -1,0 +1,16 @@
+{
+  "id": 19,
+  "name": "Lightbox",
+  "url_slug": "lightbox",
+  "headline": null,
+  "text_html": null,
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 3,
+  "posts": [
+    "magnific-popup",
+    "vstupni-stranka",
+    "zruseni-scrollovani"
+  ]
+}

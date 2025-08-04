@@ -1,0 +1,16 @@
+{
+  "id": 79,
+  "name": "Style guide",
+  "url_slug": "style-guide",
+  "headline": null,
+  "text_html": null,
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 3,
+  "posts": [
+    "css-poradi-vlastnosti",
+    "nula-pred-teckou",
+    "storybook"
+  ]
+}

@@ -1,8 +1,10 @@
 import {
-	getAllPosts as getMarkdownPosts,
-	getPostsByTag,
-	type MarkdownPost
-} from '$lib/post/markdown';
+	getAllPowerfulTags,
+	getPowerfulTagBySlug,
+	getTagsByPostSlug,
+	getPostsByTagSlug,
+	type PowerfulTag
+} from './powerfulTags';
 
 export interface MarkdownTag {
 	id: string;
@@ -35,30 +37,19 @@ const TAG_COLORS = [
 ];
 
 export async function getAllUsedTags(): Promise<MarkdownTag[]> {
-	const posts = await getMarkdownPosts();
-	const tagCounts = new Map<string, number>();
-
-	posts.forEach((post) => {
-		if (post.tags) {
-			post.tags.forEach((tag) => {
-				tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
-			});
-		}
-	});
-
-	const tags: MarkdownTag[] = Array.from(tagCounts.entries()).map(([tagName, count], index) => ({
-		id: tagName.toLowerCase().replace(/\s+/g, '-'),
-		url_slug: tagName.toLowerCase().replace(/\s+/g, '-'),
-		name: tagName,
-		headline: `Articles tagged with ${tagName}`,
-		text_html: `<p>All articles related to ${tagName}</p>`,
-		status: 1,
-		background: TAG_COLORS[index % TAG_COLORS.length],
-		color: '#ffffff',
-		count
+	const powerfulTags = getAllPowerfulTags();
+	
+	return powerfulTags.map(tag => ({
+		id: tag.id,
+		url_slug: tag.url_slug,
+		name: tag.name,
+		headline: tag.headline,
+		text_html: tag.text_html,
+		status: tag.status,
+		background: tag.background,
+		color: tag.color,
+		count: tag.usage_count
 	}));
-
-	return tags.sort((a, b) => (b.count || 0) - (a.count || 0));
 }
 
 export async function getAllTags(): Promise<MarkdownTag[]> {
@@ -66,32 +57,73 @@ export async function getAllTags(): Promise<MarkdownTag[]> {
 }
 
 export async function getAllTagsByPageId(postSlug: string): Promise<MarkdownTag[]> {
-	const posts = await getMarkdownPosts();
-	const post = posts.find((p) => p.url_slug === postSlug || p.id === postSlug);
-
-	if (!post?.tags) {
-		return [];
-	}
-
-	const allTags = await getAllUsedTags();
-	return allTags.filter((tag) => post.tags!.includes(tag.name));
+	const powerfulTags = getTagsByPostSlug(postSlug);
+	
+	return powerfulTags.map(tag => ({
+		id: tag.id,
+		url_slug: tag.url_slug,
+		name: tag.name,
+		headline: tag.headline,
+		text_html: tag.text_html,
+		status: tag.status,
+		background: tag.background,
+		color: tag.color,
+		count: tag.usage_count
+	}));
 }
 
 export async function getSingleTagBySlug(slug: string): Promise<MarkdownTag | undefined> {
-	const allTags = await getAllUsedTags();
-	return allTags.find((tag) => tag.url_slug === slug);
+	const powerfulTag = getPowerfulTagBySlug(slug);
+	
+	if (!powerfulTag) return undefined;
+	
+	return {
+		id: powerfulTag.id,
+		url_slug: powerfulTag.url_slug,
+		name: powerfulTag.name,
+		headline: powerfulTag.headline,
+		text_html: powerfulTag.text_html,
+		status: powerfulTag.status,
+		background: powerfulTag.background,
+		color: powerfulTag.color,
+		count: powerfulTag.usage_count
+	};
 }
 
 export async function getPagesTags(posts: MarkdownPost[]): Promise<TagPost[]> {
+	const { getAllPowerfulTags } = await import('$lib/tag/powerfulTags');
 	const pagesTags: TagPost[] = [];
+	
+	// Get all tags for lookup
+	const allTags = getAllPowerfulTags();
+	const tagsByName = new Map();
+	const tagsBySlug = new Map();
+	
+	allTags.forEach(tag => {
+		tagsByName.set(tag.name.toLowerCase(), tag);
+		tagsBySlug.set(tag.url_slug.toLowerCase(), tag);
+	});
 
 	posts.forEach((post) => {
 		if (post.tags) {
-			post.tags.forEach((tag) => {
-				pagesTags.push({
-					tag_id: tag.toLowerCase().replace(/\s+/g, '-'),
-					page_id: post.url_slug
-				});
+			post.tags.forEach((tagName) => {
+				// Try to find tag by exact name first
+				let tag = tagsByName.get(tagName.toLowerCase());
+				
+				// If not found, try by converting name to slug
+				if (!tag) {
+					const tagSlug = tagName.toLowerCase().replace(/\s+/g, '-');
+					tag = tagsBySlug.get(tagSlug);
+				}
+				
+				if (tag) {
+					pagesTags.push({
+						tag_id: tag.id.toString(),
+						page_id: post.url_slug  // Use slug as the primary identifier
+					});
+				} else {
+					console.warn(`Tag not found for: "${tagName}" in post: ${post.url_slug}`);
+				}
 			});
 		}
 	});

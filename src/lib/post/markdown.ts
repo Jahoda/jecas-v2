@@ -48,7 +48,7 @@ async function parseMarkdownFile(fileName: string): Promise<MarkdownPost> {
 	const text_html = await marked(content);
 	const wordCount = (content.match(/\b\w+\b/g) || []).length;
 
-	const parsedPost = {
+	return {
 		id: url_slug,
 		title: frontmatter.title,
 		url_slug,
@@ -64,10 +64,6 @@ async function parseMarkdownFile(fileName: string): Promise<MarkdownPost> {
 		tags: frontmatter.tags || [],
 		word_count: wordCount
 	};
-	
-	console.log(`Parsing ${fileName}: status from frontmatter = ${frontmatter.status}, final status = ${parsedPost.status}`);
-	
-	return parsedPost;
 }
 
 export async function getAllPosts(
@@ -79,10 +75,7 @@ export async function getAllPosts(
 	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
 
 	const filteredPosts = posts
-		.filter((post) => {
-			console.log(`Post ${post.url_slug}: status=${post.status}, expected=${status}`);
-			return post.status === status && post.url_slug !== 'home';
-		})
+		.filter((post) => post.status === status && post.url_slug !== 'home')
 		.sort((a, b) => b.last_modification.getTime() - a.last_modification.getTime());
 
 	return limit ? filteredPosts.slice(0, limit) : filteredPosts;

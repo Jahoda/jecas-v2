@@ -1,0 +1,15 @@
+{
+  "id": 66,
+  "name": "Hlas",
+  "url_slug": "hlas",
+  "headline": null,
+  "text_html": "<p>Ovládání webu hlasem, čtení obsahu hlasem.</p>",
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 2,
+  "posts": [
+    "cteni-textu",
+    "speech"
+  ]
+}

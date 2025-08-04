@@ -1,0 +1,14 @@
+{
+  "id": 80,
+  "name": "Vue.js",
+  "url_slug": "vue-js",
+  "headline": null,
+  "text_html": null,
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 1,
+  "posts": [
+    "vue-lepsi-preklady"
+  ]
+}

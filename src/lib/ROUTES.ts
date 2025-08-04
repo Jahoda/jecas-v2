@@ -21,17 +21,20 @@ const PAGES = {
   "/admin/tag/[slug]": (params: { slug: (string | number) }) => {
     return `/admin/tag/${params['slug']}`
   },
+  "/admin/tags": `/admin/tags`,
   "/archiv": `/archiv`,
   "/logging-in": `/logging-in`,
   "/nastroje/preklady-prevod-textu": `/nastroje/preklady-prevod-textu`,
   "/nastroje/vypocet-procent-sloupcu": `/nastroje/vypocet-procent-sloupcu`,
-  "/profil": `/profil`
+  "/profil": `/profil`,
+  "/test-tags": `/test-tags`
 }
 
 /**
  * SERVERS
  */
 const SERVERS = {
+  "GET /admin/api/tags": `/admin/api/tags`,
   "GET /algolia": `/algolia`,
   "GET /api/og": `/api/og`,
   "GET /rss": `/rss`,
@@ -164,8 +167,8 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/[slug]': 'slug', '/admin': never, '/admin/dashboard': never, '/admin/post/[slug]': 'slug', '/admin/tag/[slug]': 'slug', '/archiv': never, '/logging-in': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/vypocet-procent-sloupcu': never, '/profil': never }
-  SERVERS: { 'GET /algolia': never, 'GET /api/og': never, 'GET /rss': never, 'GET /sitemap.xml': never }
+  PAGES: { '/': never, '/[slug]': 'slug', '/admin': never, '/admin/dashboard': never, '/admin/post/[slug]': 'slug', '/admin/tag/[slug]': 'slug', '/admin/tags': never, '/archiv': never, '/logging-in': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/vypocet-procent-sloupcu': never, '/profil': never, '/test-tags': never }
+  SERVERS: { 'GET /admin/api/tags': never, 'GET /algolia': never, 'GET /api/og': never, 'GET /rss': never, 'GET /sitemap.xml': never }
   ACTIONS: { 'default /admin/post/[slug]': 'slug', 'default /admin/tag/[slug]': 'slug', 'update /profil': never, 'signout /profil': never }
   LINKS: Record<string, never>
   Params: { 'slug': never }

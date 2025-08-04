@@ -1,0 +1,16 @@
+{
+  "id": 77,
+  "name": "Recense",
+  "url_slug": "recense",
+  "headline": null,
+  "text_html": null,
+  "background": "#777451",
+  "color": null,
+  "status": 1,
+  "usage_count": 3,
+  "posts": [
+    "vzhuru-do-amp",
+    "vzhuru-do-css3",
+    "vzhuru-do-responzivniho"
+  ]
+}

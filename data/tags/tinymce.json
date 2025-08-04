@@ -1,0 +1,14 @@
+{
+  "id": 18,
+  "name": "TinyMCE",
+  "url_slug": "tinymce",
+  "headline": null,
+  "text_html": "<p><a href='/wysiwyg'>WYSIWYG</a> editor <a href='http://www.tinymce.com/'>TinyMCE</a>.",
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 1,
+  "posts": [
+    "filemanager-tinymce-4"
+  ]
+}

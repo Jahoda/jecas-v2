@@ -1,0 +1,23 @@
+{
+  "id": 14,
+  "name": "Frameworky",
+  "url_slug": "knihovny",
+  "headline": null,
+  "text_html": "<p>Frameworky a knihovny",
+  "background": "#686868",
+  "color": null,
+  "status": 1,
+  "usage_count": 10,
+  "posts": [
+    "bootstrap-rychlokurs",
+    "css-reset",
+    "flat-ui",
+    "framework-zepto",
+    "kraken",
+    "localforage",
+    "magnific-popup",
+    "semantic-ui",
+    "tailwind-css",
+    "tanstack-query"
+  ]
+}

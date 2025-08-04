@@ -1,0 +1,19 @@
+{
+  "id": 58,
+  "name": "Získávání obsahu",
+  "url_slug": "ziskavani-obsahu",
+  "headline": null,
+  "text_html": "<p>Jak získávat obsah z cizích URL a presentovat ho na vlastním webu.</p>",
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 6,
+  "posts": [
+    "nahled-url",
+    "oembed",
+    "php-parsovani-html",
+    "stazeni-stranky",
+    "ziskani-obsahu-cache",
+    "ziskani-obsahu-timeout"
+  ]
+}

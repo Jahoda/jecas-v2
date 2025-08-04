@@ -1,0 +1,15 @@
+{
+  "id": 44,
+  "name": "Hosting",
+  "url_slug": "hosting",
+  "headline": null,
+  "text_html": null,
+  "background": "#1206ca",
+  "color": null,
+  "status": 1,
+  "usage_count": 2,
+  "posts": [
+    "cdn",
+    "wedos-alias"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": 47,
+  "name": "Fixní posice",
+  "url_slug": "fixed",
+  "headline": null,
+  "text_html": "<p><a href=\"/position#fixed\">Fixní</a> posicování elementů.</p>",
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 6,
+  "posts": [
+    "fixni-hlavicka",
+    "fixni-menu",
+    "kotva-fixni-menu",
+    "position-fixed",
+    "position-sticky",
+    "sidebar"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": 26,
+  "name": "Facebook",
+  "url_slug": "facebook",
+  "headline": null,
+  "text_html": "<p>",
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 11,
+  "posts": [
+    "clickjacking",
+    "facebook-cover",
+    "facebook-instant-articles",
+    "facebook-poslat",
+    "facebook-url",
+    "facebook-video",
+    "nahled-odkazu",
+    "nepotvrzeni-fb-zpravy",
+    "pocet-sdileni",
+    "responsivni-facebook",
+    "sdileci-tlacitka"
+  ]
+}

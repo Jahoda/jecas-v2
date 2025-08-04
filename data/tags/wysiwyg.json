@@ -1,0 +1,16 @@
+{
+  "id": 13,
+  "name": "WYSIWYG",
+  "url_slug": "wysiwyg",
+  "headline": null,
+  "text_html": "<p>WYSIWYG editory",
+  "background": "#DFDFDF",
+  "color": null,
+  "status": 1,
+  "usage_count": 3,
+  "posts": [
+    "filemanager-tinymce-4",
+    "vlastni-wysiwyg",
+    "vycisteni-kodu"
+  ]
+}

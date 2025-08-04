@@ -1,0 +1,15 @@
+{
+  "id": 31,
+  "name": "Bing",
+  "url_slug": "bing",
+  "headline": null,
+  "text_html": null,
+  "background": "#f4bd27",
+  "color": null,
+  "status": 1,
+  "usage_count": 2,
+  "posts": [
+    "pridat-url",
+    "sitemap"
+  ]
+}

@@ -42,13 +42,13 @@
 									neutral={index > 1}
 									small={index > 0}
 									wordCount={post.word_count}
-									tags={data.tags.filter((tag) => pagesTags[post.id]?.includes(tag.id))}
+									tags={data.tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.id.toString()))}
 								/>
 							</div>
 						{/each}
 					</div>
 
-					<PostList posts={data.posts.slice(3)} />
+					<PostList posts={data.posts.slice(3)} tags={data.tags} {pagesTags} />
 
 					<div class="flex justify-center">
 						<Button large href="/archiv" arrow

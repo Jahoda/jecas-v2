@@ -1,0 +1,20 @@
+{
+  "id": 54,
+  "name": "Sublime Text",
+  "url_slug": "st",
+  "headline": null,
+  "text_html": "<p>Používání a vylepšování pokročilého editoru Sublime Text.</p>",
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 7,
+  "posts": [
+    "pluginy-sublime-text",
+    "st-ftp",
+    "st-kontrola-pravopisu",
+    "sublime-text",
+    "sublime-text-php-build",
+    "sublime-text-zkratky",
+    "zivy-nahled-css"
+  ]
+}

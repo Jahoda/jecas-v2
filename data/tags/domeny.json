@@ -1,0 +1,19 @@
+{
+  "id": 56,
+  "name": "Domény",
+  "url_slug": "domeny",
+  "headline": null,
+  "text_html": "<p>Internetové domény</p>",
+  "background": "#C7A6F4",
+  "color": null,
+  "status": 1,
+  "usage_count": 6,
+  "posts": [
+    "domena",
+    "expirace-com-domeny",
+    "expirace-domeny",
+    "tld",
+    "wedos-alias",
+    "whois"
+  ]
+}

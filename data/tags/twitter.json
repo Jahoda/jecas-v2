@@ -1,0 +1,19 @@
+{
+  "id": 10,
+  "name": "Twitter",
+  "url_slug": "twitter",
+  "headline": null,
+  "text_html": "<p>Sociální síť Twitter",
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 6,
+  "posts": [
+    "nahled-odkazu",
+    "nahled-twitter",
+    "pocet-sdileni",
+    "sdileci-tlacitka",
+    "twitter-avatar",
+    "twitter-list-pridat"
+  ]
+}

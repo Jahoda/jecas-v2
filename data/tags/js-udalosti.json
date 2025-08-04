@@ -1,0 +1,21 @@
+{
+  "id": 57,
+  "name": "JS události",
+  "url_slug": "js-udalosti",
+  "headline": null,
+  "text_html": "<p>JavaScriptové události.</p>",
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 8,
+  "posts": [
+    "event-target",
+    "js-odkaz",
+    "onbeforeunload",
+    "oninput",
+    "otaceni-koleckem",
+    "pripojeni-udalosti",
+    "rychle-kliknuti",
+    "udalosti-mysi"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": 17,
+  "name": "Seznam",
+  "url_slug": "seznam",
+  "headline": null,
+  "text_html": null,
+  "background": "#E7202B",
+  "color": null,
+  "status": 1,
+  "usage_count": 7,
+  "posts": [
+    "nahled-seznam",
+    "nahled-webu",
+    "pridat-url",
+    "seznam-prohlizec",
+    "seznam-velka-pismena",
+    "sitemap",
+    "srank"
+  ]
+}

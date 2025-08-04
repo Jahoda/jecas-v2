@@ -1,0 +1,14 @@
+{
+  "id": 51,
+  "name": "Regulární výrazy",
+  "url_slug": "regexp",
+  "headline": null,
+  "text_html": "<p></p>",
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 1,
+  "posts": [
+    "regularni-vyraz-dolar"
+  ]
+}

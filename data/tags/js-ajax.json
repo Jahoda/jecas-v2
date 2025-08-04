@@ -1,0 +1,22 @@
+{
+  "id": 62,
+  "name": "AJAX",
+  "url_slug": "js-ajax",
+  "headline": null,
+  "text_html": null,
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 9,
+  "posts": [
+    "ajax",
+    "ajax-spusteni-skriptu",
+    "bezstavove-html",
+    "nacitani-ajax",
+    "online",
+    "spa",
+    "upload-bez-refreshe",
+    "zmena-url",
+    "zrychleni-kliknutim"
+  ]
+}

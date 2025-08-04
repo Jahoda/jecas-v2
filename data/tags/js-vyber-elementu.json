@@ -1,0 +1,16 @@
+{
+  "id": 52,
+  "name": "Vybírání elementů",
+  "url_slug": "js-vyber-elementu",
+  "headline": null,
+  "text_html": "<p>Vybírání elementů v JavaScriptu</p>",
+  "background": null,
+  "color": null,
+  "status": 1,
+  "usage_count": 3,
+  "posts": [
+    "getelement",
+    "js-cykly",
+    "queryselector"
+  ]
+}

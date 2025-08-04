@@ -1,0 +1,25 @@
+{
+  "id": 37,
+  "name": "Menu v CSS",
+  "url_slug": "menu",
+  "headline": null,
+  "text_html": "<p>Vodorovné, svislé, fixní, vysouvací, klikací a další navigace webových stránek.</p>",
+  "background": "#E6C6A6",
+  "color": null,
+  "status": 1,
+  "usage_count": 12,
+  "posts": [
+    "fit-content",
+    "fixni-menu",
+    "hover-efekty-box-shadow",
+    "hover-efekty-text-shadow",
+    "klikaci-menu",
+    "menu-cela-srika",
+    "oddelovac-menu",
+    "responsivni-menu",
+    "tolerance-menu",
+    "vodorovne-menu",
+    "vyskakovaci-menu",
+    "zvyrazneni-odrolovani"
+  ]
+}
