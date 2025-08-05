@@ -21,7 +21,6 @@ export const GET: RequestHandler = async ({ url }) => {
 		// @ts-ignore
 		return await ImageResponse(OgPreview, { post, tags });
 	} catch (error) {
-
 		return new Response('Failed to generate image', { status: 500 });
 	}
 };

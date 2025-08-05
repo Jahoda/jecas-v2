@@ -10,19 +10,19 @@ export const load = (async () => {
 	const tags = await getAllUsedTags();
 
 	const favoriteSlugs = [
+		'centrovani',
+		'kontrola-stranky',
 		'svg',
+		'https',
 		'tvar-url',
 		'format-obrazku',
-		'srank',
-		'kontrola-stranky',
-		'https',
 		'chyby-formularu',
 		'ceska-pisma',
 		'responsivni-web',
 		'vykreslovani',
 		'css-selektory',
-		'centrovani',
-		'ceska-klavesnice'
+		'ceska-klavesnice',
+		'ceska-klavesnice-mac'
 	];
 
 	const favorite = await getPostsBySlug(favoriteSlugs);

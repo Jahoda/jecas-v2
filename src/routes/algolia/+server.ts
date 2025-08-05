@@ -24,9 +24,7 @@ export async function GET() {
 			indexName: PUBLIC_ALGOLIA_INDEX_NAME,
 			objects
 		})
-		.then((response: any) => {
-		
-		})
+		.then((response: any) => {})
 		.catch((e: Error) => json(e));
 
 	return json({

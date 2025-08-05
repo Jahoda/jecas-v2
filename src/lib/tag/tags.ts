@@ -31,8 +31,6 @@ export interface TagPost {
 	page_slug: string;
 }
 
-
-
 const TAG_PAGES_DIR = path.join(process.cwd(), 'content', 'tags');
 
 // Caching
@@ -315,8 +313,6 @@ export async function getPostsForTag(tagSlug: string): Promise<string[]> {
 	return allTagPosts.get(tagSlug) || [];
 }
 
-
-
 // Legacy function aliases for backward compatibility
 
 export const getTagsByPostSlug = getAllTagsByPageId;
@@ -376,5 +372,3 @@ export function invalidateTagCaches(): void {
 	usageCountsLastCalculated = 0;
 	tagPostsLastCalculated = 0;
 }
-
-
