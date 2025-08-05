@@ -8,7 +8,7 @@ import {
 	getRelatedPostsByMostTags as getMarkdownRelatedPosts,
 	type MarkdownPost
 } from './markdown';
-import type { PostCount, TagPost, Tag } from '$lib/tag/tags';
+import type { TagPost, Tag } from '$lib/tag/tags';
 
 export interface Post {
 	id: string | number;

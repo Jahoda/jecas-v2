@@ -25,7 +25,7 @@ export async function GET() {
 			objects
 		})
 		.then((response: any) => {
-			console.log(`Saved ${response.objectIDs?.length || 0} items to Algolia`);
+		
 		})
 		.catch((e: Error) => json(e));
 

@@ -31,9 +31,7 @@ export interface TagPost {
 	page_slug: string;
 }
 
-export interface PostCount {
-	count: number;
-}
+
 
 const TAG_PAGES_DIR = path.join(process.cwd(), 'content', 'tags');
 
@@ -98,7 +96,6 @@ async function loadAllTagFiles(): Promise<Map<string, Tag>> {
 
 	try {
 		if (!fs.existsSync(TAG_PAGES_DIR)) {
-			console.warn('Tag pages directory not found:', TAG_PAGES_DIR);
 			return tags;
 		}
 
@@ -124,7 +121,7 @@ async function loadAllTagFiles(): Promise<Map<string, Tag>> {
 		tagFilesCache = tags;
 		lastModified = now;
 	} catch (error) {
-		console.error('Error loading tag files:', error);
+		// Error loading tag files
 	}
 
 	return tags;
@@ -318,16 +315,10 @@ export async function getPostsForTag(tagSlug: string): Promise<string[]> {
 	return allTagPosts.get(tagSlug) || [];
 }
 
-export async function getTagUsageCount(tagSlug: string): Promise<number> {
-	const allCounts = await calculateAllUsageCounts();
-	return allCounts.get(tagSlug) || 0;
-}
+
 
 // Legacy function aliases for backward compatibility
 
-// PowerfulTag aliases
-export const getAllPowerfulTags = getAllTags;
-export const getPowerfulTagBySlug = getSingleTagBySlug;
 export const getTagsByPostSlug = getAllTagsByPageId;
 export const getPostsByTagSlug = getPostsForTag;
 
@@ -368,8 +359,6 @@ export async function getPagesTags(posts: any[]): Promise<TagPost[]> {
 						tag_slug: tag.url_slug,
 						page_slug: post.url_slug
 					});
-				} else {
-					console.warn(`Tag not found for: "${tagName}" in post: ${post.url_slug}`);
 				}
 			});
 		}
@@ -388,4 +377,4 @@ export function invalidateTagCaches(): void {
 	tagPostsLastCalculated = 0;
 }
 
-export { calculateAllUsageCounts };
+
