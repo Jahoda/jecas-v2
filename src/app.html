@@ -44,5 +44,24 @@
 
 	<body data-sveltekit-preload-data="hover" class="dark:bg-slate-900 dark:text-gray-100">
 		<div style="display: contents">%sveltekit.body%</div>
+
+		<script>
+			var toplist = new Image();
+			toplist.src =
+				'https://toplist.cz/dot.asp?id=1589887&http=' +
+				escape(document.referrer) +
+				'&t=' +
+				escape(document.title) +
+				'&wi=' +
+				escape(window.screen.width) +
+				'&he=' +
+				escape(window.screen.height);
+			toplist.alt = '';
+			toplist.style.display = 'none';
+			document.body.appendChild(toplist);
+		</script>
+		<noscript>
+			<img src="https://toplist.cz/dot.asp?id=1589887" alt="TOPlist" width="1" height="1" />
+		</noscript>
 	</body>
 </html>
