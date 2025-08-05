@@ -33,7 +33,7 @@ export interface EnhancedPostFrontmatter {
 	tags?: string[] | string; // Support both array and comma-separated string
 }
 
-const POSTS_DIRECTORY = path.join(process.cwd(), 'posts');
+const POSTS_DIRECTORY = path.join(process.cwd(), 'content', 'posts');
 
 function getPostFiles(): string[] {
 	if (!fs.existsSync(POSTS_DIRECTORY)) {

@@ -22,7 +22,7 @@ export interface MarkdownTagFile {
 	status: number;
 }
 
-const TAG_PAGES_DIR = path.join(process.cwd(), 'data', 'tag-pages');
+const TAG_PAGES_DIR = path.join(process.cwd(), 'content', 'tags');
 const TAG_METADATA_FILE = path.join(process.cwd(), 'data', 'tag-metadata.json');
 
 // Cache for tag files
