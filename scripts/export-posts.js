@@ -54,8 +54,6 @@ color: "${tag.color}"
 status: ${tag.status}
 ---
 
-# ${tag.name}
-
 ${htmlContent}`;
 
 		// Sanitize filename
@@ -110,13 +108,7 @@ async function exportPostsAndTags() {
 		const [allPagesTags] = await connection.execute(`
 			SELECT 
 				pt.page_id,
-				t.name as tag_name,
-				t.url_slug as tag_slug,
-				t.headline as tag_headline,
-				t.text_html as tag_text_html,
-				t.background as tag_background,
-				t.color as tag_color,
-				t.status as tag_status
+				t.url_slug as tag_slug
 			FROM pages_tags pt
 			JOIN tags t ON pt.tag_id = t.id
 		`);
