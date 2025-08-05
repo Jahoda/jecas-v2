@@ -45,7 +45,7 @@ async function parseMarkdownFile(fileName: string): Promise<MarkdownPost> {
 	const frontmatter = data as PostFrontmatter;
 	const url_slug = fileName.replace(/\.md$/, '');
 
-	const text_html = await marked(content);
+	const text_html = content;
 	const wordCount = (content.match(/\b\w+\b/g) || []).length;
 
 	return {
