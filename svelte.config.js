@@ -4,11 +4,10 @@ import {mdsvex} from 'mdsvex';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	extensions: ['.svelte', '.md', '.svx', '.svelte.md'],
 	kit: {
 		adapter: adapter()
 	},
-	preprocess: [vitePreprocess(), mdsvex({ extensions: ['.md', '.svx', '.svelte.md'] })],
+	preprocess: [vitePreprocess()],
 	vitePlugin: {
 		inspector: {
 			toggleKeyCombo: 'meta-shift',

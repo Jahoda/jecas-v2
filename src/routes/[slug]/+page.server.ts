@@ -1,27 +1,20 @@
-import type { PageLoad } from './$types';
-import { error } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit'
+import matter from 'gray-matter';
 
-const slugFromPath = (path: string) =>
-	path.match(/([\w-]+)\.(svelte\.md|md|svx)/i)?.[1] ?? null;
+export async function load({ params }) {
+	try {
+		const postFile = await import(`../../../content/posts/${params.slug}.md?raw`)
+		const fileContent = postFile.default
+		
+		const { data, content } = matter(fileContent);
 
-export const load: PageLoad = async ({ params }) => {
-	const modules = import.meta.glob(`/content/posts/*.{md,svx,svelte.md}`);
-
-	let match = {};
-	for (const [path, resolver] of Object.entries(modules)) {
-		if (slugFromPath(path) === params.slug) {
-			match = { path, resolver: resolver };
-			break;
+		return {
+			post: {
+				...data,
+				text_html: content
+			}
 		}
+	} catch (e) {
+		error(404, `Could not find ${params.slug}`)
 	}
-
-	const post = await match?.resolver?.();
-
-	if (!post) {
-		throw error(404); // Couldn't resolve the post
-	}
-
-	return {
-		frontmatter: post.metadata
-	};
-};
+}

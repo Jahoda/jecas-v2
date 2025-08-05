@@ -10,4 +10,6 @@
 	export let data: PageData;
 </script>
 
-{data.frontmatter.title}
+{data.post.title}
+
+{@html data.post.text_html}
