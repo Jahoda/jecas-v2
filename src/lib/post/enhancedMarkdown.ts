@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
-import { getTagsByPostSlug, type PowerfulTag } from '$lib/tag/powerfulTags';
+import { getTagsByPostSlug, type PowerfulTag } from '$lib/tag/tags';
 
 export interface EnhancedMarkdownPost {
 	id: string;
@@ -137,7 +137,7 @@ export async function getEnhancedPostsCount(): Promise<number> {
 }
 
 export async function getEnhancedPostsByTag(tagSlug: string): Promise<EnhancedMarkdownPost[]> {
-	const { getPostsByTagSlug } = await import('$lib/tag/powerfulTags');
+	const { getPostsByTagSlug } = await import('$lib/tag/tags');
 	const postSlugs = await getPostsByTagSlug(tagSlug);
 
 	const posts: EnhancedMarkdownPost[] = [];

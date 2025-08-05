@@ -1,6 +1,6 @@
 import OgPreview from '$lib/ogPreview/OgPreview.svelte';
 import { getSinglePostBySlug } from '$lib/post/post';
-import { getAllTagsByPageId, type Tag } from '$lib/tag/tag';
+import { getAllTagsByPageId, type Tag } from '$lib/tag/tags';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ url }) => {

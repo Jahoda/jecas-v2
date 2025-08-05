@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Tag } from '$lib/tag/tag';
+	import type { Tag } from '$lib/tag/tags';
 	import TagCount from './TagCount.svelte';
 
 	export let tags: Tag[];

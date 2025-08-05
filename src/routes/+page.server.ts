@@ -1,5 +1,5 @@
 import { getAllPosts, getPagesTags, getPostsBySlug, getPostsCount } from '$lib/post/post';
-import { getAllUsedTags } from '$lib/tag/tag';
+import { getAllUsedTags } from '$lib/tag/tags';
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { PowerfulTag } from '$lib/tag/powerfulTags';
+	import type { PowerfulTag } from '$lib/tag/tags';
 
 	export let tag: PowerfulTag;
 	export let size: 'sm' | 'md' | 'lg' = 'md';

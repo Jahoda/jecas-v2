@@ -1,5 +1,5 @@
 import { convertFormDataToData } from '$lib/server/utils';
-import { createPageTags, getAllTags, getAllTagsByPageId, removePageTags } from '$lib/tag/tag';
+import { createPageTags, getAllTags, getAllTagsByPageId, removePageTags } from '$lib/tag/tags';
 import type { PageServerLoad } from './$types';
 import { fail, redirect } from '@sveltejs/kit';
 import type { ErrorPacketParams } from 'mysql2';

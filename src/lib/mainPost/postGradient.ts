@@ -1,4 +1,4 @@
-import type { Tag } from '$lib/tag/tag';
+import type { Tag } from '$lib/tag/tags';
 
 export function postGradient(tags: Tag[]) {
 	const tagsColors =

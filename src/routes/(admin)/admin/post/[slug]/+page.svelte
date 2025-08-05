@@ -15,7 +15,7 @@
 	import PostContent from '$lib/post/PostContent.svelte';
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import TagItem from '$lib/tag/TagItem.svelte';
-	import type { Tag } from '$lib/tag/tag';
+	import type { Tag } from '$lib/tag/tags';
 	import IconXMark from '$lib/icon/IconXMark.svelte';
 	import Editor from '$lib/editor/Editor.svelte';
 	import FileUplad from '$lib/fileUpload/FileUplad.svelte';
@@ -38,9 +38,9 @@
 		status: 0
 	};
 
-	let postTags: number[] = data.tags?.map((tag) => tag.id) || [];
+	let postTags: string[] = data.tags?.map((tag) => tag.url_slug) || [];
 
-	let allTags: Map<number, Tag> = new Map(data.allTags.map((tag) => [tag.id, tag]));
+	let allTags: Map<string, Tag> = new Map(data.allTags.map((tag) => [tag.url_slug, tag]));
 
 	let isSlugEdited = false;
 
@@ -62,18 +62,20 @@
 	}
 
 	function handleAddTag(event: Event) {
-		const target = event.target as HTMLInputElement;
+		const target = event.target as HTMLSelectElement;
+		if (!target.value) return;
 
-		postTags.push(Number(target.value));
+		postTags.push(target.value);
 		postTags = postTags;
+		target.value = ''; // Reset the select
 	}
 
-	function handleRemoveTag(id: number) {
-		postTags = postTags.filter((tag) => tag !== id);
+	function handleRemoveTag(slug: string) {
+		postTags = postTags.filter((tag) => tag !== slug);
 	}
 
 	let asignedTags: Tag[] = [];
-	$: asignedTags = postTags.map((id) => allTags.get(id)) as Tag[];
+	$: asignedTags = postTags.map((slug) => allTags.get(slug)) as Tag[];
 
 	function handleSaveOnCtrlS(event: KeyboardEvent) {
 		if ((event.metaKey || event.ctrlKey) && event.key === 's') {
@@ -172,13 +174,13 @@
 					<div class="mt-4"></div>
 
 					<div class="flex flex-wrap gap-2">
-						{#each postTags as tagId (tagId)}
-							{@const tag = allTags.get(tagId)}
+						{#each postTags as tagSlug (tagSlug)}
+							{@const tag = allTags.get(tagSlug)}
 							{#if tag}
 								<TagItem title={tag.name} background={tag.background} color={tag.color}>
 									<button
 										type="button"
-										on:click={() => handleRemoveTag(tag.id)}
+										on:click={() => handleRemoveTag(tag.url_slug)}
 										class="hover:bg-white/10"
 									>
 										<IconXMark /></button
@@ -190,7 +192,7 @@
 						<select on:change={handleAddTag} class="rounded-md border px-2 py-1 hover:bg-slate-100">
 							<option value="">Přidat tag</option>
 							{#each data.allTags as tag}
-								<option value={tag.id}>
+								<option value={tag.url_slug}>
 									{tag.name}
 								</option>
 							{/each}

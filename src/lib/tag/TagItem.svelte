@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Tag } from '$lib/tag/tag';
+	import type { Tag } from '$lib/tag/tags';
 
 	export let title: Tag['name'];
 	export let background: Tag['background'];

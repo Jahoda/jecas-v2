@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import type { PowerfulTag } from '$lib/tag/powerfulTags';
+	import type { PowerfulTag } from '$lib/tag/tags';
 
 	let tags: PowerfulTag[] = [];
 	let loading = true;

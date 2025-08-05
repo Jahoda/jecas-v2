@@ -4,7 +4,7 @@ import {
 	getSinglePostBySlug,
 	type Post
 } from '$lib/post/post';
-import { getAllTagsByPageId, getSingleTagBySlug, type Tag } from '$lib/tag/tag';
+import { getAllTagsByPageId, getSingleTagBySlug, type Tag } from '$lib/tag/tags';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 

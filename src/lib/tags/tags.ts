@@ -1,4 +1,4 @@
-import type { TagPost } from '$lib/tag/tag';
+import type { TagPost } from '$lib/tag/tags';
 
 export function groupByPageId(pagesTags: TagPost[]) {
 	const grouped = pagesTags.reduce<Record<string, string[]>>((acc, pageTag) => {

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import MainPost from '$lib/mainPost/MainPost.svelte';
 	import type { Post } from '$lib/post/post';
-	import type { Tag } from '$lib/tag/tag';
+	import type { Tag } from '$lib/tag/tags';
 
 	export let posts: Post[];
 	export let tags: Tag[] = [];

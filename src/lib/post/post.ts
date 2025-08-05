@@ -8,7 +8,7 @@ import {
 	getRelatedPostsByMostTags as getMarkdownRelatedPosts,
 	type MarkdownPost
 } from './markdown';
-import type { PostCount, TagPost } from '$lib/tag/tag';
+import type { PostCount, TagPost } from '$lib/tag/tags';
 
 export interface Post {
 	id: string | number;
@@ -59,12 +59,12 @@ export async function getPostsCount(): Promise<number> {
 }
 
 export async function getPagesTags(posts: Post[]): Promise<TagPost[]> {
-	const { getPagesTags: getMarkdownPagesTags } = await import('$lib/tag/markdown');
+	const { getPagesTags: getMarkdownPagesTags } = await import('$lib/tag/tags');
 	return await getMarkdownPagesTags(posts as any);
 }
 
 export async function getPostsByTagId(tagSlug: string): Promise<Post[]> {
-	const { getSingleTagBySlug } = await import('$lib/tag/markdown');
+	const { getSingleTagBySlug } = await import('$lib/tag/tags');
 	const tag = await getSingleTagBySlug(tagSlug);
 
 	if (!tag) return [];
