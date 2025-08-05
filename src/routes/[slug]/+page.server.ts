@@ -21,6 +21,7 @@ export const load = (async ({ params }) => {
 	let pagesTags: Record<string, string[]> = {};
 
 	const page = await getSinglePostBySlug(slug);
+	console.log(page);
 
 	if (page?.url_slug) {
 		tags = await getAllTagsByPageId(page.url_slug);
