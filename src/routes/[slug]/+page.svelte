@@ -46,7 +46,7 @@
 		</div>
 
 		{#if data.tagPosts}
-			<PostList posts={data.tagPosts} />
+			<PostList posts={data.tagPosts} tags={data.allTags} pagesTags={data.pagesTags} />
 		{:else}
 			<div class="m-auto w-full max-w-3xl grid-cols-1">
 				{#if post}
@@ -55,8 +55,13 @@
 			</div>
 		{/if}
 
-		{#if data.relatedPosts}
-			<PostList posts={data.relatedPosts} />
+		{#if data.relatedPosts && data.relatedPosts.length > 0}
+			<div class="text-center">
+				<h2 class="mb-8 text-2xl font-bold md:text-3xl">Související články</h2>
+				<div class="mx-auto max-w-4xl">
+					<PostList posts={data.relatedPosts} tags={data.allTags} pagesTags={data.pagesTags} />
+				</div>
+			</div>
 		{/if}
 	</div>
 </Container>
