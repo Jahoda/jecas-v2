@@ -1,6 +1,6 @@
 import { getAllDrafts, getAllPosts } from '$lib/post/post';
 import { getAllTags } from '$lib/tag/tags';
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad } from './dashboard/$types';
 
 export const load = (async () => {
 	const posts = getAllPosts();

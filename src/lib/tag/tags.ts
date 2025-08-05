@@ -117,10 +117,7 @@ async function loadAllTagFiles(): Promise<Map<string, Tag>> {
 			// Create normalized tag
 			const tag = normalizeTag(frontmatter as TagFrontmatter, htmlContent, slug);
 
-			// Only include active tags
-			if (tag.status === 1) {
-				tags.set(tag.url_slug, tag);
-			}
+			tags.set(tag.url_slug, tag);
 		}
 
 		tagFilesCache = tags;
