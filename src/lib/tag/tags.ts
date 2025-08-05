@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
@@ -31,7 +29,11 @@ export interface TagPost {
 	page_slug: string;
 }
 
-const TAG_PAGES_DIR = path.join(process.cwd(), 'content', 'tags');
+const tagModules = import.meta.glob('/content/tags/*.md', {
+	query: '?raw',
+	import: 'default',
+	eager: true
+}) as Record<string, string>;
 
 // Caching
 let tagFilesCache: Map<string, Tag> | null = null;
@@ -93,19 +95,12 @@ async function loadAllTagFiles(): Promise<Map<string, Tag>> {
 	const tags = new Map<string, Tag>();
 
 	try {
-		if (!fs.existsSync(TAG_PAGES_DIR)) {
-			return tags;
-		}
-
-		const files = fs.readdirSync(TAG_PAGES_DIR).filter((file) => file.endsWith('.md'));
-
-		for (const file of files) {
-			const filePath = path.join(TAG_PAGES_DIR, file);
-			const fileContent = fs.readFileSync(filePath, 'utf8');
+		for (const [filePath, fileContent] of Object.entries(tagModules)) {
 			const { data: frontmatter, content } = matter(fileContent);
 
 			// Extract slug from filename (remove .md extension)
-			const slug = path.basename(file, '.md');
+			const filename = filePath.split('/').pop()!;
+			const slug = filename.replace(/\.md$/, '');
 
 			// Convert markdown to HTML
 			const htmlContent = await marked(content);

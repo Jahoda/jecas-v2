@@ -1,7 +1,4 @@
-import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
-import { marked } from 'marked';
 
 export interface MarkdownPost {
 	id: string;
@@ -28,20 +25,25 @@ export interface PostFrontmatter {
 	tags?: string[];
 }
 
-const POSTS_DIRECTORY = path.join(process.cwd(), 'content', 'posts');
+const postModules = import.meta.glob('/content/posts/*.md', {
+	query: '?raw',
+	import: 'default',
+	eager: true
+}) as Record<string, string>;
 
 function getPostFiles(): string[] {
-	if (!fs.existsSync(POSTS_DIRECTORY)) {
-		return [];
-	}
-	return fs.readdirSync(POSTS_DIRECTORY).filter((file) => file.endsWith('.md'));
+	return Object.keys(postModules).map((path) => path.split('/').pop()!);
 }
 
 async function parseMarkdownFile(fileName: string): Promise<MarkdownPost> {
-	const filePath = path.join(POSTS_DIRECTORY, fileName);
-	const fileContent = fs.readFileSync(filePath, 'utf8');
-	const { data, content } = matter(fileContent);
+	const fullPath = `/content/posts/${fileName}`;
+	const fileContent = postModules[fullPath];
 
+	if (!fileContent) {
+		throw new Error(`Post file not found: ${fileName}`);
+	}
+
+	const { data, content } = matter(fileContent);
 	const frontmatter = data as PostFrontmatter;
 	const url_slug = fileName.replace(/\.md$/, '');
 
@@ -90,9 +92,9 @@ export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
 
 	for (const slug of slugs) {
 		const fileName = `${slug}.md`;
-		const filePath = path.join(POSTS_DIRECTORY, fileName);
+		const fullPath = `/content/posts/${fileName}`;
 
-		if (fs.existsSync(filePath)) {
+		if (postModules[fullPath]) {
 			const post = await parseMarkdownFile(fileName);
 			// Only include published posts in lists
 			if (post.status === 1) {
@@ -106,9 +108,9 @@ export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
 
 export async function getSinglePostBySlug(slug: string): Promise<MarkdownPost | undefined> {
 	const fileName = `${slug}.md`;
-	const filePath = path.join(POSTS_DIRECTORY, fileName);
+	const fullPath = `/content/posts/${fileName}`;
 
-	if (!fs.existsSync(filePath)) {
+	if (!postModules[fullPath]) {
 		return undefined;
 	}
 
