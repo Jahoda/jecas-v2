@@ -9,6 +9,7 @@ export interface PowerfulTag {
 	background: string; // Always non-null after normalization
 	color: string; // Always non-null after normalization
 	status: number;
+	usage_count?: number; // Optional usage count
 }
 
 export interface RawPowerfulTag {
@@ -97,14 +98,9 @@ function loadTagsData(): Record<string, RawPowerfulTag> {
 }
 
 function saveTagsData(data: TagsData): void {
-	try {
-		fs.mkdirSync(path.dirname(TAGS_DATA_FILE), { recursive: true });
-		fs.writeFileSync(TAGS_DATA_FILE, JSON.stringify(data, null, 2));
-		tagsCache = data;
-		lastModified = Date.now();
-	} catch (error) {
-		console.error('Error saving tags data:', error);
-	}
+	// Note: Since we're using markdown files as source of truth,
+	// saving to JSON files is disabled. Use markdown files instead.
+	console.warn('saveTagsData is disabled - use markdown files for tag data');
 }
 
 function getContrastColor(bgColor: string | null): string {
@@ -203,9 +199,20 @@ export async function getAllPowerfulTags(): Promise<PowerfulTag[]> {
 	// Use the new markdown-based tags if available
 	try {
 		const { getAllMarkdownTags } = await import('./markdownTags');
-		return await getAllMarkdownTags();
+		const markdownTags = await getAllMarkdownTags();
+		// Convert MarkdownTagFile[] to PowerfulTag[]
+		return markdownTags.map(tag => ({
+			name: tag.title,
+			url_slug: tag.slug,
+			headline: tag.headline,
+			text_html: tag.text_html,
+			background: tag.background || '#3b82f6',
+			color: tag.color || '#ffffff',
+			status: tag.status,
+			usage_count: tag.usage_count
+		}));
 	} catch (error) {
-		console.warn('Markdown tags not available, falling back to legacy system:', error.message);
+		console.warn('Markdown tags not available, falling back to legacy system:', error instanceof Error ? error.message : String(error));
 	}
 	
 	// Fallback to legacy system
@@ -217,10 +224,10 @@ export async function getAllPowerfulTags(): Promise<PowerfulTag[]> {
 	// Get all usage counts in one efficient operation
 	const allCounts = await calculateAllUsageCounts();
 	
-	// Sort by usage count
+	// Sort by usage count and include usage_count in tags
 	return activeTags
 		.map(tag => ({
-			tag,
+			tag: { ...tag, usage_count: allCounts.get(tag.url_slug) || 0 },
 			usageCount: allCounts.get(tag.url_slug) || 0
 		}))
 		.sort((a, b) => {
@@ -237,8 +244,8 @@ export function getPowerfulTagBySlug(slug: string): PowerfulTag | undefined {
 		const markdownTag = getMarkdownTagBySlug(slug);
 		if (markdownTag) {
 			return {
-				name: markdownTag.name,
-				url_slug: markdownTag.url_slug,
+				name: markdownTag.title,
+				url_slug: markdownTag.slug,
 				headline: markdownTag.headline,
 				text_html: markdownTag.text_html,
 				background: markdownTag.background,
@@ -335,31 +342,25 @@ export async function getPostsForTag(tagSlug: string): Promise<string[]> {
 }
 
 export async function getTagsByPostSlug(postSlug: string): Promise<PowerfulTag[]> {
-	// Get tags from the actual post markdown file
-	const { getSinglePostBySlug } = await import('../post/markdown');
-	const post = await getSinglePostBySlug(postSlug);
-	
-	if (!post || !post.tags) return [];
-	
-	const data = loadTagsData();
-	const matchingTags: PowerfulTag[] = [];
-	
-	for (const tagName of post.tags) {
-		// Try exact name match first
-		let tag = data.tags.find(t => t.name.toLowerCase() === tagName.toLowerCase() && t.status === 1);
-		
-		// If not found, try slug match
-		if (!tag) {
-			const tagSlug = tagName.toLowerCase().replace(/\s+/g, '-');
-			tag = data.tags.find(t => t.url_slug === tagSlug && t.status === 1);
-		}
-		
-		if (tag) {
-			matchingTags.push(normalizeTag(tag));
-		}
+	// Use the new markdown-based tags
+	try {
+		const { getMarkdownTagsByPostSlug } = await import('./markdownTags');
+		const markdownTags = await getMarkdownTagsByPostSlug(postSlug);
+		// Convert MarkdownTagFile[] to PowerfulTag[]
+		return markdownTags.map(tag => ({
+			name: tag.title,
+			url_slug: tag.slug,
+			headline: tag.headline,
+			text_html: tag.text_html,
+			background: tag.background || '#3b82f6',
+			color: tag.color || '#ffffff',
+			status: tag.status,
+			usage_count: tag.usage_count
+		}));
+	} catch (error) {
+		console.warn('Markdown tags not available for post:', postSlug);
+		return [];
 	}
-	
-	return matchingTags.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export async function getPostsByTagSlug(tagSlug: string): Promise<string[]> {
@@ -367,138 +368,32 @@ export async function getPostsByTagSlug(tagSlug: string): Promise<string[]> {
 }
 
 export function createPowerfulTag(tagData: PowerfulTag): PowerfulTag {
-	const data = loadTagsData();
-	
-	// Check if tag with same slug already exists
-	const existing = data.tags.find(t => t.url_slug === tagData.url_slug);
-	if (existing) {
-		throw new Error(`Tag with slug '${tagData.url_slug}' already exists`);
-	}
-	
-	const newTag: RawPowerfulTag = {
-		...tagData,
-		background: tagData.background || null,
-		color: tagData.color || null
-	};
-	
-	data.tags.push(newTag);
-	saveTagsData(data);
-	
-	return normalizeTag(newTag);
+	// Legacy function disabled - create tags using markdown files instead
+	throw new Error('createPowerfulTag is disabled - create tags using markdown files in content/tags/');
 }
 
 export function updatePowerfulTag(slug: string, updates: Partial<PowerfulTag>): PowerfulTag | null {
-	const data = loadTagsData();
-	const tagIndex = data.tags.findIndex(tag => tag.url_slug === slug);
-	
-	if (tagIndex === -1) return null;
-	
-	// If updating url_slug, check it doesn't conflict with existing tags
-	if (updates.url_slug && updates.url_slug !== slug) {
-		const existing = data.tags.find(t => t.url_slug === updates.url_slug);
-		if (existing) {
-			throw new Error(`Tag with slug '${updates.url_slug}' already exists`);
-		}
-	}
-	
-	data.tags[tagIndex] = { ...data.tags[tagIndex], ...updates };
-	saveTagsData(data);
-	
-	return normalizeTag(data.tags[tagIndex]);
+	// Legacy function disabled - update tags using markdown files instead
+	throw new Error('updatePowerfulTag is disabled - update tags using markdown files in content/tags/');
 }
 
 export function deletePowerfulTag(slug: string): boolean {
-	const data = loadTagsData();
-	const tagIndex = data.tags.findIndex(tag => tag.url_slug === slug);
-	
-	if (tagIndex === -1) return false;
-	
-	// Remove tag
-	data.tags.splice(tagIndex, 1);
-	
-	// Remove all relationships
-	data.relationships = data.relationships.filter(rel => rel.tag_slug !== slug);
-	
-	saveTagsData(data);
-	return true;
+	// Legacy function disabled - delete tags using file system instead
+	throw new Error('deletePowerfulTag is disabled - delete tag markdown files in content/tags/');
 }
 
 export function addTagToPost(postSlug: string, tagSlug: string): boolean {
-	const data = loadTagsData();
-	const tag = data.tags.find(t => t.url_slug === tagSlug);
-	
-	if (!tag) return false;
-	
-	// Check if relationship already exists
-	const exists = data.relationships.some(
-		rel => rel.page_slug === postSlug && rel.tag_slug === tagSlug
-	);
-	
-	if (!exists) {
-		data.relationships.push({
-			page_slug: postSlug,
-			tag_slug: tagSlug
-		});
-		
-		saveTagsData(data);
-	}
-	
-	return true;
+	// Legacy function disabled - manage tags through post frontmatter instead
+	throw new Error('addTagToPost is disabled - manage tags in post markdown frontmatter');
 }
 
 export function removeTagFromPost(postSlug: string, tagSlug: string): boolean {
-	const data = loadTagsData();
-	const initialLength = data.relationships.length;
-	
-	data.relationships = data.relationships.filter(
-		rel => !(rel.page_slug === postSlug && rel.tag_slug === tagSlug)
-	);
-	
-	if (data.relationships.length < initialLength) {
-		saveTagsData(data);
-		return true;
-	}
-	
-	return false;
+	// Legacy function disabled - manage tags through post frontmatter instead
+	throw new Error('removeTagFromPost is disabled - manage tags in post markdown frontmatter');
 }
 
 // Migration helper: Import tags from simple string format
 export function migrateFromSimpleTags(postSlug: string, tagNames: string[]): void {
-	const data = loadTagsData();
-	
-	for (const tagName of tagNames) {
-		// Find or create tag
-		let tag = data.tags.find(t => t.name === tagName);
-		
-		if (!tag) {
-			// Create new tag with default properties
-			const slug = tagName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-			
-			tag = {
-				name: tagName,
-				url_slug: slug,
-				headline: `Articles tagged with ${tagName}`,
-				text_html: `<p>All articles related to ${tagName}</p>`,
-				background: '#3b82f6', // Default blue
-				color: '#ffffff',
-				status: 1
-			};
-			
-			data.tags.push(tag);
-		}
-		
-		// Add relationship if it doesn't exist
-		const exists = data.relationships.some(
-			rel => rel.page_slug === postSlug && rel.tag_slug === tag!.url_slug
-		);
-		
-		if (!exists) {
-			data.relationships.push({
-				page_slug: postSlug,
-				tag_slug: tag.url_slug
-			});
-		}
-	}
-	
-	saveTagsData(data);
+	// Legacy function disabled - use markdown frontmatter for tag relationships
+	throw new Error('migrateFromSimpleTags is disabled - use markdown frontmatter for tag relationships');
 }

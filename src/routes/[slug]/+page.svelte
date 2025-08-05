@@ -13,31 +13,35 @@
 </script>
 
 <svelte:head>
-	<title>{post?.headline || post?.title || post?.name}</title>
-	<meta name="description" content={post?.description} />
-	{#if !data.tag}
+	<title>{post?.headline || (post && 'title' in post ? post.title : post?.name)}</title>
+	<meta name="description" content={post && 'description' in post ? post.description : ''} />
+	{#if !data.tag && post}
 		<meta property="og:image" content="/api/og?slug={post.url_slug}" />
 	{/if}
 </svelte:head>
 
+{#if post}
 <HeroPost
-	title={post.headline || post.name}
-	description={post.description}
-	date={post.last_modification}
+	title={post.headline || ('name' in post ? post.name : '')}
+	description={post && 'description' in post ? post.description : ''}
+	date={'last_modification' in post ? post.last_modification : new Date()}
 	href={post.url_slug}
 	isTag={Boolean(data.tag)}
-	background={post.background}
+	background={'background' in post ? post.background : '#3b82f6'}
 	tags={data.tags}
 	noImage={Boolean(data.tag)}
-	wordCount={post.word_count}
+	wordCount={'word_count' in post ? post.word_count : 0}
 />
+{/if}
 <Container verticalSpace>
 	<div class="grid grid-cols-1 gap-8 md:gap-16">
 		<div class="xl:grid-cols-post grid grid-cols-1 gap-8">
 			<div class="max-md:hidden"></div>
-			<div><PostContent content={post.text_html} /></div>
+			<div><PostContent content={post?.text_html || ''} /></div>
 			<div class="sticky top-2 w-[14rem] self-start text-sm max-xl:hidden">
-				<PostToc slug={post.url_slug} />
+				{#if post}
+					<PostToc slug={post.url_slug} />
+				{/if}
 			</div>
 		</div>
 
@@ -45,7 +49,9 @@
 			<PostList posts={data.tagPosts} />
 		{:else}
 			<div class="m-auto w-full max-w-3xl grid-cols-1">
-				<PostComments slug={post.url_slug} />
+				{#if post}
+					<PostComments slug={post.url_slug} />
+				{/if}
 			</div>
 		{/if}
 

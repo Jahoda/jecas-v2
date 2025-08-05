@@ -4,22 +4,17 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 
 export interface TagFrontmatter {
-	name: string;
-	url_slug: string;
+	title: string;
 	headline: string | null;
 	background: string | null;
 	color: string | null;
 	status: number;
 }
 
-export interface MarkdownTagFile {
-	name: string;
-	url_slug: string;
-	headline: string | null;
+export interface MarkdownTagFile extends TagFrontmatter {
+	slug: string;
 	text_html: string;
-	background: string; // Always non-null after normalization
-	color: string; // Always non-null after normalization
-	status: number;
+	usage_count?: number; // Optional usage count
 }
 
 const TAG_PAGES_DIR = path.join(process.cwd(), 'content', 'tags');
@@ -48,7 +43,7 @@ function getContrastColor(bgColor: string | null): string {
 	return brightness > 128 ? '#000000' : '#ffffff';
 }
 
-function normalizeTag(tag: TagFrontmatter, content: string): MarkdownTagFile {
+function normalizeTag(tag: TagFrontmatter, content: string, slug: string): MarkdownTagFile {
 	// Ensure background color has a default
 	const background = tag.background || '#3b82f6';
 	
@@ -56,36 +51,14 @@ function normalizeTag(tag: TagFrontmatter, content: string): MarkdownTagFile {
 	const color = tag.color || getContrastColor(background);
 	
 	return {
-		name: tag.name,
-		url_slug: tag.url_slug,
+		title: tag.title,
+		slug,
 		headline: tag.headline,
 		text_html: content,
 		background,
 		color,
 		status: tag.status
 	};
-}
-
-function loadTagMetadata(): Record<string, any> {
-	const now = Date.now();
-	
-	// Return cached data if still fresh
-	if (tagMetadataCache && (now - lastModified) < CACHE_DURATION) {
-		return tagMetadataCache;
-	}
-	
-	try {
-		if (fs.existsSync(TAG_METADATA_FILE)) {
-			const data = JSON.parse(fs.readFileSync(TAG_METADATA_FILE, 'utf8'));
-			tagMetadataCache = data;
-			lastModified = now;
-			return data;
-		}
-	} catch (error) {
-		console.error('Error loading tag metadata:', error);
-	}
-	
-	return {};
 }
 
 async function loadAllTagFiles(): Promise<Map<string, MarkdownTagFile>> {
@@ -111,15 +84,18 @@ async function loadAllTagFiles(): Promise<Map<string, MarkdownTagFile>> {
 			const fileContent = fs.readFileSync(filePath, 'utf8');
 			const { data: frontmatter, content } = matter(fileContent);
 			
+			// Extract slug from filename (remove .md extension)
+			const slug = path.basename(file, '.md');
+			
 			// Convert markdown to HTML
 			const htmlContent = await marked(content);
 			
 			// Create normalized tag
-			const tag = normalizeTag(frontmatter as TagFrontmatter, htmlContent);
+			const tag = normalizeTag(frontmatter as TagFrontmatter, htmlContent, slug);
 			
 			// Only include active tags
 			if (tag.status === 1) {
-				tags.set(tag.url_slug, tag);
+				tags.set(tag.slug, tag);
 			}
 		}
 		
@@ -144,11 +120,12 @@ export async function getAllMarkdownTags(): Promise<MarkdownTagFile[]> {
 	return Array.from(tags.values())
 		.map(tag => ({
 			...tag,
-			usageCount: allCounts.get(tag.url_slug) || 0
+			usage_count: allCounts.get(tag.slug) || 0,
+			usageCount: allCounts.get(tag.slug) || 0
 		}))
 		.sort((a, b) => {
 			if (a.usageCount !== b.usageCount) return b.usageCount - a.usageCount;
-			return a.name.localeCompare(b.name);
+			return a.title.localeCompare(b.title);
 		})
 		.map(item => {
 			const { usageCount, ...tag } = item;
@@ -172,8 +149,8 @@ export async function getMarkdownTagsByPostSlug(postSlug: string): Promise<Markd
 	const matchingTags: MarkdownTagFile[] = [];
 	
 	for (const tagName of post.tags) {
-		// Try exact name match first
-		let matchingTag = Array.from(tags.values()).find(t => t.name.toLowerCase() === tagName.toLowerCase());
+		// Try exact title match first
+		let matchingTag = Array.from(tags.values()).find(t => t.title.toLowerCase() === tagName.toLowerCase());
 		
 		// If not found, try slug match
 		if (!matchingTag) {
@@ -186,7 +163,7 @@ export async function getMarkdownTagsByPostSlug(postSlug: string): Promise<Markd
 		}
 	}
 	
-	return matchingTags.sort((a, b) => a.name.localeCompare(b.name));
+	return matchingTags.sort((a, b) => a.title.localeCompare(b.title));
 }
 
 export async function getMarkdownPostsForTag(tagSlug: string): Promise<string[]> {

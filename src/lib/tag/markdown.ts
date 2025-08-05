@@ -46,14 +46,14 @@ export async function getAllUsedTags(): Promise<MarkdownTag[]> {
 	
 	// Map to MarkdownTag format with counts
 	return markdownTags.map(tag => ({
-		url_slug: tag.url_slug,
-		name: tag.name,
+		url_slug: tag.slug,
+		name: tag.title,
 		headline: tag.headline,
 		text_html: tag.text_html,
 		status: tag.status,
 		background: tag.background,
 		color: tag.color,
-		count: allCounts.get(tag.url_slug) || 0
+		count: allCounts.get(tag.slug) || 0
 	}));
 }
 
@@ -70,14 +70,14 @@ export async function getAllTagsByPageId(postSlug: string): Promise<MarkdownTag[
 	
 	// Map to MarkdownTag format with counts
 	return markdownTags.map(tag => ({
-		url_slug: tag.url_slug,
-		name: tag.name,
+		url_slug: tag.slug,
+		name: tag.title,
 		headline: tag.headline,
 		text_html: tag.text_html,
 		status: tag.status,
 		background: tag.background,
 		color: tag.color,
-		count: allCounts.get(tag.url_slug) || 0
+		count: allCounts.get(tag.slug) || 0
 	}));
 }
 
@@ -87,11 +87,11 @@ export async function getSingleTagBySlug(slug: string): Promise<MarkdownTag | un
 	if (!markdownTag) return undefined;
 	
 	// Get usage count efficiently (cached)
-	const count = await getTagUsageCount(markdownTag.url_slug);
+	const count = await getTagUsageCount(markdownTag.slug);
 	
 	return {
-		url_slug: markdownTag.url_slug,
-		name: markdownTag.name,
+		url_slug: markdownTag.slug,
+		name: markdownTag.title,
 		headline: markdownTag.headline,
 		text_html: markdownTag.text_html,
 		status: markdownTag.status,
@@ -110,13 +110,22 @@ export async function getPagesTags(posts: MarkdownPost[]): Promise<TagPost[]> {
 	const tagsBySlug = new Map();
 	
 	allTags.forEach(tag => {
-		tagsByName.set(tag.name.toLowerCase(), tag);
-		tagsBySlug.set(tag.url_slug.toLowerCase(), tag);
+		if (tag.title) {
+			tagsByName.set(tag.title.toLowerCase(), tag);
+		}
+		if (tag.slug) {
+			tagsBySlug.set(tag.slug.toLowerCase(), tag);
+		}
 	});
 
 	posts.forEach((post) => {
 		if (post.tags) {
 			post.tags.forEach((tagName) => {
+				// Skip if tagName is undefined or empty
+				if (!tagName || typeof tagName !== 'string') {
+					return;
+				}
+				
 				// Try to find tag by exact name first
 				let tag = tagsByName.get(tagName.toLowerCase());
 				
@@ -128,7 +137,7 @@ export async function getPagesTags(posts: MarkdownPost[]): Promise<TagPost[]> {
 				
 				if (tag) {
 					pagesTags.push({
-						tag_slug: tag.url_slug,
+						tag_slug: tag.slug,
 						page_slug: post.url_slug  // Use slug as the primary identifier
 					});
 				} else {

@@ -32,7 +32,7 @@ export const actions = {
 
 		if (isNew) {
 			try {
-				data.id = await createPost(data);
+				await createPost(data); // createPost now throws error for markdown files
 				result = true;
 			} catch (error) {
 				console.error(error);

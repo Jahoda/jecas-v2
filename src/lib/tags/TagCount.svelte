@@ -4,7 +4,7 @@
 	export let tag: Tag;
 	export let max: number;
 
-	$: percent = (tag.count / max) * 100;
+	$: percent = ((tag.count || 0) / max) * 100;
 </script>
 
 <a href={tag.url_slug} class="group relative flex overflow-hidden rounded-md">

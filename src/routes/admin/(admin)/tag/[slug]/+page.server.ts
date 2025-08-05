@@ -24,17 +24,19 @@ export const actions = {
 
 		const data = convertFormDataToData<TagIn>(await request.formData());
 
-		if (isNew) {
-			result = await createTag(data);
-			throw redirect(303, `/admin/tag/${data.url_slug}?created`);
-		} else {
-			result = await updateTagBySlug(slug, data);
-		}
-
-		if (result) {
+		try {
+			if (isNew) {
+				await createTag(data);
+				// Note: createTag now throws error for markdown system
+				throw redirect(303, `/admin/tag/${data.url_slug}?created`);
+			} else {
+				await updateTagBySlug(slug, data);
+				// Note: updateTagBySlug now throws error for markdown system
+			}
 			return { success: true };
-		} else {
-			return fail(500, { message: `Nepodařilo se ${isNew ? 'vytvořit' : 'upravit'} tag` });
+		} catch (error) {
+			// Admin functions are disabled for markdown-based system
+			return fail(500, { message: `Admin functions disabled - use markdown files instead` });
 		}
 	}
 } satisfies Actions;

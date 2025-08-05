@@ -4,7 +4,6 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 import { 
 	getTagsByPostSlug, 
-	migrateFromSimpleTags,
 	type PowerfulTag 
 } from '$lib/tag/powerfulTags';
 
@@ -64,13 +63,8 @@ async function parseEnhancedMarkdownFile(fileName: string): Promise<EnhancedMark
 		}
 	}
 	
-	// Migrate simple tags to powerful tags if needed
-	if (tagNames.length > 0) {
-		migrateFromSimpleTags(url_slug, tagNames);
-	}
-	
-	// Get rich tag objects
-	const tags = getTagsByPostSlug(url_slug);
+	// Get rich tag objects - tags are now managed through frontmatter
+	const tags = await getTagsByPostSlug(url_slug);
 	
 	return {
 		id: url_slug,
@@ -142,7 +136,7 @@ export async function getEnhancedPostsCount(): Promise<number> {
 
 export async function getEnhancedPostsByTag(tagSlug: string): Promise<EnhancedMarkdownPost[]> {
 	const { getPostsByTagSlug } = await import('$lib/tag/powerfulTags');
-	const postSlugs = getPostsByTagSlug(tagSlug);
+	const postSlugs = await getPostsByTagSlug(tagSlug);
 	
 	const posts: EnhancedMarkdownPost[] = [];
 	for (const slug of postSlugs) {
@@ -160,15 +154,15 @@ export async function getEnhancedRelatedPostsByMostTags(
 	currentSlug: string
 ): Promise<EnhancedMarkdownPost[]> {
 	const allPosts = await getAllEnhancedPosts();
-	const tagIds = tags.map(tag => tag.id);
+	const tagSlugs = tags.map(tag => tag.url_slug);
 
 	const scoredPosts = allPosts
 		.filter((post) => post.url_slug !== currentSlug)
 		.map((post) => {
-			const commonTagIds = post.tags.map(tag => tag.id).filter((tagId) => tagIds.includes(tagId));
+			const commonTagSlugs = post.tags.map(tag => tag.url_slug).filter((tagSlug) => tagSlugs.includes(tagSlug));
 			return {
 				post,
-				score: commonTagIds.length
+				score: commonTagSlugs.length
 			};
 		})
 		.filter((item) => item.score > 0)

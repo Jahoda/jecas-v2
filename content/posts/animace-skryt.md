@@ -1,7 +1,7 @@
 ---
 title: "Plynulé skrytí elementu"
 headline: "Animované skrytí obsahu"
-description: "Pomocí CSS <a href="/transition"><code>transition</code></a> je možné <a href="/zobrazit-skryt">skrývání a odkrývání textu</a> plynule <a href='/animace'>animovat</a> (od IE 10)."
+description: "Pomocí CSS <a href=\"/transition\"><code>transition</code></a> je možné <a href=\"/zobrazit-skryt\">skrývání a odkrývání textu</a> plynule <a href=\"/animace\">animovat</a> (od IE 10)."
 date: "2013-09-14"
 last_modification: "2013-09-17"
 status: 1

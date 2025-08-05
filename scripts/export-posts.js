@@ -34,8 +34,7 @@ async function exportTags(connection) {
 			background,
 			color,
 			status
-		FROM tags 
-		WHERE status = 1
+		FROM tags
 		ORDER BY name
 	`);
 
@@ -45,10 +44,14 @@ async function exportTags(connection) {
 	for (const tag of tags) {
 		// Clean up line endings in HTML content
 		const htmlContent = (tag.text_html || '').replace(/\r\n/g, '\n').trim();
+		
+		// Escape YAML special characters
+		const cleanTitle = (tag.name || '').replace(/"/g, '\\"');
+		const cleanHeadline = (tag.headline || '').replace(/"/g, '\\"');
 
 		const frontmatter = `---
-title: "${tag.name}"
-headline: ${tag.headline || 'null'}
+title: "${cleanTitle}"
+headline: ${cleanHeadline ? `"${cleanHeadline}"` : 'null'}
 background: "${tag.background}"
 color: "${tag.color}"
 status: ${tag.status}
@@ -129,10 +132,10 @@ async function exportPostsAndTags() {
 			// Clean the HTML content minimally (remove scripts, but keep HTML structure)
 			const htmlContent = (post.text_html);
 
-			// Clean up metadata fields by removing HTML tags and decoding entities
-			const cleanTitle = ((post.title || ''));
-			const cleanHeadline = ((post.headline || ''));
-			const cleanDescription = ((post.description || ''));
+			// Clean up metadata fields and escape for YAML
+			const cleanTitle = (post.title || '').replace(/"/g, '\\"');
+			const cleanHeadline = (post.headline || '').replace(/"/g, '\\"');
+			const cleanDescription = (post.description || '').replace(/"/g, '\\"').replace(/\n/g, ' ');
 
 			const frontmatter = `---
 title: "${cleanTitle}"
