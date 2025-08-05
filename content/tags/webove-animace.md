@@ -1,6 +1,6 @@
 ---
 title: "Animace"
-headline: Animace v CSS a JS
+headline: "Animace v CSS a JS"
 background: "#DA3F94"
 color: "null"
 status: 1

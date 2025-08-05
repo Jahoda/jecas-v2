@@ -8,7 +8,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
 		"lint": "prettier --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss --check .",
-		"format": "prettier --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss --write ."
+		"format": "prettier --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss --write .",
+		"export": "node -r dotenv/config scripts/export-posts.js"
 	},
 	"devDependencies": {
 		"@savvywombat/tailwindcss-grid-areas": "4.0.0",
@@ -23,6 +24,7 @@
 		"@vercel/analytics": "1.5.0",
 		"algoliasearch": "5.35.0",
 		"autoprefixer": "10.4.21",
+		"dotenv": "^17.2.1",
 		"emmet-monaco-es": "5.5.0",
 		"monaco-editor": "0.52.2",
 		"postcss": "8.5.6",
@@ -40,6 +42,15 @@
 		"vite-plugin-kit-routes": "1.0.2"
 	},
 	"type": "module",
+	"packageManager": "pnpm@9.0.0",
+	"engines": {
+		"node": ">=18.0.0",
+		"pnpm": ">=8.0.0"
+	},
+	"pnpm": {
+		"shamefullyHoist": false,
+		"strictPeerDependencies": false
+	},
 	"dependencies": {
 		"@ethercorps/sveltekit-og": "3.0.0",
 		"@supabase/auth-helpers-sveltekit": "0.10.3",
