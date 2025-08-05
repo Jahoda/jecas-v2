@@ -1,68 +1,27 @@
-import {
-	getPostsByTagId,
-	getRelatedPostsByMostTags,
-	getSinglePostBySlug,
-	getPagesTags,
-	type Post
-} from '$lib/post/post';
-import { getAllTagsByPageId, getSingleTagBySlug, getAllUsedTags, type Tag } from '$lib/tag/tags';
-import { groupByPageId } from '$lib/tags/tags';
+import type { PageLoad } from './$types';
 import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
 
-export const load = (async ({ params }) => {
-	const slug = params.slug;
+const slugFromPath = (path: string) =>
+	path.match(/([\w-]+)\.(svelte\.md|md|svx)/i)?.[1] ?? null;
 
-	let tags: Tag[] = [];
-	let tag: Tag | undefined;
-	let tagPosts: Post[] | undefined;
-	let relatedPosts: Post[] | undefined;
-	let allTags: Tag[] = [];
-	let pagesTags: Record<string, string[]> = {};
+export const load: PageLoad = async ({ params }) => {
+	const modules = import.meta.glob(`/content/posts/*.{md,svx,svelte.md}`);
 
-	const page = await getSinglePostBySlug(slug);
-	console.log(page);
-
-	if (page?.url_slug) {
-		tags = await getAllTagsByPageId(page.url_slug);
-
-		if (tags.length > 0) {
-			relatedPosts = await getRelatedPostsByMostTags(tags, page.url_slug);
+	let match = {};
+	for (const [path, resolver] of Object.entries(modules)) {
+		if (slugFromPath(path) === params.slug) {
+			match = { path, resolver: resolver };
+			break;
 		}
+	}
 
-		// Load all tags and pagesTags for the PostList component
-		allTags = await getAllUsedTags();
-		const allPosts = relatedPosts || [];
-		const pagesTagsArray = await getPagesTags(allPosts);
-		pagesTags = groupByPageId(pagesTagsArray);
-	} else {
-		// Try to find tag
-		tag = await getSingleTagBySlug(slug);
+	const post = await match?.resolver?.();
 
-		if (tag?.name) {
-			tagPosts = await getPostsByTagId(tag.url_slug);
-		}
-
-		if (!tag) {
-			throw error(404, {
-				message: 'Not found'
-			});
-		}
-
-		// Load all tags and pagesTags for the PostList component
-		allTags = await getAllUsedTags();
-		const allPosts = tagPosts || [];
-		const pagesTagsArray = await getPagesTags(allPosts);
-		pagesTags = groupByPageId(pagesTagsArray);
+	if (!post) {
+		throw error(404); // Couldn't resolve the post
 	}
 
 	return {
-		page,
-		tag,
-		tags,
-		tagPosts,
-		relatedPosts,
-		allTags,
-		pagesTags
+		frontmatter: post.metadata
 	};
-}) satisfies PageServerLoad;
+};
