@@ -1,7 +1,7 @@
 ---
 title: "Emmet a CSS zkratky"
 headline: "Emmet a časté zkratky"
-description: "Nástroj <a href="/emmet">Emmet</a> usnadňuje a zrychluje psaní HTML/CSS kódu. Seznam často používaných zkratek."
+description: "Nástroj <a href=\"/emmet\">Emmet</a> usnadňuje a zrychluje psaní HTML/CSS kódu. Seznam často používaných zkratek."
 date: "2014-01-25"
 last_modification: "2014-02-01"
 status: 1

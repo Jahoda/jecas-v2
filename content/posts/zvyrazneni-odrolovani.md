@@ -1,7 +1,7 @@
 ---
 title: "Zvýraznění podle rolování"
 headline: "Označení odkazu na kotvu, pokud je na ní odrolováno"
-description: "U jednostránkových webů s <a href="/fixni-menu">fixní navigací</a> (s odkazy na #kotvy) může být vhodné právě viditelnou (aktivní) položku zvýraznit."
+description: "U jednostránkových webů s <a href=\"/fixni-menu\">fixní navigací</a> (s odkazy na #kotvy) může být vhodné právě viditelnou (aktivní) položku zvýraznit."
 date: "2013-05-31"
 last_modification: "2013-06-05"
 status: 1

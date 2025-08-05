@@ -1,7 +1,7 @@
 ---
 title: "JS náhrada atributu ismap"
 headline: "JavaScriptová simulace atributu <code>ismap</code>"
-description: "HTML atribut <a href="http://www.jakpsatweb.cz/clanky/fosilie-ismap.html"><code>ismap</code></a> umí zjistit souřadnice při kliknutí na obrázek. Jak na to v JS?"
+description: "HTML atribut <a href=\"http://www.jakpsatweb.cz/clanky/fosilie-ismap.html\"><code>ismap</code></a> umí zjistit souřadnice při kliknutí na obrázek. Jak na to v JS?"
 date: "2013-10-21"
 last_modification: "2013-10-21"
 status: 1

@@ -1,10 +1,10 @@
 <script lang="ts">
 	import type { PowerfulTag } from '$lib/tag/powerfulTags';
-	
+
 	export let tag: PowerfulTag;
 	export let size: 'sm' | 'md' | 'lg' = 'md';
 	export let showCount = false;
-	
+
 	const sizeClasses = {
 		sm: 'px-2 py-1 text-xs',
 		md: 'px-3 py-1 text-sm',
@@ -14,7 +14,9 @@
 
 <a
 	href="/{tag.url_slug}"
-	class="inline-flex items-center {sizeClasses[size]} rounded-full font-medium hover:opacity-80 transition-opacity"
+	class="inline-flex items-center {sizeClasses[
+		size
+	]} rounded-full font-medium transition-opacity hover:opacity-80"
 	style="background-color: {tag.background}; color: {tag.color}"
 	title={tag.headline || `View all posts tagged with ${tag.name}`}
 >

@@ -1,7 +1,7 @@
 ---
 title: "AJAX upload souborů"
 headline: "Upload souborů bez obnovení stránky"
-description: "Jak vytvořit <a href="/ajax">ajaxové</a> nahrávání souborů na server bez obnovení stránky."
+description: "Jak vytvořit <a href=\"/ajax\">ajaxové</a> nahrávání souborů na server bez obnovení stránky."
 date: "2013-08-17"
 last_modification: "2013-08-17"
 status: 1

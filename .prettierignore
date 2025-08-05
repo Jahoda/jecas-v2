@@ -7,6 +7,7 @@ node_modules
 .env.*
 !.env.example
 /static
+/content
 lib/ROUTES.ts
 
 # Ignore files for PNPM, NPM and YARN

@@ -2,10 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
-import { 
-	getTagsByPostSlug, 
-	type PowerfulTag 
-} from '$lib/tag/powerfulTags';
+import { getTagsByPostSlug, type PowerfulTag } from '$lib/tag/powerfulTags';
 
 export interface EnhancedMarkdownPost {
 	id: string;
@@ -45,13 +42,13 @@ async function parseEnhancedMarkdownFile(fileName: string): Promise<EnhancedMark
 	const filePath = path.join(POSTS_DIRECTORY, fileName);
 	const fileContent = fs.readFileSync(filePath, 'utf8');
 	const { data, content } = matter(fileContent);
-	
+
 	const frontmatter = data as EnhancedPostFrontmatter;
 	const url_slug = fileName.replace(/\.md$/, '');
-	
+
 	const text_html = await marked(content);
 	const wordCount = (content.match(/\b\w+\b/g) || []).length;
-	
+
 	// Handle tags migration
 	let tagNames: string[] = [];
 	if (frontmatter.tags) {
@@ -59,13 +56,16 @@ async function parseEnhancedMarkdownFile(fileName: string): Promise<EnhancedMark
 			tagNames = frontmatter.tags;
 		} else if (typeof frontmatter.tags === 'string') {
 			// Support comma-separated tags
-			tagNames = frontmatter.tags.split(',').map(t => t.trim()).filter(t => t);
+			tagNames = frontmatter.tags
+				.split(',')
+				.map((t) => t.trim())
+				.filter((t) => t);
 		}
 	}
-	
+
 	// Get rich tag objects - tags are now managed through frontmatter
 	const tags = await getTagsByPostSlug(url_slug);
-	
+
 	return {
 		id: url_slug,
 		title: frontmatter.title,
@@ -99,7 +99,9 @@ export async function getAllEnhancedPosts(
 	return limit ? filteredPosts.slice(0, limit) : filteredPosts;
 }
 
-export async function getSingleEnhancedPostBySlug(slug: string): Promise<EnhancedMarkdownPost | undefined> {
+export async function getSingleEnhancedPostBySlug(
+	slug: string
+): Promise<EnhancedMarkdownPost | undefined> {
 	const fileName = `${slug}.md`;
 	const filePath = path.join(POSTS_DIRECTORY, fileName);
 
@@ -137,7 +139,7 @@ export async function getEnhancedPostsCount(): Promise<number> {
 export async function getEnhancedPostsByTag(tagSlug: string): Promise<EnhancedMarkdownPost[]> {
 	const { getPostsByTagSlug } = await import('$lib/tag/powerfulTags');
 	const postSlugs = await getPostsByTagSlug(tagSlug);
-	
+
 	const posts: EnhancedMarkdownPost[] = [];
 	for (const slug of postSlugs) {
 		const post = await getSingleEnhancedPostBySlug(slug);
@@ -145,7 +147,7 @@ export async function getEnhancedPostsByTag(tagSlug: string): Promise<EnhancedMa
 			posts.push(post);
 		}
 	}
-	
+
 	return posts.sort((a, b) => b.last_modification.getTime() - a.last_modification.getTime());
 }
 
@@ -154,12 +156,14 @@ export async function getEnhancedRelatedPostsByMostTags(
 	currentSlug: string
 ): Promise<EnhancedMarkdownPost[]> {
 	const allPosts = await getAllEnhancedPosts();
-	const tagSlugs = tags.map(tag => tag.url_slug);
+	const tagSlugs = tags.map((tag) => tag.url_slug);
 
 	const scoredPosts = allPosts
 		.filter((post) => post.url_slug !== currentSlug)
 		.map((post) => {
-			const commonTagSlugs = post.tags.map(tag => tag.url_slug).filter((tagSlug) => tagSlugs.includes(tagSlug));
+			const commonTagSlugs = post.tags
+				.map((tag) => tag.url_slug)
+				.filter((tagSlug) => tagSlugs.includes(tagSlug));
 			return {
 				post,
 				score: commonTagSlugs.length

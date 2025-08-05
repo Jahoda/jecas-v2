@@ -91,7 +91,7 @@ title: 'New Post Title'
 headline: 'Your headline here'
 description: 'SEO description'
 date: '2024-01-20'
-status: 1  # 1 = published, 0 = draft
+status: 1 # 1 = published, 0 = draft
 tags: ['tag1', 'tag2']
 ---
 
@@ -122,6 +122,7 @@ The `status` field controls post visibility:
 #### Draft Post Behavior
 
 Draft posts (`status: 0`) are:
+
 - ❌ **Hidden from all listings** (homepage, archive, tag pages, related posts, etc.)
 - ❌ **Excluded from tag clouds** (their tags won't appear in public tag lists)
 - ❌ **Not included in search results** (Algolia indexing)

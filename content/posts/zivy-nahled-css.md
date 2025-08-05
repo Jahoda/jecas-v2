@@ -1,7 +1,7 @@
 ---
 title: "Živý náhled CSS ze Sublime Text"
 headline: "Živý náhled editovaného CSS"
-description: "Jak docílit, aby se editované CSS v <a href="/sublime-text">Sublime Text</a> editoru v reálném čase aplikovalo v prohlížeči."
+description: "Jak docílit, aby se editované CSS v <a href=\"/sublime-text\">Sublime Text</a> editoru v reálném čase aplikovalo v prohlížeči."
 date: "2013-08-06"
 last_modification: "2013-08-06"
 status: 1

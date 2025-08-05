@@ -39,13 +39,13 @@ const TAG_COLORS = [
 
 export async function getAllUsedTags(): Promise<MarkdownTag[]> {
 	const markdownTags = await getAllMarkdownTags();
-	
+
 	// Get all usage counts efficiently (cached and batch-calculated)
 	const { calculateAllUsageCounts } = await import('./powerfulTags');
 	const allCounts = await calculateAllUsageCounts();
-	
+
 	// Map to MarkdownTag format with counts
-	return markdownTags.map(tag => ({
+	return markdownTags.map((tag) => ({
 		url_slug: tag.slug,
 		name: tag.title,
 		headline: tag.headline,
@@ -63,13 +63,13 @@ export async function getAllTags(): Promise<MarkdownTag[]> {
 
 export async function getAllTagsByPageId(postSlug: string): Promise<MarkdownTag[]> {
 	const markdownTags = await getMarkdownTagsByPostSlug(postSlug);
-	
+
 	// Get all usage counts efficiently (cached and batch-calculated)
 	const { calculateAllUsageCounts } = await import('./powerfulTags');
 	const allCounts = await calculateAllUsageCounts();
-	
+
 	// Map to MarkdownTag format with counts
-	return markdownTags.map(tag => ({
+	return markdownTags.map((tag) => ({
 		url_slug: tag.slug,
 		name: tag.title,
 		headline: tag.headline,
@@ -83,12 +83,12 @@ export async function getAllTagsByPageId(postSlug: string): Promise<MarkdownTag[
 
 export async function getSingleTagBySlug(slug: string): Promise<MarkdownTag | undefined> {
 	const markdownTag = await getMarkdownTagBySlug(slug);
-	
+
 	if (!markdownTag) return undefined;
-	
+
 	// Get usage count efficiently (cached)
 	const count = await getTagUsageCount(markdownTag.slug);
-	
+
 	return {
 		url_slug: markdownTag.slug,
 		name: markdownTag.title,
@@ -103,13 +103,13 @@ export async function getSingleTagBySlug(slug: string): Promise<MarkdownTag | un
 
 export async function getPagesTags(posts: MarkdownPost[]): Promise<TagPost[]> {
 	const pagesTags: TagPost[] = [];
-	
+
 	// Get all tags for lookup from the new markdown system
 	const allTags = await getAllMarkdownTags();
 	const tagsByName = new Map();
 	const tagsBySlug = new Map();
-	
-	allTags.forEach(tag => {
+
+	allTags.forEach((tag) => {
 		if (tag.title) {
 			tagsByName.set(tag.title.toLowerCase(), tag);
 		}
@@ -125,20 +125,20 @@ export async function getPagesTags(posts: MarkdownPost[]): Promise<TagPost[]> {
 				if (!tagName || typeof tagName !== 'string') {
 					return;
 				}
-				
+
 				// Try to find tag by exact name first
 				let tag = tagsByName.get(tagName.toLowerCase());
-				
+
 				// If not found, try by converting name to slug
 				if (!tag) {
 					const tagSlug = tagName.toLowerCase().replace(/\s+/g, '-');
 					tag = tagsBySlug.get(tagSlug);
 				}
-				
+
 				if (tag) {
 					pagesTags.push({
 						tag_slug: tag.slug,
-						page_slug: post.url_slug  // Use slug as the primary identifier
+						page_slug: post.url_slug // Use slug as the primary identifier
 					});
 				} else {
 					console.warn(`Tag not found for: "${tagName}" in post: ${post.url_slug}`);

@@ -1,7 +1,7 @@
 ---
 title: "Značka <body> jako obal stránky"
 headline: "Obal <code>&lt;body></code>, nebo <code>&lt;div id=container></code>?"
-description: "Ve <a href="/doctype">standardním režimu</a> lze značku <code>&lt;body></code> stylovat jako normální <code>&lt;div></code>. Má to cenu?"
+description: "Ve <a href=\"/doctype\">standardním režimu</a> lze značku <code>&lt;body></code> stylovat jako normální <code>&lt;div></code>. Má to cenu?"
 date: "2013-06-12"
 last_modification: "2013-06-13"
 status: 1

@@ -1,7 +1,7 @@
 ---
 title: "Samouk amatér vs. SuperKodér"
 headline: "Samouk amatér vs. SuperKodér"
-description: "Reakce na článek <a href="http://www.superkoderi.cz/samouk-amater-vs-superkoder">Samouk amatér vs. SuperKodér</a> z webu superkoderi.cz."
+description: "Reakce na článek <a href=\"http://www.superkoderi.cz/samouk-amater-vs-superkoder\">Samouk amatér vs. SuperKodér</a> z webu superkoderi.cz."
 date: "2014-01-29"
 last_modification: "2014-01-29"
 status: 0

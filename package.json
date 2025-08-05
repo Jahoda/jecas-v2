@@ -12,7 +12,6 @@
 		"export": "node -r dotenv/config scripts/export-posts.js"
 	},
 	"devDependencies": {
-		"@savvywombat/tailwindcss-grid-areas": "4.0.0",
 		"@sveltejs/adapter-auto": "6.0.1",
 		"@sveltejs/adapter-vercel": "5.8.1",
 		"@sveltejs/kit": "2.27.0",
@@ -32,7 +31,6 @@
 		"prettier": "3.6.2",
 		"prettier-plugin-svelte": "3.4.0",
 		"prettier-plugin-tailwindcss": "0.6.14",
-		"supabase": "2.33.9",
 		"svelte": "5.37.3",
 		"svelte-check": "4.3.1",
 		"tailwindcss": "4.1.11",
@@ -47,18 +45,9 @@
 		"node": ">=18.0.0",
 		"pnpm": ">=8.0.0"
 	},
-	"pnpm": {
-		"shamefullyHoist": false,
-		"strictPeerDependencies": false
-	},
 	"dependencies": {
 		"@ethercorps/sveltekit-og": "3.0.0",
-		"@supabase/auth-helpers-sveltekit": "0.10.3",
-		"@supabase/auth-ui-shared": "0.1.8",
-		"@supabase/auth-ui-svelte": "0.2.9",
-		"@supabase/supabase-js": "2.53.0",
 		"@sveltejs/vite-plugin-svelte": "6.1.0",
-		"@tailwindcss/container-queries": "0.1.1",
 		"@tailwindcss/postcss": "4.1.11",
 		"gray-matter": "^4.0.3",
 		"marked": "^16.1.2",

@@ -11,9 +11,13 @@
 	import { groupByPageId } from '$lib/tags/tags';
 	import PostList from '$lib/post/PostList.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: pagesTags = groupByPageId(data.pagesTags);
+	let { data }: Props = $props();
+
+	const pagesTags = $derived(groupByPageId(data.pagesTags));
 </script>
 
 <svelte:head>

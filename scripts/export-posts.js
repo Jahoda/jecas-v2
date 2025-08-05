@@ -14,11 +14,9 @@ const DATABASE_URL = process.env.DATABASE_URL || 'mysql://user:password@localhos
 const POSTS_DIRECTORY = path.join(__dirname, '..', 'content', 'posts');
 const TAGS_DIRECTORY = path.join(__dirname, '..', 'content', 'tags');
 
-
-
 async function exportTags(connection) {
 	console.log('Fetching tags from database...');
-	
+
 	// Ensure tags directory exists
 	if (!fs.existsSync(TAGS_DIRECTORY)) {
 		fs.mkdirSync(TAGS_DIRECTORY, { recursive: true });
@@ -44,7 +42,7 @@ async function exportTags(connection) {
 	for (const tag of tags) {
 		// Clean up line endings in HTML content
 		const htmlContent = (tag.text_html || '').replace(/\r\n/g, '\n').trim();
-		
+
 		// Escape YAML special characters
 		const cleanTitle = (tag.name || '').replace(/"/g, '\\"');
 		const cleanHeadline = (tag.headline || '').replace(/"/g, '\\"');
@@ -128,9 +126,9 @@ async function exportPostsAndTags() {
 		// Export each post
 		for (const post of posts) {
 			const tags = tagsByPageId[post.id] || [];
-			
+
 			// Clean the HTML content minimally (remove scripts, but keep HTML structure)
-			const htmlContent = (post.text_html);
+			const htmlContent = post.text_html;
 
 			// Clean up metadata fields and escape for YAML
 			const cleanTitle = (post.title || '').replace(/"/g, '\\"');
@@ -162,7 +160,9 @@ ${htmlContent}`;
 			}
 		}
 
-		console.log(`\n🎉 Successfully exported ${posts.length} posts with original HTML format and tags!`);
+		console.log(
+			`\n🎉 Successfully exported ${posts.length} posts with original HTML format and tags!`
+		);
 	} catch (error) {
 		console.error('Error exporting posts:', error);
 	} finally {
