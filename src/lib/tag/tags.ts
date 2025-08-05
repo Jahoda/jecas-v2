@@ -10,8 +10,8 @@ export interface Tag {
 	headline: string | null;
 	text_html: string | null;
 	status: number;
-	background: string;
-	color: string;
+	background: string | null;
+	color: string | null;
 	count?: number;
 	usage_count?: number; // Alias for count for backward compatibility
 }
@@ -64,11 +64,16 @@ function getContrastColor(bgColor: string | null): string {
 }
 
 function normalizeTag(frontmatter: TagFrontmatter, content: string, slug: string): Tag {
-	// Ensure background color has a default
-	const background = frontmatter.background || '#3b82f6';
+	// Handle background color - allow null if not specified
+	const background =
+		frontmatter.background && frontmatter.background !== 'null' ? frontmatter.background : null;
 
-	// Auto-calculate color if null
-	const color = frontmatter.color || getContrastColor(background);
+	// Only set color if background is defined, otherwise leave it null
+	const color = background
+		? frontmatter.color && frontmatter.color !== 'null'
+			? frontmatter.color
+			: getContrastColor(background)
+		: null;
 
 	return {
 		url_slug: slug,

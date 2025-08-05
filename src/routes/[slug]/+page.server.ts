@@ -22,10 +22,7 @@ export const load = (async ({ params }) => {
 		tags = await getAllTagsByPageId(page.url_slug);
 
 		if (tags.length > 0) {
-			relatedPosts = await getRelatedPostsByMostTags(
-				tags.map((tag) => tag.name),
-				page.url_slug
-			);
+			relatedPosts = await getRelatedPostsByMostTags(tags, page.url_slug);
 		}
 	} else {
 		// Try to find tag

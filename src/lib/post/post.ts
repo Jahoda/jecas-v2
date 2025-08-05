@@ -8,7 +8,7 @@ import {
 	getRelatedPostsByMostTags as getMarkdownRelatedPosts,
 	type MarkdownPost
 } from './markdown';
-import type { PostCount, TagPost } from '$lib/tag/tags';
+import type { PostCount, TagPost, Tag } from '$lib/tag/tags';
 
 export interface Post {
 	id: string | number;
@@ -21,6 +21,7 @@ export interface Post {
 	last_modification: Date;
 	comments: number;
 	status: number;
+	tags?: string[];
 	word_count?: number;
 }
 
@@ -64,17 +65,48 @@ export async function getPagesTags(posts: Post[]): Promise<TagPost[]> {
 }
 
 export async function getPostsByTagId(tagSlug: string): Promise<Post[]> {
-	const { getSingleTagBySlug } = await import('$lib/tag/tags');
-	const tag = await getSingleTagBySlug(tagSlug);
+	const { getPostsByTagSlug } = await import('$lib/tag/tags');
+	const postSlugs = await getPostsByTagSlug(tagSlug);
 
-	if (!tag) return [];
+	const posts: Post[] = [];
+	for (const slug of postSlugs) {
+		const post = await getSinglePostBySlug(slug);
+		if (post && post.status === 1) {
+			posts.push(post);
+		}
+	}
 
-	return await getPostsByTag(tag.name);
+	return posts.sort((a, b) => b.last_modification.getTime() - a.last_modification.getTime());
 }
 
-export async function getRelatedPostsByMostTags(
-	tagNames: string[],
-	postSlug: string
-): Promise<Post[]> {
-	return await getMarkdownRelatedPosts(tagNames, postSlug);
+export async function getRelatedPostsByMostTags(tags: Tag[], currentSlug: string): Promise<Post[]> {
+	const allPosts = await getAllPosts();
+	const tagSlugs = tags.map((tag) => tag.url_slug);
+
+	const scoredPosts = allPosts
+		.filter((post) => post.url_slug !== currentSlug)
+		.map((post) => {
+			// Get the tags for this post
+			const postTags = post.tags || [];
+			const commonTagSlugs = postTags
+				.map((tagName: string) => {
+					// Try to find matching tag by name
+					const matchingTag = tags.find((t) => t.name.toLowerCase() === tagName.toLowerCase());
+					return matchingTag?.url_slug;
+				})
+				.filter((slug: string | undefined) => slug && tagSlugs.includes(slug));
+
+			return {
+				post,
+				score: commonTagSlugs.length
+			};
+		})
+		.filter((item) => item.score > 0)
+		.sort((a, b) => {
+			if (a.score !== b.score) return b.score - a.score;
+			return b.post.last_modification.getTime() - a.post.last_modification.getTime();
+		})
+		.slice(0, 4);
+
+	return scoredPosts.map((item) => item.post);
 }
