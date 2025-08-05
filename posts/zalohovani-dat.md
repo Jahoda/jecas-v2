@@ -6,6 +6,7 @@ date: "2019-10-14"
 last_modification: "2019-10-14"
 status: 0
 tags: []
+format: "html"
 ---
 
 https://fastglacier.com

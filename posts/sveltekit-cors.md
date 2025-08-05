@@ -6,36 +6,44 @@ date: "2023-02-16"
 last_modification: "2023-02-16"
 status: 0
 tags: []
+format: "html"
 ---
 
-[SvelteKit](https://kit.svelte.dev) je komplexní nástroj pro vytváření webů.
+<p><a href="https://kit.svelte.dev">SvelteKit</a> je komplexní nástroj pro vytváření webů.</p>
 
-Jednak umožňuje vytvářet skvelá uživatelská rozhraní ve **Svelte**, ale kromě toho řešit i renderování na straně serveru a další věci – například vytvářet API endpointy.
+<p>Jednak umožňuje vytvářet skvelá uživatelská rozhraní ve <b>Svelte</b>, ale kromě toho řešit i renderování na straně serveru a další věci – například vytvářet API endpointy.</p>
 
-To jde velmi jednoduše umístěním souboru `+server.ts` např. do složky `routes/api/test`.
+<p>To jde velmi jednoduše umístěním souboru <code>+server.ts</code> např. do složky <code>routes/api/test</code>.</p>
 
-Automatický router založený na souborovém systému se postará o to, že vznikne endpoint `https://example.com/api/test`. Obsah souboru může být následující:
+<p>Automatický router založený na souborovém systému se postará o to, že vznikne endpoint <code>https://example.com/api/test</code>. Obsah souboru může být následující:</p>
 
-```
-import { json } from '@sveltejs/kit';
+<pre><code>import { json } from '@sveltejs/kit';
 
 export async function GET() {
 	return json({ test: 'ok' });
-}
-```
+}</code></pre>
 
-Při navštívení adresy `https://example.com/api/test` se zobrazí výstup `{"test":"ok"}`.
 
-## Nastavení CORS
 
-Pro umožnění získání dat z cizí domény je potřeba použít tzv. [hook](https://kit.svelte.dev/docs/hooks#server-hooks).
 
-Jde o soubor `hooks.server.ts` (umístěný rovnou ve složce `src`), který umožňuje modifikovat reqesty.
 
-V tomto případě přidá potřebnou hlavičku [`Access-Control-Allow-Origin`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin), pokud doména volající SvelteKit vyhoví regulárnímu výrazu `/^(.*)?\.?example\.com$/`:
 
-```
-import type { Handle } from '@sveltejs/kit';
+
+
+
+
+<p>Při navštívení adresy <code>https://example.com/api/test</code> se zobrazí výstup <code>{"test":"ok"}</code>.</p>
+
+
+<h2 id="cors">Nastavení CORS</h2>
+
+<p>Pro umožnění získání dat z cizí domény je potřeba použít tzv. <a href="https://kit.svelte.dev/docs/hooks#server-hooks">hook</a>.</p>
+
+<p>Jde o soubor <code>hooks.server.ts</code> (umístěný rovnou ve složce <code>src</code>), který umožňuje modifikovat reqesty.</p>
+
+<p>V tomto případě přidá potřebnou hlavičku <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin"><code>Access-Control-Allow-Origin</code></a>, pokud doména volající SvelteKit vyhoví regulárnímu výrazu <code>/^(.*)?\.?example\.com$/</code>:</p>
+
+<pre><code>import type { Handle } from '@sveltejs/kit';
 
 export const handle = (async ({ event, resolve }) => {
 	const allowedDomains = /^(.*)?\.?example\.com$/;
@@ -54,5 +62,6 @@ export const handle = (async ({ event, resolve }) => {
 
 	return response;
 }) satisfies Handle;
+</code></pre>
 
-```
+

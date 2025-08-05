@@ -5,55 +5,71 @@ description: "Jak pomocí CSS nakresli ovál."
 date: "2015-04-19"
 last_modification: "2015-07-11"
 status: 1
-tags: ["CSS", "Hotová řešení"]
+tags: ["css", "hotova-reseni"]
+format: "html"
 ---
 
-V některých případech se hodí [kreslit pomocí CSS](/css-kresleni) – může to být rychlejší než příprava obrázku v grafickém editoru.
+<p>V některých případech se hodí <a href="/css-kresleni">kreslit pomocí CSS</a> – může to být rychlejší než příprava obrázku v grafickém editoru.</p>
 
-Kruh jde vytvořit pomocí [zakulacení rohů](/border-radius) (CSS vlastnost `border-radius`).
+<p>Kruh jde vytvořit pomocí <a href="/border-radius">zakulacení rohů</a> (CSS vlastnost <code>border-radius</code>).</p>
 
+<div class="live">
+  <style>
     .kruh {
       border-radius: 100px;
       width: 100px;
       height: 100px;
       background: #0D6AB7;
     }
+  </style>
+  <div class="kruh"></div>
+</div>
 
-Udělat z kruhu **ovál** jde potom změnou proporcí elementu (poměr výšky a šířky).
+<p>Udělat z kruhu <b>ovál</b> jde potom změnou proporcí elementu (poměr výšky a šířky).</p>
 
-Změnit šířku: 
+<p><label>Změnit šířku: <input type="range" min="0" max="300" value="200" oninput="pomer(this.value, document.querySelector('.oval'))"></label></p>
 
+<div class="live">
+  <style>
     .oval {
       border-radius: 100px;
       width: 200px;
       height: 100px;
       background: #0D6AB7;
     }
+  </style>
+  <div class="oval"></div>
+</div>
 
-Pro vytvoření **elipsy** poslouží možnost uvést druhý radius za lomítko.
+<p>Pro vytvoření <b>elipsy</b> poslouží možnost uvést druhý radius za lomítko.</p>
 
-```
-border-radius: 100px / 50px;
-height: 100px;
-width: 200px;
-
-```
-
-  Změnit výšku: 
-
-  Změnit šířku: 
-
-  Změnit první radius: 
-
-  Změnit druhý radius: 
-
+<pre><code>border-radius: <span id="vypis">100px / 50px</span>;
+height: <span id="vypisVysky">100px</span>;
+width: <span id="vypisSirky">200px</span>;
+</code></pre>
+<form oninput="zmenit(this)">
+  <p><label>Změnit výšku: <input type="range" min="0" max="300" value="100" name="vyska"></label></p>
+  
+  <p><label>Změnit šířku: <input type="range" min="0" max="300" value="200" name="sirka"></label></p>  
+  
+  <p><label>Změnit první radius: <input type="range" min="0" max="300" value="100" name="radius1"></label></p>
+  
+  <p><label>Změnit druhý radius: <input type="range" min="0" max="300" value="50" name="radius2"></label></p>
+</form>
+  
+<div class="live">
+  <style>
     .elipsa {
       border-radius: 100px / 50px;
       width: 200px;
       height: 100px;
       background: #0D6AB7;
     }
+  </style>
+  <div class="elipsa"></div>
+</div>
 
+<script>
   function pomer(sirka, el) {
     el.style.width = parseInt(sirka) + "px";
   }
@@ -70,3 +86,4 @@ width: 200px;
     document.getElementById("vypisSirky").innerHTML = sirkaVypis;
     document.getElementById("vypisVysky").innerHTML = vyskaVypis;
   }
+</script>

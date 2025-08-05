@@ -6,8 +6,9 @@ date: "2014-01-22"
 last_modification: "2014-01-22"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://kod.djpw.cz/pjbb
 
-- [Řešení pouze v CSS](http://codepen.io/jakealbaugh/pen/KBsIo)
+<li><a href="http://codepen.io/jakealbaugh/pen/KBsIo">Řešení pouze v CSS</a></li>

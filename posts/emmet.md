@@ -5,90 +5,148 @@ description: "Nástroj Emmet nabízí výrazné zjednodušení při psaní HTML 
 date: "2013-08-01"
 last_modification: "2013-08-01"
 status: 1
-tags: ["Produktivita"]
+tags: ["produktivita"]
+format: "html"
 ---
 
-[Stránka projektu emmet.io](http://emmet.io/)
+<p><a href="http://emmet.io/" class="button">Stránka projektu emmet.io</a></p>
 
-Použít jej lze v [mnoha editorech](http://emmet.io/download/) (i v [Sublime Text](/sublime-text), [PSPadu](https://github.com/emmetio/pspad), NetBeans nebo Eclipse atd.) a je dostupný i v JavaScriptu pro použití na webu.
+<p>Použít jej lze v <a href="http://emmet.io/download/">mnoha editorech</a> (i v <a href="/sublime-text">Sublime Text</a>, <a href="https://github.com/emmetio/pspad">PSPadu</a>, NetBeans nebo Eclipse atd.) a je dostupný i v JavaScriptu pro použití na webu.</p>
 
-## Instalace
 
-### Sublime Text
 
-Do editoru Sublime Text se Emmet **instaluje** stejně jako ostatní [pluginy](/pluginy-sublime-text) přes *Package Control*.
 
-### PSPad
+<h2 id="instalace">Instalace</h2>
 
-Stačí nahrát výše [uvedný soubor](https://github.com/emmetio/pspad/blob/master/emmet.js) do adresáře `Script\JScript` ve složce PSPadu, tj. standardně do umístění `C:\Program Files (x86)\PSPad editor\Script\JScript`.
+<h3 id="sublime-text">Sublime Text</h3>
+<p>Do editoru Sublime Text se Emmet <b>instaluje</b> stejně jako ostatní <a href="/pluginy-sublime-text">pluginy</a> přes <i>Package Control</i>.</p>
+  
 
-Následně potom povolit skriptování v *Nastavení* → *Nastaveni programu* → *Integrace do systemu* → *Podpora skriptování pomocí WSH*.
+<h3 id="pspad">PSPad</h3>
+<p>Stačí nahrát výše <a href="https://github.com/emmetio/pspad/blob/master/emmet.js">uvedný soubor</a> do adresáře <code>Script\JScript</code> ve složce PSPadu, tj. standardně do umístění <code>C:\Program Files (x86)\PSPad editor\Script\JScript</code>.</p>
+  
+<p>Následně potom povolit skriptování v <i>Nastavení</i> → <i>Nastaveni programu</i> → <i>Integrace do systemu</i> → <i>Podpora skriptování pomocí WSH</i>.
+  
 
-V PSPadu se pro aplikaci Emmetu na text před kursorem používá zkratka Ctrl + ,.
+<p><img class="border" src="/files/emmet/pspad-povolit-skirptovani.png" alt="Povolení skriptování v PSPadu"></p>
 
-## Využití
 
-S Emmetem si lze výrazně urychlit a zkrátit zápis celých HTML bloků nebo CSS pravidel. Stačí napsat pár znaků a *odpálit* je standardně Tabulátorem nebo pomocí Ctrl + Enter.
 
-## Pár příkladů
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<p>V PSPadu se pro aplikaci Emmetu na text před kursorem používá zkratka <kbd>Ctrl</kbd> + <kbd>,</kbd>.
+
+
+
+<h2 id="vyuziti">Využití</h2>
+
+
+<p>S Emmetem si lze výrazně urychlit a zkrátit zápis celých HTML bloků nebo CSS pravidel. Stačí napsat pár znaků a <i>odpálit</i> je standardně <kbd>Tab</kbd>ulátorem nebo pomocí <kbd>Ctrl</kbd> + <kbd>Enter</kbd>.</p>
+
+
+<h2>Pár příkladů</h2>
+<script src="/assets/emmet/emmet.min.js"></script>
+<style>
   textarea {min-width: 50%; width: auto}
+</style>
 
-### HTML
+<h3 id="html">HTML</h3>
+<dl>
+  <dt id="odkaz-trida">Odkaz s třídou <code>button</code></dt>
+  <dd><p><code>a.button</code>, <kbd>Tab</kbd></p>
+  <textarea rows=1>a.button</textarea></dd>
+  
 
-  Odkaz s třídou `button`
-  `a.button`, Tab
+  
+  <dt id="checkbox">Zaškrtávací <code>&lt;input&gt;</code> v <code>&lt;label&gt;</code>u</dt>
+  <dd><p><code>label(input[type=checkbox])</code>, <kbd>Tab</kbd></p>
+  
+<textarea rows=1>label(input[type=checkbox])</textarea></dd>
+  
 
-  a.button
-
-  Zaškrtávací `&lt;input&gt;` v `&lt;label&gt;`u
-  `label(input[type=checkbox])`, Tab
-
-label(input[type=checkbox])
-
-  Seznam s pěti položkami
-  `ul(li{Položka}*5)`, Tab
-
-  Využít lze i číslování pořadí — je dostupné v `$`.
-
-    `ul(li{Položka **$**}*5)`, Tab
-
-ul(li{Položka $}*5)
-
+  
+  <dt>Seznam s pěti položkami</dt>
+  <dd><p><code>ul(li{Položka}*5)</code>, <kbd>Tab</kbd></p>
+  <p>Využít lze i číslování pořadí — je dostupné v <code>$</code>.</p>
+    <p><code>ul(li{Položka <b>$</b>}*5)</code>, <kbd>Tab</kbd></p>
+    
+<textarea rows="7" id="cislovani">ul(li{Položka $}*5)</textarea>
+    
+<script>
   function nastavit(str) {
     var c = document.getElementById("cislovani");   
   	c.innerHTML = str;
   	c.focus();
   }
-
-    - Číslovat od konce lze přidáním zavináče a spojovníku (`@-`),
-
-      číslování od čísla tři zajistí `@b3`,
-        - pro pevný počet míst čísel stačí napsat více dolarů,
-
-        - vše jde zkombinovat.
-
-  Jednoduchá struktura nadpisů
-  `h1+h2+p+h2+h3`, Tab
-
-h1+h2+p+h2+h3  
-
-  Komentář za ukončujícím `&lt;div>`em
-  
-    Pro přehlednost se občas hodí za ukončovací značku přidat komentář s třídou, aby bylo jasné, co značka ukončuje.
-
-    `.clanek|c`, Tab
-
-.clanek|c 
+</script>
     
-    Tohoto chování je možné dosáhnout i automaticky.
+    <ul><li>Číslovat od konce lze <button onclick="nastavit('ul(li{Položka $@-}*5)')">přidáním</button> zavináče a spojovníku (<code>@-</code>),</li>
+      
+      <li>číslování od čísla tři <button onclick="nastavit('ul(li{Položka $@3}*5)')">zajistí</button> <code>@b3</code>,
+        <li>pro pevný počet míst čísel stačí <button onclick="nastavit('ul(li{Položka $$}*5)')">napsat</button> více dolarů,</li>    
+      
+        <li>vše jde <button onclick="nastavit('ul(li{Položka $$@-3}*5)')">zkombinovat</button>.</li>  
+</ul>
+  </dd>
+  
 
-      	- [Automatically add closing comments to HTML using Emmet](http://iaintnoextra.tumblr.com/post/68089741466/automatically-add-closing-comments-to-html-using)
+  
+  <dt id="nadpisy">Jednoduchá struktura nadpisů</dt>
+  <dd><p><code>h1+h2+p+h2+h3</code>, <kbd>Tab</kbd></p>
+<textarea rows="5">h1+h2+p+h2+h3</textarea>  
+</dd>
+  
 
-Stačí do souboru `User/Emmet.sublime-settings` nakopírovat následující a restartovat.
+  
 
-    ```
-{
+  
+
+  <dt id="komentar">Komentář za ukončujícím <code>&lt;div></code>em</dt>
+  <dd>
+    <p>Pro přehlednost se občas hodí za ukončovací značku přidat komentář s třídou, aby bylo jasné, co značka ukončuje.</p>
+    <p><code>.clanek|c</code>, <kbd>Tab</kbd></p>
+<textarea rows="3">.clanek|c</textarea> 
+    
+    <p>Tohoto chování je možné dosáhnout i automaticky.</p>
+    
+    
+  	<div class="external-content">
+      <ul>
+      	<li><a href="http://iaintnoextra.tumblr.com/post/68089741466/automatically-add-closing-comments-to-html-using">Automatically add closing comments to HTML using Emmet</a></li>
+      </ul>
+
+    </div>
+  	
+    
+<p>Stačí do souboru <code>User/Emmet.sublime-settings</code> nakopírovat následující a restartovat.</p>
+    <pre><code>{
   "preferences": {
     "filter.commentAfter": "&lt;!-- /&lt;%= attr(\"id\", \"#\") %>&lt;%= attr(\"class\", \".\") %> -->"
   },
@@ -97,66 +155,72 @@ Stačí do souboru `User/Emmet.sublime-settings` nakopírovat následující a r
       "filters" : "html, c"
     }
   }
-}
-```
+}</code></pre>
+    
+    <p>Dá se do něj dostat přes <i>Preferences → Package Settings → Emmet → Settings – User</i>.</p>
+</dd>  
 
-    Dá se do něj dostat přes *Preferences → Package Settings → Emmet → Settings – User*.
 
-  Celý layout
-  `html:5>.header(img#logo)+.menu(ul(li>a{Odkaz $}*5))+.content(h1+p)+.footer`, Tab
-
-    html:5>.header(img#logo)+.menu(ul(li>a{Odkaz $}*5))+.content(h1+p)+.footer  
-
-  Lorem ipsum generátor
-  `lorem`, Tab
-
-    lorem
+  
+  <dt id="layout">Celý layout</dt>
+  <dd><p><code>html:5>.header(img#logo)+.menu(ul(li>a{Odkaz $}*5))+.content(h1+p)+.footer</code>, <kbd>Tab</kbd></p>
+    <textarea rows=10>html:5>.header(img#logo)+.menu(ul(li>a{Odkaz $}*5))+.content(h1+p)+.footer</textarea>  
+</dd>
+  
+  <dt id="lorem-ipsum">Lorem ipsum generátor</dt>
+  <dd><p><code>lorem</code>, <kbd>Tab</kbd></p>
+    <textarea rows=5>lorem
 lorem2
 p*5>lorem3
+</textarea>
+    <p>Lze používat i při zápisu „<code>element*5</code>“, číslo za <code>lorem</code> nastaví počet slov.</p>
+</dd>
+</dl>
 
-    Lze používat i při zápisu „`element*5`“, číslo za `lorem` nastaví počet slov.
+<h3>CSS</h3>
+<p>Podobná <i>kouzla</i> lze provádět i v CSS.</p>
 
-### CSS
-
-Podobná *kouzla* lze provádět i v CSS.
-
-  Absolutně posicovaný element
-  `posa+t10+l30+w100+h100+p1e+m1e`, Tab
-
-  ```
-position: absolute;
+<dl>
+  <dt id="position-absolute">Absolutně posicovaný element</dt>
+  <dd><p><code>posa+t10+l30+w100+h100+p1e+m1e</code>, <kbd>Tab</kbd></p>
+    
+<noscript>
+  <pre><code>position: absolute;
 top: 10px;
 left: 30px;
 width: 100px;
 height: 100px;
 padding: 1em;
-margin: 1em;
-```
+margin: 1em;</code></pre>
+  
+    </noscript>
+  <textarea class="emmet-syntax-css" rows=7>posa+t10+l30+w100+h100+p1e+m1e</textarea>  
+</dd>
+  <dt id="ramecek">Rámeček</dt>
+  <dd><p><code>bt1-s#</code>, <kbd>Tab</kbd></p>
+    
+<textarea class="emmet-syntax-css" rows=1>bt1-s#</textarea> 
+    <noscript><pre><code>border-top: 1px solid #000</code></pre>
+    
+    </noscript></dd>
+</dl>
 
-  posa+t10+l30+w100+h100+p1e+m1e  
+<p>Na první pohled vypadají HTML i CSS zkratky dost šíleně, nicméně jsou až překvapivě dobře promyšlené a svým způsobem intuitivní. Třeba k podivnému zápisu horního rámečku lze dojít postupným zkracováním.</p>
 
-  Rámeček
-  `bt1-s#`, Tab
+<p>Nejdříve jsem napsal <code>bt:1-s-#000</code> a zkoušel, co by se ještě dalo ubrat (<code>bt:1-s-#0</code> → <code>bt1-s#</code>). Převedení <code>#</code> bez kódu barvy na nulu je už trochu extrémní, ale myslím, že to hezky ilustruje tu promyšlenost.</p>
 
-bt1-s# 
-    ```
-border-top: 1px solid #000
-```
+<p>Kromě možnosti používat zkratky jednotlivých vlastností funguje i tzv. fuzzy search, kdy se Emmet snaží dohledávat, co vlastně chce člověk napsat, takže si lze v podstatě vytvořit svůj vlastní styl zápisu.</p>
 
-Na první pohled vypadají HTML i CSS zkratky dost šíleně, nicméně jsou až překvapivě dobře promyšlené a svým způsobem intuitivní. Třeba k podivnému zápisu horního rámečku lze dojít postupným zkracováním.
-
-Nejdříve jsem napsal `bt:1-s-#000` a zkoušel, co by se ještě dalo ubrat (`bt:1-s-#0` → `bt1-s#`). Převedení `#` bez kódu barvy na nulu je už trochu extrémní, ale myslím, že to hezky ilustruje tu promyšlenost.
-
-Kromě možnosti používat zkratky jednotlivých vlastností funguje i tzv. fuzzy search, kdy se Emmet snaží dohledávat, co vlastně chce člověk napsat, takže si lze v podstatě vytvořit svůj vlastní styl zápisu.
-
+	<script>
 		emmet.require('textarea').setup({
 			pretty_break: true, // enable formatted line breaks (when inserting 
 					            // between opening and closing tag) 
 			use_tab: true       // expand abbreviations by Tab key
 		});
+	</script>
 
-Další hezké funkce a vysvětlující dema jsou v [dokumentaci](http://docs.emmet.io/).
+<p>Další hezké funkce a vysvětlující dema jsou v <a href="http://docs.emmet.io/">dokumentaci</a>.</p>
 
-## Hayaku
 
-[Hayaku](https://github.com/hayaku/hayaku#readme) umožňuje ještě možná trochu lepší napovídání **CSS vlastností a hodnot** v **Sublime Textu**. Pohodlnější vytváření HTML kódu ale nenabízí.
+<h2 id="hayaku">Hayaku</h2>
+<p><a href="https://github.com/hayaku/hayaku#readme">Hayaku</a> umožňuje ještě možná trochu lepší napovídání <b>CSS vlastností a hodnot</b> v <b>Sublime Textu</b>. Pohodlnější vytváření HTML kódu ale nenabízí.</p>

@@ -5,120 +5,183 @@ description: "Jaké existují postupy pro <i>navěšení</i> JavaScriptové udá
 date: "2014-03-03"
 last_modification: "2017-07-30"
 status: 1
-tags: ["JavaScript", "JS události"]
+tags: ["js", "js-udalosti"]
+format: "html"
 ---
 
-Chceme-li na stránce vykonat nějakou JS akci, zpravidla si vytvoříme funkci, která se ve vhodný okamžik (při spuštění vhodné události) spustí.
+<p>Chceme-li na stránce vykonat nějakou JS akci, zpravidla si vytvoříme funkci, která se ve vhodný okamžik (při spuštění vhodné události) spustí.</p>
 
-## HTML atribut
 
-Asi nejjednodušší možnost je použít HTML atribut.
 
-```
-&lt;button **onclick**="akce()">
+
+
+
+<h2 id="html-atribut">HTML atribut</h2>
+
+<p>Asi nejjednodušší možnost je použít HTML atribut.</p>
+
+<pre><code>&lt;button <b>onclick</b>="akce()">
   Tlačítko
-&lt;/button>
-```
+&lt;/button></code></pre>
 
-[Ukázka](http://kod.djpw.cz/tecb)
 
-Výhodné je, že z HTML kódu je ihned patrné, že se tlačítko používá pro spouštění JS akcí.
 
-Někomu ale může přijít umisťování JS kódu do HTML jako *nečisté řešení*.
 
-### Celé kusy JS
 
-Do `on*` atributů je možné psát i celé bloky kódu, to ale příliš nedoporučuji.
 
-  - Takový kód není **znovupoužitelný**.
 
-  - Psaním do řetězce se ve většině editorů připravíme o barvení kódu. A nakonec si tím i *vyplácáme* jedny [uvozovky](/uvozovky).
 
-## Pseudo-odkaz
 
-Pro [klikací události](/udalosti-mysi#kliknuti) je možné využít běžný HTML odkaz:
 
-```
-&lt;a href="**javascript:**akce()">
+<p><a href="http://kod.djpw.cz/tecb">Ukázka</a></p>
+
+<p>Výhodné je, že z HTML kódu je ihned patrné, že se tlačítko používá pro spouštění JS akcí.</p>
+
+<p>Někomu ale může přijít umisťování JS kódu do HTML jako <i>nečisté řešení</i>.</p>
+
+
+
+
+
+<h3>Celé kusy JS</h3>
+<p>Do <code>on*</code> atributů je možné psát i celé bloky kódu, to ale příliš nedoporučuji.</p>
+
+<ol>
+  <li>Takový kód není <b>znovupoužitelný</b>.</li>
+  <li>Psaním do řetězce se ve většině editorů připravíme o barvení kódu. A nakonec si tím i <i>vyplácáme</i> jedny <a href="/uvozovky">uvozovky</a>.</li>
+</ol>
+
+
+
+
+<h2 id="odkaz">Pseudo-odkaz</h2>
+
+<p>Pro <a href="/udalosti-mysi#kliknuti">klikací události</a> je možné využít běžný HTML odkaz:</p>
+
+<pre><code>&lt;a href="<b>javascript:</b>akce()">
   Odkaz
-&lt;/a>
-```
+&lt;/a></code></pre>
 
-[Ukázka](http://kod.djpw.cz/uecb)
+<p><a href="http://kod.djpw.cz/uecb">Ukázka</a></p>
 
-Puntičkářům se na tomto způsobu nebude líbit, že bez podpory JavaScriptu je na stránce **nefunkční odkaz**. Řešení je toto tlačítko při absenci JS [skrýt přes CSS](/vypnuty-js).
+<p>Puntičkářům se na tomto způsobu nebude líbit, že bez podpory JavaScriptu je na stránce <b>nefunkční odkaz</b>. Řešení je toto tlačítko při absenci JS <a href="/vypnuty-js">skrýt přes CSS</a>.</p>
 
-## Nastavování vlastností
 
-První z možností, která odděluje HTML a JS kód, vypadá následovně. V HTML kódu se prvek, ke kterému připojíme událost, poznačí třeba pomocí [`id`](/id-class) (nebo se zajistí, aby se dal rozumně vybrat přes [`querySelector`](/queryselector)).
 
-```
-&lt;button **id**="tlacitko">
+
+
+
+
+
+
+
+
+<h2 id="vlastnosti">Nastavování vlastností</h2>
+
+<p>První z možností, která odděluje HTML a JS kód, vypadá následovně. V HTML kódu se prvek, ke kterému připojíme událost, poznačí třeba pomocí <a href="/id-class"><code>id</code></a> (nebo se zajistí, aby se dal rozumně vybrat přes <a href="/queryselector"><code>querySelector</code></a>).</p>
+
+<pre><code>&lt;button <b>id</b>="tlacitko">
   Tlačítko
-&lt;/button>
-```
+&lt;/button></code></pre>
 
-Pod tento HTML kód se připojí skript, který si element (v tomto případě podle ID) najde a **nastaví mu událost**.
 
-```
-// Najití elementu
+
+
+
+
+
+
+
+<p>Pod tento HTML kód se připojí skript, který si element (v tomto případě podle ID) najde a <b>nastaví mu událost</b>.</p>
+
+<pre><code>// Najití elementu
 var element = document.getElementById("tlacitko");
 // Nastavení události
-element.**onclick** = akce;
+element.<b>onclick</b> = akce;
+</code></pre>
 
-```
 
-[Ukázka](http://kod.djpw.cz/vecb)
 
-Trochu ošemetné je, že nás může svádět napsat dle zvyku z HTML atributů něco jako:
 
-```
-element.onclick = akce**()**;
-```
 
-To většinou ale není žádoucí, protože jako událost chceme zpravidla připojit danou funkci a **ne její výsledek**, což by způsobily právě ty dvě závorky (funkce by se zavolala a do `onclick`u by se přidal její výsledek).
 
-### Více funkcí
 
-Má-li se po kliknutí (nebo jiné události) provést více funkcí, řeší se to zpravidla vytvořením **anonymní funkce**.
 
-```
-element.onclick = function() {
+<p><a href="http://kod.djpw.cz/vecb">Ukázka</a></p>
+
+<p>Trochu ošemetné je, že nás může svádět napsat dle zvyku z HTML atributů něco jako:</p>
+
+
+
+<pre><code>element.onclick = akce<b>()</b>;</code></pre>
+
+
+
+
+
+<p>To většinou ale není žádoucí, protože jako událost chceme zpravidla připojit danou funkci a <b>ne její výsledek</b>, což by způsobily právě ty dvě závorky (funkce by se zavolala a do <code>onclick</code>u by se přidal její výsledek).</p>
+
+<h3 id="vice-funkci">Více funkcí</h3>
+<p>Má-li se po kliknutí (nebo jiné události) provést více funkcí, řeší se to zpravidla vytvořením <b>anonymní funkce</b>.</p>
+
+<pre><code>element.onclick = function() {
   akce();
   akce2();
-};
-```
+};</code></pre>
 
-Zde už je záměrem funkci `akce` a funkci `akce2` zavolat, proto ty `()`.
 
-## Akce přes `setAttribute`
 
-Připojit událost jde dále metodou `setAttribute`:
 
-```
-element.setAttribute("onclick", "akce()");
-```
 
-Tím se pro vybraný `element` docílí podobného efektu jako při použití `on*` HTML atributu.
 
-Stejně tak trpí toto řešení totožným problémem: psaní skriptu do textového řetězce. Omezuje to znovupoužitelnost a v editoru může být problém se zvýrazňováním syntaxe.
 
-## Metody `addEventListener`/`attachEvent`
 
-Poslední možnost je používat metodu `addEventListener`, resp. `attachEvent` pro starší než **IE 9**.
 
-```
-element.addEventListener("click", akce);
-```
 
-Pro **IE 8** a starší stačí vybrat nějaký [polyfill](https://gist.github.com/eirikbacker/2864711).
 
-Metodě `addEventListener` se jako první parametr předává název události. Ale už bez `on`, takže např. `click`, `mousemove` a podobně. Druhý parametr je potom funkce, která se má při spuštění události provést. Opět je možné používat i funkci anonymní:
+<p>Zde už je záměrem funkci <code>akce</code> a funkci <code>akce2</code> zavolat, proto ty <code>()</code>.</p>
 
-```
-element.addEventListener("click", function() {
+
+
+<h2 id="set">Akce přes <code>setAttribute</code></h2>
+
+<p>Připojit událost jde dále metodou <code>setAttribute</code>:</p>
+
+<pre><code>element.setAttribute("onclick", "akce()");</code></pre>
+
+
+
+
+
+
+
+<p>Tím se pro vybraný <code>element</code> docílí podobného efektu jako při použití <code>on*</code> HTML atributu.</p>
+
+<p>Stejně tak trpí toto řešení totožným problémem: psaní skriptu do textového řetězce. Omezuje to znovupoužitelnost a v editoru může být problém se zvýrazňováním syntaxe.</p>
+
+
+
+
+<h2 id="event-listener">Metody <code>addEventListener</code>/<code>attachEvent</code></h2>
+
+<p>Poslední možnost je používat metodu <code>addEventListener</code>, resp. <code>attachEvent</code> pro starší než <b>IE 9</b>.</p>
+
+<pre><code>element.addEventListener("click", akce);</code></pre>
+
+<p>Pro <b>IE 8</b> a starší stačí vybrat nějaký <a href="https://gist.github.com/eirikbacker/2864711">polyfill</a>.</p>
+
+<p>Metodě <code>addEventListener</code> se jako první parametr předává název události. Ale už bez <code>on</code>, takže např. <code>click</code>, <code>mousemove</code> a podobně. Druhý parametr je potom funkce, která se má při spuštění události provést. Opět je možné používat i funkci anonymní:</p>
+
+<pre><code>element.addEventListener("click", function() {
   akce();
-});
-```
+});</code></pre>
 
-Asi hlavní výhoda tohoto postupu je, že umožňuje pohodlně navazovat do jedné události několik funkcí ([ukázka](http://kod.djpw.cz/xecb)). Obdobný [postup](http://kod.djpw.cz/wecb) by u předchozího způsobu nastavil jen tu poslední akci.
+<p>Asi hlavní výhoda tohoto postupu je, že umožňuje pohodlně navazovat do jedné události několik funkcí (<a href="http://kod.djpw.cz/xecb">ukázka</a>). Obdobný <a href="http://kod.djpw.cz/wecb">postup</a> by u předchozího způsobu nastavil jen tu poslední akci.</p>
+
+<!--
+ 
+http://kod.djpw.cz/froc
+https://medium.com/@DavideRama/removeeventlistener-and-anonymous-functions-ab9dbabd3e7b
+https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener#Matching_event_listeners_for_removal
+
+-->

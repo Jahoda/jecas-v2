@@ -5,93 +5,93 @@ description: "HTML element <code>&lt;time></code>. Jak a proč ho použít na st
 date: "2014-07-01"
 last_modification: "2014-09-17"
 status: 1
-tags: ["HTML", "HTML značky", "Datum"]
+tags: ["datum", "html", "html-tagy"]
+format: "html"
 ---
 
-Pro vyznačení, co na stránce je **datum**, **čas** nebo **časový úsek**, byla zavedena HTML značka `&lt;time>`.
+<p>Pro vyznačení, co na stránce je <b>datum</b>, <b>čas</b> nebo <b>časový úsek</b>, byla zavedena HTML značka <code>&lt;time></code>.</p>
 
-Z pohledu **prohlížečů** jde o řádkový [povinně párový tag](/html-znacky#povinne), který se nevyznačuje výrazně speciálním chováním, tudíž nemá skoro smysl řešit jeho funkčnost v prohlížečích (kromě **IE 8**, kde [nepůjde stylovat](/vlastni-html-znacky#html5)).
+<p>Z pohledu <b>prohlížečů</b> jde o řádkový <a href="/html-znacky#povinne">povinně párový tag</a>, který se nevyznačuje výrazně speciálním chováním, tudíž nemá skoro smysl řešit jeho funkčnost v prohlížečích (kromě <b>IE 8</b>, kde <a href="/vlastni-html-znacky#html5">nepůjde stylovat</a>).</p>
 
-Z pohledu **návštěvníka** se použití `&lt;time>` prakticky neliší od neutrální řádkové značky `&lt;span>`.
+<p>Z pohledu <b>návštěvníka</b> se použití <code>&lt;time></code> prakticky neliší od neutrální řádkové značky <code>&lt;span></code>.</p>
 
-Využitelná je tedy tato značka zejména pro **strojové zpracování**.
+<p>Využitelná je tedy tato značka zejména pro <b>strojové zpracování</b>.</p>
 
-## Zápis
 
-```
-&lt;time>
+<h2 id="zapis">Zápis</h2>
+
+<pre><code>&lt;time>
   17. září 2014
-&lt;/time>
-```
+&lt;/time></code></pre>
 
-Protože výše uvedenému **českému formátu data** by nemusel *stroj* porozumět (i když například [Google](/google) s tím nemá problém), existuje atribut `datetime`.
+<p>Protože výše uvedenému <b>českému formátu data</b> by nemusel <i>stroj</i> porozumět (i když například <a href="/google">Google</a> s tím nemá problém), existuje atribut <code>datetime</code>.</p>
 
-```
-&lt;time **datetime**="2014-09-17">
+
+<pre><code>&lt;time <b>datetime</b>="2014-09-17">
   17. září 2014
-&lt;/time>
-```
+&lt;/time></code></pre>
 
-## Atribut `datetime`
 
-Do atributu pro strojově zpracovatelný datum/čas je potom možné zadávat *různé věci*. V zásadě jde použít totéž, co u [&lt;input>ů pro čas/datum](/input#type-date).
+<h2 id="datetime">Atribut <code>datetime</code></h2>
 
-Co se týče data, nejdelší použitelný zápis je:
+<p>Do atributu pro strojově zpracovatelný datum/čas je potom možné zadávat <i>různé věci</i>. V zásadě jde použít totéž, co u <a href="/input#type-date">&lt;input>ů pro čas/datum</a>.</p>
 
+<p>Co se týče data, nejdelší použitelný zápis je:</p>
+
+<style>
   code.vysvetleni span {position: relative; border: 1px solid transparent; cursor: pointer}
   code.vysvetleni span:hover, code.vysvetleni span:focus {background: #ccc; border: 1px dotted #666}
   code.vysvetleni span:focus:after {content: attr(title); position: absolute; top: -2em; left: 0; background: #666; color: #fff; padding: 0 .3em}
+</style>
+<pre style="overflow: visible"><code class="vysvetleni"><span tabindex="-1" title="rok">2014</span>-<span tabindex="-1" title="měsíc">09</span>-<span tabindex="-1" title="den">31</span><span tabindex="-1" title="oddělovač data a času (stačí i mezera)">T</span><span tabindex="-1" title="hodina">23</span>:<span tabindex="-1" title="minuta">59</span>:<span tabindex="-1" title="vteřina">59</span><span tabindex="-1" title="časové pásmo">+02:00</span></code></pre>
 
-```
-2014-09-31T23:59:59+02:00
-```
+<p><i>(pro vysvětlení klikněte na libovolnou část řetězce)</i></p>
 
-*(pro vysvětlení klikněte na libovolnou část řetězce)*
+<p>Z toho jde potom <b>zjednodušováním</b> vytvořit datum s časem bez časového pásma, samotný čas, samotný datum, samotný rok a měsíc nebo jen rok a podobně.</p>
 
-Z toho jde potom **zjednodušováním** vytvořit datum s časem bez časového pásma, samotný čas, samotný datum, samotný rok a měsíc nebo jen rok a podobně.
+<p>Zvláštní případ je potom určení týdne v roce:</p>
 
-Zvláštní případ je potom určení týdne v roce:
+<pre style="overflow: visible"><code class="vysvetleni">2014-<span tabindex="-1" title="23. týden v roce">W23</span></code></pre>
 
-```
-2014-W23
-```
 
-### Doba trvání
+<h3 id="trvani">Doba trvání</h3>
 
-Nakonec jde do `datetime` zadat i dobu trvání. Ta může najít uplatnění třeba u znázornění **délky videa** nebo jiné doby trvání:
+<p>Nakonec jde do <code>datetime</code> zadat i dobu trvání. Ta může najít uplatnění třeba u znázornění <b>délky videa</b> nebo jiné doby trvání:</p>
 
-```
-&lt;time datetime="4d 3m 10s">
+<pre><code>&lt;time datetime="4d 3m 10s">
   4 dny, 3 minuty a 10 vteřin
-&lt;/time>
-```
+&lt;/time></code></pre>
 
-Výše uvedený příklad by znázorňoval dobu trvání 4 dny (`4d`), 3 minuty (`3m`) a 10 vteřin (`10s`).
+<p>Výše uvedený příklad by znázorňoval dobu trvání 4 dny (<code>4d</code>), 3 minuty (<code>3m</code>) a 10 vteřin (<code>10s</code>).</p>
 
-Ještě existuje druhý způsob zápisu:
+<p>Ještě existuje druhý způsob zápisu:</p>
 
-```
-P 4D T 3M 10S
-```
 
-Mezery mezi jednotlivými částmi **jsou volitelné**.
+<pre style="overflow: visible"><code class="vysvetleni"><span tabindex="-1" title="P jako period – značí, že se jedná o dobu trvání">P</span> <span tabindex="-1" title="čtyři dny">4D</span> <span tabindex="-1" title="oddělení data a času">T</span> <span tabindex="-1" title="3 minuty">3M</span> <span tabindex="-1" title="10 vteřin">10S</span></code></pre>
 
-## Využití
+<p>Mezery mezi jednotlivými částmi <b>jsou volitelné</b>.</p>
 
-Kromě **sémantického výzamu** a teoreticky lepší **strojové čitelnosti** nejsou moc důvody element `&lt;time>` používat.
 
-**Vyhledávače** si z historických důvodů musí poradit i s prostým uvedením data mimo značku `&lt;time>`, navíc v případě Google jde oblast s datem na stránce přímo vyznačit v **Google Webmaster Tools** (*Vzhled vyhledávání* → *Zvýrazňovač dat*).
+<h2 id="vyuziti">Využití</h2>
 
-Z pohledu JavaScriptového API značky `&lt;time>` také není nic moc k disposici, kromě vlastnosti `dateTime` pro práci s atributem `datetime`.
+<p>Kromě <b>sémantického výzamu</b> a teoreticky lepší <b>strojové čitelnosti</b> nejsou moc důvody element <code>&lt;time></code> používat.</p>
 
-## Potenciál
+<p><b>Vyhledávače</b> si z historických důvodů musí poradit i s prostým uvedením data mimo značku <code>&lt;time></code>, navíc v případě Google jde oblast s datem na stránce přímo vyznačit v <b>Google Webmaster Tools</b> (<i>Vzhled vyhledávání</i> → <i>Zvýrazňovač dat</i>).</p>
 
-Potenciál značka `&lt;time>` ale možná má. Dají se představit případy užití, kdy by kombinaci s chytrým prohlížečem / operačním systémem mohla nabídnout něco víc. Třeba nabízet na základě hodnoty v `&lt;time>` **vytvoření události** v kalendáři, na základě doby trvání třeba připravit **zapnutí odpočítávání** a podobně.
+<p>Z pohledu JavaScriptového API značky <code>&lt;time></code> také není nic moc k disposici, kromě vlastnosti <code>dateTime</code> pro práci s atributem <code>datetime</code>.</p>
 
-## Odkazy jinam
 
-  - DevDocs: [`&lt;time>`](http://devdocs.io/html/element/time)
+<h2 id="potencial">Potenciál</h2>
 
-  - [Specifikace na W3C](http://www.w3.org/TR/html5/grouping-content.html#the-time-element)
+<p>Potenciál značka <code>&lt;time></code> ale možná má. Dají se představit případy užití, kdy by kombinaci s chytrým prohlížečem / operačním systémem mohla nabídnout něco víc. Třeba nabízet na základě hodnoty v <code>&lt;time></code> <b>vytvoření události</b> v kalendáři, na základě doby trvání třeba připravit <b>zapnutí odpočítávání</b> a podobně.</p>
 
-  - [Dates, Time, Units and Events](http://thenewcode.com/5/Web-Developer-Reading-List-Dates-Time-Units-and-Events)
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>DevDocs: <a href="http://devdocs.io/html/element/time"><code>&lt;time></code></a></li>
+  
+  <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-time-element">Specifikace na W3C</a></li>
+  
+  <li><a href="http://thenewcode.com/5/Web-Developer-Reading-List-Dates-Time-Units-and-Events">Dates, Time, Units and Events</a></li>
+</ul>

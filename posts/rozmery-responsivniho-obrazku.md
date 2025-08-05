@@ -5,157 +5,235 @@ description: "Jak zabránit poskakování responsivních obrázků během načí
 date: "2015-07-25"
 last_modification: "2015-08-19"
 status: 1
-tags: ["Hotová řešení", "Responsivní design", "Obrázky"]
+tags: ["hotova-reseni", "obrazky", "responsive"]
+format: "html"
 ---
 
-Nejsnazší řešení [responsivních obrázků](/responsivni-obrazky) je nastavení maximální šířky `&lt;img>` na 100 % a nastavení výšky na `auto`, aby se **dopočítala podle šířky**.
+<p>Nejsnazší řešení <a href="/responsivni-obrazky">responsivních obrázků</a> je nastavení maximální šířky <code>&lt;img></code> na 100 % a nastavení výšky na <code>auto</code>, aby se <b>dopočítala podle šířky</b>.</p>
 
-```
-img {
+<pre><code>img {
   max-width: 100%; 
   height: auto;
-}
-```
+}</code></pre>
 
-Obrázky se potom sice hezky přizpůsobují velikosti okna, ale trpí zásadním nedostatkem – **prohlížeč nezná výšku, dokud obrázek nestáhne**. To způsobuje nepěkné **poskakování stránky během načítání**, které navíc zdržuje vykreslování.
 
-Prohlížeč zkrátka neví, kolik místa má pro obrázek vyhradit.
 
-Naštěstí existuje následující řešení:
 
-    - [Výška závislá na šířce](/vyska-podle-sirky) – způsob, jak nastavit výšku jako procento z šířky
 
-Využívá se toho, že `padding` se počítá z šířky elementu a v případě výchozího „obsahového“ [box modelu](/box-sizing) (`box-sizing: border-box`) se do rozměrů sčítá `padding` s výškou. Pokud tedy bude `height` nulová, bude celkovou výšku určovat hodnota `padding`u.
+<p>Obrázky se potom sice hezky přizpůsobují velikosti okna, ale trpí zásadním nedostatkem – <b>prohlížeč nezná výšku, dokud obrázek nestáhne</b>. To způsobuje nepěkné <b>poskakování stránky během načítání</b>, které navíc zdržuje vykreslování.</p>
 
-## Řešení
+<p>Prohlížeč zkrátka neví, kolik místa má pro obrázek vyhradit.</p>
 
-Pro nastavení výšky obrázku v závislosti na proměnlivé šířce je tak nutné **nastavit poměr stran** jako `padding`.
+<p><img src="/files/rozmery-responsivniho-obrazku/nacitani.gif" alt="Odsunutí textu během načítání" class="border"></p>
 
-Dopočítat potřebný poměr jde snadno **vydělením výšky obrázku jeho šířkou** a převedením na procenta (vynásobit stem).  Níže v článku je přímo generátor kódu, který po zadání URL obrázku připraví potřebné CSS.
 
-### Realisace v CSS
 
-V CSS je postup takový, že se pro obrázek vytvoří kontejner (obal), který vymezí prostor na šířku a na výšku, což zabrání poskakování, a do tohoto obalu se vloží samotná značka `&lt;img>`.
 
-HTML kód:
 
-```
-&lt;div class="img-cover">
+
+
+
+
+
+
+
+
+
+
+<p>Naštěstí existuje následující řešení:</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/vyska-podle-sirky">Výška závislá na šířce</a> – způsob, jak nastavit výšku jako procento z šířky</li>
+  </ul>
+</div>
+
+<p>Využívá se toho, že <code>padding</code> se počítá z šířky elementu a v případě výchozího „obsahového“ <a href="/box-sizing">box modelu</a> (<code>box-sizing: border-box</code>) se do rozměrů sčítá <code>padding</code> s výškou. Pokud tedy bude <code>height</code> nulová, bude celkovou výšku určovat hodnota <code>padding</code>u.</p>
+
+
+<h2 id="reseni">Řešení</h2>
+
+<p>Pro nastavení výšky obrázku v závislosti na proměnlivé šířce je tak nutné <b>nastavit poměr stran</b> jako <code>padding</code>.</p>
+
+<p>Dopočítat potřebný poměr jde snadno <b>vydělením výšky obrázku jeho šířkou</b> a převedením na procenta (vynásobit stem).  Níže v článku je přímo generátor kódu, který po zadání URL obrázku připraví potřebné CSS.</p>
+
+
+
+
+<h3 id="css">Realisace v CSS</h3>
+
+<p>V CSS je postup takový, že se pro obrázek vytvoří kontejner (obal), který vymezí prostor na šířku a na výšku, což zabrání poskakování, a do tohoto obalu se vloží samotná značka <code>&lt;img></code>.</p>
+
+<p>HTML kód:</p>
+
+<pre><code>&lt;div class="img-cover">
   &lt;img src="">
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-Element `.img-cover` bude mít nastaven požadovaný poměr stran (v tomto případě 75 %):
 
-```
-.img-cover {
+
+
+
+<p>Element <code>.img-cover</code> bude mít nastaven požadovaný poměr stran (v tomto případě 75 %):</p>
+
+<pre><code>.img-cover {
     height: 0;
     padding-bottom: 75%;
-}
-```
+}</code></pre>
 
-Obrázek se potom pouze roztáhne podle tohoto obalu:
 
-```
-.img-cover img {
+
+
+
+
+<p>Obrázek se potom pouze roztáhne podle tohoto obalu:</p>
+
+<pre><code>.img-cover img {
   width: 100%;
-}
-```
+}</code></pre>
 
-V případě, že bude dostupná šířka pro `.img-cover` větší než skutečná šířka obrázku, bude obrázek **roztažen nad své rozměry**.
 
-Je-li to nežádoucí, je potřeba všechno obalit do dalšího `&lt;div>`u:
 
-```
-&lt;div class="img">
+
+<p>V případě, že bude dostupná šířka pro <code>.img-cover</code> větší než skutečná šířka obrázku, bude obrázek <b>roztažen nad své rozměry</b>.</p>
+
+
+<p>Je-li to nežádoucí, je potřeba všechno obalit do dalšího <code>&lt;div></code>u:</p>
+
+
+<pre><code>&lt;div class="img">
   &lt;div class="img-cover">
     &lt;img src="">
   &lt;/div>
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-Tento obal `.img` bude mít nastavenou maximální šířku (`max-widht`). Odsazení (`padding`) elementu `.img-cover`, které ve finále stanovuje výšku, se totiž počítá z šířky svého rodiče.
 
-  **Generátor CSS kódu pro přepočet rozměrů v px na procenta:**
 
-  Načíst obrázek z URL: 
 
-    Šířka: 
+  
+<p>Tento obal <code>.img</code> bude mít nastavenou maximální šířku (<code>max-widht</code>). Odsazení (<code>padding</code>) elementu <code>.img-cover</code>, které ve finále stanovuje výšku, se totiž počítá z šířky svého rodiče.</p>
 
-    Výška: 
 
-     Nastavit maximální šířku
+<form class="live no-source" oninput="generateCode(this)" id="ratio-generator">
+  <p><b>Generátor CSS kódu pro přepočet rozměrů v px na procenta:</b></p>
+  
+  <p><label>Načíst obrázek z URL: <input type="url" onpaste="loadImage(this)" onkeyup="loadImage(this)" onchange="loadImage(this)" onclick="this.select()"></label></p>
+  <div id="img-area"></div>
+  
+  <p>
+    <label>Šířka: <input type="text" name="width" value="100"></label>
+  </p>
+  <p>
+    <label>Výška: <input type="text" name="height" value="75"></label>
+  </p>  
 
-  ```
-.img-cover {height: 0; padding-bottom: 75%}
-.img-cover img {width: 100%; height: auto}
-```
+  <p>
+    <label><input type="checkbox" name="maxwidth" onchange="generateCode(this.form)"> Nastavit maximální šířku</label>
+  </p>
+  
+  <pre><code id="img-code">.img-cover {height: 0; padding-bottom: 75%}
+.img-cover img {width: 100%; height: auto}</code></pre>
+</form>
 
-## Obrázky s různými rozměry
 
-Problém nastane, když je na stránce hromada obrázků s **různými rozměry**. Potom by ruční počítání poměru výšky a šířky každého z nich bylo značně pracné.
+<h2 id="ruzne-rozmery">Obrázky s různými rozměry</h2>
 
-### Řešení na straně serveru
+<p>Problém nastane, když je na stránce hromada obrázků s <b>různými rozměry</b>. Potom by ruční počítání poměru výšky a šířky každého z nich bylo značně pracné.</p>
 
-V případě, že na straně serveru existuje nějaký mechanismus, který obrázkům dokáže nastavovat rozměry, může rovnou dopočítat i poměr s maximální šířkou a přidat tato pravidla do `style` atributu.
 
-```
-&lt;div class="img" *style="max-width: 200px"*>
-  &lt;div class="img-cover" **style="padding-bottom: 75%"**>
+
+
+<h3 id="server">Řešení na straně serveru</h3>
+
+<p>V případě, že na straně serveru existuje nějaký mechanismus, který obrázkům dokáže nastavovat rozměry, může rovnou dopočítat i poměr s maximální šířkou a přidat tato pravidla do <code>style</code> atributu.</p>
+
+<pre><code>&lt;div class="img" <i>style="max-width: 200px"</i>>
+  &lt;div class="img-cover" <b>style="padding-bottom: 75%"</b>>
     &lt;img width="200" height="150">
   &lt;/div>
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-Výše uvedený kód počítá s CSS pravidly:
 
-```
-.img-cover {height: 0}
-.img-cover img {width: 100%; height: auto}
-```
 
-V budoucnu je možné, že by rozměr z atributů mohl jít získat přes `attr` a dopočítat [funkcí `calc`](/calc). Momentálně ale `attr` funguje pouze u vlastnosti [`content`](/content-attr).
 
-    - [Živá ukázka](http://kod.djpw.cz/tbpb) vygenerovaného kódu kolem obrázků
 
-### Řešení v JavaScriptu
 
-Použít k nastavení rozměrů JS je spíš nouzové řešení, protože některé obrázky se mohou **začít načítat dříve**, než se stihne spustit skript nastavující rozměry.
 
-Dále řešení v JavaScriptu přichází pouze v úvahu, když obrázky už mají nastaveny rozměry v HTML atributech `width` a `height`. JS sice umí [zjistit skutečné rozměry obrázku](/skutecne-rozmery-obrazku), potřebuje ho ale k tomu **nejprve načíst**, což je v tomto případě problém.
+<p>Výše uvedený kód počítá s CSS pravidly:</p>
 
-JS tedy projde obrázky na stránce (`document.images`) a obalí je do elementů **zabírající prostor o rozměrech obrázku**.
+<pre><code>.img-cover {height: 0}
+.img-cover img {width: 100%; height: auto}</code></pre>
 
-Aby bylo poskakování co nejmenší, měl by se tento kód spustit na stránce co nejdříve.
 
-    - [Živá ukázka](http://kod.djpw.cz/sbpb) – vytvoření placeholderů pro responsivní obrázky
 
-## Netrpí poskakováním můj web?
+<p>V budoucnu je možné, že by rozměr z atributů mohl jít získat přes <code>attr</code> a dopočítat <a href="/calc">funkcí <code>calc</code></a>. Momentálně ale <code>attr</code> funguje pouze u vlastnosti <a href="/content-attr"><code>content</code></a>.</p>
 
-Nejlepší způsob, jak zjistit, jestli tímto problémem web netrpí, je vypnutí/zakázání obrázků.
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/tbpb">Živá ukázka</a> vygenerovaného kódu kolem obrázků</li>
+  </ul>
+</div>
 
-V **Chrome** je toto nastavení pod `chrome://settings/content`.
 
-Všimnout si poskakování stránky jde i při nastavení velmi pomalého připojení ve [vývojářských nástrojích](/vyvojarske-nastroje).
+<h3 id="js">Řešení v JavaScriptu</h3>
 
-Bez **vypínání obrázků** v prohlížeči si jde pomoci krátkým JavaScriptem, který všechny obrázky na stránce nahradí 1px bílým GIFem.
+<p>Použít k nastavení rozměrů JS je spíš nouzové řešení, protože některé obrázky se mohou <b>začít načítat dříve</b>, než se stihne spustit skript nastavující rozměry.</p>
 
-Po spuštění tohoto kódu by dobře udělaná stránka **neměla nijak poskočit**.
 
-```
-(function(img) {
+
+<p>Dále řešení v JavaScriptu přichází pouze v úvahu, když obrázky už mají nastaveny rozměry v HTML atributech <code>width</code> a <code>height</code>. JS sice umí <a href="/skutecne-rozmery-obrazku">zjistit skutečné rozměry obrázku</a>, potřebuje ho ale k tomu <b>nejprve načíst</b>, což je v tomto případě problém.</p>
+
+<p>JS tedy projde obrázky na stránce (<code>document.images</code>) a obalí je do elementů <b>zabírající prostor o rozměrech obrázku</b>.</p>
+
+<p>Aby bylo poskakování co nejmenší, měl by se tento kód spustit na stránce co nejdříve.</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/sbpb">Živá ukázka</a> – vytvoření placeholderů pro responsivní obrázky</li>
+  </ul>
+</div>
+
+<h2 id="otestovat">Netrpí poskakováním můj web?</h2>
+
+<p>Nejlepší způsob, jak zjistit, jestli tímto problémem web netrpí, je vypnutí/zakázání obrázků.</p>
+
+<p>V <b>Chrome</b> je toto nastavení pod <code>chrome://settings/content</code>.</p>
+
+<p>Všimnout si poskakování stránky jde i při nastavení velmi pomalého připojení ve <a href="/vyvojarske-nastroje">vývojářských nástrojích</a>.</p>
+
+<p>Bez <b>vypínání obrázků</b> v prohlížeči si jde pomoci krátkým JavaScriptem, který všechny obrázky na stránce nahradí 1px bílým GIFem.</p>
+
+<p>Po spuštění tohoto kódu by dobře udělaná stránka <b>neměla nijak poskočit</b>.</p>
+
+<pre><code>(function(img) {
     for (var i = img.length; i--; ) {
         img[i].src = "data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAAHAP8ALAAAAAABAAEAAAICRAEAOw==";
     }
-})(document.images);
-```
+})(document.images);</code></pre>
 
-Spustit tento kód přímo na stránce jde třeba vložením po napsání `javascript:` do adresního řádku (kopírovat „`javascript:`“ z bezpečnostních důvodů jít nemusí).
 
-## Odkazy jinam
 
-  - [Intrinsic Placeholders with the Picture Element](http://daverupert.com/2015/12/intrinsic-placeholders-with-picture/) – využití značky `&lt;picture>` pro placeholdery
 
+
+
+
+<p>Spustit tento kód přímo na stránce jde třeba vložením po napsání <code>javascript:</code> do adresního řádku (kopírovat „<code>javascript:</code>“ z bezpečnostních důvodů jít nemusí).</p>
+
+
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="http://daverupert.com/2015/12/intrinsic-placeholders-with-picture/">Intrinsic Placeholders with the Picture Element</a> – využití značky <code>&lt;picture></code> pro placeholdery</li>
+</ul>
+
+<!--
+<p><a href="http://kod.djpw.cz/pnob">Živá ukázka</a> – příklad použití u responsivní mřížky</p>
+-->
+
+<script>
   var imgCode = document.getElementById("img-code");
   
   function generateCode(f) {
@@ -181,3 +259,4 @@ Spustit tento kód přímo na stránce jde třeba vložením po napsání `javas
       generateCode(el.form);
     }    
   }
+</script>

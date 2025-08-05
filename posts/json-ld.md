@@ -6,6 +6,9 @@ date: "2016-01-29"
 last_modification: "2016-01-29"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [JSON for Linking Data](http://json-ld.org/)
+<ul>
+  <li><a href="http://json-ld.org/">JSON for Linking Data</a></li>
+</ul>

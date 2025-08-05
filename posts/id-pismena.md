@@ -5,75 +5,82 @@ description: "Jak místo dlouhého číselného identifikátoru použít kratš�
 date: "2014-11-21"
 last_modification: "2014-11-22"
 status: 1
-tags: ["Hotová řešení", "Rady a nápady", "PHP"]
+tags: ["hotova-reseni", "napady", "php"]
+format: "html"
 ---
 
-Pro identifikaci položek v databási se často používají **číselné identifikátory**. Je to pohodlné, protože díky volbě *Auto Increment* se o vytváření unikátních identifikátorů položek stará DB v podstatě sama.
+<p>Pro identifikaci položek v databási se často používají <b>číselné identifikátory</b>. Je to pohodlné, protože díky volbě <i>Auto Increment</i> se o vytváření unikátních identifikátorů položek stará DB v podstatě sama.</p>
 
-Pokud se ale s číselným identifikátorem má **setkat člověk**, není to úplně ideální.
+<p>Pokud se ale s číselným identifikátorem má <b>setkat člověk</b>, není to úplně ideální.</p>
 
-  - **Význam** – z jakéhosi čísla není patrný konkrétní záznam, který číslo representuje.
+<ol>
+  <li><b>Význam</b> – z jakéhosi čísla není patrný konkrétní záznam, který číslo representuje.</li>
+  
+  <li><b>Délka</b> – při milionu záznamů bude mít identifikátor <b>7 znaků</b> (<code>1 000 000</code>)</li>
+</ol>
 
-  - **Délka** – při milionu záznamů bude mít identifikátor **7 znaků** (`1 000 000`)
+<p>Číselné ID tedy kombinuje dvě nevýhody. Je nečitelné a dlouhé.</p>
 
-Číselné ID tedy kombinuje dvě nevýhody. Je nečitelné a dlouhé.
+<p>V případě, kdy máme pro <b>jednoznačné identifikování</b> k disposici čitelnější obsah, je lepší ho použít. To je třeba případ adres webový stránek, kdy se často v URL používá název stránky ochuzený o diakritiku, mezery a převedený na malá písmena.</p>
 
-V případě, kdy máme pro **jednoznačné identifikování** k disposici čitelnější obsah, je lepší ho použít. To je třeba případ adres webový stránek, kdy se často v URL používá název stránky ochuzený o diakritiku, mezery a převedený na malá písmena.
+<div class="external-content">
+  <ul>
+    <li>PHP triky: <a href="http://php.vrana.cz/vytvoreni-pratelskeho-url.php">Vytvoření přátelského URL</a></li>
+  </ul>
+</div>
 
-    - PHP triky: [Vytvoření přátelského URL](http://php.vrana.cz/vytvoreni-pratelskeho-url.php)
 
-## Zkrácení identifikátoru
+<h2 id="zkraceni">Zkrácení identifikátoru</h2>
 
-Pokud ale lepší identifikátor vymyslet nelze, můžeme alespoň odstranit problém s délkou. To je možné použitím alfanumerických znaků (písmen i čísel). Dělá to tak například **YouTube**, různé zkracovače adres nebo služby pro nahrávání obrázků.
+<p>Pokud ale lepší identifikátor vymyslet nelze, můžeme alespoň odstranit problém s délkou. To je možné použitím alfanumerických znaků (písmen i čísel). Dělá to tak například <b>YouTube</b>, různé zkracovače adres nebo služby pro nahrávání obrázků.</p>
 
-Zatímco u čistě číselných ID může na jedné posici být pouze 10 různých znaků (`1`–`9` a `0`), při použití základních znaků abecedy **počet kombinací naroste**. Základní abeceda má **26 znaků**.
+<p>Zatímco u čistě číselných ID může na jedné posici být pouze 10 různých znaků (<code>1</code>–<code>9</code> a <code>0</code>), při použití základních znaků abecedy <b>počet kombinací naroste</b>. Základní abeceda má <b>26 znaků</b>.</p>
 
-Na první pohled ten rozdíl nemusí vypadat významně, ale počet možných základních znaků se **umocňuje** celkovým počtem znaků identifikátoru.
+<p>Na první pohled ten rozdíl nemusí vypadat významně, ale počet možných základních znaků se <b>umocňuje</b> celkovým počtem znaků identifikátoru.</p>
 
-Pro ID o 3 znacích bude platit:
+<p>Pro ID o 3 znacích bude platit:</p>
 
-  - **Čísla** – 10 kombinací ^ 3 znaky = **1 000 položek**
+<ul>
+  <li><b>Čísla</b> – 10 kombinací ^ 3 znaky = <b>1 000 položek</b></li>
+  
+  <li><b>Základní abeceda</b> – 26 kombinací ^ 3 znaky = <b>17 576 položek</b></li>
+</ul>
 
-  - **Základní abeceda** – 26 kombinací ^ 3 znaky = **17 576 položek**
+<p>Do čtyřech znaků se potom při použití písmen vejde už skoro <b>0,5 milionu</b>, což je oproti <b>10 tisícům</b> čísel značná výhoda. Při pěti znacích už je to <b>11 milionů</b>.</p>
 
-Do čtyřech znaků se potom při použití písmen vejde už skoro **0,5 milionu**, což je oproti **10 tisícům** čísel značná výhoda. Při pěti znacích už je to **11 milionů**.
+<p>V extrémním případě (používá například <b>YouTube</b>) můžeme identifikátor tvořit z:</p>
 
-V extrémním případě (používá například **YouTube**) můžeme identifikátor tvořit z:
+<ol>
+  <li>čísel (10 znaků),</li>
+  <li>malých písmen (26 znaků),</li>
+  <li>velkých písmen (26 znaků),</li>
+  <li>dalších znaků běžně používaných v URL (např. <code>-</code> a <code>_</code>)</li>
+</ol>
 
-  - čísel (10 znaků),
+<p>Tak se dostane na jedno místo <b>64 možností</b>. Do čtyř znaků se potom vejde přes <b>16 milionů kombinací</b> (<code>64 ^ 4</code>).</p>
 
-  - malých písmen (26 znaků),
 
-  - velkých písmen (26 znaků),
+<h2 id="prevod">Převod čísla na písmena</h2>
 
-  - dalších znaků běžně používaných v URL (např. `-` a `_`)
+<p>Převádění písmen na číselná ID a obráceně může probíhat ihned po požadavku a v DB tak stále pracovat s klasickými čísly.</p>
 
-Tak se dostane na jedno místo **64 možností**. Do čtyř znaků se potom vejde přes **16 milionů kombinací** (`64 ^ 4`).
+<p>Dobře funkční je tato funkce <code>alphaID</code>:</p>
 
-## Převod čísla na písmena
+<p><a href="http://kvz.io/blog/2009/06/10/create-short-ids-with-php-like-youtube-or-tinyurl/" class="button">Hotové řešení</a></p>
 
-Převádění písmen na číselná ID a obráceně může probíhat ihned po požadavku a v DB tak stále pracovat s klasickými čísly.
+<p>K disposici je implementace v mnoha programovacích jazycích (<b>PHP</b>, <b>JavaScript</b> a další).</p>
 
-Dobře funkční je tato funkce `alphaID`:
+<h3 id="pouziti">Použití</h3>
 
-[Hotové řešení](http://kvz.io/blog/2009/06/10/create-short-ids-with-php-like-youtube-or-tinyurl/)
+<p>Při požadavku na <code>example.com/<b>fE2XnNGpF</b></code> se vezme řetězec <code>fE2XnNGpF</code>, předá se funkci <code>alphaID</code> s parametrem <code>true</code>.</p>
 
-K disposici je implementace v mnoha programovacích jazycích (**PHP**, **JavaScript** a další).
+<pre><code>$idecko = alphaID('PpQXn7COf', true);</code></pre>
 
-### Použití
+<p>V proměnné <code>$idecko</code> potom bude odpovídající číslo, podle kterého provedeme <b>dotaz do databáse</b> a podobně.</p>
 
-Při požadavku na `example.com/**fE2XnNGpF**` se vezme řetězec `fE2XnNGpF`, předá se funkci `alphaID` s parametrem `true`.
+<p>Získání zkráceného <i>kódu</i> vypadá takto (například pro <b>vygenerování odkazu</b>):</p>
 
-```
-$idecko = alphaID('PpQXn7COf', true);
-```
+<pre><code>$zkracenyKod = alphaID(9007199254740989);</code></pre>
 
-V proměnné `$idecko` potom bude odpovídající číslo, podle kterého provedeme **dotaz do databáse** a podobně.
+<p>Funkce podporuje i nastavení <b>minimálního počtu znaků</b> či přidání náhodného řetězce, který ztíží možnost hádat číselné identifikátory z ID tvořených písmeny.</p>
 
-Získání zkráceného *kódu* vypadá takto (například pro **vygenerování odkazu**):
-
-```
-$zkracenyKod = alphaID(9007199254740989);
-```
-
-Funkce podporuje i nastavení **minimálního počtu znaků** či přidání náhodného řetězce, který ztíží možnost hádat číselné identifikátory z ID tvořených písmeny.

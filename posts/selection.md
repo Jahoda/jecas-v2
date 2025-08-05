@@ -5,13 +5,19 @@ description: "Pseudo-element <code>::selection</code> umožňuje změnit styl ku
 date: "2015-01-12"
 last_modification: "2015-01-12"
 status: 1
-tags: ["CSS", "Stylování elementů", "CSS selektory"]
+tags: ["css", "selektory-css", "stylovani"]
+format: "html"
 ---
 
-Výchozí styl výběru je většinou modré pozadí a bílý text. Pomocí stylu pro `::selection` je možné toto chování změnit. Kromě důvodu čistě estetického, aby výběr **ladil k designu** stránky, existuje i praktický důvod – na stránce s modrým pozadím a bílým textem nebude **standardní styl dobře vidět**.
+<p><img src="/files/selection/oznaceni.gif" alt="Označení textu pomocí selection" class="border"></p>
 
-Před změnou si je dobré uvědomit, že uživatelé jsou na **výchozí styl** zvyklí, takže změna může přinést nejistotu.
 
+<p>Výchozí styl výběru je většinou <span style="background: #3399FE; color: #fff; padding: .1em 0">modré pozadí a bílý text</span>. Pomocí stylu pro <code>::selection</code> je možné toto chování změnit. Kromě důvodu čistě estetického, aby výběr <b>ladil k designu</b> stránky, existuje i praktický důvod – na stránce s modrým pozadím a bílým textem nebude <b>standardní styl dobře vidět</b>.</p>
+
+<p>Před změnou si je dobré uvědomit, že uživatelé jsou na <b>výchozí styl</b> zvyklí, takže změna může přinést nejistotu.</p>
+
+<div class="live">
+  <style>
     .selection-test::-moz-selection {
       color: #8ECCF0; 
       background: #DA3F94;
@@ -20,62 +26,62 @@ Před změnou si je dobré uvědomit, že uživatelé jsou na **výchozí styl**
       color: #8ECCF0; 
       background: #DA3F94;
     }
-  
-  Tento odstavec má nestandardní styl při výběru.
+  </style>
+  <p class="selection-test">Tento odstavec má nestandardní styl při výběru.</p>
+</div>
 
-Některé prohlížeče – **Firefox** a **Internet Explorer** – dokáží výchozí barevný styl `::selection` automaticky **invertovat** (bílé pozadí, modrý text), aby byl kontrastní k pozadí.
+<p>Některé prohlížeče – <b>Firefox</b> a <b>Internet Explorer</b> – dokáží výchozí barevný styl <code>::selection</code> automaticky <b>invertovat</b> (bílé pozadí, modrý text), aby byl kontrastní k pozadí.</p>
 
-Kromě staré **Opery 12** jde měnit barvu výběru i ve **formulářových polích** ([`&lt;input>`](/input)/[`&lt;textarea>`](/textarea)).
+<p>Kromě staré <b>Opery 12</b> jde měnit barvu výběru i ve <b>formulářových polích</b> (<a href="/input"><code>&lt;input></code></a>/<a href="/textarea"><code>&lt;textarea></code></a>).</p>
 
-## Zápis
 
-Styl označení textu jde nastavit globálně pro **celou stránku**:
+<h2 id="zapis">Zápis</h2>
 
-```
-::selection {
+<p>Styl označení textu jde nastavit globálně pro <b>celou stránku</b>:</p>
+
+<pre><code>::selection {
   /* styly pro všechny výběry na stránce */
-}
-```
+}</code></pre>
 
-Nebo i pro zvláštní elementy.
+<p>Nebo i pro zvláštní elementy.</p>
 
-```
-.zvlastni-element::selection {
+<pre><code>.zvlastni-element::selection {
   /* styly pro .zvlastni-element */
-}
-```
+}</code></pre>
 
-### Povolené vlastnosti
 
-Pseudo-element `::selection` má zabudovanou ochranu před **příliš kreativními designéry**, měnit tak jde pouze:
 
-  - `color` – barva písma
 
-  - `background-color` – barva pozadí (nejde použít obrázek a podobně), jde použít zápis zkratkou `background`
+<h3 id="vlastnost">Povolené vlastnosti</h3>
 
-  - [`text-shadow`](/text-shadow) – stín textu (nefunguje v **IE** a staré **Opeře 12**)
+<p>Pseudo-element <code>::selection</code> má zabudovanou ochranu před <b>příliš kreativními designéry</b>, měnit tak jde pouze:</p>
 
-## Podpora
+<ul>
+  <li><code>color</code> – barva písma</li>
+  
+  <li><code>background-color</code> – barva pozadí (nejde použít obrázek a podobně), jde použít zápis zkratkou <code>background</code></li>
+  
+  <li><a href="/text-shadow"><code>text-shadow</code></a> – stín textu (nefunguje v <b>IE</b> a staré <b>Opeře 12</b>)</li>
+</ul>
 
-Měnit styl označeného textu je možné od **IE 9**. **Firefox** vyžaduje použít `-moz-` [prefix](/css-prefixy). Selektor s prefixem nelze spojit se selektorem bez něj. Tohle proto **nebude fungovat**:
 
-```
-::selection, ::-moz-selection {
+<h2 id="podpora">Podpora</h2>
+
+<p>Měnit styl označeného textu je možné od <b>IE 9</b>. <b>Firefox</b> vyžaduje použít <code>-moz-</code> <a href="/css-prefixy">prefix</a>. Selektor s prefixem nelze spojit se selektorem bez něj. Tohle proto <b>nebude fungovat</b>:</p>
+
+<pre class="error"><code>::selection, ::-moz-selection {
   /* nebude fungovat */
-}
-```
+}</code></pre>
 
-Oba zápisy je nutné **duplikovat**:
+<p>Oba zápisy je nutné <b>duplikovat</b>:</p>
 
-```
-::selection {
+<pre><code>::selection {
   color: yellow;
   background: red;
 }
-::**-moz-**selection {
+::<b>-moz-</b>selection {
   color: yellow;
   background: red;
-}
-```
+}</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/skjb-)
+<p><a href="http://kod.djpw.cz/skjb-">Živá ukázka</a></p>

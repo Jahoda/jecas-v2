@@ -6,14 +6,17 @@ date: "2014-10-31"
 last_modification: "2014-10-31"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - [CSS Guidelines](http://cssguidelin.es)
-
-  - [Writing DRYer vanilla CSS](http://csswizardry.com/2013/07/writing-dryer-vanilla-css/)
-
-  - [The Specificity Graph](http://csswizardry.com/2014/10/the-specificity-graph/)
-
-  - Video: [Harry Roberts—Big CSS](http://www.youtube.com/watch?v=R-BX4N8egEc)
+<ul>
+  <li><a href="http://cssguidelin.es">CSS Guidelines</a></li>
+  
+  <li><a href="http://csswizardry.com/2013/07/writing-dryer-vanilla-css/">Writing DRYer vanilla CSS</a></li>
+  
+  <li><a href="http://csswizardry.com/2014/10/the-specificity-graph/">The Specificity Graph</a></li>
+  
+  <li>Video: <a href="http://www.youtube.com/watch?v=R-BX4N8egEc">Harry Roberts—Big CSS</a></li>
+</ul>

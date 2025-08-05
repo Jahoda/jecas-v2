@@ -5,41 +5,42 @@ description: "HTML atribut <code>media</code> funguje u značky <code>&lt;a></co
 date: "2014-05-21"
 last_modification: "2014-05-27"
 status: 1
-tags: ["HTML", "HTML atributy"]
+tags: ["html", "html-atributy"]
+format: "html"
 ---
 
-```
-&lt;a href="odkaz" **media**="*max-width: 480px*">
+<pre><code>&lt;a href="odkaz" <b>media</b>="<i>max-width: 480px</i>">
   Odkaz bude vidět jen při šířce do 480 px
-&lt;/a>
-```
+&lt;/a></code></pre>
 
-Hodnota HTML atributu `media` bude obdobná jako u [CSS pravidla `@media`](/mobilni-web#media-queries) a měla by i tak fungovat.
+<p>Hodnota HTML atributu <code>media</code> bude obdobná jako u <a href="/mobilni-web#media-queries">CSS pravidla <code>@media</code></a> a měla by i tak fungovat.</p>
 
-[Živá ukázka](http://kod.djpw.cz/cndb)
+<p><a href="http://kod.djpw.cz/cndb">Živá ukázka</a></p>
 
-## Podpora
 
-Bohužel zatím neznám prohlížeč, kde by atribut `media` fungoval.
+<h2 id="podpora">Podpora</h2>
 
-## Využití
+<p>Bohužel zatím neznám prohlížeč, kde by atribut <code>media</code> fungoval.</p>
 
-Do jisté míry by takto šly řešit [responsivní obrázky](/responsivni-obrazky) a jejich **datová optimalisace**. Na stránce by bylo víc obrázků s obrázky a *media queries* by zařídily zobrazení (načtení) jen toho, který **nejlépe vyhovuje** cílovému zařízení.
 
-```
-&lt;a href="maly-obrazek.png" media="**max**-width: 480px">
+<h2 id="vyuziti">Využití</h2>
+
+<p>Do jisté míry by takto šly řešit <a href="/responsivni-obrazky">responsivní obrázky</a> a jejich <b>datová optimalisace</b>. Na stránce by bylo víc obrázků s obrázky a <i>media queries</i> by zařídily zobrazení (načtení) jen toho, který <b>nejlépe vyhovuje</b> cílovému zařízení.</p>
+
+<pre><code>&lt;a href="maly-obrazek.png" media="<b>max</b>-width: 480px">
   &lt;img src="maly-obrazek.png">
 &lt;/a>
-&lt;a href="velky-obrazek.png" media="**min**-width: 480px">
+&lt;a href="velky-obrazek.png" media="<b>min</b>-width: 480px">
   &lt;img src="velky-obrazek.png">
 &lt;/a>
+</code></pre>
 
-```
+<p>Taktéž by tento mechanismus mohl sloužit k <i>opodmínkování</i> odkazu na <b>mobilní versi webu</b> nebo naopak na <i>velký</i> web.</p>
 
-Taktéž by tento mechanismus mohl sloužit k *opodmínkování* odkazu na **mobilní versi webu** nebo naopak na *velký* web.
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - MDN: [Atribut media u značky `&lt;a>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-media)
-
-  - MDN: [CSS media queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries)
+<ul>
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-media">Atribut media u značky <code>&lt;a></code></a></li>
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries">CSS media queries</a></li>
+</ul>

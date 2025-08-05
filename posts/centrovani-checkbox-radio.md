@@ -6,40 +6,75 @@ date: "2016-11-29"
 last_modification: "2016-11-29"
 status: 0
 tags: []
+format: "html"
 ---
 
-Ovládací prvky typu [`checkbox`](/input#type-checkbox)  nebo [`radio`](/input#type-radio)  jsou běžnou součástí webových formulářů. Hezky je zarovnat s popisky je ale docela oříšek.
+<p>Ovládací prvky typu <a href="/input#type-checkbox"><code>checkbox</code></a> <span class="live"><input type="checkbox"></span> nebo <a href="/input#type-radio"><code>radio</code></a> <span class="live"><input type="radio"></span> jsou běžnou součástí webových formulářů. Hezky je zarovnat s popisky je ale docela oříšek.</p>
 
-## Výchozí styly
 
-Jeden z možných a relativně úspěšných postupů je do stylů těchto `&lt;input>`ů nezasahovat.
 
-Výchozí styly prohlížečů zajišťují relativně zarovnané zobrazení – pokud se jedná o výchozí velikost písma (typicky 16 pixelů).
 
-U většího/menšího písma ale zarovnání nesedí:
+<h2 id="vychozi">Výchozí styly</h2>
 
-### Jaké jsou výchozí styly?
+<p>Jeden z možných a relativně úspěšných postupů je do stylů těchto <code>&lt;input></code>ů nezasahovat.</p>
 
-Zarovnání je zajištěno vlastností [`margin`](/margin):
+<p>Výchozí styly prohlížečů zajišťují relativně zarovnané zobrazení – pokud se jedná o výchozí velikost písma (typicky 16 pixelů).</p>
 
-```
-input[type="checkbox" i] {
+<p>U většího/menšího písma ale zarovnání nesedí:</p>
+
+<p><img src="/files/centrovani-checkbox-radio/velikost-pisma.png" alt="Různé velikosti písma" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="jake">Jaké jsou výchozí styly?</h3>
+
+<p>Zarovnání je zajištěno vlastností <a href="/margin"><code>margin</code></a>:</p>
+
+<pre><code>input[type="checkbox" i] {
     margin: 3px 3px 3px 4px;
-}
-```
+}</code></pre>
 
-Použití `margin`u v kombinaci s hodnotami v pixelech naznačují, že při změně velikosti písma přestane fungovat.
 
-### Centrování výchozího
 
-Vycentrovat svisle výchozí radio/checkbox není úplně snadné. Nejspolehlivější je vertikální centrování pomocí absolutního posicování.
 
-Druhá možnost je vytvořit předpis pro několik základních velikostí písma a přesného zarovnání docílit [relativním posicováním](/position#relative).
 
-## Vlastní checkbox/radio
 
-Stoprocentní řešení je nepoužívat systémové prvky a checkboxy/radia si vytvořit kompletně vlastní.
 
-  - [Živá ukázka](http://kod.djpw.cz/aedc) – různé velikosti 
+<p>Použití <code>margin</code>u v kombinaci s hodnotami v pixelech naznačují, že při změně velikosti písma přestane fungovat.</p>
 
-  - [Živá ukázka](http://kod.djpw.cz/cedc)
+
+
+
+<h3 id="centrovani-vychoziho">Centrování výchozího</h3>
+
+<p>Vycentrovat svisle výchozí radio/checkbox není úplně snadné. Nejspolehlivější je vertikální centrování pomocí absolutního posicování.</p>
+
+<p>Druhá možnost je vytvořit předpis pro několik základních velikostí písma a přesného zarovnání docílit <a href="/position#relative">relativním posicováním</a>.</p>
+
+
+
+
+<h2 id="vlastni">Vlastní checkbox/radio</h2>
+
+<p>Stoprocentní řešení je nepoužívat systémové prvky a checkboxy/radia si vytvořit kompletně vlastní.</p>
+
+
+<ul>
+  <li><a href="http://kod.djpw.cz/aedc">Živá ukázka</a> – různé velikosti </li>
+  <li><a href="http://kod.djpw.cz/cedc">Živá ukázka</a></li>
+</ul>

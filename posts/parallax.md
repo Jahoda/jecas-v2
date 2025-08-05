@@ -6,6 +6,7 @@ date: "2013-12-13"
 last_modification: "2013-12-13"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://inner.geek.nz/javascript/parallax/
@@ -20,8 +21,8 @@ http://webdesignledger.com/inspiration/examples-of-parallax-scrolling-websites
 
 http://www.sitepoint.com/introduction-parallax-scrolling-using-stellar-js/
 
-[Parallaxin'](http://www.html5rocks.com/en/tutorials/speed/parallax/)
+<a href="http://www.html5rocks.com/en/tutorials/speed/parallax/">Parallaxin'</a>
 
-[Recreating the Firewatch Parallax Effect](https://medium.com/@hamstu/recreating-the-firewatch-parallax-effect-213694d42f4e)
+<a href="https://medium.com/@hamstu/recreating-the-firewatch-parallax-effect-213694d42f4e">Recreating the Firewatch Parallax Effect</a>
 
-- [Pure CSS Parallax](http://codepen.io/keithclark/pen/JycFw)
+<li><a href="http://codepen.io/keithclark/pen/JycFw">Pure CSS Parallax</a></li>

@@ -6,22 +6,22 @@ date: "2019-04-08"
 last_modification: "2019-04-08"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Safe Write
+<h2 id="safe-write">Safe Write</h2>
 
-```
-Cannot read property 'type' of undefined
-```
+<pre><code>Cannot read property 'type' of undefined</code></pre>
 
-  - [Safe Write](https://parceljs.org/hmr.html#safe-write)
+<ul>
+  <li><a href="https://parceljs.org/hmr.html#safe-write">Safe Write</a></li>
+</ul>
 
-## Globální funkce
 
-### `fytopuf.js`
+<h2 id="funkce">Globální funkce</h2>
 
-```
-var fytopuf = function () {
+<h3><code>fytopuf.js</code></h3>
+<pre><code>var fytopuf = function () {
 	alert(1)
 }
 
@@ -29,30 +29,27 @@ export default (() => {
 	window.fytopuf = fytopuf
 })()
 
-```
+</code></pre>
 
-### `index.js`
+<h3><code>index.js</code></h3>
+<pre><code>import fytopuf  from './fytopuf'
+window.fytopuf = fytopuf</code></pre>
 
-```
-import fytopuf  from './fytopuf'
-window.fytopuf = fytopuf
-```
 
-## jQuery
+<h2 id="jquery">jQuery</h2>
 
-Soubor `import-jquery.js`:
+<p>Soubor <code>import-jquery.js</code>:</p>
 
-```
-import jquery from "jquery"
-window.$ = window.jQuery = jquery
-```
+<pre><code>import jquery from "jquery"
+window.$ = window.jQuery = jquery</code></pre>
 
-A v `index.js` připojit:
+<p>A v <code>index.js</code> připojit:</p>
 
-```
-import './import-jquery'
-```
+<pre><code>import './import-jquery'</code></pre>
 
-## Esbuild
 
-  - [esbuild](https://github.com/evanw/esbuild/)
+<h2 id="esbuild">Esbuild</h2>
+
+<ul>
+  <li><a href="https://github.com/evanw/esbuild/">esbuild</a></li>
+</ul>

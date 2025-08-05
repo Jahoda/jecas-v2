@@ -6,6 +6,7 @@ date: "2017-01-19"
 last_modification: "2017-01-19"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://kod.djpw.cz/fdec

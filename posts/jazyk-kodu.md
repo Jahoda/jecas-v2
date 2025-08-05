@@ -5,85 +5,117 @@ description: "Jakým jazykem programovat. Česky, nebo anglicky?"
 date: "2015-01-04"
 last_modification: "2015-01-16"
 status: 1
-tags: ["Produktivita", "Rady a nápady"]
+tags: ["napady", "produktivita"]
+format: "html"
 ---
 
-Při programování nového projektu/skriptu čelí programátor mimo jiné otázce, **jakým jazykem** psát kód. Jestli použít svůj mateřský jazyk nebo psát v **universálnější angličtině**.
+<p>Při programování nového projektu/skriptu čelí programátor mimo jiné otázce, <b>jakým jazykem</b> psát kód. Jestli použít svůj mateřský jazyk nebo psát v <b>universálnější angličtině</b>.</p>
 
-V českém prostředí jde tedy o to, zda psát zdrojové kódy **česky nebo anglicky**. Oba přístupy mají své výhody i nevýhody.
+<p>V českém prostředí jde tedy o to, zda psát zdrojové kódy <b>česky nebo anglicky</b>. Oba přístupy mají své výhody i nevýhody.</p>
 
-## Srozumitelnost
 
-Podobně jako je pro česky hovořícího člověka snazší číst v češtině obyčejný text, tak i **český zdrojový kód** bude lépe čitelný.
+<h2 id="srozumitelnost">Srozumitelnost</h2>
 
-### Odlišení klíčových slov
+<p>Podobně jako je pro česky hovořícího člověka snazší číst v češtině obyčejný text, tak i <b>český zdrojový kód</b> bude lépe čitelný.</p>
 
-Programovací jazyky obvykle obsahují tzv. **vyhrazená klíčová slova**, která mají nějakou speciální funkci.
 
-Když programátor píše vlastní kód (názvy proměnných a funkcí) česky, získá několik výhod:
 
-    V podstatě **nehrozí kolise** při pojmenovávání identifikátorů, kdy by použil název již existující **vestavěné funkce**.
+<h3 id="klicova-slova">Odlišení klíčových slov</h3>
 
-    Pokud například v PHP bude potřeba vytvořit funkci pro přepnutí, nejde ji pojmenovat `switch`:
+<p>Programovací jazyky obvykle obsahují tzv. <b>vyhrazená klíčová slova</b>, která mají nějakou speciální funkci.</p>
 
-    ```
-function switch() {
+<p>Když programátor píše vlastní kód (názvy proměnných a funkcí) česky, získá několik výhod:</p>
+
+<ol>
+  <li>
+    <p>V podstatě <b>nehrozí kolise</b> při pojmenovávání identifikátorů, kdy by použil název již existující <b>vestavěné funkce</b>.</p>
+    
+    <p>Pokud například v PHP bude potřeba vytvořit funkci pro přepnutí, nejde ji pojmenovat <code>switch</code>:</p>
+    
+    <pre><code>function switch() {
   // kód
-}
-```
+}</code></pre>
+    
+    <p><i>Switch</i> je v PHP vyhrazené slovo, takže tento kód <b>skončí chybou</b>, která není úplně vypovídající:</p>
+    
+    <pre><code>Parse error: syntax error, unexpected T_SWITCH, expecting T_STRING</code></pre>
+    
+    <p>JavaScript je na tom s <b>popisem chyby</b> trochu lépe:</p>
+    
+    <pre><code>Syntax error while loading: expected identifier, got keyword 'switch'</code></pre>
+    
+    <p>Někdy tomu dokáže předejít <b>barvení kódu nebo editor</b>, ale bez toho se jedná o hodně nepříjemný druh chyb.</p>
+  </li>
+  
+  
+  <li>
+    <p>Druhá výhoda je <b>odlišení vlastního kódu</b>, kdy se jde řídit jednoduchým pravidlem, že „co je česky, to jsem napsal“.</p>
+    
+    <p>Je tedy na první pohled jasné, že daná funkce není vestavěná a podobně.</p>
+  </li>
+</ol>
 
-    *Switch* je v PHP vyhrazené slovo, takže tento kód **skončí chybou**, která není úplně vypovídající:
 
-    ```
-Parse error: syntax error, unexpected T_SWITCH, expecting T_STRING
-```
+<h3 id="diakritika">Diakritika</h3>
 
-    JavaScript je na tom s **popisem chyby** trochu lépe:
+<p>Přestože v programovacích jazycích většinou není problém používat v názvech i <b>diakritiku</b>, s ohledem na editory to není moc rozumné. Může potom špatně fungovat <b>barvení kódu</b>, napovídání identifikátorů a podobně</p>
 
-    ```
-Syntax error while loading: expected identifier, got keyword 'switch'
-```
+<div class="internal-content">
+  <ul>
+    <li><a href="/zvlastni-znaky-class">Diakritika v názvu CSS třídy</a></li>
+    
+    <li><a href="http://kod.djpw.cz/onjb">Živá ukázka podpory diakritiky</a> – HTML, CSS, JavaScript</li>
+  </ul>
+</div>
 
-    Někdy tomu dokáže předejít **barvení kódu nebo editor**, ale bez toho se jedná o hodně nepříjemný druh chyb.
+<h2 id="musi-umet">Programátor musí umět anglicky</h2>
 
-    Druhá výhoda je **odlišení vlastního kódu**, kdy se jde řídit jednoduchým pravidlem, že „co je česky, to jsem napsal“.
+<p>Poměrně rozšířený názor je, že programátor <b>stejně musí umět anglicky</b>. Osobně se domnívám, že nemusí. Minimálně v začátcích nebo pokud nepotřebuje sledovat <b>nejnovější trendy</b> / <b>marginální oblasti</b>, existují kvalitní zdroje i v češtině.</p>
 
-    Je tedy na první pohled jasné, že daná funkce není vestavěná a podobně.
+<p>Kromě toho jsou typické <b>skupiny lidí</b>, které dají jednoznačně přednost češtině:</p>
 
-### Diakritika
+<ul>
+  <li>Hodně mladí lidé, co ještě anglicky neumí.</li>
+  
+  <li>Starší lidé, co se anglicky nikdy neučili.</li>
+</ul>
 
-Přestože v programovacích jazycích většinou není problém používat v názvech i **diakritiku**, s ohledem na editory to není moc rozumné. Může potom špatně fungovat **barvení kódu**, napovídání identifikátorů a podobně
 
-    - [Diakritika v názvu CSS třídy](/zvlastni-znaky-class)
 
-    - [Živá ukázka podpory diakritiky](http://kod.djpw.cz/onjb) – HTML, CSS, JavaScript
+<h2 id="universalnost">Universálnost</h2>
 
-## Programátor musí umět anglicky
+<p>Velká výhoda <b>psaní kódu v angličtině</b> je potom oproti češtině v o hodně větší skupině lidí, která bude kódu rozumět.</p>
 
-Poměrně rozšířený názor je, že programátor **stejně musí umět anglicky**. Osobně se domnívám, že nemusí. Minimálně v začátcích nebo pokud nepotřebuje sledovat **nejnovější trendy** / **marginální oblasti**, existují kvalitní zdroje i v češtině.
+<p>To se může hodit při rozšiřování nebo prodeji programu do zahraničí.</p>
 
-Kromě toho jsou typické **skupiny lidí**, které dají jednoznačně přednost češtině:
+<p>Universálnost a srozumitelnost pro velkou skupinu lidí může být ale i nevýhoda. Použití minoritního jazyku je do jisté míry <b>obfuskace aplikace</b> (<i>obfuscate</i> – zatemnit), která zkomplikuje nečesky rozumějícím provádět <i>reversní inženýrství</i>.</p>
 
-  - Hodně mladí lidé, co ještě anglicky neumí.
 
-  - Starší lidé, co se anglicky nikdy neučili.
 
-## Universálnost
 
-Velká výhoda **psaní kódu v angličtině** je potom oproti češtině v o hodně větší skupině lidí, která bude kódu rozumět.
 
-To se může hodit při rozšiřování nebo prodeji programu do zahraničí.
+<h2 id="rozhodovani">Jak se rozhodnout</h2>
 
-Universálnost a srozumitelnost pro velkou skupinu lidí může být ale i nevýhoda. Použití minoritního jazyku je do jisté míry **obfuskace aplikace** (*obfuscate* – zatemnit), která zkomplikuje nečesky rozumějícím provádět *reversní inženýrství*.
+<p>Na základě bodů výše nevypadá rozhodnutí mezi češtinou a angličtinou jako takový problém.</p>
 
-## Jak se rozhodnout
+<p>Bohužel nikdy dopředu není možné říct, jak se <b>program bude používat</b> a zákon schválnosti praví, že to bude nakonec úplně jinak, než to vypadalo.</p>
 
-Na základě bodů výše nevypadá rozhodnutí mezi češtinou a angličtinou jako takový problém.
 
-Bohužel nikdy dopředu není možné říct, jak se **program bude používat** a zákon schválnosti praví, že to bude nakonec úplně jinak, než to vypadalo.
 
-## Přeložení zdrojového kódu
 
-I při volbě „nevhodného“ jazyku nemusí být situace úplně ztracená. Programátorská IDE mívají nástroj pro hromadné změny názvů identifikátorů.
 
-Většinou se taková možnost nachází po něčím jako *Refactor* → *Rename*. Příklad z **NetBeans** po kliknutí pravým tlačítkem na název proměnné:
+<h2 id="preklad">Přeložení zdrojového kódu</h2>
+
+<p>I při volbě „nevhodného“ jazyku nemusí být situace úplně ztracená. Programátorská IDE mívají nástroj pro hromadné změny názvů identifikátorů.</p>
+
+<p>Většinou se taková možnost nachází po něčím jako <i>Refactor</i> → <i>Rename</i>. Příklad z <b>NetBeans</b> po kliknutí pravým tlačítkem na název proměnné:</p>
+
+<p><img src="/files/jazyk-kodu/prejmenovani.png" alt="Přejmenování proměnné v NetBeans" class="border"></p>
+
+
+
+
+
+
+
+

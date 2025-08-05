@@ -6,6 +6,9 @@ date: "2015-05-13"
 last_modification: "2015-05-13"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [15 Worst UI Design Features to Watch Out For and Overcome](http://www.onextrapixel.com/2015/05/13/15-worst-ui-design-features-to-watch-out-for-and-overcome/)
+<ul>
+  <li><a href="http://www.onextrapixel.com/2015/05/13/15-worst-ui-design-features-to-watch-out-for-and-overcome/">15 Worst UI Design Features to Watch Out For and Overcome</a></li>
+</ul>

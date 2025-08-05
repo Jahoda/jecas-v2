@@ -5,24 +5,21 @@ description: "Jak v JavaScriptu odstranit všechny potomky v určitém HTML elem
 date: "2014-05-16"
 last_modification: "2014-05-17"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "Rady a nápady"]
+tags: ["hotova-reseni", "js", "napady"]
+format: "html"
 ---
 
-Při vytváření HTML obsahu JavaScriptem se někdy může hodit **obsah celé značky vyprázdnit**.
+<p>Při vytváření HTML obsahu JavaScriptem se někdy může hodit <b>obsah celé značky vyprázdnit</b>.</p>
 
-```
-var element = document.getElementById("idecko");
-element.innerHTML = "";
-```
+<pre><code>var element = document.getElementById("idecko");
+element.innerHTML = "";</code></pre>
 
-Toto je asi nejjednodušší způsob, nicméně není nejrychlejší.
+<p>Toto je asi nejjednodušší způsob, nicméně není nejrychlejší.</p>
 
-[Rychlejší postup](http://jsperf.com/innerhtml-vs-removechild) je odebírání přes metodu `removeChild`:
+<p><a href="http://jsperf.com/innerhtml-vs-removechild">Rychlejší postup</a> je odebírání přes metodu <code>removeChild</code>:</p>
 
-```
-while (element.firstChild) {
+<pre><code>while (element.firstChild) {
   element.removeChild(element.firstChild);
-}
-```
+}</code></pre>
 
-Před snahou **odebírat všechny potomky** ještě může být dobré se zamyslet, jestli by nestačilo jenom měnit vlastnosti stávajících elmentů místo **odstraňování a vytváření komplet nových** (`createNode`/`appendChild`). To by mohlo být ještě rychlejší.
+<p>Před snahou <b>odebírat všechny potomky</b> ještě může být dobré se zamyslet, jestli by nestačilo jenom měnit vlastnosti stávajících elmentů místo <b>odstraňování a vytváření komplet nových</b> (<code>createNode</code>/<code>appendChild</code>). To by mohlo být ještě rychlejší.</p>

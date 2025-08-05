@@ -5,69 +5,71 @@ description: "Confirm je JavaScriptová hláška pro potvrzení akce. Jak ji pou
 date: "2014-02-23"
 last_modification: "2014-03-15"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-Nejjednodušší použití je:
+<p>Nejjednodušší použití je:</p>
 
-```
-&lt;button onclick="**confirm**('Opravdu?')">
+<pre><code>&lt;button onclick="<b>confirm</b>('Opravdu?')">
   Kliknout
-&lt;/button>
-```
+&lt;/button></code></pre>
 
-  Kliknout
+<div class="live">
+  <button onclick="confirm('Opravdu?')">Kliknout</button>
+</div>
 
-Kromě toho, že se tím zajistí zobrazení dialogového okna.
+<p>Kromě toho, že se tím zajistí zobrazení dialogového okna.</p>
 
-… nedělá ukázka prakticky nic.
+<p><img src="/files/confirm/confirm.png" alt="Potvrzení confirmu" class="border"></p>
 
-## Zpracování `confirm`u
+<p>… nedělá ukázka prakticky nic.</p>
 
-Zjištění, na které z tlačítek uživatel kliknul je prosté — při kliknutí na OK funkce `confirm` vrátí `true`, jinak `false`.
+<h2 id="zpracovani">Zpracování <code>confirm</code>u</h2>
+<p>Zjištění, na které z tlačítek uživatel kliknul je prosté — při kliknutí na OK funkce <code>confirm</code> vrátí <code>true</code>, jinak <code>false</code>.</p>
 
-```
-var potvrzeni = confirm("Opravdu");
+<pre><code>var potvrzeni = confirm("Opravdu");
 if (potvrzeni) {
   // akce při potvrzení
 }
 else {
   // akce při stornování
 }
+</code></pre>
 
-```
+<h2 id="potvrzeni">Potvrzení odkazu / odeslání formuláře</h2>
+<p>Velmi jednoduchý příklad, který ale už něco dělá, může být potvrzení prokliknutí odkazu nebo potvrzení odesální formuláře.</p>
 
-## Potvrzení odkazu / odeslání formuláře
+<p>To se může hodit například u odhlašovacího tlačítka. Při potvrzení se tato stránka načte znovu, jinak se nestane nic.</p>
 
-Velmi jednoduchý příklad, který ale už něco dělá, může být potvrzení prokliknutí odkazu nebo potvrzení odesální formuláře.
+<div class="live">
+  <a href="/confirm" onclick="return confirm('Opravdu?')">Kliknout</a>
+</div>
 
-To se může hodit například u odhlašovacího tlačítka. Při potvrzení se tato stránka načte znovu, jinak se nestane nic.
+<h3 id="formular">Potvrzení odeslání formuláře</h3>
 
-  [Kliknout](/confirm)
+<p>V případě formuláře to bude vypadat následovně:</p>
 
-### Potvrzení odeslání formuláře
-
-V případě formuláře to bude vypadat následovně:
-
-```
-&lt;form action="./?" *onsubmit*="return **confirm**('Opravdu')">
+<pre><code>&lt;form action="./?" <i>onsubmit</i>="return <b>confirm</b>('Opravdu')">
   &lt;button type="submit">
     Odeslat
   &lt;/button>
-&lt;/form>
-```
+&lt;/form></code></pre>
 
-Oba postupy využívají toho, že konstrukce `return false` zabrání provedení běžné akce. A právě `false` se za `return` dostane, když uživatel `confirm` stornuje (`confirm` vrátí `false`).
+<p>Oba postupy využívají toho, že konstrukce <code>return false</code> zabrání provedení běžné akce. A právě <code>false</code> se za <code>return</code> dostane, když uživatel <code>confirm</code> stornuje (<code>confirm</code> vrátí <code>false</code>).</p>
 
-## Vlastní `confirm`
+<h2 id="vlastni">Vlastní <code>confirm</code></h2>
+<p>Podobně jako je možné si vytvořit <a href="/vlastni-alert">vlastní <code>alert</code></a>, dá se o něco podobného pokusi i v případě <b>potvrzovací hlášky</b> <code>confirm</code>.</p>
 
-Podobně jako je možné si vytvořit [vlastní `alert`](/vlastni-alert), dá se o něco podobného pokusi i v případě **potvrzovací hlášky** `confirm`.
+<p>Stejně jako <code>alert</code> má i <b>originální</b> <code>confirm</code> zvláštní funkci — před odpovědí uživatele pozastaví běh skriptů. Tu vlastní <i>atrapa</i> pochopitelně nezajistí.</p>
 
-Stejně jako `alert` má i **originální** `confirm` zvláštní funkci — před odpovědí uživatele pozastaví běh skriptů. Tu vlastní *atrapa* pochopitelně nezajistí.
-
+<div class="live">
+<style>
 .confirm {
     position: fixed; width: 200px; height: 50px; padding: 1em; background: #0D6AB7; color: #fff; display: none; top: 0; left: 0; bottom: 0; right: 0; margin: auto;}
 
+</style>
+<script>
 var potvrdit = function(text, el) {
     var cover = document.createElement("div");
     cover.className = "confirm";
@@ -91,7 +93,8 @@ var potvrdit = function(text, el) {
     document.body.appendChild(cover);
     return false;
 };
+</script>
+<a href="http://djpw.cz" onclick="return potvrdit('Opravdu?', this)">Přejít na DJPW</a>
+</div>
 
-[Přejít na DJPW](http://djpw.cz)
-
-[Samostatná ukázka](http://kod.djpw.cz/ikcb)
+<p><a href="http://kod.djpw.cz/ikcb">Samostatná ukázka</a></p>

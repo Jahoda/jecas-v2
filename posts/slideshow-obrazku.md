@@ -5,37 +5,80 @@ description: "Jak na stránce automaticky plynule měnit obrázky."
 date: "2014-12-22"
 last_modification: "2014-12-25"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "Animace", "Obrázky"]
+tags: ["hotova-reseni", "js", "obrazky", "webove-animace"]
+format: "html"
 ---
 
-Ozvláštnit webovou stránku je možné **obrázkovou galerií**, kde se budou automaticky v určitém **časovém intervalu** prohazovat jednotlivé obrázky.
+<p>Ozvláštnit webovou stránku je možné <b>obrázkovou galerií</b>, kde se budou automaticky v určitém <b>časovém intervalu</b> prohazovat jednotlivé obrázky.</p>
 
-Rozhodně postup automatické změny nelze doporučit pro vytváření populárních prvků v hlavičkách stránek, kde se střídá důležitý obsah, na který má uživatel kliknout – tzv. **kolotoč** (*carousel*).
+<p>Rozhodně postup automatické změny nelze doporučit pro vytváření populárních prvků v hlavičkách stránek, kde se střídá důležitý obsah, na který má uživatel kliknout – tzv. <b>kolotoč</b> (<i>carousel</i>).</p>
 
-    - [Should I Use A Carousel?](http://shouldiuseacarousel.com/)
+<p><img src="/files/slideshow-obrazku/kolotoc.png" alt="Měl bych použít kolotoč" class="border"></p>
 
-## Řešení
+<div class="external-content">
+  <ul>
+    <li><a href="http://shouldiuseacarousel.com/">Should I Use A Carousel?</a></li>
+  </ul>
+</div>
 
-Cílem je tedy vytvořit box, kde se budou **střídat jednotlivé obrázky** s nějakou plynulou [animací](/webove-animace).
 
-Pro lepší použitelnost se hodí přidat následující dvě funkce:
 
-  - **zastavit přehrávání** při najetí na obrázek,
 
-  - **přeskočit** na další při kliknutí
 
-### Plynulá změna
 
-Asi nejsnazší způsob, jak dosáhnout **plynulého přechodu**, bude změna [průhlednosti](/opacity). Všechny obrázky se dají do společného `&lt;div>`u a [absolutně](/position#absolute) se **naposicují přes sebe**.
 
-Všechny kromě aktivního obrázku budou **100% průhledné** (`opacity: 0`). Aktivní bude naopak neprůhledný (`opacity: 1`). Přidáním [`transition`](/transition) pro průhlednost potom dosáhneme **efektu prolnutí**.
 
-[Živá ukázka](http://kod.djpw.cz/qzib)
 
-### Responsivní
 
-Trochu komplikovanější bude vytvořit celou věc, aby byla [responsivní](/responsive). Nabízí se třeba pro první obrázek (selektor [`:first-child`](/first-last-child)) použít relativní/statickou posici, aby roztáhl obal.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="reseni">Řešení</h2>
+
+<p>Cílem je tedy vytvořit box, kde se budou <b>střídat jednotlivé obrázky</b> s nějakou plynulou <a href="/webove-animace">animací</a>.</p>
+
+<p>Pro lepší použitelnost se hodí přidat následující dvě funkce:</p>
+
+<ul>
+  <li><b>zastavit přehrávání</b> při najetí na obrázek,</li>
+  
+  <li><b>přeskočit</b> na další při kliknutí</li>
+</ul>
+
+<h3 id="zmena">Plynulá změna</h3>
+
+<p>Asi nejsnazší způsob, jak dosáhnout <b>plynulého přechodu</b>, bude změna <a href="/opacity">průhlednosti</a>. Všechny obrázky se dají do společného <code>&lt;div></code>u a <a href="/position#absolute">absolutně</a> se <b>naposicují přes sebe</b>.</p>
+
+<p>Všechny kromě aktivního obrázku budou <b>100% průhledné</b> (<code>opacity: 0</code>). Aktivní bude naopak neprůhledný (<code>opacity: 1</code>). Přidáním <a href="/transition"><code>transition</code></a> pro průhlednost potom dosáhneme <b>efektu prolnutí</b>.</p>
+
+<p><a href="http://kod.djpw.cz/qzib">Živá ukázka</a></p>
+
+
+<h3 id="responsivni">Responsivní</h3>
+
+<p>Trochu komplikovanější bude vytvořit celou věc, aby byla <a href="/responsive">responsivní</a>. Nabízí se třeba pro první obrázek (selektor <a href="/first-last-child"><code>:first-child</code></a>) použít relativní/statickou posici, aby roztáhl obal.</p>
+
+<div class="live">
+<style>
 .slideshow {
     width: 600px;
     position: relative;
@@ -66,7 +109,14 @@ Trochu komplikovanější bude vytvořit celou věc, aby byla [responsivní](/re
     position: relative; 
     display: block;
 }
+</style>
 
+<div class="slideshow">
+    <img src="http://lorempixel.com/600/300/0" class="show"><!-- první obrázek -->
+    <img src="http://lorempixel.com/600/300/0/0">
+    <img src="http://lorempixel.com/600/300/0/0/0">
+</div>
+<script>
 (function(el, time) {
     var timer;
     var active = 0;
@@ -99,19 +149,26 @@ Trochu komplikovanější bude vytvořit celou věc, aby byla [responsivní](/re
     document.querySelector(".slideshow"), 
     3 * 1000 // Doba jednoho obrázku v milisekundách
 );
+</script>
+</div>
 
-[Samostatná živá ukázka](http://kod.djpw.cz/rzib)
+<p><a href="http://kod.djpw.cz/rzib">Samostatná živá ukázka</a></p>
 
-## Možné problémy
 
-Kvůli tomu, že se jednotlivé obrázky překrývají, není možné si snadno přes pravé tlačítko myši aktuální obrázek **uložit**. Ukázka tomu přechází zvýšením [`z-index`u](/position#z-index) při najetí.
+<h2 id="problemy">Možné problémy</h2>
 
-V **IE 9** a starších nebude přechod plynulý kvůli nepodpoře `transition`.
+<p>Kvůli tomu, že se jednotlivé obrázky překrývají, není možné si snadno přes pravé tlačítko myši aktuální obrázek <b>uložit</b>. Ukázka tomu přechází zvýšením <a href="/position#z-index"><code>z-index</code>u</a> při najetí.</p>
 
-Všechny obrázky se začnou načítat spolu se stránkou, ne až v momentě, kdy se mají zobrazit.
+<p>V <b>IE 9</b> a starších nebude přechod plynulý kvůli nepodpoře <code>transition</code>.</p>
 
-## Odkazy jinam
+<p>Všechny obrázky se začnou načítat spolu se stránkou, ne až v momentě, kdy se mají zobrazit.</p>
 
-  - [Wrapping around Flickity for infinite looping](http://metafizzy.co/blog/wrapping-around/) – nekonečné vodorovné posouvání obsahu ([GitHub](https://github.com/metafizzy/flickity))
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - [Cross-Fading Background Images](http://demosthenes.info/blog/991/Cross-Fading-Background-Images) – prolínání obrázků
+<ul>
+  <li><a href="http://metafizzy.co/blog/wrapping-around/">Wrapping around Flickity for infinite looping</a> – nekonečné vodorovné posouvání obsahu (<a href="https://github.com/metafizzy/flickity">GitHub</a>)</li>
+  
+  <li><a href="http://demosthenes.info/blog/991/Cross-Fading-Background-Images">Cross-Fading Background Images</a> – prolínání obrázků</li>
+</ul>
+
+

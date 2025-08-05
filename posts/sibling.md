@@ -5,103 +5,117 @@ description: "Získání následujícího nebo předchozího sourozence pomocí 
 date: "2015-03-15"
 last_modification: "2015-05-24"
 status: 1
-tags: ["JavaScript", "Rady a nápady"]
+tags: ["js", "napady"]
+format: "html"
 ---
 
-## Následující sourozenec `nextSibling`
 
-Při vyhledávání elementů pomocí JavaScriptu slouží `nextSibling` pro získání **následujícího sourozence**.
+<h2 id="next">Následující sourozenec <code>nextSibling</code></h2>
 
-Problém je, že jako následující sourozenec je brán kromě HTML elementů i textový obsah.
+<p>Při vyhledávání elementů pomocí JavaScriptu slouží <code>nextSibling</code> pro získání <b>následujícího sourozence</b>.</p>
 
-Bude-li existovat násludjící kód:
+<p>Problém je, že jako následující sourozenec je brán kromě HTML elementů i textový obsah.</p>
 
-```
-&lt;div class="prvni">1&lt;/div>
-&lt;div class="druhy">2&lt;/div>
-```
 
-JavaScriptová konstrukce využívající `nexSibling` nezachytí element `.druhy`:
+<p>Bude-li existovat násludjící kód:</p>
 
-```
-document.querySelector(".prvni").**nextSibling**;
-```
+<pre><code>&lt;div class="prvni">1&lt;/div>
+&lt;div class="druhy">2&lt;/div></code></pre>
 
-V tomto případě budou zachyceny **bílé znaky** mezi elementy.
 
-Dostat se na element `.druhy` by znamenalo:
 
-    Použít `nextSibling` dvakrát:
+<p>JavaScriptová konstrukce využívající <code>nexSibling</code> nezachytí element <code>.druhy</code>:</p>
 
-    ```
-document.querySelector(".prvni").**nextSibling.nextSibling**;
-```
+<pre><code>document.querySelector(".prvni").<b>nextSibling</b>;</code></pre>
 
-    Zrušit bílé znaky mezi HTML značkami.
+<p>V tomto případě budou zachyceny <b>bílé znaky</b> mezi elementy.</p>
 
-    ```
-&lt;div class="prvni">1&lt;/div>&lt;div class="druhy">2&lt;/div>
-```
+<p>Dostat se na element <code>.druhy</code> by znamenalo:</p>
 
-## Následující element – `nextElementSibling`
+<ol>
+  <li>
+    <p>Použít <code>nextSibling</code> dvakrát:</p>
+    
+    <pre><code>document.querySelector(".prvni").<b>nextSibling.nextSibling</b>;</code></pre>
+  </li>
+  
+  <li>
+    <p>Zrušit bílé znaky mezi HTML značkami.</p>
+    
+    <pre><code>&lt;div class="prvni">1&lt;/div>&lt;div class="druhy">2&lt;/div></code></pre>
+  </li>
+</ol>
 
-Situaci, kdy `nextSibling` vrátí bílé znaky, řeší `next**Element**Sibling`, který bere v potaz pouze HTML elementy.
 
-```
-document.querySelector(".prvni").**nextElementSibling**;
-```
 
-Vlastnost `nextElementSibling` funguje od **IE 9** a pro starší prohlížeče jde doskriptovat s využitím `nextSibling`.
 
-```
-var nextElementSibling = function(el) {
+<h2 id="nextElementSibling">Následující element – <code>nextElementSibling</code></h2>
+
+<p>Situaci, kdy <code>nextSibling</code> vrátí bílé znaky, řeší <code>next<b>Element</b>Sibling</code>, který bere v potaz pouze HTML elementy.</p>
+
+<pre><code>document.querySelector(".prvni").<b>nextElementSibling</b>;</code></pre>
+
+<p>Vlastnost <code>nextElementSibling</code> funguje od <b>IE 9</b> a pro starší prohlížeče jde doskriptovat s využitím <code>nextSibling</code>.</p>
+
+<pre><code>var nextElementSibling = function(el) {
     do {
         el = el.nextSibling;
     } while (el &amp;&amp; el.nodeType !== 1);
     return el;
-};
-```
+};</code></pre>
 
-Použití:
 
-```
-var druhy = nextElementSibling(
+
+
+
+
+<p>Použití:</p>
+
+<pre><code>var druhy = nextElementSibling(
   document.querySelector(".prvni")
-);
-```
+);</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/mjnb)
+<p><a href="http://kod.djpw.cz/mjnb">Živá ukázka</a></p>
 
-## Předchozí – `previousSibling` a `previousElementSibling`
 
-Metody pro získání předchozího sourozence nebo předchozího elementu fungují obdobně jako `next*Sibling`.
 
-```
-document.querySelector(".druhy").**previousSibling**;
-```
 
-Případně pro získání předchozího **elementu**.
 
-```
-document.querySelector(".druhy").**previousElementSibling**;
-```
 
-## Další/předchozí v jQuery
 
-V **jQuery** existují pro předchozí a další element klíčová slova `prev` a `next` a fungují jako `nextElementSibling`/`previousElementSibling`.
 
-Následující:
+<h2 id="prev">Předchozí – <code>previousSibling</code> a <code>previousElementSibling</code></h2>
 
-```
-$(".prvni").next();
-```
+<p>Metody pro získání předchozího sourozence nebo předchozího elementu fungují obdobně jako <code>next*Sibling</code>.</p>
 
-Předchozí:
+<pre><code>document.querySelector(".druhy").<b>previousSibling</b>;</code></pre>
 
-```
-$(".druhy").prev();
-```
+<p>Případně pro získání předchozího <b>elementu</b>.</p>
 
-## Odkazy jinam
 
-  - MDN: [NonDocumentTypeChildNode.nextElementSibling](https://developer.mozilla.org/en-US/docs/Web/API/NonDocumentTypeChildNode/nextElementSibling)
+<pre><code>document.querySelector(".druhy").<b>previousElementSibling</b>;</code></pre>
+
+
+
+
+
+
+<h2 id="jquery">Další/předchozí v jQuery</h2>
+
+<p>V <b>jQuery</b> existují pro předchozí a další element klíčová slova <code>prev</code> a <code>next</code> a fungují jako <code>nextElementSibling</code>/<code>previousElementSibling</code>.</p>
+
+<p>Následující:</p>
+
+<pre><code>$(".prvni").next();</code></pre>
+
+<p>Předchozí:</p>
+
+<pre><code>$(".druhy").prev();</code></pre>
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/API/NonDocumentTypeChildNode/nextElementSibling">NonDocumentTypeChildNode.nextElementSibling</a></li>
+</ul>

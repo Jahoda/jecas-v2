@@ -6,6 +6,7 @@ date: "2016-10-05"
 last_modification: "2016-10-05"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://kod.djpw.cz/lrbc

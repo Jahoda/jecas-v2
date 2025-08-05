@@ -6,6 +6,7 @@ date: "2013-07-18"
 last_modification: "2013-07-18"
 status: 0
 tags: []
+format: "html"
 ---
 
-[JSLint](http://www.jslint.com/)
+<p><a href="http://www.jslint.com/" class="button">JSLint</a>

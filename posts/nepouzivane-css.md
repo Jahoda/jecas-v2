@@ -6,6 +6,7 @@ date: "2014-08-31"
 last_modification: "2014-08-31"
 status: 0
 tags: []
+format: "html"
 ---
 
-[Nepoužívané CSS vlastnosti](http://www.labnol.org/internet/remove-unused-css/28635/)
+<a href="http://www.labnol.org/internet/remove-unused-css/28635/">Nepoužívané CSS vlastnosti</a>

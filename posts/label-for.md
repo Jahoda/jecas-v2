@@ -5,23 +5,21 @@ description: "Značka <code>&lt;label></code> slouží ke <i>svázání</i> popi
 date: "2013-05-13"
 last_modification: "2013-05-13"
 status: 1
-tags: ["HTML", "HTML značky", "Formuláře"]
+tags: ["formulare", "html", "html-tagy"]
+format: "html"
 ---
 
-Formulář se potom lépe ovládá, třeba v případě `checkbox`u je výrazným rozdíl v trefování se do malého čtverečku nebo do čtverečku s jeho popisem.
+<p>Formulář se potom lépe ovládá, třeba v případě <code>checkbox</code>u je výrazným rozdíl v trefování se do malého čtverečku nebo do čtverečku s jeho popisem.
 
-   Text bez `&lt;label>`u
-   Text s `&lt;label for='ID &lt;input>u'>`
+<ul class='none'>
+  <li><input type=checkbox> Text bez <code>&lt;label></code>u
+  <li><input type=checkbox id=a> <label for=a>Text s <code>&lt;label for='ID &lt;input>u'></code>
+</ul>
 
-## Co `&lt;input>` v `&lt;label>`u?
+<h2 id='zadny-for'>Co <code>&lt;input></code> v <code>&lt;label></code>u?</h2>
+<p>Vyhnout se atributu <code>for</code> lze umístěním <code>&lt;input></code>u do <code>&lt;label></code>u.
+<pre><code>&lt;label>&lt;input type=checkbox> Popisek&lt;/label></code></pre>
 
-Vyhnout se atributu `for` lze umístěním `&lt;input>`u do `&lt;label>`u.
-```
-&lt;label>&lt;input type=checkbox> Popisek&lt;/label>
-```
-
-Problém ale je, že takový kód se v **Internet Exploreru 6** (a starších) bude chovat jako bez `&lt;label>`u.
-A přichází dilema, zda se na tento často okrajový prohlížeč vykašlat, nebo naopak i kvůli pár jeho uživatelům provést triviální úpravu…
-```
-&lt;label for=**a**>&lt;input type=checkbox id=**a**> Popisek&lt;/label>
-```
+<p>Problém ale je, že takový kód se v <b>Internet Exploreru 6</b> (a starších) bude chovat jako bez <code>&lt;label></code>u.
+<p>A přichází dilema, zda se na tento často okrajový prohlížeč vykašlat, nebo naopak i kvůli pár jeho uživatelům provést triviální úpravu…
+<pre><code>&lt;label for=<b>a</b>>&lt;input type=checkbox id=<b>a</b>> Popisek&lt;/label></code></pre>

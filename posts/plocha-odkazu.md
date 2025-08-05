@@ -5,50 +5,69 @@ description: "Proč a jak vytvářet klikací plochu kolem odkazu."
 date: "2014-12-16"
 last_modification: "2014-12-21"
 status: 1
-tags: ["Rady a nápady", "Odkazy"]
+tags: ["napady", "odkazy"]
+format: "html"
 ---
 
-Častým nedostatkem na webových stránkách je **malá plocha odkazu**. Zvlášť problematické je to na **dotykových zařízeních** s menšími displeji, kdy je problém malý odkaz **prstem trefit**.
+<p>Častým nedostatkem na webových stránkách je <b>malá plocha odkazu</b>. Zvlášť problematické je to na <b>dotykových zařízeních</b> s menšími displeji, kdy je problém malý odkaz <b>prstem trefit</b>.</p>
 
-V řadě případů přitom jde plochu odkazu zvětšit prostým **využitím prázdného místa**.
+<p>V řadě případů přitom jde plochu odkazu zvětšit prostým <b>využitím prázdného místa</b>.</p>
 
-## Menu
 
-Budeme-li mít například následující [menu](/menu):
+<h2 id="menu">Menu</h2>
 
+<p>Budeme-li mít například následující <a href="/menu">menu</a>:</p>
+
+<div class="live">  
+  <style>
     .priklad-menu {background: #fff; width: 10em; margin: 0}
     .priklad-menu a {border: 0; text-decoration: none}
+  </style>
+  <menu class="priklad-menu">
+    <li><a href="#">První odkaz</a></li>
+    
+    <li><a href="#">Druhý delší odkaz na více řádků</a></li>
+    
+    <li><a href="#">Odkaz</a></li>
+  </menu>
+</div>
 
-    - [První odkaz](#)
+<p>Bylo by lepší, kdyby odkazy <i>klikaly</i> po celé šířce, často k tomu stačí jen přidat <a href="/display#block"><code>display: block</code></a>.</p>
 
-    - [Druhý delší odkaz na více řádků](#)
-
-    - [Odkaz](#)
-
-Bylo by lepší, kdyby odkazy *klikaly* po celé šířce, často k tomu stačí jen přidat [`display: block`](/display#block).
-
+<div class="live">  
+  <style>
     .vetsi-plocha a {display: block;}
+  </style>
+  <menu class="priklad-menu vetsi-plocha">
+    <li><a href="#">První odkaz</a></li>
+    
+    <li><a href="#">Druhý delší odkaz na více řádků</a></li>
+    
+    <li><a href="#">Odkaz</a></li>
+  </menu>
+</div>
 
-    - [První odkaz](#)
 
-    - [Druhý delší odkaz na více řádků](#)
+<h2 id="kliknete-zde">Klikněte zde</h2>
 
-    - [Odkaz](#)
+<p>Dále nedostatečnou plochou trpí prosté odkazy typu:</p>
 
-## Klikněte zde
+<div class="live">
+  <p>Pro jako zobrazení klikněte <a href="#">zde</a>.</p>
+</div>
 
-Dále nedostatečnou plochou trpí prosté odkazy typu:
+<p>Zvětšit klikací plochu jde snadno uvedením <b>výzvy k akci</b>:</p>
 
-  Pro jako zobrazení klikněte [zde](#).
+<div class="live">
+  <p><a href="#">Jako zobrazit</a></p>
+</div>
 
-Zvětšit klikací plochu jde snadno uvedením **výzvy k akci**:
+<p>Kromě zvětšení plochy je to výhodné i pro uživatele, protože když se při <b>rychlém pročítání stránky</b> zastaví na odkazu jakožto <b>výrazném prvku</b>, rychle pochopí jeho význam (nemusí číst text okolo).</p>
 
-  [Jako zobrazit](#)
+<p>Obzvlášť důležitý odkaz je rozumné ještě <b>zvýraznit odlišným stylem</b>.</p>
 
-Kromě zvětšení plochy je to výhodné i pro uživatele, protože když se při **rychlém pročítání stránky** zastaví na odkazu jakožto **výrazném prvku**, rychle pochopí jeho význam (nemusí číst text okolo).
-
-Obzvlášť důležitý odkaz je rozumné ještě **zvýraznit odlišným stylem**.
-
+<div class="live">
+  <style>
     .dulezity-odkaz a {
       display: block;
       margin: auto;
@@ -58,39 +77,59 @@ Obzvlášť důležitý odkaz je rozumné ještě **zvýraznit odlišným stylem
       border: 1px solid;
       border-radius: .5em;
     }
-  
-  [Jako zobrazit](#)
+  </style>
+  <p class="dulezity-odkaz"><a href="#">Jako zobrazit</a></p>
+</div>
 
-## Stránkování
 
-Níže uvedené [stránkování](/strankovani) bude nejspíš velmi nepohodlné.
+<h2 id="strankovani">Stránkování</h2>
 
-    [1](#) [2](#) **3** [4](#) [5](#)
+<p>Níže uvedené <a href="/strankovani">stránkování</a> bude nejspíš velmi nepohodlné.</p>
 
-Šlo by lehce vylepšit přidáním vycpávky (`padding`u):
+<div class="live">
+  <p>
+    <a href="#">1</a> <a href="#">2</a> <b>3</b> <a href="#">4</a> <a href="#">5</a>
+  </p>
+</div>
 
+<p>Šlo by lehce vylepšit přidáním vycpávky (<code>padding</code>u):</p>
+
+<div class="live">
+  <style>
     .lepsi-strankovani * {padding: .5em 1em; text-align: center;}
+  </style>
+  <p class="lepsi-strankovani">
+    <a href="#">1</a> <a href="#">2</a> <b>3</b> <a href="#">4</a> <a href="#">5</a>
+  </p>
+</div>
 
-    [1](#) [2](#) **3** [4](#) [5](#)
+<p>Zrovna v případě stránkování se ale dá celý problém často řešit <b>úplně jinak</b> a lépe:</p>
 
-Zrovna v případě stránkování se ale dá celý problém často řešit **úplně jinak** a lépe:
+<div class="live">
+  <p class="lepsi-strankovani">
+    <a href="#">&laquo; Předchozí</a> <a href="#">Další &raquo;</a>
+  </p>
+</div>
 
-    [&laquo; Předchozí](#) [Další &raquo;](#)
 
-## Příliš velká plocha
 
-Opačným problémem je naopak **příliš velká klikací plocha**. Uživatelé používající pro ovládání **myš** si ji potřebují někam *odložit* – mít kursor v části stránky, která nic nedělá. Hodí se to třeba při **přepínání mezi nemaximalisovanými okny** nebo pro použití **kontextové nabídky**.
 
-Typickým (většinou) špatným příkladem je výpis témat v diskusním fóru, kde „klikají“ celé řádky.
+<h2 id="velka">Příliš velká plocha</h2>
 
-Pro uživatele **dotykových zařízeních** to většinou problém nebývá.
+<p>Opačným problémem je naopak <b>příliš velká klikací plocha</b>. Uživatelé používající pro ovládání <b>myš</b> si ji potřebují někam <i>odložit</i> – mít kursor v části stránky, která nic nedělá. Hodí se to třeba při <b>přepínání mezi nemaximalisovanými okny</b> nebo pro použití <b>kontextové nabídky</b>.</p>
 
-## Odstupy od odkazů
+<p>Typickým (většinou) špatným příkladem je výpis témat v diskusním fóru, kde „klikají“ celé řádky.</p>
 
-Co je naopak zásadní problém některých [responsivních webů](/responsivni-web) na dotykových zařízeních je nedostatečný prostor mezi jednotlivými odkazy. V kombinaci s **malou plochou** to může totálně znemožnit pohodlné trefení se na požadované místo.
+<p>Pro uživatele <b>dotykových zařízeních</b> to většinou problém nebývá.</p>
 
-## Testování
 
-Google při testování stránek, jestli se hodí pro mobilní zařízení, posuzuje jako jednu z věcí i právě **velikost a rozestupy mezi odkazy**. Úspěšné stránky potom označuje jako „[mobile-friendly](/google-mobile-friendly)“.
+<h2 id="rozestup">Odstupy od odkazů</h2>
 
-[Mobile-Friendly Test](https://www.google.com/webmasters/tools/mobile-friendly/)
+<p>Co je naopak zásadní problém některých <a href="/responsivni-web">responsivních webů</a> na dotykových zařízeních je nedostatečný prostor mezi jednotlivými odkazy. V kombinaci s <b>malou plochou</b> to může totálně znemožnit pohodlné trefení se na požadované místo.</p>
+
+
+<h2 id="test">Testování</h2>
+
+<p>Google při testování stránek, jestli se hodí pro mobilní zařízení, posuzuje jako jednu z věcí i právě <b>velikost a rozestupy mezi odkazy</b>. Úspěšné stránky potom označuje jako „<a href="/google-mobile-friendly">mobile-friendly</a>“.</p>
+
+<p><a href="https://www.google.com/webmasters/tools/mobile-friendly/" class="button">Mobile-Friendly Test</a></p>

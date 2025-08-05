@@ -5,71 +5,119 @@ description: "Proč se vyhnout fixování záhlaví/menu k hornímu okraji obraz
 date: "2015-08-22"
 last_modification: "2015-08-22"
 status: 0
-tags: ["Responsivní design", "Fixní posice"]
+tags: ["fixed", "responsive"]
+format: "html"
 ---
 
-Některé weby při odrolování **zafixují navigaci** k hornímu okraji. Jde to zajistit trochou JavaScriptu:
+<p>Některé weby při odrolování <b>zafixují navigaci</b> k hornímu okraji. Jde to zajistit trochou JavaScriptu:</p>
 
-    - [Fixní menu při rolování](/fixni-menu) – jak při odrolování stránky zafixovat menu na horní hraně obrazovky
+<div class="internal-content">
+  <ul>
+    <li><a href="/fixni-menu">Fixní menu při rolování</a> – jak při odrolování stránky zafixovat menu na horní hraně obrazovky</li>
+  </ul>
+</div>
 
-## Zmenšení prostoru
 
-Zásadní problém zafixované vodorovné navigace tkví v **omezení dostupného prostoru** pro obsah.
+<h2 id="prostor">Zmenšení prostoru</h2>
 
-Mohlo by se zdát, že je to problém jen mobilních zařízení s **malou obrazovkou**, ale ani monitory a displeje desktopů nebo notebooků nemají výšku na rozdávání, protože je většina **širokoúhlých**.
+<p>Zásadní problém zafixované vodorovné navigace tkví v <b>omezení dostupného prostoru</b> pro obsah.</p>
 
-Jedno z nejvíce rozšířených rozlišení **1366 × 768** (pohybuje se někde kolem 20 %) má výšku podobně malou jako větší mobily při orientaci *portrait* (na výšku).
+<p>Mohlo by se zdát, že je to problém jen mobilních zařízení s <b>malou obrazovkou</b>, ale ani monitory a displeje desktopů nebo notebooků nemají výšku na rozdávání, protože je většina <b>širokoúhlých</b>.</p>
 
-Navíc na desktopu ze svislého prostoru ubere místo:
+<p>Jedno z nejvíce rozšířených rozlišení <b>1366 × 768</b> (pohybuje se někde kolem 20 %) má výšku podobně malou jako větší mobily při orientaci <i>portrait</i> (na výšku).</p>
 
-  - Hlavní systémová lišta (cca **40 px**).
+<p>Navíc na desktopu ze svislého prostoru ubere místo:</p>
 
-  - Záhlaví prohlížeče (cca **60 px**).
+<ul>
+  <li>Hlavní systémová lišta (cca <b>40 px</b>).</li>
+  
+  <li>Záhlaví prohlížeče (cca <b>60 px</b>).</li>
+  
+  <li>Lišta záložek, kterou někdo používá (cca <b>30 px</b>).</li>
+  
+  <li>Někteří uživatelé používají ještě další vlastní lišty.</li>
+</ul>
 
-  - Lišta záložek, kterou někdo používá (cca **30 px**).
+<p>Nakonec tak zbude pro samotný obsah webu něco přes 600 pixelů na výšku, což není mnoho.</p>
 
-  - Někteří uživatelé používají ještě další vlastní lišty.
+<p>Výška fixní hlavičky může mít třeba <b>30 pixelů</b>, což znamená, že bude neustále <b>užírat cca 5 % dostupného místa</b>.</p>
 
-Nakonec tak zbude pro samotný obsah webu něco přes 600 pixelů na výšku, což není mnoho.
+<p>Asi nejextrémnější situace nastává u mobilních telefonů při zobrazení webu na šířku. V tomto případě fixní hlavička zabere klidně 1/5 prostoru.</p>
 
-Výška fixní hlavičky může mít třeba **30 pixelů**, což znamená, že bude neustále **užírat cca 5 % dostupného místa**.
 
-Asi nejextrémnější situace nastává u mobilních telefonů při zobrazení webu na šířku. V tomto případě fixní hlavička zabere klidně 1/5 prostoru.
+<h2 id="fixni">Proč fixní</h2>
 
-## Proč fixní
+<p>Při aplikaci zafixované hlavičky (nebo jiného fixního obsahu) je tak vhodné mít <b>dobrý důvod</b>, proč to udělat.</p>
 
-Při aplikaci zafixované hlavičky (nebo jiného fixního obsahu) je tak vhodné mít **dobrý důvod**, proč to udělat.
+<blockquote>
+  <p>Dobrým důvodem není, že to vypadá <i lang="en">cool</i> a mají to na nějakém jiném webu.</p>
+</blockquote>
 
-  Dobrým důvodem není, že to vypadá *cool* a mají to na nějakém jiném webu.
 
-Prostor, který je neustále viditelný a snižuje tak dostupné místo pro ostatní obsah, by **měl obsahovat něco hodně důležitého**. Je k úvaze, jestli je běžná navigace tak důležitá, aby se tím neustálý zábor místa ospravedlnil.
 
-Další možný problém stále fixní navigace je **odvádění pozornosti od obsahu**.
 
-Nabízí se také možnost odkazy na ostatní stránky přidávat přímo do obsahu, kde to dává smysl. Nebo mít na konci stránku zmíněné možnosti „**Kam dál**“, odkaz pro **návrat na hlavní stranu** a podobně.
 
-Hezky je to vyřešeno třeba na [Jak psát web](http://www.jakpsatweb.cz):
 
-Hodit se může také **drobečková navigace** umístěná i pod obsahem na konci stránky:
 
-## Zobrazení při rolování vzhůru
 
-Některé weby problém s místem a odváděním pozornosti fixního obsahu řeší jeho zobrazováním **na základě směru rolování**.
+<p>Prostor, který je neustále viditelný a snižuje tak dostupné místo pro ostatní obsah, by <b>měl obsahovat něco hodně důležitého</b>. Je k úvaze, jestli je běžná navigace tak důležitá, aby se tím neustálý zábor místa ospravedlnil.</p>
 
-Pokud člověk po příchodu na stránku začne rolovat směrem dolů, hlavička neustále viditelná (fixní) nebude. Zobrazí se až při rolování směrem nahoru.
+<p>Další možný problém stále fixní navigace je <b>odvádění pozornosti od obsahu</b>.</p>
 
-Vychází se z předpokladu, že pohybem vzhůru dává návštěvník najevo, že se chce dostat na hlavičku, která je nahoře.
+<p>Nabízí se také možnost odkazy na ostatní stránky přidávat přímo do obsahu, kde to dává smysl. Nebo mít na konci stránku zmíněné možnosti „<b>Kam dál</b>“, odkaz pro <b>návrat na hlavní stranu</b> a podobně.</p>
 
-Bohužel uživatel může mít tendenci vyjet vzhůru i v případě, že se chce jen dostat k obsahu, který přejel. V takovém případě ho zobrazení fixního obsahu nejspíš naštve, protože mu překryje obsah, ke kerému se chce dostat.
+<p>Hezky je to vyřešeno třeba na <a href="http://www.jakpsatweb.cz">Jak psát web</a>:</p>
 
-Tuto situaci jde částečně řešit tak, že se při rolování vzhůru (navíc třeba ještě s nějakou tolerancí) fixní prvek umístí nad horní hranu – tím nepřekryje obsah, ale bude nutné se k němu ještě déle prorolovat.
+<p><img src="/files/fixni-hlavicka/jpw-navigace.png" alt="Navigace na konci stránky JPW" class="border"></p>
 
-## Krátké stránky
 
-Zajímavý způsob, jak se nutnosti fixní navigace (nebo jiného obsahu) vyhnout, je vytvářet stránky dostatečné krátké na to, aby potom  nebyl problém odrolovat na začátek.
 
-## Odkazy jinam
 
-  - [Fixed Headers on Mobile: A/B Tested](http://exisweb.net/abtest-fixed-navbar)
 
-  - [Fixed Positioning in Mobile Browsers](http://bradfrost.com/blog/mobile/fixed-position/)
+
+
+
+
+
+
+
+
+
+
+
+<p>Hodit se může také <b>drobečková navigace</b> umístěná i pod obsahem na konci stránky:</p>
+
+<p><img src="/files/fixni-hlavicka/drobeckova-navigace.png" alt="Navigace na konci stránky JPW" class="border"></p>
+
+
+
+
+
+
+<h2 id="rolovani-nahoru">Zobrazení při rolování vzhůru</h2>
+
+<p>Některé weby problém s místem a odváděním pozornosti fixního obsahu řeší jeho zobrazováním <b>na základě směru rolování</b>.</p>
+
+<p>Pokud člověk po příchodu na stránku začne rolovat směrem dolů, hlavička neustále viditelná (fixní) nebude. Zobrazí se až při rolování směrem nahoru.</p>
+
+
+<p>Vychází se z předpokladu, že pohybem vzhůru dává návštěvník najevo, že se chce dostat na hlavičku, která je nahoře.</p>
+
+<p>Bohužel uživatel může mít tendenci vyjet vzhůru i v případě, že se chce jen dostat k obsahu, který přejel. V takovém případě ho zobrazení fixního obsahu nejspíš naštve, protože mu překryje obsah, ke kerému se chce dostat.</p>
+
+<p>Tuto situaci jde částečně řešit tak, že se při rolování vzhůru (navíc třeba ještě s nějakou tolerancí) fixní prvek umístí nad horní hranu – tím nepřekryje obsah, ale bude nutné se k němu ještě déle prorolovat.</p>
+
+
+
+<h2 id="kratke">Krátké stránky</h2>
+
+<p>Zajímavý způsob, jak se nutnosti fixní navigace (nebo jiného obsahu) vyhnout, je vytvářet stránky dostatečné krátké na to, aby potom  nebyl problém odrolovat na začátek.</p>
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="http://exisweb.net/abtest-fixed-navbar">Fixed Headers on Mobile: A/B Tested</a></li>
+  <li><a href="http://bradfrost.com/blog/mobile/fixed-position/">Fixed Positioning in Mobile Browsers</a></li>
+</ul>

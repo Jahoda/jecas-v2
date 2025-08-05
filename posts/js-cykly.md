@@ -5,67 +5,56 @@ description: "Jak cyklem procházet značky v JavaScriptu. Popis různých možn
 date: "2013-11-23"
 last_modification: "2013-12-02"
 status: 1
-tags: ["JavaScript", "Vybírání elementů"]
+tags: ["js", "js-vyber-elementu"]
+format: "html"
 ---
 
-Elementy se **společnými znaky** (stejný název tagu, stejný název třídy) lze získat buď metodami `getElement*`, nebo od **IE 8** metodou [`querySelectorAll`](/queryselector). Oba postupy vrátí kolekci elementů.
+<p>Elementy se <b>společnými znaky</b> (stejný název tagu, stejný název třídy) lze získat buď metodami <code>getElement*</code>, nebo od <b>IE 8</b> metodou <a href="/queryselector"><code>querySelectorAll</code></a>. Oba postupy vrátí kolekci elementů.</p>
 
-Chceme-li se *získanými* značkami něco dělat (změnit jim **třídu**, přidat nějakou **funkci** do `onclick`u apod.), je potřeba je **projít cyklem**.
+<p>Chceme-li se <i>získanými</i> značkami něco dělat (změnit jim <b>třídu</b>, přidat nějakou <b>funkci</b> do <code>onclick</code>u apod.), je potřeba je <b>projít cyklem</b>.</p>
 
-## Cyklus `for`
+<h2 id="for">Cyklus <code>for</code></h2>
+<p>Časté řešení je běžný cyklus <code>for</code>, kde se prochází jednotlivé elementy do té doby, než se dosáhne počtu všech vybraných značek (<code>znacky.length</code>). (Pozor na překlep, <code>leng<font color=red>h</font>t</code> je špatně.)</p>
 
-Časté řešení je běžný cyklus `for`, kde se prochází jednotlivé elementy do té doby, než se dosáhne počtu všech vybraných značek (`znacky.length`). (Pozor na překlep, `lenght` je špatně.)
+<p>Indexy značek se <b>číslují od nuly</b>, proto <code>var i = <b>0</b></code>.</p>
 
-Indexy značek se **číslují od nuly**, proto `var i = **0**`.
-
-```
-var znacky = document.getElementsByTagName("div");
+<pre><code>var znacky = document.getElementsByTagName("div");
 for (var i = 0; i &lt; znacky.length; i++) {
   // znacky[i]
-}
-```
+}</code></pre>
 
-V případě, že chceme položky **procházet odzadu**, bude `for` vypadat následovně ([ukázka](http://kod.djpw.cz/xws)):
+<p>V případě, že chceme položky <b>procházet odzadu</b>, bude <code>for</code> vypadat následovně (<a href="http://kod.djpw.cz/xws">ukázka</a>):</p>
 
-```
-for (var i = znacky.length - 1; i >= 0; i--) {
+<pre><code>for (var i = znacky.length - 1; i >= 0; i--) {
   // znacky[i]
-}
-```
+}</code></pre>
 
-Tento postup **zezadu** by měl být **rychlejší** (nemusí se neustále procházet všechny značky a zjišťovat jejich počet — `znacky.length`).
+<p>Tento postup <b>zezadu</b> by měl být <b>rychlejší</b> (nemusí se neustále procházet všechny značky a zjišťovat jejich počet — <code>znacky.length</code>).</p>
 
-Zrychlit první způsob cyklu `for` by šlo uložením *délky* do **pomocné proměnné** ([ukázka](http://kod.djpw.cz/ixs)).
+<p>Zrychlit první způsob cyklu <code>for</code> by šlo uložením <i>délky</i> do <b>pomocné proměnné</b> (<a href="http://kod.djpw.cz/ixs">ukázka</a>).</p>
 
-```
-for (var i = 0, delka = znacky.length; i &lt; delka; i++) {
+<pre><code>for (var i = 0, delka = znacky.length; i &lt; delka; i++) {
   // znacky[i]
-}
-```
+}</code></pre>
 
-## Cyklus `for … in`
+<h2 id="for-in">Cyklus <code>for … in</code></h2>
+<p>Při použití <code>for</code>/<code>in</code> cyklu by projití všech elementů mohlo vypadat následovně (<a href="http://kod.djpw.cz/wws">ukázka</a>):</p>
 
-Při použití `for`/`in` cyklu by projití všech elementů mohlo vypadat následovně ([ukázka](http://kod.djpw.cz/wws)):
-
-```
-for (var i in znacky) {
+<pre><code>for (var i in znacky) {
   // znacky[i]
-}
-```
+}</code></pre>
 
-Nebezpečí hrozí při používání `for … in` pro [procházení polí](http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=8&amp;topic=149917). Druhá nevýhoda je, že směr procházení elementů **nemusí být shodný napříč prohlížeči**.
+<p>Nebezpečí hrozí při používání <code>for … in</code> pro <a href="http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=8&amp;topic=149917">procházení polí</a>. Druhá nevýhoda je, že směr procházení elementů <b>nemusí být shodný napříč prohlížeči</b>.</p>
 
-## Cyklus `while`
-
-Po `for … in` má asi nejstručnější zápis. Někdy může být nevýhoda, že prochází značky **od konce** a **srozumitelnost zápisu** nemusí být pro každého ([ukázka](http://kod.djpw.cz/gxs)).
-
-```
-var i = znacky.length; 
+<h2 id="while">Cyklus <code>while</code></h2>
+<p>Po <code>for … in</code> má asi nejstručnější zápis. Někdy může být nevýhoda, že prochází značky <b>od konce</b> a <b>srozumitelnost zápisu</b> nemusí být pro každého (<a href="http://kod.djpw.cz/gxs">ukázka</a>).</p>
+<pre><code>var i = znacky.length; 
 while (i--) {
   // znacky[i]
-}
-```
+}</code></pre>
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - Todd Motto: [Simple forEach implementation for Objects/NodeLists/Arrays with automatic type looping](http://toddmotto.com/simple-foreach-implementation-for-objects-nodelists-arrays-with-automatic-type-looping/)
+<ul>
+  <li>Todd Motto: <a href="http://toddmotto.com/simple-foreach-implementation-for-objects-nodelists-arrays-with-automatic-type-looping/">Simple forEach implementation for Objects/NodeLists/Arrays with automatic type looping</a></li>
+</ul>

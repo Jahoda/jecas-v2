@@ -6,10 +6,15 @@ date: "2015-11-08"
 last_modification: "2015-11-08"
 status: 0
 tags: []
+format: "html"
 ---
 
-Vzhledem k tomu, že [SVG](/svg) je snadno modifikovatelné JavaScriptem, jde plynule měnit jednotlivé tvary.
+<p>Vzhledem k tomu, že <a href="/svg">SVG</a> je snadno modifikovatelné JavaScriptem, jde plynule měnit jednotlivé tvary.</p>
 
-Pro snadné použití existuje hotové řešení:
+<p>Pro snadné použití existuje hotové řešení:</p>
 
-    - [MorphSVGPlugin](http://greensock.com/morphSVG)
+<div class="external-content">
+  <ul>
+    <li><a href="http://greensock.com/morphSVG">MorphSVGPlugin</a></li>
+  </ul>
+</div>

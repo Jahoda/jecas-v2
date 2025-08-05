@@ -5,194 +5,261 @@ description: "Jak vypadá základní „kostra“ HTML stránky. Které HTML zna
 date: "2015-03-06"
 last_modification: "2015-10-20"
 status: 1
-tags: ["HTML", "HTML značky"]
+tags: ["html", "html-tagy"]
+format: "html"
 ---
 
-```
-&lt;!doctype html>
+<pre><code>&lt;!doctype html>
 &lt;meta charset="utf-8">
 &lt;title>Titulek stránky&lt;/title>
-Obsah stránky.
-```
+Obsah stránky.</code></pre>
 
-Na HTML kódu je zajímavé, že v podstatě nemusí obsahovat žádný HTML kód a přesto funguje.
 
-Když se napíše libovolný textový obsah do textového souboru s příponou `*.html`, prohlížeče ho zobrazí jako HTML. Nejjednodušší HTML stránka tedy **nemusí obsahovat jedinou HTML značku**.
 
-```
-Nejjednodušší HTML stránka.
-```
 
-    - [Živá ukázka nejjednodušší HTML stránky](http://kod.djpw.cz/mqlb-)
+<p>Na HTML kódu je zajímavé, že v podstatě nemusí obsahovat žádný HTML kód a přesto funguje.</p>
 
-## Čeština
+<p>Když se napíše libovolný textový obsah do textového souboru s příponou <code>*.html</code>, prohlížeče ho zobrazí jako HTML. Nejjednodušší HTML stránka tedy <b>nemusí obsahovat jedinou HTML značku</b>.</p>
 
-Někdy se může stát, že prohlížeč není schopen správně určit kódování dokumentu, což vyústí ve špatné **zobrazení české diakritiky**.
+<pre><code>Nejjednodušší HTML stránka.</code></pre>
 
-  NejjednouduĹˇĹˇĂ HTML strĂˇnka.
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/mqlb-">Živá ukázka nejjednodušší HTML stránky</a></li>
+  </ul>
+</div>
 
-Příklad pochází z této stránky:
 
-    - [Příklad stránky se špatným kódováním](http://jecas.cz/files/html-kostra/stranka.html)
 
-Z takových důvodů se pro jistotu na začátek stránky přidává `&lt;meta charset>`. Pro nové stránky je zpravidla nejvýhodnější volit kódování **UTF-8**.
+<h2 id="cestina">Čeština</h2>
 
-```
-**&lt;meta charset="utf-8">**
-Nejjednodušší HTML stránka s funkční češtinou.
-```
+<p>Někdy se může stát, že prohlížeč není schopen správně určit kódování dokumentu, což vyústí ve špatné <b>zobrazení české diakritiky</b>.</p>
 
-Nastavit kódování jde i jinými způsoby.
+<div class="live no-source">
+  <p>NejjednouduĹˇĹˇĂ HTML strĂˇnka.</p>
+</div>
 
-    Využitím tzv. [BOMu](/bom) (*Byte order mark*).
+<p>Příklad pochází z této stránky:</p>
 
-    Poslat skutečnou HTTP hlavičku `Content-Type`. V PHP třeba následovně:
+<div class="external-content">
+  <ul>
+    <li><a href="http://jecas.cz/files/html-kostra/stranka.html">Příklad stránky se špatným kódováním</a></li>
+  </ul>
+</div>
 
-    ```
-header("Content-type: text/html; charset=utf-8");
-```
+<p>Z takových důvodů se pro jistotu na začátek stránky přidává <code>&lt;meta charset></code>. Pro nové stránky je zpravidla nejvýhodnější volit kódování <b>UTF-8</b>.</p>
 
-Jelikož BOM může vytvářet problémy při používání PHP a HTTP hlavička zase nezajistí správné kódování při případném **uložení souboru na disk**, zdá se `&lt;meta>` značka nejvýhodnější.
+<pre><code><b>&lt;meta charset="utf-8"></b>
+Nejjednodušší HTML stránka s funkční češtinou.</code></pre>
 
-Občas je možné se setkat se **starší podobou** `&lt;meta>` značky pro kódování češtiny, je zbytečně složitá a patří do musea:
 
-```
-&lt;meta http-equiv="content-type" content="text/html;charset=utf-8">
-```
 
-## Titulek stránky
 
-Po přidání `&lt;meta>` značky pro správné kódování češtiny už je stránka dobře funkční.
 
-Pro vyšší komfort návštěvníků je dále vhodné přidat značku `&lt;title>` obsahující titulek stránky. Bez něj se v záložce zobrazí jen ne úplně srozumitelná adresa.
 
-Titulek je optimální umístit až pod `&lt;meta charset>` značku pro kódování češtiny a před obsah.
 
-```
-&lt;meta charset="utf-8">
-**&lt;title>Název stránky&lt;/title>**
-Nejjednodušší HTML stránka s funkční češtinou a titulkem.
-```
+<p>Nastavit kódování jde i jinými způsoby.</p>
 
-  - Umístění `&lt;title>` za `&lt;meta charset>` zajistí jistotu správného kódování už v samotném titulku.
+<ol>
+  <li>
+    <p>Využitím tzv. <a href="/bom">BOMu</a> (<i>Byte order mark</i>).</p>
+  </li>
+  <li>
+    <p>Poslat skutečnou HTTP hlavičku <code>Content-Type</code>. V PHP třeba následovně:</p>
+    
+    <pre><code>header("Content-type: text/html; charset=utf-8");</code></pre>
+  </li>
+</ol>
 
-  - Umístit `&lt;title>` co nejvýš je dobré k tomu, aby se z titulku návštěvník co nejdříve dozvěděl, že se stránka načítá a o čem zhruba je.
+<p>Jelikož BOM může vytvářet problémy při používání PHP a HTTP hlavička zase nezajistí správné kódování při případném <b>uložení souboru na disk</b>, zdá se <code>&lt;meta></code> značka nejvýhodnější.</p>
 
-HTML jinak disponuje značnou volností, takže není problém značku `&lt;title>` dát klidně až za obsah. Bude to ale mít nevýhodu v tom, že se titulek může zobrazit až později, protože se před ním musí stáhnout ostatní HTML kód.
+<p>Občas je možné se setkat se <b>starší podobou</b> <code>&lt;meta></code> značky pro kódování češtiny, je zbytečně složitá a patří do musea:</p>
 
-Titulek může být jen jeden, takže opětovné umístění značky `&lt;title>` už název stránky v záložce nepřepíše. Použije se první výskyt.
+<pre><code>&lt;meta http-equiv="content-type" content="text/html;charset=utf-8"></code></pre>
 
-## Značka `&lt;!doctype>`
+    
 
-Používá se pro přepínání režimu prohlížečů. Zpravidla je výhodné přepnout stránku do **standardního režimu** (bez `&lt;!doctype>` se používá *quirk režim*).
+<h2 id="title">Titulek stránky</h2>
 
-    - [HTML značka `&lt;!doctype>`](/doctype) – rozdíl mezi standardním režimem a quirkem
+<p>Po přidání <code>&lt;meta></code> značky pro správné kódování češtiny už je stránka dobře funkční.</p>
 
-Stačí tedy uvést na začátek souboru:
+<p>Pro vyšší komfort návštěvníků je dále vhodné přidat značku <code>&lt;title></code> obsahující titulek stránky. Bez něj se v záložce zobrazí jen ne úplně srozumitelná adresa.</p>
 
-```
-&lt;!doctype html>
-```
+<p><img src="/files/html-kostra/chybi-titulek.png" alt="Chybějící titulek stránky" class="border"></p>
 
-Velké rozdíly jsou hlavně v **Internet Exploreru**. Ostatní prohlížeče se mezi quirkem a standardním režimem tolik neliší (na box model v nich nemá režim vliv), ale třeba dědění velikosti písma v tabulce je odlišné.
 
-## Kompletní HTML kostra
 
-Základní podoba dobře funkční HTML kostry dokumentu vypadá následovně.
 
-```
-&lt;!doctype html>
+
+<p>Titulek je optimální umístit až pod <code>&lt;meta charset></code> značku pro kódování češtiny a před obsah.</p>
+
+<pre><code>&lt;meta charset="utf-8">
+<b>&lt;title>Název stránky&lt;/title></b>
+Nejjednodušší HTML stránka s funkční češtinou a titulkem.</code></pre>
+
+
+
+<ul>
+  <li>Umístění <code>&lt;title></code> za <code>&lt;meta charset></code> zajistí jistotu správného kódování už v samotném titulku.</li>
+  
+  <li>Umístit <code>&lt;title></code> co nejvýš je dobré k tomu, aby se z titulku návštěvník co nejdříve dozvěděl, že se stránka načítá a o čem zhruba je.</li>
+</ul>
+
+
+<p>HTML jinak disponuje značnou volností, takže není problém značku <code>&lt;title></code> dát klidně až za obsah. Bude to ale mít nevýhodu v tom, že se titulek může zobrazit až později, protože se před ním musí stáhnout ostatní HTML kód.</p>
+
+<p>Titulek může být jen jeden, takže opětovné umístění značky <code>&lt;title></code> už název stránky v záložce nepřepíše. Použije se první výskyt.</p>
+
+
+
+
+
+<h2 id="doctype">Značka <code>&lt;!doctype></code></h2>
+
+
+<p>Používá se pro přepínání režimu prohlížečů. Zpravidla je výhodné přepnout stránku do <b>standardního režimu</b> (bez <code>&lt;!doctype></code> se používá <i>quirk režim</i>).</p>
+<div class="internal-content">
+  <ul>
+    <li><a href="/doctype">HTML značka <code>&lt;!doctype></code></a> – rozdíl mezi standardním režimem a quirkem</li>
+  </ul>
+</div>
+
+
+
+<p>Stačí tedy uvést na začátek souboru:</p>
+
+<pre><code>&lt;!doctype html></code></pre>
+
+
+<p>Velké rozdíly jsou hlavně v <b>Internet Exploreru</b>. Ostatní prohlížeče se mezi quirkem a standardním režimem tolik neliší (na box model v nich nemá režim vliv), ale třeba dědění velikosti písma v tabulce je odlišné.</p>
+
+
+
+
+<h2 id="kompletni">Kompletní HTML kostra</h2>
+
+<p>Základní podoba dobře funkční HTML kostry dokumentu vypadá následovně.</p>
+
+<pre><code>&lt;!doctype html>
 &lt;meta charset="utf-8">
 &lt;title>Titulek stránky&lt;/title>
-Obsah stránky.
-```
+Obsah stránky.</code></pre>
 
-Tato základní kostra stránky může působit trochu **minimalisticky** oproti příkladům často uváděných v HTML učebnicích.
 
-K vidění bývají příklady s uváděním nepovinných značek `&lt;html>`, `&lt;head>` a `&lt;body>`, které není potřeba psát.
 
-    - Druhy HTML značek: [Počáteční i koncová značka volitelná](/html-znacky#volitelne)
 
-Značka `&lt;html>` není přímo potřebná k ničemu. Samotné ruční dělení dokumentu na `&lt;head>` a `&lt;body>` **není potřeba v 99,9 % případů**.
 
-Explicitně uvádět tyto značky má tedy smysl jen v případě, že se pro ně nastavují nějaké CSS třídy, identifikátory a podobně. Případně kvůli **HTML editorům**, které mohou mít teoreticky problém rozlišit hlavičku a tělo.
+<p>Tato základní kostra stránky může působit trochu <b>minimalisticky</b> oproti příkladům často uváděných v HTML učebnicích.</p>
 
-Prohlížeče ví, jak funguje HTML, takže si `&lt;html>`, `&lt;head>` a `&lt;body>` domyslí a ve finále v kódu budou.
+<p>K vidění bývají příklady s uváděním nepovinných značek <code>&lt;html></code>, <code>&lt;head></code> a <code>&lt;body></code>, které není potřeba psát.</p>
 
-Všechny tyto značky jde použít na stránce **pouze jednou**. Vícenásobné pokusy budou ignorovány.
+<div class="internal-content">
+  <ul>
+    <li>Druhy HTML značek: <a href="/html-znacky#volitelne">Počáteční i koncová značka volitelná</a></li>
+  </ul>
+</div>
 
-### Značka `&lt;html>`
+<p>Značka <code>&lt;html></code> není přímo potřebná k ničemu. Samotné ruční dělení dokumentu na <code>&lt;head></code> a <code>&lt;body></code> <b>není potřeba v 99,9 % případů</b>.</p>
 
-Jedná se tzv. o **kořenový element**. Nic výš ve struktuře HTML stránky neexistuje.
+<p>Explicitně uvádět tyto značky má tedy smysl jen v případě, že se pro ně nastavují nějaké CSS třídy, identifikátory a podobně. Případně kvůli <b>HTML editorům</b>, které mohou mít teoreticky problém rozlišit hlavičku a tělo.</p>
 
-V CSS jde zaměřit [selektorem `:root`](/css-selektory#korenovy) (funkční od **IE 9**).
+<p>Prohlížeče ví, jak funguje HTML, takže si <code>&lt;html></code>, <code>&lt;head></code> a <code>&lt;body></code> domyslí a ve finále v kódu budou.</p>
 
-Má nepovinnou počáteční i koncovou značku, nemusí se tedy do kódu vůbec psát.
+<p>Všechny tyto značky jde použít na stránce <b>pouze jednou</b>. Vícenásobné pokusy budou ignorovány.</p>
 
-Podporuje skoro jen [globální atributy](/obecne-atributy), z nichž je nejzajímavější [`lang`](/lang) pro určení jazyku stránky.
 
-Další atributy:
+<h3 id="html">Značka <code>&lt;html></code></h3>
 
-  `manifest`
+<p>Jedná se tzv. o <b>kořenový element</b>. Nic výš ve struktuře HTML stránky neexistuje.</p>
+
+<p>V CSS jde zaměřit <a href="/css-selektory#korenovy">selektorem <code>:root</code></a> (funkční od <b>IE 9</b>).</p>
+
+<p>Má nepovinnou počáteční i koncovou značku, nemusí se tedy do kódu vůbec psát.</p>
+
+<p>Podporuje skoro jen <a href="/obecne-atributy">globální atributy</a>, z nichž je nejzajímavější <a href="/lang"><code>lang</code></a> pro určení jazyku stránky.</p>
+
+<p>Další atributy:</p>
+
+<dl>
+  <dt id="manifest"><code>manifest</code></dt>
+  <dd>
+    <p>Atribut <code>manifest</code> slouží pro používání <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache">application cache</a>.</p>
+  </dd>
   
-    Atribut `manifest` slouží pro používání [application cache](https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache).
-
-  `xmlns`
+  <dt id="xmlns"><code>xmlns</code></dt>
+  <dd>
+    <p>XML Namespace (jmenný prostor XML). Používal se v XHTML.</p>
+  </dd>
   
-    XML Namespace (jmenný prostor XML). Používal se v XHTML.
+  <dt id="version"><code>version</code></dt>
+  <dd>
+    <p>Dávno zavržený atribut: nahradil ho <a href="/doctype"><code>&lt;!doctype></code></a>.</p>
+  </dd>
+</dl>
 
-  `version`
+
+<h3 id="head">Hlavička <code>&lt;head></code></h3>
+
+<p>Hlavička stránky obsahuje prvky, které nejsou na stránce vidět:</p>
+
+<ul>
+  <li>titulek stránky <code>&lt;title></code>,</li>
   
-    Dávno zavržený atribut: nahradil ho [`&lt;!doctype>`](/doctype).
+  <li>meta informace ve značce <code>&lt;meta></code>,</li>
+  
+  <li>interní CSS – <code>&lt;style></code>,</li>
+  
+  <li>interní nebo externí JavaScript – <code>&lt;script></code>,</li>
+  
+  <li>obsah pro případ <a href="/vypnuty-js">vypnutého skriptování</a> – <code>&lt;noscript></code>,</li>
+  
+  <li>odkazy na externí CSS nebo ikonky stránky ve značce <code>&lt;link></code>,</li>
+  
+  <li>stanovení základní adresy pro odkazy <a href="/base"><code>&lt;base></code></a></li>  
+</ul>
 
-### Hlavička `&lt;head>`
+<p>Jiné <b>obsahové značky</b> nejsou v hlavičce dovoleny a jejich použití ji automaticky uzavře a otevře <code>&lt;body></code>.</p>
 
-Hlavička stránky obsahuje prvky, které nejsou na stránce vidět:
+<p>Psát do kódu <code>&lt;head></code> není potřeba.</p>
 
-  - titulek stránky `&lt;title>`,
+<p>Ačkoliv se značka <code>&lt;head></code> a v ní obsažené značky nezobrazují, jde je stylovat.</p>
 
-  - meta informace ve značce `&lt;meta>`,
+<div class="external-content">
+  <ul>
+    <li><a href="https://htmlhead.dev">HEAD</a> – popis snad všech myslitelných věcí, co mohou být v hlavičce stránky</li>
+  </ul>
+</div>
 
-  - interní CSS – `&lt;style>`,
 
-  - interní nebo externí JavaScript – `&lt;script>`,
+<h3 id="body">Tělo <code>&lt;body></code></h3>
 
-  - obsah pro případ [vypnutého skriptování](/vypnuty-js) – `&lt;noscript>`,
+<p>Obsahuje samostatný obsah stránky, který prohlížeč renderuje vykreslovacím jádrem. Počáteční i koncová značka je nepovinná – <code>&lt;body></code> se stejně vytvoří, když prohlížeč narazí na obsahový element, a ukončí za posledním elementem na stránce.</p>
 
-  - odkazy na externí CSS nebo ikonky stránky ve značce `&lt;link>`,
+<p>Kromě obecných atributů u něj jdou používat <code>on*</code> atributy pro <b>události v JavaScriptu</b>. Asi nejčastěji se používá událost <code>onload</code>, která se provede po načtení stránky.</p>
 
-  - stanovení základní adresy pro odkazy [`&lt;base>`](/base)
+<p>Všechny atributy: <code>onafterprint</code>, <code>onbeforeprint</code>, <code>onbeforeunload</code>, <code>onblur</code>, <code>onerror</code>, <code>onfocus</code>, <code>onhashchange</code>, <code>onlanguagechange</code>, <code>onload</code>, <code>onmessage</code>, <code>onoffline</code>, <code>ononline</code>, <code>onpopstate</code>, <code>onredo</code>, <code>onresize</code>, <code>onstorage</code>, <code>onundo</code>, <code>onunload</code></p>
 
-Jiné **obsahové značky** nejsou v hlavičce dovoleny a jejich použití ji automaticky uzavře a otevře `&lt;body>`.
+<p>Nakonec obsahuje řadu atributů, které se před CSS používaly pro <b>určení vzhledu dokumentu</b>. Nemá smysl je používat, když jdou nahradit pomocí CSS.</p>
 
-Psát do kódu `&lt;head>` není potřeba.
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/lhrb">Ukázka</a> – formátování stránky bez CSS</li>
+    
+    <li><a href="http://www.jakpsatweb.cz/html/struktura.html#body">Struktura dokument: body</a> – přehled formátovacích atributů na Jak psát web</li>
+  </ul>
+</div>
 
-Ačkoliv se značka `&lt;head>` a v ní obsažené značky nezobrazují, jde je stylovat.
 
-    - [HEAD](https://htmlhead.dev) – popis snad všech myslitelných věcí, co mohou být v hlavičce stránky
 
-### Tělo `&lt;body>`
 
-Obsahuje samostatný obsah stránky, který prohlížeč renderuje vykreslovacím jádrem. Počáteční i koncová značka je nepovinná – `&lt;body>` se stejně vytvoří, když prohlížeč narazí na obsahový element, a ukončí za posledním elementem na stránce.
 
-Kromě obecných atributů u něj jdou používat `on*` atributy pro **události v JavaScriptu**. Asi nejčastěji se používá událost `onload`, která se provede po načtení stránky.
+<h2 id="semanticke-znacky">Sémantické HTML5 značky</h2>
 
-Všechny atributy: `onafterprint`, `onbeforeprint`, `onbeforeunload`, `onblur`, `onerror`, `onfocus`, `onhashchange`, `onlanguagechange`, `onload`, `onmessage`, `onoffline`, `ononline`, `onpopstate`, `onredo`, `onresize`, `onstorage`, `onundo`, `onunload`
+<p>Na základě toho, že prvky webových stránek sestávají z obdobných sekcí jako je hlavička (tím není myšlena značka <code>&lt;head></code>), navigace, obsah, patička a podobně, v HTML5 dostaly tyto prvky <b>značky se zvláštním názvem</b>.</p>
 
-Nakonec obsahuje řadu atributů, které se před CSS používaly pro **určení vzhledu dokumentu**. Nemá smysl je používat, když jdou nahradit pomocí CSS.
+<p>Příklad HTML 5 struktury s využitím všech nových značek může vypadat následovně:</p>
 
-    - [Ukázka](http://kod.djpw.cz/lhrb) – formátování stránky bez CSS
-
-    - [Struktura dokument: body](http://www.jakpsatweb.cz/html/struktura.html#body) – přehled formátovacích atributů na Jak psát web
-
-## Sémantické HTML5 značky
-
-Na základě toho, že prvky webových stránek sestávají z obdobných sekcí jako je hlavička (tím není myšlena značka `&lt;head>`), navigace, obsah, patička a podobně, v HTML5 dostaly tyto prvky **značky se zvláštním názvem**.
-
-Příklad HTML 5 struktury s využitím všech nových značek může vypadat následovně:
-
-```
-&lt;!doctype html>
+<pre><code>&lt;!doctype html>
 &lt;html>
     &lt;head>
         &lt;meta charset="utf-8">
@@ -211,109 +278,170 @@ Příklad HTML 5 struktury s využitím všech nových značek může vypadat n
       &lt;aside>Boční sloupec&lt;/aside>
       &lt;footer>Patička&lt;/footer>
     &lt;/body>
-&lt;/html>
-```
+&lt;/html></code></pre>
 
-### Značka `&lt;main>`
 
-Patří do ní hlavní obsah stránky, který je **unikátní napříč webem**. Opakujicí se společné části stránky jako navigace, hlavička, patička a podobně by měly být mimo něj.
 
-### Hlavička `&lt;header>`
 
-Obecná značka pro hlavičku. Tím není myšleno pouze logo stránky, ale stejně tak může být v *hlavičce* uveden nadpis článku. Značka `&lt;header>` tedy označuje hlavičku/záhlaví dané sekce.
 
-Hlavičkou tak bude i třeba nadpis a perex článku:
 
-```
-&lt;header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="main">Značka <code>&lt;main></code></h3>
+
+<p>Patří do ní hlavní obsah stránky, který je <b>unikátní napříč webem</b>. Opakujicí se společné části stránky jako navigace, hlavička, patička a podobně by měly být mimo něj.</p>
+
+
+
+<h3 id="header">Hlavička <code>&lt;header></code></h3>
+
+<p>Obecná značka pro hlavičku. Tím není myšleno pouze logo stránky, ale stejně tak může být v <i>hlavičce</i> uveden nadpis článku. Značka <code>&lt;header></code> tedy označuje hlavičku/záhlaví dané sekce.</p>
+
+<p>Hlavičkou tak bude i třeba nadpis a perex článku:</p>
+
+<pre><code>&lt;header>
   &lt;h1>Název článku&lt;/h1>
   &lt;p>Popis článku&lt;/p>
-&lt;/header>
-```
+&lt;/header></code></pre>
 
-### Navigace `&lt;nav>`
 
-Značka `&lt;nav>` označuje sekci obsahující **navigační prvky** – odkazy. Je jedno jestli externí nebo interní.
 
-Do `&lt;nav>` tak patří hlavní menu, postranní menu nebo i [obsah stránky](/toc) (*table of contents*).
 
-Odkazy v navigaci se často dávají do [seznamu](/seznamy):
 
-```
-&lt;nav>
+
+
+
+<h3 id="nav">Navigace <code>&lt;nav></code></h3>
+
+<p>Značka <code>&lt;nav></code> označuje sekci obsahující <b>navigační prvky</b> – odkazy. Je jedno jestli externí nebo interní.</p>
+
+<p>Do <code>&lt;nav></code> tak patří hlavní menu, postranní menu nebo i <a href="/toc">obsah stránky</a> (<i lang="en">table of contents</i>).</p>
+
+<p>Odkazy v navigaci se často dávají do <a href="/seznamy">seznamu</a>:</p>
+
+<pre><code>&lt;nav>
   &lt;ul>
     &lt;li>&lt;a href="http://jecas.cz">Je čas&lt;/a>&lt;/li>
     …
   &lt;/ul>
-&lt;/nav>
-```
+&lt;/nav></code></pre>
 
-V dřívějších dobách se občas pro menu používala značka [`&lt;menu>`](/seznamy#menu), která se zobrazovala jako seznam. Byl jí změněn význam na [kontextovou nabídku](/menuitem).
 
-### Článek `&lt;article>`
+<p>V dřívějších dobách se občas pro menu používala značka <a href="/seznamy#menu"><code>&lt;menu></code></a>, která se zobrazovala jako seznam. Byl jí změněn význam na <a href="/menuitem">kontextovou nabídku</a>.</p>
 
-Že se značka `&lt;article>` hodí pro **obalení článku**, je asi jasné. Jinak do `&lt;article>` patří obsah, který jako celek dává smysl sám o sobě a nebyl by ho například problém přenést na jinou stránku.
 
-V případě, že je na stránce článků více, bude pro každý odpovídat jeden `&lt;article>`.
 
-Kromě článků je `&lt;article>` určen i třeba pro jednotlivé **příspěvky v diskusním fóru** nebo komentáře pod článkem.
 
-### Patička/zápatí `&lt;footer>`
 
-Neslouží pouze pro patičku stránky (to místo na konci webu, kam se [umisťuje datum](/paticka-datum)), ale pro **patičku dané sekce**.
 
-Například v článku (značka `&lt;article>`) se nabízí do značky `&lt;footer>` dát informace o autorovi článku nebo odkazy na související zdroje.
 
-### Okrajový obsah `&lt;aside>`
+<h3 id="article">Článek <code>&lt;article></code></h3>
 
-Označuje část obsahu, která není přímo související. Do `&lt;aside>` se nabízí umístit části bočního panelu, reklamy a podobně.
+<p>Že se značka <code>&lt;article></code> hodí pro <b>obalení článku</b>, je asi jasné. Jinak do <code>&lt;article></code> patří obsah, který jako celek dává smysl sám o sobě a nebyl by ho například problém přenést na jinou stránku.</p>
 
-### Sekce `&lt;section>`
+<p>V případě, že je na stránce článků více, bude pro každý odpovídat jeden <code>&lt;article></code>.</p>
 
-Obecná sekce obalující tematickou skupinu obsahu. Má smysl asi hlavně u rozsáhlých a dlouhých stránek/článků, kde už nejde vyznačit hierarchii prostřednictvím [nadpisů `&lt;h1–6>`](/nadpisy) – struktura je hlubší. Potom je řešení použít `&lt;section>`, kde se s číslováním nadpisů začne zase od začátku.
+<p>Kromě článků je <code>&lt;article></code> určen i třeba pro jednotlivé <b>příspěvky v diskusním fóru</b> nebo komentáře pod článkem.</p>
 
-Značka `&lt;section>` má podobný význam jako původně `&lt;div>` (*division* – oddíl) než se začal hromadně používat ke stylování.
 
-### Skupina nadpisů `&lt;hgroup>`
+<h3 id="footer">Patička/zápatí <code>&lt;footer></code></h3>
 
-Značka `&lt;hgroup>` už byla z HTML 5 specifikace **odebrána**. Měla sloužit k obalení nadpisu a podnadpisu. Například:
+<p>Neslouží pouze pro patičku stránky (to místo na konci webu, kam se <a href="/paticka-datum">umisťuje datum</a>), ale pro <b>patičku dané sekce</b>.</p>
 
-```
-&lt;header>
+<p>Například v článku (značka <code>&lt;article></code>) se nabízí do značky <code>&lt;footer></code> dát informace o autorovi článku nebo odkazy na související zdroje.</p>
+
+
+
+
+<h3 id="aside">Okrajový obsah <code>&lt;aside></code></h3>
+
+<p>Označuje část obsahu, která není přímo související. Do <code>&lt;aside></code> se nabízí umístit části bočního panelu, reklamy a podobně.</p>
+
+
+<h3 id="section">Sekce <code>&lt;section></code></h3>
+
+<p>Obecná sekce obalující tematickou skupinu obsahu. Má smysl asi hlavně u rozsáhlých a dlouhých stránek/článků, kde už nejde vyznačit hierarchii prostřednictvím <a href="/nadpisy">nadpisů <code>&lt;h1–6></code></a> – struktura je hlubší. Potom je řešení použít <code>&lt;section></code>, kde se s číslováním nadpisů začne zase od začátku.</p>
+
+<p>Značka <code>&lt;section></code> má podobný význam jako původně <code>&lt;div></code> (<i lang="en">division</i> – oddíl) než se začal hromadně používat ke stylování.</p>
+
+
+<h3 id="hgroup">Skupina nadpisů <code>&lt;hgroup></code></h3>
+
+<p>Značka <code>&lt;hgroup></code> už byla z HTML 5 specifikace <b>odebrána</b>. Měla sloužit k obalení nadpisu a podnadpisu. Například:</p>
+
+<pre><code>&lt;header>
   &lt;h1>Název článku&lt;/h1>
   &lt;h2>Podnadpis článku&lt;/h2>
-&lt;/header>
-```
+&lt;/header></code></pre>
 
-## Mají strukturní HTML 5 značky smysl?
 
-Na strukturních HTML5 značkách je zajímavé to, že **prakticky nic nedělají**. Chovají se jako jakékoliv [vlastní značky](/vlastni-html-znacky), jen s tím rozdílem, že mají ve výchozích stylech **blokové zobrazení** ([`display: block`](/display#block)).
 
-  Zbytečné strukturní tagy z HTML 5, protože nic nedělají.
 
-  – **Dušan Janovský**, [Strukturní tagy z HTML 5](http://www.jakpsatweb.cz/html/html5-strukturni.html)
 
-    Pro typické **návštěvníky jsou tyto značky neviditelné**, takže jejich přítomnost neocení.
 
-    **Vyhledávače** potřebují a dovedou pochopit strukturu stránky i bez speciálních značek, protože nemají důvod stránky se sémantickými značkami upřednostňovat, když to **lidé neocení**.
 
-    Pro starší prohlížeče se jedná o **neznámé značky**. V **IE 8** a starších se musí oživit JavaScriptem, aby vůbec šly stylovat.
 
-    ```
-&lt;!--[if lte IE 8]>
+<h2 id="html5-smysl">Mají strukturní HTML 5 značky smysl?</h2>
+
+<p>Na strukturních HTML5 značkách je zajímavé to, že <b>prakticky nic nedělají</b>. Chovají se jako jakékoliv <a href="/vlastni-html-znacky">vlastní značky</a>, jen s tím rozdílem, že mají ve výchozích stylech <b>blokové zobrazení</b> (<a href="/display#block"><code>display: block</code></a>).</p>
+
+
+<blockquote cite="http://www.jakpsatweb.cz/html/html5-strukturni.html">
+  <p>Zbytečné strukturní tagy z HTML 5, protože nic nedělají.</p>
+  <p class="autor">– <b>Dušan Janovský</b>, <a href="http://www.jakpsatweb.cz/html/html5-strukturni.html">Strukturní tagy z HTML 5</a></p>
+</blockquote>
+
+
+
+<ol>
+  <li>
+    <p>Pro typické <b>návštěvníky jsou tyto značky neviditelné</b>, takže jejich přítomnost neocení.</p>
+  </li>
+  
+  <li>
+    <p><b>Vyhledávače</b> potřebují a dovedou pochopit strukturu stránky i bez speciálních značek, protože nemají důvod stránky se sémantickými značkami upřednostňovat, když to <b>lidé neocení</b>.</p>
+  </li>
+  
+  <li>
+    <p>Pro starší prohlížeče se jedná o <b>neznámé značky</b>. V <b>IE 8</b> a starších se musí oživit JavaScriptem, aby vůbec šly stylovat.</p>
+    
+    <pre><code>&lt;!--[if lte IE 8]>
 &lt;script>
 var znacky = "article aside audio canvas datagrid datalist details dialog eventsource figure figcaption footer header hgroup mark menu meter nav output progress section time video";
 znacky.replace(/\w+/g, function(znacka){document.createElement(znacka)});
 &lt;/script>
+<![endif]--></code></pre>
+  </li>
+  
+  <li>
+    <p><b>Pro tvůrce webu</b> také nic moc nezlepšují. Psát <code>&lt;header></code> nebo <code>&lt;div class="header"></code> vyjde prakticky nastejno.</p>
+  </li>
+</ol>
 
-```
+<p>V součtu tedy není moc důvod je používat.</p>
 
-    **Pro tvůrce webu** také nic moc nezlepšují. Psát `&lt;header>` nebo `&lt;div class="header">` vyjde prakticky nastejno.
+<p>Důvod pro používání je možná <b>zlepšení pro postižené uživatele</b> používající hlasové čtečky, které by mohly lépe pochopit strukturu.</p>
 
-V součtu tedy není moc důvod je používat.
 
-Důvod pro používání je možná **zlepšení pro postižené uživatele** používající hlasové čtečky, které by mohly lépe pochopit strukturu.
+<p>Je ale k úvaze, jestli u čteček není situace stejná jako u vyhledávačů – <b>musí podporovat hromady starých stránek</b>, kde se HTML 5 značky nepoužívají, takže si s nimi musí poradit i bez zvláštní značek.</p>
 
-Je ale k úvaze, jestli u čteček není situace stejná jako u vyhledávačů – **musí podporovat hromady starých stránek**, kde se HTML 5 značky nepoužívají, takže si s nimi musí poradit i bez zvláštní značek.
 
-Větší přínos než zvláštní tagy by prý mohly mít [ARIA](/aria) atributy.
+<p>Větší přínos než zvláštní tagy by prý mohly mít <a href="/aria">ARIA</a> atributy.</p>
+
+<!--<h2 id="odkazy">Odkazy jinam</h2>-->
+

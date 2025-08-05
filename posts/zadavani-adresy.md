@@ -6,6 +6,7 @@ date: "2014-07-11"
 last_modification: "2014-07-11"
 status: 0
 tags: []
+format: "html"
 ---
 
 https://www.facebook.com/marek.prokop/posts/10203593589936751

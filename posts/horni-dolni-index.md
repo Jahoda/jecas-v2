@@ -5,105 +5,138 @@ description: "Pro zapisování horních a dolních indexů slouží v HTML znač
 date: "2015-08-22"
 last_modification: "2015-08-22"
 status: 1
-tags: ["HTML", "HTML značky"]
+tags: ["html", "html-tagy"]
+format: "html"
 ---
 
-Horníindex a 
-  dolníindex
+<div class="live">
+  Horní<sup>index</sup> a 
+  dolní<sub>index</sub>
+</div>
 
-Používání indexů pomocí značek `&lt;sup>` a `&lt;sub>` by mělo mít **sémantický význam**, není tedy vhodné tyto elementy používat pouze pro **odlišení vzhledu**.
+<p>Používání indexů pomocí značek <code>&lt;sup></code> a <code>&lt;sub></code> by mělo mít <b>sémantický význam</b>, není tedy vhodné tyto elementy používat pouze pro <b>odlišení vzhledu</b>.</p>
 
-## Horní index `&lt;sup>`
 
-Název z anglického *superscript*. Značka pro horní index je občas použitelná pro:
 
-  zápis **čtverečních metrů** – 10 m2, případně i metrů (nebo jiných jednotek) krychlových – 10 mm3
+<h2 id="sup">Horní index <code>&lt;sup></code></h2>
 
-  **odkaz na zdroj** – dolní index[1](#sub), což používá například **Wikipedie**.
+<p>Název z anglického <i lang="en">superscript</i>. Značka pro horní index je občas použitelná pro:</p>
 
-  zápis **matematických příkladů** – 5 * 32
+<ul>
+  <li><p>zápis <b>čtverečních metrů</b> – <span class="live">10 m<sup>2</sup></span>, případně i metrů (nebo jiných jednotek) krychlových – <span class="live">10 mm<sup>3</sup></span></p></li>  
+  
+  <li><p><b>odkaz na zdroj</b> – <span class="live">dolní index<sup><a href="#sub">1</a></sup></span>, což používá například <b>Wikipedie</b>.</p></li>    
+  
+  <li><p>zápis <b>matematických příkladů</b> – <span class="live">5 * 3<sup>2</sup></span></p></li>
+  
+  <li><p><b>anglické číslovky</b> – <span class="live">1<sup>st</sup></span>, <span class="live">2<sup>nd</sup></span>, <span class="live">3<sup>rd</sup></span>, <span class="live">4<sup>th</sup></span></p></li>
+</ul>
 
-  **anglické číslovky** – 1st, 2nd, 3rd, 4th
+<p>Použití <b>horního indexu</b> jde často obejít použitím zvláštního symbolu / <a href="/entity">HTML entity</a>:</p>
 
-Použití **horního indexu** jde často obejít použitím zvláštního symbolu / [HTML entity](/entity):
+<ul>  
+  <li><code>&amp;sup1;</code> – na první&sup1;</li>
+  
+  <li><code>&amp;sup2;</code> – na druhou&sup2;</li>
+  
+  <li><code>&amp;sup3;</code> – na třetí&sup3;</li>
+</ul>
 
-  - `&amp;sup1;` – na první&sup1;
+<p>U dolního indexu nebo jiných čísel než 1, 2 a 3 obdobný postup neexistuje.</p>
 
-  - `&amp;sup2;` – na druhou&sup2;
+<p><a href="http://www.it-joker.cz/"><b>Joker</b></a> na <a href="http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=4&amp;topic=164295#3">diskusi</a> doplnil, že <b>Unicode</b> obsahuje zvláštní blok <a href="http://www.fileformat.info/info/unicode/block/superscripts_and_subscripts/list.htm">Superscripts and subscripts</a>, který obsahuje (mj.) znaky pro číslice horních i dolních indexů.</p>
 
-  - `&amp;sup3;` – na třetí&sup3;
 
-U dolního indexu nebo jiných čísel než 1, 2 a 3 obdobný postup neexistuje.
 
-[**Joker**](http://www.it-joker.cz/) na [diskusi](http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=4&amp;topic=164295#3) doplnil, že **Unicode** obsahuje zvláštní blok [Superscripts and subscripts](http://www.fileformat.info/info/unicode/block/superscripts_and_subscripts/list.htm), který obsahuje (mj.) znaky pro číslice horních i dolních indexů.
+<h2 id="sub">Dolní index <code>&lt;sub></code></h2>
 
-## Dolní index `&lt;sub>`
+<p>V angličtině <i lang="en">subscript</i>. Spodní index má využití hlavně u <b>chemických vzorců</b> – například <span class="live">N<sub>2</sub>O</span>.</p>
 
-V angličtině *subscript*. Spodní index má využití hlavně u **chemických vzorců** – například N2O.
 
-## Typografie
 
-Při oželení **perfektní typografie** se jde bez horního/dolního indexu obejít a psát 10 m2, 5 * 3^2 nebo N2O, ale nebude to vypadat tak dobře.
+<h2 id="typografie">Typografie</h2>
 
-## Stylování indexů
+<p>Při oželení <b>perfektní typografie</b> se jde bez horního/dolního indexu obejít a psát <span class="live">10 m2</span>, <span class="live">5 * 3^2</span> nebo <span class="live">N2O</span>, ale nebude to vypadat tak dobře.</p>
 
-Z pohledu CSS je `&lt;sup>`/`&lt;sub>` řádkový element ([`display: inline`](/display#inline)) s menším písmem ([`font-size`](/font#size)) a odlišným zarovnání na řádku – `vertical-align`.
+<h2 id="stylovani">Stylování indexů</h2>
 
-Do podoby horního/dolního indexu tak jde snadno nastylovat cokoliv jiného:
+<p>Z pohledu CSS je <code>&lt;sup></code>/<code>&lt;sub></code> řádkový element (<a href="/display#inline"><code>display: inline</code></a>) s menším písmem (<a href="/font#size"><code>font-size</code></a>) a odlišným zarovnání na řádku – <code>vertical-align</code>.</p>
 
+<p>Do podoby horního/dolního indexu tak jde snadno nastylovat cokoliv jiného:</p>
+
+
+<div class="live">
+<style>
   .index {font-size: 80%}
   .index--horni {vertical-align: super}
   .index--dolni {vertical-align: sub}
+</style>
+  <p>Horní<span class="index index--horni">index</span> a dolní<span class="index index--dolni">index</span></p>
+</div>
 
-  Horníindex a dolníindex
+<p>V hodnotách <code>vertical-align</code> je trochu zrada, protože pro <b>dolní index</b> se CSS hodnota jmenuje stejně jako značka – <code>sub</code>.</p>
 
-V hodnotách `vertical-align` je trochu zrada, protože pro **dolní index** se CSS hodnota jmenuje stejně jako značka – `sub`.
+<pre><code>.index--dolni {vertical-align: sub}</code></pre>
 
-```
-.index--dolni {vertical-align: sub}
-```
+<p>Pro <b>horní index</b> to je ale <code>super</code>.</p>
 
-Pro **horní index** to je ale `super`.
+<pre><code>.index--horni {vertical-align: super}</code></pre>
 
-```
-.index--horni {vertical-align: super}
-```
 
-## Rozhozená výška řádků
 
-Použití indexů pomocí značek `&lt;sup>` a `&lt;sub>` trpí tím, že mění výšku celého řádku. U entit `&amp;sup2;` a `&amp;sup3;` problém není:
+<h2 id="vyska-radku">Rozhozená výška řádků</h2>
 
-[Živá ukázka](http://kod.djpw.cz/gfpb)
+<p>Použití indexů pomocí značek <code>&lt;sup></code> a <code>&lt;sub></code> trpí tím, že mění výšku celého řádku. U entit <code>&amp;sup2;</code> a <code>&amp;sup3;</code> problém není:</p>
 
-Existuje několik možných řešení:
+<p><img src="/files/horni-dolni-index/vyska-radku.png" alt="Rozhození výšky řádku" class="border"></p>
 
-    **Nulová výška řádku** (funkční od **IE 8**)
 
-    ```
-sup, sub {
+
+
+
+
+
+
+
+
+<p><a href="http://kod.djpw.cz/gfpb">Živá ukázka</a></p>
+
+
+<p>Existuje několik možných řešení:</p>
+
+<ol>
+  <li>
+    <p><b>Nulová výška řádku</b> (funkční od <b>IE 8</b>)</p>
+    <pre><code>sup, sub {
   line-height: 0;
-}
-```
-
-    **Relativní posicování** – indexy se nejprve zarovnají do základní posice (`baseline`) a potom relativně posunou:
-
-    ```
-sub, sup {
+}</code></pre>
+  </li>
+  
+  <li>
+    <p><b>Relativní posicování</b> – indexy se nejprve zarovnají do základní posice (<code>baseline</code>) a potom relativně posunou:</p>
+    
+    <pre><code>sub, sup {
   vertical-align: baseline;
   position: relative;
   top: 0.4em
 }
-sup {top: -0.4em}
-```
-
-    Tento postup funguje i v prastarých **IE**.
-
-  [Srovnávací ukázka](http://kod.djpw.cz/hfpb)
-
-    **Kombinace** – nástroj [Normalize.css](http://necolas.github.io/normalize.css/) obsahuje následující:
-
-    ```
-sub,
+sup {top: -0.4em}</code></pre>
+    
+    
+    
+  
+    <p>Tento postup funguje i v prastarých <b>IE</b>.</p>
+    
+  <p><a href="http://kod.djpw.cz/hfpb">Srovnávací ukázka</a></p>
+    
+    
+  </li>
+  
+  
+  <li>
+    <p><b>Kombinace</b> – nástroj <a href="http://necolas.github.io/normalize.css/">Normalize.css</a> obsahuje následující:</p>
+    
+    <pre><code>sub,
 sup {
   font-size: 75%;
   line-height: 0;
@@ -111,21 +144,35 @@ sup {
   vertical-align: baseline;
 }
 sup {top: -0.5em}
-sub {bottom: -0.25em}
-```
+sub {bottom: -0.25em}</code></pre>    
+    
+    
+    
+    
+    
+    
+    
+    
+    <p>Nevím přesně proč, protože předchozí dva jednodušší postupy fungují.</p>
+  </li>
+</ol>
 
-    Nevím přesně proč, protože předchozí dva jednodušší postupy fungují.
 
-## Jak si zapamatovat `&lt;sup>` a `&lt;sub>`
+<h2 id="zapamatovat">Jak si zapamatovat <code>&lt;sup></code> a <code>&lt;sub></code></h2>
 
-Rozlišit co je horní a dolní index jde i bez znalosti angličtiny podle umístění bříška posledního písmena. Když je bříško nahoře, jde o index horní `&lt;sup>`, když dole, tak spodní `&lt;sub>`.
+<p>Rozlišit co je horní a dolní index jde i bez znalosti angličtiny podle umístění bříška posledního písmena. Když je bříško nahoře, jde o index horní <code>&lt;sup></code>, když dole, tak spodní <code>&lt;sub></code>.</p>
 
-## Odkazy jinam
 
-  - Jak psát web: [Úprava textu](http://www.jakpsatweb.cz/html/text.html#sub)
 
-  - Lukáš Havrlant: [Stylování horních a dolních indexů](http://atd.havrlant.net/stylovani-hornich-a-dolnich-indexu.html)
 
-  - DevDocs: [`&lt;sub>`](http://devdocs.io/html/element/sub), [`&lt;sup>`](http://devdocs.io/html/element/sup)
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - CSS Tricks: [Prevent Superscripts and Subscripts from Affecting Line-Height](https://css-tricks.com/snippets/css/prevent-superscripts-and-subscripts-from-affecting-line-height/)
+<ul>
+  <li>Jak psát web: <a href="http://www.jakpsatweb.cz/html/text.html#sub">Úprava textu</a></li>
+  
+  <li>Lukáš Havrlant: <a href="http://atd.havrlant.net/stylovani-hornich-a-dolnich-indexu.html">Stylování horních a dolních indexů</a></li>
+  
+  <li>DevDocs: <a href="http://devdocs.io/html/element/sub"><code>&lt;sub></code></a>, <a href="http://devdocs.io/html/element/sup"><code>&lt;sup></code></a></li>
+  
+  <li>CSS Tricks: <a href="https://css-tricks.com/snippets/css/prevent-superscripts-and-subscripts-from-affecting-line-height/">Prevent Superscripts and Subscripts from Affecting Line-Height</a></li>
+</ul>

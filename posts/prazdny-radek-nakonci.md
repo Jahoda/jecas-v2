@@ -6,6 +6,7 @@ date: "2017-02-23"
 last_modification: "2017-02-23"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://stackoverflow.com/questions/729692/why-should-text-files-end-with-a-newline

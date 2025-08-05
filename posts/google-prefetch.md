@@ -5,37 +5,74 @@ description: "Jak Google zrychlil načítání stránek z výsledků hledání o
 date: "2014-12-11"
 last_modification: "2014-12-11"
 status: 1
-tags: ["SEO", "Google", "Zrychlování webu"]
+tags: ["google", "seo", "zrychlovani"]
+format: "html"
 ---
 
-Funkce nazvaná *reactive prefetch* (volný český překlad by mohl být *přednačítání po akci*) je podporována zatím pouze v **Chrome** na Androidu. Funguje to tak, že při **kliknutí na výsledek vyhledávání** dostane prohlížeč informaci o kritických částech stránky – například CSS, které může [blokovat vykreslování](/nacitani-css) – a začne je stahovat zároveň s obsahem stránky.
+<p>Funkce nazvaná <i>reactive prefetch</i> (volný český překlad by mohl být <i>přednačítání po akci</i>) je podporována zatím pouze v <b>Chrome</b> na Androidu. Funguje to tak, že při <b>kliknutí na výsledek vyhledávání</b> dostane prohlížeč informaci o kritických částech stránky – například CSS, které může <a href="/nacitani-css">blokovat vykreslování</a> – a začne je stahovat zároveň s obsahem stránky.</p>
 
-Místo standardního průběhu, kdy se čeká na **odezvu serveru** pro získání HTML stránky, které následně připojí CSS, umožní toto řešení **paralelně načítat** CSS už při kliknutí ve vyhledávání.
+<p><img src="/files/google-prefetch/klasicky.png" alt="Standardní načítání" class="border"></p>
 
-Celé to může fungovat díky tomu, že Google zná stránku, kterou ve výsledcích vyhledávání zobrazuje. Dokáže u ní proto odhadnout *kritické styly* a podobně.
 
-Dobré na tom je, že se **neplýtvá daty** jako u běžných *preloaderů*, kdy se dopředu načítá obsah, který by **mohl návštěvníka zajímat**, ale ještě nevykonal konkrétní akci pro jeho získání.
 
-## Řešení v JavaScriptu
 
-Celé přednačtení potom spočívá ve vytvoření `&lt;link>`u:
 
-```
-&lt;link rel="**prefetch**" href="http://example.com/styl.css">
-```
+<p>Místo standardního průběhu, kdy se čeká na <b>odezvu serveru</b> pro získání HTML stránky, které následně připojí CSS, umožní toto řešení <b>paralelně načítat</b> CSS už při kliknutí ve vyhledávání.</p>
 
-To v JS může vypadat následovně:
+<p><img src="/files/google-prefetch/prefecht.png" alt="Použití reactive prefetch" class="border"></p>
 
-```
-function reactivePrefetch(url) {
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Celé to může fungovat díky tomu, že Google zná stránku, kterou ve výsledcích vyhledávání zobrazuje. Dokáže u ní proto odhadnout <i>kritické styly</i> a podobně.</p>
+
+<p>Dobré na tom je, že se <b>neplýtvá daty</b> jako u běžných <i>preloaderů</i>, kdy se dopředu načítá obsah, který by <b>mohl návštěvníka zajímat</b>, ale ještě nevykonal konkrétní akci pro jeho získání.</p>
+
+
+
+
+
+<h2 id="reseni">Řešení v JavaScriptu</h2>
+
+
+<p><img src="/files/google-prefetch/reactive-prefetch.png" alt="Reactive prefetch ve výsledcích vyhledávání" class="border"></p>
+
+
+<p>Celé přednačtení potom spočívá ve vytvoření <code>&lt;link></code>u:</p>
+
+<pre><code>&lt;link rel="<b>prefetch</b>" href="http://example.com/styl.css"></code></pre>
+
+<p>To v JS může vypadat následovně:</p>
+
+<pre><code>function reactivePrefetch(url) {
   var hint = document.createElement("link");
-  hint.rel = "**prefetch**";
+  hint.rel = "<b>prefetch</b>";
   hint.href = url;
   document.getElementsByTagName("head")[0].appendChild(hint);
-}
-```
+}</code></pre>
 
-## Odkazy jinam
 
-  Ilya Grigorik:  
-Google mobile search is getting faster - to be exact, 100-150 milliseconds faster!
+
+
+
+
+
+
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>Ilya Grigorik: <a href="https://plus.google.com/u/0/+IlyaGrigorik/posts/ahSpGgohSDo"> 
+Google mobile search is getting faster - to be exact, 100-150 milliseconds faster!</a></li>
+</ul>

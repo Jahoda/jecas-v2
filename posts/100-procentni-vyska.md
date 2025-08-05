@@ -6,6 +6,7 @@ date: "2017-05-30"
 last_modification: "2017-05-30"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://kod.djpw.cz/stcc

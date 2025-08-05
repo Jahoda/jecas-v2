@@ -5,11 +5,13 @@ description: "Různé možnosti, jak vytvořit vodorovné menu s odkazy vedle se
 date: "2013-10-26"
 last_modification: "2013-10-27"
 status: 1
-tags: ["CSS", "Hotová řešení", "Menu v CSS"]
+tags: ["css", "hotova-reseni", "menu"]
+format: "html"
 ---
 
-Asi nejjednodušší možnost vytvoření navigace s odkazy vedle sebe je prosté *naházení* odkazů do `&lt;div&gt;`u.
+<p>Asi nejjednodušší možnost vytvoření navigace s odkazy vedle sebe je prosté <i>naházení</i> odkazů do <code>&lt;div&gt;</code>u.</p>
 
+<script>
   function trida(el, trida) {
     if (el.className.match(trida)) {
       el.className = el.className.replace(trida, "");
@@ -18,105 +20,108 @@ Asi nejjednodušší možnost vytvoření navigace s odkazy vedle sebe je prost�
       el.className += " " + trida;
     }
   }
+</script>
 
+<div class="live">
+  <style>
     .nepodtrhnout a {text-decoration: none; border-bottom: 0}
     .barvy a {background: #fff}
     .padding a {padding: .3em}
     .vycentrovat {text-align: center}
-
-    [Odkaz](#)
-    [Odkaz](#)
-    [Odkaz](#)
-    [Odkaz](#)
-    [Odkaz](#)
-
+  </style>
+  <div class="menu" id="menu1">
+    <a href="#">Odkaz</a>
+    <a href="#">Odkaz</a>
+    <a href="#">Odkaz</a>
+    <a href="#">Odkaz</a>
+    <a href="#">Odkaz</a>
+  </div>
+  <script>
     var menu1 = document.getElementById("menu1");
+  </script>
+</div>
 
-To není úplně špatné:
+<p>To není úplně špatné:</p>
+<ul>
+  <li>jednotlivé odkazy můžeme <button onclick="trida(menu1, 'nepodtrhnout')">zbavit podtržení</button> (<code>text-decoration: none</code>),</li>
+  <li>nějak hezky <button onclick="trida(menu1, 'barvy')">obarvit</button> (<code>background: #fff</code>),</li>
+  <li>přidat <button onclick="trida(menu1, 'padding')">odsazení</button> (<code>padding: .3em</code>),</li>
+  <li>nebo <button onclick="trida(menu1, 'vycentrovat')">položky vycentrovat</button> (<code>text-align: center</code> pro nadřazený element)</li>
+</ul>
 
-  - jednotlivé odkazy můžeme zbavit podtržení (`text-decoration: none`),
+<p>Jakmile ale bude potřeba <b>měnit výšku nebo šířku</b> jednotlivých odkazů, narazíme na problém, protože odkazy jsou řádkové. Naštěstí existují způsoby, jak dostat vedle sebe i bloky.</p>
 
-  - nějak hezky obarvit (`background: #fff`),
+<h2 id="inline-block">Inline-block</h2>
+<p>Přidáním <code>display: inline-block</code> pro získáme <b>výhodu řádkových i blokových elementů</b> najednou.</p>
 
-  - přidat odsazení (`padding: .3em`),
-
-  - nebo položky vycentrovat (`text-align: center` pro nadřazený element)
-
-Jakmile ale bude potřeba **měnit výšku nebo šířku** jednotlivých odkazů, narazíme na problém, protože odkazy jsou řádkové. Naštěstí existují způsoby, jak dostat vedle sebe i bloky.
-
-## Inline-block
-
-Přidáním `display: inline-block` pro získáme **výhodu řádkových i blokových elementů** najednou.
-
+<div class="live">
+  <style>
     .menu2 a {text-decoration: none; border-bottom: 0; background: #fff; padding: .3em; display: inline-block}
     .vycentrovat {text-align: center}
     .rozmery a {width: 100px; line-height: 40px}
-
-    [Odkaz](#)
-    [Odkaz](#)
-    [Odkaz](#)
-    [Odkaz](#)
-    [Odkaz](#)
-
+  </style>
+  <div class="menu2" id="menu2">
+    <a href="#">Odkaz</a>
+    <a href="#">Odkaz</a>
+    <a href="#">Odkaz</a>
+    <a href="#">Odkaz</a>
+    <a href="#">Odkaz</a>
+  </div>
+  <script>
     var menu2 = document.getElementById("menu2");
+  </script>
+</div>
 
-Vše bude fungovat jako dřív a navíc půjde měnit rozměry. Bezproblémové centrování je samozřejmost.
+<p>Vše bude fungovat jako dřív a navíc půjde <button onclick="trida(menu2, 'rozmery')">měnit rozměry</button>. Bezproblémové <button onclick="trida(menu2, 'vycentrovat')">centrování</button> je samozřejmost.</p>
 
-## Obtékání
+<h2 id="float">Obtékání</h2>
+<p>Druhá možnost je položky menu nechat <a href="/float">obtékat</a>. Nicméně nevidím důvod pro použití obtékání místo řešení s <code>inline-block</code>. Nenapadá mě žádná výhoda takového postupu.</p>
+<p>Snad jen může být problém v mezerách mezi položkami, které vzniknou při <code>inline-block</code> řešení a umístěním každného odkazu v HTML kódu na zvláštní řádek. Řešením je <b>umístit všechny odkazy ihned za sebe</b> nebo odřádkování zakomentovat.</p>
+<pre><code>   &lt;a href=#&gt;Odkaz&lt;/a&gt;&lt;!--
+--&gt;&lt;a href=#&gt;Odkaz&lt;/a&gt;</code></pre>
+<p>Nebo nakonec opravdu použít ten <code>float</code>.</p>
 
-Druhá možnost je položky menu nechat [obtékat](/float). Nicméně nevidím důvod pro použití obtékání místo řešení s `inline-block`. Nenapadá mě žádná výhoda takového postupu.
-
-Snad jen může být problém v mezerách mezi položkami, které vzniknou při `inline-block` řešení a umístěním každného odkazu v HTML kódu na zvláštní řádek. Řešením je **umístit všechny odkazy ihned za sebe** nebo odřádkování zakomentovat.
-
-```
-   &lt;a href=#&gt;Odkaz&lt;/a&gt;&lt;!--
---&gt;&lt;a href=#&gt;Odkaz&lt;/a&gt;
-```
-
-Nebo nakonec opravdu použít ten `float`.
-
+<div class="live">
+  <style>
     .floatovane {list-style: none; padding: 0; margin: 0; overflow: hidden;}
     .floatovane li {display: inline}
     .floatovane a {text-decoration: none; border-bottom: 0; background: #fff; padding: .3em; float: left; width: 100px; line-height: 40px; text-align: center;}
+    
+  </style>
+  <menu class="floatovane">
+    <li><a href="#">Odkaz</a></li>
+    <li><a href="#">Odkaz</a></li>
+    <li><a href="#">Odkaz</a></li>
+    <li><a href="#">Odkaz</a></li>
+    <li><a href="#">Odkaz</a></li>
+  </menu>
+</div>
+<p>Kromě nevýhody, že je nutné řešit <a href="/float#clear">clearování</a> bude obtíženější obtékané menu <a href="/centrovani">vycentrovat</a>.</p>
 
-    - [Odkaz](#)
+<h2 id="semantika">Sémantika</h2>
+<p>Někdo by mohl namítat, že menu patří do značky <code>&lt;menu&gt;</code> nebo alespoň seznamu (<code>&lt;ul&gt;</code>) a odkazy do položek <code>&lt;li&gt;</code>. Osobně se domnívám, že takové strukturování <b>prakticky nikdo neocení</b> a je to jen práce navíc. Ale nic neřešitelného to také nepředstavuje.</p>
+<p>V podstatě stačí jen vynulovat <code>margin</code> a <code>padding</code>, odstranit odrážky (<code>listy-style: none</code>) a z položek udělat třeba řádkové elementy (<code>display: inline</code>).</p>
 
-    - [Odkaz](#)
-
-    - [Odkaz](#)
-
-    - [Odkaz](#)
-
-    - [Odkaz](#)
-
-Kromě nevýhody, že je nutné řešit [clearování](/float#clear) bude obtíženější obtékané menu [vycentrovat](/centrovani).
-
-## Sémantika
-
-Někdo by mohl namítat, že menu patří do značky `&lt;menu&gt;` nebo alespoň seznamu (`&lt;ul&gt;`) a odkazy do položek `&lt;li&gt;`. Osobně se domnívám, že takové strukturování **prakticky nikdo neocení** a je to jen práce navíc. Ale nic neřešitelného to také nepředstavuje.
-
-V podstatě stačí jen vynulovat `margin` a `padding`, odstranit odrážky (`listy-style: none`) a z položek udělat třeba řádkové elementy (`display: inline`).
-
+<div class="live">
+  <style>
     .menu3 {list-style: none; padding: 0; margin: 0; text-align: center}
     .menu3 li {display: inline}
     .menu3 a {text-decoration: none; border-bottom: 0; background: #fff; padding: 5px; display: inline-block; width: 100px; line-height: 40px}
     .fixni-menu {position: fixed; left: 50%; margin-left: -280px; top: 0; z-index: 100; background: #1081DD; padding: 5px}
     .fixni-menu a {color: #fff}    
-
-    - [Odkaz](#)
-
-    - [Odkaz](#)
-
-    - [Odkaz](#)
-
-    - [Odkaz](#)
-
-    - [Odkaz](#)
-
+  </style>
+  <menu class="menu3" id="menu3">
+    <li><a href="#">Odkaz</a></li>
+    <li><a href="#">Odkaz</a></li>
+    <li><a href="#">Odkaz</a></li>
+    <li><a href="#">Odkaz</a></li>
+    <li><a href="#">Odkaz</a></li>
+  </menu>
+  <script>
     var menu3 = document.getElementById("menu3");
+  </script>
+</div>
 
-## Fixní menu
-
-Vodorovné menu není problém na stránce zafixovat ([`position: fixed`](/position#fixed)), může být samozřejmě i [fixované jen někdy](/fixni-menu) podobně jako [boční panel](/sidebar).
-
-**Vycentrování fixního menu** lze zajistit přes `left: 50%; margin-left: -(polovina šířky)`.
+<h2 id="fixni">Fixní menu</h2>
+<p>Vodorovné menu není problém na stránce <button onclick="trida(menu3, 'fixni-menu')">zafixovat</button> (<a href="/position#fixed"><code>position: fixed</code></a>), může být samozřejmě i <a href="/fixni-menu">fixované jen někdy</a> podobně jako <a href="/sidebar">boční panel</a>.</p>
+<p><b>Vycentrování fixního menu</b> lze zajistit přes <code>left: 50%; margin-left: -(polovina šířky)</code>.</p>

@@ -5,39 +5,60 @@ description: "HTML atribut <code>minlength</code> stanovuje minimální počet z
 date: "2015-01-27"
 last_modification: "2015-02-11"
 status: 1
-tags: ["HTML", "Formuláře", "HTML atributy"]
+tags: ["formulare", "html", "html-atributy"]
+format: "html"
 ---
 
-Atribut `minlength` je opakem [`maxlength`](/maxlength), který naopak nastavuje maximální možnou délku. Dá se použít u značek [`&lt;input>`](/input) a [`&lt;textarea>`](/textarea).
+<p>Atribut <code>minlength</code> je opakem <a href="/maxlength"><code>maxlength</code></a>, který naopak nastavuje maximální možnou délku. Dá se použít u značek <a href="/input"><code>&lt;input></code></a> a <a href="/textarea"><code>&lt;textarea></code></a>.</p>
 
-```
-&lt;input **minlength**="5">
-```
+<pre><code>&lt;input <b>minlength</b>="5"></code></pre>
 
-        Zadejte 5+ znaků: 
+<div class="live">
+<form onsubmit="alert('Jakože úspěšně odesláno'); return false">
+    <p>
+        <label>Zadejte 5+ znaků: <input type="text" minlength="5"></label>
+    </p>
+    <p>
+        <button>Odeslat</button>
+    </p>
+</form>  
+</div>
 
-        Odeslat
+<p><a href="http://kod.djpw.cz/fhkb">Samostatná živá ukázka</a></p>
 
-[Samostatná živá ukázka](http://kod.djpw.cz/fhkb)
+<p>Políčko výše bude vyžadovat <b>5 a více znaků</b>. Trochu zajímavé chování nastane při nevyplnění políčka – v takovém případě <b>validace úspěšně projde</b> – proto se může hodit kombinace s <a href="/required"><code>required</code></a>.</p>
 
-Políčko výše bude vyžadovat **5 a více znaků**. Trochu zajímavé chování nastane při nevyplnění políčka – v takovém případě **validace úspěšně projde** – proto se může hodit kombinace s [`required`](/required).
+<pre><code>&lt;input <i>minlength</i>="5" <b>required</b>></code></pre>
 
-```
-&lt;input *minlength*="5" **required**>
-```
 
-## Podpora v prohlížečích
 
-HTML atribut `minlength` funguje zatím pouze v prohlížečích používající jádro **Blink**. Minimální délku pole podporuje minimálně **Chrome 40** a **Opera 27**.
 
-Pro starší prohlížeče nezbývá než použít **JavaScript**:
+<h2 id="podpora">Podpora v prohlížečích</h2>
 
-```
-pole.value.length
-```
+<p>HTML atribut <code>minlength</code> funguje zatím pouze v prohlížečích používající jádro <b>Blink</b>. Minimální délku pole podporuje minimálně <b>Chrome 40</b> a <b>Opera 27</b>.</p>
 
-A v každém případě je nutné provést i **validaci na straně serveru**.
+<p><img src="/files/minlength/chrome.png" alt="Upozornění na nedostatečnou délku v Chrome 40" class="border"></p>
 
-## Odkazy jinam
 
-  - WHATWG: [The `minlength` attribute](https://html.spec.whatwg.org/multipage/forms.html#attr-fe-minlength)
+
+
+
+
+
+
+
+
+<p>Pro starší prohlížeče nezbývá než použít <b>JavaScript</b>:</p>
+
+<pre><code>pole.value.length</code></pre>
+
+
+<p>A v každém případě je nutné provést i <b>validaci na straně serveru</b>.</p>
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>WHATWG: <a href="https://html.spec.whatwg.org/multipage/forms.html#attr-fe-minlength">The <code>minlength</code> attribute</a></li>
+</ul>

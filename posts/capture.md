@@ -6,28 +6,28 @@ date: "2014-11-26"
 last_modification: "2014-11-26"
 status: 0
 tags: []
+format: "html"
 ---
 
-Pokud chceme na mobilní webové aplikaci umožnit uživateli **vyfocení obrázku** nebo **natočení videa**, jde k tomu použít standardní formulářové [políčko pro **upload**](/input#type-file).
+<p>Pokud chceme na mobilní webové aplikaci umožnit uživateli <b>vyfocení obrázku</b> nebo <b>natočení videa</b>, jde k tomu použít standardní formulářové <a href="/input#type-file">políčko pro <b>upload</b></a>.</p>
 
-```
-&lt;input type="file" accept="image/*">
-```
+<pre><code>&lt;input type="file" accept="image/*"></code></pre>
 
-Po kliknutí do něj nabídne **mobilní operační systém** jako jednu z možností **vytvoření fotografie** (popř. videa).
+<p>Po kliknutí do něj nabídne <b>mobilní operační systém</b> jako jednu z možností <b>vytvoření fotografie</b> (popř. videa).</p>
 
-HTML atribut `capture` potom řeší přímé určení, že se bude fotit.
+<p>HTML atribut <code>capture</code> potom řeší přímé určení, že se bude fotit.</p>
 
-```
-&lt;input type="file" accept="image/*" **capture="camera"**>
-```
+<pre><code>&lt;input type="file" accept="image/*" <b>capture="camera"</b>></code></pre>
 
-```
-&lt;input type="file" accept="image/*;**capture=camera**">
-```
+<pre><code>&lt;input type="file" accept="image/*;<b>capture=camera</b>"></code></pre>
 
-## Odkazy jinam
 
-  - HTML5Rocks: [Capturing Audio &amp; Video in HTML5](http://www.html5rocks.com/en/tutorials/getusermedia/intro/)
 
-  - W3C: [HTML Media Capture](http://dev.w3.org/2009/dap/camera/)
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>HTML5Rocks: <a href="http://www.html5rocks.com/en/tutorials/getusermedia/intro/">Capturing Audio &amp; Video in HTML5</a></li>
+  
+  <li>W3C: <a href="http://dev.w3.org/2009/dap/camera/">HTML Media Capture</a></li>
+</ul>

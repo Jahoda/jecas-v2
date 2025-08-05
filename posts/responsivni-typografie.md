@@ -6,28 +6,43 @@ date: "2015-10-14"
 last_modification: "2015-10-14"
 status: 0
 tags: []
+format: "html"
 ---
 
-Článek se zabývá typografií z hlediska aspektů jako:
+<p>Článek se zabývá typografií z hlediska aspektů jako:</p>
 
-  - velikost písma (`font-size`),
+<ul>
+  <li>velikost písma (<code>font-size</code>),</li>
+  <li>výška řádku (<code>line-height</code>),</li>
+  <li>odsazení (<code>margin</code>),</li>
+  <li>délka řádku (počet znaků na řádek)</li>
+</ul>
 
-  - výška řádku (`line-height`),
 
-  - odsazení (`margin`),
+<p>Psaním správných „českých uvozovek“ – pomlček a výpustek… se zabývá článek:</p>
 
-  - délka řádku (počet znaků na řádek)
+<div class="internal-content">
+  <ul>
+    <li><a href="/typografie">Typografie v HTML na webu</a></li>
+  </ul>
+</div>
 
-Psaním správných „českých uvozovek“ – pomlček a výpustek… se zabývá článek:
 
-    - [Typografie v HTML na webu](/typografie)
 
-## Vertikální rytmus
 
-## Odkazy
+<h2 id="vertikalni-rytmus">Vertikální rytmus</h2>
 
-  - [Responsive Typography: A Quick Tutorial](http://designmodo.com/responsive-typography-tutorial/)
 
-  - [A More Modern Scale for Web Typography](http://typecast.com/blog/a-more-modern-scale-for-web-typography) – [ukázkové CSS](http://typecast.com/images/uploads/modernscale.css) s responsivním nastavením pro dobře čitelný text
 
-  - [Fontplate](http://comandocran.github.io/cc-fontplate/) – pomocník pro udržení *vertikálního rytmu*
+
+<h2 id="odkazy">Odkazy</h2>
+
+<ul>
+  <li><a href="http://designmodo.com/responsive-typography-tutorial/">Responsive Typography: A Quick Tutorial</a></li>
+  
+  <li><a href="http://typecast.com/blog/a-more-modern-scale-for-web-typography">A More Modern Scale for Web Typography</a> – <a href="http://typecast.com/images/uploads/modernscale.css">ukázkové CSS</a> s responsivním nastavením pro dobře čitelný text</li>
+  
+  <li><a href="http://comandocran.github.io/cc-fontplate/">Fontplate</a> – pomocník pro udržení <i>vertikálního rytmu</i></li>
+  
+  
+</ul>

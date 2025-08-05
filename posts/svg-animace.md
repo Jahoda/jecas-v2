@@ -6,6 +6,7 @@ date: "2014-04-18"
 last_modification: "2014-04-18"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://css-tricks.com/svg-animation-on-css-transforms/

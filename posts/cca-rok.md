@@ -6,56 +6,138 @@ date: "2014-03-24"
 last_modification: "2014-03-24"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Milníky
 
-  9. 10. 2015 – článek na Lupě o [AMP HMTL](/amp-html)
 
-        - [AMP HTML: impuls pro weby, které se na mobilech načítají pomalu](http://www.lupa.cz/clanky/amp-html-impuls-pro-weby-ktere-se-na-mobilech-nacitaji-pomalu/)
+<h2 id="milniky">Milníky</h2>
 
-  28. 9. 2015 – 1750 návštěv za den
+<dl>
+  <dt id="amp-html"><time>9. 10. 2015</time> – článek na Lupě o <a href="/amp-html">AMP HMTL</a></dt>
+  <dd>
+    <div class="external-content">
+      <ul>
+        <li><a href="http://www.lupa.cz/clanky/amp-html-impuls-pro-weby-ktere-se-na-mobilech-nacitaji-pomalu/">AMP HTML: impuls pro weby, které se na mobilech načítají pomalu</a></li>
+      </ul>
+    </div>
+  </dd>
   
-    Článek pojednávající o funkčnosti webu bez JavaScriptu přivedl vysokou návštěvnost.
-
-        - [Má web fungovat bez JavaScriptu?](/bez-javascriptu)
-
-  29. 7. 2015 – Vydání **Windows 10** a 1500 návštěv za den
+  <dt id="bez-javascriptu"><tine>28. 9. 2015</tine> – 1750 návštěv za den</dt>
+  <dd>
+    <p>Článek pojednávající o funkčnosti webu bez JavaScriptu přivedl vysokou návštěvnost.</p>
+    
+    <div class="internal-content">
+      <ul>
+        <li><a href="/bez-javascriptu">Má web fungovat bez JavaScriptu?</a></li>
+      </ul>
+    </div>
+  </dd>
   
-    Vydání [Windows 10](/windows-10) přivedlo spoustu návštěvníků z vyhledávačů. Statistiky článku o **Windows 10**:
-
-  27. 7. 2015 – Vyšel článek na Lupa.cz
-
-    Napsal jsem článek o prohlížeči  [Microsoft Edge](/microsoft-edge) pro server Lupa.cz.
-
-  21. 4. 2015 – 1000 návštěv za den
+  <dt id="windows-10"><time>29. 7. 2015</time> – Vydání <b>Windows 10</b> a 1500 návštěv za den</dt>
+  <dd>
+    <p>Vydání <a href="/windows-10">Windows 10</a> přivedlo spoustu návštěvníků z vyhledávačů. Statistiky článku o <b>Windows 10</b>:</p>
+    
+    <p><img src="/files/cca-rok/windows-10.png" alt="Vydání Windows 10" class="border"></p>
+        
+    
+    
+    
+  </dd>
   
-    Článek popisující převod starého webu do responsivní podoby byl hojně sdílený na sociálních sítích.
-
-        - [Převod webu na responsivní design](/prevod-responsivni-design)
-
-    Dále vyšel článek o [stylu seznamů](/list-style) na Zdrojak.cz.
-
-  28. 1. 2015 – První článek od externího autora
   
-    **Tomáš Smetka** sepsal své zkušenosti z přechodu na HTTPS.
-
-        - [Jak proběhl přechod vaszrak.cz na HTTPS](/https-vaszrak)
-
-  29. 9. 2014 – Vycházení článků na Zdrojak.cz
   
-    Některé články z jecas.cz se začaly přetiskovat na Zdrojáku.
-
-        - Archiv autora: [Bohumil Jahoda](http://www.zdrojak.cz/autori/bohumil-jahoda/)
-
-  30. 6. 2014 – Prvních 1000+ návštěv za den
   
-    Článek o nedostatcích webových formulářů byl hojně sdílený a díky němu se na web podívalo 1252 návštěvníků v jediný den.
-
-        - [20 největších chyb formulářů na webu](/chyby-formularu)
-
-  26. 4. 2013 – První článek
   
-    Vyšel historicky první článek. Na web přišlo první 26 návštěvníků.
+  
+  <dt id="lupa"><time>27. 7. 2015</time> – Vyšel článek na Lupa.cz</dt>
+  
+  <dd>
+    <p>Napsal jsem článek o prohlížeči  <a href="/microsoft-edge">Microsoft Edge</a> pro server Lupa.cz.</p>
+    
+    <p><img src="/files/cca-rok/clanek-lupa.png" alt="Článek o MS Edge" class="border"></p>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </dd>
+  
+  <dt id="prevod-rwd"><time>21. 4. 2015</time> – 1000 návštěv za den</dt>
+  <dd>
+    <p>Článek popisující převod starého webu do responsivní podoby byl hojně sdílený na sociálních sítích.</p>
+    <div class="internal-content">
+      <ul>
+        <li><a href="/prevod-responsivni-design">Převod webu na responsivní design</a></li>
+      </ul>
+    </div>
+    
+    <p>Dále vyšel článek o <a href="/list-style">stylu seznamů</a> na Zdrojak.cz.</p>
+  </dd>
+  
+  <dt id="externi-autor"><time>28. 1. 2015</time> – První článek od externího autora</dt>
+  <dd>
+    <p><b>Tomáš Smetka</b> sepsal své zkušenosti z přechodu na HTTPS.</p>
+    <div class="internal-content">
+      <ul>
+        <li><a href="/https-vaszrak">Jak proběhl přechod vaszrak.cz na HTTPS</a></li>
+      </ul>
+    </div>
+    <p>
+      
+    </p>
+  </dd>
 
-        - [Úprava náhledového obrázku webu na Seznamu](/nahled-seznam)
+  <dt id="zdrojak"><time>29. 9. 2014</time> – Vycházení článků na Zdrojak.cz</dt>
+  <dd>
+    <p>Některé články z jecas.cz se začaly přetiskovat na Zdrojáku.</p>
+    <div class="external-content">
+      <ul>
+        <li>Archiv autora: <a href="http://www.zdrojak.cz/autori/bohumil-jahoda/">Bohumil Jahoda</a></li>
+      </ul>
+    </div>
+    <p>
+      
+    </p>
+  </dd> 
+  
+  <dt id="tisic"><time>30. 6. 2014</time> – Prvních 1000+ návštěv za den</dt>
+  <dd>
+    <p>Článek o nedostatcích webových formulářů byl hojně sdílený a díky němu se na web podívalo 1252 návštěvníků v jediný den.</p>
+    <div class="internal-content">
+      <ul>
+        <li><a href="/chyby-formularu">20 největších chyb formulářů na webu</a></li>
+      </ul>
+    </div>
+    <p>
+      
+    </p>
+  </dd>  
+  
+  <dt id="externi-autor"><time>26. 4. 2013</time> – První článek</dt>
+  <dd>
+    <p>Vyšel historicky první článek. Na web přišlo první 26 návštěvníků.</p>
+    <div class="internal-content">
+      <ul>
+        <li><a href="/nahled-seznam">Úprava náhledového obrázku webu na Seznamu</a></li>
+      </ul>
+    </div>
+    <p>
+      
+    </p>
+  </dd>  
+</dl>

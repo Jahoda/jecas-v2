@@ -6,6 +6,7 @@ date: "2014-08-12"
 last_modification: "2014-08-12"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://fulltext.sblog.cz/2009/02/12/co-znamenaji-cisla-ve-statistikach-hledani/
@@ -22,6 +23,6 @@ https://kwfinder.com/
 
 http://urlprofiler.com/
 
-- [OpenRefine](http://openrefine.org/) – nástroj pro čistění velkých dat
+<li><a href="http://openrefine.org/">OpenRefine</a> – nástroj pro čistění velkých dat</li>
 
-- [Buzzsumo](http://buzzsumo.com/) – Analyze what content performs best for any topic or competitor
+<li><a href="http://buzzsumo.com/">Buzzsumo</a> – Analyze what content performs best for any topic or competitor</li>

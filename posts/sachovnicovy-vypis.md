@@ -5,31 +5,61 @@ description: "Jak vypsat položky sestávající ze dvou sloupců, aby se pořad
 date: "2014-10-29"
 last_modification: "2014-11-01"
 status: 1
-tags: ["CSS", "Hotová řešení", "Tabulky"]
+tags: ["css", "hotova-reseni", "tabulky"]
+format: "html"
 ---
 
-Cílem je vytvořit výpis položek, kdy obrázek a jeho popis je na střídačku. Na lichém řádku je popis vlevo a obrázek vpravo, na sudém řádku obráceně.
+<p>Cílem je vytvořit výpis položek, kdy obrázek a jeho popis je na střídačku. Na lichém řádku je popis vlevo a obrázek vpravo, na sudém řádku obráceně.</p>
 
-  - Výška obrázku i textu je **neznámá**.
+<ul>
+  <li>Výška obrázku i textu je <b>neznámá</b>.</li>
+  
+  <li>Někdy může být vyšší obrázek, jindy text.</li>
+  
+  <li>Výška řádku je určena tím, <b>co je vyšší</b>.</li>
+  
+  <li>Nižší položka je potom svisle <a href="/centrovani">centrovaná</a>.</li>
+  
+  <li>Při zobrazení na malé obrazovce, kdy se obrázek a popis nevejdou vedle sebe, má být vždy popis nad obrázkem.</li>
+</ul>
 
-  - Někdy může být vyšší obrázek, jindy text.
+<p>Mělo by to vypadat nějak takto:</p>
 
-  - Výška řádku je určena tím, **co je vyšší**.
+<p><img src="/files/sachovnicovy-vypis/ukazka.png" alt="Šachovnicový výpis položek s různou výškou" class="border"></p>
 
-  - Nižší položka je potom svisle [centrovaná](/centrovani).
 
-  - Při zobrazení na malé obrazovce, kdy se obrázek a popis nevejdou vedle sebe, má být vždy popis nad obrázkem.
 
-Mělo by to vypadat nějak takto:
 
-## Centrování
 
-Kvůli svislému centrování je jasné, že bude třeba použít [tabulkové hodnoty vlastnosti `display`](/display#tabulkove). Šlo by použít i [flexboxy](/flexbox), ale ty fungují až od **IE 10**.
 
-Vytvoří se tedy *CSS tabulka*:
 
-```
-.tabulka {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="centrovani">Centrování</h2>
+
+<p>Kvůli svislému centrování je jasné, že bude třeba použít <a href="/display#tabulkove">tabulkové hodnoty vlastnosti <code>display</code></a>. Šlo by použít i <a href="/flexbox">flexboxy</a>, ale ty fungují až od <b>IE 10</b>.</p>
+
+<p>Vytvoří se tedy <i>CSS tabulka</i>:</p>
+
+<pre><code>.tabulka {
     display: table; 
     width: 100%;
 }
@@ -41,71 +71,101 @@ Vytvoří se tedy *CSS tabulka*:
     vertical-align: middle; 
     width: 50%; 
     text-align: center;
-}
-```
+}</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/yygb)
+<p><a href="http://kod.djpw.cz/yygb">Živá ukázka</a></p>
 
-Pro zobrazení na malých zařízeních se potom tabulka [„rozláme“](/responsivni-tabulky#rozlamani).
+<p>Pro zobrazení na malých zařízeních se potom tabulka <a href="/responsivni-tabulky#rozlamani">„rozláme“</a>.</p>
 
-```
-@media (max-width: 600px) {
+<pre><code>@media (max-width: 600px) {
     .bunka, .radek, .tabulka {
         display: block; 
         width: auto; 
         text-align: left;
     }
-}
-```
+}</code></pre>
 
-## Prohození sloupců
 
-Po vycentrování zbývá *jen* prohodit sloupce sudých řádků. Od **IE 9** pro jejich zaměření funguje [selektor n-tého potomka](/css-selektory#n-ty-potomek):
 
-```
-.radek:**nth-child**(even) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="prohozeni">Prohození sloupců</h2>
+
+<p>Po vycentrování zbývá <i>jen</i> prohodit sloupce sudých řádků. Od <b>IE 9</b> pro jejich zaměření funguje <a href="/css-selektory#n-ty-potomek">selektor n-tého potomka</a>:</p>
+
+<pre><code>.radek:<b>nth-child</b>(even) {
   /* styly pro sudý řádek */
-}
-```
+}</code></pre>
 
-To `even` znamená anglicky sudý, lichý je potom `odd`. Pro případnou funkčnost v **IE 8** je nutné příslušné třídy přidat *ručně* (serverovým skriptem).
+<p>To <code>even</code> znamená anglicky sudý, lichý je potom <code>odd</code>. Pro případnou funkčnost v <b>IE 8</b> je nutné příslušné třídy přidat <i>ručně</i> (serverovým skriptem).</p>
 
-### Vlastnost `transform: translate`
 
-Od **IE 9** jde používat tzv. *CSS transformace*. Jedna z nich se jmenuje `translate` a umí **přesouvat objekty na stránce**.
 
-Na sudých řádcích potom takto můžeme obsah vlevo dostat doprava posunutím o 100 % šířky:
 
-```
-transform: translate(**100%**, 0);
-```
 
-Analogicky dostat obsah zprava doleva. Tentokrát odečtením 100 % šířky:
 
-```
-transform: translate(**-100%**, 0)
-```
 
-Druhý parametr funkce `translate` určuje svislé posunutí, to je nulové, protože potřebujeme posouvat jen **vodorovně**.
+<h3 id="translate">Vlastnost <code>transform: translate</code></h3>
 
-[Živá ukázka](http://kod.djpw.cz/fzgb)
+<p>Od <b>IE 9</b> jde používat tzv. <i>CSS transformace</i>. Jedna z nich se jmenuje <code>translate</code> a umí <b>přesouvat objekty na stránce</b>.</p>
 
-### Relativní posicování
+<p>Na sudých řádcích potom takto můžeme obsah vlevo dostat doprava posunutím o 100 % šířky:</p>
 
-Podobného efektu jde ale obdobným způsobem docílit i [relativním posicováním](/position#relative) s daleko lepší podporou.
+<pre><code>transform: translate(<b>100%</b>, 0);</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/gzgb)
+<p>Analogicky dostat obsah zprava doleva. Tentokrát odečtením 100 % šířky:</p>
 
-### Změna směru textu
+<pre><code>transform: translate(<b>-100%</b>, 0)</code></pre>
 
-S originálním řešením přišel [**Chamurappi**](http://webylon.info). To spočívá ve využití CSS vlastnosti `direction`, která určuje, jestli je text psán (standardně) zleva doprava (`ltr` – left to right) nebo naopak zprava doleva (`rtl` – right to left).
+<p>Druhý parametr funkce <code>translate</code> určuje svislé posunutí, to je nulové, protože potřebujeme posouvat jen <b>vodorovně</b>.</p>
 
-Když totiž tabulce nastavíme `direction` *zprava do leva*, prohodí se pořadí sloupců. Pro buňky se `direction` zase vrátí, aby se text **správně zobrazoval**, a sloupce jsou elegantně prohozeny.
+<p><a href="http://kod.djpw.cz/fzgb">Živá ukázka</a></p>
 
-Měnit `direction` je nutné pro **celou tabulku**, nestačí to jen pro samostatný řádek.
 
-[Živá ukázka](http://kod.djpw.cz/hzgb)
 
-Tento postup jde kromě **skutečných tabulek** využít i u „CSS tabulek“, čímž vznikne asi nejlepší řešení tohoto problému.
 
-[Živá ukázka](http://kod.djpw.cz/izgb)
+
+
+<h3 id="relativni">Relativní posicování</h3>
+
+<p>Podobného efektu jde ale obdobným způsobem docílit i <a href="/position#relative">relativním posicováním</a> s daleko lepší podporou.</p>
+
+<p><a href="http://kod.djpw.cz/gzgb">Živá ukázka</a></p>
+
+
+
+
+<h3 id="direction">Změna směru textu</h3>
+
+<p>S originálním řešením přišel <a href="http://webylon.info"><b>Chamurappi</b></a>. To spočívá ve využití CSS vlastnosti <code>direction</code>, která určuje, jestli je text psán (standardně) zleva doprava (<code>ltr</code> – left to right) nebo naopak zprava doleva (<code>rtl</code> – right to left).</p>
+
+<p>Když totiž tabulce nastavíme <code>direction</code> <i>zprava do leva</i>, prohodí se pořadí sloupců. Pro buňky se <code>direction</code> zase vrátí, aby se text <b>správně zobrazoval</b>, a sloupce jsou elegantně prohozeny.</p>
+
+<p>Měnit <code>direction</code> je nutné pro <b>celou tabulku</b>, nestačí to jen pro samostatný řádek.</p>
+
+<p><a href="http://kod.djpw.cz/hzgb">Živá ukázka</a></p>
+
+<p>Tento postup jde kromě <b>skutečných tabulek</b> využít i u „CSS tabulek“, čímž vznikne asi nejlepší řešení tohoto problému.</p>
+
+<p><a href="http://kod.djpw.cz/izgb">Živá ukázka</a></p>
+
+<!-- TL: http://www.tlachtace.cz/privatni-tematicke-3/coding-gypsy-4086/2/#p178994 -->

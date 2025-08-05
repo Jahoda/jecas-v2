@@ -6,30 +6,43 @@ date: "2014-05-17"
 last_modification: "2014-05-17"
 status: 0
 tags: []
+format: "html"
 ---
 
-Pro lepší uživatelský dojem se může hodit nějaký prvek z bodu A do bodu B přesunou plynule JavaScriptem.
+<p>Pro lepší uživatelský dojem se může hodit nějaký prvek z bodu A do bodu B přesunou plynule JavaScriptem.</p>
 
-Třeba položka v e-shopu se po přidání do košíku může do něj visuálně přesunout. Uživatel tak získá přehled, kde se košík na stránce nachází.
+<p>Třeba položka v e-shopu se po přidání do košíku může do něj visuálně přesunout. Uživatel tak získá přehled, kde se košík na stránce nachází.</p>
 
-## Přesun elementu
 
-Vyjmout někde HTML element a vložit ho do jiného rodiče je v JavaScriptu velmi jednoduché:
 
-```
-cil.appendChild(element);
-```
 
-První myšlenka pro animovaný přesun tak může znít, že se spočítá cílové umístění, element se tam pouze visuálně přemístí transformací `translate` (nebo hůře [absolutním posicováním](/position#absolute)) a po dokončení přesunu se provede skutečné přemístění v [DOMu](/dom) přes `appendChild` a transformace se zruší.
+<h2 id="presun">Přesun elementu</h2>
 
-[Živá ukázka](http://kod.djpw.cz/orsb) – přesun transformací a přehození elementu
+<p>Vyjmout někde HTML element a vložit ho do jiného rodiče je v JavaScriptu velmi jednoduché:</p>
 
-[Živá ukázka](http://kod.djpw.cz/lhdb)
+<pre><code>cil.appendChild(element);</code></pre>
 
-## FLIP – lepší řešení
 
-S ohledem na rychlost existuje ale lepší postup. Nazvaný zkratkou FLIP (First, Last, Invert, Play):
+<p>První myšlenka pro animovaný přesun tak může znít, že se spočítá cílové umístění, element se tam pouze visuálně přemístí transformací <code>translate</code> (nebo hůře <a href="/position#absolute">absolutním posicováním</a>) a po dokončení přesunu se provede skutečné přemístění v <a href="/dom">DOMu</a> přes <code>appendChild</code> a transformace se zruší.</p>
 
-  - 
 
-  - [FLIP Your Animations](http://aerotwist.com/blog/flip-your-animations/)
+<p><a href="http://kod.djpw.cz/orsb">Živá ukázka</a> – přesun transformací a přehození elementu</p>
+
+<p><a href="http://kod.djpw.cz/lhdb">Živá ukázka</a></p>
+
+
+
+
+
+
+<h2 id="flip">FLIP – lepší řešení</h2>
+
+<p>S ohledem na rychlost existuje ale lepší postup. Nazvaný zkratkou FLIP (First, Last, Invert, Play):</p>
+
+<ul>
+  <li></li>
+</ul>
+
+<ul>
+  <li><a href="http://aerotwist.com/blog/flip-your-animations/">FLIP Your Animations</a></li>
+</ul>

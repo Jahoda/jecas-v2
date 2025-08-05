@@ -5,214 +5,285 @@ description: "CSS konstrukce, které nejspíš píšete zbytečně."
 date: "2015-05-21"
 last_modification: "2015-05-22"
 status: 1
-tags: ["CSS", "Rady a nápady"]
+tags: ["css", "napady"]
+format: "html"
 ---
 
-Během objevování a **učení se** kaskádovým stylům (CSS) si člověk snadno přivykne na **zbytečně komplikované konstrukce**, které začne používat z neznalosti. Potom si na ně navykne a ze setrvačnosti je často používá, i když už CSS docela rozumí…
+<p>Během objevování a <b>učení se</b> kaskádovým stylům (CSS) si člověk snadno přivykne na <b>zbytečně komplikované konstrukce</b>, které začne používat z neznalosti. Potom si na ně navykne a ze setrvačnosti je často používá, i když už CSS docela rozumí…</p>
 
-## `margin: 0 auto`
 
-Hodnotu horního a spodního [`margin`u](/margin) není při vodorovném [centrování](/centrovani) třeba explicitně uvádět.
 
-Prosté:
 
-```
-margin: auto
-```
+<h2 id="margin-auto"><code>margin: 0 auto</code></h2>
 
-Funguje naprosto identicky.
+<p>Hodnotu horního a spodního <a href="/margin"><code>margin</code>u</a> není při vodorovném <a href="/centrovani">centrování</a> třeba explicitně uvádět.</p>
 
-Nejspíš jediná výjimka, kdy se výsledek „`margin: auto`“ a „`margin: 0 auto`“ liší, je [centrování absolutním posicováním](/centrovani#absolutni-margin).
+<p>Prosté:</p>
 
-    - [Psát `margin: auto`, nebo `margin: 0 auto`?](/margin-auto)
+<pre><code>margin: auto</code></pre>
 
-## Nula před desetinnou tečkou
+<p>Funguje naprosto identicky.</p>
 
-Jak tomu tak bývá, v programování jde při zápisu **desetinných čísel** vypustit nulu na začátku.
+<p>Nejspíš jediná výjimka, kdy se výsledek „<code>margin: auto</code>“ a „<code>margin: 0 auto</code>“ liší, je <a href="/centrovani#absolutni-margin">centrování absolutním posicováním</a>.</p>
 
-```
-.5 +.5 = 1
-```
+<div class="internal-content">
+  <ul>
+    <li><a href="/margin-auto">Psát <code>margin: auto</code>, nebo <code>margin: 0 auto</code>?</a></li>
+  </ul>
+</div>
 
-Jde to praktikovat i v CSS:
 
-```
-margin: .5em;
-```
 
-## Jednotky u hodnoty `0px`
 
-Je-li nějaká hodnota nastavena na nulu, je zbytečné uvádět jednotky (`0px`, `0em` a podobně). Nula bude pořád nula.
+<h2 id="nula">Nula před desetinnou tečkou</h2>
 
-```
-element {
-  height: 0px;
-}
-```
+<p>Jak tomu tak bývá, v programování jde při zápisu <b>desetinných čísel</b> vypustit nulu na začátku.</p>
 
-## Uvozovky kolem URL/písem
+<pre><code>.5 +.5 = 1</code></pre>
 
-```
-element {
-  background: url(**"**obrazek.png**"**);
-  font-family: **'**Název písma**'**;
-}
-```
+<p>Jde to praktikovat i v CSS:</p>
 
-Při zadávání URL obrázku do CSS funkce `url` jsou [uvozovky](/uvozovky) nepovinné.
+<pre><code>margin: .5em;</code></pre>
 
-Při uvádění fontu ([`font-family`](/font#font-family)) jsou uvozovky nutné jen v případě, že název písma obsahuje čísla a speciální symboly.
 
-## Středník
+<!-- http://www.lamer.cz/quote/72668 -->
 
-Jednotlivé CSS deklarace bývají oddělovány středníkem (`;`). Středník **není nutné psát** za poslední deklarací pro daný [selektor](/css-selektory).
 
-```
-.uzasnyStyl {
+
+<h2 id="nula-jednotky">Jednotky u hodnoty <code>0px</code></h2>
+
+<p>Je-li nějaká hodnota nastavena na nulu, je zbytečné uvádět jednotky (<code>0px</code>, <code>0em</code> a podobně). Nula bude pořád nula.</p>
+
+<pre><code>element {
+  height: 0<del>px</del>;
+}</code></pre>
+
+
+
+
+
+
+<h2 id="uvozovky">Uvozovky kolem URL/písem</h2>
+
+<pre><code>element {
+  background: url(<b>"</b>obrazek.png<b>"</b>);
+  font-family: <b>'</b>Název písma<b>'</b>;
+}</code></pre>
+
+<p>Při zadávání URL obrázku do CSS funkce <code>url</code> jsou <a href="/uvozovky">uvozovky</a> nepovinné.</p>
+
+<p>Při uvádění fontu (<a href="/font#font-family"><code>font-family</code></a>) jsou uvozovky nutné jen v případě, že název písma obsahuje čísla a speciální symboly.</p>
+
+
+
+
+
+
+
+<h2 id="strednik">Středník</h2>
+
+<p>Jednotlivé CSS deklarace bývají oddělovány středníkem (<code>;</code>). Středník <b>není nutné psát</b> za poslední deklarací pro daný <a href="/css-selektory">selektor</a>.</p>
+
+<pre><code>.uzasnyStyl {
   color: red;
   text-align: center
-}
-```
+}</code></pre>
 
-Při používání **strukturovaného CSS** to ale dost zavání zapomenutím středníku při připsání dalšího předpisu.
 
-U **řádkového CSS** to problém není.
+<p>Při používání <b>strukturovaného CSS</b> to ale dost zavání zapomenutím středníku při připsání dalšího předpisu.</p>
 
-```
-.uzasnyStyl {color: red; text-align: center}
-```
 
-## Obtékaný element se stane blokovým
+<p>U <b>řádkového CSS</b> to problém není.</p>
 
-Je-li element plovoucí (tj. má nastaven [`float`](/float)), stane se automaticky blokovým ([`display: block`](/display#block)).
+<pre><code>.uzasnyStyl {color: red; text-align: center}</code></pre>
 
-```
-.obtekany {
+
+
+
+
+
+<h2 id="block-float">Obtékaný element se stane blokovým</h2>
+
+<p>Je-li element plovoucí (tj. má nastaven <a href="/float"><code>float</code></a>), stane se automaticky blokovým (<a href="/display#block"><code>display: block</code></a>).</p>
+
+<pre><code>.obtekany {
   float: left;
-  display: block;
-}
-```
+  <del>display: block</del>;
+}</code></pre>
 
-Blokovým se stane i element s výslovně nastaveným `display: inline`, `display: inline-block` nebo `display: table-cell` a podobně.
 
-Výjimka je obtékaný element s `display: table` – tabulkové zobrazení se zachová. Obdobně se chová hodnota `list-item`, která je výchozí u odrážek seznamů. Rozplavaná položka seznamu bude stále `display: list-item`.
 
-    - Položka
 
-## Absolutně posicovaný element se stane blokovým
 
-Je-li element [posicován](/position) absolutně nebo fixně, stane se z něj automaticky `display: block` bez nutnosti to uvádět.
+<p>Blokovým se stane i element s výslovně nastaveným <code>display: inline</code>, <code>display: inline-block</code> nebo <code>display: table-cell</code> a podobně.</p>
 
-```
-.posicovany {
+<p>Výjimka je obtékaný element s <code>display: table</code> – tabulkové zobrazení se zachová. Obdobně se chová hodnota <code>list-item</code>, která je výchozí u odrážek seznamů. Rozplavaná položka seznamu bude stále <code>display: list-item</code>.</p>
+
+<div class="live">
+  <ul>
+    <li style="float: left">Položka</li>
+  </ul>
+  <br>
+</div>
+
+
+
+
+<h2 id="block-absolute">Absolutně posicovaný element se stane blokovým</h2>
+
+<p>Je-li element <a href="/position">posicován</a> absolutně nebo fixně, stane se z něj automaticky <code>display: block</code> bez nutnosti to uvádět.</p>
+
+<pre><code>.posicovany {
   position: absolute;
-  display: block;
-}
-```
+  <del>display: block</del>;
+}</code></pre>
 
-## Dopočítávání hodnot
 
-CSS vlastnosti mající varianty pro všechny strany `*-top`, `*-right`, `*-bottom` a `*-left` jde zadávat do sdružené vlastnosti.
 
-Konstrukce:
 
-`margin: 1em .5em .3em;`
 
-Odpovídá:
 
-```
-margin-top: 1em;
+<h2 id="dopocitavani">Dopočítávání hodnot</h2>
+
+<p>CSS vlastnosti mající varianty pro všechny strany <code>*-top</code>, <code>*-right</code>, <code>*-bottom</code> a <code>*-left</code> jde zadávat do sdružené vlastnosti.</p>
+
+<p>Konstrukce:</p>
+
+<code>margin: 1em .5em .3em;</code>
+
+<p>Odpovídá:</p>
+
+<pre><code>margin-top: 1em;
 margin-right: .5em;
 margin-bottom: .3em;
-margin-left: .5em;
-```
+margin-left: .5em;</code></pre>
 
-    - [Dopočítávání CSS hodnot](/css-dopocitavani) – samostatný článek věnovaný se dopočítávání
 
-## Zkratky CSS vlastností
 
-Řada CSS vlastností má tzv. **zkratku**.
 
-```
-border-width: 1px;
+<div class="internal-content">
+  <ul>
+    <li><a href="/css-dopocitavani">Dopočítávání CSS hodnot</a> – samostatný článek věnovaný se dopočítávání</li>
+  </ul>
+</div>
+
+
+
+
+
+<h2 id="zkratky">Zkratky CSS vlastností</h2>
+
+<p>Řada CSS vlastností má tzv. <b>zkratku</b>.</p>
+
+<pre><code>border-width: 1px;
 border-style: solid;
-border-color: red;
-```
+border-color: red;</code></pre>
 
-Předchozí rámeček tak jde zapsat jako:
 
-```
-border: 1px solid red;
-```
 
-I při použití zkratky není třeba uvádět všechny hodnoty. Pro zrušení rámečku tak stačí:
 
-`border: 0;`
 
-Obdobně pro zrušení odrážek [seznamu](/list-style) stačí použít `list-style: none`, místo `list-style**-type**: none`, jak bývá často k vidění.
+<p>Předchozí rámeček tak jde zapsat jako:</p>
 
-## Příliš konkrétní selektory
+<pre><code>border: 1px solid red;</code></pre>
 
-Řekněme, že je cílem v následujícím HTML kódu zaměřit odkaz (značku `&lt;a>`).
+<p>I při použití zkratky není třeba uvádět všechny hodnoty. Pro zrušení rámečku tak stačí:</p>
 
-```
-&lt;div class="menu">
+<code>border: 0;</code>
+
+
+
+<p>Obdobně pro zrušení odrážek <a href="/list-style">seznamu</a> stačí použít <code>list-style: none</code>, místo <code>list-style<b>-type</b>: none</code>, jak bývá často k vidění.</p>
+
+
+
+
+
+<h2 id="detailni-selektory">Příliš konkrétní selektory</h2>
+
+<p>Řekněme, že je cílem v následujícím HTML kódu zaměřit odkaz (značku <code>&lt;a></code>).</p>
+
+<pre><code>&lt;div class="menu">
   &lt;ul>
     &lt;li>&lt;a href="">Odkaz&lt;/a>&lt;/li>
   &lt;/ul>
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-    Jedna extrémní varianta je selektor typu:
 
-    ```
-div.menu ul li a {}
-```
 
-    Na opačné straně stojí:
+<ol>
+  <li>
+    <p>Jedna extrémní varianta je selektor typu:</p>
+    
+    <pre><code>div.menu ul li a {}</code></pre>
+  </li>
+  
+  <li>
+    <p>Na opačné straně stojí:</p>
+    
+    <pre><code>.menu a {}</code></pre>
+  </li>
+</ol>
 
-    ```
-.menu a {}
-```
+<p>Obecně bývá lepší používat spíš druhý způsob s jednodušším selektorem.</p>
 
-Obecně bývá lepší používat spíš druhý způsob s jednodušším selektorem.
 
-  - Má kratší zápis.
+<ol>
+  <li>Má kratší zápis.</li>
+  
+  <li>Nemá zbytečně <b>vysokou prioritu</b>. Kvůli případnému přepisování vlastností je dobré držet <i>sílu selektorů</i> co nejnižší.</li>
+  
+  <li>Jednodušší selektor je rychlejší na vyhodnocení. To je spíš teoretická výhoda – i komplikovaný selektor bude pořád hodně rychlý.</li>
+</ol>
 
-  - Nemá zbytečně **vysokou prioritu**. Kvůli případnému přepisování vlastností je dobré držet *sílu selektorů* co nejnižší.
 
-  - Jednodušší selektor je rychlejší na vyhodnocení. To je spíš teoretická výhoda – i komplikovaný selektor bude pořád hodně rychlý.
+<h2 id="dedicnost-barvy">Dědičnost barvy</h2>
 
-## Dědičnost barvy
+<p>Rámečky <code>border</code>, ale i <code>outline</code>, <a href="/box-shadow"><code>box-shadow</code></a> nebo <a href="/text-shadow"><code>text-shadow</code></a> dokáží dědit barvu, která se nachází ve vlastnosti <code>color</code>.</p>
 
-Rámečky `border`, ale i `outline`, [`box-shadow`](/box-shadow) nebo [`text-shadow`](/text-shadow) dokáží dědit barvu, která se nachází ve vlastnosti `color`.
+<div class="live">  
+  <p style="border: solid; color: #0D6AB7">Rámeček převzal barvu z <code>color</code></p>
+  
+  <p style="text-shadow: 10px 10px 5px; color: #0D6AB7">Stín převzal barvu z <code>color</code></p>
+</div>
 
-  Rámeček převzal barvu z `color`
 
-  Stín převzal barvu z `color`
 
-## Uvádění šířky
 
-Blokový element dle výchozích stylů automaticky vyplní všechnu dostupnou šířku.
 
-Nastavovat pro vnořený element **stejnou šířku jako má jeho rodič** je tudíž zbytečné.
 
-```
-&lt;div style="width: 400px">
+<h2 id="sirka">Uvádění šířky</h2>
+
+<p>Blokový element dle výchozích stylů automaticky vyplní všechnu dostupnou šířku.</p>
+
+
+<p>Nastavovat pro vnořený element <b>stejnou šířku jako má jeho rodič</b> je tudíž zbytečné.</p>
+
+<pre><code>&lt;div style="width: 400px">
   &lt;div style="width: 400px">
     Vnořený element
   &lt;/div>
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-Totéž platí pro nastavování šířky na 100 % pro **roztažení přes celou plochu** – to je výchozí chování blokového elementu.
 
-## Zbytečné CSS prefixy
 
-K vidění bývá používání [CSS prefixů](/css-prefixy) pro vlastnosti, které daný prohlížeč s prefixem nikdy nepodporoval – například `-ms-transition`.
 
-Podobný případ je vlastnost `-moz-opacity` – od **Firefoxu 0.9** (rok 2004) funguje prosté [`opacity`](/opacity).
 
-## Poděkování
 
-Na sesbírání jednotlivých zbytečností se podíleli: [habendorf](http://www.1-webdesign.cz/), [Bubák](http://teststranek.kvalitne.cz/), [Keil](http://ciwe.cz) a [Chamurappi](http://webylon.info/).
+<p>Totéž platí pro nastavování šířky na 100 % pro <b>roztažení přes celou plochu</b> – to je výchozí chování blokového elementu.</p>
+
+
+
+<h2 id="prefixy">Zbytečné CSS prefixy</h2>
+
+<p>K vidění bývá používání <a href="/css-prefixy">CSS prefixů</a> pro vlastnosti, které daný prohlížeč s prefixem nikdy nepodporoval – například <code>-ms-transition</code>.</p>
+
+<p>Podobný případ je vlastnost <code>-moz-opacity</code> – od <b>Firefoxu 0.9</b> (rok 2004) funguje prosté <a href="/opacity"><code>opacity</code></a>.</p>
+
+
+
+
+
+<h2 id="podekovani">Poděkování</h2>
+
+<p>Na sesbírání jednotlivých zbytečností se podíleli: <a href="http://www.1-webdesign.cz/">habendorf</a>, <a href="http://teststranek.kvalitne.cz/">Bubák</a>, <a href="http://ciwe.cz">Keil</a> a <a href="http://webylon.info/">Chamurappi</a>.</p>

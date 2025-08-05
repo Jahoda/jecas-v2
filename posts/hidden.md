@@ -5,59 +5,73 @@ description: "HTML atribut <code>hidden</code> jde použít pro skrytí obsahu."
 date: "2015-02-16"
 last_modification: "2015-02-16"
 status: 1
-tags: ["HTML", "HTML atributy"]
+tags: ["html", "html-atributy"]
+format: "html"
 ---
 
-```
-&lt;p hidden>
+<pre><code>&lt;p hidden>
   Obsah odstavce nebude vidět.
-&lt;/p>
-```
+&lt;/p></code></pre>
 
-Jedná se o tzv. **globální atribut** – tedy jde použít u všech HTML elementů. Element s atributem `hidden` nebude na stránce vidět – jako by měl nastaveno `[display](/display): none`.
 
-## Podpora
 
-Použití `hidden` zneviditelní obsah od **IE 11**. Pro starší **Internet Explorery** jde teoreticky použít [atributový selektor](/css-selektory#atributovy):
+<p>Jedná se o tzv. <b>globální atribut</b> – tedy jde použít u všech HTML elementů. Element s atributem <code>hidden</code> nebude na stránce vidět – jako by měl nastaveno <code><a href="/display">display</a>: none</code>.</p>
 
-```
-[hidden] {
+
+
+
+<h2 id="podpora">Podpora</h2>
+
+<p>Použití <code>hidden</code> zneviditelní obsah od <b>IE 11</b>. Pro starší <b>Internet Explorery</b> jde teoreticky použít <a href="/css-selektory#atributovy">atributový selektor</a>:</p>
+
+<pre><code>[hidden] {
     display: none;
-}
-```
+}</code></pre>
 
-## Využití
 
-Atribut `hidden` neslouží ke [skrývání/odkrývání textu](/zobrazit-skryt), jak by se mohlo zdát. Neměl by se používat ani k *přepínání záložek*.
 
-Je vhodný k označení obsahu, který ještě nebo už **není relevantní**. Využití má tedy hlavně u **JS aplikací**, kdy jsou na stránce různé bloky kódu, které se nevyužívají najednou.
 
-### Příklad použití
+<h2 id="vyuziti">Využití</h2>
 
-Specifikace uvádí příklad s přihlášením, kdy je zobrazen přihlašovací formulář a skrytý obsah.
+<p>Atribut <code>hidden</code> neslouží ke <a href="/zobrazit-skryt">skrývání/odkrývání textu</a>, jak by se mohlo zdát. Neměl by se používat ani k <i>přepínání záložek</i>.</p>
 
-Obsah bude skrytý pomocí `hidden`.
+<p>Je vhodný k označení obsahu, který ještě nebo už <b>není relevantní</b>. Využití má tedy hlavně u <b>JS aplikací</b>, kdy jsou na stránce různé bloky kódu, které se nevyužívají najednou.</p>
 
-```
-&lt;form id="prihlaseni">
+
+<h3 id="priklad">Příklad použití</h3>
+
+<p>Specifikace uvádí příklad s přihlášením, kdy je zobrazen přihlašovací formulář a skrytý obsah.</p>
+
+<p><img src="/files/hidden/atribut-hidden.gif" alt="Příklad použití atributu hidden" class="border"></p>
+
+<p>Obsah bude skrytý pomocí <code>hidden</code>.</p>
+
+<pre><code>&lt;form id="prihlaseni">
 …
 &lt;/form>
-&lt;div id="obsah" **hidden**>
+&lt;div id="obsah" <b>hidden</b>>
 …
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-Po přihlášení se potom `hidden` prohodí (nastaví pro přihlašovací formulář a zruší pro obsah):
 
-```
-document.getElementById("prihlaseni").hidden = true;
-document.getElementById("obsah").hidden = false;
-```
 
-[Živá ukázka](http://kod.djpw.cz/kmkb)
 
-## Odkazy jinam
 
-  - WHATWG: [The `hidden` attribute](https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute)
 
-  - MDN: [`hidden`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden)
+
+
+<p>Po přihlášení se potom <code>hidden</code> prohodí (nastaví pro přihlašovací formulář a zruší pro obsah):</p>
+
+<pre><code>document.getElementById("prihlaseni").hidden = true;
+document.getElementById("obsah").hidden = false;</code></pre>
+
+<p><a href="http://kod.djpw.cz/kmkb">Živá ukázka</a></p>
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>WHATWG: <a href="https://html.spec.whatwg.org/multipage/interaction.html#the-hidden-attribute">The <code>hidden</code> attribute</a></li>
+  
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden"><code>hidden</code></a></li>
+</ul>

@@ -5,74 +5,106 @@ description: "JavaScriptová událost <code>oninput</code> zachytí práci s for
 date: "2014-05-01"
 last_modification: "2014-05-12"
 status: 1
-tags: ["JavaScript", "JS události"]
+tags: ["js", "js-udalosti"]
+format: "html"
 ---
 
-Odchytávání stavu, že uživatel *něco dělá* s formulářovým elementem [`&lt;input>`](/input) není úplně jednoduché.
+<p>Odchytávání stavu, že uživatel <i>něco dělá</i> s formulářovým elementem <a href="/input"><code>&lt;input></code></a> není úplně jednoduché.</p>
 
-## Událost `onchange`
+<h2 id="onchange">Událost <code>onchange</code></h2>
 
-### `&lt;input type=text>`
+<h3 id="input-text"><code>&lt;input type=text></code></h3>
+<p>Například událost <code>onchange</code> u značky <code>&lt;input></code> reaguje, až když se ztratí <code>:focus</code>.</p>
 
-Například událost `onchange` u značky `&lt;input>` reaguje, až když se ztratí `:focus`.
+<div class="live"><input onchange="zmena(this)"></div>
 
-### `&lt;input type=range>`
+<h3 id="input-range"><code>&lt;input type=range></code></h3>
+<p>U <a href="/input#type-range"><code>&lt;input type=range></code></a> je potom pro některé prohlížeče změna už samotné přesouvání jezdce a jinde se <code>onchange</code> vyvolá až při uvolnění tlačítka myši.</p>
 
-U [`&lt;input type=range>`](/input#type-range) je potom pro některé prohlížeče změna už samotné přesouvání jezdce a jinde se `onchange` vyvolá až při uvolnění tlačítka myši.
+<div class="live"><input type="range" onchange="zmena(this)" min=0 max=10 step=2></div>
 
-### `&lt;select>`
+<h3 id="select"><code>&lt;select></code></h3>
+<div class="live">
+  <select onchange="zmena(this)">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+  </select>
+</div>
 
-    1
-    2
-    3
+<h3 id="input-radio"><code>&lt;input type=radio></code></h3>
 
-### `&lt;input type=radio>`
+<div class="live">
+  <input type="radio" name="radio" onchange="zmena(this)"><input type="radio" name="radio" onchange="zmena(this)">
+</div>
 
-## Události `onkeyup`, `onkeydown`, `onkeypress`
+<h2 id="onkey">Události <code>onkeyup</code>, <code>onkeydown</code>, <code>onkeypress</code></h2>
 
-Pokud jsme tedy v textovém `&lt;input>`u chtěli reagovat na každé **napsané písmeno**, bylo nutné odchytávat **stisk klávesy**.
+<p>Pokud jsme tedy v textovém <code>&lt;input></code>u chtěli reagovat na každé <b>napsané písmeno</b>, bylo nutné odchytávat <b>stisk klávesy</b>.</p>
 
-### `onkeyup`
+<h3 id="onkeyup"><code>onkeyup</code></h3>
 
-### `onkeydown`
+<div class="live"><input onkeyup="zmena(this)"></div>
 
-### `onkeypress`
+<h3 id="onkeydown"><code>onkeydown</code></h3>
+<div class="live"><input onkeydown="zmena(this)"></div>
 
-### `onpaste`
+<h3 id="onkeypress"><code>onkeypress</code></h3>
+<div class="live"><input onkeypress="zmena(this)"></div>
 
-Problém pochopitelně nastane, když návštěvník bude chtít obsah vkládat ze **schránky** přes **kontextové menu** myší a podobně. Potom je řešení potřebnou událost spustit i při `onpaste` a pro případ, že se obsah přesune do pole myší ještě pro `onfocus`.
 
-## Událost `oninput`
+<h3 id="onpaste"><code>onpaste</code></h3>
+<p>Problém pochopitelně nastane, když návštěvník bude chtít obsah vkládat ze <b>schránky</b> přes <b>kontextové menu</b> myší a podobně. Potom je řešení potřebnou událost spustit i při <code>onpaste</code> a pro případ, že se obsah přesune do pole myší ještě pro <code>onfocus</code>.</p>
+<div class="live"><input onpaste="zmena(this)" onfocus="zmena(this)"></div>
 
-Událost `oninput`, funkční od **IE 9** by tuto nejednotnost měla řešit a spouštět se vždy, když se s políčkem nějak pracuje.
 
-Kromě staré **Opery 12** všechny prohlížeče vyvolají `oninput` jen u textového pole, `&lt;input type=range>` a `&lt;textarea>`.
+<h2 id="oninput">Událost <code>oninput</code></h2>
 
-### Textové políčko
+<p>Událost <code>oninput</code>, funkční od <b>IE 9</b> by tuto nejednotnost měla řešit a spouštět se vždy, když se s políčkem nějak pracuje.</p>
 
-### Posuvník
+<p>Kromě staré <b>Opery 12</b> všechny prohlížeče vyvolají <code>oninput</code> jen u textového pole, <code>&lt;input type=range></code> a <code>&lt;textarea></code>.</p>
 
-### Textarea
+<h3 id="textove-pole">Textové políčko</h3>
+<div class="live"><input oninput="zmena(this)"></div>
 
-### Zaškrtávátko
+<h3 id="posuvnik">Posuvník</h3>
+<div class="live"><input type="range" oninput="zmena(this)" min=0 max=10 step=2></div>
 
-U následujících prvků už `oninput` v nových prohlížečích nic nedělá.
+<h3 id="textarea">Textarea</h3>
 
-### Přepínač
+<div class="live"><textarea name="" id="" cols="30" rows="10" oninput="zmena(this)"></textarea></div>
 
-V **Opeře 12** je zajímavé, že se `oninput` vyvolá na obou `&lt;input>`ech.
+<h3 id="zaskrtavatko">Zaškrtávátko</h3>
+<p>U následujících prvků už <code>oninput</code> v nových prohlížečích nic nedělá.</p>
 
-### Roletový výběr
+<div class="live"><input type="checkbox" oninput="zmena(this)"></div>
 
-    1
-    2
-    3
+<h3 id="prepinac">Přepínač</h3>
 
+<p>V <b>Opeře 12</b> je zajímavé, že se <code>oninput</code> vyvolá na obou <code>&lt;input></code>ech.</p>
+
+<div class="live">
+  <input type="radio" name="radio2" oninput="zmena(this)"><input type="radio" name="radio2" oninput="zmena(this)">
+</div>
+
+<h3 id="roleta">Roletový výběr</h3>
+<div class="live">
+  <select oninput="zmena(this)">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+  </select>
+</div>
+
+
+<style>
   .live .zmena {display: inline-block; background: #fff; padding: 0 .2em; margin: 0 .2em}
-
+</style>
+<script>
   function zmena(el) {
     var span = document.createElement("span");
     span.className = "zmena";
     span.innerHTML = "Změna";
     el.parentNode.appendChild(span);
   }
+</script>

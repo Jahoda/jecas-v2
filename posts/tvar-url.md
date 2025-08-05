@@ -5,212 +5,371 @@ description: "Jakým způsobem volit tvar URL jednotlivých stránek s ohledem n
 date: "2015-04-11"
 last_modification: "2015-07-17"
 status: 1
-tags: ["SEO", "Rady a nápady"]
+tags: ["napady", "seo"]
+format: "html"
 ---
 
-Kromě toho, že každá webová stránka má zpravidla:
+<p><img class="border" src="/files/article-large/tvar-url.png" alt="10 rad, jak vytvořit dobrou URL"></p>
 
-  - název/titulek (značka `&lt;title>`),
 
-  - hlavní nadpis ([`&lt;h1>`](/nadpisy)),
 
-  - obsah
 
-Se všechny tyto věci nacházejí na nějaké adrese – **URL** (*Uniform Resource Locator* – český překlad „jednotná adresa zdroje“). Tvar adresy může být různý:
 
-```
-example.com/super-clanek
+
+
+
+
+
+
+
+
+
+<p>Kromě toho, že každá webová stránka má zpravidla:</p>
+
+<ol>
+  <li>název/titulek (značka <code>&lt;title></code>),</li>
+  
+  <li>hlavní nadpis (<a href="/nadpisy"><code>&lt;h1></code></a>),</li>
+  
+  <li>obsah</li>
+</ol>
+
+<p>Se všechny tyto věci nacházejí na nějaké adrese – <b>URL</b> (<i lang="en">Uniform Resource Locator</i> – český překlad „jednotná adresa zdroje“). Tvar adresy může být různý:</p>
+
+
+
+<pre><code>example.com/super-clanek
 example.com/clanky/super-clanek
 example.com/super-clanek.html
 example.com/Super_článek
-example.com/?id=5
-```
+example.com/?id=5</code></pre>
 
-Plus různé variace výše uvedeného.
 
-Tento článek se zabývá volbou tvaru adresy za názvem domény. Postup pro vybírání **vhodné domény** je popsán zde:
 
-    - [Jak vybrat vhodnou doménu?](/domena) – 8 rad, kterými se řídit
 
-## Tvar URL chce promyslet
 
-Zatímco přepsat název článku nebo změnit jeho obsah není výraznější problém, **změna adresy** je značně komplikovanější.
+<p>Plus různé variace výše uvedeného.</p>
 
-Na obsah nacházející se na dané URL už mohou **vést odkazy** či stránku již **zaindexovaly vyhledávače**. V takovém případě změna URL **přináší komplikace**.
+<p>Tento článek se zabývá volbou tvaru adresy za názvem domény. Postup pro vybírání <b>vhodné domény</b> je popsán zde:</p>
 
-Ideální je **adresy neměnit**.
+<div class="internal-content">
+  <ul>
+    <li><a href="/domena">Jak vybrat vhodnou doménu?</a> – 8 rad, kterými se řídit</li>
+  </ul>
+</div>
 
-Jaké by měly být dobré adresy, aby zaručily dobrou dohledatelnost informací? Přináším přehled třích hlavních vlastností. URL adresy by měly být
 
-  - trvalé,
+<h2 id="promyslet">Tvar URL chce promyslet</h2>
 
-  - trvalé
+<p>Zatímco přepsat název článku nebo změnit jeho obsah není výraznější problém, <b>změna adresy</b> je značně komplikovanější.</p>
 
-  - a trvalé
+<p>Na obsah nacházející se na dané URL už mohou <b>vést odkazy</b> či stránku již <b>zaindexovaly vyhledávače</b>. V takovém případě změna URL <b>přináší komplikace</b>.</p>
 
-  **Yuhů**, [Tři zásady pro tvorbu dobrých SEO URL](http://weblog.jakpsatweb.cz/d/1333060980-tri-zasady-pro-tvorbu-dobrych-seo-url.html)
+<p>Ideální je <b>adresy neměnit</b>.</p>
 
-Když už se adresy změní, je nutné alespoň zajistit **přesměrování**, což bývá práce navíc, takže je lepší skutečně adresy neměnit.
+<blockquote cite="http://weblog.jakpsatweb.cz/d/1333060980-tri-zasady-pro-tvorbu-dobrych-seo-url.html">
+<p>Jaké by měly být dobré adresy, aby zaručily dobrou dohledatelnost informací? Přináším přehled třích hlavních vlastností. URL adresy by měly být</p>
+<ol>
+  <li>trvalé,</li>
+  <li>trvalé</li>
+  <li>a trvalé</li>
+</ol>  
+  
+  <p class="autor"><b>Yuhů</b>, <a href="http://weblog.jakpsatweb.cz/d/1333060980-tri-zasady-pro-tvorbu-dobrych-seo-url.html">Tři zásady pro tvorbu dobrých SEO URL</a></p>
+</blockquote>
 
-Navíc seznam přesměrování zanáší lehký nepořádek do webu, na který se při redesignu stránek snadno zapomene.
 
-Na určení tvaru URL je tedy mimořádně důležité **si dát záležet** a i například při publikaci obsahu pořádně zkontrolovat, že **neobsahuje překlep**.
 
-## Srozumitelnost a stručnost adresy
 
-URL stránky se zobrazuje na řadě míst.
 
-V adresním řádku prohlížeče:
 
-Ve **stavovém řádku** po najetí myší na odkaz:
+<p>Když už se adresy změní, je nutné alespoň zajistit <b>přesměrování</b>, což bývá práce navíc, takže je lepší skutečně adresy neměnit.</p>
 
-Dále se adresy zobrazují ve **výsledcích vyhledávání**. Vyhledávače v nich i zvýrazňují hledaná slova. Zobrazení na [Seznamu](/seznam):
+<p>Navíc seznam přesměrování zanáší lehký nepořádek do webu, na který se při redesignu stránek snadno zapomene.</p>
 
-Zobrazení URL v SERPu [Googlu](/google):
+<p>Na určení tvaru URL je tedy mimořádně důležité <b>si dát záležet</b> a i například při publikaci obsahu pořádně zkontrolovat, že <b>neobsahuje překlep</b>.</p>
 
-Jen tak vložená URL bez úpravy textu odkazu se může objevit v **diskusních fórech nebo komentářích**, kde se samotná URL stane textem odkazu.
 
-Je tedy dobré, když adresa dobře vystihuje obsah, který lze na dané URL **očekávat**. Z toho vyplývá, že by adresa **neměla mít podobu** typu:
 
-```
-example.com/?id=5
-```
 
-To člověku většinou příliš nepomůže.
 
-### Délka adresy
+<h2 id="srozumitelnost">Srozumitelnost a stručnost adresy</h2>
 
-Vzhledem k omezenému prostoru je dále lepší, aby adresa byla **kratší než delší**. Hodně dlouhá URL se stejně zpravidla celá nezobrazí.
+<p>URL stránky se zobrazuje na řadě míst.</p>
 
-Krátká URL se dá dobře nadiktovat (tj. je použitelná v offline světě), lze zapamatovat nebo se zobrazí celá při sdílení na [Twitteru](/twitter):
+<p>V adresním řádku prohlížeče:</p>
 
-Opravdu **hodně dlouhé adresy** mohou být rozbity různými redakčními systémy, které dlouhá slova rozdělují a neumějí rozlišit slovo od URL. Uživatelé tak musí používat **zkracovače adres**.
+<p><img src="/files/tvar-url/adresni-radek.png" alt="URL v adresním řádku" class="border"></p>
 
-## Klíčová slova v URL a SEO
 
-Z pohledu vyhledávačů se zdá být rozumné uvádět v URL **nejdůležitější klíčová slova**.
 
-    Klíčová slova v URL jsou zvýrazněna ve výsledcích hledání. To může být další signál pro návštěvníka, že má právě kliknout na daný odkaz.
 
-    Pro vyhledávač je adresa stránky další informace, podle které určovat téma stránky.
 
-Nějaký **zázračný SEO efekt** klíčovým slovům v adrese ale přisuzovat nelze. Adresa není pro návštěvníky tak důležitá jako obsah, aby vyhledávač stránky kvůli špatným adresám výrazně upozaďoval.
 
-## Složky/kategorie
 
-Někdy bývají k vidění adresy znázorňující stromovou strukturu.
 
-```
-example.com/sekce/kategorie/clanek
-```
+<p>Ve <b>stavovém řádku</b> po najetí myší na odkaz:</p>
 
-Vytvářet hlubokou strukturu v adresách je značně risikové z toho důvodu, že se rozvržení stránky málokdy podaří navrhnout rovnou finálně.
+<p><img src="/files/tvar-url/stavovy-radek.png" alt="URL ve stavovém řádku" class="border"></p>
 
-Problém logicky vyvstane, když bude **potřeba strukturu změnit**. To bude znamenat:
 
-  - buď **změnu URL**,
 
-  - nebo vytvoření **nekonsistence** mezi tvarem adres a skutečnou strukturou.
+<p>Dále se adresy zobrazují ve <b>výsledcích vyhledávání</b>. Vyhledávače v nich i zvýrazňují hledaná slova. Zobrazení na <a href="/seznam">Seznamu</a>:</p>
 
-Celé situaci se tak jde vyhnout **jednou jedinou úrovní** pro veškerý obsah. Tento systém používá například **Wikipedie**.
 
-```
-cs.wikipedia.org/wiki/HyperText_Markup_Language
-```
+<p><img src="/files/tvar-url/seznam.png" alt="URL v SERPu na Seznamu" class="border"></p>
 
-## Zbytečná slova
 
-V ideálním případě by v URL nemělo být nic, co nenese hodnotnou informaci. Tedy se vyhnout různým identifikátorům, které do URL přidávají redakční systémy.
 
-Pro web o pěti podstránkách je zbytečné mít adresy ve tvaru:
 
-```
-example.com/**stranka/**kontakt
-```
 
-Postačí prosté:
+<p>Zobrazení URL v SERPu <a href="/google">Googlu</a>:</p>
+<p><img src="/files/tvar-url/google.png" alt="URL v SERPu v Google" class="border"></p>
 
-```
-example.com/kontakt
-```
 
-## Vycpávání klíčovými slovy
 
-Vycpávání klíčovými slovy (anglicky *Keyword stuffing*) je nekalá [SEO](/seo) praktika, kdy se do adresy **klíčové slovní spojení** vloží hned několikrát.
 
-```
-example.com/klicove-slovo/klicove-slovo.html
-```
 
-Lze předpokládat, že rozumné vyhledávače nebudou mít důvod kvůli zopakování klíčových slov stránku upřednostnit. Naopak taková adresa může působit podezřele na **lidské návštěvníky** a vést tak **nižší míře prokliku**.
 
-## Česká diakritika v URL
 
-Wikipedie dokazuje, že adresa stránky diakritiku (a dokonce i další netradiční znaky) obsahovat může. Mohou s tím ale být problémy, za které se **lepší srozumitelnost** a **menší počet kolisí** (např. *koš vs. kos*) adresy nemusí vyplatit – některé přísnější skripty ověřující URL s tím mohou mít problémy.
 
-Automatický převodník textu na klikací odkaz tak může vzít znak s **háčkem nebo čárkou** jako konec URL a odkaz tím rozbít.
 
-Osvědčené je používat pouze znaky a–z, 0–9 a pro oddělení slov spojovník `-`. Jde k tomu použít následující funkci, které dokáže takovou podobu URL **automaticky vytvořit podle názvu stránky**:
+<p>Jen tak vložená URL bez úpravy textu odkazu se může objevit v <b>diskusních fórech nebo komentářích</b>, kde se samotná URL stane textem odkazu.</p>
 
-    - PHP triky: [Vytvoření přátelského URL](http://php.vrana.cz/vytvoreni-pratelskeho-url.php) – hotové funkce v PHP a JavaScriptu
+<p><img src="/files/tvar-url/webtrh.png" alt="Vložení odkazu v diskusním fóru" class="border"></p>
 
-## Předložky a slovní vata
 
-Skripty zajišťující **automatický převod názvu stránky na URL** (řetězec adresy se někdy označuje jako *slug*) mohou obsahovat funkci pro odstraňování předložek, spojek a dalšího obsahu, co není klíčovým slovem. V angličtině potom ještě členů.
 
-V češtině to kvůli skloňování značně **snižuje čitelnost**. Například z titulku:
 
-  Hledám fotografa s objektivem pro interier - Praha Palmovka
 
-Může vzniknou *slug* ve tvaru:
 
-  hledam-fotografa-objektivem-interier-praha
 
-Ideální je tedy **tvořit URL ručně**. U webů, kde obsah tvoří nepoučení lidé, jako třeba **diskusní fórum**, je ale takový postup značně komplikovaný. Nakonec může méně škody napáchat automatický převod než vložení důvěry do rukou návštěvníků.
 
-## Duplicitní adresy
 
-Nikdy by nemělo být možné získat **stejný obsah na více různých adresách**. V případě, že na něco takového vyhledávač narazí, musí si jednu z adres vybrat a tu preferovat. Nešikovné je, když si vybere tu podobu, která nebyla zamýšlena.
 
-U adres obsahující číselný identifikátor následovaný textovou omáčkou pro uživatele, může dojít ke komickým situacím, kdy je možné **změnit text URL bez následného přesměrování**.
 
-Stránka `example.com/5-kontakt` tak může být dostupná na URL `example.com/5-jsme-hlupaci`. Řešením je používat **přesměrování hlavičkou 301** na preferovaný tvar.
 
-## URL složené z číselných ID
+<p>Je tedy dobré, když adresa dobře vystihuje obsah, který lze na dané URL <b>očekávat</b>. Z toho vyplývá, že by adresa <b>neměla mít podobu</b> typu:</p>
 
-V některých případech je prakticky nevyhnutelné mít v adresách identifikátory číselné či [složené z písmen](/id-pismena). Týká se to stránek s **velkým množstvím obsahu** – zpravidla tvořeným lidmi, po kterých lze těžko požadovat navrhnutí rozumných URL.
+<pre><code>example.com/?id=5</code></pre>
 
-Příkladem je třeba [YouTube](/youtube) s tvarem URL:
 
-```
-youtube.com/watch?v=-ecdH-HdLjA
-```
 
-Nebo [Facebook](/facebook):
 
-```
-facebook.com/jecas.cz/posts/896912130370504
-```
+<p>To člověku většinou příliš nepomůže.</p>
 
-Číselné identifikátory navíc řeší ještě jednu věc – případné **kolise stejných tvarů URL** vytvořené z nadpisů, které tak není vůbec třeba řešit.
 
-Při nízkém počtu stránek se některým návštěvníkům může líbit, že se číselná adresa typu „`example.com/1312`“ snadno zapamatuje. Domnívám se ale, že **stručná slovní adresa** typu „`example.com/css`“ na tom bude ještě lépe.
+<h3 id="delka">Délka adresy</h3>
 
-## Česky, nebo anglicky?
+<p>Vzhledem k omezenému prostoru je dále lepší, aby adresa byla <b>kratší než delší</b>. Hodně dlouhá URL se stejně zpravidla celá nezobrazí.</p>
 
-Google doporučuje, aby jazyk URL odpovídal jazyku, kterým je napsán obsah stránky.
+<p>Krátká URL se dá dobře nadiktovat (tj. je použitelná v offline světě), lze zapamatovat nebo se zobrazí celá při sdílení na <a href="/twitter">Twitteru</a>:</p>
 
-    - [Google: Your URLs Should Be In Your Contents Language](https://www.seroundtable.com/google-url-language-format-20523.html)
+<p><img src="/files/tvar-url/twitter.png" alt="URL v SERPu na Seznamu" class="border"></p>
 
-U vícejazyčného webu to tedy znamená mít například pro stánku *Kontakt* adresy typu:
 
-```
-example.com/cs/kontakt
-example.com/en/contact
-```
 
-U hloupějších redakčních systému to ale může být problém.
 
-## Odkazy jinam
 
-  - Moz.com: [15 SEO Best Practices for Structuring URLs](http://moz.com/blog/15-seo-best-practices-for-structuring-urls)
+
+
+
+<p>Opravdu <b>hodně dlouhé adresy</b> mohou být rozbity různými redakčními systémy, které dlouhá slova rozdělují a neumějí rozlišit slovo od URL. Uživatelé tak musí používat <b>zkracovače adres</b>.</p>
+
+
+
+
+<h2 id="klicova-slova">Klíčová slova v URL a SEO</h2>
+
+<p>Z pohledu vyhledávačů se zdá být rozumné uvádět v URL <b>nejdůležitější klíčová slova</b>.</p>
+
+<ol>
+  <li>
+    <p>Klíčová slova v URL jsou zvýrazněna ve výsledcích hledání. To může být další signál pro návštěvníka, že má právě kliknout na daný odkaz.</p>
+    
+    <p><img src="/files/tvar-url/google.png" alt="URL v SERPu v Google" class="border"></p>
+  </li>
+  
+  
+    
+  
+  
+  <li>
+    <p>Pro vyhledávač je adresa stránky další informace, podle které určovat téma stránky.</p>
+  </li>
+</ol>
+
+<p>Nějaký <b>zázračný SEO efekt</b> klíčovým slovům v adrese ale přisuzovat nelze. Adresa není pro návštěvníky tak důležitá jako obsah, aby vyhledávač stránky kvůli špatným adresám výrazně upozaďoval.</p>
+
+
+
+
+<h2 id="slozky">Složky/kategorie</h2>
+
+<p>Někdy bývají k vidění adresy znázorňující stromovou strukturu.</p>
+
+<pre><code>example.com/sekce/kategorie/clanek</code></pre>
+
+
+
+<p>Vytvářet hlubokou strukturu v adresách je značně risikové z toho důvodu, že se rozvržení stránky málokdy podaří navrhnout rovnou finálně.</p>
+
+<p>Problém logicky vyvstane, když bude <b>potřeba strukturu změnit</b>. To bude znamenat:</p>
+
+<ul>
+  <li>buď <b>změnu URL</b>,</li>
+  
+  <li>nebo vytvoření <b>nekonsistence</b> mezi tvarem adres a skutečnou strukturou.</li>
+</ul>
+
+<p>Celé situaci se tak jde vyhnout <b>jednou jedinou úrovní</b> pro veškerý obsah. Tento systém používá například <b>Wikipedie</b>.</p>
+
+<pre><code>cs.wikipedia.org/wiki/HyperText_Markup_Language</code></pre>
+
+
+
+
+
+
+<h2 id="zbytecna-slova">Zbytečná slova</h2>
+
+<p>V ideálním případě by v URL nemělo být nic, co nenese hodnotnou informaci. Tedy se vyhnout různým identifikátorům, které do URL přidávají redakční systémy.</p>
+
+
+
+<p>Pro web o pěti podstránkách je zbytečné mít adresy ve tvaru:</p>
+
+<pre><code>example.com/<b>stranka/</b>kontakt</code></pre>
+
+<p>Postačí prosté:</p>
+
+<pre><code>example.com/kontakt</code></pre>
+
+
+
+
+
+
+<h2 id="vycpavani-slovy">Vycpávání klíčovými slovy</h2>
+
+<p>Vycpávání klíčovými slovy (anglicky <i lang="en">Keyword stuffing</i>) je nekalá <a href="/seo">SEO</a> praktika, kdy se do adresy <b>klíčové slovní spojení</b> vloží hned několikrát.</p>
+
+
+
+<pre><code>example.com/klicove-slovo/klicove-slovo.html</code></pre>
+
+
+<p>Lze předpokládat, že rozumné vyhledávače nebudou mít důvod kvůli zopakování klíčových slov stránku upřednostnit. Naopak taková adresa může působit podezřele na <b>lidské návštěvníky</b> a vést tak <b>nižší míře prokliku</b>.</p>
+
+
+
+<h2 id="diakritika">Česká diakritika v URL</h2>
+
+<p><img src="/files/tvar-url/diakritika-wiki.png" alt="Diakritika v URL na Wikipedii" class="border"></p>
+
+
+
+
+<p>Wikipedie dokazuje, že adresa stránky diakritiku (a dokonce i další netradiční znaky) obsahovat může. Mohou s tím ale být problémy, za které se <b>lepší srozumitelnost</b> a <b>menší počet kolisí</b> (např. <i>koš vs. kos</i>) adresy nemusí vyplatit – některé přísnější skripty ověřující URL s tím mohou mít problémy.</p>
+
+<p>Automatický převodník textu na klikací odkaz tak může vzít znak s <b>háčkem nebo čárkou</b> jako konec URL a odkaz tím rozbít.</p>
+
+<p>Osvědčené je používat pouze znaky a–z, 0–9 a pro oddělení slov spojovník <code>-</code>. Jde k tomu použít následující funkci, které dokáže takovou podobu URL <b>automaticky vytvořit podle názvu stránky</b>:</p>
+
+<div class="external-content">
+  <ul>
+    <li>PHP triky: <a href="http://php.vrana.cz/vytvoreni-pratelskeho-url.php">Vytvoření přátelského URL</a> – hotové funkce v PHP a JavaScriptu</li>
+  </ul>
+</div>
+
+
+
+<h2 id="vata">Předložky a slovní vata</h2>
+
+<p>Skripty zajišťující <b>automatický převod názvu stránky na URL</b> (řetězec adresy se někdy označuje jako <i lang="en">slug</i>) mohou obsahovat funkci pro odstraňování předložek, spojek a dalšího obsahu, co není klíčovým slovem. V angličtině potom ještě členů.</p>
+
+
+<p>V češtině to kvůli skloňování značně <b>snižuje čitelnost</b>. Například z titulku:</p>
+
+<blockquote>
+  <p>Hledám fotografa s objektivem pro interier - Praha Palmovka</p>
+</blockquote>
+
+
+<p>Může vzniknou <i>slug</i> ve tvaru:</p>
+
+<blockquote>  
+  <p>hledam-fotografa-objektivem-interier-praha</p>
+</blockquote>
+
+
+
+
+<p>Ideální je tedy <b>tvořit URL ručně</b>. U webů, kde obsah tvoří nepoučení lidé, jako třeba <b>diskusní fórum</b>, je ale takový postup značně komplikovaný. Nakonec může méně škody napáchat automatický převod než vložení důvěry do rukou návštěvníků.</p>
+
+
+
+<h2 id="duplicity">Duplicitní adresy</h2>
+
+<p>Nikdy by nemělo být možné získat <b>stejný obsah na více různých adresách</b>. V případě, že na něco takového vyhledávač narazí, musí si jednu z adres vybrat a tu preferovat. Nešikovné je, když si vybere tu podobu, která nebyla zamýšlena.</p>
+
+<p>U adres obsahující číselný identifikátor následovaný textovou omáčkou pro uživatele, může dojít ke komickým situacím, kdy je možné <b>změnit text URL bez následného přesměrování</b>.</p>
+
+<p>Stránka <code>example.com/5-kontakt</code> tak může být dostupná na URL <code>example.com/5-jsme-hlupaci</code>. Řešením je používat <b>přesměrování hlavičkou 301</b> na preferovaný tvar.</p>
+
+
+
+
+
+
+
+<h2 id="cisla">URL složené z číselných ID</h2>
+
+<p>V některých případech je prakticky nevyhnutelné mít v adresách identifikátory číselné či <a href="/id-pismena">složené z písmen</a>. Týká se to stránek s <b>velkým množstvím obsahu</b> – zpravidla tvořeným lidmi, po kterých lze těžko požadovat navrhnutí rozumných URL.</p>
+
+
+
+<p>Příkladem je třeba <a href="/youtube">YouTube</a> s tvarem URL:</p>
+
+<pre><code>youtube.com/watch?v=-ecdH-HdLjA</code></pre>
+
+
+
+<p>Nebo <a href="/facebook">Facebook</a>:</p>
+
+<pre><code>facebook.com/jecas.cz/posts/896912130370504</code></pre>
+
+
+
+<p>Číselné identifikátory navíc řeší ještě jednu věc – případné <b>kolise stejných tvarů URL</b> vytvořené z nadpisů, které tak není vůbec třeba řešit.</p>
+
+<p>Při nízkém počtu stránek se některým návštěvníkům může líbit, že se číselná adresa typu „<code>example.com/1312</code>“ snadno zapamatuje. Domnívám se ale, že <b>stručná slovní adresa</b> typu „<code>example.com/css</code>“ na tom bude ještě lépe.</p>
+
+
+
+
+
+<h2 id="jazyk">Česky, nebo anglicky?</h2>
+
+<p>Google doporučuje, aby jazyk URL odpovídal jazyku, kterým je napsán obsah stránky.</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://www.seroundtable.com/google-url-language-format-20523.html">Google: Your URLs Should Be In Your Contents Language</a></li>
+  </ul>
+</div>
+
+<p>U vícejazyčného webu to tedy znamená mít například pro stánku <i>Kontakt</i> adresy typu:</p>
+
+<pre><code>example.com/cs/kontakt
+example.com/en/contact</code></pre>
+
+
+
+<p>U hloupějších redakčních systému to ale může být problém.</p>
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>Moz.com: <a href="http://moz.com/blog/15-seo-best-practices-for-structuring-urls">15 SEO Best Practices for Structuring URLs</a></li>
+</ul>

@@ -1,20 +1,25 @@
 ---
 title: "JS náhrada atributu ismap"
 headline: "JavaScriptová simulace atributu <code>ismap</code>"
-description: "HTML atribut <a href=\"http://www.jakpsatweb.cz/clanky/fosilie-ismap.html\"><code>ismap</code></a> umí zjistit souřadnice při kliknutí na obrázek. Jak na to v JS?"
+description: "HTML atribut <a href="http://www.jakpsatweb.cz/clanky/fosilie-ismap.html"><code>ismap</code></a> umí zjistit souřadnice při kliknutí na obrázek. Jak na to v JS?"
 date: "2013-10-21"
 last_modification: "2013-10-21"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-## Zjištění souřadnic při kliknutí
-
-Při **kliknutí na obrázek** se od souřadnic kliknutí počítaných v rámci celé stránky (`event.pageX`/`Y || event.clientX`/`Y`) odečte umístění souřadnic obrázku (`obrazek.offsetLeft`/`Top`).
-
-    X
-    Y
-
+<h2>Zjištění souřadnic při kliknutí</h2>
+<p>Při <b>kliknutí na obrázek</b> se od souřadnic kliknutí počítaných v rámci celé stránky (<code>event.pageX</code>/<code>Y || event.clientX</code>/<code>Y</code>) odečte umístění souřadnic obrázku (<code>obrazek.offsetLeft</code>/<code>Top</code>).</p>
+<div class="live">
+  <div style="border: 1px solid #fff; cursor: crosshair; position: relative; width: 135px" id=obr>
+    <img src="/images/logo2.png">
+  </div>
+  <dl>
+    <dt>X<dd><input name=x id=x>
+    <dt>Y<dd><input name=y id=y>
+  </dl>
+<script>
 var obr = document.getElementById("obr");
 var x = document.getElementById("x");
 var y = document.getElementById("y");
@@ -29,3 +34,6 @@ obr.onclick = function(e) {
     
     location.hash = "?" + cX + "," + cY;
 };
+</script>
+
+</div>

@@ -5,49 +5,79 @@ description: "Jak je možné stránku přepnout do fullscreenu (režimu celé ob
 date: "2015-01-18"
 last_modification: "2015-01-19"
 status: 1
-tags: ["JavaScript", "CSS", "CSS selektory"]
+tags: ["css", "js", "selektory-css"]
+format: "html"
 ---
 
-Prohlížeče mají obvykle tzv. *režim přes celou obrazovku*, kdy **zmizí ovládací prvky** prohlížeče i operačního systému a stránka se **zobrazí přes celý monitor**.
+<p>Prohlížeče mají obvykle tzv. <i>režim přes celou obrazovku</i>, kdy <b>zmizí ovládací prvky</b> prohlížeče i operačního systému a stránka se <b>zobrazí přes celý monitor</b>.</p>
 
-Obvykle se do **fullscreenu** přepíná klávesou F11. Přepnout zpět je možné opětovným stiskem F11 (někdy i klávesou Esc).
+<p>Obvykle se do <b>fullscreenu</b> přepíná klávesou <kbd>F11</kbd>. Přepnout zpět je možné opětovným stiskem <kbd>F11</kbd> (někdy i klávesou <kbd>Esc</kbd>).</p>
 
-Pomocí JS metody `requestFullscreen` jde přepnout do fullscreenu i **pouze určitý prvek stránky**.
+<p>Pomocí JS metody <code>requestFullscreen</code> jde přepnout do fullscreenu i <b>pouze určitý prvek stránky</b>.</p>
 
-## Využití
 
-Použít režim přes celou obrazovku se hodí v celé řadě případů – při použití HTML přehrávače značkou `&lt;video>`, při vytváření HTML her nebo aplikací. U online editorů pro **psaní textu** jde fullscreenem vytvořit *režim nerušeného psaní*. Fullscreen se hodí i pro prohlížení **obrázkové galerie**.
 
-## Podpora v prohlížečích
+<h2 id="vyuziti">Využití</h2>
 
-V některých prohlížečích funguje pouze **s prefixy**.
+<p>Použít režim přes celou obrazovku se hodí v celé řadě případů – při použití HTML přehrávače značkou <code>&lt;video></code>, při vytváření HTML her nebo aplikací. U online editorů pro <b>psaní textu</b> jde fullscreenem vytvořit <i>režim nerušeného psaní</i>. Fullscreen se hodí i pro prohlížení <b>obrázkové galerie</b>.</p>
 
-  - **Chrome 15+** (s prefixem `webkit`)
 
-  - **Firefox 9+** (s prefixem `moz`)
 
-  - **Internet Explorer 11+** (s prefixem `ms`)
 
-  - **Opera 12.10**
 
-  - **Safari 5** (s prefixem `webkit`)
+<h2 id="podpora">Podpora v prohlížečích</h2>
 
-Po přepnutí na celou obrazovku obvykle prohlížeč **zobrazí upozornění** s postupem, jak se přepnout zpátky.
+<p>V některých prohlížečích funguje pouze <b>s prefixy</b>.</p>
 
-  Hláška v **Chrome**
+<ul>
+  <li><b>Chrome 15+</b> (s prefixem <code>webkit</code>)</li>
 
-  Volby režimu celé obrazovky ve **Firefoxu**
+  <li><b>Firefox 9+</b> (s prefixem <code>moz</code>)</li>
 
-  Povolení fullscreenu v **Internet Exploreru**
+  <li><b>Internet Explorer 11+</b> (s prefixem <code>ms</code>)</li>
 
-Upozornění po chvíli **zmizí** a uživatel to může **zapomenout**, takže je lepší přidat tlačítko, co fullscreen vypne.
+  <li><b>Opera 12.10</b></li>
 
-## Použití
+  <li><b>Safari 5</b> (s prefixem <code>webkit</code>)</li>
+</ul>
 
-Následující funkce `zapnoutFullscreen` přepne předaný element do režimu přes celou obrazovku. Kód je tak komplikovaný kvůli prefixům pro různé prohlížeče.
+<p>Po přepnutí na celou obrazovku obvykle prohlížeč <b>zobrazí upozornění</b> s postupem, jak se přepnout zpátky.</p>
 
-```
-function zapnoutFullscreen(el) {
+<figure>
+  <img src="/files/fullscreen/chrome.png" alt="Upozornění v Chrome" class="border">
+  <figcaption>Hláška v <b>Chrome</b></figcaption>
+</figure>
+
+
+
+<figure>
+  <img src="/files/fullscreen/firefox.png" alt="Upozornění ve Firefoxu" class="border">
+  <figcaption>Volby režimu celé obrazovky ve <b>Firefoxu</b></figcaption>
+</figure>
+
+
+
+
+
+
+
+
+
+
+<figure>
+  <img src="/files/fullscreen/ie.png" alt="Upozornění v IE" class="border">
+  <figcaption>Povolení fullscreenu v <b>Internet Exploreru</b></figcaption>
+</figure>
+
+<p>Upozornění po chvíli <b>zmizí</b> a uživatel to může <b>zapomenout</b>, takže je lepší přidat tlačítko, co fullscreen vypne.</p>
+
+
+
+<h2 id="pouziti">Použití</h2>
+
+<p>Následující funkce <code>zapnoutFullscreen</code> přepne předaný element do režimu přes celou obrazovku. Kód je tak komplikovaný kvůli prefixům pro různé prohlížeče.</p>
+
+<pre><code>function zapnoutFullscreen(el) {
   if (el.requestFullscreen) {
     el.requestFullscreen();
   } 
@@ -60,9 +90,9 @@ function zapnoutFullscreen(el) {
   else if (el.webkitRequestFullscreen) {
     el.webkitRequestFullscreen();
   }
-}
-```
+}</code></pre>
 
+<script>
 function zapnoutFullscreen(el) {
   if (el.requestFullscreen) {
     el.requestFullscreen();
@@ -77,67 +107,97 @@ function zapnoutFullscreen(el) {
     el.webkitRequestFullscreen();
   }
 }  
+</script>
 
-### Vypnutí fullscreenu
 
-Pro ukončení režimu celé obrazovky existuje metoda `exitFullscreen`. Opět má různou podobu napříč prohlížeči.
+<h3 id="vypnuti">Vypnutí fullscreenu</h3>
 
-  - **Firefox** – `moz**Cancel**FullScreen()`,
+<p>Pro ukončení režimu celé obrazovky existuje metoda <code>exitFullscreen</code>. Opět má různou podobu napříč prohlížeči.</p>
 
-  - **Webkit** – `webkitExitFullscreen()`,
+<ul>
+  <li><b>Firefox</b> – <code>moz<b>Cancel</b>FullScreen()</code>,</li>
+   
+  <li><b>Webkit</b> – <code>webkitExitFullscreen()</code>,</li>
+  
+  <li><b>IE</b> – <code>msExitFullscreen()</code></li>  
+</ul>
 
-  - **IE** – `msExitFullscreen()`
 
-## Ukázka
+<h2 id="ukazka">Ukázka</h2>
 
-Přepnout samotný článek do fullscreenu
+<p><button onclick="zapnoutFullscreen(this.parentNode.parentNode)">Přepnout samotný článek do fullscreenu</button></p>
 
-Jak je vidět na funkci předchozího tlačítka, výchozí podoba elementu v **režimu na celou obrazovku** nemusí vypadat nejlépe.
+<p>Jak je vidět na funkci předchozího tlačítka, výchozí podoba elementu v <b>režimu na celou obrazovku</b> nemusí vypadat nejlépe.</p>
 
-Bez úprav je pozadí fullscreenu v některých prohlížečích černé (**Firefox**, **IE**), takže na něm není černý text bez explicitně nastaveného kontrastního pozadí vidět. Dále je potom nemožné obsahem elementu **rolovat**.
+<p>Bez úprav je pozadí fullscreenu v některých prohlížečích <font style="background: black; color: white">černé</font> (<b>Firefox</b>, <b>IE</b>), takže na něm není černý text bez explicitně nastaveného kontrastního pozadí vidět. Dále je potom nemožné obsahem elementu <b>rolovat</b>.</p>
 
-## CSS selektor `:fullscreen`
 
-Pro pohodlné stylování existuje v CSS pseudo-třída `:fullscreen`. Nestačí ji psát jen s [CSS prefixy](/css-prefixy), ale **Firefox** a **Webkit** mají v názvu vlastnoti spojovník, tj. `-moz-full**-**screen` a `-webkit-full**-**screen`.
+<h2 id="css">CSS selektor <code>:fullscreen</code></h2>
 
-Selektory s prefixy nelze řetězit za sebe, ale deklarace se musí duplikovat:
+<p>Pro pohodlné stylování existuje v CSS pseudo-třída <code>:fullscreen</code>. Nestačí ji psát jen s <a href="/css-prefixy">CSS prefixy</a>, ale <b>Firefox</b> a <b>Webkit</b> mají v názvu vlastnoti spojovník, tj. <code>-moz-full<b>-</b>screen</code> a <code>-webkit-full<b>-</b>screen</code>.</p>
 
-```
-element:-webkit-full-screen {/* styly */}
+<p>Selektory s prefixy nelze řetězit za sebe, ale deklarace se musí duplikovat:</p>
+
+<pre><code>element:-webkit-full-screen {/* styly */}
 element:-moz-full-screen {/* styly */}
-element:-ms-fullscreen {/* styly */}
-```
+element:-ms-fullscreen {/* styly */}</code></pre>
 
-Pseudo-třídu `:fullscreen` dostane **pouze element**, na který se použije JS metoda `requestFullscreen`.
 
-[Živá ukázka](http://kod.djpw.cz/wpjb-)
 
-## Blokování kláves
+<p>Pseudo-třídu <code>:fullscreen</code> dostane <b>pouze element</b>, na který se použije JS metoda <code>requestFullscreen</code>.</p>
 
-Aby se dalo fullscreenu „zbavit“ nemusí po jeho aktivaci fungovat odchytávání kláves Esc nebo F11, které slouží k jeho ukončení.
+<p><a href="http://kod.djpw.cz/wpjb-">Živá ukázka</a></p>
 
-    - [Ovládání webu klávesami v JavaScriptu](/klavesy)
 
-Kód Esc je `27` a F11 `122`, v režimu přes celou obrazovku je napříč prohlížeči nejde odchytávat (Esc ruší fullscreen, F11 v **Chrome** funguje jako Esc).
 
-[Živá ukázka](http://kod.djpw.cz/cqjb-)
 
-## Fullscreen z `&lt;iframe>`
 
-Zapnout fullscreen nejde „ven“ z **vnořeného rámu**.
 
-## Automatické přepnutí na celou obrazovku
+<h2 id="blokovani-klaves">Blokování kláves</h2>
 
-Přepnout do fullscreenu bez **přímé akce uživatele** není možné.
+<p>Aby se dalo fullscreenu „zbavit“ nemusí po jeho aktivaci fungovat odchytávání kláves <kbd>Esc</kbd> nebo <kbd>F11</kbd>, které slouží k jeho ukončení.</p>
 
-[Živá ukázka](http://kod.djpw.cz/hqjb-)
+<div class="internal-content">
+  <ul>
+    <li><a href="/klavesy">Ovládání webu klávesami v JavaScriptu</a></li>
+  </ul>
+</div>
 
-Vysvětluje to **chybové varování**, které takový pokus vyvolá:
+<p>Kód <kbd>Esc</kbd> je <code>27</code> a <kbd>F11</kbd> <code>122</code>, v režimu přes celou obrazovku je napříč prohlížeči nejde odchytávat (<kbd>Esc</kbd> ruší fullscreen, <kbd>F11</kbd> v <b>Chrome</b> funguje jako <kbd>Esc</kbd>).</p>
 
-  Failed to execute 'requestFullScreen' on 'Element': API can only be initiated by a user gesture.
+<p><a href="http://kod.djpw.cz/cqjb-">Živá ukázka</a></p>
 
-## Odkazy jinam
 
-  - MDN: [Using fullscreen mode](https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Using_full_screen_mode)
 
-  - WHATWG: [Fullscreen API](https://fullscreen.spec.whatwg.org/)
+
+
+<h2 id="ramy">Fullscreen z <code>&lt;iframe></code></h2>
+
+<p>Zapnout fullscreen nejde „ven“ z <b>vnořeného rámu</b>.</p>
+
+
+
+
+<h2 id="automaticke">Automatické přepnutí na celou obrazovku</h2>
+
+<p>Přepnout do fullscreenu bez <b>přímé akce uživatele</b> není možné.</p>
+
+<p><a href="http://kod.djpw.cz/hqjb-">Živá ukázka</a></p>
+
+<p>Vysvětluje to <b>chybové varování</b>, které takový pokus vyvolá:</p>
+
+<blockquote>
+  <p>Failed to execute 'requestFullScreen' on 'Element': API can only be initiated by a user gesture.</p>
+</blockquote>
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Using_full_screen_mode">Using fullscreen mode</a></li>
+  
+  <li>WHATWG: <a href="https://fullscreen.spec.whatwg.org/">Fullscreen API</a></li>
+  
+</ul>
+
+<!-- i-l-u-s-t-r-a-c-e: http://kod.djpw.cz/xpjb -->

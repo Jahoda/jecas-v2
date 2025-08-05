@@ -6,6 +6,9 @@ date: "2015-10-06"
 last_modification: "2015-10-06"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Živá ukázka](http://kod.djpw.cz/puqb) – šikmý stín
+<uli>
+  <li><a href="http://kod.djpw.cz/puqb">Živá ukázka</a> – šikmý stín</li>
+</uli>

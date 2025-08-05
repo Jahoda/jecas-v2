@@ -6,155 +6,206 @@ date: "2014-11-25"
 last_modification: "2014-11-25"
 status: 0
 tags: []
+format: "html"
 ---
 
-Reakce na článek **Martina Michálka**.
+<p>Reakce na článek <b>Martina Michálka</b>.</p>
 
-    - [Organizace CSS, verze 2014](http://www.vzhurudolu.cz/blog/29-organizace-css-2014)
+<div class="external-content">
+  <ul>
+    <li><a href="http://www.vzhurudolu.cz/blog/29-organizace-css-2014">Organizace CSS, verze 2014</a></li>
+  </ul>
+</div>
 
-TLDR: Možná to někoho překvapí, ale v podstatě nijak.
+<p>TLDR: Možná to někoho překvapí, ale v podstatě nijak.</p>
 
-Proč?
+<p>Proč?</p>
 
-## Organisace souborů
 
-V první řadě je třeba si zopdpovědět otázku, proč vlastně kasakádové styly **členit** do podadresářů a více souborů.
+<h2 id="soubory">Organisace souborů</h2>
 
-V zásadě jediné důvody, proč se vyplatí mít styly rozdělené, je u většího projektu:
+<p>V první řadě je třeba si zopdpovědět otázku, proč vlastně kasakádové styly <b>členit</b> do podadresářů a více souborů.</p>
 
-  - **práce ve více lidech**,
+<p>V zásadě jediné důvody, proč se vyplatí mít styly rozdělené, je u většího projektu:</p>
 
-  - **přehlednost ve versovacím systému**
+<ol>
+  <li><b>práce ve více lidech</b>,</li>
+  <li><b>přehlednost ve versovacím systému</b></li>
+</ol>
 
-Je určitě příjemnější, když se v *commitu* ukáže, že se změnil soubor `tlacitka.css` místo `styl.css`. Stejně tak neustále řešit *mergeování* v `styl.css` při práci ve více lidech není žádný med.
+<p>Je určitě příjemnější, když se v <i>commitu</i> ukáže, že se změnil soubor <code>tlacitka.css</code> místo <code>styl.css</code>. Stejně tak neustále řešit <i>mergeování</i> v <code>styl.css</code> při práci ve více lidech není žádný med.</p>
 
-Pokud tedy na něčem pracuji sám nebo CSS neversuji používám klidně jediný soubor. S přehledností není problém, protože stejně člověk hledá potřebné části CSS podle selektorů ve veškerém CSS, ne na základě souborů.
+<p>Pokud tedy na něčem pracuji sám nebo CSS neversuji používám klidně jediný soubor. S přehledností není problém, protože stejně člověk hledá potřebné části CSS podle selektorů ve veškerém CSS, ne na základě souborů.</p>
 
-I když styly dělím do více souborů, **složkám** se vyhýbám úplně, protože způsobují problémy s **relativními cestami**. Více souborů se používá pouze pro **vývoj** a ve finále se ze všech souborů udělá jeden [zmačkaný soubor](/slouceni-js-css) (v **Nette** používám [WebLoader](http://addons.nette.org/janmarek/webloader)).
+<p>I když styly dělím do více souborů, <b>složkám</b> se vyhýbám úplně, protože způsobují problémy s <b>relativními cestami</b>. Více souborů se používá pouze pro <b>vývoj</b> a ve finále se ze všech souborů udělá jeden <a href="/slouceni-js-css">zmačkaný soubor</a> (v <b>Nette</b> používám <a href="http://addons.nette.org/janmarek/webloader">WebLoader</a>).</p>
 
-Ve vývojovém režimu se používají soubory z:
+<p>Ve vývojovém režimu se používají soubory z:</p>
 
-```
-/css/styl.css
+<pre><code>/css/styl.css
 /css/menu.css
-/css/tlacitka.css
-```
+/css/tlacitka.css</code></pre>
 
-V ostrém provozu potom:
+<p>V ostrém provozu potom:</p>
 
-```
-/cache/spojeny.css
-```
+<pre><code>/cache/spojeny.css</code></pre>
 
-V případě, že by spojený CSS soubor byl hodně velký, jeho „kritickou část“ vkládám přímo do hlavičky HTML stránky, do značky `&lt;style>`, aby čekání na CSS soubor **nezdržovalo načítání**.
+<p>V případě, že by spojený CSS soubor byl hodně velký, jeho „kritickou část“ vkládám přímo do hlavičky HTML stránky, do značky <code>&lt;style></code>, aby čekání na CSS soubor <b>nezdržovalo načítání</b>.</p>
 
-Relativní adresy na obrázky do složky `/obrazky/` bezproblémů fungují (`../obrazky/obrazek.jpg`). Aby správně fungovaly i se zanořenými složkami, musely by se adresy převádět.
+<p>Relativní adresy na obrázky do složky <code>/obrazky/</code> bezproblémů fungují (<code>../obrazky/obrazek.jpg</code>). Aby správně fungovaly i se zanořenými složkami, musely by se adresy převádět.</p>
 
-Možná to umí řešit **CSS preprocesory**…
+<p>Možná to umí řešit <b>CSS preprocesory</b>…</p>
 
-## CSS preprocesory
 
-… ty ale nepoužívám. Proč? Mají přece spoustu výhod.
 
-### Proměnné
 
-Dá se bez nich obejít. V [Sublime Text](/sublime-text) není problém snadno označit stejné hodnoty a najednou je přepsat.
 
-Jindy si jde vystačit s čistým CSS. Pokud budu chtít nadpisy, odkazy a tlačítka napsané super písmem, použiji:
 
-```
-h1, a, button {
+
+
+
+
+
+
+
+
+
+<h2 id="preprocesory">CSS preprocesory</h2>
+
+<p>… ty ale nepoužívám. Proč? Mají přece spoustu výhod.</p>
+
+
+<h3 id="promenne">Proměnné</h3>
+
+<p>Dá se bez nich obejít. V <a href="/sublime-text">Sublime Text</a> není problém snadno označit stejné hodnoty a najednou je přepsat.</p>
+
+<p>Jindy si jde vystačit s čistým CSS. Pokud budu chtít nadpisy, odkazy a tlačítka napsané super písmem, použiji:</p>
+
+<pre><code>h1, a, button {
   font-family: Super písmo;
-}
-```
+}</code></pre>
 
-### Nesting
 
-Nesting je vlastnost, která umožňuje do sebe zanořovat jednotlivé deklarace.
 
-```
-.polozky {
+
+
+
+<h3 id="nesting">Nesting</h3>
+
+<p>Nesting je vlastnost, která umožňuje do sebe zanořovat jednotlivé deklarace.</p>
+
+<pre><code>.polozky {
   color: blue;
 
   .polozka {
     color: red;
   }
-}
-```
+}</code></pre>
 
-Výsledek bude:
+<p>Výsledek bude:</p>
 
-```
-.polozky {color: blue}
-.polozky .polozka {color: red}
-```
+<pre><code>.polozky {color: blue}
+.polozky .polozka {color: red}</code></pre>
 
-Opět to není funkce, bez které by se nedalo žít, navíc to není úplně dobrý postup. Samoúčelně **posilovat selektory** (`.polozky .polozka`) není dobré.
+<p>Opět to není funkce, bez které by se nedalo žít, navíc to není úplně dobrý postup. Samoúčelně <b>posilovat selektory</b> (<code>.polozky .polozka</code>) není dobré.</p>
 
-### Skládání souborů
 
-Řeším vlastním PHP skriptem / rozšířením v Nette.
 
-### Mixiny
 
-Používají se k vytvoření jakési funkce, které se předají argumenty a ona vrátí blok kódu. Ukázkový příklad je pro používání CSS vlastností potřebujících [prefixy](/css-prefixy).
 
-Stačí napsat něco jako `border-radius(10px)` a vygeneruje se:
 
-```
--webkit-border-radius: 10px;
+
+
+
+
+
+
+
+<h3 id="skladani">Skládání souborů</h3>
+
+<p>Řeším vlastním PHP skriptem / rozšířením v Nette.</p>
+
+
+
+<h3 id="mixiny">Mixiny</h3>
+
+<p>Používají se k vytvoření jakési funkce, které se předají argumenty a ona vrátí blok kódu. Ukázkový příklad je pro používání CSS vlastností potřebujících <a href="/css-prefixy">prefixy</a>.</p>
+
+<p>Stačí napsat něco jako <code>border-radius(10px)</code> a vygeneruje se:</p>
+
+<pre><code>-webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 -ms-border-radius: 10px;
-border-radius: 10px;
-```
+border-radius: 10px;</code></pre>
 
-To je hezké, ale podobně poslouží snippety v Sublime Text a upravovat **více hodnot najednou** není podobně jako u náhrady proměnných problém ani tady.
+<p>To je hezké, ale podobně poslouží snippety v Sublime Text a upravovat <b>více hodnot najednou</b> není podobně jako u náhrady proměnných problém ani tady.</p>
 
-### Rozšíření/dědičnost
 
-Pomocí něčeho jako `@extend` je možné do pravidel jednoho selektoru zakomponovat pravidla jiného.
 
-```
-.prvni {color: red}
+
+
+
+
+
+
+<h3 id="extend">Rozšíření/dědičnost</h3>
+
+<p>Pomocí něčeho jako <code>@extend</code> je možné do pravidel jednoho selektoru zakomponovat pravidla jiného.</p>
+
+<pre><code>.prvni {color: red}
 .druhy {
   @extend .prvni;
   font-weight: bold;
-}
-```
+}</code></pre>
 
-Z toho vznikne:
+<p>Z toho vznikne:</p>
 
-```
-.prvni, .druhy {color: red}
+<pre><code>.prvni, .druhy {color: red}
 .druhy {
   font-weight: bold;
-}
-```
+}</code></pre>
 
-Zde mi není moc jasné, jakou to má přinášet výhodu, když zápis využívající `@extend` je delší.
+<p>Zde mi není moc jasné, jakou to má přinášet výhodu, když zápis využívající <code>@extend</code> je delší.</p>
 
-### Matematické operace
 
-To je docela hezká vlastnost (od **IE 9** funguje přímo v CSS vlastnost [`calc`](/calc)).
 
-Hodně by se hodila tak před 10 lety, když se dělaly weby s **pevným layoutem v pixelech** a nešlo napříč prohlížeči používat okrajový box model ve standardním režimu.
 
-Ale [převod pixelů na em](/responsivni-web#kalkulacka) při určování break-pointů by se hodil i dnes.
 
-### Funkce
 
-Asi nejhezčí věci, co preprocesory nabízí, jsou **funkce pro úpravy barev**.
 
-Použitím jednoduché funkce jde barvy **zesvětlit, ztmavit, invertovat** a podobně. Dá se tím dosáhnout stavu, kdy se pro web nadefinuje jedna nebo dvě hlavní barvy a zbytek odstínů se od toho **odvodí**.
 
-V Sublime Text si jde sice pohodlně **upravovat barvy** prostřednictvím [palety](/pluginy-sublime-text#pluginy), ale dosáhnout výše uvedeného je prakticky nemožné.
 
-### Cykly
+<h3 id="operace">Matematické operace</h3>
 
-S některými preprocesory je možné generovat kód pomocí **cyklů**.
+<p>To je docela hezká vlastnost (od <b>IE 9</b> funguje přímo v CSS vlastnost <a href="/calc"><code>calc</code></a>).</p>
 
-  - [Side Effects in CSS](http://philipwalton.com/articles/side-effects-in-css/)
+<p>Hodně by se hodila tak před 10 lety, když se dělaly weby s <b>pevným layoutem v pixelech</b> a nešlo napříč prohlížeči používat okrajový box model ve standardním režimu.</p>
 
-  - [Can CSS Be Too Modular?](http://csswizardry.com/2015/03/can-css-be-too-modular/)
+<p>Ale <a href="/responsivni-web#kalkulacka">převod pixelů na em</a> při určování break-pointů by se hodil i dnes.</p>
 
-  - [CSS Best Practices](https://github.com/sezgi/CSS-Best-Practices)
+
+
+
+
+
+<h3 id="funkce">Funkce</h3>
+
+<p>Asi nejhezčí věci, co preprocesory nabízí, jsou <b>funkce pro úpravy barev</b>.</p>
+
+
+<p>Použitím jednoduché funkce jde barvy <b>zesvětlit, ztmavit, invertovat</b> a podobně. Dá se tím dosáhnout stavu, kdy se pro web nadefinuje jedna nebo dvě hlavní barvy a zbytek odstínů se od toho <b>odvodí</b>.</p>
+
+<p>V Sublime Text si jde sice pohodlně <b>upravovat barvy</b> prostřednictvím <a href="/pluginy-sublime-text#pluginy">palety</a>, ale dosáhnout výše uvedeného je prakticky nemožné.</p>
+
+
+
+<h3 id="cykly">Cykly</h3>
+
+<p>S některými preprocesory je možné generovat kód pomocí <b>cyklů</b>.</p>
+
+<ul>
+  <li><a href="http://philipwalton.com/articles/side-effects-in-css/">Side Effects in CSS</a></li>
+  
+  <li><a href="http://csswizardry.com/2015/03/can-css-be-too-modular/">Can CSS Be Too Modular?</a></li>
+  
+  <li><a href="https://github.com/sezgi/CSS-Best-Practices">CSS Best Practices</a></li>
+</ul>

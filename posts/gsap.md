@@ -6,6 +6,7 @@ date: "2014-01-13"
 last_modification: "2014-01-13"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://www.greensock.com/gsap-js/
@@ -18,14 +19,14 @@ http://css-tricks.com/using-requestanimationframe/
 
 https://gist.github.com/paulirish/1579671
 
-[Animating Without jQuery](http://www.smashingmagazine.com/2014/09/04/animating-without-jquery/)
+<a href="http://www.smashingmagazine.com/2014/09/04/animating-without-jquery/">Animating Without jQuery</a>
 
-- [25 Free Libraries for Custom Web Animation](http://webdesignledger.com/free-web-animation-libs)
+<li><a href="http://webdesignledger.com/free-web-animation-libs">25 Free Libraries for Custom Web Animation</a></li>
 
 http://davidwalsh.name/responsive-scalable-animations
 
-[CSS vs. JS Animation: Which is Faster?](http://davidwalsh.name/css-js-animation)
+<a href="http://davidwalsh.name/css-js-animation">CSS vs. JS Animation: Which is Faster?</a>
 
-[fastdom - Eliminates layout thrashing by batching DOM read/write operations](https://github.com/wilsonpage/fastdom)
+<a href="https://github.com/wilsonpage/fastdom">fastdom - Eliminates layout thrashing by batching DOM read/write operations</a>
 
-[snabbt.js](http://daniel-lundin.github.io/snabbt.js/index.html)
+<a href="http://daniel-lundin.github.io/snabbt.js/index.html">snabbt.js</a>

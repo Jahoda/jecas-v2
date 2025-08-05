@@ -5,230 +5,355 @@ description: "Pomocí CSS pseudo třídy <code>:visited</code> jde měnit někte
 date: "2015-07-26"
 last_modification: "2015-07-29"
 status: 1
-tags: ["CSS", "CSS selektory", "Odkazy"]
+tags: ["css", "odkazy", "selektory-css"]
+format: "html"
 ---
 
-Pro přehlednější používání webové stránky se hodí odlišit odkazy, které **návštěvník již navštívil** – nemusí na ně potom už klikat znovu, když zná jejich obsah.
+<p>Pro přehlednější používání webové stránky se hodí odlišit odkazy, které <b>návštěvník již navštívil</b> – nemusí na ně potom už klikat znovu, když zná jejich obsah.</p>
 
-Zaměřit navštívené odkazy jde pomocí `:visited`:
 
-```
-:visited {
+<p>Zaměřit navštívené odkazy jde pomocí <code>:visited</code>:</p>
+
+<pre><code>:visited {
   color: grey; /* navštívený odkaz bude šedivý */
-}
-```
+}</code></pre>
 
-Někdy se před `:visited` zbytečně píše ještě značka odkazu:
 
-```
-**a**:visited {}
-```
 
-Jelikož navštívený může být pouze odkaz, nemá to funkci vliv. Teoreticky je složitější zápis odolný proti případným **změnám chování prohlížečů**, pokud by `:visited` začalo fungovat i u jiných značek. Už se to v **historii** stalo s pseudo třídou po najetí myší – `:hover` (více v článku [Kaskádová móda](http://www.webylon.info/K.46#I) na Webylonu).
 
-Výchozí styl běžných odkazů je modrou barvou, navštívené odkazy potom červenomodrou. Pokud výchozí barvy nezapadají do stylu webu, obvykle se navštívený odkaz styluje **méně výrazněji než normální odkaz**.
 
-## Má smysl odlišovat navštívené odkazy?
+<p>Někdy se před <code>:visited</code> zbytečně píše ještě značka odkazu:</p>
 
-Je docela běžné, že webové stránky navštívené odkazy **neodlišují**.
+<pre><code><b>a</b>:visited {}</code></pre>
 
-V řadě případů to bude nejspíš z **lenosti** – zkrátka se styl odkazu zapíše jako:
 
-```
-a {
+
+<p>Jelikož navštívený může být pouze odkaz, nemá to funkci vliv. Teoreticky je složitější zápis odolný proti případným <b>změnám chování prohlížečů</b>, pokud by <code>:visited</code> začalo fungovat i u jiných značek. Už se to v <b>historii</b> stalo s pseudo třídou po najetí myší – <code>:hover</code> (více v článku <a href="http://www.webylon.info/K.46#I">Kaskádová móda</a> na Webylonu).</p>
+
+
+<p>Výchozí styl běžných odkazů je <font color="0000CC">modrou barvou</font>, navštívené odkazy potom <font color="800080">červenomodrou</font>. Pokud výchozí barvy nezapadají do stylu webu, obvykle se navštívený odkaz styluje <b>méně výrazněji než normální odkaz</b>.</p>
+
+
+
+<h2 id="odlisit">Má smysl odlišovat navštívené odkazy?</h2>
+
+<p>Je docela běžné, že webové stránky navštívené odkazy <b>neodlišují</b>.</p>
+
+<p>V řadě případů to bude nejspíš z <b>lenosti</b> – zkrátka se styl odkazu zapíše jako:</p>
+
+<pre><code>a {
   /* styl odkazu */
-}
-```
+}</code></pre>
 
-Což postihne i odkaz, který již byl navštíven.
 
-Druhá možnost je, že by odlišný styl některých odkazů **mátl uživatele**, takže se schválně jinak nestyluje.
 
-  - Nemusí být každému na první pohled jasné, že jiná barva odkazu značí, že byl navštíven.
 
-  - U některých stránek může být cílem, aby na něj návštěvník **chodil opakovaně**. Méně výrazý styl odkazu by od toho mohl odrazovat.
 
-  - U odkazů na **stránky kategorií/rozcestníků** je potom snížení důrazu risikové, protože nebere v úvahu, jestli návštěvník prošel i podstránky.
 
-Možnosti stylování navštívených odkazů jsou navíc **značně omezené z důvodu ochrany soukromí**:
+<p>Což postihne i odkaz, který již byl navštíven.</p>
 
-## Nefungují styly pro `:visited`
+<p>Druhá možnost je, že by odlišný styl některých odkazů <b>mátl uživatele</b>, takže se schválně jinak nestyluje.</p>
 
-Bez znalosti okolností se může zdát, že stylování navštívených odkazů **nefunguje**.
+<ul>
+  <li>Nemusí být každému na první pohled jasné, že jiná barva odkazu značí, že byl navštíven.</li>
+  
+  <li>U některých stránek může být cílem, aby na něj návštěvník <b>chodil opakovaně</b>. Méně výrazý styl odkazu by od toho mohl odrazovat.</li>
 
-U `:visited` jde měnit pouze **barvy**:
+  <li>U odkazů na <b>stránky kategorií/rozcestníků</b> je potom snížení důrazu risikové, protože nebere v úvahu, jestli návštěvník prošel i podstránky.</li>
+</ul>
 
-  - barvu písma (`color`),
 
-  - pozadí (`background`),
+<p>Možnosti stylování navštívených odkazů jsou navíc <b>značně omezené z důvodu ochrany soukromí</b>:</p>
 
-  - okrajů (`border-*-color`),
 
-  - ohraničení (`outline-color`),
 
-  - barvu oddělovače sloupců (`column-rule-color`),
+<h2 id="soukromi">Nefungují styly pro <code>:visited</code></h2>
 
-  - `fill` a `stroke`
+<p>Bez znalosti okolností se může zdát, že stylování navštívených odkazů <b>nefunguje</b>.</p>
 
-Proč?
+<p>U <code>:visited</code> jde měnit pouze <b>barvy</b>:</p>
 
-V dobách před tímto omezením šlo velmi snadno ověřit, jaký libovolný web **návštěvník navštívil**. Třeba nastavením pozadí na adresu **měřicího skriptu**:
+<ul>
+  <li>barvu písma (<code>color</code>),</li>
+  
+  <li>pozadí (<code>background</code>),</li>
+  
+  <li>okrajů (<code>border-*-color</code>),</li>
+  
+  <li>ohraničení (<code>outline-color</code>),</li>
+  
+  <li>barvu oddělovače sloupců (<code>column-rule-color</code>),</li>
+  
+  <li><code>fill</code> a <code>stroke</code></li>
+</ul>
 
-```
-&lt;a 
+
+<p>Proč?</p>
+
+<p>V dobách před tímto omezením šlo velmi snadno ověřit, jaký libovolný web <b>návštěvník navštívil</b>. Třeba nastavením pozadí na adresu <b>měřicího skriptu</b>:</p>
+
+<pre><code>&lt;a 
   href="http://jecas.cz" 
-  style="background: url(**navstivil.php?url=jecas.cz**)"
+  style="background: url(<b>navstivil.php?url=jecas.cz</b>)"
 >
-&lt;/a>
-```
+&lt;/a></code></pre>
 
-Šlo to třeba hezky využít k zjištění toho, jestli návštěvník byl na webu konkurence. Z tohoto důvodu tedy nejde navštíveným odkazům měnit **obrázkové pozadí**.
 
-  Omezené stylování navštívených odkazů se týká prohlížečů:
 
-    - **Internet Explorer 9+**,
 
-    - **Firefox 4+**,
 
-    - **Chrome**,
 
-    - **Opera 15+**
 
-Proč nefungují další vlastnosti, jako změna rozměrů (výšky/šířky), nastavení tučného písma a další?
+<p>Šlo to třeba hezky využít k zjištění toho, jestli návštěvník byl na webu konkurence. Z tohoto důvodu tedy nejde navštíveným odkazům měnit <b>obrázkové pozadí</b>.</p>
 
-I z těch by šlo zjistit (byť méně elegantně než obrázkový pozadím), zda návštěvník web už navštívil. Změny takových vlastností mohou **ovlivňovat své okolí**, takže by se zjišťování jen přesunulo na okolní elementy.
-
-### Zjištění barvy
-
-I barvu je ale přece možné skriptem zjistit:
-
-    - [Zjištění výsledného CSS v JavaScriptu](/zjisteni-css)
-
-Z tohoto důvodu metoda `getComputedStyle()` při použití na navštíveném odkazu **lže** – vrací hodnoty odkazu nenavštíveného.
-
-### Selektor sourozence
-
-Stejně tak nefunguje ani **selektor sourozence**:
-
-```
-:visited + span {
-  /* tato pravidla se nikdy neaplikují */
-}
-```
-
-Prohlížeč se z pohledu selektoru tváří, že odkaz navštívený není.
-
-### Pseudo elementy `:before`/`after`
-
-Nemožnosti používat pseudo-elementy je zvlášť škoda, šlo by tak snadno a elegantně k odkazům připsat, že byly navštíveny:
-
-```
-:visited:after {
-  content: "✔ Navštíveno";
-}
-```
-
-Bohužel to funguje jen u staré **Opery 12**, kde tak jde velmi snadno hezky označit **přečtené články**:
-
-## Důsledky omezení
-
-Asi největší problém možnost **měnit pouze barvu** přináší návštěvníkům s **problémem rozlišovat barvy**.
-
-Může se zdát, že omezení nemuselo být tak dramatické a dalo se vztahovat pouze na **odkazy na jiné domény**, vždyť vlastník webu může stejně sledovat, co jeho návštěvníci viděli a co ne.
-
-Takové chování by zneužitelnost pouze zmírnilo, protože stále existují stránky na stejné doméně, které spolu nesouvisí.
-
-## Odlišení navštíveného odkazu
-
-Pro názornější znázornění navštíveného obsahu je tak nutné si ukládat navštívené stránky uživatele ve vlastní režii:
-
-    Pomocí JavaScriptu do **lokálního úložiště** – [`localStorage`](/zalohovani-formularu#local-storage).
-
-    Serverovým skriptem uživateli přidat **identifikační cookie** a do DB na straně serveru mu přiřazovat navštívené stránky.
-
-Když už se tato data ukládají, nabízí se si informací uložit co nejvíc. Třeba **datum návštěvy**:
-
-Z ukládaných záznamů by mohlo jít zjistit a zobrazit i počet návštěv dané stránky, případě měřit i dobu, kterou člověk stránku četl a podobně.
-
-### Ukládat u klienta, nebo na server?
-
-Ukládat data na server má smysl hlavně v případě, že není **data o návštěvnosti** možné zjistit jinak – třeba pomocí [Google Analytics](/ga). Jinak je ukládání na serveru zbytečná zátěž.
-
-## Hotové řešení s `localStorage`
-
-Pro konkrétní implementaci ukládání do `localStorage` je potřeba:
-
-    Sestavit **identifikátor stránky** – k tomu se bude hodit obsah za lomítkem (`location.pathname`) a část s otazníkem (`location.search`).
-
-    ```
-var pageId = location.pathname + location.search;
+<blockquote>
+  <p>Omezené stylování navštívených odkazů se týká prohlížečů:</p>
+  
+  <ul>
+    <li><b>Internet Explorer 9+</b>,</li>
     
-    Postup jako při `location` bude stejný i pro následné procházení odkazů:
+    <li><b>Firefox 4+</b>,</li>
+    
+    <li><b>Chrome</b>,</li>
+    
+    <li><b>Opera 15+</b></li>
+  </ul>
+</blockquote>
 
-      [Parsování URL v JavaScriptu](/js-parsovani-url)
 
-    **Uložit** do lokálního úložiště pro identifikátor datum:
+<p>Proč nefungují další vlastnosti, jako změna rozměrů (výšky/šířky), nastavení tučného písma a další?</p>
 
-    localStorage.setItem(
+<p>I z těch by šlo zjistit (byť méně elegantně než obrázkový pozadím), zda návštěvník web už navštívil. Změny takových vlastností mohou <b>ovlivňovat své okolí</b>, takže by se zjišťování jen přesunulo na okolní elementy.</p>
+
+
+
+
+<h3 id="zjisteni-barvy">Zjištění barvy</h3>
+
+<p>I barvu je ale přece možné skriptem zjistit:</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/zjisteni-css">Zjištění výsledného CSS v JavaScriptu</a></li>
+  </ul>
+</div>
+
+<p>Z tohoto důvodu metoda <code>getComputedStyle()</code> při použití na navštíveném odkazu <b>lže</b> – vrací hodnoty odkazu nenavštíveného.</p>
+
+
+<h3 id="sourozenec">Selektor sourozence</h3>
+
+<p>Stejně tak nefunguje ani <b>selektor sourozence</b>:</p>
+
+<pre><code>:visited + span {
+  /* tato pravidla se nikdy neaplikují */
+}</code></pre>
+
+<p>Prohlížeč se z pohledu selektoru tváří, že odkaz navštívený není.</p>
+
+
+
+
+
+<h3 id="before-after">Pseudo elementy <code>:before</code>/<code>after</code></h3>
+
+<p>Nemožnosti používat pseudo-elementy je zvlášť škoda, šlo by tak snadno a elegantně k odkazům připsat, že byly navštíveny:</p>
+
+<pre><code>:visited:after {
+  content: "✔ Navštíveno";
+}</code></pre>
+
+
+
+
+<p>Bohužel to funguje jen u staré <b>Opery 12</b>, kde tak jde velmi snadno hezky označit <b>přečtené články</b>:</p>
+
+<p><img src="/files/visited/visited-opera.png" alt="Označení navštívených odkazů" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="omezeni">Důsledky omezení</h2>
+
+<p>Asi největší problém možnost <b>měnit pouze barvu</b> přináší návštěvníkům s <b>problémem rozlišovat barvy</b>.</p>
+
+<p>Může se zdát, že omezení nemuselo být tak dramatické a dalo se vztahovat pouze na <b>odkazy na jiné domény</b>, vždyť vlastník webu může stejně sledovat, co jeho návštěvníci viděli a co ne.</p>
+
+<p>Takové chování by zneužitelnost pouze zmírnilo, protože stále existují stránky na stejné doméně, které spolu nesouvisí.</p>
+
+
+
+
+
+<h2 id="odliseni">Odlišení navštíveného odkazu</h2>
+
+<p>Pro názornější znázornění navštíveného obsahu je tak nutné si ukládat navštívené stránky uživatele ve vlastní režii:</p>
+
+<ol>
+  <li>
+    <p>Pomocí JavaScriptu do <b>lokálního úložiště</b> – <a href="/zalohovani-formularu#local-storage"><code>localStorage</code></a>.</p>
+  </li>
+  <li>
+    <p>Serverovým skriptem uživateli přidat <b>identifikační cookie</b> a do DB na straně serveru mu přiřazovat navštívené stránky.</p>
+  </li>
+</ol>
+
+<p>Když už se tato data ukládají, nabízí se si informací uložit co nejvíc. Třeba <b>datum návštěvy</b>:</p>
+
+<p><img src="/files/visited/navstiveno.png" alt="Označení navštívených odkazů" class="border"></p>
+
+
+<p>Z ukládaných záznamů by mohlo jít zjistit a zobrazit i počet návštěv dané stránky, případě měřit i dobu, kterou člověk stránku četl a podobně.</p>
+
+
+
+
+
+<h3 id="ukladani">Ukládat u klienta, nebo na server?</h3>
+
+<p>Ukládat data na server má smysl hlavně v případě, že není <b>data o návštěvnosti</b> možné zjistit jinak – třeba pomocí <a href="/ga">Google Analytics</a>. Jinak je ukládání na serveru zbytečná zátěž.</p>
+
+
+
+<h2 id="hotove-reseni">Hotové řešení s <code>localStorage</code></h2>
+
+<p>Pro konkrétní implementaci ukládání do <code>localStorage</code> je potřeba:</p>
+
+<ol>
+  <li>
+    <p>Sestavit <b>identifikátor stránky</b> – k tomu se bude hodit obsah za lomítkem (<code>location.pathname</code>) a část s otazníkem (<code>location.search</code>).</p>
+    
+    <pre><code>var pageId = location.pathname + location.search</code>;</pre>
+    
+    <p>Postup jako při <code>location</code> bude stejný i pro následné procházení odkazů:</p>
+  <div class="internal-content">
+    <ul>
+      <li><p><a href="/js-parsovani-url">Parsování URL v JavaScriptu</a></p></li>
+    </ul>
+  </div>
+  </li>
+  
+  <li>
+    <p><b>Uložit</b> do lokálního úložiště pro identifikátor datum:</p>
+    <pre><code>localStorage.setItem(
   pageId,
   new Date()
-);
-```
+);</code></pre>
+  </li>
+</ol>
 
-Nyní zbývá jen část pro **znázornění navštívenosti**:
 
-    **Projít odkazy** na stránce [cyklem](/js-cykly). Všechny odkaz na stránce jsou v `document.links`, případně se výběr může vztahovat jen na určitou oblast.
 
-    ```
-var links = document.links;
+
+
+
+<p>Nyní zbývá jen část pro <b>znázornění navštívenosti</b>:</p>
+
+<ol>
+  <li>
+    <p><b>Projít odkazy</b> na stránce <a href="/js-cykly">cyklem</a>. Všechny odkaz na stránce jsou v <code>document.links</code>, případně se výběr může vztahovat jen na určitou oblast.</p>
+    
+    <pre><code>var links = document.links;
 for (var i = links.length; i--; ) {
   visited(links[i]);
-}
-```
-
-    **Označit navštívené odkazy** – to zajistí funkce `visited` třeba přidáním vlastního atributu `data-visited`.
-
-    Navštívenost se zjistí na základě vyhledání položky v úložišti podle identifikátoru odkazu:
-
-    ```
-var item = localStorage.getItem(pageId);
+}</code></pre>
+  </li>
+  
+  
+  
+  
+  <li>
+    <p><b>Označit navštívené odkazy</b> – to zajistí funkce <code>visited</code> třeba přidáním vlastního atributu <code>data-visited</code>.</p>
+    
+    <p>Navštívenost se zjistí na základě vyhledání položky v úložišti podle identifikátoru odkazu:</p>
+    
+    <pre><code>var item = localStorage.getItem(pageId);
 if (item) {   
   // navštívený odkaz
-}
-```
-
-    **Časový rozdíl** se zjistí odečtením data z úložiště (proměnná `item`) od aktuálního data, datum je nutné parsovat:
-
-  ```
-var date = new Date() - Date.parse(item);
-```
-
-  Pro representaci časové prodlevy v **češtině** stylem *před X minutami* půjde použít funkci `timeAgoInWords` z [dynamického updatu času](/update-casu).
-
-  Výsledek se nastaví do atributu:
-
-  ```
-link.setAttribute("data-visited", TimeAgo.init(date));
-```
-
-  To by mělo zajistit označení všech navštívených odkazů v HTML [DOMu](/dom):
-
-    **Znázornění proběhne v CSS** pomocí pseudoelementu `:after` a přečtení hodnoty pomocí [`attr()`](/content-attr) (**IE 8+**).
-
-    ```
-a[data-visited]:after {
+}</code></pre>
+  </li>
+  
+  
+  
+  <li>
+    <p><b>Časový rozdíl</b> se zjistí odečtením data z úložiště (proměnná <code>item</code>) od aktuálního data, datum je nutné parsovat:</p>
+  
+  <pre><code>var date = new Date() - Date.parse(item);</code></pre>
+  
+  
+  <p>Pro representaci časové prodlevy v <b>češtině</b> stylem <i>před X minutami</i> půjde použít funkci <code>timeAgoInWords</code> z <a href="/update-casu">dynamického updatu času</a>.</p>
+  
+  
+  <p>Výsledek se nastaví do atributu:</p>
+  
+  <pre><code>link.setAttribute("data-visited", TimeAgo.init(date));</code></pre>
+  
+  <p>To by mělo zajistit označení všech navštívených odkazů v HTML <a href="/dom">DOMu</a>:</p>
+  
+  
+  <p><img src="/files/visited/ago.png" alt="Znázornění navštívení v DOMu" class="border"></p>
+  </li>
+  
+  <li>
+    <p><b>Znázornění proběhne v CSS</b> pomocí pseudoelementu <code>:after</code> a přečtení hodnoty pomocí <a href="/content-attr"><code>attr()</code></a> (<b>IE 8+</b>).</p>
+    
+    <pre><code>a[data-visited]:after {
     content: "navštíveno " attr(data-visited);
-}
-```
+}</code></pre>
+    
+    
+    <p>Stylovat <b>navštívené odkazy libovolným způsobem</b> půjde přes prosté <code>a[data-visited]</code>.</p>   
+  </li>
+</ol>
 
-    Stylovat **navštívené odkazy libovolným způsobem** půjde přes prosté `a[data-visited]`.
+<p><a href="http://kod.djpw.cz/bqob-">Živá ukázka</a> – po poklikání na odkazy a vyčkání by to mělo zobrazovat <b>dobu od poslední návštěvy</b>:</p>
 
-[Živá ukázka](http://kod.djpw.cz/bqob-) – po poklikání na odkazy a vyčkání by to mělo zobrazovat **dobu od poslední návštěvy**:
+<p><img src="/files/visited/vysledek.png" alt="Zobrazení doby od načtení" class="border"></p>
 
-(Moc jsem to netestoval, najdete-li chybu, dejte prosím vědět do komentářů.)
 
-## Odkazy jinam
 
-  - Mozilla Hacks: [privacy-related changes coming to CSS :visited](https://hacks.mozilla.org/2010/03/privacy-related-changes-coming-to-css-vistited/)
 
-  - MDN: [`:visited`](https://developer.mozilla.org/en-US/docs/Web/CSS/%3Avisited)
+
+
+
+
+
+
+
+
+
+
+
+
+<p>(Moc jsem to netestoval, najdete-li chybu, dejte prosím vědět do komentářů.)</p>
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>Mozilla Hacks: <a href="https://hacks.mozilla.org/2010/03/privacy-related-changes-coming-to-css-vistited/">privacy-related changes coming to CSS :visited</a></li>
+  
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/%3Avisited"><code>:visited</code></a></li>
+</ul>

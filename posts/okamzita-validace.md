@@ -5,91 +5,144 @@ description: "Jak okamžitě reagovat na zadávání znaků do pole během psan�
 date: "2015-03-02"
 last_modification: "2015-03-03"
 status: 1
-tags: ["Formuláře", "Rady a nápady"]
+tags: ["formulare", "napady"]
+format: "html"
 ---
 
-Postupem času se vyvíjí způsob validování [formulářů](/formulare) s cílem **zkracovat dobu** mezi vyplněním pole a ověřením hodnoty. Zpravidla platí, že čím dříve dostane návštěvník zpětnou vazbu od vyplnění, tím lépe.
+<p>Postupem času se vyvíjí způsob validování <a href="/formulare">formulářů</a> s cílem <b>zkracovat dobu</b> mezi vyplněním pole a ověřením hodnoty. Zpravidla platí, že čím dříve dostane návštěvník zpětnou vazbu od vyplnění, tím lépe.</p>
 
-    **Zpracování na straně serveru** po odeslání formuláře je od vyplnění políčka úplně nejdál.
+<ol>
+  <li>
+    <p><b>Zpracování na straně serveru</b> po odeslání formuláře je od vyplnění políčka úplně nejdál.</p>
+  </li>
+  
+  <li>
+    <p><b>Validace v JS</b> při odeslání formuláře (<code>onsubmit</code>) na straně klienta se trochu přibližuje (nemusí se čekat na odpověď serveru).</p>
+  </li>
+  
+  <li>
+    <p>Zpracování pole při <b>přeskočení</b> na další (událost <code>onblur</code>) už následuje bezprostředně po vyplnění.</p>
+  </li>
+  
+  <li>
+    <p>Reagovat na každé <b>zadané písmeno</b> je nejspíš cestou k úplně nejrychlejší odezvě.</p>
+  </li>
+</ol>
 
-    **Validace v JS** při odeslání formuláře (`onsubmit`) na straně klienta se trochu přibližuje (nemusí se čekat na odpověď serveru).
 
-    Zpracování pole při **přeskočení** na další (událost `onblur`) už následuje bezprostředně po vyplnění.
+<h2 id="okmazita">Okamžitá validace</h2>
 
-    Reagovat na každé **zadané písmeno** je nejspíš cestou k úplně nejrychlejší odezvě.
+<p><b>Výhoda</b> okamžité validace na základě každého zadaného písmena tkví v tom, že uživatel aplikace získá zpětnou vazbu ještě v momentě, kdy <b>má ruce na klávesnici</b> a zrovna vyplňuje dané políčko, takže případné opravy nejsou tolik obtěžující.</p>
 
-## Okamžitá validace
+<p>Pohodlnější a přívětivější chování formulářů vede k <b>vyššímu počtu vyplnění</b> a <b>vyšší kvalitě získaných dat</b>.</p>
 
-**Výhoda** okamžité validace na základě každého zadaného písmena tkví v tom, že uživatel aplikace získá zpětnou vazbu ještě v momentě, kdy **má ruce na klávesnici** a zrovna vyplňuje dané políčko, takže případné opravy nejsou tolik obtěžující.
+<p><b>Nevýhoda</b>: Pokud je pro ověření dat nutná součinnost se serverem, způsobí odeslání obsahu po každém znaku <b>vyšší zátěž serveru</b>. Není-li server schopný <b>rychle</b> a pokud možno v <b>konstantní době</b> odbavovat požadavky, aplikace se bude chovat nepředvídatelně.</p>
 
-Pohodlnější a přívětivější chování formulářů vede k **vyššímu počtu vyplnění** a **vyšší kvalitě získaných dat**.
 
-**Nevýhoda**: Pokud je pro ověření dat nutná součinnost se serverem, způsobí odeslání obsahu po každém znaku **vyšší zátěž serveru**. Není-li server schopný **rychle** a pokud možno v **konstantní době** odbavovat požadavky, aplikace se bude chovat nepředvídatelně.
+<h3 id="jmeno">Uživatelské jméno</h3>
 
-### Uživatelské jméno
+<p>Příklad na obrázku ukazuje validaci <b>uživatelského jména</b>, kde se po zadání každého znaku objeví, jestli má jméno dostatečnou délku a je obsazené nebo k disposici.</p>
 
-Příklad na obrázku ukazuje validaci **uživatelského jména**, kde se po zadání každého znaku objeví, jestli má jméno dostatečnou délku a je obsazené nebo k disposici.
+<p><img src="/files/okamzita-validace/validace.png" alt="Příklad validace" class="border"></p>
+<!-- k-o-d: http://kod.djpw.cz/iclb -->
 
-## Technické řešení
 
-Pro okamžitou reakci na vstup do políček existuje událost [`oninput`](/oninput), jde použít na úrovni samotného [`&lt;input>`u](/input) či celého formuláře:
 
-```
-&lt;form **oninput="zpracuj(this)">**
-```
 
-Tato událost funguje od **IE 9** a zachytí i operace se schránkou (pomocí klávesových zkratek i přes kontextové menu) nebo drag &amp; drop přesunutí textu do políčka. Pro prohlížeče neznalé události `oninput` je odchytávání trochu komplikovanější. Konstrukce řešící většinu případů vypadá následovně.
 
-```
-&lt;input
+
+
+
+
+
+
+
+
+
+
+<h2 id="reseni">Technické řešení</h2>
+
+<p>Pro okamžitou reakci na vstup do políček existuje událost <a href="/oninput"><code>oninput</code></a>, jde použít na úrovni samotného <a href="/input"><code>&lt;input></code>u</a> či celého formuláře:</p>
+
+<pre><code>&lt;form <b>oninput="zpracuj(this)"></b></code></pre>
+
+
+
+<p>Tato událost funguje od <b>IE 9</b> a zachytí i operace se schránkou (pomocí klávesových zkratek i přes kontextové menu) nebo drag &amp; drop přesunutí textu do políčka. Pro prohlížeče neznalé události <code>oninput</code> je odchytávání trochu komplikovanější. Konstrukce řešící většinu případů vypadá následovně.</p>
+
+<pre><code>&lt;input
   onpaste="var that = this; setTimeout(function(){akce(that.value)})"
   oncut="var that = this; setTimeout(function(){akce(that.value)})"
   onkeyup="akce(this.value)"
   onkeypress="akce(this.value)"
   onfocus="var that = this; setTimeout(function(){akce(that.value)})"
- >
-```
+ ></code></pre>
 
-Často se využívá [trik s časovačem](/onpaste#prodleva), protože bez něj by v momentě vyvolání události ještě nedošlo ke změně.
 
-### AJAXové požadavky
 
-Požadavky na server se potom odesílají [AJAXem](/ajax). Důležité je, aby se před novým požadavkem zrušil ten předcházející, jinak může dojít k [předběhnutí požadavků](/nacitani-ajax#pozdejsi), kdy dříve vytvořený požadavek doběhne později a přepíše tak novější výsledek.
 
-K přerušení AJAX požadavku slouží metoda `abort`.
 
-```
-if (xhr) xhr.abort();
-```
 
-## Optimalisace zátěže
 
-Aby **zátěž okamžité validace** nebyla tak velká, jde si pomoci několika triky.
 
-### Validace bez serveru
 
-Dobré je validovat co **nejvíce věcí v JS** na straně klienta. Pro testování počtu znaků nebo použití povolených znaků si lze vystačit s JS a na server nic neposílat.
+<p>Často se využívá <a href="/onpaste#prodleva">trik s časovačem</a>, protože bez něj by v momentě vyvolání události ještě nedošlo ke změně.</p>
 
-### Kontrolovat změnu
 
-V případě použití více událostí zachycujících změnu pole se mohou volání ověřovací funkce se stejnou hodnotou pole provádět zbytečně zároveň. Není-li pravděpodobné, že by se výsledek ověření **měnil rychle v čase**, není ani potřeba požadavek se stejnými vstupními daty odesílat opakovaně.
 
-### Prodleva
+<h3 id="ajax">AJAXové požadavky</h3>
 
-Značné **úspory požadavků** jde docílit přidáním časové prodlevy, po které se validace provede. Validace se potom neprovádí po stisknutí každého znaku, ale až v momentě, kdy uživatel chvíli nic nenapíše.
+<p>Požadavky na server se potom odesílají <a href="/ajax">AJAXem</a>. Důležité je, aby se před novým požadavkem zrušil ten předcházející, jinak může dojít k <a href="/nacitani-ajax#pozdejsi">předběhnutí požadavků</a>, kdy dříve vytvořený požadavek doběhne později a přepíše tak novější výsledek.</p>
 
-Dělá se to tak, že se po každé změně **vytvoří nový časovač**, který má v plánu spustit validaci. Před tím se případně zruší ten předchozí.
+<p>K přerušení AJAX požadavku slouží metoda <code>abort</code>.</p>
 
-Následující kód tak zavolá funkci `validaceNaServeru` až po 300 milisekundách nečinnosti. Když návštěvník napíše daný řetězec rychle, provede se jen jeden požadavek.
+<pre><code>if (xhr) xhr.abort();</code></pre>
 
-```
-var prodleva;
+
+
+
+
+<h2 id="optimalisace">Optimalisace zátěže</h2>
+
+<p>Aby <b>zátěž okamžité validace</b> nebyla tak velká, jde si pomoci několika triky.</p>
+
+
+<h3 id="klient">Validace bez serveru</h3>
+
+<p>Dobré je validovat co <b>nejvíce věcí v JS</b> na straně klienta. Pro testování počtu znaků nebo použití povolených znaků si lze vystačit s JS a na server nic neposílat.</p>
+
+
+
+
+<h3 id="zmena">Kontrolovat změnu</h3>
+
+<p>V případě použití více událostí zachycujících změnu pole se mohou volání ověřovací funkce se stejnou hodnotou pole provádět zbytečně zároveň. Není-li pravděpodobné, že by se výsledek ověření <b>měnil rychle v čase</b>, není ani potřeba požadavek se stejnými vstupními daty odesílat opakovaně.</p>
+
+
+
+
+
+<h3 id="prodleva">Prodleva</h3>
+
+<p>Značné <b>úspory požadavků</b> jde docílit přidáním časové prodlevy, po které se validace provede. Validace se potom neprovádí po stisknutí každého znaku, ale až v momentě, kdy uživatel chvíli nic nenapíše.</p>
+
+<p>Dělá se to tak, že se po každé změně <b>vytvoří nový časovač</b>, který má v plánu spustit validaci. Před tím se případně zruší ten předchozí.</p>
+
+<p>Následující kód tak zavolá funkci <code>validaceNaServeru</code> až po 300 milisekundách nečinnosti. Když návštěvník napíše daný řetězec rychle, provede se jen jeden požadavek.</p>
+
+<pre><code>var prodleva;
 functin akce(hodnota) {
   clearTimeout(prodleva);
   prodleva = setTimeout(function() {
-    **validaceNaServeru**(hodnota)
+    <b>validaceNaServeru</b>(hodnota)
   }, 300);
-}
-```
+}</code></pre>
 
-Zvyšování této prodlevy **zhoršuje dojem okamžité reakce**, ale někdy není s ohledem na výkon na výběr.
+
+
+
+
+
+
+
+<p>Zvyšování této prodlevy <b>zhoršuje dojem okamžité reakce</b>, ale někdy není s ohledem na výkon na výběr.</p>

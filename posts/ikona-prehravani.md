@@ -5,51 +5,46 @@ description: "Symbol přehrávání ▶ v titulku stránky jako je u videí na Y
 date: "2014-03-26"
 last_modification: "2014-03-26"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "YouTube"]
+tags: ["hotova-reseni", "js", "youtube"]
+format: "html"
 ---
 
-Při přehrávání videa na YT si je možné povšimnout šipky na začátku titulku. V případě, že má člověk otevřeno více záložek téže stránky, docela se to hodí. Je totiž ihned jasné, **která záložka něco přehrává**.
+<p>Při přehrávání videa na YT si je možné povšimnout šipky na začátku titulku. V případě, že má člověk otevřeno více záložek téže stránky, docela se to hodí. Je totiž ihned jasné, <b>která záložka něco přehrává</b>.</p>
 
-Tuto **šipku**/trojúhelník znázorňuje znak `▶`.
+<p>Tuto <b>šipku</b>/trojúhelník znázorňuje znak <code>▶</code>.</p>
 
-  Symbol přehrávání můžeme umístit rovnou do kódu (poznámka: některé editory, třeba [Sublime Text](/sublime-text), s tím mohou mít problém, ale výsledek v prohlížeči by měl být OK).
+<ol>
+  <li><p>Symbol přehrávání můžeme umístit rovnou do kódu (poznámka: některé editory, třeba <a href="/sublime-text">Sublime Text</a>, s tím mohou mít problém, ale výsledek v prohlížeči by měl být OK).</p></li>
+  <li><p>Použít <b>HTML entitu</b> <code>&amp;#9654;</code> nebo <code>&amp;#x25b6;</code>.</p></li>
+  <li><p>V JS použít escape sekvenci <code>\u25b6</code>.</p></li>
+</ol>
 
-  Použít **HTML entitu** `&amp;#9654;` nebo `&amp;#x25b6;`.
+<h2 id="nastaveni">Nastavení ikony</h2>
 
-  V JS použít escape sekvenci `\u25b6`.
+<p>Nastavit tuto šipku JavaScriptem je potom možné změnou <code>document.title</code>.</p>
 
-## Nastavení ikony
+<pre><code>document.title = "▶" + document.title;</code></pre>
 
-Nastavit tuto šipku JavaScriptem je potom možné změnou `document.title`.
+<p>Nebo:</p>
 
-```
-document.title = "▶" + document.title;
-```
+<pre><code>document.title = "\u25b6 " + document.title;</code></pre>
 
-Nebo:
+<p>Nebo:</p>
 
-```
-document.title = "\u25b6 " + document.title;
-```
+<pre><code>document.title = "&amp;#9654; " + document.title;</code></pre>
 
-Nebo:
+<h2 id="odstraneni">Odstranění šipky</h2>
 
-```
-document.title = "&amp;#9654; " + document.title;
-```
+<p>Při <i>zastavení</i> je na místě šipku smazat, to jde zajistit buď kompletním <b>přepsáním</b> <code>document.title</code>, nebo odstraněním šipky funkcí <code>replace</code>:</p>
 
-## Odstranění šipky
+<pre><code>document.title = document.title.replace("\u25b6 ", "");</code></pre>
 
-Při *zastavení* je na místě šipku smazat, to jde zajistit buď kompletním **přepsáním** `document.title`, nebo odstraněním šipky funkcí `replace`:
+<h2 id="ukazka">Ukázka</h2>
 
-```
-document.title = document.title.replace("\u25b6 ", "");
-```
+<p>Jednoduchá ukázka, která přidává/odebírá <i>šipku</i> z titulku (<code>document.title</code>).</p>
 
-## Ukázka
-
-Jednoduchá ukázka, která přidává/odebírá *šipku* z titulku (`document.title`).
-
+<div class="live">
+  <script>
     function prepnoutPrehravani(el) {
       if (el.hasAttribute("data-vypnuto")) {
         document.title = "\u25b6 " + document.title;
@@ -62,13 +57,17 @@ Jednoduchá ukázka, která přidává/odebírá *šipku* z titulku (`document.t
         el.innerHTML = "Zapnout";
       }
     }
-
+  </script>
+  <button onclick="prepnoutPrehravani(this)" data-vypnuto>
     Zapnout
+  </button>
+</div>
 
-Manipulovat JavaScriptem s `&lt;title>` je vůbec docela užitečné a není důvod se toho bát. Dá se tak snadno znázorňovat.
+<p>Manipulovat JavaScriptem s <code>&lt;title></code> je vůbec docela užitečné a není důvod se toho bát. Dá se tak snadno znázorňovat.</p>
 
-  - Již zmíněné **přehrávání videa/hudby**.
+<ol>
+  <li>Již zmíněné <b>přehrávání videa/hudby</b>.</li>
+  <li>Zobrazit <b>počet nepřečtených</b> zpráv/příspěvků (používá Facebook nebo Twitter).</li>
+  <li>Signalisovat, že je na stránce <b>rozepsaný příspěvek</b> (používá <a href="http://djpw.cz">DJPW</a>).</li>
+</ol>
 
-  - Zobrazit **počet nepřečtených** zpráv/příspěvků (používá Facebook nebo Twitter).
-
-  - Signalisovat, že je na stránce **rozepsaný příspěvek** (používá [DJPW](http://djpw.cz)).

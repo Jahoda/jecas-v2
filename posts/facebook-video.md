@@ -5,15 +5,17 @@ description: "Jak na vlastní stránku vložit video z Facebooku."
 date: "2014-11-21"
 last_modification: "2014-11-21"
 status: 1
-tags: ["Lazy loading", "Hotová řešení", "Facebook", "Video"]
+tags: ["facebook", "hotova-reseni", "lazy-loading", "video"]
+format: "html"
 ---
 
-Pokud chceme na vlastní web vložit Facebook video, existuje k tomu [na stránce s videem](https://www.facebook.com/video.php?v=796588687069516) možnost *Embed post*.
+<p>Pokud chceme na vlastní web vložit Facebook video, existuje k tomu <a href="https://www.facebook.com/video.php?v=796588687069516">na stránce s videem</a> možnost <i>Embed post</i>.</p>
 
-To nám připraví HTML kód a JavaScript, který připojí Facebook SDK, které *oživí* video.
+<p><img src="/files/facebook-video/embed-post.png" alt="Embedování videa" class="border"></p>
 
-```
-&lt;div id="fb-root">&lt;/div>
+<p>To nám připraví HTML kód a JavaScript, který připojí Facebook SDK, které <i>oživí</i> video.</p>
+
+<pre><code>&lt;div id="fb-root">&lt;/div>
 &lt;script>
 (function(d, s, id) { 
   var js, fjs = d.getElementsByTagName(s)[0]; 
@@ -25,55 +27,58 @@ To nám připraví HTML kód a JavaScript, který připojí Facebook SDK, které
 }(document, 'script', 'facebook-jssdk'));
 &lt;/script>
 &lt;div class="fb-post" 
-data-href="https://www.facebook.com/video.php?v=**796588687069516**" 
+data-href="https://www.facebook.com/video.php?v=<b>796588687069516</b>" 
   data-width="466"
 >
   &lt;div class="fb-xfbml-parse-ignore">
-    &lt;a href="https://www.facebook.com/video.php?v=**796588687069516**">Post&lt;/a> by &lt;a href="https://www.facebook.com/jecas.cz">Je čas&lt;/a>.
+    &lt;a href="https://www.facebook.com/video.php?v=<b>796588687069516</b>">Post&lt;/a> by &lt;a href="https://www.facebook.com/jecas.cz">Je čas&lt;/a>.
   &lt;/div>
 &lt;/div>
+</code></pre>
 
-```
+<p>Po vložení na stránku to vypadá takto (<a href="http://kod.djpw.cz/yuhb">živá ukázka</a>):</p>
 
-Po vložení na stránku to vypadá takto ([živá ukázka](http://kod.djpw.cz/yuhb)):
+<p><img src="/files/facebook-video/vysledek.png" alt="Ukázka embedování videa" class="border"></p>
 
-Nevýhoda tohoto postupu je, že výše uvedený kód vytvoří **34 HTTP požadavků** a **stáhne cca 0,5 MB dat**.
+<p>Nevýhoda tohoto postupu je, že výše uvedený kód vytvoří <b>34 HTTP požadavků</b> a <b>stáhne cca 0,5 MB dat</b>.</p>
 
-## Vložení jako `&lt;iframe>`
 
-Na rozdíl od [YouTube](/youtube) není snadno k disposici možnost vložit video na vlastní web pomocí `&lt;iframe>`. Naštěstí se ale k universálnímu kódu pro `&lt;iframe>` dá dopátrat skrze *Graph API*.
+<h2 id="iframe">Vložení jako <code>&lt;iframe></code></h2>
 
-```
-&lt;iframe 
-  src="https://www.facebook.com/video/embed?video_id=**796588687069516**"
+<p>Na rozdíl od <a href="/youtube">YouTube</a> není snadno k disposici možnost vložit video na vlastní web pomocí <code>&lt;iframe></code>. Naštěstí se ale k universálnímu kódu pro <code>&lt;iframe></code> dá dopátrat skrze <i>Graph API</i>.</p>
+
+<pre><code>&lt;iframe 
+  src="https://www.facebook.com/video/embed?video_id=<b>796588687069516</b>"
   width="480" height="270" frameborder="0"
 >
-&lt;/iframe>
-```
+&lt;/iframe></code></pre>
 
-[Samostatná ukázka](http://kod.djpw.cz/avhb)
+<p><a href="http://kod.djpw.cz/avhb">Samostatná ukázka</a></p>
 
-URL stránky vložitelné do *frame* je tedy: `https://www.facebook.com/video/embed?video_id=**796588687069516**`
+<p>URL stránky vložitelné do <i>frame</i> je tedy: <code>https://www.facebook.com/video/embed?video_id=<b>796588687069516</b></code></p>
 
-Tento způsob je sice o trochu úspornější než předchozí – 22 požadavků a 0,43 MB, ale pořád to není žádná sláva.
+<p>Tento způsob je sice o trochu úspornější než předchozí – 22 požadavků a 0,43 MB, ale pořád to není žádná sláva.</p>
 
-Výhoda ale spočívá v tom, že s `&lt;iframe>`m půjde snáze provést [*lazy loading*](/lazy-loading).
+<p>Výhoda ale spočívá v tom, že s <code>&lt;iframe></code>m půjde snáze provést <a href="/lazy-loading"><i>lazy loading</i></a>.</p>
 
-## Lazy loading
 
-Podobně jako u [videí z YouTube](/js-youtube-lazy-loading) můžeme vytvořit na stránce atrapu, která `&lt;iframe>` s videem načte až **na vyžádání**.
+<h2 id="lazy-loading">Lazy loading</h2>
 
-Bohužel v tomto případě půjde obtížněji získat **náhled videa**. Neexistuje nějaká universální adresa, kde by stačilo **změnit ID** a obrázek by byl na světě. URL obrázku jde získat jedině přes [Graph API](https://developers.facebook.com/tools/explorer/?method=GET&path=796588687069516&version=v2.2).
+<p>Podobně jako u <a href="/js-youtube-lazy-loading">videí z YouTube</a> můžeme vytvořit na stránce atrapu, která <code>&lt;iframe></code> s videem načte až <b>na vyžádání</b>.</p>
 
-## Automatické přehrávání Facebook videa
+<p>Bohužel v tomto případě půjde obtížněji získat <b>náhled videa</b>. Neexistuje nějaká universální adresa, kde by stačilo <b>změnit ID</b> a obrázek by byl na světě. URL obrázku jde získat jedině přes <a href="https://developers.facebook.com/tools/explorer/?method=GET&path=796588687069516&version=v2.2">Graph API</a>.</p>
 
-Spustit video rovnou při načtení není normálně dosažitelné. Jde ale využít **mobilní verse**, kde to funkční je ([ukázka](http://kod.djpw.cz/bvhb)).
+<p><img src="/files/facebook-video/url-obrazku.png" alt="Získání URL obrázku" class="border"></p>
 
-```
-&lt;iframe 
-  src="https://*m*.facebook.com/video/video.php?v=**796588687069516**" 
+
+
+<h2 id="automaticke-prehravani">Automatické přehrávání Facebook videa</h2>
+
+<p>Spustit video rovnou při načtení není normálně dosažitelné. Jde ale využít <b>mobilní verse</b>, kde to funkční je (<a href="http://kod.djpw.cz/bvhb">ukázka</a>).</p>
+
+<pre><code>&lt;iframe 
+  src="https://<i>m</i>.facebook.com/video/video.php?v=<b>796588687069516</b>" 
   frameborder="0" 
   allowfullscreen
 >
-&lt;/iframe>
-```
+&lt;/iframe></code></pre>

@@ -6,20 +6,18 @@ date: "2016-01-19"
 last_modification: "2016-01-19"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Simulace skutečného prohlížeče
+<h2 id="simulace">Simulace skutečného prohlížeče</h2>
 
-Nastavením vhodných HTTP hlaviček jde při použití CURL simulovat skutečný prohlížeč.
+<p>Nastavením vhodných HTTP hlaviček jde při použití CURL simulovat skutečný prohlížeč.</p>
 
-Může to znít překvapivě, ale pro stažení obsahu některých webů je naprosto podstatné nastavit [cookies](/cookie):
+<p>Může to znít překvapivě, ale pro stažení obsahu některých webů je naprosto podstatné nastavit <a href="/cookie">cookies</a>:</p>
 
-```
-curl_setopt($ch, CURLOPT_COOKIEFILE, "cookie.txt");
-```
+<pre><code>curl_setopt($ch, CURLOPT_COOKIEFILE, "cookie.txt");</code></pre>
 
-```
-$header = array();
+<pre><code>$header = array();
 $header[] = 'Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5';
 $header[] = 'Cache-Control: max-age=0';
 $header[] = 'Connection: keep-alive';
@@ -38,11 +36,10 @@ curl_setopt($ch, CURLOPT_ENCODING, '');
 curl_setopt($ch, CURLOPT_TIMEOUT, 20);
 $result = curl_exec($ch);
 curl_close ($ch);
-echo $result;
-```
+echo $result;</code></pre>
 
-```
-   /**
+
+<pre><code>   /**
      * Get a web file (HTML, XHTML, XML, image, etc.) from a URL.  Return an
      * array containing the HTTP server response header fields and content.
      */
@@ -79,8 +76,9 @@ echo $result;
         $header['errmsg']  = $errmsg;
         $header['content'] = $content;
         return $header;
-    }
-```
+    }</code></pre>
 
-  Browser Simulator/Emulator Tool,
-Web Page Tester, URL Source/Headers Viewer
+<ul>
+  <li><a href="http://www.hashemian.com/tools/browser-simulator.htm">Browser Simulator/Emulator Tool,
+Web Page Tester, URL Source/Headers Viewer</a></li>
+</ul>

@@ -5,165 +5,219 @@ description: "Převedení textu na velká nebo malá písmena."
 date: "2015-11-07"
 last_modification: "2015-11-07"
 status: 1
-tags: ["JavaScript", "CSS", "Hotová řešení", "PHP"]
+tags: ["css", "hotova-reseni", "js", "php"]
+format: "html"
 ---
 
-Text s VELKÝMI i malými písmeny
+<div class="live no-source">
+  <textarea cols="50" rows="5" id="prevod" onfocus="this.select()">Text s VELKÝMI i malými písmeny</textarea>
+  
+  <p>
+    <button onclick="prevod.value = naVelka(prevod.value)">VELKÁ PÍSMENA</button>
+    <button onclick="prevod.value = naMala(prevod.value)">malá písmena</button>
+    <button onclick="prevod.value = camelCase(prevod.value)">CamelCase</button>
+    <button onclick="prevod.value = invertovat(prevod.value)">Invertovat</button>
+    <button onclick="prevod.value = stridave(prevod.value)">sTřÍdAvĚ</button>
+    <button onclick="puvodni()">× Původní</button>
+  </p>
+</div>
 
-    VELKÁ PÍSMENA
-    malá písmena
-    CamelCase
-    Invertovat
-    sTřÍdAvĚ
-    × Původní
 
-## JavaScript
+<h2 id="js">JavaScript</h2>
 
-V JavaScriptu existují pro změnu velikosti dvě základní metody:
+<p>V JavaScriptu existují pro změnu velikosti dvě základní metody:</p>
 
-  - `text.toUpperCase()` – převede proměnnou `text` na velká písmena
+<ul>
+  <li><code>text.toUpperCase()</code> – převede proměnnou <code>text</code> na velká písmena</li>
+  <li><code>text.toLowerCase()</code> – převede proměnnou <code>text</code> na malá písmena</li>
+</ul>
 
-  - `text.toLowerCase()` – převede proměnnou `text` na malá písmena
 
-Pro převod částí slov, jako pouze prvního písmena a podobně, je možné použít rozdělení řetězce pomocí `substr` a první znak vybrat pomocí `charAt(0)`:
+<p>Pro převod částí slov, jako pouze prvního písmena a podobně, je možné použít rozdělení řetězce pomocí <code>substr</code> a první znak vybrat pomocí <code>charAt(0)</code>:</p>
 
-```
-function prvniVelke(text) {
+
+
+<pre><code>function prvniVelke(text) {
   return text.charAt(0).toUpperCase() + text.substr(1);
-}
-```
+}</code></pre>
 
-Pro průchod všemi slovy stačí rozdělit řetězec podle mezery (`text.split(" ")`) a jednotlivá slova projít [cyklem](/js-cykly).
 
-## PHP
 
-V PHP existují pro zvětšování a zmenšování následující funkce:
+<p>Pro průchod všemi slovy stačí rozdělit řetězec podle mezery (<code>text.split(" ")</code>) a jednotlivá slova projít <a href="/js-cykly">cyklem</a>.</p>
 
-  - `strtoupper($text)` – převede `$text` na velká písmena
 
-  - `strtolower($text)` – převede `$text` na malá písmena
 
-  - `ucfirst($text)` – převede první písmeno `$text`u na velké
 
-  - `ucwords($text)` – převede každé první písmeno slova v `$text`u na velké
+<h2 id="php">PHP</h2>
 
-Převedení prvního písmena na velké v každém slově se v angličtině používá pro **psaní nadpisů**.
+<p>V PHP existují pro zvětšování a zmenšování následující funkce:</p>
 
-Ještě existují `mb_*` varianty. Pro znaky s **českou diakritikou** jsou ale všechny tyto funkce nepoužitelné:
+<ul>
+  <li><code>strtoupper($text)</code> – převede <code>$text</code> na velká písmena</li>
+  <li><code>strtolower($text)</code> – převede <code>$text</code> na malá písmena</li>
+  <li><code>ucfirst($text)</code> – převede první písmeno <code>$text</code>u na velké</li>
+  <li><code>ucwords($text)</code> – převede každé první písmeno slova v <code>$text</code>u na velké</li>
+</ul>
 
-		`strtoupper($text)`
+<p>Převedení prvního písmena na velké v každém slově se v angličtině používá pro <b>psaní nadpisů</b>.</p>
 
-		žluťoučký kůň => žLUťOUčKý Kůň
+<p>Ještě existují <code>mb_*</code> varianty. Pro znaky s <b>českou diakritikou</b> jsou ale všechny tyto funkce nepoužitelné:</p>
 
-		`strtolower($text)`
 
-		ŽLUŤOUČKÝ KŮŇ => ŽluŤouČkÝ kŮŇ
+<div class="live no-source">
+<meta charset=utf-8>
 
-		`ucfirst($text)`
+<dl>
+	<dt>
+		<code>strtoupper($text)</code>
+	</dt>
+	<dd>
+		<p>žluťoučký kůň => žLUťOUčKý Kůň</p>
+	</dd>
+	<dt>
+		<code>strtolower($text)</code>
+	</dt>
+	<dd>
+		<p>ŽLUŤOUČKÝ KŮŇ => ŽluŤouČkÝ kŮŇ</p>
+	</dd>
+	<dt>
+		<code>ucfirst($text)</code>
+	</dt>
+	<dd>
+		<p>žluťoučký kůň => žluťoučký kůň</p>
+	</dd>
+	<dt>
+		<code>ucwords($text)</code>
+	</dt>
+	<dd>
+		<p>žluťoučký kůň => žluťoučký Kůň</p>
+	</dd>
+	<dt>
+		<code>mb_strtoupper($text)</code>
+	</dt>
+	<dd>
+		<p>žluťoučký kůň => žLUťOUčKý Kůň</p>
+	</dd>
+	<dt>
+		<code>mb_strtolower($text)</code>
+	</dt>
+	<dd>
+		<p>ŽLUŤOUČKÝ KŮŇ => �lu�ou�k� k��</p>
+	</dd>					
+</dl>  
+</div>
 
-		žluťoučký kůň => žluťoučký kůň
+<p>Rozchodit <code>mb_*</code> funkce se může podařit uvedením kódování:</p>
 
-		`ucwords($text)`
+<pre><code>mb_internal_encoding("UTF-8");</code></pre>
 
-		žluťoučký kůň => žluťoučký Kůň
+<p>Případně to může rovnou fungovat v novějším PHP.</p>
 
-		`mb_strtoupper($text)`
+<p>Kódování <code>UTF-8</code> jde případně předat jako druhý parametr:</p>
 
-		žluťoučký kůň => žLUťOUčKý Kůň
+<pre><code><pre><code>mb_strtoupper("žluťoučký kůň", "UTF-8");</code></pre></code></pre>
 
-		`mb_strtolower($text)`
 
-		ŽLUŤOUČKÝ KŮŇ => �lu�ou�k� k��
 
-Rozchodit `mb_*` funkce se může podařit uvedením kódování:
+<h3 id="mb_convert_case"><code>mb_convert_case</code></h3>
 
-```
-mb_internal_encoding("UTF-8");
-```
+<p>Dosáhnout správného převodu českých znaků jde i funkcí <code>mb_convert_case</code>, které se navíc zadává typ převodu:</p>
 
-Případně to může rovnou fungovat v novějším PHP.
+<ul>
+  <li><code>MB_CASE_UPPER</code> – na velká písmena</li>
+  <li><code>MB_CASE_LOWER</code> – na malá písmena</li>
+  <li><code>MB_CASE_TITLE</code> – začátek slova velký</li>
+</ul>
 
-Kódování `UTF-8` jde případně předat jako druhý parametr:
 
-```
-mb_strtoupper("žluťoučký kůň", "UTF-8");
-```
+<p>Rovněž se jí předá kódování (typicky <code>UTF-8</code>):</p>
 
-### `mb_convert_case`
+<pre><code>mb_convert_case("žluťoučký kůň", MB_CASE_UPPER, "UTF-8");</code></pre>
 
-Dosáhnout správného převodu českých znaků jde i funkcí `mb_convert_case`, které se navíc zadává typ převodu:
+<div class="live no-source">
+<dl>
+	<dt>
+		<code>mb_convert_case($text, MB_CASE_UPPER, "UTF-8")</code>
+	</dt>
+	<dd>
+		<p>žluťoučký kůň => ŽLUŤOUČKÝ KŮŇ</p>
+	</dd>	
+	<dt>
+		<code>mb_convert_case($text, MB_CASE_LOWER, "UTF-8")</code>
+	</dt>
+	<dd>
+		<p>ŽLUŤOUČKÝ KŮŇ => žluťoučký kůň</p>
+	</dd>	
+	<dt>
+		<code>mb_convert_case($text, MB_CASE_TITLE, "UTF-8")</code>
+	</dt>
+	<dd>
+		<p>ŽLUŤOUČKÝ KŮŇ => Žluťoučký Kůň</p>
+		<p>žluťoučký kůň => Žluťoučký Kůň</p>
+	</dd>  
+</dl>
+</div>
 
-  - `MB_CASE_UPPER` – na velká písmena
+<p>Pro vyzkoušení:</p>
 
-  - `MB_CASE_LOWER` – na malá písmena
+<div class="external-content">
+  <ul>
+    <li><a href="https://gist.github.com/Jahoda/114b1c65967807681b2d">Testovací skript</a></li>
+  </ul>
+</div>
 
-  - `MB_CASE_TITLE` – začátek slova velký
 
-Rovněž se jí předá kódování (typicky `UTF-8`):
+<h2 id="css">CSS</h2>
 
-```
-mb_convert_case("žluťoučký kůň", MB_CASE_UPPER, "UTF-8");
-```
+<p>V CSS jde pro převod velikosti písma použít vlastnost <code>text-transform</code>:</p>
 
-		`mb_convert_case($text, MB_CASE_UPPER, "UTF-8")`
+<ul>
+  <li><p><code>text-transform: lowercase</code> – <span class="live" style="text-transform: lowercase">PŘEVEDE TEXT NA MALÁ PÍSMENA</span></p></li>
+  <li><p><code>text-transform: uppercase</code> – <span class="live" style="text-transform: uppercase">převede text na velká písmena</span></p></li>
+</ul>
 
-		žluťoučký kůň => ŽLUŤOUČKÝ KŮŇ
+<p>Prohlížeče <b>Chrome</b> a nová <b>Opera</b> fungují jinak než <a href="/microsoft-edge"><b>Edge</b></a> nebo <b>Firefox</b> – při kopírování nectí původní velikost písma v HTML kódu. Jde to vyzkoušet: předchozí ukázky jsou psány opačnou velikostí, než je nastavena v CSS.</p>
 
-		`mb_convert_case($text, MB_CASE_LOWER, "UTF-8")`
 
-		ŽLUŤOUČKÝ KŮŇ => žluťoučký kůň
+<p>Pomocí <a href="/first-letter"><code>:first-letter</code></a> jde automaticky docílit textu malými písmeny s velkým počátečním.</p>
 
-		`mb_convert_case($text, MB_CASE_TITLE, "UTF-8")`
-
-		ŽLUŤOUČKÝ KŮŇ => Žluťoučký Kůň
-
-		žluťoučký kůň => Žluťoučký Kůň
-
-Pro vyzkoušení:
-
-    - [Testovací skript](https://gist.github.com/Jahoda/114b1c65967807681b2d)
-
-## CSS
-
-V CSS jde pro převod velikosti písma použít vlastnost `text-transform`:
-
-  `text-transform: lowercase` – PŘEVEDE TEXT NA MALÁ PÍSMENA
-
-  `text-transform: uppercase` – převede text na velká písmena
-
-Prohlížeče **Chrome** a nová **Opera** fungují jinak než [**Edge**](/microsoft-edge) nebo **Firefox** – při kopírování nectí původní velikost písma v HTML kódu. Jde to vyzkoušet: předchozí ukázky jsou psány opačnou velikostí, než je nastavena v CSS.
-
-Pomocí [`:first-letter`](/first-letter) jde automaticky docílit textu malými písmeny s velkým počátečním.
-
-```
-.prvniVelke {
+<pre><code>.prvniVelke {
   text-transform: lowercase;
 }
 .prvniVelke:first-letter {
   text-transform: uppercase;
-}
-```
+}</code></pre>
 
-## Převod velikosti v Sublime Text
 
-V [Sublime Text](/st) editoru je pro převod na malá/velká písmena přímo [klávesová zkratka](/sublime-text-zkratky#velka-mala):
+<h2 id="st">Převod velikosti v Sublime Text</h2>
 
-  - Ctrl + K, U – velká písmena
+<p>V <a href="/st">Sublime Text</a> editoru je pro převod na malá/velká písmena přímo <a href="/sublime-text-zkratky#velka-mala">klávesová zkratka</a>:</p>
 
-  - Ctrl + K, L – malá písmena
+<ul>
+  <li><kbd>Ctrl + K, U</kbd> – velká písmena</li>
+  <li><kbd>Ctrl + K, L</kbd> – malá písmena</li>
+</ul>
 
-## KŘIK
 
-V internetových diskusích je občas k vidění, že někdo záměrně píše vše velkými písmeny se zapnutým CapsLockem.
+<h2 id="krik">KŘIK</h2>
 
-UKŘIČENÝ text není možné dost dobře převést do normální podoby, protože část informací je nenávratně ztracena. Automatisovaně jde alespoň převést vše na malá písmena a ponechat velká jen písmena na začátku věty.
+<p>V internetových diskusích je občas k vidění, že někdo záměrně píše vše velkými písmeny se zapnutým <kbd>CapsLock</kbd>em.</p>
 
-## Velká písmena ve vyhledávání
+<p>UKŘIČENÝ text není možné dost dobře převést do normální podoby, protože část informací je nenávratně ztracena. Automatisovaně jde alespoň převést vše na malá písmena a ponechat velká jen písmena na začátku věty.</p>
 
-[Vyhledávač Seznam](/seznam) automaticky převádí některé titulky s velkými písmeny:
 
-  - [Proč Seznam převádí zkratky na malá písmena](/seznam-velka-pismena)
+<h2 id="seo">Velká písmena ve vyhledávání</h2>
 
+<p><a href="/seznam">Vyhledávač Seznam</a> automaticky převádí některé titulky s velkými písmeny:</p>
+
+<div class="internal-content">
+<ul>
+  <li><a href="/seznam-velka-pismena">Proč Seznam převádí zkratky na malá písmena</a></li>
+</ul>  
+</div>
+
+
+<script>
   function naVelka(text) {
     return text.toUpperCase();
   }
@@ -178,4 +232,37 @@ UKŘIČENÝ text není možné dost dobře převést do normální podoby, proto
   function camelCase(text) {    
     var slova = text.split(" ");
     var vysledek = "";
-    for (var i = 0; i
+    for (var i = 0; i < slova.length; i++) {
+        vysledek += prvniVelke(slova[i]);
+    }
+    return vysledek;
+  }  
+  
+  function stridave(text) {
+    var vysledek = "";
+    for (var i = 0; i < text.length; i++) {
+      var pismeno = text.substr(i, 1);
+      vysledek += (i % 2) ? naMala(pismeno) : naVelka(pismeno);
+    }
+    return vysledek;
+  }
+  
+  function invertovat(text) {
+    var vysledek = "";
+    for (var i = 0; i < text.length; i++) {
+        var pismeno = text.substr(i, 1);
+        vysledek += (pismeno == pismeno.toUpperCase()) ? naMala(pismeno) : naVelka(pismeno);
+    }
+    return vysledek;
+  }    
+  
+  var original = prevod.value;
+  function puvodni() {
+    prevod.value = original;
+  }
+  prevod.onpaste = prevod.onblur = function() {
+    setTimeout(function() {
+      original = prevod.value;
+    });
+  }
+</script>

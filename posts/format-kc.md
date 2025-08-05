@@ -6,45 +6,54 @@ date: "2016-02-12"
 last_modification: "2016-02-12"
 status: 0
 tags: []
+format: "html"
 ---
 
-Při počítání finančních částek bývá rozdíl mezi číslem získaným v programovacím jazyce a vhodnou podobou pro presentování uživatelům.
+<p>Při počítání finančních částek bývá rozdíl mezi číslem získaným v programovacím jazyce a vhodnou podobou pro presentování uživatelům.</p>
 
-Částku spočítanou skriptem ve tvaru:
 
-```
-1016.5
-```
+<p>Částku spočítanou skriptem ve tvaru:</p>
 
-By bylo lepší zobrazovat (třeba) jako:
+<pre><code>1016.5</code></pre>
 
-```
-1 016,50 Kč
-```
+<p>By bylo lepší zobrazovat (třeba) jako:</p>
 
-Pro zobrazování částky v korunách platí následující pravidla:
+<pre><code>1 016,50 Kč</code></pre>
 
-    Bývá zvykem po **3 znacích oddělovat** číslice mezerou. Tedy oddělit tisíce, miliony, miliardy a podobně.
+<p>Pro zobrazování částky v korunách platí následující pravidla:</p>
 
-    V češtině se pro oddělení **desetinných míst** používá čárka místo tečky běžné v programování nebo některých jiných jazycích.
 
-    Je-li částka i v **haléřích**, má obsah za desetinnou čárkou **2 desetinná místa**.
+<ol>
+  <li>
+    <p>Bývá zvykem po <b>3 znacích oddělovat</b> číslice mezerou. Tedy oddělit tisíce, miliony, miliardy a podobně.</p>
+  </li>
+  <li>
+    <p>V češtině se pro oddělení <b>desetinných míst</b> používá čárka místo tečky běžné v programování nebo některých jiných jazycích.</p>
+  </li>
+  <li>
+    <p>Je-li částka i v <b>haléřích</b>, má obsah za desetinnou čárkou <b>2 desetinná místa</b>.</p>
+  </li>
+  <li>
+    <p>Zkratka pro koruny <code>Kč</code> se píše s <b>velkým počátečním písmenem</b>.</p>
+  </li>
+  <li>
+    <p>Aby se uprostřed částky nezalomil řádek, mezery se používají tzv. <a href="/ceska-klavesnice#nbsp">pevné</a> (<code>&amp;nbsp;</code>).</p>
+  </li>
+</ol>
 
-    Zkratka pro koruny `Kč` se píše s **velkým počátečním písmenem**.
+<h2 id="js">Formátování Kč v JavaScriptu</h2>
 
-    Aby se uprostřed částky nezalomil řádek, mezery se používají tzv. [pevné](/ceska-klavesnice#nbsp) (`&amp;nbsp;`).
 
-## Formátování Kč v JavaScriptu
-
-```
-var koruny = function(castka) {
+<pre><code>var koruny = function(castka) {
   castka = castka.toFixed(0).replace(/./g, function(c, i, a) {
       return ((a.length - i) % 3 === 0) ? ' ' + c : c;
   });
   return castka;
-};
-```
+};</code></pre>
 
-## Odkazy jinam
 
-  - [Localizing Dates, Currency, and Numbers with Php-Intl](https://www.sitepoint.com/localizing-dates-currency-and-numbers-with-php-intl/) – jak v PHP lokalisovat kalendářní data, měnu a čísla
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="https://www.sitepoint.com/localizing-dates-currency-and-numbers-with-php-intl/">Localizing Dates, Currency, and Numbers with Php-Intl</a> – jak v PHP lokalisovat kalendářní data, měnu a čísla</li>
+</ul>

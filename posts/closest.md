@@ -5,79 +5,104 @@ description: "JavaScriptovou metodou <code>closest</code> jde získat nejbližš
 date: "2015-03-11"
 last_modification: "2015-03-14"
 status: 1
-tags: ["JavaScript"]
+tags: ["js"]
+format: "html"
 ---
 
-Pokud je skriptem vybrán nějaký element, jde se dostat pomocí `parentNode` k jeho nejbližšímu předkovi.
+<p>Pokud je skriptem vybrán nějaký element, jde se dostat pomocí <code>parentNode</code> k jeho nejbližšímu předkovi.</p>
 
-```
-&lt;div class="predek">
+<pre><code>&lt;div class="predek">
   &lt;div id="potomek">
   &lt;/div>
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-Pro tento HTML kód to v JS vypadá následovně:
 
-```
-var potomek = document.getElementById("potomek");
-var predek = potomek.**parentNode**;
-```
 
-Hodí se to například při [přepínání třídy](/prepinani-trid) společnému obalu tlačítka a obsahu, který se má [zobrazit/skrýt](/zobrazit-skryt). Značný problém tohoto postupu je ale v tom, že je JS kód **hodně závislý na změně HTML** – stačí přidat třeba další obal, a vše přestane fungovat.
 
-Pomocí `closest` jde nadřazený element specifikovat CSS selektorem (selektor se zadává podobně jako u [`querySelector`/`querySelectorAll`](/queryselector)).
+<p>Pro tento HTML kód to v JS vypadá následovně:</p>
 
-## Zápis
+<pre><code>var potomek = document.getElementById("potomek");
+var predek = potomek.<b>parentNode</b>;</code></pre>
 
-Metoda `closest` má jeden povinný parametr, což je CSS selektor.
 
-```
-&lt;div class="predek">
+
+<p>Hodí se to například při <a href="/prepinani-trid">přepínání třídy</a> společnému obalu tlačítka a obsahu, který se má <a href="/zobrazit-skryt">zobrazit/skrýt</a>. Značný problém tohoto postupu je ale v tom, že je JS kód <b>hodně závislý na změně HTML</b> – stačí přidat třeba další obal, a vše přestane fungovat.</p>
+
+<p>Pomocí <code>closest</code> jde nadřazený element specifikovat CSS selektorem (selektor se zadává podobně jako u <a href="/queryselector"><code>querySelector</code>/<code>querySelectorAll</code></a>).</p>
+
+
+
+<h2 id="zapis">Zápis</h2>
+
+<p>Metoda <code>closest</code> má jeden povinný parametr, což je CSS selektor.</p>
+
+<pre><code>&lt;div class="predek">
   &lt;div>
     &lt;div id="potomek">
     &lt;/div>
   &lt;/div>
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-Pro tento HTML kód, kde je mezi potomkem a předkem další `&lt;div>`, jde provést následující:
 
-```
-var potomek = document.getElementById("potomek");
-var predek = potomek.**closest('.predek')**;
-```
 
-Kód vybere nejbližší nadřazený element, co má třídu `predek`.
 
-Zajímavé a trochu zrádné je, že se element může dostat i „sám na sebe“, bude-li vyhovovat zadanému selektoru.
 
-```
-potomek.closest('**div**');
-```
 
-Tato konstrukce tedy opět vybere potomka (protože se jedná o `&lt;div>`, čímž bude vyhovovat zadanému selektoru).
 
-## Podpora
 
-Metoda `closest` je zatím podporována pouze v následujících prohlížečích:
+<p>Pro tento HTML kód, kde je mezi potomkem a předkem další <code>&lt;div></code>, jde provést následující:</p>
 
-  - **Firefox 35**,
+<pre><code>var potomek = document.getElementById("potomek");
+var predek = potomek.<b>closest('.predek')</b>;</code></pre>
 
-  - **Chrome 41**,
+<p>Kód vybere nejbližší nadřazený element, co má třídu <code>predek</code>.</p>
 
-  - **Opera 18**
+<p>Zajímavé a trochu zrádné je, že se element může dostat i „sám na sebe“, bude-li vyhovovat zadanému selektoru.</p>
 
-Pro nepodporované prohlížeče jde podpora doskriptovat pomocí `parentNode` a `querySelectoru` nebo [`matches`](/matches#js).
+<pre><code>potomek.closest('<b>div</b>');</code></pre>
 
-    - [Polyfill funkce closest](http://kod.djpw.cz/pmlb)
+<p>Tato konstrukce tedy opět vybere potomka (protože se jedná o <code>&lt;div></code>, čímž bude vyhovovat zadanému selektoru).</p>
 
-## `closest()` v jQuery
 
-JS knihovna jQuery disponuje obdobou nativní funkce `closest`.
 
-    - jQuery API: [.closest()](http://api.jquery.com/closest/)
 
-## Odkazy jinam
 
-  - MDN: [Element.closest()](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)
+<h2 id="podpora">Podpora</h2>
+
+<p>Metoda <code>closest</code> je zatím podporována pouze v následujících prohlížečích:</p>
+
+<ul>
+  <li><b>Firefox 35</b>,</li>
+  <li><b>Chrome 41</b>,</li>
+  <li><b>Opera 18</b></li>
+</ul>
+
+<p>Pro nepodporované prohlížeče jde podpora doskriptovat pomocí <code>parentNode</code> a <code>querySelectoru</code> nebo <a href="/matches#js"><code>matches</code></a>.</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/pmlb">Polyfill funkce closest</a></li>
+  </ul>
+</div>
+
+
+
+
+
+<h2 id="jquery"><code>closest()</code> v jQuery</h2>
+
+<p>JS knihovna jQuery disponuje obdobou nativní funkce <code>closest</code>.</p>
+
+<div class="external-content">
+  <ul>
+    <li>jQuery API: <a href="http://api.jquery.com/closest/">.closest()</a></li>
+  </ul>
+</div>
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/closest">Element.closest()</a></li>
+</ul>

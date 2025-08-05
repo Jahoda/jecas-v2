@@ -1,67 +1,84 @@
 ---
 title: "Emmet a CSS zkratky"
 headline: "Emmet a časté zkratky"
-description: "Nástroj <a href=\"/emmet\">Emmet</a> usnadňuje a zrychluje psaní HTML/CSS kódu. Seznam často používaných zkratek."
+description: "Nástroj <a href="/emmet">Emmet</a> usnadňuje a zrychluje psaní HTML/CSS kódu. Seznam často používaných zkratek."
 date: "2014-01-25"
 last_modification: "2014-02-01"
 status: 1
-tags: ["CSS", "Produktivita"]
+tags: ["css", "produktivita"]
+format: "html"
 ---
 
-Díky tomu, že je Emmet možné používat v [mnoha editorech](http://emmet.io/download/), namátkou:
+<p>Díky tomu, že je Emmet možné používat v <a href="http://emmet.io/download/">mnoha editorech</a>, namátkou:</p>
 
-  - [Submile Text](/sublime-text),
+<ul>
+  <li><a href="/sublime-text">Submile Text</a>,</li>
+  <li>PsPad,</li>
+  <li>NetBeans</li>
+  <li>webové služby pro psaní sdílení kódu (jako např. <a href="http://kod.djpw.cz">Živá ukázka</a>).</li>
+</ul>
 
-  - PsPad,
+<p>… už píšu zásadně s ním. Některé CSS vlastnosti se tedy pro mě <i>přejmenovaly</i>.</p>
 
-  - NetBeans
+<table>
+  <tr>
+    <th>Zkratka + <kbd>Tab</kbd></th>
+    <th>Výsledek</th>
+  </tr>
+  <tr>
+    <td><code>tac</code></td>
+    <td><code>text-align: center</code></td>
+  </tr>
+  <tr>
+    <td><code>dn</code></td>
+    <td><code>display: none</code></td>
+  </tr>  
+  <tr>
+    <td><code>di</code></td>
+    <td><code>display: inline</code></td>
+  </tr>    
+  <tr>
+    <td><code>dib</code></td>
+    <td><code>display: inline-block</code></td>
+  </tr>    
+  <tr>
+    <td><code>fl</code>/<code>fr</code></td>
+    <td><code>float: left/right</code></td>
+  </tr>    
+  <tr>
+    <td><code>posa</code>/<code>posr</code></td>
+    <td><code>position: absolute/relative</code></td>
+  </tr>      
+  <tr>
+    <td><code>bd</code></td>
+    <td><code>border</code></td>
+  </tr> 
+  <tr>
+    <td><code>bg</code></td>
+    <td><code>background</code></td>
+  </tr>   
+  <tr>
+    <td><code>c</code></td>
+    <td><code>color</code></td>
+  </tr> 
+  <tr>
+    <td><code>m</code></td>
+    <td><code>margin</code></td>
+  </tr> 
+  <tr>
+    <td><code>p</code></td>
+    <td><code>padding</code></td>
+  </tr> 
+  <tr>
+    <td><code>h</code></td>
+    <td><code>height</code></td>
+  </tr>   
+  <tr>
+    <td><code>w</code></td>
+    <td><code>width</code></td>
+  </tr>   
+</table>
 
-  - webové služby pro psaní sdílení kódu (jako např. [Živá ukázka](http://kod.djpw.cz)).
+<p>A další vlastnosti se vlastně ani <a href="/cetnost-css">moc nepoužívají</a>.</p>
 
-… už píšu zásadně s ním. Některé CSS vlastnosti se tedy pro mě *přejmenovaly*.
-
-    Zkratka + Tab
-    Výsledek
-
-    `tac`
-    `text-align: center`
-
-    `dn`
-    `display: none`
-
-    `di`
-    `display: inline`
-
-    `dib`
-    `display: inline-block`
-
-    `fl`/`fr`
-    `float: left/right`
-
-    `posa`/`posr`
-    `position: absolute/relative`
-
-    `bd`
-    `border`
-
-    `bg`
-    `background`
-
-    `c`
-    `color`
-
-    `m`
-    `margin`
-
-    `p`
-    `padding`
-
-    `h`
-    `height`
-
-    `w`
-    `width`
-
-A další vlastnosti se vlastně ani [moc nepoužívají](/cetnost-css).
-
-Jaké zkratky jste si vy, kdož Emmet používáte, oblíbili?
+<p>Jaké zkratky jste si vy, kdož Emmet používáte, oblíbili?</p>

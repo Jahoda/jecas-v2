@@ -5,66 +5,46 @@ description: "Co takhle psát názvy tříd v HTML a CSS hezky česky s diakriti
 date: "2013-06-13"
 last_modification: "2013-06-13"
 status: 1
-tags: ["HTML", "CSS"]
+tags: ["css", "html"]
+format: "html"
 ---
 
-V dnešních prohlížečích fungují jako názvy tříd prakticky všechny znaky s výjimkou těch, které se používají jako řídicí v CSS (`.#{}(),;/*~>` a podobně).
+<p>V dnešních prohlížečích fungují jako názvy tříd prakticky všechny znaky s výjimkou těch, které se používají jako řídicí v CSS (<code>.#{}(),;/*~></code> a podobně).
 
-Ve standardním režimu jsou ještě nefunkční **názvy tříd začínající číslicí**. V quirku v Explorerech a starších Operách funguje i to.
+<p>Ve standardním režimu jsou ještě nefunkční <b>názvy tříd začínající číslicí</b>. V quirku v Explorerech a starších Operách funguje i to.
 
-```
-&lt;style>
+<pre><code>&lt;style>
 .růžovoučký {background: pink; font-size: small}
 &lt;/style>
-&lt;p class=růžovoučký>Růžovoučký odstaveček
-```
+&lt;p class=růžovoučký>Růžovoučký odstaveček</code></pre>
 
+<style>
 .content .růžovoučký {background: pink; font-size: small}
+</style>
+<p class='live růžovoučký'>Růžovoučký odstaveček
 
-Růžovoučký odstaveček
+<p>Lepší bizarnosti ale začínají s dalšími speciálními znaky:
+<ol><li>Co třeba stylové pojmenování třídy stylující částku v EUR?
+<pre><code>.€ {color: blue}</code></pre>
+<li>Nebo pojmenování stylu pro vypsání teploty?
+<pre><code>&lt;span class=<b>°C</b>>21 °C&lt;/span></code></pre>
+<li>Proč používat pro zarovnání zdlouhavé třídy <code>left</code> nebo <code>right</code>?
+<pre><code>.<b>←</b> {text-align: left}
+.<b>→</b> {text-align: right}</code></pre>
+<li>Podtrhávání odteď zásadně:
+<pre><code>.<b>_</b> {text-decoration: underline}</code></pre>
+<li>A třída pro citace může vypadat:
+<pre><code>&lt;p class=<b>„“</b>>Citovaný text.</code></pre>
+<li>A nakonec třeba třída bez třídy (pomocí nedělitelné mezery):
+<pre><code>. {padding: 1em}</code></pre>
+<pre><code>&lt;p class= >Odstavec s paddingem.</code></pre>
+</ol>
 
-Lepší bizarnosti ale začínají s dalšími speciálními znaky:
-Co třeba stylové pojmenování třídy stylující částku v EUR?
-```
-.€ {color: blue}
-```
+<p>Přestože to hezky funguje, asi není ideální takto třídy zapisovat. Jednak to může zaskočit HTML/CSS editor při obarvování syntaxe a jednak to může zaskočit člověka, co bude s kódem chtít pracovat, obzvláště nebude-li umět zapsat některé <a href="/ceska-klavesnice">speciální znaky</a>.
 
-Nebo pojmenování stylu pro vypsání teploty?
-```
-&lt;span class=**°C**>21 °C&lt;/span>
-```
-
-Proč používat pro zarovnání zdlouhavé třídy `left` nebo `right`?
-```
-.**←** {text-align: left}
-.**→** {text-align: right}
-```
-
-Podtrhávání odteď zásadně:
-```
-.**_** {text-decoration: underline}
-```
-
-A třída pro citace může vypadat:
-```
-&lt;p class=**„“**>Citovaný text.
-```
-
-A nakonec třeba třída bez třídy (pomocí nedělitelné mezery):
-```
-. {padding: 1em}
-```
-
-```
-&lt;p class= >Odstavec s paddingem.
-```
-
-Přestože to hezky funguje, asi není ideální takto třídy zapisovat. Jednak to může zaskočit HTML/CSS editor při obarvování syntaxe a jednak to může zaskočit člověka, co bude s kódem chtít pracovat, obzvláště nebude-li umět zapsat některé [speciální znaky](/ceska-klavesnice).
-
-## Test
-
-Pokud daná třída funguje, bude zelená.
-
+<h2 id=test>Test</h2>
+<p>Pokud daná třída funguje, <font color=green>bude zelená</font>.
+<style type='text/css'>
 .zlutoucka {color: green}
 .1 {color: green}
 .1zlutoucka {color: green}
@@ -86,25 +66,28 @@ Pokud daná třída funguje, bude zelená.
 .. {color: green;}
 .# {color: green;}
 .() {color: green;}
+</style>
 
-Zadaná třída je „`zlutoucka`“.  
-Zadaná třída je „`1`“.
-Zadaná třída je „`1zlutoucka`“.
-Zadaná třída je „`žluťoučká`“.
-Zadaná třída je „`1žluťoučká`“.
-Zadaná třída je „`1_žluťoučká—třída`“.
-Zadaná třída je „`zlut666oucka`“.
-Zadaná třída je „`žluťo„uč“ká—třída`“.
-Zadaná třída je „`žluťoučká-třída`“.
-Zadaná třída je „`→`“.
-Zadaná třída je „` `“ (tvrdá mezera).
-Zadaná třída je „`.`“.
-Zadaná třída je „`()`“.
-Zadaná třída je „`~`“.
-Zadaná třída je „`=`“.
-Zadaná třída je „`_`“.
-Zadaná třída je „`° C`“.
-Zadaná třída je „`€`“.
-Zadaná třída je „`÷×`“.
-Zadaná třída je „`_žluťoučká—třída`“.
-Zadaná třída je „`#`“.
+<ul>
+<li class='zlutoucka'>Zadaná třída je „<code>zlutoucka</code>“.  
+<li class='1'>Zadaná třída je „<code>1</code>“.
+<li class='1zlutoucka'>Zadaná třída je „<code>1zlutoucka</code>“.
+<li class='žluťoučká'>Zadaná třída je „<code>žluťoučká</code>“.
+<li class='1žluťoučká'>Zadaná třída je „<code>1žluťoučká</code>“.
+<li class='1_žluťoučká—třída'>Zadaná třída je „<code>1_žluťoučká—třída</code>“.
+<li class='zlut666oucka'>Zadaná třída je „<code>zlut666oucka</code>“.
+<li class='žluťo„uč“ká—třída'>Zadaná třída je „<code>žluťo„uč“ká—třída</code>“.
+<li class='žluťoučká-třída'>Zadaná třída je „<code>žluťoučká-třída</code>“.
+<li class='→'>Zadaná třída je „<code>→</code>“.
+<li class= >Zadaná třída je „<code> </code>“ (tvrdá mezera).
+<li class=.>Zadaná třída je „<code>.</code>“.
+<li class='()'>Zadaná třída je „<code>()</code>“.
+<li class='~'>Zadaná třída je „<code>~</code>“.
+<li class='='>Zadaná třída je „<code>=</code>“.
+<li class='_'>Zadaná třída je „<code>_</code>“.
+<li class='° C'>Zadaná třída je „<code>° C</code>“.
+<li class='€'>Zadaná třída je „<code>€</code>“.
+<li class='÷×'>Zadaná třída je „<code>÷×</code>“.
+<li class='_žluťoučká—třída'>Zadaná třída je „<code>_žluťoučká—třída</code>“.
+<li class=#>Zadaná třída je „<code>#</code>“.
+</ul>

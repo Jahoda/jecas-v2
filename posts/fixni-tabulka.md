@@ -6,24 +6,36 @@ date: "2019-05-22"
 last_modification: "2019-05-22"
 status: 0
 tags: []
+format: "html"
 ---
 
-Vzhledem k potřebě vytvářet [resposnivní weby](/responsive) je často elegantním řešením pro tabulky fixování jejich sloupců.
+<p>Vzhledem k potřebě vytvářet <a href="/responsive">resposnivní weby</a> je často elegantním řešením pro tabulky fixování jejich sloupců.</p>
 
-Kromě běžných tabulek na mobilu se fixování hodí i u hodně velkých tabulek na velkých zařízeních.
+<p>Kromě běžných tabulek na mobilu se fixování hodí i u hodně velkých tabulek na velkých zařízeních.</p>
 
-Fixování připadá do hry v případě, že by přeskládání tabulky bylo příliš krkolomné a obyčejné rolování nedostatečné:
 
-    - [Responsivní tabulky](/responsivni-tabulky) – samostatný článek o dalších postupech
+<p>Fixování připadá do hry v případě, že by přeskládání tabulky bylo příliš krkolomné a obyčejné rolování nedostatečné:</p>
 
-## Jak na to?
+<div class="internal-content">
+  <ul>
+    <li><a href="/responsivni-tabulky">Responsivní tabulky</a> – samostatný článek o dalších postupech</li>
+  </ul>
+</div>
 
-Existuje několik možností. Žádná není úplně ideální, takže se hodí pro různé případy:
 
-### Absolutní posicování
+<h2 id="jak">Jak na to?</h2>
+
+<p>Existuje několik možností. Žádná není úplně ideální, takže se hodí pro různé případy:</p>
+
+<h3 id="absolute">Absolutní posicování</h3>
 
 http://kod.djpw.cz/amrc
 
-## Smysluplnost tabulky
 
-Nevýhoda některých postupů může být v ne úplně smysluplném HTML kódu tabulky. To je problém třeba u hlasových čteček nebo při kopírování tabulky.
+
+
+
+
+<h2 id="semantika">Smysluplnost tabulky</h2>
+
+<p>Nevýhoda některých postupů může být v ne úplně smysluplném HTML kódu tabulky. To je problém třeba u hlasových čteček nebo při kopírování tabulky.</p>

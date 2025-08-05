@@ -5,90 +5,79 @@ description: "Možnosti, jak otevřít stránku do nového okna / nového tabu p
 date: "2014-03-04"
 last_modification: "2014-03-13"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-Někteří lidé namítají, že by webová stránka neměla nic otevírat do nového okna a **nechat to na uživateli**.
+<p>Někteří lidé namítají, že by webová stránka neměla nic otevírat do nového okna a <b>nechat to na uživateli</b>.</p>
 
-Ten si přece umí odkaz požadovaným způsobem *otevřít sám*. Cíl odkazu je ve většině prohlížečů zpravidla možné:
+<p>Ten si přece umí odkaz požadovaným způsobem <i>otevřít sám</i>. Cíl odkazu je ve většině prohlížečů zpravidla možné:</p>
 
-  - otevřít **kliknutím kolečkem**, stránka se otevře na pozadí,
+<ol>
+  <li>otevřít <b>kliknutím kolečkem</b>, stránka se otevře na pozadí,</li>
+  <li>otevřít rovněž <b>na pozadí</b> při přidržení klávesy <kbd>Ctrl</kbd> a prokliknutím,</li>
+  <li>otevřít do <b>nové záložky</b> přidržením klávesy <kbd>Shift</kbd>,</li>
+  <li>vybrat požadovaný způsob z <b>kontextové nabídky</b>.</li>
+</ol>
 
-  - otevřít rovněž **na pozadí** při přidržení klávesy Ctrl a prokliknutím,
+<div class="live">
+  <a href="http://kod.djpw.cz">Odkaz na vyzkoušení</a>
+</div>
 
-  - otevřít do **nové záložky** přidržením klávesy Shift,
+<p>Osobně se ale domnívám, že značná část návštěvníků toto <b>nezná</b> a v případech, kdy je nežádoucí přechodem na další stránku v podstatě <b>zavřít tu původní</b>, je <b>otevření nového okna</b> rozumné řešení. (Nechtěnému zavření může zabránit <a href="/onbeforeunload">událost <code>onbeforeunload</code></a> a nebo alespoň minimalisovat následky dokáže <a href="/zalohovani-formularu">ukládání formulářů do <code>localStorage</code></a>.)</p>
 
-  - vybrat požadovaný způsob z **kontextové nabídky**.
+<p>Těm, co je <i>nevyžádané</i> otevírání <b>nových tabů</b> otravuje, doporučím alespoň zjednodušení v podobě zavírání záložek <b>klikáním kolečkem</b> – ve většině prohlížečů funguje.</p>
 
-  [Odkaz na vyzkoušení](http://kod.djpw.cz)
+<h2 id="target">HTML odkaz a <code>target</code></h2>
 
-Osobně se ale domnívám, že značná část návštěvníků toto **nezná** a v případech, kdy je nežádoucí přechodem na další stránku v podstatě **zavřít tu původní**, je **otevření nového okna** rozumné řešení. (Nechtěnému zavření může zabránit [událost `onbeforeunload`](/onbeforeunload) a nebo alespoň minimalisovat následky dokáže [ukládání formulářů do `localStorage`](/zalohovani-formularu).)
+<p>První způsob otevření nového okna je obyčejný HTML odkaz doplněný o nastavení prázdného rámu:</p>
 
-Těm, co je *nevyžádané* otevírání **nových tabů** otravuje, doporučím alespoň zjednodušení v podobě zavírání záložek **klikáním kolečkem** – ve většině prohlížečů funguje.
-
-## HTML odkaz a `target`
-
-První způsob otevření nového okna je obyčejný HTML odkaz doplněný o nastavení prázdného rámu:
-
-```
-&lt;a href="http://example.com" **target**="*_blank*">
+<pre><code>&lt;a href="http://example.com" <b>target</b>="<i>_blank</i>">
   Text odkazu
-&lt;/a>
-```
+&lt;/a></code></pre>
 
-Pro otevření cíle odkazu do nového tabu se zpravidla používá hodnota `_blank`. (Mimochodem, je možné použít i nějaké **nesmyslné jméno rámce**, což také funguje.)
+<p>Pro otevření cíle odkazu do nového tabu se zpravidla používá hodnota <code>_blank</code>. (Mimochodem, je možné použít i nějaké <b>nesmyslné jméno rámce</b>, což také funguje.)</p>
 
-## JavaScript a `window.open`
+<h2 id="window-open">JavaScript a <code>window.open</code></h2>
 
-V JS se nové okno otevírá přes `window.open`.
+<p>V JS se nové okno otevírá přes <code>window.open</code>.</p>
 
-```
-window.open("url-stranky", '_blank');
-```
+<pre><code>window.open("url-stranky", '_blank');</code></pre>
 
-### Blokování vyskakovacích oken
+<h3 id="blokovani">Blokování vyskakovacích oken</h3>
 
-Kvůli pohodlí uživatelů většina prohlížečů **blokuje automatické otevírání nových oken**, která se JavaScript snaží otevřít bez přímé akce uživatele. Jako *přímé* akce jsou vyhodnocovány některé [události myši](/udalosti-mysi), např. `onclick` nebo `onmousedown`, tam prohlížeče ve výchozím nastavení **nová okna neblokují**.
+<p>Kvůli pohodlí uživatelů většina prohlížečů <b>blokuje automatické otevírání nových oken</b>, která se JavaScript snaží otevřít bez přímé akce uživatele. Jako <i>přímé</i> akce jsou vyhodnocovány některé <a href="/udalosti-mysi">události myši</a>, např. <code>onclick</code> nebo <code>onmousedown</code>, tam prohlížeče ve výchozím nastavení <b>nová okna neblokují</b>.</p>
 
-Neznám způsob, jak u jiných událostí omezení obejít, **nefunguje** ani trik typu:
+<p>Neznám způsob, jak u jiných událostí omezení obejít, <b>nefunguje</b> ani trik typu:</p>
 
-```
-&lt;button id="tlacitko" onclick="window.open('http://example.com')">
+<pre><code>&lt;button id="tlacitko" onclick="window.open('http://example.com')">
   Tlačítko
 &lt;/button>
 &lt;script>
   document.getElementById("tlacitko").click();
-&lt;/script>
-```
+&lt;/script></code></pre>
 
-[Ukázka](http://kod.djpw.cz/jfcb)
+<p><a href="http://kod.djpw.cz/jfcb">Ukázka</a></p>
 
-### Změna URL okna
+<h3 id="zmena-url">Změna URL okna</h3>
 
-Měnit URL zobrazenou v okně **otevřeném skriptem** je možné přes `location.href` ([ukázka](http://kod.djpw.cz/kfcb)):
+<p>Měnit URL zobrazenou v okně <b>otevřeném skriptem</b> je možné přes <code>location.href</code> (<a href="http://kod.djpw.cz/kfcb">ukázka</a>):</p>
 
-```
-var okno = window.open();
-okno.location.href = "http://example.com";
-```
+<pre><code>var okno = window.open();
+okno.location.href = "http://example.com";</code></pre>
 
-To se může hodit v situaci, kdy při potřebě otevřít nové okno ještě **neznáme URL**, která se teprve zjistí třeba [AJAXem](/ajax). Při přímé akci (kliknutí) se jen otevře prázdné okno a při nepřímé akci (získání dat AJAXem) se změní URL. To funguje bez **blokování** ze strany prohlížečů.
+<p>To se může hodit v situaci, kdy při potřebě otevřít nové okno ještě <b>neznáme URL</b>, která se teprve zjistí třeba <a href="/ajax">AJAXem</a>. Při přímé akci (kliknutí) se jen otevře prázdné okno a při nepřímé akci (získání dat AJAXem) se změní URL. To funguje bez <b>blokování</b> ze strany prohlížečů.</p>
 
-### Zavření okna
+<h3 id="zavreni">Zavření okna</h3>
 
-Právě otevřené okno zavře prosté:
+<p>Právě otevřené okno zavře prosté:</p>
+<pre><code>window.close()</code></pre>
 
-```
-window.close()
-```
+<p>V případě, že si na skriptem vytvořené okno vytvoříme odkaz (přiřadíme ho do proměnné dostupné z daného <a href="/scope">scope</a>), můžeme zavřít i okno konkrétní:</p>
 
-V případě, že si na skriptem vytvořené okno vytvoříme odkaz (přiřadíme ho do proměnné dostupné z daného [scope](/scope)), můžeme zavřít i okno konkrétní:
+<pre><code>var <b>okno</b> = window.open("url");
+<b>okno</b>.close();</code></pre>
 
-```
-var **okno** = window.open("url");
-**okno**.close();
-```
+<h2 id="window-open-dalsi">Rozšíření <code>window.open</code></h2>
 
-## Rozšíření `window.open`
-
-Kromě URL stránky a názvu okna/rámu existuje ještě třetí parametr, který umožňuje různá **další nastavení**, co fungují různě napříč prohlížeči, a je s jejich pomocí možné docílit různých nestandardních podob. A to moc nedoporučuji.
+<p>Kromě URL stránky a názvu okna/rámu existuje ještě třetí parametr, který umožňuje různá <b>další nastavení</b>, co fungují různě napříč prohlížeči, a je s jejich pomocí možné docílit různých nestandardních podob. A to moc nedoporučuji.</p>

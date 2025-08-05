@@ -5,59 +5,74 @@ description: "Systémový vzhled elementů pomocí CSS vlastnosti <code>appearan
 date: "2016-11-01"
 last_modification: "2016-11-01"
 status: 1
-tags: ["CSS", "Stylování elementů", "CSS vlastnosti"]
+tags: ["css", "css-vlastnosti", "stylovani"]
+format: "html"
 ---
 
-Kromě neutrálních značek [`&lt;div>` a `&lt;span>`](/div-span), které se bez patřičného stylování zobrazují bez zvláštních stylů, existují elementy, které visuální podobu přebírají z operačního systému – typicky prvky [formulářů](/formulare).
+<p>Kromě neutrálních značek <a href="/div-span"><code>&lt;div></code> a <code>&lt;span></code></a>, které se bez patřičného stylování zobrazují bez zvláštních stylů, existují elementy, které visuální podobu přebírají z operačního systému – typicky prvky <a href="/formulare">formulářů</a>.</p>
 
-Vlastností `appearance` jde tento vzhled přiřadit *normálním* HTML značkám. (*Appearance* znamená v angličtině vzhled.)
+<p>Vlastností <code>appearance</code> jde tento vzhled přiřadit <i>normálním</i> HTML značkám. (<i lang="en">Appearance</i> znamená v angličtině vzhled.)</p>
 
-Symbolický zápis může vypadat následovně:
+<p>Symbolický zápis může vypadat následovně:</p>
 
-```
-.jako-tlacitko {
+<pre><code>.jako-tlacitko {
   appearance: button; 
-}
-```
+}</code></pre>
 
-Po přiřazení této třídy pro běžný `&lt;div>` vznikne něco jako [`&lt;button>`](/button).
 
+
+
+
+
+
+<p>Po přiřazení této třídy pro běžný <code>&lt;div></code> vznikne něco jako <a href="/button"><code>&lt;button></code></a>.</p>
+
+<div class="live">
+  <div style="-webkit-appearance: button; -moz-appearance: button; appearance: button">
     Text v „tlačítku“
+  </div>
+</div>
 
-Jedná se **pouze** o visuální změnu. Veškeré chování je jinak stejné jako u obyčejného elementu.
 
-## Podpora
+<p>Jedná se <b>pouze</b> o visuální změnu. Veškeré chování je jinak stejné jako u obyčejného elementu.</p>
 
-Podpora chybí v **Internet Exploreru** / [**MS Edge**](/microsoft-edge) a pro **Chrome**/**Operu**/**Safari**/**Firefox** je nutné použí [CSS prefixy](/css-prefixy). Navíc se od sebe liší hodnoty pro `-webkit-` a `-moz-` prefix.
 
-Možných hodnot existuje obrovské množství:
+<h2 id="podpora">Podpora</h2>
 
-    - DevDocs: [`-webkit-appearance`](http://devdocs.io/css/-webkit-appearance)
+<p>Podpora chybí v <b>Internet Exploreru</b> / <a href="/microsoft-edge"><b>MS Edge</b></a> a pro <b>Chrome</b>/<b>Operu</b>/<b>Safari</b>/<b>Firefox</b> je nutné použí <a href="/css-prefixy">CSS prefixy</a>. Navíc se od sebe liší hodnoty pro <code>-webkit-</code> a <code>-moz-</code> prefix.</p>
 
-    - DevDocs: [`-moz-appearance`](http://devdocs.io/css/-moz-appearance)
+<p>Možných hodnot existuje obrovské množství:</p>
 
-V praxi jakž takž rozumně fungují hodnoty nastavující tlačítko, [checkbox](/input#type-checkbox) a [radio přepínač](/input#type-radio).
+<div class="external-content">
+  <ul>
+    <li>DevDocs: <a href="http://devdocs.io/css/-webkit-appearance"><code>-webkit-appearance</code></a></li>
+    <li>DevDocs: <a href="http://devdocs.io/css/-moz-appearance"><code>-moz-appearance</code></a></li>
+  </ul>
+</div>
 
-  - `appearance: button` – Tlačítko
+<p>V praxi jakž takž rozumně fungují hodnoty nastavující tlačítko, <a href="/input#type-checkbox">checkbox</a> a <a href="/input#type-radio">radio přepínač</a>.</p>
 
-  - `appearance: checkbox` – &nbsp;&nbsp;&nbsp; checkbox
+<ul>
+  <li><code>appearance: button</code> – <span style="-webkit-appearance: button; -moz-appearance: button">Tlačítko</span></li>
+  <li><code>appearance: checkbox</code> – <span style="-webkit-appearance: checkbox; -moz-appearance: checkbox">&nbsp;&nbsp;&nbsp;</span> checkbox</li>
+  <li><code>appearance: radio</code> – <span style="-webkit-appearance: radio; -moz-appearance: radio">&nbsp;&nbsp;&nbsp;</span> checkbox</li>
+</ul>
 
-  - `appearance: radio` – &nbsp;&nbsp;&nbsp; checkbox
 
-## `appearance: none`
+<h2 id="none"><code>appearance: none</code></h2>
 
-Možná nejzajímavější hodnota vlastnosti `appearance` je `none`. Ta totiž dokáže vypnout výchozí vzhled formulářových prvků a umožnit jejich vlastní stylování.
+<p>Možná nejzajímavější hodnota vlastnosti <code>appearance</code> je <code>none</code>. Ta totiž dokáže vypnout výchozí vzhled formulářových prvků a umožnit jejich vlastní stylování.</p>
 
-```
-input {
+<pre><code>input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
-```
+}</code></pre>
 
-Výsledek může vypadat třeba takto:
+<p>Výsledek může vypadat třeba takto:</p>
 
+<div class="live">
+  <style>
     #vlastni-checkbox {
       -webkit-appearance: none;
       -moz-appearance: none; 
@@ -71,13 +86,22 @@ Výsledek může vypadat třeba takto:
     #vlastni-checkbox:checked {
       background: #0D6AB7;
     }
+  </style>
+  <input type="checkbox" id="vlastni-checkbox">
+  <label for="vlastni-checkbox">Vlastní styl checkboxu</label>
+</div>
 
-  Vlastní styl checkboxu
+<p>Vzhledem k nespolehlivosti vlastnosti <code>appearance</code> je ale pořád osvědčenější postup používat atrapy pomocí <a href="/label-for">značky <code>&lt;label></code></a>:</p>
 
-Vzhledem k nespolehlivosti vlastnosti `appearance` je ale pořád osvědčenější postup používat atrapy pomocí [značky `&lt;label>`](/label-for):
+<div class="internal-content">
+  <ul>
+    <li><a href="/stylovani-checked">Pokročilé stylování <code>checkbox</code>u</a></li>
+  </ul>
+</div>
 
-    - [Pokročilé stylování `checkbox`u](/stylovani-checked)
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - CSS Tricks: [`appearance`](https://css-tricks.com/almanac/properties/a/appearance/)
+<ul>
+  <li>CSS Tricks: <a href="https://css-tricks.com/almanac/properties/a/appearance/"><code>appearance</code></a></li>
+</ul>

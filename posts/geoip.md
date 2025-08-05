@@ -5,49 +5,52 @@ description: "Jak na základě IP adresy lokalisovat návštěvníka webu."
 date: "2014-05-11"
 last_modification: "2014-05-16"
 status: 1
-tags: ["Hotová řešení", "PHP"]
+tags: ["hotova-reseni", "php"]
+format: "html"
 ---
 
-V některých případech se hodí **zjistit zemi**, ze které se návštěvník na web připojuje.
+<p>V některých případech se hodí <b>zjistit zemi</b>, ze které se návštěvník na web připojuje.</p>
 
-## Proč lokalisovat?
+<h2 id="proc">Proč lokalisovat?</h2>
 
-  - Nabídnutí vhodného jazyka webu / nabídnutí na lokalitu zaměřené nabídky.
+<ul>
+  
+  <li>Nabídnutí vhodného jazyka webu / nabídnutí na lokalitu zaměřené nabídky.</li>
+  
+  <li>U webů pro primárně <b>českou/slovenskou klientelu</b> můžeme pro cizí návštěvníky zpřísnit <a href="/spam">ochranu před spamem</a>.</li>
+</ul>
 
-  - U webů pro primárně **českou/slovenskou klientelu** můžeme pro cizí návštěvníky zpřísnit [ochranu před spamem](/spam).
+<p>Kromě zkoumání IP adresy se dá jazyk odhadnout z hlavičky <a href="/server#http-accept-language"><code>HTTP_ACCEPT_LANGUAGE</code></a> nebo použít geolokační JS API (to ale musí návštěvník povolit).</p>
 
-Kromě zkoumání IP adresy se dá jazyk odhadnout z hlavičky [`HTTP_ACCEPT_LANGUAGE`](/server#http-accept-language) nebo použít geolokační JS API (to ale musí návštěvník povolit).
+<h2 id="php">GeoIP v PHP</h2>
 
-## GeoIP v PHP
+<p>Pro určení země určité IP adresy potřebujeme dvě věci:</p>
 
-Pro určení země určité IP adresy potřebujeme dvě věci:
+<ol>
+  <li>
+    <p>Databasi IP adres.</p>
+    <p>Ta může být i zdarma – <a href="http://dev.maxmind.com/geoip/legacy/geolite/#Downloads">GeoLite</a>.</p>
+    <p><a href="http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz" class="button">Stáhnout</a></p>
+  </li>
+  
+  <li>
+    <p>PHP skript, jenž bude s touto DB pracovat.</p>
+    <p><a href="https://github.com/maxmind/geoip-api-php/blob/master/src/geoip.inc"><code>geoip.inc</code></a></p>
+  </li>
+</ol>
 
-    Databasi IP adres.
+<h3 id="pouziti">Použití</h3>
 
-    Ta může být i zdarma – [GeoLite](http://dev.maxmind.com/geoip/legacy/geolite/#Downloads).
+<p>Nyní stačí PHP soubor připoji a předat soubor s databásí.</p>
 
-    [Stáhnout](http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz)
+<pre><code>include("geoip.inc");
+<b>$gi</b> = geoip_open("GeoIP.dat", GEOIP_STANDARD);</code></pre>
 
-    PHP skript, jenž bude s touto DB pracovat.
+<p>Kód země (např. <code>CZ</code> pro Českou republiku) dané IP adresy potom vrátí funkce <code>geoip_country_code_by_addr</code>.</p>
 
-    [`geoip.inc`](https://github.com/maxmind/geoip-api-php/blob/master/src/geoip.inc)
+<pre><code>$zeme = geoip_country_code_by_addr(
+  <b>$gi</b>, 
+  <i>$ipAdresa</i>
+);</code></pre>
 
-### Použití
-
-Nyní stačí PHP soubor připoji a předat soubor s databásí.
-
-```
-include("geoip.inc");
-**$gi** = geoip_open("GeoIP.dat", GEOIP_STANDARD);
-```
-
-Kód země (např. `CZ` pro Českou republiku) dané IP adresy potom vrátí funkce `geoip_country_code_by_addr`.
-
-```
-$zeme = geoip_country_code_by_addr(
-  **$gi**, 
-  *$ipAdresa*
-);
-```
-
-Pro plný název země v angličtině (např. `Czech Republic`) slouží funkce `geoip_country_**name**_by_addr`. Použití je stejné jako při získávání dvojpísmenného kódu.
+<p>Pro plný název země v angličtině (např. <code>Czech Republic</code>) slouží funkce <code>geoip_country_<b>name</b>_by_addr</code>. Použití je stejné jako při získávání dvojpísmenného kódu.</p>

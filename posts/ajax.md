@@ -5,165 +5,131 @@ description: "Asynchronní načítání částí stránek a odesílání formul�
 date: "2013-11-15"
 last_modification: "2013-11-16"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "Rady a nápady", "AJAX"]
+tags: ["hotova-reseni", "js", "js-ajax", "napady"]
+format: "html"
 ---
 
-Od **IE 7** je napříč prohlížeči nejednodušší funkční řešení následující:
-
-```
-var xhr = new XMLHttpRequest();
+<p>Od <b>IE 7</b> je napříč prohlížeči nejednodušší funkční řešení následující:</p>
+<pre><code>var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function () {
-  if (xhr.readyState == 4) alert(**xhr.responseText**);
+  if (xhr.readyState == 4) alert(<b>xhr.responseText</b>);
 }
-xhr.open('GET', "*url-stranky*");
-xhr.send();
-```
+xhr.open('GET', "<i>url-stranky</i>");
+xhr.send();</code></pre>
 
-Pro případnou podporu **IE 6** a starších je třeba použít `ActiveXObject`.
 
-```
-var xhr = window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : new XMLHttpRequest();
-```
 
-## JSON
 
-Zkratka [JSON](/json) znamená *JavaScript Object Notation*, tj. jedná se o textový obsah, který je ve formátu jako se v JS vytváří objekty. Obsah je typu `{klic: "hodnota"}` a v **PHP** jde elegantně vytvořit z běžného pole funkcí [`json_encode`](http://php.net/json_encode).
 
-V `xhr.responseText` bude po vykonání **požadavku na URL** obsah dané stránky (co se stahuje si lze snadno ověřit zadáním stejné URL do prohlížeče). Neřeší se, zda se jedná o **HTML**, **JSON** nebo cokoliv jiného. Tvůrce si tedy může vybrat, který formát bude preferovat a používat.
 
-Pokud není příliš obtížné / je možné stránku na straně serveru upravit tak, aby v určitých situacích (např. speciální parametr v URL) **vracela JSON** pouze s potřebnými daty, bude se s výsledkem z `xhr.responseText` lépe pracovat.
 
-Vyzobávat potřebná data je možné i z původního HTML souboru včetně `&lt;!doctype>`, hlavičky a podobně, a to buď **regulárními výrazy** nebo standardními funkcemi **DOM**u. Je potom ale otázka, zda **asynchronní načítání** vůbec používat. V takovém případě to  vyjde stejně jako **běžný přechod** na cílovou URL (stáhne se stejné množství dat).
+<p>Pro případnou podporu <b>IE 6</b> a starších je třeba použít <code>ActiveXObject</code>.</p>
 
-## Řešení AJAXu s JSONem
+<pre><code>var xhr = window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : new XMLHttpRequest();</code></pre>
 
-Hotová funkce pro **zpracovávání JSONu získaného AJAXem** může vypadat následovně:
 
-```
-function ajax(url, callback) {
+
+
+<h2 id="json">JSON</h2>
+
+<p>Zkratka <a href="/json">JSON</a> znamená <i>JavaScript Object Notation</i>, tj. jedná se o textový obsah, který je ve formátu jako se v JS vytváří objekty. Obsah je typu <code>{klic: "hodnota"}</code> a v <b>PHP</b> jde elegantně vytvořit z běžného pole funkcí <a href="http://php.net/json_encode"><code>json_encode</code></a>.</p>
+
+<p>V <code>xhr.responseText</code> bude po vykonání <b>požadavku na URL</b> obsah dané stránky (co se stahuje si lze snadno ověřit zadáním stejné URL do prohlížeče). Neřeší se, zda se jedná o <b>HTML</b>, <b>JSON</b> nebo cokoliv jiného. Tvůrce si tedy může vybrat, který formát bude preferovat a používat.</p>
+
+<p>Pokud není příliš obtížné / je možné stránku na straně serveru upravit tak, aby v určitých situacích (např. speciální parametr v URL) <b>vracela JSON</b> pouze s potřebnými daty, bude se s výsledkem z <code>xhr.responseText</code> lépe pracovat.</p>
+
+<p>Vyzobávat potřebná data je možné i z původního HTML souboru včetně <code>&lt;!doctype></code>, hlavičky a podobně, a to buď <b>regulárními výrazy</b> nebo standardními funkcemi <b>DOM</b>u. Je potom ale otázka, zda <b>asynchronní načítání</b> vůbec používat. V takovém případě to  vyjde stejně jako <b>běžný přechod</b> na cílovou URL (stáhne se stejné množství dat).</p>
+
+<h2 id="ajax-json">Řešení AJAXu s JSONem</h2>
+<p>Hotová funkce pro <b>zpracovávání JSONu získaného AJAXem</b> může vypadat následovně:</p>
+<pre><code>function ajax(url, callback) {
   var xhr = window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4) callback(eval('(' + xhr.responseText + ')'));
   };
   xhr.open('GET', url);
   xhr.send();
-}
-```
+}</code></pre>
 
-**Použití** pro JSON obsah `{url: "http://jecas.cz", nazev: "Je čas"}` ([živá ukázka](http://kod.djpw.cz/cir)):
-
-```
-ajax("url-stranky", function(data) {
+<p><b>Použití</b> pro JSON obsah <code>{url: "http://jecas.cz", nazev: "Je čas"}</code> (<a href="http://kod.djpw.cz/cir">živá ukázka</a>):</p>
+<pre><code>ajax("url-stranky", function(data) {
   alert(data.url); // vypíše „http://jecas.cz“
   alert(data.nazev); // vypíše „Je čas“
-});
-```
+});</code></pre>
 
-Pro zpracovávání **prostého textu nebo HTML** stačí z funkce `ajax` odstranit `eval` a pracovat s textovým řetězcem ([ukázka](http://kod.djpw.cz/eir)).
+<p>Pro zpracovávání <b>prostého textu nebo HTML</b> stačí z funkce <code>ajax</code> odstranit <code>eval</code> a pracovat s textovým řetězcem (<a href="http://kod.djpw.cz/eir">ukázka</a>).</p>
 
-## AJAX na jinou doménu
+<h2 id="jina-domena">AJAX na jinou doménu</h2>
+<p>Kvůli bezpečnosti je možné používat AJAX jen v rámci <b>stejné domény</b>. Tedy z domény <code>example.com</code> se dostaneme na stránku <code>example.com/stranka</code>. Ale už ne na <code><i>jiny.</i>example.com</code>, <code><i>www.</i>example.com</code> (AJAX nefunguje ani na <b>subdoménách</b>) nebo <code><i>jiny-</i>example.com</code>.</p>
 
-Kvůli bezpečnosti je možné používat AJAX jen v rámci **stejné domény**. Tedy z domény `example.com` se dostaneme na stránku `example.com/stranka`. Ale už ne na `*jiny.*example.com`, `*www.*example.com` (AJAX nefunguje ani na **subdoménách**) nebo `*jiny-*example.com`.
+<h3>Řešení je</h3>
+<ol>
+  <li>Zajistit, aby potřebný obsah byl dostupný na <b>URL z téže domény</b>.</li>
+  <li>Vytvořit na stejné doméně skript, který z cizí domény <a href="/stazeni-stranky">stránku stáhne</a>. K takovému obsahu už se AJAX dostane.</li>
+  <li>Obsah z cizí domény <b>připojovat jako externí skript</b> (tzv. JSON<b>P</b>).</li>
+</ol>
 
-### Řešení je
+<h2 id="jsonp">JSONP</h2>
+<p>JSONP je <i>JavaScriptový objekt s „vycpávkou“</i>. Funguje to tak, že se běžný JSON umístí do argumentu nějaké funkce (to je ta <i>vycpávka</i>) a celé se to připojí jako <b>externí JavaScript</b> (připojovat skripty je možné i z <b>jiné domény</b>).</p>
+<p>Takový JSONP soubor / externí JS (ve skutečnosti třeba v PHP dynamicky generovaný <i>soubor</i> na straně serveru) může vypadat následovně:</p>
+<pre><code>vlastniFunkce({url: "http://jecas.cz", nazev: "Je čas"})</code></pre>
 
-  - Zajistit, aby potřebný obsah byl dostupný na **URL z téže domény**.
+<p>V momentě, kdy tento skript připojíme (a on se stáhne a vykoná), se zavolá funkce <code>vlastniFunkce</code> (kterou si na cílovém webu nadeklarujeme) a budou jí tak předána data, která může dále libovolně zpracovávat.</p>
 
-  - Vytvořit na stejné doméně skript, který z cizí domény [stránku stáhne](/stazeni-stranky). K takovému obsahu už se AJAX dostane.
+<p>Kromě zpracovávání JSONu ale nic nebrání tuto techniku připojování externího skriptu využít s jiným typem dat, tj. třeba vůbec nepoužívat JSON a data rovnou nastavit jako <b>parametry funkce</b>:</p>
+<pre><code>vlastniFunkce("http://jecas.cz", "Je čas")</code></pre>
 
-  - Obsah z cizí domény **připojovat jako externí skript** (tzv. JSON**P**).
+<p><b>Potenciální risiko</b> JSONP řešení je v tom, že si do stránky připojíme cizí skript, který v případě napadení může vytvořit <a href="/bezpecnost#xss">neřešitelný XSS</a>. Proto je tuto techniku vhodné používat jen u <b>důvěryhodných stránek</b>.</p>
 
-## JSONP
-
-JSONP je *JavaScriptový objekt s „vycpávkou“*. Funguje to tak, že se běžný JSON umístí do argumentu nějaké funkce (to je ta *vycpávka*) a celé se to připojí jako **externí JavaScript** (připojovat skripty je možné i z **jiné domény**).
-
-Takový JSONP soubor / externí JS (ve skutečnosti třeba v PHP dynamicky generovaný *soubor* na straně serveru) může vypadat následovně:
-
-```
-vlastniFunkce({url: "http://jecas.cz", nazev: "Je čas"})
-```
-
-V momentě, kdy tento skript připojíme (a on se stáhne a vykoná), se zavolá funkce `vlastniFunkce` (kterou si na cílovém webu nadeklarujeme) a budou jí tak předána data, která může dále libovolně zpracovávat.
-
-Kromě zpracovávání JSONu ale nic nebrání tuto techniku připojování externího skriptu využít s jiným typem dat, tj. třeba vůbec nepoužívat JSON a data rovnou nastavit jako **parametry funkce**:
-
-```
-vlastniFunkce("http://jecas.cz", "Je čas")
-```
-
-**Potenciální risiko** JSONP řešení je v tom, že si do stránky připojíme cizí skript, který v případě napadení může vytvořit [neřešitelný XSS](/bezpecnost#xss). Proto je tuto techniku vhodné používat jen u **důvěryhodných stránek**.
-
-### Dynamické připojení skriptu
-
-Připojování skriptu může zajišťovat funkce ve stylu.
-
-```
-function pripojitJs(url) {
+<h3 id="pripojeni-skriptu">Dynamické připojení skriptu</h3>
+<p>Připojování skriptu může zajišťovat funkce ve stylu.</p>
+<pre><code>function pripojitJs(url) {
   var s = document.createElement("script");
   s.src = url;
   document.getElementsByTagName("head")[0].appendChild(s);
 }
+</code></pre>
+<p><a href="http://kod.djpw.cz/elr">Živá ukázka</a> JSONP řešení.</p>
 
-```
+<h2 id="indikace">Indikace průběhu</h2>
+<p>Po vyvolání akce, která začne AJAXem stahovat nějaká data, zvlášť v případě, že to bude <b>trvat déle</b>, je vhodné dát uživateli najevo, <i>že se něco děje</i>; to může znázorňovat.</p>
 
-[Živá ukázka](http://kod.djpw.cz/elr) JSONP řešení.
+<ol>
+  <li style="background: url(/files/ajax/ajax-loading.gif) left center no-repeat; padding-left: 20px"><b>Animovaný obrázek</b>, který se objeví po kliknutí a bude skryt <code>callback</code> funkcí.</li>
+  <li style="cursor: wait">Změna kursoru na <code>wait</code> (opět je nutné zajistit <i>vrácení</i> kursoru po <b>dokončení akce</b>). Toto řešení není moc použitelné u dotykem ovládaných zařízení.</li>
+  <li>Nástroj <a href="http://github.hubspot.com/pace/docs/welcome/">PACE</a> nabízí hotové řešení <b>průběhu načítání</b>.</li>
+</ol>
 
-## Indikace průběhu
+<h2 id="formulare">Odesílání formulářů AJAXem</h2>
+<p>AJAXové <b>odesílání formulářů</b> se dá řešit dvěma způsoby. Buď projít všechna formulářová pole JavaScriptem a sestavit z nich řetězec ve stylu <code>prvniPole=hodnota&amp;druhePole=hodnota</code> (<a href="http://php.vrana.cz/odeslani-formulare-pres-ajax.php">hotová funkce</a>).</p>
 
-Po vyvolání akce, která začne AJAXem stahovat nějaká data, zvlášť v případě, že to bude **trvat déle**, je vhodné dát uživateli najevo, *že se něco děje*; to může znázorňovat.
+<p>Nebo formulář odesílat do skrytého rámu, který podobně jako JSONP řešení zavolá funkci z původní stránky s předanými daty.</p>
 
-  - **Animovaný obrázek**, který se objeví po kliknutí a bude skryt `callback` funkcí.
-
-  - Změna kursoru na `wait` (opět je nutné zajistit *vrácení* kursoru po **dokončení akce**). Toto řešení není moc použitelné u dotykem ovládaných zařízení.
-
-  - Nástroj [PACE](http://github.hubspot.com/pace/docs/welcome/) nabízí hotové řešení **průběhu načítání**.
-
-## Odesílání formulářů AJAXem
-
-AJAXové **odesílání formulářů** se dá řešit dvěma způsoby. Buď projít všechna formulářová pole JavaScriptem a sestavit z nich řetězec ve stylu `prvniPole=hodnota&amp;druhePole=hodnota` ([hotová funkce](http://php.vrana.cz/odeslani-formulare-pres-ajax.php)).
-
-Nebo formulář odesílat do skrytého rámu, který podobně jako JSONP řešení zavolá funkci z původní stránky s předanými daty.
-
-Skript, na který se **formulář odešle** vytvoří výstup:
-
-```
-&lt;script>
+<p>Skript, na který se <b>formulář odešle</b> vytvoří výstup:</p>
+<pre><code>&lt;script>
 window.top.window.vlastniFunkce({url: "http://jecas.cz", nazev: "Je čas"});
-&lt;/script>
-```
+&lt;/script></code></pre>
 
-Tím se obsah (JSON) předá funkci v nadřazené stránce **skrytému rámu**. Výhoda tohoto řešení je v tom, že o [indikaci](#indikace) se postará prohlížeč standardní cestou.
+<p>Tím se obsah (JSON) předá funkci v nadřazené stránce <b>skrytému rámu</b>. Výhoda tohoto řešení je v tom, že o <a href="#indikace">indikaci</a> se postará prohlížeč standardní cestou.</p>
 
-Pro [AJAXový upload](/upload-bez-refreshe) je to jediná možnost funkční napříč prohlížeči. Tento způsob se dá bez problému **použít i pro běžný formulář**.
+<p>Pro <a href="/upload-bez-refreshe">AJAXový upload</a> je to jediná možnost funkční napříč prohlížeči. Tento způsob se dá bez problému <b>použít i pro běžný formulář</b>.</p>
 
-## Pseudo AJAX
+<h2 id="pseudo-ajax">Pseudo AJAX</h2>
+<p>Pro situace, kde není potřeba <b>zpětná vazba</b>, si je možné vystačit bez <code>XMLHttpRequest</code>u, JSONP řešení nebo odesílání do skrytého rámu. Chceme-li pouze odeslat nějaká data <b>bez obnovování stránky</b>, existují další možnosti.</p>
 
-Pro situace, kde není potřeba **zpětná vazba**, si je možné vystačit bez `XMLHttpRequest`u, JSONP řešení nebo odesílání do skrytého rámu. Chceme-li pouze odeslat nějaká data **bez obnovování stránky**, existují další možnosti.
+<p>Před použitím tohoto způsobu je nutné pečlivě zvážit, zda <b>absence odezvy</b> nebude pro návštěvníka matoucí.</p>
 
-Před použitím tohoto způsobu je nutné pečlivě zvážit, zda **absence odezvy** nebude pro návštěvníka matoucí.
+<h3 id="hlavicka-204">HTTP hlavička 204</h3>
+<p>HTTP hlavička 204 (No Response / No Content) znamená, že byl požadavek úspěšně zpracován, ale výsledkem není žádný výstup k navrácení klientovi. Za následek to má, že prohlížeč na takovou stránku <b>nepřejde</b>, ale skript běžící na dané URL se <b>normálně vykoná</b>.</p>
 
-### HTTP hlavička 204
-
-HTTP hlavička 204 (No Response / No Content) znamená, že byl požadavek úspěšně zpracován, ale výsledkem není žádný výstup k navrácení klientovi. Za následek to má, že prohlížeč na takovou stránku **nepřejde**, ale skript běžící na dané URL se **normálně vykoná**.
-
-```
-&lt;?php
+<pre><code>&lt;?php
 header('HTTP/1.0 204 No Content', true, 204);
 // Nějaká akce
-exit;
-```
+exit;</code></pre>
 
-### Pingnutí obrázkem
-
-Této techniky často využívají různé **měřicí skripty**. Do **HTML kódu** umístíme obrázek s cílem skriptu, který po vykonání své činnosti vrátí průhledný 1px obrázek (aby na stránce nerušil):
-
-```
-&lt;img src="akce.php">
-```
-
-Případně je možné  pingnutí *obrázkem* provést v JavaScriptu (s generováním prázdného obrázku se nemusíme obtěžovat):
-
-```
-var obrazek = new Image();
-obrazek.src = "akce.php";
-```
+<h3 id="pingnout">Pingnutí obrázkem</h3>
+<p>Této techniky často využívají různé <b>měřicí skripty</b>. Do <b>HTML kódu</b> umístíme obrázek s cílem skriptu, který po vykonání své činnosti vrátí průhledný 1px obrázek (aby na stránce nerušil):</p>
+<pre><code>&lt;img src="akce.php"></code></pre>
+<p>Případně je možné  pingnutí <i>obrázkem</i> provést v JavaScriptu (s generováním prázdného obrázku se nemusíme obtěžovat):</p>
+<pre><code>var obrazek = new Image();
+obrazek.src = "akce.php";</code></pre>

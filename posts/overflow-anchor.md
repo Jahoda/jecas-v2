@@ -5,43 +5,68 @@ description: "CSS vlastnost <code>overflow-anchor</code> umožňuje nastavit, ja
 date: "2019-03-29"
 last_modification: "2019-03-29"
 status: 1
-tags: ["CSS", "CSS vlastnosti", "Scrollování"]
+tags: ["css", "css-vlastnosti", "scroll"]
+format: "html"
 ---
 
-Poměrně dlouhou dobu prohlížeče neřešily situace, kdy se na stránce stane *něco* takového, co způsobí **odrolování někam pryč**.
+<p>Poměrně dlouhou dobu prohlížeče neřešily situace, kdy se na stránce stane <i>něco</i> takového, co způsobí <b>odrolování někam pryč</b>.</p>
 
-Typicky po následujících případech:
+<p>Typicky po následujících případech:</p>
 
-    U (především) mobilních zařízení se **změní orientace z výšky na šířku** nebo obráceně.
+<ol>
+  <li>
+    <p>U (především) mobilních zařízení se <b>změní orientace z výšky na šířku</b> nebo obráceně.</p>
+  </li>
+  
+  <li>
+    <p>Před obsahem se donačte nějaký prvek se zprvu <b>neznámými rozměry</b> a stránka poskočí. Například video, obrázek nebo reklama.</p>
+  </li>
+</ol>
 
-    Před obsahem se donačte nějaký prvek se zprvu **neznámými rozměry** a stránka poskočí. Například video, obrázek nebo reklama.
+<p>Návštěvník si tak prochází webem, stane se nějaká z výše uvedených věcí, a je ztracen, protože je ve <i>viewportu stránky</i> (aktuálně viditelné oblasti) úplně něco jiného, než tam bylo předtím.</p>
 
-Návštěvník si tak prochází webem, stane se nějaká z výše uvedených věcí, a je ztracen, protože je ve *viewportu stránky* (aktuálně viditelné oblasti) úplně něco jiného, než tam bylo předtím.
+<p>Druhý případ s obsahem o neznámých rozměrech si povětšinou zkušený tvůrce webů dokáže ohlídat:</p>
 
-Druhý případ s obsahem o neznámých rozměrech si povětšinou zkušený tvůrce webů dokáže ohlídat:
+<div class="internal-content">
+  <ul>
+    <li><a href="/poskakovani">Poskakování stránky</a> – proč vadí a jak se ho zbavit</li>
+  </ul>
+</div>
 
-    - [Poskakování stránky](/poskakovani) – proč vadí a jak se ho zbavit
 
-Řešit změnu orientace ale už nejde bez nějakého relativně komplikovaného počítání a [scrollování](/odrolovani) v JavaScriptu.
+<p>Řešit změnu orientace ale už nejde bez nějakého relativně komplikovaného počítání a <a href="/odrolovani">scrollování</a> v JavaScriptu.</p>
 
-Naštěstí oba případy začaly **automaticky řešit přímo prohlížeče**. A prohlížeče **Chrome 56+** (leden 2017) a **Firefox 66+** (březen 2019) dokáží toto chování ovlivňovat CSS vlastností.
+<p>Naštěstí oba případy začaly <b>automaticky řešit přímo prohlížeče</b>. A prohlížeče <b>Chrome 56+</b> (leden 2017) a <b>Firefox 66+</b> (březen 2019) dokáží toto chování ovlivňovat CSS vlastností.</p>
 
-## CSS vlastnost `overflow-anchor`
 
-Právě vlastnost `overflow-anchror` zapíná/vypíná toto *chytré* zapamatování odrolování. A nastavuje se pro elementy s posuvníkem (tedy pro celou stránku nebo pro něco s `overflow: auto` / `overflow: scroll`).
+<h2 id="css-vlastnost">CSS vlastnost <code>overflow-anchor</code></h2>
 
-Kromě globálních hodnot `inherit`, `initial` a `unset` existují 2 specifické hodnoty:
+<p>Právě vlastnost <code>overflow-anchror</code> zapíná/vypíná toto <i>chytré</i> zapamatování odrolování. A nastavuje se pro elementy s posuvníkem (tedy pro celou stránku nebo pro něco s <code>overflow: auto</code> / <code>overflow: scroll</code>).</p>
 
-    `overflow-anchor: auto`
+<p>Kromě globálních hodnot <code>inherit</code>, <code>initial</code> a <code>unset</code> existují 2 specifické hodnoty:</p>
 
-    Prohlížeč se sám snaží chovat *chytře* (výchozí chování).
+<dl>
+  <dt id="auto">
+    <code>overflow-anchor: auto</code>
+  </dt>
+  <dd>
+    <p>Prohlížeč se sám snaží chovat <i>chytře</i> (výchozí chování).</p>
+  </dd>
+  
+  <dt id="none">
+    <code>overflow-anchor: none</code>
+  </dt>
+  <dd>
+    <p>Zakáže automatické pokusy prohlížeče o lepší uživatelský zážitek. Hodí se jako pojistka u elementů, kde je nějaké vlastní JavaScriptové scrollování, pokud výchozí chování způsobuje problémy.</p>
+  </dd>
+</dl>
 
-    `overflow-anchor: none`
 
-    Zakáže automatické pokusy prohlížeče o lepší uživatelský zážitek. Hodí se jako pojistka u elementů, kde je nějaké vlastní JavaScriptové scrollování, pokud výchozí chování způsobuje problémy.
+<h2 id="odkazy">Odkazy jinam</h2>
 
-## Odkazy jinam
-
-  MDN: overflow-anchor
-
-  - Mozilla Hacks: [Scroll Anchoring in Firefox 66](https://hacks.mozilla.org/2019/03/scroll-anchoring-in-firefox-66/)
+<ul>
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-anchor"><code>overflow-anchor
+</code></a></li>
+  
+  <li>Mozilla Hacks: <a href="https://hacks.mozilla.org/2019/03/scroll-anchoring-in-firefox-66/">Scroll Anchoring in Firefox 66</a></li>
+</ul>

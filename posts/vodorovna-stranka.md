@@ -6,8 +6,11 @@ date: "2015-04-11"
 last_modification: "2015-04-11"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [25 Fantastic Horizontal Scrolling Sites You’ll Love](http://webdesignledger.com/inspiration/horizontal-scrolling-sites-youll-love)
-
-  - [Css trick to reproduce glimpse on native scroll](http://davidecalignano.it/css-trick-to-reproduce-glimpse-on-native-scroll/)
+<ul>
+  <li><a href="http://webdesignledger.com/inspiration/horizontal-scrolling-sites-youll-love">25 Fantastic Horizontal Scrolling Sites You’ll Love</a></li>
+  
+  <li><a href="http://davidecalignano.it/css-trick-to-reproduce-glimpse-on-native-scroll/">Css trick to reproduce glimpse on native scroll</a></li>
+</ul>

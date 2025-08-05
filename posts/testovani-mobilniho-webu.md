@@ -6,6 +6,9 @@ date: "2015-03-26"
 last_modification: "2015-03-26"
 status: 0
 tags: []
+format: "html"
 ---
 
-- Six Revisions: [How to Test Responsive Designs](http://sixrevisions.com/tutorials/test-responsive-designs/)
+<ul>
+  <li>Six Revisions: <a href="http://sixrevisions.com/tutorials/test-responsive-designs/">How to Test Responsive Designs</a></li>
+</ul>

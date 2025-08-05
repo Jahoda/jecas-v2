@@ -5,93 +5,131 @@ description: "HTML značka <code>&lt;dfn></code> slouží pro vyznačení slovn�
 date: "2015-06-23"
 last_modification: "2015-06-24"
 status: 1
-tags: ["HTML", "HTML značky"]
+tags: ["html", "html-tagy"]
+format: "html"
 ---
 
-Používají-li se v textu stránky **odborné termíny** s vysvětlením, existuje pro ně speciální sémantická značka `&lt;dfn>` (název pochází z anglického *definition*).
+<p>Používají-li se v textu stránky <b>odborné termíny</b> s vysvětlením, existuje pro ně speciální sémantická značka <code>&lt;dfn></code> (název pochází z anglického <i lang="en">definition</i>).</p>
 
-Jedná se o řádkový element s [povinnou](/html-znacky#povinne) počáteční i koncovou značkou, zpravidla se zobrazuje kursivou ([`font-style: italic`](/font#style)).
+<p>Jedná se o řádkový element s <a href="/html-znacky#povinne">povinnou</a> počáteční i koncovou značkou, zpravidla se zobrazuje <dfn class="live">kursivou</dfn> (<a href="/font#style"><code>font-style: italic</code></a>).</p>
 
-Existují různé způsoby, jak se značka `&lt;dfn>` používá.
+<p>Existují různé způsoby, jak se značka <code>&lt;dfn></code> používá.</p>
 
-## Prosté označení termínu
 
-Termín se obalí značkou `&lt;dfn>` a jako jeho definice se bude chápat nejbližší nadřazený odstavec, definiční seznam nebo nějaký z tzv. sekčních elementů (`&lt;article>`, `&lt;aside>`, `&lt;nav>`, `&lt;section>`).
 
-Příklad:
 
-```
-&lt;p>
- &lt;**dfn**>Fytopuf&lt;/**dfn**> je něco jako kládoblah, ale trochu měkčí.
-&lt;/p>
-```
 
-## Vysvětlení termínu v `title`
+<h2 id="oznaceni">Prosté označení termínu</h2>
 
-Další použití počítá s umístěním vysvětlení termínu do obecného HTML atributu `title`.
+<p>Termín se obalí značkou <code>&lt;dfn></code> a jako jeho definice se bude chápat nejbližší nadřazený odstavec, definiční seznam nebo nějaký z tzv. sekčních elementů (<code>&lt;article></code>, <code>&lt;aside></code>, <code>&lt;nav></code>, <code>&lt;section></code>).</p>
 
-```
-&lt;p>
+<p>Příklad:</p>
+
+<pre><code>&lt;p>
+ &lt;<b>dfn</b>>Fytopuf&lt;/<b>dfn</b>> je něco jako kládoblah, ale trochu měkčí.
+&lt;/p></code></pre>
+
+
+
+
+
+
+
+<h2 id="title">Vysvětlení termínu v <code>title</code></h2>
+
+<p>Další použití počítá s umístěním vysvětlení termínu do obecného HTML atributu <code>title</code>.</p>
+
+<pre><code>&lt;p>
   Doporučoval bych vytvořit web o 
-  &lt;**dfn** title="něco jako kládoblah, ale trochu měkčí">
+  &lt;<b>dfn</b> title="něco jako kládoblah, ale trochu měkčí">
     fytopufu
-  &lt;/**dfn**>.
-&lt;/p>
-```
+  &lt;/<b>dfn</b>>.
+&lt;/p></code></pre>
 
-Bohužel atribut `title` je problematický u **dotykových zařízení**, kde je problematické ho u elementu **zobrazit**.
 
-Napomoci tomu může špetka JavaScriptu, která `title` odkryje po kliknutí na element a obsah `title` zobrazí v závorce.
 
-    - [Příklad zobrazení obsahu `title` po kliknutí](http://kod.djpw.cz/uwnb)
 
-## Kombinace s `&lt;abbr>`
 
-Značka `&lt;abbr>` z anglického *abbreviation* (česky *zkratka*) slouží k vysvětlení písmen symbolisujících zkratku.
 
-```
-&lt;p>
+
+<p>Bohužel atribut <code>title</code> je problematický u <b>dotykových zařízení</b>, kde je problematické ho u elementu <b>zobrazit</b>.</p>
+
+<p>Napomoci tomu může špetka JavaScriptu, která <code>title</code> odkryje po kliknutí na element a obsah <code>title</code> zobrazí v závorce.</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/uwnb">Příklad zobrazení obsahu <code>title</code> po kliknutí</a></li>
+  </ul>
+</div>
+
+
+<h2 id="abbr">Kombinace s <code>&lt;abbr></code></h2>
+
+<p>Značka <code>&lt;abbr></code> z anglického <i lang="en">abbreviation</i> (česky <i>zkratka</i>) slouží k vysvětlení písmen symbolisujících zkratku.</p>
+
+<pre><code>&lt;p>
   Učím se používat 
   &lt;abbr title="Hypertext Markup Language">HTML&lt;/abbr>
-&lt;/p>
-```
+&lt;/p></code></pre>
 
-Značku `&lt;abbr>` je možné ještě obalit do `&lt;dfn>`. Titulek zkratky se potom bude chápat jako definice.
+<p>Značku <code>&lt;abbr></code> je možné ještě obalit do <code>&lt;dfn></code>. Titulek zkratky se potom bude chápat jako definice.</p>
 
-```
-&lt;p>
+
+<pre><code>&lt;p>
   Učím se používat 
   &lt;dfn>
     &lt;abbr title="Hypertext Markup Language">HTML&lt;/abbr>
   &lt;/dfn>
-&lt;/p>
-```
+&lt;/p></code></pre>
 
-## Odkaz na termín
 
-Termínu lze přiřadit `id` a následně se na něj odkazovat:
 
-```
-&lt;p>
-  &lt;**dfn** id="*fytopuf*">Fytopuf&lt;/**dfn**> je 
+
+
+
+
+
+
+
+<h2 id="odkaz">Odkaz na termín</h2>
+
+<p>Termínu lze přiřadit <code>id</code> a následně se na něj odkazovat:</p>
+
+<pre><code>&lt;p>
+  &lt;<b>dfn</b> id="<i>fytopuf</i>">Fytopuf&lt;/<b>dfn</b>> je 
   něco jako kládoblah, ale trochu měkčí.
 &lt;/p>
 …
 &lt;p>
   Doporučoval bych vytvořit web 
-  o &lt;a href="#*fytopuf*">fytopufu&lt;/a>.
-&lt;/p>
-```
+  o &lt;a href="#<i>fytopuf</i>">fytopufu&lt;/a>.
+&lt;/p></code></pre>
 
-## Použití `&lt;dfn>` v praxi
 
-V praxi se element `&lt;dfn>` moc nepoužívá, protože nepřináší pro návštěvníky nějaký významný rozdíl oproti jiným značkám pro zvýraznění.
 
-Teoreticky by mohl pomoci **robotům vyhledávačů** zpracovávajícím obsah stránek pro jeho lepší pochopení.
 
-## Odkazy jinam
 
-  HTML
-    Living Standard: [The `dfn` element](https://html.spec.whatwg.org/multipage/semantics.html#the-dfn-element)
+
+
+
+
+
+
+
+<h2 id="praxe">Použití <code>&lt;dfn></code> v praxi</h2>
+
+<p>V praxi se element <code>&lt;dfn></code> moc nepoužívá, protože nepřináší pro návštěvníky nějaký významný rozdíl oproti jiným značkám pro zvýraznění.</p>
+
+<p>Teoreticky by mohl pomoci <b>robotům vyhledávačů</b> zpracovávajícím obsah stránek pro jeho lepší pochopení.</p>
+
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>HTML
+    Living Standard: <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-dfn-element">The <code>dfn</code> element</a></li>
   
-  - Mírně související: [Accessible Footnotes with CSS](http://www.sitepoint.com/accessible-footnotes-css/) – jak na přístupné poznámky pod čarou
+  <li>Mírně související: <a href="http://www.sitepoint.com/accessible-footnotes-css/">Accessible Footnotes with CSS</a> – jak na přístupné poznámky pod čarou</li>
+</ul>

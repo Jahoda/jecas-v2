@@ -5,77 +5,100 @@ description: "Jak zajistit transformaci jednoduchého JavaScriptu i pro staré p
 date: "2022-07-13"
 last_modification: "2022-12-22"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-V dnešní době se zpravidla **výrazně liší** JavaScript, ve kterém se něco píše, a výsledek, který potom běží v prohlížeči.
+<p>V dnešní době se zpravidla <b>výrazně liší</b> JavaScript, ve kterém se něco píše, a výsledek, který potom běží v prohlížeči.</p>
 
-Teoreticky je možná psát pouze jeden kód a ten nijak pro produkční použití neupravovat, ale má to několik problémů:
+<p>Teoreticky je možná psát pouze jeden kód a ten nijak pro produkční použití neupravovat, ale má to několik problémů:</p>
 
-      **Nekompatibilita** – v novějších prohlížečích funguje řada hezkých JS konstrukcí, které v **IE 11** ne.
+<ol>
+  <li>
+    <p>
+      <b>Nekompatibilita</b> – v novějších prohlížečích funguje řada hezkých JS konstrukcí, které v <b>IE 11</b> ne.
+    </p>
+    
+    <p>To jsou věci jako například:</p>
+    
+    <ul>
+      <li>
+        Psaní <code>const</code> a <a href="/js-var-let"><code>let</code> místo <code>var</code></a>.
+      </li>
+      <li>
+        Optional chaining operator (<code>objekt?.vlastnost?.dalsiVlastnost</code>)
+      </li>
+      <li>
+        Arrow functions (<code>const funkce = () => 'vrácená hodnota'</code>)
+      </li>
+      <li>
+        Template Literals (<code>`textový řetězec a v něm ${promenna}`</code>)
+      </li>
+    </ul>
+  </li>
+  
+  <li>
+    <p>
+      <b>Horší čitelnost/udržitelnost</b> – pokud se naopak kód píše v kompatibilním režimu, nepoužívání novějších JS praktik vede k hůře čitelnému kódu.
+    </p>
+  </li>
+  
+  <li>
+    <p>
+      <b>Velikost</b> – pro vývoj čitelný kód je zbytečně velký.
+    </p>
+    
+    <p>Prohlížeč nepotřebuje rozumně pojmenované funkce a proměnné. Vystačí si v pohodě s tím, že místo <code>vystiznyNazevFunkce()</code> bude <code>a()</code>.</p>
+  </li>
+  
+  <li>
+    <p>
+      <b>TypeScript</b> – pro větší kontrolu nad kódem se hodí používat typy. TypeScript díky tomu dokáže upozornit na spoustu potenciálních chyb.
+    </p>
+  </li>
+</ol>
 
-    To jsou věci jako například:
+<p>Cílem je tedy psát kód se všemi vymoženostmi nového JS v TypeScriptu. A z toho nakonec dostat obyčejný JavaScript funkční i v <b>IE 11</b>.</p>
 
-        Psaní `const` a [`let` místo `var`](/js-var-let).
 
-        Optional chaining operator (`objekt?.vlastnost?.dalsiVlastnost`)
+<h2 id="frameworky">Bez frameworků</h2>
 
-        Arrow functions (`const funkce = () => 'vrácená hodnota'`)
+<p>Dnešní standard je většinou použít nějakou reaktivní JS knihovnu jako je <b>React</b>, <b>Vue</b> nebo <b>Svelte</b>.</p>
 
-        Template Literals (``textový řetězec a v něm ${promenna}``)
+<p>U těch je kompatibilní build dávno vyřešen.</p>
 
-      **Horší čitelnost/udržitelnost** – pokud se naopak kód píše v kompatibilním režimu, nepoužívání novějších JS praktik vede k hůře čitelnému kódu.
+<p>V některých případech je ale framework zbytečný, který by zbytečně navyšoval celkovou velikost.</p>
 
-      **Velikost** – pro vývoj čitelný kód je zbytečně velký.
 
-    Prohlížeč nepotřebuje rozumně pojmenované funkce a proměnné. Vystačí si v pohodě s tím, že místo `vystiznyNazevFunkce()` bude `a()`.
+<h2 id="babel">Babel</h2>
 
-      **TypeScript** – pro větší kontrolu nad kódem se hodí používat typy. TypeScript díky tomu dokáže upozornit na spoustu potenciálních chyb.
+<p>Když jde o kompilaci do zpětně kompatibilního JS, nejznámější řešení je <a href="https://babeljs.io">Babel</a>.</p>
 
-Cílem je tedy psát kód se všemi vymoženostmi nového JS v TypeScriptu. A z toho nakonec dostat obyčejný JavaScript funkční i v **IE 11**.
+<p>Má i <a href="https://babeljs.io/repl">online nástroj</a>, kde je možné si vyzkoušet, co udělá.</p>
 
-## Bez frameworků
+<p>Instalace je jednoduchá:</p>
 
-Dnešní standard je většinou použít nějakou reaktivní JS knihovnu jako je **React**, **Vue** nebo **Svelte**.
+<pre><code>npm install --save-dev @babel/core @babel/cli @babel/preset-env</code></pre>
 
-U těch je kompatibilní build dávno vyřešen.
+<p>Pro TypeScript ještě:</p>
 
-V některých případech je ale framework zbytečný, který by zbytečně navyšoval celkovou velikost.
+<pre><code>npm install --save-dev @babel/preset-typescript</code></pre>
 
-## Babel
+<p>Prohnat přes něj JS soubor jde potom snadno jednoduchým npm skriptem (v <code>package.json</code>):</p>
 
-Když jde o kompilaci do zpětně kompatibilního JS, nejznámější řešení je [Babel](https://babeljs.io).
-
-Má i [online nástroj](https://babeljs.io/repl), kde je možné si vyzkoušet, co udělá.
-
-Instalace je jednoduchá:
-
-```
-npm install --save-dev @babel/core @babel/cli @babel/preset-env
-```
-
-Pro TypeScript ještě:
-
-```
-npm install --save-dev @babel/preset-typescript
-```
-
-Prohnat přes něj JS soubor jde potom snadno jednoduchým npm skriptem (v `package.json`):
-
-```
-{
+<pre><code>{
   ...
   "scripts": {
       "babel": "babel puvodni-soubor.ts --out-file dist/vystupni-soubor.js"
   }
   ...
-}
-```
+}</code></pre>
 
-Transformaci pro **IE 11** je třeba nastavit např. v souboru `.babelrc`:
 
-```
-{
+
+<p>Transformaci pro <b>IE 11</b> je třeba nastavit např. v souboru <code>.babelrc</code>:</p>
+
+<pre><code>{
   "presets": [
     [
       "@babel/preset-env",
@@ -85,72 +108,86 @@ Transformaci pro **IE 11** je třeba nastavit např. v souboru `.babelrc`:
     ],
     "@babel/preset-typescript"
   ]
-}
-```
+}</code></pre>
 
-## SWC
 
-[SWC](https://swc.rs) (Speedy Web Compiler) je mnohem méně známá a údajně 20–70krát rychlejší alternativa Babelu.
 
-Pro vyzkoušení jde použít [online nástroj](https://swc.rs/playground).
 
-## Vite
 
-[Vite](/vite) je nástroj pro super rychlé vývojové prostředí a build.
 
-Hodí se především pro větší aplikace napsané v Reactu/Vue/Svelte, ale má i [library mode](https://vitejs.dev/guide/build.html#library-mode).
 
-Díky tomu jde obyčejný kód v TS spojit do jednoho souboru.
 
-Přes plugin [vite-plugin-babel](https://github.com/owlsdepartment/vite-plugin-babel) zajistit funkčnost ve starých prohlížečích.
 
-## Dělení do souborů
 
-Pro přehlednost a snažší týmovou práci je užitečné dělit části kódu do samostatných souborů.
 
-Ty potom ve výsledku spojit.
 
-K tomu jde použít třeba **Vite** nebo [esbuild](https://esbuild.github.io):
 
-### Esbuild
+<h2 id="swc">SWC</h2>
 
-Stačí nainstalovat:
+<p><a href="https://swc.rs">SWC</a> (Speedy Web Compiler) je mnohem méně známá a údajně 20–70krát rychlejší alternativa Babelu.</p>
 
-```
-npm install --save-exact esbuild
-```
+<p>Pro vyzkoušení jde použít <a href="https://swc.rs/playground">online nástroj</a>.</p>
 
-A přidat skripty pro vývoj a build:
 
-```
-{
+
+<h2 id="vite">Vite</h2>
+
+<p><a href="/vite">Vite</a> je nástroj pro super rychlé vývojové prostředí a build.</p>
+
+<p>Hodí se především pro větší aplikace napsané v Reactu/Vue/Svelte, ale má i <a href="https://vitejs.dev/guide/build.html#library-mode">library mode</a>.</p>
+
+<p>Díky tomu jde obyčejný kód v TS spojit do jednoho souboru.</p>
+
+<p>Přes plugin <a href="https://github.com/owlsdepartment/vite-plugin-babel">vite-plugin-babel</a> zajistit funkčnost ve starých prohlížečích.</p>
+
+
+<h2 id="deleni">Dělení do souborů</h2>
+
+<p>Pro přehlednost a snažší týmovou práci je užitečné dělit části kódu do samostatných souborů.</p>
+
+<p>Ty potom ve výsledku spojit.</p>
+
+<p>K tomu jde použít třeba <b>Vite</b> nebo <a href="https://esbuild.github.io">esbuild</a>:</p>
+
+
+<h3 id="esbuild">Esbuild</h3>
+
+<p>Stačí nainstalovat:</p>
+
+<pre><code>npm install --save-exact esbuild</code></pre>
+
+<p>A přidat skripty pro vývoj a build:</p>
+
+<pre><code>{
   ...
   "scripts": {
     "esbuild": "esbuild src/main.ts --bundle --outfile=dist/vystupni-soubor.js --define:DEBUG=false",
     "esbuild:dev": "esbuild src/main.ts --bundle --outfile=dist/vystupni-soubor.js --define:DEBUG=true",
   }
   ...
-}
-```
+}</code></pre>
 
-## Testy
 
-Psát kód bez testů je dost otrava. Takže je rozumné přidat [Jest](https://jestjs.io) nebo [Vitest](https://vitest.dev).
 
-## Code style
+<h2 id="testy">Testy</h2>
 
-Aby měl kód nějakou kulturu, hodí se nějak **automaticky formátovat kód**. Není potom potřeba při code review někomu připomínat, že používá taby místo mezer a podobně.
+<p>Psát kód bez testů je dost otrava. Takže je rozumné přidat <a href="https://jestjs.io">Jest</a> nebo <a href="https://vitest.dev">Vitest</a>.</p>
 
-Osvědčil se mi [Prettier](https://prettier.io), protože podporuje hromady formátů, má jednoduchou instalaci a nastavení a dobrou podporu v editorech.
 
-## Kompilace a minifikace
+<h2 id="codestyle">Code style</h2>
 
-[Closure Compiler](https://closure-compiler.appspot.com/home) dokáže ušetřit hodně dat díky tomu, že zkrátí všechny možné názvy identifikátorů. Dokáže i zjednodušit některý kód a vyházet nepoužívaný kód.
+<p>Aby měl kód nějakou kulturu, hodí se nějak <b>automaticky formátovat kód</b>. Není potom potřeba při code review někomu připomínat, že používá taby místo mezer a podobně.</p>
 
-Z následující funkce:
+<p>Osvědčil se mi <a href="https://prettier.io">Prettier</a>, protože podporuje hromady formátů, má jednoduchou instalaci a nastavení a dobrou podporu v editorech.</p>
 
-```
-const nazevFunkce = (prvniParametr, druhyParametr) => {
+
+<h2 id="kompilace">Kompilace a minifikace</h2>
+
+<p><a href="https://closure-compiler.appspot.com/home">Closure Compiler</a> dokáže ušetřit hodně dat díky tomu, že zkrátí všechny možné názvy identifikátorů. Dokáže i zjednodušit některý kód a vyházet nepoužívaný kód.</p>
+
+<p>Z následující funkce:</p>
+
+<pre><code>const nazevFunkce = (prvniParametr, druhyParametr) => {
   const objekt = {
     prvniVlastnost: prvniParametr * 2,
     druhaVlastnost: druhyParametr * 3
@@ -158,23 +195,16 @@ const nazevFunkce = (prvniParametr, druhyParametr) => {
   return `text ${objekt.prvniVlastnost} ${objekt.druhaVlastnost}`
 }
 
-window["a"] = nazevFunkce
-```
+window["a"] = nazevFunkce</code></pre>
 
-Udělá:
+<p>Udělá:</p>
 
-```
-window.a=function(b,c){return"text "+2*b+" "+3*c};
-```
+<pre><code>window.a=function(b,c){return"text "+2*b+" "+3*c};</code></pre>
 
-Instalace je následující:
+<p>Instalace je následující:</p>
 
-```
-npm i google-closure-compiler
-```
+<pre><code>npm i google-closure-compiler</code></pre>
 
-A kompilace se spustí skriptem:
+<p>A kompilace se spustí skriptem:</p>
 
-```
-"closure": "java -jar node_modules/google-closure-compiler-java/compiler.jar --js=vstupni-soubor.js --js_output_file=vystupni-soubor.js",
-```
+<pre><code>"closure": "java -jar node_modules/google-closure-compiler-java/compiler.jar --js=vstupni-soubor.js --js_output_file=vystupni-soubor.js",</code></pre>

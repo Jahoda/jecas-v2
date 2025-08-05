@@ -5,18 +5,25 @@ description: "Na základě čeho určujete prohlížeče, pro které webovou str
 date: "2015-06-18"
 last_modification: "2015-06-18"
 status: 1
-tags: ["Prohlížeče", "Testování webů"]
+tags: ["testovani", "webove-prohlizece"]
+format: "html"
 ---
 
-Anketní otázky jsou zjednodušené, vyberte prosím možnost, která je nejbližší vašemu reálnému chování.
+<p>Anketní otázky jsou zjednodušené, vyberte prosím možnost, která je nejbližší vašemu reálnému chování.</p>
 
-Děkuji.
+<p>Děkuji.</p>
 
-## Podle čeho vybíráte prohlížeče, pro které ještě optimalisujete web?
+<h2>Podle čeho vybíráte prohlížeče, pro které ještě optimalisujete web?</h2>
 
+<!-- BlueBoard.cz Anketa -->
+<style>
   #blok-bbsluzba-1004156 * {
     border: 0!important;
   }
   #blok-bbsluzba-1004156 > div > div {
     display: none;
   }
+</style>
+<div id="blok-bbsluzba-1004156"></div>
+<script type="text/javascript" src="http://miniaplikace.blueboard.cz/widget-anketa-1004156"></script>
+<!-- BlueBoard.cz Anketa KONEC -->

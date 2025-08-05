@@ -5,69 +5,93 @@ description: "CSS vlastností <code>background-clip</code> jde omezit místo, kd
 date: "2014-11-15"
 last_modification: "2014-11-16"
 status: 1
-tags: ["CSS", "CSS vlastnosti", "Obrázky"]
+tags: ["css", "css-vlastnosti", "obrazky"]
+format: "html"
 ---
 
-Standardní chování pozadí v HTML elementu je takové, že vyplní **celý prostor**. Včetně případného rámečku (`border`), což je k vidění u rámečku s průhlednou barvou (`border-color: transparent`) nebo s průsvitnou barvou přes [`rgba`](/rgba). Taktéž v případě, že je `border` čárkovaný (`dashed`), dvojitý (`double`) nebo tečkovaný (`dotted`).
+<p>Standardní chování pozadí v HTML elementu je takové, že vyplní <b>celý prostor</b>. Včetně případného rámečku (<code>border</code>), což je k vidění u rámečku s průhlednou barvou (<code>border-color: transparent</code>) nebo s průsvitnou barvou přes <a href="/rgba"><code>rgba</code></a>. Taktéž v případě, že je <code>border</code> čárkovaný (<code>dashed</code>), dvojitý (<code>double</code>) nebo tečkovaný (<code>dotted</code>).</p>
 
-Vlastnost `background-clip` toto chování umí změnit.
+<p>Vlastnost <code>background-clip</code> toto chování umí změnit.</p>
 
-## Podpora
+<h2 id="podpora">Podpora</h2>
 
-Funguje od **IE 9**. Kromě zvláštní hodnoty `text`, která umí oříznout obrázek podle textu, ta funguje pouze s [prefixem](/css-prefixy) `-webkit-`.
+<p>Funguje od <b>IE 9</b>. Kromě zvláštní hodnoty <code>text</code>, která umí oříznout obrázek podle textu, ta funguje pouze s <a href="/css-prefixy">prefixem</a> <code>-webkit-</code>.</p>
 
-## Zápis
 
-```
-element {
-  background-clip: *způsob*
+<h2 id="zapis">Zápis</h2>
+
+<pre><code>element {
+  background-clip: <i>způsob</i>
 }
+</code></pre>
 
-```
+<p><i>Způsob</i> může mít následující hodnoty:</p>
 
-*Způsob* může mít následující hodnoty:
+<dl>
+  
+  <dt id="border-box"><code>border-box</code></dt>
+  
+  <dd>
+    <p>Výchozí chování. Pozadí bude i za rámečkem.</p>
+    
+    <div class="pozadi-ramecek" style="background-clip: border-box">
+      <p>Text s obrázkovým pozadím.</p>
+    </div>
+  </dd>
+  
+  <dt id="padding-box"><code>padding-box</code></dt>
+  
+  <dd>
+    <p>Pozadí se zarazí u rámečku.</p>
+    
+    <div class="pozadi-ramecek" style="background-clip: padding-box">
+      <p>Text s obrázkovým pozadím.</p>
+    </div>
+  </dd>  
+  
+  <dt id="content-box"><code>content-box</code></dt>
+  
+  <dd>
+    <p>Pozadí se zarazí před <code>padding</code>em elementu.</p>
+    
+    <div class="pozadi-ramecek" style="background-clip: content-box">
+      <p>Text s obrázkovým pozadím.</p>
+    </div>
+  </dd>  
 
-  `border-box`
+  <dt id="text"><code>text</code></dt>
+  
+  <dd>
+    <p>Asi nejzajímavější je volba <b>oříznutí pozadí podle textu</b>, což umožňuje nastavit písmenům obrázkové pozadí.</p>
+    
+    <p>Funguje zatím pouze v jádru Blink (<b>Chrome</b>, <b>Opera</b>). Obrázek se jako pozadí písmen objeví při zprůhlednění barvy (<code>color</code>) nebo po zprůhlednění vlastností <code>text-fill-color</code>.</p>
+    
+    <p><a href="http://kod.djpw.cz/anhb">Živá ukázka</a></p>
+    
+    <p>Obrázek, jak to přbližně vypadá v podporujícím prohlížeči.</p>
+    
+    <img src="/files/background-clip/obrazkovy-nadpis.png" alt="Obrázek jako pozadí textu" class="border">
+    
+    <p>S touto vlastností se dají dělat docela zajímavé efekty animováním pozadí (vlastností <a href="/animation"><code>animation</code></a> nebo <a href="/transition"><code>transition</code></a>).</p>
+  </dd>  
+</dl>
 
-    Výchozí chování. Pozadí bude i za rámečkem.
 
-      Text s obrázkovým pozadím.
 
-  `padding-box`
+<h2 id="odkazy">Odkazy jinam</h2>
 
-    Pozadí se zarazí u rámečku.
+<ul>
+  <li>DevDocs: <a href="http://devdocs.io/css/background-clip"><code>background-clip</code></a></li>
+  <li>Zajímavé kousky s obrázkovým pozadí textu: <a href="http://scotch.io/tutorials/css/text-backgrounds-and-gradients-with-background-clip">Text Backgrounds and Gradients with background-clip</a></li>
+  
+  <li>CSS-Tricks: <a href="https://css-tricks.com/how-to-do-knockout-text/">How To Do Knockout Text</a></li>
+</ul>
 
-      Text s obrázkovým pozadím.
 
-  `content-box`
-
-    Pozadí se zarazí před `padding`em elementu.
-
-      Text s obrázkovým pozadím.
-
-  `text`
-
-    Asi nejzajímavější je volba **oříznutí pozadí podle textu**, což umožňuje nastavit písmenům obrázkové pozadí.
-
-    Funguje zatím pouze v jádru Blink (**Chrome**, **Opera**). Obrázek se jako pozadí písmen objeví při zprůhlednění barvy (`color`) nebo po zprůhlednění vlastností `text-fill-color`.
-
-    [Živá ukázka](http://kod.djpw.cz/anhb)
-
-    Obrázek, jak to přbližně vypadá v podporujícím prohlížeči.
-
-    S touto vlastností se dají dělat docela zajímavé efekty animováním pozadí (vlastností [`animation`](/animation) nebo [`transition`](/transition)).
-
-## Odkazy jinam
-
-  - DevDocs: [`background-clip`](http://devdocs.io/css/background-clip)
-
-  - Zajímavé kousky s obrázkovým pozadí textu: [Text Backgrounds and Gradients with background-clip](http://scotch.io/tutorials/css/text-backgrounds-and-gradients-with-background-clip)
-
-  - CSS-Tricks: [How To Do Knockout Text](https://css-tricks.com/how-to-do-knockout-text/)
-
+<style>
 .pozadi-ramecek {
     background: #8ECCF0;
     padding: .5em;
     margin: 1em 0;
     border: 5px dotted #1081DD;
-}
+}</style>

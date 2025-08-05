@@ -6,14 +6,17 @@ date: "2015-09-02"
 last_modification: "2015-09-02"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - Smashing Magazine: [Color Theory For Designers: Creating Your Own Color Palettes](http://www.smashingmagazine.com/2010/02/color-theory-for-designer-part-3-creating-your-own-color-palettes/)
-
-  - [Understanding Color &amp; The Meaning of Color](http://www.blackbeardesign.com/understanding-color-the-meaning-of-color/)
-
-  - [Psychologie barev](http://www.jinudy.cz/clanky/psychologie-barev/) (česky)
-
-  - [Co vyjadřují barvy?](http://www.font.cz/design/co-vyjadruji-barvy.html) (česky)
+<ul>
+  <li>Smashing Magazine: <a href="http://www.smashingmagazine.com/2010/02/color-theory-for-designer-part-3-creating-your-own-color-palettes/">Color Theory For Designers: Creating Your Own Color Palettes</a></li>
+  
+  <li><a href="http://www.blackbeardesign.com/understanding-color-the-meaning-of-color/">Understanding Color &amp; The Meaning of Color</a></li>
+  
+  <li><a href="http://www.jinudy.cz/clanky/psychologie-barev/">Psychologie barev</a> (česky)</li>
+  
+  <li><a href="http://www.font.cz/design/co-vyjadruji-barvy.html">Co vyjadřují barvy?</a> (česky)</li>
+</ul>

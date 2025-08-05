@@ -5,25 +5,30 @@ description: "Jak vytvořit v čistém CSS vyskakovací menu."
 date: "2013-06-05"
 last_modification: "2013-06-21"
 status: 1
-tags: ["CSS", "Hotová řešení", "Menu v CSS"]
+tags: ["css", "hotova-reseni", "menu"]
+format: "html"
 ---
 
-V kaskádových stylech lze využít pseudo třídy `:hover` a docílit tak toho, že při **najetí myší** na nějakou položku se jiná objeví. 
-
-  Normálně je element skrytý (`[display](/display): none`),
-při `:hover`u se přepne na `block`/`inline`.
-
+<p>V kaskádových stylech lze využít pseudo třídy <code>:hover</code> a docílit tak toho, že při <b>najetí myší</b> na nějakou položku se jiná objeví. 
+<ol>
+  <li>Normálně je element skrytý (<code><a href="/display">display</a>: none</code>),
+<li>při <code>:hover</code>u se přepne na <code>block</code>/<code>inline</code>.
+</ol>
+<div class='live'>
+<style>
 .demo span {display: none}
 .demo:hover span {display: inline}
+</style>
+<p class="demo">Ahoj… <span>Světe!</span></p>
+</div>
 
-Ahoj… Světe!
+<p>Funguje to od <b>Internet Exploreru 7</b>, starší umí <code>:hover</code> jen na odkazech.
 
-Funguje to od **Internet Exploreru 7**, starší umí `:hover` jen na odkazech.
+<h2>Menu jako na Alza.cz</h2>
+<p>Pokud se k výše uvedenému principu přidá špetka dalšího CSS, může to vypadat takto…</p>
 
-## Menu jako na Alza.cz
-
-Pokud se k výše uvedenému principu přidá špetka dalšího CSS, může to vypadat takto…
-
+<div class="live" style="background: transparent">
+<style>
 .navigace a {border: 0}
 .navigace a:hover {background: #81C1F5; color: #0D6AB7}
 
@@ -42,54 +47,65 @@ Pokud se k výše uvedenému principu přidá špetka dalšího CSS, může to v
 .navigace ul li {display: block; float: left;}
 .navigace ul a {float: left; width: 184px; text-align: center;}
 .navigace ul a:hover {text-decoration: none; background: #0D6AB7; color: #fff}
+</style>
 
-	Vyskakovací
-		
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
+<menu class=navigace>
+	<li><a href='#'>Vyskakovací</a>
+		<ul>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+		</ul>
+	<li><a href='#'>Menu</a>
+		<ul>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+		</ul>
+	<li><a href='#'>Pomocí</a>
+		<ul>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+		</ul>
+	<li><a href='#'>CSS</a>
+		<ul>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+			<li><a href='#'>Odkaz</a>
+		</ul>
+</menu>
+</div>
 
-	Menu
-		
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
+<p>U vyskakovacího menu bývá dobrá nějaká tolerance nepřesnosti pohybu, zabývá se tím samostatný článek:</p>
 
-	Pomocí
-		
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-
-	CSS
-		
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-			Odkaz
-
-U vyskakovacího menu bývá dobrá nějaká tolerance nepřesnosti pohybu, zabývá se tím samostatný článek:
-
-      [Tolerance myši u vysouvacího menu](/tolerance-menu)
+<div class="internal-content">
+  <ul>
+    <li>
+      <p><a href="/tolerance-menu">Tolerance myši u vysouvacího menu</a></p>
+    </li>
+  </ul>
+</div>

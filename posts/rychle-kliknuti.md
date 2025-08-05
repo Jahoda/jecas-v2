@@ -5,45 +5,54 @@ description: "Jak zajistit, aby ovládací prvky uživatelského rozhraní reago
 date: "2014-01-27"
 last_modification: "2014-01-28"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "Rady a nápady", "JS události"]
+tags: ["hotova-reseni", "js", "js-udalosti", "napady"]
+format: "html"
 ---
 
-## Problém
+<h2 id="problem">Problém</h2>
 
-Ovládací prvky běžných JS aplikací zpravidla provádějí nějakou [událost při kliknutí myši](/udalosti-mysi) (`onclick`).
+<p>Ovládací prvky běžných JS aplikací zpravidla provádějí nějakou <a href="/udalosti-mysi">událost při kliknutí myši</a> (<code>onclick</code>).</p>
 
-  Kliknout
+<div class="live">
+  <p onclick="alert('Kliknuto')" style="background: #efefef">Kliknout</p>
+</div>
 
-Co nepěkného se může stát? V situaci, kdy uživatel bude chtít kliknout na více věcí v **rychlém sledu**, se snadno stane, že pohyb myši v momentě kliknutí událost `onclick` **nespustí**.
+<p>Co nepěkného se může stát? V situaci, kdy uživatel bude chtít kliknout na více věcí v <b>rychlém sledu</b>, se snadno stane, že pohyb myši v momentě kliknutí událost <code>onclick</code> <b>nespustí</b>.</p>
 
-Toto může nastat ve třech **reálných** případech:
+<p>Toto může nastat ve třech <b>reálných</b> případech:</p>
 
-  - uživatel tlačítko myši stlačí, potom si uvědomí, že **kliknout nechce**, a tak odjede pryč, aby akci nevyvolal,
+<ol>
+  <li>uživatel tlačítko myši stlačí, potom si uvědomí, že <b>kliknout nechce</b>, a tak odjede pryč, aby akci nevyvolal,</li>
+  <li>uživatel je tak rychlý, že chce na prvky klikat <i>za jízdy</i>, tudíž akci nevyvolá,</li>
+  <li>uživatel má problémy s přesností a kliknutí bez (lehkého) posunu myši je pro něj <b>obtížné</b>.</li>
+</ol>
 
-  - uživatel je tak rychlý, že chce na prvky klikat *za jízdy*, tudíž akci nevyvolá,
+<p>Kromě bodu 1 jsou to situace <b>nežádoucí</b>. A nepomůže ani použití tlačítka (<code>&lt;button></code>) nebo odkazu.</p>
 
-  - uživatel má problémy s přesností a kliknutí bez (lehkého) posunu myši je pro něj **obtížné**.
+<div class="live">
+  <a class="button" href="javascript:alert('Kliknuto')">Kliknout odkazem</a>
+  <button onclick="alert('Kliknuto')">Kliknout tlačítkem</button>
+</div>
 
-Kromě bodu 1 jsou to situace **nežádoucí**. A nepomůže ani použití tlačítka (`&lt;button>`) nebo odkazu.
 
-  [Kliknout odkazem](javascript:alert('Kliknuto'))
-  Kliknout tlačítkem
+<h2 id="reseni">Řešení</h2>
+<p>Odstranit tento problém umí událost <code>onmousedown</code>.</p>
 
-## Řešení
+<div class="live">
+  <a class="button" href="javascript://akce" onmousedown="alert('Kliknuto')">Kliknout odkazem</a>
+  <button onmousedown="alert('Kliknuto')">Kliknout tlačítkem</button>
+</div>
 
-Odstranit tento problém umí událost `onmousedown`.
+<p>Výhodné to může být i v rychlosti aplikace (<code>onmousedown</code> člověk provede běžně o desítky milisekund dříve než <code>onclick</code>). Problém ale je v <i>rozmyslení si kliknutí</i>.</p>
 
-  [Kliknout odkazem](javascript://akce)
-  Kliknout tlačítkem
+<p>Docela funkční mi přijde postup, kdy se při <code>onmousedown</code> požadovaná akce připraví do <code>onmouseup</code> (puštění tlačítka nad elementem) a <code>onmouseout</code> (odjetí myší z elementu). A z <code>onmouseout</code> se akce po nějaké době (cca 80 milisekund) vyhodí <a href="/odpocitavani">časovačem</a>.</p>
 
-Výhodné to může být i v rychlosti aplikace (`onmousedown` člověk provede běžně o desítky milisekund dříve než `onclick`). Problém ale je v *rozmyslení si kliknutí*.
+<p><a href="http://kod.djpw.cz/ymbb">Živá ukázka</a> srovnávající oba přístupy.</p>
 
-Docela funkční mi přijde postup, kdy se při `onmousedown` požadovaná akce připraví do `onmouseup` (puštění tlačítka nad elementem) a `onmouseout` (odjetí myší z elementu). A z `onmouseout` se akce po nějaké době (cca 80 milisekund) vyhodí [časovačem](/odpocitavani).
+<p>Pokud se výsledek akce má získávat <a href="/ajax">AJAXem</a>, nabízí se požadavek na soubor zavolat již při <code>onmousedown</code>, ale zobrazit až při <i>potvrzení</i> kliknutí (<code>onmouseup</code>/<code>onmouseout</code>).</p>
 
-[Živá ukázka](http://kod.djpw.cz/ymbb) srovnávající oba přístupy.
-
-Pokud se výsledek akce má získávat [AJAXem](/ajax), nabízí se požadavek na soubor zavolat již při `onmousedown`, ale zobrazit až při *potvrzení* kliknutí (`onmouseup`/`onmouseout`).
-
+<div class="live">
+  <script>
     function kliknout(el, callback) {
       el.onmouseup = el.onmouseout = function() {
         callback();
@@ -53,5 +62,6 @@ Pokud se výsledek akce má získávat [AJAXem](/ajax), nabízí se požadavek n
         el.onmouseout = null;
       }, 80);
     }
-  
-  Chytře klikající tlačítko
+  </script>
+  <button onmousedown="kliknout(this, function(){alert('Kliknuto')})">Chytře klikající tlačítko</button>
+</div>

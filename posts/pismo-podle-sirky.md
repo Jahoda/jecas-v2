@@ -5,23 +5,41 @@ description: "Jak přizpůsobovat velikost písma aktuální šířce stránky."
 date: "2015-10-05"
 last_modification: "2015-10-05"
 status: 1
-tags: ["Hotová řešení", "Responsivní design", "Písma"]
+tags: ["hotova-reseni", "pisma", "responsive"]
+format: "html"
 ---
 
-Při tvorbě **responsivního webu** může v některých případech bloků psaných **hodně velkým písmem** – třeba u [nadpisů](/nadpisy) – dávat smysl je u menších šířek obrazovky zmenšit.
+<p>Při tvorbě <b>responsivního webu</b> může v některých případech bloků psaných <b>hodně velkým písmem</b> – třeba u <a href="/nadpisy">nadpisů</a> – dávat smysl je u menších šířek obrazovky zmenšit.</p>
 
-Jak na to?
+<p>Jak na to?</p>
 
-Zatímco třeba výška jde stanovit [procentuálně k šířce](/vyska-podle-sirky), procenta u vlastnosti `font-size` fungují jinak – stanovují poměr velikosti písma ke svému rodiči.
 
-Existují ale různé způsoby, jak podle šířky **odvozovat i velikost písma**:
+<p>Zatímco třeba výška jde stanovit <a href="/vyska-podle-sirky">procentuálně k šířce</a>, procenta u vlastnosti <code>font-size</code> fungují jinak – stanovují poměr velikosti písma ke svému rodiči.</p>
 
-## Pravidlo `@media`
 
-Asi nejčastější je použití [media queries](/mobilni-web#media-queries). Stanoví se break-pointy, kdy se písmo zmenší:
+<p>Existují ale různé způsoby, jak podle šířky <b>odvozovat i velikost písma</b>:</p>
 
-```
-h1 {font-size: 320%}
+
+
+
+<h2 id="media">Pravidlo <code>@media</code></h2>
+
+<p><img src="/files/pismo-podle-sirky/zmena.gif" alt="Změna velikosti podle šířky" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Asi nejčastější je použití <a href="/mobilni-web#media-queries" lang="en">media queries</a>. Stanoví se break-pointy, kdy se písmo zmenší:</p>
+
+<pre><code>h1 {font-size: 320%}
 @media (max-width: 60em) {
   h1 {font-size: 280%}
 }
@@ -30,33 +48,47 @@ h1 {font-size: 320%}
 }
 @media (max-width: 30em) {
   h1 {font-size: 200%}
-}
-```
+}</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/npqb-) – změna velikosti písma pomocí `@media`
 
-Tento postup se vyznačuje několika **skoky mezi velikostmi**. Teoreticky by šlo nějakým CSS preprocesorem vygenerovat desítky různých variant pro různé šířky, ale v případě více elementů na stránce to může být datově náročné.
 
-## Jednotka viewport
 
-Od **IE 9** fungují jednotky závislé na šířce nebo výšce viewportu. Nefungují ve staré **Opeře 12**, mobilní **Opeře Mini** a starých **Android Browserech** do verse 4.3.
 
-```
-h1 {
+
+
+
+
+
+<p><a href="http://kod.djpw.cz/npqb-">Živá ukázka</a> – změna velikosti písma pomocí <code>@media</code></p>
+
+<p>Tento postup se vyznačuje několika <b>skoky mezi velikostmi</b>. Teoreticky by šlo nějakým CSS preprocesorem vygenerovat desítky různých variant pro různé šířky, ale v případě více elementů na stránce to může být datově náročné.</p>
+
+
+
+<h2 id="viewport">Jednotka viewport</h2>
+
+<p>Od <b>IE 9</b> fungují jednotky závislé na šířce nebo výšce viewportu. Nefungují ve staré <b>Opeře 12</b>, mobilní <b>Opeře Mini</b> a starých <b>Android Browserech</b> do verse 4.3.</p>
+
+<pre><code>h1 {
   font-size: 10vw;
-}
-```
+}</code></pre>
 
-Hodnota `1vw` (***v**iewport **w**idth*) odpovídá setině šířky *viewportu*, tedy `10vw` je desetina šířky. V případě zobrazení stránky ve FullHD (1920 pixelů na šířku) bude potom výše uvedený nadpis **192 pixelů velký**.
 
-[Živá ukázka](http://kod.djpw.cz/ppqb-) – viewport jednotky pro písmo
 
-Jednotku `vw` se nabízí zkombinovat s `@media` pravidly, aby se velikost nedostala do nesmyslně malých/velkých hodnot.
 
-Mezi šířkou `25`–`60em` se bude velikost písma řídit **šířkou viewportu**, jinak se nastaví na pevnou maximální/minimální hodnotu:
 
-```
-h1 {
+<p>Hodnota <code>1vw</code> (<i><b>v</b>iewport <b>w</b>idth</i>) odpovídá setině šířky <i>viewportu</i>, tedy <code>10vw</code> je desetina šířky. V případě zobrazení stránky ve FullHD (1920 pixelů na šířku) bude potom výše uvedený nadpis <b>192 pixelů velký</b>.</p>
+
+
+
+<p><a href="http://kod.djpw.cz/ppqb-">Živá ukázka</a> – viewport jednotky pro písmo</p>
+
+
+<p>Jednotku <code>vw</code> se nabízí zkombinovat s <code>@media</code> pravidly, aby se velikost nedostala do nesmyslně malých/velkých hodnot.</p>
+
+<p>Mezi šířkou <code>25</code>–<code>60em</code> se bude velikost písma řídit <b>šířkou viewportu</b>, jinak se nastaví na pevnou maximální/minimální hodnotu:</p>
+
+<pre><code>h1 {
   font-size: 300%;
 }
 @media (min-width: 25em) and (max-width: 60em) {
@@ -64,55 +96,83 @@ h1 {
 }
 @media (max-width: 25em) {
   h1 {font-size: 160%}
-}
-```
+}</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/upqb-) – omezení hranic, kdy se velikost písma přizpůsobuje šířce
 
-### Šířka elementu, ne viewportu
 
-Problematické trochu je, když se má `font-size` počítat podle šířky **konkrétního elementu**, který neodpovídá šířce viewportu.
 
-To bude typicky problematické u webu s **pružným layoutem a omezenou maximální šířkou stránky**. Zde nezbývá než opět použít *media-queries* a velikost písma závislou na šířce aplikovat jen někdy.
 
-Vytvořit dobře funkční přizpůsobování s použitím jednotky `vw` tak může dát **dost práce s kalkulačkou** při stanovování hodnot.
 
-Tento postup bude i složitý na případné **změny rozměrů bloků**, kdy bude nutné všechno přepočítat. Zpřehlednění může přinést funkce [`calc`](/calc). Ta ale nefunguje v `@media` pravidlech, takže bude lepší **provádět výpočty** s použitím CSS preprocesoru.
 
-Nebo použít JavaScript:
 
-## Počítání velikosti JavaScriptem
 
-Pro starší prohlížeče nebo pro **přehlednější a pohodlnější počítání** poslouží JavaScript.
+<p><a href="http://kod.djpw.cz/upqb-">Živá ukázka</a> – omezení hranic, kdy se velikost písma přizpůsobuje šířce</p>
 
-Šířka požadovaného elementu se zjistí z `offsetWidth` a potom stačí už jen určit **poměr šířky k velikosti písma** – a takovou hodnotou šířku vydělit.
 
-```
-var velikost = element.offsetWidth / pomer;
-```
+<h3 id="sirka-elementu">Šířka elementu, ne viewportu</h3>
 
-Pro omezení **minimální a maximální velikosti** jde použít `Math.min`/`max`:
+<p>Problematické trochu je, když se má <code>font-size</code> počítat podle šířky <b>konkrétního elementu</b>, který neodpovídá šířce viewportu.</p>
 
-```
-var velikostPisma = Math.max(
+
+
+<p>To bude typicky problematické u webu s <b>pružným layoutem a omezenou maximální šířkou stránky</b>. Zde nezbývá než opět použít <i>media-queries</i> a velikost písma závislou na šířce aplikovat jen někdy.</p>
+
+
+<p>Vytvořit dobře funkční přizpůsobování s použitím jednotky <code>vw</code> tak může dát <b>dost práce s kalkulačkou</b> při stanovování hodnot.</p>
+
+
+<p>Tento postup bude i složitý na případné <b>změny rozměrů bloků</b>, kdy bude nutné všechno přepočítat. Zpřehlednění může přinést funkce <a href="/calc"><code>calc</code></a>. Ta ale nefunguje v <code>@media</code> pravidlech, takže bude lepší <b>provádět výpočty</b> s použitím CSS preprocesoru.</p>
+
+<p>Nebo použít JavaScript:</p>
+
+
+
+
+<h2 id="js">Počítání velikosti JavaScriptem</h2>
+
+<p>Pro starší prohlížeče nebo pro <b>přehlednější a pohodlnější počítání</b> poslouží JavaScript.</p>
+
+
+<p>Šířka požadovaného elementu se zjistí z <code>offsetWidth</code> a potom stačí už jen určit <b>poměr šířky k velikosti písma</b> – a takovou hodnotou šířku vydělit.</p>
+
+
+<pre><code>var velikost = element.offsetWidth / pomer;</code></pre>
+
+
+<p>Pro omezení <b>minimální a maximální velikosti</b> jde použít <code>Math.min</code>/<code>max</code>:</p>
+
+<pre><code>var velikostPisma = Math.max(
   20, // minimální velikost
   Math.min(
     60, // maximální velikost
     velikost
   )
-);
-```
+);</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/ypqb-) – změna velikosti písma podle šířky v JavaScriptu
 
-Největší problém JS řešení bude v tom, že do jeho vykonání bude mít písmo **jinou velikost**. To nejspíš způsobí nepěkné **poskočení** po přepočtu.
 
-Existují i lehce sofistikovanější hotová řešení v JavaScriptu:
 
-    - [FlowType.JS](http://simplefocus.com/flowtype/) – velikost písma podle šířky
 
-    - [FitText](http://fittextjs.com/) – jQuery plugin zajišťující přizpůsobení velikosti písma
 
-## Odkazy jinam
 
-  - Smashing Magazine: [Truly Fluid Typography With vh And vw Units](https://www.smashingmagazine.com/2016/05/fluid-typography/)
+
+<p><a href="http://kod.djpw.cz/ypqb-">Živá ukázka</a> – změna velikosti písma podle šířky v JavaScriptu</p>
+
+<p>Největší problém JS řešení bude v tom, že do jeho vykonání bude mít písmo <b>jinou velikost</b>. To nejspíš způsobí nepěkné <b>poskočení</b> po přepočtu.</p>
+
+
+<p>Existují i lehce sofistikovanější hotová řešení v JavaScriptu:</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://simplefocus.com/flowtype/">FlowType.JS</a> – velikost písma podle šířky</li>
+    <li><a href="http://fittextjs.com/">FitText</a> – jQuery plugin zajišťující přizpůsobení velikosti písma</li>
+  </ul>
+</div>
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>Smashing Magazine: <a href="https://www.smashingmagazine.com/2016/05/fluid-typography/">Truly Fluid Typography With vh And vw Units</a></li>
+</ul>

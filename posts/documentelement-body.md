@@ -5,25 +5,28 @@ description: "Co se skrývá pod <code>document.body</code> a <code>document.doc
 date: "2014-02-10"
 last_modification: "2014-02-20"
 status: 1
-tags: ["JavaScript", "Rady a nápady"]
+tags: ["js", "napady"]
+format: "html"
 ---
 
-Obě konstrukce jsou *zkratky* pro výběr elementu `&lt;body>`, respektive `&lt;html>`. Vrací totéž co příslušně použité `getElementsByTagName` metody.
+<p>Obě konstrukce jsou <i>zkratky</i> pro výběr elementu <code>&lt;body></code>, respektive <code>&lt;html></code>. Vrací totéž co příslušně použité <code>getElementsByTagName</code> metody.</p>
 
-## Podpora v prohlížečích
+<h2 id="ie">Podpora v prohlížečích</h2>
 
-Na [diskusi](http://diskuse.jakpsatweb.cz/?action=vthread&forum=8&topic=154936) se objevilo podezření, že `document.body` nefunguje správně v **Internet Exploreru**. Není tomu tak.
+<p>Na <a href="http://diskuse.jakpsatweb.cz/?action=vthread&forum=8&topic=154936">diskusi</a> se objevilo podezření, že <code>document.body</code> nefunguje správně v <b>Internet Exploreru</b>. Není tomu tak.</p>
 
-  Výběr elmentu `&lt;body>` funguje pomocí `document.body` ve všech běžných prohlížečích stejně jako `document.getElementsByTagName("body")[0]`.
+<ul>
+  <li><p>Výběr elmentu <code>&lt;body></code> funguje pomocí <code>document.body</code> ve všech běžných prohlížečích stejně jako <code>document.getElementsByTagName("body")[0]</code>.</p></li>
+  <li><p>Obdobně pro výběr <code>&lt;html></code> funguje <code>document.documentElement</code> ve všech běžných prohlížečích stejně jako <code>document.getElementsByTagName("html")[0]</code>.</p></li>
+</ul>
 
-  Obdobně pro výběr `&lt;html>` funguje `document.documentElement` ve všech běžných prohlížečích stejně jako `document.getElementsByTagName("html")[0]`.
+<p>Nezávisle na <a href="/doctype">vykreslovacích režimech</a>.</p>
 
-Nezávisle na [vykreslovacích režimech](/doctype).
+<ul>
+  <li><a href="http://kod.djpw.cz/bubb">Ukázka ve standardním režimu</a></li>
+  <li><a href="http://kod.djpw.cz/aubb">Ukázka v QUIRKu</a></li>
+</ul>
 
-  - [Ukázka ve standardním režimu](http://kod.djpw.cz/bubb)
+<h2 id="vyuzit">Využití</h2>
 
-  - [Ukázka v QUIRKu](http://kod.djpw.cz/aubb)
-
-## Využití
-
-Zápisy `document.body` a `document.documentElement` jsou kratší než `getElement*` metody. Jinak je celkem jedno, co se použije.
+<p>Zápisy <code>document.body</code> a <code>document.documentElement</code> jsou kratší než <code>getElement*</code> metody. Jinak je celkem jedno, co se použije.</p>

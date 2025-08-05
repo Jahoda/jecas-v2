@@ -5,74 +5,67 @@ description: "Jak je to s vytvářením a používáním atributů s vlastními 
 date: "2014-02-05"
 last_modification: "2014-02-05"
 status: 1
-tags: ["HTML", "HTML značky", "Rady a nápady"]
+tags: ["html", "html-tagy", "napady"]
+format: "html"
 ---
 
-Podobně jako je možné si vytvářet [vlastní HTML elementy](/vlastni-html-znacky) (od **IE 9** plně funkční včetně možnosti stylování), dá se totéž dělat i s atributy. S těmi je to dokonce ještě lepší — pro stylování je lze využít už v **IE 7**.
+<p>Podobně jako je možné si vytvářet <a href="/vlastni-html-znacky">vlastní HTML elementy</a> (od <b>IE 9</b> plně funkční včetně možnosti stylování), dá se totéž dělat i s atributy. S těmi je to dokonce ještě lepší — pro stylování je lze využít už v <b>IE 7</b>.</p>
 
-```
-&lt;style>
-  div[**barva**=*cervena*] {color: red}
+<pre><code>&lt;style>
+  div[<b>barva</b>=<i>cervena</i>] {color: red}
 &lt;/style>
-&lt;div **barva**="*cervena*">
+&lt;div <b>barva</b>="<i>cervena</i>">
   Červený div.
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/erbb). Použití je bezproblémové. Pochopitelně v případě, že se omylem náhodou netrefíme do existujícího atributu. Prohlížeče neznámý atribut nijak neřeší, ale **umožní stylování** [atributovým selektorem](/css-selektory#atributovy).
+<p><a href="http://kod.djpw.cz/erbb">Živá ukázka</a>. Použití je bezproblémové. Pochopitelně v případě, že se omylem náhodou netrefíme do existujícího atributu. Prohlížeče neznámý atribut nijak neřeší, ale <b>umožní stylování</b> <a href="/css-selektory#atributovy">atributovým selektorem</a>.</p>
 
-Jediná nevýhoda bude možná **teoreticky lehce nižší rychlost** než při klasickém stylování [třídami nebo identifikátory](/id-class), ale zatím jsem nic takového nepostřehl. Otázka je spíš, co to v CSS přinese navíc.
+<p>Jediná nevýhoda bude možná <b>teoreticky lehce nižší rychlost</b> než při klasickém stylování <a href="/id-class">třídami nebo identifikátory</a>, ale zatím jsem nic takového nepostřehl. Otázka je spíš, co to v CSS přinese navíc.</p>
 
-Od **IE 8** je možné [číst hodnotu i přímo v CSS](/content-attr).
+<p>Od <b>IE 8</b> je možné <a href="/content-attr">číst hodnotu i přímo v CSS</a>.</p>
 
-Mimochodem, atributový selektor má nižší váhu než `class` nebo `id`.
+<p>Mimochodem, atributový selektor má nižší váhu než <code>class</code> nebo <code>id</code>.</p>
 
-## Vlastní atributy a JavaScript
+<h2 id="js">Vlastní atributy a JavaScript</h2>
+<p>Zajímavé mi přijde až používání v JavaScriptu. Nestandardní atributy se dobře hodí k uložení nějaké hodnoty, <b>označení stavu aplikace</b> nebo označení elementů se společnými znaky.</p>
 
-Zajímavé mi přijde až používání v JavaScriptu. Nestandardní atributy se dobře hodí k uložení nějaké hodnoty, **označení stavu aplikace** nebo označení elementů se společnými znaky.
+<p>Zejména to ukládání stavů do vlastních atributů mi přijde „čistší“, než je používání <a href="/prepinani-trid">běžných tříd</a>. Je tak hezky odděleno samotné stylování vzhledu a stylování <i>funkcí</i> (např. <a href="/zobrazit-skryt">skrytí obsahu</a>).</p>
 
-Zejména to ukládání stavů do vlastních atributů mi přijde „čistší“, než je používání [běžných tříd](/prepinani-trid). Je tak hezky odděleno samotné stylování vzhledu a stylování *funkcí* (např. [skrytí obsahu](/zobrazit-skryt)).
+<h3 id="vyber">Výběr elementů podle vlastní atributů</h3>
 
-### Výběr elementů podle vlastní atributů
+<p>Od <b>IE 8</b>, který umí metody <a href="/queryselector"><code>querySelector</code>/<code>querySelectorAll</code></a>, je výběr těchto elementů velmi jednoduchý.</p>
 
-Od **IE 8**, který umí metody [`querySelector`/`querySelectorAll`](/queryselector), je výběr těchto elementů velmi jednoduchý.
+<pre><code>var cerveneDivy = document.querySelectorAll("div[barva=cervena]");</code></pre>
 
-```
-var cerveneDivy = document.querySelectorAll("div[barva=cervena]");
-```
+<p>(Pro <b>IE 7</b> by případně <code>querySelector</code> mohl jít <a href="http://www.codecouch.com/2012/05/adding-document-queryselectorall-support-to-ie-7/">dodělat</a> <a href="https://gist.github.com/connrs/2724353">polyfillem</a>.)</p>
 
-(Pro **IE 7** by případně `querySelector` mohl jít [dodělat](http://www.codecouch.com/2012/05/adding-document-queryselectorall-support-to-ie-7/) [polyfillem](https://gist.github.com/connrs/2724353).)
+<p>V případě, že bychom chtěli najít libovolné elementy s požadovaným atributem, řešení je hvězdičkový selektor.</p>
 
-V případě, že bychom chtěli najít libovolné elementy s požadovaným atributem, řešení je hvězdičkový selektor.
+<pre><code>var cerveneDivy = document.querySelectorAll("<b>*</b>[barva=cervena]");</code></pre>
 
-```
-var cerveneDivy = document.querySelectorAll("*****[barva=cervena]");
-```
+<p><a href="http://kod.djpw.cz/grbb">Živá ukázka</a>.</p>
 
-[Živá ukázka](http://kod.djpw.cz/grbb).
+<h3 id="nastavovani-cteni">Nastavování a čtení atributů</h3>
 
-### Nastavování a čtení atributů
+<p>Odlišnost oproti běžným atributů je v získávání/nastavování hodnoty.</p>
 
-Odlišnost oproti běžným atributů je v získávání/nastavování hodnoty.
+<p>Je nutné používat metody <code>getAttribute</code>/<code>setAttribute</code> (poznámka: pro standardní atributy jsou <a href="http://diskuse.jakpsatweb.cz/?action=vthread&forum=8&topic=90307">lepší standardní vlastnosti DOMu</a>.)</p>
 
-Je nutné používat metody `getAttribute`/`setAttribute` (poznámka: pro standardní atributy jsou [lepší standardní vlastnosti DOMu](http://diskuse.jakpsatweb.cz/?action=vthread&forum=8&topic=90307).)
-
-```
-var element = document.querySelector("*[barva]");
+<pre><code>var element = document.querySelector("*[barva]");
 element.getAttribute("barva"); // obsah atributu „barva“
-element.setAttribute("barva", "**novaHodnota**); // nastaví obsah
-```
+element.setAttribute("barva", "<b>novaHodnota</b>); // nastaví obsah</code></pre>
 
-[Ukázka](http://kod.djpw.cz/hrbb)
+<p><a href="http://kod.djpw.cz/hrbb">Ukázka</a></p>
 
-## Data atributy, nebo vlastní?
+<h2 id="data">Data atributy, nebo vlastní?</h2>
+<p>Podle specifikace by <i>vlastní atributy</i> měly začínat prefixem <code>data-</code>. Má smysl se tohoto držet?</p>
 
-Podle specifikace by *vlastní atributy* měly začínat prefixem `data-`. Má smysl se tohoto držet?
-
-  - Dle vlastní libosti pojmenované atributy **neprojdou validátorem** (validátor je vyhodnotí jako nepovolené pro danou značku). To `data-atribut`y toleruje.
-
-  - U `data-` prefixu by nemělo hrozit, že se námi vymyslený atribut **dostane do specifikace**, prohlížeče mu začnou přisuzovat nějaký význam a web se tak **rozbije**.
-
-  - Pojmenování atributu jako `data-nazev-atributu` místo prostého `nazev-atributu` může člověku, co detailně nezná všechny HTML atributy, **pomoci v orientaci**. Na první pohled je vidět, že je atribut *vlastní*.
-
-  - Jinak je to asi jedno.
+<ul>
+  <li>Dle vlastní libosti pojmenované atributy <b>neprojdou validátorem</b> (validátor je vyhodnotí jako nepovolené pro danou značku). To <code>data-atribut</code>y toleruje.</li>
+  
+  <li>U <code>data-</code> prefixu by nemělo hrozit, že se námi vymyslený atribut <b>dostane do specifikace</b>, prohlížeče mu začnou přisuzovat nějaký význam a web se tak <b>rozbije</b>.</li>
+  
+  <li>Pojmenování atributu jako <code>data-nazev-atributu</code> místo prostého <code>nazev-atributu</code> může člověku, co detailně nezná všechny HTML atributy, <b>pomoci v orientaci</b>. Na první pohled je vidět, že je atribut <i>vlastní</i>.</li>
+  
+  <li>Jinak je to asi jedno.</li>
+</ul>

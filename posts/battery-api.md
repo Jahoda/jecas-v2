@@ -6,8 +6,11 @@ date: "2016-01-19"
 last_modification: "2016-01-19"
 status: 0
 tags: []
+format: "html"
 ---
 
-Některé operace a efekty na webové stránce mohou být značně náročné na hardware a následně lidově řečeno *žrát baterku*. Pomocí Battery API jde detekovat aktuální stav baterie a podle toho přizpůsobit chování nebo uživatele upozornit, že bez dobití mu stránka dlouho nevydrží.
+<p>Některé operace a efekty na webové stránce mohou být značně náročné na hardware a následně lidově řečeno <i>žrát baterku</i>. Pomocí Battery API jde detekovat aktuální stav baterie a podle toho přizpůsobit chování nebo uživatele upozornit, že bez dobití mu stránka dlouho nevydrží.</p>
 
-  - David Walsh: [JavaScript Battery API](https://davidwalsh.name/javascript-battery-api)
+<ul>
+  <li>David Walsh: <a href="https://davidwalsh.name/javascript-battery-api">JavaScript Battery API</a></li>
+</ul>

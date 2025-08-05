@@ -5,89 +5,96 @@ description: "CSS vlastnost <code>fit-content</code> nastaví šířku podle obs
 date: "2015-01-15"
 last_modification: "2015-01-25"
 status: 1
-tags: ["CSS", "Rady a nápady", "Menu v CSS"]
+tags: ["css", "menu", "napady"]
+format: "html"
 ---
 
-Výchozí chování blokových elementů (`display: block`) je snaha se **roztáhnout přes celou šířku**.
+<p>Výchozí chování blokových elementů (<code>display: block</code>) je snaha se <b>roztáhnout přes celou šířku</b>.</p>
 
+<div class="live">
+  <style>
     .div {
       background: #0D6AB7; 
       color: #fff;
       padding: 1em;
     }
-  
-  obsah
+  </style>
+  <div class="div">obsah</div>
+</div>
 
-Takový postup vůbec neřeší, jak je široký obsah. Pomocí `fit-content` se dá nastavit šířka (`width`), aby respektovala šířku obsahu:
+<p>Takový postup vůbec neřeší, jak je široký obsah. Pomocí <code>fit-content</code> se dá nastavit šířka (<code>width</code>), aby respektovala šířku obsahu:</p>
 
-```
-element {
+<pre><code>element {
   width: fit-content;
-}
-```
+}</code></pre>
 
+<div class="live">
+  <style>
     .fit-content {
       width: -webkit-fit-content;
       width: -moz-fit-content;
       width: fit-content;
     }
-  
-  obsah
+  </style>
+  <div class="div fit-content">obsah</div>
+</div>
 
-[Živá ukázka](http://kod.djpw.cz/svjb) – centrování menu s neznámou šířkou pomocí `fit-content`
+<p><a href="http://kod.djpw.cz/svjb">Živá ukázka</a> – centrování menu s neznámou šířkou pomocí <code>fit-content</code></p>
 
-## Podpora
 
-Ve **Firefoxu** a **Webkitech** funguje s [prefixy](/css-prefixy):
+<h2 id="podpora">Podpora</h2>
 
-```
-element {
-  width: **-webkit-**fit-content;
-  width: **-moz-**fit-content;
+<p>Ve <b>Firefoxu</b> a <b>Webkitech</b> funguje s <a href="/css-prefixy">prefixy</a>:</p>
+
+<pre><code>element {
+  width: <b>-webkit-</b>fit-content;
+  width: <b>-moz-</b>fit-content;
   width: fit-content;
-}
-```
+}</code></pre>
 
-Podpora v jednotlivých versích prohlížečů:
+<p>Podpora v jednotlivých versích prohlížečů:</p>
 
-  - **Firefox 4+**,
+<ul>
+  <li><b>Firefox 4+</b>,</li>
+  <li><b>Chrome 22+</b>,</li>
+  <li><b>Safar 6.1+</b>,</li>
+  <li><b>Opera 15+</b></li>
+</ul>
 
-  - **Chrome 22+**,
+<p><b>Webkit</b> podporuje ještě alternativní zápis:</p>
 
-  - **Safar 6.1+**,
+<pre><code>element {
+  width: <b>intrinsic</b>;
+}</code></pre>
 
-  - **Opera 15+**
+<p><a href="http://kod.djpw.cz/rvjb">Živá ukázka</a></p>
 
-**Webkit** podporuje ještě alternativní zápis:
+<p>Pro prohlížeče nepodporující <code>fit-content</code> existují následující možnosti.</p>
 
-```
-element {
-  width: **intrinsic**;
-}
-```
 
-[Živá ukázka](http://kod.djpw.cz/rvjb)
 
-Pro prohlížeče nepodporující `fit-content` existují následující možnosti.
+<h2 id="inline-block"><code>display: inline-block</code></h2>
 
-## `display: inline-block`
+<p>Přizpůsobit rozměry obsahu jde například pomocí <code>display: inline-block</code>:</p>
 
-Přizpůsobit rozměry obsahu jde například pomocí `display: inline-block`:
-
+<div class="live">
+  <style>
     .inline-block {
       display: inline-block;
     }
-  
-  obsah
+  </style>
+  <div class="div inline-block">obsah</div>
+</div>
 
-V případě, že je cílem takový obsah [vycentrovat](/centrovani), jde použít prosté `text-align: center` pro rodiče.
+<p>V případě, že je cílem takový obsah <a href="/centrovani">vycentrovat</a>, jde použít prosté <code>text-align: center</code> pro rodiče.</p>
 
-[Živá ukázka](http://kod.djpw.cz/ovjb)
+<p><a href="http://kod.djpw.cz/ovjb">Živá ukázka</a></p>
 
-Problém řešení s `inline-block` mohou být [bílé znaky](/inline-block-whitespace).
+<p>Problém řešení s <code>inline-block</code> mohou být <a href="/inline-block-whitespace">bílé znaky</a>.</p>
 
-## `display: table`
+<h2 id="display-table"><code>display: table</code></h2>
 
-Obdobně jako `width: fit-content` zafunguje i `display: table`.
+<p>Obdobně jako <code>width: fit-content</code> zafunguje i <code>display: table</code>.</p>
 
-[Živá ukázka](http://kod.djpw.cz/pvjb)
+<p><a href="http://kod.djpw.cz/pvjb">Živá ukázka</a></p>
+

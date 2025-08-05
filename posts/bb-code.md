@@ -5,79 +5,86 @@ description: "Formátování příspěvků pomocí BB code v PHP. Převod BB kó
 date: "2014-03-11"
 last_modification: "2014-03-20"
 status: 1
-tags: ["Hotová řešení", "PHP"]
+tags: ["hotova-reseni", "php"]
+format: "html"
 ---
 
-V případě, že chceme umožnit návštěvníkům stránky používat základní **formátování textu**, existuje několik základních způsobů, jak to zařídit.
+<p>V případě, že chceme umožnit návštěvníkům stránky používat základní <b>formátování textu</b>, existuje několik základních způsobů, jak to zařídit.</p>
 
-  - [WYSIWYG editor](/wysiwyg),
+<ol>
+  <li><a href="/wysiwyg">WYSIWYG editor</a>,</li>
+  <li>HTML značky,</li>
+  <li><a href="/markdown">Markdown/Texy!</a>,</li>
+  <li><b>BB code</b></li>
+</ol>
 
-  - HTML značky,
+<p>Každá z možností má své pro a proti.</p>
 
-  - [Markdown/Texy!](/markdown),
+<h2 id="co">Co to je BB code?</h2>
 
-  - **BB code**
+<p>Stručně řečeno má BB kód zjednodušenou podobu HTML kódu, kdy se místo špičatých <code>&lt;></code> závorek zapisují hranaté <code>[]</code> (tyto znaky lze relativně pohodlně zapsat i na <a href="/ceska-klavesnice">české klávesnici</a>).</p>
 
-Každá z možností má své pro a proti.
+<p>Zkratka <b>BB</b> znamená <i>Bulletin Board</i>, protože se tento způsob formátování nejvíce rozšířil na <b>diskusních fórech</b>.</p>
 
-## Co to je BB code?
+<h3 id="zakladni-znaky">Základní znaky</h3>
 
-Stručně řečeno má BB kód zjednodušenou podobu HTML kódu, kdy se místo špičatých `&lt;>` závorek zapisují hranaté `[]` (tyto znaky lze relativně pohodlně zapsat i na [české klávesnici](/ceska-klavesnice)).
+<p>Typické BB značky:</p>
 
-Zkratka **BB** znamená *Bulletin Board*, protože se tento způsob formátování nejvíce rozšířil na **diskusních fórech**.
+<table>
+  <tr>
+    <th>BB kód</th>
+    <th>HTML ekvivalent</th>
+    <th>Výsledek</th>
+  </tr>
+  <tr>
+    <td><code>[b]text[/b]</code></td>
+    <td><code>&lt;b>text&lt;/b></code></td>
+    <td><b>text</b></td>
+  </tr>
+  <tr>
+    <td><code>[i]text[/i]</code></td>
+    <td><code>&lt;i>text&lt;/i></code></td>
+    <td><i>text</i></td>
+  </tr>
+  <tr>
+    <td><code>[code]code[/code]</code></td>
+    <td><code>&lt;code>text&lt;/code></code></td>
+    <td><code>text</code></td>
+  </tr>
+  <tr>
+    <td><code>[url=http://example.com]text[/url]</code></td>
+    <td><code>&lt;a href='http://example.com'>text&lt;/a></code></td>
+    <td><a href='http://example.com'>text</a></td>
+  </tr>
+  <tr>
+    <td><code>[img]http://example.com/obrazek.png[/img]</code></td>
+    <td><code>&lt;img src='http://example.com/obrazek.png'>text&lt;/a></code></td>
+    <td>(obrázek)</td>
+  </tr>  
+</table>
 
-### Základní znaky
+<p>Asi hlavní výhoda oproti obyčejnému HTML spočívá v tom, že:</p>
 
-Typické BB značky:
+<ul>
+  <li>Není problém zapsat ukázku HTML kódu. HTML se neinterpretuje a zároveň nezahodí, ale převede na entity.</li>
+  <li>V PHP není jednoduchý způsob, jak povolit jen určité HTML značky a atributy. Značky zvládne sice odstranit funkce <code>strip_tags</code>, ale na povolení atributů je potřeba nějaký nástroj jako <a href="/vycisteni-kodu">HTML Purifier</a>.</li>
+</ul>
 
-    BB kód
-    HTML ekvivalent
-    Výsledek
+<h2 id="prevod">Převod BB značek na HTML</h2>
 
-    `[b]text[/b]`
-    `&lt;b>text&lt;/b>`
-    **text**
+<h3 id="jednoduche">Jednoduché značky <code>[b]</code>, <code>[i]</code>, <code>[code]</code></h3>
 
-    `[i]text[/i]`
-    `&lt;i>text&lt;/i>`
-    *text*
+<p>Nejjednodušší způsob jako převádět <code>[b]text[/b]</code> na <code>>&lt;b>text&lt;/b></code> a podobně je použití regulárních výrazů a funkce <code>preg_replace</code>.</p>
 
-    `[code]code[/code]`
-    `&lt;code>text&lt;/code>`
-    `text`
-
-    `[url=http://example.com]text[/url]`
-    `&lt;a href='http://example.com'>text&lt;/a>`
-    text
-
-    `[img]http://example.com/obrazek.png[/img]`
-    `&lt;img src='http://example.com/obrazek.png'>text&lt;/a>`
-    (obrázek)
-
-Asi hlavní výhoda oproti obyčejnému HTML spočívá v tom, že:
-
-  - Není problém zapsat ukázku HTML kódu. HTML se neinterpretuje a zároveň nezahodí, ale převede na entity.
-
-  - V PHP není jednoduchý způsob, jak povolit jen určité HTML značky a atributy. Značky zvládne sice odstranit funkce `strip_tags`, ale na povolení atributů je potřeba nějaký nástroj jako [HTML Purifier](/vycisteni-kodu).
-
-## Převod BB značek na HTML
-
-### Jednoduché značky `[b]`, `[i]`, `[code]`
-
-Nejjednodušší způsob jako převádět `[b]text[/b]` na `>&lt;b>text&lt;/b>` a podobně je použití regulárních výrazů a funkce `preg_replace`.
-
-```
-$text = preg_replace(
+<pre><code>$text = preg_replace(
   "~\[(b)\](.+?)\[/\\1\]~ui", 
   "&lt;\\1>\\2&lt;/\\1>", 
   $text
-);
-```
+);</code></pre>
 
-Formátování všech jednoduchých značek (`[b]`, `[i]`, `[code]`) může zajistit jednoduchá funkce, které se předají požadované značky.
+<p>Formátování všech jednoduchých značek (<code>[b]</code>, <code>[i]</code>, <code>[code]</code>) může zajistit jednoduchá funkce, které se předají požadované značky.</p>
 
-```
-function obycejnyBbKod($znacky, $text) {
+<pre><code>function obycejnyBbKod($znacky, $text) {
   foreach ($znacky as $znacka) {
     $text = preg_replace(
       "~\[($znacka)\](.+?)\[/\\1\]~ui", 
@@ -86,73 +93,58 @@ function obycejnyBbKod($znacky, $text) {
     );
   }
   return $text;
-}
-```
+}</code></pre>
 
-Použití.
+<p>Použití.</p>
 
-```
-$text = obycejnyBbKod(
+<pre><code>$text = obycejnyBbKod(
   array("b", "i", "code"), $text
 );
-echo $text;
-```
+echo $text;</code></pre>
 
-### Značka `[img]`
+<h3 id="img">Značka <code>[img]</code></h3>
 
-V případě **vkládání obrázků** je nutné vytvořit jinou funkci (už se nebude nahrazovat značka za značku, ale potřebujeme obsah mezi `[img]` a `[/img]` dostat do `src` atributu značky `&lt;img>`). Regulární výraz ale bude stejný.
+<p>V případě <b>vkládání obrázků</b> je nutné vytvořit jinou funkci (už se nebude nahrazovat značka za značku, ale potřebujeme obsah mezi <code>[img]</code> a <code>[/img]</code> dostat do <code>src</code> atributu značky <code>&lt;img></code>). Regulární výraz ale bude stejný.</p>
 
-```
-$text = preg_replace(
+<pre><code>$text = preg_replace(
   "~\[img\](.+?)\[/img]~ui", 
   "&lt;img src='\\1'>", 
   $text
-);
-```
+);</code></pre>
 
-### Složitější BB značky `[url]`
+<h3 id="slozitejsi">Složitější BB značky <code>[url]</code></h3>
 
-BB značky, kde může být nějaký *atribut* s hodnotou, musí zpracovávat trochu **složitější regulární výraz**.
+<p>BB značky, kde může být nějaký <i>atribut</i> s hodnotou, musí zpracovávat trochu <b>složitější regulární výraz</b>.</p>
 
-```
-$text = preg_replace(
+<pre><code>$text = preg_replace(
   "~\[url=(.+?)\](.+?)\[/url]~ui", 
   "&lt;a href='\\1'>\\2&lt;/a>", 
   $text
-);
-```
+);</code></pre>
 
-## Bezpečnost
+<h2 id="bezpecnost">Bezpečnost</h2>
 
-Je potřeba myslet na to, že vstup od uživatele je nutno chránit před [XSS](/bezpecnost#xss) a zároveň veškeré akce chránit před [CSRF](/bezpecnost#csrf). Možnost **vložit obrázek** může být skvělá příležitost, jak administrátor načte požadovanou URL (třeba URL pro smazání obsahu), aniž by **o tom věděl**.
+<p>Je potřeba myslet na to, že vstup od uživatele je nutno chránit před <a href="/bezpecnost#xss">XSS</a> a zároveň veškeré akce chránit před <a href="/bezpecnost#csrf">CSRF</a>. Možnost <b>vložit obrázek</b> může být skvělá příležitost, jak administrátor načte požadovanou URL (třeba URL pro smazání obsahu), aniž by <b>o tom věděl</b>.</p>
 
-### XSS
+<h3 id="xss">XSS</h3>
+<p>Proti <b>XSS</b> je vhodný postup ošetřit před <b>převáděním na BB code</b> obsah funkcí <code>htmlspecialchars</code>.</p>
 
-Proti **XSS** je vhodný postup ošetřit před **převáděním na BB code** obsah funkcí `htmlspecialchars`.
+<pre><code>$text = htmlspecialchars($text, ENT_QUOTES);</code></pre>
 
-```
-$text = htmlspecialchars($text, ENT_QUOTES);
-```
+<p>Uvést druhý parametr <code>ENT_QUOTES</code> je <b>naprosto klíčové</b>. Zabrání to možnosti vložit škodlivý kód typu:</p>
 
-Uvést druhý parametr `ENT_QUOTES` je **naprosto klíčové**. Zabrání to možnosti vložit škodlivý kód typu:
+<pre><code>[img]http://example.com'<b> onclick='alert("XSS")</b>[/img]
+</code></pre>
 
-```
-[img]http://example.com'** onclick='alert("XSS")**[/img]
+<p>Který by se jinak přetvořil na <i>validní</i>, funkční a nebezpečný kód:</p>
 
-```
+<pre><code>&lt;img src='http://example.com'<b> onclick='alert("XSS")</b>'></code></pre>
 
-Který by se jinak přetvořil na *validní*, funkční a nebezpečný kód:
+<h2 id="callback">Zpracovávání obsahu značek</h2>
 
-```
-&lt;img src='http://example.com'** onclick='alert("XSS")**'>
-```
+<p>V případě, že je žádoucí zadaný obsah BB značek nějak zpracovávat (upravovat), poslouží k tomu <b>PHP funkce</b> <code>preg_replace_<b>callback</b></code>.</p>
 
-## Zpracovávání obsahu značek
-
-V případě, že je žádoucí zadaný obsah BB značek nějak zpracovávat (upravovat), poslouží k tomu **PHP funkce** `preg_replace_**callback**`.
-
-```
-$text = preg_replace_callback(
+<pre><code>$text = preg_replace_callback(
   "~\[url=(.+?)\](.+?)\[/url]~ui", 
   function($vyskyty) {
     $cilOdkazu = $vyskyty["1"];
@@ -161,21 +153,20 @@ $text = preg_replace_callback(
     return "&lt;a href='" . $cilOdkazu . "'>" . $textOdkazu . "&lt;/a>"; 
   },
   $text
-);
-```
+);</code></pre>
 
-## Hotové řešení
+<h2 id="hotove-reseni">Hotové řešení</h2>
 
-Hotové řešení [BB code v PHP](https://github.com/Jahoda/bb-code) je na GitHubu.
+<p>Hotové řešení <a href="https://github.com/Jahoda/bb-code">BB code v PHP</a> je na GitHubu.</p>
 
-## Zpětný převod HTML na BB code
+<h2 id="zpetny-prevod">Zpětný převod HTML na BB code</h2>
 
-Převádět pro účely editace textů v BB kódu zpětně z HTML sice možné je, ale není to úplně ideální postup. Musí se kromě funkcí „BB Code → HTML“ vytvářet i převody opačné.
+<p>Převádět pro účely editace textů v BB kódu zpětně z HTML sice možné je, ale není to úplně ideální postup. Musí se kromě funkcí „BB Code → HTML“ vytvářet i převody opačné.</p>
 
-Navíc to není jen dopisování zpětných regulárních výrazů. Když se rozhodneme, že HTML značky obrázků mají mít třeba nějakou třídu, bude se muset psát další regulární výraz pro **převod staré podoby HTML do nové**. Nebo si napsat nějaký skript, co všechen obsah dekóduje do BB a převede zpět do nové podoby HTML.
+<p>Navíc to není jen dopisování zpětných regulárních výrazů. Když se rozhodneme, že HTML značky obrázků mají mít třeba nějakou třídu, bude se muset psát další regulární výraz pro <b>převod staré podoby HTML do nové</b>. Nebo si napsat nějaký skript, co všechen obsah dekóduje do BB a převede zpět do nové podoby HTML.</p>
 
-Většinou lepší řešení je ukládat v DB **obě podoby** – jednu v BB kódu pro editaci a druhou v HTML pro výpis. Převádět BB kód by sice bylo možné při **každém vypsání stránky**, ale je to trochu zbytečná zátěž.
+<p>Většinou lepší řešení je ukládat v DB <b>obě podoby</b> – jednu v BB kódu pro editaci a druhou v HTML pro výpis. Převádět BB kód by sice bylo možné při <b>každém vypsání stránky</b>, ale je to trochu zbytečná zátěž.</p>
 
-## Problémy
+<h2 id="problemy">Problémy</h2>
 
-Převody BB značek na HTML **regulárními výrazy** nejsou úplně neprůstřelné. Například není problém vytvořit překřížené značky a obecně **nevalidní výstup**. Je to ale řešení na pár řádek, což by napsání dokonale funkčního parseru, který by těmito problémy netrpěl, nebylo.
+<p>Převody BB značek na HTML <b>regulárními výrazy</b> nejsou úplně neprůstřelné. Například není problém vytvořit překřížené značky a obecně <b>nevalidní výstup</b>. Je to ale řešení na pár řádek, což by napsání dokonale funkčního parseru, který by těmito problémy netrpěl, nebylo.</p>

@@ -5,55 +5,77 @@ description: "Jak v JavaScriptu zjistit posici, na které je kursor v textovém 
 date: "2015-02-19"
 last_modification: "2015-11-10"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "Formuláře"]
+tags: ["formulare", "hotova-reseni", "js"]
+format: "html"
 ---
 
-Při **okamžité validaci** formulářových polí se může hodit znát místo, kde je zrovna kursor.
+<p>Při <b>okamžité validaci</b> formulářových polí se může hodit znát místo, kde je zrovna kursor.</p>
 
-Od **IE 9** je možné zjistit aktuální místo kursoru z vlastnosti `selectionStart`. Zjišťovat posici má smysl hlavně při události `onkeyup` (po uvolnění klávesy).
+<p>Od <b>IE 9</b> je možné zjistit aktuální místo kursoru z vlastnosti <code>selectionStart</code>. Zjišťovat posici má smysl hlavně při události <code>onkeyup</code> (po uvolnění klávesy).</p>
 
-```
-&lt;input
-  onkeyup="alert(this.**selectionStart**)"
->
-```
+<pre><code>&lt;input
+  onkeyup="alert(this.<b>selectionStart</b>)"
+></code></pre>
 
+
+<div class="live no-source">
+  <label>
     Zobrazit posici kursoru: 
+    <input
+      onkeyup="this.nextElementSibling.innerHTML = (this.selectionStart)"
+    >
+    <span></span>
+  </label>
+</div>
 
-## Změna umístění kursoru
 
-Pomocí `selectionStart` jde i umístit kursor na vybrané místo.
+<h2 id="zmena">Změna umístění kursoru</h2>
 
-```
-input.selectionStart = 0; // začátek na 0
-```
+<p>Pomocí <code>selectionStart</code> jde i umístit kursor na vybrané místo.</p>
 
-Následující pole bude mít po vybrání (`onfocus`) kursor před zavináčem:
+<pre><code>input.selectionStart = 0; // začátek na 0</code></pre>
 
-**Chrome** a [**Edge**](/microsoft-edge) mají problém s označením výběru při focusu.
+<p>Následující pole bude mít po vybrání (<code>onfocus</code>) kursor před zavináčem:</p>
 
-Je možné použít `onclick`, ale potom je vidět poskočení kursoru z konce na začátek:
+<div class="live">
+  <input type="text" value="@" onfocus="this.selectionStart = this.selectionEnd = 0">
+</div>
 
-**Nejlepšího výsledku** napříč prohlížeči jde nejspíš dosáhnout pomocí obalení do časovače při použití `onfocus`:
+<p><b>Chrome</b> a <a href="/microsoft-edge"><b>Edge</b></a> mají problém s označením výběru při focusu.</p>
 
-### Konec výběru `selectionEnd`
+<p>Je možné použít <code>onclick</code>, ale potom je vidět poskočení kursoru z konce na začátek:</p>
 
-Kromě vlastnosti `selectionStart` existuje ještě `selectionEnd`, která znamená konec výběru. Nastavením odlišného startu a konce jde potom označit vybranou část políčka:
+<div class="live">
+<input type="text" value="@" onclick="this.selectionStart = this.selectionEnd = 0">  
+</div>
 
-  Označit 3–5
+<p><b>Nejlepšího výsledku</b> napříč prohlížeči jde nejspíš dosáhnout pomocí obalení do časovače při použití <code>onfocus</code>:</p>
 
-Výběr se začíná číslovat od nuly, takže `selectionStart = 2` přesune začátek výběru za 2. znak.
+<div class="live">
+  <input type="text" value="@" onfocus="var that = this; setTimeout(function(){that.selectionStart = that.selectionEnd = 0})">  
+</div>
 
-## Starší IE
+<h3 id="selectionEnd">Konec výběru <code>selectionEnd</code></h3>
 
-Pro **IE 8** a starší je pro stejnou funkčnost nutné použít `document.selection.createRange()` a metody `moveStart`/`moveEnd`.
+<p>Kromě vlastnosti <code>selectionStart</code> existuje ještě <code>selectionEnd</code>, která znamená konec výběru. Nastavením odlišného startu a konce jde potom označit vybranou část políčka:</p>
 
-```
-var sel = document.selection.createRange();
+<div class="live">
+  <input type="text" id="zmenaUmisteni" value="123456789">
+  <p><button onclick="zmenaUmisteni.focus(); zmenaUmisteni.selectionStart = 2; zmenaUmisteni.selectionEnd = 5">Označit 3–5</button></p>
+</div>
+
+<p>Výběr se začíná číslovat od nuly, takže <code>selectionStart = 2</code> přesune začátek výběru za 2. znak.</p>
+
+
+
+<h2 id="starsi">Starší IE</h2>
+
+<p>Pro <b>IE 8</b> a starší je pro stejnou funkčnost nutné použít <code>document.selection.createRange()</code> a metody <code>moveStart</code>/<code>moveEnd</code>.</p>
+
+<pre><code>var sel = document.selection.createRange();
 sel.moveStart('character', -pole.value.length);
-posice = sel.text.length;
-```
+posice = sel.text.length;</code></pre>
 
-Oba postupy potom stačí zkombinovat.
+<p>Oba postupy potom stačí zkombinovat.</p>
 
-[Živá ukázka](http://kod.djpw.cz/qpkb)
+<p><a href="http://kod.djpw.cz/qpkb">Živá ukázka</a></p>

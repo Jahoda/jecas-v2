@@ -5,169 +5,214 @@ description: "Jak funguje dopočítávání hodnot v kaskádových stylech."
 date: "2014-11-25"
 last_modification: "2014-12-03"
 status: 1
-tags: ["CSS", "Rady a nápady"]
+tags: ["css", "napady"]
+format: "html"
 ---
 
-Zajímává součást CSS je doplňování neuvedených vlastností a hodnot.
+<p>Zajímává součást CSS je doplňování neuvedených vlastností a hodnot.</p>
 
-## Čtyři strany
 
-První případ je nastavování hodnot pro **čtyři strany**, typicky pro vlastnosti `padding`, [`margin`](/margin), `border-color/width/style`, `outline-color/width/style` a podobně.
 
-Tyto vlastnosti jsou **zkratkami** pro `*-top`, `*-right`, `*-bottom` a `*-left` (v uvedeném pořadí).
+<h2 id="ctyri">Čtyři strany</h2>
 
-Zapíšeme-li:
+<p>První případ je nastavování hodnot pro <b>čtyři strany</b>, typicky pro vlastnosti <code>padding</code>, <a href="/margin"><code>margin</code></a>, <code>border-color/width/style</code>, <code>outline-color/width/style</code> a podobně.</p>
 
-```
-div {
+<p>Tyto vlastnosti jsou <b>zkratkami</b> pro <code>*-top</code>, <code>*-right</code>, <code>*-bottom</code> a <code>*-left</code> (v uvedeném pořadí).</p>
+
+<p>Zapíšeme-li:</p>
+
+<pre><code>div {
   margin: 1em 2em 3em 4em;
-}
-```
+}</code></pre>
 
-Je to ekvivalent (nezkráceného) zápisu.
+<p>Je to ekvivalent (nezkráceného) zápisu.</p>
 
-```
-div {
+<pre><code>div {
   margin-top: 1em;
   margin-right: 2em;
   margin-bottom: 3em;
   margin-left: 4em;
-}
-```
+}</code></pre>
 
-Společná vlastnost (zkratka) ale může mít nastaveno kromě čtyř hodnot i méně — 3, 2 nebo jednu.
+<p>Společná vlastnost (zkratka) ale může mít nastaveno kromě čtyř hodnot i méně — 3, 2 nebo jednu.</p>
 
-### Jedna hodnota
 
-```
-div {
-  margin: **1em**;
-}
-```
 
-Nastaví **všem stranám** totéž:
 
-```
-div {
-  margin-top: **1em**;
-  margin-right: **1em**;
-  margin-bottom: **1em**;
-  margin-left: **1em**;
-}
-```
 
-Jedna hodnota nastavená na `auto` se často používá při [centrování](/centrovani#margin-auto).
 
-### Dvě hodnoty
 
-```
-div {
-  margin: **1em** *2em*;
-}
-```
 
-První hodnota nastaví obě svislé vlastnosti (`*-top` a `*-bottom`), druhá potom vodorovné (`*-right` a `*-left`).
 
-```
-div {
-  margin-top: **1em**;
-  margin-right: *2em*;
-  margin-bottom: **1em**;
-  margin-left: *2em*;
-}
-```
 
-### Tři hodnoty
 
-```
-div {
-  margin: 1em *2em* **3em**;
-}
-```
+<h3 id="jedna">Jedna hodnota</h3>
 
-Od dvou hodnot se liší tím, že třetí hodnota přepíše `*-bottom`. Vodorovné hodnoty (`*-right`/`*-left`) se budou rovnat – podle druhé hodnoty:
+<pre><code>div {
+  margin: <b>1em</b>;
+}</code></pre>
 
-```
-div {
+<p>Nastaví <b>všem stranám</b> totéž:</p>
+
+<pre><code>div {
+  margin-top: <b>1em</b>;
+  margin-right: <b>1em</b>;
+  margin-bottom: <b>1em</b>;
+  margin-left: <b>1em</b>;
+}</code></pre>
+
+
+<div class="internal-content">
+<p>Jedna hodnota nastavená na <code>auto</code> se často používá při <a href="/centrovani#margin-auto">centrování</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+<h3 id="dve">Dvě hodnoty</h3>
+
+<pre><code>div {
+  margin: <b>1em</b> <i>2em</i>;
+}</code></pre>
+
+<p>První hodnota nastaví obě svislé vlastnosti (<code>*-top</code> a <code>*-bottom</code>), druhá potom vodorovné (<code>*-right</code> a <code>*-left</code>).</p>
+
+<pre><code>div {
+  margin-top: <b>1em</b>;
+  margin-right: <i>2em</i>;
+  margin-bottom: <b>1em</b>;
+  margin-left: <i>2em</i>;
+}</code></pre>
+
+
+
+
+
+
+
+
+
+
+<h3 id="tri">Tři hodnoty</h3>
+
+<pre><code>div {
+  margin: 1em <i>2em</i> <b>3em</b>;
+}</code></pre>
+
+<p>Od dvou hodnot se liší tím, že třetí hodnota přepíše <code>*-bottom</code>. Vodorovné hodnoty (<code>*-right</code>/<code>*-left</code>) se budou rovnat – podle druhé hodnoty:</p>
+
+<pre><code>div {
   margin-top: 1em;
-  margin-right: *2em*;
-  margin-bottom: **3em**;
-  margin-left: *2em*;
-}
-```
+  margin-right: <i>2em</i>;
+  margin-bottom: <b>3em</b>;
+  margin-left: <i>2em</i>;
+}</code></pre>
 
-## Zkratky
 
-Zajímavé věci se potom dějí u zkratek více vlastností s ohledem na **výchozí/zděděné hodnoty**.
 
-Třeba následující kód vytvoří (nejspíš) 3 pixely tlustý černý rámeček. [Nevěříte](http://kod.djpw.cz/kiib)?
 
-```
-div {
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="zkratky">Zkratky</h2>
+
+<p>Zajímavé věci se potom dějí u zkratek více vlastností s ohledem na <b>výchozí/zděděné hodnoty</b>.</p>
+
+<p>Třeba následující kód vytvoří (nejspíš) <span style="border: solid">3 pixely tlustý černý rámeček</span>. <a href="http://kod.djpw.cz/kiib">Nevěříte</a>?</p>
+
+<pre><code>div {
   border: solid;
-}
-```
+}</code></pre>
 
-Cca tři pixely (`medium`) jsou výchozí tloušťka rámečku a barva se zdědí z [`currentColor/color`](/currentcolor).
+<p>Cca tři pixely (<code>medium</code>) jsou výchozí tloušťka rámečku a barva se zdědí z <a href="/currentcolor"><code>currentColor/color</code></a>.</p>
 
-## Resetování
 
-Použití *zkratky* má další zajímavý efekt — **zresetuje nenastavené specifické vlastnosti**.
 
-```
-div {  
+
+<h2 id="resetovani">Resetování</h2>
+
+<p>Použití <i>zkratky</i> má další zajímavý efekt — <b>zresetuje nenastavené specifické vlastnosti</b>.</p>
+
+<pre><code>div {  
   border-width: 10px;
   border-style: solid;
   border-color: red;
   border: dotted;
-}
-```
+}</code></pre>
 
-Tento `&lt;div>` tedy nebude mít 10px tečkovaný červený rámeček, ale 3px tečkovaný černý. Všechny konkrétnější deklarace se přepíší – [ukázka](http://kod.djpw.cz/liib).
+<p>Tento <code>&lt;div></code> tedy nebude mít <span style="border: 10px dotted red">10px tečkovaný červený rámeček</span>, ale <span style="border: dotted">3px tečkovaný černý</span>. Všechny konkrétnější deklarace se přepíší – <a href="http://kod.djpw.cz/liib">ukázka</a>.</p>
 
-Poznámka: **IE 7** a starší neuvedené hodnoty neresetují, ale dědí, takže ukázka v nich bude 10px tlustá, červená a **tečkovaná** (`dotted`).
+<p>Poznámka: <b>IE 7</b> a starší neuvedené hodnoty neresetují, ale dědí, takže ukázka v nich bude 10px tlustá, červená a <b>tečkovaná</b> (<code>dotted</code>).</p>
 
-## Záleží na pořadí?
 
-CSS se snaží fungovat chytře a **hádat** vlastnosti, ke kterým hodnota patří. Tento kód proto vytvoří 5px rámeček, ačkoliv je pořadí značně **nestandardní** (obyvykle se uvádí obráceně – tloušťka styl barva).
 
-```
-div {
+
+
+
+
+
+
+<h2 id="poradi">Záleží na pořadí?</h2>
+
+<p>CSS se snaží fungovat chytře a <b>hádat</b> vlastnosti, ke kterým hodnota patří. Tento kód proto vytvoří <span style="border: red solid 5px">5px rámeček</span>, ačkoliv je pořadí značně <b>nestandardní</b> (obyvykle se uvádí obráceně – tloušťka styl barva).</p>
+
+<pre><code>div {
   border: red solid 5px;
-}
-```
+}</code></pre>
 
-Je až možná trochu překvapivé, jak často se dá z **kontextu** odvodit, co daná hodnota nastavuje.
+<p>Je až možná trochu překvapivé, jak často se dá z <b>kontextu</b> odvodit, co daná hodnota nastavuje.</p>
 
-Není ale asi úplně šťastné na to spoléhat. Třeba u nastavování písma nebude následující kód fungovat podle očekávání:
+<p>Není ale asi úplně šťastné na to spoléhat. Třeba u nastavování písma nebude následující kód fungovat podle očekávání:</p>
 
-```
-div {
+<pre><code>div {
   font: 'Arial';
-}
-```
+}</code></pre>
 
-Při použití zkratky `font` musí být vždy uvedena minimálně **velikost a písmo**.
+<p>Při použití zkratky <code>font</code> musí být vždy uvedena minimálně <b>velikost a písmo</b>.</p>
 
-## Zneplatnění
 
-CSS funguje v prohlížečích tak, že když v deklaraci vlastnosti nejde něco **čemu nerozumí**, celou deklaraci **zahodí**.
 
-```
-div {
-  border: 1px solid **neznamaBarva**;
-}
-```
 
-Jde toho využít pro [hack](/hacky) **starších prohlížečů**.
 
-Zajímavé využití zmínil [**Chamurappi**](http://webylon.info) na [Diskusi JPW](http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=19&amp;topic=160223#4), kdy se použije [„vícenásobný“ obrázek](/vice-obrazku#multiple-backgrounds) pro rozhodnutí, zda se má vložit **PNG/SVG**. Vícenásobná pozadí fungují stejně jako SVG od **IE 9**, takže starší prohlížeče nastavení SVG obrázku zahodí.
 
-```
-.symbol {
+
+
+
+
+
+
+
+<h2 id="zneplatneni">Zneplatnění</h2>
+
+<p>CSS funguje v prohlížečích tak, že když v deklaraci vlastnosti nejde něco <b>čemu nerozumí</b>, celou deklaraci <b>zahodí</b>.</p>
+
+<pre><code>div {
+  border: 1px solid <b>neznamaBarva</b>;
+}</code></pre>
+
+<p>Jde toho využít pro <a href="/hacky">hack</a> <b>starších prohlížečů</b>.</p>
+
+<p>Zajímavé využití zmínil <a href="http://webylon.info"><b>Chamurappi</b></a> na <a href="http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=19&amp;topic=160223#4">Diskusi JPW</a>, kdy se použije <a href="/vice-obrazku#multiple-backgrounds">„vícenásobný“ obrázek</a> pro rozhodnutí, zda se má vložit <b>PNG/SVG</b>. Vícenásobná pozadí fungují stejně jako SVG od <b>IE 9</b>, takže starší prohlížeče nastavení SVG obrázku zahodí.</p>
+
+<pre><code>.symbol {
   background: url("symbol.png");
   background: url("symbol.svg"), transparent;
-}
-```
+}</code></pre>
 
-    - [SVG fallbacky](/svg#fallback) – přehled všech možných způsobů
+<div class="internal-content">
+  <ul>
+    <li><a href="/svg#fallback">SVG fallbacky</a> – přehled všech možných způsobů</li>
+  </ul>
+</div>

@@ -6,8 +6,11 @@ date: "2014-12-16"
 last_modification: "2014-12-16"
 status: 0
 tags: []
+format: "html"
 ---
 
-[Dědičnost](http://kod.djpw.cz/usib)
+<p><a href="http://kod.djpw.cz/usib">Dědičnost</a></p>
 
-  - [Combining Typefaces: Free guide to great typography](http://blog.typekit.com/2016/04/29/combining-typefaces-free-guide-to-great-typography/) – kombinování písem
+<ul>
+  <li><a href="http://blog.typekit.com/2016/04/29/combining-typefaces-free-guide-to-great-typography/">Combining Typefaces: Free guide to great typography</a> – kombinování písem</li>
+</ul>

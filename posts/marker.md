@@ -6,8 +6,11 @@ date: "2015-08-04"
 last_modification: "2015-08-04"
 status: 0
 tags: []
+format: "html"
 ---
 
 https://css-tricks.com/almanac/selectors/m/marker/
 
-  - [CSS Lists, Markers, And Counters](https://www.smashingmagazine.com/2019/07/css-lists-markers-counters/)
+<ul>
+  <li><a href="https://www.smashingmagazine.com/2019/07/css-lists-markers-counters/">CSS Lists, Markers, And Counters</a></li>
+</ul>

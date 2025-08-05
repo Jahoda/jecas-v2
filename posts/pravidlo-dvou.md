@@ -6,6 +6,7 @@ date: "2020-04-01"
 last_modification: "2020-04-01"
 status: 0
 tags: []
+format: "html"
 ---
 
-Čistý kód
+<p>Čistý kód</p>

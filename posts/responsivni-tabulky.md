@@ -5,98 +5,120 @@ description: "Co udělat s tabulkami, aby se rozumně zobrazovaly na mobilech/ta
 date: "2013-11-07"
 last_modification: "2013-11-24"
 status: 1
-tags: ["CSS", "Responsivní design", "Tabulky"]
+tags: ["css", "responsive", "tabulky"]
+format: "html"
 ---
 
-/* reset rozlamování tabulek */
+<!--
+<style>
+  /* reset rozlamování tabulek */
   table {display: table}
   td, th {display: table-cell}
   tr {display: table-row}
   thead {display: table-header-group}
   tbody {display: table-row-group}
   tfooter {display: table-footer-group}
--->
+</style>-->
 
-Přestože éra **tabulkových layoutů** a jejich nahrazení `&lt;div>`y (**CSS layouty**) způobila u mnoha tvůrců **tabulkový odpor**, pořád stará dobrá tabulka **má na stránce místo**.
+<p>Přestože éra <b>tabulkových layoutů</b> a jejich nahrazení <code>&lt;div></code>y (<b>CSS layouty</b>) způobila u mnoha tvůrců <b>tabulkový odpor</b>, pořád stará dobrá tabulka <b>má na stránce místo</b>.</p>
 
-Problém ale nastává při snaze vytvořit [responsivní web](/mobilni-web). Na malou obrazovku se těžko **vícesloupcová** tabulka vejde. Co stím?
+<p>Problém ale nastává při snaze vytvořit <a href="/mobilni-web">responsivní web</a>. Na malou obrazovku se těžko <b>vícesloupcová</b> tabulka vejde. Co stím?</p>
 
-## Zjednodušení tabulky
+<h2 id="zjednoduseni">Zjednodušení tabulky</h2>
+<p>První možnost je zkusit tabulku zjednodušit, tj. některé <b>sloupce vypustit</b> nebo texty odkazů/tlačítek nahradit obrázky (ikonami). Ideálně s co nejmenší <b>ztrátou informací</b>.</p>
 
-První možnost je zkusit tabulku zjednodušit, tj. některé **sloupce vypustit** nebo texty odkazů/tlačítek nahradit obrázky (ikonami). Ideálně s co nejmenší **ztrátou informací**.
+<p>Vezmeme-li si jako příklad <b>tabulku uživatelů</b>.</p>
 
-Vezmeme-li si jako příklad **tabulku uživatelů**.
-
+<div class="live">
+  <style>
     .vypnout-popis th:nth-child(3), .vypnout-popis td:nth-child(3) {display: none;}
     .zjednodusit td:nth-child(5) .ico {display: inline-block;}
     .ico, .zjednodusit td:nth-child(5) .txt {display: none;}
-
-      JménoE-mailPopisFunkceAkce
-
-      Běžný Uživatel
-      bezny@uzivatel.cz
-      Popis běžného uživatele.
-      Uživatel    
-      ×SmazatEUpravit
-
-      Franta Fytopuf
-      franta@fytopuf.cz
-      Popis běžného fytopufu.
-      Rostlinář
-      ×SmazatEUpravit
-
-      Nejlepší Trenér
-      strouhanka@kobercovka.cz
-      Dlouhý popis nejlepšího trenéra.
-      Reservoár    
-      ×SmazatEUpravit
-
-      Žerou Děti
-      junior@plzen-wd40.cz
-      Popis
-      Klaun
-      ×SmazatEUpravit
-
+  </style>
+  <table style="background: #fff" id="zjednodusit">
+    <tr>
+      <th>Jméno</th><th>E-mail</th><th>Popis</th><th>Funkce</th><th>Akce</th>
+    </tr>
+    <tr>
+      <td>Běžný Uživatel</td>
+      <td>bezny@uzivatel.cz</td>
+      <td>Popis běžného uživatele.</td>
+      <td>Uživatel</td>    
+      <td><button><span class="ico">×</span><span class="txt">Smazat</span></button><button><span class="ico">E</span><span class="txt">Upravit</span></button></td>
+    </tr>
+    <tr>
+      <td>Franta Fytopuf</td>
+      <td>franta@fytopuf.cz</td>
+      <td>Popis běžného fytopufu.</td>
+      <td>Rostlinář</td>
+      <td><button><span class="ico">×</span><span class="txt">Smazat</span></button><button><span class="ico">E</span><span class="txt">Upravit</span></button></td>
+    </tr>  
+    <tr>
+      <td>Nejlepší Trenér</td>
+      <td>strouhanka@kobercovka.cz</td>
+      <td>Dlouhý popis nejlepšího trenéra.</td>
+      <td>Reservoár</td>    
+      <td><button><span class="ico">×</span><span class="txt">Smazat</span></button><button><span class="ico">E</span><span class="txt">Upravit</span></button></td>
+    </tr>  
+    <tr>
+      <td>Žerou Děti</td>
+      <td>junior@plzen-wd40.cz</td>
+      <td>Popis</td>
+      <td>Klaun</td>
+      <td><button><span class="ico">×</span><span class="txt">Smazat</span></button><button><span class="ico">E</span><span class="txt">Upravit</span></button></td>
+    </tr>  
+  </table>  
+</div>
+<script>
   var zjednodusit = document.getElementById("zjednodusit");
+</script>
 
-  - *Popis* můžeme na malé obrazovce oželet ([ukázka](http://kod.djpw.cz/dis-) – zmenšit pod 500px).
+<ul>
+  <li><i>Popis</i> můžeme na malé obrazovce <button onclick="toggle(zjednodusit, 'vypnout-popis')">oželet</button> (<a href="http://kod.djpw.cz/dis-">ukázka</a> – zmenšit pod 500px).</li>
+  <li><i>Funkci</i> lze znázornit <b>podbarvením buňky</b> anebo <b>ikonou</b>.</li>
+  <li>Obdobně <i>akce</i> mohou být na mobilu <button onclick="toggle(zjednodusit, 'zjednodusit')">representovány</button> jen <b>menší ikonou</b>.</li>
+</ul>
 
-  - *Funkci* lze znázornit **podbarvením buňky** anebo **ikonou**.
+<p>„Vypnout“ nebo přestylovat celé sloupce jde nejlépe <i>po staru</i> <b>nastavením tříd</b> pro všechny buňky nebo přes <a href="/css-selektory#n-ty-potomek">selektor n-tého potomka</a> (více o <a href="/stylovani-tabulky">stylování tabulek</a> je na samostatné stránce).</p>
 
-  - Obdobně *akce* mohou být na mobilu **representovány jen menší ikonou**.
+<pre><code>th:nth-child(3), td:nth-child(3) {display: none;}</code></pre>
 
-„Vypnout“ nebo přestylovat celé sloupce jde nejlépe *po staru* **nastavením tříd** pro všechny buňky nebo přes [selektor n-tého potomka](/css-selektory#n-ty-potomek) (více o [stylování tabulek](/stylovani-tabulky) je na samostatné stránce).
+<p>Výše uvedený kód pro <i>zmizení</i> třetího <b>sloupce</b> sice bude fungovat až od <b>IE 9</b>, ale to nás při optimalisaci pro <a href="/prohlizece#mobily">mobilní zařízení</a> nemusí moc trápit. Starší IE je na mobilech <b>raritní</b>.</p>
 
-```
-th:nth-child(3), td:nth-child(3) {display: none;}
-```
+<h2 id="posuvnik">Horizontální posuvník</h2>
+<p>Asi nejjednodušší řešení je u tabulky, která se na obrazovku <b>nevejde</b>, zobrazit posuvník. Zabrání se tak <b>rozpadnutí stránky</b>, ale použitelnost <b>nebude nejelepší</b>.</p>
 
-Výše uvedený kód pro *zmizení* třetího **sloupce** sice bude fungovat až od **IE 9**, ale to nás při optimalisaci pro [mobilní zařízení](/prohlizece#mobily) nemusí moc trápit. Starší IE je na mobilech **raritní**.
+<p>Stačí k tomu tabulku obalit <code>&lt;div></code>em s <code>max-width: 100%; overflow: auto</code>:</p>
 
-## Horizontální posuvník
+<div style="max-width: 450px">
+  <div class="live no-source" style="max-width: 100%; overflow: auto;">
+    <table style="background: #fff;">
+      <tr>
+        <th>Jméno</th><th>E-mail</th><th>Popis</th><th>Funkce</th><th>Akce</th>
+      </tr> 
+      <tr>
+        <td>Nejlepší Trenér</td>
+        <td>strouhanka@kobercovka.cz</td>
+        <td>Dlouhý popis nejlepšího trenéra.</td>
+        <td>Reservoár</td>    
+        <td><button><span class="ico">×</span><span class="txt">Smazat</span></button><button><span class="ico">E</span><span class="txt">Upravit</span></button></td>
+      </tr>  
+      <tr>
+        <td>Žerou Děti</td>
+        <td>junior@plzen-wd40.cz</td>
+        <td>Popis</td>
+        <td>Klaun</td>
+        <td><button><span class="ico">×</span><span class="txt">Smazat</span></button><button><span class="ico">E</span><span class="txt">Upravit</span></button></td>
+      </tr>  
+    </table>  
+  </div>
+</div>
 
-Asi nejjednodušší řešení je u tabulky, která se na obrazovku **nevejde**, zobrazit posuvník. Zabrání se tak **rozpadnutí stránky**, ale použitelnost **nebude nejelepší**.
+<h2 id="rozlamani">„Rozlámání“ tabulky</h2>
+<p>Pokud <b>zjednodušení</b> není možné nebo dostatečné, nezbývá než tabulku zrušit. Zkrátka ji <i>rozlámat</i> do podoby, že jednotlivé řádky budou <b>pod sebou</b>.</p>
 
-Stačí k tomu tabulku obalit `&lt;div>`em s `max-width: 100%; overflow: auto`:
-
-        JménoE-mailPopisFunkceAkce
-
-        Nejlepší Trenér
-        strouhanka@kobercovka.cz
-        Dlouhý popis nejlepšího trenéra.
-        Reservoár    
-        ×SmazatEUpravit
-
-        Žerou Děti
-        junior@plzen-wd40.cz
-        Popis
-        Klaun
-        ×SmazatEUpravit
-
-## „Rozlámání“ tabulky
-
-Pokud **zjednodušení** není možné nebo dostatečné, nezbývá než tabulku zrušit. Zkrátka ji *rozlámat* do podoby, že jednotlivé řádky budou **pod sebou**.
-
+<div class="live">
+  <style>
     .rozlamat th {display: none;}
     .rozlamat td, .rozlamat tr, .rozlamat thead, .rozlamat tbody, table.rozlamat {display: block;}
     
@@ -108,57 +130,56 @@ Pokud **zjednodušení** není možné nebo dostatečné, nezbývá než tabulku
 	.popisky td:nth-of-type(3):before {content: "Popis"}
 	.popisky td:nth-of-type(4):before {content: "Funkce"}
 	.popisky td:nth-of-type(5):before {content: "Akce"}
-
-      JménoE-mailPopisFunkceAkce
-
-      Běžný Uživatel
-      bezny@uzivatel.cz
-      Popis běžného uživatele.
-      Uživatel    
-      ×SmazatEUpravit
-
-      Franta Fytopuf
-      franta@fytopuf.cz
-      Popis běžného fytopufu.
-      Rostlinář
-      ×SmazatEUpravit
-
+  </style>
+  <table style="background: #fff;" id="rozlamat">
+    <tr>
+      <th>Jméno</th><th>E-mail</th><th>Popis</th><th>Funkce</th><th>Akce</th>
+    </tr>
+    <tr>
+      <td>Běžný Uživatel</td>
+      <td>bezny@uzivatel.cz</td>
+      <td>Popis běžného uživatele.</td>
+      <td>Uživatel</td>    
+      <td><button><span class="ico">×</span><span class="txt">Smazat</span></button><button><span class="ico">E</span><span class="txt">Upravit</span></button></td>
+    </tr>
+    <tr>
+      <td>Franta Fytopuf</td>
+      <td>franta@fytopuf.cz</td>
+      <td>Popis běžného fytopufu.</td>
+      <td>Rostlinář</td>
+      <td><button><span class="ico">×</span><span class="txt">Smazat</span></button><button><span class="ico">E</span><span class="txt">Upravit</span></button></td>
+    </tr>   
+  </table>  
+</div>
+<script>
   var rozlamat = document.getElementById("rozlamat");
+</script>
 
-Zrušení tabulky je možné provést třeba nastavením `display: block` pro všechny tabulkové elementy ([nezapomínat na `&lt;tbody>`](/html-znacky#volitelne)).
+<p>Zrušení tabulky je možné <button onclick="toggle(rozlamat, 'rozlamat')">provést</button> třeba nastavením <code>display: block</code> pro všechny tabulkové elementy (<a href="/html-znacky#volitelne">nezapomínat na <code>&lt;tbody></code></a>).</p>
 
-```
-@media screen and (max-width: 600px) {
+<pre><code>@media screen and (max-width: 600px) {
   /* rozlámání tabulek */
   td, th, tr, thead, tbody, tfoot, table {display: block} 
-}
-```
+}</code></pre>
 
-### Doplnění popisků
+<h3 id="popisky">Doplnění popisků</h3>
+<p>Pokud by srozumitelnost tabulky byla bez popisků nedostatečná, můžeme je <button onclick="toggle(rozlamat, 'popisky')">přidat</button> CSS vlastností <a href="/content-attr"><code>content</code></a>.</p>
 
-Pokud by srozumitelnost tabulky byla bez popisků nedostatečná, můžeme je přidat CSS vlastností [`content`](/content-attr).
+<p>A to buď CSS deklarací ve stylu:</p>
+<pre><code>.popisky td:nth-of-type(1):before {content: "Popis první buňky"}
+.popisky td:nth-of-type(2):before {content: "Popis druhé buňky"}</code></pre>
 
-A to buď CSS deklarací ve stylu:
+<p>Nebo přiřazením popisků do <a href="/vlastni-html-znacky">vlastních atributů</a> všech buněk a následné dolování přes <code>content: attr(vlastni-atribut)</code>. To by mohlo zajistit i <a href="http://kod.djpw.cz/lts">pár řádku JavaScriptu</a>.</p>
 
-```
-.popisky td:nth-of-type(1):before {content: "Popis první buňky"}
-.popisky td:nth-of-type(2):before {content: "Popis druhé buňky"}
-```
+<h2 id="transformace">Transformace tabulky</h2>
+<p>Poslední možnost je tabulku projít skriptem a převést ji třeba na <b>definiční seznam</b> (značka <code>&lt;dl></code>), případně ji převést už na straně serveru při <a href="/mobilni-web#detekce">detekci</a> mobilního prohlížeče.</p>
 
-Nebo přiřazením popisků do [vlastních atributů](/vlastni-html-znacky) všech buněk a následné dolování přes `content: attr(vlastni-atribut)`. To by mohlo zajistit i [pár řádku JavaScriptu](http://kod.djpw.cz/lts).
-
-## Transformace tabulky
-
-Poslední možnost je tabulku projít skriptem a převést ji třeba na **definiční seznam** (značka `&lt;dl>`), případně ji převést už na straně serveru při [detekci](/mobilni-web#detekce) mobilního prohlížeče.
-
-## Odkazy jinam
-
-  - [Elvery.net](http://elvery.net/demo/responsive-tables/) – Responsive Tables Demo
-
-  - [Zurb.com](http://zurb.com/playground/playground/responsive-tables/index.html) – Responsive Tables
-
-  - [CSS-Tricks](http://css-tricks.com/examples/ResponsiveTables/responsive.php) – Responsive Table
-
-  - [RWD List to Table](http://codepen.io/geoffyuen/pen/FCBEg)
-
-  - Sitepoint: [The Ancient Sumerians, Tablet Computing and HTML Tables](http://www.sitepoint.com/ancient-sumerians-knew-html-tables/)
+<h2 id="odkazy">Odkazy jinam</h2>
+<ul>
+  <li><a href="http://elvery.net/demo/responsive-tables/">Elvery.net</a> – Responsive Tables Demo</li>
+  <li><a href="http://zurb.com/playground/playground/responsive-tables/index.html">Zurb.com</a> – Responsive Tables</li>
+  <li><a href="http://css-tricks.com/examples/ResponsiveTables/responsive.php">CSS-Tricks</a> – Responsive Table</li>
+  <li><a href="http://codepen.io/geoffyuen/pen/FCBEg">RWD List to Table</a></li>
+  
+  <li>Sitepoint: <a href="http://www.sitepoint.com/ancient-sumerians-knew-html-tables/">The Ancient Sumerians, Tablet Computing and HTML Tables</a></li>
+</ul>

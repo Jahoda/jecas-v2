@@ -5,90 +5,77 @@ description: "Jak může JavaScript přes <code>history.pushState</code> změnit
 date: "2013-11-13"
 last_modification: "2013-11-13"
 status: 1
-tags: ["JavaScript", "Rady a nápady", "AJAX"]
+tags: ["js", "js-ajax", "napady"]
+format: "html"
 ---
 
-Pokud se jednotlivé stránky webové aplikace mají načítat asynchronně ([AJAXem](/ajax)), je důležité spolu se změnou obsahu **změnit i URL**. Proč?
+<p>Pokud se jednotlivé stránky webové aplikace mají načítat asynchronně (<a href="/ajax">AJAXem</a>), je důležité spolu se změnou obsahu <b>změnit i URL</b>. Proč?</p>
 
-  - Aby se dalo **na stránku odkázat**,
+<ul>
+  <li>Aby se dalo <b>na stránku odkázat</b>,</li>
+  <li>aby se návštěvník <b>mohl pohybovat historií</b> prohlížeče,</li>
+  <li>aby danou <b>URL mohl vyhledávač zaindexovat</b>.</li>
+</ul>
 
-  - aby se návštěvník **mohl pohybovat historií** prohlížeče,
+<p>Kromě <b>změny URL</b> je potřeba zároveň zajistit, aby se po zadání konkrétní URL <b>zpětně načetl</b> příslušný obsah.</p>
 
-  - aby danou **URL mohl vyhledávač zaindexovat**.
-
-Kromě **změny URL** je potřeba zároveň zajistit, aby se po zadání konkrétní URL **zpětně načetl** příslušný obsah.
-
-## Změna URL
-
-Od **IE 10** lze napříč prohlížeči používat `history.pushState`:
-
-```
-if (history.pushState) { // Test podpory
+<h2>Změna URL</h2>
+<p>Od <b>IE 10</b> lze napříč prohlížeči používat <code>history.pushState</code>:
+</p>
+  
+<pre><code>if (history.pushState) { // Test podpory
   // Načtení obsahu AJAXem
   window.history.pushState(objektObsah, "Titulek stránky", "url-stranky");
-}
-```
+}</code></pre>
 
-Parametry *Titulek* a *URL* jsou jasné. Parametr `objektObsah` slouží k uchování dat právě pro případ **pohybu v historii prohlížeče**. Jedná se o běžný JS objekt:
-
-```
-window.history.pushState(
-  **{nadpis: "Text nadpisu", obsah: "Obsah stránky"}**, 
+<p>Parametry <i>Titulek</i> a <i>URL</i> jsou jasné. Parametr <code>objektObsah</code> slouží k uchování dat právě pro případ <b>pohybu v historii prohlížeče</b>. Jedná se o běžný JS objekt:</p>
+<pre><code>window.history.pushState(
+  <b>{nadpis: "Text nadpisu", obsah: "Obsah stránky"}</b>, 
   "Titulek stránky", 
   "url-stranky"
-);
-```
+);</code></pre>
 
-Ideální proto je do něj **uložit obsah stránky**, který se mění (nadpis, obsah, …). K uloženým hodnotám objektu se dá dostat z `history.state`. Zjistit, že se má načíst obsah z `history.state`, je možné z události `window.onpopstate`. Testovací [ukázka](http://kod.djpw.cz/apq-).
+<p>Ideální proto je do něj <b>uložit obsah stránky</b>, který se mění (nadpis, obsah, …). K uloženým hodnotám objektu se dá dostat z <code>history.state</code>. Zjistit, že se má načíst obsah z <code>history.state</code>, je možné z události <code>window.onpopstate</code>. Testovací <a href="http://kod.djpw.cz/apq-">ukázka</a>.</p>
 
-```
-window.onpopstate = function(*event*) {
-  alert(*event*.state.**nadpis**);
-};
-```
+<pre><code>window.onpopstate = function(<i>event</i>) {
+  alert(<i>event</i>.state.<b>nadpis</b>);
+};</code></pre>
 
-### `history.replaceState`
+<h3 id="replaceState"><code>history.replaceState</code></h3>
+<p>Kromě <code>pushState</code> existuje ještě metoda <code>replaceState</code>, která funguje víceméně stejně, jen místo nové položky v historii <b>nahradí</b> tu současnou.</p>
 
-Kromě `pushState` existuje ještě metoda `replaceState`, která funguje víceméně stejně, jen místo nové položky v historii **nahradí** tu současnou.
+<h2 id="hash">Změna #hashe ve starých prohlížečích</h2>
+<p>V prohlížečích <b>IE 9</b> a starších je jediná možnost, jak <b>zajistit změnu URL</b> u AJAXem načítaného obsahu, měnit hodnotu <code>location.hash</code>.</p>
+<p>Zachytit změnu <code>hash</code>e jde od <b>IE 8</b> přes <code>window.onhashchange</code>; pro ještě starší prohlížeče nezbývá než <code>location.hash</code> kontrolovat <b>časovačem</b>.</p>
 
-## Změna #hashe ve starých prohlížečích
+<h3 id="odkazovani">Odkazování</h3>
+<p>Problém tohoto řešení je v tom, že URL v obvyklém tvaru <code>http://example.com/#!url-stranky</code> může být dostupná jen <b>při zapnutém JS</b>.</p>
 
-V prohlížečích **IE 9** a starších je jediná možnost, jak **zajistit změnu URL** u AJAXem načítaného obsahu, měnit hodnotu `location.hash`.
+<p><b>Vyhledávače</b> a další služby (typu <b>facebookové načítání</b> titulku a popisu stránky u odkazů) to řeší tak, že adresu obsahující tzv. <i>hashbang</i> (<code>#!</code>) – tj. například <code>http://example.com/<b>#!</b>url-stranky</code> přepíší na <code>http://example.com/<b>?_escaped_fragment_=</b>url-stranky</code> a tam očekávají obsah.</p>
 
-Zachytit změnu `hash`e jde od **IE 8** přes `window.onhashchange`; pro ještě starší prohlížeče nezbývá než `location.hash` kontrolovat **časovačem**.
+<p>Nešťastné je, že takto nefungují zdaleka všechny služby a návštěvníci bez JavaScriptu se na URL s <b>fragmentem/hashem nedostanou</b>.</p>
 
-### Odkazování
+<p>Další nevýhoda je, že <b>fragment v URL</b> neumí serverový skript spolehlivě zachytit, takže při příchodu na <code>example.com/#!url-stranky</code> se stejně nejprve vygeneruje stránka <code>example.com</code>, aby se potom <b>skriptem stáhla ještě</b> <code>example.com/url-stranky</code>. Očekávané <b>zrychlení</b> webu je potom fuč.</p>
 
-Problém tohoto řešení je v tom, že URL v obvyklém tvaru `http://example.com/#!url-stranky` může být dostupná jen **při zapnutém JS**.
+<p>Při použítí <code>history.pushState</code> tyto problémy nehrozí. JavaScript mění URL stránek na <b>plnohodnotné</b>, takže se po příchodu na tuto URL načte obsah standardně <b>ze serveru</b> a asynchronně se donačítá až další obsah při procházení. Vyhledávače a roboti používají jen <b>obsah přímo ze serveru</b>.</p>
 
-**Vyhledávače** a další služby (typu **facebookové načítání** titulku a popisu stránky u odkazů) to řeší tak, že adresu obsahující tzv. *hashbang* (`#!`) – tj. například `http://example.com/**#!**url-stranky` přepíší na `http://example.com/**?_escaped_fragment_=**url-stranky` a tam očekávají obsah.
+<h2 id="co-pouzivat">Co používat?</h2>
+<p>Použití <code>history.pushState</code> s plnohodnotnými adresami se zdá být docela rozumné (už to tak funguje mj. na <b>YouTube</b>). Měnit adresu za <code>#!</code> už je trochu slabší, ale při <b>správném řešení</b> to jako náhrada <code>pushState</code> může sloužit, tj.:</p>
 
-Nešťastné je, že takto nefungují zdaleka všechny služby a návštěvníci bez JavaScriptu se na URL s **fragmentem/hashem nedostanou**.
+<ul>
+  <li>Všude používat <b>plnohodnotné adresy</b> (cíl/<code>href</code> odkazů na <code>#!</code> variantu měnit v daných prohlížečích až skriptem).</li>
+  <li>Zajistit zobrazení příslušného obsahu na URL s <code>?_escaped_fragment_=</code>, aby např. návštěvník v <b>IE 9</b> mohl stránku normálně nasdílet na Facebooku.</li>
+  <li>Zajistit, aby se po zadání <b>adresy s fragmentem</b> zobrazil odpovídající obsah. V prohlížečích, co umí <code>pushState</code>, <b>fragment odstraňovat</b>.</li>
+</ul>
 
-Další nevýhoda je, že **fragment v URL** neumí serverový skript spolehlivě zachytit, takže při příchodu na `example.com/#!url-stranky` se stejně nejprve vygeneruje stránka `example.com`, aby se potom **skriptem stáhla ještě** `example.com/url-stranky`. Očekávané **zrychlení** webu je potom fuč.
+<p>Pořád ale přetrvává nevýhoda <b>dvojitého načítání</b> a získávání <b>nehezkých zpětných odkazů</b> s <code>#!</code>.</p>
 
-Při použítí `history.pushState` tyto problémy nehrozí. JavaScript mění URL stránek na **plnohodnotné**, takže se po příchodu na tuto URL načte obsah standardně **ze serveru** a asynchronně se donačítá až další obsah při procházení. Vyhledávače a roboti používají jen **obsah přímo ze serveru**.
+<h3 id="reset">Reset a zrychlení</h3>
+<p>Kromě toho je dobré zvážit, zda není při běžném (neajaxovém) procházení webů výhodné to, že se při každém načtení stránky všechen JavaScript v podstatě <b>vyresetuje</b>. Hrozí tak menší risiko, že se něco <b>rozbije</b> a návštěvník neznalý <b>reload tlačítka</b> nebude na stránce schopen dalšího fungování.</p>
+<p>Nakonec u <b>rychlého webu</b> nebude nejspíš zisk z AJAXového načítání jen části stránky moc <b>významný</b>.</p>
 
-## Co používat?
-
-Použití `history.pushState` s plnohodnotnými adresami se zdá být docela rozumné (už to tak funguje mj. na **YouTube**). Měnit adresu za `#!` už je trochu slabší, ale při **správném řešení** to jako náhrada `pushState` může sloužit, tj.:
-
-  - Všude používat **plnohodnotné adresy** (cíl/`href` odkazů na `#!` variantu měnit v daných prohlížečích až skriptem).
-
-  - Zajistit zobrazení příslušného obsahu na URL s `?_escaped_fragment_=`, aby např. návštěvník v **IE 9** mohl stránku normálně nasdílet na Facebooku.
-
-  - Zajistit, aby se po zadání **adresy s fragmentem** zobrazil odpovídající obsah. V prohlížečích, co umí `pushState`, **fragment odstraňovat**.
-
-Pořád ale přetrvává nevýhoda **dvojitého načítání** a získávání **nehezkých zpětných odkazů** s `#!`.
-
-### Reset a zrychlení
-
-Kromě toho je dobré zvážit, zda není při běžném (neajaxovém) procházení webů výhodné to, že se při každém načtení stránky všechen JavaScript v podstatě **vyresetuje**. Hrozí tak menší risiko, že se něco **rozbije** a návštěvník neznalý **reload tlačítka** nebude na stránce schopen dalšího fungování.
-
-Nakonec u **rychlého webu** nebude nejspíš zisk z AJAXového načítání jen části stránky moc **významný**.
-
-## Odkazy jinam
-
-  - [Jak Google prohledává AJAXové weby](https://developers.google.com/webmasters/ajax-crawling/docs/getting-started)
-
-  - [*Manipulování* s historií na MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history)
+<h2 id="odkazy">Odkazy jinam</h2>
+<ul>
+  <li><a href="https://developers.google.com/webmasters/ajax-crawling/docs/getting-started">Jak Google prohledává AJAXové weby</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history"><i>Manipulování</i> s historií na MDN</a></li>
+</ul>

@@ -5,45 +5,58 @@ description: "Jak asynchronně načítat CSS, aby neblokovalo vykreslování str
 date: "2014-11-18"
 last_modification: "2014-12-08"
 status: 1
-tags: ["CSS", "Hotová řešení", "Rady a nápady", "Zrychlování webu"]
+tags: ["css", "hotova-reseni", "napady", "zrychlovani"]
+format: "html"
 ---
 
-**Externí CSS** se většinou připojuje v **hlavičce stránky** (`&lt;head>`) dvěma způsoby:
+<p><b>Externí CSS</b> se většinou připojuje v <b>hlavičce stránky</b> (<code>&lt;head></code>) dvěma způsoby:</p>
 
-    HTML značkou `&lt;link>`:
-
-    ```
-&lt;link rel="stylesheet" href="styl.css">
-```
-
-    CSS pravidlem `@import` uvnitř `&lt;style>`:
-
-    ```
-&lt;style>
+<ul>
+  <li>
+    <p>HTML značkou <code>&lt;link></code>:</p>
+    
+    <pre><code>&lt;link rel="stylesheet" href="styl.css"></code></pre>
+  </li>
+  
+  <li>
+    <p>CSS pravidlem <code>@import</code> uvnitř <code>&lt;style></code>:</p>
+    
+    <pre><code>&lt;style>
   @import url('styl.css');
-&lt;/style>
-```
+&lt;/style></code></pre>
+  </li>
+</ul>
 
-Problém obou případů spočívá v tom, že jejich **načítání** a **zpracování** blokuje vykreslení stránky. Než se CSS stáhne a zpracuje, uživatel **zírá na prázdnou stránku**.
+<p>Problém obou případů spočívá v tom, že jejich <b>načítání</b> a <b>zpracování</b> blokuje vykreslení stránky. Než se CSS stáhne a zpracuje, uživatel <b>zírá na prázdnou stránku</b>.</p>
 
-S ohledem na [vykreslování stránky](/vykreslovani) to má opodstatnění. Prohlížeč nemusí stránku **překreslovat** po každém CSS pravidlu, které zrovna zpracoval, ale nejdříve si počká na všechny styly a stránku **vykreslí najednou**.
+<p>S ohledem na <a href="/vykreslovani">vykreslování stránky</a> to má opodstatnění. Prohlížeč nemusí stránku <b>překreslovat</b> po každém CSS pravidlu, které zrovna zpracoval, ale nejdříve si počká na všechny styly a stránku <b>vykreslí najednou</b>.</p>
 
-Jelikož **HTTP spojení** pro každý CSS soubor něco *stojí*, znamená toto čekání zbytečnou **prodlevu při načítání stránky**. U datově většího nebo u více souborů se styly už to může být problematické.
+<p>Jelikož <b>HTTP spojení</b> pro každý CSS soubor něco <i>stojí</i>, znamená toto čekání zbytečnou <b>prodlevu při načítání stránky</b>. U datově většího nebo u více souborů se styly už to může být problematické.</p>
 
-    - Více CSS souborů bývá dobré spojit: [Spojení CSS a JS souborů do jednoho](/slouceni-js-css)
+<div class="internal-content">
+  <ul>
+    <li>Více CSS souborů bývá dobré spojit: <a href="/slouceni-js-css">Spojení CSS a JS souborů do jednoho</a></li>
+  </ul>
+</div>
 
-## Asynchronní načítání CSS
 
-V případě, že bude výsledné CSS hodně velké nebo zkrátka chceme první načtení **co nejrychlejší**, nabízí se styly **rozdělit na dvě části**:
+<h2 id="async">Asynchronní načítání CSS</h2>
 
-    Minimum stylů nutných k přijatelnému **zobrazení obsahu „nad ohybem“** (obsah, který je vidět ihned po načtení, než začne uživatel **rolovat**).
+<p>V případě, že bude výsledné CSS hodně velké nebo zkrátka chceme první načtení <b>co nejrychlejší</b>, nabízí se styly <b>rozdělit na dvě části</b>:</p>
 
-    Zbytek stylů („kritické CSS“).
+<ol>
+  <li>
+    <p>Minimum stylů nutných k přijatelnému <b>zobrazení obsahu „nad ohybem“</b> (obsah, který je vidět ihned po načtení, než začne uživatel <b>rolovat</b>).</p>
+  </li>
+  
+  <li>
+    <p>Zbytek stylů („kritické CSS“).</p>
+  </li>
+</ol>
 
-Tzv. **kritické CSS** (pro obsah nad ohybem) se potom vloží přímo do hlavičky do značky `&lt;style>`. A zbytek se načte později JavaScriptem. Taková **JS funkce** a její použití může vypadat následovně.
+<p>Tzv. <b>kritické CSS</b> (pro obsah nad ohybem) se potom vloží přímo do hlavičky do značky <code>&lt;style></code>. A zbytek se načte později JavaScriptem. Taková <b>JS funkce</b> a její použití může vypadat následovně.</p>
 
-```
-&lt;script>
+<pre><code>&lt;script>
 function nacistCSS(url) {
   var styl = document.createElement("link");
   var skript = document.getElementsByTagName("script")[0];
@@ -53,67 +66,105 @@ function nacistCSS(url) {
     skript.parentNode.insertBefore(styl, skript);
   });
 }
-nacistCSS("**dalsi-styl.css**");
-&lt;/script>
-```
+nacistCSS("<b>dalsi-styl.css</b>");
+&lt;/script></code></pre>
 
-Pro funkčnost [bez podpory JavaScriptu](/vypnuty-js) se potom za tento skript umístí standardní připojení CSS do značky `&lt;noscript>`.
+<p>Pro funkčnost <a href="/vypnuty-js">bez podpory JavaScriptu</a> se potom za tento skript umístí standardní připojení CSS do značky <code>&lt;noscript></code>.</p>
 
-```
-&lt;noscript>
-  &lt;link rel="stylesheet" href="**dalsi-styl.css**">
-&lt;/noscript>
-```
+<pre><code>&lt;noscript>
+  &lt;link rel="stylesheet" href="<b>dalsi-styl.css</b>">
+&lt;/noscript></code></pre>
 
-## Kdy má rozdělení smysl
 
-Při úvaze o **asynchronním načítání CSS**, je dobré stejně jako u jiných způsobů **optimalisace rychlosti** nejprve změřit aktuální stav.
 
-    - [WebPageTest](http://www.webpagetest.org/) – zjistí časovou osu načítání stránky
 
-A podle aktuálního stavu potom postupně upravovat nejprve věci, které **zdržují nejvíce**. Tj. pokud generování stránky na serveru trvá 0,5 sekundy, je nejspíš účinnější řešit to místo pár desítek milisekund, co zabere stažení CSS o velikosti pár desítek kilobytů.
 
-HTTP požadavek na běžný CSS soubor tedy může zabrat nižší desítky milisekund, kdy většinu času zabere **navázání spojení**.
 
-U webů, které používá hodně návštěvníků **z mobilu**, jsou docela rozumné následující **orientační hodnoty**.
 
-  - Obsah stránky „nad ohybem“ by se měl vejít do **prvních 14 kB**.
 
-  - Neasynchronně načítané (= vykreslování blokující) externí CSS by mělo být **do 20 kB**.
 
-## Vytvoření „kritického CSS“
 
-Pro získání kritické části CSS z již **existující stránky** existuje docela šikovný online nástroj:
 
-      - [Critical Path CSS Generator](http://jonassebastianohlsson.com/criticalpathcssgenerator/)
 
-    - [Inlining critical CSS for first-time visits](https://adactio.com/journal/8504)
 
-Pochopitelně se těžko může měřit s **ručním vytvořením** nejnutnějších stylů. A už vůbec potom s tím, když bude člověk psát CSS od začátku s ohledem na vytvoření *kritického CSS*.
 
-Není potřeba se totiž striktně držet stylování **všeho „nad ohybem“**, ale můžeme se zaměřit jen na styl hlavního obsahu. A ostatní styly asynchronně donačíst později bez **zdržování vykreslování**.
 
-Pro **pocit rychlého načtení** je totiž klíčové zobrazit co nejdříve hlavní obsah. Když si ho uživatel bude už moci číst, není takový problém, že se **zbytek stránky** načte až později.
+<h2 id="smysl">Kdy má rozdělení smysl</h2>
 
-## Cache
+<p>Při úvaze o <b>asynchronním načítání CSS</b>, je dobré stejně jako u jiných způsobů <b>optimalisace rychlosti</b> nejprve změřit aktuální stav.</p>
 
-Nevýhoda rozdělení CSS na **interní a externí** část způsobí, že se ta interní **nebude ukládat do cache** v prohlížeči. Dá se tedy říct, že výrazně zrychlíme **načítání první stránky**, abychom lehce zpomalili načítání všech dalších stránek. Kritické CSS se bude znovu a znovu stahovat na všech stránkách webu.
+<div class="external-content">
+  <ul>
+    <li><a href="http://www.webpagetest.org/">WebPageTest</a> – zjistí časovou osu načítání stránky</li>
+  </ul>
+</div>
 
-Taktéž přenášení stále stejného *kritického CSS* zvýší datový přenos.
+<p>A podle aktuálního stavu potom postupně upravovat nejprve věci, které <b>zdržují nejvíce</b>. Tj. pokud generování stránky na serveru trvá 0,5 sekundy, je nejspíš účinnější řešit to místo pár desítek milisekund, co zabere stažení CSS o velikosti pár desítek kilobytů.</p>
 
-Existují různé pokusy o **kešování kritického CSS** do [lokálního úložiště](/zalohovani-formularu#local-storage) (`localStorage`), ale u většiny webů to nejspíš nepřinese takovou úsporu, aby to mělo smysl řešit. Několik kB navíc bez nutnosti dalšího HTTP spojení zbrzdí stránku jen **minimálně**.
 
-Při implementaci si je nutné dát pozor na **relativní cesty** k **obrázkům** nebo **fontům**, pokud jsou tyto soubory v podadresářích třeba nějak takto:
+<p>HTTP požadavek na běžný CSS soubor tedy může zabrat nižší desítky milisekund, kdy většinu času zabere <b>navázání spojení</b>.</p>
 
-```
-/index.html
+<p>U webů, které používá hodně návštěvníků <b>z mobilu</b>, jsou docela rozumné následující <b>orientační hodnoty</b>.</p>
+
+<ul>
+  <li>Obsah stránky „nad ohybem“ by se měl vejít do <b>prvních 14 kB</b>.</li>
+  
+  <li>Neasynchronně načítané (= vykreslování blokující) externí CSS by mělo být <b>do 20 kB</b>.</li>
+</ul>
+
+
+
+<h2 id="vytvoreni">Vytvoření „kritického CSS“</h2>
+
+<p>Pro získání kritické části CSS z již <b>existující stránky</b> existuje docela šikovný online nástroj:</p>
+
+<div class="external-content">
+  <ul>
+      <li><a href="http://jonassebastianohlsson.com/criticalpathcssgenerator/">Critical Path CSS Generator</a></li>
+    
+    <li><a href="https://adactio.com/journal/8504">Inlining critical CSS for first-time visits</a></li>
+  </ul>
+</div>
+
+<p>Pochopitelně se těžko může měřit s <b>ručním vytvořením</b> nejnutnějších stylů. A už vůbec potom s tím, když bude člověk psát CSS od začátku s ohledem na vytvoření <i>kritického CSS</i>.</p>
+
+<p>Není potřeba se totiž striktně držet stylování <b>všeho „nad ohybem“</b>, ale můžeme se zaměřit jen na styl hlavního obsahu. A ostatní styly asynchronně donačíst později bez <b>zdržování vykreslování</b>.</p>
+
+<p>Pro <b>pocit rychlého načtení</b> je totiž klíčové zobrazit co nejdříve hlavní obsah. Když si ho uživatel bude už moci číst, není takový problém, že se <b>zbytek stránky</b> načte až později.</p>
+
+
+
+<h2 id="cache">Cache</h2>
+
+<p>Nevýhoda rozdělení CSS na <b>interní a externí</b> část způsobí, že se ta interní <b>nebude ukládat do cache</b> v prohlížeči. Dá se tedy říct, že výrazně zrychlíme <b>načítání první stránky</b>, abychom lehce zpomalili načítání všech dalších stránek. Kritické CSS se bude znovu a znovu stahovat na všech stránkách webu.</p>
+
+<p>Taktéž přenášení stále stejného <i>kritického CSS</i> zvýší datový přenos.</p>
+
+<p>Existují různé pokusy o <b>kešování kritického CSS</b> do <a href="/zalohovani-formularu#local-storage">lokálního úložiště</a> (<code>localStorage</code>), ale u většiny webů to nejspíš nepřinese takovou úsporu, aby to mělo smysl řešit. Několik kB navíc bez nutnosti dalšího HTTP spojení zbrzdí stránku jen <b>minimálně</b>.</p>
+
+<p>Při implementaci si je nutné dát pozor na <b>relativní cesty</b> k <b>obrázkům</b> nebo <b>fontům</b>, pokud jsou tyto soubory v podadresářích třeba nějak takto:</p>
+
+<pre><code>/index.html
 /css/styl.css
 /obrazky/obrazek.png
-/fonty/pismo.otf
-```
+/fonty/pismo.otf</code></pre>
 
-Nebude cesta typu „`../obrazky/obrazek.png`“ ze značky `&lt;style>` z hlavičky souboru `index.html` fungovat.
 
-## Odkazy jinam
+<p>Nebude cesta typu „<code>../obrazky/obrazek.png</code>“ ze značky <code>&lt;style></code> z hlavičky souboru <code>index.html</code> fungovat.</p>
 
-  - [Loading CSS without blocking render](http://keithclark.co.uk/articles/loading-css-without-blocking-render/)
+
+
+
+
+
+
+<!--
+
+<h2 id="shrnuti">Výhody a nevýhody</h2>
+-->
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="http://keithclark.co.uk/articles/loading-css-without-blocking-render/">Loading CSS without blocking render</a></li>
+
+</ul>

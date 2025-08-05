@@ -6,10 +6,13 @@ date: "2015-01-26"
 last_modification: "2015-01-26"
 status: 0
 tags: []
+format: "html"
 ---
 
-- Seznam, Komunikace s vyhledávacím robotem: [Meta tag robots](http://napoveda.seznam.cz/cz/meta-tag-robots/)
-
-  - Seznam: [Robots.txt 2.0](https://napoveda.seznam.cz/cz/fulltext-hledani-v-internetu/robots-txt/robots-txt-verze-2/) – umožňuje pokročilejší regulární výrazy
-
-  - Google Webmaster's Mobile Guide: [Blocked JavaScript, CSS and image files](https://developers.google.com/webmasters/mobile-sites/mobile-seo/common-mistakes/blocked-resources)
+<ul>
+  <li>Seznam, Komunikace s vyhledávacím robotem: <a href="http://napoveda.seznam.cz/cz/meta-tag-robots/">Meta tag robots</a></li>
+  
+  <li>Seznam: <a href="https://napoveda.seznam.cz/cz/fulltext-hledani-v-internetu/robots-txt/robots-txt-verze-2/">Robots.txt 2.0</a> – umožňuje pokročilejší regulární výrazy</li>
+  
+  <li>Google Webmaster's Mobile Guide: <a href="https://developers.google.com/webmasters/mobile-sites/mobile-seo/common-mistakes/blocked-resources">Blocked JavaScript, CSS and image files</a></li>
+</ul>

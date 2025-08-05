@@ -6,6 +6,7 @@ date: "2015-04-26"
 last_modification: "2015-04-26"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://howtocenterincss.com/

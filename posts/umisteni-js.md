@@ -6,116 +6,187 @@ date: "2015-01-15"
 last_modification: "2015-01-15"
 status: 0
 tags: []
+format: "html"
 ---
 
-Při používání JavaScriptu v HTML existuje spoustu způsobů, jak a kam vložit JS kód, který bude s HTML elementy pracovat. **Špatné pořadí** HTML a JS dokáže **znefunkčnit** celý JS kód a někdy se špatně odhaluje.
+<p>Při používání JavaScriptu v HTML existuje spoustu způsobů, jak a kam vložit JS kód, který bude s HTML elementy pracovat. <b>Špatné pořadí</b> HTML a JS dokáže <b>znefunkčnit</b> celý JS kód a někdy se špatně odhaluje.</p>
 
-Ať už jde o interní (kód mezi `&lt;script>` a `&lt;/script>`) nebo externí JS (připojený přes `&lt;script src="">&lt;/script>`), může být kdekoliv v:
+<p>Ať už jde o interní (kód mezi <code>&lt;script></code> a <code>&lt;/script></code>) nebo externí JS (připojený přes <code>&lt;script src="">&lt;/script></code>), může být kdekoliv v:</p>
 
-  - hlavičce webu (sekce `&lt;head>`)
+<ul>
+  <li>hlavičce webu (sekce <code>&lt;head></code>)</li>
+  <li>těle stránky (sekce <code>&lt;body></code>)</li>
+</ul>
 
-  - těle stránky (sekce `&lt;body>`)
 
-## Vliv na načítání
 
-Čím „výš“ je skript umístěn, tím dříve může být **načten a vykonán**. Na druhou stranu načítání a zpracování externího (neasynchronního) skriptu **přeruší vykreslování** zbytku webu.
 
-Připojení velkého JS nad textovým obsahem webu tedy způsobí, že návštěvník nic nevidí do doby stažení a vykonání celého souboru.
 
-Pro **maximální rychlost načítání** HTML obsahu je tedy vhodné skripty umisťovat na samý konec stránky (před pomyslnou ukončovací značku `&lt;/body>`). Ne vždy je to ale ideální postup, protože pokud je stránka do jisté míry závislá na JS, tak se sice obsah rychle načte, ale oživení skripty může přijít později, než by bylo potřeba. Například nebude fungovat JS akce tlačítka, protože příslušný kód ještě nebyl načten a vykonán.
 
-Častý případ to je u [hamburger navigací](/hamburger-menu), které po kliknutí před načtením JS nic nedělají a pro uživatele vytváří **efekt nefunkčního webu**.
+<h2 id="nacitani">Vliv na načítání</h2>
 
-### URL se stavem aplikace
+<p>Čím „výš“ je skript umístěn, tím dříve může být <b>načten a vykonán</b>. Na druhou stranu načítání a zpracování externího (neasynchronního) skriptu <b>přeruší vykreslování</b> zbytku webu.</p>
 
-Řada těchto problémů jde vyřešit tím, že se pro typická [rozklikávání obsahu](/css-rozbalovani) nepoužívá JavaScript. Případně se rozbalování obsahu apod. bere jako **stav aplikace**, který se může přenášet v URL parametrech.
 
-Tlačítko pro zobrazení menu tak může symbolicky vypadat následovně:
+<p>Připojení velkého JS nad textovým obsahem webu tedy způsobí, že návštěvník nic nevidí do doby stažení a vykonání celého souboru.</p>
 
-```
-&lt;a href="?zobrazitMenu=true" onclick="zobrazitSkrytMenu(); return false">
+<p>Pro <b>maximální rychlost načítání</b> HTML obsahu je tedy vhodné skripty umisťovat na samý konec stránky (před pomyslnou ukončovací značku <code>&lt;/body></code>). Ne vždy je to ale ideální postup, protože pokud je stránka do jisté míry závislá na JS, tak se sice obsah rychle načte, ale oživení skripty může přijít později, než by bylo potřeba. Například nebude fungovat JS akce tlačítka, protože příslušný kód ještě nebyl načten a vykonán.</p>
+
+<p>Častý případ to je u <a href="/hamburger-menu">hamburger navigací</a>, které po kliknutí před načtením JS nic nedělají a pro uživatele vytváří <b>efekt nefunkčního webu</b>.</p>
+
+
+
+
+
+<h3 id="stav">URL se stavem aplikace</h3>
+
+<p>Řada těchto problémů jde vyřešit tím, že se pro typická <a href="/css-rozbalovani">rozklikávání obsahu</a> nepoužívá JavaScript. Případně se rozbalování obsahu apod. bere jako <b>stav aplikace</b>, který se může přenášet v URL parametrech.</p>
+
+<p>Tlačítko pro zobrazení menu tak může symbolicky vypadat následovně:</p>
+
+<pre><code>&lt;a href="?zobrazitMenu=true" onclick="zobrazitSkrytMenu(); return false">
   Menu
-&lt;/a>
-```
+&lt;/a></code></pre>
 
-Do doby načtení a zpracování JS se uživateli načte totožná stránka s parametrem `zobrazitMenu`, díky kterému se menu zobrazí už na úrovni HTML. Pokud na tlačítko klikne až po stažení a zpracování JS, o zobrazení se postará skript a žádná další stránka se načítat nebude.
 
-### JS aplikace
 
-Je-li webová stránka plně závislá na JS, dává smysl nezbytné skripty začít stahovat co nejdříve a umístit je proto klidně už do `&lt;head>`.
 
-Nebo dokonce použít [resource hint](/async-defer#resource-Hints) a odkaz na externí JS posílat už v HTTP hlavičce:
 
-```
-Link: &lt;https://example.com/velkyJavaScript.js>; rel=prefetch;
-```
 
-Blokování vykreslování potom nemusí vadit, protože vykreslená stránka by bez načteného JS stejně nic nedělala.
 
-## Atribut `async`
 
-Atribut `async` funguje od **IE 10**, **Firefoxu 3.6**, **Chrome 8** a **Opery 15**. Umožňuje docílit dvou věcí najednou:
 
-  - začít načítat externí JavaScript co nejdříve,
 
-  - nezablokovat vykreslování stránky
 
-Zapisuje se následovně (a kvůli kompatibilitě se často používá ještě s `defer`):
 
-```
-&lt;script src="externi.js" **async** *defer*>&lt;/script>
-```
+<p>Do doby načtení a zpracování JS se uživateli načte totožná stránka s parametrem <code>zobrazitMenu</code>, díky kterému se menu zobrazí už na úrovni HTML. Pokud na tlačítko klikne až po stažení a zpracování JS, o zobrazení se postará skript a žádná další stránka se načítat nebude.</p>
 
-    - [Připojení JavaScriptu s `async` a `defer`](/async-defer) – více informací o (a)synchronním připojování JS
 
-Tímto způsobem není problém skript připojit i jinde než na konci stránky, protože **nebude blokovat vykreslování**. Pouze jeho stahování může zpomalit stahování jiných externích objektů (styly, [obrázky](/obrazky), [videa](/video), [fonty](/pisma) a podobně). V jakém místě skript připojit proto závisí na prioritách daného webu.
 
-## Čekání na vytvoření DOMu
+<h3 id="aplikace">JS aplikace</h3>
 
-Asynchronní JS má ze své povahy svou specifickou vlastnost v tom, že se může vykonat prakticky v libovolnou dobu.
+<p>Je-li webová stránka plně závislá na JS, dává smysl nezbytné skripty začít stahovat co nejdříve a umístit je proto klidně už do <code>&lt;head></code>.</p>
 
-U synchronního JS se je možné spolehnout, že HTML elementy nebo jiné JS soubory nacházející se před připojením externího skriptu jsou dostupné a elementy/skripty po připojení ještě ne. U asynchronního mohou nastat oba případy.
+<p>Nebo dokonce použít <a href="/async-defer#resource-Hints">resource hint</a> a odkaz na externí JS posílat už v HTTP hlavičce:</p>
 
-### Příklad synchronního JS
+<pre><code>Link: &lt;https://example.com/velkyJavaScript.js>; rel=prefetch;</code></pre>
 
-Jako příklad může posloužit následující synchronní kód:
+<p>Blokování vykreslování potom nemusí vadit, protože vykreslená stránka by bez načteného JS stejně nic nedělala.</p>
 
-```
-&lt;div id="neco">…&lt;/div>
+
+
+
+
+
+
+<h2 id="async">Atribut <code>async</code></h2>
+
+<p>Atribut <code>async</code> funguje od <b>IE 10</b>, <b>Firefoxu 3.6</b>, <b>Chrome 8</b> a <b>Opery 15</b>. Umožňuje docílit dvou věcí najednou:</p>
+
+<ol>
+  <li>začít načítat externí JavaScript co nejdříve,</li>
+  
+  <li>nezablokovat vykreslování stránky</li>
+</ol>
+
+<p>Zapisuje se následovně (a kvůli kompatibilitě se často používá ještě s <code>defer</code>):</p>
+
+<pre><code>&lt;script src="externi.js" <b>async</b> <i>defer</i>>&lt;/script></code></pre>
+
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/async-defer">Připojení JavaScriptu s <code>async</code> a <code>defer</code></a> – více informací o (a)synchronním připojování JS</li>
+  </ul>
+</div>
+
+
+
+
+
+<p>Tímto způsobem není problém skript připojit i jinde než na konci stránky, protože <b>nebude blokovat vykreslování</b>. Pouze jeho stahování může zpomalit stahování jiných externích objektů (styly, <a href="/obrazky">obrázky</a>, <a href="/video">videa</a>, <a href="/pisma">fonty</a> a podobně). V jakém místě skript připojit proto závisí na prioritách daného webu.</p>
+
+
+
+
+<h2 id="load">Čekání na vytvoření DOMu</h2>
+
+<p>Asynchronní JS má ze své povahy svou specifickou vlastnost v tom, že se může vykonat prakticky v libovolnou dobu.</p>
+
+<p>U synchronního JS se je možné spolehnout, že HTML elementy nebo jiné JS soubory nacházející se před připojením externího skriptu jsou dostupné a elementy/skripty po připojení ještě ne. U asynchronního mohou nastat oba případy.</p>
+
+
+
+
+<h3 id="priklad-sync">Příklad synchronního JS</h3>
+
+<p>Jako příklad může posloužit následující synchronní kód:</p>
+
+<pre><code>&lt;div id="neco">…&lt;/div>
 &lt;script src="funkce.js">&lt;/script>
-&lt;script src="**synchronni-skript.js**">&lt;/script>
-&lt;div id="neco-jineho">…&lt;/div>
-```
+&lt;script src="<b>synchronni-skript.js</b>">&lt;/script>
+&lt;div id="neco-jineho">…&lt;/div></code></pre>
 
-Pokud bude výše uvedený `synchronni-skript.js` chtít pracovat s elementem `#neco` pomocí funkce ze souboru `funkce.js`, bude to OK. Pokud bude chtít pracovat s elementem `#neco-jineho`, nepůjde to, protože tento element ještě v daném momentu nebude v DOMu.
 
-### Příklad asynchronního JS
 
-Případ s použitím `async` se na první pohled moc neliší:
 
-```
-&lt;div id="neco">…&lt;/div>
+
+
+
+
+
+
+<p>Pokud bude výše uvedený <code>synchronni-skript.js</code> chtít pracovat s elementem <code>#neco</code> pomocí funkce ze souboru <code>funkce.js</code>, bude to OK. Pokud bude chtít pracovat s elementem <code>#neco-jineho</code>, nepůjde to, protože tento element ještě v daném momentu nebude v DOMu.</p>
+
+
+
+
+<h3 id="priklad-async">Příklad asynchronního JS</h3>
+
+<p>Případ s použitím <code>async</code> se na první pohled moc neliší:</p>
+
+<pre><code>&lt;div id="neco">…&lt;/div>
 &lt;script src="funkce.js">&lt;/script>
-&lt;script src="**asynchronni-skript.js**" *async*>&lt;/script>
-&lt;div id="neco-jineho">…&lt;/div>
-```
+&lt;script src="<b>asynchronni-skript.js</b>" <i>async</i>>&lt;/script>
+&lt;div id="neco-jineho">…&lt;/div></code></pre>
 
-Podstatně se ale liší funkčnost:
 
-    Soubor `funkce.js` 
 
-To se někdy hodí – typicky u **měřicích skriptů** typu [Google Analytics](/ga), kdy není třeba manimulovat s DOMem stránky.
 
-Pokud se tedy skript připojí asynchronně na začátku stránky a potřebuje pracovat s elementy na stránce, je třeba zajistit, aby se spustil v určitou dobu, kdy už potřebné elementy budou v DOMu.
 
-## Čekání na načtení
 
-```
-window.addEventListener('load', function () {
+
+
+
+
+<p>Podstatně se ale liší funkčnost:</p>
+
+<ol>
+  <li>
+    <p>Soubor <code>funkce.js</code> </p>
+  </li>
+</ol>
+
+
+<p>To se někdy hodí – typicky u <b>měřicích skriptů</b> typu <a href="/ga">Google Analytics</a>, kdy není třeba manimulovat s DOMem stránky.</p>
+
+<p>Pokud se tedy skript připojí asynchronně na začátku stránky a potřebuje pracovat s elementy na stránce, je třeba zajistit, aby se spustil v určitou dobu, kdy už potřebné elementy budou v DOMu.</p>
+
+<h2 id="cekani">Čekání na načtení</h2>
+
+<pre><code>window.addEventListener('load', function () {
     console.log(jQuery.fn.jquery);
-});
-```
+});</code></pre>
 
-    StackOverflow: Javascript run inline script after load async resources
+<div class="external-content">
+  <ul>
+    <li>StackOverflow: <a href="https://stackoverflow.com/questions/45869839/javascript-run-inline-script-after-load-async-resources">Javascript run inline script after load async resources
+</a></li>
+  </ul>
+</div>
 
-    - [How to wait for DOM elements to show up in modern browsers](http://swizec.com/blog/how-to-properly-wait-for-dom-elements-to-show-up-in-modern-browsers/swizec/6663)
+<div class="external-content">
+  <ul>
+    <li><a href="http://swizec.com/blog/how-to-properly-wait-for-dom-elements-to-show-up-in-modern-browsers/swizec/6663">How to wait for DOM elements to show up in modern browsers</a></li>
+  </ul>
+</div>

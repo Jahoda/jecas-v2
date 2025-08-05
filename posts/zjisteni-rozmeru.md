@@ -5,129 +5,210 @@ description: "Jak v JavaScriptu zjistit šířku a výšku rozlišení obrazovky
 date: "2014-01-15"
 last_modification: "2017-06-01"
 status: 1
-tags: ["JavaScript", "Rady a nápady", "Rozlišení"]
+tags: ["js", "napady", "rozliseni"]
+format: "html"
 ---
 
-Co zajímavého je možné na stránce měřit ilustruje následující obrázek:
+<p>Co zajímavého je možné na stránce měřit ilustruje následující obrázek:</p>
 
-Všechny hodnoty jsou v **pixelech**, proto v případě jejich používání v nastavování CSS vlastností je nutné jednotky `px` přidat:
+<p><img src="/files/zjisteni-rozmeru/screen-offset-client.png" alt="Zjištění rozlišení v JavaScriptu" class="border"></p>
 
-```
-element.style.width = screen.width + **"px"**;
-```
 
-## Rozlišení uživatele
 
-Zjištění **rozlišení obrazovky**. Kromě statistických účelů to není moc použitelné. Z praktického hlediska je zajímavější znát prostor okna, který je dostupný pro samotný web.
 
-  `screen.width`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Všechny hodnoty jsou v <b>pixelech</b>, proto v případě jejich používání v nastavování CSS vlastností je nutné jednotky <code>px</code> přidat:</p>
+
+<pre><code>element.style.width = screen.width + <b>"px"</b>;</code></pre>
+
+
+
+
+
+
+
+
+<h2>Rozlišení uživatele</h2>
+
+<p>Zjištění <b>rozlišení obrazovky</b>. Kromě statistických účelů to není moc použitelné. Z praktického hlediska je zajímavější znát prostor okna, který je dostupný pro samotný web.</p>
+<dl>
+  <dt><code>screen.width</code></dt>
+  <dd>
+    <p>Šířka obrazovky: <tt class="live" data-eval="screen.width"></tt></p>
+  </dd>
   
-    Šířka obrazovky: 
-
-  `screen.height`
+  <dt><code>screen.height</code></dt>
+  <dd>
+    <p>Výška obrazovky: <tt class="live" data-eval="screen.height"></tt></p>
+  </dd>  
   
-    Výška obrazovky: 
-
-  `screen.availWidth`
+  <dt><code>screen.availWidth</code></dt>
+  <dd>
+    <p>Dostupná šířka: <tt class="live" data-eval="screen.availWidth"></tt></p>
+  </dd>
   
-    Dostupná šířka: 
+  <dt><code>screen.availHeight</code></dt>
+  <dd>
+    <p>Dostupná výška: <tt class="live" data-eval="screen.availHeight"></tt></p>
+  </dd>  
+</dl>
 
-  `screen.availHeight`
+<p>Hodnota <code>availHeight</code> se liší kvůli panelu v operačním systému.</p>
+
+
+
+
+<h2 id="pixel-ratio">Poměr pixelů <code>pixelRatio</code></h2>
+
+<p>Jedná s o poměr skutečných hardwarových pixelů vůči počtu pixelů, kterými se presentuje prohlížeč.</p>
+
+<dl>  
+  <dt><code>window.devicePixelRatio</code></dt>
+  <dd>
+    <p>Poměr pixelů: <tt class="live" data-eval="window.devicePixelRatio"></tt></p>
+  </dd>
+</dl>
+
+<p><b>Jiná hodnota než 1</b> typicky nastává u mobilních zařízení. Ta mají běžně na 5" displeji třeba FullHD rozlišení (1920 × 1080 pixelů). Pokud by byl poměr HW a SW pixelů 1:1, stránka by byla na mobilu nečitelná.</p>
+
+<p>Obdobné chování je i u <b>4K monitorů</b> (3840 × 2160 pixelů), kde se stránky v prohlížečích tváří jako by byly v QHD rozlišení (2560 × 1440 px) při device-pixel-ratio 1.5.</p>
+
+
+
+<h2 id="viewport">Rozměry viewportu</h2>
+<p><i>Viewport</i> znamená „čistý“ rozměr okna, který je dostupný pro samotný web. Mění své rozměry při úpravách velikosti okna. Taktéž při zobrazování/vypínání různých panelů v prohlížeči.</p>
+
+<dl>
+  <dt><code>document.documentElement.clientWidth</code></dt>
+  <dd>
+    <p>Šířka viewportu: <tt class="live" data-eval="document.documentElement.clientWidth"></tt></p>
+  </dd>
   
-    Dostupná výška: 
+  <dt><code>document.documentElement.clientHeight</code></dt>
+  <dd>
+    <p>Výška viewportu: <tt class="live" data-eval="document.documentElement.clientHeight"></tt></p>
+  </dd>  
+</dl>
 
-Hodnota `availHeight` se liší kvůli panelu v operačním systému.
+<p>V některých prohlížečích je možné použít (<b>IE 9+</b>):</p>
 
-## Poměr pixelů `pixelRatio`
-
-Jedná s o poměr skutečných hardwarových pixelů vůči počtu pixelů, kterými se presentuje prohlížeč.
-
-  `window.devicePixelRatio`
+<dl>
+  <dt><code>window.innerWidth</code></dt>
+  <dd>
+    <p>Šířka viewportu: <tt class="live" data-eval="window.innerWidth"></tt></p>
+  </dd>
   
-    Poměr pixelů: 
+  <dt><code>window.innerHeight</code></dt>
+  <dd>
+    <p>Výška viewportu: <tt class="live" data-eval="window.innerHeight"></tt></p>
+  </dd>  
+</dl>
 
-**Jiná hodnota než 1** typicky nastává u mobilních zařízení. Ta mají běžně na 5" displeji třeba FullHD rozlišení (1920 × 1080 pixelů). Pokud by byl poměr HW a SW pixelů 1:1, stránka by byla na mobilu nečitelná.
-
-Obdobné chování je i u **4K monitorů** (3840 × 2160 pixelů), kde se stránky v prohlížečích tváří jako by byly v QHD rozlišení (2560 × 1440 px) při device-pixel-ratio 1.5.
-
-## Rozměry viewportu
-
-*Viewport* znamená „čistý“ rozměr okna, který je dostupný pro samotný web. Mění své rozměry při úpravách velikosti okna. Taktéž při zobrazování/vypínání různých panelů v prohlížeči.
-
-  `document.documentElement.clientWidth`
+<h2 id="cela-velikost">Velikost celé stránky</h2>
+<p>Zjistit celkové rozměry stránky (nebo samotného elementu) umí <code>offset*</code> hodnoty. Započítá se i obsah, ke kterému se musí <b>odrolovat</b>.</p>
+<dl>
+  <dt><code>document.documentElement.offsetWidth</code></dt>
+  <dd>
+    <p>Šířka stránky: <tt class="live" data-eval="document.documentElement.offsetWidth"></tt></p>
+  </dd>
   
-    Šířka viewportu: 
+  <dt><code>document.documentElement.offsetHeight</code></dt>
+  <dd>
+    <p>Výška stránky: <tt class="live" data-eval="document.documentElement.offsetHeight"></tt></p>
+  </dd>  
+</dl>
 
-  `document.documentElement.clientHeight`
+<dl>
+  <dt><code>document.documentElement.scrollWidth</code></dt>
+  <dd>
+    <p>Šířka stránky: <tt class="live" data-eval="document.documentElement.scrollWidth"></tt></p>
+  </dd>
   
-    Výška viewportu: 
+  <dt><code>document.documentElement.scrollHeight</code></dt>
+  <dd>
+    <p>Výška stránky: <tt class="live" data-eval="document.documentElement.offsetHeight"></tt></p>
+  </dd>  
+</dl>
 
-V některých prohlížečích je možné použít (**IE 9+**):
-
-  `window.innerWidth`
+<h3>document.body</h3>
+<p>Zjišťování rozměrů celé stránky přes <a href="/documentelement-body"><code>documentElement</code></a> nefunguje správně v <b>IE 9</b> a starších. Hodnota z <code>document.body</code> vypadá mnohem lépe.</p>
+<dl>
+  <dt><code>document.body.offsetWidth</code></dt>
+  <dd>
+    <p>Šířka stránky: <tt class="live" data-eval="document.body.offsetWidth"></tt></p>
+  </dd>
   
-    Šířka viewportu: 
+  <dt><code>document.body.offsetHeight</code></dt>
+  <dd>
+    <p>Výška stránky: <tt class="live" data-eval="document.body.offsetHeight"></tt></p>
+  </dd>  
+</dl>
 
-  `window.innerHeight`
+<dl>
+  <dt><code>document.body.scrollWidth</code></dt>
+  <dd>
+    <p>Šířka stránky: <tt class="live" data-eval="document.body.scrollWidth"></tt></p>
+  </dd>
   
-    Výška viewportu: 
+  <dt><code>document.body.scrollHeight</code></dt>
+  <dd>
+    <p>Výška stránky: <tt class="live" data-eval="document.body.offsetHeight"></tt></p>
+  </dd>  
+</dl>
 
-## Velikost celé stránky
+<h2 id="rozmery-elementu">Rozměry elementu</h2>
+<p>Pro přeměření elementů jako <a href="/div-span#div"><code>&lt;div></code></a>, <code>&lt;p></code> a podobně slouží rovněž <code>offset*</code> hodnoty.</p>
 
-Zjistit celkové rozměry stránky (nebo samotného elementu) umí `offset*` hodnoty. Započítá se i obsah, ke kterému se musí **odrolovat**.
-
-  `document.documentElement.offsetWidth`
-  
-    Šířka stránky: 
-
-  `document.documentElement.offsetHeight`
-  
-    Výška stránky: 
-
-  `document.documentElement.scrollWidth`
-  
-    Šířka stránky: 
-
-  `document.documentElement.scrollHeight`
-  
-    Výška stránky: 
-
-### document.body
-
-Zjišťování rozměrů celé stránky přes [`documentElement`](/documentelement-body) nefunguje správně v **IE 9** a starších. Hodnota z `document.body` vypadá mnohem lépe.
-
-  `document.body.offsetWidth`
-  
-    Šířka stránky: 
-
-  `document.body.offsetHeight`
-  
-    Výška stránky: 
-
-  `document.body.scrollWidth`
-  
-    Šířka stránky: 
-
-  `document.body.scrollHeight`
-  
-    Výška stránky: 
-
-## Rozměry elementu
-
-Pro přeměření elementů jako [`&lt;div>`](/div-span#div), `&lt;p>` a podobně slouží rovněž `offset*` hodnoty.
-
-Element k přeměření
-
+<textarea id="premerit" style="padding: 1em; border: 0; background: #efefef; resize: both;">Element k přeměření</textarea>
+<script>
   var premerit = document.getElementById('premerit');
+</script>
 
-  `element.offsetWidth`
+<dl>
+  <dt><code>element.offsetWidth</code></dt>
+  <dd>
+    <p>Šířka: <tt class="live" data-eval="premerit.offsetWidth"></tt></p>
+  </dd>
   
-    Šířka: 
+  <dt><code>element.offsetHeight</code></dt>
+  <dd>
+    <p>Výška: <tt class="live" data-eval="premerit.offsetHeight"></tt></p>
+  </dd>  
+</dl>
 
-  `element.offsetHeight`
-  
-    Výška: 
-
+<script>
   function reCount() {
     var items = document.getElementsByTagName("tt");
-    for (var i = 0; i
+    for (var i = 0; i < items.length; i++) {
+      items[i].innerHTML = eval(items[i].getAttribute("data-eval"));
+    }
+  }
+  
+  window.onload = window.onresize = premerit.onmouseup = reCount;
+</script>

@@ -6,21 +6,26 @@ date: "2014-01-31"
 last_modification: "2014-01-31"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Jak nepoužívat jQuery
+<h2 id="nepouzivat">Jak nepoužívat jQuery</h2>
 
-  - [Qwery](https://github.com/ded/qwery) – miniauturní obálka na [`querySelector`em](/queryselector) o velikosti cca 1 kB
 
-  - [You Might Not Need jQuery](http://youmightnotneedjquery.com) – stránka obsahující příklady, jak standardní jQuery konstrukce napsat v čistém JS
+<ul>
+  <li><a href="https://github.com/ded/qwery">Qwery</a> – miniauturní obálka na <a href="/queryselector"><code>querySelector</code>em</a> o velikosti cca 1 kB</li>
+  
+  <li><a href="http://youmightnotneedjquery.com">You Might Not Need jQuery</a> – stránka obsahující příklady, jak standardní jQuery konstrukce napsat v čistém JS</li>
+  
+  <li><a href="http://codeblog.cz/vanilla/#prerequisities">jQuery to vanilla JS</a> – přepis jQuery scriptů do čistého JS (včetně ES 6 variant)</li>
+</ul>
 
-  - [jQuery to vanilla JS](http://codeblog.cz/vanilla/#prerequisities) – přepis jQuery scriptů do čistého JS (včetně ES 6 variant)
 
 http://youmightnotneedjquery.com/
 http://toddmotto.com/is-it-time-to-drop-jquery-essentials-to-learning-javascript-from-a-jquery-background/
 
-- [Vanilla JS](http://vanilla-js.com/) – programování v čistém JS
+<li><a href="http://vanilla-js.com/">Vanilla JS</a> – programování v čistém JS</li>
 
-- [A Year Without jQuery](http://blog.wearecolony.com/a-year-without-jquery/)
+<li><a href="http://blog.wearecolony.com/a-year-without-jquery/">A Year Without jQuery</a></li>
 
-- [Using The jQuery .each() Function](http://www.paulund.co.uk/using-jquery-each)
+<li><a href="http://www.paulund.co.uk/using-jquery-each">Using The jQuery .each() Function</a></li>

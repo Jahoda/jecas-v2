@@ -5,291 +5,318 @@ description: "CSS vlastnost <code>font</code> slouží k nastavení písma na st
 date: "2014-05-07"
 last_modification: "2015-01-17"
 status: 1
-tags: ["CSS", "CSS vlastnosti", "Písma"]
+tags: ["css", "css-vlastnosti", "pisma"]
+format: "html"
 ---
 
-Jedná se o zkratku pro mnoho další `font-*` vlastností.
+<p>Jedná se o zkratku pro mnoho další <code>font-*</code> vlastností.</p>
 
-Minimální funkční použití vyžaduje uvést **velikost písma** (`font-size`) a **rodinu písma** (použitý font – `font-family`):
+<p>Minimální funkční použití vyžaduje uvést <b>velikost písma</b> (<code>font-size</code>) a <b>rodinu písma</b> (použitý font – <code>font-family</code>):</p>
 
-```
-body {
+<pre><code>body {
   font: 100% sans-serif;
-}
-```
+}</code></pre>
 
-## `font-style`
 
-Styl písma:
 
-  - `font-style: normal` – výchozí písmo
 
-  - `font-style: italic` – kursiva
 
-  - `font-style: oblique` – zkosené písmo, vypadá většinou stejně jako kursiva
+<h2 id="style"><code>font-style</code></h2>
 
-## `font-variant`
+<p>Styl písma:</p>
 
-Ve starší specifikaci CSS umí `font-variant` pouze nastavit typ písma na **kapitálky**.
+<ul>
+  <li><code>font-style: normal</code> – výchozí písmo</li>
+  
+  <li><code>font-style: italic</code> – <font style="font-style: italic">kursiva</font></li>
+  
+  <li><code>font-style: oblique</code> – <font style="font-style: oblique">zkosené písmo, vypadá většinou stejně jako kursiva</font></li>
+</ul>
 
-  - `font-variant: normal` – výchozí písmo
 
-  - `font-variant: small-caps` – malá velká písmena
 
-(Pro **převod** textu na malá/velká písmena slouží vlastnost `text-transform`.)
+<h2 id="variant"><code>font-variant</code></h2>
 
-V novější specifikaci je `font-variant` **zkratka** pro další CSS vlastnosti.
+<p>Ve starší specifikaci CSS umí <code>font-variant</code> pouze nastavit typ písma na <b>kapitálky</b>.</p>
 
-  - `font-variant-caps`
+<ul>
+  <li><code>font-variant: normal</code> – výchozí písmo</li>
+  
+  <li><code>font-variant: small-caps</code> – <font style="font-variant: small-caps">malá velká písmena</font></li>
+</ul>
 
-  - `font-variant-numeric`
+<p>(Pro <b>převod</b> textu na malá/velká písmena slouží vlastnost <code>text-transform</code>.)</p>
 
-  - `font-variant-alternates`
+<p>V novější specifikaci je <code>font-variant</code> <b>zkratka</b> pro další CSS vlastnosti.</p>
 
-  - `font-variant-ligatures`
+<ul>
+  <li><code>font-variant-caps</code></li>
+  <li><code>font-variant-numeric</code></li>
+  <li><code>font-variant-alternates</code></li>
+  <li><code>font-variant-ligatures</code></li>
+  <li><code>font-variant-east-asian</code></li>
+</ul>
 
-  - `font-variant-east-asian`
+<p>Některé z těchto vlastností jde používat pomocí <a href="/font-feature-settings"><code>font-feature-settings</code></a>.</p>
 
-Některé z těchto vlastností jde používat pomocí [`font-feature-settings`](/font-feature-settings).
 
-## `font-weight`
 
-Upravuje sílu (**tučnost**).
+<h2 id="weight"><code>font-weight</code></h2>
 
-    `font-weight: normal` – normální tloušťka
+<p>Upravuje sílu (<b>tučnost</b>).</p>
 
-    `font-weight: bold` – tučné písmo
+<ul>
+  <li>
+    <code>font-weight: normal</code> – normální tloušťka
+  </li>
+  
+  <li>
+    <code>font-weight: bold</code> – <font style="font-weight: bold">tučné písmo</font>
+  </li>
+</ul>
 
-Kromě toho existuje možnost nastavit **sílu písma** na hodnoty z rozmezí `100`–`900`. Výsledek potom hodně záleží na konkrétním písmu a prohlížeči.
+<p>Kromě toho existuje možnost nastavit <b>sílu písma</b> na hodnoty z rozmezí <code>100</code>–<code>900</code>. Výsledek potom hodně záleží na konkrétním písmu a prohlížeči.</p>
 
-  - `font-weight: 100` – ukázka síly 100
+<ul id="sila">
+  <li><code>font-weight: 100</code> – <font style="font-weight: 100">ukázka síly 100</font></li>
+  <li><code>font-weight: 200</code> – <font style="font-weight: 200">ukázka síly 200</font></li>
+  <li><code>font-weight: 300</code> – <font style="font-weight: 300">ukázka síly 300</font></li>
+  <li><code>font-weight: 400</code> – <font style="font-weight: 400">ukázka síly 400</font> (odpovídá hodnotě <code>normal</code>)</li>
+  <li><code>font-weight: 500</code> – <font style="font-weight: 500">ukázka síly 500</font></li>
+  <li><code>font-weight: 600</code> – <font style="font-weight: 600">ukázka síly 600</font></li>
+  <li><code>font-weight: 700</code> – <font style="font-weight: 700">ukázka síly 700</font> (odpovídá hodnotě <code>bold</code>)</li>
+  <li><code>font-weight: 800</code> – <font style="font-weight: 800">ukázka síly 800</font></li>
+  <li><code>font-weight: 900</code> – <font style="font-weight: 900">ukázka síly 900</font></li>  
+</ul>
 
-  - `font-weight: 200` – ukázka síly 200
-
-  - `font-weight: 300` – ukázka síly 300
-
-  - `font-weight: 400` – ukázka síly 400 (odpovídá hodnotě `normal`)
-
-  - `font-weight: 500` – ukázka síly 500
-
-  - `font-weight: 600` – ukázka síly 600
-
-  - `font-weight: 700` – ukázka síly 700 (odpovídá hodnotě `bold`)
-
-  - `font-weight: 800` – ukázka síly 800
-
-  - `font-weight: 900` – ukázka síly 900
-
-function nastavitPismo(nazev){
+<script>function nastavitPismo(nazev){
   sila.style.fontFamily = nazev;
-}
+}</script>
 
-Nastavit ukázku na písmo: 
+<datalist id="pisma">
+  <option value="Verdana">
+  </option><option value="Arial">
+  </option><option value="Tahoma">
+  </option><option value="Segoe UI">
+  </option><option value="Times New Roman">
+  </option>
+</datalist>
 
-Pokud daný font *umí* pouze normální písmo a tučné, bude cokoliv z rozsahu `100`–`500` normální a z `600`–`900` tučné.
+<p><label>Nastavit ukázku na písmo: <input list="pisma" oninput="nastavitPismo(this.value)"></label></p>
 
-Nakonec potom existují ještě hodnoty `bolder` a `lighter`. Jelikož se **síla písma dědí**, lze u potomka vytvořit písmo o jeden stupeň silnější/slabší.
 
-  - `font-weight: lighter`
+<p>Pokud daný font <i>umí</i> pouze normální písmo a tučné, bude cokoliv z rozsahu <code>100</code>–<code>500</code> normální a z <code>600</code>–<code>900</code> tučné.</p>
 
-  - `font-weight: bolder`
+<p>Nakonec potom existují ještě hodnoty <code>bolder</code> a <code>lighter</code>. Jelikož se <b>síla písma dědí</b>, lze u potomka vytvořit písmo o jeden stupeň silnější/slabší.</p>
 
-Jelikož většina písem má pouze dva stupně tučnosti, nemají klíčová slova `lighter` a `bolder` přílišné využití.
+<ul>
+  <li><code>font-weight: lighter</code></li>
+  <li><code>font-weight: bolder</code></li>  
+</ul>
 
-[Test hodnot](http://kod.djpw.cz/wnjb) `bolder` a `lighter`
+<p>Jelikož většina písem má pouze dva stupně tučnosti, nemají klíčová slova <code>lighter</code> a <code>bolder</code> přílišné využití.</p>
 
-## `font-size`
+<p><a href="http://kod.djpw.cz/wnjb">Test hodnot</a> <code>bolder</code> a <code>lighter</code></p>
 
-### Absolutními klíčovými slovy
 
-  - `font-size: xx-small` – ukázka velikosti `xx-small`
+<h2 id="size"><code>font-size</code></h2>
 
-  - `font-size: x-small` – ukázka velikosti `x-small`
+<h3 id="absolutni">Absolutními klíčovými slovy</h3>
 
-  - `font-size: small` – ukázka velikosti `small`
+<ul>
+  <li><code>font-size: xx-small</code> – <font style="font-size: xx-small">ukázka velikosti <code>xx-small</code></font></li>
+  <li><code>font-size: x-small</code> – <font style="font-size: x-small">ukázka velikosti <code>x-small</code></font></li>
+  <li><code>font-size: small</code> – <font style="font-size: small">ukázka velikosti <code>small</code></font></li>
+  <li><code>font-size: medium</code> – <font style="font-size: medium">ukázka velikosti <code>medium</code></font></li>
+  <li><code>font-size: large</code> – <font style="font-size: large">ukázka velikosti <code>large</code></font></li>
+  <li><code>font-size: x-large</code> – <font style="font-size: x-large">ukázka velikosti <code>x-large</code></font></li>
+  <li><code>font-size: xx-large</code> – <font style="font-size: xx-large">ukázka velikosti <code>xx-large</code></font></li>  
+</ul>
 
-  - `font-size: medium` – ukázka velikosti `medium`
 
-  - `font-size: large` – ukázka velikosti `large`
+<h3 id="relativni">Relativními klíčovými slovy</h3>
 
-  - `font-size: x-large` – ukázka velikosti `x-large`
+<p>Písmo bude o stupeň větší/menší než velikost rodiče.</p>
 
-  - `font-size: xx-large` – ukázka velikosti `xx-large`
+<ul>
+  <li><code>font-size: larger</code> – <font style="font-size: larger">ukázka velikosti <code>larger</code></font></li>
+  <li><code>font-size: smaller</code> – <font style="font-size: smaller">ukázka velikosti <code>smaller</code></font></li>  
+</ul>
 
-### Relativními klíčovými slovy
 
-Písmo bude o stupeň větší/menší než velikost rodiče.
 
-  - `font-size: larger` – ukázka velikosti `larger`
+<h3 id="jednotky">Délkovými jednotkami</h3>
 
-  - `font-size: smaller` – ukázka velikosti `smaller`
+<p>Velikost se nastaví standardními CSS délkovými jednotkami (<code>em</code>, <code>px</code> a podobně).</p>
 
-### Délkovými jednotkami
+<pre><code>font-size: 1em;</code></pre>
 
-Velikost se nastaví standardními CSS délkovými jednotkami (`em`, `px` a podobně).
 
-```
-font-size: 1em;
-```
+<h3 id="procenta">Procenty</h3>
 
-### Procenty
+<p>Písmo bude dvakrát větší než velikost rodiče.</p>
 
-Písmo bude dvakrát větší než velikost rodiče.
+<pre><code>font-size: 200%;</code></pre>
 
-```
-font-size: 200%;
-```
+<p>Při použití procent, relativních délkových jednotek (např. <code>em</code>) nebo <code>larger</code>/<code>smaller</code> jde šikovně využívat <b>dědičnosti</b>, klidně na jednom místě změnit velikost písma celého webu a velikosti jednotlivých částí se tomu přizpůsobí.</p>
 
-Při použití procent, relativních délkových jednotek (např. `em`) nebo `larger`/`smaller` jde šikovně využívat **dědičnosti**, klidně na jednom místě změnit velikost písma celého webu a velikosti jednotlivých částí se tomu přizpůsobí.
+<p><a href="http://kod.djpw.cz/ynjb">Živá ukázka</a></p>
 
-[Živá ukázka](http://kod.djpw.cz/ynjb)
 
-## `line-height`
+<h2 id="line-height"><code>line-height</code></h2>
 
-Když se za velikost písma u zkrácené vlastnosti `font` napíše lomítko, může se za něj uvést výška řádku.
+<p>Když se za velikost písma u zkrácené vlastnosti <code>font</code> napíše lomítko, může se za něj uvést výška řádku.</p>
 
-```
-html {
-  font: x-small/**300%** Arial, serif;
-}
-```
+<pre><code>html {
+  font: x-small/<b>300%</b> Arial, serif;
+}</code></pre>
 
-Je trochu zvláštní, že pro změnu **výšky řádku** neslouží `font-*` vlastnosti, ale `line-height`.
+<p>Je trochu zvláštní, že pro změnu <b>výšky řádku</b> neslouží <code>font-*</code> vlastnosti, ale <code>line-height</code>.</p>
 
-Výška řádku je hodně důležitá vlastnost s ohledem na **dobrou čitelnost** textu. Při nastavení `line-height` společnému obalu stránky (`&lt;html>`/[`&lt;body>`/`&lt;div class="obal">`](/stylovani-body)) se snadno stane, že pro **velké písmo** bude výška řádku malá a pro **malá písmena** zase moc velká.
+<p>Výška řádku je hodně důležitá vlastnost s ohledem na <b>dobrou čitelnost</b> textu. Při nastavení <code>line-height</code> společnému obalu stránky (<code>&lt;html></code>/<a href="/stylovani-body"><code>&lt;body></code>/<code>&lt;div class="obal"></code></a>) se snadno stane, že pro <b>velké písmo</b> bude výška řádku malá a pro <b>malá písmena</b> zase moc velká.</p>
 
-[Živá ukázka](http://kod.djpw.cz/bojb)
+<p><a href="http://kod.djpw.cz/bojb">Živá ukázka</a></p>
 
-Je tedy dobré si elementy s větší/menší velikostí písma ohlídat a **výšku řádku** jim upravit. Snadno se na to zapomene u nadpisů, protože se často vejdnou **na jeden řádek**, takže se nesprávná výška řádku hned neprojeví.
 
-## `font-family`
 
-Slouží k nastavení **rodiny písem** / konkrétního fontu. Zadává se konkrétní název písma (například `Arial`), obecná rodina (`sans-serif`) nebo víc položek zároveň.
+<p>Je tedy dobré si elementy s větší/menší velikostí písma ohlídat a <b>výšku řádku</b> jim upravit. Snadno se na to zapomene u nadpisů, protože se často vejdnou <b>na jeden řádek</b>, takže se nesprávná výška řádku hned neprojeví.</p>
 
-Protože nikdy není jistota, že konkrétní font bude dané koncové zařízení **podporovat**, obvykle se uvádí několik konkrétních rozšířených fontů zakončených obecnou rodinou.
 
-```
-h1 {
+<h2 id="font-family"><code>font-family</code></h2>
+
+<p>Slouží k nastavení <b>rodiny písem</b> / konkrétního fontu. Zadává se konkrétní název písma (například <code>Arial</code>), obecná rodina (<code>sans-serif</code>) nebo víc položek zároveň.</p>
+
+<p>Protože nikdy není jistota, že konkrétní font bude dané koncové zařízení <b>podporovat</b>, obvykle se uvádí několik konkrétních rozšířených fontů zakončených obecnou rodinou.</p>
+
+<pre><code>h1 {
   font-family: Arial, Helvetica, sans-serif
-}
-```
+}</code></pre>
 
-### Obecné rodiny
 
-Zpravidla si jde vystačit s **bezpatkovým** (`sans-serif`), **patkovým** (`serif`) a **neproporcionálním** (`monospace`) písmem.
 
-  - `font-family: sans-serif` – ukázka stylu sans-serif
 
-  - `font-family: serif` – ukázka stylu serif
+<h3 id="rodiny">Obecné rodiny</h3>
 
-  - `font-family: fantasy` – ukázka stylu fantasy
+<p>Zpravidla si jde vystačit s <b style="font-family: sans-serif">bezpatkovým</b> (<code>sans-serif</code>), <b style="font-family: serif">patkovým</b> (<code>serif</code>) a <b style="font-family: monospace">neproporcionálním</b> (<code>monospace</code>) písmem.</p>
 
-  - `font-family: cursive` – ukázka stylu cursive
+<ul>
+  <li><code>font-family: sans-serif</code> – <font style="font-family: sans-serif">ukázka stylu sans-serif</font></li>
+  <li><code>font-family: serif</code> – <font style="font-family: serif">ukázka stylu serif</font></li>
+  <li><code>font-family: fantasy</code> – <font style="font-family: fantasy">ukázka stylu fantasy</font></li>
+  <li><code>font-family: cursive</code> – <font style="font-family: cursive">ukázka stylu cursive</font></li>
+  <li><code>font-family: monospace</code> – <font style="font-family: monospace">ukázka stylu monospace</font></li>  
+</ul>
 
-  - `font-family: monospace` – ukázka stylu monospace
 
-### Uvozovky kolem názvu písma
+<h3 id="uvozovky">Uvozovky kolem názvu písma</h3>
 
-V některých návodech se uvádí, že víceslovné názvy fontu musí být **obaleny [uvozovkami](/uvozovky#css)**. To je pravda jen částečná – uvozovkami musejí být obaleny názvy obsahující **čísla a speciální symboly**.
+<p>V některých návodech se uvádí, že víceslovné názvy fontu musí být <b>obaleny <a href="/uvozovky#css">uvozovkami</a></b>. To je pravda jen částečná – uvozovkami musejí být obaleny názvy obsahující <b>čísla a speciální symboly</b>.</p>
 
-Víceslovný název proto bude normálně fungovat i bez uvozovek:
+<p>Víceslovný název proto bude normálně fungovat i bez uvozovek:</p>
 
-```
-element {
+<pre><code>element {
   font-family: Lucida Console, monospace;
-}
-```
+}</code></pre>
 
-    - MDN: [Valid family names](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#Valid_family_names) – jaké názvy zadané do `font-family` jsou platné
 
-## Systémová písma
+<div class="external-content">
+  <ul>
+    <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#Valid_family_names">Valid family names</a> – jaké názvy zadané do <code>font-family</code> jsou platné</li>
+  </ul>
+</div>
 
-Písmo jde také nastavit podle určitých prvků systému. V tom případě se zadává jediná hodnota, která určí použitý font, velikost, tučnost a podobně.
 
-Je poměrně obtížné najít pro tento způsob **rozumné využití**, možná při snaze napodobit v prohlížeči **systémovou aplikaci**.
 
-  - `font: caption` – ukázka písma `caption`
+<h2 id="systemova">Systémová písma</h2>
 
-  - `font: icon` – ukázka písma `icon`
+<p>Písmo jde také nastavit podle určitých prvků systému. V tom případě se zadává jediná hodnota, která určí použitý font, velikost, tučnost a podobně.</p>
 
-  - `font: menu` – ukázka písma `menu`
+<p>Je poměrně obtížné najít pro tento způsob <b>rozumné využití</b>, možná při snaze napodobit v prohlížeči <b>systémovou aplikaci</b>.</p>
 
-  - `font: message-box` – ukázka písma `message-box`
+<ul>
+  <li><code>font: caption</code> – <font style="font: caption">ukázka písma</font> <code>caption</code></li>
+  <li><code>font: icon</code> – <font style="font: icon">ukázka písma</font> <code>icon</code></li>
+  <li><code>font: menu</code> – <font style="font: menu">ukázka písma</font> <code>menu</code></li>
+  <li><code>font: message-box</code> – <font style="font: message-box">ukázka písma</font> <code>message-box</code></li>
+  <li><code>font: small-caption</code> – <font style="font: small-caption">ukázka písma</font> <code>small-caption</code></li>
+  <li><code>font: status-bar</code> – <font style="font: status-bar">ukázka písma</font> <code>status-bar</code></li>  
+</ul>
 
-  - `font: small-caption` – ukázka písma `small-caption`
 
-  - `font: status-bar` – ukázka písma `status-bar`
+<h3 id="firefox">Další hodnoty ve Firefoxu</h3>
+<p>Firefoxu podporuje ještě další hodnoty systémových stylů s <a href="/css-prefixy">prefixem</a>:</p>
 
-### Další hodnoty ve Firefoxu
+<ul>
+  <li><code>font: -moz-window</code> – <font style="font: -moz-window">ukázka písma</font> <code>-moz-window</code></li>
+  <li><code>font: -moz-document</code> – <font style="font: -moz-document">ukázka písma</font> <code>-moz-document</code></li>
+  <li><code>font: -moz-desktop</code> – <font style="font: -moz-desktop">ukázka písma</font> <code>-moz-desktop</code></li>
+  <li><code>font: -moz-info</code> – <font style="font: -moz-info">ukázka písma</font> <code>-moz-info</code></li>
+  <li><code>font: -moz-dialog</code> – <font style="font: -moz-dialog">ukázka písma</font> <code>-moz-dialog</code></li>
+  <li><code>font: -moz-button</code> – <font style="font: -moz-button">ukázka písma</font> <code>-moz-button</code></li>
+  <li><code>font: -moz-pull-down-menu</code> – <font style="font: -moz-pull-down-menu">ukázka písma</font> <code>-moz-pull-down-menu</code></li>
+  <li><code>font: -moz-list </code> – <font style="font: -moz-list ">ukázka písma</font> <code>-moz-list </code></li>
+  <li><code>font: -moz-field</code> – <font style="font: -moz-field">ukázka písma</font> <code>-moz-field</code></li>  
+</ul>
 
-Firefoxu podporuje ještě další hodnoty systémových stylů s [prefixem](/css-prefixy):
 
-  - `font: -moz-window` – ukázka písma `-moz-window`
 
-  - `font: -moz-document` – ukázka písma `-moz-document`
+<h2 id="font-html">Styl písma v HTML</h2>
 
-  - `font: -moz-desktop` – ukázka písma `-moz-desktop`
+<p>Před příchodem CSS se velikost, font a barva písma upravovaly prostřednictvím značek <code>&lt;font></code> a <code>&lt;basefont></code>:</p>
 
-  - `font: -moz-info` – ukázka písma `-moz-info`
 
-  - `font: -moz-dialog` – ukázka písma `-moz-dialog`
+<h3 id="font"><code>&lt;font></code></h3>
 
-  - `font: -moz-button` – ukázka písma `-moz-button`
+<p>Řádková značka pro změnu stylu textu přímo v HTML. Tento způsob nastavování písma, ačkoliv není doporučený, stále dobře funguje napříč prohlížeči:</p>
 
-  - `font: -moz-pull-down-menu` – ukázka písma `-moz-pull-down-menu`
-
-  - `font: -moz-list ` – ukázka písma `-moz-list `
-
-  - `font: -moz-field` – ukázka písma `-moz-field`
-
-## Styl písma v HTML
-
-Před příchodem CSS se velikost, font a barva písma upravovaly prostřednictvím značek `&lt;font>` a `&lt;basefont>`:
-
-### `&lt;font>`
-
-Řádková značka pro změnu stylu textu přímo v HTML. Tento způsob nastavování písma, ačkoliv není doporučený, stále dobře funguje napříč prohlížeči:
-
-```
-&lt;font size="6" color="red" face="sans-serif">
+<pre><code>&lt;font size="6" color="red" face="sans-serif">
   Velký červený bezpatkový text
-&lt;font>
-```
+&lt;font></code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/twtb)
 
-Podporuje 3 atributy:
 
-  - `size` – velikost písma se udává hodnotami 1–7 (7 je největší)
 
-  - `color` – barva písma (odpovídá CSS vlastnosti `color`)
 
-  - `face` – použitý font (odpovídá CSS vlastnosti `font-family`)
 
-Ačkoliv je `&lt;font>` zavržený, občas se hodí a jeho použití mi přijde rozumné. Třeba v případě potřeby přebarvit text na konkrétní barvu mi přijde:
 
-```
-&lt;font color="red">Červený text&lt;/font>
-```
+<p><a href="http://kod.djpw.cz/twtb">Živá ukázka</a></p>
 
-Elegantnější než *správná* varianta pomocí CSS:
+<p>Podporuje 3 atributy:</p>
 
-```
-&lt;span style="color: red">Červený text&lt;/span>
-```
+<ul>
+  <li><code>size</code> – velikost písma se udává hodnotami 1–7 (7 je největší)</li>
+  <li><code>color</code> – barva písma (odpovídá CSS vlastnosti <code>color</code>)</li>
+  <li><code>face</code> – použitý font (odpovídá CSS vlastnosti <code>font-family</code>)</li>
+</ul>
 
-### `&lt;basefont>`
 
-Nastavení písma jedinou značkou pro celou stránku. Bez používání CSS to bylo docela elegantní, protože nemusel být každý text obalen samostatným `&lt;font>`em, ale styl celé stránky se deklaroval na jednom místě.
 
-```
-&lt;basefont face="Arial" color="red">
-```
+<p>Ačkoliv je <code>&lt;font></code> zavržený, občas se hodí a jeho použití mi přijde rozumné. Třeba v případě potřeby přebarvit text na konkrétní barvu mi přijde:</p>
 
-Značka je považována za zastaralou a není v prohlížečích moc podporovaná. Posledním prohlížečem, kde má vliv, je **Internet Explorer 9**. [Ukázka](http://kod.djpw.cz/rwtb).
+<pre><code>&lt;font color="red">Červený text&lt;/font></code></pre>
 
-## Odkazy jinam
 
-  - DevDocs: [`font`](http://devdocs.io/css/font)
 
-  - JPW: [Font](http://www.jakpsatweb.cz/css/font.html)
+<p>Elegantnější než <i>správná</i> varianta pomocí CSS:</p>
+
+<pre><code>&lt;span style="color: red">Červený text&lt;/span></code></pre>
+
+
+
+
+<h3 id="basefont"><code>&lt;basefont></code></h3>
+
+<p>Nastavení písma jedinou značkou pro celou stránku. Bez používání CSS to bylo docela elegantní, protože nemusel být každý text obalen samostatným <code>&lt;font></code>em, ale styl celé stránky se deklaroval na jednom místě.</p>
+
+<pre><code>&lt;basefont face="Arial" color="red"></code></pre>
+
+<p>Značka je považována za zastaralou a není v prohlížečích moc podporovaná. Posledním prohlížečem, kde má vliv, je <b>Internet Explorer 9</b>. <a href="http://kod.djpw.cz/rwtb">Ukázka</a>.</p>
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>DevDocs: <a href="http://devdocs.io/css/font"><code>font</code></a></li>
+  
+  <li>JPW: <a href="http://www.jakpsatweb.cz/css/font.html">Font</a></li>
+</ul>

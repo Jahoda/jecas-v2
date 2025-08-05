@@ -5,13 +5,13 @@ description: "Jak PHP skriptem ověřit, zda je doména volná nebo kdo je její
 date: "2014-06-12"
 last_modification: "2014-06-16"
 status: 1
-tags: ["Hotová řešení", "PHP", "Domény"]
+tags: ["domeny", "hotova-reseni", "php"]
+format: "html"
 ---
 
-Pro **české domény** stačí navštívit stránku `whois.nic.cz` PHP funkcí `[fsockopen](/stazeni-stranky#fsockopen)`.
+<p>Pro <b>české domény</b> stačí navštívit stránku <code>whois.nic.cz</code> PHP funkcí <code><a href="/stazeni-stranky#fsockopen">fsockopen</a></code>.</p>
 
-```
-&lt;?php
+<pre><code>&lt;?php
 $domain = "seznam.cz"; // název domény
 $server = "whois.nic.cz"; // adresa WHOIS serveru
 $port = 43;
@@ -30,7 +30,6 @@ while(!feof($fp)){
 }
 fclose($fp);
 echo $out; // výpis záznamu
-?>
-```
+?></code></pre>
 
-Aktuální **seznam všech ostatních WHOIS serverů** pro [jednotlivé TLD](/tld) je možné [získat zde](http://www.whois365.com/en/listtld/).
+<p>Aktuální <b>seznam všech ostatních WHOIS serverů</b> pro <a href="/tld">jednotlivé TLD</a> je možné <a href="http://www.whois365.com/en/listtld/">získat zde</a>.</p>

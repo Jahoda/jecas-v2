@@ -5,45 +5,55 @@ description: "CSS vlastnost <code>clip</code> slouží k oříznutí obsahu elem
 date: "2014-10-17"
 last_modification: "2014-10-19"
 status: 1
-tags: ["CSS", "CSS vlastnosti", "CSS funkce"]
+tags: ["css", "css-funkce", "css-vlastnosti"]
+format: "html"
 ---
 
-Už před rokem 2000 (od **IE 4**) bylo možné [absolutně posicované](/position#absolute) elementy oříznout ve tvaru obdélníku. [Více na JPW](http://www.jakpsatweb.cz/css/clip.html).
+<p>Už před rokem 2000 (od <b>IE 4</b>) bylo možné <a href="/position#absolute">absolutně posicované</a> elementy oříznout ve tvaru obdélníku. <a href="http://www.jakpsatweb.cz/css/clip.html">Více na JPW</a>.</p>
 
-V roce 2014 začíná být pomalu možné provádět i ořezávání **nepravidelných tvarů** vlastností `clip-path`. Výhoda a velký rozdíl také je, že pro oříznutí už nemusí být element absolutně posicovaný.
+<p>V roce 2014 začíná být pomalu možné provádět i ořezávání <b>nepravidelných tvarů</b> vlastností <code>clip-path</code>. Výhoda a velký rozdíl také je, že pro oříznutí už nemusí být element absolutně posicovaný.</p>
 
-## Podpora
 
-Nepravidelné oříznutí podporuje **Chrome 24+**, **Opera 15+** a **Safari 8+**.
 
-## Zápis
+<h2 id="podpora">Podpora</h2>
 
-Tvar je možné zadat jako **polygon**.
+<p>Nepravidelné oříznutí podporuje <b>Chrome 24+</b>, <b>Opera 15+</b> a <b>Safari 8+</b>.</p>
 
-Nejjednodušší útvar je proto **trojůhelník**.
 
-```
-element {
+
+
+<h2 id="zapis">Zápis</h2>
+
+<p>Tvar je možné zadat jako <b>polygon</b>.</p>
+
+<p>Nejjednodušší útvar je proto <b>trojůhelník</b>.</p>
+
+<pre><code>element {
   clip-path: polygon(
     50% 0%, 
     0% 100%, 
     100% 100%
   );
-}
-```
+}</code></pre>
 
-Výsledek:
+<p>Výsledek:</p>
 
-Funkci `polygon` se předávají jednotlivé body. Každý bod má dvě hodnoty – souřadnici zleva a souřadnici shora. Hodnotu je možné zadávat v **obvyklých délkových jednotkách**. Pro oříznutí, co se přizpůsobuje velikosti elementu, je vhodné použít **procenta**.
+<p><img src="/files/clip/polygon.png" alt="Oříznutí trojúhelníkem" class="border"></p>
 
-Zadané hodnoty mohou být i **mimo hranice** ořezávaného elementu (záporné nebo větší než 100 %). Oříznutí se ale aplikuje jen na element, co ho má nastavené.
+<p>Funkci <code>polygon</code> se předávají jednotlivé body. Každý bod má dvě hodnoty – souřadnici zleva a souřadnici shora. Hodnotu je možné zadávat v <b>obvyklých délkových jednotkách</b>. Pro oříznutí, co se přizpůsobuje velikosti elementu, je vhodné použít <b>procenta</b>.</p>
 
-Oříznutí je **skutečné**, tj. například po najetí myši bude oříznutý obsah reagovat jen na ploše, která po oříznutí zbyla.
 
-[Živá ukázka](http://kod.djpw.cz/xpgb)
+<p>Zadané hodnoty mohou být i <b>mimo hranice</b> ořezávaného elementu (záporné nebo větší než 100 %). Oříznutí se ale aplikuje jen na element, co ho má nastavené.</p>
 
-## Nástroje
+<p>Oříznutí je <b>skutečné</b>, tj. například po najetí myši bude oříznutý obsah reagovat jen na ploše, která po oříznutí zbyla.</p>
 
-Protože kreslit polygon pro oříznutí by byla nuda, existují nástroje, kde si jde potřebnou *cestu* naklikat.
+<p><a href="http://kod.djpw.cz/xpgb">Živá ukázka</a></p>
 
-[Clippy — CSS clip-path maker](http://bennettfeely.com/clippy/)
+
+<h2 id="nastroje">Nástroje</h2>
+
+<p>Protože kreslit polygon pro oříznutí by byla nuda, existují nástroje, kde si jde potřebnou <i>cestu</i> naklikat.</p>
+
+<a class="button" href="http://bennettfeely.com/clippy/">Clippy — CSS clip-path maker</a>
+
+

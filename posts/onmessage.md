@@ -6,10 +6,15 @@ date: "2015-10-12"
 last_modification: "2015-10-12"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [HTML5 Server-Sent Events](http://www.w3schools.com/html/html5_serversentevents.asp)
+<li><a href="http://www.w3schools.com/html/html5_serversentevents.asp">HTML5 Server-Sent Events</a></li>
 
+<div id="received-message"></div>
+
+
+<script>
   function displayMessage (evt) {
 	var message;
 	if (evt.origin !== "http://robertnyman.com") {
@@ -29,9 +34,12 @@ if (window.addEventListener) {
 else {
 	window.attachEvent("onmessage", displayMessage);
 }
+</script>
 
-```
-var CSSReload = {
+<iframe src="http://kod.djpw.cz/ggrb-" frameborder="0"></iframe>
+
+
+<pre><code>var CSSReload = {
     head: null,
     init: function() {
         this._storeHead(), this._listenToPostMessages()
@@ -65,5 +73,4 @@ var CSSReload = {
         return !1
     }
 };
-CSSReload.init();
-```
+CSSReload.init();</code></pre>

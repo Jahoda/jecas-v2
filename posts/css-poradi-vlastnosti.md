@@ -5,19 +5,23 @@ description: "Jak správně řadit jednotlivé CSS vlastnosti v rámci jednoho b
 date: "2017-09-22"
 last_modification: "2018-05-28"
 status: 1
-tags: ["CSS", "Hotová řešení", "Preprocesory", "Style guide"]
+tags: ["css", "hotova-reseni", "preprocesory", "style-guide"]
+format: "html"
 ---
 
-Při práci ve skupině o více vývojářích bývá dobré, když se používá co nejvíce **jednotný styl zápisu CSS**. Slouží k tomu tzv. *Coding Standards* (CS) – soubor pravidel, jak kód odsazovat, jaké psát komentáře, jak pojmenovávat identifikátory apod.
+<p>Při práci ve skupině o více vývojářích bývá dobré, když se používá co nejvíce <b>jednotný styl zápisu CSS</b>. Slouží k tomu tzv. <i lang="en">Coding Standards</i> (CS) – soubor pravidel, jak kód odsazovat, jaké psát komentáře, jak pojmenovávat identifikátory apod.</p>
 
-V CSS je jedna z největších výzev **řazení vlastností** v rámci selektoru:
+<p>V CSS je jedna z největších výzev <b>řazení vlastností</b> v rámci selektoru:</p>
 
-## Náhodně
 
-Asi nejčastější způsob „řazení“ je náhodný.
 
-```
-.nahodny {
+
+
+<h2 id="nahodne">Náhodně</h2>
+
+<p>Asi nejčastější způsob „řazení“ je náhodný.</p>
+
+<pre><code>.nahodny {
   display: none;
   margin: 0;
   font-size: 120%;
@@ -28,19 +32,38 @@ Asi nejčastější způsob „řazení“ je náhodný.
   left: 10px;
   height: 20px;
   animation: mojeAnimace .5s;
-}
-```
+}</code></pre>
 
-Nevýhoda je v (ne)přehlednosti, protože není absolutně jasné, kde danou vlastnost najít. Problém z toho plynoucí může nastat třeba v případě přidávání nové vlastnosti, kdy snadno dojde k duplikování některých vlastností, protože to člověk snadno přehlédne.
 
-## Abecedně
 
-Abecední řazení je asi nejsnazší a nejpřístupnější způsob, jak docílit jednotného stylu kódu napříč týmem.
 
-Seřadit vlastnosti podle abecedy jde relativně snadno i ručně. Případně to umí každý trochu chytřejší editor. V [Sublime Text](/st) k tomu slouží klávesa F9 nad označeným blokem.
 
-```
-.abecedne {
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Nevýhoda je v (ne)přehlednosti, protože není absolutně jasné, kde danou vlastnost najít. Problém z toho plynoucí může nastat třeba v případě přidávání nové vlastnosti, kdy snadno dojde k duplikování některých vlastností, protože to člověk snadno přehlédne.</p>
+
+
+
+
+<h2 id="abecedne">Abecedně</h2>
+
+<p>Abecední řazení je asi nejsnazší a nejpřístupnější způsob, jak docílit jednotného stylu kódu napříč týmem.</p>
+
+<p>Seřadit vlastnosti podle abecedy jde relativně snadno i ručně. Případně to umí každý trochu chytřejší editor. V <a href="/st">Sublime Text</a> k tomu slouží klávesa <kbd>F9</kbd> nad označeným blokem.</p>
+
+
+
+<pre><code>.abecedne {
   animation: mojeAnimace .5s;
   color: red;
   display: none;
@@ -51,31 +74,59 @@ Seřadit vlastnosti podle abecedy jde relativně snadno i ručně. Případně t
   position: absolute;
   top: 5px;
   width: 100px;
-}
-```
+}</code></pre>
 
-Pokud si na to člověk zvykne, celkem se eliminuje risiko duplikování vlastností. A je i jasné, kde danou vlastnost hledat a kam ji přidat.
 
-**Nevýhody?** Úplně se vytrácí přirozené seskupování vlastností k sobě nebo prioritisace „důležitějších“ vlastností.
 
-    Proč je zrovna [animace](/animation) na první místě?
 
-    Proč nejsou vlastnosti zajišťující rozměry bloku, tj. `width` a `height` u sebe?
 
-    Proč tak důležitá vlastnost jako [`display`](/display) je ukryta někde uprostřed?
 
-    Proč vlastnosti související s [posicováním](/position) (`position`, `top`, `left`) nejsou u sebe?
 
-    V případě, že se používají [prefixované vlasnosti](/css-prefixy) (přímo ve zdrojovém kódu bez Autoprefixeru) nebo jiné hacky, dochází potom k dost bizarním situacím nebo až rozbití zamýšlené funkce.
 
-    …
 
-## Logické řazení
 
-Dle vkusu autora by byl optimální zápis např. následující:
 
-```
-.logicke {
+
+
+
+<p>Pokud si na to člověk zvykne, celkem se eliminuje risiko duplikování vlastností. A je i jasné, kde danou vlastnost hledat a kam ji přidat.</p>
+
+
+
+<p><b>Nevýhody?</b> Úplně se vytrácí přirozené seskupování vlastností k sobě nebo prioritisace „důležitějších“ vlastností.</p>
+
+<ol>
+  <li>
+    <p>Proč je zrovna <a href="/animation">animace</a> na první místě?</p>
+  </li>
+  
+  <li>
+    <p>Proč nejsou vlastnosti zajišťující rozměry bloku, tj. <code>width</code> a <code>height</code> u sebe?</p>
+  </li>
+  
+  <li>
+    <p>Proč tak důležitá vlastnost jako <a href="/display"><code>display</code></a> je ukryta někde uprostřed?</p>
+  </li>
+  
+  <li>
+    <p>Proč vlastnosti související s <a href="/position">posicováním</a> (<code>position</code>, <code>top</code>, <code>left</code>) nejsou u sebe?</p>
+  </li>
+  
+  <li>
+    <p>V případě, že se používají <a href="/css-prefixy">prefixované vlasnosti</a> (přímo ve zdrojovém kódu bez Autoprefixeru) nebo jiné hacky, dochází potom k dost bizarním situacím nebo až rozbití zamýšlené funkce.</p>
+  </li>
+  
+  <li>
+    <p>…</p>
+  </li>
+</ol>
+
+
+<h2 id="logicke">Logické řazení</h2>
+
+<p>Dle vkusu autora by byl optimální zápis např. následující:</p>
+
+<pre><code>.logicke {
   display: none;
   width: 100px;
   height: 20px;
@@ -86,27 +137,37 @@ Dle vkusu autora by byl optimální zápis např. následující:
   font-size: 120%;
   color: red;
   animation: mojeAnimace .5s;
-}
-```
+}</code></pre>
 
-Bohužel co člověk, to názor. Navíc není úplně triviální zajistit, aby vlastnosti do uvedeného pořadí dokázal **automaticky připravit editor**.
 
-Pro použití tohoto způsobu je tedy téměř nutná nějaká automatisace:
 
-    Automatické řazení v pre/post-procesoru.
 
-    CSS lint hlídající pořadí.
 
-Automatické řazení může být teoreticky problém, protože v CSS na pořadí záleží. Zvlášť v případě hacků může i podivné pořadí dávat smysl a postprocesor to potom celé rozbije.
+<p>Bohužel co člověk, to názor. Navíc není úplně triviální zajistit, aby vlastnosti do uvedeného pořadí dokázal <b>automaticky připravit editor</b>.</p>
 
-Mezi rozšířenější způsoby, jak řadit CSS vlastnosti (a které jde navíc automatisovat), jde považovat následující:
+<p>Pro použití tohoto způsobu je tedy téměř nutná nějaká automatisace:</p>
 
-### Concentric CSS
+<ol>
+  <li>
+    <p>Automatické řazení v pre/post-procesoru.</p>
+  </li>
+  
+  <li>
+    <p>CSS lint hlídající pořadí.
+    </p>
+  </li>
+</ol>
 
-Pořadí vlastností se dělí do následujících skupin:
+<p>Automatické řazení může být teoreticky problém, protože v CSS na pořadí záleží. Zvlášť v případě hacků může i podivné pořadí dávat smysl a postprocesor to potom celé rozbije.</p>
 
-```
-.concentric-css {
+<p>Mezi rozšířenější způsoby, jak řadit CSS vlastnosti (a které jde navíc automatisovat), jde považovat následující:</p>
+
+<h3 id="concentric-css">Concentric CSS</h3>
+
+<p>Pořadí vlastností se dělí do následujících skupin:</p>
+
+
+<pre><code>.concentric-css {
     display: ;    /* Umístění boxu */
     position: ;
     float: ;
@@ -129,19 +190,41 @@ Pořadí vlastností se dělí do následujících skupin:
     color: ;      /* Text */
     text: ;
     font: ;
-}
-```
+}</code></pre>
 
-    - [Concentric CSS](http://rhodesmill.org/brandon/2011/concentric-css/) – popis
 
-    - [stylelint-config-concentric-order](https://www.npmjs.com/package/stylelint-config-concentric-order) – balíček pro stylelint
 
-### Idiomatic CSS
 
-Vlastnosti se řadí podle základních 3 skupin:
 
-```
-.idiomatic-css {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://rhodesmill.org/brandon/2011/concentric-css/">Concentric CSS</a> – popis</li>
+    
+    <li><a href="https://www.npmjs.com/package/stylelint-config-concentric-order">stylelint-config-concentric-order</a> – balíček pro stylelint</li>
+  </ul>
+</div>
+
+
+
+<h3 id="idiomatic">Idiomatic CSS</h3>
+
+<p>Vlastnosti se řadí podle základních 3 skupin:</p>
+
+<pre><code>.idiomatic-css {
     /* Posicování */
     position: absolute;
     z-index: 10;
@@ -166,17 +249,40 @@ Vlastnosti se řadí podle základních 3 skupin:
     font-family: sans-serif;
     font-size: 16px;
     text-align: right;
-}
-```
+}</code></pre>
 
-    - [Principles of writing consistent, idiomatic CSS](https://github.com/necolas/idiomatic-css#declaration-order)
 
-    - [stylelint-config-idiomatic-order](https://www.npmjs.com/package/stylelint-config-idiomatic-order) – balíček pro stylelint
 
-### Rational order
 
-```
-.rational-order {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://github.com/necolas/idiomatic-css#declaration-order">Principles of writing consistent, idiomatic CSS</a></li>
+    
+    <li><a href="https://www.npmjs.com/package/stylelint-config-idiomatic-order">stylelint-config-idiomatic-order</a> – balíček pro stylelint</li>
+  </ul>
+</div>
+
+
+<h3 id="rational">Rational order</h3>
+
+<pre><code>.rational-order {
   /* Posicování */
   position: absolute;
   top: 0;
@@ -204,19 +310,43 @@ Vlastnosti se řadí podle základních 3 skupin:
 
   /* Ostatní */
   opacity: 1;
-}
-```
+}</code></pre>
 
-    - Code Guide by @mdo: [Declaration order](http://codeguide.co/#css-declaration-order)
 
-    - [stylelint-config-rational-order](https://www.npmjs.com/package/stylelint-config-rational-order) – balíček pro stylelint
 
-## Podle délky řádku
 
-Existuje ještě jeden způsob řazení – podle délky řádku. To má sice celkem jasné pravidlo, ale kombinuje to nevýhody abecedního i náhodného přístupu:
 
-```
-selektor {
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="external-content">
+  <ul>
+    <li>Code Guide by @mdo: <a href="http://codeguide.co/#css-declaration-order">Declaration order</a></li>
+    
+    <li><a href="https://www.npmjs.com/package/stylelint-config-rational-order">stylelint-config-rational-order</a> – balíček pro stylelint</li>
+  </ul>
+</div>
+
+
+
+
+
+
+<h2 id="delka">Podle délky řádku</h2>
+
+<p>Existuje ještě jeden způsob řazení – podle délky řádku. To má sice celkem jasné pravidlo, ale kombinuje to nevýhody abecedního i náhodného přístupu:</p>
+
+<pre><code>selektor {
   top: 5px;
   margin: 0;
   color: red;
@@ -227,85 +357,156 @@ selektor {
   font-size: 120%;
   position: absolute;
   animation: mojeAnimace .5s;
-}
-```
+}</code></pre>
 
-## Co zvolit?
 
-Z výše uvedeného vyplývá, že universální nejlepší způsob neexistuje.
 
-Nejsnáze dosažitelný relativně rozumný způsob je **abecední řazení**, protože ho lze snadno dosáhnout v editoru i dodržovat z hlavy.
 
-    - Google HTML/CSS Style Guide: [CSS Formatting Rules: Declaration Order](https://google.github.io/styleguide/htmlcssguide.html#Declaration_Order)
 
-Pokud není problém v projektu používat automatisační nástroje, je možné do workflow zabudovat řešení, které kontroluje a případně i samo opravuje pořadí vlastností, dle nějakého [logického pořadí](#logicke):
 
-## Řazení pomocí Stylelintu v Gulpu
 
-Automatickou kontrolu a i opravu řazení s použitím [Gulpu 4](/gulp-4) jde vytvořit následovně díky **Stylelintu**:
 
-    Nainstalovat potřebné balíčky: [`gulp-stylelint`](https://www.npmjs.com/package/gulp-stylelint), [`stylelint`](https://stylelint.io), [`stylelint-order`](https://github.com/hudochenkov/stylelint-order) a například `stylelint-config-rational-order` (dle preferovaného řazení).
 
-    ```
-npm install --save-dev gulp-stylelint stylelint stylelint-order
-```
 
-    Vybrat a nainstalovat nějaký plugin pro řazení:
 
-    ```
-npm install --save-dev stylelint-config-rational-order
-```
 
-    Vytvořit konfigurační soubor `.stylelintrc` a do `extends` uvést název řadicího balíčku:
 
-    ```
-{
+
+
+
+
+<h2 id="co-zvolit">Co zvolit?</h2>
+
+<p>Z výše uvedeného vyplývá, že universální nejlepší způsob neexistuje.</p>
+
+<p>Nejsnáze dosažitelný relativně rozumný způsob je <b>abecední řazení</b>, protože ho lze snadno dosáhnout v editoru i dodržovat z hlavy.</p>
+
+
+<div class="external-content">
+  <ul>
+    <li>Google HTML/CSS Style Guide: <a href="https://google.github.io/styleguide/htmlcssguide.html#Declaration_Order">CSS Formatting Rules: Declaration Order</a></li>
+  </ul>
+</div>
+
+
+<p>Pokud není problém v projektu používat automatisační nástroje, je možné do workflow zabudovat řešení, které kontroluje a případně i samo opravuje pořadí vlastností, dle nějakého <a href="#logicke">logického pořadí</a>:</p>
+
+
+
+<h2 id="stylelint">Řazení pomocí Stylelintu v Gulpu</h2>
+
+<p>Automatickou kontrolu a i opravu řazení s použitím <a href="/gulp-4">Gulpu 4</a> jde vytvořit následovně díky <b>Stylelintu</b>:</p>
+
+<ol>
+  <li>
+    <p>Nainstalovat potřebné balíčky: <a href="https://www.npmjs.com/package/gulp-stylelint"><code>gulp-stylelint</code></a>, <a href="https://stylelint.io"><code>stylelint</code></a>, <a href="https://github.com/hudochenkov/stylelint-order"><code>stylelint-order</code></a> a například <code>stylelint-config-rational-order</code> (dle preferovaného řazení).</p>
+    
+    <pre><code>npm install --save-dev gulp-stylelint stylelint stylelint-order</code></pre>
+    
+    <p>Vybrat a nainstalovat nějaký plugin pro řazení:</p>
+    
+    <pre><code>npm install --save-dev stylelint-config-rational-order</code></pre>    
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li>
+    <p>Vytvořit konfigurační soubor <code>.stylelintrc</code> a do <code>extends</code> uvést název řadicího balíčku:</p>
+    
+    <pre><code>{
   "rules": {
     …
   },
   "extends": [
     "stylelint-config-rational-order"
   ]
-}
-```
-
-    Vytvořit gulp task pro kontrolování lintem:
-
-    ```
-gulp.task('lint-css', function lintCssTask() {
+}</code></pre>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <li>
+    <p>Vytvořit gulp task pro kontrolování lintem:</p>
+    
+    <pre><code>gulp.task('lint-css', function lintCssTask() {
 	const gulpStylelint = require('gulp-stylelint');
 
 	return gulp
-		.src(**'/scss/**/*.scss'**)
+		.src(<b>'/scss/**/*.scss'</b>)
 		.pipe(gulpStylelint({
 			reporters: [
 				{formatter: 'string', console: true}
 			]
 		}));
-});
-```
-
-    Po zavolání `gulp lint-css` by se měly objevit problémy v řazení (pokud tedy nějaké v kódu existují):
-
-    Pro počáteční automatickou opravu jde vytvořit další gulp task, který projde zdrojové soubory a změní v nich řazení vlastností:
-
-    ```
-gulp.task('fix-css', function fixCssTask() {
+});</code></pre>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <p>Po zavolání <code>gulp lint-css</code> by se měly objevit problémy v řazení (pokud tedy nějaké v kódu existují):</p>
+    
+    <p><img src="/files/css-poradi-vlastnosti/stylelint-poradi.png" alt="Zobrazení chyb ve výpisu" class="border"></p>
+  </li>
+  
+  
+  
+    
+  
+  
+  
+  
+  <li>
+    <p>Pro počáteční automatickou opravu jde vytvořit další gulp task, který projde zdrojové soubory a změní v nich řazení vlastností:</p>
+    
+    <pre><code>gulp.task('fix-css', function fixCssTask() {
 	const gulpStylelint = require('gulp-stylelint');
 
 	return gulp
-		.src(**'/scss/**/*.scss'**)
+		.src(<b>'/scss/**/*.scss'</b>)
 		.pipe(gulpStylelint({
-			*fix: true*
+			<i>fix: true</i>
 		}))
-		.pipe(gulp.dest(**'/scss/'**));
-});
-```
+		.pipe(gulp.dest(<b><b>'/scss/'</b></b>));
+});</code></pre>
+  </li>
+</ol>
 
-    - Martin Michálek: [Stylelint, protože pořádek musí být. I v CSS kódu](https://www.vzhurudolu.cz/prirucka/stylelint) – obecnější popis používání lintování v CSS
 
-## PostCSS řazení
 
-Řadit vlastnosti dokáže i následující plugin [PostCSS Sorting](https://github.com/hudochenkov/postcss-sorting). Nezkoušel jsem.
 
-**Máte s řazením zkušenosti?** Budu rád, když mi napíšete do komentářů.
+
+
+
+
+<div class="external-content">
+  <ul>
+    <li>Martin Michálek: <a href="https://www.vzhurudolu.cz/prirucka/stylelint">Stylelint, protože pořádek musí být. I v CSS kódu</a> – obecnější popis používání lintování v CSS</li>
+  </ul>
+</div>
+
+
+<h2 id="post-css-razeni">PostCSS řazení</h2>
+
+<p>Řadit vlastnosti dokáže i následující plugin <a href="https://github.com/hudochenkov/postcss-sorting">PostCSS Sorting</a>. Nezkoušel jsem.</p>
+
+<p><b>Máte s řazením zkušenosti?</b> Budu rád, když mi napíšete do komentářů.</p>

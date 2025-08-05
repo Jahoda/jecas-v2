@@ -5,63 +5,49 @@ description: "Když se záložky v prohlížeči přemnoží, řešení je zavř
 date: "2013-11-02"
 last_modification: "2013-12-16"
 status: 1
-tags: ["Produktivita"]
+tags: ["produktivita"]
+format: "html"
 ---
 
-Nevyužívaje tuto funkci, běžně jsem v prohlížeči míval vysoké desítky otevřených záložek. Start prohlížeče s tolika záložkami potom byl **velmi nepříjemný**, orientace v desítkách záložek, z kterých koukala jen ikona byla velmi obtížná.
+<p>Nevyužívaje tuto funkci, běžně jsem v prohlížeči míval vysoké desítky otevřených záložek. Start prohlížeče s tolika záložkami potom byl <b>velmi nepříjemný</b>, orientace v desítkách záložek, z kterých koukala jen ikona byla velmi obtížná.</p>
 
-Řešení spočívá v **nevyužívání otevřených listů jako skladiště**.
+<p>Řešení spočívá v <b>nevyužívání otevřených listů jako skladiště</b>.</p>
 
-## Uložení relace
+<h2 id="relace">Uložení relace</h2>
+<p>Některé prohlížeče umožňují uložit všechny otevřené listy do <i>relace</i>, tu je potom možné <b>kdykoliv načíst</b>.</p>
+<p>To se příliš neosvědčilo. Vždy, když se počet „určitě se někdy bude hodit“ záložek blížil stovce, osvobodil jsem se uložením všeho a <b>startem s čistým prohlížečem</b>.</p>
+<p>Tento postup měl ale zásadní nedostatky:</p>
+<ol>
+  <li>Nikdy jsem už uloženou relaci znovu <b>neotevřel</b>.</li>
+  <li>Uložené stránky, co <i>se budou hodit</i>, byly <b>nevyužité</b>.</li>
+</ol>
 
-Některé prohlížeče umožňují uložit všechny otevřené listy do *relace*, tu je potom možné **kdykoliv načíst**.
+<h2 id="zalozky">Uložení do záložek</h2>
+<p>Ani to nebylo vhodné řešení. Procházet nějaký abecedně řazený <b>seznam odkazů</b> není o moc lepší než relace.</p>
 
-To se příliš neosvědčilo. Vždy, když se počet „určitě se někdy bude hodit“ záložek blížil stovce, osvobodil jsem se uložením všeho a **startem s čistým prohlížečem**.
+<h2 id="poznamky">Poznámky</h2>
+<p>Nakonec jsem došel k vytváření si <b>poznámek</b>, kde je kromě URL webu i nějaký popis, popř. odkaz na <b>související stránky</b>. Částečně kvůli tomu <b>vznikl tento web</b>, má to spoustu výhod.</p>
+<ol>
+  <li>Jednotlivé poznámky lze <b>označovat štítky</b>,</li>
+  <li>poznámky lze <b>prohledávat</b> přímo v databási nebo Googlem,</li>
+</ol>
+<ol start=4 style="margin-top: -1em">
+  <li>je u nich uveden <b>čas a datum</b> vytvoření,</li>
+  <li>mohu si je psát <b>libovolným stylem</b> (HTML, <a href="/markdown">Markdown</a>, <a href="/bb-code">BB kód</a>, WYSIWYG),</li>
+  <li>není problém si HTML, CSS, JS rovnou <b>zkoušet v rámci poznámky</b>,</li>
+  <li>lze je mezi sebou <b>provazovat odkazy</b>,</li>
+  <li>dostanu s k nim <b>odkudkoliv</b> (nemusím řešit nějakou synchronisaci napříč zařízeními),</li>
+  <li>dají se <b>veřejně odkázat</b>,</li>
+  <li>může si je číst i <b>někdo další</b> a poskytovat tak <b>zpětnou vazbu</b></li>  
+  <li>a hlavně je hodně výhodný <b>bod 3</b>. :–)</li>
+</ol>
 
-Tento postup měl ale zásadní nedostatky:
+<p>Proto nyní, když mě něco více <b>zaujme</b>, vytvořím si poznámku / rozšířím již existující. Co <b>nestojí za poznámku</b> se jednoduše zavře, stejně bych to nejspíš později nevyužil a jen si tím <b>komplikoval ovládání prohlížeče</b>.</p>
+<p>Nicméně i bez vytváření poznámek mi přijde lepší občas průběžně všechno zavřít, protože šance, že se k nějaké z padesáti otevřených záložek vrátím, <b>je mizivá</b>.</p>
 
-  - Nikdy jsem už uloženou relaci znovu **neotevřel**.
+<h2 id="prohlizece">Zavírání všeho v prohlížečích</h2>
+<p>Kromě <b>Zavřít vše</b> je možná ještě lepší možnost <b>Zavřít vše, zachovat aktivní</b> / <b>Zavřít ostatní</b>. Tyto možnosti nabízejí <b>všechny čtyři nejrozšířenější prohlížeče</b> (Chrome, Explorer, Firefox, Opera) po kliknutí pravým tlačítkem na <b>nějakou záložku</b>.</p>
+<p>Firefox a Chrome ještě umí zavřít <b>Všechny záložky napravo</b> od právě prohlížené.</p>
 
-  - Uložené stránky, co *se budou hodit*, byly **nevyužité**.
-
-## Uložení do záložek
-
-Ani to nebylo vhodné řešení. Procházet nějaký abecedně řazený **seznam odkazů** není o moc lepší než relace.
-
-## Poznámky
-
-Nakonec jsem došel k vytváření si **poznámek**, kde je kromě URL webu i nějaký popis, popř. odkaz na **související stránky**. Částečně kvůli tomu **vznikl tento web**, má to spoustu výhod.
-
-  - Jednotlivé poznámky lze **označovat štítky**,
-
-  - poznámky lze **prohledávat** přímo v databási nebo Googlem,
-
-  - je u nich uveden **čas a datum** vytvoření,
-
-  - mohu si je psát **libovolným stylem** (HTML, [Markdown](/markdown), [BB kód](/bb-code), WYSIWYG),
-
-  - není problém si HTML, CSS, JS rovnou **zkoušet v rámci poznámky**,
-
-  - lze je mezi sebou **provazovat odkazy**,
-
-  - dostanu s k nim **odkudkoliv** (nemusím řešit nějakou synchronisaci napříč zařízeními),
-
-  - dají se **veřejně odkázat**,
-
-  - může si je číst i **někdo další** a poskytovat tak **zpětnou vazbu**
-  
-  - a hlavně je hodně výhodný **bod 3**. :–)
-
-Proto nyní, když mě něco více **zaujme**, vytvořím si poznámku / rozšířím již existující. Co **nestojí za poznámku** se jednoduše zavře, stejně bych to nejspíš později nevyužil a jen si tím **komplikoval ovládání prohlížeče**.
-
-Nicméně i bez vytváření poznámek mi přijde lepší občas průběžně všechno zavřít, protože šance, že se k nějaké z padesáti otevřených záložek vrátím, **je mizivá**.
-
-## Zavírání všeho v prohlížečích
-
-Kromě **Zavřít vše** je možná ještě lepší možnost **Zavřít vše, zachovat aktivní** / **Zavřít ostatní**. Tyto možnosti nabízejí **všechny čtyři nejrozšířenější prohlížeče** (Chrome, Explorer, Firefox, Opera) po kliknutí pravým tlačítkem na **nějakou záložku**.
-
-Firefox a Chrome ještě umí zavřít **Všechny záložky napravo** od právě prohlížené.
-
-## Zavírání všeho v editorech
-
-Tento postup jsem si přenesl i do ostatních programů ([Sublime Text](/sublime-text), PSPad, Total Commander, grafické editory), kde se používají záložky. Hromadné zavírání se osvědčuje i bez **vytváření poznámek**.
+<h2 id="editory">Zavírání všeho v editorech</h2>
+<p>Tento postup jsem si přenesl i do ostatních programů (<a href="/sublime-text">Sublime Text</a>, PSPad, Total Commander, grafické editory), kde se používají záložky. Hromadné zavírání se osvědčuje i bez <b>vytváření poznámek</b>.</p>

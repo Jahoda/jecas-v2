@@ -5,53 +5,69 @@ description: "CSS selektor <code>:empty</code> zaměří element, ve kterém vů
 date: "2015-09-13"
 last_modification: "2015-09-16"
 status: 1
-tags: ["CSS", "CSS selektory"]
+tags: ["css", "selektory-css"]
+format: "html"
 ---
 
-Pro zachycení pomocí `:empty` **nesmí** být v elementu:
+<p>Pro zachycení pomocí <code>:empty</code> <b>nesmí</b> být v elementu:</p>
 
-  - Jiný HTML element.
+<ul>
+  <li>Jiný HTML element.</li>
+  <li>Libovolný text.</li>
+  <li>Mezera nebo odřádkování.</li>
+</ul>
 
-  - Libovolný text.
 
-  - Mezera nebo odřádkování.
+<p>Tedy CSS pravidlo:</p>
 
-Tedy CSS pravidlo:
-
-```
-div:empty {
+<pre><code>div:empty {
   display: none;
-}
-```
+}</code></pre>
 
-Skryje pouze:
 
-```
-&lt;div>&lt;/div>
-```
 
-Případně se jako *empty* bere i HTML komentář:
 
-```
-&lt;div>&lt;!-- komentář -->&lt;/div>
-```
+<p>Skryje pouze:</p>
 
-## Podpora
+<pre><code>&lt;div>&lt;/div></code></pre>
 
-CSS selektor `:empty` je funkční od **Internet Exploreru 9**.
 
-## Využití
 
-Asi nejzajímavější je využití v případě, kdy není jisté, jestli bude ve značce nějaký obsah (třeba se vypisuje JavaScriptem), a takový element má nějaký padding, pozadí nebo rámeček.
+<p>Případně se jako <i>empty</i> bere i HTML komentář:</p>
 
+<pre><code>&lt;div>&lt;!-- komentář -->&lt;/div></code></pre>
+
+
+
+
+
+<h2 id="podpora">Podpora</h2>
+
+<p>CSS selektor <code>:empty</code> je funkční od <b>Internet Exploreru 9</b>.</p>
+
+
+
+
+<h2 id="vyuziti">Využití</h2>
+
+<p>Asi nejzajímavější je využití v případě, kdy není jisté, jestli bude ve značce nějaký obsah (třeba se vypisuje JavaScriptem), a takový element má nějaký padding, pozadí nebo rámeček.</p>
+
+<div class="live">
+  <style>
     .test-empty {
       padding: 1em;
       background: #fff;
       border-left: 5px solid #ccc
     }
-  
-  Element s odsazením a rámečkem
+  </style>
+  <div class="test-empty">Element s odsazením a rámečkem</div>
+</div>
 
-Pokud by v něm žádný obsah nebyl, zobrazilo by se něco jako:
+<p>Pokud by v něm žádný obsah nebyl, zobrazilo by se něco jako:</p>
 
-Skrytí značky pomocí `:empty` tento případ elegantně řeší bez nutnosti zobrazovat/skrývat element JavaScriptem změnou vlastnosti [`display`](/display).
+
+<div class="live">
+  <div class="test-empty"></div>
+</div>
+
+<p>Skrytí značky pomocí <code>:empty</code> tento případ elegantně řeší bez nutnosti zobrazovat/skrývat element JavaScriptem změnou vlastnosti <a href="/display"><code>display</code></a>.</p>

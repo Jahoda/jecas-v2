@@ -6,12 +6,11 @@ date: "2015-11-06"
 last_modification: "2015-11-06"
 status: 0
 tags: []
+format: "html"
 ---
 
-## HTTP hlavička
+<h2 id="http-hlavicka">HTTP hlavička</h2>
 
-```
-&lt;?php 
+<pre><code>&lt;?php 
 header("Link: &lt;styl.css>; rel=stylesheet");
-?>
-```
+?></code></pre>

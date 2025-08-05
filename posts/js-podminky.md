@@ -6,8 +6,11 @@ date: "2016-02-17"
 last_modification: "2016-02-17"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - [An if-else shortcut in JavaScript: the ternary operator](http://thenewcode.com/416/An-if-else-shortcut-in-JavaScript-the-ternary-operator)
+<ul>
+  <li><a href="http://thenewcode.com/416/An-if-else-shortcut-in-JavaScript-the-ternary-operator">An if-else shortcut in JavaScript: the ternary operator</a></li>
+</ul>

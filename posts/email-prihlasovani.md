@@ -6,6 +6,9 @@ date: "2015-10-06"
 last_modification: "2015-10-06"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Slack - Offers to send a sign in link on the password screen](http://littlebigdetails.com/post/130549039305/slack-offers-to-send-a-sign-in-link-on-the)
+<ul>
+  <li><a href="http://littlebigdetails.com/post/130549039305/slack-offers-to-send-a-sign-in-link-on-the">Slack - Offers to send a sign in link on the password screen</a></li>
+</ul>

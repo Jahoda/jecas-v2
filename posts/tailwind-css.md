@@ -5,111 +5,158 @@ description: "CSS framework pro stylování webů přes utility třídy."
 date: "2021-11-20"
 last_modification: "2021-11-24"
 status: 1
-tags: ["CSS", "Produktivita", "Frameworky"]
+tags: ["css", "knihovny", "produktivita"]
+format: "html"
 ---
 
-Tailwind je CSS framework, který umožňuje kompletně nakódovat web bez toho, aby bylo potřeba psát jakékoliv CSS.
+<p>Tailwind je CSS framework, který umožňuje kompletně nakódovat web bez toho, aby bylo potřeba psát jakékoliv CSS.</p>
 
-Zatímco například jiný populární framework [Bootstrap](/bootstrap-rychlokurs) přináší základní nastavení typografie a předpřipravené komponenty, Tailwind na to jde jinou cestou a *jen* nabízí obecné utility třídy pro kompletní vlastní stylování.
+<p>Zatímco například jiný populární framework <a href="/bootstrap-rychlokurs">Bootstrap</a> přináší základní nastavení typografie a předpřipravené komponenty, Tailwind na to jde jinou cestou a <i>jen</i> nabízí obecné utility třídy pro kompletní vlastní stylování.</p>
 
-      [Tailwind CSS](https://tailwindcss.com)
 
-## Utility třídy
+<div class="external-content">
+  <ul>
+    <li>
+      <a href="https://tailwindcss.com">Tailwind CSS</a>
+    </li>
+  </ul>
+</div>
 
-Celá myšlenka je postavena na tom, že jsou v CSS předpřipravené jednoduché universální CSS třídy pro prakticky každou kombinaci vlastnost: hodnota.
 
-CSS se potom nepíše k jednotlivým selektorům ve stylu:
+<h2 id="utility">Utility třídy</h2>
 
-```
-.komponenta {
+<p>Celá myšlenka je postavena na tom, že jsou v CSS předpřipravené jednoduché universální CSS třídy pro prakticky každou kombinaci vlastnost: hodnota.</p>
+
+<p>CSS se potom nepíše k jednotlivým selektorům ve stylu:</p>
+
+<pre><code>.komponenta {
   text-align: center;
   padding: 1rem;
   color: red;
-}
-```
+}</code></pre>
 
-Místo toho se na HTML prvek rovnou aplikují příslušné třídy a do CSS se vůbec nezasahuje. Takže ekvivalentní zápis vypadá zhruba následovně:
 
-```
-&lt;div class="text-center p-4 text-red-500">
-```
 
-[Živá ukázka](https://play.tailwindcss.com/zCjotCfMRB)
 
-Před lety se tento přístup nazýval jako [expresivní CSS](/expressive-css).
 
-## Inline styly
 
-Na první pohled to dost připomíná používání inline stylů přes HTML atribut `style`:
 
-```
-&lt;div class="text-align: center; padding: 1rem; color: red">
-```
 
-Má to ale oproti tomu značné výhody:
 
-    Člověk je **omezen** na několik předpřipravených velikostí/rozměrů/barev apod. Takže je výsledek relativně **visuálně konsistentní**.
 
-    Není možné si dělat úplně cokoliv (alespoň ve výchozí konfiguraci).
 
-    Styly těchto předpřipravených tříd lze snadno hromadně změnit úpravou konfigurace.
+<p>Místo toho se na HTML prvek rovnou aplikují příslušné třídy a do CSS se vůbec nezasahuje. Takže ekvivalentní zápis vypadá zhruba následovně:</p>
 
-    **Responsivita** – Tailwind třídy jsou [responsivní](/responsive) a používají [mobile first](/mobile-first) přístup.
+<pre><code>&lt;div class="text-center p-4 text-red-500"></code></pre>
 
-    Bleskurychle tak lze vytvářet responsivní komponenty.
 
-    Následující kód zarovná text na střed a od `sm` (výchozí šířka 640 px) vlevo díky [`@media` pravidlům](/media).
+<p><a href="https://play.tailwindcss.com/zCjotCfMRB">Živá ukázka</a></p>
 
-    ```
-&lt;div class="text-center sm:text-left">
-```
 
-    **Uživatelské stavy** jako `:hover`, `:focus` a podobně. Zapisují se jednoduše s názvem stavu a dvojtečkou před vlastnost.
 
-    ```
-&lt;button class="bg-red-500 **hover:**bg-red-700">
-```
+<p>Před lety se tento přístup nazýval jako <a href="/expressive-css">expresivní CSS</a>.</p>
 
-    **[Tmavý režim](/dark-theme)** – stačí před třídu přidat `dark:`, je možné kombinovat i se stavy nebo responsivními breakpointy.
 
-    Takže třída `lg:hover:dark:bg-red-700` se aplikuje na velkých obrazovkách ve tmavém režimu po najetí myší.
+<h2 id="inline">Inline styly</h2>
 
-## Další užitečné vlastnosti
+<p>Na první pohled to dost připomíná používání inline stylů přes HTML atribut <code>style</code>:</p>
 
-Tailwind nabízí další zajímavé vlastnosti usnadňující stylování, namátkou:
 
-    **Odsazení** přes [`margin`](/margin) (`m-*`) a `padding` (`p-*`).
+<pre><code>&lt;div class="text-align: center; padding: 1rem; color: red"></code></pre>
 
-    Třídy pro layout pomocí [`float`u](/float) [flexu](/flexbox) nebo gridu.
 
-    **[Animace](/animace), transformace** a [`transition`](/transition) – jsou připravené základní animace jako otáčení (`animate-spin`), pulsování (`animate-pulse`) a další.
+<p>Má to ale oproti tomu značné výhody:</p>
 
-    [Rotace](/rotace) objektu je otázka přidání třídy `rotate-*`.
+<ol>
+  <li>
+    <p>Člověk je <b>omezen</b> na několik předpřipravených velikostí/rozměrů/barev apod. Takže je výsledek relativně <b>visuálně konsistentní</b>.</p>
 
-    Díky `transition` mohou být přechody plynulé.
+    <p>Není možné si dělat úplně cokoliv (alespoň ve výchozí konfiguraci).</p>
+    <p><img src="/files/tailwind-css/pripravene-fixni-vysky.png" alt="Připravené fixní výšky" class="border"></p>
+  </li>
 
-    [Živá ukázka](https://play.tailwindcss.com/SGIjrB67I6)
 
-    [Stíny](/box-shadow) a [filtry](/filter).
 
-Kompletní přehled je v [dokumentaci](https://tailwindcss.com/docs).
 
-## Velikost CSS
 
-Velikost minifikovaného spojeného Tailwind CSS souboru je někde kolem **3 MB** (gzipovaného cca 300 kB). To je na jednu stranu hrozně moc, na stranu druhou je doporučené používat knihovnu [PurgeCSS](https://purgecss.com), která je již zabudovaná.
 
-Díky tomu se projde HTML kód a ponechají se pouze ty CSS třídy, které se používají.
 
-Výsledkem je (v závislosti na projektu) obvykle **velmi malé výsledné CSS** v řádech jednotek či nízkých desítek kB.
 
-Obvykle je výsledek datově lepší, než při psaní veškerého CSS do vlastních selektorů.
 
-Odstraňovat nepoužité CSS umí Tailwind i tzv. *just in time* během vývoje, slouží k tomu JIT mode.
 
-```
-// tailwind.config.js
+
+  <li>
+    <p>Styly těchto předpřipravených tříd lze snadno hromadně změnit úpravou konfigurace.</p>
+  </li>
+
+  <li>
+    <p><b>Responsivita</b> – Tailwind třídy jsou <a href="/responsive">responsivní</a> a používají <a href="/mobile-first">mobile first</a> přístup.</p>
+
+    <p>Bleskurychle tak lze vytvářet responsivní komponenty.</p>
+
+    <p>Následující kód zarovná text na střed a od <code>sm</code> (výchozí šířka 640 px) vlevo díky <a href="/media"><code>@media</code> pravidlům</a>.</p>
+
+    <pre><code>&lt;div class="text-center sm:text-left"></code></pre>
+  </li>
+
+  <li>
+    <p><b>Uživatelské stavy</b> jako <code>:hover</code>, <code>:focus</code> a podobně. Zapisují se jednoduše s názvem stavu a dvojtečkou před vlastnost.</p>
+
+    <pre><code>&lt;button class="bg-red-500 <b>hover:</b>bg-red-700"></code></pre>
+  </li>
+
+  <li>
+    <p><b><a href="/dark-theme">Tmavý režim</a></b> – stačí před třídu přidat <code>dark:</code>, je možné kombinovat i se stavy nebo responsivními breakpointy.</p>
+
+    <p>Takže třída <code>lg:hover:dark:bg-red-700</code> se aplikuje na velkých obrazovkách ve tmavém režimu po najetí myší.</p>
+  </li>
+
+</ol>
+
+
+<h2 id="uzitecne">Další užitečné vlastnosti</h2>
+
+<p>Tailwind nabízí další zajímavé vlastnosti usnadňující stylování, namátkou:</p>
+
+<ol>
+  <li>
+    <p><b>Odsazení</b> přes <a href="/margin"><code>margin</code></a> (<code>m-*</code>) a <code>padding</code> (<code>p-*</code>).</p>
+  </li>
+  <li>
+    <p>Třídy pro layout pomocí <a href="/float"><code>float</code>u</a> <a href="/flexbox">flexu</a> nebo gridu.</p>
+  </li>
+    <li>
+    <p><b><a href="/animace">Animace</a>, transformace</b> a <a href="/transition"><code>transition</code></a> – jsou připravené základní animace jako otáčení (<code>animate-spin</code>), pulsování (<code>animate-pulse</code>) a další.</p>
+
+    <p><a href="/rotace">Rotace</a> objektu je otázka přidání třídy <code>rotate-*</code>.</p>
+
+    <p>Díky <code>transition</code> mohou být přechody plynulé.</p>
+
+    <p><a href="https://play.tailwindcss.com/SGIjrB67I6">Živá ukázka</a></p>
+  </li>
+  <li>
+    <p><a href="/box-shadow">Stíny</a> a <a href="/filter">filtry</a>.</p>
+  </li>
+</ol>
+
+<p>Kompletní přehled je v <a href="https://tailwindcss.com/docs">dokumentaci</a>.</p>
+
+
+<h2 id="velikost">Velikost CSS</h2>
+
+<p>Velikost minifikovaného spojeného Tailwind CSS souboru je někde kolem <b>3 MB</b> (gzipovaného cca 300 kB). To je na jednu stranu hrozně moc, na stranu druhou je doporučené používat knihovnu <a href="https://purgecss.com">PurgeCSS</a>, která je již zabudovaná.</p>
+
+<p>Díky tomu se projde HTML kód a ponechají se pouze ty CSS třídy, které se používají.</p>
+
+<p>Výsledkem je (v závislosti na projektu) obvykle <b>velmi malé výsledné CSS</b> v řádech jednotek či nízkých desítek kB.</p>
+
+<p>Obvykle je výsledek datově lepší, než při psaní veškerého CSS do vlastních selektorů.</p>
+
+<p>Odstraňovat nepoužité CSS umí Tailwind i tzv. <i>just in time</i> během vývoje, slouží k tomu JIT mode.</p>
+
+<pre><code>// tailwind.config.js
 module.exports = {
- **mode: 'jit'**,
+ <b>mode: 'jit'</b>,
   purge: [
     // ...
   ],
@@ -117,123 +164,243 @@ module.exports = {
     // ...
   }
   // ...
-}
-```
+}</code></pre>
 
-Nehrozí tak zpomalení a zanesení [DevTools](/vyvojarske-nastroje) hromadou zbytečných nepoužitých tříd.
 
-## Opakování tříd v HTML
 
-Používání vlastních CSS selektorů je dobré k tomu, že jde styly snadno znovupoužívat v HTML kódu.
 
-Do kódu se píše něco jako:
 
-```
-&lt;div class="nadpis">
-```
 
-Místo neustálého opakování:
+<p>Nehrozí tak zpomalení a zanesení <a href="/vyvojarske-nastroje">DevTools</a> hromadou zbytečných nepoužitých tříd.</p>
 
-```
-&lt;div class="text-center p-4 text-red-500">
-```
 
-Opakovat více stejných utility tříd v žádném případě **není dobré dělat** a Tailwind nabízí 2 možná řešení, jak se tomu vyhnout:
 
-    Konstrukce `@apply` – třídy z HTML stačí přesunout do běžného CSS selektoru za klíčové slovo `@apply` a v kódu používat vlastní selektor místo utilit tříd:
+<h2 id="opakovani-html">Opakování tříd v HTML</h2>
 
-    ```
-.nadpis {
+<p>Používání vlastních CSS selektorů je dobré k tomu, že jde styly snadno znovupoužívat v HTML kódu.</p>
+
+
+<p>Do kódu se píše něco jako:</p>
+
+<pre><code>&lt;div class="nadpis"></code></pre>
+
+
+
+
+
+
+
+
+<p>Místo neustálého opakování:</p>
+
+<pre><code>&lt;div class="text-center p-4 text-red-500"></code></pre>
+
+
+<p>Opakovat více stejných utility tříd v žádném případě <b>není dobré dělat</b> a Tailwind nabízí 2 možná řešení, jak se tomu vyhnout:</p>
+
+
+<ol>
+  <li>
+    <p>Konstrukce <code>@apply</code> – třídy z HTML stačí přesunout do běžného CSS selektoru za klíčové slovo <code>@apply</code> a v kódu používat vlastní selektor místo utilit tříd:</p>
+    
+    <pre><code>.nadpis {
   @apply text-center p-4 text-red-500
-}
-```
+}</code></pre>
+    
+    
+    <p>Případně lze vlastní selektory se styly zapsat přímo do <a href="https://tailwindcss.com/docs/extracting-components#writing-a-component-plugin">konfigurace</a>.</p>
+  </li>
+  
+  <li>
+    <p><b>Šablonovací/komponentový systém</b> – při použití dobrého šablonovacího nástroje není <code>@apply</code> příliš potřeba používat.</p>
+    
+    <p>V JS frameworcích typu Reactu, Vue nebo Svelte se přímo z <code>&lt;div class="text-center p-4 text-red-500"></code> může udělat komponenta <code>&lt;Nadpis></code> a opakovaně ji používat, kde je potřeba.</p>
+    
+    <p>Případně si třídy uložit někam do JS konstanty a naimportovat, kde je potřeba:</p>
+    
+    <pre><code>const nadpis = 'text-center p-4 text-red-400'</code></pre>
+  </li>
+</ol>
 
-    Případně lze vlastní selektory se styly zapsat přímo do [konfigurace](https://tailwindcss.com/docs/extracting-components#writing-a-component-plugin).
 
-    **Šablonovací/komponentový systém** – při použití dobrého šablonovacího nástroje není `@apply` příliš potřeba používat.
 
-    V JS frameworcích typu Reactu, Vue nebo Svelte se přímo z `&lt;div class="text-center p-4 text-red-500">` může udělat komponenta `&lt;Nadpis>` a opakovaně ji používat, kde je potřeba.
 
-    Případně si třídy uložit někam do JS konstanty a naimportovat, kde je potřeba:
 
-    ```
-const nadpis = 'text-center p-4 text-red-400'
-```
+<h2 id="omezene">(Ne)omezené možnosti</h2>
 
-## (Ne)omezené možnosti
+<p>V Tailwindu jde nakódovat asi 99 % myslitelných věcí.</p>
 
-V Tailwindu jde nakódovat asi 99 % myslitelných věcí.
+<p>Díky hranatým závorkám jde ve specifických případech zapisovat i libovolné vlastní hodnoty.</p>
 
-Díky hranatým závorkám jde ve specifických případech zapisovat i libovolné vlastní hodnoty.
+<p>Třeba posunout něco o 13 pixelů:</p>
 
-Třeba posunout něco o 13 pixelů:
+<pre><code>&lt;div class="relative top-[13px]"></code></pre>
 
-```
-&lt;div class="relative top-[13px]">
-```
 
-Nebo si nastavit vlastní barvu:
 
-```
-&lt;div class="md:hover:text-[#ff0000]">
-```
 
-Navíc to všechno funguje se stavy, `@media` pravidly atd. Tailwind automaticky pro tyto konstrukce vygeneruje příslušné třídy.
 
-Vlastní věci jde případně přidávat jako [pluginy do konfigurace](https://tailwindcss.com/docs/plugins).
 
-A koneckonců pořád nic člověku nebrání použít přímo `style` atribut nebo vlastní selektor.
 
-## WYSIWYG editory a uživatelský obsah
 
-Zadává-li se obsah do stránky prostřednictvím nějakého [WYSIWYG editoru](/wysiwyg) nebo je zdrojem třeba text v [Markdownu](/markdown), nejsou běžné utility třídy moc použitelné.
+<p>Nebo si nastavit vlastní barvu:</p>
 
-Musely by se nějak naroubovat na strukturovaný obsah.
+<pre><code>&lt;div class="md:hover:text-[#ff0000]"></code></pre>
 
-Tento problém řeší [typography plugin](https://github.com/tailwindlabs/tailwindcss-typography). Díky tomu stačí takový obsah obalit do rodiče s třídou `prose`:
 
-```
-&lt;div class="prose">
+
+
+
+<p>Navíc to všechno funguje se stavy, <code>@media</code> pravidly atd. Tailwind automaticky pro tyto konstrukce vygeneruje příslušné třídy.</p>
+
+<p>Vlastní věci jde případně přidávat jako <a href="https://tailwindcss.com/docs/plugins">pluginy do konfigurace</a>.</p>
+
+<p>A koneckonců pořád nic člověku nebrání použít přímo <code>style</code> atribut nebo vlastní selektor.</p>
+
+
+
+
+
+<h2 id="wysiwyg">WYSIWYG editory a uživatelský obsah</h2>
+
+<p>Zadává-li se obsah do stránky prostřednictvím nějakého <a href="/wysiwyg">WYSIWYG editoru</a> nebo je zdrojem třeba text v <a href="/markdown">Markdownu</a>, nejsou běžné utility třídy moc použitelné.</p>
+
+<p>Musely by se nějak naroubovat na strukturovaný obsah.</p>
+
+<p>Tento problém řeší <a href="https://github.com/tailwindlabs/tailwindcss-typography">typography plugin</a>. Díky tomu stačí takový obsah obalit do rodiče s třídou <code>prose</code>:</p>
+
+<pre><code>&lt;div class="prose">
   Uživatelský obsah
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-A prvky uvnitř jako [nadpisy](/nadpisy), odstavce, [seznamy](/seznamy) atd. dostanou hezčí styl. [Ukázka](https://play.tailwindcss.com/cDEjmn2pcV)
+<p>A prvky uvnitř jako <a href="/nadpisy">nadpisy</a>, odstavce, <a href="/seznamy">seznamy</a> atd. dostanou hezčí styl. <a href="https://play.tailwindcss.com/cDEjmn2pcV">Ukázka</a></p>
 
-Pokud výchozí styl nevyhovuje, jde ho snadno změnit v konfiguraci, opět bez žádného psaní vlastního CSS.
+<p><img src="/files/tailwind-css/stylovani-uzivatelskeho-obsahu.png" alt="Stylování uživatelského obsahu" class="border"></p>
 
-## Podpora v editorech
 
-Tailwind CSS má i dobrou podporu v editorech. Existují rozšíření do VS Code i JetBrains editorů jako je [PhpStorm/WebStorm](/phpstorm-vs-webstorm).
 
-Editor tak bude spolehlivě napovídat Tailwind utility třídy.
 
-Dokonce i rovnou u nich zobrazovat výsledné CSS:
 
-## Závěr
 
-Pokud je možné v projektu používat vlastní komponenty (popř. sdílené části šablon) a odstraňovat při buildu nepoužívaný kód, neexistuje moc důvodů proč Tailwind nepoužít.
 
-Prakticky všechny dřívější nevýhody utility tříd jsou vyřešeny.
 
-I kdyby byl člověku nesympatický zápis stylů do HTML atributu `class` (popř. `className` v Reactu), může se Tailwind hodit alespoň na nějaké drobnosti jako grid, odsazení apod.
 
-Díky PurgeCSS zůstane jen to použité a nenafoukne se tak datová velikost výsledného CSS.
 
-Kromě výhody v rychlejší práci pro vývojáře bude nejspíš styl webu postavený v Tailwindu i lepší pro návštěvníka díky [rychlejšímu](/zrychlovani) načtení stránky.
 
-### Proč Tailwind nepoužívat
 
-Moc důvodů nevidím.
 
-Možná jde jen o módní vlnu.
 
-Ze začátku je trochu **nezvyk** psát specifické zkratky HTML tříd místo klasického CSS.
 
-U starého projektu může být komplikovanější mít automatické promazávání nepoužívaných stylů nebo mít dobře znovupoužitelné JS komponenty s HTML třídami.
 
-Pokud projekt **nepotřebuje vlastní stylování**, ale používá nějakou hotovou UI knihovnu – např. [Vuetify](https://vuetifyjs.com/en/) – asi není potřeba ještě připojovat Tailwind.
 
-## Odkazy jinam
 
-    Vzhůru dolů: [Tailwind CSS: další evoluční krok pro CSS frameworky](www.vzhurudolu.cz/prirucka/tailwind-css)
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Pokud výchozí styl nevyhovuje, jde ho snadno změnit v konfiguraci, opět bez žádného psaní vlastního CSS.</p>
+
+
+
+
+<h2 id="podpora">Podpora v editorech</h2>
+
+<p>Tailwind CSS má i dobrou podporu v editorech. Existují rozšíření do VS Code i JetBrains editorů jako je <a href="/phpstorm-vs-webstorm">PhpStorm/WebStorm</a>.</p>
+
+
+<p><img src="/files/tailwind-css/tailwind-code.png" alt="Tailwind Code" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Editor tak bude spolehlivě napovídat Tailwind utility třídy.</p>
+
+<p>Dokonce i rovnou u nich zobrazovat výsledné CSS:</p>
+
+
+<p><img src="/files/tailwind-css/napovidani-trid.png" alt="Napovídání tříd" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+<h2 id="zaver">Závěr</h2>
+
+<p>Pokud je možné v projektu používat vlastní komponenty (popř. sdílené části šablon) a odstraňovat při buildu nepoužívaný kód, neexistuje moc důvodů proč Tailwind nepoužít.</p>
+
+
+<p>Prakticky všechny dřívější nevýhody utility tříd jsou vyřešeny.</p>
+
+<p>I kdyby byl člověku nesympatický zápis stylů do HTML atributu <code>class</code> (popř. <code>className</code> v Reactu), může se Tailwind hodit alespoň na nějaké drobnosti jako grid, odsazení apod.</p>
+
+
+
+
+
+
+
+<p>Díky PurgeCSS zůstane jen to použité a nenafoukne se tak datová velikost výsledného CSS.</p>
+
+
+
+
+<p>Kromě výhody v rychlejší práci pro vývojáře bude nejspíš styl webu postavený v Tailwindu i lepší pro návštěvníka díky <a href="/zrychlovani">rychlejšímu</a> načtení stránky.</p>
+
+
+<h3 id="nepouzivat">Proč Tailwind nepoužívat</h3>
+
+<p>Moc důvodů nevidím.</p>
+
+<p>Možná jde jen o módní vlnu.</p>
+
+<p>Ze začátku je trochu <b>nezvyk</b> psát specifické zkratky HTML tříd místo klasického CSS.</p>
+
+<p>U starého projektu může být komplikovanější mít automatické promazávání nepoužívaných stylů nebo mít dobře znovupoužitelné JS komponenty s HTML třídami.</p>
+
+
+
+
+
+
+<p>Pokud projekt <b>nepotřebuje vlastní stylování</b>, ale používá nějakou hotovou UI knihovnu – např. <a href="https://vuetifyjs.com/en/">Vuetify</a> – asi není potřeba ještě připojovat Tailwind.</p>
+
+
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>
+    Vzhůru dolů: <a href="www.vzhurudolu.cz/prirucka/tailwind-css">Tailwind CSS: další evoluční krok pro CSS frameworky</a>
+  </li>
+</ul>

@@ -5,13 +5,17 @@ description: "Při zadávání šířky elementům s <code>display: inline-block
 date: "2014-04-24"
 last_modification: "2014-04-27"
 status: 1
-tags: ["CSS", "Hotová řešení"]
+tags: ["css", "hotova-reseni"]
+format: "html"
 ---
 
-Mějme jednoduchý cíl: umístit do řádku 3 odkazy, každý 100 px široký s 5px mezerou mezi nimi. Výsledná celková šířka by proto měla být 310 px (šířka: 3 * 100 px + odsazení: 2 * 5 px).
+<p>Mějme jednoduchý cíl: umístit do řádku 3 odkazy, každý 100 px široký s 5px mezerou mezi nimi. Výsledná celková šířka by proto měla být 310 px (šířka: 3 * 100 px + odsazení: 2 * 5 px).</p>
 
+<style>
   .obal a {background: #1081DD!important; color: #fff!important}
-
+</style>
+<div class="live">
+<style>
 .obal {
     width: 310px;
     background: #DA3F94;
@@ -26,45 +30,41 @@ Mějme jednoduchý cíl: umístit do řádku 3 odkazy, každý 100 px široký s
 .obal a.posledni {
     margin-right: 0;
 }
+</style>
+<div class="obal">
+    <a href="#">Odkaz</a>
+    <a href="#">Odkaz</a>
+    <a class="posledni" href="#">Odkaz</a>
+</div>
+</div>
 
-    [Odkaz](#)
-    [Odkaz](#)
-    [Odkaz](#)
+<p>Proč se to tedy do obalu o šířce 310 pixelů ↑ nevejde a třetí odkaz <b>odskočí na další řádek</b>?</p>
 
-Proč se to tedy do obalu o šířce 310 pixelů ↑ nevejde a třetí odkaz **odskočí na další řádek**?
+<p>Na vině jsou <b>mezery/odřádkování mezi jednotlivými odkazy</b> (<a href="http://kod.djpw.cz/gvcb">samostatná ukázka</a>).</p>
 
-Na vině jsou **mezery/odřádkování mezi jednotlivými odkazy** ([samostatná ukázka](http://kod.djpw.cz/gvcb)).
+<pre><code>&lt;a href="#">Odkaz&lt;/a><b> </b>&lt;a href="#">Odkaz&lt;/a></code></pre>
 
-```
-&lt;a href="#">Odkaz&lt;/a>** **&lt;a href="#">Odkaz&lt;/a>
-```
+<h2 id="reseni">Řešení</h2>
 
-## Řešení
+<p>První možnost je v HTML kódu mezery odstranit (<a href="http://kod.djpw.cz/hvcb">ukázka</a>):</p>
 
-První možnost je v HTML kódu mezery odstranit ([ukázka](http://kod.djpw.cz/hvcb)):
+<pre><code>&lt;a href="#">Odkaz&lt;/a>&lt;a href="#">Odkaz&lt;/a></code></pre>
 
-```
-&lt;a href="#">Odkaz&lt;/a>&lt;a href="#">Odkaz&lt;/a>
-```
+<p>Případně pro lepší přehlednost posunout <b>koncovou značku</b> (<a href="http://kod.djpw.cz/kigb">ukázka</a>).</p>
 
-Případně pro lepší přehlednost posunout **koncovou značku** ([ukázka](http://kod.djpw.cz/kigb)).
+<pre><code>&lt;a href="#">Odkaz&lt;/a
+>&lt;a href="#">Odkaz&lt;/a></code></pre>
 
-```
-&lt;a href="#">Odkaz&lt;/a
->&lt;a href="#">Odkaz&lt;/a>
-```
+<p>Nebo zakomentovat (<a href="http://kod.djpw.cz/ivcb">ukázka</a>). Moc elegantní se mi to ale nezdá.</p>
 
-Nebo zakomentovat ([ukázka](http://kod.djpw.cz/ivcb)). Moc elegantní se mi to ale nezdá.
+<pre><code>&lt;a href="#">Odkaz&lt;/a>&lt;!--
+ -->&lt;a href="#">Odkaz&lt;/a></code></pre>
 
-```
-&lt;a href="#">Odkaz&lt;/a>&lt;!--
- -->&lt;a href="#">Odkaz&lt;/a>
-```
+<p>Ještě je možné se mezer zbavit <b>nulovou velikostí písma</b> (<code>font-size: 0</code>) pro rodiče a následným <i>obnovením</i> velikosti pro položky s <code>inline-block</code> (<a href="http://kod.djpw.cz/ligb">ukázka</a>). Není to ale úplně spolehlivé a nenávratně se tím rozhodí <b>relativní velikosti písma</b>.</p>
 
-Ještě je možné se mezer zbavit **nulovou velikostí písma** (`font-size: 0`) pro rodiče a následným *obnovením* velikosti pro položky s `inline-block` ([ukázka](http://kod.djpw.cz/ligb)). Není to ale úplně spolehlivé a nenávratně se tím rozhodí **relativní velikosti písma**.
+<p>Jinak se nabízí na <code>inline-block</code> resignovat a použít:</p>
 
-Jinak se nabízí na `inline-block` resignovat a použít:
-
-  - Tabulkové zobrazení `display: table-cell` ([ukázka](http://kod.djpw.cz/jvcb)). Funkční od **IE 8**.
-
-  - Odkazy [`float`ovat](/float) ([ukázka](http://kod.djpw.cz/lwcb)). Funkční všude.
+<ul>
+  <li>Tabulkové zobrazení <code>display: table-cell</code> (<a href="http://kod.djpw.cz/jvcb">ukázka</a>). Funkční od <b>IE 8</b>.</li>
+  <li>Odkazy <a href="/float"><code>float</code>ovat</a> (<a href="http://kod.djpw.cz/lwcb">ukázka</a>). Funkční všude.</li>
+</ul>

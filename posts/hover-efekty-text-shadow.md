@@ -5,23 +5,24 @@ description: "Zajímavé <code>:hover</code> efekty s využitím CSS vlastnosti 
 date: "2014-08-12"
 last_modification: "2014-08-12"
 status: 1
-tags: ["CSS", "Hotová řešení", "Animace", "Menu v CSS"]
+tags: ["css", "hotova-reseni", "menu", "webove-animace"]
+format: "html"
 ---
 
-Podobně jako lze k `:hover` efektům využít [stíny boxu](/hover-efekty-box-shadow) (`box-shadow`), dost podobně se dá použít i **stín písma** – `text-shadow` (funguje od **IE 10**).
+<p>Podobně jako lze k <code>:hover</code> efektům využít <a href="/hover-efekty-box-shadow">stíny boxu</a> (<code>box-shadow</code>), dost podobně se dá použít i <b>stín písma</b> – <code>text-shadow</code> (funguje od <b>IE 10</b>).</p>
 
-Symbolický zápis vlastnosti `text-shadow` je obdobný jako u [`**box**-shadow`](/box-shadow):
+<p>Symbolický zápis vlastnosti <code>text-shadow</code> je obdobný jako u <a href="/box-shadow"><code><b>box</b>-shadow</code></a>:</p>
 
-```
-element {
-  text-shadow: *vodorovné* *svislé umístění* *rozmazání* *barva*;
-}
-```
+<pre><code>element {
+  text-shadow: <i>vodorovné</i> <i>svislé umístění</i> <i>rozmazání</i> <i>barva</i>;
+}</code></pre>
 
-Pokud vynulujeme **rozmazání**, vznikne tak v podstatě **duplikát** původního textu, který může díky [`transition`](/transition) plynule přilétat nebo odlétat.
+<p>Pokud vynulujeme <b>rozmazání</b>, vznikne tak v podstatě <b>duplikát</b> původního textu, který může díky <a href="/transition"><code>transition</code></a> plynule přilétat nebo odlétat.</p>
 
-## Shora
+<h2 id="shora">Shora</h2>
 
+<div class="live">
+  <style>
     .shora a {
         display: inline-block;
         font-family: Segoe UI;
@@ -41,15 +42,20 @@ Pokud vynulujeme **rozmazání**, vznikne tak v podstatě **duplikát** původn�
         text-shadow: 0 0 0 #fff;
         color: #fff;
     }    
+  </style>
+  <div class="shora">
+    <a href="">Odkaz</a>
+    <a href="">Další odkaz</a>
+    <a href="">Odkaz</a>
+  </div>
+</div>
 
-    [Odkaz]()
-    [Další odkaz]()
-    [Odkaz]()
+<p><a href="http://kod.djpw.cz/rxeb">Samostatná živá ukázka</a></p>
 
-[Samostatná živá ukázka](http://kod.djpw.cz/rxeb)
+<h2 id="zdola">Zdola</h2>
 
-## Zdola
-
+<div class="live">
+  <style>
     .zdola a {
         display: inline-block;
         font-family: Segoe UI;
@@ -69,13 +75,18 @@ Pokud vynulujeme **rozmazání**, vznikne tak v podstatě **duplikát** původn�
         text-shadow: 0 0 0 #fff;
         color: #fff;
     }    
+  </style>
+  <div class="zdola">
+    <a href="">Odkaz</a>
+    <a href="">Další odkaz</a>
+    <a href="">Odkaz</a>
+  </div>
+</div>
 
-    [Odkaz]()
-    [Další odkaz]()
-    [Odkaz]()
+<h2 id="zleva">Zleva</h2>
 
-## Zleva
-
+<div class="live">
+  <style>
     .zleva a {
         display: block;
         font-family: Segoe UI;
@@ -95,15 +106,21 @@ Pokud vynulujeme **rozmazání**, vznikne tak v podstatě **duplikát** původn�
         text-shadow: 0 0 0 #fff;
         color: #fff;
     }    
+  </style>
+  <div class="zleva">
+    <a href="">Odkaz</a>
+    <a href="">Odkaz</a>
+    <a href="">Odkaz</a>
+  </div>
+</div>
 
-    [Odkaz]()
-    [Odkaz]()
-    [Odkaz]()
 
-## Z více stran najednou
+<h2 id="najednou">Z více stran najednou</h2>
 
-Stínů textu může být více. Přiletět tedy může zároveň stín shora i zdola nebo třeba 4 stíny ze **všech stran**.
+<p>Stínů textu může být více. Přiletět tedy může zároveň stín shora i zdola nebo třeba 4 stíny ze <b>všech stran</b>.</p>
 
+<div class="live">
+  <style>
     .shora-zdola a {
         display: inline-block;
         font-family: Segoe UI;
@@ -123,15 +140,21 @@ Stínů textu může být více. Přiletět tedy může zároveň stín shora i 
         text-shadow: 0 0 0 #fff;
         color: #fff;
     }    
+  </style>
+  <div class="shora-zdola">
+    <a href="">Odkaz</a>
+    <a href="">Další odkaz</a>
+    <a href="">Odkaz</a>
+  </div>
+</div>
 
-    [Odkaz]()
-    [Další odkaz]()
-    [Odkaz]()
+<p><a href="http://kod.djpw.cz/sxeb">Ukázka</a></p>
 
-[Ukázka](http://kod.djpw.cz/sxeb)
 
-### Všechny strany
+<h3 id="vsechny-strany">Všechny strany</h3>
 
+<div class="live">
+  <style>
     .vsechny-strany a {
         display: inline-block;
         font-family: Segoe UI;
@@ -151,9 +174,12 @@ Stínů textu může být více. Přiletět tedy může zároveň stín shora i 
         text-shadow: 0 0 0 #fff;
         color: #fff;
     }    
+  </style>
+  <div class="vsechny-strany">
+    <a href="">Odkaz</a>
+    <a href="">Další odkaz</a>
+    <a href="">Odkaz</a>
+  </div>
+</div>
 
-    [Odkaz]()
-    [Další odkaz]()
-    [Odkaz]()
-
-[Ukázka](http://kod.djpw.cz/txeb)
+<p><a href="http://kod.djpw.cz/txeb">Ukázka</a></p>

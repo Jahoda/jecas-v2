@@ -6,8 +6,9 @@ date: "2015-02-15"
 last_modification: "2015-02-15"
 status: 0
 tags: []
+format: "html"
 ---
 
 https://github.com/phanan/htaccess
 
-- [Cache.control](https://varvy.com/pagespeed/cache-control.html)
+<li><a href="https://varvy.com/pagespeed/cache-control.html">Cache.control</a></li>

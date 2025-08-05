@@ -5,71 +5,152 @@ description: "Statistiky používání internetových prohlížečů na webovýc
 date: "2014-01-02"
 last_modification: "2016-03-23"
 status: 1
-tags: ["Prohlížeče", "Testování webů"]
+tags: ["testovani", "webove-prohlizece"]
+format: "html"
 ---
 
-Při optimalisaci webů pro jednotlivá koncová zařízení obvykle tvůrci webů sledují **statistiky prohlížečů**, podle kterých se rozhodují, **pro který prohlížeč optimalisovat** a pro který už ne.
+<p>Při optimalisaci webů pro jednotlivá koncová zařízení obvykle tvůrci webů sledují <b>statistiky prohlížečů</b>, podle kterých se rozhodují, <b>pro který prohlížeč optimalisovat</b> a pro který už ne.</p>
 
-Rozhodovat se jde podle statistik dvojího typu:
+<p>Rozhodovat se jde podle statistik dvojího typu:</p>
 
-  - **Vlastní statistiky** konkrétního webu (nejčastěji se používá měřicí skript [Google Analytics](/ga)).
+<ol>
+  <li><b>Vlastní statistiky</b> konkrétního webu (nejčastěji se používá měřicí skript <a href="/ga">Google Analytics</a>).</li>
+  
+  <li><b>Globální statistiky</b>.</li>
+</ol>
 
-  - **Globální statistiky**.
+<p>Oboje je značně zavádějící:</p>
 
-Oboje je značně zavádějící:
 
-## Vlastní statistiky
 
-Výsledky měření návštěvnosti na vlastním webu jsou sice **přesné**, ale mají zásadní problém, který **Dušan Janovský** [nazval](http://www.jakpsatweb.cz/clanky/vypuzovaci-chyba-mereni.html) **vypuzovací chybou měření**.
+<h2 id="vlastni">Vlastní statistiky</h2>
 
-V případě, že web v některých prohlížečích špatně funguje, přirozeně se na webu **sníží podíl návštěvníků**, kteří tento prohlížeč používají.
+<p>Výsledky měření návštěvnosti na vlastním webu jsou sice <b>přesné</b>, ale mají zásadní problém, který <b>Dušan Janovský</b> <a href="http://www.jakpsatweb.cz/clanky/vypuzovaci-chyba-mereni.html">nazval</a> <b>vypuzovací chybou měření</b>.</p>
 
-Špatná podpora návštěvníky *vypudí*, ale autor webu má chybný pocit, že se daný prohlížeč obecně přestal používat.
+<p>V případě, že web v některých prohlížečích špatně funguje, přirozeně se na webu <b>sníží podíl návštěvníků</b>, kteří tento prohlížeč používají.</p>
 
-V dnešní době je vypuzovací chyba měření asi nejmarkantnější u stránek bez [mobilní verse](/mobilni-web), kde je kvůli nepohodlnému zobrazení na mobilech **nižší podíl mobilních zařízení**, než by byl v případě optimalisace pro mobily.
+<p>Špatná podpora návštěvníky <i>vypudí</i>, ale autor webu má chybný pocit, že se daný prohlížeč obecně přestal používat.</p>
 
-## Globální statistiky prohlížečů
 
-Existuje řada stránek nabízející globální statistiky používání prohlížečů.
+<p>V dnešní době je vypuzovací chyba měření asi nejmarkantnější u stránek bez <a href="/mobilni-web">mobilní verse</a>, kde je kvůli nepohodlnému zobrazení na mobilech <b>nižší podíl mobilních zařízení</b>, než by byl v případě optimalisace pro mobily.</p>
 
-Zde je zase snadné sklouznout k nic **neříkajícímu průměru** z nerelevantních zdrojových dat.
 
-Statistiky používání prohlížečů, operačních systémů, mobilních telefonů apod. ovlivňuje hromada faktorů.
 
-Pro alespoň trochu relevantní data je potřeba sledovat jiné **weby podobného zaměření**.
 
-Získat globální statistiky nejpoužívanějších prohlížečů jde z následujících stránek:
 
-    - [Toplist](http://www.toplist.cz/global.html) (zobrazuje statistiky dle kategorií)
+<h2 id="globalni">Globální statistiky prohlížečů</h2>
 
-    - [NetMonitor](http://online.netmonitor.cz/)
+<p>Existuje řada stránek nabízející globální statistiky používání prohlížečů.</p>
 
-    - [Rankigns.cz](http://rankings.cz/en/index.html)
+<p>Zde je zase snadné sklouznout k nic <b>neříkajícímu průměru</b> z nerelevantních zdrojových dat.</p>
 
-    - [StatCounter GlobalStats](http://gs.statcounter.com/)
+<p>Statistiky používání prohlížečů, operačních systémů, mobilních telefonů apod. ovlivňuje hromada faktorů.</p>
 
-    - [Can I Use statistiky](http://caniuse.com/usage-table) (vychází z StatCounter GlobalStats)
+<p>Pro alespoň trochu relevantní data je potřeba sledovat jiné <b>weby podobného zaměření</b>.</p>
 
-    - [W3Counter](http://www.w3counter.com/globalstats.php)
+<p>Získat globální statistiky nejpoužívanějších prohlížečů jde z následujících stránek:</p>
 
-## Nejpoužívanější prohlížeče
+<div class="external-content">
+  <ul>
+    <li><a href="http://www.toplist.cz/global.html">Toplist</a> (zobrazuje statistiky dle kategorií)</li>
 
-V roce 2016 prohlížečům dominuje **Chrome**, následuje **Firefox** a **Internet Explorer**/[**Edge**](/microsoft-edge). Nakonec za zmínku stojí ještě **Safari** a **Opera**.
+    <li><a href="http://online.netmonitor.cz/">NetMonitor</a></li>
 
-Statistiky prohlížečů na českých webech podle Toplistu:
+    <li><a href="http://rankings.cz/en/index.html">Rankigns.cz</a></li>
 
-Globální statistiky dle StatCounteru:
+    <li><a href="http://gs.statcounter.com/">StatCounter GlobalStats</a></li>
 
-### Které prohlížeče
+    <li><a href="http://caniuse.com/usage-table">Can I Use statistiky</a> (vychází z StatCounter GlobalStats)</li>
 
-Problematice rozhodování, kdy pro prohlížeč stránku optimalisovat, rozebírá samostatný článek:
+    <li><a href="http://www.w3counter.com/globalstats.php">W3Counter</a></li>
+  </ul>  
+</div>
 
-    - [Pro jaké prohlížeče ladit svůj web](/prohlizece-optimalisace)
+<h2 id="nejpouzivanejsi">Nejpoužívanější prohlížeče</h2>
 
-## Neřešit statistiky
+<p>V roce 2016 prohlížečům dominuje <b>Chrome</b>, následuje <b>Firefox</b> a <b>Internet Explorer</b>/<a href="/microsoft-edge"><b>Edge</b></a>. Nakonec za zmínku stojí ještě <b>Safari</b> a <b>Opera</b>.</p>
 
-Jeden z možných přístupů je statistiky příliš neřešit a vytvářet web cestou **postupného rozšiřování**, kdy základní funkční podoba stránky běží i v hodně starých prohlížečích. Novější lépe vybavené prohlížeče potom dostanou pokročilejší funkce.
 
-V takovém případě web vypadá a chová se napříč prohlížeči různě, ale všude základní věci fungují a v novějších prohlížečích má návštěvník vyšší komfort.
 
-Jiná možnost je *novinky* nepoužívat a spokojit se pouze s osvědčenými a perfektně fungujícími postupy. To je většinou jednodušší na vývoj, ale uživatelé nových prohlížečů kvůli tomu mohou být ochuzeni o možná vylepšení.
+<p>Statistiky prohlížečů na českých webech podle Toplistu:</p>
+
+<p><img src="/files/statistiky-prohlizecu/toplist-2016.png" alt="Statistiky prohlížečů 2016" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Globální statistiky dle StatCounteru:</p>
+
+<p><img src="/files/statistiky-prohlizecu/StatCounter-2016.png" alt="Statistiky prohlížečů 2016" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="kdy-ladit">Které prohlížeče</h3>
+
+<p>Problematice rozhodování, kdy pro prohlížeč stránku optimalisovat, rozebírá samostatný článek:</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/prohlizece-optimalisace">Pro jaké prohlížeče ladit svůj web</a></li>
+  </ul>
+</div>
+
+
+<h2 id="bez-statistiky">Neřešit statistiky</h2>
+
+<p>Jeden z možných přístupů je statistiky příliš neřešit a vytvářet web cestou <b>postupného rozšiřování</b>, kdy základní funkční podoba stránky běží i v hodně starých prohlížečích. Novější lépe vybavené prohlížeče potom dostanou pokročilejší funkce.</p>
+
+<p>V takovém případě web vypadá a chová se napříč prohlížeči různě, ale všude základní věci fungují a v novějších prohlížečích má návštěvník vyšší komfort.</p>
+
+<p>Jiná možnost je <i>novinky</i> nepoužívat a spokojit se pouze s osvědčenými a perfektně fungujícími postupy. To je většinou jednodušší na vývoj, ale uživatelé nových prohlížečů kvůli tomu mohou být ochuzeni o možná vylepšení.</p>

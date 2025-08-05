@@ -5,25 +5,27 @@ description: "Jak může JavaScript zjistit skutečnou výšku a šířku obráz
 date: "2013-08-22"
 last_modification: "2013-08-22"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-V novějších prohlížečích, než je **Internet Explorer 8**, lze použít `obrazek.**naturalWidth**`, respektive `obrazek.**naturalHeight**`.
+<p>V novějších prohlížečích, než je <b>Internet Explorer 8</b>, lze použít <code>obrazek.<b>naturalWidth</b></code>, respektive <code>obrazek.<b>naturalHeight</b></code>.</p>
+<pre><code>&lt;img src="logo.png" <b>width=500 height=100</b> id=obrazek&gt;</code></pre>
 
-```
-&lt;img src="logo.png" **width=500 height=100** id=obrazek&gt;
-```
-
+<div class="live">
+  <img src="/images/logo2.png" width=500 height=100 id=obrazek>
+  <script>
     function skutecnyRozmer(obr) {
       alert("Skutečná šířka: " + obr.naturalWidth + " a výška: " + obr.naturalHeight);
     }
+  </script>
+</div>
 
-Skutečný rozměr
+<p><button onclick="skutecnyRozmer(document.getElementById('obrazek'))">Skutečný rozměr</button></p>
 
-Ve starších prohlížečích lze využít načtení pomocného obrázku pomocí `new Image()` (podobně jako při testování, zda [obrázek existuje](/existence-obrazku)).
+<p>Ve starších prohlížečích lze využít načtení pomocného obrázku pomocí <code>new Image()</code> (podobně jako při testování, zda <a href="/existence-obrazku">obrázek existuje</a>).</p>
 
-```
-function zjistitSkutecnyRozmer(obr) {
+<pre><code>function zjistitSkutecnyRozmer(obr) {
     var pomocnyObrazek = new Image();
     pomocnyObrazek.src = obr.src;
     return {
@@ -31,21 +33,20 @@ function zjistitSkutecnyRozmer(obr) {
       vyska: pomocnyObrazek.height
     };
   }
+</code></pre>
 
-```
-
-**Použití:**
-
-```
-var obrazek = document.getElementById('obrazek');
+<p><b>Použití:</b></p>
+<pre><code>var obrazek = document.getElementById('obrazek');
 var skutecna = zjistitSkutecnyRozmer(obrazek);
 alert(
   "Skutečná šířka: " + skutecna.sirka + 
   " a výška: " + skutecna.vyska
 );
+</code></pre>
 
-```
-
+<div class="live">
+  <img src="/images/logo2.png" width=500 height=100 id=obrazek2>
+  <script>
     function zjistitSkutecnyRozmer(obr) {
       var pomocnyObrazek = new Image();
       pomocnyObrazek.src = obr.src;
@@ -59,5 +60,8 @@ alert(
       var skutecna = zjistitSkutecnyRozmer(obrazek);
       alert("Skutečná šířka: " + skutecna.sirka + " a výška: " + skutecna.vyska);
     }
+  </script>
+</div>  
+<p><button onclick="vypisSkutecnyRozmer(document.getElementById('obrazek2'))">Skutečný rozměr</button></p>
 
-Skutečný rozměr
+<!-- http://kod.djpw.cz/cegb -->

@@ -5,26 +5,27 @@ description: "Jak v CSS otočit obsah kolem svislé nebo vodorovné osy."
 date: "2014-09-04"
 last_modification: "2014-09-11"
 status: 1
-tags: ["CSS", "Hotová řešení", "Animace"]
+tags: ["css", "hotova-reseni", "webove-animace"]
+format: "html"
 ---
 
-Od **IE 9** fungují v prohlížečích transformace za použití CSS vlastnosti `transform`. Jedním z mnoha, co tato vlastnost nabízí, je **svislé a vodorovné otočení**.
+<p>Od <b>IE 9</b> fungují v prohlížečích transformace za použití CSS vlastnosti <code>transform</code>. Jedním z mnoha, co tato vlastnost nabízí, je <b>svislé a vodorovné otočení</b>.</p>
 
-Pro **Chrome 35**, **IE 9** a **Safari 8** jsou nutné [prefixy](/css-prefixy). Ve staré **Opeře 12** otočení podle osy nefunguje (podporuje jen klasické [otočení](/rotace)).
+<p>Pro <b>Chrome 35</b>, <b>IE 9</b> a <b>Safari 8</b> jsou nutné <a href="/css-prefixy">prefixy</a>. Ve staré <b>Opeře 12</b> otočení podle osy nefunguje (podporuje jen klasické <a href="/rotace">otočení</a>).</p>
 
-## Zápis
 
-```
-.svisle-otoceni {
-  transform: rotate**Y**(20deg);
+<h2 id="zapis">Zápis</h2>
+
+<pre><code>.svisle-otoceni {
+  transform: rotate<b>Y</b>(20deg);
 }
 .vodorovne-otoceni {
-  transform: rotate**X**(20deg);
-}
-```
+  transform: rotate<b>X</b>(20deg);
+}</code></pre>
 
-Funkce `rotate**Y**` a `rotate**X**` zajistí otočení kolem svislé, respektive vodorovné osy. Hodnota se zadává jako **úhel**. Kromě animací mají smysl hlavně hodnoty 0–180, potom nebo předtím (hodnota může být i záporná) se otočení opakuje.
+<p>Funkce <code>rotate<b>Y</b></code> a <code>rotate<b>X</b></code> zajistí otočení kolem svislé, respektive vodorovné osy. Hodnota se zadává jako <b>úhel</b>. Kromě animací mají smysl hlavně hodnoty 0–180, potom nebo předtím (hodnota může být i záporná) se otočení opakuje.</p>
 
+<script>
   function el(id) {
     return document.getElementById(id);
   }
@@ -33,15 +34,17 @@ Funkce `rotate**Y**` a `rotate**X**` zajistí otočení kolem svislé, respektiv
     div.style.transform = div.style.webkitTransform = div.style.msTransform = div.style.oTransform = "rotateX(" + el("hodnotaX").value + "deg)" + " rotateY(" + el("hodnotaY").value + "deg) ";
     div.style.transformOrigin = div.style.webkitTransformOrigin = div.style.msTransformOrigin = div.style.oTransformOrigin = el("osaX").value + "% " +  el("osaY").value + "%"; 
   }
+</script>
+<p><b>Vodorovné otočení:</b><span class="live">0 deg <input oninput="upravitOtoceni()" onchange="upravitOtoceni()" type="range" min="0" max="180" id="hodnotaY" value="0"> 180 deg</span></p>
 
-**Vodorovné otočení:**0 deg  180 deg
+<p><b>Svislé otočení:</b><span class="live">0 deg <input oninput="upravitOtoceni()" onchange="upravitOtoceni()" type="range" min="0" max="180" id="hodnotaX" value="0"> 180 deg</span></p>
 
-**Svislé otočení:**0 deg  180 deg
+<p><b>Vodorovná osa:</b><span class="live">0 % <input oninput="upravitOtoceni()" onchange="upravitOtoceni()" type="range" min="0" max="100" id="osaY" value="50"> 100 %</span></p>
 
-**Vodorovná osa:**0 %  100 %
+<p><b>Svislá osa:</b><span class="live">0 % <input oninput="upravitOtoceni()" onchange="upravitOtoceni()" type="range" min="0" max="100" id="osaX" value="50"> 100 %</span></p>
 
-**Svislá osa:**0 %  100 %
-
+<div class="live">
+  <style>
     .otoceni-podle-osy {
       width: 200px;
       height: 100px;
@@ -52,37 +55,38 @@ Funkce `rotate**Y**` a `rotate**X**` zajistí otočení kolem svislé, respektiv
       font-size: 200%;
       transform: rotateY(20deg);
     }
-  
-  Text
+  </style>
+  <div class="otoceni-podle-osy">Text</div>
+</div>
 
-Vlastností `transform**-origin**` je možné upravit umístění osy, podle které se bude box překlápět.
+<p>Vlastností <code>transform<b>-origin</b></code> je možné upravit umístění osy, podle které se bude box překlápět.</p>
 
-Hodnotu je ideální zadávat v pixelech nebo procentech. Výchozí umístění je uprostřed (`50%`). Osu je možné mít i **mimo element**. První hodnota je posice **vodorovné osy**, druhá hodnota potom **svislé**.
+<p>Hodnotu je ideální zadávat v pixelech nebo procentech. Výchozí umístění je uprostřed (<code>50%</code>). Osu je možné mít i <b>mimo element</b>. První hodnota je posice <b>vodorovné osy</b>, druhá hodnota potom <b>svislé</b>.</p>
 
-```
-element {
+<pre><code>element {
   transform-origin: 50% 50%; /* výchozí */
-}
-```
+}</code></pre>
 
-## 3D perspektiva
 
-Zajímavěji může efekt vypadat při použití *3D perspektivy*.
+<h2 id="perspektiva">3D perspektiva</h2>
 
-To funguje v **Chrome**, **Firefoxu** a **nové Opeře**. Čím nižší hodnota se zadá, tím je „3D efekt“ mocnější.
+<p>Zajímavěji může efekt vypadat při použití <i>3D perspektivy</i>.</p>
 
-```
-element {
+<p>To funguje v <b>Chrome</b>, <b>Firefoxu</b> a <b>nové Opeře</b>. Čím nižší hodnota se zadá, tím je „3D efekt“ mocnější.</p>
+
+<pre><code>element {
   /* Webkit */
   -webkit-perspective: 500; 
   /* Firefox */
   -moz-transform-style: preserve-3d; 
   -moz-transform: perspective(500px);
-}
-```
+}</code></pre>
 
-Otočení jde animovat pomocí [`transition`](/transition). V podporovaných prohlížečích se po najetí myší na „Text“ provede otočení.
 
+<p>Otočení jde animovat pomocí <a href="/transition"><code>transition</code></a>. V podporovaných prohlížečích se po najetí myší na „Text“ provede otočení.</p>
+
+<div class="live">
+<style>
 .otoceni-3d {
     width: 200px;
     
@@ -109,13 +113,22 @@ Otočení jde animovat pomocí [`transition`](/transition). V podporovaných pro
     transform: rotateY(180deg);
     
 }
-
+</style>
+<div class="otoceni-3d">
+    <div class="predni">
         Text
+    </div>
+</div>
+</div>
 
-[Samostatná ukázka](http://kod.djpw.cz/epfb)
+<p><a href="http://kod.djpw.cz/epfb">Samostatná ukázka</a></p>
 
-## Praktické použití
 
-Díky této **transformaci** jde vytvořit poměrně efektní změnu obsahu po najetí myši. (V nepodporovaných prohlížečích se změna odehraje bez animace.)
 
-[Živá ukázka](http://kod.djpw.cz/fpfb)
+<h2 id="prakticke-pouziti">Praktické použití</h2>
+
+<p>Díky této <b>transformaci</b> jde vytvořit poměrně efektní změnu obsahu po najetí myši. (V nepodporovaných prohlížečích se změna odehraje bez animace.)</p>
+
+<p><img src="/files/flip/animace-otoceni.gif" alt="Ukázka animace" class="border"></p>
+
+<p><a href="http://kod.djpw.cz/fpfb">Živá ukázka</a></p>

@@ -6,18 +6,21 @@ date: "2015-07-28"
 last_modification: "2015-07-28"
 status: 0
 tags: []
+format: "html"
 ---
 
-Pro lepší přístupnost **ovládacích prvků stránky** se občas hodí je zafixovat na jednom místě.
+<p>Pro lepší přístupnost <b>ovládacích prvků stránky</b> se občas hodí je zafixovat na jednom místě.</p>
 
-Slouží k tomu [fixní posice](/fixed) ([`position: fixed`](/position-fixed)).
+<p>Slouží k tomu <a href="/fixed">fixní posice</a> (<a href="/position-fixed"><code>position: fixed</code></a>).</p>
 
-**Neustále zafixovaná navigace** ale nemusí být úplně šťastné řešení, protože **neustále zabírá obsah** a ukraujuje tak prostor pro samotný obsah.
+<p><b>Neustále zafixovaná navigace</b> ale nemusí být úplně šťastné řešení, protože <b>neustále zabírá obsah</b> a ukraujuje tak prostor pro samotný obsah.</p>
 
-Zvlášť v případě vodorovného obsahu umístěného nahoře nebo dole se ještě **zmenší dostupná výška**, která je už tak hojně ukrajována **rozhraním prohlížeče** nebo módou **širokoúhlých monitorů**.
+<p>Zvlášť v případě vodorovného obsahu umístěného nahoře nebo dole se ještě <b>zmenší dostupná výška</b>, která je už tak hojně ukrajována <b>rozhraním prohlížeče</b> nebo módou <b>širokoúhlých monitorů</b>.</p>
 
-[Živá ukázka](http://kod.djpw.cz/hpob)
+<p><a href="http://kod.djpw.cz/hpob">Živá ukázka</a></p>
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - [Headroom.js](http://wicky.nillia.ms/headroom.js/) – hotové řešení skrývání fixní navigace
+<ul>
+  <li><a href="http://wicky.nillia.ms/headroom.js/">Headroom.js</a> – hotové řešení skrývání fixní navigace</li>
+</ul>

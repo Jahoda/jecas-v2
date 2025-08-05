@@ -6,55 +6,52 @@ date: "2013-10-30"
 last_modification: "2013-10-30"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Odsazování mezerou
+<h2 id="odsazovani">Odsazování mezerou</h2>
+<p>Asi nejčastější chyba je <b>neznalost odsazování</b>. 
+<ul><li><b>Před</b> tečkou, čárkou, otazníkem, vykřičníkem, středníkem nebo dvojtečkou <b>mezeru nepíšeme</b>, po těchto znacích ale <b>už ano</b>. Závorky se odsazují jen zvenčí.</li>
+  <li>Pokud dvě slova/alternativy oddělíme lomítkem a
+  <ul>
+    <li>obě jsou <b>jednoslovné</b>, mezeru <b>nepíšeme</b>,</li>
+    <li>v případě, kdy je jedna z možností více slovná, lomeno <b>mezerou odsadíme</b>.</li>
+  </ul>
+  </li>
+  <li>odsazování <b>jednotek</b> mění význam:
+    <ul>
+      <li>100% — stoprocentní</li>
+      <li>100 % — sto procent</li>
+      <li>100Kč — stokorunový</li>
+      <li>100 Kč — sto korun</li>
+    </ul>
+  </li>
+  <li><b>kalendářní datum</b></li>
+</ul>
+ 
+<h2 id="uvozovky">„České“ uvozovky</h2>
+<p>Hezké uvozovky místo "uvozovek" (či snad ještě horšího ,,pokusu o uvozovky``) lze zapsat entitami <code>&amp;bdquo;</code> a <code>&amp;ldquo;</code> nebo přímo <a href="/ceska-klavesnice#kody">vyťukat na klávesnici</a>.</p>
 
-Asi nejčastější chyba je **neznalost odsazování**. 
-- **Před** tečkou, čárkou, otazníkem, vykřičníkem, středníkem nebo dvojtečkou **mezeru nepíšeme**, po těchto znacích ale **už ano**. Závorky se odsazují jen zvenčí.
+<h2 id="pomlcka">Pomlčka a spojovník</h2>
+<p>Pomlčku lze zapsat entitou <code>&amp;ndash;</code> (kratší – pomlčka) nebo <code>&amp;mdash;</code> (delší — pomlčka). U některých fontů se délka nemusí lišit.</p>
+<p>Spojovník, ač se z neznalosti nebo ignoranství používá na webu častěji, je - kratší. Občas je k vidění jeho -- zdvojování.</p>
 
-  Pokud dvě slova/alternativy oddělíme lomítkem a
-  
-    - obě jsou **jednoslovné**, mezeru **nepíšeme**,
+<h2 id="tri-tecky">Trojtečka (výpustka)</h2>
+<p>I tři tečky mají svou HTML enitu, konkrétně <code>&amp;hellip;</code>, i když v tomto případě nevypadají tři fysické tečky za sebou výrazně hůře (u některých fontů může být rozdíl zanedbatelný).</p>
+<ul>
+  <li>… — trojtečka</li>
+  <li>... — tři tečky</li>
+</ul>
 
-    - v případě, kdy je jedna z možností více slovná, lomeno **mezerou odsadíme**.
+<h2 id="rozsah">Psaní rozsahu</h2>
+<p>Rozsah ve smyslu od do, je možné zapisovat <b>pomlčkou</b> ta se od čísle neodsazuje.</p>
+<div class="live">
+  <p>Otevírací doba 9–15 hodin.</p>
+</div>
 
-  odsazování **jednotek** mění význam:
-    
-      - 100% — stoprocentní
+<h2 id="predlozky">Předložky na koncích řádků</h2>
 
-      - 100 % — sto procent
 
-      - 100Kč — stokorunový
-
-      - 100 Kč — sto korun
-
-  - **kalendářní datum**
-
-## „České“ uvozovky
-
-Hezké uvozovky místo "uvozovek" (či snad ještě horšího ,,pokusu o uvozovky``) lze zapsat entitami `&amp;bdquo;` a `&amp;ldquo;` nebo přímo [vyťukat na klávesnici](/ceska-klavesnice#kody).
-
-## Pomlčka a spojovník
-
-Pomlčku lze zapsat entitou `&amp;ndash;` (kratší – pomlčka) nebo `&amp;mdash;` (delší — pomlčka). U některých fontů se délka nemusí lišit.
-
-Spojovník, ač se z neznalosti nebo ignoranství používá na webu častěji, je - kratší. Občas je k vidění jeho -- zdvojování.
-
-## Trojtečka (výpustka)
-
-I tři tečky mají svou HTML enitu, konkrétně `&amp;hellip;`, i když v tomto případě nevypadají tři fysické tečky za sebou výrazně hůře (u některých fontů může být rozdíl zanedbatelný).
-
-  - … — trojtečka
-
-  - ... — tři tečky
-
-## Psaní rozsahu
-
-Rozsah ve smyslu od do, je možné zapisovat **pomlčkou** ta se od čísle neodsazuje.
-
-  Otevírací doba 9–15 hodin.
-
-## Předložky na koncích řádků
-
-  - [29 principles for making great font combinations](http://bonfx.com/29-principles-for-making-great-font-combinations/)
+<ul>
+  <li><a href="http://bonfx.com/29-principles-for-making-great-font-combinations/">29 principles for making great font combinations</a></li>
+</ul>

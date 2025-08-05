@@ -5,37 +5,46 @@ description: "Jak vytvořit plynulý animovaný přechod mezi dvěma stránkami.
 date: "2014-08-16"
 last_modification: "2014-08-20"
 status: 1
-tags: ["JavaScript", "CSS", "Hotová řešení", "Animace"]
+tags: ["css", "hotova-reseni", "js", "webove-animace"]
+format: "html"
 ---
 
-Snažíme-li se webovou stránku vytvářet s **ohledem na krásu** (s využitím [animací](/animace) a různých **plynulých přechodů**), může působit přechod mezi dvěma stránkami lehce rušivě. Zvlášť potom u **komplikovanějších layoutů** lze pozorovat nepěkné probliknutí, než si prohlížeč *přechroupe* HTML, CSS a JavaScript.
+<p>Snažíme-li se webovou stránku vytvářet s <b>ohledem na krásu</b> (s využitím <a href="/animace">animací</a> a různých <b>plynulých přechodů</b>), může působit přechod mezi dvěma stránkami lehce rušivě. Zvlášť potom u <b>komplikovanějších layoutů</b> lze pozorovat nepěkné probliknutí, než si prohlížeč <i>přechroupe</i> HTML, CSS a JavaScript.</p>
 
-První možnost, jak se tomuto vyhnout, je použít [AJAX](/ajax) a veškerý obsah načítat *asynchronně*.
+<p>První možnost, jak se tomuto vyhnout, je použít <a href="/ajax">AJAX</a> a veškerý obsah načítat <i>asynchronně</i>.</p>
 
-To díky [`history.pushState`](/zmena-url) sice jde řešit i s používáním normálních URL, ale stránka se stává **náchylnější k chybám**, kdy drobná chyba v JS může znefunkčnit celou navigaci na webu. Klasický přechod mezi stránkami je vlastně takový **restart** všech skriptů.
+<p>To díky <a href="/zmena-url"><code>history.pushState</code></a> sice jde řešit i s používáním normálních URL, ale stránka se stává <b>náchylnější k chybám</b>, kdy drobná chyba v JS může znefunkčnit celou navigaci na webu. Klasický přechod mezi stránkami je vlastně takový <b>restart</b> všech skriptů.</p>
 
-Kromě toho je *zajaxování* webu relativně pracné.
+<p>Kromě toho je <i>zajaxování</i> webu relativně pracné.</p>
 
-## Skrytí a zobrazení animací
 
-Řešením proto může být:
 
-  - Použití **skrývací** animace před opuštěním stránky.
+<h2 id="skryti-zobrazeni">Skrytí a zobrazení animací</h2>
 
-  - Použití **zobrazovací** animace na začátku načtení stránky.
+<p><img src="/files/plynuly-prechod/animovany-prechod.gif" alt="Plynulý přechod mezi stránkami" class="border"></p>
 
-Potřebnou animaci stačí vytvořit pomocí `@keyframes` a přiřadit ji do vlastnosti [animation](/animation)). **Zpětný průchod** animací zajistí klíčové slovo `reverse`.
+<p>Řešením proto může být:</p>
 
-*Objevovací* animace se spustí při **načtení stránky**.
+<ol>
+  <li>Použití <b>skrývací</b> animace před opuštěním stránky.</li>
+  <li>Použití <b>zobrazovací</b> animace na začátku načtení stránky.</li>
+</ol>
 
-Animace *zmizení* bude vyvolána po kliknutí na odkaz mířící pryč. Získat všechny odkazy na stránce jde z `document.links`. Nabízelo by se možná použít událost [`onbeforeunload`](/onbeforeunload), nicméně nejspíš ji nejde rozumně časovat, takže by nešlo garantovat přehrání ukončovací animace.
+<p>Potřebnou animaci stačí vytvořit pomocí <code>@keyframes</code> a přiřadit ji do vlastnosti <a href="/animation">animation</a>). <b>Zpětný průchod</b> animací zajistí klíčové slovo <code>reverse</code>.</p>
 
-## Živá ukázka
+<p><i>Objevovací</i> animace se spustí při <b>načtení stránky</b>.</p>
 
-  - [Živá ukázka](http://jecas.cz/animovany-prechod/)
+<p>Animace <i>zmizení</i> bude vyvolána po kliknutí na odkaz mířící pryč. Získat všechny odkazy na stránce jde z <code>document.links</code>. Nabízelo by se možná použít událost <a href="/onbeforeunload"><code>onbeforeunload</code></a>, nicméně nejspíš ji nejde rozumně časovat, takže by nešlo garantovat přehrání ukončovací animace.</p>
 
-  - [GitHub](https://github.com/Jahoda/animovany-prechod)
+<h2 id="ziva-ukazka">Živá ukázka</h2>
 
-## Odkazy jinam
+<ul>
+  <li><a href="http://jecas.cz/animovany-prechod/">Živá ukázka</a></li>
+  <li><a href="https://github.com/Jahoda/animovany-prechod">GitHub</a></li>
+</ul>
 
-  - [jquery.smoothState.js](https://github.com/miguel-perez/smoothState.js) ([použití v praxi](http://css-tricks.com/add-page-transitions-css-smoothstate-js/))
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="https://github.com/miguel-perez/smoothState.js">jquery.smoothState.js</a> (<a href="http://css-tricks.com/add-page-transitions-css-smoothstate-js/">použití v praxi</a>)</li>
+</ul>

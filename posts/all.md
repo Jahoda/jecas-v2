@@ -5,36 +5,40 @@ description: "Resetování CSS pravidel vlastností <code>all</code>."
 date: "2013-12-15"
 last_modification: "2013-12-15"
 status: 1
-tags: ["CSS", "CSS vlastnosti"]
+tags: ["css", "css-vlastnosti"]
+format: "html"
 ---
 
-Zatím vlastnost `all` funguje od **Firefoxu 27**. Umožňuje **resetovat** vzhled libovolných elementů.
+<p>Zatím vlastnost <code>all</code> funguje od <b>Firefoxu 27</b>. Umožňuje <b>resetovat</b> vzhled libovolných elementů.</p>
 
-To se může hodit pro hotová řešení třetích stran, kde je risiko, že cizí elementy zdědí nežádoucí styly. Nyní je v takovém případě nutné [přebíjet](/css-reset) obvyklé vlastnosti **defaultní hodnotou**.
+<p>To se může hodit pro hotová řešení třetích stran, kde je risiko, že cizí elementy zdědí nežádoucí styly. Nyní je v takovém případě nutné <a href="/css-reset">přebíjet</a> obvyklé vlastnosti <b>defaultní hodnotou</b>.</p>
 
-Vlastnost `all` je zkratka (níže uvedené hodnoty je možné zadávat přímo jako hodnotu všech CSS vlastností). Slouží pro resetování všech CSS vlastností určitého elementu **jedním příkazem**. Může nabývat tří hodnot.
+<p>Vlastnost <code>all</code> je zkratka (níže uvedené hodnoty je možné zadávat přímo jako hodnotu všech CSS vlastností). Slouží pro resetování všech CSS vlastností určitého elementu <b>jedním příkazem</b>. Může nabývat tří hodnot.</p>
 
-  `initial`
+<dl>
+  <dt id="initial"><code>initial</code></dt>
+  <dd>
+    <p>Vyresetuje úplně všechno včetně hodnot z <b>uživatelských stylů</b> nebo výchozích stylů prohlížeče. <a href="http://kod.djpw.cz/iox">Ukázka</a> — text nebude červený ani modrý, ale černý.</p>
+  </dd>
   
-    Vyresetuje úplně všechno včetně hodnot z **uživatelských stylů** nebo výchozích stylů prohlížeče. [Ukázka](http://kod.djpw.cz/iox) — text nebude červený ani modrý, ale černý.
-
-  `inherit`
+  <dt id="inherit"><code>inherit</code></dt>
+  <dd>
+    <p>Vlastnost se zdědí. <a href="http://kod.djpw.cz/jox">Ukázka</a> — text nebude modrý, ale červený (zdědí hodnotu od rodiče).</p>
+  </dd>
   
-    Vlastnost se zdědí. [Ukázka](http://kod.djpw.cz/jox) — text nebude modrý, ale červený (zdědí hodnotu od rodiče).
+  <dt id="unset"><code>unset</code></dt>
+  <dd>
+    <p>V případě, že existuje hodnota k dědění, chová se jako <code>inherit</code>, jinak jako <code>initial</code>. <a href="http://kod.djpw.cz/kox">Ukázka</a>.</p>
+  </dd>
+</dl>
 
-  `unset`
-  
-    V případě, že existuje hodnota k dědění, chová se jako `inherit`, jinak jako `initial`. [Ukázka](http://kod.djpw.cz/kox).
+<p>Při <b>resetování</b> stále platí pravidla kaskádování. Proto odstavec v následujícím kódu bude modrý.</p>
 
-Při **resetování** stále platí pravidla kaskádování. Proto odstavec v následujícím kódu bude modrý.
-
-```
-&lt;style>
+<pre><code>&lt;style>
   p {color: red}
   p#text {color: blue}
   p {all: initial}
 &lt;/style>
-&lt;p id="text">Text&lt;/p>
-```
+&lt;p id="text">Text&lt;/p></code></pre>
 
-Protože ID přebije obyčejný kontext. Podobně to dopadne i s `!important` ([ukázka](http://kod.djpw.cz/nox)).
+<p>Protože ID přebije obyčejný kontext. Podobně to dopadne i s <code>!important</code> (<a href="http://kod.djpw.cz/nox">ukázka</a>).</p>

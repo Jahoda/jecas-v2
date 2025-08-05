@@ -5,88 +5,113 @@ description: "Proč má <code>&lt;input type=number></code> různou výchozí š
 date: "2025-03-25"
 last_modification: "2025-03-25"
 status: 1
-tags: ["CSS", "Stylování elementů", "Formuláře"]
+tags: ["css", "formulare", "stylovani"]
+format: "html"
 ---
 
-I přes značné posuny je stylování HTML formulářů stále jednou z největších výzev.
+<p>I přes značné posuny je stylování HTML formulářů stále jednou z největších výzev.</p>
 
-Do hry zde vstupují **výchozí styly** prohlížeče a operačního systému.
+<p>Do hry zde vstupují <b>výchozí styly</b> prohlížeče a operačního systému.</p>
 
-Jedna taková specialita je různá šířka číselného pole.
+<p>Jedna taková specialita je různá šířka číselného pole.</p>
 
-Prohlížeč se snaží podle omezeného rozmezí čísel chytře určovat šířku `&lt;input>`u.
+<p>Prohlížeč se snaží podle omezeného rozmezí čísel chytře určovat šířku <code>&lt;input></code>u.</p>
 
-Může to způsobovat dost divné stavy, když se právě atributy `min` a `max` používají pro validaci na straně klienta.
+<p>Může to způsobovat dost divné stavy, když se právě atributy <code>min</code> a <code>max</code> používají pro validaci na straně klienta.</p>
 
-Zvlášť v případě, kdy jsou dynamické, může docházet k nepěknému poskakování.
+<p>Zvlášť v případě, kdy jsou dynamické, může docházet k nepěknému poskakování.</p>
 
-Jak je vidět na ukázce, v závislosti na minimální/maximální hodnotě prohlížeč přizpůsobuje šířku políčka.
 
-   (min 0, max 100)
+<p>Jak je vidět na ukázce, v závislosti na minimální/maximální hodnotě prohlížeč přizpůsobuje šířku políčka.</p>
 
-   (min 0, max 10000)
+<div class="live">
+  <input type="number" min="0" max="100"> (min 0, max 100)
+  
+  <br>
+  
+  <input type="number" min="0" max="10000"> (min 0, max 10000)
+  
+  <br>
+  
+  <input type="number" min="0" max="1.7976931348623157e308"> (min 0, max 1.7976931348623157e308) 
+  
+  <br>
+  
+  <input type="number" max="10000"> (max 10000)
+  
+  <br>
+  
+  <input type="text"> (text)
+</div>
 
-   (min 0, max 1.7976931348623157e308) 
+<p><a href="https://kod.djpw.cz/onnd">Samostatná živá ukázka</a></p>
 
-   (max 10000)
 
-   (text)
+<p>Dělá to pouze při vyplnění obou atributů.</p>
 
-[Samostatná živá ukázka](https://kod.djpw.cz/onnd)
 
-Dělá to pouze při vyplnění obou atributů.
 
-## Řešení
+<h2 id="reseni">Řešení</h2>
 
-Bohužel 100% universální a uspokojivé řešení neznám.
+<p>Bohužel 100% universální a uspokojivé řešení neznám.</p>
 
-V některých případech to **nemusí vadit**.
+<p>V některých případech to <b>nemusí vadit</b>.</p>
 
-Ono obecně nastavovat šířku políčka podle očekávaného obsahu je rozumné pro lepší pochopení formuláře ze strany uživatele.
 
-Vadí-li to, asi nejsnazší je nastavit políčku pevnou šířku (`width`).
+<p>Ono obecně nastavovat šířku políčka podle očekávaného obsahu je rozumné pro lepší pochopení formuláře ze strany uživatele.</p>
 
-Výchozí šířka `&lt;input>`u je ale proměnlivá napříč prohlížeči. Pro stejnou šířku s textovými políčky (`&lt;input type=text>`) je tak potřeba explicitně nastavit šířku i pro ně.
+<p>Vadí-li to, asi nejsnazší je nastavit políčku pevnou šířku (<code>width</code>).</p>
 
-V macOS pozoruji následující výchozí rozměry textových políček:
+<p>Výchozí šířka <code>&lt;input></code>u je ale proměnlivá napříč prohlížeči. Pro stejnou šířku s textovými políčky (<code>&lt;input type=text></code>) je tak potřeba explicitně nastavit šířku i pro ně.</p>
 
-  - **Safari** – 148 × 19 px
+<p>V macOS pozoruji následující výchozí rozměry textových políček:</p>
 
-  - **Chrome**, **Edge**, **Brave** – 153 × 21 px
+<ul>
+  <li><b>Safari</b> – 148 × 19 px</li>
+  <li><b>Chrome</b>, <b>Edge</b>, <b>Brave</b> – 153 × 21 px</li>
+  <li><b>Firefox</b> – 189 × 21 px</li>
+</ul>
 
-  - **Firefox** – 189 × 21 px
 
-### Dostupná šířka
+<h3 id="dostupna-sirka">Dostupná šířka</h3>
 
-Cesta k sjednocení může být i nastavení šířky na dostupnou a následné omezení, aby políčko nebylo zbytečně široké.
+<p>Cesta k sjednocení může být i nastavení šířky na dostupnou a následné omezení, aby políčko nebylo zbytečně široké.</p>
 
-```
-input {
+<pre><code>input {
     width: -webkit-fill-available;
     max-width: 8ch;
-}
-```
+}</code></pre>
 
-Jednotka `ch` zde representuje šířku číslice `0` v aktuálním fontu políčka. Jde tak přibližně docílit šířky dle očekávaného počtu číslic.
 
-Atribut `size` totiž u číselného políčka nic nedělá.
 
-### Šířka podle obsahu
 
-Docela zajímavá je vlastnost `field-sizing: content`, kdy se šířka obsahu přizpůsobuje šířce obsahu.
 
-Může to jít hezky zkombinovat s minimální šířkou. Ale funguje jen v **Chrome**.
 
-```
-input {
+<p>Jednotka <code>ch</code> zde representuje šířku číslice <code>0</code> v aktuálním fontu políčka. Jde tak přibližně docílit šířky dle očekávaného počtu číslic.</p>
+
+<p>Atribut <code>size</code> totiž u číselného políčka nic nedělá.</p>
+
+
+<h3 id="podle-obsahu">Šířka podle obsahu</h3>
+
+<p>Docela zajímavá je vlastnost <code>field-sizing: content</code>, kdy se šířka obsahu přizpůsobuje šířce obsahu.</p>
+
+<p>Může to jít hezky zkombinovat s minimální šířkou. Ale funguje jen v <b>Chrome</b>.</p>
+
+<pre><code>input {
     field-sizing: content;
     min-width: 8ch;
-}
-```
+}</code></pre>
 
-## Odkazy
+<h2 id="odkazy">Odkazy</h2>
 
+<ul>
+  <li>
     StackOverflow:
-    [input number max attribute resizes field](https://stackoverflow.com/questions/33283901/input-number-max-attribute-resizes-field)
-
-    MDN: [field-sizing](https://developer.mozilla.org/en-US/docs/Web/CSS/field-sizing)
+    <a href="https://stackoverflow.com/questions/33283901/input-number-max-attribute-resizes-field">input number max attribute resizes field</a>
+  </li>
+  
+  <li>
+    MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/field-sizing">field-sizing</a>
+  </li>
+</ul>

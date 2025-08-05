@@ -6,10 +6,10 @@ date: "2019-06-21"
 last_modification: "2019-06-21"
 status: 0
 tags: []
+format: "html"
 ---
 
-```
-partner_workflow status nastavit na "PRODUCTION"
+<pre><code>partner_workflow status nastavit na "PRODUCTION"
 
 rm -rf var/cache
 bin/console graphql:compile
@@ -18,12 +18,13 @@ docker ps
 
  winpty docker exec -it c60fcfb1de2c bash
 
+
 cd cockpit-portal-api
 make init-dev
 
 zakomentovat ř. 27 v cockpit-poratal-api/docker-compose.yml
 
-winpty docker exec -it  bash
+winpty docker exec -it <ID php kontejneru> bash
 php bin/console ...
 
 Smazat
@@ -40,8 +41,8 @@ Nahodit:
 Nahodit po pádu
 docker start $(docker ps -aq)
 
+
 URL v config.js
 
 apiBaseUrl: 'http://127.0.0.69:8000/v1',
-graphqlBaseUrl: 'http://127.0.0.69:8000/graphql',
-```
+graphqlBaseUrl: 'http://127.0.0.69:8000/graphql',</code></pre>

@@ -6,6 +6,7 @@ date: "2015-11-08"
 last_modification: "2015-11-08"
 status: 0
 tags: []
+format: "html"
 ---
 
-[Odesílací skript](https://gist.github.com/Jahoda/28dd6aaa346f1b844bef) pro [AJAXový](/ajax) formulář.
+<p><a href="https://gist.github.com/Jahoda/28dd6aaa346f1b844bef">Odesílací skript</a> pro <a href="/ajax">AJAXový</a> formulář.</p>

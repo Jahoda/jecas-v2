@@ -6,6 +6,7 @@ date: "2017-09-11"
 last_modification: "2017-09-11"
 status: 0
 tags: []
+format: "html"
 ---
 
 https://www.vzhurudolu.cz/prirucka/browsersync

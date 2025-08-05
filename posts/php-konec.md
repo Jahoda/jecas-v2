@@ -6,56 +6,134 @@ date: "2020-03-29"
 last_modification: "2020-03-29"
 status: 0
 tags: []
+format: "html"
 ---
 
-K PHP jsem se dostal někdy v roce **2005**, tehdy to byla asi nejsnazší cesta, **jak psát web**.
+<p>K PHP jsem se dostal někdy v roce <b>2005</b>, tehdy to byla asi nejsnazší cesta, <b>jak psát web</b>.</p>
 
-Člověk mohl relativně bez znalosti programování smysluplně [skládat stránky dohromady](/include), zdarma to hostovat na [Webu zdarma](https://www.webzdarma.cz).
+<p>Člověk mohl relativně bez znalosti programování smysluplně <a href="/include">skládat stránky dohromady</a>, zdarma to hostovat na <a href="https://www.webzdarma.cz">Webu zdarma</a>.</p>
 
-Případně celkem levně na nějakém z mnoha sdílených [hostingů](/hosting).
+<p><img src="/files/php-konec/webzdarma-cz-v-roce-2004.png" alt="Webzdarma.cz v roce 2004" class="border"></p>
 
-V PHP existovala (a někdy i dodnes existuje) řada hotových aplikací, redakčních systému nebo tehdy populárních diskusních fór.
 
-    [WordPress](/wordpress)
 
-    [phpBB](https://www.phpbb.com)
 
-Původně byl v PHP napsán i [Facebook](/facebook).
 
-## Co zabilo PHP
 
-Při pohledu na [statistiky GitHubu](https://octoverse.github.com/2022/top-programming-languages) s používanými programovacími jazyky, je u **PHP** vidět meziročně sestupný trend.
 
-Čím to?
 
-Podle mě za to může rozšíření [AJAXu](/ajax), kdy se změnil způsob, jak uživatel se stránkou komunikuje.
 
-Zatímco dřív každé kliknutí znamenalo **sestavení nového HTML kódu** na straně serveru, poslání ho ke klientovi a znovunačtení celé stránky, JavaScript umožnil reagovat na uživatele okamžitě přímo v prohlížeči.
 
-Případně ze serveru stahovat jen potřebné části dat.
 
-Z toho plyne, že **v PHP není možné vytvořit tak dobrý uživatelský zážitek jako v JS**.
 
-Nástup **reaktivních frameworků** jako je **React**, **Angular**, **Vue.js**, **Svelte** a podobně následně začal nabízet i celkem rozumný způsob vývoje.
 
-Rozšíření History API umožnilo [plnohodnotně měnit URL bez znovunačtení stránky](/zmena-url).
 
-Vynález [TypeScriptu](https://www.typescriptlang.org) a různých dalších kompilátorů potom aspoň trochu polidštil programování v JavaScriptu.
 
-Skončila tím doba slepování HTML řetězců v **jQuery** v jednom obrovském souboru `main.js`.
 
-## Frontend vs. backend
 
-V dřívějších dobách se to nerozlišovalo. Zažil jsem i doby, kdy *dělat frontend* znamenalo připravit HTML/CSS šablony, které potom backendista implementoval do PHP aplikace a šablonovacího systému.
 
-Pokročilejší frontendista je potom dokázal implementovat i sám, ale samotný návrh aplikace, routování a podobné věci byl pořád na backendu v PHP.
 
-Dnes se frontendem zpravidla rozumí všechno, co běží v prohlížeči.
 
-Takže React je dnes nové PHP.
 
-## PHP nestačí
 
-## Ne vše musí být webová aplikace
 
-## Server side rendering
+
+
+
+
+
+
+
+
+
+<p>Případně celkem levně na nějakém z mnoha sdílených <a href="/hosting">hostingů</a>.</p>
+
+<p>V PHP existovala (a někdy i dodnes existuje) řada hotových aplikací, redakčních systému nebo tehdy populárních diskusních fór.</p>
+
+<ul>
+  <li>
+    <a href="/wordpress">WordPress</a>
+  </li>
+  <li>
+    <a href="https://www.phpbb.com">phpBB</a>
+  </li>
+</ul>
+
+<p>Původně byl v PHP napsán i <a href="/facebook">Facebook</a>.</p>
+
+
+
+<h2 id="co">Co zabilo PHP</h2>
+
+<p>Při pohledu na <a href="https://octoverse.github.com/2022/top-programming-languages">statistiky GitHubu</a> s používanými programovacími jazyky, je u <b>PHP</b> vidět meziročně sestupný trend.</p>
+
+<p><img src="/files/php-konec/trend-php.png" alt="Trend PHP" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Čím to?</p>
+
+<p>Podle mě za to může rozšíření <a href="/ajax">AJAXu</a>, kdy se změnil způsob, jak uživatel se stránkou komunikuje.</p>
+
+
+
+<p>Zatímco dřív každé kliknutí znamenalo <b>sestavení nového HTML kódu</b> na straně serveru, poslání ho ke klientovi a znovunačtení celé stránky, JavaScript umožnil reagovat na uživatele okamžitě přímo v prohlížeči.</p>
+
+<p>Případně ze serveru stahovat jen potřebné části dat.</p>
+
+
+<p>Z toho plyne, že <b>v PHP není možné vytvořit tak dobrý uživatelský zážitek jako v JS</b>.</p>
+
+
+<p>Nástup <b>reaktivních frameworků</b> jako je <b>React</b>, <b>Angular</b>, <b>Vue.js</b>, <b>Svelte</b> a podobně následně začal nabízet i celkem rozumný způsob vývoje.</p>
+
+<p>Rozšíření History API umožnilo <a href="/zmena-url">plnohodnotně měnit URL bez znovunačtení stránky</a>.</p>
+
+<p>Vynález <a href="https://www.typescriptlang.org">TypeScriptu</a> a různých dalších kompilátorů potom aspoň trochu polidštil programování v JavaScriptu.</p>
+
+
+<p>Skončila tím doba slepování HTML řetězců v <b>jQuery</b> v jednom obrovském souboru <code>main.js</code>.</p>
+
+
+
+
+
+<h2 id="fe-be">Frontend vs. backend</h2>
+
+<p>V dřívějších dobách se to nerozlišovalo. Zažil jsem i doby, kdy <i>dělat frontend</i> znamenalo připravit HTML/CSS šablony, které potom backendista implementoval do PHP aplikace a šablonovacího systému.</p>
+
+<p>Pokročilejší frontendista je potom dokázal implementovat i sám, ale samotný návrh aplikace, routování a podobné věci byl pořád na backendu v PHP.</p>
+
+<p>Dnes se frontendem zpravidla rozumí všechno, co běží v prohlížeči.</p>
+
+<p>Takže React je dnes nové PHP.</p>
+
+
+
+
+
+
+
+
+
+<h2 id="jednoduchost">PHP nestačí</h2>
+
+
+<h2 id="ne-vse-spa">Ne vše musí být webová aplikace</h2>
+
+
+<h2 id="ssr">Server side rendering</h2>

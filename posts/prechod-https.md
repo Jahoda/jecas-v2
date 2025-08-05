@@ -6,8 +6,10 @@ date: "2019-04-03"
 last_modification: "2019-04-03"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [SSL Server Test](https://www.ssllabs.com/ssltest/) – kontroluje obecné nastavení serveru
-
-  - [SSL Check](https://www.jitbit.com/sslcheck/) – dokáže projít 200 stránek webu a zkontrolovat je
+<ul>
+  <li><a href="https://www.ssllabs.com/ssltest/">SSL Server Test</a> – kontroluje obecné nastavení serveru</li>
+  <li><a href="https://www.jitbit.com/sslcheck/">SSL Check</a> – dokáže projít 200 stránek webu a zkontrolovat je </li>
+</ul>

@@ -5,97 +5,132 @@ description: "Roletový seznam nabízí omezené možnosti v úpravách vzhledu.
 date: "2013-08-16"
 last_modification: "2016-07-03"
 status: 1
-tags: ["CSS", "Stylování elementů", "Rady a nápady"]
+tags: ["css", "napady", "stylovani"]
+format: "html"
 ---
 
-## Odsazení `padding`
-
-Funguje od Exploreru 8 na značce `&lt;select&gt;`, na `&lt;option&gt;`u umí `padding` jen Firefox. 
-
+<h2 id=padding>Odsazení <code>padding</code></h2>
+<p>Funguje od Exploreru 8 na značce <code>&lt;select&gt;</code>, na <code>&lt;option&gt;</code>u umí <code>padding</code> jen Firefox. </p>
+<div class="live">
+<style>
   .padding {padding: 1em}
+</style>
+    <select class=padding>
+      <option>HTML
+      <option>CSS
+      <option>JavaScript
+    </select>
+</div>
 
-      HTML
-      CSS
-      JavaScript
 
-## Barvy
 
-Obarvení `&lt;select&gt;`u je možné ve všech prohlížečích. Je možné barvit i konkrétní `&lt;option&gt;` položky. Pokud se tak neučiní, převezmou položky barvu `&lt;select&gt;`u.
 
-    -- vybrat --
-    HTML
-      CSS
-      JavaScript
 
-Jak je vidět z ukázky, nastavení pozadí (`background`) způsobí [přepnutí na *oldschool* vzhled](/vzhled-formularu#select), téhož je možné *docílit* vlastností `border`.
+<h2 id="barvy">Barvy</h2>
+<p>Obarvení <code>&lt;select&gt;</code>u je možné ve všech prohlížečích. Je možné barvit i konkrétní <code>&lt;option&gt;</code> položky. Pokud se tak neučiní, převezmou položky barvu <code>&lt;select&gt;</code>u.</p>
 
-## Rámeček `border`
+<div class="live">
+  <select style="background: #000; color: #fff">
+    <option value="">-- vybrat --</option>
+    <option style="background: #E44D27">HTML
+      <option style="background: #0D6AB7">CSS
+      <option style="background: #FEDA3F; color: #000">JavaScript
+    </select>
+</div>
 
-S rámečky není problém. Firefox je umí i pro jednotlivé položky.
+<p>Jak je vidět z ukázky, nastavení pozadí (<code>background</code>) způsobí <a href="/vzhled-formularu#select">přepnutí na <i>oldschool</i> vzhled</a>, téhož je možné <i>docílit</i> vlastností <code>border</code>.</p>
 
-V prohlížečích, které podporují kulaté rohy přes [`border-radius`](/border-radius), není problém ani zakulacení.
+<h2 id="border">Rámeček <code>border</code></h2>
+<p>S rámečky není problém. Firefox je umí i pro jednotlivé položky.</p>
 
-    -- vybrat --
-    HTML
-      CSS
-      JavaScript
+<p>V prohlížečích, které podporují kulaté rohy přes <a href="/border-radius"><code>border-radius</code></a>, není problém ani zakulacení.</p>
 
-## Šířka a výška
+<div class="live">
+  <select style="background: #000; color: #fff; border: 5px solid #fff; border-radius: 5px">
+    <option value="">-- vybrat --</option>
+    <option style="background: #E44D27">HTML
+      <option style="background: #0D6AB7">CSS
+      <option style="background: #FEDA3F; color: #000">JavaScript
+    </select>
+</div>
 
-Přenastavení rozměrů je taktéž široce podporováno.
-Problém je s výškou, kdy různé prohlížeče text různě zarovnávají (není možné použít `line-height`). 
-Zarovnat text u širokého `&lt;select&gt;`u pomocí `text-align: center` funguje jen v **Opeře 12**.
-Firefox jako jediný umí nastavit výšku i pro položky výběru.
+<h2 id="width-height">Šířka a výška</h2>
+<ul><li>Přenastavení rozměrů je taktéž široce podporováno.
+<li>Problém je s výškou, kdy různé prohlížeče text různě zarovnávají (není možné použít <code>line-height</code>). 
+<li>Zarovnat text u širokého <code>&lt;select&gt;</code>u pomocí <code>text-align: center</code> funguje jen v <b>Opeře 12</b>.
+<li>Firefox jako jediný umí nastavit výšku i pro položky výběru.
+  </ul>
 
-    -- vybrat --
-    HTML
-      CSS
-      JavaScript
+<div class="live">
+  <select style="background: #000; color: #fff; border: 5px solid #fff; border-radius: 5px; width: 300px; height: 100px; text-align: center">
+    <option value="">-- vybrat --</option>
+    <option style="background: #E44D27">HTML
+      <option style="background: #0D6AB7">CSS
+      <option style="background: #FEDA3F; color: #000">JavaScript
+    </select>
+</div>
 
-## Písmo
+<h2 id="font">Písmo</h2>
+<p>Ohledně písma lze nastavit prakticky vše — <b>tučné písmo</b>, <i>kursivu</i> apod., velikost, barvu (jak je zmíněno výše), atd.</p>
+<p>Opět to je možné <b>kromě Firefoxu jen pro celý výběr</b>, tj. pro <code>&lt;select&gt;</code>.</p>
 
-Ohledně písma lze nastavit prakticky vše — **tučné písmo**, *kursivu* apod., velikost, barvu (jak je zmíněno výše), atd.
+<div class="live">
+  <select style="background: #000; color: #fff; border: 5px solid #fff; border-radius: 5px; font-weight: bold; text-transform: lowercase; font-size: 200%; font-style: italic">
+    <option value="">-- vybrat --</option>
+    <option style="background: #E44D27">HTML
+      <option style="background: #0D6AB7;">CSS
+      <option style="background: #FEDA3F; color: #000">JavaScript
+    </select>
+</div>
 
-Opět to je možné **kromě Firefoxu jen pro celý výběr**, tj. pro `&lt;select&gt;`.
+<h2 id="hover">Zvýraznění položky</h2>
+<p>Při najetí na <code>&lt;select&gt;</code> lze klasicky aplikovat <code>:hover</code>. Otevřený <code>&lt;select&gt;</code> získává <code>:focus</code>.</p>
 
-    -- vybrat --
-    HTML
-      CSS
-      JavaScript
+<ul>
+  <li>V Explorerech do verse 9 včetně nefunguje <code>:hover</code>, do verse 8 včetně ani <code>:focus</code>.</li>
+  <li>Nastavit vlastní styl pro <code>:hover</code> jednotlivých položek se zdá být nemožné.</li>
+</ul>
 
-## Zvýraznění položky
-
-Při najetí na `&lt;select&gt;` lze klasicky aplikovat `:hover`. Otevřený `&lt;select&gt;` získává `:focus`.
-
-  - V Explorerech do verse 9 včetně nefunguje `:hover`, do verse 8 včetně ani `:focus`.
-
-  - Nastavit vlastní styl pro `:hover` jednotlivých položek se zdá být nemožné.
-
+<div class="live">
+  <style>
     .hover {background: #000; color: #fff; border: 5px solid #fff; border-radius: 5px; font-weight: bold; text-transform: lowercase; font-size: 200%; font-style: italic}
     .hover:hover {background: red!important; width: 300px}
     .hover:focus {border-color: red}
+  </style>
+  <select class="hover" style="">
+    <option value="">-- vybrat --</option>
+    <option style="background: #E44D27">HTML
+      <option style="background: #0D6AB7;">CSS
+      <option style="background: #FEDA3F; color: #000">JavaScript
+    </select>
+</div>
 
-    -- vybrat --
-    HTML
-      CSS
-      JavaScript
 
-## Vlastní styl šipky
+<h2 id="sipka">Vlastní styl šipky</h2>
 
-Standardním způsobem není možné změnit styl šipky znázorňující rozevření seznamu (například jí změnit barvu).
+<p>Standardním způsobem není možné změnit styl šipky znázorňující rozevření seznamu (například jí změnit barvu).</p>
 
-Existují ale způsoby, jak to obejít:
+<p>Existují ale způsoby, jak to obejít:</p>
 
-### `appearance: none`
 
-CSS vlastnost `appearance` nastavená na hodnotu `none` dokáže *vypnout* výchozí styl formulářového políčka. Tím se mimo jiné docílí, že se nezobrazí šipka pro rozevření.
+<h3 id="appearance"><code>appearance: none</code></h3>
 
-Vlastní šipku jde potom snadno absolutně naposicovat na požadované místo. Šipka jde vytvořit i přímo v CSS:
+<p>CSS vlastnost <code>appearance</code> nastavená na hodnotu <code>none</code> dokáže <i>vypnout</i> výchozí styl formulářového políčka. Tím se mimo jiné docílí, že se nezobrazí šipka pro rozevření.</p>
 
-    - [Generátor CSS šipek](/css-sipky)
+<p>Vlastní šipku jde potom snadno absolutně naposicovat na požadované místo. Šipka jde vytvořit i přímo v CSS:</p>
 
-Aby na místě posicované šipky šlo `&lt;select>` prokliknout, je třeba přidat `pointer-events: none`.
+<div class="internal-content">
+  <ul>
+    <li><a href="/css-sipky">Generátor CSS šipek</a></li>
+  </ul>
+</div>
 
+
+<p>Aby na místě posicované šipky šlo <code>&lt;select></code> prokliknout, je třeba přidat <code>pointer-events: none</code>.</p>
+
+
+<div class="live">
+  <style>
   .select-cover {
       width: 200px;
       overflow: hidden;
@@ -127,23 +162,35 @@ Aby na místě posicované šipky šlo `&lt;select>` prokliknout, je třeba při
       margin-top: -4px;
       right: .5em;
   }
+  </style>
+  <div class="select-cover">
+    <select>
+        <option value="">První</option>
+        <option value="">Druhá</option>
+        <option value="">Třetí</option>
+    </select>
+  </div>  
+</div>
 
-        První
-        Druhá
-        Třetí
+<p><a href="http://kod.djpw.cz/tnzb">Samostatná ukázka</a></p>
 
-[Samostatná ukázka](http://kod.djpw.cz/tnzb)
 
-## Závěr
 
-Jak je vidět, stylování je **docela omezené**. Pro plnou kontrolu je třeba [použít atrapu](/vzhled-formularu#js) a `&lt;select&gt;` ovládat JavaScriptem. Problém je, že vytvořit funkčnost shodnou s obyčejným formulářem je docela komplikované. A hotová řešení často věci jako ovládání klávesnicí apod. neumožňují.
+<h2 id="zaver">Závěr</h2>
+<p>Jak je vidět, stylování je <b>docela omezené</b>. Pro plnou kontrolu je třeba <a href="/vzhled-formularu#js">použít atrapu</a> a <code>&lt;select&gt;</code> ovládat JavaScriptem. Problém je, že vytvořit funkčnost shodnou s obyčejným formulářem je docela komplikované. A hotová řešení často věci jako ovládání klávesnicí apod. neumožňují.</p>
 
-Problémům se stylováním se jde často úplně vyhnout, protože selectbox není úplně ideální formulářový prvek a často jde nahradit uživatelsky příjemnějším ovládacím prvkem:
+<p>Problémům se stylováním se jde často úplně vyhnout, protože selectbox není úplně ideální formulářový prvek a často jde nahradit uživatelsky příjemnějším ovládacím prvkem:</p>
 
-    - [Proč nepoužívat `&lt;select>`](/select-pouzitelnost)
+<div class="internal-content">
+  <ul>
+    <li><a href="/select-pouzitelnost">Proč nepoužívat <code>&lt;select></code></a></li>
+  </ul>
+</div>
 
-## Odkazy jinam
 
-  - jQuery UI: [Selectmenu](https://jqueryui.com/selectmenu/)
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - [Cross-browser styles for consistent select element styling](https://github.com/filamentgroup/select-css) ([demo](http://filamentgroup.github.io/select-css/demo/))
+<ul>
+  <li>jQuery UI: <a href="https://jqueryui.com/selectmenu/">Selectmenu</a></li>
+  <li><a href="https://github.com/filamentgroup/select-css">Cross-browser styles for consistent select element styling</a> (<a href="http://filamentgroup.github.io/select-css/demo/">demo</a>)</li>
+</ul>

@@ -6,42 +6,61 @@ date: "2015-08-20"
 last_modification: "2015-08-20"
 status: 0
 tags: []
+format: "html"
 ---
 
-Na dobré umístění stránky ve výsledcích hledání mají **značný vliv zpětné odkazy**. Jeden ze způsobů, jak zpětné odkazy získat, je hledání nefunkčních odkazů na **tématických významných webech**.
+<p>Na dobré umístění stránky ve výsledcích hledání mají <b>značný vliv zpětné odkazy</b>. Jeden ze způsobů, jak zpětné odkazy získat, je hledání nefunkčních odkazů na <b>tématických významných webech</b>.</p>
 
-Pokud máme na vlastním webu obsah odpovídající původní stránce, na kterou **vede rozbitý odkaz**, je celkem vyhráno.
+<p>Pokud máme na vlastním webu obsah odpovídající původní stránce, na kterou <b>vede rozbitý odkaz</b>, je celkem vyhráno.</p>
 
-Autor webu zpravidla velmi rád na základě upozornění rozbitý odkaz nahradí jiným, protože je to pro něj nejpohodlnější. Nemusí hledat alternativní stránku nebo přepisovat text, že odkaz už nefunguje.
+<p>Autor webu zpravidla velmi rád na základě upozornění rozbitý odkaz nahradí jiným, protože je to pro něj nejpohodlnější. Nemusí hledat alternativní stránku nebo přepisovat text, že odkaz už nefunguje.</p>
 
-## Odkaz na nefunkční článek
 
-### Příklad zprávy
 
-  Ahoj, dobrý den,
+<h2 id="clanek">Odkaz na nefunkční článek</h2>
 
-    při procházení stránky `http://jecas.cz/nefunkcni-odkaz` jsem si všiml nefunkčního odkazu na `http://puvodni-odkaz.cz/nefunkcni-stranka`. Vypadá to, že už daný obsah nebude dostupný.
+<h3 id="zprava">Příklad zprávy</h3>
 
-  Podobnou problematikou jsem se zabýval na stránce `http://muj-web.cz/podobny-clanek`, takže by pro návštěvníky mohlo být prospěšné tento článek odkázat, když původní nefunguje.
+<blockquote>
+  <p>Ahoj, dobrý den,<br>
+    při procházení stránky <code>http://jecas.cz/nefunkcni-odkaz</code> jsem si všiml nefunkčního odkazu na <code>http://puvodni-odkaz.cz/nefunkcni-stranka</code>. Vypadá to, že už daný obsah nebude dostupný.
+  </p>
+  
+  <p>Podobnou problematikou jsem se zabýval na stránce <code>http://muj-web.cz/podobny-clanek</code>, takže by pro návštěvníky mohlo být prospěšné tento článek odkázat, když původní nefunguje.</p>
+  
+  <p>Děkuji za pozornost</p>
+</blockquote>
 
-  Děkuji za pozornost
 
-## Zaniklá služba
 
-Čas od času se stane, že nějaká užitečná služba zanikne. Je možné, že na ni vede řada odkazů a máme obdobnou službu, takže by bylo ideální tyto původní odkazy získat.
 
-  Dear Jahoda,
 
-  I come across your page http://jecas.cz/kontrola-stranky and realise you have a broken link at "Rychlost a odezva stránky”, 200please.com. It seems to me that 200please.com is not available anymore. I would like to take this opportunity to introduce the Server Speed Checker in http://www.bitcatcha.com/. The free tool does exactly the same with 200please.com except for Bitcatcha’s has a more user-friendly approach. 
 
+
+<h2 id="sluzba">Zaniklá služba</h2>
+
+<p>Čas od času se stane, že nějaká užitečná služba zanikne. Je možné, že na ni vede řada odkazů a máme obdobnou službu, takže by bylo ideální tyto původní odkazy získat.</p>
+
+<blockquote>
+  <p>Dear Jahoda,</p> 
+
+<p>
+  I come across your page http://jecas.cz/kontrola-stranky and realise you have a broken link at "Rychlost a odezva stránky”, 200please.com. It seems to me that 200please.com is not available anymore. I would like to take this opportunity to introduce the Server Speed Checker in http://www.bitcatcha.com/. The free tool does exactly the same with 200please.com except for Bitcatcha’s has a more user-friendly approach. </p>
+
+<p>
 It would be very nice of you if you could list http://www.bitcatcha.com/ for server speed check in your site too. 
+  </p>
 
-  Please let me know if you have any questions.
+  <p>Please let me know if you have any questions.</p>
 
+<p>
 Thanks,
-Joe
+Joe</p>
+</blockquote>
 
-  Hey Bohumil
+
+<blockquote>
+  <pre>Hey Bohumil
 
  I was searching for some articles about responsive images today and I came across this page: http://jecas.cz/responsivni-obrazky
 
@@ -55,9 +74,12 @@ Joe
 
  Cheers,
 
- Edoardo 
+ Edoardo </pre>
+</blockquote>
 
-  Hey Bohumil,
+
+<blockquote>
+  <pre>Hey Bohumil,
 
 I noticed you shared the time tracking tool Rescue Time (https://www.rescuetime.com/), but I figured you probably hadn’t heard about our app, Hubstaff.com?
 
@@ -76,9 +98,17 @@ Let me know if there is anything I can do to facilitate this.
 -Ed
 
 PS. I sent you this message by hand as I think you’ll be interested in Hubstaff. Of course if that isn’t the case please let me know and I will be sure not to contact you again.
+</pre>
+</blockquote>
 
-  - [This ‘Inverted Broken Link Building’ Strategy Will Make You Facepalm](https://blog.ahrefs.com/broken-link-building-method/)
+<ul>
+  <li><a href="https://blog.ahrefs.com/broken-link-building-method/">This ‘Inverted Broken Link Building’ Strategy Will Make You Facepalm</a></li>
+</ul>
 
-    - [Check My Links](https://chrome.google.com/webstore/detail/check-my-links/ojkcdipcgfaekbeaelaapakgnjflfglf) – rozšíření do **Chrome** znázorňující funkční a nefunkční odkazy
-
-    - [Free Broken Link Checker](http://www.brokenlinkcheck.com/) – online služba hledající nefunkční odkazy
+<div class="external-content">
+  <ul>
+    <li><a href="https://chrome.google.com/webstore/detail/check-my-links/ojkcdipcgfaekbeaelaapakgnjflfglf">Check My Links</a> – rozšíření do <b>Chrome</b> znázorňující funkční a nefunkční odkazy</li>
+    
+    <li><a href="http://www.brokenlinkcheck.com/">Free Broken Link Checker</a> – online služba hledající nefunkční odkazy</li>
+  </ul>
+</div>

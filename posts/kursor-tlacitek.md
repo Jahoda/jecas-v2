@@ -6,8 +6,12 @@ date: "2019-04-22"
 last_modification: "2019-04-22"
 status: 0
 tags: []
+format: "html"
 ---
 
-Correct cursor for “content cannot be interacted with”
-
-  - [Buttons shouldn’t have a hand cursor part 2](https://uxdesign.cc/buttons-shouldnt-have-a-hand-cursor-part-2-4a6e1c8423a5)
+<ul>
+  <li><a href="https://ux.stackexchange.com/questions/12726/correct-cursor-for-content-cannot-be-interacted-with">Correct cursor for “content cannot be interacted with”
+</a></li>
+  
+  <li><a href="https://uxdesign.cc/buttons-shouldnt-have-a-hand-cursor-part-2-4a6e1c8423a5">Buttons shouldn’t have a hand cursor part 2</a></li>
+</ul>

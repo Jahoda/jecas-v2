@@ -1,29 +1,28 @@
 ---
 title: "Živý náhled CSS ze Sublime Text"
 headline: "Živý náhled editovaného CSS"
-description: "Jak docílit, aby se editované CSS v <a href=\"/sublime-text\">Sublime Text</a> editoru v reálném čase aplikovalo v prohlížeči."
+description: "Jak docílit, aby se editované CSS v <a href="/sublime-text">Sublime Text</a> editoru v reálném čase aplikovalo v prohlížeči."
 date: "2013-08-06"
 last_modification: "2013-08-06"
 status: 1
-tags: ["Produktivita", "Sublime Text"]
+tags: ["produktivita", "st"]
+format: "html"
 ---
 
-- Pomocí [Package Control](/pluginy-sublime-text) v Sublime Text se nainstaluje rozšíření *LiveStyle*,
+<ol>
+  <li>Pomocí <a href="/pluginy-sublime-text">Package Control</a> v Sublime Text se nainstaluje rozšíření <i>LiveStyle</i>,</li>
+  <li>do Google Chrome se nainstaluje doplněk <a href="https://chrome.google.com/webstore/detail/emmet-livestyle/diebikgmpmeppiilkaijjbdgciafajmg">LiveStyle</a>,</li>
+  <li>vše se restartuje,</li>
+  <li>v Google Chrome se ve <a href="/vyvojarske-nastroje#chrome">vývojářských nástrojích</a> (klávesa <kbd>F12</kbd>) přejde na kartu <i>LiveStyle</i>,</li>
+  <li>tam si stačí z roletové nabídky vybrat libovolný CSS soubor, co je v Sublime Text právě otevřený…</li>
+  <li>A je to!</li>
+</ol>
 
-  - do Google Chrome se nainstaluje doplněk [LiveStyle](https://chrome.google.com/webstore/detail/emmet-livestyle/diebikgmpmeppiilkaijjbdgciafajmg),
+<p>(Alternativní řešení obnovení stránky při uložení souboru, které je <b>nezávislé na konkrétním editoru</b>, se jmenuje <a href="/livereload">LiveReload</a>.)</p>
 
-  - vše se restartuje,
+<img src="/files/zivy-nahled-css/nahled.png" alt="" class="border">
 
-  - v Google Chrome se ve [vývojářských nástrojích](/vyvojarske-nastroje#chrome) (klávesa F12) přejde na kartu *LiveStyle*,
+<p><a href="http://livestyle.emmet.io/" class="button">Více na Emmet LiveStyle</a></p>
 
-  - tam si stačí z roletové nabídky vybrat libovolný CSS soubor, co je v Sublime Text právě otevřený…
-
-  - A je to!
-
-(Alternativní řešení obnovení stránky při uložení souboru, které je **nezávislé na konkrétním editoru**, se jmenuje [LiveReload](/livereload).)
-
-[Více na Emmet LiveStyle](http://livestyle.emmet.io/)
-
-## Video-ukázka
-
-[Emmet LiveStyle sneak peek](http://www.youtube.com/watch?v=iQLhGbkupS4)
+<h2>Video-ukázka</h2>
+<a href="http://www.youtube.com/watch?v=iQLhGbkupS4" class="yt">Emmet LiveStyle sneak peek</a>

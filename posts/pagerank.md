@@ -6,6 +6,7 @@ date: "2015-02-23"
 last_modification: "2015-02-23"
 status: 0
 tags: []
+format: "html"
 ---
 
 https://www.seroundtable.com/google-next-pagerank-update-19902.html

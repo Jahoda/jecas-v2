@@ -5,87 +5,134 @@ description: "Pomocí atributu <code>autocomplete</code> jde usnadnit a zrychlit
 date: "2014-01-10"
 last_modification: "2015-03-18"
 status: 1
-tags: ["HTML", "Formuláře", "HTML atributy"]
+tags: ["formulare", "html", "html-atributy"]
+format: "html"
 ---
 
-Webové **formuláře** jsou nedílnou součástí webu. V případě, že stránka něco prodává (e-shop), je takový formulář místem, který zákazník bude muset překonat, má-li nakoupit.
+<p>Webové <b>formuláře</b> jsou nedílnou součástí webu. V případě, že stránka něco prodává (e-shop), je takový formulář místem, který zákazník bude muset překonat, má-li nakoupit.</p>
 
-Když už se tedy povede zákazníka přimět k objednání zboží, byla by škoda ho následně odradit **špatně použitelným** formulářem.
+<p>Když už se tedy povede zákazníka přimět k objednání zboží, byla by škoda ho následně odradit <b>špatně použitelným</b> formulářem.</p>
 
-    - [20 nejhorších chyb formulářů](/chyby-formularu) – přehled chyb, kterým se vyvarovat
+<div class="internal-content">
+  <ul>
+    <li><a href="/chyby-formularu">20 nejhorších chyb formulářů</a> – přehled chyb, kterým se vyvarovat</li>
+  </ul>
+</div>
 
-## Automatické vyplnění
 
-Zvlášť u mobilních zařízení s malými obrazovkami a dotykovou klávesnicí je hodně nepohodlné cokoliv vyplňovat.
+<h2 id="vyplnovani">Automatické vyplnění</h2>
 
-Při návrhu formuláře je tak dobré se nad každým prvkem zamyslet, jestli je skutečně nutný. U opravdu **nezbytných políček** může pomoci atribut `autocomplete`.
+<p>Zvlášť u mobilních zařízení s malými obrazovkami a dotykovou klávesnicí je hodně nepohodlné cokoliv vyplňovat.</p>
 
-Atributem `autocomplete` jde prohlížeči sdělit typ údaje k vyplnění, který by se na dané místo hodil.
+<p>Při návrhu formuláře je tak dobré se nad každým prvkem zamyslet, jestli je skutečně nutný. U opravdu <b>nezbytných políček</b> může pomoci atribut <code>autocomplete</code>.</p>
 
-```
-&lt;input type="email" **autocomplete="email"**>
-```
+<p>Atributem <code>autocomplete</code> jde prohlížeči sdělit typ údaje k vyplnění, který by se na dané místo hodil.</p>
 
-Automatické doplňování funguje pouze u formulářů odesílaných metodou `post`.
+<pre><code>&lt;input type="email" <b>autocomplete="email"</b>></code></pre>
 
-### Uložení údajů v Chrome
+<p>Automatické doplňování funguje pouze u formulářů odesílaných metodou <code>post</code>.</p>
 
-V prohlížeči **Chrome** si jde údaje k napovídání nastavit v *Menu → Nastavení → Zobrazit rozšířená nastavení... → Hesla a formuláře*.
 
-## Jméno políčka
 
-I bez atributu `autocomplete` dokáží některé prohlížeče nabízet hodnoty zadané do políček se stejným atributem `name`, nezávisle na webu, kde byly vyplněny.
 
-Z tohoto důvodu je proto vhodné **používat názvy políček**, které jsou hodně rozšířené.
+<h3 id="chrome">Uložení údajů v Chrome</h3>
 
-## Doporučené hodnoty `name` a `autocomplete`
+<p>V prohlížeči <b>Chrome</b> si jde údaje k napovídání nastavit v <i>Menu → Nastavení → Zobrazit rozšířená nastavení... → Hesla a formuláře</i>.</p>
 
-Možné hodnoty pro `autocomplete` jsou uvedené ve specifikaci.
+<p><img src="/files/autocomplete/chrome.png" alt="Nastavení automatického doplňování" class="border"></p>
 
-    - HTML specifikace: [Autofill](https://html.spec.whatwg.org/multipage/forms.html#autofill)
 
-Pro názvy políček (atribut `name`) je většinou nejuniversálnější používat anglické názvy.
 
-### Jméno
 
-```
-&lt;input name="name" autocomplete="name">
-```
 
-### E-mail
 
-```
-&lt;input name="email" autocomplete="email">
-```
 
-### Telefon
 
-```
-&lt;input name="phone" autocomplete="tel">
-```
 
-## Vypnutí `autocomplete`
 
-V případě, že políčko disponuje vlastním **našeptávačem** obsahu, mohlo by být napovídání ještě z prohlížeče rušivé. Autocomplete se dá v takových případech vypnout hodnotou `off`.
 
-```
-&lt;input autocomplete="**off**">
-```
 
-## requestAutocomplete API
 
-Metoda `requestAutocomplete` slouží k vyplnění čísel **platební karty** a adresy pro doručení. Pokud má potřebná data návštěvník uložená, je nakupování otázkou jednoho kliknutí.
 
-  - Metoda `requestAutocomplete` funguje pouze pro **platební formuláře** (musí obsahovat pole s `autocomplete="cc-*"` – „cc“ znamená *credit card*).
+<h2 id="jmeno">Jméno políčka</h2>
 
-  - Jde použít pouze na **zabezpečeném připojení** ([HTTPS](/https)).
+<p>I bez atributu <code>autocomplete</code> dokáží některé prohlížeče nabízet hodnoty zadané do políček se stejným atributem <code>name</code>, nezávisle na webu, kde byly vyplněny.</p>
 
-    - [Simplify checkout with requestAutocomplete API](https://developers.google.com/web/fundamentals/input/form/use-request-auto-complete?hl=en)
+<p>Z tohoto důvodu je proto vhodné <b>používat názvy políček</b>, které jsou hodně rozšířené.</p>
 
-  - [Chrome’s requestAutocomplete(), for a Better Payment on the Web &amp; Mobile](http://daker.me/2014/01/chrome-requestautocomplete-better-payment-web-mobile.html)
 
-## Odkazy jinam
 
-  - Google Webmaster Central Blog: [Helping users fill out online forms](http://googlewebmastercentral.blogspot.cz/2015/03/helping-users-fill-out-online-forms.html)
 
-  - Jeremy's Blog: [Rules for Autocomplete](http://jeremymikkola.com/posts/2019_03_19_rules_for_autocomplete.html)
+
+
+
+<h2 id="hodnoty">Doporučené hodnoty <code>name</code> a <code>autocomplete</code></h2>
+
+<p>Možné hodnoty pro <code>autocomplete</code> jsou uvedené ve specifikaci.</p>
+
+<div class="external-content">
+  <ul>  <li>HTML specifikace: <a href="https://html.spec.whatwg.org/multipage/forms.html#autofill">Autofill</a></li></ul>
+</div>
+
+<p>Pro názvy políček (atribut <code>name</code>) je většinou nejuniversálnější používat anglické názvy.</p>
+
+<h3 id="jmeno">Jméno</h3>
+
+<pre><code>&lt;input name="name" autocomplete="name"></code></pre>
+
+
+<h3 id="email">E-mail</h3>
+
+<pre><code>&lt;input name="email" autocomplete="email"></code></pre>
+
+
+<h3 id="tel">Telefon</h3>
+
+<pre><code>&lt;input name="phone" autocomplete="tel"></code></pre>
+
+
+
+
+
+
+
+
+<h2 id="zakazat">Vypnutí <code>autocomplete</code></h2>
+
+<p>V případě, že políčko disponuje vlastním <b>našeptávačem</b> obsahu, mohlo by být napovídání ještě z prohlížeče rušivé. Autocomplete se dá v takových případech vypnout hodnotou <code>off</code>.</p>
+
+<pre><code>&lt;input autocomplete="<b>off</b>"></code></pre>
+
+
+
+
+
+
+<h2 id="request">requestAutocomplete API</h2>
+
+<p>Metoda <code>requestAutocomplete</code> slouží k vyplnění čísel <b>platební karty</b> a adresy pro doručení. Pokud má potřebná data návštěvník uložená, je nakupování otázkou jednoho kliknutí.</p>
+
+<ul>
+  <li>Metoda <code>requestAutocomplete</code> funguje pouze pro <b>platební formuláře</b> (musí obsahovat pole s <code>autocomplete="cc-*"</code> – „cc“ znamená <i>credit card</i>).</li>
+  
+  <li>Jde použít pouze na <b>zabezpečeném připojení</b> (<a href="/https">HTTPS</a>).</li>
+</ul>
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://developers.google.com/web/fundamentals/input/form/use-request-auto-complete?hl=en">Simplify checkout with requestAutocomplete API</a></li>
+    
+  <li><a href="http://daker.me/2014/01/chrome-requestautocomplete-better-payment-web-mobile.html">Chrome’s requestAutocomplete(), for a Better Payment on the Web &amp; Mobile</a></li>    
+  </ul>
+</div>
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>  
+  <li>Google Webmaster Central Blog: <a href="http://googlewebmastercentral.blogspot.cz/2015/03/helping-users-fill-out-online-forms.html">Helping users fill out online forms</a></li>
+  
+  <li>Jeremy's Blog: <a href="http://jeremymikkola.com/posts/2019_03_19_rules_for_autocomplete.html">Rules for Autocomplete</a></li>
+  
+
+</ul>

@@ -5,79 +5,83 @@ description: "Jak vytvořit barevný přechod (gradient) přímo v CSS bez použ
 date: "2014-03-04"
 last_modification: "2014-03-25"
 status: 1
-tags: ["CSS", "Obrázky", "CSS funkce"]
+tags: ["css", "css-funkce", "obrazky"]
+format: "html"
 ---
 
-Barevné přechody je v CSS možné vytvářet přes:
+<p>Barevné přechody je v CSS možné vytvářet přes:</p>
 
-  - vlastnost `filter` pro **IE 9**
+<ol>
+  <li>vlastnost <code>filter</code> pro <b>IE 9</b></li>
+  <li><code>background-image</code> pro <b>IE 10</b> a novější</li>
+</ol>
 
-  - `background-image` pro **IE 10** a novější
+<p>V prohlížečích starších než <b>Opera 12.1</b>, <b>Firefox 16</b>, <b>Chrome 26</b> se používají ještě <a href="/css-prefixy">CSS prefixy</a>.</p>
 
-V prohlížečích starších než **Opera 12.1**, **Firefox 16**, **Chrome 26** se používají ještě [CSS prefixy](/css-prefixy).
+<h2 id="priklad">Příklad</h2>
 
-## Příklad
+<p>Nejjednodušší použití CSS gradientu může vypadat v případě lineárního přechodu takto:</p>
 
-Nejjednodušší použití CSS gradientu může vypadat v případě lineárního přechodu takto:
+<pre><code>.prechod {
+  background-image: <b>linear-gradient</b>(#0D6AB7, #DA3F94);
+}</code></pre>
 
-```
-.prechod {
-  background-image: **linear-gradient**(#0D6AB7, #DA3F94);
-}
-```
-
+<div class="live no-source">
+  <style>
     .prechod {
       background-image: linear-gradient(
         #0D6AB7, 
         #DA3F94
       );
     }
-  
-  &nbsp;
+  </style>
+  <div class="prechod">&nbsp;</div>
+</div>
 
-## Lineární gradient
+<h2 id="linear">Lineární gradient</h2>
 
-Funkci `linear-gradient` se předávají různé parametry ovlivňující výchozí podobu celého přechodu. Symbolický zápis veškerých možností vypadá následovně.
+<p>Funkci <code>linear-gradient</code> se předávají různé parametry ovlivňující výchozí podobu celého přechodu. Symbolický zápis veškerých možností vypadá následovně.</p>
 
-```
-.prechod {
+<pre><code>.prechod {
   background-image: linear-gradient(
-    **směr**, 
-    **první barva** *umístění*,
-    **druhá barva** *umístění*
+    <b>směr</b>, 
+    <b>první barva</b> <i>umístění</i>,
+    <b>druhá barva</b> <i>umístění</i>
   )
-}
-```
+}</code></pre>
 
-### Směr
+<h3 id="smer">Směr</h3>
 
-První parametr určuje, jakým směrem se má přechod ubírat. Výchozí nastavení je shora dolů.
+<p>První parametr určuje, jakým směrem se má přechod ubírat. Výchozí nastavení je shora dolů.</p>
 
-  - `to top` – zdola nahoru,
-  
-  - `to bottom` – shora dolů,
-  
-  - `to right` – zleva doprava,
-  
-  - `to left` – zprava doleva
+<ul>
+  <li><code>to top</code> – zdola nahoru,</li>  
+  <li><code>to bottom</code> – shora dolů,</li>  
+  <li><code>to right</code> – zleva doprava,</li>  
+  <li><code>to left</code> – zprava doleva</li>  
+</ul>
 
-Kromě toho existují i šikmé směry, například `to bottom right`:
+<p>Kromě toho existují i šikmé směry, například <code>to bottom right</code>:</p>
 
+<div class="live">
+  <style>
     .prechod-sikmy {
       background-image: linear-gradient(to bottom right, #0D6AB7, #DA3F94);
     }
-  
-  &nbsp;
-&nbsp;
+  </style>
+  <div class="prechod-sikmy">&nbsp;<br>&nbsp;</div>
+</div>
 
-### Umístění barev
+<h3 id="umisteni-barvy">Umístění barev</h3>
 
-Délkovými jednotkami (pixely, procenta apod.) je možné nastavit, kde se daná barva má *aplikovat*.
+<p>Délkovými jednotkami (pixely, procenta apod.) je možné nastavit, kde se daná barva má <i>aplikovat</i>.</p>
 
-Výchozí chování je, že první barva začíná (tj. `0%`) a druhá končí (tj. `100%`).
+<p>Výchozí chování je, že první barva začíná (tj. <code>0%</code>) a druhá končí (tj. <code>100%</code>).</p>
 
-Takto se přechod změní při nastavení procent na `60` a `90`.
+<p>Takto se přechod změní při nastavení procent na <code>60</code> a <code>90</code>.</p>
 
+<div class="live">
+  <style>
     .prechod-umisteni {
       background-image: linear-gradient(
         to bottom right, 
@@ -85,14 +89,16 @@ Takto se přechod změní při nastavení procent na `60` a `90`.
         #DA3F94 90%
       );
     }
-  
-  &nbsp;
-&nbsp;
+  </style>
+  <div class="prechod-umisteni">&nbsp;<br>&nbsp;</div>
+</div>
 
-### Více barev
+<h3 id="vice-barev">Více barev</h3>
 
-Přechod může mít **libovolný počet** barev.
+<p>Přechod může mít <b>libovolný počet</b> barev.</p>
 
+<div class="live">
+  <style>
     .prechod-vice-barev {
       background-image: linear-gradient(
         to bottom right, 
@@ -102,39 +108,41 @@ Přechod může mít **libovolný počet** barev.
         #DA3F94 90%
       );
     }
-  
-  &nbsp;
-&nbsp;
+  </style>
+  <div class="prechod-vice-barev">&nbsp;<br>&nbsp;</div>
+</div>
 
-## Radiální gradient
+<h2 id="radial">Radiální gradient</h2>
 
-Další typ *gradientu* je kruhový (radiální). Zápis je obdobný jako u lineárního.
+<p>Další typ <i>gradientu</i> je kruhový (radiální). Zápis je obdobný jako u lineárního.</p>
 
-```
-.prechod-radialni {
-  background-image: **radial-gradient**(#0D6AB7, #DA3F94);
-}
-```
+<pre><code>.prechod-radialni {
+  background-image: <b>radial-gradient</b>(#0D6AB7, #DA3F94);
+}</code></pre>
 
+<div class="live no-source">
+  <style>
     .prechod-radialni {
       background-image: radial-gradient(
         #0D6AB7, 
         #DA3F94
       );
     }
-  
-  &nbsp;
-&nbsp;
-&nbsp;
+  </style>
+  <div class="prechod-radialni">&nbsp;<br>&nbsp;<br>&nbsp;</div>
+</div>
 
-### Tvar
+<h3 id="tvar">Tvar</h3>
 
-První parametr udává *tvar* kruhového přechodu.
+<p>První parametr udává <i>tvar</i> kruhového přechodu.</p>
 
-  - `ellipse` – výchozí podoba, přechod se roztáhne přes celý prostor elementu.
+<ul>
+  <li><code>ellipse</code> – výchozí podoba, přechod se roztáhne přes celý prostor elementu.</li>
+  <li><code>circle</code> – přechod bude mít podobu kruhu.</li>
+</ul>
 
-  - `circle` – přechod bude mít podobu kruhu.
-
+<div class="live">
+  <style>
     .prechod-circle {
       background-image: radial-gradient(
         circle,
@@ -142,13 +150,14 @@ První parametr udává *tvar* kruhového přechodu.
         #DA3F94
       );
     }
-  
-  &nbsp;
-&nbsp;
-&nbsp;
+  </style>
+  <div class="prechod-circle">&nbsp;<br>&nbsp;<br>&nbsp;</div>
+</div>
 
-V případě, že chceme mít vidět celý kruh (když element s přechodem na pozadí není čtvercový), stačí přidat za tvar (`circle`) `closest-side`:
+<p>V případě, že chceme mít vidět celý kruh (když element s přechodem na pozadí není čtvercový), stačí přidat za tvar (<code>circle</code>) <code>closest-side</code>:</p>
 
+<div class="live">
+  <style>
     .prechod-closest-side {
       background-image: radial-gradient(
         circle closest-side,
@@ -156,15 +165,16 @@ V případě, že chceme mít vidět celý kruh (když element s přechodem na p
         #DA3F94
       );
     }
-  
-  &nbsp;
-&nbsp;
-&nbsp;
+  </style>
+  <div class="prechod-closest-side">&nbsp;<br>&nbsp;<br>&nbsp;</div>
+</div>
 
-### Umístění
+<h3 id="umisteni">Umístění</h3>
 
-**Umístění barev** funguje stejně jako u *lineárního přechodu*. Je ale možné změnit střed, odkud přechod *začíná*, zapsáním `at top|bottom|left|right` a *šikmých* kombinací.
+<p><b>Umístění barev</b> funguje stejně jako u <i>lineárního přechodu</i>. Je ale možné změnit střed, odkud přechod <i>začíná</i>, zapsáním <code>at top|bottom|left|right</code> a <i>šikmých</i> kombinací.</p>
 
+<div class="live">
+  <style>
     .prechod-at {
         width: 100px;
         height: 100px;
@@ -174,19 +184,22 @@ V případě, že chceme mít vidět celý kruh (když element s přechodem na p
         #DA3F94
       );
     }
+  </style>
+  <div class="prechod-at"></div>
+</div>
 
-## Opakující se gradient
+<h2 id="repeating">Opakující se gradient</h2>
 
-Poslední typ gradientu je **opakování přechodu do nekonečna**.
+<p>Poslední typ gradientu je <b>opakování přechodu do nekonečna</b>.</p>
 
-```
-.prechod-opakovani {
-  background-image: **repeating-linear-gradient**(
+<pre><code>.prechod-opakovani {
+  background-image: <b>repeating-linear-gradient</b>(
     #0D6AB7, #DA3F94 50%
   );
-}
-```
+}</code></pre>
 
+<div class="live no-source">
+  <style>
     .prechod-repeating {
       height: 100px;
       background-image: repeating-linear-gradient(
@@ -194,17 +207,23 @@ Poslední typ gradientu je **opakování přechodu do nekonečna**.
         #DA3F94 50%
       );
     }
+  </style>
+  <div class="prechod-repeating"></div>
+</div>
 
-Opakovat se může přechod lineární i radiální:
+<p>Opakovat se může přechod lineární i radiální:</p>
 
-  - `repeating-**linear**-gradient`,
+<ul>
+  <li><code>repeating-<b>linear</b>-gradient</code>,</li>
+  <li><code>repeating-<b>radial</b>-gradient</code></li>
+</ul>
 
-  - `repeating-**radial**-gradient`
+<h3 id="prouzky">Proužky</h3>
 
-### Proužky
+<p>Zajímavější využití <b>opakujících se přechodů</b> je vytvoření proužků.</p>
 
-Zajímavější využití **opakujících se přechodů** je vytvoření proužků.
-
+<div class="live">
+  <style>
     .prechod-prouzky {
       height: 100px;
       background-image: repeating-linear-gradient(
@@ -214,11 +233,16 @@ Zajímavější využití **opakujících se přechodů** je vytvoření proužk
         #DA3F94 20%
       );
     }
+  </style>
+  <div class="prechod-prouzky"></div>
+</div>
 
-### Otočení
+<h3 id="otoceni">Otočení</h3>
 
-Jde i přechod otočit (např. `-45deg`) a vytvořit tak třeba **šikmé pruhy**:
+<p>Jde i přechod otočit (např. <code>-45deg</code>) a vytvořit tak třeba <b>šikmé pruhy</b>:</p>
 
+<div class="live">
+  <style>
     .prechod-otoceny {
       height: 100px;
       background-image: repeating-linear-gradient(
@@ -229,42 +253,45 @@ Jde i přechod otočit (např. `-45deg`) a vytvořit tak třeba **šikmé pruhy*
         #DA3F94 10px
       );
     }
+  </style>
+  <div class="prechod-otoceny"></div>
+</div>
 
-## Přechody vlastností filter
+<h2 id="filter">Přechody vlastností filter</h2>
 
-Pro **IE 9** a starší je možné některé přechody vytvořit vlastností `filter`. Vytvořit se tak dá ale nejspíš **jen přechod lineární**:
+<p>Pro <b>IE 9</b> a starší je možné některé přechody vytvořit vlastností <code>filter</code>. Vytvořit se tak dá ale nejspíš <b>jen přechod lineární</b>:</p>
 
-```
-.prechod {
+<pre><code>.prechod {
   filter: progid:DXImageTransform.Microsoft.Gradient(
     startColorStr="#0D6AB7", 
     endColorStr="#DA3F94"
   );
-}
-```
+}</code></pre>
 
-Více o [gradientech přes `filter`](http://msdn.microsoft.com/en-us/library/ms532997(v=vs.85).aspx).
+<p>Více o <a href="http://msdn.microsoft.com/en-us/library/ms532997(v=vs.85).aspx">gradientech přes <code>filter</code></a>.</p>
 
-## Fallback
+<h2 id="fallback">Fallback</h2>
 
-*Fallback* pro plnohodnotné CSS přechody tedy může být:
+<p><i>Fallback</i> pro plnohodnotné CSS přechody tedy může být:</p>
 
-  - CSS vlastnost `filter` pro **IE 9** a starší (třeba s méně dokonalým přechodem).
+<ol>
+  <li>CSS vlastnost <code>filter</code> pro <b>IE 9</b> a starší (třeba s méně dokonalým přechodem).</li>
+  <li>Prostá barva bez přechodu. Když se gradient nastaví jako <code>background-image</code>, nastavená vlastnost <code>background-color</code> <i>přežije</i>.</li>
+  <li>Obyčejný obrázek.</li>
+</ol>
 
-  - Prostá barva bez přechodu. Když se gradient nastaví jako `background-image`, nastavená vlastnost `background-color` *přežije*.
+<p>V případě každého webu je pochopitlně nutno zvážit, co se <a href="/prohlizece-optimalisace#kalkulace">vyplatí realisovat</a>.</p>
 
-  - Obyčejný obrázek.
+<h2 id="generator">Generátor CSS gradientů</h2>
 
-V případě každého webu je pochopitlně nutno zvážit, co se [vyplatí realisovat](/prohlizece-optimalisace#kalkulace).
+<p>Pro pohodlnou tvorbu gradientů existují tzv. generátory gradientů.</p>
 
-## Generátor CSS gradientů
+<ul>
+  <li>ColorSpace: <a href="https://mycolor.space/gradient3">Generate a 3-Color-Gradient
+</a></li>
+  
+  <li><a href="http://www.colorzilla.com/gradient-editor/">Ultimate CSS Gradient Generator</a></li>
+  <li><a href="http://ie.microsoft.com/testdrive/graphics/cssgradientbackgroundmaker/">CSS Gradient Background Maker</a></li>
+</ul>
 
-Pro pohodlnou tvorbu gradientů existují tzv. generátory gradientů.
-
-  ColorSpace: Generate a 3-Color-Gradient
-
-  - [Ultimate CSS Gradient Generator](http://www.colorzilla.com/gradient-editor/)
-
-  - [CSS Gradient Background Maker](http://ie.microsoft.com/testdrive/graphics/cssgradientbackgroundmaker/)
-
-Nutno přiznat, že výsledný kód plný prefixů není **úplně elegantní** ([ukázka](http://kod.djpw.cz/fncb)).
+<p>Nutno přiznat, že výsledný kód plný prefixů není <b>úplně elegantní</b> (<a href="http://kod.djpw.cz/fncb">ukázka</a>).</p>

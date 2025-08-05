@@ -6,46 +6,70 @@ date: "2019-06-21"
 last_modification: "2019-06-21"
 status: 0
 tags: []
+format: "html"
 ---
 
-## SSR, nebo prerenderování?
+<h2 id="ssr-prerender">SSR, nebo prerenderování?</h2>
 
-### vue-cli-plugin-prerender-spa
+<h3 id="cli">vue-cli-plugin-prerender-spa</h3>
 
-Konfigurace z příkazové řádky:
+<p>Konfigurace z příkazové řádky:</p>
 
-  - [vue-cli-plugin-prerender-spa](https://github.com/SolarLiner/vue-cli-plugin-prerender-spa)
+<ul>
+  <li><a href="https://github.com/SolarLiner/vue-cli-plugin-prerender-spa">vue-cli-plugin-prerender-spa</a></li>
+</ul>
 
-## Prerender SPA Plugin
+<h2 id="prerender-spa-plugin">Prerender SPA Plugin</h2>
 
-```
-npm i prerender-spa-plugin
-```
 
-### Hydratace
+<pre><code>npm i prerender-spa-plugin</code></pre>
 
-  - [Client Side Hydration](https://ssr.vuejs.org/guide/hydration.html)
+<h3 id="hydratace">Hydratace</h3>
 
-### Událost po vyrenderování
+<ul>
+  <li><a href="https://ssr.vuejs.org/guide/hydration.html">Client Side Hydration</a></li>
+</ul>
 
-#### `main.js`
+<h3 id="event">Událost po vyrenderování</h3>
 
-```
-new Vue({
+<h4><code>main.js</code></h4>
+
+<pre><code>new Vue({
   router,
   store,
   i18n,
   render: h => h(App),
   mounted: () => {
-    **document.dispatchEvent(new Event('render-event'))**
+    <b>document.dispatchEvent(new Event('render-event'))</b>
   }
-}).$mount('#app')
-```
+}).$mount('#app')</code></pre>
 
-#### `vue.config.js`
 
-```
-const path = require('path')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4><code>vue.config.js</code></h4>
+
+<pre><code>const path = require('path')
 const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const routeList = require('./src/router/routes/prerenderRouteList')
 
@@ -71,39 +95,61 @@ module.exports = {
     ]
   }
 }
+</code></pre>
 
-```
 
-#### `AppLayout.vue`
 
-```
-&lt;template>
-  **&lt;div id="app">**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4 id="layout"><code>AppLayout.vue</code></h4>
+
+<pre><code>&lt;template>
+  <b>&lt;div id="app"></b>
     &lt;div class="page-wrapper">
       …
   &lt;/div>
-&lt;/template>
-```
+&lt;/template></code></pre>
 
-## Nastavení nginx serveru
+<h2 id="nginx">Nastavení nginx serveru</h2>
 
-```
-location / {
+<pre><code>location / {
     add_header Cache-Control "no-store, no-cache, must-revalidate";
     try_files $uri $uri/index.html $uri.html /index.html =404;
-}
-```
+}</code></pre>
 
-## Docker
 
-```
-FROM node:latest as builder
+<h2 id="docker">Docker</h2>
+
+<pre><code>FROM node:latest as builder
 
 # Install headless Chrome dependecies for puppeteer staic page prerender
 RUN apt-get update
-RUN apt install -y gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
-```
+RUN apt install -y gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget</code></pre>
 
-## Odkazy jinam
 
-  - [How to Pre-render Vue.js Powered Websites With webpack](https://markus.oberlehner.net/blog/how-to-pre-render-vue-powered-websites-with-webpack/)
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="https://markus.oberlehner.net/blog/how-to-pre-render-vue-powered-websites-with-webpack/">How to Pre-render Vue.js Powered Websites With webpack</a></li>
+</ul>

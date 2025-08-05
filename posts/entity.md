@@ -5,165 +5,236 @@ description: "Entity v HTML jsou zvláštní druh posloupnosti znaků sloužíc�
 date: "2015-01-15"
 last_modification: "2015-02-06"
 status: 1
-tags: ["HTML"]
+tags: ["html"]
+format: "html"
 ---
 
-Znakové entity v HTML vznikly nejspíš z toho důvodu, že by bez nich bylo **komplikované zapsat znak „menší než“** — „`&lt;`“, který v HTML slouží k otevření značky, aniž by se tak interpretoval. Jedná se tedy o způsob tzv. *escapování*.
+<p>Znakové entity v HTML vznikly nejspíš z toho důvodu, že by bez nich bylo <b>komplikované zapsat znak „menší než“</b> — „<code>&lt;</code>“, který v HTML slouží k otevření značky, aniž by se tak interpretoval. Jedná se tedy o způsob tzv. <i>escapování</i>.</p>
 
-Typicky entita začíná znakem `&amp;` (na [české klávesnici](/ceska-klavesnice) pravý Alt + C), potom následuje její název a končí středníkem – `;`.
+<p>Typicky entita začíná znakem <code>&amp;</code> (na <a href="/ceska-klavesnice">české klávesnici</a> pravý <kbd>Alt</kbd> + <kbd>C</kbd>), potom následuje její název a končí středníkem – <code>;</code>.</p>
 
-## Menší než `&lt;` – `&amp;lt;`
 
-Začátek značky je sice tvořen sekvencí `&lt;` a alespoň jednoho znaku A–z (na velikosti nezáleží, bez diakritiky, čísel a podobně), takže napsat například a  by nebyl problém.
+<h2 id="lt">Menší než <code>&lt;</code> – <code>&amp;lt;</code></h2>
 
-V případě „a&lt;b“ bez mezer by se už ale **nechtěně vytvořil** tučný text – sekvence „&lt;b“ by započala značku `&lt;b>`.
+<p>Začátek značky je sice tvořen sekvencí <code>&lt;</code> a alespoň jednoho znaku A–z (na velikosti nezáleží, bez diakritiky, čísel a podobně), takže napsat například <span class="live">a < b</span> by nebyl problém.</p>
 
-Kromě toho by bez entit bylo komplikované do textu [vypisovat zdrojový HTML kód](/vypis-kodu).
+<p>V případě „a&lt;b“ bez mezer by se už ale <b>nechtěně vytvořil</b> tučný text – sekvence „&lt;b“ by započala značku <code>&lt;b></code>.</p>
 
-Znak „**menší než**“ tedy na stránkách nevypisujících HTML kód a nepoužívajících výrazy typu „a&lt;b“ (bez mezer) není potřeba zapisovat pomocí entity. Většinou se tak ale pro pocit bezpečí dělá – entita je to `&amp;lt;` (z anglického *less than*).
+<p>Kromě toho by bez entit bylo komplikované do textu <a href="/vypis-kodu">vypisovat zdrojový HTML kód</a>.</p>
 
-## Větší než `&gt;` – `&amp;gt;`
+<p>Znak „<b>menší než</b>“ tedy na stránkách nevypisujících HTML kód a nepoužívajících výrazy typu „a&lt;b“ (bez mezer) není potřeba zapisovat pomocí entity. Většinou se tak ale pro pocit bezpečí dělá – entita je to <code>&amp;lt;</code> (z anglického <i>less than</i>).</p>
 
-I symbol pro konec HTML značky je možné zapsat entitou. Nenapadá mě ale moc situací, kde by mohlo nezaentitování „`>`“ vadit.
 
-Ani v hodnotě HTML atributu není s `>` problém, když se **použijí [uvozovky](/uvozovky#html)**.
 
-```
-&lt;p title="a>b">
+
+
+
+<h2 id="gt">Větší než <code>&gt;</code> – <code>&amp;gt;</code></h2>
+
+<p>I symbol pro konec HTML značky je možné zapsat entitou. Nenapadá mě ale moc situací, kde by mohlo nezaentitování „<code>></code>“ vadit.</p>
+
+<p>Ani v hodnotě HTML atributu není s <code>></code> problém, když se <b>použijí <a href="/uvozovky#html">uvozovky</a></b>.</p>
+
+<pre><code>&lt;p title="a>b">
   Odstavec s popiskem „a>b“.
-&lt;/p>
-```
+&lt;/p></code></pre>
 
-## Ampersand `&amp;` – `&amp;amp;`
 
-Protože entity začínají ampersandem, stal se `&amp;` do jisté míry **řídicím znakem**. Bylo tak najednou nutné vytvořit escape sekvenci i pro ampersand.
 
-Podobně jako `&lt;`, ani ampersand není **většinou nutné** zapisovat pomocí entity.
 
-Opět se to ale většinou pro jistotu dělá. Mohlo by se totiž stát že by přímo za `&amp;` byl obsah, který by tak dohromady dal **název existující entity**. Pokus o zápis „`Vt&amp;gt`“ by skončil následovně:
 
-  Vt&gt
 
-### Ampersand v odkazech
+<h2 id="amp">Ampersand <code>&amp;</code> – <code>&amp;amp;</code></h2>
 
-Trochu reálnější risiko existuje v adresách u odkazů. Bude-li mít stránka URL:
+<p>Protože entity začínají ampersandem, stal se <code>&amp;</code> do jisté míry <b>řídicím znakem</b>. Bylo tak najednou nutné vytvořit escape sekvenci i pro ampersand.</p>
 
-```
-example.com/?a=1&amp;times
-```
+<p>Podobně jako <code>&lt;</code>, ani ampersand není <b>většinou nutné</b> zapisovat pomocí entity.</p>
 
-A někdo tuto URL zkopíruje do **cíle odkazu**. Bez převedení `&amp;` na entitu se `&amp;times` zobrazí jako křížek `&times;` (který se zapisuje entitou `&amp;times;`) a odkaz nejspíš nebude fungovat.
+<p>Opět se to ale většinou pro jistotu dělá. Mohlo by se totiž stát že by přímo za <code>&amp;</code> byl obsah, který by tak dohromady dal <b>název existující entity</b>. Pokus o zápis „<code>Vt&amp;gt</code>“ by skončil následovně:</p>
 
-Předejít tomuto problému může i autor webové aplikace vhodným návrhem parametrů v URL, aby s entitami **nekolidovaly**.
+<div class="live">
+  <p>Vt&gt</p>
+</div>
 
-## Uvozovky – `&amp;quot;`/`&amp;apos;`
 
-Pro dvojité (`"`) a jednoduché (`'`) *uvozovky* existují taktéž speciální entity – hodí se k zápisu uvozovek do **hodnoty atributů**, které bývají v uvozovkách.
 
-Pokud má v atributu `title` být obsah `Text v "uvozovkách"`, je nutné `"` převést na entity (nebo pro obalení hodnoty atributu použít uvozovky jednoduché).
 
-```
-&lt;p title="Text v &amp;quot;uvozovkách&amp;quot;">
-```
 
-Jelikož u českých textů bývá zvykem používat „české uvozovky“ (`&amp;bdquo;` a `&amp;ldquo;`), hodí se `&amp;quot;`/`&amp;apos;` spíš při psaní JavaScriptu do `on*` atributů (což obecně nebývá moc dobrý nápad) nebo jako **automatická ochrana** před [XSS](/bezpecnost#xss).
 
-## Středník na konci
+<h3 id="odkazy">Ampersand v odkazech</h3>
 
-Entity jsou obvykle k vidění se **středníkem na konci**. Ani tento středník ale není tak úplně povinný. Některé entity se zobrazí i bez středníku. Dokonce za entitou bez středníku může i normálně pokračovat &regslovo&plusmn (výsledek zápisu `&amp;regslovo&amp;plusmn`).
+<p>Trochu reálnější risiko existuje v adresách u odkazů. Bude-li mít stránka URL:</p>
 
-Vzhledem k editorům barvícím zdrojový kód a obecně přehlednosti to nevypadá jako vhodný postup.
+<pre><code>example.com/?a=1&amp;times</code></pre>
 
-## Velikost textu entit
+<p>A někdo tuto URL zkopíruje do <b>cíle odkazu</b>. Bez převedení <code>&amp;</code> na entitu se <code>&amp;times</code> zobrazí jako křížek <code>&times;</code> (který se zapisuje entitou <code>&amp;times;</code>) a odkaz nejspíš nebude fungovat.</p>
 
-Identifikátory entit jsou většinou **závislé na velikosti písma**. Některé entity je možné zapsat malými i VELKÝMI písmeny.
+<p>Předejít tomuto problému může i autor webové aplikace vhodným návrhem parametrů v URL, aby s entitami <b>nekolidovaly</b>.</p>
 
-  VELKÁ: &TRADE;, &REG;, &QUOT;
 
-  malá: &trade;, &reg;, &quot;
 
-U entit pro písmena řecké abecedy se na základě velikosti prvního písmena rozlišuje mezi malou a velkou variantou téhož znaku.
 
-## Zápis symbolů
 
-Kromě escapovacího významu se entity hodí i k zápisu zvláštních symbolů **bez ohledu na kódování**. To v dnešní době, kdy jde dobře používat UTF-8 ale není významná výhoda – různé podivné znaky jde rovnou vkládat do HTML kódu.
 
-Jelikož ale může být problematické exotičtější znak umět na klávesnici zapsat, znalost **znakových entit** se hodí pro urychlení zápisu.
+<h2 id="quote">Uvozovky – <code>&amp;quot;</code>/<code>&amp;apos;</code></h2>
 
-    - [Seznam znakových entit](http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Character_entity_references_in_HTML)
+<p>Pro dvojité (<code>"</code>) a jednoduché (<code>'</code>) <i>uvozovky</i> existují taktéž speciální entity – hodí se k zápisu uvozovek do <b>hodnoty atributů</b>, které bývají v uvozovkách.</p>
 
-## Číselné entity
+<p>Pokud má v atributu <code>title</code> být obsah <code>Text v "uvozovkách"</code>, je nutné <code>"</code> převést na entity (nebo pro obalení hodnoty atributu použít uvozovky jednoduché).</p>
 
-Kromě entit, které jsou slovně pojmenované, existují ještě tzv. **číselné entity**. Existují dvojího typu:
+<pre><code>&lt;p title="Text v &amp;quot;uvozovkách&amp;quot;"></code></pre>
 
-  - Desítkové – `&amp;#` – číslo – `;`
 
-  - Šestnáctkové – `&amp;x` – kód – `;`
 
-Těmito entitami jdou zapsat úplně všechny znaky.
 
-    - [HTML Character Codes](http://www.7is7.com/software/chars.html) – seznam všech číselných entit.
+<p>Jelikož u českých textů bývá zvykem používat „české uvozovky“ (<code>&amp;bdquo;</code> a <code>&amp;ldquo;</code>), hodí se <code>&amp;quot;</code>/<code>&amp;apos;</code> spíš při psaní JavaScriptu do <code>on*</code> atributů (což obecně nebývá moc dobrý nápad) nebo jako <b>automatická ochrana</b> před <a href="/bezpecnost#xss">XSS</a>.</p>
 
-Číselné entity jde občas použít k obejití různých ochran ve webových aplikacích. Pokud bude například nějaký web v komentářích blokovat řetězec `jecas.cz`, může k obejití stačit nahradit nějaký znak řetězce entitou.
 
-```
-jec&amp;#97;s.cz
-```
 
-Taktéž se tímto způsobem často podaří obejít minimální limit délky formulářového pole.
+<h2 id="streadnik">Středník na konci</h2>
 
-Entitou `&amp;#8203;` se zapisuje tzv. **nulová mezera** (mezeru s nulovou šířkou). Skutečná délka je potom mnohem vyšší, než vypadá.
+<p>Entity jsou obvykle k vidění se <b>středníkem na konci</b>. Ani tento středník ale není tak úplně povinný. Některé entity se zobrazí i bez středníku. Dokonce za entitou bez středníku může i normálně pokračovat <span class="live">&regslovo&plusmn</span> (výsledek zápisu <code>&amp;regslovo&amp;plusmn</code>).</p>
 
-  Délka
+<p>Vzhledem k editorům barvícím zdrojový kód a obecně přehlednosti to nevypadá jako vhodný postup.</p>
 
-## Diakritika
 
-Některé [WYSIWYG](/wysiwyg) editory mají tendenci znaky s **českou diakritikou** převádět na entity. Při správně nastaveném kódování to není nutné.
 
-		`&amp;ecaron;`
-		ě
 
-		`&amp;scaron;`
-		š
+<h2 id="velikost-textu">Velikost textu entit</h2>
 
-		`&amp;ccaron;`
-		č
+<p>Identifikátory entit jsou většinou <b>závislé na velikosti písma</b>. Některé entity je možné zapsat malými i VELKÝMI písmeny.</p>
 
-		`&amp;rcaron;`
-		ř
+<div class="live">
+  <p>VELKÁ: &TRADE;, &REG;, &QUOT;</p>
+  <p>malá: &trade;, &reg;, &quot;</p>
+</div>
 
-		`&amp;zcaron;`
-		ž
 
-		`&amp;dcaron;`
-		ď
 
-		`&amp;tcaron;`
-		ť
 
-		`&amp;ncaron;`
-		ň
 
-		`&amp;uacute;`
-		ú
 
-		`&amp;oacute;`
-		ó
+<p>U entit pro písmena řecké abecedy se na základě velikosti prvního písmena rozlišuje mezi malou a velkou variantou téhož znaku.</p>
 
-Používání entit pro diakritiku vytváří nepřehledný zdrojový kód. Převést ho na běžné znaky jde automaticky:
 
-    - [Pročištění a opravení HTML](/vycisteni-kodu)
+<h2 id="symboly">Zápis symbolů</h2>
 
-## Převod entit v PHP
+<p>Kromě escapovacího významu se entity hodí i k zápisu zvláštních symbolů <b>bez ohledu na kódování</b>. To v dnešní době, kdy jde dobře používat UTF-8 ale není významná výhoda – různé podivné znaky jde rovnou vkládat do HTML kódu.</p>
 
-V jazyce PHP existují pro práci s entitami tři funkce:
+<p>Jelikož ale může být problematické exotičtější znak umět na klávesnici zapsat, znalost <b>znakových entit</b> se hodí pro urychlení zápisu.</p>
 
-  - [`htmlentities`](http://php.net/manual/en/function.htmlentities.php) – převede na znakové entity všechny znaky, které převést jde
+<div class="external-content">
+  <ul>
+    <li><a href="http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references#Character_entity_references_in_HTML">Seznam znakových entit</a></li>
+  </ul>
+</div>
 
-  - [`html_entity_decode`](http://php.net/manual/en/function.html-entity-decode.php) – převede entity na běžné znaky
 
-  - [`htmlspecialchars`](http://php.net/manual/en/function.htmlspecialchars.php) – převede řídicí znaky HTML (`&lt;`, `&amp;`, `&gt;`), s parametrem `html_entity_decode` i uvozovky (`"`, `'`)
+<h2 id="ciselne">Číselné entity</h2>
 
-## Odkazy jinam
+<p>Kromě entit, které jsou slovně pojmenované, existují ještě tzv. <b>číselné entity</b>. Existují dvojího typu:</p>
 
-  - Jak psát web: [Použitelné znakové entity](http://www.jakpsatweb.cz/html/entity-vsechny.html)
+<ol>
+  <li>Desítkové – <code>&amp;#</code> – číslo – <code>;</code></li>
+  <li>Šestnáctkové – <code>&amp;x</code> – kód – <code>;</code></li>  
+</ol>
+
+<p>Těmito entitami jdou zapsat úplně všechny znaky.</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://www.7is7.com/software/chars.html">HTML Character Codes</a> – seznam všech číselných entit.</li>
+  </ul>
+</div>
+
+<p>Číselné entity jde občas použít k obejití různých ochran ve webových aplikacích. Pokud bude například nějaký web v komentářích blokovat řetězec <code>jecas.cz</code>, může k obejití stačit nahradit nějaký znak řetězce entitou.</p>
+
+<pre><code>jec&amp;#97;s.cz</code></pre>
+
+<p>Taktéž se tímto způsobem často podaří obejít minimální limit délky formulářového pole.</p>
+
+<p>Entitou <code>&amp;#8203;</code> se zapisuje tzv. <b>nulová mezera</b> (mezeru s nulovou šířkou). Skutečná délka je potom mnohem vyšší, než vypadá.</p>
+
+<div class="live">
+  <input type="text" value="1&#8203;&#8203;&#8203;&#8203;">
+  <button onclick="alert('Počet znaků: ' + this.previousSibling.previousSibling.value.length)">Délka</button>
+</div>
+
+
+
+
+
+<h2 id="diakritika">Diakritika</h2>
+
+<p>Některé <a href="/wysiwyg">WYSIWYG</a> editory mají tendenci znaky s <b>českou diakritikou</b> převádět na entity. Při správně nastaveném kódování to není nutné.</p>
+
+<table>
+	<tr>
+		<td><code>&amp;ecaron;</code></td>
+		<td>ě</td>
+	</tr>
+	<tr>
+		<td><code>&amp;scaron;</code></td>
+		<td>š</td>
+	</tr>
+	<tr>
+		<td><code>&amp;ccaron;</code></td>
+		<td>č</td>
+	</tr>
+	<tr>
+		<td><code>&amp;rcaron;</code></td>
+		<td>ř</td>
+	</tr>
+	<tr>
+		<td><code>&amp;zcaron;</code></td>
+		<td>ž</td>
+	</tr>
+	<tr>
+		<td><code>&amp;dcaron;</code></td>
+		<td>ď</td>
+	</tr>
+	<tr>
+		<td><code>&amp;tcaron;</code></td>
+		<td>ť</td>
+	</tr>
+	<tr>
+		<td><code>&amp;ncaron;</code></td>
+		<td>ň</td>
+	</tr>
+	<tr>
+		<td><code>&amp;uacute;</code></td>
+		<td>ú</td>
+	</tr>
+	<tr>
+		<td><code>&amp;oacute;</code></td>
+		<td>ó</td>
+	</tr>
+</table>
+
+<p>Používání entit pro diakritiku vytváří nepřehledný zdrojový kód. Převést ho na běžné znaky jde automaticky:</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/vycisteni-kodu">Pročištění a opravení HTML</a></li>
+  </ul>
+</div>
+
+
+<h2 id="php">Převod entit v PHP</h2>
+
+<p>V jazyce PHP existují pro práci s entitami tři funkce:</p>
+
+<ul>
+  <li><a href="http://php.net/manual/en/function.htmlentities.php"><code>htmlentities</code></a> – převede na znakové entity všechny znaky, které převést jde</li>
+  
+  <li><a href="http://php.net/manual/en/function.html-entity-decode.php"><code>html_entity_decode</code></a> – převede entity na běžné znaky</li>
+  
+  <li><a href="http://php.net/manual/en/function.htmlspecialchars.php"><code>htmlspecialchars</code></a> – převede řídicí znaky HTML (<code>&lt;</code>, <code>&amp;</code>, <code>&gt;</code>), s parametrem <code>html_entity_decode</code> i uvozovky (<code>"</code>, <code>'</code>)</li>
+</ul>
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>Jak psát web: <a href="http://www.jakpsatweb.cz/html/entity-vsechny.html">Použitelné znakové entity</a></li>
+</ul>

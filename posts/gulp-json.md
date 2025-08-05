@@ -6,22 +6,22 @@ date: "2019-04-08"
 last_modification: "2019-04-08"
 status: 0
 tags: []
+format: "html"
 ---
 
-Při používání [preprocesoru](/preprocesory) [Gulp](/gulp-4) se občas hodí do JS souboru s jednotlivými *tasky* (`gulpfile.js`) předávat nějakou konfiguraci.
+<p>Při používání <a href="/preprocesory">preprocesoru</a> <a href="/gulp-4">Gulp</a> se občas hodí do JS souboru s jednotlivými <i>tasky</i> (<code>gulpfile.js</code>) předávat nějakou konfiguraci.</p>
 
-Například zdrojové soubory, ze kterých se má sestavit výsledné CSS/JS.
+<p>Například zdrojové soubory, ze kterých se má sestavit výsledné CSS/JS.</p>
 
-Pro **přehlednost** může být užitečné nastavení **vyčlenit do samostatného souboru**. Nebo použít `package.json`:
+<p>Pro <b>přehlednost</b> může být užitečné nastavení <b>vyčlenit do samostatného souboru</b>. Nebo použít <code>package.json</code>:</p>
 
-Jak ale tato data předat?
+<p>Jak ale tato data předat?</p>
 
-## `package.json`
+<h2><code>package.json</code></h2>
 
-V `package.json` se vytvoří nový klíč, např. `assets`.
+<p>V <code>package.json</code> se vytvoří nový klíč, např. <code>assets</code>.</p>
 
-```
-…,
+<pre><code>…,
 "assets": {
   "js" : [
     "node_modules/focus-visible/dist/focus-visible.min.js",
@@ -31,33 +31,71 @@ V `package.json` se vytvoří nový klíč, např. `assets`.
   "css" : [
     "www/assets/scss/main.scss"
   ]
-}
-```
+}</code></pre>
 
-## `gulpfile.js`
 
-Pro přečtení jde použít třeba balíček `fs`:
 
-    Nainstaluje se následovně:
 
-    ```
-npm install fs --save-dev
-```
 
-    Potom se připojí:
 
-    ```
-import fs from 'fs';
-```
 
-    Obsah `package.json` se zparsuje a přiřadí do konstanty:
 
-    ```
-const packageJson = JSON.parse(fs.readFileSync('./package.json'));
-```
 
-    Nyní je v `packageJson.assets.js` pole všech použitých JS (viz výše) a soubory jsou připravené k dalšímu zpracování Gulpem (spojení, minifikace apod.).
 
-    ```
-return gulp.src(packageJson.assets.js).pipe(…)
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2><code>gulpfile.js</code></h2>
+
+<p>Pro přečtení jde použít třeba balíček <code>fs</code>:</p>
+
+<ol>
+  <li>
+    <p>Nainstaluje se následovně:</p>
+    
+    <pre><code>npm install fs --save-dev</code></pre>
+  </li>
+  
+  <li>
+    <p>Potom se připojí:</p>
+    <pre><code>import fs from 'fs';</code></pre>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  <li>
+    <p>Obsah <code>package.json</code> se zparsuje a přiřadí do konstanty:</p>
+    
+    <pre><code>const packageJson = JSON.parse(fs.readFileSync('./package.json'));</code></pre>
+  </li>
+  
+  
+  
+  
+  
+  <li>
+    <p>Nyní je v <code>packageJson.assets.js</code> pole všech použitých JS (viz výše) a soubory jsou připravené k dalšímu zpracování Gulpem (spojení, minifikace apod.).
+    </p>
+    
+    <pre><code>return gulp.src(packageJson.assets.js).pipe(…)</code></pre>
+  </li>
+</ol>
+

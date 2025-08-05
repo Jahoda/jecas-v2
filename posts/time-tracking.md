@@ -6,10 +6,11 @@ date: "2014-07-31"
 last_modification: "2014-07-31"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Toggl.com](https://www.toggl.com/)
-
-  - [Timely](http://www.timelyapp.com/)
-
-  - [Paymo](http://www.paymo.biz/)
+<ul>
+  <li><a href="https://www.toggl.com/">Toggl.com</a></li>
+  <li><a href="http://www.timelyapp.com/">Timely</a></li>
+  <li><a href="http://www.paymo.biz/">Paymo</a></li>
+</ul>

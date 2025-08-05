@@ -5,158 +5,244 @@ description: "Jak udělat, aby se obtékané boxy přizpůsobovaly proměnlivé 
 date: "2014-01-21"
 last_modification: "2016-01-27"
 status: 1
-tags: ["CSS", "Hotová řešení", "Responsivní design"]
+tags: ["css", "hotova-reseni", "responsive"]
+format: "html"
 ---
 
-Při tvorbě responsivního webu, kdy se [šířka stránky](/sirka-stranky) odvozuje od velikosti okna, je vhodné jednotlivým boxům nastavit rozměry v procentech. Díky tomu se optimálně využije dostupná šířka.
+<p>Při tvorbě responsivního webu, kdy se <a href="/sirka-stranky">šířka stránky</a> odvozuje od velikosti okna, je vhodné jednotlivým boxům nastavit rozměry v procentech. Díky tomu se optimálně využije dostupná šířka.</p>
 
-Pomocí [pravidel `@media`](/mobilni-web#media-queries) se potom zvyšováním procentuální šířky při menší dostupné šířce okna docílí postupného snižování počtu sloupců:
 
-## Řešení
+<p>Pomocí <a href="/mobilni-web#media-queries">pravidel <code>@media</code></a> se potom zvyšováním procentuální šířky při menší dostupné šířce okna docílí postupného snižování počtu sloupců:</p>
 
-### 5 sloupců
 
-Při maximální šířce budou na stránce 5 sloupců (100 % / 5 = 20 %):
+<p><img src="/files/responsivni-obtekane-boxy/roztazeni.gif" alt="Přeskládání boxů při změně velikosti okna" class="border"></p>
 
-```
-.box {
+
+
+
+
+
+
+
+
+
+
+<h2 id="reseni">Řešení</h2>
+
+<h3 id="pet">5 sloupců</h3>
+
+<p>Při maximální šířce budou na stránce 5 sloupců (100 % / 5 = 20 %):</p>
+
+<pre><code>.box {
   float: left;
   width: 20%;
-}
-```
+}</code></pre>
 
-### 4 sloupce
 
-Při zmenšení šířky se sníží počet sloupců na čtyři o šířce 25 procent (100 % / 4 = 25 %):
 
-```
-@media screen and (max-width: **50em**) {
+
+
+
+
+<h3 id="ctyri">4 sloupce</h3>
+
+<p>Při zmenšení šířky se sníží počet sloupců na čtyři o šířce 25 procent (100 % / 4 = 25 %):</p>
+
+<pre><code>@media screen and (max-width: <b>50em</b>) {
   .box {width: 25%}
-}
-```
+}</code></pre>
 
-Šířka `@media` pravidla se zadává v jednotkách `em`, aby se případně dobře **přizpůsobovala velikosti písma**, kterou si návštěvník nastavil v operačním systému nebo prohlížeči.
 
-Při použití pixelů by při zvětšením/zmenšení písma hodnoty neodpovídaly:
 
-    - Responsivní design webu: [Rozměry media queries v pixelech](/responsivni-web#px)
 
-### 3 sloupce
+<p>Šířka <code>@media</code> pravidla se zadává v jednotkách <code>em</code>, aby se případně dobře <b>přizpůsobovala velikosti písma</b>, kterou si návštěvník nastavil v operačním systému nebo prohlížeči.</p>
 
-Při nastavování šířky pro 3 sloupce začne být menší problém dopočítat výslednou hodnotu, protože 100 % nejde třemi dělit beze zbytku.
+<p>Při použití pixelů by při zvětšením/zmenšení písma hodnoty neodpovídaly:</p>
 
-Nejpřesnější možné hodnoty pro takové dělení jde nejspíš dosáhnout CSS funkcí [`calc`](/calc) funkční od **IE 9**:
+<div class="internal-content">
+  <ul>
+    <li>Responsivní design webu: <a href="/responsivni-web#px">Rozměry media queries v pixelech</a></li>
+  </ul>
+</div>
 
-```
-.box {
+
+
+<h3 id="tri">3 sloupce</h3>
+
+<p>Při nastavování šířky pro 3 sloupce začne být menší problém dopočítat výslednou hodnotu, protože 100 % nejde třemi dělit beze zbytku.</p>
+
+<p>Nejpřesnější možné hodnoty pro takové dělení jde nejspíš dosáhnout CSS funkcí <a href="/calc"><code>calc</code></a> funkční od <b>IE 9</b>:</p>
+
+<pre><code>.box {
   width: calc(100% / 3);
-}
-```
+}</code></pre>
 
-Pro starší prohlížeče založené na **Webkitu** potom ještě s [prefixem `-webkit-`](/css-prefixy):
 
-```
-.box {
+
+
+
+<p>Pro starší prohlížeče založené na <b>Webkitu</b> potom ještě s <a href="/css-prefixy">prefixem <code>-webkit-</code></a>:</p>
+
+<pre><code>.box {
   width: calc(100% / 3);
-  width: **-webkit-**calc(100% / 3);
+  width: <b>-webkit-</b>calc(100% / 3);
 }
+</code></pre>
 
-```
 
-Jako záložní pro prohlížeče nepodporující `calc` jde navíc uvést hodnotu spočítanou na kalkulačce.
 
-```
-.box {
-  width: **33.3333333%**;
+<p>Jako záložní pro prohlížeče nepodporující <code>calc</code> jde navíc uvést hodnotu spočítanou na kalkulačce.</p>
+
+<pre><code>.box {
+  width: <b>33.3333333%</b>;
   width: calc(100% / 3);
-  width: **-webkit-**calc(100% / 3);
+  width: <b>-webkit-</b>calc(100% / 3);
 }
+</code></pre>
 
-```
 
-Potom si člověk výsledek zobrazí v **IE** / [**MS Edge**](/microsoft-edge) a zjistí, že se při určitých šířkách mřížka špatně zobrazuje:
 
-    - [Chyba zaokrouhlování procent u `calc` v IE/Edge](http://kod.djpw.cz/seqb-)
 
-Zbavit se tohoto problému jde třeba odečtením setiny pixelu ve funkci `calc`. Výsledný kód dobře funkční i v **IE**:
+<p>Potom si člověk výsledek zobrazí v <b>IE</b> / <a href="/microsoft-edge"><b>MS Edge</b></a> a zjistí, že se při určitých šířkách mřížka špatně zobrazuje:</p>
 
-```
-@media screen and (max-width: 40em) {
+<p><img src="/files/responsivni-obtekane-boxy/calc-ie.png" alt="Špatné zaokrouhlování v IE/Edge" class="border"></p>
+
+
+
+
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/seqb-">Chyba zaokrouhlování procent u <code>calc</code> v IE/Edge</a></li>
+  </ul>
+</div>
+
+<p>Zbavit se tohoto problému jde třeba odečtením setiny pixelu ve funkci <code>calc</code>. Výsledný kód dobře funkční i v <b>IE</b>:</p>
+
+
+<pre><code>@media screen and (max-width: 40em) {
   .box {
     width: 33.3333333%; 
     width: calc(100% / 3 - 0.01px);
-    width: -webkit-calc(100% / 3 **- 0.01px**);     
+    width: -webkit-calc(100% / 3 <b>- 0.01px</b>);     
   }
-}
-```
+}</code></pre>
 
-### 2 a 1 sloupec
 
-Pro jeden a dva sloupce je už nastavení šířky snadné:
 
-```
-@media screen and (max-width: 30em) {
+
+
+
+
+<h3 id="dva-jeden">2 a 1 sloupec</h3>
+
+<p>Pro jeden a dva sloupce je už nastavení šířky snadné:</p>
+
+<pre><code>@media screen and (max-width: 30em) {
   .box {width: 50%}
 }
 @media screen and (max-width: 20em) {
   .box {width: 100%}
-}
-```
+}</code></pre>
 
-    [Živá ukázka výsledku](http://kod.djpw.cz/djqb-) – proměnlivý počet obtékaných boxů s šířkou v procentech
 
-## Stejná výška
+<div class="external-content">
+  <ul>
+    <li><p><a href="http://kod.djpw.cz/djqb-">Živá ukázka výsledku</a> – proměnlivý počet obtékaných boxů s šířkou v procentech</p></li>
+  </ul>
+</div>
 
-Aby přeskládávání obtékaných boxů dobře fungovalo, je vhodné, když všechny boxy mají **stejnou výšku**.
 
-Nastavovat obsahu pevnou výšku vlastností [`height`](/height) zpravidla nevěstí nic dobrého, protože při zvětšení písma nebo různě dlouhém obsahu mohou nastat problémy.
 
-Přebytečný text jde třeba [oříznout](/oriznuti-radek) po určitém počtu řádků.
 
-Jsou-li v obtékaných boxech [obrázky](/obrazky), hodí se použít trik s dopočítáváním výšky podle šířky, aby při načítání stránka neposkakovala:
 
-    - [Nastavení výšky responsivního obrázku](/rozmery-responsivniho-obrazku)
 
-### Různá výška
+<h2 id="vyska">Stejná výška</h2>
 
-Pan [**habendorf**](http://1-webdesign.cz/) doplnil řešení, co dělat v případě, kdy je nutné, aby boxy měly proměnlivou výšku.
+<p>Aby přeskládávání obtékaných boxů dobře fungovalo, je vhodné, když všechny boxy mají <b>stejnou výšku</b>.</p>
 
-Je k tomu potřeba použít na konci řádku CSS vlastnost [`clear`](/float#clear). Problém je, že při různém počtu boxů na řádek není jasné, kde je konec řádku.
+<p>Nastavovat obsahu pevnou výšku vlastností <a href="/height"><code>height</code></a> zpravidla nevěstí nic dobrého, protože při zvětšení písma nebo různě dlouhém obsahu mohou nastat problémy.</p>
 
-Takže se mezi jednotlivé boxy nastrkají elementy pro clearování, které se potom v příslušných `@media` pravidlech skryjí/zobrazí, když je to potřeba.
 
-  Jeden sloupec neřeším – tam netřeba floatovat. Za každej druhej blok vrazim něco (`br`, `hr`) `.cleaner .cleaner_2col`, za třetí `.cleaner .cleaner_3col` a za čtvrtej `.cleaner .cleaner_4col.`
 
-  `.cleaner` si nadefinuju a ty `.cleaner_xcol` už jen `display: none` dle potřeby.
+<p>Přebytečný text jde třeba <a href="/oriznuti-radek">oříznout</a> po určitém počtu řádků.</p>
 
-V novějších prohlížečích si jde poradit bez změny HTML kódu pomocí pseudo-elementu [`:before`/`:after`](/css-selektory#before-after) (**IE8+**) a selektorů [`:nth-child`](/css-selektory#n-ty-potomek) (**IE9+**).
+<p>Jsou-li v obtékaných boxech <a href="/obrazky">obrázky</a>, hodí se použít trik s dopočítáváním výšky podle šířky, aby při načítání stránka neposkakovala:</p>
 
-## Zarovnání do bloku
+<div class="internal-content">
+  <ul>
+    <li><a href="/rozmery-responsivniho-obrazku">Nastavení výšky responsivního obrázku</a></li>
+  </ul>
+</div>
 
-V případě položek, které mají mít fixní rozměry, je možné použít zarovnání do bloku:
 
-```
-.obal {
+
+<h3 id="ruzna">Různá výška</h3>
+
+<p>Pan <a href="http://1-webdesign.cz/"><b>habendorf</b></a> doplnil řešení, co dělat v případě, kdy je nutné, aby boxy měly proměnlivou výšku.</p>
+
+<p>Je k tomu potřeba použít na konci řádku CSS vlastnost <a href="/float#clear"><code>clear</code></a>. Problém je, že při různém počtu boxů na řádek není jasné, kde je konec řádku.</p>
+
+<p>Takže se mezi jednotlivé boxy nastrkají elementy pro clearování, které se potom v příslušných <code>@media</code> pravidlech skryjí/zobrazí, když je to potřeba.</p>
+
+<blockquote>
+  <p>Jeden sloupec neřeším – tam netřeba floatovat. Za každej druhej blok vrazim něco (<code>br</code>, <code>hr</code>) <code>.cleaner .cleaner_2col</code>, za třetí <code>.cleaner .cleaner_3col</code> a za čtvrtej <code>.cleaner .cleaner_4col.</code></p>
+  <p><code>.cleaner</code> si nadefinuju a ty <code>.cleaner_xcol</code> už jen <code>display: none</code> dle potřeby.</p>
+</blockquote>
+
+
+
+
+
+
+<p>V novějších prohlížečích si jde poradit bez změny HTML kódu pomocí pseudo-elementu <a href="/css-selektory#before-after"><code>:before</code>/<code>:after</code></a> (<b>IE8+</b>) a selektorů <a href="/css-selektory#n-ty-potomek"><code>:nth-child</code></a> (<b>IE9+</b>).</p>
+
+
+
+
+<h2 id="justify">Zarovnání do bloku</h2>
+
+<p>V případě položek, které mají mít fixní rozměry, je možné použít zarovnání do bloku:</p>
+
+<pre><code>.obal {
   text-align: justify;
 }
 .polozka {
   display: inline-block;
   width: 100px;
-}
-```
+}</code></pre>
 
-To zajistí vytvoření rozestupů mezi položkami, aby vyplnily celou šířku. Bohužel to neřeší poslední řádek, který se v případě, že na něj zbude méně položek, zobrazí odlišně.
 
-[Živá ukázka](http://kod.djpw.cz/uasb) – zarovnání do bloku
 
-## Flexboxy?
 
-Dosáhnout podobného výsledku jde kromě obtékání i s [flexboxy](/flexbox).
 
-Při nastavení `flex-wrap: wrap` pro obal jednotlivých boxů a `flex-grow: 1` spolu s pevnou šířkou (nikoliv v procentech) pro jednotlivé položky se dosáhne automatického  přizpůsobování položek dostupnému prostoru bez nutnosti nastavovat různou šířku v `@media` pravidlech.
 
-Bude ale stejně potřeba řešit situaci, kdy na posledním řádku zbude počet boxů neodpovídající počtu sloupců.
 
-[Živá ukázka](http://kod.djpw.cz/uytb)
 
-    - CSS Tricks: [Designing A Product Page Layout with Flexbox](https://css-tricks.com/designing-a-product-page-layout-with-flexbox/)
+
+<p>To zajistí vytvoření rozestupů mezi položkami, aby vyplnily celou šířku. Bohužel to neřeší poslední řádek, který se v případě, že na něj zbude méně položek, zobrazí odlišně.</p>
+
+<p><a href="http://kod.djpw.cz/uasb">Živá ukázka</a> – zarovnání do bloku</p>
+
+
+
+
+
+<h2 id="flex">Flexboxy?</h2>
+
+<p>Dosáhnout podobného výsledku jde kromě obtékání i s <a href="/flexbox">flexboxy</a>.</p>
+
+
+<p>Při nastavení <code>flex-wrap: wrap</code> pro obal jednotlivých boxů a <code>flex-grow: 1</code> spolu s pevnou šířkou (nikoliv v procentech) pro jednotlivé položky se dosáhne automatického  přizpůsobování položek dostupnému prostoru bez nutnosti nastavovat různou šířku v <code>@media</code> pravidlech.</p>
+
+<p>Bude ale stejně potřeba řešit situaci, kdy na posledním řádku zbude počet boxů neodpovídající počtu sloupců.</p>
+
+<p><a href="http://kod.djpw.cz/uytb">Živá ukázka</a></p>
+
+
+
+<div class="external-content">
+  <ul>
+    <li>CSS Tricks: <a href="https://css-tricks.com/designing-a-product-page-layout-with-flexbox/">Designing A Product Page Layout with Flexbox</a></li>
+  </ul>
+</div>

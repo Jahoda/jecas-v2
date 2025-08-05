@@ -6,6 +6,7 @@ date: "2015-02-15"
 last_modification: "2015-02-15"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://stackoverflow.com/questions/12925716/adding-facebook-login-to-own-website

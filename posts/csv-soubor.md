@@ -6,44 +6,65 @@ date: "2019-11-20"
 last_modification: "2019-11-20"
 status: 0
 tags: []
+format: "html"
 ---
 
-**CSV** je zkratka *comma separated values*, tedy česky hodnoty oddělené čárkami.
+<p><b>CSV</b> je zkratka <i lang="en">comma separated values</i>, tedy česky hodnoty oddělené čárkami.</p>
 
-Nejčastěji se používá pro export/import dat. A umí s ním pracovat **MS Excel** či jiné tabulkové aplikace.
+<p>Nejčastěji se používá pro export/import dat. A umí s ním pracovat <b>MS Excel</b> či jiné tabulkové aplikace.</p>
 
-Vypadá to nějak takto:
+<p>Vypadá to nějak takto:</p>
 
-```
-hodnota,hodnota
-"Další hodnota","Další hodnota"
-```
+<pre><code>hodnota,hodnota
+"Další hodnota","Další hodnota"</code></pre>
 
-Bohužel je zde v **Excelu** problém, že CSV není vždy úplně oddělené čárkou. Ve Windows se Excel řídí nastavením systému, konkrétně nastavením oddělovače seznamu a oddělovače desetiných čísel.
+<p>Bohužel je zde v <b>Excelu</b> problém, že CSV není vždy úplně oddělené čárkou. Ve Windows se Excel řídí nastavením systému, konkrétně nastavením oddělovače seznamu a oddělovače desetiných čísel.</p>
 
-Výchozí nastavení v českém **Windows** je středník `;` pro seznamy a čárka `,` pro desetinná čísla.
 
-Kvůli tomu se standardní CSV v **Excelu** při běžném otevření nenačte správně. Byl by potřeba zápis oddělený středníky:
+<p>Výchozí nastavení v českém <b>Windows</b> je středník <code>;</code> pro seznamy a čárka <code>,</code> pro desetinná čísla.</p>
 
-```
-hodnota**;**hodnota
-"Další hodnota"**;**"Další hodnota"
-```
+<p>Kvůli tomu se standardní CSV v <b>Excelu</b> při běžném otevření nenačte správně. Byl by potřeba zápis oddělený středníky:</p>
 
-Ten ale zase nebude správně fungovat v prostředích, kde je oddělovač seznamů čárka a desetinných míst tečka.
+<pre><code><pre><code>hodnota<b>;</b>hodnota
+"Další hodnota"<b>;</b>"Další hodnota"</code></pre></code></pre>
 
-**Co s tím?**
 
-## Nastavení oddělovače
 
-V některých versích MS Excelu funguje přidání tohoto na první řádek:
 
-```
-sep=,
-```
 
-Bohužel to nefunguje v různých jiných tabulkových programech, kde se to zobrazí jako data.
 
-## Import/export CSV v Excelu
 
-Jak tyto problémy obejít je CSV do Excelu importovat.
+
+
+
+
+
+
+
+
+
+
+<p>Ten ale zase nebude správně fungovat v prostředích, kde je oddělovač seznamů čárka a desetinných míst tečka.</p>
+
+<p><b>Co s tím?</b></p>
+
+
+
+
+<h2 id="oddelovac">Nastavení oddělovače</h2>
+
+<p>V některých versích MS Excelu funguje přidání tohoto na první řádek:</p>
+
+<pre><code>sep=,</code></pre>
+
+
+<p>Bohužel to nefunguje v různých jiných tabulkových programech, kde se to zobrazí jako data.</p>
+
+
+
+
+
+
+<h2 id="import-export">Import/export CSV v Excelu</h2>
+
+<p>Jak tyto problémy obejít je CSV do Excelu importovat.</p>

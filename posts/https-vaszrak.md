@@ -5,115 +5,187 @@ description: "Příklad konkrétního webu, který přešel z nezabezpečeného 
 date: "2015-01-27"
 last_modification: "2015-10-08"
 status: 1
-tags: ["Bezpečnost"]
+tags: ["zabezpeceni"]
+format: "html"
 ---
 
-Autorem článku je **Tomáš Smetka, DiS.** provozující web [vaszrak.cz](https://www.vaszrak.cz/).
+<div class="autor-profile">
+  <p>Autorem článku je <b>Tomáš Smetka, DiS.</b> provozující web <a href="https://www.vaszrak.cz/">vaszrak.cz</a>.</p>
+</div>
+ 
+<div class="soft">
+  <ul><li><a href="#aktualizace">Aktualizace ke dni 7. 10. 2015</a></li></ul>
+</div>
 
-  - [Aktualizace ke dni 7. 10. 2015](#aktualizace)
+<p>Minulý rok podpora vyhledávače Google vydala krátkou zprávu o zapojení tzv. SSL protokolu (web s <code>https://</code>) do fulltextového vyhledávání.     Na různých odborných diskusních fórech mnoho webmasterů řeší <b>vliv SSL na pozice klíčových slov</b> a problematiku přechodu na tento zabezpečený protokol.</p>
 
-Minulý rok podpora vyhledávače Google vydala krátkou zprávu o zapojení tzv. SSL protokolu (web s `https://`) do fulltextového vyhledávání.     Na různých odborných diskusních fórech mnoho webmasterů řeší **vliv SSL na pozice klíčových slov** a problematiku přechodu na tento zabezpečený protokol.
+<div class="internal-content">
+  <ul>
+    <li><a href="/https">Přechod na HTTPS</a> – souhrn poznatků při uvažování o HTTPS</li>
+  </ul>
+</div>
 
-    - [Přechod na HTTPS](/https) – souhrn poznatků při uvažování o HTTPS
+<p>V tomto článku uvedeme své <b>praktické zkušenosti</b> s převodem domény a obsahu 
+  <a href="https://www.vaszrak.cz">www.vaszrak.cz</a>, jež jsme realizovali na začátku listopadu 2014.
+</p>
+<p>Zmíněné webové stránky budujeme od poloviny roku 2011, obsahují kvalitní nezkopírované napsané texty a zpětné organické relevantní odkazy z autoritativních a menších tématicky zaměřených webů.    Od začátku jsme nikdy nepřistupovali na tzv. black hat SEO či jiné šedé praktiky, vždy jsme šli „čistou cestou“.
+</p>     
 
-V tomto článku uvedeme své **praktické zkušenosti** s převodem domény a obsahu 
-  [www.vaszrak.cz](https://www.vaszrak.cz), jež jsme realizovali na začátku listopadu 2014.
 
-Zmíněné webové stránky budujeme od poloviny roku 2011, obsahují kvalitní nezkopírované napsané texty a zpětné organické relevantní odkazy z autoritativních a menších tématicky zaměřených webů.    Od začátku jsme nikdy nepřistupovali na tzv. black hat SEO či jiné šedé praktiky, vždy jsme šli „čistou cestou“.
+<h2 id="problematika">Problematika přechodu</h2>
 
-## Problematika přechodu
+<p>Jak již bylo napsáno i na tomto webu, přechod na HTTPS není zcela jednoduchý a má svá úskalí. Je třeba vždy <b>zvážit pro a proti</b>.</p>
 
-Jak již bylo napsáno i na tomto webu, přechod na HTTPS není zcela jednoduchý a má svá úskalí. Je třeba vždy **zvážit pro a proti**.
+<p>Hlavním problémem při přechodu byl <b>vyhledávač <a href="/seznam">Seznam</a></b>, který podle dostupných informací registroval web s <code>https://</code> <b>jako nový</b> i v případě korektního přesměrování 1:1 se správnou hlavičkou.       S <b>přechodem u <a href="/google">Google</a></b> podle informací potíže nejsou, nový web na HTTPS se zobrazuje v organickém vyhledávání přibližně <b>3. den</b>.
+</p>        
 
-Hlavním problémem při přechodu byl **vyhledávač [Seznam](/seznam)**, který podle dostupných informací registroval web s `https://` **jako nový** i v případě korektního přesměrování 1:1 se správnou hlavičkou.       S **přechodem u [Google](/google)** podle informací potíže nejsou, nový web na HTTPS se zobrazuje v organickém vyhledávání přibližně **3. den**.
 
-## Přechod v praxi
 
-Převod na nový web probíhal v několika fázích.
 
-### 1. Nákup SSL a nasazení
+<h2 id="praxe">Přechod v praxi</h2>
 
-Pro naše účely nám nejvíce vyhovoval nákup **SSL certifikátu** na 
-  [www.ssls.cz](https://www.ssls.cz), jelikož tento e-shop umožňuje možnost:
+<p>Převod na nový web probíhal v několika fázích.</p>      
 
-  - výběr [SNI](http://cs.wikipedia.org/wiki/Server_Name_Indication) certifikátu (osazení SSL pro více domén s jednou dedikovanou IP adresou),
 
-  - rychlou **platbu online kartou**,
+<h3 id="certifikat">1. Nákup SSL a nasazení</h3>
 
-  - poměrně svižně odbornou technickou podporu.
+<p>Pro naše účely nám nejvíce vyhovoval nákup <b>SSL certifikátu</b> na 
+  <a href="https://www.ssls.cz">www.ssls.cz</a>, jelikož tento e-shop umožňuje možnost:</p>
 
-Základní SSL stojí na tomto e-shopu **necelých 100 Kč** a pro naše testovací účely dostačující. Web hostujeme na hostingu 
-  [Savana](http://www.savana.cz), který umožňuje instalaci přímo v administrativním rozhraní bez zásahu podpory. Postup nasazení SSL konkrétně na tomto hostingu rozepíšeme někdy příště.
-
-### 2. Registrace nového webu s `https://` v nástroji Google Webmaster Tools.
-
-V druhém kroku jsme zanesli do tohoto nástroje pro webmastery web s `https://` **jako nový a starý vymazali** (nelze spravovat domény s oběma protokoly současně). Bohužel, při registraci webu **dočasně ztratíte data** o vyhledávaných dotazech, pozice klíčových slov a jiných informací. **Nová data** se nám v nástroji začínala objevovat přibližně **po 14 dnech** od registrace. V souboru [`sitemap.xml`](/sitemap) jsme generovali doménu již s `https://`.
-
-### 3. Změna odkazů na `https://`
-
-V tomto kroku šlo o administrativu. Kontaktovali jsme naše partnery, kteří na web odkazovali a **zažádali o změnu odkazu** na HTTPS podobu. Pro ty, kteří přechod plánují, doporučuji **vést seznam partnerů**, popř. sledovat odkazy v Google Webmaster Tools.
-
-U katalogů typu Firmy.cz, ZlateStranky.cz a pod. lze odkaz změnit v administraci. Je vhodné také pamatovat na sociální služby typu [Facebook](/facebook), [Twitter](/twitter) apod.
-
-### 4.  Paralelní  spuštění domény s `http://` a `https://`
-
-Jelikož jsme věděli o potížích při přechodu u vyhledávače Seznam, nenastavovali jsme záměrně přesměrování ihned, ale **nechali doménu paralelně** na `http://` a `https://` pro případ náhlého propadu návštěvnosti. Dále jsme také chtěli vědět, jak na tyto protokoly **zareaguje Seznam a Google**.
-
-Fulltext Seznamu překvapivě zobrazoval na různá spojení web ve vyhledávání s `https://` i `http://`.       Vyhledávač Google `http://` ignoroval a téměř ihned zobrazil `https://`. S největší pravděpodobností **klade velký důraz na Google Webmaster Tools**. Tento stav jsme nechali spuštěný 30 dní.
-
-### 5. Nastavení přesměrování
-
-Po uplynutí 30 dní jsme stránky **přesměrovali** na `https://` v poměru 1:1 s hlavičkou *301 – Moved Permanently*. U Seznamu se toto přesměrování neprojevilo u všech stránek dodnes (*konec ledna 2015*), zobrazuje stále některé stránky s `http://`, některé s `https://`.
-
-## Měření pozic ve vyhledávačích
-
-      Pro periodické – měsíční měření pozic ve vyhledávačích jsme použili nástroj 
-  [SEMOR](http://www.semor.cz). Do textové části měřených podstránek nebylo nijak zasahováno, probíhaly pouze průběžné úpravy zdrojového kódu (minifikace JS, drobné změny) Výsledky jsou následující:
-
-  Datum měření1. 11. 141. 12. 141. 1. 15
+<ul>
+  <li>výběr <a href="http://cs.wikipedia.org/wiki/Server_Name_Indication">SNI</a> certifikátu (osazení SSL pro více domén s jednou dedikovanou IP adresou),</li>
+  <li>rychlou <b>platbu online kartou</b>,</li>
   
-  Klíčové slovo 
-    Google.cz / Seznam.cz
-  
-  krátkozrakost28 / 928 / 1022 / 7
-  
-  dalekozrakost34 / 834 / 1231 / 2
-  
-  astigmatismus56 / 3858 / 3256 / 36
-  
-  oční klinika plzeň7 / 165 / 175 / 8
-  
-  oční klinika praha22 / 2025 / 2225 / 17
-  
-  oční klinika brno20 / 1923 / 1722 / 17
-  
-  oční klinika ostrava10 / 1710 / 1811 / 8
-  
-  oční klinika zlín9 / 108 / 117 / 10
-  
-  operace očí praha30 / 1722 / 5530 / 48
-  
-  lasik60+  / 4060+  / 4260+  / 40
-  
-  femtolasik6 / 17  / 18  / 1
-  
-  relex smile6 / 47  / 29  / 2
-  
-  ocni klinika46 / 2040  / 2136  / 23
+  <li>poměrně svižně odbornou technickou podporu.</li>
+</ul>
 
-  Klíčová slova byla vybrána z konkurenčních důvodů pouze obecná.
+<p>Základní SSL stojí na tomto e-shopu <b>necelých 100 Kč</b> a pro naše testovací účely dostačující. Web hostujeme na hostingu 
+  <a href="http://www.savana.cz" onmousedown="this.href='http://www.savana.cz?aid=d61de63b'">Savana</a>, který umožňuje instalaci přímo v administrativním rozhraní bez zásahu podpory. Postup nasazení SSL konkrétně na tomto hostingu rozepíšeme někdy příště.
+</p>             
 
-   Z měřených hodnot lze vyvodit, že **přechod na HTTPS nijak závratně pozice a ve výsledku i návštěvnost nemění**. Níže přikládáme návštěvnost z Google i Seznam z testovaného období.
 
-Pro srovnání graf za stejné období předešlého roku.
+<h3 id="gwt">2. Registrace nového webu s <code>https://</code> v nástroji Google Webmaster Tools.</h3>
 
-## Technické potíže
+<p>V druhém kroku jsme zanesli do tohoto nástroje pro webmastery web s <code>https://</code> <b>jako nový a starý vymazali</b> (nelze spravovat domény s oběma protokoly současně). Bohužel, při registraci webu <b>dočasně ztratíte data</b> o vyhledávaných dotazech, pozice klíčových slov a jiných informací. <b>Nová data</b> se nám v nástroji začínala objevovat přibližně <b>po 14 dnech</b> od registrace. V souboru <a href="/sitemap"><code>sitemap.xml</code></a> jsme generovali doménu již s <code>https://</code>.
+</p>            
 
-Bohužel Seznam (resp. jeho [screenshotovací robot](/nahled-seznam)) dodnes nezobrazuje **náhled webových stránek**. Tento problém budeme konzultovat s technickým oddělení Fulltextu.   Dalším problémem vyhledávacího robota je **pomalá indexace nového obsahu**. Doporučuji např. při vydání článku či update textu přidat odkaz ručně pomocí formuláře
-  [přidat URL](/pridat-url).
 
-## Aktualizace ke dni 7. 10. 2015
+<h3 id="zmena-odkazu">3. Změna odkazů na <code>https://</code></h3>
 
-Seznam.cz vydal na svém [blogu](http://fulltext.sblog.cz/2015/10/06/3254/) článek s doporučením nasadit https rotokol až na začátek roku 2016. Toto doporučení potvrzuji, na testovaných webových stránkách došlo k propadu návštěv z fulltextu Seznam.cz. Níže přikládám vývoj návštěvnost od nasazení Google Analytics k dnešnímu dni.
+<p>V tomto kroku šlo o administrativu. Kontaktovali jsme naše partnery, kteří na web odkazovali a <b>zažádali o změnu odkazu</b> na HTTPS podobu. Pro ty, kteří přechod plánují, doporučuji <b>vést seznam partnerů</b>, popř. sledovat odkazy v Google Webmaster Tools.</p>
 
-Vývoj budu nadále sledovat, ke konci tohoto roku bude článek aktualizován o nový graf.
+<p>U katalogů typu Firmy.cz, ZlateStranky.cz a pod. lze odkaz změnit v administraci. Je vhodné také pamatovat na sociální služby typu <a href="/facebook">Facebook</a>, <a href="/twitter">Twitter</a> apod.
+</p>                   
+
+
+
+
+
+<h3 id="spusteni">4.  Paralelní  spuštění domény s <code>http://</code> a <code>https://</code></h3>
+
+<p>Jelikož jsme věděli o potížích při přechodu u vyhledávače Seznam, nenastavovali jsme záměrně přesměrování ihned, ale <b>nechali doménu paralelně</b> na <code>http://</code> a <code>https://</code> pro případ náhlého propadu návštěvnosti. Dále jsme také chtěli vědět, jak na tyto protokoly <b>zareaguje Seznam a Google</b>.</p>
+
+<p>Fulltext Seznamu překvapivě zobrazoval na různá spojení web ve vyhledávání s <code>https://</code> i <code>http://</code>.       Vyhledávač Google <code>http://</code> ignoroval a téměř ihned zobrazil <code>https://</code>. S největší pravděpodobností <b>klade velký důraz na Google Webmaster Tools</b>. Tento stav jsme nechali spuštěný 30 dní.
+</p>             
+
+
+
+<h3>5. Nastavení přesměrování</h3>
+<p>Po uplynutí 30 dní jsme stránky <b>přesměrovali</b> na <code>https://</code> v poměru 1:1 s hlavičkou <i>301 – Moved Permanently</i>. U Seznamu se toto přesměrování neprojevilo u všech stránek dodnes (<i>konec ledna 2015</i>), zobrazuje stále některé stránky s <code>http://</code>, některé s <code>https://</code>.
+</p>            
+
+
+
+<h2>Měření pozic ve vyhledávačích</h2>
+
+<p>      Pro periodické – měsíční měření pozic ve vyhledávačích jsme použili nástroj 
+  <a href="http://www.semor.cz">SEMOR</a>. Do textové části měřených podstránek nebylo nijak zasahováno, probíhaly pouze průběžné úpravy zdrojového kódu (minifikace JS, drobné změny) Výsledky jsou následující:
+</p>
+<table>
+  <tr><th>Datum měření</th><th>1. 11. 14</th><th>1. 12. 14</th><th>1. 1. 15</th>
+  </tr>
+  <tr><th>Klíčové slovo</th> 
+    <td colspan="3">Google.cz / Seznam.cz</td>
+  </tr>
+  <tr><td>krátkozrakost</td><td>28 / 9</td><td>28 / 10</td><td>22 / 7</td>
+  </tr>
+  <tr><td>dalekozrakost</td><td>34 / 8</td><td>34 / 12</td><td>31 / 2</td>
+  </tr>
+  <tr><td>astigmatismus</td><td>56 / 38</td><td>58 / 32</td><td>56 / 36</td>
+  </tr>
+  <tr><td>oční klinika plzeň</td><td>7 / 16</td><td>5 / 17</td><td>5 / 8</td>
+  </tr>
+  <tr><td>oční klinika praha</td><td>22 / 20</td><td>25 / 22</td><td>25 / 17</td>
+  </tr>
+  <tr><td>oční klinika brno</td><td>20 / 19</td><td>23 / 17</td><td>22 / 17</td>
+  </tr>
+  <tr><td>oční klinika ostrava</td><td>10 / 17</td><td>10 / 18</td><td>11 / 8</td>
+  </tr>
+  <tr><td>oční klinika zlín</td><td>9 / 10</td><td>8 / 11</td><td>7 / 10</td>
+  </tr>
+  <tr><td>operace očí praha</td><td>30 / 17</td><td>22 / 55</td><td>30 / 48</td>
+  </tr>
+  <tr><td>lasik</td><td>60+  / 40</td><td>60+  / 42</td><td>60+  / 40</td>
+  </tr>
+  <tr><td>femtolasik</td><td>6 / 1</td><td>7  / 1</td><td>8  / 1</td>
+  </tr>
+  <tr><td>relex smile</td><td>6 / 4</td><td>7  / 2</td><td>9  / 2</td>
+  </tr>
+  <tr><td>ocni klinika</td><td>46 / 20</td><td>40  / 21</td><td>36  / 23</td>
+  </tr>
+</table>
+<p> 
+  <em>Klíčová slova byla vybrána z konkurenčních důvodů pouze obecná.
+  </em>
+</p>
+
+
+<p>   Z měřených hodnot lze vyvodit, že <b>přechod na HTTPS nijak závratně pozice a ve výsledku i návštěvnost nemění</b>. Níže přikládáme návštěvnost z Google i Seznam z testovaného období.
+</p>
+
+
+<p><img src="/files/https-vaszrak/vz-organic-search.png" alt="Vývoj návštěvnosti po přechodu na HTTPS" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Pro srovnání graf za stejné období předešlého roku.</p>
+
+<p><img src="/files/https-vaszrak/2013.png" alt="Vývoj návštěvnosti předchozí rok" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="potize">Technické potíže</h2>
+
+<p>Bohužel Seznam (resp. jeho <a href="/nahled-seznam">screenshotovací robot</a>) dodnes nezobrazuje <b>náhled webových stránek</b>. Tento problém budeme konzultovat s technickým oddělení Fulltextu.   Dalším problémem vyhledávacího robota je <b>pomalá indexace nového obsahu</b>. Doporučuji např. při vydání článku či update textu přidat odkaz ručně pomocí formuláře
+  <a href="/pridat-url">přidat URL</a>.
+</p>
+
+
+
+<h2 id="aktualizace">Aktualizace ke dni 7. 10. 2015</h2>
+
+<p>Seznam.cz vydal na svém <a href="http://fulltext.sblog.cz/2015/10/06/3254/">blogu</a> článek s doporučením nasadit https rotokol až na začátek roku 2016. Toto doporučení potvrzuji, na testovaných webových stránkách došlo k propadu návštěv z fulltextu Seznam.cz. Níže přikládám vývoj návštěvnost od nasazení Google Analytics k dnešnímu dni.<p>
+
+<p><img src="/files/https-vaszrak/vz-organic-search-update-2015.png" alt="Vývoj návštěvnosti za celé období ke dni 7.10.2015" class="border"></p>
+
+<p>Vývoj budu nadále sledovat, ke konci tohoto roku bude článek aktualizován o nový graf.</p>

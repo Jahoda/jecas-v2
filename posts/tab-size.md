@@ -5,33 +5,36 @@ description: "Jak pomocí CSS změnit šířku tabulátoru ve zdrojovém kódu."
 date: "2013-11-21"
 last_modification: "2013-11-28"
 status: 1
-tags: ["CSS", "CSS vlastnosti"]
+tags: ["css", "css-vlastnosti"]
+format: "html"
 ---
 
-Vlastnost `tab-size` umožňuje čistě z CSS změnit šířku (**počet mezer**), kterou bude zabírat **tabulátor**.
+<p>Vlastnost <code>tab-size</code> umožňuje čistě z CSS změnit šířku (<b>počet mezer</b>), kterou bude zabírat <b>tabulátor</b>.</p>
 
-Tato vlastnost má smysl zejména u **zdrojových kódů** (elementu `&lt;pre>` nebo nečeho s `white-space: pre`). Pro maximální funkčnost napříč prohlížeči je nutné používat [prefixy](/css-prefixy) pro **Operu** a **Firefox** (**Chrome** umí `tab-size` bez prefixu a **IE** (ani [IE 11](/ie11)) si *neškrtá*). [Samostatná ukázka](http://kod.djpw.cz/ips).
+<p>Tato vlastnost má smysl zejména u <b>zdrojových kódů</b> (elementu <code>&lt;pre></code> nebo nečeho s <code>white-space: pre</code>). Pro maximální funkčnost napříč prohlížeči je nutné používat <a href="/css-prefixy">prefixy</a> pro <b>Operu</b> a <b>Firefox</b> (<b>Chrome</b> umí <code>tab-size</code> bez prefixu a <b>IE</b> (ani <a href="/ie11">IE 11</a>) si <i>neškrtá</i>). <a href="http://kod.djpw.cz/ips">Samostatná ukázka</a>.</p>
 
+<div class="live">
+  <style>
     .tab-size {tab-size: 4; -moz-tab-size: 4; -o-tab-size: 4}
-  
-```
-if (podminka) {
+  </style>
+<pre id="tab-size" class="tab-size"><code>if (podminka) {
 	for () {
 		// Cyklus
 		if (podminka) {
 			// Podmínka
 		}
 	}
-}
-```
-
+}</code></pre>
+</div>
+<script>
   function zmenitTabSize(size) {
     var tabSizeCss = "tab-size: " + size + "; -moz-tab-size: " + size + "; -o-tab-size: " + size + "; -ms-tab-size: " + size;
     document.getElementById("tab-size").style.cssText = tabSizeCss;
   }
+</script>
 
-Změnit `tab-size`: 
+<p>Změnit <code>tab-size</code>: <input type="range" step="1" min="0" max="40" value="4" onchange="zmenitTabSize(this.value)"></p>
 
-Kromě **nedostatečné podpory v IE** má `tab-size` další vadu. Velká část kódů bývá odsazována **několika mezerami** místo **skutečného tabulátoru**. Na takový kód se pochopitelně přenastavení `tab-size` **neprojeví**.
+<p>Kromě <b>nedostatečné podpory v IE</b> má <code>tab-size</code> další vadu. Velká část kódů bývá odsazována <b>několika mezerami</b> místo <b>skutečného tabulátoru</b>. Na takový kód se pochopitelně přenastavení <code>tab-size</code> <b>neprojeví</b>.</p>
 
-Je otázka, zda úpravu **zdrojových kódů** neřešit přímo na straně serveru. U hotových **obarvovačů kódu** nebývá problém počet mezer nastavit.
+<p>Je otázka, zda úpravu <b>zdrojových kódů</b> neřešit přímo na straně serveru. U hotových <b>obarvovačů kódu</b> nebývá problém počet mezer nastavit.</p>

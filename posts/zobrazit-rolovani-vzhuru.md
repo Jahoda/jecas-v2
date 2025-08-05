@@ -6,6 +6,7 @@ date: "2015-05-18"
 last_modification: "2015-05-18"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://kod.djpw.cz/bgnb

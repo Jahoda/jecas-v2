@@ -5,77 +5,85 @@ description: "Jak na webové stránce detekovat zapnuté nebo vypnuté skriptov�
 date: "2013-06-19"
 last_modification: "2013-06-20"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "Rady a nápady"]
+tags: ["hotova-reseni", "js", "napady"]
+format: "html"
 ---
 
-Při psaní webové aplikace, kde se **používá JavaScript**, může být vhodné jeho **přítomnost detekovat** a tu informaci umět přenášet na server (např. do **PHP skriptu**).
+<p>Při psaní webové aplikace, kde se <b>používá JavaScript</b>, může být vhodné jeho <b>přítomnost detekovat</b> a tu informaci umět přenášet na server (např. do <b>PHP skriptu</b>).</p>
 
-## HTML a CSS
 
-### Značka `&lt;noscript>`
 
-V HTML existuje značka `&lt;noscript>`, jejíž obsah se zobrazí při vypnutém skriptování.
+<h2 id="klient">HTML a CSS</h2>
+
+
+
+<h3 id="noscript">Značka <code>&lt;noscript></code></h3>
+<p>V HTML existuje značka <code>&lt;noscript></code>, jejíž obsah se zobrazí při vypnutém skriptování.
   
-```
-&lt;noscript>
+<pre><code>&lt;noscript>
 	&lt;p>Zapněte si JavaSript!
-&lt;/noscript>
-```
+&lt;/noscript></code></pre>
 
-Pokud se do této značky umístí třeba tag `&lt;body>` (nebo nějaký jiný [obal celé stránky](/stylovani-body)) a bude mít třídu `.no-js`, otevírá se možnost všechny styly, co se mají projevit při vypnutém JS, začínat právě „`.no-js`“.
 
-Značka `&lt;body>` má [volitelnou](/html-znacky#volitelne) počáteční i uzavírací značku, takže se není třeba trápit s tím, že by se sama neotevřela.
 
-### JavaScript
 
-Obrácený postup je naopak JavaScriptem přidat obalovému elementu třídu „`.js`“; popřípadě element do HTML zapsat s „`.no-js`“ a tu mu skriptem odebrat.
 
-```
-&lt;body class="no-js">
-&lt;script>document.body.className = ''&lt;/script>
-```
-
-U tagu `&lt;body>` je výhodné, že má volitelnou počáteční i koncovou značku, není třeba tedy řešit nějaké otevírání/uzavření, oboje umí udělat sám. Na začátku stránky tak lze použít i:
+<p>Pokud se do této značky umístí třeba tag <code>&lt;body></code> (nebo nějaký jiný <a href="/stylovani-body">obal celé stránky</a>) a bude mít třídu <code>.no-js</code>, otevírá se možnost všechny styly, co se mají projevit při vypnutém JS, začínat právě „<code>.no-js</code>“.</p>
   
-```
-&lt;script>document.write("&lt;body class=js>")&lt;/script>
-```
+<p>Značka <code>&lt;body></code> má <a href="/html-znacky#volitelne">volitelnou</a> počáteční i uzavírací značku, takže se není třeba trápit s tím, že by se sama neotevřela.</p>
+  
 
-Konstrukce `document.write` je způsob, jak vypisovat obsah stránky, který má být přístupný jen s JS.
+<h3 id=js>JavaScript</h3>
+<p>Obrácený postup je naopak JavaScriptem přidat obalovému elementu třídu „<code>.js</code>“; popřípadě element do HTML zapsat s „<code>.no-js</code>“ a tu mu skriptem odebrat.
 
-### Použití v CSS
+<pre><code>&lt;body class="no-js">
+&lt;script>document.body.className = ''&lt;/script></code></pre>
 
-Využití třídy `.js` nebo naopak `.no-js` je prosté:
-```
-.js .schovat-pri-js {display: none}
-```
 
-Nebo…
 
-```
-.zobrazit-bez-js {display: none}
-.no-js .zobrazit-bez-js {display: block}
-```
 
-## Na straně serveru
 
-Serverový skript se **nemá jak spolehlivě dozvědět** o (ne)zapnutém JS. Dát mu tuto informaci možné je, ale musí se použít oklika z řešeních výše. Například:
 
-Ihned JavaScriptem/`&lt;noscript>`em přesměrovat stránku na URL s `?js=ano`.
-```
-&lt;noscript>
+<p>U tagu <code>&lt;body></code> je výhodné, že má volitelnou počáteční i koncovou značku, není třeba tedy řešit nějaké otevírání/uzavření, oboje umí udělat sám. Na začátku stránky tak lze použít i:
+  
+<pre><code>&lt;script>document.write("&lt;body class=js>")&lt;/script></code></pre>
+
+
+
+<p>Konstrukce <code>document.write</code> je způsob, jak vypisovat obsah stránky, který má být přístupný jen s JS.
+
+<h3 id="css">Použití v CSS</h3>
+<p>Využití třídy <code>.js</code> nebo naopak <code>.no-js</code> je prosté:
+<pre><code>.js .schovat-pri-js {display: none}</code></pre>
+
+
+
+
+<p>Nebo…
+  
+  
+<pre><code>.zobrazit-bez-js {display: none}
+.no-js .zobrazit-bez-js {display: block}</code></pre>
+
+
+
+
+
+<h2 id="server">Na straně serveru</h2>
+<p>Serverový skript se <b>nemá jak spolehlivě dozvědět</b> o (ne)zapnutém JS. Dát mu tuto informaci možné je, ale musí se použít oklika z řešeních výše. Například:
+
+<ol>
+<li>Ihned JavaScriptem/<code>&lt;noscript></code>em přesměrovat stránku na URL s <code>?js=ano</code>.
+<pre><code>&lt;noscript>
   &lt;meta http-equiv="refresh" content="1;URL=?js=ne">
-&lt;/noscript>
-```
+&lt;/noscript></code></pre>
+<p>Nebo v JS:
+<pre><code>&lt;script>window.location = "?js=ano"&lt;/script></code></pre>
+  
+<p>Po zjištění je nutné <b>přesměrování odstranit</b>, jinak vznikne nekonečná smyčka.
 
-Nebo v JS:
-```
-&lt;script>window.location = "?js=ano"&lt;/script>
-```
+  <li>Uložit pomocí JS cookie a při následném načtení nějaká stránky kontrolovat její existenci.
+  <li><a href="/ajax#pingnout">Pingnout</a> serverový skript JavaScriptem/<code>&lt;noscript></code>em.
+</ol>
 
-Po zjištění je nutné **přesměrování odstranit**, jinak vznikne nekonečná smyčka.
-
-  Uložit pomocí JS cookie a při následném načtení nějaká stránky kontrolovat její existenci.
-  [Pingnout](/ajax#pingnout) serverový skript JavaScriptem/`&lt;noscript>`em.
-
-Zjištění **zapnutého JavaScriptu v PHP** potom bude fungovat na základě kontroly `$_GET["js"]`, popř. `$_COOKIE["js"]`.
+<p>Zjištění <b>zapnutého JavaScriptu v PHP</b> potom bude fungovat na základě kontroly <code>$_GET["js"]</code>, popř. <code>$_COOKIE["js"]</code>.

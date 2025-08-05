@@ -5,186 +5,400 @@ description: "Jak usnadnit uživatelům zadávání data narození."
 date: "2022-05-02"
 last_modification: "2023-01-07"
 status: 1
-tags: ["Formuláře", "UX"]
+tags: ["formulare", "ux"]
+format: "html"
 ---
 
-U [webových formulářů](/formulare) existuje spoustu možností, jak uživatelům **znepříjemnit jejich používání**.
+<p>U <a href="/formulare">webových formulářů</a> existuje spoustu možností, jak uživatelům <b>znepříjemnit jejich používání</b>.</p>
 
-      [20 největších chyb formulářů na webu](/chyby-formularu)
+<div class="internal-content">
+  <ul>
+    <li>
+      <a href="/chyby-formularu">20 největších chyb formulářů na webu</a>
+    </li>
+  </ul>
+</div>
 
-Výzvou k řešení je způsob pro **zadání data narození**. Existuje několik způsobů, jak ho nechat uživatele zadávat.
+<p>Výzvou k řešení je způsob pro <b>zadání data narození</b>. Existuje několik způsobů, jak ho nechat uživatele zadávat.</p>
 
-## Textové pole
 
-Jedno z nejjednodušších řešení je obyčejný textový [`&lt;input>`](/input).
 
+<h2 id="text">Textové pole</h2>
+
+<p>Jedno z nejjednodušších řešení je obyčejný textový <a href="/input"><code>&lt;input></code></a>.</p>
+
+<div class="live">
+  <label>
     Datum narození
+    <br>
+    <small>Např. 30. 1. 1970</small>
+    <br>
+    <input type="text">
+  </label>
+</div>
 
-    Např. 30. 1. 1970
 
-Má to několik problémů:
+<p>Má to několik problémů:</p>
 
-    Textové pole na dotykových zařízeních se SW klávesnicí nezobrazuje optimální **rozložení klávesnice** s preferováním čísel.
-
-    Pro textové pole se zobrazí alfanumerická klávesnice, kde nejde přímo zadávat čísla:
-
-    Uživatel **nezná formát**, ve kterém má datum zadat.
-
-    ```
-30.1.1970
+<ol>    
+  <li>
+    <p>Textové pole na dotykových zařízeních se SW klávesnicí nezobrazuje optimální <b>rozložení klávesnice</b> s preferováním čísel.</p>
+    
+    <p>Pro textové pole se zobrazí alfanumerická klávesnice, kde nejde přímo zadávat čísla:</p>
+    
+    <p><img src="/files/datum-narozeni/ios-klavesnice.png" alt="iOS klávesnice" class="border"></p>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </li>
+  
+  <li>
+    <p>Uživatel <b>nezná formát</b>, ve kterém má datum zadat.</p>
+    
+    <pre><code>30.1.1970
 30. 1. 1970
 30.01.1970
 30/1/1970
 1/30/1970
-1970-01-30
-```
+1970-01-30</code></pre>
+    
+    <p>Kvůli tomu může být obtížná <b>validace</b>, aby si poradila s různými možnostmi.</p>
+    
+    <p>Zvlášť problém je v tom, že napříč zeměmi je zvykem mít různé pořadí dnů a měsíců.</p>
+    
+    
+    <p>Například u data <code>4/12/1970</code> není možné se 100% jistotou rozhodnout, zda se jedná o 12. duben nebo 4. prosinec.</p>
+  </li>
+  
+  
+  
 
-    Kvůli tomu může být obtížná **validace**, aby si poradila s různými možnostmi.
+</ol>
 
-    Zvlášť problém je v tom, že napříč zeměmi je zvykem mít různé pořadí dnů a měsíců.
 
-    Například u data `4/12/1970` není možné se 100% jistotou rozhodnout, zda se jedná o 12. duben nebo 4. prosinec.
 
-## Systémový datepicker
 
-Většinou se pro datum dobře hodí tzv. [datepicker](/datepicke). Typicky se jedná o políčko, které po kliknutí zobrazí kalendář.
 
-Dosáhnout toho jde snadno přes `&lt;input type="date">`:
+<h2 id="date">Systémový datepicker</h2>
 
+<p>Většinou se pro datum dobře hodí tzv. <a href="/datepicke">datepicker</a>. Typicky se jedná o políčko, které po kliknutí zobrazí kalendář.</p>
+
+<p>Dosáhnout toho jde snadno přes <code>&lt;input type="date"></code>:</p>
+
+<div class="live">
+  <label>
     Datum narození
+    <br>
+    <input type="date">
+  </label>
+</div>
 
-Nevýhoda je v tom, že si toto políčko různé prohlížeče implementují různě.
+<p>Nevýhoda je v tom, že si toto políčko různé prohlížeče implementují různě.</p>
 
-Třeba **Safari** v **macOS** zobrazí následující věc.
+<p>Třeba <b>Safari</b> v <b>macOS</b> zobrazí následující věc.</p>
 
-V mobilním **iOS** v **iPhone** potom:
+<p><img src="/files/datum-narozeni/safari-input-pro-datum.png" alt="Safari input pro datum" class="border"></p>
 
-V desktopovém **Chromu**:
 
-Je celkem zřejmé, že zadávat datum narození těmito způsoby je zvlášť pro dříve narozené celkem problematické. Musí se probrat množstvím položek, aby našli svůj rok.
 
-Na mobilu je problém, že **datum nelze zadat ručně**. Datum ani není možné odněkud zkopírovat do políčka.
 
-## Výběr přes `&lt;select>`
 
-Tento formulářový prvek je většinou [nejlepší nepoužívat](/select-pouzitelnost).
 
-Ani zadávání data narození není výjimka:
 
+
+
+
+
+
+
+<p>V mobilním <b>iOS</b> v <b>iPhone</b> potom:</p>
+
+<p><img src="/files/datum-narozeni/input-pro-datum-v-iphone.png" alt="Input pro datum v iPhone" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>V desktopovém <b>Chromu</b>:</p>
+
+<p><img src="/files/datum-narozeni/chrome-input-pro-datum.png" alt="Chrome input pro datum" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Je celkem zřejmé, že zadávat datum narození těmito způsoby je zvlášť pro dříve narozené celkem problematické. Musí se probrat množstvím položek, aby našli svůj rok.</p>
+
+<p>Na mobilu je problém, že <b>datum nelze zadat ručně</b>. Datum ani není možné odněkud zkopírovat do políčka.</p>
+
+
+
+<h2 id="select">Výběr přes <code>&lt;select></code></h2>
+
+<p>Tento formulářový prvek je většinou <a href="/select-pouzitelnost">nejlepší nepoužívat</a>.</p>
+
+
+<p>Ani zadávání data narození není výjimka:</p>
+
+<div class="live">
+  <label>
     Datum narození
+    <br>
+    <select>
+      <option value="">1</option>
+      <option value="">2</option>
+      <option value="">3</option>
+      <option value="">4</option>
+      <option value="">5</option>
+      <option value="">6</option>
+      <option value="">7</option>
+      <option value="">8</option>
+      <option value="">9</option>
+      <option value="">10</option>
+      <option value="">11</option>
+      <option value="">12</option>
+      <option value="">13</option>
+      <option value="">14</option>
+      <option value="">15</option>
+      <option value="">16</option>
+      <option value="">17</option>
+      <option value="">18</option>
+      <option value="">19</option>
+      <option value="">20</option>
+      <option value="">21</option>
+      <option value="">22</option>
+      <option value="">23</option>
+      <option value="">24</option>
+      <option value="">25</option>
+      <option value="">26</option>
+      <option value="">27</option>
+      <option value="">28</option>
+      <option value="">29</option>
+      <option value="">30</option>
+      <option value="">31</option>
+    </select>
+    <select>
+      <option value="">1</option>
+      <option value="">2</option>
+      <option value="">3</option>
+      <option value="">4</option>
+      <option value="">5</option>
+      <option value="">6</option>
+      <option value="">7</option>
+      <option value="">8</option>
+      <option value="">9</option>
+      <option value="">10</option>
+      <option value="">11</option>
+      <option value="">12</option>
+    </select> 
+    <select>
+      <option value="">1970</option>
+      <option value="">1971</option>
+      <option value="">1972</option>
+      <option value="">1973</option>
+      <option value="">1974</option>
+      <option value="">1975</option>
+      <option value="">1976</option>
+      <option value="">1977</option>
+      <option value="">1978</option>
+      <option value="">1979</option>
+      <option value="">1980</option>
+      <option value="">1981</option>
+      <option value="">1982</option>
+      <option value="">1983</option>
+      <option value="">1984</option>
+      <option value="">1985</option>
+      <option value="">1986</option>
+      <option value="">1987</option>
+      <option value="">1988</option>
+      <option value="">1989</option>
+      <option value="">1990</option>
+      <option value="">1991</option>
+      <option value="">1992</option>
+      <option value="">1993</option>
+      <option value="">1994</option>
+      <option value="">1995</option>
+      <option value="">1996</option>
+      <option value="">1997</option>
+      <option value="">1998</option>
+      <option value="">1999</option>
+    </select>    
+  </label>
+</div>
 
-      1
-      2
-      3
-      4
-      5
-      6
-      7
-      8
-      9
-      10
-      11
-      12
-      13
-      14
-      15
-      16
-      17
-      18
-      19
-      20
-      21
-      22
-      23
-      24
-      25
-      26
-      27
-      28
-      29
-      30
-      31
 
-      1
-      2
-      3
-      4
-      5
-      6
-      7
-      8
-      9
-      10
-      11
-      12
+<p>V tomto případě nenabízí nic moc navíc oproti <code>&lt;input type="date"></code>. Navíc trpí nemožností ručního zadání data i na desktopu.</p>
 
-      1970
-      1971
-      1972
-      1973
-      1974
-      1975
-      1976
-      1977
-      1978
-      1979
-      1980
-      1981
-      1982
-      1983
-      1984
-      1985
-      1986
-      1987
-      1988
-      1989
-      1990
-      1991
-      1992
-      1993
-      1994
-      1995
-      1996
-      1997
-      1998
-      1999
 
-V tomto případě nenabízí nic moc navíc oproti `&lt;input type="date">`. Navíc trpí nemožností ručního zadání data i na desktopu.
+<h3 id="vice">Více textových polí</h3>
 
-### Více textových polí
+<p>Relativně rozumný může být přístup rozdělení dnů, měsíců a roků na samostatná políčka:</p>
 
-Relativně rozumný může být přístup rozdělení dnů, měsíců a roků na samostatná políčka:
-
+<div class="live">
+  <legend>
     Datum narození
-
+  </legend>
+  
+  <div style="display: flex; gap: 1em">
+    <label>
       Den
-
+      <br>
+      <input type="text" pattern="[0-9]*" min="1" max="31" size="2">
+    </label>
+    <label>
       Měsíc
-
+      <br>
+      <input type="text" pattern="[0-9]*" min="1" max="12" size="2">
+    </label>    
+    <label>
       Rok
+      <br>
+      <input type="text" pattern="[0-9]*" min="1900" max="2022" size="4">
+    </label>        
+  </div>
+</div>
 
-Uživatel v tomto případě **jasně ví, co má kam zadat**. Validace je jednoduchá – stačí obsah pole převést na číslo (ignorovat jiné znaky něž číslice).
+<p>Uživatel v tomto případě <b>jasně ví, co má kam zadat</b>. Validace je jednoduchá – stačí obsah pole převést na číslo (ignorovat jiné znaky něž číslice).</p>
 
-Díky atributu `pattern="[0-9]*"` se na dotykových zařízení zobrazí číselná klávesnice:
+<p>Díky atributu <code>pattern="[0-9]*"</code> se na dotykových zařízení zobrazí číselná klávesnice:</p>
 
-Má to ale i nevýhody:
+<p><img src="/files/datum-narozeni/ciselna-klavesnice-iphone.png" alt="Číselná klávesnice iPhone" class="border"></p>
 
-    Více políček komplikuje vyplnění formuláře (další klikání navíc).
+<p>Má to ale i nevýhody:</p>
 
-    Není možné celé datum narození zkopírovat a vložit.
+<ol>
+  <li>
+    <p>Více políček komplikuje vyplnění formuláře (další klikání navíc).</p>
+  </li>
+  <li>
+    <p>Není možné celé datum narození zkopírovat a vložit.</p>
+  </li>
+  <li>
+    <p>Automatické vyplňování formulářů bude mít pravděpodobně problém rozpadnout datum narození do 3 polí.</p>
+  </li>
+</ol>
 
-    Automatické vyplňování formulářů bude mít pravděpodobně problém rozpadnout datum narození do 3 polí.
 
-## Vlastní datepicker
 
-Velmi dobré řešení může být vlastní datepicker uzpůsobený pro datum z dávné minulosti.
 
-Tj. postupně nechat zadávat rok, měsíc a nakonec den. A umožnit přepínání pro případ chyby.
 
-Je ale relativně pracné něco takového napsat, takže se nabízí hledat takové hotové řešení, které splňuje podmínky pro pohodlné zadávání.
 
-## Odkazy jinam
 
-    GOV.UK Design System: [Dates](https://design-system.service.gov.uk/patterns/dates/)
 
-    Smashing Magazine: [Frustrating Design Patterns That Need Fixing: Birthday Picker](https://www.smashingmagazine.com/2021/05/frustrating-design-patterns-birthday-picker/)
+
+
+
+
+<h2 id="datepicker">Vlastní datepicker</h2>
+
+<p>Velmi dobré řešení může být vlastní datepicker uzpůsobený pro datum z dávné minulosti.</p>
+
+<p>Tj. postupně nechat zadávat rok, měsíc a nakonec den. A umožnit přepínání pro případ chyby.</p>
+
+<p><img src="/files/datum-narozeni/vyber-roku.png" alt="Výběr roku" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Je ale relativně pracné něco takového napsat, takže se nabízí hledat takové hotové řešení, které splňuje podmínky pro pohodlné zadávání.</p>
+
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>
+    GOV.UK Design System: <a href="https://design-system.service.gov.uk/patterns/dates/">Dates</a>
+  </li>
+  <li>
+    Smashing Magazine: <a href="https://www.smashingmagazine.com/2021/05/frustrating-design-patterns-birthday-picker/">Frustrating Design Patterns That Need Fixing: Birthday Picker</a>
+  </li>
+</ul>

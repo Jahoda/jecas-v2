@@ -6,34 +6,108 @@ date: "2014-05-09"
 last_modification: "2014-05-09"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://i.snag.gy/Y2cPU.jpg
 
-```
-; Maximum size of POST data that PHP will accept.
+<pre><code>; Maximum size of POST data that PHP will accept.
 ; http://php.net/post-max-size
-post_max_size = 80M
-```
+post_max_size = 80M</code></pre>
 
-```
-; Maximum allowed size for uploaded files.
+<pre><code>; Maximum allowed size for uploaded files.
 ; http://php.net/upload-max-filesize
-upload_max_filesize = 200M
-```
+upload_max_filesize = 200M</code></pre>
 
-## WAMP nejde spustit
 
-Může se stát, že z ničeho nic nepůjde WAMP spustit. Na vině bývá typicky obsazení portu `80`, na kterém běží Apache.
 
-Pro ověření, zda je vše v pořádku, je k disposici funkce dostupná z tray ikony (*Apache → Service → Test port 80*):
 
-Pokud se tam neobjeví, že na daném portu běží Apache, je problém.
 
-### Microsoft IIS
 
-Často při instalaci nějakého programu od Microsoftu port 80 obsadí IIS (Internetová informační služba).
 
-Řešení je ji vypnout ve *Funkcích systému*. Do následujícího dialogu je ve [Windows 10](/windows-10) nejsnazší přístup přes hledání v nabídce start (napsat tam „Funkce systému“).
 
-Po vypnutí IIS a restartování systému by již měl Apache opět fungovat.
+<h2 id="nejde">WAMP nejde spustit</h2>
+
+<p>Může se stát, že z ničeho nic nepůjde WAMP spustit. Na vině bývá typicky obsazení portu <code>80</code>, na kterém běží Apache.</p>
+
+<p>Pro ověření, zda je vše v pořádku, je k disposici funkce dostupná z tray ikony (<i>Apache → Service → Test port 80</i>):</p>
+
+<p><img src="/files/wamp/test-port.png" alt="Test portu 80" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Pokud se tam neobjeví, že na daném portu běží Apache, je problém.</p>
+
+<p><img src="/files/wamp/apache-port-80.png" alt="Apache na portu 80" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="iis">Microsoft IIS</h3>
+
+<p>Často při instalaci nějakého programu od Microsoftu port 80 obsadí IIS (Internetová informační služba).</p>
+
+<p><img src="/files/wamp/iis-obsazeno.png" alt="IIS na portu 80" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+<p>Řešení je ji vypnout ve <i>Funkcích systému</i>. Do následujícího dialogu je ve <a href="/windows-10">Windows 10</a> nejsnazší přístup přes hledání v nabídce start (napsat tam „Funkce systému“).</p>
+
+
+<p><img src="/files/wamp/iis.png" alt="Vypnutí funkce IIS" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Po vypnutí IIS a restartování systému by již měl Apache opět fungovat.</p>

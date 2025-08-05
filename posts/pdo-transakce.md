@@ -5,61 +5,55 @@ description: "K čemu slouží, jak a proč používat transakce při používá
 date: "2014-03-05"
 last_modification: "2014-03-10"
 status: 1
-tags: ["PHP", "PHP a PDO", "SQL"]
+tags: ["php", "php-pdo", "sql"]
+format: "html"
 ---
 
-[PDO](/pdo) nabízí jednoduchý způsob **řešení transakcí**. Transakce jsou dobré k tomu, aby se nestalo, že třeba ze 3 souvisejících dotazů se dva provedou a poslední skončí chybou, čímž mohou vzniknout **nekonsistentní data**.
+<p><a href="/pdo">PDO</a> nabízí jednoduchý způsob <b>řešení transakcí</b>. Transakce jsou dobré k tomu, aby se nestalo, že třeba ze 3 souvisejících dotazů se dva provedou a poslední skončí chybou, čímž mohou vzniknout <b>nekonsistentní data</b>.</p>
 
-## Příklad
 
-Po [připojení k MySQL](/pdo#pripojeni) provedeme jednoduchý úkon. Budou existovat dvě tabulky:
+<h2 id="priklad">Příklad</h2>
+<p>Po <a href="/pdo#pripojeni">připojení k MySQL</a> provedeme jednoduchý úkon. Budou existovat dvě tabulky:</p>
 
-  - tabulka `polozky` se sloupci `id` a `kolik`,
+<ol>
+  <li>tabulka <code>polozky</code> se sloupci <code>id</code> a <code>kolik</code>,</li>
+  <li>tabulka <code>soucet</code> s jedním řádkem a sloupcem <code>celkem</code></li>
+</ol>
 
-  - tabulka `soucet` s jedním řádkem a sloupcem `celkem`
+<p>Cílem je vložit jeden záznam s hodnotou (např. 10) a přepočítat součet:</p>
 
-Cílem je vložit jeden záznam s hodnotou (např. 10) a přepočítat součet:
-
-```
-// Vložení položky
+<pre><code>// Vložení položky
 $dotaz = $pdo->prepare('INSERT INTO polozky (kolik) VALUES (?)');
 $dotaz->execute(array('10'));
 // Přepočítání součtu
 $dotaz = $pdo->prepare('UPDATE soucet SET celkem = (
   SELECT sum(kolik) FROM polozky
 )');
-$dotaz->execute();
-```
+$dotaz->execute();</code></pre>
 
-Problém tohoto kódu spočívá v tom, že v případě, že **přepočítávací** `UPDATE` selže nebo mezi oběma dotazy **bude nějaká chyba**, vzniknou **nekonsistentní data**. Položka se vloží, ale **celkový součet se nepřepočítá**, takže nebude souhlasit.
+<p>Problém tohoto kódu spočívá v tom, že v případě, že <b>přepočítávací</b> <code>UPDATE</code> selže nebo mezi oběma dotazy <b>bude nějaká chyba</b>, vzniknou <b>nekonsistentní data</b>. Položka se vloží, ale <b>celkový součet se nepřepočítá</b>, takže nebude souhlasit.</p>
 
-## Použití transakcí
 
-Transakce zajistí, že se provede **všechno**, nebo **nic**.
+<h2 id="pouziti">Použití transakcí</h2>
+<p>Transakce zajistí, že se provede <b>všechno</b>, nebo <b>nic</b>.</p>
 
-```
-// Připojení k DB
+<pre><code>// Připojení k DB
 $pdo = new PDO($dsn, $user, $password);
 // Začátek transakce
-$pdo->beginTransaction();
-```
+$pdo->beginTransaction();</code></pre>
 
-*Založení* transakce způsobí, že se změny neprojeví do okamžiku, než se zavolá `commit`. Výchozí chování je tzv. *auto-commit* režim, kdy se všechny úspěšné dotazy rovnou promítnou do DB.
+<p><i>Založení</i> transakce způsobí, že se změny neprojeví do okamžiku, než se zavolá <code>commit</code>. Výchozí chování je tzv. <i>auto-commit</i> režim, kdy se všechny úspěšné dotazy rovnou promítnou do DB.</p>
 
-V praxi nám tedy stačí po provedení posledního dotazu ze *skupiny souvisejících dotazů* zkontrolovat, zda proběhl v pořádku a změny potvrdit:
+<p>V praxi nám tedy stačí po provedení posledního dotazu ze <i>skupiny souvisejících dotazů</i> zkontrolovat, zda proběhl v pořádku a změny potvrdit:</p>
 
-```
-$pdo->commit();
-```
+<pre><code>$pdo->commit();</code></pre>
 
-Je-li transakce *otevřená* a neprovede se `commit`, změny se zahodí při ukončení běhu skriptu. *Ručně* se dá k původnímu stavu databáse dostat příkazem `rollBack`.
+<p>Je-li transakce <i>otevřená</i> a neprovede se <code>commit</code>, změny se zahodí při ukončení běhu skriptu. <i>Ručně</i> se dá k původnímu stavu databáse dostat příkazem <code>rollBack</code>.</p>
 
-```
-$pdo->rollBack();
-```
+<pre><code>$pdo->rollBack();</code></pre>
 
-Metody `commit` i `rollBack` opět vrátí *auto-commit* režim.
+<p>Metody <code>commit</code> i <code>rollBack</code> opět vrátí <i>auto-commit</i> režim.</p>
 
-## Různé typy úložiště
+<h2 id="uloziste">Různé typy úložiště</h2>
 
-Je důležité zmínit, že transakce v MySQL nefungují pod **všemi typy úložišť dat** (storage engine). Pokud např. používáte **MyISAM**, tak místo reálného vstupu do transakce dostanete jen varování a při chybě nebude rollback fungovat. Naproti tomu **úložiště InnoDB** transakce podporuje. (Děkuji za doplnění **Ondrovi Geršlovi**.)
+<p>Je důležité zmínit, že transakce v MySQL nefungují pod <b>všemi typy úložišť dat</b> (storage engine). Pokud např. používáte <b>MyISAM</b>, tak místo reálného vstupu do transakce dostanete jen varování a při chybě nebude rollback fungovat. Naproti tomu <b>úložiště InnoDB</b> transakce podporuje. (Děkuji za doplnění <b>Ondrovi Geršlovi</b>.)</p>

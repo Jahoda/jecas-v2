@@ -5,65 +5,92 @@ description: "Pravidlem <code>@supports</code> lze v CSS testovat dostupnost CSS
 date: "2013-11-21"
 last_modification: "2017-08-14"
 status: 1
-tags: ["CSS", "Hacky", "CSS pravidla"]
+tags: ["css", "css-pravidla", "hacky"]
+format: "html"
 ---
 
-Ve všech prohlížečích **kromě IE** (ani v [IE 11](/ie11)) je funkční pravidlo `@supports`. K čemu je to dobré?
+<p>Ve všech prohlížečích <b>kromě IE</b> (ani v <a href="/ie11">IE 11</a>) je funkční pravidlo <code>@supports</code>. K čemu je to dobré?</p>
 
-```
-@supports (color: #000) {
+
+
+
+<pre><code>@supports (color: #000) {
   p {color: red}
-}
-```
+}</code></pre>
 
-Pokud prohlížeč podporuje **vlastnost** `color` a je možné jí dát **hodnotu** `#000` (a pokud podporuje `@supports`, pochopitelně), nastaví se barva odstavce na červenou. [Ukázka](http://kod.djpw.cz/vns).
 
-## Zápis
 
-Pravidla `@supports` je možné kombinovat přes přkazy:
 
-  - `and` (musí splňovat **obě** podmínky),
- 
-  - `or` (musí splňovat **alespoň jednu** z podmínek),
 
-  - `not` (**nesmí splňovat**/podporovat danou vlastnost).
 
-## CSS hacky
+<p>Pokud prohlížeč podporuje <b>vlastnost</b> <code>color</code> a je možné jí dát <b>hodnotu</b> <code>#000</code> (a pokud podporuje <code>@supports</code>, pochopitelně), nastaví se barva odstavce na <font color=red>červenou</font>. <a href="http://kod.djpw.cz/vns">Ukázka</a>.</p>
 
-Jako užitečné využití mě v zásadě napadá jen **odlišení stylů pro různé prohlížeče** (CSS hackování), protože prohlížeče zpravidla nemají s **neznámou deklarací problémy**.
 
-Pro **Internet Explorer** (všech versí) využijeme toho, že `@supports` nezná. A pro ostatní prohlížeče nachystáme nějakou symbolickou podmínku (třeba testování `color`).
 
-```
-element {/* vlastnosti pro IE */}
+<h2 id="zapis">Zápis</h2>
+
+<p>Pravidla <code>@supports</code> je možné kombinovat přes přkazy:</p>
+<ul>
+  <li><code>and</code> (musí splňovat <b>obě</b> podmínky),</li> 
+  <li><code>or</code> (musí splňovat <b>alespoň jednu</b> z podmínek),</li>
+  <li><code>not</code> (<b>nesmí splňovat</b>/podporovat danou vlastnost).</li>
+</ul>
+
+
+
+
+
+
+<h2 id="hacky">CSS hacky</h2>
+
+
+<p>Jako užitečné využití mě v zásadě napadá jen <b>odlišení stylů pro různé prohlížeče</b> (CSS hackování), protože prohlížeče zpravidla nemají s <b>neznámou deklarací problémy</b>.</p>
+
+<p>Pro <b>Internet Explorer</b> (všech versí) využijeme toho, že <code>@supports</code> nezná. A pro ostatní prohlížeče nachystáme nějakou symbolickou podmínku (třeba testování <code>color</code>).</p>
+
+
+
+
+
+<pre><code>element {/* vlastnosti pro IE */}
 @supports (color: #000) {
   element {/* přepsání vlastností pro ostatní prohlížeče */}
-}
-```
+}</code></pre>
 
-Pro odlišení ostatních prohlížečů stačí testovat [prefixované](/css-prefixy) vlastnosti (projdou jen v konkrétním prohlížeči).
 
-```
-/* **IE** a starší prohlížeče */
-@supports (-webkit-transform: none) {/* **Webkit** */}
-@supports (-moz-transform: none) {/* **Firefox** */}
-@supports (-ms-ime-align:auto) {/* **Edge** */}
-@supports (-o-transform: none) {/* **Opera** */}
-```
 
-Na následující [ukázce](http://kod.djpw.cz/aos) bude mít odstavec v **IE**, **Opeře 12**, **Firefoxu 22+** a **Chromu 28+** různé barvy.
 
-### Nebezpečí a problémy
 
-Udržování hacků je do budoucna poměrně náročné, a proto je ideální se jim raději vyhnout.
 
-Dále se může stát, že starší minifikátor kódu bude mít se `@supports` pravidlem problém.
 
-## JavaScriptové testování podpory
+<p>Pro odlišení ostatních prohlížečů stačí testovat <a href="/css-prefixy">prefixované</a> vlastnosti (projdou jen v konkrétním prohlížeči).</p>
 
-V prohlížečích znalých `@suppport`u (kromě **Opery 12**) je možné používat i elegantní **testování CSS vlastností** v JS ([ukázka](http://kod.djpw.cz/eos)):
 
-```
-if (CSS.supports("vlastnost", "hodnota")) {
-}
-```
+<pre><code>/* <b>IE</b> a starší prohlížeče */
+@supports (-webkit-transform: none) {/* <b>Webkit</b> */}
+@supports (-moz-transform: none) {/* <b>Firefox</b> */}
+@supports (-ms-ime-align:auto) {/* <b>Edge</b> */}
+@supports (-o-transform: none) {/* <b>Opera</b> */}</code></pre>
+
+
+
+
+
+
+
+<p>Na následující <a href="http://kod.djpw.cz/aos">ukázce</a> bude mít odstavec v <b>IE</b>, <b>Opeře 12</b>, <b>Firefoxu 22+</b> a <b>Chromu 28+</b> různé barvy.</p>
+
+
+
+<h3 id="nebezpeci">Nebezpečí a problémy</h3>
+
+<p>Udržování hacků je do budoucna poměrně náročné, a proto je ideální se jim raději vyhnout.</p>
+
+<p>Dále se může stát, že starší minifikátor kódu bude mít se <code>@supports</code> pravidlem problém.</p>
+
+
+
+<h2 id="js">JavaScriptové testování podpory</h2>
+<p>V prohlížečích znalých <code>@suppport</code>u (kromě <b>Opery 12</b>) je možné používat i elegantní <b>testování CSS vlastností</b> v JS (<a href="http://kod.djpw.cz/eos">ukázka</a>):</p>
+<pre><code>if (CSS.supports("vlastnost", "hodnota")) {
+}</code></pre>

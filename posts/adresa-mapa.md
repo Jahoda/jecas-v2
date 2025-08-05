@@ -5,84 +5,98 @@ description: "Jak správně zadávat na webové stránce svou adresu a jako zaji
 date: "2014-01-13"
 last_modification: "2014-02-22"
 status: 1
-tags: ["Rady a nápady", "Mapy"]
+tags: ["mapy", "napady"]
+format: "html"
 ---
 
-Pro zápis adres existuje speciální HTML značka `&lt;address>` (dvě d a dvě s).
+<p>Pro zápis adres existuje speciální HTML značka <code>&lt;address></code> (dvě <kbd>d</kbd> a dvě <kbd>s</kbd>).</p>
 
+<div class="live">
+  <style>
     address.bez {font-style: normal}
-
-    Thunovská 178/10
-
-    Praha 1
- 
+  </style>
+  <address id="priklad-adresy">
+    Thunovská 178/10<br>
+    Praha 1<br> 
     118 00
+  </address>
+</div>
 
-Ve výchozím nastavení se zobrazuje kursivou, což jde snadno změnit/zurušit změnou `font-style` na `normal`.
+<p>Ve výchozím nastavení se zobrazuje kursivou, což jde snadno změnit/zurušit <button onclick="toggle(document.getElementById('priklad-adresy'), 'bez')">změnou</button> <code>font-style</code> na <code>normal</code>.</p>
 
-## Adresu by mělo jít vyhledat
+<h2 id="vyhledatelnost">Adresu by mělo jít vyhledat</h2>
 
-Zásadní požadavek pro uvedenou textovou adresu je v tom, aby při **zkopírování a zadání** do **mapové aplikace** byla řádně vyhodnocena. A na mapě se daná adresa zobrazila **na správném místě**.
+<p>Zásadní požadavek pro uvedenou textovou adresu je v tom, aby při <b>zkopírování a zadání</b> do <b>mapové aplikace</b> byla řádně vyhodnocena. A na mapě se daná adresa zobrazila <b>na správném místě</b>.</p>
 
-To může někdy komplikovat zmatené číslování, které se v Čechách používá, kdy ve městech mívají domy **číslo popisné i  číslo orientační** (obvykle se oddělují lomítkem).
+<p>To může někdy komplikovat zmatené číslování, které se v Čechách používá, kdy ve městech mívají domy <b>číslo popisné i  číslo orientační</b> (obvykle se oddělují lomítkem).</p>
 
-Při uvedení **pouze orientačního čísla** (zpravidla to druhé za lomítkem) může snadno dojít k nejednoznačnosti, kdy existuje druhá budova s **číslem popisným**, které se shoduje s **orientačním** číslem budovy první.
+<p>Při uvedení <b>pouze orientačního čísla</b> (zpravidla to druhé za lomítkem) může snadno dojít k nejednoznačnosti, kdy existuje druhá budova s <b>číslem popisným</b>, které se shoduje s <b>orientačním</b> číslem budovy první.</p>
 
-## Interaktivní náhled mapy
+<h2 id="nahled">Interaktivní náhled mapy</h2>
 
-Mapové služby jako:
+<p>Mapové služby jako:</p>
 
-  - [Mapy.cz](http://mapy.cz)
+<ul>
+  <li><a href="http://mapy.cz">Mapy.cz</a></li>
+  <li><a href="http://maps.google.cz">Google Maps</a></li>
+</ul>
 
-  - [Google Maps](http://maps.google.cz)
+<p>Nabízejí vložení <i>živé</i> mapy do stránky prostřednictvím rámu (konkrétně <code>&lt;iframe></code>).</p>
 
-Nabízejí vložení *živé* mapy do stránky prostřednictvím rámu (konkrétně `&lt;iframe>`).
+<h3 id="mapy-cz">Mapy.cz</h3>
+<p>Mapy.cz mají tuto funkci vpravo nahoře.</p>
 
-### Mapy.cz
+<p><img src="/files/adresa-mapa/mapy-cz.png" alt="Získání odkazu na mapu z Mapy.cz" class="border"></p>
 
-Mapy.cz mají tuto funkci vpravo nahoře.
+<h3 id="google-maps">Google Maps</h3>
+<p>U Google Maps je podobná funkce lehce ukrytá.</p>
 
-### Google Maps
+<p><img src="/files/adresa-mapa/google-maps.png" alt="Získání odkazu na mapu z Google Maps" class="border"></p>
 
-U Google Maps je podobná funkce lehce ukrytá.
+<h2 id="obrazek">Obrázek a odkaz</h2>
 
-## Obrázek a odkaz
+<p>Osobně ale doporučuji raději z mapy udělat screenshot, <b>vyříznout z něj podstatnou část</b> a tu uložit jako obrázek na vlastní server. S tím, že tento obrázek se vloží do odkazu mířící na velkou mapu.</p>
 
-Osobně ale doporučuji raději z mapy udělat screenshot, **vyříznout z něj podstatnou část** a tu uložit jako obrázek na vlastní server. S tím, že tento obrázek se vloží do odkazu mířící na velkou mapu.
 
-```
-&lt;a href="http://mapy.cz/s/9eh7">
+<pre><code>&lt;a href="http://mapy.cz/s/9eh7">
   &lt;img src="obrazek-mapy.png" width="šířka" height="výška" alt="Naše poloha na mapě">
-&lt;/a>
-```
+&lt;/a></code></pre>
 
-Proč?
+<p>Proč?</p>
 
-  - Načtení funkční interaktivní mapy do `&lt;iframe>` zbytečně **prodlouží načítání stránky**.
+<ol>
+  <li>Načtení funkční interaktivní mapy do <code>&lt;iframe></code> zbytečně <b>prodlouží načítání stránky</b>.</li>
+  <li>Návštěvník si mapu stejně nejspíš rozklikne do <b>plnohodnotné velké podoby</b>.</li>
+</ol>
 
-  - Návštěvník si mapu stejně nejspíš rozklikne do **plnohodnotné velké podoby**.
+<p>(Neplatí pochopitelně pro webové stránky, kde je interaktivní mapa <a href="http://www.mechaniky.cz/">hlavní součástí</a> stránky.)</p>
 
-(Neplatí pochopitelně pro webové stránky, kde je interaktivní mapa [hlavní součástí](http://www.mechaniky.cz/) stránky.)
+<h2 id="staticke-api">Statické API</h2>
 
-## Statické API
+<p><a href="http://webylon.info"><b>Chamurappi</b></a> mě upozornil, že Google Mapy v <i><a href="http://maps.google.com/help/terms_maps.html">licenci</a> zakazují „kopírování, překládání, úpravy nebo vytváření odvozeného díla obsahu nebo jeho části“ a jsou schopní to připomínat</i>.</p>
 
-[**Chamurappi**](http://webylon.info) mě upozornil, že Google Mapy v *[licenci](http://maps.google.com/help/terms_maps.html) zakazují „kopírování, překládání, úpravy nebo vytváření odvozeného díla obsahu nebo jeho části“ a jsou schopní to připomínat*.
+<p>Lepší řešení tedy bude použít <a href="https://developers.google.com/maps/documentation/staticmaps/?hl=cs">statické API</a>. To je ještě výhodnější, protože se nemusíme řezat s obrázkem, ale vložit si ho přímo do stránky z Google Maps. Výhodnější je tedy pro <b>malé weby</b>, které nevyužijí moc požadavků, protože od určité hranice je <b>API placené</b>.</p>
 
-Lepší řešení tedy bude použít [statické API](https://developers.google.com/maps/documentation/staticmaps/?hl=cs). To je ještě výhodnější, protože se nemusíme řezat s obrázkem, ale vložit si ho přímo do stránky z Google Maps. Výhodnější je tedy pro **malé weby**, které nevyužijí moc požadavků, protože od určité hranice je **API placené**.
-
-  Adresa:  Překreslit
-  Zoom: 
-
-``
-
+<div class="live">
+<form action=".?" onsubmit="prekreslit(this.adresa.value, this.zoom.value); return false">
+  <p><label>Adresa: <input type="text" name="adresa" value="Thunovská 178/10
+ Praha"></label> <button>Překreslit</button></p>
+  <p><label>Zoom: <input type="range" min=1 value=15 max=20 name="zoom"></label></p>
+</form>
+<img id="mapa" src="http://maps.googleapis.com/maps/api/staticmap?center=Praha&size=400x200&sensor=false&zoom=15" alt="">
+<p><code id="url-mapy"></code></p>
+<script>
 function prekreslit(adresa, zoom) {
     var url = "http://maps.googleapis.com/maps/api/staticmap?center=" + encodeURIComponent(adresa) + "&size=400x200&sensor=false&zoom=" + encodeURIComponent(zoom);
     document.getElementById("mapa").src = url;
     document.getElementById("url-mapy").innerHTML = url;
 }
+</script>
+</div>
 
-## Odkazy
-
-  - [OpenLayers: Free Maps for the Web](http://openlayers.org/)
-
-  - [20 Free and Premium Vector World Maps](http://designmodo.com/vector-world-maps/)
+<h2 id="odkazy">Odkazy</h2>
+<ul>
+  <li><a href="http://openlayers.org/">OpenLayers: Free Maps for the Web</a></li>
+  
+  <li><a href="http://designmodo.com/vector-world-maps/">20 Free and Premium Vector World Maps</a></li>
+</ul>

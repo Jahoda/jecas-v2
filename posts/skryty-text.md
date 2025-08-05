@@ -5,25 +5,44 @@ description: "Obsah v záložkách a skrytý v „Zobrazit více“ nemusí být
 date: "2014-11-26"
 last_modification: "2014-11-26"
 status: 1
-tags: ["SEO", "Google"]
+tags: ["google", "seo"]
+format: "html"
 ---
 
-Pokud je na stránce hodně informací, často se jejich obsah všelijak **skrývá a odkrývá** pomocí JavaScriptu.
+<p>Pokud je na stránce hodně informací, často se jejich obsah všelijak <b>skrývá a odkrývá</b> pomocí JavaScriptu.</p>
 
-    - Zdejší kategorie: [Přepínání vzhledu](/prepinani-vzhledu)
+<div class="internal-content">
+  <ul>
+    <li>Zdejší kategorie: <a href="/prepinani-vzhledu">Přepínání vzhledu</a></li>
+  </ul>
+</div>
 
-Nejčastěji se používá:
+<p>Nejčastěji se používá:</p>
 
-    **Přepínání záložek** – obsah se rozdělí do několika sekcí a dá se přepínat bez nutnosti **načíst novou stránku**.
+<ul>
+  <li>
+    <p><b>Přepínání záložek</b> – obsah se rozdělí do několika sekcí a dá se přepínat bez nutnosti <b>načíst novou stránku</b>.</p>
+    
+    <p><img src="/files/skryty-text/zalozky.gif" alt="Přepínání záložek" class="border"></p>
+  </li>
+  
+  
+  <li>
+    <p><b>Zobrazit více</b> – jednoduché rozkliknutí další části obsahu.</p>
+    
+    <p><img src="/files/skryty-text/odkryvani.gif" alt="Přepínání záložek" class="border"></p>
+  </li>
+</ul>
 
-    **Zobrazit více** – jednoduché rozkliknutí další části obsahu.
 
-Z [vyjádření](https://www.youtube.com/watch?v=tFSI4cpJX-I&t=10m56s) na Google Webmaster hangoutu vyplývá, že není rozumné takto skrývat **důležitý obsah** — mohlo by to snížit jeho význam nebo ho dokonce učinit **nenalezitelným**.
+<p>Z <a href="https://www.youtube.com/watch?v=tFSI4cpJX-I&t=10m56s">vyjádření</a> na Google Webmaster hangoutu vyplývá, že není rozumné takto skrývat <b>důležitý obsah</b> — mohlo by to snížit jeho význam nebo ho dokonce učinit <b>nenalezitelným</b>.</p>
 
-Docela to dává smysl. Pro vyhledávač je problematické posílat uživatele na stránku, kde nakonec hledaný text bez interakce se stránkou **nebude vidět**. Takové chování totiž potom může vypadat jako **chyba vyhledávače**.
+<p>Docela to dává smysl. Pro vyhledávač je problematické posílat uživatele na stránku, kde nakonec hledaný text bez interakce se stránkou <b>nebude vidět</b>. Takové chování totiž potom může vypadat jako <b>chyba vyhledávače</b>.</p>
 
-  From our point of view, it's always a tricky problem when we send a user to a page where we know this content is actually hidden. Because the user will see perhaps the content in the snippet, they'll click through the page, and say, well, I don't see where this information is on this page. I feel kind of almost misled to click on this to actually get in there.
+<blockquote>
+  <p>From our point of view, it's always a tricky problem when we send a user to a page where we know this content is actually hidden. Because the user will see perhaps the content in the snippet, they'll click through the page, and say, well, I don't see where this information is on this page. I feel kind of almost misled to click on this to actually get in there.</p>
+</blockquote>
 
-Další důvod pro **snižování váhy** takto (dočasně) skrytého textu potom může být v prostém boji proti skrývání textu jako [zakázané praktice](https://support.google.com/webmasters/answer/66353?hl=en).
+<p>Další důvod pro <b>snižování váhy</b> takto (dočasně) skrytého textu potom může být v prostém boji proti skrývání textu jako <a href="https://support.google.com/webmasters/answer/66353?hl=en">zakázané praktice</a>.</p>
 
-Závěr je ale jasný — mít důležitý obsah zobrazený **ihned při načtení stránky**.
+<p>Závěr je ale jasný — mít důležitý obsah zobrazený <b>ihned při načtení stránky</b>.</p>

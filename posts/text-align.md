@@ -5,151 +5,172 @@ description: "CSS vlastnost <code>text-align</code> nastavuje zarovnání písma
 date: "2014-11-26"
 last_modification: "2014-11-27"
 status: 1
-tags: ["CSS", "CSS vlastnosti"]
+tags: ["css", "css-vlastnosti"]
+format: "html"
 ---
 
-Ve své základní podobě (zarovnání vlevo, vpravo, na střed či do bloku) je široce podporovaná napříč prohlížeči.
+<p>Ve své základní podobě (zarovnání vlevo, vpravo, na střed či do bloku) je široce podporovaná napříč prohlížeči.</p>
 
-## Co jde zarovnat
 
-V aktuálních prohlížečích funguje `text-align` pouze na řádkové (`[display](/display): inline`) nebo řádkově-blokové (`display: inline-block`) prvky.
+<h2 id="co">Co jde zarovnat</h2>
 
-Dříve šlo v **IE** v [QUIRK režimu](/doctype#quirk) přes `text-align` zarovnávat i bloky. Ve **Firefoxu** a **Chrome** jde toto chování simulovat hodnotami s [CSS prefixy](/css-prefixy). [Ukázka](http://kod.djpw.cz/gcib).
+<p>V aktuálních prohlížečích funguje <code>text-align</code> pouze na řádkové (<code><a href="/display">display</a>: inline</code>) nebo řádkově-blokové (<code>display: inline-block</code>) prvky.</p>
 
-Různým způsobům centrování se věnuje samostatný článek.
+<p>Dříve šlo v <b>IE</b> v <a href="/doctype#quirk">QUIRK režimu</a> přes <code>text-align</code> zarovnávat i bloky. Ve <b>Firefoxu</b> a <b>Chrome</b> jde toto chování simulovat hodnotami s <a href="/css-prefixy">CSS prefixy</a>. <a href="http://kod.djpw.cz/gcib">Ukázka</a>.</p>
 
-    - [Centrování v CSS](/centrovani)
+<p>Různým způsobům centrování se věnuje samostatný článek.</p>
 
-## Dědičnost
+<div class="internal-content">
+  <ul>
+    <li><a href="/centrovani">Centrování v CSS</a></li>
+  </ul>
+</div>
 
-Zarovnání pomocí `text-align` od rodiče **dědí** jeho potomci.
 
-```
-&lt;div>Bude vlevo (výchozí)&lt;/div>
-&lt;div style="text-align: **center**">
+<h2 id="dedicnost">Dědičnost</h2>
+
+<p>Zarovnání pomocí <code>text-align</code> od rodiče <b>dědí</b> jeho potomci.</p>
+
+<pre><code>&lt;div>Bude vlevo (výchozí)&lt;/div>
+&lt;div style="text-align: <b>center</b>">
   &lt;div>Bude uprostřed&lt;/div>
-  &lt;div style="text-align: **right**">
+  &lt;div style="text-align: <b>right</b>">
     &lt;div>Bude vpravo&lt;/div>
   &lt;/div>
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-[Ukázka](http://kod.djpw.cz/jdib)
+<p><a href="http://kod.djpw.cz/jdib">Ukázka</a></p>
 
-## Základní zarovnávání
 
-  `left`
+<h2 id="zakladni">Základní zarovnávání</h2>
+
+<dl>
+  <dt id="left"><code>left</code></dt>
+  <dd>
+    <pre><code>text-align: left</code></pre>
+      
+    <p style="text-align: left">Výchozí chování u textu psaného zleva doprava (<code>ltr</code> – <i>left to right</i>).</p>    
+  </dd>
+
+
+  <dt id="right"><code>right</code></dt>
+  <dd>
+    <pre><code>text-align: right</code></pre>
+      
+    <p style="text-align: right">Zarovnání textu k pravé straně.</p>    
+  </dd>  
+
+
+
+
+  <dt id="center"><code>center</code></dt>
+  <dd>
+    <pre><code>text-align: center</code></pre>
+      
+    <p style="text-align: center">Zarovnání textu na střed.</p>    
+    
+  </dd>  
+
+  <dt id="justify"><code>justify</code></dt>
+  <dd>
+    <pre><code>text-align: justify</code></pre>
+      
+    <p style="text-align: justify">Zarovnání textu do bloku jako je tomu běžné například u <b>novinových sloupků</b>. Používání <code>text-align: justify</code> je trochu problematické s ohledem na fakt, že ne všechny prohlížeče umí <b>dělit text uprostřed slova</b>. Při <b>zarovnání do bloku</b> tak snadno vznikají tzv. <b>řeky</b>, kdy jsou mezi jednotlivými slovy nepřirozeně velké mezery.</p>  
+    
+    <p>Rozdělování slov spojovníkem na konci řádku jde v něterých prohlížečích zapnout CSS vlastností <a href="/hyphens"><code>hyphens</code></a>.</p>
+    
+  </dd>    
+</dl>
+
+
+<h2 id="start-end">Začátek a konec</h2>
+
+<p>Mimo <b>IE</b> fungují dále hodnoty označující <b>začátek a konec řádku</b> (v závislosti na směru psaní textu).</p>
+
+<dl>
+  <dt id="start"><code>start</code></dt>
+  <dd>
+    <pre><code>text-align: start</code></pre>
+      
+    <p style="text-align: start">V případě u nás běžného psaní zleva doprava je <code>start</code> ekvivalentem <code>text-alight: left</code>.</p>    
+  </dd>
+
+
+  <dt id="end"><code>end</code></dt>
+  <dd>
+    <pre><code>text-align: end</code></pre>
+      
+    <p style="text-align: end">Zarovnání textu na konec řádku, což se chová v podporovaných prohlížečích jako <code>right</code>.</p>    
+  </dd>  
+</dl>
+
+
+<h2 id="last">Zarovnání posledního řádku</h2>
+
+<p>Zvlášť v případě zarovnání do bloku <code>(text-align: justify</code>) je většinou cílem, aby se <b>poslední řádek</b> do bloku nezarovnával.</p>
+
+<p>Prohlížeče tak činí – poslední řádek zarovnávají na začátek řádku. Vlastností <code>text-align-<b>last</b></code> je možné toto chování změnit a poslední řádek bloku například <b>vycentrovat</b>.</p>
+
+<p>Nastavení zarovnání posledního řádku funguje ve všech <b>IE</b> (od <b>IE 5.5</b>) a ve <b>Firefoxu</b> s prefixem.</p>
+
+<p><a href="http://kod.djpw.cz/mcib">Ukázka</a> centrovaného posledního řádku.</p>
+
+
+<h2 id="specifikace">Specifikace</h2>
+
+<p>CSS specifikace do budoucna počítá, že <code>text-align</code> bude zkratka pro:</p>
+
+<ul>
+  <li><code>text-align-<b>last</b></code> – zarovnání posledního řádku</li>
   
-    ```
-text-align: left
-```
+  <li><code>text-align-<b>all</b></code> – zarovnání všech řádků</li>
+</ul>
 
-    Výchozí chování u textu psaného zleva doprava (`ltr` – *left to right*).
 
-  `right`
-  
-    ```
-text-align: right
-```
+<h2 id="znak">Zarovnání podle znaku</h2>
 
-    Zarovnání textu k pravé straně.
+<p>CSS specifikace dále počítá s možností zarovnávat podle <b>určitého znaku</b> – třeba podle <b>desetinné čárky</b> nebo <b>jednotek</b>.</p>
 
-  `center`
-  
-    ```
-text-align: center
-```
-
-    Zarovnání textu na střed.
-
-  `justify`
-  
-    ```
-text-align: justify
-```
-
-    Zarovnání textu do bloku jako je tomu běžné například u **novinových sloupků**. Používání `text-align: justify` je trochu problematické s ohledem na fakt, že ne všechny prohlížeče umí **dělit text uprostřed slova**. Při **zarovnání do bloku** tak snadno vznikají tzv. **řeky**, kdy jsou mezi jednotlivými slovy nepřirozeně velké mezery.
-
-    Rozdělování slov spojovníkem na konci řádku jde v něterých prohlížečích zapnout CSS vlastností [`hyphens`](/hyphens).
-
-## Začátek a konec
-
-Mimo **IE** fungují dále hodnoty označující **začátek a konec řádku** (v závislosti na směru psaní textu).
-
-  `start`
-  
-    ```
-text-align: start
-```
-
-    V případě u nás běžného psaní zleva doprava je `start` ekvivalentem `text-alight: left`.
-
-  `end`
-  
-    ```
-text-align: end
-```
-
-    Zarovnání textu na konec řádku, což se chová v podporovaných prohlížečích jako `right`.
-
-## Zarovnání posledního řádku
-
-Zvlášť v případě zarovnání do bloku `(text-align: justify`) je většinou cílem, aby se **poslední řádek** do bloku nezarovnával.
-
-Prohlížeče tak činí – poslední řádek zarovnávají na začátek řádku. Vlastností `text-align-**last**` je možné toto chování změnit a poslední řádek bloku například **vycentrovat**.
-
-Nastavení zarovnání posledního řádku funguje ve všech **IE** (od **IE 5.5**) a ve **Firefoxu** s prefixem.
-
-[Ukázka](http://kod.djpw.cz/mcib) centrovaného posledního řádku.
-
-## Specifikace
-
-CSS specifikace do budoucna počítá, že `text-align` bude zkratka pro:
-
-  - `text-align-**last**` – zarovnání posledního řádku
-
-  - `text-align-**all**` – zarovnání všech řádků
-
-## Zarovnání podle znaku
-
-CSS specifikace dále počítá s možností zarovnávat podle **určitého znaku** – třeba podle **desetinné čárky** nebo **jednotek**.
-
-```
-text-align: ".";
+<pre><code>text-align: ".";
 text-align: start ".";
-text-align: "." end;
-```
+text-align: "." end;</code></pre>
 
-U následujícího seznamu by se to velmi hodilo:
+<p>U následujícího seznamu by se to velmi hodilo:</p>
 
-    - 10,1
+<ul>
+    <li>10,1</li>
+    <li>5,55</li>
+    <li>105,55</li>
+    <li>5,525</li>
+</ul>
 
-    - 5,55
+<p>Bohužel to v žádném prohlížeči <b>nefunguje</b>.</p>
 
-    - 105,55
 
-    - 5,525
+<h3 id="pevny-pocet">Pevný počet desetinných míst</h3>
 
-Bohužel to v žádném prohlížeči **nefunguje**.
+<p>Nejrychlejší řešení, jak se o takové zarovnání pokusit, je zajistit <b>pevný počet desetinných míst</b>, nastavit šířku a zarovnat obsah doprava.</p>
 
-### Pevný počet desetinných míst
+<div class="live">
+<ul style="text-align: right; width: 5em">
+    <li>10,018</li>
+    <li>5,550</li>
+    <li>105,550</li>
+    <li>5,111</li>
+</ul>
+</div>
 
-Nejrychlejší řešení, jak se o takové zarovnání pokusit, je zajistit **pevný počet desetinných míst**, nastavit šířku a zarovnat obsah doprava.
+<p>Dobře bude fungovat ale jen u <b>neproporcionálních písem</b>, která mají všechny číslice stejně široká.</p>
 
-    - 10,018
 
-    - 5,550
 
-    - 105,550
+<h3 id="tabulka">Tabulka</h3>
 
-    - 5,111
+<p>Další možnost je <b>tabulka</b>. Ať už klasická nebo v CSS s využitím <a href="/display#tabulkove">tabulkových hodnot</a> vlastnosti <code>display</code>.</p>
 
-Dobře bude fungovat ale jen u **neproporcionálních písem**, která mají všechny číslice stejně široká.
 
-### Tabulka
-
-Další možnost je **tabulka**. Ať už klasická nebo v CSS s využitím [tabulkových hodnot](/display#tabulkove) vlastnosti `display`.
-
+<div class="live">
+<style>
   .desetinne-zarovnani {
       display: table;
       border-collapse: collapse;
@@ -166,74 +187,73 @@ Další možnost je **tabulka**. Ať už klasická nebo v CSS s využitím [tabu
   .desetinne-zarovnani .cislo {
       text-align: right;
   }  
+</style>
+<ul class="desetinne-zarovnani">
+    <li><span class="cislo">10</span><span class="carka">,</span><span class="desetiny">518</span></li>
+    <li><span class="cislo">0</span><span class="carka">,</span><span class="desetiny">8</span></li>
+    <li><span class="cislo">5810</span><span class="carka">,</span><span class="desetiny">58</span></li>
+    <li><span class="cislo">10</span><span class="carka">,</span><span class="desetiny">18</span></li>
+</ul>  
+</div>
 
-    - 10,518
+<p><a href="http://kod.djpw.cz/jcib">Samostatná ukázka</a></p>
 
-    - 0,8
 
-    - 5810,58
+<p>To funguje zdánlivě hezky, ale jen do chvíle, kdy bude nutné <b>text kopírovat</b> — rozdělení do sloupců totiž způsobí vložení tabulátorů mezi ně.</p>
 
-    - 10,18
+<pre><code>10	,	518</code></pre>
 
-[Samostatná ukázka](http://kod.djpw.cz/jcib)
 
-To funguje zdánlivě hezky, ale jen do chvíle, kdy bude nutné **text kopírovat** — rozdělení do sloupců totiž způsobí vložení tabulátorů mezi ně.
+<h3 id="pevna-sirka">Pevná šířka celého čísla</h3>
 
-```
-10	,	518
-```
+<p>Jako funkční postup se zdá obalení <b>celého čísla</b> <code>&lt;span></code>em a nastavení jeho <b>šířky a zarovnání doprava</b>:</p>
 
-### Pevná šířka celého čísla
-
-Jako funkční postup se zdá obalení **celého čísla** `&lt;span>`em a nastavení jeho **šířky a zarovnání doprava**:
-
+<div class="live">
+<style>
   .pevna-sirka .cele-cislo {
       display: inline-block;
       text-align: right;
       width: 2em;
   }
+</style>  
+<ul class="pevna-sirka">
+    <li><span class="cele-cislo">10</span>,518</li>
+    <li><span class="cele-cislo">0</span>,8</li>
+    <li><span class="cele-cislo">810</span>,58</li>
+    <li><span class="cele-cislo">10</span>,18</li>
+</ul>  
+</div>
 
-    - 10,518
+<p><a href="http://kod.djpw.cz/kcib">Samostatná ukázka</a></p>
 
-    - 0,8
+<p>Potřebný HTML kód pro správné zarovnání je potom ideální <b>generovat na straně serveru</b>.</p>
 
-    - 810,58
+<p>Další nevýhoda kromě úprav HTML je, že pevná šířka není universální pro různě dlouhá čísla. To by mohl vyřešit kousek JavaScriptu, co <b>čísla přeměří</b> a šířku nastaví podle toho nejdelšího.</p>
 
-    - 10,18
-
-[Samostatná ukázka](http://kod.djpw.cz/kcib)
-
-Potřebný HTML kód pro správné zarovnání je potom ideální **generovat na straně serveru**.
-
-Další nevýhoda kromě úprav HTML je, že pevná šířka není universální pro různě dlouhá čísla. To by mohl vyřešit kousek JavaScriptu, co **čísla přeměří** a šířku nastaví podle toho nejdelšího.
-
+<div class="live">
+<style>
   .zarovnat-cisla .cele-cislo {
       display: inline-block;
       text-align: right;
   }
+</style>
+<p>První blok:</p>
+<ul class="zarovnat-cisla">
+    <li><span class="cele-cislo">10</span>,518</li>
+    <li><span class="cele-cislo">0</span>,8</li>
+    <li><span class="cele-cislo">810</span>,58</li>
+    <li><span class="cele-cislo">10</span>,18</li>
+</ul>
+<p>Druhý blok:</p>
+<ul class="zarovnat-cisla">
+    <li><span class="cele-cislo">1</span>,8</li>
+    <li><span class="cele-cislo">100 010</span>,518</li>
+    <li><span class="cele-cislo">0</span>,8</li>
+    <li><span class="cele-cislo">1 810</span>,58</li>
+    <li><span class="cele-cislo">10</span>,18</li>
+</ul>
 
-První blok:
-
-    - 10,518
-
-    - 0,8
-
-    - 810,58
-
-    - 10,18
-
-Druhý blok:
-
-    - 1,8
-
-    - 100 010,518
-
-    - 0,8
-
-    - 1 810,58
-
-    - 10,18
-
+<script>
   var kZarovnani = document.querySelectorAll(".zarovnat-cisla");
   
   for (var i = kZarovnani.length; i--; ) {
@@ -249,11 +269,16 @@ Druhý blok:
           cisla[j].style.width = sirka + "px";
       }    
   }
+</script>
+</div>
 
-[Samostatná ukázka](http://kod.djpw.cz/ncib)
+<p><a href="http://kod.djpw.cz/ncib">Samostatná ukázka</a></p>
 
-## Odkazy
 
-  - DevDocs: [`text-align`](http://devdocs.io/css/text-align)
+<h2 id="odkazy">Odkazy</h2>
 
-  - W3C: [Text Alignment: the ‘text-align’ shorthand](http://dev.w3.org/csswg/css-text/#justification)
+<ul>
+  <li>DevDocs: <a href="http://devdocs.io/css/text-align"><code>text-align</code></a></li>
+  
+  <li>W3C: <a href="http://dev.w3.org/csswg/css-text/#justification">Text Alignment: the ‘text-align’ shorthand</a></li>
+</ul>

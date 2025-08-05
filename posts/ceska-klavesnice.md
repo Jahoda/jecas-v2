@@ -5,148 +5,185 @@ description: "Jak na běžné české klávesnici pohodlně programovat a zapiso
 date: "2013-05-19"
 last_modification: "2015-01-18"
 status: 1
-tags: ["Produktivita"]
+tags: ["produktivita"]
+format: "html"
 ---
 
-Pro psaní speciálních znaků existují v zásadě tři možnosti.
+<p>Pro psaní speciálních znaků existují v zásadě tři možnosti.
+<ol>
+<li>používat <b>anglickou klávesnici</b> a neustále se mezi ní a českou přepínat klávesami <kbd>Alt</kbd> + <kbd>Shift</kbd>,
+<li>používat nějakou <b>programátorskou</b> / vlastnoručně upravenou klávesnici, která umožňuje psaní speciálních i českých znaků,
+<li>naučit se, jak speciální znaky zadávat na <b>obyčejném české rozložení</b> kláves.
+</ol>
 
-používat **anglickou klávesnici** a neustále se mezi ní a českou přepínat klávesami Alt + Shift,
-používat nějakou **programátorskou** / vlastnoručně upravenou klávesnici, která umožňuje psaní speciálních i českých znaků,
-naučit se, jak speciální znaky zadávat na **obyčejném české rozložení** kláves.
+<p>První možnost trpí nutností neustálého přepínání tam a zpět, druhá možnost zavádí značnou nekompatibilitu s cizími počítači, takže zbývá možnost třetí…
 
-První možnost trpí nutností neustálého přepínání tam a zpět, druhá možnost zavádí značnou nekompatibilitu s cizími počítači, takže zbývá možnost třetí…
-
-## Kouzelná klávesa pravý Alt
-
-Při podržení této klapky získají běžné klávesy novou funkci, díky které se dají **pohodlně napsat** různé **speciální znaky**.
+<h2 id='pravy-alt'>Kouzelná klávesa pravý <kbd>Alt</kbd></h2>
+<p>Při podržení této klapky získají běžné klávesy novou funkci, díky které se dají <b>pohodlně napsat</b> různé <b>speciální znaky</b>.
   
-### Jak napsat…
+<h3>Jak napsat…</h3>  
 
-požadovaný znak
-zkratka pravý Alt + …
-význam
+<table>
+<tr>
+<th>požadovaný znak
+<th>zkratka pravý <kbd>Alt</kbd> + …
+<th>význam
 
-`&lt;` a `>`
-, a .
-špičaté závorky
+<tr>
+<td><code>&lt;</code> a <code>></code>
+<td><kbd>,</kbd> a <kbd>.</kbd>
+<td>špičaté závorky
 
-`{` a `}`
-B a N
-složené závorky
+<tr>
+<td><code>{</code> a <code>}</code>
+<td><kbd>B</kbd> a <kbd>N</kbd>
+<td>složené závorky
 
-`[` a `]`
-F a G
-hranaté závorky
+<tr>
+<td><code>[</code> a <code>]</code>
+<td><kbd>F</kbd> a <kbd>G</kbd>
+<td>hranaté závorky
 
-`$`
-ů
-znak dolaru
+<tr>
+<td><code>$</code>
+<td><kbd>ů</kbd>
+<td>znak dolaru
 
-`#`
-X
-  mřížka / dvojitý křížek	
 
-`&amp;`
-C
-ampersand (and)
+<tr>
+<td><code>#</code>
+<td><kbd>X</kbd>
+  <td>mřížka / dvojitý křížek	
 
-`@`
-V
-zavináč
+<tr>
+<td><code>&amp;</code>
+<td><kbd>C</kbd>
+<td>ampersand (and)
 
-`|`
-W
-svislá čára
+<tr>
+<td><code>@</code>
+<td><kbd>V</kbd>
+<td>zavináč
 
-`\`
-Q
-zpětné lomítko
+<tr>
+<td><code>|</code>
+<td><kbd>W</kbd>
+<td>svislá čára
 
-`~`
-1/+
-vlnovka (tilda)
+<tr>
+<td><code>\</code>
+<td><kbd>Q</kbd>
+<td>zpětné lomítko
 
-`^`
-3/š
-stříška*
+<tr>
+<td><code>~</code>
+<td><kbd>1/+</kbd>
+<td>vlnovka (tilda)
 
-`°`
-5/ř
+<tr>
+<td><code>^</code>
+<td><kbd>3/š</kbd>
+<td>stříška*
 
-  nebo Shift + ;
-stupně*
+<tr>
+<td><code>°</code>
+<td><kbd>5/ř</kbd>
+  <br>
+  nebo <kbd>Shift</kbd> + <kbd>;</kbd>
+<td>stupně*
 
-`×` a `÷`
-) a ú
-krát a děleno	
+<tr>
+<td><code>×</code> a <code>÷</code>
+<td><kbd>)</kbd> a <kbd>ú</kbd>
+<td>krát a děleno	
 
-*) Je třeba stisknout dvakrát nebo po jednom stisku potvrdit mezerníkem.
 
-## Kódy kláves
+</table>
+<p>*) Je třeba stisknout dvakrát nebo po jednom stisku potvrdit mezerníkem.
 
-Některé (neprogramátorské) užitečné znaky lze bez štelování klávesnice zapsat pomocí **levého** Altu a číselného kódu.
-### Jak napsat…
+<h2 id='kody'>Kódy kláves</h2>
+<p>Některé (neprogramátorské) užitečné znaky lze bez štelování klávesnice zapsat pomocí <b>levého</b> <kbd>Alt</kbd>u a číselného kódu.
+<h3>Jak napsat…</h3> 
+<table>
+<tr>
+<th>požadovaný znak
+<th>levý <kbd>Alt</kbd> + kód
+<th>HTML entita
+<th>význam
 
-požadovaný znak
-levý Alt + kód
-HTML entita
-význam
+<tr id="nbsp">
+<td><input type="text" value="&nbsp;" size="1">
+<td><code>0160</code>
+<td><code>&amp;nbsp;</code> a <code>&amp;#160;</code>
+  <td>nedělitelná/pevná mezera
 
-`0160`
-`&amp;nbsp;` a `&amp;#160;`
-  nedělitelná/pevná mezera
+<tr>
+<td><code>„</code> a <code>“</code>
+<td><code>0132</code> a <code>0147</code>
+<td><code>&amp;bdquo;</code> a <code>&amp;ldquo;</code>
+<td>české dvojité uvozovky
 
-`„` a `“`
-`0132` a `0147`
-`&amp;bdquo;` a `&amp;ldquo;`
-české dvojité uvozovky
+<tr>
+<td><code>‚</code> a <code>‘</code>
+<td><code>0130</code> a <code>0145</code>
+<td><code>&amp;sbquo;</code> a <code>&amp;lsquo;</code>
+<td>české jednoduché uvozovky
 
-`‚` a `‘`
-`0130` a `0145`
-`&amp;sbquo;` a `&amp;lsquo;`
-české jednoduché uvozovky
+<tr>
+<td><code>–</code> a <code>—</code>
+<td><code>0150</code> a <code>0151</code>
+<td><code>&amp;ndash;</code> a <code>&amp;mdash;</code>
+<td>krátká a dlouhá pomlčka
 
-`–` a `—`
-`0150` a `0151`
-`&amp;ndash;` a `&amp;mdash;`
-krátká a dlouhá pomlčka
+<tr>
+<td><code>…</code>
+<td><code>0133</code>
+<td><code>&amp;hellip;</code>
+<td>tři tečky
 
-`…`
-`0133`
-`&amp;hellip;`
-tři tečky
+<tr>
+<td><code>−</code>
+<td><code></code>
+<td><code>&amp;minus;</code>
+<td>minus
 
-`−`
-``
-`&amp;minus;`
-minus
-
-`™`
-``
-`&amp;trade;`
-trade mark
-
-  `&#8203;`    
+<tr>
+<td><code>™</code>
+<td><code></code>
+<td><code>&amp;trade;</code>
+<td>trade mark
   
-  `&amp;#8203;`
-  mezera s nulovou šířkou
-
-  `&#8209;`    
   
-  `&amp;#8209;`
-  nezalomitelná pomlčka
-
-  `&pm;`    
+<tr id="nulova">
+  <td><code>&#8203;</code>    <button onclick="zkopirovat('&#8203;')" title="Kopírovat"><img src="/files/ceska-klavesnice/copy.png"></button></td>
+  <td></td>
+  <td><code>&amp;#8203;</code></td>
+  <td>mezera s nulovou šířkou
+  </td>
+</tr>  
+<tr id="nedelitelna-pomlcka">
+  <td><code>&#8209;</code>    <button onclick="zkopirovat('&#8209;')" title="Kopírovat"><img src="/files/ceska-klavesnice/copy.png"></button></td>
+  <td></td>
+  <td><code>&amp;#8209;</code></td>
+  <td>nezalomitelná pomlčka
+  </td>
+</tr>   
+<tr id="plus-minus">
+  <td><code>&pm;</code>    <button onclick="zkopirovat('&pm;')" title="Kopírovat"><img src="/files/ceska-klavesnice/copy.png"></button></td>
+  <td></td>
+  <td><code>&amp;pm;</code></td>
+  <td>plus minus
+  </td>
+</tr>     
+</table>
   
-  `&amp;pm;`
-  plus minus
-
-### Mocniny a zlomky
-
-Pro zápis *něco na druhou* se dá použít buď **horní index** (značka `&lt;sup>`) nebo přímo znak „²“ — druhá mocnina² (HTML entita`&amp;sup2;`), třetí mocnina³ (`&amp;sup3;`). Čtvrtá **mocnina** už neexistuje.
-
-Ze **zlomků** je k disposici čtvrtina ¼ (`&amp;frac14;`) polovina ½	(`&amp;frac12;`)	a tři čtvrtiny ¾ (`&amp;frac34;`).
-
+<h3 id="mocniny-zlomky">Mocniny a zlomky</h3>
+<p>Pro zápis <i>něco na druhou</i> se dá použít buď <b>horní <sup>index</sup></b> (značka <code>&lt;sup></code>) nebo přímo znak „²“ — druhá mocnina² (HTML entita<code>&amp;sup2;</code>), třetí mocnina³ (<code>&amp;sup3;</code>). Čtvrtá <b>mocnina</b> už neexistuje.</p>
+  
+<p>Ze <b>zlomků</b> je k disposici čtvrtina ¼ (<code>&amp;frac14;</code>) polovina ½	(<code>&amp;frac12;</code>)	a tři čtvrtiny ¾ (<code>&amp;frac34;</code>).</p>  
+  
+  
+  <script>
 function zkopirovat(text) {  
   var range = document.createRange();  
   var node = document.createTextNode(text);
@@ -162,4 +199,5 @@ function zkopirovat(text) {
   }  
   window.getSelection().removeAllRanges();  
   document.body.removeChild(node);
-}
+}    
+  </script>

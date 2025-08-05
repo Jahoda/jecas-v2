@@ -5,11 +5,14 @@ description: "Točící se kolečko pro znázornění načítání v čistém CS
 date: "2013-12-01"
 last_modification: "2016-10-31"
 status: 1
-tags: ["CSS", "Animace"]
+tags: ["css", "webove-animace"]
+format: "html"
 ---
 
-Pro **znázornění** [průběhu načítání](/animace-nacitani) je možné použít od **IE 10** [animaci](/animace). Jak si nějakou připravit čistě v CSS pomocí [`animation`](/animation).
+<p>Pro <b>znázornění</b> <a href="/animace-nacitani">průběhu načítání</a> je možné použít od <b>IE 10</b> <a href="/animace">animaci</a>. Jak si nějakou připravit čistě v CSS pomocí <a href="/animation"><code>animation</code></a>.</p>
 
+<div class="live">
+<style>
 .kolecko {
     width: 50px; 
     height: 50px;
@@ -24,52 +27,66 @@ Pro **znázornění** [průběhu načítání](/animace-nacitani) je možné pou
 @keyframes tocit {
     to {transform: rotate(360deg)}
 }
+</style>
+<div class="kolecko"></div>
+</div>
 
-[Samostatná ukázka](http://kod.djpw.cz/nhcb)
+<p><a href="http://kod.djpw.cz/nhcb">Samostatná ukázka</a></p>
 
-Funguje to tak, že se element zakulatí vlastností [`border-radius`](/border-radius). Na jednu stranu (např. `border-bottom`) se přidá rámeček.
+<p>Funguje to tak, že se element zakulatí vlastností <a href="/border-radius"><code>border-radius</code></a>. Na jednu stranu (např. <code>border-bottom</code>) se přidá rámeček.</p>
 
+<div class="live">
+<style>
 .koleckoBezAnimace {
     width: 50px; 
     height: 50px;
     border-radius: 50%;
     border-bottom: 3px solid black;
 }
+</style>
+<div class="koleckoBezAnimace"></div>
+</div>
 
-A nekonečná animace tento *rámeček* bude [otáčet](/rotace) přes transformaci: `transform: rotate(360deg)`.
+<p>A nekonečná animace tento <i>rámeček</i> bude <a href="/rotace">otáčet</a> přes transformaci: <code>transform: rotate(360deg)</code>.</p>
 
-Pro transformaci i animaci je v prohlížečích s jádrem **Webkit** nutné použít [CSS prefixy](/css-prefixy).
+<p>Pro transformaci i animaci je v prohlížečích s jádrem <b>Webkit</b> nutné použít <a href="/css-prefixy">CSS prefixy</a>.</p>
 
-## Starší prohlížeče
+<h2 id="starsi-prohlizece">Starší prohlížeče</h2>
+<p>Pro starší prohlížeče (<b>IE 9</b> a starší) by se obdobná animace musela dělat <a href="/js">JavaScriptem</a> nebo obrázkovým <a href="/format-obrazku#gif">GIFem</a>.</p>
 
-Pro starší prohlížeče (**IE 9** a starší) by se obdobná animace musela dělat [JavaScriptem](/js) nebo obrázkovým [GIFem](/format-obrazku#gif).
+<div class="live">
+  <img src="/files/ajax/loading.gif" alt="Načítání">
+</div>
 
-## Proč CSS animace
+<h2 id="proc">Proč CSS animace</h2>
 
-Animování pomocí CSS bývá nepatrně **rychlejší** než srovnatelné animace v JavaScriptu.
+<p>Animování pomocí CSS bývá nepatrně <b>rychlejší</b> než srovnatelné animace v JavaScriptu.</p>
 
-CSS animace může být i jednodušší na realisaci a úpravy vzhledu než tvorba GIFu.
+<p>CSS animace může být i jednodušší na realisaci a úpravy vzhledu než tvorba GIFu.</p>
 
-## Hotové CSS animace načítání
+<h2 id="hotova-reseni">Hotové CSS animace načítání</h2>
 
-  - [CSS spinner](http://lea.verou.me/2013/11/cleanest-css-spinner-ever/)
+<ul>
+  <li><a href="http://lea.verou.me/2013/11/cleanest-css-spinner-ever/">CSS spinner</a></li>
+  
+  <li><a href="http://tympanus.net/Development/ProgressButtonStyles/">Animace průběhu v odesílacím tlačítku</a></li>
+  
+  <li><a href="http://tobiasahlin.com/spinkit/">Různé styly animací</a></li>
+  
+  <li><a href="http://www.paulund.co.uk/playground/demo/css-only-loading-spinner/">CSS Only Loading Spinners</a></li>
+  
+  <li><a href="http://usablica.github.io/progress.js/">Progress.js</a> – znázornění průběhu v horní části stránky</li>
+  
+  <li><a href="https://www.dev-metal.com/8-awesome-spinners-loaders-pure-css/">8 awesome pure CSS spinner / loader</a></li>
+  
+  <li><a href="http://projects.lukehaas.me/css-loaders/">Single Element CSS Spinners</a></li>
+  
+  <li><a href="http://webdesign.tutsplus.com/tutorials/creating-a-collection-of-css3-animated-pre-loaders--cms-21978">Creating a Collection of CSS3 Animated Pre-loaders</a> – jak animace načítání vytvořit</li>
+  
+  <li><a href="http://samherbert.net/svg-loaders/">SVG Loaders</a></li>
+  
+  <li><a href="http://designmodo.com/css3-jquery-loading-animations/">16 CSS3 and jQuery Loading Animations Solutions</a></li>
+  
+  <li><a href="http://loading.io/">Loading.io</a> – nástroj pro vytvoření loadovacích animací v CSS/SVG/GIF</li>
+</ul>
 
-  - [Animace průběhu v odesílacím tlačítku](http://tympanus.net/Development/ProgressButtonStyles/)
-
-  - [Různé styly animací](http://tobiasahlin.com/spinkit/)
-
-  - [CSS Only Loading Spinners](http://www.paulund.co.uk/playground/demo/css-only-loading-spinner/)
-
-  - [Progress.js](http://usablica.github.io/progress.js/) – znázornění průběhu v horní části stránky
-
-  - [8 awesome pure CSS spinner / loader](https://www.dev-metal.com/8-awesome-spinners-loaders-pure-css/)
-
-  - [Single Element CSS Spinners](http://projects.lukehaas.me/css-loaders/)
-
-  - [Creating a Collection of CSS3 Animated Pre-loaders](http://webdesign.tutsplus.com/tutorials/creating-a-collection-of-css3-animated-pre-loaders--cms-21978) – jak animace načítání vytvořit
-
-  - [SVG Loaders](http://samherbert.net/svg-loaders/)
-
-  - [16 CSS3 and jQuery Loading Animations Solutions](http://designmodo.com/css3-jquery-loading-animations/)
-
-  - [Loading.io](http://loading.io/) – nástroj pro vytvoření loadovacích animací v CSS/SVG/GIF

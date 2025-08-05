@@ -6,71 +6,90 @@ date: "2025-03-24"
 last_modification: "2025-03-24"
 status: 0
 tags: []
+format: "html"
 ---
 
-```
-https://example.com/produkty?**orderBy=price**
-```
+<pre><code>https://example.com/produkty?<b>orderBy=price</b></code></pre>
 
-Obsah query stringu se obvykle zapisuje ve tvaru `parametr=hodnota` a více těchto dvojic se oddělí ampersandem (`&amp;`):
 
-```
-https://example.com/produkty?orderBy=price**&amp;**sort=desc
-```
+<p>Obsah query stringu se obvykle zapisuje ve tvaru <code>parametr=hodnota</code> a více těchto dvojic se oddělí ampersandem (<code>&amp;</code>):</p>
 
-Historicky existovala v HTML značka `&lt;isindex>`, která umožnila zadat uživateli vstup a ten se potom poslal na server za otazníkem.
 
-Server tak mohl nabídnout například vyhledávání.
 
-Je dost možné, že právě proto se tyto parametry v URL někdy označují i jako *search params*. A v JavaScriptu se dají získat z `window.location.**search**` nebo moderněji z `URLSearchParams`.
+<pre><code>https://example.com/produkty?orderBy=price<b>&amp;</b>sort=desc</code></pre>
 
-Svého času se tyto parametry v URL využívali i pro kompletní routování v PHP aplikacích. Celá aplikace klidně mohla být jediný soubor `index.php`, který přes obsah v URL za otazníkem rozhodoval, co se má vykreslit.
 
-```
-https://example.com?page=kontakt
-```
+<p>Historicky existovala v HTML značka <code>&lt;isindex></code>, která umožnila zadat uživateli vstup a ten se potom poslal na server za otazníkem.</p>
 
-Postupem času se přešlo k hezčím URL, kde jsou tyto parametry nenesoucí přílišnou hodnotu vypuštěny.
+<p>Server tak mohl nabídnout například vyhledávání.</p>
 
-```
-https://example.com/kontakt
-```
+<p>Je dost možné, že právě proto se tyto parametry v URL někdy označují i jako <i>search params</i>. A v JavaScriptu se dají získat z <code>window.location.<b>search</b></code> nebo moderněji z <code>URLSearchParams</code>.</p>
 
-Parametry v URL se tak používají zejména pro **vyhledávání, filtrování**, [stránkování](/strankovan), předávání identifikátorů nebo invalidace cache.
 
-```
-https://www.google.com/search?q=je+cas
-```
 
-## SEO
 
-Z pohledu vyhledávače je každá URL s jiným obsahem query stringu *samostatná stránka*.
+<p>Svého času se tyto parametry v URL využívali i pro kompletní routování v PHP aplikacích. Celá aplikace klidně mohla být jediný soubor <code>index.php</code>, který přes obsah v URL za otazníkem rozhodoval, co se má vykreslit.</p>
 
-Z toho plyne risiko duplicitních stránek.
+<pre><code>https://example.com?page=kontakt</code></pre>
 
-```
-https://example.com/produkty
+
+
+
+
+<p>Postupem času se přešlo k hezčím URL, kde jsou tyto parametry nenesoucí přílišnou hodnotu vypuštěny.</p>
+
+<pre><code>https://example.com/kontakt</code></pre>
+
+
+
+
+<p>Parametry v URL se tak používají zejména pro <b>vyhledávání, filtrování</b>, <a href="/strankovan">stránkování</a>, předávání identifikátorů nebo invalidace cache.</p>
+
+
+<pre><code>https://www.google.com/search?q=je+cas</code></pre>
+
+
+
+
+
+
+<h2 id="seo">SEO</h2>
+
+<p>Z pohledu vyhledávače je každá URL s jiným obsahem query stringu <i>samostatná stránka</i>.</p>
+
+<p>Z toho plyne risiko duplicitních stránek.</p>
+
+
+<pre><code>https://example.com/produkty
 https://example.com/produkty?a
-https://example.com/produkty?b
-```
+https://example.com/produkty?b</code></pre>
 
-Všechny tyto stránky mohou vracet stejný obsah, ale vyhledávač se musí rozhodnout, kterou z nich upřednostnit.
 
-Dokonce i následující URL mohou teoreticky vracet různý obsah:
 
-```
-https://example.com/produkty?orderBy=price&amp;sort=desc
-https://example.com/produkty?sort=desc&amp;orderBy=price
-```
 
-Většinou se to řeší **kanonickým odkazem**, který jasně definuje, která varianta je preferovaná:
 
-```
-&lt;link href="https://example.com/kontakt" rel="canonical">
-```
+
+<p>Všechny tyto stránky mohou vracet stejný obsah, ale vyhledávač se musí rozhodnout, kterou z nich upřednostnit.</p>
+
+<p>Dokonce i následující URL mohou teoreticky vracet různý obsah:</p>
+
+<pre><code>https://example.com/produkty?orderBy=price&amp;sort=desc
+https://example.com/produkty?sort=desc&amp;orderBy=price</code></pre>
+
+
+<p>Většinou se to řeší <b>kanonickým odkazem</b>, který jasně definuje, která varianta je preferovaná:</p>
+
+<pre><code>&lt;link href="https://example.com/kontakt" rel="canonical"></code></pre>
+
 
 https://www.npmjs.com/package/query-string
 https://github.com/beynar/kit-query-params
 https://github.com/paoloricciuti/sveltekit-search-params
 
-    JPW: [Živá fosílie HTML - ISINDEX](https://www.jakpsatweb.cz/clanky/fosilie-isindex.html)
+
+
+<ul>
+  <li>
+    JPW: <a href="https://www.jakpsatweb.cz/clanky/fosilie-isindex.html">Živá fosílie HTML - ISINDEX</a>
+  </li>
+</ul>

@@ -5,27 +5,34 @@ description: "Jak zabránit falešným spam registrací robotů ve WordPress."
 date: "2014-04-22"
 last_modification: "2014-04-25"
 status: 1
-tags: ["Rady a nápady", "WordPress", "Spam", "Redakční systémy"]
+tags: ["cms", "napady", "spam-ochrana", "wordpress"]
+format: "html"
 ---
 
-Jakožto nejpopulárnější redakční systém čelí WordPress a weby na něm postavené **masivnímu útoku spammerů** (zpravidla robotů).
+<p>Jakožto nejpopulárnější redakční systém čelí WordPress a weby na něm postavené <b>masivnímu útoku spammerů</b> (zpravidla robotů).</p>
 
-Před [spamem](/spam) je dobré se bránit. V případě samotných **registrací** by roboti na první pohled nemusely vadit. Horší je, že registrace je spojená s **odesláním potvrzovacího e-mailu**, což může provozovatel webhostingu vyhodnotit jako spamování.
+<p>Před <a href="/spam">spamem</a> je dobré se bránit. V případě samotných <b>registrací</b> by roboti na první pohled nemusely vadit. Horší je, že registrace je spojená s <b>odesláním potvrzovacího e-mailu</b>, což může provozovatel webhostingu vyhodnotit jako spamování.</p>
 
-Na jednom webu u [hostingu Wedos](http://hosting.wedos.com) mně kvůli tomu byla zablokována PHP funkce `mail`, která rozesílání mailů obstarává.
+<p>Na jednom webu u <a href="http://hosting.wedos.com" onmousedown="this.href = 'http://hosting.wedos.com/d/117947'">hostingu Wedos</a> mně kvůli tomu byla zablokována PHP funkce <code>mail</code>, která rozesílání mailů obstarává.</p>
 
-## Řešení proti spamu
+<h2 id="reseni">Řešení proti spamu</h2>
 
-První a nejjednodušší řešení je **registrace vůbec neumožnit**. Možnost zaregistrovat ovlivňuje položka *Členství* v nabídce *Nastavení*:
+<p>První a nejjednodušší řešení je <b>registrace vůbec neumožnit</b>. Možnost zaregistrovat ovlivňuje položka <i>Členství</i> v nabídce <i>Nastavení</i>:</p>
 
-Chceme-li ale registrace povolit, nezbývá než najít řešení jiné.
+<p><img src="/files/wordpress-spam-registrace/clenstvi.png" alt="Zapnutí/vypnutí registrací ve WordPressu" class="border"></p>
 
-## Plugin proti spamu
+<p>Chceme-li ale registrace povolit, nezbývá než najít řešení jiné.</p>
 
-Jak už to tak u Wordpressu bývá, na všechno **existuje plugin**.
+<h2 id="plugin">Plugin proti spamu</h2>
 
-Funkčním se ukázal být **Stop Registration Spam**, který zavádí ochranu prostřednictvím [kontrolní otázky](/spam#otazka-bez-vyplneni). To je sice pro *živého škůdce* slabá metoda, ale na roboty relativně slušně funguje.
+<p>Jak už to tak u Wordpressu bývá, na všechno <b>existuje plugin</b>.</p>
 
-Po instalaci a aktivaci pluginu přibude v menu položka *Stop Registration Spam Settings*, kde je rovněž možné nastavit vlastní (českou) otázku.
+<p>Funkčním se ukázal být <b>Stop Registration Spam</b>, který zavádí ochranu prostřednictvím <a href="/spam#otazka-bez-vyplneni">kontrolní otázky</a>. To je sice pro <i>živého škůdce</i> slabá metoda, ale na roboty relativně slušně funguje.</p>
 
-Při špatné odpovědi se zobrazí chyba a **e-mail na adresu spammera** se neodešle. Výsledná podoba na stránce registrace (`example.com/wp-login.php?action=register`) bude následovná:
+<p>Po instalaci a aktivaci pluginu přibude v menu položka <i>Stop Registration Spam Settings</i>, kde je rovněž možné nastavit vlastní (českou) otázku.</p>
+
+<p><img src="/files/wordpress-spam-registrace/stop-registration-spam.png" alt="Nastavení kontrolní otázky ve WordPresss" class="border"></p>
+
+<p>Při špatné odpovědi se zobrazí chyba a <b>e-mail na adresu spammera</b> se neodešle. Výsledná podoba na stránce registrace (<code>example.com/wp-login.php?action=register</code>) bude následovná:</p>
+
+<p><img src="/files/wordpress-spam-registrace/kontrolni-otazka.png" alt="Kontrolní otázka u WordPress registrace" class="border"></p>

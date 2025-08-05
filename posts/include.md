@@ -5,25 +5,22 @@ description: "I web o pár stránkách je vhodné skládat automatisovaně. Jak 
 date: "2013-09-05"
 last_modification: "2013-09-08"
 status: 1
-tags: ["Hotová řešení", "PHP"]
+tags: ["hotova-reseni", "php"]
+format: "html"
 ---
 
-Pro některé **malé weby** může být jednodušší a z hlediska výkonu (zátěž serveru + rychlost načítání) výhodnější nepoužívat nějaký rozsáhlý redakční systém. Psát vše v **čistém HTML** a **ručně kopírovat společné části** není také nic moc. Nabízí se třetí cesta… skládání stránky v PHP.
+<p>Pro některé <b>malé weby</b> může být jednodušší a z hlediska výkonu (zátěž serveru + rychlost načítání) výhodnější nepoužívat nějaký rozsáhlý redakční systém. Psát vše v <b>čistém HTML</b> a <b>ručně kopírovat společné části</b> není také nic moc. Nabízí se třetí cesta… skládání stránky v PHP.</p>
 
-## Vložení společných částí
+<h2>Vložení společných částí</h2>
+<p>Jako nejelegantnější se mi jeví společné části uložit jako funkce do společného souboru, který se na každé stránce připojí a společné funkce se zavolají.</p>
+<p>Můžeme vycházet z toho, že výsledný HTML kód každé stránky sestává z:</p>
+<ol>
+  <li>společného obsahu <b>před</b> samotným obsahem — typicky <code>&lt;!doctype html&gt;</code>, <code>&lt;meta&gt;</code> značky, hlavička, popřípadě menu,</li>
+  <li>společného obsahu <b>za</b> samotným obsahem — typicky patička nebo další sloupec</li>
+</ol>
 
-Jako nejelegantnější se mi jeví společné části uložit jako funkce do společného souboru, který se na každé stránce připojí a společné funkce se zavolají.
-
-Můžeme vycházet z toho, že výsledný HTML kód každé stránky sestává z:
-
-  - společného obsahu **před** samotným obsahem — typicky `&lt;!doctype html&gt;`, `&lt;meta&gt;` značky, hlavička, popřípadě menu,
-
-  - společného obsahu **za** samotným obsahem — typicky patička nebo další sloupec
-
-Samotná stránka `nejaka-stranka.php` potom bude vypadat nějak takto:
-
-```
-&lt;?php
+<p>Samotná stránka <code>nejaka-stranka.php</code> potom bude vypadat nějak takto:</p>
+<pre><code>&lt;?php
 include "spolecne.php";
 hlavicka("Titulek stránky");
 ?&gt;
@@ -36,15 +33,12 @@ hlavicka("Titulek stránky");
 &lt;?php 
 paticka();
 ?&gt;
+</code></pre>
 
-```
+<p>Soubor <code>spolecne.php</code> bude v začátku jen definovat funkce <code>hlavicka</code> a <code>paticka</code>.</p>
 
-Soubor `spolecne.php` bude v začátku jen definovat funkce `hlavicka` a `paticka`.
-
-### Hlavička
-
-```
-&lt;?php
+<h3>Hlavička</h3>
+<pre><code>&lt;?php
 function hlavicka($title, $description = "") {
 ?>
 &lt;!doctype html>
@@ -64,73 +58,55 @@ function hlavicka($title, $description = "") {
   &lt;/div>
 
 &lt;div class=content>
-&lt;?php } ?>
-```
+&lt;?php } ?></code></pre>
 
-Tato funkce provede následující:
-  
-    vypíše `&lt;!doctype>`, `&lt;meta>` značku pro **kódování**, pokud bude předán **titulek**, tak nastaví `&lt;title>` na *Název stránky – Název webu* pokud se funkci předá **popisek**, nastaví se `&lt;meta name=description>`,
-    - připojí CSS a vůbec všechen **společný obsah** (hlavička, navigace, obal z `&lt;div>`u pro samotný obsah.
+<p>Tato funkce provede následující:
+  <ol>
+    <li>vypíše <code>&lt;!doctype></code>, <li><code>&lt;meta></code> značku pro <b>kódování</b>, <li>pokud bude předán <b>titulek</b>, tak nastaví <code>&lt;title></code> na <i>Název stránky – Název webu</i> <li>pokud se funkci předá <b>popisek</b>, nastaví se <code>&lt;meta name=description></code>,
+    <li>připojí CSS a vůbec všechen <b>společný obsah</b> (hlavička, navigace, obal z <code>&lt;div></code>u pro samotný obsah.</li>
+    </ol>
 
-Některé HTML značky v rámci této funkce **zůstanou neuzavřené** — uzavře je až funkce `paticka`.
+<p>Některé HTML značky v rámci této funkce <b>zůstanou neuzavřené</b> — uzavře je až funkce <code>paticka</code>.</p>
 
-### Patička
+<h3>Patička</h3>
+<p>Tato funkce bude o poznání jednodušší. Stačí v ní v podstatě akorát vypsat běžné HTML (uzavření otevřených značek, vypsání patičky, připojení měřicích skriptů).</p>
 
-Tato funkce bude o poznání jednodušší. Stačí v ní v podstatě akorát vypsat běžné HTML (uzavření otevřených značek, vypsání patičky, připojení měřicích skriptů).
-
-```
-&lt;?php
+<pre><code>&lt;?php
 function paticka() {
 ?>
 &lt;/div>
 &lt;p>Web vytvořil XXX
 &lt;/div>
-&lt;?php } ?>
-```
+&lt;?php } ?></code></pre>
 
-## Hezké adresy
-
-Tento postup řešení **skládání stránek** sám o sobě nabízí relativně rozumnou podobu adres, tj. `example.com/**adresa-stranky.php**`. Nicméně, můžeme adresy ještě trochu vylepšit přepisem v `.htaccess` na podobu `example.com/adresa-stranky`:
-
-```
-RewriteEngine On
+<h2 id="hezke-adresy">Hezké adresy</h2>
+<p>Tento postup řešení <b>skládání stránek</b> sám o sobě nabízí relativně rozumnou podobu adres, tj. <code>example.com/<b>adresa-stranky.php</b></code>. Nicméně, můžeme adresy ještě trochu vylepšit přepisem v <code>.htaccess</code> na podobu <code>example.com/adresa-stranky</code>:</p>
+<pre><code>RewriteEngine On
 # podstrčení PHP, přepsat pouze na existující skript
 RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule ^([^.]+)$    $1.php    [L]
-```
+RewriteRule ^([^.]+)$    $1.php    [L]</code></pre>
 
-### Přesměrování `*.php` adres
-
-Zamezit duplicitě lze:
-  [přesměrováním](http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=31&amp;topic=97246#bez-pripony) v `.htaccess`,
-    *čisticí* funkcí v PHP, která se přidá do hlavičky (do funkce `hlavicka`):
-    ```
-function presmerovat() {
+<h3>Přesměrování <code>*.php</code> adres</h3>
+<p>Zamezit duplicitě lze:
+  <ol><li><a href="http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=31&amp;topic=97246#bez-pripony">přesměrováním</a> v <code>.htaccess</code>,
+    <li><i>čisticí</i> funkcí v PHP, která se přidá do hlavičky (do funkce <code>hlavicka</code>):
+    <pre><code>function presmerovat() {
 	$redir = str_replace(array("index.php", ".php"), "", $_SERVER['REQUEST_URI']);
 	 if ($_SERVER['REQUEST_URI'] != $redir) {
 	 	header("Location: $redir", 301);
 	 }
-}
-```
+}</code></pre></li></ol>
 
-## Menu se zvýrazněním aktuální položky
-
-Ve společném souboru (`spolecny.php`) můžeme statické menu *oživit*, aby se aktuální položka zvýraznila.
-
-Asi nejpohodlnější bude nadefinovat si jednotlivé stránky jako pole:
-
-```
-$menu = array(
+<h2 id="menu">Menu se zvýrazněním aktuální položky</h2>
+<p>Ve společném souboru (<code>spolecny.php</code>) můžeme statické menu <i>oživit</i>, aby se aktuální položka zvýraznila.</p>
+<p>Asi nejpohodlnější bude nadefinovat si jednotlivé stránky jako pole:</p>
+<pre><code>$menu = array(
     "Název stránky" => "url-stranky",
     "Název další stránky => "url-dalsi-stranky",
   );
-
-```
-
-A potom jen zajistit výpis.
-
-```
-&lt;?php
+</code></pre>
+<p>A potom jen zajistit výpis.</p>
+<pre><code>&lt;?php
 function menu($title) {
 ?>
   &lt;div class=menu>
@@ -140,13 +116,10 @@ function menu($title) {
     &lt;a href="./&lt;?=$odkaz?>"&lt;?=($nazev == $title) ? " class='active'" : ""?>>&lt;?=$nazev?>&lt;/a>
 &lt;?php } ?>
   &lt;/div>
-&lt;?php } ?>
-```
+&lt;?php } ?></code></pre>
 
-Tato funkce `menu` se zavolá z funkce `hlavicka` a předá se zadaný titulek, ten se porovná a v případě schody s některou z položek se přidá CSS třída `active`.
+<p>Tato funkce <code>menu</code> se zavolá z funkce <code>hlavicka</code> a předá se zadaný titulek, ten se porovná a v případě schody s některou z položek se přidá CSS třída <code>active</code>.</p>
 
-## Stáhnout
-
-[Hotová ukázka ke stažení](/files/include/web.rar) [Demo](/files/include/demo)
-
-Pro vyzkoušení na svém počítači je třeba mít [nainstalován webserver](http://pehapko.cz/sprava-serveru/instalace) s podporou PHP.
+<h2 id="stahnout">Stáhnout</h2>
+<p><a href="/files/include/web.rar" class="button">Hotová ukázka ke stažení</a> <a href="/files/include/demo" class="button">Demo</a></p> 
+<p>Pro vyzkoušení na svém počítači je třeba mít <a href="http://pehapko.cz/sprava-serveru/instalace">nainstalován webserver</a> s podporou PHP.</p>

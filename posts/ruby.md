@@ -5,49 +5,75 @@ description: "HTML značka <code>&lt;ruby></code> slouží k označení výslovn
 date: "2016-01-29"
 last_modification: "2016-01-29"
 status: 1
-tags: ["HTML", "HTML značky"]
+tags: ["html", "html-tagy"]
+format: "html"
 ---
 
-Uvnitř elementu `&lt;ruby>` se používá celá řada dalších značek:
+<p>Uvnitř elementu <code>&lt;ruby></code> se používá celá řada dalších značek:</p>
 
-## `&lt;rt>`
 
-Text přiřazený k symbolu se obaluje do značky `&lt;rt>` a v podporovaných prohlížečích se potom zobrazí nad symbolem.
 
-  漢 Kan
-  字 ji
+<h2 id="rt"><code>&lt;rt></code></h2>
 
-## `&lt;rp>`
+<p>Text přiřazený k symbolu se obaluje do značky <code>&lt;rt></code> a v podporovaných prohlížečích se potom zobrazí nad symbolem.</p>
 
-Jako fallback pro prohlížeče neznalé ruby existuje značka `&lt;rp>`. Do ní jde umístit obsah, který se v podporovaných prohlížečích nezobrazí, ale v nepodporovaných ano.
+<div class="live">
+<ruby>
+  漢 <rt>Kan</rt>
+  字 <rt>ji</rt>
+</ruby></div>
 
-Díky tomu se text přiřazený k symbolu může zobrazit třeba v závorce:
 
-```
-&lt;ruby>
-  漢 **&lt;rp>(&lt;/rp>** &lt;rt>Kan&lt;/rt>&lt;rp>)&lt;/rp>
+<h2 id="rp"><code>&lt;rp></code></h2>
+
+<p>Jako fallback pro prohlížeče neznalé ruby existuje značka <code>&lt;rp></code>. Do ní jde umístit obsah, který se v podporovaných prohlížečích nezobrazí, ale v nepodporovaných ano.</p>
+
+<p>Díky tomu se text přiřazený k symbolu může zobrazit třeba v závorce:</p>
+
+<pre><code>&lt;ruby>
+  漢 <b>&lt;rp>(&lt;/rp></b> &lt;rt>Kan&lt;/rt>&lt;rp>)&lt;/rp>
   字 &lt;rp>(&lt;/rp>&lt;rt>ji&lt;/rt>&lt;rp>)&lt;/rp>
-&lt;/ruby>
-```
+&lt;/ruby></code></pre>
 
-## `&lt;rb>`
 
-Značku `&lt;rb>` je možné použít pro označení symbolu.
 
-## `&lt;rtc>`
 
-Slouží pro umístění anotace. Specifikace uvádí následující příklad:
 
-```
-&lt;ruby>
+
+<h2 id="rb"><code>&lt;rb></code></h2>
+
+<p>Značku <code>&lt;rb></code> je možné použít pro označení symbolu.</p>
+
+
+<h2 id="rtc"><code>&lt;rtc></code></h2>
+
+<p>Slouží pro umístění anotace. Specifikace uvádí následující příklad:</p>
+
+<pre><code>&lt;ruby>
   &lt;rb>旧&lt;rb>金&lt;rb>山
   &lt;rt>jiù&lt;rt>jīn&lt;rt>shān
   &lt;rtc>San Francisco
-&lt;/ruby>
-```
+&lt;/ruby></code></pre>
 
-Ten se v podporovaných prohlížečích (např. **Firefox 44**) zobrazí následovně ([ukázka](http://kod.djpw.cz/eztb)):
 
-## Odkazy jinam
 
-    - W3C specifikace: [The `ruby` element](http://www.w3.org/TR/html5/text-level-semantics.html#the-ruby-element)
+
+
+
+
+<p>Ten se v podporovaných prohlížečích (např. <b>Firefox 44</b>) zobrazí následovně (<a href="http://kod.djpw.cz/eztb">ukázka</a>):</p>
+
+<p><img src="/files/ruby/rtc-zobrazeni.png" alt="Zobrazení se značkou RTC" class="border"></p>
+
+
+
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<div class="external-content">
+  <ul>
+    <li>W3C specifikace: <a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-ruby-element">The <code>ruby</code> element</a></li>
+  </ul>
+</div>

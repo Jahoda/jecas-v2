@@ -6,14 +6,20 @@ date: "2018-10-29"
 last_modification: "2018-10-29"
 status: 0
 tags: []
+format: "html"
 ---
 
-Políčko pro upload má výchozí styl, který se liší napříč prohlížeči:
+<p>Políčko pro upload má výchozí styl, který se liší napříč prohlížeči:</p>
 
-## Zobrazení názvu souboru
 
-```
-(function () {
+<div class="live">
+  <input type="file">
+</div>
+
+
+<h2 id="nazev-souboru">Zobrazení názvu souboru</h2>
+
+<pre><code>(function () {
 	var inputs = document.querySelectorAll('.js-input-file-wrap');
 	Array.prototype.forEach.call(inputs, function (inputWrap) {
 		var input = inputWrap.querySelector('.js-input-file');
@@ -22,9 +28,10 @@ Políčko pro upload má výchozí styl, který se liší napříč prohlížeč
 			fileNameEl.innerText = event.target.value.split('\\').pop();
 		});
 	});
-})();
-```
+})();</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/cwoc)
 
-[Živá ukázka](http://kod.djpw.cz/dwoc) – zobrazení názvu souboru bez JS (pouze **Chrome**)
+<p><a href="http://kod.djpw.cz/cwoc">Živá ukázka</a></p>
+
+
+<p><a href="http://kod.djpw.cz/dwoc">Živá ukázka</a> – zobrazení názvu souboru bez JS (pouze <b>Chrome</b>)</p>

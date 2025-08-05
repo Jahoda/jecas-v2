@@ -5,129 +5,145 @@ description: "Odchytávání stisknutých kláves a vytváření klávesových z
 date: "2014-03-05"
 last_modification: "2014-03-18"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-Ve webových aplikacích se občas hodí umožnit uživatelům některé funkce ovládat z **klávesnice**. Většinou by to neměl být jediný způsob, jak danou funkci použít, ale spíš usnadňující doplněk.
+<p>Ve webových aplikacích se občas hodí umožnit uživatelům některé funkce ovládat z <b>klávesnice</b>. Většinou by to neměl být jediný způsob, jak danou funkci použít, ale spíš usnadňující doplněk.</p>
 
-## Odchytávání kláves
+<h2 id="odchytavani">Odchytávání kláves</h2>
 
-Zjišťovat, co uživatel stisk za klávesu, je většinou nejvhodnější přes `document.onkeydown`. Pro určení konkrétní klávesy se musí pro některé prohlížeče předat objekt `event` a sjednotit ho s `window.event`.
+<p>Zjišťovat, co uživatel stisk za klávesu, je většinou nejvhodnější přes <code>document.onkeydown</code>. Pro určení konkrétní klávesy se musí pro některé prohlížeče předat objekt <code>event</code> a sjednotit ho s <code>window.event</code>.</p>
 
-```
-document.onkeydown = function(e) {
+<pre><code>document.onkeydown = function(e) {
   var event = window.event || e;
   var kod = event.keyCode;
   alert(kod);
-}
-```
+}</code></pre>
 
-  Kód poslední stisklé klávesy: (něco stiskněte)
-
+<div class="live nosource">
+  <p>Kód poslední stisklé klávesy: <tt>(něco stiskněte)</tt></p>
+<script>
   document.onkeydown = function(e) {
   var event = window.event || e;
   var kod = event.keyCode;
   document.getElementsByTagName("tt")[0].innerHTML = (kod);
 }
+</script>
+</div>
 
-Nyní stačí při požadovaném kódu provádět příslušnou akci.
+<p>Nyní stačí při požadovaném kódu provádět příslušnou akci.</p>
 
-## Číselné kódy kláves
+<h2 id="kody-klaves">Číselné kódy kláves</h2>
 
-Často používané **kódy kláves**.
+<p>Často používané <b>kódy kláves</b>.</p>
 
-    Kód
-    Klávesa
+<table>
+  <tr>
+    <th>Kód</th>
+    <th>Klávesa</th>
+  </tr>
+  <tr>
+    <td><code>27</code></td>
+    <td><kbd>Esc</kbd></td>
+  </tr>
+  <tr>
+    <td><code>37</code></td>
+    <td><kbd>←</kbd></td>
+  </tr>
+  <tr>
+    <td><code>39</code></td>
+    <td><kbd>→</kbd></td>
+  </tr>
+  <tr>
+    <td><code>38</code></td>
+    <td><kbd>↑</kbd></td>
+  </tr>
+  <tr>
+    <td><code>40</code></td>
+    <td><kbd>↓</kbd></td>
+  </tr>
+  <tr>
+    <td><code>116</code></td>
+    <td><kbd>F5</kbd></td>
+  </tr>
+  <tr>
+    <td><code>13</code></td>
+    <td><kbd>Enter</kbd></td>
+  </tr>
+  <tr>
+    <td><code>32</code></td>
+    <td><kbd>Space</kbd> (mezerník)</td>
+  </tr>
+  <tr>
+    <td><code>8</code></td>
+    <td><kbd>Backspace</kbd></td>
+  </tr>
+  <tr>
+    <td><code>46</code></td>
+    <td><kbd>Delete</kbd></td>
+  </tr> 
+  <tr>
+    <td><code>9</code></td>
+    <td><kbd>Tab</kbd></td>
+  </tr>   
+</table>
 
-    `27`
-    Esc
+<h2 id="shift-ctrl">Klávesy <kbd>Shift</kbd>, <kbd>Ctrl</kbd> a <kbd>Alt</kbd></h2>
 
-    `37`
-    ←
+<p>Pro vytváření klávesových zkratek existují další speciální vlastnosti objektu <code>event</code>.</p>
 
-    `39`
-    →
+<table>
+  <tr>
+    <th>Kód</th>
+    <th>Klávesa</th>
+    <th>Vlastnost</th>
+  </tr>
+  <tr>
+    <td><code>16</code></td>
+    <td><kbd>Shift</kbd></td>
+    <td><code>event.shiftKey</code></td>
+  </tr>
+  <tr>
+    <td><code>17</code></td>
+    <td><kbd>Ctrl</kbd></td>
+    <td><code>event.metaKey || event.ctrlKey</code> (sjednocení pro Mac OS)</td>
+  </tr>
+  <tr>
+    <td><code>18</code></td>
+    <td><kbd>Alt</kbd></td>
+    <td><code>event.altKey</code></td>
+  </tr>
+</table>
 
-    `38`
-    ↑
+<p>Pro odchytávání <b>složených klávesových zkratek</b> potom stačí něco jako:</p>
 
-    `40`
-    ↓
-
-    `116`
-    F5
-
-    `13`
-    Enter
-
-    `32`
-    Space (mezerník)
-
-    `8`
-    Backspace
-
-    `46`
-    Delete
-
-    `9`
-    Tab
-
-## Klávesy Shift, Ctrl a Alt
-
-Pro vytváření klávesových zkratek existují další speciální vlastnosti objektu `event`.
-
-    Kód
-    Klávesa
-    Vlastnost
-
-    `16`
-    Shift
-    `event.shiftKey`
-
-    `17`
-    Ctrl
-    `event.metaKey || event.ctrlKey` (sjednocení pro Mac OS)
-
-    `18`
-    Alt
-    `event.altKey`
-
-Pro odchytávání **složených klávesových zkratek** potom stačí něco jako:
-
-```
-if (event.keyCode == 83 &amp;&amp; (event.metaKey || event.ctrlKey)) {
+<pre><code>if (event.keyCode == 83 &amp;&amp; (event.metaKey || event.ctrlKey)) {
 // Zkratka Ctrl + S
-}
-```
+}</code></pre>
 
-Tedy hlídat číslo klávesy a zároveň *speciální* klávesu.
+<p>Tedy hlídat číslo klávesy a zároveň <i>speciální</i> klávesu.</p>
 
-## Formulářová pole
+<h2 id="formulare">Formulářová pole</h2>
 
-Někdy **je žádoucí**, aby některé klávesové zkratky **nefungovaly při psaní ve formuláři**. Bylo by docela nepraktické, kdyby například ovládání fotogalerie šipkami blokovalo přesun kursoru v [`&lt;input>`u](/input). Nebo při stisknutí klávesy S se provedla příslušná akce místo napsání znaku.
+<p>Někdy <b>je žádoucí</b>, aby některé klávesové zkratky <b>nefungovaly při psaní ve formuláři</b>. Bylo by docela nepraktické, kdyby například ovládání fotogalerie šipkami blokovalo přesun kursoru v <a href="/input"><code>&lt;input></code>u</a>. Nebo při stisknutí klávesy <kbd>S</kbd> se provedla příslušná akce místo napsání znaku.</p>
 
-Řešení je zjišťovat *cílový* element. Opět se způsob liší napříč prohlížeči.
+<p>Řešení je zjišťovat <i>cílový</i> element. Opět se způsob liší napříč prohlížeči.</p>
 
-```
-var target = event.srcElement || event.target;
-```
+<pre><code>var target = event.srcElement || event.target;</code></pre>
 
-Použití:
+<p>Použití:</p>
 
-```
-if (target.tagName == "INPUT") {
+<pre><code>if (target.tagName == "INPUT") {
   // jsme v &lt;input>u
-}
-```
+}</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/rkcb) povolení zpracování zkratky Ctrl + S mimo formulářová políčka.
+<p><a href="http://kod.djpw.cz/rkcb">Živá ukázka</a> povolení zpracování zkratky <kbd>Ctrl</kbd> + <kbd>S</kbd> mimo formulářová políčka.</p>
 
-## Přidávání více zkratek
+<h2 id="vice-zkratek">Přidávání více zkratek</h2>
+<p>Při používání více zkratek je vhodné vymyslet nějaký <b>elegantnější postup</b>. Třeba si vytvořit JS objekt se všemi zkratkami a jejich akcemi a ten předat funkci, která bude požadované funkce volat podle čísla klávesy.</p>
 
-Při používání více zkratek je vhodné vymyslet nějaký **elegantnější postup**. Třeba si vytvořit JS objekt se všemi zkratkami a jejich akcemi a ten předat funkci, která bude požadované funkce volat podle čísla klávesy.
-
-```
-var zkratky = {
+<pre><code>var zkratky = {
   27 : function() {
     // ESC
   },
@@ -136,15 +152,15 @@ var zkratky = {
   }
 };
 // Volání funkce při document.onkeydown
-zkratky[kodKlavesy]();
-```
+zkratky[kodKlavesy]();</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/clcb).
+<p><a href="http://kod.djpw.cz/clcb">Živá ukázka</a>.</p>
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - [Keys.js](http://bitwalker.github.io/keys.js/)
-
-  - [Keyboard Shortcuts for Pagination](http://osvaldas.info/keyboard-shortcuts-for-pagination)
-
-  - [Combokeys](https://github.com/mightyiam/combokeys) – snadná implementace klávesových zkratek pro JS akce
+<ul>
+  <li><a href="http://bitwalker.github.io/keys.js/">Keys.js</a></li>
+  <li><a href="http://osvaldas.info/keyboard-shortcuts-for-pagination">Keyboard Shortcuts for Pagination</a></li>
+  
+  <li><a href="https://github.com/mightyiam/combokeys">Combokeys</a> – snadná implementace klávesových zkratek pro JS akce</li>
+</ul>

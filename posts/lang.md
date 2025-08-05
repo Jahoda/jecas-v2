@@ -5,80 +5,92 @@ description: "K čemu slouží a vyplatí se používat HTML atribut <code>lang<
 date: "2014-09-21"
 last_modification: "2014-09-21"
 status: 1
-tags: ["HTML", "HTML atributy"]
+tags: ["html", "html-atributy"]
+format: "html"
 ---
 
-Jedná se o **universální atribut** (lze ho tedy použít na libovolné HTML značce, i když u některých to nedává smysl) a **určuje jazyk**, ve kterém je příslušný obsah.
+<p>Jedná se o <b>universální atribut</b> (lze ho tedy použít na libovolné HTML značce, i když u některých to nedává smysl) a <b>určuje jazyk</b>, ve kterém je příslušný obsah.</p>
 
-Většinou bývá celá stránka jen v jednom jazyce, takže `lang` spatříme nejčastěji u značky `&lt;html>`:
+<p>Většinou bývá celá stránka jen v jednom jazyce, takže <code>lang</code> spatříme nejčastěji u značky <code>&lt;html></code>:</p>
 
-```
-&lt;html **lang**="cs">
+<pre><code>&lt;html <b>lang</b>="cs">
   &lt;p>
     Celý obsah stránky je česky
-  &lt;/p>
-```
+  &lt;/p></code></pre>
 
-Není nic proti ničemu následně `lang` umístit do vnořené značky `&lt;div>`, formuláře nebo čehokoliv jiného.
+<p>Není nic proti ničemu následně <code>lang</code> umístit do vnořené značky <code>&lt;div></code>, formuláře nebo čehokoliv jiného.</p>
 
-```
-&lt;html lang="en">
-  &lt;div **lang**="cs">
+<pre><code>&lt;html lang="en">
+  &lt;div <b>lang</b>="cs">
     Kus obsahu v češtině.
   &lt;/div>
-&lt;/html>
-```
+&lt;/html></code></pre>
 
-Funguje to potom tak, že jazyk dané oblasti vždy určuje **nejbližší nadřazený element** s `lang`.
+<p>Funguje to potom tak, že jazyk dané oblasti vždy určuje <b>nejbližší nadřazený element</b> s <code>lang</code>.</p>
 
-Kódy jazyků by měly být ve formátu *ISO 639-1* ([seznam kódů](http://www.loc.gov/standards/iso639-2/php/English_list.php)). Tj. například:
+<p>Kódy jazyků by měly být ve formátu <i>ISO 639-1</i> (<a href="http://www.loc.gov/standards/iso639-2/php/English_list.php">seznam kódů</a>). Tj. například:</p>
 
-  - `cs` – čeština
+<ul>
+  <li><code>cs</code> – čeština</li>
+  <li><code>sk</code> – slovenština</li>
+  <li><code>en</code> – angličtina</li>
+  <li><code>de</code> – němčina</li>
+  <li><code>fr</code> – francouzština</li>
+  <li><code>es</code> – španělština</li>
+  <li><code>it</code> – italština</li>
+  <li><code>ru</code> – ruština</li>
+</ul>
 
-  - `sk` – slovenština
 
-  - `en` – angličtina
 
-  - `de` – němčina
+<h2 id="vyuziti">Využití</h2>
 
-  - `fr` – francouzština
+<p>Proč se ale <b>zdržovat</b> s určením jazyka? Je určení jazyka i využitelné v <b>praxi</b>?</p>
 
-  - `es` – španělština
+<ol>
+  <li>
+    <p>Určení jazyka může pomoci <b>vyhledávači</b> nebo <b>překladači</b> (např. <a href="https://translate.google.com/">Překladač Google</a>). Oba typy nástrojů sice mají vymyšleny systémy pro <b>automatickou detekci</b>, ale v jistých případech mohou selhat.</p>
+  </li>
+  
+  <li>
+    <p><b>Kontrola pravopisu</b> je dostupná ve všech běžných prohlížečích. V případě, že má uživatel více <b>slovníků</b>, lze použitím <code>lang</code>u nastavit preferovaný jazyk pro kontrolu.</p>
+    
+    <p>Týká se to kontroly ve <b>formulářových polích</b> (<a href="/input"><code>&lt;input></code></a> a <a href="/textarea"><code>&lt;textarea></code></a>) nebo <a href="/uprava-stranky-designmode"><code>contenteditable</code></a>.</p>
+    
+    <p>Tato funkčnost dle mých testů funguje momentálně jen ve <b>Firefoxu</b>. <a href="http://kod.djpw.cz/kvfb">Pokusná stránka</a> – v podporovaném prohlížeči při dostupnosti českého i anglického slovníku díky <code>&lt;html <b>lang="en"</b>></code> podtrhá jako chyby češtinu.</p>
+  </li>
+  
+  <li>
+    <p><b>Hlasové čtečky</b> by rovněž mohly volbu jazyka provést na základě atributu <code>lang</code>.</p>
+  </li>
+  
+  <li>
+    <p>Z pohledu CSS použití <code>lang</code>u nabídne selektor <a href="/css-selektory#lang"><code>:lang()</code></a> (funkční od <b>IE 8</b>).</p>
+    
+    <p>U <b>vícejazyčného webu</b> se hodí mít dostupnou informaci o jazyku dostupnou z CSS/JavaScriptu. Atribut <code>lang</code> je nejspíš elegantnější řešení než <a href="/id-class">třídy nebo ID</a>.</p>
+  </li>
+  
+  <li>
+    <p>CSS vlastnost <a href="/hyphens"><code>hyphens</code></a> (= dělení slov na konci řádku spojovníkem) může na základě informace o jazyku fungovat korektně podle pravidel daného jazyka.</p>
+  </li>
+  
+</ol>
 
-  - `it` – italština
+<p>Nakonec se nabízí využití pro <b>změnu klávesnice</b> na základě jazyka například u mobilních zařízení, aby lépe vyhovovala danému jazyku (diakritika), ale s tím jsem se zatím nesetkal.</p>
 
-  - `ru` – ruština
 
-## Využití
 
-Proč se ale **zdržovat** s určením jazyka? Je určení jazyka i využitelné v **praxi**?
+<h2 id="doporuceni">Doporučení</h2>
 
-    Určení jazyka může pomoci **vyhledávači** nebo **překladači** (např. [Překladač Google](https://translate.google.com/)). Oba typy nástrojů sice mají vymyšleny systémy pro **automatickou detekci**, ale v jistých případech mohou selhat.
+<p>Doporučuji tedy atribut <code>lang</code> <b>správně</b> používat. To <i>správně</i> je dost důležité, protože chybné použití – nastavení jiného <code>lang</code>u, než je jazyk stránky – nadělá více škody než užitku.</p>
 
-    **Kontrola pravopisu** je dostupná ve všech běžných prohlížečích. V případě, že má uživatel více **slovníků**, lze použitím `lang`u nastavit preferovaný jazyk pro kontrolu.
+<p>To se může hravě stát při <b>okopírování</b> cizí HTML kostry z anglického prostředí pro použití na české stránce.</p>
 
-    Týká se to kontroly ve **formulářových polích** ([`&lt;input>`](/input) a [`&lt;textarea>`](/textarea)) nebo [`contenteditable`](/uprava-stranky-designmode).
 
-    Tato funkčnost dle mých testů funguje momentálně jen ve **Firefoxu**. [Pokusná stránka](http://kod.djpw.cz/kvfb) – v podporovaném prohlížeči při dostupnosti českého i anglického slovníku díky `&lt;html **lang="en"**>` podtrhá jako chyby češtinu.
+<h2 id="odkazy">Odkazy jinam</h2>
 
-    **Hlasové čtečky** by rovněž mohly volbu jazyka provést na základě atributu `lang`.
-
-    Z pohledu CSS použití `lang`u nabídne selektor [`:lang()`](/css-selektory#lang) (funkční od **IE 8**).
-
-    U **vícejazyčného webu** se hodí mít dostupnou informaci o jazyku dostupnou z CSS/JavaScriptu. Atribut `lang` je nejspíš elegantnější řešení než [třídy nebo ID](/id-class).
-
-    CSS vlastnost [`hyphens`](/hyphens) (= dělení slov na konci řádku spojovníkem) může na základě informace o jazyku fungovat korektně podle pravidel daného jazyka.
-
-Nakonec se nabízí využití pro **změnu klávesnice** na základě jazyka například u mobilních zařízení, aby lépe vyhovovala danému jazyku (diakritika), ale s tím jsem se zatím nesetkal.
-
-## Doporučení
-
-Doporučuji tedy atribut `lang` **správně** používat. To *správně* je dost důležité, protože chybné použití – nastavení jiného `lang`u, než je jazyk stránky – nadělá více škody než užitku.
-
-To se může hravě stát při **okopírování** cizí HTML kostry z anglického prostředí pro použití na české stránce.
-
-## Odkazy jinam
-
-  - W3C: [Why use the language attribute?](http://www.w3.org/International/questions/qa-lang-why.en)
-
-  - W3C: [Declaring language in HTML](http://www.w3.org/International/questions/qa-html-language-declarations)
+<ul>
+  <li>W3C: <a href="http://www.w3.org/International/questions/qa-lang-why.en">Why use the language attribute?</a></li>
+  
+  <li>W3C: <a href="http://www.w3.org/International/questions/qa-html-language-declarations">Declaring language in HTML</a></li>
+</ul>

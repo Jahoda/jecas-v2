@@ -5,27 +5,32 @@ description: "Jak <i>psát</i> na web převodem hlasu na text pomocí <code>spee
 date: "2014-04-07"
 last_modification: "2017-05-14"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "Hlas"]
+tags: ["hlas", "hotova-reseni", "js"]
+format: "html"
 ---
 
-Pro usnadnění zadávání obsahu na web existuje *Speech Recognition API*. Díky němu je možné převést řeč na text a dále s ním na stránce pracovat.
+<p>Pro usnadnění zadávání obsahu na web existuje <i>Speech Recognition API</i>. Díky němu je možné převést řeč na text a dále s ním na stránce pracovat.</p>
 
-Tím se otevírají možnosti jako je např. významné usnadnění **vyplňování formulářů** a podobně.
+<p>Tím se otevírají možnosti jako je např. významné usnadnění <b>vyplňování formulářů</b> a podobně.</p>
 
-## Podpora v prohlížečích
 
-V květnu 2017 podporuje hlasové zadávání pouze **Google Chrome**. Ostatní prohlížeče ho buď vyvíjí ([**Edge**](/microsoft-edge), **Opera**), nebo zvažují vyvinout (**Firefox**).
+<h2 id="podpora">Podpora v prohlížečích</h2>
 
-Jelikož rozpoznávání funguje tak, že se vstup z mikrofonu **odesílá na servery Google**, které vrací výsledný text, musí si ostatní prohlížeče implementovat obdobnou serverovou službu.
+<p>V květnu 2017 podporuje hlasové zadávání pouze <b>Google Chrome</b>. Ostatní prohlížeče ho buď vyvíjí (<a href="/microsoft-edge"><b>Edge</b></a>, <b>Opera</b>), nebo zvažují vyvinout (<b>Firefox</b>).</p>
 
-## JS API
+<p>Jelikož rozpoznávání funguje tak, že se vstup z mikrofonu <b>odesílá na servery Google</b>, které vrací výsledný text, musí si ostatní prohlížeče implementovat obdobnou serverovou službu.</p>
 
-Pro rozpoznávání slov je třeba použít JavaScriptové API.
 
-Zjednodušené použití je následovné následovné. První řádek slouží k detekci podpory v prohlížeči. **Rozpoznávání češtiny** funguje relativně slušně.
 
-```
-if ('webkitSpeechRecognition' in window) {
+
+
+<h2 id="api">JS API</h2>
+
+<p>Pro rozpoznávání slov je třeba použít JavaScriptové API.</p>
+
+<p>Zjednodušené použití je následovné následovné. První řádek slouží k detekci podpory v prohlížeči. <b>Rozpoznávání češtiny</b> funguje relativně slušně.</p>
+
+<pre><code>if ('webkitSpeechRecognition' in window) {
   var speech = new webkitSpeechRecognition();
   speech.continuous = true; // Může se v mluvení navázat
   speech.lang = "cs"; // Nastavení jazyku
@@ -37,45 +42,96 @@ if ('webkitSpeechRecognition' in window) {
   };
   
   speech.start(); // Odstartuje rozpoznávání
-}
-```
+}</code></pre>
 
-      [Živá ukázka](http://kod.djpw.cz/kedb) (funguje pouze v **Chrome**)
 
-### Nepodpora v Opeře
 
-**Opera** (alespoň verse 44) se tváří, že rozpoznávání podporuje, nicméně není tomu tak. 
 
-Aby se v **Opeře** nezobrazovaly ovládací prvky hlasového ovládání, je potřeba přidat ošklivou detekci tohoto prohlížeče, třeba:
 
-```
-var isOpera = window.opr &amp;&amp; window.opr.addons;
-```
 
-### Povolení v prohlížeči
 
-Před započetím mluvení je nutné udělit stránce **přístup k mikrofonu**. To je poměrně logické, protože jinak by mohla webová stránka uživatele odposlouchávat.
 
-### Odhad vs. finální výsledek
 
-Rozpoznaná slova se dělí na dva typy: odhad a finální výsledek. Interpret jazyka je nejspíš schopný ze souvislého spojení slov **odhalit kontext** a dosáhnout tak lepších výsledků než ze **samostatných slov**.
 
-Rozlišit tyto dva případy jde z JS vlastnosti `isFinal` jednotlivých výsledků.
 
-## Využití
 
-Kromě prostého zadávání textu jde umožnit hlasem ovládat celou stránku, třeba podle vysloveného pokynu přecházet ze stránky na stránku.
 
-### Zadávání interpunkce
 
-Asi největší slabina v zadávání delšího souvislého textu spočívá v interpunkci. Rozpoznávací server nedokáže správně umístit čárky v souvětích.
 
-Řešení je asi jedině přidat do rozpoznávací metody klíčová slova tečka, čárka a podobně, která se převedou.
 
-## Převod textu na řeč
 
-Zatímco převod hlasu na text není moc dobře podporovaný, obrácený postup – předčítání textu na stránce – je podporované mnohem lépe.
 
+
+<div class="external-content">
+  <ul>
+    <li>
+      <a href="http://kod.djpw.cz/kedb">Živá ukázka</a> (funguje pouze v <b>Chrome</b>)
+    </li>
+  </ul>
+</div>
+
+
+<h3 id="opera">Nepodpora v Opeře</h3>
+
+<p><b>Opera</b> (alespoň verse 44) se tváří, že rozpoznávání podporuje, nicméně není tomu tak. </p>
+
+<p>Aby se v <b>Opeře</b> nezobrazovaly ovládací prvky hlasového ovládání, je potřeba přidat ošklivou detekci tohoto prohlížeče, třeba:</p>
+
+<pre><code>var isOpera = window.opr &amp;&amp; window.opr.addons;</code></pre>
+
+
+
+
+
+
+
+
+<h3 id="povoleni">Povolení v prohlížeči</h3>
+
+<p>Před započetím mluvení je nutné udělit stránce <b>přístup k mikrofonu</b>. To je poměrně logické, protože jinak by mohla webová stránka uživatele odposlouchávat.
+    <p><img src="/files/speech/povoleni.png" alt="Povolení rozpoznávání hlasu v Google Chrome" class="border"></p>
+
+
+
+
+
+
+
+
+
+<h3 id="odhad">Odhad vs. finální výsledek</h3>
+
+Rozpoznaná slova se dělí na dva typy: odhad a finální výsledek. Interpret jazyka je nejspíš schopný ze souvislého spojení slov <b>odhalit kontext</b> a dosáhnout tak lepších výsledků než ze <b>samostatných slov</b>.
+
+<p>Rozlišit tyto dva případy jde z JS vlastnosti <code>isFinal</code> jednotlivých výsledků.</p>
+
+
+
+<h2 id="vyuziti">Využití</h2>
+
+
+<p>Kromě prostého zadávání textu jde umožnit hlasem ovládat celou stránku, třeba podle vysloveného pokynu přecházet ze stránky na stránku.</p>
+
+
+
+
+<h3 id="interpunkce">Zadávání interpunkce</h3>
+
+<p>Asi největší slabina v zadávání delšího souvislého textu spočívá v interpunkci. Rozpoznávací server nedokáže správně umístit čárky v souvětích.</p>
+
+<p>Řešení je asi jedině přidat do rozpoznávací metody klíčová slova tečka, čárka a podobně, která se převedou.</p>
+
+
+
+
+
+
+<h2 id="text-rec">Převod textu na řeč</h2>
+
+<p id="precist">Zatímco převod hlasu na text není moc dobře podporovaný, obrácený postup – předčítání textu na stránce – je podporované mnohem lépe.</p>
+
+<div class="live">
+  <script>
     var readText = function(text) {
         var msg = new SpeechSynthesisUtterance();
         var voices = window.speechSynthesis.getVoices();
@@ -89,35 +145,66 @@ Zatímco převod hlasu na text není moc dobře podporovaný, obrácený postup�
 
         speechSynthesis.speak(msg);
     };
-
+  </script>
+  
+  <button onclick="readText(document.getElementById('precist').innerText)">
     Přečíst předchozí odstavec
+  </button>
+</div>
 
-V češtině ale výsledky nejsou úplně přesvědčivé.
+<p>V češtině ale výsledky nejsou úplně přesvědčivé.</p>
 
-    - Google Developers: [Web apps that talk - Introduction to the Speech Synthesis API](https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API)
 
-## Překonaný atribut `x-webkit-speech`
+<div class="external-content">
+  <ul>
+    <li>Google Developers: <a href="https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API">Web apps that talk - Introduction to the Speech Synthesis API</a></li>
+  </ul>
+</div>
 
-V prohlížeči **Google Chrome** šlo ještě v roce 2014 automaticky běžný [`&lt;input>`](/input) proměnit na hlasově ovladatelný. V aktuálních versích **Chrome** to už ale nefunguje.
 
-```
-&lt;input **x-webkit-speech**>
-```
+<h2 id="input">Překonaný atribut <code>x-webkit-speech</code></h2>
 
-U takto označeného pole se potom objevovala **ikonka mikrofonu**. Živá ukázka (v novějších prohlížečích nefunguje):
+<p>V prohlížeči <b>Google Chrome</b> šlo ještě v roce 2014 automaticky běžný <a href="/input"><code>&lt;input></code></a> proměnit na hlasově ovladatelný. V aktuálních versích <b>Chrome</b> to už ale nefunguje.</p>
 
-## Odkazy jinam
 
-  - W3C: [Speech Input API Specification](http://lists.w3.org/Archives/Public/public-xg-htmlspeech/2011Feb/att-0020/api-draft.html)
 
-  - [Dictation.io](https://dictation.io/)
 
-  - Labnol.org: [How to Add Speech Recognition to your Website](http://www.labnol.org/software/add-speech-recognition-to-website/19989/)
 
-  - [Enabling Voice Input into the Open Web and Firefox OS](https://hacks.mozilla.org/2014/09/enabling-voice-input-into-the-open-web-and-firefox-os/)
 
-  - [Edit this webpage with your voice](https://shaungallagher.github.io/say_restyle/) – hlasově ovladatelná stránka
 
-  - Google: [Web Speech API Demonstration](https://www.google.com/intl/en/chrome/demos/speech.html)
+<pre><code>&lt;input <b>x-webkit-speech</b>></code></pre>
 
-  - [annyang!](https://www.talater.com/annyang/) – ovládání webu hlasovými příkazy
+
+<p><img src="/files/speech/rozpoznavani-hlasu.png" alt="Rozpoznávání hlasu v Google Chrome" class="border"></p>
+
+
+
+
+
+
+
+
+
+<p>U takto označeného pole se potom objevovala <b>ikonka mikrofonu</b>. Živá ukázka (v novějších prohlížečích nefunguje):</p>
+
+<div class="live">
+  <input type="text" x-webkit-speech>
+</div>
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>W3C: <a href="http://lists.w3.org/Archives/Public/public-xg-htmlspeech/2011Feb/att-0020/api-draft.html">Speech Input API Specification</a></li>
+  <li><a href="https://dictation.io/">Dictation.io</a></li>
+  <li>Labnol.org: <a href="http://www.labnol.org/software/add-speech-recognition-to-website/19989/">How to Add Speech Recognition to your Website</a></li>
+  
+  <li><a href="https://hacks.mozilla.org/2014/09/enabling-voice-input-into-the-open-web-and-firefox-os/">Enabling Voice Input into the Open Web and Firefox OS</a></li>
+  
+  <li><a href="https://shaungallagher.github.io/say_restyle/">Edit this webpage with your voice</a> – hlasově ovladatelná stránka</li>
+  
+  <li>Google: <a href="https://www.google.com/intl/en/chrome/demos/speech.html">Web Speech API Demonstration</a></li>
+  
+  <li><a href="https://www.talater.com/annyang/">annyang!</a> – ovládání webu hlasovými příkazy</li>
+</ul>

@@ -5,164 +5,251 @@ description: "Local Storage je úložiště v prohlížeči klienta přístupné
 date: "2015-03-13"
 last_modification: "2015-09-16"
 status: 1
-tags: ["JavaScript"]
+tags: ["js"]
+format: "html"
 ---
 
-Lokální úložiště má využití v případě, kdy je potřeba návštěvníkovi uložit nějaká data, která **není potřeba přenášet na server**.
+<p>Lokální úložiště má využití v případě, kdy je potřeba návštěvníkovi uložit nějaká data, která <b>není potřeba přenášet na server</b>.</p>
 
-To je třeba případ **průběžného ukládání obsahu formulářů**, které se díky lokálnímu úložišti může provádět velmi často, takže v případě nějakého problému přijde uživatel maximálně o pár znaků textu.
+<p>To je třeba případ <b>průběžného ukládání obsahu formulářů</b>, které se díky lokálnímu úložišti může provádět velmi často, takže v případě nějakého problému přijde uživatel maximálně o pár znaků textu.</p>
 
-    - [Automatické zapamatování formulářů](/zalohovani-formularu)
+<div class="internal-content">
+  <ul>
+    <li><a href="/zalohovani-formularu">Automatické zapamatování formulářů</a></li>
+  </ul>
+</div>
 
-Někdy se `localStorage` používá i pro **ukládání nastavení**, ale to může být lepší vázat na uživatelský profil, aby bylo přenositelné mezi různými zařízeními, které uživatel používá.
+<p>Někdy se <code>localStorage</code> používá i pro <b>ukládání nastavení</b>, ale to může být lepší vázat na uživatelský profil, aby bylo přenositelné mezi různými zařízeními, které uživatel používá.</p>
 
-## Cookies
 
-Dříve se pro ukládání používaly zpravidla **cookies** – ty mají ale jistá omezení a problémy:
 
-    Při všech HTTP požadavcích se **odesílají na server**, což limituje jejich velikost a zvětšuje objem přenášených dat.
 
-    Bezpečná velikost napříč prohlížeči je **4 kB** pro všechny cookies na dané doméně, bezpečný maximální počet sušenek je **20**. Novější prohlížeče mají limity velkorysejší. Do velikosti se započítává i název cookie, nastavení expirace a podobně.
+<h2 id="cookies">Cookies</h2>
 
-        - [Browser Cookie Limits](http://browsercookielimits.squawky.net/) – limity v současných prohlížečích
 
-    Kvůli nepotřebnosti přenášení cookie se někdy servírují statické soubory (styly, skripty, obrázky), které sušenky k ničemu nevyžadují, z jiné domény.
+<p>Dříve se pro ukládání používaly zpravidla <b>cookies</b> – ty mají ale jistá omezení a problémy:</p>
 
-    Práce s cookies není v JavaScriptu úplně pohodlná.
+<ol>
+  <li>
+    <p>Při všech HTTP požadavcích se <b>odesílají na server</b>, což limituje jejich velikost a zvětšuje objem přenášených dat.</p>
+    
+    <p>Bezpečná velikost napříč prohlížeči je <b>4 kB</b> pro všechny cookies na dané doméně, bezpečný maximální počet sušenek je <b>20</b>. Novější prohlížeče mají limity velkorysejší. Do velikosti se započítává i název cookie, nastavení expirace a podobně.</p>
+    
+    <div class="external-content">
+      <ul>
+        <li><a href="http://browsercookielimits.squawky.net/">Browser Cookie Limits</a> – limity v současných prohlížečích</li>
+      </ul>
+    </div>
+    
+    <p>Kvůli nepotřebnosti přenášení cookie se někdy servírují statické soubory (styly, skripty, obrázky), které sušenky k ničemu nevyžadují, z jiné domény.</p>
+  </li>
+  
+  
+  <li>
+    <p>Práce s cookies není v JavaScriptu úplně pohodlná.</p>
+    
+    <p>Nastavování cookie probíhá prostřednictvím <code>document.cookie</code>. Přidání 2 sušenek vypadá následovně:</p>
+    
+    <pre><code>document.cookie = "nazev=hodnota";
+document.cookie = "nazev2=hodnota2";</code></pre>
+    
+    <p>Pro <b>získání všech cookies a jejich hodnot</b> se musí řetězec z <code>document.cookie</code> rozsekávat podle středníku a rovnítka, protože obsah <code>document.cookie</code> bude po předchozím použití následující:</p>
+    
+    <pre><code>nazev=hodnota; nazev2=hodnota2</code></pre>
+    
+    <p>Aby byla manipulace s cookies pohodlnější, lze použít nějakou sadu funkcí:</p>
+    
+    <div class="external-content">
+      <ul>
+        <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/API/document/cookie#A_little_framework_a_complete_cookies_readerwriter_with_full_unicode_support">A little framework: a complete cookies reader/writer with full unicode support</a></li>
+      </ul>
+    </div>
+  </li>
+</ol>
 
-    Nastavování cookie probíhá prostřednictvím `document.cookie`. Přidání 2 sušenek vypadá následovně:
+<h2 id="ukladani">Ukládání větších dat do cookie</h2>
 
-    ```
-document.cookie = "nazev=hodnota";
-document.cookie = "nazev2=hodnota2";
-```
+<p>Pro ukládání větších dat pomocí cookie tak bylo před <code>localStorage</code> nutné používat hybridní způsob, kdy je v cookie pouze identifikátor, ke kterému se data ukládají na server.</p>
 
-    Pro **získání všech cookies a jejich hodnot** se musí řetězec z `document.cookie` rozsekávat podle středníku a rovnítka, protože obsah `document.cookie` bude po předchozím použití následující:
 
-    ```
-nazev=hodnota; nazev2=hodnota2
-```
+<h2 id="localStorage">Lokální úložiště</h2>
 
-    Aby byla manipulace s cookies pohodlnější, lze použít nějakou sadu funkcí:
+<p>Lokální úložiště funguje od <b>Internet Exploreru 8</b>. Z aktuálních rozšířených prohlížečů chybí podpora v mobilním prohlížeči <b>Opera Mini</b>.</p>
 
-        - MDN: [A little framework: a complete cookies reader/writer with full unicode support](https://developer.mozilla.org/en-US/docs/Web/API/document/cookie#A_little_framework_a_complete_cookies_readerwriter_with_full_unicode_support)
+<p>Použití je elegantní:</p>
 
-## Ukládání větších dat do cookie
+<h3 id="setItem">Uložení hodnoty <code>setItem</code></h3>
 
-Pro ukládání větších dat pomocí cookie tak bylo před `localStorage` nutné používat hybridní způsob, kdy je v cookie pouze identifikátor, ke kterému se data ukládají na server.
+<pre><code>localStorage.setItem("nazev-polozky", "hodnota");</code></pre>
 
-## Lokální úložiště
 
-Lokální úložiště funguje od **Internet Exploreru 8**. Z aktuálních rozšířených prohlížečů chybí podpora v mobilním prohlížeči **Opera Mini**.
 
-Použití je elegantní:
 
-### Uložení hodnoty `setItem`
+<h3 id="getItem">Přečtení hodnoty <code>getItem</code></h3>
 
-```
-localStorage.setItem("nazev-polozky", "hodnota");
-```
+<pre><code>var obsah = localStorage.getItem("nazev-polozky");</code></pre>
 
-### Přečtení hodnoty `getItem`
 
-```
-var obsah = localStorage.getItem("nazev-polozky");
-```
 
-### Odstranění položky `removeItem`
+<h3 id="removeItem">Odstranění položky <code>removeItem</code></h3>
 
-```
-localStorage.removeItem("nazev-polozky");
-```
+<pre><code>localStorage.removeItem("nazev-polozky");</code></pre>
 
-### Odstranění všech dat `clear`
 
-```
-localStorage.clear();
-```
 
-## Platnost dat v `localStorage`
 
-Data v lokálním úložišti zpravidla vydrží hodně dlouho. Nemají **omezenou dobu platnosti** jako `cookie` a běžní uživatelé je většinou nemažou.
+<h3 id="clear">Odstranění všech dat <code>clear</code></h3>
 
-## Velikost úložiště
+<pre><code>localStorage.clear();</code></pre>
 
-Do `localStorage` se ve většině prohlížečů vejde 10 MB dat (**Chrome 40**, **Firefox 34**, **IE 9, 10, 11**). Prohlížeče **Safari** podporují 5 MB a **Android Browser 4.3** jen 2 MB.
 
-Bezpečná velikost je tedy **2 megabyty**.
 
-    - HTML5 Rocks: [Working with quota on mobile browsers](http://www.html5rocks.com/en/tutorials/offline/quota-research/) – přehled velikosti úložišť v prohlížečích
 
-## Ukládání JSONu
+<h2 id="platnost">Platnost dat v <code>localStorage</code></h2>
 
-Někdy se hodí ukládat do `localStorage` celé [JS objekty](/json). Lokální úložiště je velmi *hloupé* a umí ukládat pouze **řetězce**. Takže se objekt musí na řetězec převést.
+<p>Data v lokálním úložišti zpravidla vydrží hodně dlouho. Nemají <b>omezenou dobu platnosti</b> jako <code>cookie</code> a běžní uživatelé je většinou nemažou.</p>
 
-### Uložení JSONu
 
-JavaScriptový objekt se převede pomocí `JSON.stringify`:
 
-```
-var objekt = {
+
+<h2 id="velikost">Velikost úložiště</h2>
+
+<p>Do <code>localStorage</code> se ve většině prohlížečů vejde 10 MB dat (<b>Chrome 40</b>, <b>Firefox 34</b>, <b>IE 9, 10, 11</b>). Prohlížeče <b>Safari</b> podporují 5 MB a <b>Android Browser 4.3</b> jen 2 MB.</p>
+
+<p>Bezpečná velikost je tedy <b>2 megabyty</b>.</p>
+
+<div class="external-content">
+  <ul>
+    <li>HTML5 Rocks: <a href="http://www.html5rocks.com/en/tutorials/offline/quota-research/">Working with quota on mobile browsers</a> – přehled velikosti úložišť v prohlížečích</li>
+  </ul>
+</div>
+
+
+
+<h2 id="json">Ukládání JSONu</h2>
+
+<p>Někdy se hodí ukládat do <code>localStorage</code> celé <a href="/json">JS objekty</a>. Lokální úložiště je velmi <i>hloupé</i> a umí ukládat pouze <b>řetězce</b>. Takže se objekt musí na řetězec převést.</p>
+
+
+
+<h3 id="ulozeni">Uložení JSONu</h3>
+
+<p>JavaScriptový objekt se převede pomocí <code>JSON.stringify</code>:</p>
+
+<pre><code>var objekt = {
   "klic" : "hodnota",
   "klic 2" : "hodnota 2"
 }
 localStorage.setItem(
   "nazev-polozky", 
-  **JSON.stringify**(objekt)
-);
-```
+  <b>JSON.stringify</b>(objekt)
+);</code></pre>
 
-### Získání JSONu
 
-Pro převodu řetězce zpět na JSON se použije `JSON.parse`:
 
-```
-var data = localStorage.getItem("nazev-polozky");
+
+
+
+
+
+
+
+<h3 id="ziskani">Získání JSONu</h3>
+
+<p>Pro převodu řetězce zpět na JSON se použije <code>JSON.parse</code>:</p>
+
+<pre><code>var data = localStorage.getItem("nazev-polozky");
 if (data) {
-  var objekt = **JSON.parse**(data);
-}
-```
+  var objekt = <b>JSON.parse</b>(data);
+}</code></pre>
 
-## Anonymní režim
 
-V privátním/anonymním režimu **Safari**, **iOS Safari** a **Android browser** nepodporují nastavování položek do `localStorage` (stejně tak do `sessionStorage`).
 
-Aplikace používající úložiště by s tím měla počítat.
 
-Ostatní prohlížeče data uchovají pouze **do zavření** anonymního okna.
 
-  - [Don’t Forget to Check Private Browsing Mode when Testing](http://arbitraryreason.com/dont-forget-to-check-private-browsing-mode-when-testing/)
 
-## Zobrazení `localStorage` v prohlížeči
 
-Pro testování se může hodit podívat, jaké položky v lokálním úložišti jsou.
+<h2 id="anonymni-rezim">Anonymní režim</h2>
 
-Ve [vývojářských nástrojích](/vyvojarske-nastroje) (klávesa F12) jsou všechna úložiště dostupná na záložce *Resources*/*Zdroje*:
+<p>V privátním/anonymním režimu <b>Safari</b>, <b>iOS Safari</b> a <b>Android browser</b> nepodporují nastavování položek do <code>localStorage</code> (stejně tak do <code>sessionStorage</code>).</p>
 
-## Lokální úložiště jako cache
+<p>Aplikace používající úložiště by s tím měla počítat.</p>
 
-Ukládáním potřebných souborů do `localStorage` lze v některých případech **zrychlit načítání stránky** oproti standardnímu cacheování v prohlížeči:
+<p>Ostatní prohlížeče data uchovají pouze <b>do zavření</b> anonymního okna.</p>
 
-    - [Smartphone Browser localStorage is up to 5x Faster than Native Cache (New Research)](http://www.mobify.com/blog/smartphone-localstorage-outperforms-browser-cache/)
+<div class="external-content">
+  <ul><li><a href="http://arbitraryreason.com/dont-forget-to-check-private-browsing-mode-when-testing/">Don’t Forget to Check Private Browsing Mode when Testing</a></li></ul>
+</div>
 
-Je ale nutné řešit, aby se případná neaktuální data při změně obnovovala a podobně.
 
-## Starší prohlížeče
 
-Pro starší prohlížeče nepodporující `localStorage` je dobré **testovat podporu**, aby volání metod nad `localStorage` zbytečně nevyhazovalo chyby.
 
-```
-if (window.localStorage) {
+
+<h2 id="prochazeni">Zobrazení <code>localStorage</code> v prohlížeči</h2>
+
+<p>Pro testování se může hodit podívat, jaké položky v lokálním úložišti jsou.</p>
+
+<p>Ve <a href="/vyvojarske-nastroje">vývojářských nástrojích</a> (klávesa <kbd>F12</kbd>) jsou všechna úložiště dostupná na záložce <i lang="en">Resources</i>/<i>Zdroje</i>:</p>
+
+<p><img src="/files/localstorage/local-storage.png" alt="Procházení lokálního úložiště v Dev Tools" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="cache">Lokální úložiště jako cache</h2>
+
+<p>Ukládáním potřebných souborů do <code>localStorage</code> lze v některých případech <b>zrychlit načítání stránky</b> oproti standardnímu cacheování v prohlížeči:</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://www.mobify.com/blog/smartphone-localstorage-outperforms-browser-cache/">Smartphone Browser localStorage is up to 5x Faster than Native Cache (New Research)</a></li>
+  </ul>
+</div>
+
+<p>Je ale nutné řešit, aby se případná neaktuální data při změně obnovovala a podobně.</p>
+
+
+
+<h2 id="starsi">Starší prohlížeče</h2>
+
+<p>Pro starší prohlížeče nepodporující <code>localStorage</code> je dobré <b>testovat podporu</b>, aby volání metod nad <code>localStorage</code> zbytečně nevyhazovalo chyby.</p>
+
+
+
+<pre><code>if (window.localStorage) {
   // prohlížeč podporuje lokální úložiště
-}
-```
+}</code></pre>
 
-### Internet Explorer 7
 
-Starší **IE** dokáží místo `localStorage` používat `userData`. [**Chamurappiho**](http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=8&amp;topic=151480#4) [polyfill](/polyfill) pro starší **Explorery**:
 
-```
-if(!window.localStorage &amp;&amp; document.documentElement.addBehavior) window.localStorage = (function(name)
+
+
+<h3 id="ie7">Internet Explorer 7</h3>
+
+<p>Starší <b>IE</b> dokáží místo <code>localStorage</code> používat <code>userData</code>. <a href="http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=8&amp;topic=151480#4"><b>Chamurappiho</b></a> <a href="/polyfill">polyfill</a> pro starší <b>Explorery</b>:</p>
+
+<pre><code>if(!window.localStorage &amp;&amp; document.documentElement.addBehavior) window.localStorage = (function(name)
 {
   var prefix = "storage-";
   var link = document.createElement("link");
@@ -185,29 +272,52 @@ if(!window.localStorage &amp;&amp; document.documentElement.addBehavior) window.
       link.save(name);
     }
   };
-})("localStorage");
-```
+})("localStorage");</code></pre>
 
-## Session storage
 
-Kromě `localStorage` existuje ještě velmi podobné `sessionStorage`.
 
-Liší se tím, že se jeho obsah **smaže po zavření prohlížeče**. Prohlížeče **Safari** a **Android Browser** ho navíc nelimitují maximální velikostí dat.
 
-Použití v JavaScriptu je potom obdobné. Jen se `localStorage` přepíše na `sessionStorage`:
 
-```
-**sessionStorage**.setItem("nazev-polozky", "hodnota");
-```
 
-Pro přečtení obsahu potom:
 
-```
-var obsah = sessionStorage.getItem("nazev-polozky");
-```
 
-## Odkazy jinam
 
-  - MDN: [Window.localStorage](https://developer.mozilla.org/en-US/docs/Web/API/window/localStorage)
 
-  - Sitepoint: [HTML5 Local Storage Revisited](http://www.sitepoint.com/html5-local-storage-revisited/)
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="sessionstorage">Session storage</h2>
+
+<p>Kromě <code>localStorage</code> existuje ještě velmi podobné <code>sessionStorage</code>.</p>
+
+<p>Liší se tím, že se jeho obsah <b>smaže po zavření prohlížeče</b>. Prohlížeče <b>Safari</b> a <b>Android Browser</b> ho navíc nelimitují maximální velikostí dat.</p>
+
+
+<p>Použití v JavaScriptu je potom obdobné. Jen se <code>localStorage</code> přepíše na <code>sessionStorage</code>:</p>
+
+<pre><code><b>sessionStorage</b>.setItem("nazev-polozky", "hodnota");</code></pre>
+
+
+<p>Pro přečtení obsahu potom:</p>
+
+<pre><code>var obsah = sessionStorage.getItem("nazev-polozky");</code></pre>
+
+
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul> 
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/API/window/localStorage">Window.localStorage</a></li>
+  
+  <li>Sitepoint: <a href="http://www.sitepoint.com/html5-local-storage-revisited/">HTML5 Local Storage Revisited</a></li>  
+</ul>

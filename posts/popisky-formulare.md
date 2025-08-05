@@ -5,78 +5,121 @@ description: "Jak umístit popisky formulářových prvků, aby bylo vyplňován
 date: "2016-02-04"
 last_modification: "2016-02-10"
 status: 1
-tags: ["Hotová řešení", "Formuláře", "Rady a nápady", "UX"]
+tags: ["formulare", "hotova-reseni", "napady", "ux"]
+format: "html"
 ---
 
-Téměř každá webová stránka nebo aplikace obsahuje formuláře. Bývá zvykem, že formuláře sestávají z dvojic „popisek – políčko“. K velké úvaze potom je, kam popisek umístit.
+<p>Téměř každá webová stránka nebo aplikace obsahuje formuláře. Bývá zvykem, že formuláře sestávají z dvojic „popisek – políčko“. K velké úvaze potom je, kam popisek umístit.</p>
 
-Pro lepší pohodlí se popisky obalují do značky [`&lt;label>` s atributem `for`](/label-for), aby se šlo přes popisek prokliknout do [`&lt;input>`u](/input):
+<p>Pro lepší pohodlí se popisky obalují do značky <a href="/label-for"><code>&lt;label></code> s atributem <code>for</code></a>, aby se šlo přes popisek prokliknout do <a href="/input"><code>&lt;input></code>u</a>:</p>
 
-```
-&lt;label for="policko">
+<pre><code>&lt;label for="policko">
   Popisek
 &lt;/label>
-&lt;input id="policko">
-```
+&lt;input id="policko"></code></pre>
 
-## Popisky vedle políček
 
-  Jméno
+<h2 id="vedle">Popisky vedle políček</h2>
 
-Umístit popisky vedle příslušných prvků je výhodné hlavně kvůli místu. Formulář může být nižší.
+<div class="live">
+  <p><label for="policko1">Jméno</label>
+    <input id="policko1">  
+  </p>
+</div>
 
-Jinak má tento postup několik nevýhod.
+<p>Umístit popisky vedle příslušných prvků je výhodné hlavně kvůli místu. Formulář může být nižší.</p>
 
-Při více položkách je třeba řešit jejich zarovnání pod sebe. Jde to snadno třeba [tabulkou](/html-tabulky):
+<p>Jinak má tento postup několik nevýhod.</p>
 
-      Jméno a příjmení
 
-      Město
+<p>Při více položkách je třeba řešit jejich zarovnání pod sebe. Jde to snadno třeba <a href="/html-tabulky">tabulkou</a>:</p>
+<div class="live">
+  <table class="no-border">
+    <tr>
+      <td><label for="p2">Jméno a příjmení</label></td>
+      <td><input type="text" id="p1"></td>
+    </tr>
+    <tr>
+      <td><label for="p2">Město</label></td>
+      <td><input type="text" id="p2"></td>
+    </tr>
+    <tr>
+      <td><label for="p3">Telefon</label></td>
+      <td><input type="text" id="p3"></td>
+    </tr>    
+  </table>
+</div>
 
-      Telefon
+<p>Jak je na ukázce vidět, vlivem rozdílné délky popisků je <i>město</i> a <i>telefon</i> hodně daleko od příslušného políčka. Kvůli tomu bude muset člověk více přeskakovat očima, čímž se prodlouží doba vyplňování.</p>
 
-Jak je na ukázce vidět, vlivem rozdílné délky popisků je *město* a *telefon* hodně daleko od příslušného políčka. Kvůli tomu bude muset člověk více přeskakovat očima, čímž se prodlouží doba vyplňování.
 
-### Zarovnání vpravo
+<h3 id="vpravo">Zarovnání vpravo</h3>
 
-Zrychlit čtení takového formuláře jde zarovnáním popisků doprava k políčkům:
+<p>Zrychlit čtení takového formuláře jde zarovnáním popisků doprava k políčkům:</p>
 
-      Jméno a příjmení
+<div class="live">
+  <table class="no-border">
+    <tr>
+      <td style="text-align: right"><label for="p12">Jméno a příjmení</label></td>
+      <td><input type="text" id="p12"></td>
+    </tr>
+    <tr>
+      <td style="text-align: right"><label for="p13">Město</label></td>
+      <td><input type="text" id="p13"></td>
+    </tr>
+  </table>
+</div>
 
-      Město
+<h2 id="nad">Popisky nad políčky</h2>
 
-## Popisky nad políčky
+<p>Popisky nad formulářovými prvky by měly být na vyplňování <b>nejrychlejší</b>. Očím vyplňujícího uživatele se stačí pohybovat jen směrem dolů. Není potřeba se přesouvat ještě zleva doprava jako v předchozím případě.</p>
 
-Popisky nad formulářovými prvky by měly být na vyplňování **nejrychlejší**. Očím vyplňujícího uživatele se stačí pohybovat jen směrem dolů. Není potřeba se přesouvat ještě zleva doprava jako v předchozím případě.
+<div class="live">
+  <p>
+    <label for="policko2">Jméno</label><br>
+    <td><input id="policko2"></td>
+  </p>
+  <p>
+    <label for="policko3">Město</label><br>
+    <td><input id="policko3"></td>
+  </p>  
+</div>
 
-    Jméno
+<p>Nevýhoda je oproti předchozímu postupu ve větší prostorové náročnosti. Tento typ formuláře je přibližně 2× vyšší.</p>
 
-    Město
+<p>Hodně užitečná je ale na tomto postupu snadná přenositelnost formuláře na mobily při tvorbě <a href="/responsive">responsivního designu</a>, kam se dvousloupcový formulář nemusí vejít.</p>
 
-Nevýhoda je oproti předchozímu postupu ve větší prostorové náročnosti. Tento typ formuláře je přibližně 2× vyšší.
+<div class="external-content">
+  <ul><li><a href="http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php">Label Placement in Forms</a> – test rychlosti vyplňování různých formulářů se snímáním pohybu zraku</li>
+  </ul>
+</div>
 
-Hodně užitečná je ale na tomto postupu snadná přenositelnost formuláře na mobily při tvorbě [responsivního designu](/responsive), kam se dvousloupcový formulář nemusí vejít.
+<h2 id="v">Popisky v políčku</h2>
 
-  - [Label Placement in Forms](http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php) – test rychlosti vyplňování různých formulářů se snímáním pohybu zraku
+<p>Hlavní výhoda popisků v políčku je úspora místa.</p>
 
-## Popisky v políčku
 
-Hlavní výhoda popisků v políčku je úspora místa.
+<h3 id="placeholder">Mizející popisky</h3>
 
-### Mizející popisky
+<p>Docela populární, ale většinou velmi špatné řešení, je realisovat popisky prostřednictvím <a href="/placeholder"><code>placeholder</code>u</a>:</p>
 
-Docela populární, ale většinou velmi špatné řešení, je realisovat popisky prostřednictvím [`placeholder`u](/placeholder):
+<div class="live">
+  <p><input type="text" placeholder="Jméno"></p>
+</div>
 
-Problém je v tom, že takový *popisek* v některých prohlížečích zmizí ihned po kliknutí do něj. Případně zmizí nejpozději při zadání prvního znaku.
+<p>Problém je v tom, že takový <i>popisek</i> v některých prohlížečích zmizí ihned po kliknutí do něj. Případně zmizí nejpozději při zadání prvního znaku.</p>
 
-Uživatel si kvůli **mizejícímu popisku** musí zapamatovat, co má do políčka zadávat. Pokud na účel políčka zapomene, nedostane se k němu jinak, než že celé pole smaže. Kontrola již vyplněného formuláře je potom prakticky nemožná.
+<p>Uživatel si kvůli <b>mizejícímu popisku</b> musí zapamatovat, co má do políčka zadávat. Pokud na účel políčka zapomene, nedostane se k němu jinak, než že celé pole smaže. Kontrola již vyplněného formuláře je potom prakticky nemožná.</p>
 
-Mizející placeholder jako popisek není moc dobrý ani u krátkých formulářů. I u formuláře o pár políčkách může člověka něco vyrušit během vyplňování. Po návratu k přihlašovacímu formuláři může třeba zapomenout, jestli má zadat e-mail nebo uživatelské jméno.
+<p>Mizející placeholder jako popisek není moc dobrý ani u krátkých formulářů. I u formuláře o pár políčkách může člověka něco vyrušit během vyplňování. Po návratu k přihlašovacímu formuláři může třeba zapomenout, jestli má zadat e-mail nebo uživatelské jméno.</p>
 
-### Přesun placeholderu
+<h3 id="presun">Přesun placeholderu</h3>
 
-Trochu lepší a celkem rozšířené řešení je placeholder po vybrání pole zmenšit a přemístit.
+<p>Trochu lepší a celkem rozšířené řešení je placeholder po vybrání pole zmenšit a přemístit.</p>
 
+
+<div class="live">
+<style>
 .policko {
     position: relative;
 }
@@ -94,21 +137,35 @@ Trochu lepší a celkem rozšířené řešení je placeholder po vybrání pole
     background: #fff;
     padding: .2em;
 }
+</style>
+<p>
+  <span class="policko">
+    <input id="email3" type="email" onfocus="this.className = 'focus'">
+    <label for="email3">E-mail</label>
+  </span>
+</p>
+<p>
+  <span class="policko">
+    <input id="url" type="url" onfocus="this.className = 'focus'">
+    <label for="url">URL</label>
+  </span>
+</p>    
+</div>
 
-    E-mail
+<p>Je otázka, jestli přesouvání popisku není zbytečný efekt, který bude odvádět pozornost od vyplňování. Další možný problém je čitelnost popisku při zmenšení jeho písma.</p>
 
-    URL
+<p>Nakonec přetrvává ještě jedna nevýhoda. Bývá dobré, když velikost políčka odpovídá očekávané délce vstupu. Při popisku v políčku se ale velikost musí přizpůsobit délce popisku, takže následující příklad není s popiskem v políčku moc dobře řešitelný:</p>
 
-Je otázka, jestli přesouvání popisku není zbytečný efekt, který bude odvádět pozornost od vyplňování. Další možný problém je čitelnost popisku při zmenšení jeho písma.
+<div class="live">
+  <p><label>Velikost bot<br><input size="2" value="45"></label></p>
+</div>
 
-Nakonec přetrvává ještě jedna nevýhoda. Bývá dobré, když velikost políčka odpovídá očekávané délce vstupu. Při popisku v políčku se ale velikost musí přizpůsobit délce popisku, takže následující příklad není s popiskem v políčku moc dobře řešitelný:
+<h3 id="viditelne">Neustále viditelný popisek</h3>
 
-  Velikost bot
+<p>Existuje ještě jedna varianta. Ve visuálním políčku utvořeném <code>&lt;label></code>em nechat popisek stále viditelný:</p>
 
-### Neustále viditelný popisek
-
-Existuje ještě jedna varianta. Ve visuálním políčku utvořeném `&lt;label>`em nechat popisek stále viditelný:
-
+<div class="live">
+  <style>
     .viditelny label {
       background: #fff;
       display: inline-block;
@@ -125,31 +182,48 @@ Existuje ještě jedna varianta. Ve visuálním políčku utvořeném `&lt;label
     .viditelny input {
       border: 0
     }
+  </style>
+  <div class="viditelny"><label><span>Jméno a příjmení</span><input></label></div>
+  <div class="viditelny"><label><span>Heslo</span><input></label></div>
+</div>
+
+<p>Pointa tohoto postupu je v tom, že takový formulář neobsahuje žádné rušivé prvky navíc. Popisek je přidružen k políčku.</p>
+
+<p>Výhody tohoto postupu popisuje článek:</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://uxmovement.com/forms/why-infield-top-aligned-form-labels-are-quickest-to-scan/">Why Infield Top Aligned Form Labels are Quickest to Scan</a></li>
+  </ul>
+</div>
+
+<p>Je potřeba si uvědomit, že i přes některé hezké výhody existují risika hovořící pro používání jiného řešení:</p>
+
+<ol>
+  <li>
+    <p>Vzhled není úplně standardní a uživatelé mohou mít problém ho pochopit. Jeden z velkých problému formulářů bývá v tom, že formulář nevypadá jako formulář.</p>
+  </li>
+  <li>
+    <p>Velikost políčka nemůže odpovídat délce očekávané hodnoty (odpovídá velikostí popisku).</p>
+  </li>
+  <li>
+    <p>Je problém s umístěním chybových hlášek při vyplnění špatné hodnoty.</p>
+  </li>
+</ol>
+
+
+<h2 id="odkazy">Odkazy</h2>
+
+<ul>   
+  <li><a href="http://uxmovement.com/forms/faster-with-top-aligned-labels/">Why Users Fill Out Forms Faster with Top Aligned Labels</a></li>
   
-  Jméno a příjmení
-  Heslo
+  <li>Luke Wroblewski: <a href="http://www.lukew.com/ff/entry.asp?1502">Web Application Form Design</a></li>
+</ul>
 
-Pointa tohoto postupu je v tom, že takový formulář neobsahuje žádné rušivé prvky navíc. Popisek je přidružen k políčku.
-
-Výhody tohoto postupu popisuje článek:
-
-    - [Why Infield Top Aligned Form Labels are Quickest to Scan](http://uxmovement.com/forms/why-infield-top-aligned-form-labels-are-quickest-to-scan/)
-
-Je potřeba si uvědomit, že i přes některé hezké výhody existují risika hovořící pro používání jiného řešení:
-
-    Vzhled není úplně standardní a uživatelé mohou mít problém ho pochopit. Jeden z velkých problému formulářů bývá v tom, že formulář nevypadá jako formulář.
-
-    Velikost políčka nemůže odpovídat délce očekávané hodnoty (odpovídá velikostí popisku).
-
-    Je problém s umístěním chybových hlášek při vyplnění špatné hodnoty.
-
-## Odkazy
-
-  - [Why Users Fill Out Forms Faster with Top Aligned Labels](http://uxmovement.com/forms/faster-with-top-aligned-labels/)
-
-  - Luke Wroblewski: [Web Application Form Design](http://www.lukew.com/ff/entry.asp?1502)
-
+<style>
 .no-border td, .no-border {
   border: 0;
   background: transparent;
-}
+}</style>
+
+<!-- http://kod.djpw.cz/ygub -->

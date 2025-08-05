@@ -6,26 +6,27 @@ date: "2014-02-21"
 last_modification: "2014-02-21"
 status: 0
 tags: []
+format: "html"
 ---
 
 Co je to CSS framework?
 
 http://mobile.smashingmagazine.com/2014/02/19/responsive-design-frameworks-just-because-you-can-should-you/
 
-[http://scotch.io/tutorials/css/getting-started-with-foundation-5-by-zurb](http://scotch.io/tutorials/css/getting-started-with-foundation-5-by-zurb)
+<a href="http://scotch.io/tutorials/css/getting-started-with-foundation-5-by-zurb">http://scotch.io/tutorials/css/getting-started-with-foundation-5-by-zurb</a>
 
-[http://scotch.io/tutorials/css/cheat-sheet-for-comparing-bootstrap-and-foundation-css-classes](http://scotch.io/tutorials/css/cheat-sheet-for-comparing-bootstrap-and-foundation-css-classes)
+<a href="http://scotch.io/tutorials/css/cheat-sheet-for-comparing-bootstrap-and-foundation-css-classes">http://scotch.io/tutorials/css/cheat-sheet-for-comparing-bootstrap-and-foundation-css-classes</a>
 
 http://picnicss.com/
 
-[material ui](http://material-ui.com/)
+<a href="http://material-ui.com/">material ui</a>
 
-[Junior, a Front End Framework for HTML 5 Mobile Apps](http://www.sitepoint.com/junior-front-end-framework-html-5-mobile-apps/)
+<a href="http://www.sitepoint.com/junior-front-end-framework-html-5-mobile-apps/">Junior, a Front End Framework for HTML 5 Mobile Apps</a>
 
-[Skeleton](http://getskeleton.com/)
+<a href="http://getskeleton.com/">Skeleton</a>
 
-- [CSS Frontend Frameworks: The Best 10 for Modern Web Design](http://noeticforce.com/css-front-end-frameworks-for-web-development-and-design)
+<li><a href="http://noeticforce.com/css-front-end-frameworks-for-web-development-and-design">CSS Frontend Frameworks: The Best 10 for Modern Web Design</a></li>
 
-- [12 Small CSS Frameworks To Use In Your Web Designs](http://sixrevisions.com/css/small-css-frameworks/)
+<li><a href="http://sixrevisions.com/css/small-css-frameworks/">12 Small CSS Frameworks To Use In Your Web Designs</a></li>
 
-- [Tailwind CSS](https://tailwindcss.com/docs/flexbox-flex-grow-shrink/) – flex utility
+<li><a href="https://tailwindcss.com/docs/flexbox-flex-grow-shrink/">Tailwind CSS</a> – flex utility</li>

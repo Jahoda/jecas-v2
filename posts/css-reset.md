@@ -5,27 +5,29 @@ description: "Používat CSS reset, nebo ne? Jaká jsou pro a proti."
 date: "2013-10-21"
 last_modification: "2015-06-02"
 status: 1
-tags: ["CSS", "Frameworky", "Rady a nápady"]
+tags: ["css", "knihovny", "napady"]
+format: "html"
 ---
 
-Pro známé HTML elementy (na rozdíl od [neznámých](/vlastni-html-znacky)) mají prohlížeče své výchozí CSS předpisy.
+<p>Pro známé HTML elementy (na rozdíl od <a href="/vlastni-html-znacky">neznámých</a>) mají prohlížeče své výchozí CSS předpisy.</p>
 
-## Příklad výchozích hodnot
 
-Různé prohlížeče mají trochu odlišné výchozí CSS.
+<h2 id="vychozi">Příklad výchozích hodnot</h2>
 
-    - **Firefox**: [Výchozí CSS předpisy](http://hg.mozilla.org/mozilla-central/file/tip/layout/style/html.css)
-    
-    - **Webkit**: [Výchozí CSS](http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css)
-    
-    - **Internet Explorer**: [Přehled výchozích CSS pravidel různých IE](http://www.iecss.com/)
-    
-    - W3C: [Default style sheet for HTML 4](http://www.w3.org/TR/CSS2/sample.html)
+<p>Různé prohlížeče mají trochu odlišné výchozí CSS.</p>
 
-Následující obsah CSS pravidel pochází z W3C specifikace:
+<div class="external-content">
+  <ul>   
+    <li><b>Firefox</b>: <a href="http://hg.mozilla.org/mozilla-central/file/tip/layout/style/html.css">Výchozí CSS předpisy</a></li>    
+    <li><b>Webkit</b>: <a href="http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css">Výchozí CSS</a></li>    
+    <li><b>Internet Explorer</b>: <a href="http://www.iecss.com/">Přehled výchozích CSS pravidel různých IE</a></li>    
+    <li>W3C: <a href="http://www.w3.org/TR/CSS2/sample.html">Default style sheet for HTML 4</a></li>    
+  </ul>
+</div>
 
-```
-html, address, blockquote,
+<p>Následující obsah CSS pravidel pochází z W3C specifikace:</p>
+
+<pre data-style="max-height: 50em; overflow: auto;"><code>html, address, blockquote,
 body, dd, div, dl, dt, fieldset, form,
 frame, frameset, h1, h2, h3, h4, h5, h6, 
 noframes, ol, p, ul, center,
@@ -91,68 +93,154 @@ center          { text-align: center }
   h4, h5, h6    { page-break-after: avoid }
   ul, ol, dl    { page-break-before: avoid }
 }
+</code></pre>
 
-```
 
-## Proč resetovat?
 
-Cílem CSS resetu je **sjednotit výchozí pravidla napříč prohlížeči**, protože různé prohlížeče mohou mít trochu jiné výchozí hodnoty. Nebo nastavit nějaký **jednotný základní vzhled**.
 
-Ohledně *CSS resetování* jsou čtyři možnosti:
 
-  - všechno **vynulovat**,
 
-  - sjednotit **odlišné vlastnosti**,
 
-  - přednastavit nějaké **universální hodnoty**,
 
-  - **neresetovat**.
 
-## Hvězdičkový reset
 
-```
-* {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="proc">Proč resetovat?</h2>
+
+<p>Cílem CSS resetu je <b>sjednotit výchozí pravidla napříč prohlížeči</b>, protože různé prohlížeče mohou mít trochu jiné výchozí hodnoty. Nebo nastavit nějaký <b>jednotný základní vzhled</b>.</p>
+
+<p>Ohledně <i>CSS resetování</i> jsou čtyři možnosti:</p>
+
+<ol>
+  <li>všechno <b>vynulovat</b>,</li>
+  <li>sjednotit <b>odlišné vlastnosti</b>,</li>
+  <li>přednastavit nějaké <b>universální hodnoty</b>,</li>
+  <li><b>neresetovat</b>.</li>
+</ol>
+
+
+
+
+
+
+<h2 id="hvezdickovy">Hvězdičkový reset</h2>
+
+<pre><code>* {
   margin: 0; 
   padding: 0
-}
-```
+}</code></pre>
 
-Jelikož hlavní rozdíly bývaly v hodnotách [`margin`](/margin) a `padding`, výše uvedený předpis je všem elementům sjednotí tím, že je vynuluje. A to, co se týče délky zápisu CSS pravidel, velmi stručně.
 
-Kromě toho se tento postup může **hodit CSS začátečníkům**, kteří ještě pořádně neví, jaké **výchozí hodnoty daný element má**. Vyresetováním všeho mají jistotu, že se projeví jen vlastnoručně přidané `margin`y a `padding`y.
 
-Dále je na první pohled na stránce patrné, které elementy je **ještě potřeba nastylovat**. **Nevýhodný** je naopak fakt, že **zapomenuté elementy** budou **špatně vypadat** – lepší výchozí hodnoty než žádné.
 
-Hrozba [nenávratného rozhození formulářů](/css-reset-formularu) už není v dnešní době **moc reálná** (pokud se neresetuje i `border` nebo `background`, což [rozhodí systémový vzhled](/vzhled-formularu) formulářových prvků).
 
-## Konkrétní reset / normalisace
+<p>Jelikož hlavní rozdíly bývaly v hodnotách <a href="/margin"><code>margin</code></a> a <code>padding</code>, výše uvedený předpis je všem elementům sjednotí tím, že je vynuluje. A to, co se týče délky zápisu CSS pravidel, velmi stručně.</p>
 
-Kromě resetování úplně všeho je možnost pečlivě vyjmenovat elementy s různými styly a ty **sjednotit napříč prohlížeči**.
 
-To dělá třeba [normalize.css](http://necolas.github.io/normalize.css/). **Výhoda je**, že elementy, u kterých by se **dalo smířit s výchozím vzhledem**, není třeba po vynulování zvnovu deklarovat. **Nevýhodné** je pravděpodobné zanášení CSS spoustou **předpisů, které se na stránce nevyužijí** a obecně používání CSS, které není 100% pod kontrolou.
+<p>Kromě toho se tento postup může <b>hodit CSS začátečníkům</b>, kteří ještě pořádně neví, jaké <b>výchozí hodnoty daný element má</b>. Vyresetováním všeho mají jistotu, že se projeví jen vlastnoručně přidané <code>margin</code>y a <code>padding</code>y.</p>
 
-## Sjednocení universálními hodnotami
 
-Další způsob je před psaním samotných CSS pravidel připojit CSS přepisy **sjednocují hodnoty ve všech prohlížečích** nastavením na nějaké **použitelné hodnoty**.
+<p>Dále je na první pohled na stránce patrné, které elementy je <b>ještě potřeba nastylovat</b>. <b>Nevýhodný</b> je naopak fakt, že <b>zapomenuté elementy</b> budou <b>špatně vypadat</b> – lepší výchozí hodnoty než žádné.</p>
 
-Existují hotová řešení (bývají součástní CSS frameworků – [Semantic UI](/semantic-ui), [Kraken](/kraken) nebo [Bootstrap](http://twitter.github.io/bootstrap/)), jejichž použitím se získá **shodný vzhled napříč prohlížeči** a většinou i v nějaké **hezčí podobě**, než bývají výchozí CSS.
+<p>Hrozba <a href="/css-reset-formularu">nenávratného rozhození formulářů</a> už není v dnešní době <b>moc reálná</b> (pokud se neresetuje i <code>border</code> nebo <code>background</code>, což <a href="/vzhled-formularu">rozhodí systémový vzhled</a> formulářových prvků).</p>
 
-Nevýhody jsou **znečištění CSS** spoustou zbytečného kódu, který se buď nepoužije, nebo stejně následně **přepíše**. Kromě toho podobně jako u *čistého CSS* je vhodné znát **výchozí hodnoty** daného frameworku, když je **bude potřeba přepisovat**.
 
-## Neresetovat
 
-Nakonec je i řešení nic předem neresetovat a rovnou **psát vlastní CSS pravidla**. Jak bylo naznačeno, hodí se k tomu **znalost výchozích hodnot** (nebo větší trpělivost při ladění v různých prohlížečích).
 
-## Shrnutí
+<h2 id="normalisace">Konkrétní reset / normalisace</h2>
 
-Těžko **obecně určit nejlepší postup**. Volba by měla záviset na konkrétním použití.
+<p>Kromě resetování úplně všeho je možnost pečlivě vyjmenovat elementy s různými styly a ty <b>sjednotit napříč prohlížeči</b>.</p>
 
-  - Vyhovuje-li výchozí **styl nějakého FW**, nemá většinou smysl **vynalézat kolo**, ale je vhodné framework použít.
+<p>To dělá třeba <a href="http://necolas.github.io/normalize.css/">normalize.css</a>. <b>Výhoda je</b>, že elementy, u kterých by se <b>dalo smířit s výchozím vzhledem</b>, není třeba po vynulování zvnovu deklarovat. <b>Nevýhodné</b> je pravděpodobné zanášení CSS spoustou <b>předpisů, které se na stránce nevyužijí</b> a obecně používání CSS, které není 100% pod kontrolou.</p>
 
-  - Naopak v případě, že cílový vzhled frameworku vůbec **neodpovídá** potřebnému vzhledu, moc se jeho použitím nezíská a jen uživatelé budou muset stahovat **zbytečná data navíc**. Kromě toho se snadno **zapomene na přestylování** obsahu ladícího k frameworku, ale neladícího k webu.
 
-  - Je třeba zvážit, zda [normalisace](#normalisace) neřeší jen nepoužité elementy nebo sjednocuje jen elementy, **co by se stejně přestylovaly** — typicky třeba velikost a odsazení nadpisů, často i seznamy nebo formuláře. Podobně u [hvězdičkového resetu](/css-reset#hvezdickovy) je teoreticky zbytečné elementy *vynulovat*, když se stejně vlastní hodnoty **později přepíší vlastními**.
 
-## Odkazy jinam
 
-  - Six Revisions: [The Best CSS Reset Stylesheets](http://sixrevisions.com/css/css-reset-stylesheets/) – seznam různých CSS resetů
+
+<h2 id="sjednoceni">Sjednocení universálními hodnotami</h2>
+
+<p>Další způsob je před psaním samotných CSS pravidel připojit CSS přepisy <b>sjednocují hodnoty ve všech prohlížečích</b> nastavením na nějaké <b>použitelné hodnoty</b>.</p>
+
+<p>Existují hotová řešení (bývají součástní CSS frameworků – <a href="/semantic-ui">Semantic UI</a>, <a href="/kraken">Kraken</a> nebo <a href="http://twitter.github.io/bootstrap/">Bootstrap</a>), jejichž použitím se získá <b>shodný vzhled napříč prohlížeči</b> a většinou i v nějaké <b>hezčí podobě</b>, než bývají výchozí CSS.</p>
+
+<p>Nevýhody jsou <b>znečištění CSS</b> spoustou zbytečného kódu, který se buď nepoužije, nebo stejně následně <b>přepíše</b>. Kromě toho podobně jako u <i>čistého CSS</i> je vhodné znát <b>výchozí hodnoty</b> daného frameworku, když je <b>bude potřeba přepisovat</b>.</p>
+
+
+
+
+
+<h2 id="neresetovat">Neresetovat</h2>
+
+<p>Nakonec je i řešení nic předem neresetovat a rovnou <b>psát vlastní CSS pravidla</b>. Jak bylo naznačeno, hodí se k tomu <b>znalost výchozích hodnot</b> (nebo větší trpělivost při ladění v různých prohlížečích).</p>
+
+
+
+
+
+<h2 id="shrnuti">Shrnutí</h2>
+
+<p>Těžko <b>obecně určit nejlepší postup</b>. Volba by měla záviset na konkrétním použití.</p>
+
+<ol>
+  <li>Vyhovuje-li výchozí <b>styl nějakého FW</b>, nemá většinou smysl <b>vynalézat kolo</b>, ale je vhodné framework použít.</li>
+  
+  <li>Naopak v případě, že cílový vzhled frameworku vůbec <b>neodpovídá</b> potřebnému vzhledu, moc se jeho použitím nezíská a jen uživatelé budou muset stahovat <b>zbytečná data navíc</b>. Kromě toho se snadno <b>zapomene na přestylování</b> obsahu ladícího k frameworku, ale neladícího k webu.</li>
+  
+  <li>Je třeba zvážit, zda <a href="#normalisace">normalisace</a> neřeší jen nepoužité elementy nebo sjednocuje jen elementy, <b>co by se stejně přestylovaly</b> — typicky třeba velikost a odsazení nadpisů, často i seznamy nebo formuláře. Podobně u <a href="/css-reset#hvezdickovy">hvězdičkového resetu</a> je teoreticky zbytečné elementy <i>vynulovat</i>, když se stejně vlastní hodnoty <b>později přepíší vlastními</b>.</li>
+</ol>
+
+
+
+<h2 id="odkaz">Odkazy jinam</h2>
+
+<ul>
+  <li>Six Revisions: <a href="http://sixrevisions.com/css/css-reset-stylesheets/">The Best CSS Reset Stylesheets</a> – seznam různých CSS resetů</li>
+</ul>

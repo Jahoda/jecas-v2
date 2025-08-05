@@ -5,66 +5,91 @@ description: "HTML atribut <code>download</code> zlepšuje uživatelský dojem z
 date: "2014-04-15"
 last_modification: "2022-07-25"
 status: 1
-tags: ["HTML", "HTML atributy"]
+tags: ["html", "html-atributy"]
+format: "html"
 ---
 
-## Zápis
-
-```
-&lt;a href="adresa-souboru" **download="Název souboru"**>
+<h2 id="zapis">Zápis</h2>
+<pre><code>&lt;a href="adresa-souboru" <b>download="Název souboru"</b>>
   Odkaz
-&lt;/a>
-```
+&lt;/a></code></pre>
 
-## Podpora
+<h2 id="podpora">Podpora</h2>
 
-Atribut `download` funguje jen v některých prohlížečích.
+<p>Atribut <code>download</code> funguje jen v některých prohlížečích.</p>
 
-  - **Chrome 14+**
+<ul>
+  <li><b>Chrome 14+</b></li>
+  <li><b>Firefox 20+</b></li>
+  <li><b>Opera 15+</b></li>
+</ul>
 
-  - **Firefox 20+**
+<h2 id="vyuziti">Využití</h2>
 
-  - **Opera 15+**
+<p>Atribut pro <b>stahování souborů</b> má hned dvě užitečné funkce.</p>
 
-## Využití
-
-Atribut pro **stahování souborů** má hned dvě užitečné funkce.
-
-    Umožňuje **nastavit název souboru** po stažení na disk.
-
-    Cíl odkazu (`href`) tedy může být klidně nějaký nesmyslný hash, avšak (v podporovaných prohlížečích) se uloží pod uživatelsky přívětivým jménem, které do `download`u nastavíme.
-
-    **Příponu souboru** je do `download`u možné zadat, ale **není to nutné** (přípona se potom převezme ze stahovaného souboru). Stejně tak není nutné zadávat samotný název (převezme se z názvu souboru).
-
-    Atribut `download` vyvolá **dialog pro stahování** i u souboru známého typu (obrázek, HTML stránka).
-
-    Ano, přidáním `download`u jde snadno nabídnout **stažení HTML stránky**.
-
-    Řeší to tedy problém, kdy je cílem nabídnout soubor známého typu rovnou ke stažení. V PHP se to řeší třeba následovně:
-
-    ```
-header("Content-Type: application/download");
+<ol>
+  
+  <li>
+    <p>Umožňuje <b>nastavit název souboru</b> po stažení na disk.</p>
+    
+    <p>Cíl odkazu (<code>href</code>) tedy může být klidně nějaký nesmyslný hash, avšak (v podporovaných prohlížečích) se uloží pod uživatelsky přívětivým jménem, které do <code>download</code>u nastavíme.</p>
+    
+    <p><b>Příponu souboru</b> je do <code>download</code>u možné zadat, ale <b>není to nutné</b> (přípona se potom převezme ze stahovaného souboru). Stejně tak není nutné zadávat samotný název (převezme se z názvu souboru).</p>
+  </li>
+  
+  <li>
+    
+    <p>Atribut <code>download</code> vyvolá <b>dialog pro stahování</b> i u souboru známého typu (obrázek, HTML stránka).</p>
+    
+    <p>Ano, přidáním <code>download</code>u jde snadno nabídnout <b>stažení HTML stránky</b>.</p>
+    
+    <p>Řeší to tedy problém, kdy je cílem nabídnout soubor známého typu rovnou ke stažení. V PHP se to řeší třeba následovně:</p>
+    
+    <pre><code>header("Content-Type: application/download");
 header("Content-Disposition: attachment; filename=$soubor");
 header("Content-Length: " . filesize($soubor));
-readfile($soubor);
-```
+readfile($soubor);</code></pre>
+  </li>
+  
+  <li>
+    <p>Stahování lze vyvolat <b>na straně klienta</b>. Stačí obsah uložit do odkazu přes <a href="/data-uri">data URL</a> a přidat <code>download</code>. Po kliknutí prohlížeč nabídne stahování. <a href="http://kod.djpw.cz/ducb-">Ukázka</a> stažení obrázku nakresleného do <a href="/canvas"><code>&lt;canvas></code>u</a>.
+    </p>
+  </li>
+</ol>
 
-    Stahování lze vyvolat **na straně klienta**. Stačí obsah uložit do odkazu přes [data URL](/data-uri) a přidat `download`. Po kliknutí prohlížeč nabídne stahování. [Ukázka](http://kod.djpw.cz/ducb-) stažení obrázku nakresleného do [`&lt;canvas>`u](/canvas).
+<h2 id="ukazka">Ukázka</h2>
 
-## Ukázka
+<p>V podporovaných prohlížečích je možné vyzkoušet <code>download</code> přímo v akci:</p>
 
-V podporovaných prohlížečích je možné vyzkoušet `download` přímo v akci:
-
+<div class="live">
+  <a 
+    href="http://jecas.cz/files/article/atribut-download.png" 
+    download="Atribut download"
+  >
     Stáhnout obrázek
-
+  </a>
+  <br>
+  <a 
+    href="http://jecas.cz/atribut-download" 
+    download
+  >
     Stáhnout stránku
+  </a>
+</div>
 
-## Stažení souboru v JavaScriptu
 
-Využít `download` atributu jde i v JS. Je tak možné uživateli umožnit cokoliv stáhnout po kliknutí jako soubor. [Ukázka](http://kod.djpw.cz/kngd)
 
-```
-function download(text, filename) {
+
+
+
+
+
+<h2 id="js">Stažení souboru v JavaScriptu</h2>
+
+<p>Využít <code>download</code> atributu jde i v JS. Je tak možné uživateli umožnit cokoliv stáhnout po kliknutí jako soubor. <a href="http://kod.djpw.cz/kngd">Ukázka</a></p>
+
+<pre><code>function download(text, filename) {
     const anchor = document.createElement('a');
     anchor.style.display = 'none';
     anchor.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
@@ -72,5 +97,4 @@ function download(text, filename) {
     document.body.appendChild(anchor);
     anchor.click();
     document.body.removeChild(anchor);
-}
-```
+}</code></pre>

@@ -6,62 +6,111 @@ date: "2015-08-31"
 last_modification: "2015-08-31"
 status: 0
 tags: []
+format: "html"
 ---
 
-Pravidla pro **minimální délku hesla**.
+<ul>
+  <li>
+    <p>Pravidla pro <b>minimální délku hesla</b>.</p>
+    
+    <p>Nároky by neměly být přehnané.</p>
+  </li>
+  
+  <li>
+    <p>Při změně e-mailu a dalších citlivých údajů vyžadaovat <b>zadání hesla</b>.</p>
+  </li>
+  
+  <li>
+    <p>Používání přihlašování třetích stran (Facebook, Twitter). Používat pro registrace více e-mailových adres. Vytvořit si účty u běžně používaných služeb pro zablokování e-mailu.</p>
+  </li>
+  
+  <li>Nedostatečná ochrana obsahu, kam vede odkaz.</li>
+</ul>
 
-    Nároky by neměly být přehnané.
 
-    Při změně e-mailu a dalších citlivých údajů vyžadaovat **zadání hesla**.
+<h2 id="pozadavky">Požadavky na heslo</h2>
 
-    Používání přihlašování třetích stran (Facebook, Twitter). Používat pro registrace více e-mailových adres. Vytvořit si účty u běžně používaných služeb pro zablokování e-mailu.
+<p>Požadavky na minimální délku a sílu hesla jsou značně ošemetné.</p>
 
-  - Nedostatečná ochrana obsahu, kam vede odkaz.
+<p>Běžně se je možné setkat s tím, že heslo vyžaduje:</p>
 
-## Požadavky na heslo
+<ul>
+  <li>minimálně 8 znaků,</li>
+  <li>maximálně 30 znaků,</li>
+  <li>alespoň jedno velké písmeno,</li>
+  <li>alespoň jedno číslo,</li>
+  <li>alespoň jeden speciální znak</li>
+</ul>
 
-Požadavky na minimální délku a sílu hesla jsou značně ošemetné.
 
-Běžně se je možné setkat s tím, že heslo vyžaduje:
+<p>Takže třeba <code>1Password_</code> projde.</p>
 
-  - minimálně 8 znaků,
+<p>Na jednu stranu</p>
 
-  - maximálně 30 znaků,
 
-  - alespoň jedno velké písmeno,
+<h3 id="priklad">Příklad, jak to nedělat</h3>
 
-  - alespoň jedno číslo,
+<p>Pro přihlašování z mobilu do jedné nejmenované banky je nutné vytvořit PIN.</p>
 
-  - alespoň jeden speciální znak
+<p>Zadal jsem PIN <code>27775555</code>, načež mi aplikace vynadala, že PIN musí mít 4–6 znaků.</p>
 
-Takže třeba `1Password_` projde.
+<p>Zkrátil jsem na <code>277755</code>, načež aplikace zahlásila, že kód nesmí obsahovat opakující se číselné řady.</p>
 
-Na jednu stranu
+<p>Zkusil jsem zadat <code>2727</code> a prošlo to.</p>
 
-### Příklad, jak to nedělat
 
-Pro přihlašování z mobilu do jedné nejmenované banky je nutné vytvořit PIN.
 
-Zadal jsem PIN `27775555`, načež mi aplikace vynadala, že PIN musí mít 4–6 znaků.
 
-Zkrátil jsem na `277755`, načež aplikace zahlásila, že kód nesmí obsahovat opakující se číselné řady.
 
-Zkusil jsem zadat `2727` a prošlo to.
 
-## Změna hesla
 
-Některé systémy vyžadují změnu po určitém období. Heslo má omezenou platnost, po které musí být změněno.
+<h2 id="zmena-hesla">Změna hesla</h2>
 
-Na první pohled se to může zdát rozumné – pokud by se útočník dostal ke starým heslům, byly by mu k ničemu, protože už by byla dávno změněná.
+<p>Některé systémy vyžadují změnu po určitém období. Heslo má omezenou platnost, po které musí být změněno.</p>
 
-Bohužel nucená změna hesel v praxi způsobuje, že:
+<p>Na první pohled se to může zdát rozumné – pokud by se útočník dostal ke starým heslům, byly by mu k ničemu, protože už by byla dávno změněná.</p>
 
-    Lidé volí **lépe zapamatovatelná** a tedy jednodušší hesla, když vidí, že jim na dlouho nevydrží.
 
-    Změnu hesla řeší tím, že na konec přidají **pořadové číslo nebo letopočet**.
 
-    Vznikne tak heslo: `1Password_1`, `1Password_2`, `1Password_2015` a podobně.
+<p>Bohužel nucená změna hesel v praxi způsobuje, že:</p>
 
-    Nové heslo si člověk pro jistotu **někam zapíše**. Třeba si ho [nalepí na monitor](http://praha.idnes.cz/blanka-a-kuriozity-z-provozu-djp-/praha-zpravy.aspx?c=A151019_112525_praha-zpravy_nub):
+<ol>
+  <li>
+    <p>Lidé volí <b>lépe zapamatovatelná</b> a tedy jednodušší hesla, když vidí, že jim na dlouho nevydrží.</p>
+  </li>  
+  <li>
+    <p>Změnu hesla řeší tím, že na konec přidají <b>pořadové číslo nebo letopočet</b>.</p>    
+    <p>Vznikne tak heslo: <code>1Password_1</code>, <code>1Password_2</code>, <code>1Password_2015</code> a podobně.</p>
+  </li>
+  <li>
+    <p>Nové heslo si člověk pro jistotu <b>někam zapíše</b>. Třeba si ho <a href="http://praha.idnes.cz/blanka-a-kuriozity-z-provozu-djp-/praha-zpravy.aspx?c=A151019_112525_praha-zpravy_nub">nalepí na monitor</a>:</p>
+    
+    <p><img src="/files/heslo/heslo-monitor.jpg" alt="Heslo na monitoru" class="border"></p>
+  </li>
+</ol>
 
-  - Smashing Magazine: [Why Passphrases Are More User-Friendly Than Passwords](http://www.smashingmagazine.com/2015/12/passphrases-more-user-friendly-passwords/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul>
+  <li>Smashing Magazine: <a href="http://www.smashingmagazine.com/2015/12/passphrases-more-user-friendly-passwords/">Why Passphrases Are More User-Friendly Than Passwords</a></li>
+</ul>

@@ -5,25 +5,34 @@ description: "Jak v Google Analytics filtrovat návštěvnost na základě země
 date: "2014-11-28"
 last_modification: "2014-11-29"
 status: 1
-tags: ["SEO", "Google", "Google Analytics"]
+tags: ["ga", "google", "seo"]
+format: "html"
 ---
 
-Pokud web cílíme jen na **určité země**, nemusí být žádoucí, aby se do statistik počítaly i zbloudilé duše nerozumějící našemu obsahu či různí roboti, kteří by jen **zkreslovali statistiku**.
+<p>Pokud web cílíme jen na <b>určité země</b>, nemusí být žádoucí, aby se do statistik počítaly i zbloudilé duše nerozumějící našemu obsahu či různí roboti, kteří by jen <b>zkreslovali statistiku</b>.</p>
 
-Podobně jako při [vyloučení vlastních návštěv](/vylouceni-svych-navstev) k tomu poslouží **filtry**.
+<p>Podobně jako při <a href="/vylouceni-svych-navstev">vyloučení vlastních návštěv</a> k tomu poslouží <b>filtry</b>.</p>
 
-Nejjednodušší je si v nabídce *Správce* pro daný účet vytvořit **nové zobrazení**.
+<p>Nejjednodušší je si v nabídce <i>Správce</i> pro daný účet vytvořit <b>nové zobrazení</b>.</p>
 
-Po vytvoření zobrazení pro něj přidáme **filtr**.
+<p><img src="/files/analytics-filtrovani-zeme/nove-zobrazeni.png" alt="Vytvořit nové zobrazení" class="border"></p>
 
-Filtr se pojmenuje (pro případné pozdější použití jinde) a vytvoří se mu výběr dat.
+<p>Po vytvoření zobrazení pro něj přidáme <b>filtr</b>.</p>
 
--->
+<p><img src="/files/analytics-filtrovani-zeme/filtry.png" alt="Filtry" class="border"></p>
 
-Typ filtru bude **vlastní**. V závislosti na potřebách se zvolí **Zahrnout**/**Vyloučit**. Jako pole filtru potom poslouží **Země**.
+<p>Filtr se pojmenuje (pro případné pozdější použití jinde) a vytvoří se mu výběr dat.</p>
 
-Nyní stačí do políčka napsat anglický název země, která se má vyloučit/zahrnout. Do políčka se píše regulární výraz, takže více zemí je třeba oddělit znakem „`|`“ (na [české klávesnici](/ceska-klavesnice#pravy-alt) se zapíše klávesovou zkratkou Alt + W).
+<!--<p><img src="/files/analytics-filtrovani-zeme/vytvorit-vyber.png" alt="Vytvořit výběr dat" class="border"></p>-->
 
-Vyčíst si názvy zemí je ideální ve statistikách *Cílové publikum → Geograficky → Lokalita.*
+<p>Typ filtru bude <b>vlastní</b>. V závislosti na potřebách se zvolí <b>Zahrnout</b>/<b>Vyloučit</b>. Jako pole filtru potom poslouží <b>Země</b>.</p>
 
-Po uložení vznikne na hlavní straně nový přehled, kde budou data vyfiltrována potřebným způsobem.
+<p><img src="/files/analytics-filtrovani-zeme/zahrnout-zemi.png" alt="Zahrnutí země" class="border"></p>
+
+<p>Nyní stačí do políčka napsat anglický název země, která se má vyloučit/zahrnout. Do políčka se píše regulární výraz, takže více zemí je třeba oddělit znakem „<code>|</code>“ (na <a href="/ceska-klavesnice#pravy-alt">české klávesnici</a> se zapíše klávesovou zkratkou <kbd>Alt</kbd> + <kbd>W</kbd>).</p>
+
+<p>Vyčíst si názvy zemí je ideální ve statistikách <i>Cílové publikum → Geograficky → Lokalita.</i></p>
+
+<p><img src="/files/analytics-filtrovani-zeme/lokalita.png" alt="Zobrazení lokalit ve statistikách" class="border"></p>
+
+<p>Po uložení vznikne na hlavní straně nový přehled, kde budou data vyfiltrována potřebným způsobem.</p>

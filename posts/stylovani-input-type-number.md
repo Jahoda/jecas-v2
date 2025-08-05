@@ -6,12 +6,11 @@ date: "2020-01-13"
 last_modification: "2020-01-13"
 status: 0
 tags: []
+format: "html"
 ---
 
-```
-input[type=number]::-webkit-inner-spin-button, 
+<pre><code>input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
-}
-```
+}</code></pre>

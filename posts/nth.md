@@ -6,8 +6,11 @@ date: "2014-11-23"
 last_modification: "2014-11-23"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Quantity Queries](http://quantityqueries.com/) – nástroj pro vytvoření `:nth-*` selektorů
-
-  - [LINING.JS](http://zencode.in/lining.js/) – JavaScript umožňující používat selektory `::nth-line()`, `::nth-last-line()` nebo `::last-line`
+<ul>
+  
+  <li><a href="http://quantityqueries.com/">Quantity Queries</a> – nástroj pro vytvoření <code>:nth-*</code> selektorů</li>
+  <li><a href="http://zencode.in/lining.js/">LINING.JS</a> – JavaScript umožňující používat selektory <code>::nth-line()</code>, <code>::nth-last-line()</code> nebo <code>::last-line</code></li>
+</ul>

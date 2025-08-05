@@ -6,147 +6,201 @@ date: "2019-11-22"
 last_modification: "2019-11-22"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Klávesové zkratky
+<h2>Klávesové zkratky</h2>
 
-Alt + Tab = Command Tab
+<p><kbd>Alt</kbd> + <kbd>Tab</kbd> = <kbd>Command</kbd> <kbd>Tab</kbd></p>
 
-⊞ Win = ⌘ + Mezerník – vyhledávání v aplikacích, souborech atd.
+<p><kbd>⊞ Win</kbd> = <kbd>⌘</kbd> + <kbd>Mezerník</kbd> – vyhledávání v aplikacích, souborech atd.</p>
 
-Delete = fn + Delete 
+<p><kbd>Delete</kbd> = <kbd>fn</kbd> + <kbd>Delete</kbd> </p>
 
-Alt + F4 = ⌘ command + Q – zavře okno
+<p><kbd>Alt</kbd> + <kbd>F4</kbd> = <kbd>⌘ command</kbd> + <kbd>Q</kbd> – zavře okno</p>
 
-## Myš
+<h2 id="mys">Myš</h2>
 
-Při připojení klasické myši s kolečkem je směr rolování převrácen oproti Windows.
+<p>Při připojení klasické myši s kolečkem je směr rolování převrácen oproti Windows.</p>
 
-Systém to nazývá *přirozeným směrem posuvu*.
+<p>Systém to nazývá <i>přirozeným směrem posuvu</i>.</p>
 
-Změnit to jde v *Předvolby systému &gt; Myš*.
+<p>Změnit to jde v <i>Předvolby systému &gt; Myš</i>.</p>
 
-Bohužel toto nastavení nejde odlišit od nastavení trackpadu, kde se naopak „přirozený“ směr hodí.
+<p>Bohužel toto nastavení nejde odlišit od nastavení trackpadu, kde se naopak „přirozený“ směr hodí.</p>
 
-Řešení je aplikace [Scroll Reverser](https://github.com/pilotmoon/Scroll-Reverser/releases).
+<p>Řešení je aplikace <a href="https://github.com/pilotmoon/Scroll-Reverser/releases">Scroll Reverser</a>.</p>
 
-### Screenshoty
 
-⌘ + Shift + 3 – screen celé obrazovky
 
-⌘ + Shift + 4 – výstřižek
 
-⌘ + Shift + 5 – zobrazení nástroje pro screenshoty (hodí se k vyfocení okna)
 
-Při stisknutí klávesy Ctrl navíc se screenshot uloží do schránky.
 
-## Jak napsat
 
-  - české uvozovky „“ – ⌥ option + Shift + N a option + Shift + H
+<h3 id="screenshoty">Screenshoty</h3>
 
-    - nedělitelná mezera – ⌥ option + Mezerník
+<p><kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>3</kbd> – screen celé obrazovky</p>
 
-      - trojtečka … – ⌥ option + shift + ů
+<p><kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>4</kbd> – výstřižek</p>
 
-  - pomlčka – ⌥ option + -
+<p><kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd> – zobrazení nástroje pro screenshoty (hodí se k vyfocení okna)</p>
 
-## Příkazová řádka / terminál
+<p>Při stisknutí klávesy <kbd>Ctrl</kbd> navíc se screenshot uloží do schránky.</p>
 
-Vyhledat „Terminál“
 
-## Průzkumník / Finder
 
-Obdoba *Průzkumníku* ve Windows se jmenuje **Finder**.
+<h2 id="jak-napsat">Jak napsat</h2>
 
-Zásadně jiná je navigace napříč úrovněmi složek. Třeba možnost, jak se dostat **o adresář výš**, je řádně ukrytá.
+<ul>
+  <li>české uvozovky „“ – <kbd>⌥ option</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd> a <kbd>option</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd></li>
+    <li>nedělitelná mezera – <kbd>⌥ option</kbd> + <kbd>Mezerník</kbd></li>
+      <li>trojtečka … – <kbd>⌥ option</kbd> + <kbd>shift</kbd> + <kbd>ů</kbd></li>
+  <li>pomlčka – <kbd>⌥ option</kbd> + <kbd>-</kbd></li>
+</ul>
 
-Docílit toho jde kliknutím pravého tlačítka na záhlaví okna (jméno aktuální složky) nebo klávesovou zkratkou ⌘ command + ↑.
 
-### Zobrazení skrytých souborů
 
-Systém před uživatelem tají některé soubory a složky. Odkrýt je ve *Finderu* jde těmito příkazy v terminálu:
+<h2 id="terminal">Příkazová řádka / terminál</h2>
 
-```
-defaults write com.apple.Finder AppleShowAllFiles true
-killall Finder
-```
+<p>Vyhledat „Terminál“</p>
 
-## Správce úloh
 
-Pro násilné ukončení zaseknuté aplikace existuje ekvivalent Ctrl + Alt + Delete. Slouží k tomu zkratka ⌘ command + ⌥ option + esc.
 
-Druhá možnost je vybrat položku *Vynutit ukončení…* v  Apple menu (ikona vlevo nahoře).
 
-Pro zobrazení vytížení prostředků slouží aplikace *Monitor aktivity*. Nejjednodušší je ho vyhledat ve *Spotlightu* (zkratka ⌘ + Mezerník) nebo ve *Finderu* pod *Aplikace &gt; Utitlity*.
+<h2 id="pruzkumnik">Průzkumník / Finder</h2>
 
-## Ovládání
+<p>Obdoba <i>Průzkumníku</i> ve Windows se jmenuje <b>Finder</b>.</p>
 
-Oproti **Windows** je dost nezvyk umístění menu dané aplikace vždy do horní společné lišty. Než si na to člověk zvykne, snadno přehlédne, že má program nějaké nastavení.
+<p>Zásadně jiná je navigace napříč úrovněmi složek. Třeba možnost, jak se dostat <b>o adresář výš</b>, je řádně ukrytá.</p>
 
-**Práce se oknky** – není moc zvykem zvětšovat okna přes celou obrazovku (asi protože to jednoduše moc nejde). Místo *maximalisace* jde okno zvětšit do fullscreenu.
+<p>Docílit toho jde kliknutím pravého tlačítka na záhlaví okna (jméno aktuální složky) nebo klávesovou zkratkou <kbd>⌘ command</kbd> + <kbd>↑</kbd>.</p>
 
-**Přichycení ke straně** – je nutné najet na ikonky vlevo u daného okna a vydržet chvíli s kursorem na zelené.
 
-### Tooltipy
 
-Některé ikonky zobrazují popis své akce, jiné ne.
 
-### Update systému
 
-Update **MacOS** může v závislosti na rychlosti internetu trvat hodně dlouho. I když predikuje *několik miniut*, může to trvat mnoho hodin.
 
-## Vývoj
+<h3 id="skryte">Zobrazení skrytých souborů</h3>
 
-[Homebrew](https://brew.sh)
+<p>Systém před uživatelem tají některé soubory a složky. Odkrýt je ve <i>Finderu</i> jde těmito příkazy v terminálu:</p>
 
-Node.js:
+<pre><code>defaults write com.apple.Finder AppleShowAllFiles true
+killall Finder</code></pre>
 
-```
-brew update
+
+
+
+
+
+
+
+
+
+<h2 id="spravce-uloh">Správce úloh</h2>
+
+<p>Pro násilné ukončení zaseknuté aplikace existuje ekvivalent <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Delete</kbd>. Slouží k tomu zkratka <kbd>⌘ command</kbd> + <kbd>⌥ option</kbd> + <kbd>esc</kbd>.</p>
+
+<p>Druhá možnost je vybrat položku <i>Vynutit ukončení…</i> v  Apple menu (ikona vlevo nahoře).</p>
+
+<p>Pro zobrazení vytížení prostředků slouží aplikace <i>Monitor aktivity</i>. Nejjednodušší je ho vyhledat ve <i>Spotlightu</i> (zkratka <kbd>⌘</kbd> + <kbd>Mezerník</kbd>) nebo ve <i>Finderu</i> pod <i>Aplikace &gt; Utitlity</i>.</p>
+
+
+
+
+
+
+<h2 id="ovladani">Ovládání</h2>
+
+<p>Oproti <b>Windows</b> je dost nezvyk umístění menu dané aplikace vždy do horní společné lišty. Než si na to člověk zvykne, snadno přehlédne, že má program nějaké nastavení.</p>
+
+<p><b>Práce se oknky</b> – není moc zvykem zvětšovat okna přes celou obrazovku (asi protože to jednoduše moc nejde). Místo <i>maximalisace</i> jde okno zvětšit do fullscreenu.</p>
+
+<p><b>Přichycení ke straně</b> – je nutné najet na ikonky vlevo u daného okna a vydržet chvíli s kursorem na zelené.</p>
+
+
+
+
+
+
+<h3 id="tooltipy">Tooltipy</h3>
+
+<p>Některé ikonky zobrazují popis své akce, jiné ne.</p>
+
+
+
+
+<h3 id="update">Update systému</h3>
+
+<p>Update <b>MacOS</b> může v závislosti na rychlosti internetu trvat hodně dlouho. I když predikuje <i>několik miniut</i>, může to trvat mnoho hodin.</p>
+
+
+
+
+<h2 id="vyvoj">Vývoj</h2>
+
+<p><a href="https://brew.sh">Homebrew</a></p>
+
+<p>Node.js:</p>
+
+
+<pre><code>brew update
 brew install node
 npm i npm -g
+</code></pre>
 
-```
 
-## Putty/SSH
 
-Ve Windows je běžné se ke vzdáleným serverům připojovat například přes Putty. V macOS jde k tomu použít vestavěný terminál.
 
-Nejprve je třeba transformovat klíč z `*.ppk` formátu pomocí `puttygen`u. Nainstalovat jde přes:
 
-```
-brew install putty
-```
 
-Nyní už samotný převod a nastavení oprávnění:
 
-```
-puttygen privatekey.ppk -O private-openssh -o privatekey.pem
-chmod go-rw privatekey.pem
-```
+<h2 id="ssh">Putty/SSH</h2>
 
-A konečně připojení k vzdálenému serveru:
+<p>Ve Windows je běžné se ke vzdáleným serverům připojovat například přes Putty. V macOS jde k tomu použít vestavěný terminál.</p>
 
-```
-ssh -i privatekey.pem uzivatel@hostname
-```
 
-Připojit se jde i přes grafické rozhraní. Při otevřeném terminálu je v horním menu nabídka *Shell/Nové vzdálené připojení*.
+<p>Nejprve je třeba transformovat klíč z <code>*.ppk</code> formátu pomocí <code>puttygen</code>u. Nainstalovat jde přes:</p>
 
-## Programy
+<pre><code>brew install putty</code></pre>
 
-**RAR** – [The Unarchiver](https://apps.apple.com/cz/app/the-unarchiver/id425424353?l=cs&mt=12)
+<p>Nyní už samotný převod a nastavení oprávnění:</p>
 
-## MacBook Pro 2019
+<pre><code>puttygen privatekey.ppk -O private-openssh -o privatekey.pem
+chmod go-rw privatekey.pem</code></pre>
 
-### Výdrž baterie
+<p>A konečně připojení k vzdálenému serveru:</p>
 
-Udávaná výdrž je asi 10 hodin. Mně se podařilo při standardní práci vydržet skoro **7 hodin**.
+<pre><code>ssh -i privatekey.pem uzivatel@hostname</code></pre>
 
-### Tlačítko vypnout
+<p>Připojit se jde i přes grafické rozhraní. Při otevřeném terminálu je v horním menu nabídka <i>Shell/Nové vzdálené připojení</i>.</p>
 
-Původně jsem si myslel, že tímto tlačítkem notebook nedisponuje. Není tomu tak. Je zkombinované s tlačítkem pro Touch ID.
 
-## Nevýhody
 
-**MS Office** – Word, Excel i Outlook mají své verse pro MacOS. Bohužel tak dobře jako ve **Windows**.
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="programy">Programy</h2>
+
+<p><b>RAR</b> – <a href="https://apps.apple.com/cz/app/the-unarchiver/id425424353?l=cs&mt=12">The Unarchiver</a></p>
+
+<h2 id="mac-book-pro">MacBook Pro 2019</h2>
+
+<h3 id="baterie">Výdrž baterie</h3>
+
+<p>Udávaná výdrž je asi 10 hodin. Mně se podařilo při standardní práci vydržet skoro <b>7 hodin</b>.</p>
+
+<h3 id="tlacitko-vypnout">Tlačítko vypnout</h3>
+
+<p>Původně jsem si myslel, že tímto tlačítkem notebook nedisponuje. Není tomu tak. Je zkombinované s tlačítkem pro Touch ID.</p>
+
+<h2 id="nevyhody">Nevýhody</h2>
+
+<p><b>MS Office</b> – Word, Excel i Outlook mají své verse pro MacOS. Bohužel tak dobře jako ve <b>Windows</b>.</p>

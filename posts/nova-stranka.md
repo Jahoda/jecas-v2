@@ -5,77 +5,101 @@ description: "Jak v JavaScriptu vytvořit novou HTML stránku."
 date: "2015-02-13"
 last_modification: "2015-10-02"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-V některých případech se může hodit vytvořit skriptem novou stránku. Je sice možné měnit [DOM](/dom) té stávající, ale to způsobí **přepsání původního obsahu** a s tím spojenou **nemožnost návratu**.
+<p id="prvni-odstavec">V některých případech se může hodit vytvořit skriptem novou stránku. Je sice možné měnit <a href="/dom">DOM</a> té stávající, ale to způsobí <b>přepsání původního obsahu</b> a s tím spojenou <b>nemožnost návratu</b>.</p>
 
+
+<div class="live">
+  <script>
     function novaStranka(html) {
       var stranka = window.open("", "_self");
-      var tlacitkoZpet = 'Zpět
-
-';
+      var tlacitkoZpet = '<p><button onclick="history.back()">Zpět</button></p>';
       stranka.document.write(html + tlacitkoZpet);
     }
-
+  </script>
+  <button onclick="novaStranka(document.getElementById('prvni-odstavec').innerHTML)">
     Otevřít předchozí odstavec do nové stránky
+  </button>
+</div>
 
-Po různém testování jsem došel k následujícímu kódu:
+<p>Po různém testování jsem došel k následujícímu kódu:</p>
 
-```
-var html = "&lt;p>HTML obsah stránky&lt;/p>";
+<pre><code>var html = "&lt;p>HTML obsah stránky&lt;/p>";
 var stranka = window.open("", "_self");
-stranka.document.write(html);
-```
+stranka.document.write(html);</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/ojkb-)
+<p><a href="http://kod.djpw.cz/ojkb-">Živá ukázka</a></p>
 
-Bohužel v prohlížečích **Chrome** a **Opera** nefunguje funkce zpět. V **IE**/[**Edge**](/microsoft-edge), **Firefoxu** a staré **Opeře** řešení funguje, jak má.
+<p>Bohužel v prohlížečích <b>Chrome</b> a <b>Opera</b> nefunguje funkce zpět. V <b>IE</b>/<a href="/microsoft-edge"><b>Edge</b></a>, <b>Firefoxu</b> a staré <b>Opeře</b> řešení funguje, jak má.</p>
 
-Akce *Zpět* (JS akce `history.back()`) v prohlížečích vycházejících z jádra **Blink** nevede na stránku, ze které se nová stránka vytvořila, ale už na tu předchozí.
+<p>Akce <i>Zpět</i> (JS akce <code>history.back()</code>) v prohlížečích vycházejících z jádra <b>Blink</b> nevede na stránku, ze které se nová stránka vytvořila, ale už na tu předchozí.</p>
 
-Případně není vůbec kam jít zpět:
+<p>Případně není vůbec kam jít zpět:</p>
 
-Jediná možnost, jak se *vrátit*, je tak pomocí *reloadu*:
+<p><img src="/files/nova-stranka/neaktivni.png" alt="Neaktivní ikona pro funkci Zpět" class="border"></p>
 
-```
-`location.reload()`
-```
 
-V takovém případě už je ale rovnou možné **přepsat DOM původní stránky**:
 
-## Přepsání celého obsahu stránky
 
-Pokud je cílem, aby **zůstal společný obsah** stránky jako hlavička, navigace a podobně, jde změnit pouze obsahový `&lt;div>`:
 
-```
-document.**getElementById("obsah")**.innerHTML = "HTML kód";
-```
 
-Pro změnu celého obsahu při zachování stylů a skriptů připojených v `&lt;head>` je ideální přepsat `&lt;body>`:
 
-```
-document.**body**.innerHTML = "HTML kód";
-```
 
-Kompletní změnu zajistí přepsání `documentElement`u (značka `&lt;html>`):
+<p>Jediná možnost, jak se <i>vrátit</i>, je tak pomocí <i>reloadu</i>:</p>
 
-```
-document.**documentElement**.innerHTML = "HTML kód";
-```
+<pre><code><code>location.reload()</code></code></pre>
 
-    - [Elementy `documentElement` a `body` v JavaScriptu](/documentelement-body)
+<p>V takovém případě už je ale rovnou možné <b>přepsat DOM původní stránky</b>:</p>
 
-## Objekt `history` a `pushState`
 
-V **Chrome** a nové **Opeře** je nejspíš jediná možnost, jak docílit nové stránky s možností návratu, použít `history.pushState`.
 
-    - [Změna URL bez obnovení stránky](/zmena-url)
 
-Takové řešení funguje až od **IE 10** a je pracnější na realisaci, ale dokáže zajistit, že různý obsah bude na různých URL, což je čistší řešení, než když toho na jedné URL může být víc – například kvůli **odkazování**.
 
-## Nové okno
 
-Další možnost je obsah otevřít v [novém vyskakovacím okně](/nove-okno) – to půjde alespoň zavřít. Takový postup se často využívá pro přípravu stránky k tisku:
+<h2 id="prepsani">Přepsání celého obsahu stránky</h2>
 
-    - Vytisknutí stránky: [Zvláštní stránka vytvořená JavaScriptem](/tisk#js)
+<p>Pokud je cílem, aby <b>zůstal společný obsah</b> stránky jako hlavička, navigace a podobně, jde změnit pouze obsahový <code>&lt;div></code>:</p>
+
+<pre><code>document.<b>getElementById("obsah")</b>.innerHTML = "HTML kód";</code></pre>
+
+<p>Pro změnu celého obsahu při zachování stylů a skriptů připojených v <code>&lt;head></code> je ideální přepsat <code>&lt;body></code>:</p>
+
+<pre><code>document.<b>body</b>.innerHTML = "HTML kód";</code></pre>
+
+<p>Kompletní změnu zajistí přepsání <code>documentElement</code>u (značka <code>&lt;html></code>):</p>
+
+<pre><code>document.<b>documentElement</b>.innerHTML = "HTML kód";</code></pre>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/documentelement-body">Elementy <code>documentElement</code> a <code>body</code> v JavaScriptu</a></li>
+  </ul>
+</div>
+
+
+<h2 id="history">Objekt <code>history</code> a <code>pushState</code></h2>
+
+<p>V <b>Chrome</b> a nové <b>Opeře</b> je nejspíš jediná možnost, jak docílit nové stránky s možností návratu, použít <code>history.pushState</code>.</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/zmena-url">Změna URL bez obnovení stránky</a></li>
+  </ul>
+</div>
+
+<p>Takové řešení funguje až od <b>IE 10</b> a je pracnější na realisaci, ale dokáže zajistit, že různý obsah bude na různých URL, což je čistší řešení, než když toho na jedné URL může být víc – například kvůli <b>odkazování</b>.</p>
+
+
+
+<h2 id="nove">Nové okno</h2>
+
+<p>Další možnost je obsah otevřít v <a href="/nove-okno">novém vyskakovacím okně</a> – to půjde alespoň zavřít. Takový postup se často využívá pro přípravu stránky k tisku:</p>
+
+<div class="internal-content">
+  <ul>
+    <li>Vytisknutí stránky: <a href="/tisk#js">Zvláštní stránka vytvořená JavaScriptem</a></li>
+  </ul>
+</div>

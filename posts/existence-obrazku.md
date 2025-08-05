@@ -5,16 +5,17 @@ description: "Jak JavaScriptem ověřit existenci obrázku?"
 date: "2013-05-13"
 last_modification: "2013-05-13"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-K ověření existence stačí obrázek vytvořit (`new Image()`), nastavit mu `src` a:
+<p>K ověření existence stačí obrázek vytvořit (<code>new Image()</code>), nastavit mu <code>src</code> a:
+<ul>
+<li>na událost <code>onerror</code> zavěsit kód, který se má provést při neexistenci,
+<li>na událost <code>onload</code> naopak kód pro existenci.
+</ul>
 
-na událost `onerror` zavěsit kód, který se má provést při neexistenci,
-na událost `onload` naopak kód pro existenci.
-
-```
-function overitExistenci(url) {
+<pre><code>function overitExistenci(url) {
     var isExist = new Image();
     isExist.src = url;
     isExist.onerror = function () {
@@ -23,5 +24,5 @@ function overitExistenci(url) {
     isExist.onload = function () {
         alert("Existuje");
     };
-}
-```
+}</code></pre>
+

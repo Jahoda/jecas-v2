@@ -5,80 +5,159 @@ description: "Google vytvořil novou podobu nástroje chránícího před roboty
 date: "2014-12-10"
 last_modification: "2014-12-10"
 status: 1
-tags: ["Google", "Spam"]
+tags: ["google", "spam-ochrana"]
+format: "html"
 ---
 
-U rozšířených systémů je poměrně složité se [bránit proti spamu](/spam). Jednoduché ochrany **vyžadující JavaScript** nebo řešení typu vytvoření **speciálního lákavého políčka**, které uživatel nesmí vyplnit, ale robot se nachytá, sice u **méně významných webů** fungují poměrně spolehlivě.
+<p>U rozšířených systémů je poměrně složité se <a href="/spam">bránit proti spamu</a>. Jednoduché ochrany <b>vyžadující JavaScript</b> nebo řešení typu vytvoření <b>speciálního lákavého políčka</b>, které uživatel nesmí vyplnit, ale robot se nachytá, sice u <b>méně významných webů</b> fungují poměrně spolehlivě.</p>
 
-U větších služeb, kde se už vyplatí **hromadný útok**, je ale taková ochrana nedostatečná. Proto se zpravidla používají různé **obrázky** obsahující slova nebo čísla a je vyžadováno, aby je uživatel rozluštil – tzv. **obrázková CAPTCHA**.
+<p>U větších služeb, kde se už vyplatí <b>hromadný útok</b>, je ale taková ochrana nedostatečná. Proto se zpravidla používají různé <b>obrázky</b> obsahující slova nebo čísla a je vyžadováno, aby je uživatel rozluštil – tzv. <b>obrázková CAPTCHA</b>.</p>
 
-S tou ale mají postupem času větší problém **uživatelé** než roboti.
+<p>S tou ale mají postupem času větší problém <b>uživatelé</b> než roboti.</p>
 
-## No CAPTCHA reCAPTCHA
 
-Google se nyní pokusil vytvořit řešení, které by mělo dokázat ověřit, že člověk **není robot**, pomocí kliknutí do políčka *Nejsem robot*.
 
-    - [Google reCAPTCHA](https://www.google.com/recaptcha/)
 
-## Použití na stránce
 
-    Správce webu si do reCAPTCHA systému **přidá svou doménu**, čímž získá veřejný klíč stránky (*Site key*) a tajný klíč (*Secret key*).
+<h2 id="no-captcha">No CAPTCHA reCAPTCHA</h2>
 
-          Google reCAPTCHA: [Register a new site](https://www.google.com/recaptcha/admin)
+<p><img src="/files/recaptcha/overeni.gif" alt="Ověření, že nejsem robot" class="border"></p>
 
-    Na stránku se **připojí skript** od Google:
 
-    ```
-&lt;script src='https://www.google.com/recaptcha/api.js'>&lt;/script>
-```
 
-    Na požadovaném místě formuláře se **vykreslí políčko** pro ověření.
 
-    ```
-&lt;div class="g-recaptcha" data-sitekey="**klíč stránky**">&lt;/div>
-```
 
-    Při ověření, že člověk není robot, se vyplní formulářový prvek `g-recaptcha-response`, který se následně běžným odesláním formuláře **odešle na server**.
 
-    Na straně serveru se při zpracování zavolá stránka, které se přidá tajný klíč (*Secret key*) a hodnota políčka `g-recaptcha-response`.
 
-    ```
-https://www.google.com/recaptcha/api/siteverify?secret=**tajný klíč**&amp;response=**obsah políčka**
-```
+<p>Google se nyní pokusil vytvořit řešení, které by mělo dokázat ověřit, že člověk <b>není robot</b>, pomocí kliknutí do políčka <i>Nejsem robot</i>.</p>
 
-    Výsledkem je potom objekt v **[JSONu](/json) se stavem ověření** (více v [dokumentaci](https://developers.google.com/recaptcha/docs/verify)).
+<div class="external-content">
+  <ul>
+    <li><a href="https://www.google.com/recaptcha/">Google reCAPTCHA</a></li>
+  </ul>
+</div>
 
-    ```
-{
+
+
+<h2 id="pouziti">Použití na stránce</h2>
+
+<ol>
+  <li>
+    <p>Správce webu si do reCAPTCHA systému <b>přidá svou doménu</b>, čímž získá veřejný klíč stránky (<i>Site key</i>) a tajný klíč (<i>Secret key</i>).</p>
+    
+    <div class="external-content">
+      <ul>
+        <li>
+          <p>Google reCAPTCHA: <a href="https://www.google.com/recaptcha/admin">Register a new site</a></p>
+        </li>
+      </ul>
+    </div>
+  </li>
+  
+  <li>
+    <p>Na stránku se <b>připojí skript</b> od Google:</p>
+    
+    <pre><code>&lt;script src='https://www.google.com/recaptcha/api.js'>&lt;/script></code></pre>
+  </li>
+  
+  <li>
+    <p>Na požadovaném místě formuláře se <b>vykreslí políčko</b> pro ověření.</p>
+    
+    <pre><code>&lt;div class="g-recaptcha" data-sitekey="<b>klíč stránky</b>">&lt;/div></code></pre>
+  </li>
+  
+  <li>
+    <p>Při ověření, že člověk není robot, se vyplní formulářový prvek <code>g-recaptcha-response</code>, který se následně běžným odesláním formuláře <b>odešle na server</b>.</p>
+  </li>
+  
+  <li>
+    <p>Na straně serveru se při zpracování zavolá stránka, které se přidá tajný klíč (<i>Secret key</i>) a hodnota políčka <code>g-recaptcha-response</code>.</p>
+    
+    <pre><code>https://www.google.com/recaptcha/api/siteverify?secret=<b>tajný klíč</b>&amp;response=<b>obsah políčka</b></code></pre>
+    
+    <p>Výsledkem je potom objekt v <b><a href="/json">JSONu</a> se stavem ověření</b> (více v <a href="https://developers.google.com/recaptcha/docs/verify">dokumentaci</a>).</p>
+    
+    <pre><code>{
   "success": true|false,
   "error-codes": [...]   // optional
-}
-```
+}</code></pre>
+    
+    <p>Na základě toho <b>ve své aplikaci</b> určíme, jestli se jedná o robota nebo ne.</p>
+  </li>
+</ol>
 
-    Na základě toho **ve své aplikaci** určíme, jestli se jedná o robota nebo ne.
+<p><a href="http://kod.djpw.cz/rmib">Živá ukázka</a></p>
 
-[Živá ukázka](http://kod.djpw.cz/rmib)
 
-## Jak to funguje
 
-Celé **rozhodování robot/uživatel** funguje na základě **sledování chování uživatele** na stránce. Pomocí JavaScriptu je možné získat spoustu informací o prohlížeči, rozlišení a podobně, navíc potom sledovat každý **pohyb myši nebo mačkání kláves**.
+<h2 id="jak">Jak to funguje</h2>
 
-Kromě toho může **Google** použít informace, co o daném návštěvníkovi má z jiných svých služeb.
+<p>Celé <b>rozhodování robot/uživatel</b> funguje na základě <b>sledování chování uživatele</b> na stránce. Pomocí JavaScriptu je možné získat spoustu informací o prohlížeči, rozlišení a podobně, navíc potom sledovat každý <b>pohyb myši nebo mačkání kláves</b>.</p>
 
-Skript od Google tedy **šmíruje uživatele** a při kliknutí na *Nejsem robot* tato data pošle k ověření na svůj server. Odpověď ze serveru Google se přidá do formuláře na stránce, z něho se odešle na server dané aplikace, odkud se pošle na server Google k ověření.
+<p>Kromě toho může <b>Google</b> použít informace, co o daném návštěvníkovi má z jiných svých služeb.</p>
 
-## Možná úskalí
+<p><img src="/files/recaptcha/nejsem-robot.png" alt="Nejsem robot" class="border"></p>
 
-    Jako vždy – vložením cizího skriptu získává jeho majitel nad stránkou **obrovskou moc**.
 
-    Uživatelé přihlášení ke svému **Google účtu** budou na webu používající reCAPTCHA ochranu **automaticky identifikovatelní** (podobně jako tomu je u Facebooku a jeho *Like* boxů a tlačítek).
 
-    Při **nerozpoznání** uživatele se stále zobrazí nečitelná **změť znaků**.
 
-    Proto by nasazení **reCAPTCHA** mělo nastat až v případě, kdy selžou pro uživatele přívětivější metody.
 
-    **Spolehlivost ochrany** před roboty na základě monitorování chování na stránce je diskutabilní. Je nejspíš jen otázkou času, kdy se roboti dokáží při vyplňování chovat více „jako člověk“ než živí návštěvníci.
 
-## Mobilní zařízení
 
-Na mobilních zařízeních není možné **monitorovat pohyby kursorem**, takže zde opisování textu nahrazuje určování zvířat.
+<p>Skript od Google tedy <b>šmíruje uživatele</b> a při kliknutí na <i>Nejsem robot</i> tato data pošle k ověření na svůj server. Odpověď ze serveru Google se přidá do formuláře na stránce, z něho se odešle na server dané aplikace, odkud se pošle na server Google k ověření.</p>
+
+<p><img src="/files/recaptcha/diagram.png" alt="Postup ověřování robota/uživatele" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="uskali">Možná úskalí</h2>
+
+<ol>
+  <li>
+    <p>Jako vždy – vložením cizího skriptu získává jeho majitel nad stránkou <b>obrovskou moc</b>.</p>
+  </li>
+  
+  <li>
+    <p>Uživatelé přihlášení ke svému <b>Google účtu</b> budou na webu používající reCAPTCHA ochranu <b>automaticky identifikovatelní</b> (podobně jako tomu je u Facebooku a jeho <i>Like</i> boxů a tlačítek).</p>
+  </li>
+  
+  <li>
+    <p>Při <b>nerozpoznání</b> uživatele se stále zobrazí nečitelná <b>změť znaků</b>.</p>
+    
+    <p><img src="/files/recaptcha/mozna-jsem.png" alt="Opisování nečitelných obrázků" class="border"></p>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    <p>Proto by nasazení <b>reCAPTCHA</b> mělo nastat až v případě, kdy selžou pro uživatele přívětivější metody.</p>
+  </li>
+  
+  <li>
+    <p><b>Spolehlivost ochrany</b> před roboty na základě monitorování chování na stránce je diskutabilní. Je nejspíš jen otázkou času, kdy se roboti dokáží při vyplňování chovat více „jako člověk“ než živí návštěvníci.</p>
+  </li>
+</ol>
+
+
+
+<h2 id="mobily">Mobilní zařízení</h2>
+
+<p>Na mobilních zařízeních není možné <b>monitorovat pohyby kursorem</b>, takže zde opisování textu nahrazuje určování zvířat.</p>
+
+<p><img src="/files/recaptcha/cat-captcha.png" alt="Určování koček" class="border"></p>

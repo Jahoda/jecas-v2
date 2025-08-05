@@ -5,61 +5,70 @@ description: "Jak skriptem na stránce průběžně aktualisovat datum v podobě
 date: "2014-07-04"
 last_modification: "2014-07-13"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-V případě, že se na stránce zobrazuje místo běžného data text typu „**zasláno před 1 hodinou**“, je dobré tento údaj JavaScriptem průběžně aktualisovat.
+<p>V případě, že se na stránce zobrazuje místo běžného data text typu „<b>zasláno před 1 hodinou</b>“, je dobré tento údaj JavaScriptem průběžně aktualisovat.</p>
 
-Pro získání slovní representace kalendářního data v PHP se perfektně hodí funkce [`timeAgoInWords`](https://github.com/fprochazka/nette-components/blob/master/TimeAgoInWords/Helpers.php), která obsahuje i správné **české skloňování**.
+<p>Pro získání slovní representace kalendářního data v PHP se perfektně hodí funkce <a href="https://github.com/fprochazka/nette-components/blob/master/TimeAgoInWords/Helpers.php"><code>timeAgoInWords</code></a>, která obsahuje i správné <b>české skloňování</b>.</p>
 
-Pro docílení průběžné aktualisace času stačí tedy:
+<p>Pro docílení průběžné aktualisace času stačí tedy:</p>
 
-  - [Převést PHP funkci do JS](/php2js).
+<ol>
+  <li><a href="/php2js">Převést PHP funkci do JS</a>.</li>
+  
+  <li>Vytvořit funkci, co projde všechny příslušné elementy a upraví jejich obsah.</li>
+  
+  <li>Tato funkce se bude spouštět opakovaně (například každou minutu).</li>
+</ol>
 
-  - Vytvořit funkci, co projde všechny příslušné elementy a upraví jejich obsah.
+<p><a href="http://kod.djpw.cz/nleb">Živá ukázka hotového řešení</a></p>
 
-  - Tato funkce se bude spouštět opakovaně (například každou minutu).
 
-[Živá ukázka hotového řešení](http://kod.djpw.cz/nleb)
+<h2 id="time">Element <code>&lt;time></code></h2>
 
-## Element `&lt;time>`
+<p>Pro uvedení data/času se nabízí použít HTML značku <code>&lt;time></code>. Slovní representace času bude jako její obsah (v JS <a href="/innerhtml"><code>innerHTML</code></a>). Skutečný a <i>strojově čitelný</i> datum potom bude v atributu <code>datetime</code>.</p>
 
-Pro uvedení data/času se nabízí použít HTML značku `&lt;time>`. Slovní representace času bude jako její obsah (v JS [`innerHTML`](/innerhtml)). Skutečný a *strojově čitelný* datum potom bude v atributu `datetime`.
-
-```
-&lt;time datetime="2014-07-04T10:37:00">
+<pre><code>&lt;time datetime="2014-07-04T10:37:00">
   Před X hodinami
-&lt;/time>
-```
+&lt;/time></code></pre>
 
-Původní obsah může buď vypsat PHP, nebo se první JavaScriptový update času spustí ihned po načtení stránky.
+<p>Původní obsah může buď vypsat PHP, nebo se první JavaScriptový update času spustí ihned po načtení stránky.</p>
 
-Písmeno `T` mezi datem a časem je kvůli **Firefoxu** a **IE**, které si s běžným `2014-07-04 10:37:00` neporadí.
+<p>Písmeno <code>T</code> mezi datem a časem je kvůli <b>Firefoxu</b> a <b>IE</b>, které si s běžným <code>2014-07-04 10:37:00</code> neporadí.</p>
 
-## Nepřesnosti
 
-Komplikace přináší fakt, že datum na straně klienta (v JavaScriptu) nemusí a nejspíš také **nebude shodné s časem na serveru**.
+<h2 id="nepresnost">Nepřesnosti</h2>
 
-### Časová pásma
 
-Je tedy poměrně vhodné u data a času uvést na straně serveru **časové pásmo**:
 
-```
-&lt;time datetime="2014-07-04T10:37:00**+02:00**">
+<p>Komplikace přináší fakt, že datum na straně klienta (v JavaScriptu) nemusí a nejspíš také <b>nebude shodné s časem na serveru</b>.</p>
+
+<h3 id="casova-pasma">Časová pásma</h3>
+
+<p>Je tedy poměrně vhodné u data a času uvést na straně serveru <b>časové pásmo</b>:</p>
+
+<pre><code>&lt;time datetime="2014-07-04T10:37:00<b>+02:00</b>">
   Před X hodinami/měsíci/roky
-&lt;/time>
-```
+&lt;/time></code></pre>
 
-### Přesnější doba prodlevy
+<h3 id="presny-cas">Přesnější doba prodlevy</h3>
 
-Je potřeba si zvážit do jaké míry má být údaj přesný.
+<p>Je potřeba si zvážit do jaké míry má být údaj přesný.</p>
 
-V případě počítání **rozdílu mezi časem** ze serveru a od návštěvníka to nejspíš žádná sláva nebude (přesný/stejný čas by musel mít nastaven návštěvník i server).
+<p>V případě počítání <b>rozdílu mezi časem</b> ze serveru a od návštěvníka to nejspíš žádná sláva nebude (přesný/stejný čas by musel mít nastaven návštěvník i server).</p>
 
-Nabízejí se následující řešení:
+<p>Nabízejí se následující řešení:</p>
 
-    Čas pro zjišťování rozdílu si zjišťovat [AJAXem](/ajax) ze serveru. Zvlášť v případě, že je na stránce nějaké automatické **kontrolování nového obsahu**, není problém do odpovědi serveru přibalit hodnotu aktuálního data.
-
-    Při **načtení stránky** si do jedné JS proměnné vypsat čas na serveru a do druhé aktuální čas klienta. Z toho potom počítat nepřesnost mezi časy a výsledný rozdíl tak upravit.
-
-  - Na serveru si do `&lt;time>` vypsat přímo **počet sekund**. V JavaScriptu si uložit do proměnné **čas klienta** a při spuštění aktualisace ho odečíst od **aktuálního klientského času**. Tento rozdíl se potom přičte k rozdílu ze serveru a výsledek je připraven.
+<ol>
+  <li>
+    <p>Čas pro zjišťování rozdílu si zjišťovat <a href="/ajax">AJAXem</a> ze serveru. Zvlášť v případě, že je na stránce nějaké automatické <b>kontrolování nového obsahu</b>, není problém do odpovědi serveru přibalit hodnotu aktuálního data.</p>
+  </li>
+  
+  <li>
+    <p>Při <b>načtení stránky</b> si do jedné JS proměnné vypsat čas na serveru a do druhé aktuální čas klienta. Z toho potom počítat nepřesnost mezi časy a výsledný rozdíl tak upravit.</p>
+  </li>
+  
+  <li>Na serveru si do <code>&lt;time></code> vypsat přímo <b>počet sekund</b>. V JavaScriptu si uložit do proměnné <b>čas klienta</b> a při spuštění aktualisace ho odečíst od <b>aktuálního klientského času</b>. Tento rozdíl se potom přičte k rozdílu ze serveru a výsledek je připraven.</li>
+</ol>

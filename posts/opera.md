@@ -5,98 +5,106 @@ description: "Mých 20 důvodů, co mě drží u <a href='http://www.opera.com/'
 date: "2013-05-26"
 last_modification: "2013-05-26"
 status: 1
-tags: ["Produktivita", "Prohlížeče"]
+tags: ["produktivita", "webove-prohlizece"]
+format: "html"
 ---
 
-Jelikož používám kromě hlavního prohlížeče (Opery) i&nbsp;Explorer,
+<p>Jelikož používám kromě hlavního prohlížeče (Opery) i&nbsp;Explorer,
 Chrome a Firefox, tak mám docela dobrou představu, který prohlížeč co
-umí a co ne.
+umí a co ne.</p>
 
-Když to vezmu souhrnně, tak potřebuji prohlížeč, co splňuje
-následující:
+<p>Když to vezmu souhrnně, tak potřebuji prohlížeč, co splňuje
+následující:</p>
 
-    **Upravitelné GUI**&nbsp;&ndash; Opera je snad jediný prohlížeč, kde si
+<ol>
+    <li id=gui><p><strong>Upravitelné GUI</strong>&nbsp;&ndash; Opera je snad jediný prohlížeč, kde si
     jakékoliv tlačítko nebo část rozhraní můžu dát kamkoliv. Vadí mi
-    nějaké výchozí tlačítko nebo panel? RMB → Odstranit z&nbsp;lišty →
+    nějaké výchozí tlačítko nebo panel? <abbr class='help' title='Pravé tlačítko myši'>RMB</abbr> → Odstranit z&nbsp;lišty →
     Hotovo. Chci mít možnost si jednoduše vytvořit i&nbsp;tlačítko vlastní a
-    libovolně si ho umístit.
+    libovolně si ho umístit.</li>
 
-    **Gesta myší**&nbsp;&ndash; opravdová gesta, ne jen nějaká JS
+    <li id=gesta><p><strong>Gesta myší</strong>&nbsp;&ndash; opravdová gesta, ne jen nějaká JS
     náhrada, nýbrž gesta funkční napříč celým prohlížečem, tj. i&nbsp;v&nbsp;nabídkách,
-    záložkách, RSS zprávách&nbsp;atd.
+    záložkách, RSS zprávách&nbsp;atd.</li>
 
-    **Panely s&nbsp;náhledem webu**. Možnost si tyto záložky
+    <li id=panely><p><strong>Panely s&nbsp;náhledem webu</strong>. Možnost si tyto záložky
     s&nbsp;náhledy dát na stranu (vhodné u&nbsp;širokoúhlého NTB, kde je problém
-    s&nbsp;místem víc na výšku než šířku).
+    s&nbsp;místem víc na výšku než šířku).<p><img src="/files/opera/nahled.jpg"
+    class="border"></li>
 
-    Jednoduchý **blokovač obsahu**&nbsp;&ndash; něco mě na stránce
-    otravuje: RMB → Blokovat →&nbsp;Hotovo
+    <li id=blokovani><p>Jednoduchý <strong>blokovač obsahu</strong>&nbsp;&ndash; něco mě na stránce
+    otravuje: RMB → Blokovat →&nbsp;Hotovo</li>
 
-    **Zvětšování stránek**&nbsp;&ndash; při čtení delších
+    <li id=zoom><p><strong>Zvětšování stránek</strong>&nbsp;&ndash; při čtení delších
     stránek si rád zvětšuji písmo. V&nbsp;závislosti na defaultní velikosti
-    písma si kliknu do té stupnice a hotovo. Klávesami + a
-    - se stránka zvětšuje jemně, klávesou * se přepnu do
+    písma si kliknu do té stupnice a hotovo. Klávesami <kbd>+</kbd> a
+    <kbd>-</kbd> se stránka zvětšuje jemně, klávesou <kbd>*</kbd> se přepnu do
     100&nbsp;%. Zvětšování se týká jen konkrétní stránky a stránek z&nbsp;této
     otvíraných. Pokud se při zvětšení má tendenci objevit posuvník, mám
     k&nbsp;disposici funkci, která přizpůsobí stránku tak, aby se hezky vešla
-    celá na monitor bez něj.
+    celá na monitor bez něj.<p><img src="/files/opera/lupa.png"
+    class="border"></li>
 
-    **Práce se záložkami**&nbsp;&ndash; když zavřu záložku, tak se
+    <li id=zalozky><p><strong>Práce se záložkami</strong>&nbsp;&ndash; když zavřu záložku, tak se
     musí objevit předchozí otevřená, nikoliv ta vlevo od zavřené. Záložky
     musí jít seskupovat pomocí drag &amp; drop a celou skupinu sbalit/rozbalit.
-    Nesmí chybět Ctrl + Z&nbsp;pro vrácení omylem zavřené
+    Nesmí chybět <kbd>Ctrl</kbd> + <kbd>Z</kbd>&nbsp;pro vrácení omylem zavřené
     záložky ani seznam všech zavřených na jedno kliknutí. Záložky musí jít
-    duplikovat.
+    duplikovat.<p><img
+    src="/files/opera/duplikovat-zalozku.png" class="border"></li>
 
-    Možnost **chytit okno prohlížeče nad záložkami**. Rád
+    <li id=snap><p>Možnost <strong>chytit okno prohlížeče nad záložkami</strong>. Rád
     používám AeroSnap a pokud chci zmenšit okno z&nbsp;maximalisovaného, chci mít
-    možnost jej nahoře chytit, i&nbsp;když je horní strana plná záložek.
+    možnost jej nahoře chytit, i&nbsp;když je horní strana plná záložek.</li>
 
-    **Poznámky**&nbsp;&ndash; označit text a mít možnost jej uložit
-    jako poznámku.
+    <li id=poznamky><p><strong>Poznámky</strong>&nbsp;&ndash; označit text a mít možnost jej uložit
+    jako poznámku.</li>
 
-    **Synchronisace** záložek, poznámek, zadaných adres,
-    rychlého přístupu&nbsp;atd.
+    <li id=sync><p><strong>Synchronisace</strong> záložek, poznámek, zadaných adres,
+    rychlého přístupu&nbsp;atd.</li>
 
-    Možnost **rovnou spustit stahovaný soubor**.
+    <li id=soubor><p>Možnost <strong>rovnou spustit stahovaný soubor</strong>.<p><img src="/files/opera/spustit-soubor.png"
+    class="border"></li>
 
-    **Rychlý přístup**, kde si mohu každou stránku umístit na
+    <li id=speed-dial><p><strong>Rychlý přístup</strong>, kde si mohu každou stránku umístit na
     libovolnou posici, mohu si nastavit libovolný počet sloupců a velikost
-    jednotlivých stránek.
+    jednotlivých stránek.</li>
 
-    **Snadná tvorba vyhledávačů**&nbsp;&ndash; z&nbsp;libovolného
+    <li id=vyhledavace><p><strong>Snadná tvorba vyhledávačů</strong>&nbsp;&ndash; z&nbsp;libovolného
     formulářového pole si za pár sekund vytvořím vyhledávač s&nbsp;přiřazeným
     klíčem. Tyto vyhledávače potom musí být možno použít přes kontextovou
-    nabídku na označený&nbsp;text.
+    nabídku na označený&nbsp;text.</li>
 
-    **Místní nastavení** pro každou stránku&nbsp;&ndash; běžně mám
-    nastaven prohlížeč, aby neposílal [referer](/referer)&nbsp;&ndash; tudíž musí jít jeho
+    <li id=mistni-nastaveni><p><strong>Místní nastavení</strong> pro každou stránku&nbsp;&ndash; běžně mám
+    nastaven prohlížeč, aby neposílal <a href="/referer">referer</a>&nbsp;&ndash; tudíž musí jít jeho
     odesílání jednoduše (pro web, kde jej potřebuji) zapnout. Stejně tak
-    jednoduše si chci přiřazovat vlastní JS nebo&nbsp;CSS.
+    jednoduše si chci přiřazovat vlastní JS nebo&nbsp;CSS.</li>
 
-    **Zadání osobních údajů**&nbsp;&ndash; v&nbsp;Opeře si uložím
-    položky, které často stejně vypisuji a jsou mi potom nabízeny.
+    <li id=udaje><p><strong>Zadání osobních údajů</strong>&nbsp;&ndash; v&nbsp;Opeře si uložím
+    položky, které často stejně vypisuji a jsou mi potom nabízeny.</li>
 
-    Text odkazu lze označit běžným způsobem&nbsp;&ndash; odhadovat v&nbsp;jakém
-    místě nad ním lze označení provést je nepřípustné.
+    <li id=oznaceni-odkazu><p>Text odkazu lze označit běžným způsobem&nbsp;&ndash; odhadovat v&nbsp;jakém
+    místě nad ním lze označení provést je nepřípustné.</li>
 
-    **Klávesové zkratky**&nbsp;&ndash; musejí jít snadno a libovolně
-    nastavit. Klávesa H musí umožnit přepsat URL (velmi pohodlné, když chce člověk psát něco do adresního řádku), Ctrl +
-    B musí fungovat jako „Vložit a přejít&nbsp;na“.
+    <li id=klavesy><p><strong>Klávesové zkratky</strong>&nbsp;&ndash; musejí jít snadno a libovolně
+    nastavit. Klávesa <kbd>H</kbd> musí umožnit přepsat URL (velmi pohodlné, když chce člověk psát něco do adresního řádku), <kbd>Ctrl</kbd> +
+    <kbd>B</kbd> musí fungovat jako „Vložit a přejít&nbsp;na“.</li>
 
-    **Uložit stránku**&nbsp;&ndash; se vším všudy do jednoho souboru /
-    se vším všudy jako HTML (+ složka se obrázky, styly atd.) / jen&nbsp;HTML.
+    <li id=ulozit><p><strong>Uložit stránku</strong>&nbsp;&ndash; se vším všudy do jednoho souboru /
+    se vším všudy jako HTML (+ složka se obrázky, styly atd.) / jen&nbsp;HTML.</li>
 
-    **Relace**&nbsp;&ndash; celou sestavu otevřených záložek lze
+    <li id=relace><p><strong>Relace</strong>&nbsp;&ndash; celou sestavu otevřených záložek lze
     uložit (včetně zapamatování případného odrolování) pro budoucí
-    otevření.
+    otevření.</li>
 
-    **Vlastní lišta**, která lze jedním tlačítkem
-    zobrazit/skrýt.
+    <li id=lista><p><strong>Vlastní lišta</strong>, která lze jedním tlačítkem
+    zobrazit/skrýt.</li>
 
-    Odeslání **formuláře do nové záložky** (popř. na
-    pozadí).
+    <li id=odeslani-formulare><p>Odeslání <strong>formuláře do nové záložky</strong> (popř. na
+    pozadí).</li>
+</ol>
 
+    <p>
     To jsou asi nejzásadnější věci, co mi brání používat primárně jiný prohlížeč (ač mně v Opeře plno věcí vadí). Myslím, že žádný jiný
     tyto všechny podmínky bohužel nesplňuje. Nejblíž by se těmto funkcím základní
-    Opery nejspíš přiblížil Firefox po týdenním instalování doplňků.
+    Opery nejspíš přiblížil Firefox po týdenním instalování doplňků.</p>

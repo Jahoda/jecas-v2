@@ -5,64 +5,48 @@ description: "Jak vybrat z SQL databáse záznamy za poslední minutu, hodinu, d
 date: "2014-05-02"
 last_modification: "2014-05-02"
 status: 1
-tags: ["SQL"]
+tags: ["sql"]
+format: "html"
 ---
 
-Při psaní aplikace **využívající databási** (např. MySQL) se dřív nebo později setkáme s potřebou vypisovat data za určité období do minulosti.
+<p>Při psaní aplikace <b>využívající databási</b> (např. MySQL) se dřív nebo později setkáme s potřebou vypisovat data za určité období do minulosti.</p>
 
-Vytvořit si požadované **datum pro porovnávání** je sice možné například v PHP, ale jako **elegantnější řešení** se mi jeví použití `SUBDATE`, `NOW` a `INTERVAL` přímo v SQL.
+<p>Vytvořit si požadované <b>datum pro porovnávání</b> je sice možné například v PHP, ale jako <b>elegantnější řešení</b> se mi jeví použití <code>SUBDATE</code>, <code>NOW</code> a <code>INTERVAL</code> přímo v SQL.</p>
 
-Funkce `SUBDATE` odečte od aktuálního data (`NOW`) stanovený interval.
+<p>Funkce <code>SUBDATE</code> odečte od aktuálního data (<code>NOW</code>) stanovený interval.</p>
 
-Interval se zadává pomocí čísla a klíčového slova pro časový úsek (`MINUTE`, `HOUR`, `DAY`, `YEAR`). Pozor, klíčové slovo je **vždy v jednotném čísle**, tedy ne `DAY**S**`, `HOUR**S**` a podobně.
+<p>Interval se zadává pomocí čísla a klíčového slova pro časový úsek (<code>MINUTE</code>, <code>HOUR</code>, <code>DAY</code>, <code>YEAR</code>). Pozor, klíčové slovo je <b>vždy v jednotném čísle</b>, tedy ne <code>DAY<b>S</b></code>, <code>HOUR<b>S</b></code> a podobně.</p>
 
-## Za poslední minutu
+<h2 id="minuta">Za poslední minutu</h2>
+<pre><code>SELECT * FROM tabulka
+WHERE datum > SUBDATE(NOW(), INTERVAL <b>1 MINUTE</b>)</code></pre>
 
-```
-SELECT * FROM tabulka
-WHERE datum > SUBDATE(NOW(), INTERVAL **1 MINUTE**)
-```
+<h2 id="hodina">Za poslední hodinu</h2>
+<pre><code>SELECT * FROM tabulka
+WHERE datum > SUBDATE(NOW(), INTERVAL <b>1 HOUR</b>)</code></pre>
 
-## Za poslední hodinu
+<h2 id="den">Za poslední den (24 hodin)</h2>
+<pre><code>SELECT * FROM tabulka
+WHERE datum > SUBDATE(NOW(), INTERVAL <b>1 DAY</b>)</code></pre>
 
-```
-SELECT * FROM tabulka
-WHERE datum > SUBDATE(NOW(), INTERVAL **1 HOUR**)
-```
+<h2 id="mesic">Za poslední měsíc</h2>
+<pre><code>SELECT * FROM tabulka
+WHERE datum > SUBDATE(NOW(), INTERVAL <b>1 MONTH</b>)</code></pre>
 
-## Za poslední den (24 hodin)
+<h2 id="rok">Za poslední rok</h2>
+<pre><code>SELECT * FROM tabulka
+WHERE datum > SUBDATE(NOW(), INTERVAL <b>1 YEAR</b>)</code></pre>
 
-```
-SELECT * FROM tabulka
-WHERE datum > SUBDATE(NOW(), INTERVAL **1 DAY**)
-```
+<p>V případě, že je potřeba vypsat záznamy <i>za poslední měsíc</i> a tabulka obsahuje i <b>záznamy s datem v budoucnosti</b> (vyšším než aktuálním) – třeba u článků, které mají teprve vyjít, je potřeba <b>použít <code>BETWEEN</code></b>.</p>
 
-## Za poslední měsíc
+<pre><code>SELECT * FROM tabulka
+WHERE datum BETWEEN <b>NOW()</b> AND SUBDATE(NOW(), INTERVAL <b>1 DAY</b>)</code></pre>
 
-```
-SELECT * FROM tabulka
-WHERE datum > SUBDATE(NOW(), INTERVAL **1 MONTH**)
-```
 
-## Za poslední rok
+<h2 id="nasledujici-den">Následující den</h2>
 
-```
-SELECT * FROM tabulka
-WHERE datum > SUBDATE(NOW(), INTERVAL **1 YEAR**)
-```
+<p>Někdy je naopak potřeba vypsat záznamy, které mají datum v <b>následujícím období</b>. I tady už je nutné použít <code>BETWEEN</code> a záporný <code>INTERVAL</code>.</p>
 
-V případě, že je potřeba vypsat záznamy *za poslední měsíc* a tabulka obsahuje i **záznamy s datem v budoucnosti** (vyšším než aktuálním) – třeba u článků, které mají teprve vyjít, je potřeba **použít `BETWEEN`**.
+<pre><code>SELECT * FROM tabulka
+WHERE datum BETWEEN <b>NOW()</b> AND SUBDATE(NOW(), INTERVAL <b>-1 DAY</b>)</code></pre>
 
-```
-SELECT * FROM tabulka
-WHERE datum BETWEEN **NOW()** AND SUBDATE(NOW(), INTERVAL **1 DAY**)
-```
-
-## Následující den
-
-Někdy je naopak potřeba vypsat záznamy, které mají datum v **následujícím období**. I tady už je nutné použít `BETWEEN` a záporný `INTERVAL`.
-
-```
-SELECT * FROM tabulka
-WHERE datum BETWEEN **NOW()** AND SUBDATE(NOW(), INTERVAL **-1 DAY**)
-```

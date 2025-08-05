@@ -6,34 +6,49 @@ date: "2015-01-15"
 last_modification: "2015-01-15"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Sass Colour Function Calculator](http://razorltd.github.io/sasscolourfunctioncalculator/) – vrátí rozdíl mezi dvěma barvami ve funkci
+<div class="external-content">
+  <ul>
+    <li><a href="http://razorltd.github.io/sasscolourfunctioncalculator/">Sass Colour Function Calculator</a> – vrátí rozdíl mezi dvěma barvami ve funkci</li>
+  </ul>
+</div>
 
-## Automatický konstrast
+<h2 id="kontrast">Automatický konstrast</h2>
 
-Při programovém generování barev se může hodit následující SASS mixin, který pro tmavá pozadí vrátí bílou barvu a naopak pro světlá pozadí barvu černou.
+<p>Při programovém generování barev se může hodit následující SASS mixin, který pro tmavá pozadí vrátí bílou barvu a naopak pro světlá pozadí barvu černou.</p>
 
-```
-@mixin text-contrast($n) {
+<pre><code>@mixin text-contrast($n) {
   $color-brightness: round((red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000);
   $light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000);
   
-  @if abs($color-brightness) 
-  
-    - [SASS mixin for accessible color contrast](https://codepen.io/davidhalford/pen/wlDxL)
+  @if abs($color-brightness) < ($light-color/2){
+    color: white;
+  }
+
+  @else {
+    color: black;
+  }
+}</code></pre>
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://codepen.io/davidhalford/pen/wlDxL">SASS mixin for accessible color contrast</a></li>
+  </ul>
+</div>
 
 http://sixrevisions.com/css/css-colors/
 
-- [Why Facebook Is Blue: The Science of Colors in Marketing](https://blog.bufferapp.com/the-science-of-colors-in-marketing-why-is-facebook-blue) – jak vyznívají jednotlivé barvy
+<li><a href="https://blog.bufferapp.com/the-science-of-colors-in-marketing-why-is-facebook-blue">Why Facebook Is Blue: The Science of Colors in Marketing</a> – jak vyznívají jednotlivé barvy</li>
 
-- [randomColor](http://llllll.li/randomColor/) – generátor barev v JavaScriptu
+<li><a href="http://llllll.li/randomColor/">randomColor</a> – generátor barev v JavaScriptu</li>
 
-- [HTML Color Codes](http://htmlcolorcodes.com/)
+<li><a href="http://htmlcolorcodes.com/">HTML Color Codes</a></li>
 
-- [colllor](http://colllor.com/1081DD) – generátor odstínů barvy
+<li><a href="http://colllor.com/1081DD">colllor</a> – generátor odstínů barvy</li>
 
-- [Adobe Color](https://color.adobe.com/) – generátor barevných schemat
+<li><a href="https://color.adobe.com/">Adobe Color</a> – generátor barevných schemat</li>
 
-contrast
-ratio – zjištění kontrastu mezi dvěma barvami (jestli je dostatečný)
+<li><a href="http://leaverou.github.io/contrast-ratio/">contrast
+ratio</a> – zjištění kontrastu mezi dvěma barvami (jestli je dostatečný)</li>

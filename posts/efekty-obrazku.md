@@ -6,6 +6,9 @@ date: "2015-11-13"
 last_modification: "2015-11-13"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [CSS Image Effects #6: Infrared Photography](http://una.im/infrared/)
+<ul>
+  <li><a href="http://una.im/infrared/">CSS Image Effects #6: Infrared Photography</a></li>
+</ul>

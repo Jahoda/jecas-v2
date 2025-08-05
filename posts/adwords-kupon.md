@@ -5,25 +5,35 @@ description: "Jak získat zdarma propagační kód na 1000 Kč v Google Adwords.
 date: "2014-05-28"
 last_modification: "2014-05-29"
 status: 1
-tags: ["SEO", "Google"]
+tags: ["google", "seo"]
+format: "html"
 ---
 
-Vše, co je nutné pro **získání kuponu** udělat, je:
+<p>Vše, co je nutné pro <b>získání kuponu</b> udělat, je:</p>
 
-  - navštívit stránku [Google AdWords](http://www.google.cz/adwords/coupons/),
+<ol>
+  <li>navštívit stránku <a href="http://www.google.cz/adwords/coupons/">Google AdWords</a>,</li>
+  <li>zadat e-mail, na který Google <b>slevový kód pošle</b>,</li>
+  <li>tzv. <i>propagační kód</i> zadat při <b>nastavování fakturace</b> v Google AdWords</li>
+</ol>
 
-  - zadat e-mail, na který Google **slevový kód pošle**,
+<p>E-mailovou adresu je třeba zadat do políčka vpravo dole.</p>
 
-  - tzv. *propagační kód* zadat při **nastavování fakturace** v Google AdWords
+<p><img src="/files/adwords-kupon/ziskani-kuponu.png" alt="Získání kódu" class="border"></p>
 
-E-mailovou adresu je třeba zadat do políčka vpravo dole.
+<p>Při nastaování plateb stačí na konec formuláře vložit kód, který přišel mailem.</p>
 
-Při nastaování plateb stačí na konec formuláře vložit kód, který přišel mailem.
+<p><img src="/files/adwords-kupon/zadani-kodu.png" alt="Zadání propagačního kódu" class="border"></p>
 
-Pro získání slevovy (kreditu) je nutné mít *čerstvý* účet. Jinak se objeví hláška:
+<p>Pro získání slevovy (kreditu) je nutné mít <i>čerstvý</i> účet. Jinak se objeví hláška:</p>
 
-  Je nám líto, ale nesplňujete podmínky pro použití tohoto propagačního kódu. 
-
+<blockquote>
+  <p>Je nám líto, ale nesplňujete podmínky pro použití tohoto propagačního kódu. 
+    <br>
     Důvod: Účet překročil maximální stáří stanovené v podrobnostech nabídky.
+</p>
+</blockquote>
 
-K zadání slevového kuponu se je možné dostat i později přes *Fakturace* → *Další akce…* → *Uplatnit propagační kód*.
+<p>K zadání slevového kuponu se je možné dostat i později přes <i>Fakturace</i> → <i>Další akce…</i> → <i>Uplatnit propagační kód</i>.</p>
+
+<p><img src="/files/adwords-kupon/zadani-kuponu.png" alt="Zadání propagačního kuponu" class="border"></p>

@@ -6,14 +6,17 @@ date: "2014-01-11"
 last_modification: "2014-01-11"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://kod.djpw.cz/xdbb
 
 IE: onclik, onmousedown při posouvání
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - [Creating responsive, touch-friendly carousels with Flickity](https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/)
-
-  - [Slideout.js](http://mango.github.io/slideout/)
+<ul>
+  <li><a href="https://css-tricks.com/creating-responsive-touch-friendly-carousels-with-flickity/">Creating responsive, touch-friendly carousels with Flickity</a></li>
+  
+  <li><a href="http://mango.github.io/slideout/">Slideout.js</a></li>
+</ul>

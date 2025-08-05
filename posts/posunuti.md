@@ -5,62 +5,99 @@ description: "Jak posunout jakýkoliv element někam jinam."
 date: "2015-05-13"
 last_modification: "2015-05-14"
 status: 1
-tags: ["CSS", "Hotová řešení", "Rady a nápady"]
+tags: ["css", "hotova-reseni", "napady"]
+format: "html"
 ---
 
-V CSS existuje řada možností jak něco někam posunout.
+<p>V CSS existuje řada možností jak něco někam posunout.</p>
 
-## Margin
+<p><img src="/files/posunuti/posun.png" alt="Posunutí obsahu pomocí CSS" class="border"></p>
 
-```
-.posunuty {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="margin">Margin</h2>
+
+<pre><code>.posunuty {
   margin-top: 1em;
-}
-```
+}</code></pre>
 
-Asi nejčastější způsob, jak se elementy odsouvají, je využití vlastnosti [`margin`](/margin).
+<p>Asi nejčastější způsob, jak se elementy odsouvají, je využití vlastnosti <a href="/margin"><code>margin</code></a>.</p>
 
+<div class="live">
   Obsah
   
-  Odsunutý obsah
+  <div style="margin-top: 3em">Odsunutý obsah</div>
+</div>
 
-Hodnota `margin`u může být i záporná, čímž se dají různé elementy **dostat přes sebe**.
 
+<p>Hodnota <code>margin</code>u může být i záporná, čímž se dají různé elementy <b>dostat přes sebe</b>.</p>
+
+<div class="live">
   Obsah
   
-  Odsunutý obsah překrývá jiný element  
+  <div style="margin-top: -1.5em">Odsunutý obsah překrývá jiný element</div>  
+</div>
 
-V kombinaci s `padding`em jde toto chování šikovně využít třeba pro **zvětšování klikacích ploch**, kdy se hodnota `padding`u odečte.
+<p>V kombinaci s <code>padding</code>em jde toto chování šikovně využít třeba pro <b>zvětšování klikacích ploch</b>, kdy se hodnota <code>padding</code>u odečte.</p>
 
-  Text jakože tlačítko text
+<div class="live">
+  Text <span style="padding: .3em; margin: -.3em; background: #fff">jakože tlačítko</span> text
+</div>
 
-Při používání `margin`u může být problém, že se jeho hodnoty [slučují](/margin#spojovani).
+<p>Při používání <code>margin</code>u může být problém, že se jeho hodnoty <a href="/margin#spojovani">slučují</a>.</p>
 
-## Relativní posicování
 
-```
-.posunuty {
+
+
+
+
+<h2 id="position-relative">Relativní posicování</h2>
+
+<pre><code>.posunuty {
   position: relative;
   top: 1em;
-}
-```
+}</code></pre>
 
-Rozdíl [relativního posicování](/position#relative) od `margin`u je hlavně v tom, že element s `position: relative` stále zabírá prostor na původním umístění.
 
+
+
+<p>Rozdíl <a href="/position#relative">relativního posicování</a> od <code>margin</code>u je hlavně v tom, že element s <code>position: relative</code> stále zabírá prostor na původním umístění.</p>
+
+<div class="live">
   Obsah
-  posunutý
+  <span style="position: relative; top: .5em; left: .4em">posunutý</span>
   relativním posicováním
+</div>
 
-## Transformace `translate`
 
-```
-.posunuty {
+<h2 id="transform">Transformace <code>translate</code></h2>
+
+<pre><code>.posunuty {
   transform: translate(.5em, .4em);
-}
-```
+}</code></pre>
 
-Pro zvýšení rychlosti zejména animací byla zavedena CSS vlastnost `transform`. Prohlížeče dokáží elementy s transformací lépe optimalisovat. Hlavně díky tomu, že transformace **neovlivňuje své okolí**. Nefunguje ale v **IE 8**.
 
+
+
+<p>Pro zvýšení rychlosti zejména animací byla zavedena CSS vlastnost <code>transform</code>. Prohlížeče dokáží elementy s transformací lépe optimalisovat. Hlavně díky tomu, že transformace <b>neovlivňuje své okolí</b>. Nefunguje ale v <b>IE 8</b>.</p>
+
+<div class="live">
+  <style>
     .posun-transformace {
       display: inline-block;
       -webkit-transform: translate(.5em, .4em);
@@ -68,54 +105,100 @@ Pro zvýšení rychlosti zejména animací byla zavedena CSS vlastnost `transfor
       -ms-transform: translate(.5em, .4em);
       transform: translate(.5em, .4em);
     }
-  
+  </style>
   Obsah
-  posunutý
+  <span class="posun-transformace">posunutý</span>
   transformací translate
+</div>
 
-## Absolutní posicování
 
-Posunu jde docílit i posicováním absolutním. Specifikum této techniky je, že absolutně posicovaný element **nebude zabírat místo**. Stejně tak se chová i `position: fixed`, jen je obsah navíc fixovaný na stránce.
 
+<h2 id="position-absolute">Absolutní posicování</h2>
+
+<p>Posunu jde docílit i posicováním absolutním. Specifikum této techniky je, že absolutně posicovaný element <b>nebude zabírat místo</b>. Stejně tak se chová i <code>position: fixed</code>, jen je obsah navíc fixovaný na stránce.</p>
+
+<div class="live">
+  <div style="position: relative">
   Obsah
-    posunutý
+    <span style="position: absolute; top: .7em; left: .4em">posunutý</span>
     absolutním posicováním    
+  </div>
+</div>
 
-## Padding
 
-Pro posunutí jde použít i `padding`. Jelikož je `padding` součástí vnitřku elementu, hodí se spíš při použití pro rodičovský element.
+<h2 id="padding">Padding</h2>
 
+<p>Pro posunutí jde použít i <code>padding</code>. Jelikož je <code>padding</code> součástí vnitřku elementu, hodí se spíš při použití pro rodičovský element.</p>
+
+<div class="live">
+  <style>
     .padding-obal {
         padding: 4em 1em;
     }
     .padding-obsah {
       background: #efefef;
     }
+  </style>
+  <div class="padding-obal">
+    <div class="padding-obsah">Obsah odsazený <code>padding</code>em rodičovského elementu.</div>
+  </div>  
+</div>
 
-    Obsah odsazený `padding`em rodičovského elementu.
+<p>Výhoda v užívání <code>padding</code>u před <code>margin</code>em je v tom, že se dokáže díky <a href="/box-sizing#border-box">okrajovému box-modelu</a> (<code>box-sizing: border-box</code>) započítávat do výšky/šířky.</p>
 
-Výhoda v užívání `padding`u před `margin`em je v tom, že se dokáže díky [okrajovému box-modelu](/box-sizing#border-box) (`box-sizing: border-box`) započítávat do výšky/šířky.
 
-## Rámeček `border`
+<h2 id="border">Rámeček <code>border</code></h2>
 
-Jedná se spíš o zřídka využitelnou metodu, ale hodí se v situacích, kdy se `margin` nemá od čeho *odrazit*. To se může stát u elementu s `clear: both`, co je za něčím [obtékaným](/float).
+<p>Jedná se spíš o zřídka využitelnou metodu, ale hodí se v situacích, kdy se <code>margin</code> nemá od čeho <i>odrazit</i>. To se může stát u elementu s <code>clear: both</code>, co je za něčím <a href="/float">obtékaným</a>.</p>
 
-  Plovoucí obsah
-  Obsah s clear, kde se margin neprojeví.
+<div class="live">
+  <div style="float: left; background: #efefef; height: 150px; width: 100px">Plovoucí obsah</div>
+  <div style="clear: both; margin-top: 5em">Obsah s clear, kde se margin neprojeví.</div>
+</div>
 
-Jde to obejít mimo jiné právě nastavením průhledného rámečku.
 
-  Plovoucí obsah
-  Obsah s clear, odsunutý rámečkem.
 
-## Stín
 
-Trochu kuriosní způsob je využití stínu – CSS vlastnost [`text-shadow`](/text-shadow). Stínem textu bez rozmazání jde v podstatě vytvořit kopii původního obsahu a kamkoliv ji přesunout.
 
-  Červená podoba tohoto textu je stín.
 
-Stínů může být víc, čehož využívá:
 
-    - [Hover efekty s `text-shadow`](/hover-efekty-text-shadow) – zajímavé hover efekty využívající stín textu
 
-Nevýhoda je, že stín nejde označit kursorem myši a funguje až v **IE 10**.
+<p>Jde to obejít mimo jiné právě nastavením průhledného rámečku.</p>
+
+<div class="live">
+  <div style="float: left; background: #efefef; height: 150px; width: 100px">Plovoucí obsah</div>
+  <div style="clear: both; border-top: 5em solid transparent">Obsah s clear, odsunutý rámečkem.</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="stin">Stín</h2>
+
+<p>Trochu kuriosní způsob je využití stínu – CSS vlastnost <a href="/text-shadow"><code>text-shadow</code></a>. Stínem textu bez rozmazání jde v podstatě vytvořit kopii původního obsahu a kamkoliv ji přesunout.</p>
+
+<div class="live">
+  <div style="text-shadow: 20px -18px 0 #ff0000;">Červená podoba tohoto textu je stín.</div>
+</div>
+
+<p>Stínů může být víc, čehož využívá:</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/hover-efekty-text-shadow">Hover efekty s <code>text-shadow</code></a> – zajímavé hover efekty využívající stín textu</li>
+  </ul>
+</div>
+
+<p>Nevýhoda je, že stín nejde označit kursorem myši a funguje až v <b>IE 10</b>.</p>

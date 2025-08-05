@@ -5,142 +5,181 @@ description: "BEM (Block, Element, Modifier) je postup, kterým zapisovat CSS pr
 date: "2015-04-02"
 last_modification: "2015-04-03"
 status: 1
-tags: ["CSS", "Rady a nápady"]
+tags: ["css", "napady"]
+format: "html"
 ---
 
-```
-.blok {}
+<pre><code>.blok {}
 .blok__element {}
-.blok--modifikator {}
-```
+.blok--modifikator {}</code></pre>
 
-Nejjednodušší příklad použití této konvence pojmenování tříd může vypadat následovně.
+<p>Nejjednodušší příklad použití této konvence pojmenování tříd může vypadat následovně.</p>
 
-```
-&lt;button class="tlacitko tlacitko--dulezite">
+<pre><code>&lt;button class="tlacitko tlacitko--dulezite">
   &lt;span class="tlacitko__popis">Koupit za&lt;/span>
   &lt;span class="tlacitko__cena">500 Kč&lt;/span>
-&lt;/button> 
-```
+&lt;/button> </code></pre>
 
-S CSS selektory:
 
-```
-.tlacitko {}
+<p>S CSS selektory:</p>
+
+<pre><code>.tlacitko {}
 .tlacitko--dulezite {}
 .tlacitko__popis {}
-.tlacitko__cena {}
-```
+.tlacitko__cena {}</code></pre>
 
-  Block
+<dl>
+  <dt id="block">Block</dt>
+  <dd>
+    <p><b>B</b>lokem je v tomto případě třída <code>tlacitko</code>.</p>
+  </dd>
   
-    **B**lokem je v tomto případě třída `tlacitko`.
-
-  Element
+  <dt id="element">Element</dt>
+  <dd>
+    <p><b>E</b>lementy jsou potomci bloku, tedy třídy <code>tlacitko__popis</code> a <code>tlacitko__cena</code>.</p>
+  </dd>  
   
-    **E**lementy jsou potomci bloku, tedy třídy `tlacitko__popis` a `tlacitko__cena`.
+  <dt id="modifier">Modifier</dt>
+  <dd>
+    <p><b>M</b>odifikátorem je třída <code>tlacitko--dulezite</code>.</p>
+  </dd>    
+</dl>
 
-  Modifier
-  
-    **M**odifikátorem je třída `tlacitko--dulezite`.
 
-## Principy BEM
 
-Hlavní princip BEMu boří jeden z hlavních pilířů kaskádových stylů – kaskádovitost. Vůbec se nepoužívá **zanořování**. Každý element má svou třídu, podle které je jednoznačně identifikován.
 
-To má některé výhody.
 
-### Zanořování a dědičnost
 
-HTML/CSS kodér se nemusí tolik prát s dědičností a sílou selektorů. Síla selektorů je pouze na úrovni prosté třídy.
 
-Původní příklad bez použití BEMu by mohl vypadat následovně.
+<h2 id="principy">Principy BEM</h2>
 
-```
-&lt;button class="tlacitko dulezite">
+<p>Hlavní princip BEMu boří jeden z hlavních pilířů kaskádových stylů – kaskádovitost. Vůbec se nepoužívá <b>zanořování</b>. Každý element má svou třídu, podle které je jednoznačně identifikován.</p>
+
+<p>To má některé výhody.</p>
+
+
+<h3 id="zanorovani">Zanořování a dědičnost</h3>
+<p>HTML/CSS kodér se nemusí tolik prát s dědičností a sílou selektorů. Síla selektorů je pouze na úrovni prosté třídy.</p>
+
+<p>Původní příklad bez použití BEMu by mohl vypadat následovně.</p>
+
+
+
+<pre><code>&lt;button class="tlacitko dulezite">
   &lt;span class="popis">Koupit za&lt;/span>
   &lt;span class="cena">500 Kč&lt;/span>
-&lt;/button> 
-```
+&lt;/button> </code></pre>
 
-Adekvátní CSS by vypadalo následovně:
 
-```
-.tlacitko {}
+
+
+
+
+
+<p>Adekvátní CSS by vypadalo následovně:</p>
+
+<pre><code>.tlacitko {}
 .tlacitko.dulezite {}
 .tlacitko .popis {}
-.tlactiko .cena {}
-```
+.tlactiko .cena {}</code></pre>
 
-Problém potom může nastat v případě, že by někde na stránce měl existovat blok s názvem `popis`:
 
-```
-&lt;div class="popis">
+
+
+
+<p>Problém potom může nastat v případě, že by někde na stránce měl existovat blok s názvem <code>popis</code>:</p>
+
+<pre><code>&lt;div class="popis">
 …
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-Jeho styly pro selektor `.popis {}` by se potom promítly i do `&lt;button class="tlacitko popis">`. Stejně tak by se styly pro blok `.dulezite` promítly do `&lt;button class="tlacitko dulezite">`.
+<p>Jeho styly pro selektor <code>.popis {}</code> by se potom promítly i do <code>&lt;button class="tlacitko popis"></code>. Stejně tak by se styly pro blok <code>.dulezite</code> promítly do <code>&lt;button class="tlacitko dulezite"></code>.</p>
 
-Konflikt tak při používání BEMu může nastat jen na úrovni bloků, což je menší risiko, než při zanořování selektorů.
+<p>Konflikt tak při používání BEMu může nastat jen na úrovni bloků, což je menší risiko, než při zanořování selektorů.</p>
 
-### Srozumitelnost kódu
 
-Jelikož se styly nemohou dědit napříč různými bloky a každý stylovaný element má svou CSS třídu, je snazší k HTML elementu dohledat jeho selektor. Není kvůli tomu nutné používat [vývojářské nástroje](/vyvojarske-nastroje). Na druhou stranu to přináší nároky na **vyšší složitost HTML kódu**, kde se píší třídy i v místech, kdy by šlo použít obecný kontext (`.navigace a`).
 
-```
-&lt;div class="navigace">
+<h3 id="srozumitelnost">Srozumitelnost kódu</h3>
+
+<p>Jelikož se styly nemohou dědit napříč různými bloky a každý stylovaný element má svou CSS třídu, je snazší k HTML elementu dohledat jeho selektor. Není kvůli tomu nutné používat <a href="/vyvojarske-nastroje">vývojářské nástroje</a>. Na druhou stranu to přináší nároky na <b>vyšší složitost HTML kódu</b>, kde se píší třídy i v místech, kdy by šlo použít obecný kontext (<code>.navigace a</code>).</p>
+
+
+
+<pre><code>&lt;div class="navigace">
   &lt;a href="#" class="navigace__odkaz">Odkaz&lt;/a>
   &lt;a href="#" class="navigace__odkaz">Odkaz&lt;/a>
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-Používání konvence BEM tedy přináší něco za něco. Vyžaduje sice trochu více psaní, výsledek ale může být srozumitelný a **lépe přenositelný mezi projekty**, protože je menší risiko, že dojde ke kolisi v názvech.
+<p>Používání konvence BEM tedy přináší něco za něco. Vyžaduje sice trochu více psaní, výsledek ale může být srozumitelný a <b>lépe přenositelný mezi projekty</b>, protože je menší risiko, že dojde ke kolisi v názvech.</p>
 
-## Používat BEM?
 
-Postup *Block, Element, Modifier* může být užitečný jako společná konvence při práci hodně lidí nad stejným CSS, kdy je jasně patrné, co která třída je.
 
-Jde použít i nějaký kompromis, kdy se alespoň v rámci bloku používají třídy s názvem bloku na začátku:
 
-```
-&lt;button class="tlacitko tlacitko-dulezite">
+
+
+
+
+
+<h2 id="pouzivat">Používat BEM?</h2>
+
+<p>Postup <i>Block, Element, Modifier</i> může být užitečný jako společná konvence při práci hodně lidí nad stejným CSS, kdy je jasně patrné, co která třída je.</p>
+
+<p>Jde použít i nějaký kompromis, kdy se alespoň v rámci bloku používají třídy s názvem bloku na začátku:</p>
+
+<pre><code>&lt;button class="tlacitko tlacitko-dulezite">
   &lt;span class="tlacitko-popis">Koupit za&lt;/span>
   &lt;span class="tlacitko-cena">500 Kč&lt;/span>
-&lt;/button> 
-```
+&lt;/button> </code></pre>
 
-Nebo si zvolit jinou konvenci pro znázornění elementu a modifikátoru. Například **Martin Michálek** [nepoužívá](http://www.vzhurudolu.cz/prirucka/bem) spojovníky v názvech tříd, takže může používat následující zjednodušení.
 
-```
-.blok {}
+
+
+
+
+<p>Nebo si zvolit jinou konvenci pro znázornění elementu a modifikátoru. Například <b>Martin Michálek</b> <a href="http://www.vzhurudolu.cz/prirucka/bem">nepoužívá</a> spojovníky v názvech tříd, takže může používat následující zjednodušení.</p>
+
+<pre><code>.blok {}
 .blok-element {}
-.blok--modifikator {}
-```
+.blok--modifikator {}</code></pre>
 
-Omezit kolise v názvech tříd může i postup, který popsal **Pepa Linha**:
 
-    - [Pište CSS jako znovupoužitelné komponenty](http://blog.webdream.cz/css/piste-css-jako-znovupouzitelne-komponenty)
 
-To spočívá v tom, že tzv. blok z metodiky BEM zapíše s prefixem „`c-`“, načež všechny třídy, co k němu patří, do něj zanořuje s využitím CSS preprocesoru.
 
-```
-.c-blok {  
+
+<p>Omezit kolise v názvech tříd může i postup, který popsal <b>Pepa Linha</b>:</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://blog.webdream.cz/css/piste-css-jako-znovupouzitelne-komponenty">Pište CSS jako znovupoužitelné komponenty</a></li>
+  </ul>
+</div>
+
+<p>To spočívá v tom, že tzv. blok z metodiky BEM zapíše s prefixem „<code>c-</code>“, načež všechny třídy, co k němu patří, do něj zanořuje s využitím CSS preprocesoru.</p>
+
+<pre><code>.c-blok {  
   .element {}
   &amp;.-modifikator {}
-}
-```
+}</code></pre>
 
-Výhodou je, že se v HTML kódu nemusejí neustále opakovat názvy bloků u elementů a modifikátorů. Nevýhoda je potom menší *neprůstřelnost* k stejně pojmenovaným třídám a vyšší váha selektorů.
 
-## Odkazy jinam
 
-  - CSS Tricks: [BEM 101](https://css-tricks.com/bem-101/)
 
-  - CSS Wizardry: [More Transparent UI Code with Namespaces](http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/)
 
-    - CSS Wizardry: [BEMIT: Taking the BEM Naming Convention a Step Further](http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/)
+<p>Výhodou je, že se v HTML kódu nemusejí neustále opakovat názvy bloků u elementů a modifikátorů. Nevýhoda je potom menší <i>neprůstřelnost</i> k stejně pojmenovaným třídám a vyšší váha selektorů.</p>
 
-  - BEM.info: [BEM – Technology for creating web applications](https://en.bem.info/)
 
-  - David Berner: [Battling BEM – 5 common problems and how to avoid them](https://medium.com/fed-or-dead/battling-bem-5-common-problems-and-how-to-avoid-them-5bbd23dee319)
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  
+  <li>CSS Tricks: <a href="https://css-tricks.com/bem-101/">BEM 101</a></li>
+  
+  <li>CSS Wizardry: <a href="http://csswizardry.com/2015/03/more-transparent-ui-code-with-namespaces/">More Transparent UI Code with Namespaces</a></li>
+  
+    <li>CSS Wizardry: <a href="http://csswizardry.com/2015/08/bemit-taking-the-bem-naming-convention-a-step-further/">BEMIT: Taking the BEM Naming Convention a Step Further</a></li>
+    
+  <li>BEM.info: <a href="https://en.bem.info/">BEM – Technology for creating web applications</a></li>
+  
+  <li>David Berner: <a href="https://medium.com/fed-or-dead/battling-bem-5-common-problems-and-how-to-avoid-them-5bbd23dee319">Battling BEM – 5 common problems and how to avoid them</a></li>
+  
+</ul>

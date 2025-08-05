@@ -5,83 +5,87 @@ description: "Co je to v prostředí HTML stránky DOM (Document Object Model) a
 date: "2013-12-29"
 last_modification: "2014-02-13"
 status: 1
-tags: ["HTML"]
+tags: ["html"]
+format: "html"
 ---
 
-Stručně řečeno je **DOM** nějaká **stromová struktura**, kterou si prohlížeč vytvoří po zpracování stránky. Podívat se na něj je možné pomocí [vývojářských nástrojů](/vyvojarske-nastroje) (bývá zpravidla na první kartě).
+<p>Stručně řečeno je <b>DOM</b> nějaká <b>stromová struktura</b>, kterou si prohlížeč vytvoří po zpracování stránky. Podívat se na něj je možné pomocí <a href="/vyvojarske-nastroje">vývojářských nástrojů</a> (bývá zpravidla na první kartě).</p>
 
-## DOM není zdrojový kód
+<p><img src="/files/jak-funguje-html/html-vysledek.png" alt="Zobrazení výsledného DOMu ve vývojářských nástrojích" class="border"></p>
 
-Ač to tak možná na první pohled vypadá, *Document Object Model* není to samé co zdrojový kód stránky.
+<h2 id="zdrojovy-kod">DOM není zdrojový kód</h2>
+<p>Ač to tak možná na první pohled vypadá, <i>Document Object Model</i> není to samé co zdrojový kód stránky.</p>
 
-**Liší se** v základu ve dvou věcech.
+<p><b>Liší se</b> v základu ve dvou věcech.</p>
 
-  - Některé [druhy značek](/html-znacky) nemusí v **zdrojovém HTML kódu** být zapsány, ale v DOMu se vytvoří (třeba značky `&lt;html>`, `&lt;head>`, `&lt;body>` nebo `&lt;tbody>` u tabulek).
+<ol>
+  <li>Některé <a href="/html-znacky">druhy značek</a> nemusí v <b>zdrojovém HTML kódu</b> být zapsány, ale v DOMu se vytvoří (třeba značky <code>&lt;html></code>, <code>&lt;head></code>, <code>&lt;body></code> nebo <code>&lt;tbody></code> u tabulek).</li>
+  
+  <li>JavaScript může podobu DOMu, která vzešla z HTML zdroje, dále <b>upravovat</b>.</li>
+</ol>
 
-  - JavaScript může podobu DOMu, která vzešla z HTML zdroje, dále **upravovat**.
+<p>Kromě vývojářských nástrojů se přibližná podoba po zpracování <b>HTML i JS kódů</b> získá vypsáním <a href="/innerhtml"><code>innerHTML</code></a>.</p>
 
-Kromě vývojářských nástrojů se přibližná podoba po zpracování **HTML i JS kódů** získá vypsáním [`innerHTML`](/innerhtml).
+<div class="live">
+  <div>
+    <script>document.write("<p>Odstavec vypsaný skriptem</p>");</script>
+    <p>Odstavec v HTML
+  </div>  
+  <button onclick="alert(this.parentNode.getElementsByTagName('div')[0].innerHTML)">Výsledný zdrojový kód</button>
+</div>
 
-    document.write("Odstavec vypsaný skriptem
 
-");
-    Odstavec v HTML
-    
-  Výsledný zdrojový kód
+<h2 id="zdroj-vs-dom">Zdrojový kód vs. DOM</h2>
 
-## Zdrojový kód vs. DOM
+<p>Například tento zdrojový kód. Obsahuje otevírací HTML značku pro odstavec (<code>&lt;p></code>) a trochu JS, který přidá do stránky nadpis (<code>&lt;h1></code>). (<a href="http://kod.djpw.cz/utbb">Ukázka</a>.)</p>
 
-Například tento zdrojový kód. Obsahuje otevírací HTML značku pro odstavec (`&lt;p>`) a trochu JS, který přidá do stránky nadpis (`&lt;h1>`). ([Ukázka](http://kod.djpw.cz/utbb).)
-
-```
-&lt;p>Odstavec
+<pre><code>&lt;p>Odstavec
 &lt;script>
   var nadpis = document.createElement("h1");
   nadpis.innerHTML = "Nadpis stránky";
   document.body.appendChild(nadpis);
-&lt;/script>
-```
+&lt;/script></code></pre>
 
-Vytvoří následující podobu DOMu.
+<p>Vytvoří následující podobu DOMu.</p>
 
-## Úpravy DOMu
+<p><img src="/files/dom/vysledny-dom.png" alt="Výsledná podoba DOMu" class="border"></p>
 
-Co je myšleno takovou úpravou DOMu pomocí JavaScriptu?
+<h2 id="upravy">Úpravy DOMu</h2>
+<p>Co je myšleno takovou úpravou DOMu pomocí JavaScriptu?</p>
 
-  - Změna, přidávání nebo odebírání **atributů** (`element.className = 'novaTrida'`, `setAttribute`, `removeAttribute`).
+<ul>
+  <li>Změna, přidávání nebo odebírání <b>atributů</b> (<code>element.className = 'novaTrida'</code>, <code>setAttribute</code>, <code>removeAttribute</code>).</li>
+  <li>Přidávání nebo odebírání <b>elementů</b> (metody <code>appendChild</code>, <code>removeChild</code> a podobně).</li>
+  <li>Změna <b>obsahu</b> elementů (<code>innerHTML</code>, <code>innerText</code>/<code>textContent</code>).</li>
+</ul>
 
-  - Přidávání nebo odebírání **elementů** (metody `appendChild`, `removeChild` a podobně).
+<h2 id="vyber-elementu">Výběr elementů</h2>
 
-  - Změna **obsahu** elementů (`innerHTML`, `innerText`/`textContent`).
+<p>Pro výběr potřebného elementu z HTML DOMu existuje v JavaScriptu několik možností.</p>
 
-## Výběr elementů
+<ul>
+  <li><p>Od <b>IE 8</b> se dá používat <a href="/queryselector"><code>querySelector</code></a> a běžné <a href="/css-selektory">CSS selektory</a>.</p></li>
+  <li><p>Oblíbené jsou metody <code>getElement*</code>:</p>
+    <ul>
+      <li><code>document.getElementById("idecko")</code> — vybere jeden element s ID <code>idecko</code></li>
+      <li><code>document.getElement<b>s</b>ByTagName("div")</code> — vybere <b>kolekci</b> značek <code>&lt;div></code></li>
+      <li><code>document.getElement<b>s</b>ByClassName("trida")</code> — vybere <b>kolekci</b> elementů s třídou <code>trida</code> (funguje až od <b>IE 9</b>)</li>
+    </ul>
+    <p>Kolekce získané metodami <code>getElement<b>s</b></code> se potom většinou <a href="/js-cykly">procházejí cykly</a>.</p>
+  </li>
+  <li><p>Obrázky na stránce je možné získat z <code>document.images</code> (<a href="http://kod.djpw.cz/vtbb">ukázka</a>).</p></li>
+  <li><p>K formulářům se dostaneme přes <code>document.jmenoFormulare</code> a k jejich políčkům přes <code>document.jmenoFormulare.jmenoPolicka</code> (<a href="http://kod.djpw.cz/wtbb">ukázka</a>).</p></li>
+</ul>
 
-Pro výběr potřebného elementu z HTML DOMu existuje v JavaScriptu několik možností.
+<p>Ještě existují další možnosti, ale ty se zase tak moc nepoužívají a koneckonců jdou nahradit <code>querySelectorem</code> / <code>getElement*</code> metodami.</p>
 
-  Od **IE 8** se dá používat [`querySelector`](/queryselector) a běžné [CSS selektory](/css-selektory).
+<h2 id="php">DOM v PHP</h2>
 
-  Oblíbené jsou metody `getElement*`:
+<p>Podobné metody jako v JS jde používat i v PHP pro získávání dat z HTML (třeba tak vytahovat data z <a href="/stazeni-stranky">cizích stránek</a> získaných funkcí <code>file_get_contents</code>).</p>
 
-      - `document.getElementById("idecko")` — vybere jeden element s ID `idecko`
+<p><a href="http://cz2.php.net/book.dom" class="button">PHP DOM</a></p>
 
-      - `document.getElement**s**ByTagName("div")` — vybere **kolekci** značek `&lt;div>`
-
-      - `document.getElement**s**ByClassName("trida")` — vybere **kolekci** elementů s třídou `trida` (funguje až od **IE 9**)
-
-    Kolekce získané metodami `getElement**s**` se potom většinou [procházejí cykly](/js-cykly).
-
-  Obrázky na stránce je možné získat z `document.images` ([ukázka](http://kod.djpw.cz/vtbb)).
-
-  K formulářům se dostaneme přes `document.jmenoFormulare` a k jejich políčkům přes `document.jmenoFormulare.jmenoPolicka` ([ukázka](http://kod.djpw.cz/wtbb)).
-
-Ještě existují další možnosti, ale ty se zase tak moc nepoužívají a koneckonců jdou nahradit `querySelectorem` / `getElement*` metodami.
-
-## DOM v PHP
-
-Podobné metody jako v JS jde používat i v PHP pro získávání dat z HTML (třeba tak vytahovat data z [cizích stránek](/stazeni-stranky) získaných funkcí `file_get_contents`).
-
-[PHP DOM](http://cz2.php.net/book.dom)
-
-## Odkazy jinam
-
-  - [Writing A Better JavaScript Library For The DOM](http://coding.smashingmagazine.com/2014/01/13/better-javascript-library-for-the-dom/) — knihovna, která vylepšuje klasický DOM
+<h2 id="odkazy">Odkazy jinam</h2>
+<ul>
+  <li><a href="http://coding.smashingmagazine.com/2014/01/13/better-javascript-library-for-the-dom/">Writing A Better JavaScript Library For The DOM</a> — knihovna, která vylepšuje klasický DOM</li>
+</ul>

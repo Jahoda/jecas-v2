@@ -5,49 +5,70 @@ description: "Co užitečného obsahuje v PHP vestavěná proměnná <code>$_SER
 date: "2014-04-29"
 last_modification: "2014-04-29"
 status: 1
-tags: ["Rady a nápady", "PHP"]
+tags: ["napady", "php"]
+format: "html"
 ---
 
-Celá [proměnná `$_SERVER`](http://cz2.php.net/manual/en/reserved.variables.server.php) obsahuje spoustu údajů. Které jsou **nejzajímavější a nejpoužívanější**?
+<p>Celá <a href="http://cz2.php.net/manual/en/reserved.variables.server.php">proměnná <code>$_SERVER</code></a> obsahuje spoustu údajů. Které jsou <b>nejzajímavější a nejpoužívanější</b>?</p>
 
-  `$_SERVER["REMOTE_ADDR"]`
+<dl>
 
-    Obsahuje IP adresu návštěvníka.
-
-  `$_SERVER["HTTP_REFERER"]`
-
-    Informace o předchozí navštívené stránce. Může být prázdné v případě, že:
-
-      - Návštěvník zadal adresu přímo do prohlížeče.
-
-      - Posílání [referreru](/referer) je uživatelem zakázáno nebo ho blokuje [`rel=noreferrer`](/noreferrer).
-
-  `$_SERVER["HTTP_USER_AGENT"]`
-
-    Z hlavičky `user-agent` je možné zjistit informace o **prohlížeči**, **operačním systému** a podobně.
-
-    Tytéž informace umí zjistit i JavaScript přes `navigator.userAgent`.
-
+  <dt id="remote-addr"><code>$_SERVER["REMOTE_ADDR"]</code></dt>
+  
+  <dd>
+    <p>Obsahuje IP adresu návštěvníka.</p>
+  </dd>
+  
+  <dt id="http-referer"><code>$_SERVER["HTTP_REFERER"]</code></dt>
+  
+  <dd>
+    <p>Informace o předchozí navštívené stránce. Může být prázdné v případě, že:</p>
+    
+    <ul>
+      
+      <li>Návštěvník zadal adresu přímo do prohlížeče.</li>
+      
+      <li>Posílání <a href="/referer">referreru</a> je uživatelem zakázáno nebo ho blokuje <a href="/noreferrer"><code>rel=noreferrer</code></a>.</li>
+    </ul>
+  </dd>  
+  
+  <dt id="http-user-agent"><code>$_SERVER["HTTP_USER_AGENT"]</code></dt>
+  
+  <dd>
+    <p>Z hlavičky <code>user-agent</code> je možné zjistit informace o <b>prohlížeči</b>, <b>operačním systému</b> a podobně.</p>
+    
+    <p>Tytéž informace umí zjistit i JavaScript přes <code>navigator.userAgent</code>.</p>
+    
+    <p class="live">
+<script>
   document.write(navigator.userAgent);
-
-    Hodnota `$_SERVER["HTTP_USER_AGENT"]` se dá využívat k [detekcím verse prohlížeče](/css-pro-ie#detekce) nebo třeba ke zjištěné [prohlížeče mobilního](/mobilni-web#detekce).
-
-  `$_SERVER["REQUEST_URI"]`
-
-    URL aktuální stránky očištěná o doménu. Pro stránku `http://jecas.cz/server` bude `REQUEST_URI` obsahovat `/server`.
-
-    Využití se najde při **přepisování adres** s využitím souboru `.htaccess` nebo **logování akcí uživatelů**, kde je vhodné URL ukládat.
-
-  `$_SERVER["QUERY_STRING"]`
-
-    Taktéž se týká URL a obsahuje obsah `$_SERVER["REQUEST_URI"]` za otazníkem, pokud za otazníkem nějaký obsah je.
-
-  `$_SERVER["HTTP_ACCEPT_LANGUAGE"]`
-
-    Dá se používat k **detekci jazyku uživatele**. Obsah může vypadat takto:
-
-    ```
-cs-CZ,cs;q=0.9,en;q=0.8
-```
-
-    Hodnota za `q=` uvádí prioritu daného jazyka (vyšší číslo = vyšší priorita). Dá se ovlivnit v **nastavení prohlížeče**.
+</script>
+    </p>
+    
+    <p>Hodnota <code>$_SERVER["HTTP_USER_AGENT"]</code> se dá využívat k <a href="/css-pro-ie#detekce">detekcím verse prohlížeče</a> nebo třeba ke zjištěné <a href="/mobilni-web#detekce">prohlížeče mobilního</a>.</p>
+  </dd>
+  
+  <dt id="request-uri"><code>$_SERVER["REQUEST_URI"]</code></dt>
+  
+  <dd>
+    <p>URL aktuální stránky očištěná o doménu. Pro stránku <code>http://jecas.cz/server</code> bude <code>REQUEST_URI</code> obsahovat <code>/server</code>.</p>
+    
+    <p>Využití se najde při <b>přepisování adres</b> s využitím souboru <code>.htaccess</code> nebo <b>logování akcí uživatelů</b>, kde je vhodné URL ukládat.</p>
+  </dd>
+  
+  <dt id="query-string"><code>$_SERVER["QUERY_STRING"]</code></dt>
+  
+  <dd>
+    <p>Taktéž se týká URL a obsahuje obsah <code>$_SERVER["REQUEST_URI"]</code> za otazníkem, pokud za otazníkem nějaký obsah je.</p>
+  </dd>
+  
+  <dt id="http-accept-language"><code>$_SERVER["HTTP_ACCEPT_LANGUAGE"]</code></dt>
+  
+  <dd>
+    <p>Dá se používat k <b>detekci jazyku uživatele</b>. Obsah může vypadat takto:</p>
+    
+    <pre><code>cs-CZ,cs;q=0.9,en;q=0.8</code></pre>
+    
+    <p>Hodnota za <code>q=</code> uvádí prioritu daného jazyka (vyšší číslo = vyšší priorita). Dá se ovlivnit v <b>nastavení prohlížeče</b>.</p>
+  </dd>
+</dl>

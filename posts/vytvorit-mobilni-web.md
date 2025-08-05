@@ -5,114 +5,267 @@ description: "Potřebujete vytvořit mobilní web. Z vaší WWW stránky vytvoř
 date: "2015-03-23"
 last_modification: "2015-03-23"
 status: 0
-tags: ["Responsivní design"]
+tags: ["responsive"]
+format: "html"
 ---
 
-Dne **21. dubna 2015** začal Google ve svém algoritmu zohledňovat, jestli je stránka přizpůsobená mobilním zařízením. Chystaná změna by měla ovlivnit až **40 % výsledků**. Neváhejte proto s tvorbou **responzivní verze** vaší stránky, využijte mou nabídku, nechte si **mobilní web vytvořit** a získejte tím výhodu před svou konkurencí.
+<p>Dne <b>21. dubna 2015</b> začal Google ve svém algoritmu zohledňovat, jestli je stránka přizpůsobená mobilním zařízením. Chystaná změna by měla ovlivnit až <b>40 % výsledků</b>. Neváhejte proto s tvorbou <b>responzivní verze</b> vaší stránky, využijte mou nabídku, nechte si <b>mobilní web vytvořit</b> a získejte tím výhodu před svou konkurencí.</p>
 
-    Cena od
-    5500 Kč
+<div class="prehled">
+  <div class="polozka">
+    <div class="popis">Cena od</div>
+    <div class="nadpis">5500 Kč</div>
+  </div>
+  
+  <div class="polozka">
+    <div class="popis">Web splní</div>
+    <div class="nadpis"><img src="/files/vytvorit-mobilni-web/google.png" alt="Google"> test použitelnosti</div>
+  </div>      
+  <div class="polozka">
+    <div class="popis">Dodání do</div>
+    <div class="nadpis">5 dní</div>
+  </div>  
 
-    Web splní
-     test použitelnosti
+</div>
 
-    Dodání do
-    5 dní
 
-  ## Nezávazná cenová kalkulace
+<form id="objednat" class="formular objednat" onsubmit="return Objednavka.odeslat(this)" novalidate>
+  <h2 id="kalkulace">Nezávazná cenová kalkulace</h2>
+  <p>
+    <label for="email">Váš e-mail</label>
+    <input type="email" name="email" id="email" placeholder="email@domena.cz">   
+  </p>
+  <p>
+    <label for="url">Adresa webu</label>
+    <input type="url" name="url" id="url" placeholder="domena.cz"> 
+  </p>  
+  <p>
+    <input type="checkbox" id="pripominka"><label for="pripominka">Připsat poznámku</label>
+    <span class="pripominka">
+      <textarea name="zprava" id="zprava" cols="30" rows="10" placeholder="Připomínky k vytvoření mobilní verze webu"></textarea>
+      <i>Komentář k nezávazné objednávce.</i>
+    </span>
+  </p>
+  <div id="hlaska" class="hlaska"></div>
+  <noscript>
+    <div class="hlaska" data-zobrazit>Bez JavaScriptu formulář nefunguje, napište mi prosím na e-mail <code>jahoda&#64;jecas.cz</code>.</div>
+  </noscript>
+  
+  <p><button class="chci">Odeslat objednávku</button></p>
+</form>
 
-    Váš e-mail
 
-    Adresa webu
+<p>Upravená stránka bude dobře <b>použitelná pro vaše návštěvníky</b>. Kromě toho projde testem Googlu, což zajistí <b>lepší pozice ve vyhledávačích</b>.</p>
 
-    Připsat poznámku
+<p><img src="/files/vytvorit-mobilni-web/test.png" alt="Výsledek testu mobilní použitelnosti" class="border"></p>
 
-      *Komentář k nezávazné objednávce.*
 
-    Bez JavaScriptu formulář nefunguje, napište mi prosím na e-mail `jahoda&#64;jecas.cz`.
 
-  Odeslat objednávku
 
-Upravená stránka bude dobře **použitelná pro vaše návštěvníky**. Kromě toho projde testem Googlu, což zajistí **lepší pozice ve vyhledávačích**.
 
-Cena za mobilní web je od **5500 Kč**, dle náročnosti současné podoby a rozsahu (počtu typových podstránek) webu.
 
-Od spuštění nového Google algoritmu uplynulo:
 
+
+
+
+
+
+<p>Cena za mobilní web je od <b>5500 Kč</b>, dle náročnosti současné podoby a rozsahu (počtu typových podstránek) webu.</p>
+
+
+<p>Od spuštění nového Google algoritmu uplynulo:</p>
+
+<div id="odpocet" class="odpocet status positive" data-konec="4/21/2015 00:00:00" data-hlaska="Čas vypršel!" data-zbyva=""></div>
+<script>
   window.onload = function() {
     odpocet(document.getElementById('odpocet'));
   }
+</script>
 
-**Neodkládejte** proto vytvoření mobilního webu na později.
+<p><b>Neodkládejte</b> proto vytvoření mobilního webu na později.</p>
 
-  - Zadejte adresu webu a e-mail.
+<ol class="kroky">
+  <li>Zadejte adresu webu a e-mail.</li>
+  <li>Obratem vypracuji a zašlu <b>nezávaznou cenovou kalkulaci</b>.</li>  
+  <li>Po odsouhlasení se pustím do práce.</li>
+</ol>
 
-  - Obratem vypracuji a zašlu **nezávaznou cenovou kalkulaci**.
+<div><a class="chci" href="#objednat">Chci mobilní web</a></div>
+
+
+
+<h2 id="proc">Proč vytvořit mobilní web?</h2>
+
+<blockquote cite="https://www.seroundtable.com/google-mobile-friendly-search-ranking-factors-19926.html">
+<ul>
+  <li><b>61 %</b> uživatelů se nerado vrací na stránku, která je špatně použitelná na mobilech.</li>
   
-  - Po odsouhlasení se pustím do práce.
+  <li><b>40 %</b> návštěvníků říká, že by dalo přednost stránce upravené pro mobilní zařízení.</li>
+</ul>
+</blockquote>
 
-[Chci mobilní web](#objednat)
+<p>Podíl návštěvnosti z mobilních zařízení s malou obrazovkou <b>neustále roste</b>. Běžné weby se na mobilech nepoužívají nejlépe. Řešení je responzivní web, který se přizpůsobí každému zařízení a za všech okolností nabídne návštěvníkům/zákazníkům <b>pohodlně použitelnou stránku</b>.</p>
 
-## Proč vytvořit mobilní web?
+<p>Taková stránka bude navíc i lépe hodnocena <b>vyhledávačem Google</b> a ve výsledích hledání označená jako „vhodná pro prohlížeční z mobilních zařízení“ (<i>mobile-friendly</i>). Upravení stránky pro mobilní telefony tak přinese <b>vyšší návštěvnost z vyhledávání</b>.</p>
 
-  - **61 %** uživatelů se nerado vrací na stránku, která je špatně použitelná na mobilech.
+<figure>
+  <img src="/files/google-mobile-friendly/ukazka.png" alt="Označení stránky vhodné pro mobilní zařízení" class="border">
+  <figcaption>Příklad označení stránky „<a href="/google-mobile-friendly">mobile-friendly</a>“</figcaption>
+</figure>
 
-  - **40 %** návštěvníků říká, že by dalo přednost stránce upravené pro mobilní zařízení.
 
-Podíl návštěvnosti z mobilních zařízení s malou obrazovkou **neustále roste**. Běžné weby se na mobilech nepoužívají nejlépe. Řešení je responzivní web, který se přizpůsobí každému zařízení a za všech okolností nabídne návštěvníkům/zákazníkům **pohodlně použitelnou stránku**.
 
-Taková stránka bude navíc i lépe hodnocena **vyhledávačem Google** a ve výsledích hledání označená jako „vhodná pro prohlížeční z mobilních zařízení“ (*mobile-friendly*). Upravení stránky pro mobilní telefony tak přinese **vyšší návštěvnost z vyhledávání**.
 
-  Příklad označení stránky „[mobile-friendly](/google-mobile-friendly)“
 
-## Co je to responzivní/mobilní web?
 
-Responzivní stránka se vyznačuje tím, že se **dynamicky přizpůsobuje velikosti** aktuální obrazovky. Nehrozí tak, že se stránka na displej nevejde a návštěvník bude nucen se nepohodlně posouvat do stran.
 
-Dále se ovládací prvky **přizpůsobují dotykovému ovládání prsty**, které je méně přesné než myš, takže odkazy a tlačítka musejí být větší.
 
-## Jak zjistit, jestli potřebuji mobilní web?
+<h2 id="co">Co je to responzivní/mobilní web?</h2>
 
-Je možné, že je váš web pro mobilní zařízení již přizpůsoben. Jde to jednoduše ověřit zmenšením šířky okna, kdy by se stránka měla změnám šířky přizpůsobovat. V žádném případě by se neměl **zobrazovat vodorovný posuvník**.
+<p><img src="/files/vytvorit-mobilni-web/zarizeni.png" alt="Přizpůsobení se zařízením" class="border"></p>
 
-Google nabízí automatický test, kam stačí zadat adresu stránky, kliknout na **Analyzovat** a dozvíte se výsledek.
 
-    - Google: [Test použitelnosti v mobilech](https://www.google.com/webmasters/tools/mobile-friendly/)
 
-Pokud web v mobilech není dobře použitelný, je dobré se podívat na podíl návštěvníků, kterých se to týká. A zvážit, jestli jim používání webu nezpříjemnit. Je možné, že nízky podíl mobilních návštěvníků je způsoben i tím, že se jim nemobilní stránka **špatně používá**.
 
-V nástroji **Google Analytics** jde podíl návštěv z mobilů a tabletů zjistit v nabídce *Cílové publikum → Mobilní zařízení → Přehled*.
 
-## Půjde i starý web předělat na responzivní?
 
-Ano, i velmi staré stánky upravím tak, aby se na mobilech, tabletech a dalších malých zařízeních správně zobrazovaly.
 
-## Zásahy do současného webu
 
-Není se třeba bát, že mobilní verze stránky ohrozí současné zobrazení, které není k mobilům přívětivé.
 
-Většina úprav proběhne v CSS, úpravy v HTML šablonách budou jen minimální.
 
-## Zrychlení webu
 
-Načítá se vaše stránka dlouho?
 
-Kromě rozložení stránky vhodné pro mobily je zásadní, aby mobilní web byl maximálně **rychlý**. K vytvoření mobilní varianty stránek proto navrhuji i **zrychlení webu**.
 
-Pro otestování aktuální rychlosti webu existuje rovněž online nástroj.
 
-    - [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) – nástroj pro testování rychlosti na mobilech i desktopech
 
-  Příklad výsledku webu bez zásadních problémů s rychlostí
 
-[Mám zájem o mobilní web](#objednat)
 
-## Vytvoření responzivního webu svépomocí
 
-Chcete si mobilní verzi webu vytvořit raději **vlastními silami**? Pročtěte si přes 10 článků, které jsem o tvorbě responzivních stránek za poslední dva roky napsal:
 
-    - [Responsivní design](/responsive): Přizpůsobení webové stránky různým cílovým zařízením.
 
+
+
+
+
+
+
+
+
+
+
+<p>Responzivní stránka se vyznačuje tím, že se <b>dynamicky přizpůsobuje velikosti</b> aktuální obrazovky. Nehrozí tak, že se stránka na displej nevejde a návštěvník bude nucen se nepohodlně posouvat do stran.</p>
+
+<p>Dále se ovládací prvky <b>přizpůsobují dotykovému ovládání prsty</b>, které je méně přesné než myš, takže odkazy a tlačítka musejí být větší.</p>
+
+
+
+<h2 id="jak">Jak zjistit, jestli potřebuji mobilní web?</h2>
+
+<p>Je možné, že je váš web pro mobilní zařízení již přizpůsoben. Jde to jednoduše ověřit zmenšením šířky okna, kdy by se stránka měla změnám šířky přizpůsobovat. V žádném případě by se neměl <b>zobrazovat vodorovný posuvník</b>.</p>
+
+<p>Google nabízí automatický test, kam stačí zadat adresu stránky, kliknout na <b>Analyzovat</b> a dozvíte se výsledek.</p>
+
+<div class="external-content">
+  <ul>
+    <li>Google: <a target="_blank" href="https://www.google.com/webmasters/tools/mobile-friendly/">Test použitelnosti v mobilech</a></li>
+  </ul>
+</div>
+
+<p>Pokud web v mobilech není dobře použitelný, je dobré se podívat na podíl návštěvníků, kterých se to týká. A zvážit, jestli jim používání webu nezpříjemnit. Je možné, že nízky podíl mobilních návštěvníků je způsoben i tím, že se jim nemobilní stránka <b>špatně používá</b>.</p>
+
+
+
+<p>V nástroji <b>Google Analytics</b> jde podíl návštěv z mobilů a tabletů zjistit v nabídce <i>Cílové publikum → Mobilní zařízení → Přehled</i>.</p>
+
+<p><img src="/files/vytvorit-mobilni-web/statistiky.png" alt="Zobrazení podílu mobilních zařízení v GA" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="pujde">Půjde i starý web předělat na responzivní?</h2>
+
+<p>Ano, i velmi staré stánky upravím tak, aby se na mobilech, tabletech a dalších malých zařízeních správně zobrazovaly.</p>
+
+
+
+
+<h2 id="zasahy">Zásahy do současného webu</h2>
+
+<p>Není se třeba bát, že mobilní verze stránky ohrozí současné zobrazení, které není k mobilům přívětivé.</p>
+
+<p>Většina úprav proběhne v CSS, úpravy v HTML šablonách budou jen minimální.</p>
+
+
+
+
+
+<h2 id="zrychleni">Zrychlení webu</h2>
+
+<p>Načítá se vaše stránka dlouho?</p>
+
+<p>Kromě rozložení stránky vhodné pro mobily je zásadní, aby mobilní web byl maximálně <b>rychlý</b>. K vytvoření mobilní varianty stránek proto navrhuji i <b>zrychlení webu</b>.</p>
+
+<p>Pro otestování aktuální rychlosti webu existuje rovněž online nástroj.</p>
+
+<div class="external-content">
+  <ul>
+    <li><a target="_blank" href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a> – nástroj pro testování rychlosti na mobilech i desktopech</li>
+  </ul>
+</div>
+
+
+<figure>
+  <img src="/files/vytvorit-mobilni-web/rychlost.png" alt="Výsledky měření rychlosti webu" class="border">
+  <figcaption>Příklad výsledku webu bez zásadních problémů s rychlostí</figcaption>
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><a class="chci" href="#objednat">Mám zájem o mobilní web</a></div>
+
+
+<h2 id="svepomoci">Vytvoření responzivního webu svépomocí</h2>
+
+<p>Chcete si mobilní verzi webu vytvořit raději <b>vlastními silami</b>? Pročtěte si přes 10 článků, které jsem o tvorbě responzivních stránek za poslední dva roky napsal:</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/responsive">Responsivní design</a>: Přizpůsobení webové stránky různým cílovým zařízením.</li>
+  </ul>
+</div>
+
+
+
+<script src="/files/vytvorit-mobilni-web/skript.js"></script>
+<style>
 .objednat {
     background-color: #E2FEEB;
     padding: 1px 1em;
@@ -230,7 +383,8 @@ ol.kroky {
 .odpocet .cislo {
     font-size: 150%;
 }
-
+  
+  
   .obchod-box-obal {
     display: none;
-  }
+  }</style>

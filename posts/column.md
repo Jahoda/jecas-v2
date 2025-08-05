@@ -5,109 +5,125 @@ description: "CSS vlastnost <code>column</code> umožňuje rozdělení textu do 
 date: "2013-06-19"
 last_modification: "2015-08-04"
 status: 1
-tags: ["CSS", "CSS vlastnosti", "Hotová řešení"]
+tags: ["css", "css-vlastnosti", "hotova-reseni"]
+format: "html"
 ---
 
-V novinách nebo časopisech je běžné, že je text **rozdělen do více sloupečků**. Pro docílení tohoto efektu na webové stránce existují CSS vlastnosti `column-*`.
+<p>V novinách nebo časopisech je běžné, že je text <b>rozdělen do více sloupečků</b>. Pro docílení tohoto efektu na webové stránce existují CSS vlastnosti <code>column-*</code>.</p>
 
-## Podpora
 
-Tvorba sloupců s využít CSS vlastností `column-*` funguje od **Internet Exploreru 9**. V **Chrome**/**Opeře** je nutno použít [CSS prefix](/css-prefixy) `-webkit-`, ve **Firefoxu** zase `-moz-`. Ve staré **Opeře 12** funguje samotné `column-*` jako v **IE 9** a novějších.
 
-Ukázka rozdělení [seznamu `&lt;ul>`](/seznamy):
+<h2 id="podpora">Podpora</h2>
 
-    - První
+<p>Tvorba sloupců s využít CSS vlastností <code>column-*</code> funguje od <b>Internet Exploreru 9</b>. V <b>Chrome</b>/<b>Opeře</b> je nutno použít <a href="/css-prefixy">CSS prefix</a> <code>-webkit-</code>, ve <b>Firefoxu</b> zase <code>-moz-</code>. Ve staré <b>Opeře 12</b> funguje samotné <code>column-*</code> jako v <b>IE 9</b> a novějších.</p>
 
-    - Druhá
+<p>Ukázka rozdělení <a href="/seznamy">seznamu <code>&lt;ul></code></a>:</p>
 
-    - Třetí
+<div class="live">
+  <ul style='list-style: none; padding: 0; text-align: center; column-count: 2; -webkit-column-count: 2; -moz-column-count: 2; column-rule: 1px solid #0D6AB7; -webkit-column-rule: 1px solid #0D6AB7; -moz-column-rule: 1px solid #0D6AB7'>
+    <li>První</li>
+    <li>Druhá</li>
+    <li>Třetí</li>
+    <li>Čtvrtá</li>
+    <li>Pátá</li>
+    <li>Šestá</li>
+    <li>Sedmá</li>
+    <li>Osmá</li>
+    <li>Devátá</li>
+  </ul>
+</div>  
 
-    - Čtvrtá
 
-    - Pátá
+<h2 id=column>Vlastnost <code>column-*</code></h2>
 
-    - Šestá
+<p>Pro nastavení sloupců existují následující vlastnosti:</p>
 
-    - Sedmá
+<table>
+<tr>
+  <th width=150>Značka<th>Význam</th>
+  <tr><td><code>column-count</code><td>počet sloupců</td></tr>
+<tr><td><code>column-gap</code><td>šíře mezery mezi sloupci </td></tr>
 
-    - Osmá
+<tr><td><code>column-rule</code><td>styl oddělovače sloupců, funguje podobně jako <code>border</code> (analogicky lze rozdělit na 3 vlastnosti <code>column-rule-color</code>, <code>column-rule-style</code> a <code>column-rule-width</code>).</td></tr>
+<tr><td><code>column-width</code><td>šířka jednoho sloupce</td></tr>
+  <tr><td><code>columns</code><td>zkratka; sdružení <code>column-count</code> a <code>column-width</code> do jedné vlastnosti</td></tr>
+<!--<tr><td><code>column-span</code><td>
+<tr><td><code>column-fill</code><td>-->
+</table>
 
-    - Devátá
 
-## Vlastnost `column-*`
 
-Pro nastavení sloupců existují následující vlastnosti:
+<h3 id="zmena-poctu">Změna počtu sloupců</h3>
 
-  ZnačkaVýznam
-  `column-count`počet sloupců
-`column-gap`šíře mezery mezi sloupci 
+<p>Užitečné chování CSS <code>column</code> spočívá v tom, že se počet sloupců dokáže <b>sám průběžně měnit</b> podle dostupného prostoru. V případě, že se zadá šířka (<code>column-width</code>), se tento rozměr chápe jako minimální, kdy se při zúžení sloupeček odebere.</p>
 
-`column-rule`styl oddělovače sloupců, funguje podobně jako `border` (analogicky lze rozdělit na 3 vlastnosti `column-rule-color`, `column-rule-style` a `column-rule-width`).
-`column-width`šířka jednoho sloupce
-  `columns`zkratka; sdružení `column-count` a `column-width` do jedné vlastnosti
-`column-span`
-`column-fill`-->
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/htob">Živá ukázka</a> – při změně dostupné velikosti se mění počet sloupců</li>
+  </ul>
+</div>
 
-### Změna počtu sloupců
 
-Užitečné chování CSS `column` spočívá v tom, že se počet sloupců dokáže **sám průběžně měnit** podle dostupného prostoru. V případě, že se zadá šířka (`column-width`), se tento rozměr chápe jako minimální, kdy se při zúžení sloupeček odebere.
 
-    - [Živá ukázka](http://kod.djpw.cz/htob) – při změně dostupné velikosti se mění počet sloupců
+<h2 id="pouzivat">Používat sloupce?</h2>
 
-## Používat sloupce?
+<p>Stručně řečeno: <b>Ne</b>.</p>
 
-Stručně řečeno: **Ne**.
+<p>Web funguje jinak než časopis nebo noviny – <b>není rozdělen na jednotlivé stránky</b>, ale text plyne nerozděleně shora dolů.</p>
 
-Web funguje jinak než časopis nebo noviny – **není rozdělen na jednotlivé stránky**, ale text plyne nerozděleně shora dolů.
+<p>Použití více sloupců bude tedy pro návštěvníky většinou <b>nezvyklé a nepřehledné</b>.</p>
 
-Použití více sloupců bude tedy pro návštěvníky většinou **nezvyklé a nepřehledné**.
+<p>Možná existují výjimky, kdy je použití více sloupců užitečné, ale moc mě jich nenapadá (budu rád, když mi dáte tip do komentářů).</p>
 
-Možná existují výjimky, kdy je použití více sloupců užitečné, ale moc mě jich nenapadá (budu rád, když mi dáte tip do komentářů).
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/mtob-">Responsivní navigace pomocí <code>column</code></a> – příklad navigace měnící počet sloupců</li>
+  </ul>
+</div>
 
-    - [Responsivní navigace pomocí `column`](http://kod.djpw.cz/mtob-) – příklad navigace měnící počet sloupců
 
-## Více sloupců ve starších prohlížečích
 
-Ve starších prohlížečích existují dvě možnost řešení:
-
-  - *Přesypávání* obsahu JavaScriptem.
-
-  - Hackování v CSS.
-
-Následující ukázka je funkční od **Internet Exploreru 7**. Používá se primitivní metoda selektoru sourozence ve stylu `li+li+li+li+li+li` a [relativní posicování](/position#relative).
   
-Od páté položky v seznamu se začne tvořit **nový sloupec**.
+<h2 id="starsi">Více sloupců ve starších prohlížečích</h2>  
 
+<p>Ve starších prohlížečích existují dvě možnost řešení:</p>
+
+<ol>
+  <li><i>Přesypávání</i> obsahu JavaScriptem.</li>
+  
+  <li>Hackování v CSS.</li>
+</ol>
+
+<p>Následující ukázka je funkční od <b>Internet Exploreru 7</b>. Používá se primitivní metoda <a href='/css-selektory#primy-sourozenec'>selektoru sourozence</a> ve stylu <code>li+li+li+li+li+li</code> a <a href="/position#relative">relativní posicování</a>.
+  
+<p>Od páté položky v seznamu se začne tvořit <b>nový sloupec</b>.</p>
+  <div class="live">
+    <style>
       ul.sloupcovemenu {width: 100%; margin: 0; padding: 5px; height: 10em; text-align: center; list-style: none}
       ul.sloupcovemenu {overflow: hidden}
       ul.sloupcovemenu li {line-height: 2em; width: 50%; display: block;}
       ul.sloupcovemenu li {border-right: 1px solid #0D6AB7; float: left; clear: left;}
       ul.sloupcovemenu li+li+li+li+li+li {float: right; clear: right; position: relative; top: -10em; border: none}
+  </style>
+    <ul class="sloupcovemenu">
+    <li>První</li>
+    <li>Druhá</li>
+    <li>Třetí</li>
+    <li>Čtvrtá</li>
+    <li>Pátá</li>
+    <li>Šestá</li>
+    <li>Sedmá</li>
+    <li>Osmá</li>
+    <li>Devátá</li>
+  </ul>
+  </div>
 
-    - První
 
-    - Druhá
+<h2 id="tabulka">Responsivní tabulka ve sloupcích</h2>
 
-    - Třetí
+<p>V SCSS:</p>
 
-    - Čtvrtá
-
-    - Pátá
-
-    - Šestá
-
-    - Sedmá
-
-    - Osmá
-
-    - Devátá
-
-## Responsivní tabulka ve sloupcích
-
-V SCSS:
-
-```
-.table-column {
+<pre><code>.table-column {
     display: block;
     width: 100%;
 
@@ -142,5 +158,4 @@ V SCSS:
             padding: 0;
         }
     }
-}
-```
+}</code></pre>

@@ -6,22 +6,28 @@ date: "2020-06-05"
 last_modification: "2020-06-05"
 status: 0
 tags: []
+format: "html"
 ---
 
-Při práci ve více lidech s versovacím nástrojem Git je prakticky nevyhnutelný stav, kdy vývoj probíhá paraelně ve více větvích. V extrémním případě potom ve větvích různě od sebe odvozených.
+<p>Při práci ve více lidech s versovacím nástrojem Git je prakticky nevyhnutelný stav, kdy vývoj probíhá paraelně ve více větvích. V extrémním případě potom ve větvích různě od sebe odvozených.</p>
 
-Např. první *feature branch* odvozená z hlavní `master` větve, ze které vychází další *feature branch*. 
+<p>Např. první <i>feature branch</i> odvozená z hlavní <code>master</code> větve, ze které vychází další <i>feature branch</i>. </p>
 
-Příkaz `git rebase` (popř. `git merge`) se potom hodí pro synchronisaci větví mezi sebou, aby pořád vycházely z aktuálního *masteru*.
+<p>Příkaz <code>git rebase</code> (popř. <code>git merge</code>) se potom hodí pro synchronisaci větví mezi sebou, aby pořád vycházely z aktuálního <i>masteru</i>.</p>
 
-## Merge vs. rebase
 
-Obecně celkem platí, že `git merge` používají dvě skupiny lidí:
 
-  - lidé, co moc nerozumí Gitu,
 
-  - lidé, co neřeší hezkou historii commitů
+<h2 id="merge">Merge vs. rebase</h2>
 
-Hezká historiie souvisí i s vytvářením smysluplných commitů.
+<p>Obecně celkem platí, že <code>git merge</code> používají dvě skupiny lidí:</p>
 
-## Rebase `onto`
+<ol>
+  <li>lidé, co moc nerozumí Gitu,</li>
+  <li>lidé, co neřeší hezkou historii commitů</li>
+</ol>
+
+<p>Hezká historiie souvisí i s vytvářením smysluplných commitů.</p>
+
+
+<h2 id="onto">Rebase <code>onto</code></h2>

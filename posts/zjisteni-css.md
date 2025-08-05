@@ -5,31 +5,27 @@ description: "Jak v JavaScriptu zjistit výslednou hodnotu libovolné CSS vlastn
 date: "2014-01-24"
 last_modification: "2014-10-03"
 status: 1
-tags: ["JavaScript", "CSS", "Hotová řešení"]
+tags: ["css", "hotova-reseni", "js"]
+format: "html"
 ---
 
-V některých případech je potřeba v JS *spočítat* výsledné hodnoty CSS vlastností nějakého elementu. To se může hodit třeba při tvorbě **universálního JS + CSS řešení**, kdy nelze spoléhat na výchozí CSS, ale zase je nemůžeme natvrdo přenastavit.
+<p>V některých případech je potřeba v JS <i>spočítat</i> výsledné hodnoty CSS vlastností nějakého elementu. To se může hodit třeba při tvorbě <b>universálního JS + CSS řešení</b>, kdy nelze spoléhat na výchozí CSS, ale zase je nemůžeme natvrdo přenastavit.</p>
 
-Zatímco pro nastavování CSS vlastností z JavaScriptu stačí jen z názvů CSS vlastností vhodit spojovník a následující písmeno zvětšit:
+<p>Zatímco pro nastavování CSS vlastností z JavaScriptu stačí jen z názvů CSS vlastností vhodit spojovník a následující písmeno zvětšit:</p>
 
-```
-element.style.cssVlastnost = "její hodnota";
-element.style.backgroundColor = "red";
-```
+<pre><code>element.style.cssVlastnost = "její hodnota";
+element.style.backgroundColor = "red";</code></pre>
 
-Nebo veškeré CSS zapsat do `cssText`u.
+<p>Nebo veškeré CSS zapsat do <code>cssText</code>u.</p>
 
-```
-element.style.cssText = "
+<pre><code>element.style.cssText = "
   css-vlastnost: 'její hodnota'; 
   background-color: 'red'
-";
-```
+";</code></pre>
 
-Při **čtení stylu** skriptem je to komplikovanější.
+<p>Při <b>čtení stylu</b> skriptem je to komplikovanější.</p>
 
-```
-&lt;style>
+<pre><code>&lt;style>
   div {color: red}
 &lt;style>
 &lt;div>&lt;/div>
@@ -37,28 +33,39 @@ Při **čtení stylu** skriptem je to komplikovanější.
   alert(
     document.getElementsByTagName("div")[0].style.color
   );
-&lt;/script>
-```
+&lt;/script></code></pre>
 
-Tento kód nevyhodí v `alert`u hodnotu `red`, jak by se mohlo očekávat. [Ukázka](http://kod.djpw.cz/tlbb).
+<p>Tento kód nevyhodí v <code>alert</code>u hodnotu <code>red</code>, jak by se mohlo očekávat. <a href="http://kod.djpw.cz/tlbb">Ukázka</a>.</p>
 
-## Řešení
+<h2 id="reseni">Řešení</h2>
+<p>Co tedy s tím? Existují vlastnosti <code>getComputedStyle</code> a do <b>IE 8</b> <code>currentStyle</code>. Ve starších <b>IE</b> je ještě drobná odlišnost v tom, že potřebuje název CSS vlastnosti v <i>camelCase</i> a ne <i>se-spojovníkem</i>.</p>
 
-Co tedy s tím? Existují vlastnosti `getComputedStyle` a do **IE 8** `currentStyle`. Ve starších **IE** je ještě drobná odlišnost v tom, že potřebuje název CSS vlastnosti v *camelCase* a ne *se-spojovníkem*.
+<p>Funkce sjednocující prohlížeče může vypadat následovně:</p>
 
-Funkce sjednocující prohlížeče může vypadat následovně:
+<!--<pre><code>function getStyle(oElm, strCssRule) {
+  var strValue = "";
+  if (document.defaultView &amp;&amp; document.defaultView.getComputedStyle) {
+    strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+  } else if (oElm.currentStyle) {
+    strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1) {
+      return p1.toUpperCase();
+    });
+    strValue = oElm.currentStyle[strCssRule];
+  }
+  return strValue;
+}</code></pre>-->
 
-```
-function getStyle(oElm){
+<pre><code>function getStyle(oElm){
     return window.getComputedStyle ? getComputedStyle(oElm, "") : oElm.currentStyle;
-}
-```
+}</code></pre>
 
-### Použití
+<h3 id="pouzit">Použití</h3>
+<pre><code>var div = document.getElementsByTagName("div")[0];
+var sktuecnyRamecek = getStyle(div).border;</code></pre>
 
-```
-var div = document.getElementsByTagName("div")[0];
-var sktuecnyRamecek = getStyle(div).border;
-```
+<!--
+<p><a href="http://kod.djpw.cz/wlbb">Živá ukázka</a>.</p>
+-->
 
-[Živá ukázka](http://kod.djpw.cz/gobb)
+<p><a href="http://kod.djpw.cz/gobb">Živá ukázka</a></p>
+

@@ -6,18 +6,31 @@ date: "2019-08-07"
 last_modification: "2019-08-07"
 status: 0
 tags: []
+format: "html"
 ---
 
-## SvelteKit
+<h2 id="sveltekit">SvelteKit</h2>
 
-    [Exploring SvelteKit in 2022 by Building a Portfolio Website](https://blog.openreplay.com/exploring-sveltekit-in-2022-by-building-a-portfolio-website) – blog ve Svelte včetně deploye
+<ul>
+  <li>
+    <a href="https://blog.openreplay.com/exploring-sveltekit-in-2022-by-building-a-portfolio-website">Exploring SvelteKit in 2022 by Building a Portfolio Website</a> – blog ve Svelte včetně deploye
+  </li>
+</ul>
 
-  - Alligator.io: [Getting Started with Svelte 3](https://alligator.io/svelte/getting-started-with-svelte/)
+<ul>
+  <li>Alligator.io: <a href="https://alligator.io/svelte/getting-started-with-svelte/">Getting Started with Svelte 3</a></li>
+</ul>
 
-## Ikony
+<h2 id="ikony">Ikony</h2>
 
-    [Svelte Icon Explorer](https://svelteicons.dev) – prohlížeč populárních sad ikon pro Svelte
-
-    [Svelte Icons Pack](https://leshak.github.io/svelte-icons-pack/) – balík mnoha populárních ikon
-
-    [Svelte Icons](https://github.com/Introvertuous-Fun/svelte-icons#usage)
+<ul>
+  <li>
+    <a href="https://svelteicons.dev">Svelte Icon Explorer</a> – prohlížeč populárních sad ikon pro Svelte
+  </li>
+  <li>
+    <a href="https://leshak.github.io/svelte-icons-pack/">Svelte Icons Pack</a> – balík mnoha populárních ikon
+  </li>
+  <li>
+    <a href="https://github.com/Introvertuous-Fun/svelte-icons#usage">Svelte Icons</a>
+  </li>
+</ul>

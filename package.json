@@ -50,6 +50,7 @@
 		"@tailwindcss/container-queries": "0.1.1",
 		"@tailwindcss/postcss": "4.1.11",
 		"gray-matter": "^4.0.3",
-		"marked": "^16.1.2"
+		"marked": "^16.1.2",
+		"mysql2": "^3.14.3"
 	}
 }

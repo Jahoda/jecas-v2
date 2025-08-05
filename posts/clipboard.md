@@ -6,30 +6,27 @@ date: "2013-12-14"
 last_modification: "2013-12-14"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Vložení obrázku ze schránky
+<h2 id="obrazek">Vložení obrázku ze schránky</h2>
+<p>V <b>Chrome</b> a <b>Firefoxu</b> je možné ze schránky vložit i obrázek a ten ihned zobrazit nebo <b>uložit na server</b>.</p>
 
-V **Chrome** a **Firefoxu** je možné ze schránky vložit i obrázek a ten ihned zobrazit nebo **uložit na server**.
-
-## Odkazy jinam
-
-  - [paste.js](http://puffant.github.io/paste.js/)
-
-  - [ZeroClipboard](https://github.com/zeroclipboard/zeroclipboard)
-
-  - [W3c](http://dev.w3.org/2006/webapi/clipops/): Clipboard API and events
-
-  - [Fabricjs.com](http://fabricjs.com/demos/): Dema různých věcí v `&lt;canvas>`u
-
-  - [Grafický editor](http://jsvectoreditor.googlecode.com/svn/trunk/index.html)
-
-  - [Nahrávání obrázků ze schránky](http://snag.gy/) (Java)
-
-  Drag &amp; Drop
-    
-      - [D&amp;D](http://jsfiddle.net/Zevan/QZejF/5/)
-
-      - [HTML5 Canvas tutorials](http://www.html5canvastutorials.com/labs/html5-canvas-drag-and-drop-resize-and-invert-images/)
-
-  - [Kopírování speciálních znaků](http://copypastecharacter.com/)
+<h2 id="odkazy">Odkazy jinam</h2>
+<ul>
+  <li><a href="http://puffant.github.io/paste.js/">paste.js</a></li>
+  <li><a href="https://github.com/zeroclipboard/zeroclipboard">ZeroClipboard</a></li>
+  <li><a href="http://dev.w3.org/2006/webapi/clipops/">W3c</a>: Clipboard API and events</li>
+  <li><a href="http://fabricjs.com/demos/">Fabricjs.com</a>: Dema různých věcí v <code>&lt;canvas></code>u</li>
+  <li><a href="http://jsvectoreditor.googlecode.com/svn/trunk/index.html">Grafický editor</a></li>
+  <li><a href="http://snag.gy/">Nahrávání obrázků ze schránky</a> (Java)</li>
+  <li>Drag &amp; Drop
+    <ul>
+      <li><a href="http://jsfiddle.net/Zevan/QZejF/5/">D&amp;D</a></li>
+      <li><a href="http://www.html5canvastutorials.com/labs/html5-canvas-drag-and-drop-resize-and-invert-images/">HTML5 Canvas tutorials</a></li>
+      
+    </ul>
+  </li>
+  
+  <li><a href="http://copypastecharacter.com/">Kopírování speciálních znaků</a></li>
+</ul>

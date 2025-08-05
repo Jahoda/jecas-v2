@@ -5,41 +5,71 @@ description: "CSS vlastnost <code>caret-color</code> dokáže obarvit blikajíc�
 date: "2019-04-18"
 last_modification: "2019-04-18"
 status: 1
-tags: ["Formuláře"]
+tags: ["formulare"]
+format: "html"
 ---
 
-Pro znázornění umístění, kde člověk zrovna píše, existuje tzv. *caret* (visuálně zpravidla blikající ukazatel).
+<p>Pro znázornění umístění, kde člověk zrovna píše, existuje tzv. <i>caret</i> (visuálně zpravidla blikající ukazatel).</p>
 
-Vlastnost `caret-color` dokáze tento ukazatel **přebarvit** nebo třeba **úplně skrýt**.
+<p>Vlastnost <code>caret-color</code> dokáze tento ukazatel <b>přebarvit</b> nebo třeba <b>úplně skrýt</b>.</p>
 
-## Podpora
 
-Dobře podporovaná vlastnost fungující prakticky všude kromě **IE** a **MS Edge** (do verse nepoužívající **Chromium**).
 
-## Použití
 
-```
-element {
+
+<h2 id="podpora">Podpora</h2>
+
+<p>Dobře podporovaná vlastnost fungující prakticky všude kromě <b>IE</b> a <b>MS Edge</b> (do verse nepoužívající <b>Chromium</b>).</p>
+
+
+
+
+
+<h2 id="pouziti">Použití</h2>
+
+<pre><code>element {
   caret-color: red;
-}
-```
+}</code></pre>
 
-Projevuje se potom nějak takto:
 
-  bílý ukazatel
+<p>Projevuje se potom nějak takto:</p>
+
+<div class="live">
+  <input type="text" style="caret-color: red" value="červený ukazatel">
   
-  žádný ukazatel
+  <div contenteditable style="caret-color: white">bílý ukazatel</div>
+  
+  <textarea style="caret-color: transparent">žádný ukazatel</textarea>
+</div>
 
-Může se projevit elementů umožňujících zadávat uživateli vstup, tj. [`&lt;input>`](/input), [`&lt;textarea>`](/textarea) nebo cokoliv s [atributem `contenteditable`](/uprava-stranky-designmode).
 
-## Využití
 
-Asi pouze v hodně ojedinělých případech. Barva ukazatele ve výchozím chování odpovídá hodnotě [`currentColor`](/currentcolor) – je tedy stejná jako barva textu. Takové chování je většinou dostatečně dobré.
 
-Nastavení **málo kontrastního** nebo dokonce průhledného *caretu* (`caret-color: transparent`) potom může uživatele dost mást.
 
-## Odkazy jinam
 
-  - MDN: [`caret-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/caret-color)
 
-  - CSS-Tricks: [`caret-color`](https://css-tricks.com/almanac/properties/c/caret-color/)
+
+
+
+
+
+<p>Může se projevit elementů umožňujících zadávat uživateli vstup, tj. <a href="/input"><code>&lt;input></code></a>, <a href="/textarea"><code>&lt;textarea></code></a> nebo cokoliv s <a href="/uprava-stranky-designmode">atributem <code>contenteditable</code></a>.</p>
+
+
+<h2 id="vyuziti">Využití</h2>
+
+<p>Asi pouze v hodně ojedinělých případech. Barva ukazatele ve výchozím chování odpovídá hodnotě <a href="/currentcolor"><code>currentColor</code></a> – je tedy stejná jako barva textu. Takové chování je většinou dostatečně dobré.</p>
+
+
+<p>Nastavení <b>málo kontrastního</b> nebo dokonce průhledného <i>caretu</i> (<code>caret-color: transparent</code>) potom může uživatele dost mást.</p>
+
+<!-- náhled: http://kod.djpw.cz/txqc -->
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/caret-color"><code>caret-color</code></a></li>
+  
+  <li>CSS-Tricks: <a href="https://css-tricks.com/almanac/properties/c/caret-color/"><code>caret-color</code></a></li>
+</ul>

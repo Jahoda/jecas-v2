@@ -5,40 +5,30 @@ description: "Hotové řešení v JavaScriptu načítání videí z YouTube, až
 date: "2013-08-07"
 last_modification: "2013-08-07"
 status: 1
-tags: ["Lazy loading", "JavaScript", "Hotová řešení", "YouTube", "Video"]
+tags: ["hotova-reseni", "js", "lazy-loading", "video", "youtube"]
+format: "html"
 ---
 
-Pokud je na stránce více videí z YouTube, značně to **zbrzdí rychlost načítání**, případně mohou YouTube videa při načítání **zasekávat prohlížení stránky**. A uživatel hromadné načtení nejspíš moc neocení, takže se nabízí využít [lazy-loading](/youtube-lazy-loading).
+<p>Pokud je na stránce více videí z YouTube, značně to <b>zbrzdí rychlost načítání</b>, případně mohou YouTube videa při načítání <b>zasekávat prohlížení stránky</b>. A uživatel hromadné načtení nejspíš moc neocení, takže se nabízí využít <a href="/youtube-lazy-loading">lazy-loading</a>.</p>
 
-## Hotové řešení
+<h2>Hotové řešení</h2>
+<p>V článku <a href="/youtube-lazy-loading">Lazy loading YouTube videí</a> je popsána tvorba makety YouTube přehrávače v CSS a donačtení skutečného přehrávače při najetí myši.</p>
 
-V článku [Lazy loading YouTube videí](/youtube-lazy-loading) je popsána tvorba makety YouTube přehrávače v CSS a donačtení skutečného přehrávače při najetí myši.
+<h3>Co hotové řešení dělá?</h3>
+<p>Projde na stránce všechny odkazy na YouTube videa s třídou <code>yt</code> a nahradí je atrapou, která při najetí myší donačte originál.</p>
+<pre><code>&lt;a class="<b>yt</b>" href="http://www.youtube.com/watch?v=m_t4_6eHFdk"&gt;Název videa&lt;/a&gt;</code></pre>
+<p><a href="http://saintsrow.cz/videa" class="button">Ukázka na webu o hře Saints Row</a> <a href="http://kod.djpw.cz/smb" class="button">Živá ukázka</a></p>
 
-### Co hotové řešení dělá?
-
-Projde na stránce všechny odkazy na YouTube videa s třídou `yt` a nahradí je atrapou, která při najetí myší donačte originál.
-
-```
-&lt;a class="**yt**" href="http://www.youtube.com/watch?v=m_t4_6eHFdk"&gt;Název videa&lt;/a&gt;
-```
-
-[Ukázka na webu o hře Saints Row](http://saintsrow.cz/videa) [Živá ukázka](http://kod.djpw.cz/smb)
-
-### CSS
-
-```
-.yt {background: #000 center 65%}
+<h3>CSS</h3>
+<pre><code>.yt {background: #000 center 65%}
 .yt, .yt a {width: 640px; height: 385px; display: block; border: 0;}
-.yt a {background: transparent url("[yt-control.png](/files/yt/yt-control.png)") left bottom no-repeat; position: relative; text-decoration: none; color: #fff;}
+.yt a {background: transparent url("<a href="/files/yt/yt-control.png">yt-control.png</a>") left bottom no-repeat; position: relative; text-decoration: none; color: #fff;}
 .yt a span {display: block; width: 96%; position: absolute; top: 0; left: 0; background: #000; color: #fff; font: .8em Arial; padding: 1.2% 2%; opacity: .75;}
 .yt a:hover {background-color: transparent}
-.yt iframe {border: 0;}
-```
+.yt iframe {border: 0;}</code></pre>
 
-### JavaScript
-
-```
-/* Načtení originálu */
+<h3>JavaScript</h3>
+<pre><code>/* Načtení originálu */
 function youTube() {
 	var ifr = document.createElement("iframe");
 	ifr.width = 640;
@@ -69,18 +59,10 @@ for (var i = 0; i &lt; a.length; i++) {
     div.appendChild(a[i]);
     a[i].onmouseover = youTube;
   }
-}
-```
+}</code></pre>
 
-## Nahrazení starých kódů
-
-Pokud již na stránce jsou videa vložená klasicky značkou `&lt;iframe&gt;`, provedeme jednoduché nahrazení **regulárním výrazem**:
-
-```
-&lt;iframe.*embed/([A-z0-9_-]*).*&lt;/iframe>
-```
-
+<h2 id=nahrazeni>Nahrazení starých kódů</h2>
+<p>Pokud již na stránce jsou videa vložená klasicky značkou <code>&lt;iframe&gt;</code>, provedeme jednoduché nahrazení <b>regulárním výrazem</b>:</p>
+<pre><code>&lt;iframe.*embed/([A-z0-9_-]*).*&lt;/iframe></code></pre>
 Na:
-```
-&lt;a class="yt" href="http://www.youtube.com/watch?v=$1">Video&lt;/a>
-```
+<pre><code>&lt;a class="yt" href="http://www.youtube.com/watch?v=$1">Video&lt;/a></code></pre>

@@ -6,8 +6,12 @@ date: "2015-10-13"
 last_modification: "2015-10-13"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Živá ukázka](http://kod.djpw.cz/ecrb)
+<ul>
+  <li><a href="http://kod.djpw.cz/ecrb">Živá ukázka</a></li>
+  
+  <li><a href="http://thomaspark.co/project/expandingalbums/#intheaeroplane">Demo</a></li>
+</ul>
 
-  - [Demo](http://thomaspark.co/project/expandingalbums/#intheaeroplane)

@@ -5,119 +5,219 @@ description: "Jaké HTML značky používat pro tlačítka na webových stránk�
 date: "2015-11-09"
 last_modification: "2015-11-29"
 status: 1
-tags: ["Formuláře", "Rady a nápady", "Odkazy"]
+tags: ["formulare", "napady", "odkazy"]
+format: "html"
 ---
 
-Tlačítka jsou základním prvkem každé webové aplikace. Ať jde o jednoduchý kontaktní formulář nebo o JS aplikaci typu emailový klient (např. [Outlook.com](/outlook-com) nebo Gmail). I běžný odkaz v menu jde svým způsobem považovat za tlačítko.
+<p>Tlačítka jsou základním prvkem každé webové aplikace. Ať jde o jednoduchý kontaktní formulář nebo o JS aplikaci typu emailový klient (např. <a href="/outlook-com">Outlook.com</a> nebo Gmail). I běžný odkaz v menu jde svým způsobem považovat za tlačítko.</p>
 
-## Značky
 
-V HTML existuje pro tlačítko přímo značka [`&lt;button>`](/button). V podstatě stejnou podobu a funkčnost nabízí i značka [`&lt;input>`](/input) – s typem `button`/`submit`.
 
-Obě značky se obvykle používají uvnitř formulářů.
+<h2 id="znacky">Značky</h2>
 
-## Různé podoby tlačítka
+<p>V HTML existuje pro tlačítko přímo značka <a href="/button"><code>&lt;button></code></a>. V podstatě stejnou podobu a funkčnost nabízí i značka <a href="/input"><code>&lt;input></code></a> – s typem <code>button</code>/<code>submit</code>.</p>
 
-Tlačítko jde ale vytvořit více způsoby.
 
-  - `&lt;button>` (s `type=submit` nebo `type=button`)
 
-  - `&lt;input>` (s `type=submit` nebo `type=button`)
+<p>Obě značky se obvykle používají uvnitř formulářů.</p>
 
-  - `&lt;input type="image">` – obrázkové tlačítko
 
-  - [`&lt;a>`](/odkaz) – běžný HTML odkaz
+<h2 id="typy">Různé podoby tlačítka</h2>
 
-  - `&lt;div>`/`&lt;span>`
+<p>Tlačítko jde ale vytvořit více způsoby.</p>
 
-Je možné dlouze diskutovat, jestli je lepší `&lt;button>`, `&lt;input type="button">`, odkaz a podobně. Záleží ale na okolnostech. Každý ze způsobu má výhody i nevýhody.
+<ul>
+  <li><code>&lt;button></code> (s <code>type=submit</code> nebo <code>type=button</code>)</li>
+  
+  <li><code>&lt;input></code> (s <code>type=submit</code> nebo <code>type=button</code>)</li>
+  
+  <li><code>&lt;input type="image"></code> – obrázkové tlačítko</li>
+  
+  <li><a href="/odkaz"><code>&lt;a></code></a> – běžný HTML odkaz</li>
+  <li><code>&lt;div></code>/<code>&lt;span></code></li>
+</ul>
 
-### Systémový vzhled
 
-Pokud se člověk nechce zabývat vlastním [stylem tlačítek](/vzhled-formularu) (to obnáší vytvořit styl pro 5 různých stavů), při použití `&lt;button>`/`&lt;input type="button">` obstará styl prohlížeč v kombinaci s operačním systémem.
+<p>Je možné dlouze diskutovat, jestli je lepší <code>&lt;button></code>, <code>&lt;input type="button"></code>, odkaz a podobně. Záleží ale na okolnostech. Každý ze způsobu má výhody i nevýhody.</p>
 
-Tlačítko má potom bez práce vzhled pro všechny stavy, navíc je na něj uživatel zvyklý.
 
-### `&lt;button>` vs. `&lt;input type="button">`
 
-Rozhodování mezi tlačítkem a input-tlačítkem je potom celkem jednoduché. Input-tlačítko v sobě **nemůže mít HTML obsah**.
+<h3 id="systemovy">Systémový vzhled</h3>
 
-Má-li mít tlačítko například ikonku, s `&lt;button>`em jde použít následující:
+<p>Pokud se člověk nechce zabývat vlastním <a href="/vzhled-formularu">stylem tlačítek</a> (to obnáší vytvořit styl pro 5 různých stavů), při použití <code>&lt;button></code>/<code>&lt;input type="button"></code> obstará styl prohlížeč v kombinaci s operačním systémem.</p>
 
-```
-&lt;button>
+<p>Tlačítko má potom bez práce vzhled pro všechny stavy, navíc je na něj uživatel zvyklý.</p>
+
+
+
+<h3 id="button-input"><code>&lt;button></code> vs. <code>&lt;input type="button"></code></h3>
+
+<p>Rozhodování mezi tlačítkem a input-tlačítkem je potom celkem jednoduché. Input-tlačítko v sobě <b>nemůže mít HTML obsah</b>.</p>
+
+<p>Má-li mít tlačítko například ikonku, s <code>&lt;button></code>em jde použít následující:</p>
+
+<pre><code>&lt;button>
   &lt;span class="ikona">&lt;/span>
   Popisek
 &lt;/button>
+</code></pre>
 
-```
 
-V případě `&lt;input type="submit">`/`&lt;input type="button">` by se obrázková ikona musela řešit pozadím přímo pro `&lt;input>`. Tento postup nemusí být tak pohodlný.
 
-Stejně tak vzhledem k tomu, že `&lt;input>` nemá obsah, nejde u něj použít pseudo-elementy [`:before`/`:after`](/css-selektory#before-after).
 
-V dřívějších dobách se častěji používal `&lt;input type"submit">`, protože se formulářové prvky tolik nestylovaly a `&lt;button>` se ve starších **IE** choval odlišně:
+<p>V případě <code>&lt;input type="submit"></code>/<code>&lt;input type="button"></code> by se obrázková ikona musela řešit pozadím přímo pro <code>&lt;input></code>. Tento postup nemusí být tak pohodlný.</p>
 
-    Do **IE 6** se odesílal obsah všech `&lt;button>`ů ve formuláři (ne jen ten stisknutý).
+<p>Stejně tak vzhledem k tomu, že <code>&lt;input></code> nemá obsah, nejde u něj použít pseudo-elementy <a href="/css-selektory#before-after"><code>:before</code>/<code>:after</code></a>.</p>
 
-    Do **IE 7** se místo atributu `value` tlačítka  odesílal jeho HTML obsah mezi `&lt;button>` a `&lt;/button>`.
+<p>V dřívějších dobách se častěji používal <code>&lt;input type"submit"></code>, protože se formulářové prvky tolik nestylovaly a <code>&lt;button></code> se ve starších <b>IE</b> choval odlišně:</p>
 
-    Do **IE 8** se tlačítko neodeslalo při potvrzení formuláře klávesou Enter z jiného políčka. (Jeho `name` a `value` se nepřenesly na server.)
+<ul>
+  <li>
+    <p>Do <b>IE 6</b> se odesílal obsah všech <code>&lt;button></code>ů ve formuláři (ne jen ten stisknutý).</p>
+  </li>
+  <li>
+    <p>Do <b>IE 7</b> se místo atributu <code>value</code> tlačítka  odesílal jeho HTML obsah mezi <code>&lt;button></code> a <code>&lt;/button></code>.</p>
+  </li>  
+  <li>
+    <p>Do <b>IE 8</b> se tlačítko neodeslalo při potvrzení formuláře klávesou <kbd>Enter</kbd> z jiného políčka. (Jeho <code>name</code> a <code>value</code> se nepřenesly na server.)</p>
+  </li>
+</ul>
 
-Dnes kvůli častějšímu stylování a potřebě mít HTML kód v tlačítku převládá spíš `&lt;button>`. Problémy se staršími **IE** se buď ignorují, nebo jim lze předcházet návrhem serverového skriptu, který nedetekuje odeslání formuláře podle odesílacího tlačítka ale podle jiných prvků.
+<p>Dnes kvůli častějšímu stylování a potřebě mít HTML kód v tlačítku převládá spíš <code>&lt;button></code>. Problémy se staršími <b>IE</b> se buď ignorují, nebo jim lze předcházet návrhem serverového skriptu, který nedetekuje odeslání formuláře podle odesílacího tlačítka ale podle jiných prvků.</p>
 
-### Obrázkový `&lt;input type="image">`
 
-Jako tlačítko jde použít běžný obrázek:
+<h3 id="image">Obrázkový <code>&lt;input type="image"></code></h3>
 
-```
-&lt;input type="image" src="obrazek.png" alt="Odeslat">
-```
+<p>Jako tlačítko jde použít běžný obrázek:</p>
 
-Tento postup se prakticky nepoužívá, protože styl tlačítka jde universálněji vykouzlit pomocí CSS. Pro tlačítka s různými popisy by se muselo generovat spoustu obrázků.
+<pre><code>&lt;input type="image" src="obrazek.png" alt="Odeslat"></code></pre>
 
-## Odkaz
+<p>Tento postup se prakticky nepoužívá, protože styl tlačítka jde universálněji vykouzlit pomocí CSS. Pro tlačítka s různými popisy by se muselo generovat spoustu obrázků.</p>
 
-Běžný [HTML odkaz `&lt;a>`](/odkaz) se hodí pro tlačítka, která nemají odesílat obsah jiných formulářových prvků, byť i to by s JavaScriptem šlo.
 
-Odkaz není problém [nastylovat jako tlačítko](/odkaz-tlacitko) i je možné se na něj standardně dostat pouze z klávesnice klávesou Tab.
 
-Hlavní rozdíl mezi mezi odkazem a formulářovým tlačítkem je v tom, že tlačítko jde aktivovat kromě Enteru i klávesou Space (mezerník).
 
-Používat odkaz se obecně hodí u tlačítek, která **vedou na nějakou URL**. Návštěvník si tak cíl odkazu může pohodlně zkopírovat do schránky, standardním způsobem cíl otevřít do nové záložky a podobně.
 
-V případě `&lt;button>`u se zobrazí většinou standardní kontextová nabídka jako u kteréhokoliv jiného obyčejného elementu.
 
-## Neutrální `&lt;div>`/`&lt;span>`
+<h2 id="odkaz">Odkaz</h2>
 
-V rozhraní některých velkých JS aplikací se je možné setkat s tím, že tlačítka jsou jen obyčejné `&lt;div>`y/`&lt;span>`y.
+<p>Běžný <a href="/odkaz">HTML odkaz <code>&lt;a></code></a> se hodí pro tlačítka, která nemají odesílat obsah jiných formulářových prvků, byť i to by s JavaScriptem šlo.</p>
 
-Příklad z [Google+](/google-plus):
+<p>Odkaz není problém <a href="/odkaz-tlacitko">nastylovat jako tlačítko</a> i je možné se na něj standardně dostat pouze z klávesnice klávesou <kbd>Tab</kbd>.</p>
 
-Taktéž v **Gmailu** je tlačítkem neutrální značka:
+<p>Hlavní rozdíl mezi mezi odkazem a formulářovým tlačítkem je v tom, že tlačítko jde aktivovat kromě <kbd>Enter</kbd>u i klávesou <kbd>Space</kbd> (mezerník).</p>
 
-I pro obyčejný `&lt;div>` není problém **doplnit chování** jako má běžné formulářové tlačítko:
+<p>Používat odkaz se obecně hodí u tlačítek, která <b>vedou na nějakou URL</b>. Návštěvník si tak cíl odkazu může pohodlně zkopírovat do schránky, standardním způsobem cíl otevřít do nové záložky a podobně.</p>
 
-    Atributem [`tabindex`](/tabindex) umožnit ovládání klávesnicí.
 
-    Atributem `role="button"` sdělit hlasovým čtečkám, že se jedná o tlačítko.
+<p><img src="/files/tlacitko/kopirovat.png" alt="Kopírovat adresu odkazu" class="border"></p>
 
-    Vlastností [`user-select`](/zakazat-oznaceni-textu#user-select) zakázat označení obsahu.
 
-    Pomocí JS událostí připojit příslušné akce.
 
-Pokud aplikace stejně [bez JavaScriptu](/bez-javascriptu) nefunguje a styl tlačítek má být vlastní, není příliš důvod se neutrálním značkám bránit.
 
-Na jednu stranu je těmto *tlačítkům* nutné přidat některé vlastnosti, aby se chovala jako opravdová tlačítka, na stranu druhou odpadne nutnost při stylování **přebíjet výchozí styly prohlížečů**.
 
-Někdy to není úplně snadné:
 
-    - [Stylování formulářových políček a tlačítek](/stylovani-inputu)
 
-    - [Vyšší tlačítko ve Firefoxu](/firefox-vyssi-tlacitko)
 
-## Odkazy jinam
 
-  - [Jordan Scales na Twitteru](https://twitter.com/jdan/status/663835261948837888): Jaké jsou výhody `&lt;div>`u oproti `&lt;button>`?
 
-  - CSS Tricks: [When To Use The Button Element](https://css-tricks.com/use-button-element/)
+
+
+
+
+
+<p>V případě <code>&lt;button></code>u se zobrazí většinou standardní kontextová nabídka jako u kteréhokoliv jiného obyčejného elementu.</p>
+
+
+
+<h2 id="div">Neutrální <code>&lt;div></code>/<code>&lt;span></code></h2>
+
+<p>V rozhraní některých velkých JS aplikací se je možné setkat s tím, že tlačítka jsou jen obyčejné <code>&lt;div></code>y/<code>&lt;span></code>y.</p>
+
+<p>Příklad z <a href="/google-plus">Google+</a>:</p>
+
+<p><img src="/files/tlacitko/gplus-tlacitko.png" alt="Span jako tlačítko" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Taktéž v <b>Gmailu</b> je tlačítkem neutrální značka:</p>
+
+<p><img src="/files/tlacitko/gmail-tlacitko.png" alt="Div jako tlačítko" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>I pro obyčejný <code>&lt;div></code> není problém <b>doplnit chování</b> jako má běžné formulářové tlačítko:</p>
+
+<ul>
+  <li>
+    <p>Atributem <a href="/tabindex"><code>tabindex</code></a> umožnit ovládání klávesnicí.</p>
+  </li>
+  <li>
+    <p>Atributem <code>role="button"</code> sdělit hlasovým čtečkám, že se jedná o tlačítko.</p>
+  </li>
+  <li>
+    <p>Vlastností <a href="/zakazat-oznaceni-textu#user-select"><code>user-select</code></a> zakázat označení obsahu.</p>
+  </li>
+  <li>
+    <p>Pomocí JS událostí připojit příslušné akce.</p>
+  </li>
+</ul>
+
+<p>Pokud aplikace stejně <a href="/bez-javascriptu">bez JavaScriptu</a> nefunguje a styl tlačítek má být vlastní, není příliš důvod se neutrálním značkám bránit.</p>
+
+<p>Na jednu stranu je těmto <i>tlačítkům</i> nutné přidat některé vlastnosti, aby se chovala jako opravdová tlačítka, na stranu druhou odpadne nutnost při stylování <b>přebíjet výchozí styly prohlížečů</b>.</p>
+
+<p>Někdy to není úplně snadné:</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/stylovani-inputu">Stylování formulářových políček a tlačítek</a></li>
+    <li><a href="/firefox-vyssi-tlacitko">Vyšší tlačítko ve Firefoxu</a></li>
+  </ul>
+</div>
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="https://twitter.com/jdan/status/663835261948837888">Jordan Scales na Twitteru</a>: Jaké jsou výhody <code>&lt;div></code>u oproti <code>&lt;button></code>?</li>
+  <li>CSS Tricks: <a href="https://css-tricks.com/use-button-element/">When To Use The Button Element</a></li>
+</ul>

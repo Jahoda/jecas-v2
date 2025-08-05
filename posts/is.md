@@ -5,124 +5,158 @@ description: "Jak v CSS pseudo třída <code>:is()</code> dokáže z(ne)přehled
 date: "2021-03-16"
 last_modification: "2021-03-16"
 status: 1
-tags: ["CSS", "CSS selektory"]
+tags: ["css", "selektory-css"]
+format: "html"
 ---
 
-## Zápis
+<h2 id="zapis">Zápis</h2>
 
-Konstrukce `:is()` může obsahovat jeden nebo více selektorů a slouží k minimalisování opakování se v kódu.
+<p>Konstrukce <code>:is()</code> může obsahovat jeden nebo více selektorů a slouží k minimalisování opakování se v kódu.</p>
 
-Dříve tato pseudo třída měla ještě jiné názvy:
 
-      [Selektory `:matches` a `:any`](/matches) – historické názvy této pseudo-třídy v roce 2015
+<p>Dříve tato pseudo třída měla ještě jiné názvy:</p>
 
-Následujícím způsobem jde vybrat všechny [odkazy](/odkaz) a [odstavce](/odstavec) nacházející se v elementu s třídou `element`:
+<div class="internal-content">
+  <ul>
+    <li>
+      <a href="/matches">Selektory <code>:matches</code> a <code>:any</code></a> – historické názvy této pseudo-třídy v roce 2015
+    </li>
+  </ul>
+</div>
 
-```
-.element :is(a, p) {}
-```
+<p>Následujícím způsobem jde vybrat všechny <a href="/odkaz">odkazy</a> a <a href="/odstavec">odstavce</a> nacházející se v elementu s třídou <code>element</code>:</p>
 
-Téhož by šlo dosáhnout třeba následujícím způsobem:
+<pre><code>.element :is(a, p) {}</code></pre>
 
-```
-.element a,
-.element p {}
-```
 
-Pseudo třídu `:is` je možné v selektorech používat na libovolných místech, takže třeba taky:
 
-```
-:is(.header, .footer) a {}
-```
 
-Výše uvedený selektor zaměří všechny odkazy (`&lt;a>`) v elementech s třídami `header` nebo `footer`.
+<p>Téhož by šlo dosáhnout třeba následujícím způsobem:</p>
 
-Není podmínka psát všechny selektory na jeden řádek. Tohle taky funguje:
+<pre><code>.element a,
+.element p {}</code></pre>
 
-```
-:is(
+
+
+
+
+
+
+
+
+<p>Pseudo třídu <code>:is</code> je možné v selektorech používat na libovolných místech, takže třeba taky:</p>
+
+<pre><code>:is(.header, .footer) a {}</code></pre>
+
+<p>Výše uvedený selektor zaměří všechny odkazy (<code>&lt;a></code>) v elementech s třídami <code>header</code> nebo <code>footer</code>.</p>
+
+
+<p>Není podmínka psát všechny selektory na jeden řádek. Tohle taky funguje:</p>
+
+<pre><code>:is(
     .header,
     .footer
-) a {}
-```
+) a {}</code></pre>
 
-*Starý* zápis by byl:
+<p><i>Starý</i> zápis by byl:</p>
 
-```
-.header a,
-.footer a {}
-```
 
-Míchat jde i více `:is` v rámci jednoho selektoru:
+<pre><code>.header a,
+.footer a {}</code></pre>
 
-```
-:is(.header, .footer) :is(a, span) {}
-```
 
-Toto zaměří všechny odkazy a [`&lt;span>`y](/div-span#span) v elementech s třídami `header` a `footer`.
 
-[Živá ukázka](http://kod.djpw.cz/pzad) – různé pokusy s `:is`
 
-## Využití
 
-Použít `:is` se nabízí v případech, kdy by člověk měl tendenci **psát něco opakovaně**.
 
-Celkem smysluplné použití mi přijde pro [nastavování hoveru a focusu](/focus#automaticky) u odkazů:
 
-```
-a:is(:hover, :focus) {}
-```
 
-Místo:
 
-```
-a:hover,
-a:focus {}
-```
 
-Na druhou stranu jde vymyslet dost nesrozumitelné konstrukce, takže  všeho s mírou.
 
-## Specificita / síla selektoru
 
-Dost zajímavá *vlastnost* je síla selektoru s `:is`.
 
-Bude-li v HTML kódu odkaz v odstavci a následující styl:
+<p>Míchat jde i více <code>:is</code> v rámci jednoho selektoru:</p>
 
-```
-p :is(a) { color: yellow; }
-p a { color: pink; }
-```
+<pre><code>:is(.header, .footer) :is(a, span) {}</code></pre>
 
-Odkaz bude růžový, protože pozdější vyhrává. Změna ale nastane, když se do `is` dostane něco silnějšího, ačkoliv to s původním elementem vůbec nesouvisí – třeba neexistující třída:
+<p>Toto zaměří všechny odkazy a <a href="/div-span#span"><code>&lt;span></code>y</a> v elementech s třídami <code>header</code> a <code>footer</code>.</p>
 
-```
-p :is(a, .nesmyslna-neexistujici-trida) { color: yellow; }
-p a { color: pink; }
-```
+<p><a href="http://kod.djpw.cz/pzad">Živá ukázka</a> – různé pokusy s <code>:is</code></p>
 
-V tomto případě už bude odkaz žlutý, protože třída posílila selektor na prvním řádku.
 
-## Podpora
+<h2 id="vyuziti">Využití</h2>
 
-Kromě **IE 11** celkem dobře podporovaná vlastnost. Ve starších prohlížečích funguje přes klíčové slovo `:any`.
+<p>Použít <code>:is</code> se nabízí v případech, kdy by člověk měl tendenci <b>psát něco opakovaně</b>.</p>
 
-## Řeší to CSS preprocesory
+<p>Celkem smysluplné použití mi přijde pro <a href="/focus#automaticky">nastavování hoveru a focusu</a> u odkazů:</p>
 
-Pokud se na stránce používají preprocesory, využití `:is()` není takové, protože preprocesory už roky nabízí řadu způsobů, jak se opakování vyhnout.
+<pre><code>a:is(:hover, :focus) {}</code></pre>
 
-V **SCSS** jde třeba napsat:
 
-```
-.element {
+
+
+<p>Místo:</p>
+
+<pre><code>a:hover,
+a:focus {}</code></pre>
+
+
+
+
+
+<p>Na druhou stranu jde vymyslet dost nesrozumitelné konstrukce, takže  všeho s mírou.</p>
+
+
+
+
+
+<h2 id="specificita">Specificita / síla selektoru</h2>
+
+<p>Dost zajímavá <i>vlastnost</i> je síla selektoru s <code>:is</code>.</p>
+
+<p>Bude-li v HTML kódu odkaz v odstavci a následující styl:</p>
+
+<pre><code>p :is(a) { color: yellow; }
+p a { color: pink; }</code></pre>
+
+<p>Odkaz bude růžový, protože pozdější vyhrává. Změna ale nastane, když se do <code>is</code> dostane něco silnějšího, ačkoliv to s původním elementem vůbec nesouvisí – třeba neexistující třída:</p>
+
+
+
+<pre><code>p :is(a, .nesmyslna-neexistujici-trida) { color: yellow; }
+p a { color: pink; }</code></pre>
+
+
+
+
+
+<p>V tomto případě už bude odkaz žlutý, protože třída posílila selektor na prvním řádku.</p>
+
+
+
+
+<h2 id="podpora">Podpora</h2>
+
+<p>Kromě <b>IE 11</b> celkem dobře podporovaná vlastnost. Ve starších prohlížečích funguje přes klíčové slovo <code>:any</code>.</p>
+
+
+
+
+
+<h2 id="preprocesory">Řeší to CSS preprocesory</h2>
+
+<p>Pokud se na stránce používají preprocesory, využití <code>:is()</code> není takové, protože preprocesory už roky nabízí řadu způsobů, jak se opakování vyhnout.</p>
+
+<p>V <b>SCSS</b> jde třeba napsat:</p>
+
+<pre><code>.element {
   a, p {}
-}
-```
+}</code></pre>
 
-Nebo:
+<p>Nebo:</p>
 
-```
-a {
+<pre><code>a {
   .header &amp;,
   .footer &amp; {}
-}
-```
+}</code></pre>

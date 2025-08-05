@@ -6,76 +6,118 @@ date: "2018-07-26"
 last_modification: "2018-07-26"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Vue CLI
+<!-- -->
 
-Nejsnazší způsob, jak s Vue.js rozumně začít, je použít Vue CLI. Nainstaluje se příkazem.
 
-```
-npm install -g @vue/cli
-```
+<h2 id="vue-cli">Vue CLI</h2>
 
-Po dokončení instalace stačí napsat:
+<p>Nejsnazší způsob, jak s Vue.js rozumně začít, je použít Vue CLI. Nainstaluje se příkazem.</p>
 
-```
-vue ui
-```
+<pre><code>npm install -g @vue/cli</code></pre>
 
-A spustí se pěkné webové rozhraní, kde jde naklikat nový projekt.
 
-Touto webovou aplikací jde takřka plnohodnotně nastavovat a ovládat celý build proces.
 
-## Připojení do stránky
 
-Pro maximální komfort vývoje je dobré mít automatické obnovování.
 
-Vue.js aplikace standardně běží na URL typu `http://localhost:8080/` a balík s obsahem (JS i CSS) na URL: `http://localhost:8080/app.js`. Pro vývoj je vhodné do existující aplikace připojit právě soubor `app.js`, čímž se zajistí automatické obnovování po každé úpravě.
 
-Aby to fungovalo, je třeba povolit requesty mezi různými URL nastavením hlavičky `Access-Control-Allow-Origin`. Toho jde docílit nastavením Webpacku, konkrétně úpravou souboru `vue.config.js`:
+<p>Po dokončení instalace stačí napsat:</p>
 
-```
-module.exports = {
+
+
+
+<pre><code>vue ui</code></pre>
+
+<p>A spustí se pěkné webové rozhraní, kde jde naklikat nový projekt.</p>
+
+
+
+
+
+<p>Touto webovou aplikací jde takřka plnohodnotně nastavovat a ovládat celý build proces.</p>
+
+
+
+
+
+
+<h2 id="pripojeni">Připojení do stránky</h2>
+
+
+<p>Pro maximální komfort vývoje je dobré mít automatické obnovování.</p>
+
+
+<p>Vue.js aplikace standardně běží na URL typu <code>http://localhost:8080/</code> a balík s obsahem (JS i CSS) na URL: <code>http://localhost:8080/app.js</code>. Pro vývoj je vhodné do existující aplikace připojit právě soubor <code>app.js</code>, čímž se zajistí automatické obnovování po každé úpravě.</p>
+
+<p>Aby to fungovalo, je třeba povolit requesty mezi různými URL nastavením hlavičky <code>Access-Control-Allow-Origin</code>. Toho jde docílit nastavením Webpacku, konkrétně úpravou souboru <code>vue.config.js</code>:</p>
+
+
+
+<pre><code>module.exports = {
   …
   devServer: {
     headers: {
       'Access-Control-Allow-Origin': '*'
     }
   }
-}
-```
+}</code></pre>
 
-### Připojení skriptu
 
-Připojit výše uvedený JS soubor je vhodné pouze při vývoji.
 
-```
-{if $environmentType === 'dev'}
+
+
+
+
+
+
+
+
+
+<h3 id="skript">Připojení skriptu</h3>
+
+<p>Připojit výše uvedený JS soubor je vhodné pouze při vývoji.</p>
+
+<pre><code>{if $environmentType === 'dev'}
     &lt;script n:if="$scriptUrl" src="{$scriptUrl}">&lt;/script>
-{/if}
-```
+{/if}</code></pre>
 
-Pro produkční použití se po spuštění `npm run build` vybuildí samostatné soubory pro CSS i JS do složky `dist`.
 
-### Úprava HTML
 
-Část stránky, kde je žádoucí Vue používat, je potřeba obalit do `&lt;div>`u:
 
-```
-&lt;div id="app">
+
+
+
+
+
+<p>Pro produkční použití se po spuštění <code>npm run build</code> vybuildí samostatné soubory pro CSS i JS do složky <code>dist</code>.</p>
+
+
+
+<h3 id="html">Úprava HTML</h3>
+
+<p>Část stránky, kde je žádoucí Vue používat, je potřeba obalit do <code>&lt;div></code>u:</p>
+
+<pre><code>&lt;div id="app">
   Obsah stránky
-&lt;/div
-```
+&lt;/div</code></pre>
 
-Na tuto oblast se potom aplikují potřebné komponenty (v souboru `main.js`):
 
-```
-import Vue from 'vue'
+
+
+
+
+
+
+
+<p>Na tuto oblast se potom aplikují potřebné komponenty (v souboru <code>main.js</code>):</p>
+
+<pre><code>import Vue from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 
 new Vue({
   components: {
     HelloWorld
   }
-}).$mount('#app')
-```
+}).$mount('#app')</code></pre>

@@ -5,29 +5,31 @@ description: "Pro zaměření první/poslední položky v CSS lze místo přidá
 date: "2013-05-11"
 last_modification: "2013-05-11"
 status: 1
-tags: ["CSS", "CSS selektory"]
+tags: ["css", "selektory-css"]
+format: "html"
 ---
 
-Kromě starších Internet Explorerů (tam [jde doplnit podporu JavaScriptem](/css3-ie)) funkční ve všech běžných prohlížečích.
-
+<p>Kromě starších Internet Explorerů (tam <a href="/css3-ie">jde doplnit podporu JavaScriptem</a>) funkční ve všech běžných prohlížečích.</p>
+<style>
 .test span:first-child {color: blue;}
 .test span:last-child {color: red;}
+</style>
 
-## CSS
-
-.test span:first-child {color: blue;}
+<h2>CSS</h2>
+<pre>.test span:first-child {color: blue;}
 .test span:last-child {color: red;}
+</pre>
 
-## HTML
-
+<h2>HTML</h2>
+<pre class="test">
 &lt;div class='test'>
-	&lt;span>Odkaz 1 (`:first-child` modře od IE 7)&lt;/span>
-	&lt;span>Odkaz 2&lt;/span>
-	&lt;span>Odkaz 3&lt;/span>
-	&lt;span>Odkaz 4&lt;/span>
-	&lt;span>Odkaz 5 (`:last-child` červeně od IE 9)&lt;/span>
+	<span>&lt;span>Odkaz 1 (<code>:first-child</code> modře od IE 7)&lt;/span></span>
+	<span>&lt;span>Odkaz 2&lt;/span></span>
+	<span>&lt;span>Odkaz 3&lt;/span></span>
+	<span>&lt;span>Odkaz 4&lt;/span></span>
+	<span>&lt;span>Odkaz 5 (<code>:last-child</code> červeně od IE 9)&lt;/span></span>
 &lt;/div>	
+</pre>
 
-## Další selektory
-
-Seznam [všech CSS selektorů](/css-selektory) je na samostatné stránce.
+<h2>Další selektory</h2>
+<p>Seznam <a href="/css-selektory">všech CSS selektorů</a> je na samostatné stránce.</p>

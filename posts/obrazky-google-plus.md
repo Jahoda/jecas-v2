@@ -6,6 +6,7 @@ date: "2014-03-29"
 last_modification: "2014-03-29"
 status: 0
 tags: []
+format: "html"
 ---
 
 Avatar 250×250.

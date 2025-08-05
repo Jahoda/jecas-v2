@@ -6,30 +6,37 @@ date: "2015-02-04"
 last_modification: "2015-02-04"
 status: 0
 tags: []
+format: "html"
 ---
 
-U uživatelských rozhraní aplikací bývá zvykem, že se pro přehlednost používají **obrázkové ikony**. V případě, že je ikona návštěvníkovi srozumitelná, získají se tím výhody:
+<p>U uživatelských rozhraní aplikací bývá zvykem, že se pro přehlednost používají <b>obrázkové ikony</b>. V případě, že je ikona návštěvníkovi srozumitelná, získají se tím výhody:</p>
 
-  - Uživatel aplikace **rychleji** pozná, co dané tlačítko dělá.
+<ol>
+  <li>Uživatel aplikace <b>rychleji</b> pozná, co dané tlačítko dělá.</li>
+  
+  <li>Ikona obvykle zabere <b>méně místa</b> než text, čímž mohou ovládací prvky zabírat méně místa.</li>
+  
+  <li>Nároky na prostor pro různé ikony jsou <b>konstantní</b>. Textová tlačítka mívají různý počet znaků a z toho plynoucí různou výslednou velikost.</li>
+</ol>
 
-  - Ikona obvykle zabere **méně místa** než text, čímž mohou ovládací prvky zabírat méně místa.
 
-  - Nároky na prostor pro různé ikony jsou **konstantní**. Textová tlačítka mívají různý počet znaků a z toho plynoucí různou výslednou velikost.
+<h2 id="popisek">Popisek ikony</h2>
 
-## Popisek ikony
+<p>Pro předcházení špatnému pochopení ikon je vhodné zobrazovat <b>při najetí myši</b> popisek. Bohužel tento způsob neřeší <b>dotyková zařízení</b>, kde nebývá možné najetí vyvolat.</p>
 
-Pro předcházení špatnému pochopení ikon je vhodné zobrazovat **při najetí myši** popisek. Bohužel tento způsob neřeší **dotyková zařízení**, kde nebývá možné najetí vyvolat.
+<p>To je trochu nešikovné, protože kvůli nenáročnosti na prostor jsou ikony zajímavé zvlášť u malých displejů mobilních zařízení.</p>
 
-To je trochu nešikovné, protože kvůli nenáročnosti na prostor jsou ikony zajímavé zvlášť u malých displejů mobilních zařízení.
 
-## Popisek po najetí
+<h2 id="najeti">Popisek po najetí</h2>
 
-## Ikona i popisek
+<h2 id="obe">Ikona i popisek</h2>
 
-## Změna ikony za popisek
+<h2 id="zmena">Změna ikony za popisek</h2>
 
-## SVG, font ikony
+<h2 id="typ">SVG, font ikony</h2>
 
-  - [Seriously, use icon fonts](http://benfrain.com/seriously-use-icon-fonts/)
-
-  - [Seriously, Don’t Use Icon Fonts](http://blog.cloudfour.com/seriously-dont-use-icon-fonts/)
+<ul>
+  <li><a href="http://benfrain.com/seriously-use-icon-fonts/">Seriously, use icon fonts</a></li>
+  
+  <li><a href="http://blog.cloudfour.com/seriously-dont-use-icon-fonts/">Seriously, Don’t Use Icon Fonts</a></li>
+</ul>

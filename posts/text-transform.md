@@ -6,12 +6,19 @@ date: "2015-08-27"
 last_modification: "2015-08-27"
 status: 0
 tags: []
+format: "html"
 ---
 
-[Test hodnoty `full-width`](http://kod.djpw.cz/xipb)
+<p><a href="http://kod.djpw.cz/xipb">Test hodnoty <code>full-width</code></a></p>
 
-    - [Náhrada obrázkového textu](/obrazek-text#nahrada) – způsoby ozvláštnění prostého textu, aby se nemusel používat obrázek
+<div class="internal-content">
+  <ul>
+    <li><a href="/obrazek-text#nahrada">Náhrada obrázkového textu</a> – způsoby ozvláštnění prostého textu, aby se nemusel používat obrázek</li>
+  </ul>
+</div>
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - MDN: [`text-transform`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)
+<ul>
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform"><code>text-transform</code></a></li>
+</ul>

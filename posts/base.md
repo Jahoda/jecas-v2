@@ -5,26 +5,26 @@ description: "K čemu využít a na co si dát pozor u HTML tagu <code>&lt;base>
 date: "2013-06-18"
 last_modification: "2013-06-19"
 status: 1
-tags: ["HTML", "HTML značky"]
+tags: ["html", "html-tagy"]
+format: "html"
 ---
 
-Značkou `&lt;base>` spolu s atributem `href` je možné z HTML ovlivnit *vypočítávání* relativních cest odkazů, obrázků, stylů, skriptů a dalších na stránku vkládaných objektů. Přesněji řečeno nastavit jejich začátek. Atributem `target` zase hromadně určuje okno/rám, do kterého se všechny odkazy budou otevírat.
-```
-&lt;base href='http://jecas.cz' target="_blank">
-```
+<p>Značkou <code>&lt;base></code> spolu s atributem <code>href</code> je možné z HTML ovlivnit <i>vypočítávání</i> relativních cest odkazů, obrázků, stylů, skriptů a dalších na stránku vkládaných objektů. Přesněji řečeno nastavit jejich začátek. Atributem <code>target</code> zase hromadně určuje okno/rám, do kterého se všechny odkazy budou otevírat.
+<pre><code>&lt;base href='http://jecas.cz' target="_blank"></code></pre>
 
-## Zajímavosti a fakta
+<h2>Zajímavosti a fakta</h2>
+<ol>
+<li>V Explorerech je nutno umístit do části <code>&lt;head></code>. Jinak se neprojeví.
+<li>Odkazy na soubory CSS (<code>&lt;link href></code>) nebo JS (<code>&lt;script src></code>) umístěné před <code>&lt;base></code> se touto značkou nebudou řídit.
+<li>Vytvořit odkaz mimo <code>&lt;base href></code> lze jen uvedením protokolu. Ani <code>/</code> na začátku <code>href</code>u chování nezmění.
+<li>Atribut <code>target</code> lze na stránce u odkazů <i>přebít</i>.
+</ol>
 
-V Explorerech je nutno umístit do části `&lt;head>`. Jinak se neprojeví.
-Odkazy na soubory CSS (`&lt;link href>`) nebo JS (`&lt;script src>`) umístěné před `&lt;base>` se touto značkou nebudou řídit.
-Vytvořit odkaz mimo `&lt;base href>` lze jen uvedením protokolu. Ani `/` na začátku `href`u chování nezmění.
-Atribut `target` lze na stránce u odkazů *přebít*.
-
-## Kdy má smysl používat?
-
-Zejména pro testování cizích stránek. Stačí si zkopírovat HTML kód, přidat `&lt;base href>` a na kopii stránky se řádně načtou všechny externí objekty. Není tak potřeba přepisovat všechny cesty.
-Jinak se ale tato značka moc rozumně využít nedá.
-
-U stránek s redakčním systémem nebývá problém hromadně vytvářet přímo absolutní adresy.
-U statických stránek zase přítomnost `&lt;base href>`u způsobí, že web nepůjde přenést jinam bez hromadné úpravy.
-Protože se moc běžně nepoužívá, může neznalému člověku vytvořit nečekané a zpočátku nevysvětlitelné chování.
+<h2 id=kdy>Kdy má smysl používat?</h2>
+<p>Zejména pro testování cizích stránek. Stačí si zkopírovat HTML kód, přidat <code>&lt;base href></code> a na kopii stránky se řádně načtou všechny externí objekty. Není tak potřeba přepisovat všechny cesty.
+<p>Jinak se ale tato značka moc rozumně využít nedá.
+<ul>
+<li>U stránek s redakčním systémem nebývá problém hromadně vytvářet přímo absolutní adresy.
+<li>U statických stránek zase přítomnost <code>&lt;base href></code>u způsobí, že web nepůjde přenést jinam bez hromadné úpravy.
+<li>Protože se moc běžně nepoužívá, může neznalému člověku vytvořit nečekané a zpočátku nevysvětlitelné chování.
+</ul>

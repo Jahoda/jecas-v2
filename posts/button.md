@@ -5,54 +5,58 @@ description: "Tlačítko <code>&lt;button></code> v HTML, možné problémy v In
 date: "2013-12-14"
 last_modification: "2013-12-14"
 status: 1
-tags: ["HTML", "HTML značky", "Formuláře"]
+tags: ["formulare", "html", "html-tagy"]
+format: "html"
 ---
 
-HTML značka `&lt;button>` slouží k vytvoření tlačítka. Je hodně podobná značce [`&lt;input>`](/input) s atributem `type` nastaveným na `button`, `submit` nebo `reset` — `&lt;button>` má tyto typy **stejné**.
+<p>HTML značka <code>&lt;button></code> slouží k vytvoření tlačítka. Je hodně podobná značce <a href="/input"><code>&lt;input></code></a> s atributem <code>type</code> nastaveným na <code>button</code>, <code>submit</code> nebo <code>reset</code> — <code>&lt;button></code> má tyto typy <b>stejné</b>.</p>
 
-Typický zápis:
-
-```
-&lt;button type="submit" name="tlacitko" value="hodnota">
+<p>Typický zápis:</p>
+<pre><code>&lt;button type="submit" name="tlacitko" value="hodnota">
   Text tlačítka
-&lt;button>
-```
+&lt;button></code></pre>
+<div class="live">
+  <button>Tlačítko (nic nedělá)</button>
+</div>
 
-  Tlačítko (nic nedělá)
+<p>Element <code>&lt;button></code> jde docela dobře <a href="/odkaz-tlacitko">stylovat</a>.</p>
 
-Element `&lt;button>` jde docela dobře [stylovat](/odkaz-tlacitko).
+<h2 id="input-button">Použít <code>&lt;input></code>, nebo <code>&lt;button></code>?</h2>
+<p>Podstatný rozdíl mezi značkami je, kromě <a href="/html-znacky">různých druhů</a> (<code>&lt;input></code> je povinně <b>nepárový</b>, <code>&lt;button></code> povinně <b>párový</b>), že do značky <code>&lt;button></code> je možné umístit další HTML kód.</p>
 
-## Použít `&lt;input>`, nebo `&lt;button>`?
+<h2 id="ie">Internet Explorer</h2>
+<p>Ve starších versích <b>IE</b> nebo i v novějších v <a href="/doctype#quirk">QUIRK režimu</a> se kolem značky <code>&lt;button></code> točí řada rozdílů.</p>
 
-Podstatný rozdíl mezi značkami je, kromě [různých druhů](/html-znacky) (`&lt;input>` je povinně **nepárový**, `&lt;button>` povinně **párový**), že do značky `&lt;button>` je možné umístit další HTML kód.
+<h3 id="vice-tlacitek">Více odesílacích tlačítek</h3>
+<p>V <b>IE 6</b> a starších se při použití více <code>&lt;button></code> tlačítek neodešle jen to, na které bylo kliknuto, ale úplně všechna <code>&lt;button></code> tlačítka.</p>
 
-## Internet Explorer
+<div class="live">
+  <form action=?>
+	<input name=kdo>
+	<button type=submit name=vysledek value=Ano>Ano</button>
+	<button type=submit name=vysledek value=Ne>Ne</button>
+  </form>
+</div>
 
-Ve starších versích **IE** nebo i v novějších v [QUIRK režimu](/doctype#quirk) se kolem značky `&lt;button>` točí řada rozdílů.
+<p>Po odeslání se v <b>IE 6</b> v URL objeví <code>…&amp;vysledek=Ano&amp;vysledek=Ne</code>, ačkoliv se zmáčklo jen jedno tlačítko.</p>
 
-### Více odesílacích tlačítek
+<h3 id="ie-value">Obsah značky místo <code>value</code></h3>
+<p>Další nepěkná věc je, že starší <b>IE</b> odesílá jako hodnotu políčka obsah mezi <code>&lt;button></code> a <code>&lt;/button></code> místo atributu <code>value</code>, který má značka nastavený.</p>
 
-V **IE 6** a starších se při použití více `&lt;button>` tlačítek neodešle jen to, na které bylo kliknuto, ale úplně všechna `&lt;button>` tlačítka.
+<div class="live">
+  <form action=?>
+	<input name=kdo>
+	<button type=submit name=vysledek value=Ano>Odeslat</button>
+  </form>
+</div>
 
-	Ano
-	Ne
+<p>Tlačítko <i>Odeslat</i> má <code>value</code> nastavenou na <code>Ano</code>, přesto se v <b>IE 7</b> a starších (v QUIRKu do <b>IE 9</b> včetně) odešle obsah značky, tj. <code>Odeslat</code> (JavaScriptovou terminologií <code>innerHTML</code>).</p>
 
-Po odeslání se v **IE 6** v URL objeví `…&amp;vysledek=Ano&amp;vysledek=Ne`, ačkoliv se zmáčklo jen jedno tlačítko.
+<h3 id="neodeslani">Neodeslaní bez kliknutí</h3>
+<p>Další problém je neodeslání tlačítka v případě, kde se formulář odešle <kbd>Enter</kbd>em z jiného políčka. Tím trpí <b>IE 8</b> a starší (nezávisle na <code>&lt;!doctype></code>).</p>
 
-### Obsah značky místo `value`
-
-Další nepěkná věc je, že starší **IE** odesílá jako hodnotu políčka obsah mezi `&lt;button>` a `&lt;/button>` místo atributu `value`, který má značka nastavený.
-
-	Odeslat
-
-Tlačítko *Odeslat* má `value` nastavenou na `Ano`, přesto se v **IE 7** a starších (v QUIRKu do **IE 9** včetně) odešle obsah značky, tj. `Odeslat` (JavaScriptovou terminologií `innerHTML`).
-
-### Neodeslaní bez kliknutí
-
-Další problém je neodeslání tlačítka v případě, kde se formulář odešle Enterem z jiného políčka. Tím trpí **IE 8** a starší (nezávisle na `&lt;!doctype>`).
-
-## Co s tím?
-
-  Nepoužívat ve **formulářích** `&lt;button>`, ale [`&lt;input>`](/input) s odpovídajícím `type`m.
-
-  Zpracovávat formuláře na straně serveru tak, aby podoba, ve které se `&lt;button>` odešle, **nehrála roli**. Tj. zda byl formulář **odeslán** testovat **jiným políčkem**. (Případně si potřebná data, která by mohl odesílat `&lt;button>` uložit do `&lt;input type=hidden>` — ten funguje spolehlivě.
+<h2 id="co">Co s tím?</h2>
+<ul>
+  <li><p>Nepoužívat ve <b>formulářích</b> <code>&lt;button></code>, ale <a href="/input"><code>&lt;input></code></a> s odpovídajícím <code>type</code>m.</p></li>
+  <li><p>Zpracovávat formuláře na straně serveru tak, aby podoba, ve které se <code>&lt;button></code> odešle, <b>nehrála roli</b>. Tj. zda byl formulář <b>odeslán</b> testovat <b>jiným políčkem</b>. (Případně si potřebná data, která by mohl odesílat <code>&lt;button></code> uložit do <code>&lt;input type=hidden></code> — ten funguje spolehlivě.</p></li>
+</ul>

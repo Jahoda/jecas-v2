@@ -6,10 +6,13 @@ date: "2014-03-10"
 last_modification: "2014-03-10"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://fsojs.com/
 
-## Odkazy
+<h2 id="odkazy">Odkazy</h2>
 
-  - [Building A Line-by-Line File Reader Using HTML5 and JavaScript](http://matthewmeye.rs/blog/post/html5-line-reader/)
+<ul>
+  <li><a href="http://matthewmeye.rs/blog/post/html5-line-reader/">Building A Line-by-Line File Reader Using HTML5 and JavaScript</a></li>
+</ul>

@@ -5,47 +5,61 @@ description: "Jak se chová <code>margin</code> a <code>border</code> u absolutn
 date: "2014-10-13"
 last_modification: "2014-10-14"
 status: 1
-tags: ["CSS", "Hotová řešení", "Rady a nápady"]
+tags: ["css", "hotova-reseni", "napady"]
+format: "html"
 ---
 
-Fakt, že něco [absolutně naposicujeme](/position#absolute) – tj. umístíme přesně na určité místo vlastnostmi `top`/`bottom`, `left`/`right` – nemusí znamenat, že to na daném místě **skutečně bude**.
+<p>Fakt, že něco <a href="/position#absolute">absolutně naposicujeme</a> – tj. umístíme přesně na určité místo vlastnostmi <code>top</code>/<code>bottom</code>, <code>left</code>/<code>right</code> – nemusí znamenat, že to na daném místě <b>skutečně bude</b>.</p>
 
-Změnit posici elementu s `position: absolute` dokáže vlastnost [`margin`](/margin).
+<p>Změnit posici elementu s <code>position: absolute</code> dokáže vlastnost <a href="/margin"><code>margin</code></a>.</p>
 
+<div class="live">
+  <style>
     .obal {position: relative; background: #efefef;}
     .obal > span {position: absolute; right: 0; bottom: 0; background: #ccc;}
     .obal .s-marginem {margin: 1em}
+  </style>
+  <div class="obal">    
+    <p>Obsah je v obalu s <code>position: relative</code>.</p>    
+    <p>Obsah.</p>  
+    <span id="posicovany">Abs. posicovaný element (<code>bottom: 0; right: 0</code>)</span>
+  </div>
+</div>
 
-    Obsah je v obalu s `position: relative`.
+<p><button onclick="toggle(document.getElementById('posicovany'), 's-marginem')">Přidat/odebrat <code>margin</code></button></p>
 
-    Obsah.
+<p>Jak je vidět, přidání <code>margin</code>u element <b>posune</b>.</p>
 
-    Abs. posicovaný element (`bottom: 0; right: 0`)
+<p>To na jednu stranu může být výhodné chování, na stranu druhou to může nepříjemně překvapit u elementů, které mají různý <code>margin</code> <b>napříč prohlížeči</b>. To je třeba <a href="/button">element <code>&lt;button></code></a>, který má v <b>Chrome</b> 2px <code>margin</code> a jinde má nulu.</p>
 
-Přidat/odebrat `margin`
 
-Jak je vidět, přidání `margin`u element **posune**.
+<p><a href="http://kod.djpw.cz/algb">Živá ukázka</a> rozdílu v <b>Chrome</b>.</p>
 
-To na jednu stranu může být výhodné chování, na stranu druhou to může nepříjemně překvapit u elementů, které mají různý `margin` **napříč prohlížeči**. To je třeba [element `&lt;button>`](/button), který má v **Chrome** 2px `margin` a jinde má nulu.
+<p><img src="/files/margin-border-absolute/margin-button.png" alt="Výchozí margin tlačítka v Chrome" class="border"></p>
 
-[Živá ukázka](http://kod.djpw.cz/algb) rozdílu v **Chrome**.
 
-## Hranice obalu
+<h2 id="hranice">Hranice obalu</h2>
 
-Další zajímavá věc je, kde se nacházejí hranice obalu s `position: relative`, kam se potom prvek absolutně umisťuje.
+<p>Další zajímavá věc je, kde se nacházejí hranice obalu s <code>position: relative</code>, kam se potom prvek absolutně umisťuje.</p>
 
-Vezmeme-li si obecné znázornění boxu, pomyslný bod „`top: 0; left: 0`“ se nachází na hranici mezi `padding`em a `border`em.
+<p>Vezmeme-li si obecné znázornění boxu, pomyslný bod „<code>top: 0; left: 0</code>“ se nachází na hranici mezi <code style="background: #C1CD89">padding</code>em a <code style="background: #FCDB9A">border</code>em.</p>
 
-Někdy je cílem, aby například rámeček boxu **splýval s rámečkem** absolutně posicovaného tlačítka.
+<p><img src="/files/margin-border-absolute/box.png" alt="Části boxu" class="border"></p>
 
-Řešení je buď **záporný `margin`** o rozměrech rámečku, nebo záporné souřadnice `top`/`bottom`, `left`/`right` – rovněž o tloušťku rámečku.
+<p>Někdy je cílem, aby například rámeček boxu <b>splýval s rámečkem</b> absolutně posicovaného tlačítka.</p>
 
-[Ukázka obou postupů](http://kod.djpw.cz/blgb)
+<p><img src="/files/margin-border-absolute/tlacitko-okraj.png" alt="Splývání okrajů" class="border"></p>
 
-Problém nastane, když budeme potřebovat obalu nastavit `overflow: hidden`, protože rámeček se v podstatě nachází mimo obsah + `padding` (jak znázorňuje předchozí obrázek), takže bude **oříznut**.
+<p>Řešení je buď <b>záporný <code>margin</code></b> o rozměrech rámečku, nebo záporné souřadnice <code>top</code>/<code>bottom</code>, <code>left</code>/<code>right</code> – rovněž o tloušťku rámečku.</p>
 
-[Živá ukázka](http://kod.djpw.cz/clgb)
+<p><a href="http://kod.djpw.cz/blgb">Ukázka obou postupů</a></p>
 
-Řešení je umístit oba prvky s rámečkem na stejnou úroveň v HTML kódu. [Ukázka](http://kod.djpw.cz/dlgb).
+<p>Problém nastane, když budeme potřebovat obalu nastavit <code>overflow: hidden</code>, protože rámeček se v podstatě nachází mimo <span style="background: #8AB3BF">obsah</span> + <code style="background: #C1CD89">padding</code> (jak znázorňuje předchozí obrázek), takže bude <b>oříznut</b>.</p>
 
-Nebo rámeček vytvořit vlastností [`box-shadow`](/box-shadow) (**IE 9+**). [Ukázka](http://kod.djpw.cz/flgb).
+<p><img src="/files/margin-border-absolute/tlacitko-okraj-overflow.png" alt="Splývání okrajů" class="border"></p>
+
+<p><a href="http://kod.djpw.cz/clgb">Živá ukázka</a></p>
+
+<p>Řešení je umístit oba prvky s rámečkem na stejnou úroveň v HTML kódu. <a href="http://kod.djpw.cz/dlgb">Ukázka</a>.</p>
+
+<p>Nebo rámeček vytvořit vlastností <a href="/box-shadow"><code>box-shadow</code></a> (<b>IE 9+</b>). <a href="http://kod.djpw.cz/flgb">Ukázka</a>.</p>

@@ -6,78 +6,94 @@ date: "2019-04-08"
 last_modification: "2019-04-08"
 status: 0
 tags: []
+format: "html"
 ---
 
-Pro nastavení zobrazování chyb (tzv. *error reporting*) existuje v PHP 16 předdefinovaných konstant:
+<p>Pro nastavení zobrazování chyb (tzv. <i lang="en">error reporting</i>) existuje v PHP 16 předdefinovaných konstant:</p>
 
-  - `E_ERROR`
+<ol>
+  <li><code>E_ERROR</code></li>
+<li><code>E_WARNING</code></li>
+<li><code>E_PARSE</code></li>
+<li><code>E_NOTICE</code></li>
+<li><code>E_CORE_ERROR</code></li>
+<li><code>E_CORE_WARNING</code></li>
+<li><code>E_COMPILE_ERROR</code></li>
+<li><code>E_COMPILE_WARNING</code></li>
+<li><code>E_USER_ERROR</code></li>
+<li><code>E_USER_WARNING</code></li>
+<li><code>E_USER_NOTICE</code></li>
+<li><code>E_STRICT</code></li>
+<li><code>E_RECOVERABLE_ERROR</code></li>
+<li><code>E_DEPRECATED</code></li>
+<li><code>E_USER_DEPRECATED</code></li>
+<li><code>E_ALL</code></li>
+</ol>
 
-- `E_WARNING`
 
-- `E_PARSE`
 
-- `E_NOTICE`
 
-- `E_CORE_ERROR`
 
-- `E_CORE_WARNING`
 
-- `E_COMPILE_ERROR`
 
-- `E_COMPILE_WARNING`
 
-- `E_USER_ERROR`
 
-- `E_USER_WARNING`
 
-- `E_USER_NOTICE`
 
-- `E_STRICT`
 
-- `E_RECOVERABLE_ERROR`
 
-- `E_DEPRECATED`
+<p>Jak ale hlášení chyb nastavit?</p>
 
-- `E_USER_DEPRECATED`
 
-- `E_ALL`
 
-Jak ale hlášení chyb nastavit?
+<p>Obecně platí, že:</p>
 
-Obecně platí, že:
+<ul>
+  <li>
+    <p>Pro <b>vývoj</b> se hodí <b>co největší přísnost</b>, protože i nekritické chyby mohou signalisovat potenciální risiko v kódu. Možnou budoucí nekompatibilitu apod.</p>
+  </li>
+  
+  <li>
+    <p>Pro <b>produkci</b> naopak nezobrazovat <b>vůbec nic</b>, protože výchozí PHP hlášky jsou:</p>
+    
+    <ol>
+      <li>ne úplně přívětivé pro uživatele,</li>
+      <li>mohou zbytečně odhalovat části aplikace (např. adresářovou strukturu)</li>
+    </ol>
+  </li>
+  
+  <li>
+    <p>Výjimka může být <b>starší aplikace</b>, kde by zapnutí všech chybových hlášek svým množstvím paralysovalo vývojáře.</p>
+  </li>
+</ul>
 
-    Pro **vývoj** se hodí **co největší přísnost**, protože i nekritické chyby mohou signalisovat potenciální risiko v kódu. Možnou budoucí nekompatibilitu apod.
+<h2 id="typy">Základní typy chyb</h2>
 
-    Pro **produkci** naopak nezobrazovat **vůbec nic**, protože výchozí PHP hlášky jsou:
+<p>Zjednodušeně lze chyby zařadit do 4 kategorií:</p>
 
-      - ne úplně přívětivé pro uživatele,
+<ul>
+  <li>
+    <p><b>Fatální chyby</b> – ukončí běh PHP, takže další kód po chybě se už nezpracuje. Typicky jde o <i>parse errory</i> (chybu v syntaxi – např. chybějící <code>;</code>) nebo o volání neexistujících funkcí nebo tříd.</p>
+  </li>
+  
+  <li>
+    <p><b>Varování</b> – kód pokračuje ve zpracování, ale jde o poměrně zásadní problém, který při ignorování může způsobit nepředvídané chyby aplikace. Příklad je třeba dělení nulou (<code>1/0</code>) nebo vkládání neexistujícíh souborů příkazem <code>include</code>.</p>
+  </li>
+  
+  <li>
+    <p><b>Poznámky</b> (<i lang="en">Notice</i>) – </p> 
+  </li>
+</ul>
 
-      - mohou zbytečně odhalovat části aplikace (např. adresářovou strukturu)
 
-    Výjimka může být **starší aplikace**, kde by zapnutí všech chybových hlášek svým množstvím paralysovalo vývojáře.
+<h2 id="vsechny">Zobrazení všech chyb</h2>
 
-## Základní typy chyb
-
-Zjednodušeně lze chyby zařadit do 4 kategorií:
-
-    **Fatální chyby** – ukončí běh PHP, takže další kód po chybě se už nezpracuje. Typicky jde o *parse errory* (chybu v syntaxi – např. chybějící `;`) nebo o volání neexistujících funkcí nebo tříd.
-
-    **Varování** – kód pokračuje ve zpracování, ale jde o poměrně zásadní problém, který při ignorování může způsobit nepředvídané chyby aplikace. Příklad je třeba dělení nulou (`1/0`) nebo vkládání neexistujícíh souborů příkazem `include`.
-
-    **Poznámky** (*Notice*) – 
-
-## Zobrazení všech chyb
-
-```
-ini_set('display_errors', 1);
+<pre><code>ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-```
+error_reporting(E_ALL);</code></pre>
 
-## Vypnutí zobrazování chyb
+<h2 id="zadne">Vypnutí zobrazování chyb</h2>
 
-```
-error_reporting(0);
-```
+<pre><code>error_reporting(0);</code></pre>
 
 https://stackify.com/display-php-errors/

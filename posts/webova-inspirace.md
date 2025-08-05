@@ -6,12 +6,11 @@ date: "2013-07-29"
 last_modification: "2013-07-29"
 status: 0
 tags: []
+format: "html"
 ---
 
-## The Best Designs
+<h2 id="thebestdesigns">The Best Designs</h2>
+<p><a class=button href='http://www.thebestdesigns.com/'>Web</a>
 
-Web
-
-## Awwwards
-
-[Web](http://www.awwwards.com/)
+<h2 id="awwwards">Awwwards</h2>
+<p><a href="http://www.awwwards.com/" class="button">Web</a></p>

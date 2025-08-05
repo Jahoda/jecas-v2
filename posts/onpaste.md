@@ -5,46 +5,72 @@ description: "JavaScriptová událost <code>onpaste</code> slouží k odchycení
 date: "2015-02-18"
 last_modification: "2015-02-19"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "Schránka"]
+tags: ["hotova-reseni", "js", "schranka"]
+format: "html"
 ---
 
-U [formulářových](/formulare) polí [`&lt;input>`](/input)/[`&lt;textarea>`](/textarea), kde je reálné očekávat, že bude člověk vkládat ze schránky, se hodí toto vložení **odchytit**. Uživatelé některé údaje kopírují, takže vložení lze současně chápat jako **pokyn k validaci**.
+<p>U <a href="/formulare">formulářových</a> polí <a href="/input"><code>&lt;input></code></a>/<a href="/textarea"><code>&lt;textarea></code></a>, kde je reálné očekávat, že bude člověk vkládat ze schránky, se hodí toto vložení <b>odchytit</b>. Uživatelé některé údaje kopírují, takže vložení lze současně chápat jako <b>pokyn k validaci</b>.</p>
 
-```
-&lt;input **onpaste**="vlozeno()">
-```
+<pre><code>&lt;input <b>onpaste</b>="vlozeno()"></code></pre>
 
-V novějších prohlížečích (**IE 9**+) jde místo `onpaste` použít universálnější událost [`oninput`](/oninput), která se při vložení ze schránky (Ctrl + V) rovněž vyvolá, ale není z ní přímo patrné, že se jedná o vložení.
+<p>V novějších prohlížečích (<b>IE 9</b>+) jde místo <code>onpaste</code> použít universálnější událost <a href="/oninput"><code>oninput</code></a>, která se při vložení ze schránky (<kbd>Ctrl</kbd> + <kbd>V</kbd>) rovněž vyvolá, ale není z ní přímo patrné, že se jedná o vložení.</p>
 
-## Prodleva `onpaste`
 
-Trošku záludné je chování `onpaste` v tom, že se událost provede **předtím**, než se obsah vloží do políčka. Následující kód tedy zobrazí po vložení předchozí hodnotu, což je většinou nežádoucí.
 
-```
-&lt;input onpaste="alert(this.value)">
-```
 
-Řešení je práci s hodnotou pole obalit do [časovače](/odpocitavani).
+<h2 id="prodleva">Prodleva <code>onpaste</code></h2>
 
-```
-&lt;input onpaste="
+<p>Trošku záludné je chování <code>onpaste</code> v tom, že se událost provede <b>předtím</b>, než se obsah vloží do políčka. Následující kód tedy zobrazí po vložení předchozí hodnotu, což je většinou nežádoucí.</p>
+
+<pre><code>&lt;input onpaste="alert(this.value)"></code></pre>
+
+<div class="live no-source">
+  <input onpaste="alert(this.value)" value="Původní hodnota">
+</div>
+
+
+
+<p>Řešení je práci s hodnotou pole obalit do <a href="/odpocitavani">časovače</a>.</p>
+
+<pre><code>&lt;input onpaste="
   var that = this;
   setTimeout(function(){
     alert(that.value)
   }, 0)
-">
-```
+"></code></pre>
 
-Výsledek:
 
-  Něco vložte:
 
-Vzhledem ke složitějšímu **programování uvnitř atributu** se nabízí obsluhu pro vložení vytvořit jako samostatnou funkci a v atributu ji pouze zavolat – `onpaste="vlozit(this)"`. Pozměněná ukázka se stejnou funkčností:
 
+
+
+
+<p>Výsledek:</p>
+
+<div class="live no-source">
+  <label>Něco vložte:
+  <input value="Původní"
+    onpaste="
+  var that = this;
+  setTimeout(function(){
+    alert(that.value)
+  }, 0)
+">  
+  </label>
+</div>
+
+<p>Vzhledem ke složitějšímu <b>programování uvnitř atributu</b> se nabízí obsluhu pro vložení vytvořit jako samostatnou funkci a v atributu ji pouze zavolat – <code>onpaste="vlozit(this)"</code>. Pozměněná ukázka se stejnou funkčností:</p>
+
+<div class="live">
+  <script>
   function vlozit(el) {
     setTimeout(function(){
         alert(el.value)
     }, 0)  
   }    
-
+  </script>
+  <label>
     Něco vložte:
+    <input onpaste="vlozit(this)" value="Původní">  
+  </label>
+</div>

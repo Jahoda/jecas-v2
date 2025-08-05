@@ -5,81 +5,105 @@ description: "Jak na webové stránce přidat k obrázku popisek."
 date: "2015-01-02"
 last_modification: "2015-01-14"
 status: 1
-tags: ["HTML", "Rady a nápady", "Obrázky"]
+tags: ["html", "napady", "obrazky"]
+format: "html"
 ---
 
-Při vložení obrázku na stránku bývá často potřebné k němu uvést nějaký popis.
+<p>Při vložení obrázku na stránku bývá často potřebné k němu uvést nějaký popis.</p>
 
-## Atribut `alt`
 
-Jedno z míst, kam je možné umístit popis obrázku, je HTML atribut `alt`. Zásadní jeho nevýhoda ale je, že jeho obsah **není standardně viditelný**.
 
-```
-&lt;img src="obrazek.jpg" alt="**popisek obrázku**">
-```
+<h2 id="alt">Atribut <code>alt</code></h2>
 
-Smysl má tak hlavně pro roboty vyhledávačů.
+<p>Jedno z míst, kam je možné umístit popis obrázku, je HTML atribut <code>alt</code>. Zásadní jeho nevýhoda ale je, že jeho obsah <b>není standardně viditelný</b>.</p>
 
-### Nevidomí návštěvníci
+<pre><code>&lt;img src="obrazek.jpg" alt="<b>popisek obrázku</b>"></code></pre>
 
-Atribut `alt` může zlepšit zážitek ze stránky **nevidomým návštěvníkům**, kteří používají **hlasové čtečky**.
+<p>Smysl má tak hlavně pro roboty vyhledávačů.</p>
 
-Pro takové návštěvníky by obrázek:
 
-  - měl mít `alt` vyplněný, jinak na obrázek čtečka neupozorní,
 
-  - neobsahovat totéž, co viditelný popisek – jedná se o duplicitní informaci
 
-    - [Pes Ben](http://validator.webylon.info/docs/pes-ben.html) – co slyší nevidomý u různých způsobů popisu obrázků
 
-Z praktického hlediska je ale tvorba správných popisků **často nemožná/nerentabilní** – například popisovat **stovky obrázků v galerii**.
 
-## HTML kód pro popisek
+<h3 id="nevidomi">Nevidomí návštěvníci</h3>
 
-Aby si běžný návštěvník mohl popis obrázku přečíst, je ho nutné vložit přímo do HTML.
+<p>Atribut <code>alt</code> může zlepšit zážitek ze stránky <b>nevidomým návštěvníkům</b>, kteří používají <b>hlasové čtečky</b>.</p>
 
-### Značka `&lt;figure>`
+<p>Pro takové návštěvníky by obrázek:</p>
 
-HTML 5 přišlo se značkami `&lt;figure>` a `&lt;figcaption>`, které se mimo jiné hodí k obalení obrázku a jeho popisu. Obě značky jsou blokové a `&lt;figure>` má výchozí [`margin`](/margin).
+<ol>
+  <li>měl mít <code>alt</code> vyplněný, jinak na obrázek čtečka neupozorní,</li>
+  
+  <li>neobsahovat totéž, co viditelný popisek – jedná se o duplicitní informaci</li>
+</ol>
 
-```
-&lt;figure>
+<div class="external-content">
+  <ul>
+    <li><a href="http://validator.webylon.info/docs/pes-ben.html">Pes Ben</a> – co slyší nevidomý u různých způsobů popisu obrázků</li>
+  </ul>
+</div>
+
+<p>Z praktického hlediska je ale tvorba správných popisků <b>často nemožná/nerentabilní</b> – například popisovat <b>stovky obrázků v galerii</b>.</p>
+
+
+<h2 id="html">HTML kód pro popisek</h2>
+
+<p>Aby si běžný návštěvník mohl popis obrázku přečíst, je ho nutné vložit přímo do HTML.</p>
+
+
+<h3 id="figure">Značka <code>&lt;figure></code></h3>
+
+<p>HTML 5 přišlo se značkami <code>&lt;figure></code> a <code>&lt;figcaption></code>, které se mimo jiné hodí k obalení obrázku a jeho popisu. Obě značky jsou blokové a <code>&lt;figure></code> má výchozí <a href="/margin"><code>margin</code></a>.</p>
+
+<pre><code>&lt;figure>
     &lt;img src='obrazek.jpg' alt='obrázek'>
     &lt;figcaption>Popis obrázku&lt;/figcaption>
-&lt;/figure>
-```
+&lt;/figure></code></pre>
 
-[Ukázka](http://kod.djpw.cz/fmjb)
+<p><a href="http://kod.djpw.cz/fmjb">Ukázka</a></p>
 
-Jediná nevýhoda je absence podpory v **IE8** a starších, kterou je kvůli stylování nutné [doplnit skriptem](/vlastni-html-znacky#html5).
+<p>Jediná nevýhoda je absence podpory v <b>IE8</b> a starších, kterou je kvůli stylování nutné <a href="/vlastni-html-znacky#html5">doplnit skriptem</a>.</p>
 
-### Odstavec
 
-Asi nejjednodušší možná varianta je prosté použití odstavce.
 
-```
-&lt;p>
+
+
+
+
+<h3 id="odstavec">Odstavec</h3>
+
+<p>Asi nejjednodušší možná varianta je prosté použití odstavce.</p>
+
+
+<pre><code>&lt;p>
     &lt;img src='obrazek.jpg' alt='obrázek'>
     &lt;br>
     Popis obrázku
-&lt;/p>
-```
+&lt;/p></code></pre>
 
-Tento HTML kód ale nedává moc prostoru k **pohodlnému stylování**, takže v případě, že je obtížné formát výsledného kódu obrázku s popiskem **hromadně měnit**, bude lepší navrhnout HTML ve stylu `&lt;figure>` a `&lt;figcaption>`.
+<p>Tento HTML kód ale nedává moc prostoru k <b>pohodlnému stylování</b>, takže v případě, že je obtížné formát výsledného kódu obrázku s popiskem <b>hromadně měnit</b>, bude lepší navrhnout HTML ve stylu <code>&lt;figure></code> a <code>&lt;figcaption></code>.</p>
 
-### Odkaz
 
-Pro zobrazení miniatury obrázku s popisem, která bude odkazovat na velký obrázek, by mohl HTML kód vypadat následovně:
 
-```
-&lt;a href="velky-obrazek.jpg">
+
+
+<h3 id="odkaz">Odkaz</h3>
+
+<p>Pro zobrazení miniatury obrázku s popisem, která bude odkazovat na velký obrázek, by mohl HTML kód vypadat následovně:</p>
+
+<pre><code>&lt;a href="velky-obrazek.jpg">
   &lt;img src="maly-obrazek.jpg" alt="obrazek">
   &lt;div class="popisek">Popis obrázku&lt;/div>
-&lt;/a>
-```
+&lt;/a></code></pre>
 
-## Odkazy jinam
 
-  - MDN: [`&lt;figure>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure)
 
-  - MDN: [`&lt;figcaption>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption)
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure"><code>&lt;figure></code></a></li>
+
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figcaption"><code>&lt;figcaption></code></a></li>  
+</ul>

@@ -5,133 +5,221 @@ description: "Jak umožnit návštěvníkům nahrát soubory jako videa v řáde
 date: "2016-04-20"
 last_modification: "2016-05-02"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "Formuláře", "PHP"]
+tags: ["formulare", "hotova-reseni", "js", "php"]
+format: "html"
 ---
 
-U některých typů webových aplikací je potřeba umožnit uživatelům nahrávat na server soubory (obrázky, videa a podobně).
+<p>U některých typů webových aplikací je potřeba umožnit uživatelům nahrávat na server soubory (obrázky, videa a podobně).</p>
 
-Nahrát v PHP soubor velký několik stovek kB nebo jednotek MB není příliš složité – stačí k tomu formulář a funkce [`move_uploaded_file`](http://php.net/manual/en/function.move-uploaded-file.php).
 
-Co ale v případě, že požadované soubory mají **stovky megabytů nebo dokonce gigabyty**?
 
-## Demo
+<p>Nahrát v PHP soubor velký několik stovek kB nebo jednotek MB není příliš složité – stačí k tomu formulář a funkce <a href="http://php.net/manual/en/function.move-uploaded-file.php"><code>move_uploaded_file</code></a>.</p>
 
-Jen simulace (data se nikam neodesílají), ideální je nahrát soubor v řádu stovek MB:
+<p>Co ale v případě, že požadované soubory mají <b>stovky megabytů nebo dokonce gigabyty</b>?</p>
 
+
+
+<h2 id="demo">Demo</h2>
+
+
+<p>Jen simulace (data se nikam neodesílají), ideální je nahrát soubor v řádu stovek MB:</p>
+
+<div class="live no-source">
+<div class="upload">
+    <div id="upload" ondrop="runUpload(event)">
     	Přetáhněte sem soubor
+    </div>
+    <div class="upload-info">
+        <div id="upload-fileinfo"></div>
+	    <div id="upload-text"></div>
+        <div id="upload-stav"></div>
+	</div>
+</div>
+</div>
 
-Ke stažení:
+<p>Ke stažení:</p>
 
-    - [Samostatná ukázka](http://kod.djpw.cz/rnxb)
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/rnxb">Samostatná ukázka</a></li>
+    <li>Funkční JS/PHP řešení na <a href="https://github.com/Jahoda/upload">GitHubu</a></li>
+  </ul>
+</div>
 
-    - Funkční JS/PHP řešení na [GitHubu](https://github.com/Jahoda/upload)
 
-## Zvýšení limitů v PHP
+<h2 id="limity">Zvýšení limitů v PHP</h2>
 
-Mimo sdílené hostingy jde hýbat s limity pro maximální velikost souborů.
 
-Bohužel to má některé problémy:
+<p>Mimo sdílené hostingy jde hýbat s limity pro maximální velikost souborů.</p>
 
-  - Při selhání spojení se celý obsah zahodí a musí se přenášet znovu.
+<p>Bohužel to má některé problémy:</p>
 
-  - Nezobrazuje se průběh nahrávání. (Jde řešit pomocí [APC](http://php.vrana.cz/zobrazeni-prubehu-uploadu-prakticky.php).)
+<ol>
+  <li>Při selhání spojení se celý obsah zahodí a musí se přenášet znovu.</li>
+  
+  <li>Nezobrazuje se průběh nahrávání. (Jde řešit pomocí <a href="http://php.vrana.cz/zobrazeni-prubehu-uploadu-prakticky.php">APC</a>.)</li>
+</ol>
 
-Cesta tedy vede jinudy.
+<p>Cesta tedy vede jinudy.</p>
 
-## JS `FileReader`
 
-Od **IE 10** prohlížeče podporují `FileReader`. Jedná se o JavaScriptovou třídu, která umí číst soubory přímo na straně klienta.
 
-Při uploadu menších souborů jako jsou obrázky nebo text jde obsah zobrazit přímo na stránce, aniž by se musel odesílat na server.
+<h2 id="filereader">JS <code>FileReader</code></h2>
 
-    - [Drag &amp; Drop upload obrázků](/upload)
+<p>Od <b>IE 10</b> prohlížeče podporují <code>FileReader</code>. Jedná se o JavaScriptovou třídu, která umí číst soubory přímo na straně klienta.</p>
 
-Teoreticky by tak šlo celé video zobrazit v prohlížeči před uploadem. V praxi je ale zobrazení velkého souboru velmi náročné na operační paměť.
 
-### Rozsekání souborů
+<p>Při uploadu menších souborů jako jsou obrázky nebo text jde obsah zobrazit přímo na stránce, aniž by se musel odesílat na server.</p>
 
-Klíčová vlastnost pro nahrávání obrovských souborů je možnost jejich rozsekání.
 
-```
-var reader = new FileReader();
+<div class="internal-content">
+  <ul>
+    <li><a href="/upload">Drag &amp; Drop upload obrázků</a></li>
+  </ul>
+</div>
+
+<p>Teoreticky by tak šlo celé video zobrazit v prohlížeči před uploadem. V praxi je ale zobrazení velkého souboru velmi náročné na operační paměť.</p>
+
+
+
+
+
+<h3 id="rozsekani">Rozsekání souborů</h3>
+
+<p>Klíčová vlastnost pro nahrávání obrovských souborů je možnost jejich rozsekání.</p>
+
+
+
+
+<pre><code>var reader = new FileReader();
 reader.readAsDataURL(
-  **soubor.slice**(zacatek, konec)
-);
-```
+  <b>soubor.slice</b>(zacatek, konec)
+);</code></pre>
 
-Pomocí `slice`, jde ze souboru vzít libovolnou část a načíst ji jako [data URL](/data-uri).
 
-```
-reader.onload = function (e) {
+
+
+
+
+
+
+<p>Pomocí <code>slice</code>, jde ze souboru vzít libovolnou část a načíst ji jako <a href="/data-uri">data URL</a>.</p>
+
+<pre><code>reader.onload = function (e) {
   var cast = e.target.result;
-}
-```
+}</code></pre>
 
-V proměnné `cast` nyní po načtení bude část souboru, kterou jen stačí [AJAXem](/ajax) odeslat na server a pomocí PHP uložit.
 
-Na tomto principu je tedy třeba postavit rekursivní funkci, která projde celý soubor po stanovených blocích (třeba 1 MB) a všechno postupně odešle na server.
 
-Je nutné zachovat pořadí odesílaných částí, takže je potřeba funkci rekursivně volat až v úspěšném callbacku z volání AJAXu.
 
-Vzhledem k tomu, že je možné předem zjistit velikost souboru a velikost jednoho bloku je také známa, není problém na základě toho sestavit **znázornění průběhu odesílání**.
 
-### Spojení souborů
 
-Získání obsahu na straně PHP je velmi jednoduché. Nejprve je potřeba dekódovat data:
 
-```
-$data = str_replace("data:;base64,", "", urldecode($_POST['data']));
+<p>V proměnné <code>cast</code> nyní po načtení bude část souboru, kterou jen stačí <a href="/ajax">AJAXem</a> odeslat na server a pomocí PHP uložit.</p>
+
+<p>Na tomto principu je tedy třeba postavit rekursivní funkci, která projde celý soubor po stanovených blocích (třeba 1 MB) a všechno postupně odešle na server.</p>
+
+<p>Je nutné zachovat pořadí odesílaných částí, takže je potřeba funkci rekursivně volat až v úspěšném callbacku z volání AJAXu.</p>
+
+<p>Vzhledem k tomu, že je možné předem zjistit velikost souboru a velikost jednoho bloku je také známa, není problém na základě toho sestavit <b>znázornění průběhu odesílání</b>.</p>
+
+
+
+
+<h3 id="spojeni">Spojení souborů</h3>
+
+<p>Získání obsahu na straně PHP je velmi jednoduché. Nejprve je potřeba dekódovat data:</p>
+
+
+<pre><code>$data = str_replace("data:;base64,", "", urldecode($_POST['data']));
 $data = str_replace(' ', '+', $data);
-$data = base64_decode($data);
-```
+$data = base64_decode($data);</code></pre>
 
-Nyní je stačí při každém spuštění skriptu připsat funkcí `file_put_contents`:
 
-```
-file_put_contents(
+
+
+
+
+
+
+
+<p>Nyní je stačí při každém spuštění skriptu připsat funkcí <code>file_put_contents</code>:</p>
+
+
+<pre><code>file_put_contents(
   "data/" . $_POST['filename'], 
   $data, 
-  **FILE_APPEND**
-);
-```
+  <b>FILE_APPEND</b>
+);</code></pre>
 
-Tímto způsobem jde i na sdíleném hostingu nahrávat velké soubory. Celý postup jde ale ještě vylepšit…
 
-## Vylepšení
 
-### Přerušení a navázání
 
-Pokud nahrávání selže, je zbytečné, aby již odeslaná data musel návštěvník nahrávat znovu. Řešení je kromě připisování do jednoho souboru ještě ukládat jednotlivé části a při úspěšném uložení poslat ze serveru odpověď s číslem poslední části.
 
-```
-if (file_put_contents(
+
+
+
+<p>Tímto způsobem jde i na sdíleném hostingu nahrávat velké soubory. Celý postup jde ale ještě vylepšit…</p>
+
+
+
+<h2 id="vylepseni">Vylepšení</h2>
+
+
+<h3 id="preruseni">Přerušení a navázání</h3>
+
+<p>Pokud nahrávání selže, je zbytečné, aby již odeslaná data musel návštěvník nahrávat znovu. Řešení je kromě připisování do jednoho souboru ještě ukládat jednotlivé části a při úspěšném uložení poslat ze serveru odpověď s číslem poslední části.</p>
+
+
+<pre><code>if (file_put_contents(
   "data/" . $_POST['filename'] . ".part" . $_POST['chunk'], 
   $data
 )) {
   echo $_POST['chunk'];
-}
-```
+}</code></pre>
 
-Na straně klienta se poslední část pro daný soubor může uložit do [`localStorage`](/localstorage). Díky tomu nebude případně problém v odesílání souboru navázat tam, kde se minule skončilo.
 
-### Ideální velikost dělení
 
-K úvaze je, jakou zvolit jednotku pro dělení souboru. Při nižším objemu získá návštěvník rychlejší odezvu a živější aktualisaci odeslaných procent.
 
-Dále v případě selhání odesílání bude zahozeno menší množství dat.
 
-Na druhou stranu nahrávání po hodně malých částech může způsobit zdržení kvůli odezvě serveru a připojení.
 
-### Zobrazení rychlosti
 
-Vzhledem k tomu, že je možné zaznamenat čas, kdy byla na server data odeslána, a čas, kdy byla uložena, a stejně tak je známa velikost bloku, dá se spočítat rychlost odesílání.
 
-Podle rychlosti by potom případně šlo ovlivňovat velikost odesílaných bloků.
 
-### Metoda `readAsBinaryString`
 
-Místo čtení dat metodou `readAsDataURL` by nejspíš bylo lepší použít [`readAsBinaryString`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsBinaryString). Podpora v prohlížečích je ale podle všeho horší (nefunguje v **IE**).
+<p>Na straně klienta se poslední část pro daný soubor může uložit do <a href="/localstorage"><code>localStorage</code></a>. Díky tomu nebude případně problém v odesílání souboru navázat tam, kde se minule skončilo.</p>
 
+
+
+<h3 id="velikost-bloku">Ideální velikost dělení</h3>
+
+
+
+<p>K úvaze je, jakou zvolit jednotku pro dělení souboru. Při nižším objemu získá návštěvník rychlejší odezvu a živější aktualisaci odeslaných procent.</p>
+
+<p>Dále v případě selhání odesílání bude zahozeno menší množství dat.</p>
+
+
+<p>Na druhou stranu nahrávání po hodně malých částech může způsobit zdržení kvůli odezvě serveru a připojení.</p>
+
+
+
+<h3 id="rychlost">Zobrazení rychlosti</h3>
+
+<p>Vzhledem k tomu, že je možné zaznamenat čas, kdy byla na server data odeslána, a čas, kdy byla uložena, a stejně tak je známa velikost bloku, dá se spočítat rychlost odesílání.</p>
+
+
+<p>Podle rychlosti by potom případně šlo ovlivňovat velikost odesílaných bloků.</p>
+
+
+
+
+<h3 id="readAsBinaryString">Metoda <code>readAsBinaryString</code></h3>
+
+<p>Místo čtení dat metodou <code>readAsDataURL</code> by nejspíš bylo lepší použít <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsBinaryString"><code>readAsBinaryString</code></a>. Podpora v prohlížečích je ale podle všeho horší (nefunguje v <b>IE</b>).</p>
+
+
+<style>
 .upload {
     background: #fff;
 }
@@ -157,7 +245,8 @@ Místo čtení dat metodou `readAsDataURL` by nejspíš bylo lepší použít [`
     position: relative;
     z-index: 1;
 }
-
+</style>
+<script>
 function prevent(e) {
     e = e || event;
     e.preventDefault();
@@ -174,8 +263,7 @@ var uploadFileInfo = document.getElementById("upload-fileinfo");
 function runUpload(e) {
     var files = e.dataTransfer.files;
     file = files[0];
-    uploadFileInfo.innerHTML = file.name + "
-";
+    uploadFileInfo.innerHTML = file.name + "<br>";
     uploadFileInfo.innerHTML+= Math.round(file.size / 1000 / 1000) + " MB";
     chunk = 0;
     uploadText.innerHTML = "";
@@ -204,4 +292,14 @@ function loadFile(file) {
     	uploadText.innerHTML = Math.round(chunk / chunks * 100)  + " %";
 
         chunk++;
-        if (chunk
+        if (chunk <= chunks) {
+        	loadFile(file);	        	
+        }
+        else {
+            uploadText.innerHTML = "Hotovo";
+            uploadText.style.background = "lightgreen";
+        }
+    };
+    reader.readAsDataURL(file.slice(start, end));    
+}  
+</script>

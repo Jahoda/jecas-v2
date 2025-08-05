@@ -5,47 +5,62 @@ description: "HTML atribut <code>novalidate</code> zabrání výchozí HTML 5 va
 date: "2015-01-29"
 last_modification: "2015-01-30"
 status: 1
-tags: ["HTML", "Formuláře", "HTML atributy"]
+tags: ["formulare", "html", "html-atributy"]
+format: "html"
 ---
 
-Při používání pokročilejších pokročilejších typů značky [`&lt;input>`](/input) je ve výchozím stavu přítomna jistá **automatická validace**.
+<p>Při používání pokročilejších pokročilejších typů značky <a href="/input"><code>&lt;input></code></a> je ve výchozím stavu přítomna jistá <b>automatická validace</b>.</p>
 
-Například políčko `&lt;input type="email">` požaduje platnou e-mailovou adresu. Ověření proběhne při **odeslání formuláře**.
+<p>Například políčko <code>&lt;input type="email"></code> požaduje platnou e-mailovou adresu. Ověření proběhne při <b>odeslání formuláře</b>.</p>
 
-      E-mail: 
-      Odeslat
+<div class="live">
+  <form onsubmit="alert('Jakože odesláno'); return false">
+    <p>
+      <label>E-mail: <input type="email" required></label>
+      <button>Odeslat</button>
+    </p>
+  </form>
+</div>
 
-Atributem `novalidate` jde toto výchozí chování **vypnout**:
+<p>Atributem <code>novalidate</code> jde toto výchozí chování <b>vypnout</b>:</p>
 
-```
-&lt;form novalidate>
-&lt;/form>
-```
+<pre><code>&lt;form novalidate>
+&lt;/form></code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/bzjb) – test formuláře s/bez výchozí validace
+<p><a href="http://kod.djpw.cz/bzjb">Živá ukázka</a> – test formuláře s/bez výchozí validace</p>
 
-## Proč validaci vypnout
 
-Výchozí HTML 5 validace není úplně optimální. Lepšího výsledku jde zpravidla dosáhnout **vlastní validací v JavaScriptu**, která nemá následující nedostatky:
+<h2 id="vypnout">Proč validaci vypnout</h2>
 
-    **Nedostatečná podpora napříč prohlížeči**. U HTML 5 validace je například políčko pro e-mail podporované až v **IE 10**.
+<p>Výchozí HTML 5 validace není úplně optimální. Lepšího výsledku jde zpravidla dosáhnout <b>vlastní validací v JavaScriptu</b>, která nemá následující nedostatky:</p>
 
-    **Nejistá kontrola** nad výsledkem. Někdy se zvláštní typy políček používají hlavně k tomu, aby na mobilních zařízeních byla nabídnuta [lepší podoba klávesnice](/chyby-formularu#type). To je dobré chování, které ale doprovází i **výchozí validace**, která nemusí vyhovovat.
+<ol>
+  <li>
+    <p><b>Nedostatečná podpora napříč prohlížeči</b>. U HTML 5 validace je například políčko pro e-mail podporované až v <b>IE 10</b>.</p>
+  </li>
+  
+  <li>
+    <p><b>Nejistá kontrola</b> nad výsledkem. Někdy se zvláštní typy políček používají hlavně k tomu, aby na mobilních zařízeních byla nabídnuta <a href="/chyby-formularu#type">lepší podoba klávesnice</a>. To je dobré chování, které ale doprovází i <b>výchozí validace</b>, která nemusí vyhovovat.</p>
+  </li>
+</ol>
 
-## Výchozí validace
+<h2 id="validace">Výchozí validace</h2>
 
-[Text hlášek](/valid-invalid#vlastni-hlaska) výchozí validace změnit jde. Problematická může být přílišná nebo nedostatečná **benevolence k zadaným datům**.
+<p><a href="/valid-invalid#vlastni-hlaska">Text hlášek</a> výchozí validace změnit jde. Problematická může být přílišná nebo nedostatečná <b>benevolence k zadaným datům</b>.</p>
 
-Například u e-mailu si lze představit tři stupně *přísnosti*:
+<p>Například u e-mailu si lze představit tři stupně <i>přísnosti</i>:</p>
 
-  - Vyžadovat přesný tvar „email@example.com“.
+<ol>
+  <li>Vyžadovat přesný tvar „<mark>email@example.com</mark>“.</li>
+  
+  <li>Tolerovat a oříznout  tzv. <i>bílé znaky</i>, tedy akceptovat i „ <mark>email@example.com</mark>“.</li>
+  
+  <li>Spokojit se s výskytem e-mailu, tj. akceptovat i „cokoliv <mark>email@example.com</mark>“. Takový případ může nastat při nešikovném kopírování.</li>
+</ol>
 
-  - Tolerovat a oříznout  tzv. *bílé znaky*, tedy akceptovat i „ email@example.com“.
+<p>Výchozí validace formulářů používá většinou první nebo druhý způsob.</p>
 
-  - Spokojit se s výskytem e-mailu, tj. akceptovat i „cokoliv email@example.com“. Takový případ může nastat při nešikovném kopírování.
 
-Výchozí validace formulářů používá většinou první nebo druhý způsob.
+<h3 id="vyhoda">Výhoda</h3>
 
-### Výhoda
-
-Výhoda HTML 5 validace je ale ve své jednoduchosti nasazení a se selektory [`:valid` a `:invalid`](/valid-invalid) jde provádět i něco jako primitivní **ověřování během psaní**.
+<p>Výhoda HTML 5 validace je ale ve své jednoduchosti nasazení a se selektory <a href="/valid-invalid"><code>:valid</code> a <code>:invalid</code></a> jde provádět i něco jako primitivní <b>ověřování během psaní</b>.</p>

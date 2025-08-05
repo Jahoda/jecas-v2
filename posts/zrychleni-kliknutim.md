@@ -5,35 +5,43 @@ description: "Jak u AJAXové aplikace snadno zrychlit odezvu na kliknutí o 100 
 date: "2014-12-16"
 last_modification: "2014-12-24"
 status: 1
-tags: ["JavaScript", "Zrychlování webu", "AJAX"]
+tags: ["js", "js-ajax", "zrychlovani"]
+format: "html"
 ---
 
-Pokud stránka funguje tak, že při kliknutí na **odkaz/tlačítko** ([`onclick`](/udalosti-mysi#oncick)) zavolá [AJAXový](/ajax) požadavek, který změní část obsahu stránky, můžeme celé odbavení jednoduše zkrátit v průměru o 100 a více milisekund.
+<p>Pokud stránka funguje tak, že při kliknutí na <b>odkaz/tlačítko</b> (<a href="/udalosti-mysi#oncick"><code>onclick</code></a>) zavolá <a href="/ajax">AJAXový</a> požadavek, který změní část obsahu stránky, můžeme celé odbavení jednoduše zkrátit v průměru o 100 a více milisekund.</p>
 
-Vše, co je potřeba udělat, je rozložit akci do dvou kroků.
+<p>Vše, co je potřeba udělat, je rozložit akci do dvou kroků.</p>
 
-  - **stažení** dat,
+<ol>
+  <li><b>stažení</b> dat,</li>
+  
+  <li><b>zobrazení</b> obsahu</li>
+</ol>
 
-  - **zobrazení** obsahu
 
-## Jak funguje kliknutí
+<h2 id="kliknuti">Jak funguje kliknutí</h2>
 
-Standardní průběh kliknutí je takový, že uživatel:
+<p>Standardní průběh kliknutí je takový, že uživatel:</p>
 
-  - **najede** na tlačítko/odkaz (`onmouseover`),
+<ol>
+  <li><b>najede</b> na tlačítko/odkaz (<code>onmouseover</code>),</li>
+  
+  <li><b>stiskne</b> levé tlačítko myši (<code>onmouse<b>down</b></code>),</li>
+  
+  <li><b>uvolní</b> tlačítko myši (<code>onmouse<b>up</b></code>)</li>
+</ol>
 
-  - **stiskne** levé tlačítko myši (`onmouse**down**`),
+<p>Pointa je v tom, že tyto tři kroky mohou trvat běžně kolem <b>0,5 vteřiny</b> (mezi stisknutím a uvolněním tlačítka cca <b>100 milisekund</b>). Pokud tedy obsah začneme načítat už při (1) <b>najetí myší</b> nebo (2) <b>stisknutí tlačítka</b>, může být v době (3) <b>uvolnění tlačítka</b> už připravený (stažený).</p>
 
-  - **uvolní** tlačítko myši (`onmouse**up**`)
+<p>Samotné <b>přejetí myší</b> ale může vykonat řadu „planých poplachů“, kdy se data budou načítat zbytečně. Jde tomu pomoci menší prodlevou mezi najetím a přednačítáním.</p>
 
-Pointa je v tom, že tyto tři kroky mohou trvat běžně kolem **0,5 vteřiny** (mezi stisknutím a uvolněním tlačítka cca **100 milisekund**). Pokud tedy obsah začneme načítat už při (1) **najetí myší** nebo (2) **stisknutí tlačítka**, může být v době (3) **uvolnění tlačítka** už připravený (stažený).
+<p>Při stisknutí tlačítka je sice také možné <b>zrušit akci</b> odjetím pryč, ale počet takových případů nebude příliš vysoký.</p>
 
-Samotné **přejetí myší** ale může vykonat řadu „planých poplachů“, kdy se data budou načítat zbytečně. Jde tomu pomoci menší prodlevou mezi najetím a přednačítáním.
+<p>Vyzkoušejte si, <b>jak dlouho vám zabere</b> kliknutí od najetí na tlačítko nebo od jeho stisknutí. Celková doba je závislá i na <b>velikosti prvku</b>.</p>
 
-Při stisknutí tlačítka je sice také možné **zrušit akci** odjetím pryč, ale počet takových případů nebude příliš vysoký.
-
-Vyzkoušejte si, **jak dlouho vám zabere** kliknutí od najetí na tlačítko nebo od jeho stisknutí. Celková doba je závislá i na **velikosti prvku**.
-
+<div class="live">
+<script>
 var start, tlacitko;
 function zacatek() {
     start = new Date().getTime();
@@ -45,74 +53,80 @@ function konec(el) {
 function kliknuto() {
     tlacitko = new Date().getTime();
 }
+</script>
+<p>Kliknutí od najetí trvalo: <button onmouseover="zacatek()" onmousedown="kliknuto()" onmouseup="konec(this)">Kliknout</button></p>  
+</div>
 
-Kliknutí od najetí trvalo: Kliknout
+<p>O tento čas můžeme snadno snížit <b>odezvu aplikace</b>.</p>
 
-O tento čas můžeme snadno snížit **odezvu aplikace**.
 
-## Řešení
 
-Při konkrétním použití mohou nastat dva případy.
+<h2 id="reseni">Řešení</h2>
 
-  - Přednačtení se stihne **před dokončením akce** (uvolnění tlačítka).
+<p>Při konkrétním použití mohou nastat dva případy.</p>
 
-  - Načítání bude **pokračovat i po dokončení akce**.
+<ol>
+  <li>Přednačtení se stihne <b>před dokončením akce</b> (uvolnění tlačítka).</li>
+  
+  <li>Načítání bude <b>pokračovat i po dokončení akce</b>.</li>
+</ol>
 
-Pro konkrétní řešení si tedy uložíme dva stavy:
+<p>Pro konkrétní řešení si tedy uložíme dva stavy:</p>
 
-  - obsah je připraven – `pripravenaData`
+<ol>
+  <li>obsah je připraven – <code>pripravenaData</code></li>
+  <li>na získaný obsah se má přejít – <code>prejit</code></li>
+</ol>
 
-  - na získaný obsah se má přejít – `prejit`
+<p>Při <b>stisknutí</b> tlačítka se nastaví, že nejsou data připravená a zavolá se funkce pro načtení:</p>
 
-Při **stisknutí** tlačítka se nastaví, že nejsou data připravená a zavolá se funkce pro načtení:
+<pre><code>pripravenaData = false;
+nacist(url);</code></pre>
 
-```
-pripravenaData = false;
-nacist(url);
-```
+<p>Funkce <code>nacist</code> začne <b>načítat obsah</b> a v případě dokončení změní proměnnou <code>pripravenaData</code>.</p>
 
-Funkce `nacist` začne **načítat obsah** a v případě dokončení změní proměnnou `pripravenaData`.
+<pre><code>pripravenaData = true;</code></pre>
 
-```
-pripravenaData = true;
-```
 
-Při **uvolnění** tlačítka (dokončení akce) se v případě, že jsou data už načtena, **zobrazí obsah**.
+<p>Při <b>uvolnění</b> tlačítka (dokončení akce) se v případě, že jsou data už načtena, <b>zobrazí obsah</b>.</p>
 
-```
-if (pripravenaData) {
+<pre><code>if (pripravenaData) {
   // zobrazit obsah
-}
-```
+}</code></pre>
 
-Pokud by obsah **ještě načten nebyl**, změní se proměnná `prejit` na `true`. V takovém případě na základě kladné hodnoty `prejit` funkce `nacist` rovnou zobrazí obsah.
+<p>Pokud by obsah <b>ještě načten nebyl</b>, změní se proměnná <code>prejit</code> na <code>true</code>. V takovém případě na základě kladné hodnoty <code>prejit</code> funkce <code>nacist</code> rovnou zobrazí obsah.</p>
 
-Celý postup demonstruje živá ukázka. Kde se po stisknutí tlačítka myši začne načítat obsah do přednačítacího `&lt;div>`u a po dokončení akce se přesune na **cílové umístění**.
+<p>Celý postup demonstruje živá ukázka. Kde se po stisknutí tlačítka myši začne načítat obsah do přednačítacího <code>&lt;div></code>u a po dokončení akce se přesune na <b>cílové umístění</b>.</p>
 
-[Živá ukázka](http://kod.djpw.cz/bzib)
+<p><a href="http://kod.djpw.cz/bzib">Živá ukázka</a></p>
 
-### Způsob přednačítání
 
-K úvaze je, zda si (před)načtený obsah pouze **uložit do proměnné** nebo vypsat do **pomocného elementu**. V případě vypsání do pomocného `&lt;div>`u se začnou rovnou načítat i případné **externí objekty** a nový obsah se může [vykreslit](/vykreslovani) už před dokončením akce, což také nejspíš **zrychlí výsledný dojem**.
+<h3 id="zpusob">Způsob přednačítání</h3>
 
-### Dotyková zařízení
+<p>K úvaze je, zda si (před)načtený obsah pouze <b>uložit do proměnné</b> nebo vypsat do <b>pomocného elementu</b>. V případě vypsání do pomocného <code>&lt;div></code>u se začnou rovnou načítat i případné <b>externí objekty</b> a nový obsah se může <a href="/vykreslovani">vykreslit</a> už před dokončením akce, což také nejspíš <b>zrychlí výsledný dojem</b>.</p>
 
-U dotykových zařízení jde místo `onmousedown` a `onmouseup` použít  jejich [`ontouch*` obdoby](/udalosti-mysi#dotykove).
 
-### Otevírání do nového okna
+<h3 id="dotyk">Dotyková zařízení</h3>
 
-V desktopových prohlížečích je běžné, že uživatelé otevírají odkazy do nové záložky nebo do nové záložky na pozadí klávesami Shift/Ctrl + kliknutí.
+<p>U dotykových zařízení jde místo <code>onmousedown</code> a <code>onmouseup</code> použít  jejich <a href="/udalosti-mysi#dotykove"><code>ontouch*</code> obdoby</a>.</p>
 
-Případně si kliknutím **pravého tlačítka** chtějí zkopírovat adresu odkazu a podobně.
 
-V takových případech je nejspíš zbytečné **cokoliv přednačítat** a při stisku jiného tlačítka než levého nebo při přidržení některých kláves proto nic nedělat.
+<h3 id="klavesy">Otevírání do nového okna</h3>
 
-```
-if (e.which > 1 || e.metaKey || e.ctrlKey) {
+<p>V desktopových prohlížečích je běžné, že uživatelé otevírají odkazy do nové záložky nebo do nové záložky na pozadí klávesami <kbd>Shift</kbd>/<kbd>Ctrl</kbd> + kliknutí.</p>
+
+<p>Případně si kliknutím <b>pravého tlačítka</b> chtějí zkopírovat adresu odkazu a podobně.</p>
+
+<p>V takových případech je nejspíš zbytečné <b>cokoliv přednačítat</b> a při stisku jiného tlačítka než levého nebo při přidržení některých kláves proto nic nedělat.</p>
+
+<pre><code>if (e.which > 1 || e.metaKey || e.ctrlKey) {
   return;
-}
-```
+}</code></pre>
 
-    - [Kódy tlačítek u `onmousedown`](/udalosti-mysi#onmousedown)
-
-    - [Klávesy Shift, Ctrl a Alt](/klavesy#shift-ctrl)
+<div class="internal-content">
+  <ul>
+    <li><a href="/udalosti-mysi#onmousedown">Kódy tlačítek u <code>onmousedown</code></a></li>
+    
+    <li><a href="/klavesy#shift-ctrl">Klávesy <kbd>Shift</kbd>, <kbd>Ctrl</kbd> a <kbd>Alt</kbd></a></li>
+  </ul>
+</div>

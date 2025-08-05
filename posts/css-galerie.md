@@ -5,14 +5,19 @@ description: "Galerie obrázků bez JavaScriptu pomocí CSS."
 date: "2013-10-10"
 last_modification: "2013-10-10"
 status: 1
-tags: ["CSS", "Hotová řešení", "Obrázky"]
+tags: ["css", "hotova-reseni", "obrazky"]
+format: "html"
 ---
 
-Pro **obrázkovou galerii** o pár obrázcích může stačit prosté řešení čistě v HTML a CSS.
+<p>Pro <b>obrázkovou galerii</b> o pár obrázcích může stačit prosté řešení čistě v HTML a CSS.</p>
 
+<style>
   .large a:hover {background: none}
   .large div:target {outline: none}  
+</style>
 
+<div class="live">
+<style>
   /* zrušení orámování odkazu v Exploreru */
   img {border: 0;}
   a:focus {outline: 0}
@@ -28,19 +33,33 @@ Pro **obrázkovou galerii** o pár obrázcích může stačit prosté řešení 
   .thumb a {margin-right: 10px; border: 5px solid #000; display: inline-block;}
   .thumb img {display: block; width: 120px; height: 80px}
   .thumb a:hover {border-color: red;}  
+</style>
 
-		[&gt;](#druhy)
+<div class='large'>
+	<div id="prvni">
+		<img src='http://img.dummy-image-generator.com/abstract/dummy-600x400-Circus-plain.jpg'>
+		<a href="#druhy" class='next'><span>&gt;</span></a>
+	</div>
+	<div id="druhy">
+		<a href="#prvni" class='prev'><span>&lt;</span></a>
+		<img src='http://img.dummy-image-generator.com/abstract/dummy-600x400-Rope-plain.jpg'>
+		<a href="#treti" class='next'><span>&gt;</span></a>
+	</div>
+	<div id="treti">
+		<a href="#druhy" class='prev'><span>&lt;</span></a>
+		<img src='http://img.dummy-image-generator.com/abstract/dummy-600x400-Comb-plain.jpg'>
+	</div>		
+</div>
+<div class='thumb'>
+	<a href='#prvni'><img src='http://img.dummy-image-generator.com/abstract/dummy-600x400-Circus-plain.jpg'></a>
+	<a href='#druhy'><img src='http://img.dummy-image-generator.com/abstract/dummy-600x400-Rope-plain.jpg'></a>
+	<a href='#treti'><img src='http://img.dummy-image-generator.com/abstract/dummy-600x400-Comb-plain.jpg'></a>
+</div>  
+</div>
 
-		[&lt;](#prvni)
-		
-		[&gt;](#treti)
+<p>Galerie využívá obalu s nastavenou výškou a <code>overflow: hidden</code>, ve kterém jsou obrázky, na které lze odkázat <code>#kotvou</code> — v takovém případě prohlížeč <i>odroluje</i> na požadovaný obrázek. V novějších prohlížečích (od <b>IE9</b>) by šlo použít <a href="/css-selektory#zamereni">selektor</a> <a href="/zvyrazneni-kotvy"><code>:target</code></a>.</p>
 
-		[&lt;](#druhy)
+<p>Jelikož jsou všechny obrázky <b>v plné velikosti přímo na stránce</b>, načtou se všechny při vstupu na stránku a nemá tedy příliš smysl řešit vytváření náhledů (maximálně kvůli lepší ostrosti miniatur).</p>
+<p>Tento postup je výhodný v tom, že při prohlížení <b>budou všechny obrázky už načtené</b>, nevýhoda je <b>plýtvání daty</b> v případě, kdy návštěvník všechny obrázky zvětšit nechce.</p>
 
-Galerie využívá obalu s nastavenou výškou a `overflow: hidden`, ve kterém jsou obrázky, na které lze odkázat `#kotvou` — v takovém případě prohlížeč *odroluje* na požadovaný obrázek. V novějších prohlížečích (od **IE9**) by šlo použít [selektor](/css-selektory#zamereni) [`:target`](/zvyrazneni-kotvy).
-
-Jelikož jsou všechny obrázky **v plné velikosti přímo na stránce**, načtou se všechny při vstupu na stránku a nemá tedy příliš smysl řešit vytváření náhledů (maximálně kvůli lepší ostrosti miniatur).
-
-Tento postup je výhodný v tom, že při prohlížení **budou všechny obrázky už načtené**, nevýhoda je **plýtvání daty** v případě, kdy návštěvník všechny obrázky zvětšit nechce.
-
-Pro **více obrázků na jedné stránce** je proto nejspíš vhodnější [lightbox galerie](/magnific-popup) — Magnific Popup umí dokonce řídit, kolik obrázků se má přednačítat.
+<p>Pro <b>více obrázků na jedné stránce</b> je proto nejspíš vhodnější <a href="/magnific-popup">lightbox galerie</a> — Magnific Popup umí dokonce řídit, kolik obrázků se má přednačítat.</p>

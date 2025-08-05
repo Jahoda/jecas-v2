@@ -5,85 +5,109 @@ description: "CSS vlastnost <code>word-spacing</code> upravuje velikost mezer me
 date: "2015-08-27"
 last_modification: "2015-09-30"
 status: 1
-tags: ["CSS", "CSS vlastnosti", "Písma"]
+tags: ["css", "css-vlastnosti", "pisma"]
+format: "html"
 ---
 
-.velke-mezery {
+<div class="live">
+  <style>
+    .velke-mezery {
       word-spacing: 1em;  
     }
-  
-  Tento text má velké mezery mezi slovy.
+  </style>
+  <p class="velke-mezery">Tento text má velké mezery mezi slovy.</p>
+</div>
 
-Pro upravení rozestupů mezi **písmeny** slouží vlastnost [`letter-spacing`](/letter-spacing).
+<p>Pro upravení rozestupů mezi <b>písmeny</b> slouží vlastnost <a href="/letter-spacing"><code>letter-spacing</code></a>.</p>
 
-## Zápis
+<h2 id="zapis">Zápis</h2>
 
-```
-element {
+<pre><code>element {
   word-spacing: 1em;    
-}
-```
+}</code></pre>
 
-Hodnotu jde zadat několika způsoby:
+<p>Hodnotu jde zadat několika způsoby:</p>
 
-    **Výchozí mezera**:
+<ol>
+  <li>
+    <p><b>Výchozí mezera</b>:</p>
+    
+    <pre><code>word-spacing: <b>normal</b></code></pre>
+    
+    <p>Výchozí hodnota odpovídá nule.</p>
+  </li>
+  
+  <li>
+    <p><b>Délkové jednotky</b> (kromě procent):</p>
+    
+    <pre><code>word-spacing: <b>1em</b></code></pre>
+  </li>  
+</ol>
 
-    ```
-word-spacing: **normal**
-```
+<p>Kromě zvětšení jde mezery i <b>zmenšit nebo zrušit</b>. Zmenšení se provede zadáním dostatečně velké <b>záporné hodnoty</b>.</p>
 
-    Výchozí hodnota odpovídá nule.
 
-    **Délkové jednotky** (kromě procent):
-
-    ```
-word-spacing: **1em**
-```
-
-Kromě zvětšení jde mezery i **zmenšit nebo zrušit**. Zmenšení se provede zadáním dostatečně velké **záporné hodnoty**.
-
+<div class="live">
+  <style>
     .male-mezery {
       word-spacing: -0.1em;
     }
     .bez-mezer {
       word-spacing: -.25em;
     }    
-  
-  Text s normálními mezerami.
+  </style>
+  <p>Text s normálními mezerami.</p>
+  <p class="male-mezery">Text s menšími mezerami mezi slovy.</p>
+  <p class="bez-mezer">Text bez mezer mezi slovy.</p>
+</div>
 
-  Text s menšími mezerami mezi slovy.
+<p>Prohlížeče používající vykreslovací jádra <b>Gecko</b> a <b>Blink</b> (např. <b>Firefox</b> a <b>Chrome</b>) při záporné hodnotě převyšující šířku mezery začnou překrývat slova přes sebe. Stará <b>Opera 12</b> a <b>IE</b>/<a href="/microsoft-edge"><b>Edge</b></a> tímto problémem netrpí.</p>
 
-  Text bez mezer mezi slovy.
-
-Prohlížeče používající vykreslovací jádra **Gecko** a **Blink** (např. **Firefox** a **Chrome**) při záporné hodnotě převyšující šířku mezery začnou překrývat slova přes sebe. Stará **Opera 12** a **IE**/[**Edge**](/microsoft-edge) tímto problémem netrpí.
-
+<div class="live">
+  <style>
     .zaporne-mezery {
       word-spacing: -10em;
       text-align: center;
     }    
-  
-  Slova se překrývají
+  </style>
+  <p class="zaporne-mezery">Slova se překrývají</p>
+</div>
 
-Srovnání zobrazení v různých prohlížečích:
+<p>Srovnání zobrazení v různých prohlížečích:</p>
 
-## Podpora
+<p><img src="/files/word-spacing/zaporny.png" alt="Zobrazení záporného word-spacing v různých prohlížečích" class="border"></p>
 
-Široce podporovaná vlastnost ve všech běžně používaných prohlížečích.
 
-Chování se liší při používání **záporných hodnot**.
 
-## Využití
 
-Hodně málo používaná vlastnost.
+<h2 id="podpora">Podpora</h2>
 
-    - [Nejpoužívanější CSS vlastnosti](/cetnost-css) – přehled nejpoužívanějších CSS vlastností
+<p>Široce podporovaná vlastnost ve všech běžně používaných prohlížečích.</p>
 
-Měnit výchozí mezery mezi slovy většinou není potřeba.
+<p>Chování se liší při používání <b>záporných hodnot</b>.</p>
 
-### Odsazení
 
-Použít `word-spacing` jde třeba pro jednoduché **vodorovné odsazení několika položek**. Například odkazů v [menu](/menu):
 
+<h2 id="vyuziti">Využití</h2>
+
+<p>Hodně málo používaná vlastnost.</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/cetnost-css">Nejpoužívanější CSS vlastnosti</a> – přehled nejpoužívanějších CSS vlastností</li>
+  </ul>
+</div>
+
+<p>Měnit výchozí mezery mezi slovy většinou není potřeba.</p>
+
+
+
+<h3 id="odsazeni">Odsazení</h3>
+
+<p>Použít <code>word-spacing</code> jde třeba pro jednoduché <b>vodorovné odsazení několika položek</b>. Například odkazů v <a href="/menu">menu</a>:</p>
+
+<div class="live">
+<style>
 .menu-odsazeni {
     word-spacing: 2em;
     background: #fff;
@@ -94,38 +118,52 @@ Použít `word-spacing` jde třeba pro jednoduché **vodorovné odsazení někol
 .menu-odsazeni a {
     word-spacing: 0;
 }
+</style>
+<div class="menu-odsazeni">
+    <a href="#">Odkaz</a>
+    <a href="#">Víceslovný odkaz</a>
+    <a href="#">Odkaz</a>
+</div>  
+</div>
 
-    [Odkaz](#)
-    [Víceslovný odkaz](#)
-    [Odkaz](#)
 
-Pro obalový element se nastaví `word-spacing` o rozměru odsazení a pro jednotlivé položky se zase vrátí na nulu (výchozí hodnotu).
+<p>Pro obalový element se nastaví <code>word-spacing</code> o rozměru odsazení a pro jednotlivé položky se zase vrátí na nulu (výchozí hodnotu).</p>
 
-```
-.obal-menu {word-spacing: 1em}
-.obal-menu a {word-spacing: 0}
-```
+<pre><code>.obal-menu {word-spacing: 1em}
+.obal-menu a {word-spacing: 0}</code></pre>
 
-[Samostatná ukázka](http://kod.djpw.cz/nnqb)
+<p><a href="http://kod.djpw.cz/nnqb">Samostatná ukázka</a></p>
 
-### Zarovnání do bloku
 
-Při použití blokového zarovnání písma ([`text-align: justify`](/text-align#justify)) se k přesnému roztažení na šířku využívá **automatické zvětšení mezer mezi slovy**.
+<h3 id="blok">Zarovnání do bloku</h3>
 
-V takovém případě jsou odstupy mezi slovy typicky stejné nebo větší než hodnota vlastnosti `word-spacing`.
+<p>Při použití blokového zarovnání písma (<a href="/text-align#justify"><code>text-align: justify</code></a>) se k přesnému roztažení na šířku využívá <b>automatické zvětšení mezer mezi slovy</b>.</p>
 
+<p>V takovém případě jsou odstupy mezi slovy typicky stejné nebo větší než hodnota vlastnosti <code>word-spacing</code>.</p>
+
+<div class="live">
+  <style>
     .mezery-justify {
       text-align: justify;
       width: 14em;
       border: 1px solid;
       padding: 1em;
-    }
-  Mezery mezi slovy v textu zarovnaném do bloku se zvětší, aby se obsah přesně roztáhl ke krajům bloku.
+    }</style>
+  <p class="mezery-justify">Mezery mezi slovy v textu zarovnaném do bloku se zvětší, aby se obsah přesně roztáhl ke krajům bloku.</p>
+</div>
 
-Změnou hodnoty `word-spacing` se v tomto případě ničeho použitelnějšího nedocílí. Ve staré **Opeře 12** dokáže text při větším záporném `word-spacing`u, než odpovídá šířce mezery, opustit svůj obal.
+<p>Změnou hodnoty <code>word-spacing</code> se v tomto případě ničeho použitelnějšího nedocílí. Ve staré <b>Opeře 12</b> dokáže text při větším záporném <code>word-spacing</code>u, než odpovídá šířce mezery, opustit svůj obal.</p>
 
-## Odkazy jinam
+<p><img src="/files/word-spacing/opera-12.png" alt="Špatné zobrazení ve staré Opeře 12" class="border"></p>
 
-  - Jak psát web: [Word-spacing](http://www.jakpsatweb.cz/css/word-spacing.html)
+<!-- ukázka: http://kod.djpw.cz/tnqb -->
 
-  - MDN: [`word-spacing`](https://developer.mozilla.org/en-US/docs/Web/CSS/word-spacing)
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>Jak psát web: <a href="http://www.jakpsatweb.cz/css/word-spacing.html">Word-spacing</a></li>
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/word-spacing"><code>word-spacing</code></a></li>
+</ul>

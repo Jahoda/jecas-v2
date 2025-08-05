@@ -6,36 +6,39 @@ date: "2015-11-26"
 last_modification: "2015-11-26"
 status: 0
 tags: []
+format: "html"
 ---
 
-## SVG ikony
+<h2>SVG ikony</h2>
 
-  - [Snag 300 Free Streamline 3.0 Icons](https://streamlineicons.com/free/)
+<ul>
   
-  - Diskuse na Frontendisti: [Znáte nějaké konkrétní pěkné SVG ikonky, ideálně zdarma](https://www.facebook.com/groups/frontendisti/permalink/1621012051443646/)
+  <li><a href="https://streamlineicons.com/free/">Snag 300 Free Streamline 3.0 Icons</a></li>  
+  <li>Diskuse na Frontendisti: <a href="https://www.facebook.com/groups/frontendisti/permalink/1621012051443646/">Znáte nějaké konkrétní pěkné SVG ikonky, ideálně zdarma</a></li>
+  <li><a href="https://dribbble.com/shots/1804367-340-Freebies-Touch-Icon-Set">340 Freebies! Touch Icon Set</a></li>
+  
+  <li><a href="http://sixrevisions.com/freebies/free-svg-icons/">Free SVG Icons</a></li>
+  
+    <li>Google: <a href="https://github.com/google/material-design-icons/releases/tag/1.0.0">Material Design Icons</a></li>
+</ul>
 
-  - [340 Freebies! Touch Icon Set](https://dribbble.com/shots/1804367-340-Freebies-Touch-Icon-Set)
+<h2 id="prohledavani-ikon">Prohledávání ikon</h2>
 
-  - [Free SVG Icons](http://sixrevisions.com/freebies/free-svg-icons/)
+<p>Pro snadné prohledávání různých fotn ikon, existuje nástroj:</p>
 
-    - Google: [Material Design Icons](https://github.com/google/material-design-icons/releases/tag/1.0.0)
+<li><a href="http://icomoon.io/">Icomoon.io</a></li>
 
-## Prohledávání ikon
 
-Pro snadné prohledávání různých fotn ikon, existuje nástroj:
 
-- [Icomoon.io](http://icomoon.io/)
+<p>Obdobná služba pro prohledávání <b>obrázkových ikon</b> slouží <a href="https://www.iconfinder.com/">Iconfinder</a></p>
 
-Obdobná služba pro prohledávání **obrázkových ikon** slouží [Iconfinder](https://www.iconfinder.com/)
+<p><a href="http://glyphsearch.com/" class="button">GlyphSearch</a></p>
 
-[GlyphSearch](http://glyphsearch.com/)
+<p>Nabízí prohledávání:</p>
 
-Nabízí prohledávání:
-
-  - Font Awesome
-
-  - Glyphicons
-
-  - IcoMoon
-
-  - Ionicons
+<ul>
+  <li>Font Awesome</li>
+  <li>Glyphicons</li>
+  <li>IcoMoon</li>
+  <li>Ionicons</li>
+</ul>

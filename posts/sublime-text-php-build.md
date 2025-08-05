@@ -5,37 +5,36 @@ description: "Při programování v PHP se občas hodí testovat (spouštět) sk
 date: "2014-04-26"
 last_modification: "2014-04-26"
 status: 1
-tags: ["Produktivita", "Sublime Text"]
+tags: ["produktivita", "st"]
+format: "html"
 ---
 
-V editoru [Sublime Text](/sublime-text) to jde poměrně snadno zařídit. Přes položku *New Build System…* nacházející se v hlavním menu pod *Tools* → *Build System*.
+<p>V editoru <a href="/sublime-text">Sublime Text</a> to jde poměrně snadno zařídit. Přes položku <i>New Build System…</i> nacházející se v hlavním menu pod <i>Tools</i> → <i>Build System</i>.</p>
 
-Po kliknutí na *New Build System…* by mělo stačit **nahradit obsah** nově otevřeného souboru následujícím obsahem.
+<p><img src="/files/sublime-text-php-build/php-build.png" alt="Přidání nového Build Systému v Sublime Text" class="border"></p>
 
-```
-{
+<p>Po kliknutí na <i>New Build System…</i> by mělo stačit <b>nahradit obsah</b> nově otevřeného souboru následujícím obsahem.</p>
+
+<pre><code>{
 	"cmd": ["php", "$file"],
 	"file_regex": "php$",
 	"selector": "source.php"
-}
-```
+}</code></pre>
 
-A soubor uložit do **předvybraného adresáře** `User` pod názvem `**php.sublime-build**` (celá cesta na Windows je `C:\Users\Uživatel\AppData\Roaming\Sublime Text 2\Packages\User`).
+<p>A soubor uložit do <b>předvybraného adresáře</b> <code>User</code> pod názvem <code><b>php.sublime-build</b></code> (celá cesta na Windows je <code>C:\Users\Uživatel\AppData\Roaming\Sublime Text 2\Packages\User</code>).</p>
 
-Nyní stačí nově vytvořený build v PHP zaškrtnout ve stejné nabídce, kde se vytvářel. A po stisknutí Ctrl + B v otevřeném PHP souboru by to mělo fungovat. Výsledek *buildu* se zobrazuje v dolní části editoru.
+<p>Nyní stačí nově vytvořený build v PHP zaškrtnout ve stejné nabídce, kde se vytvářel. A po stisknutí <kbd>Ctrl</kbd> + <kbd>B</kbd> v otevřeném PHP souboru by to mělo fungovat. Výsledek <i>buildu</i> se zobrazuje v dolní části editoru.</p>
 
-## Build celého projektu
+<h2 id="cely-projekt">Build celého projektu</h2>
 
-Teoreticky je možné si místo buildování právě otevřeného souboru (`$file`) nastavit `index.php` celého projektu.
+<p>Teoreticky je možné si místo buildování právě otevřeného souboru (<code>$file</code>) nastavit <code>index.php</code> celého projektu.</p>
 
-### `php-projekt.sublime-build`
+<h3 id="php-projekt-build"><code>php-projekt.sublime-build</code></h3>
 
-```
-{
-	"cmd": ["php", "**$project_path**/index.php"],
+<pre><code>{
+	"cmd": ["php", "<b>$project_path</b>/index.php"],
 	"file_regex": "php$",
 	"selector": "source.php"
-}
-```
+}</code></pre>
 
-Ale u většiny webových stránek je to stejně v podstatě k ničemu, protože se zpravidla jednotlivé stránky stejně skládají na základě všelijakých **parametrů v URL**.
+<p>Ale u většiny webových stránek je to stejně v podstatě k ničemu, protože se zpravidla jednotlivé stránky stejně skládají na základě všelijakých <b>parametrů v URL</b>.</p>

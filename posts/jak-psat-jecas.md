@@ -6,54 +6,75 @@ date: "2016-02-19"
 last_modification: "2016-02-19"
 status: 0
 tags: []
+format: "html"
 ---
 
-Je čas je primárně one man show **Bohumila Jahody**, dávám ale prostor i jiným autorům, kteří by se chtěli podělit o své znalosti na webu s cca 50 000 návštěvami za měsíc.
+<p>Je čas je primárně one man show <b>Bohumila Jahody</b>, dávám ale prostor i jiným autorům, kteří by se chtěli podělit o své znalosti na webu s cca 50 000 návštěvami za měsíc.</p>
 
-Téma, o kterém byste chtěli psát, se mnou prosím nejprve konsultujte. Mám stovky rozepsaných článků, tak by mohlo být zbytečné to duplikovat.
 
-  Kontaktní e-mail: [jahoda&#64;jecas.cz](mailto:jahoda&#64;jecas.cz)
+<p>Téma, o kterém byste chtěli psát, se mnou prosím nejprve konsultujte. Mám stovky rozepsaných článků, tak by mohlo být zbytečné to duplikovat.</p>
 
-## Doporučení k psaní
+<blockquote>
+  <p>Kontaktní e-mail: <a href="mailto:jahoda&#64;jecas.cz">jahoda&#64;jecas.cz</a></p>
+</blockquote>
 
-Vážím si vašeho zájmu zde publikovat, a proto netrvám na žádných pravidlech podoby dodaného textu, dodržením následujících doporučení mi ale ušetříte práci s úpravami:
 
-    **Délka** článku je libovolná. Stručné a obsahově bohaté články jsou fajn. Pokud máte čas, zkuste vyškrtat zbytečnou omáčku.
 
-    **Formát** je vcelku libovolný. Preferované je HTML, které může obsahovat i živé ukázky (libovolné HTML/JS/CSS konstrukce, které se ve výsledku interpretují).
 
-    Můžete ale psát i ve Wordu (umím to [pročistit a převést do HTML](/vycisteni-kodu)).
 
-    Doporučuji používat editor s kontrolou pravopisu (umí to i [Sublime Text](/st-kontrola-pravopisu)) pro odfiltrování běžných překlepů.
 
-    **Obrázky** je ideální poslat jako přílohu nebo je do HTML kódu článku linkovat z veřejných úložišť typu [img.djpw.cz](http://img.djpw.cz).
+<h2 id="psani">Doporučení k psaní</h2>
 
-    **Živé ukázky** prosím ideálně vytvářejte na [kod.djpw.cz](http://kod.djpw.cz). Menší ukázky mohou být přímo v HTML kódu článku.
+<p>Vážím si vašeho zájmu zde publikovat, a proto netrvám na žádných pravidlech podoby dodaného textu, dodržením následujících doporučení mi ale ušetříte práci s úpravami:</p>
 
-    **Nadpisy** by při psaní v HTML měly mít `id`, aby šlo na ně odkazovat.
+<ul>
+  <li>
+    <p><b>Délka</b> článku je libovolná. Stručné a obsahově bohaté články jsou fajn. Pokud máte čas, zkuste vyškrtat zbytečnou omáčku.</p>
+  </li>
+  <li>
+    <p><b>Formát</b> je vcelku libovolný. Preferované je HTML, které může obsahovat i živé ukázky (libovolné HTML/JS/CSS konstrukce, které se ve výsledku interpretují).</p>
+    
+    <p>Můžete ale psát i ve Wordu (umím to <a href="/vycisteni-kodu">pročistit a převést do HTML</a>).</p>
+    
+    <p>Doporučuji používat editor s kontrolou pravopisu (umí to i <a href="/st-kontrola-pravopisu">Sublime Text</a>) pro odfiltrování běžných překlepů.</p>
+  </li>
+  <li>
+    <p><b>Obrázky</b> je ideální poslat jako přílohu nebo je do HTML kódu článku linkovat z veřejných úložišť typu <a href="http://img.djpw.cz">img.djpw.cz</a>.</p>
+  </li>
+  <li>
+    <p><b>Živé ukázky</b> prosím ideálně vytvářejte na <a href="http://kod.djpw.cz">kod.djpw.cz</a>. Menší ukázky mohou být přímo v HTML kódu článku.</p>
+  </li>
+  <li>
+    <p><b>Nadpisy</b> by při psaní v HTML měly mít <code>id</code>, aby šlo na ně odkazovat.</p>
+  </li>
+  <li>
+    <p><b>Širší tabulky</b> (nad cca 320 px) prosím raději nepoužívejte (při zobrazení na mobilech je s nimi problém).</p>
+  </li>
+  <li>
+    <p>Tvary <i>vás</i>, <i>vašich</i>, <i>vám</i> apod. pište s malým písmenem.</p>
+  </li>
+  <li>
+    <p><b>Jednotný styl</b>. Není problém pokud autor článku:</p>
+    
+    <ul>
+      <li>tyká (<i>do souboru CSS napiš…</i>),</li>
+      <li>vyká (<i>do souboru CSS napište…</i>),</li>
+      <li>myká (<i>do souboru CSS napíšeme…</i>),</li>
+      <li>se udělá (<i>do souboru CSS se napíše…</i>)</li>
+    </ul>
+    
+    <p>Je ale dobré různé styly nekombinovat v rámci jednoho článku.</p>
+  </li>
+</ul>
 
-    **Širší tabulky** (nad cca 320 px) prosím raději nepoužívejte (při zobrazení na mobilech je s nimi problém).
 
-    Tvary *vás*, *vašich*, *vám* apod. pište s malým písmenem.
+<h2 id="upravy">Úpravy</h2>
 
-    **Jednotný styl**. Není problém pokud autor článku:
+<p>Vyhrazuji si právo vaše texty upravovat (pravopisně, stylisticky, formátování, přidáváním interních/externích odkazů a podobně).</p>
 
-      - tyká (*do souboru CSS napiš…*),
 
-      - vyká (*do souboru CSS napište…*),
+<h2 id="propagace">Propagace</h2>
 
-      - myká (*do souboru CSS napíšeme…*),
+<p>Nemám vyloženě nic proti propagaci autorových aktivit a projektů souvisejících s tématem.</p>
 
-      - se udělá (*do souboru CSS se napíše…*)
-
-    Je ale dobré různé styly nekombinovat v rámci jednoho článku.
-
-## Úpravy
-
-Vyhrazuji si právo vaše texty upravovat (pravopisně, stylisticky, formátování, přidáváním interních/externích odkazů a podobně).
-
-## Propagace
-
-Nemám vyloženě nic proti propagaci autorových aktivit a projektů souvisejících s tématem.
-
-Čistě **reklamní články** publikuji pouze za úplatu. Aktuální cena je **15 000 Kč** (10 dní na homepage).
+<p>Čistě <b>reklamní články</b> publikuji pouze za úplatu. Aktuální cena je <b>15 000 Kč</b> (10 dní na homepage).</p>

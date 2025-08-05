@@ -5,57 +5,66 @@ description: "Jak si vytvořit vlastní filtr (helper) do Latte šablon v Nette 
 date: "2015-10-19"
 last_modification: "2015-10-19"
 status: 1
-tags: ["Hotová řešení", "PHP", "Nette Framework"]
+tags: ["hotova-reseni", "nette", "php"]
+format: "html"
 ---
 
-Při používání šablonovacího systému **Latte** si jde práci usnadnit používáním filtrů (dříve se jim říkalo *helpery*). Jedná se o příkazy zapisující se za `|` (tento znak se na [české klávesnici](/ceska-klavesnice) zapíše zkratkou Pravý Alt + W).
+<p>Při používání šablonovacího systému <b>Latte</b> si jde práci usnadnit používáním filtrů (dříve se jim říkalo <i>helpery</i>). Jedná se o příkazy zapisující se za <code>|</code> (tento znak se na <a href="/ceska-klavesnice">české klávesnici</a> zapíše zkratkou <kbd>Pravý Alt</kbd> + <kbd>W</kbd>).</p>
 
-Spoustu filtrů je přímo zabudovaných:
+<p>Spoustu filtrů je přímo zabudovaných:</p>
 
-    - Nette dokumentace: [Výchozí Latte filtry](https://doc.nette.org/cs/2.3/default-filters)
+<div class="external-content">
+  <ul>
+    <li>Nette dokumentace: <a href="https://doc.nette.org/cs/2.3/default-filters">Výchozí Latte filtry</a></li>
+  </ul>
+</div>
 
-Příklad elegantního formátování kalendářního data přímo v `*.latte` šabloně vypadá následovně:
+<p>Příklad elegantního formátování kalendářního data přímo v <code>*.latte</code> šabloně vypadá následovně:</p>
 
-```
-{$article->last_modification|date:'j. n. Y'}
-```
+<pre><code>{$article->last_modification|date:'j. n. Y'}</code></pre>
 
-## Jednoduchý vlastní filtr
 
-Vlastní filtry se registrují v presenteru (typicky soubory `NecoPresenter.php` ve složce `presenters`). Pro použití v rámci celé aplikace (modulu) se je hodí zaregistrovat v `BasePresenter.php` v metodě `beforeRender`.
+<h2 id="jednoduchy">Jednoduchý vlastní filtr</h2>
 
-Filtr je potom **obyčejná funkce**, které se předají parametry, a ona vrátí požadovaným způsobem upravený výstup.
+<p>Vlastní filtry se registrují v presenteru (typicky soubory <code>NecoPresenter.php</code> ve složce <code>presenters</code>). Pro použití v rámci celé aplikace (modulu) se je hodí zaregistrovat v <code>BasePresenter.php</code> v metodě <code>beforeRender</code>.</p>
 
-```
-protected function beforeRender()
+<p>Filtr je potom <b>obyčejná funkce</b>, které se předají parametry, a ona vrátí požadovaným způsobem upravený výstup.</p>
+
+<pre><code>protected function beforeRender()
 {
-  $this->template->addFilter('**tucne**', function ($obsah) {
+  $this->template->addFilter('<b>tucne</b>', function ($obsah) {
     return "&lt;b>" . $obsah . "&lt;/b>";
   });
 }
+</code></pre>
 
-```
 
-Použití v šabloně je následující:
 
-```
-{**!**$article->last_modification|date:'j. n. Y'|**tucne**}
-```
 
-Jak je vidět:
 
-  - Filtry je možné řetězit (použít více filtrů pro jednu proměnnou).
 
-  - Před proměnnou je vykřičník, aby se vypsaly HTML značky.
+<p>Použití v šabloně je následující:</p>
 
-## Více vlastních filtrů
+<pre><code>{<b>!</b>$article->last_modification|date:'j. n. Y'|<b>tucne</b>}</code></pre>
 
-Používat filtry výše uvedeným způsobem příliš nepomáhá přenositelnosti kódu. Lepší bude si pro filtry vytvořit vlastní třídu nebo dokonce více tříd.
+<p>Jak je vidět:</p>
 
-### `Filters.php`
+<ol>
+  <li>Filtry je možné řetězit (použít více filtrů pro jednu proměnnou).</li>
+  <li>Před proměnnou je vykřičník, aby se vypsaly HTML značky.</li>
+</ol>
 
-```
-&lt;?php
+
+
+
+
+<h2 id="vice">Více vlastních filtrů</h2>
+
+<p>Používat filtry výše uvedeným způsobem příliš nepomáhá přenositelnosti kódu. Lepší bude si pro filtry vytvořit vlastní třídu nebo dokonce více tříd.</p>
+
+<h3><code>Filters.php</code></h3>
+
+<pre><code>&lt;?php
 class Filters
 {
     public static function common($filter, $value)
@@ -71,71 +80,121 @@ class Filters
     {
         return "&lt;b>" . $obsah . "&lt;/b>";
     }
-}
-```
+}</code></pre>
 
-### `BasePresenter.php`
 
-Přidá se metoda `createTemplate`:
 
-```
-protected function createTemplate($class = NULL)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3><code>BasePresenter.php</code></h3>
+
+<p>Přidá se metoda <code>createTemplate</code>:</p>
+
+<pre><code>protected function createTemplate($class = NULL)
 {
     $template = parent::createTemplate($class);
     $template->addFilter(NULL, 'Filters::common');
     return $template;
-}
-```
+}</code></pre>
 
-Metoda `common` ve třídě `Filters` zajistí to, že půjde v šablonách všechny filtry ze třídy používat prostřednictvím názvu funkce.
 
-Filtry z nějaké třídy jde přiřazovat i jednotlivě:
 
-```
-$template->addFilter("tucne", 'Filters::tucne');
-```
 
-## Třída jako filtr
 
-Byla-li by celá třída jeden filtr, mělo by jít použít `__invoke`:
 
-```
-class TucneFilter
+
+<p>Metoda <code>common</code> ve třídě <code>Filters</code> zajistí to, že půjde v šablonách všechny filtry ze třídy používat prostřednictvím názvu funkce.</p>
+
+<p>Filtry z nějaké třídy jde přiřazovat i jednotlivě:</p>
+
+<pre><code>$template->addFilter("tucne", 'Filters::tucne');</code></pre>
+
+
+
+<h2 id="trida">Třída jako filtr</h2>
+
+<p>Byla-li by celá třída jeden filtr, mělo by jít použít <code>__invoke</code>:</p>
+
+<pre><code>class TucneFilter
 {
     public function __invoke($obsah)
     {
         return "&lt;b>" . $obsah . "&lt;/b>";
     }
-}
-```
+}</code></pre>
 
-A následně připojit filtr v `BasePresenter`u jako:
 
-```
-$template->addFilter('tucne', new TucneFilter);
 
-```
 
-Více informací:
 
-    - Petr Jirásek: [Jak napsat vlastní Latte filtr v Nette?](https://petrjirasek.cz/blog/jak-napsat-vlastni-latte-filtr-v-nette)
+<p>A následně připojit filtr v <code>BasePresenter</code>u jako:</p>
 
-## Užitečné vlastní filtry
+<pre><code>$template->addFilter('tucne', new TucneFilter);
+</code></pre>
 
-Hodně populární je filtr pro výpis data v podobě „[před X minutami](/update-casu)“:
+<p>Více informací:</p>
 
-    - [TimeAgoInWords](https://github.com/fprochazka/nette-components/blob/master/TimeAgoInWords/Helpers.php)
+<div class="external-content">
+  <ul>
+    <li>Petr Jirásek: <a href="https://petrjirasek.cz/blog/jak-napsat-vlastni-latte-filtr-v-nette">Jak napsat vlastní Latte filtr v Nette?</a></li>
+  </ul>
+</div>
 
-Filtr se hodí i pro přidání formátování nástrojem Texy!, ale to ještě budu muset vymyslet, jak se dělá.
 
-## Starší způsob
 
-Dříve se vlastní helpery registrovaly přes `registerHelperLoader`:
 
-```
-$template->registerHelperLoader('Helpers::loader');
-```
 
-To už je *deprecated* a hlásí to chybu:
 
-  Nette\Bridges\ApplicationLatte\Template::registerHelperLoader() is deprecated, use dynamic getLatte()->addFilter()
+<h2 id="uzitecne">Užitečné vlastní filtry</h2>
+
+<p>Hodně populární je filtr pro výpis data v podobě „<a href="/update-casu">před X minutami</a>“:</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://github.com/fprochazka/nette-components/blob/master/TimeAgoInWords/Helpers.php">TimeAgoInWords</a></li>
+  </ul>
+</div>
+
+
+<p>Filtr se hodí i pro přidání formátování nástrojem Texy!, ale to ještě budu muset vymyslet, jak se dělá.</p>
+
+
+<h2 id="starsi">Starší způsob</h2>
+
+<p>Dříve se vlastní helpery registrovaly přes <code>registerHelperLoader</code>:</p>
+
+<pre><code>$template->registerHelperLoader('Helpers::loader');</code></pre>
+
+<p><img src="/files/latte-vlastni-filtry/helperloader.png" alt="Deprecated helperLoader" class="border"></p>
+
+
+
+
+
+
+
+
+
+<p>To už je <i>deprecated</i> a hlásí to chybu:</p>
+
+<blockquote>
+  <p>Nette\Bridges\ApplicationLatte\Template::registerHelperLoader() is deprecated, use dynamic getLatte()->addFilter()</p>
+</blockquote>

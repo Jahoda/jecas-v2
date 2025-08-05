@@ -6,36 +6,49 @@ date: "2014-10-10"
 last_modification: "2014-10-10"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Cache
+<h2 id="cahce">Cache</h2>
 
-  - [Using Plugins to Speed Up WordPress](http://code.tutsplus.com/tutorials/using-plugins-to-speed-up-wordpress--cms-22055)
+<ul>
+  <li><a href="http://code.tutsplus.com/tutorials/using-plugins-to-speed-up-wordpress--cms-22055">Using Plugins to Speed Up WordPress</a></li>
+</ul>
 
-### W3 Total Cache
+<h3 id="total">W3 Total Cache</h3>
 
-  - [Configuring W3 Total Cache: Advanced Minification Settings](http://code.tutsplus.com/articles/configuring-w3-total-cache-advance-minify-settings--wp-31043)
+<ul>
+  <li><a href="http://code.tutsplus.com/articles/configuring-w3-total-cache-advance-minify-settings--wp-31043">Configuring W3 Total Cache: Advanced Minification Settings</a></li>
+</ul>
 
-### WP Super Cache
+<h3 id="super">WP Super Cache</h3>
 
-### Quick Cache
+<h3 id="quick">Quick Cache</h3>
 
-## Sociální sítě
 
-### WordPress SEO by Yoast
+<h2 id="social">Sociální sítě</h2>
 
-- [Moving from All in One SEO to WordPress SEO by Yoast](http://www.sitepoint.com/all-in-one-seo-to-yoast/)
+<h3 id="yoast">WordPress SEO by Yoast</h3>
 
-## Affiliate
+<li><a href="http://www.sitepoint.com/all-in-one-seo-to-yoast/">Moving from All in One SEO to WordPress SEO by Yoast</a></li>
 
-### Pretty link
 
-## Reklama &amp; bannery
+<h2 id="affiliate">Affiliate</h2>
 
-### AdRotate
+<h3 id="pretty">Pretty link</h3>
 
-  - [WordPress.org’s Most Popular Plugins for 2014](http://www.sitepoint.com/wordpress-orgs-most-popular-plugins-for-2014/)
 
-## Nástroje pro vývoj
+<h2 id="reklama">Reklama &amp; bannery</h2>
 
-  - [Roots](http://roots.io/) – Modern WordPress Development
+<h3 id="ad-rotate">AdRotate</h3>
+
+<ul>
+  <li><a href="http://www.sitepoint.com/wordpress-orgs-most-popular-plugins-for-2014/">WordPress.org’s Most Popular Plugins for 2014</a></li>
+</ul>
+
+
+<h2 id="nastroje">Nástroje pro vývoj</h2>
+
+<ul>
+  <li><a href="http://roots.io/">Roots</a> – Modern WordPress Development</li>
+</ul>

@@ -5,121 +5,154 @@ description: "Definitivní řešení automatického nastavování velikosti <cod
 date: "2015-09-01"
 last_modification: "2015-09-01"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-Vnořený [rámec `&lt;iframe>`](/ramy#iframe) je způsob, jak stránku čistě v HTML **sestavit z více samostatných souborů**.
+<p>Vnořený <a href="/ramy#iframe">rámec <code>&lt;iframe></code></a> je způsob, jak stránku čistě v HTML <b>sestavit z více samostatných souborů</b>.</p>
 
-Pokud je dostupné skriptování na straně serveru, bývá lepší stránku z kousků sestavit už tam:
+<p>Pokud je dostupné skriptování na straně serveru, bývá lepší stránku z kousků sestavit už tam:</p>
 
-    - [Jednoduchý web v PHP](/include) – složení hlavičky, menu a obsahu v PHP
+<div class="internal-content">
+  <ul>
+    <li><a href="/include">Jednoduchý web v PHP</a> – složení hlavičky, menu a obsahu v PHP</li>
+  </ul>
+</div>
 
-Při použití `&lt;iframe>` je problém, že není jasné, jakou mu nastavit výšku, **aby se zobrazil obsah celý bez posuvníku**.
+<p>Při použití <code>&lt;iframe></code> je problém, že není jasné, jakou mu nastavit výšku, <b>aby se zobrazil obsah celý bez posuvníku</b>.</p>
 
-Nastavování něčeho jako `height: auto` nemá na funkci vliv.
+<p>Nastavování něčeho jako <code>height: auto</code> nemá na funkci vliv.</p>
 
-## Hotové řešení
 
-Naštěstí jde u stránky v rámu spočítat její výšku a tu následně skriptem nastavit jako výšku rámu.
+<h2 id="reseni">Hotové řešení</h2>
 
-HTML kód rámu bude vcelku obyčejný:
+<p>Naštěstí jde u stránky v rámu spočítat její výšku a tu následně skriptem nastavit jako výšku rámu.</p>
 
-```
-&lt;iframe 
+<p>HTML kód rámu bude vcelku obyčejný:</p>
+
+<pre><code>&lt;iframe 
   src="stranka.html" 
   frameborder="0" 
-  **id="ram"** 
+  <b>id="ram"</b> 
   width="100%" 
   height="500">
-&lt;/iframe>
-```
+&lt;/iframe></code></pre>
 
-Za povšimnutí stojí identifikátor `ram`, podle kterého se s ním bude dále pracovat. Výška 500 pixelů (`height="500"`) je pouze záložní pro případ bez JavaScriptu.
 
-Rámeček (`frameborder`) a stoprocentní šířka (`width="100%"`) by šla nastavit i přes CSS. Pro **IE 8** a starší je ale vypnutí rámečku atributem `frameborder` asi nejrozumnější řešení.
 
-### Zjištění výšky v JS
 
-Kód pro zjištění a nastavení výšky proběhne po načtení obsahu (`onload`):
 
-```
-var ram = document.getElementById("ram");
+
+
+
+<p>Za povšimnutí stojí identifikátor <code>ram</code>, podle kterého se s ním bude dále pracovat. Výška 500 pixelů (<code>height="500"</code>) je pouze záložní pro případ bez JavaScriptu.</p>
+
+<p>Rámeček (<code>frameborder</code>) a stoprocentní šířka (<code>width="100%"</code>) by šla nastavit i přes CSS. Pro <b>IE 8</b> a starší je ale vypnutí rámečku atributem <code>frameborder</code> asi nejrozumnější řešení.</p>
+
+
+
+
+<h3 id="zjisteni">Zjištění výšky v JS</h3>
+
+<p>Kód pro zjištění a nastavení výšky proběhne po načtení obsahu (<code>onload</code>):</p>
+
+<pre><code>var ram = document.getElementById("ram");
 ram.scrolling = "no";
 ram.onload = function() {
   var obsah = ram.contentDocument || ram.contentWindow.document;
   ram.style.height = obsah.documentElement.scrollHeight + "px";
-};
-```
+};</code></pre>
 
-Za povšimnutí stojí:
 
-  - Zabránění zobrazení posuvníku a rolování pomocí `ram.scrolling = "no"`. Posuvník by jinak ubíral místo obsahu. Důležité je toto nastavit v JS, aby se bez skriptování dalo k obsahu rámu dostat.
 
-  - Sjednocení `ram.contentDocument || ram.contentWindow.document` – druhá část slouží pro **IE 7** a starší
 
-  - Pro počítání výšky se používá `scrollHeight`. Hodnota `offsetHeight` by ve většině prohlížečů vracela původní výšku.
+<p>Za povšimnutí stojí:</p>
 
-  [Samostatná živá ukázka](http://kod.djpw.cz/fupb)
+<ol>
+  <li>Zabránění zobrazení posuvníku a rolování pomocí <code>ram.scrolling = "no"</code>. Posuvník by jinak ubíral místo obsahu. Důležité je toto nastavit v JS, aby se bez skriptování dalo k obsahu rámu dostat.</li>
+  
+  <li>Sjednocení <code>ram.contentDocument || ram.contentWindow.document</code> – druhá část slouží pro <b>IE 7</b> a starší</li>
+  
+  <li>Pro počítání výšky se používá <code>scrollHeight</code>. Hodnota <code>offsetHeight</code> by ve většině prohlížečů vracela původní výšku.</li>
+</ol>
 
-### Změna velikosti stránky
 
-Pokud by šířka iframu nebyla fixní, při zúžení/rozšíření okna se výška obsahu v rámu natáhne nebo zmenší.
+<div class="external-content">
+  <p><a href="http://kod.djpw.cz/fupb">Samostatná živá ukázka</a></p>
+</div>
 
-Pro docílení lepšího výsledku stačí přepočet provést kromě po načtení obsahu i při `window.onresize`. [Ukázka](http://kod.djpw.cz/gupb)
 
-### Plynulá změna
+<h3 id="resize">Změna velikosti stránky</h3>
 
-Nastavení výšky rámu by navíc ještě šlo **animovat** pomocí [CSS transition](/transition):
+<p>Pokud by šířka iframu nebyla fixní, při zúžení/rozšíření okna se výška obsahu v rámu natáhne nebo zmenší.</p>
 
-[Živá ukázka](http://kod.djpw.cz/dupb)
+<p>Pro docílení lepšího výsledku stačí přepočet provést kromě po načtení obsahu i při <code>window.onresize</code>. <a href="http://kod.djpw.cz/gupb">Ukázka</a></p>
 
-## Automatická výška externího obsahu
 
-Problém nastává při **vkládání obsahu do rámu z jiné domény**. Kvůli bezpečnosti do takové stránky nemá JavaScript přístup. Stránka v rámu se načítá včetně cookies a dalších dat uživatele, takže by bez tohoto omezení bylo možné ovládat libovolnou aplikaci, kde je návštěvník přihlášen.
+<h3 id="animace">Plynulá změna</h3>
 
-### Spolupráce autora externího obsahu
+<p>Nastavení výšky rámu by navíc ještě šlo <b>animovat</b> pomocí <a href="/transition">CSS transition</a>:</p>
 
-Pokud autor obsahu, který se má načítat do rámu, spolupracuje, je možné:
+<p><a href="http://kod.djpw.cz/dupb">Živá ukázka</a></p>
 
-    Změnit způsob vkládání obsahu na **externí JavaScript**, který obsah vloží přímo do stránky bez použití `&lt;iframe>`.
 
-    Má to svá specifika: obsah převezme styl stránky, která ho vkládá. Pomocí externího JS má jeho správce prakticky **neomezenou kontrolu nad webem**. Proto by externí JS z neznámého zdroje neměl být načítán u citlivých stránek.
 
-    Předat informaci o výšce prostřednictvím změny #hashe v URL.
 
-    Umístit do stránky následující kód:
 
-    ```
-window.onload = function() {
+<h2 id="externi">Automatická výška externího obsahu</h2>
+
+<p>Problém nastává při <b>vkládání obsahu do rámu z jiné domény</b>. Kvůli bezpečnosti do takové stránky nemá JavaScript přístup. Stránka v rámu se načítá včetně cookies a dalších dat uživatele, takže by bez tohoto omezení bylo možné ovládat libovolnou aplikaci, kde je návštěvník přihlášen.</p>
+
+
+
+<h3 id="spoluprace">Spolupráce autora externího obsahu</h3>
+
+<p>Pokud autor obsahu, který se má načítat do rámu, spolupracuje, je možné:</p>
+
+<ol>
+  <li>
+    <p>Změnit způsob vkládání obsahu na <b>externí JavaScript</b>, který obsah vloží přímo do stránky bez použití <code>&lt;iframe></code>.</p>
+    
+    <p>Má to svá specifika: obsah převezme styl stránky, která ho vkládá. Pomocí externího JS má jeho správce prakticky <b>neomezenou kontrolu nad webem</b>. Proto by externí JS z neznámého zdroje neměl být načítán u citlivých stránek.</p>    
+  </li>
+  
+  <li>
+    <p>Předat informaci o výšce prostřednictvím změny #hashe v URL.</p>
+    
+    <p>Umístit do stránky následující kód:</p>
+    
+    <pre><code>window.onload = function() {
   var vyska = document.documentElement.scrollHeight;
   window.top.location = "#vyska=" + vyska;
-}
-```
-
-    Ten do hostiteské stránky předá výšku v kotvě (`location.hash`).
-
-    V nadřazené stránce stačí už jen výšku přečíst a nastavit rámu:
-
-    ```
-&lt;iframe src="" width="100%" frameborder="0"
+}</code></pre>
+    
+    <p>Ten do hostiteské stránky předá výšku v kotvě (<code>location.hash</code>).</p>
+    
+    <p>V nadřazené stránce stačí už jen výšku přečíst a nastavit rámu:</p>
+    
+    <pre><code>&lt;iframe src="" width="100%" frameborder="0"
   onload="
     var vyska = window.location.hash.replace('#vyska=', '');
     this.style.height = vyska + 'px';
 ">
-&lt;/iframe>
-```
-
-    Tento postup funguje v **Chrome** a **Firefoxu** pouze při uvedení absolutní adresy. V **Internet Exploreru** a staré **Opeře 12** to funguje i při relativní:
-
-    Ukázka externí stránky v rámu s automatickou výškou:
-
+&lt;/iframe></code></pre>
+    
+    <p>Tento postup funguje v <b>Chrome</b> a <b>Firefoxu</b> pouze při uvedení absolutní adresy. V <b>Internet Exploreru</b> a staré <b>Opeře 12</b> to funguje i při relativní:</p>
+    
+    <p>Ukázka externí stránky v rámu s automatickou výškou:</p>
+    
+    <div class="live">
+      <style>
         #ram {
           height: 0; 
           transition: .2s height;
           border: 0;
           width: 100%;
-        }
-
+        }</style>
+      <iframe id="ram"
+  onload="nastavitVysku">
+</iframe>
+      <script>
         function nastavitVysku() {
           var vyska = window.location.hash.replace('#vyska=', '');
           if (vyska) {
@@ -127,26 +160,55 @@ window.onload = function() {
           }          
         }
         window.onhashchange = nastavitVysku;          
+      </script>
+</div>
 
-      Připojit stránku s absolutní URL
-      Připojit stránku s relativní změnou #hashe
+        
+    
+    <p>
+      <button onclick="ram.src='http://kod.djpw.cz/udrb-'">Připojit stránku s absolutní URL</button>
+      <button onclick="ram.src='http://kod.djpw.cz/mdrb-'">Připojit stránku s relativní změnou #hashe</button>
+    </p>
 
-### Vlastní řešení
+  </li>
+</ol>
 
-Pokud autor stránky nespolupracuje, je nejspíš jediná možnost stáhnout jeho stránku serverovým skriptem.
 
-V PHP k tomu slouží funkce `file_get_contents`:
 
-    - [Získání obsahu cizí stránky](/stazeni-stranky)
 
-### Přístup k subdoméně
 
-Je-li stránka A na jiné subdoméně než stránka B, měl by pomoci následující JS kód na obou stránkách:
 
-```
-document.domain = 'example.com';
-```
 
-Více v článku:
 
-    - [Iframe cross domain JavaScript calls](http://madskristensen.net/post/iframe-cross-domain-javascript-calls)
+
+
+
+
+
+
+<h3 id="bez-spoluprace">Vlastní řešení</h3>
+
+<p>Pokud autor stránky nespolupracuje, je nejspíš jediná možnost stáhnout jeho stránku serverovým skriptem.</p>
+
+<p>V PHP k tomu slouží funkce <code>file_get_contents</code>:</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/stazeni-stranky">Získání obsahu cizí stránky</a></li>
+  </ul>
+</div>
+
+
+<h3 id="subdomeny">Přístup k subdoméně</h3>
+
+<p>Je-li stránka A na jiné subdoméně než stránka B, měl by pomoci následující JS kód na obou stránkách:</p>
+
+<pre><code>document.domain = 'example.com';</code></pre>
+
+<p>Více v článku:</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://madskristensen.net/post/iframe-cross-domain-javascript-calls">Iframe cross domain JavaScript calls</a></li>
+  </ul>
+</div>

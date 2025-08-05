@@ -6,6 +6,9 @@ date: "2015-04-11"
 last_modification: "2015-04-11"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [7 Best Practices for Designing a Mobile User Experience](http://www.sitepoint.com/7-best-practices-designing-mobile-user-experience/)
+<ul>
+  <li><a href="http://www.sitepoint.com/7-best-practices-designing-mobile-user-experience/">7 Best Practices for Designing a Mobile User Experience</a></li>
+</ul>

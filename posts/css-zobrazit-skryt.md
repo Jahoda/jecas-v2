@@ -6,12 +6,19 @@ date: "2016-11-01"
 last_modification: "2016-11-01"
 status: 0
 tags: []
+format: "html"
 ---
 
-Často bývá potřeba na stránce méně důležité informace sbalit do tlačítka/odkazu, který po kliknutí zobrazí příslušný obsah.
+<p>Často bývá potřeba na stránce méně důležité informace sbalit do tlačítka/odkazu, který po kliknutí zobrazí příslušný obsah.</p>
 
-Existují dvě možnosti, jak tuto situaci řešit:
+<p>Existují dvě možnosti, jak tuto situaci řešit:</p>
 
-  - Pomocí [JavaScriptu](/js) přes [přepínání CSS třídy](/prepinani-trid)
+<ol>
+  <li>Pomocí <a href="/js">JavaScriptu</a> přes <a href="/prepinani-trid">přepínání CSS třídy</a></li>
+</ol>
 
-    - [Živá ukázka](http://kod.djpw.cz/zhcc) – zobrazit/skrýt v CSS
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/zhcc">Živá ukázka</a> – zobrazit/skrýt v CSS</li>
+  </ul>
+</div>

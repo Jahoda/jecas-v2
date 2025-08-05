@@ -6,75 +6,102 @@ date: "2014-05-16"
 last_modification: "2014-05-16"
 status: 0
 tags: []
+format: "html"
 ---
 
-[The 7 Best Search Engines for Finding Free Images](http://www.sitepoint.com/7-best-search-engines-free-images/)
+<a href="http://www.sitepoint.com/7-best-search-engines-free-images/">The 7 Best Search Engines for Finding Free Images</a>
 
 http://bootstrapbay.com/blog/free-stock-photos/
 
 http://www.labnol.org/internet/find-free-images/24990/
 
-- [TheStocks.im best royalty free stock photos in one place](http://thestocks.im/)
+<li><a href="http://thestocks.im/">TheStocks.im best royalty free stock photos in one place</a></li>
 
-- [Travel coffe book](http://travelcoffeebook.com/) – cestovatelské fotografie zdarma pro libovolné použití
+<li><a href="http://travelcoffeebook.com/">Travel coffe book</a> – cestovatelské fotografie zdarma pro libovolné použití</li>
+
 
 http://www.lupa.cz/clanky/jak-vytvorit-logo-obrazek-s-citatem-kolaz-infografiku-tady-jsou-desitky-nastroju/
 
 http://allthefreestock.com/
 
-[Stock Up](http://www.sitebuilderreport.com/stock-up)
+<a href="http://www.sitebuilderreport.com/stock-up">Stock Up</a>
 
 Fonty
 
-  - [Unsplash](http://unsplash.com/)
+<ul>
+  
+  <li><a href="http://unsplash.com/">Unsplash</a></li>
+  
+  <li><a href="http://thestocks.im/">THE STOCKS</a></li>
 
-  - [THE STOCKS](http://thestocks.im/)
+  <li><a href="http://travelcoffeebook.tumblr.com/">Sharing beautiful travel moments</a></li>
+  
+  <li><a href="http://www.gratisography.com">GRATISOGRAPHY</a></li>
+  
+  <li><a href="http://www.sitepoint.com/5-sites-fantastic-creative-commons-design-resources/">5 Sites For Fantastic Creative Commons Design Resources</a></li>
+  
+</ul>
 
-  - [Sharing beautiful travel moments](http://travelcoffeebook.tumblr.com/)
+<h2 id="gratisography">GRATISOGRAPHY</h2>
 
-  - [GRATISOGRAPHY](http://www.gratisography.com)
+<p><a href="http://www.gratisography.com" class="button">Web</a></p>
 
-  - [5 Sites For Fantastic Creative Commons Design Resources](http://www.sitepoint.com/5-sites-fantastic-creative-commons-design-resources/)
 
-## GRATISOGRAPHY
 
-[Web](http://www.gratisography.com)
+<h2 id="tinyography">TINYOGRAPHY</h2>
 
-## TINYOGRAPHY
+<p><a href="http://www.tinyography.com" class="button">Web</a></p>
 
-[Web](http://www.tinyography.com)
 
-## Pixabay.com
+<h2 id="pixabay">Pixabay.com</h2>
 
-Možnost vyhledávání. Obrázky zdarma pro nekomerční i komerční užití.
+<p>Možnost vyhledávání. Obrázky zdarma pro nekomerční i komerční užití.</p>
 
-[Web](http://pixabay.com/)
+<p><a href="http://pixabay.com/" class="button">Web</a></p>
 
-## Placené
 
-  - [Dollar Photo Club](http://cz.dollarphotoclub.com/)
 
-## Grafika
+<h2 id="placene">Placené</h2>
 
-  - [Rare Vintage Vectors](http://www.vectorian.net/free)
+<ul>
+  <li><a href="http://cz.dollarphotoclub.com/">Dollar Photo Club</a></li>
+</ul>
 
-- [Cultural Appropriation: Using Museum Collections For Free Digital Work](http://demosthenes.info/blog/972/Cultural-Appropriation-Using-Museum-Collections-For-Free-Digital-Work)
 
-- [TIP #003: Služby se zdarma použitelnými fotografiemi a vyhledávání fotografií](https://365tipu.wordpress.com/2015/01/03/tip-003-sluzby-se-zdarma-pouzitelnymi-fotografiemi-a-vyhledavani-fotografii/)
+<h2 id="grafika">Grafika</h2>
 
-- [16 Places to Find the Best Free Stock Photos](http://designmodo.com/free-photos/)
+<ul>
+  <li><a href="http://www.vectorian.net/free">Rare Vintage Vectors</a></li>
+</ul>
 
-  TIP: Ja využívam obrázky do článkov predovšetkým z týchto zdrojov:
+<li><a href="http://demosthenes.info/blog/972/Cultural-Appropriation-Using-Museum-Collections-For-Free-Digital-Work">Cultural Appropriation: Using Museum Collections For Free Digital Work</a></li>
 
-      [Google Search Image](https://www.google.com/imghp)
+<li><a href="https://365tipu.wordpress.com/2015/01/03/tip-003-sluzby-se-zdarma-pouzitelnymi-fotografiemi-a-vyhledavani-fotografii/">TIP #003: Služby se zdarma použitelnými fotografiemi a vyhledávání fotografií</a></li>
+
+<li><a href="http://designmodo.com/free-photos/">16 Places to Find the Best Free Stock Photos</a></li>
+
+
+<blockquote>
+  <p>TIP: Ja využívam obrázky do článkov predovšetkým z týchto zdrojov:</p>
+  <ul>
+    <li>
+      <a href="https://www.google.com/imghp" target="_blank">Google Search Image</a>
       , ale musíte si tam zvoliť 
-      **“Práva k užití – Povolené opětovné užití” **
-
-      [dollarphotoclub.com](https://cz.dollarphotoclub.com/)
+      <strong>“Práva k užití – Povolené opětovné užití” </strong>
+    </li>
+  </ul>
+  <ul>
+    <li>
+      <a href="https://cz.dollarphotoclub.com/" target="_blank">dollarphotoclub.com</a>
        – parádny zdroj obrázkov, každý za jeden dolár. Lacnejšie kvalitné obrázky už skutočne nezoženiete
-
-      [pixabay.com](https://pixabay.com/)
+    </li>
+    <li>
+      <a href="https://pixabay.com/" target="_blank">pixabay.com</a>
        – všetky obrázky úplne FREE
-
-      [freeimages.com](http://www.freeimages.com/)
+    </li>
+    <li>
+      <a href="http://www.freeimages.com/" target="_blank">freeimages.com</a>
        – tiež parádna databáza FREE obrázkov
+    </li>
+  </ul>
+</blockquote>

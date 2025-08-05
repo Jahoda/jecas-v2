@@ -6,14 +6,15 @@ date: "2014-04-25"
 last_modification: "2014-04-25"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://www.sitepoint.com/20-docs-guides-front-end-developers/
 
 http://davidwalsh.name/tools-resources-web-designer
 
-- [7 CSS Tools You Should Be Using](http://sixrevisions.com/lists/css-tools-you-should-be-using/)
+<li><a href="http://sixrevisions.com/lists/css-tools-you-should-be-using/">7 CSS Tools You Should Be Using</a></li>
 
-- [Do anything to any file](https://filestar.com) – unversální konvertor souborů
+<li><a href="https://filestar.com">Do anything to any file</a> – unversální konvertor souborů</li>
 
-- [Fronty](https://fronty.com) – převod obrázku do HTML/CSS
+<li><a href="https://fronty.com">Fronty</a> – převod obrázku do HTML/CSS</li>

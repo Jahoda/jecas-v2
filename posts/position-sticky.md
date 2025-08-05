@@ -5,157 +5,198 @@ description: "CSS <code>sticky</code> posice umožňuje bez JS zafixovat element
 date: "2015-06-02"
 last_modification: "2020-03-18"
 status: 1
-tags: ["CSS", "CSS vlastnosti", "Scrollování", "Fixní posice"]
+tags: ["css", "css-vlastnosti", "fixed", "scroll"]
+format: "html"
 ---
 
-*Sticky* je v překladu něco jako *lepkavý* – element se při rolování dokáže „přilepit“ k okraji.
+<p><i lang="en">Sticky</i> je v překladu něco jako <i>lepkavý</i> – element se při rolování dokáže „přilepit“ k okraji.</p>
 
-```
-.sticky {
+<pre><code>.sticky {
   position: sticky;
   top: 0;
-}
-```
+}</code></pre>
 
-Vlastnost [`position`](/position) měla dlouhé roky 4 možné hodnoty:
 
-  - `position: static` – výchozí hodnota
 
-  - `position: relative` – relativní posun oproti původnímu umístění bez ovlivnění okolí
 
-  - `position: absolute` – vyjmutí z původního místa
 
-  - `position: fixed` – vyjmutí z původního místa + zafixování
 
-Hodnota `sticky` je tak trochu kombinací výše uvedeného. 
 
-Když je *sticky* element uvnitř *viewportu*, chová se jako `static`/`relative`, tedy se nijak neprojevuje.
 
-Po opuštění okna se potom chová jako `absolute` (zobrazení mimo přirozené umístění) a `fixed` (zafixování na jednom místě).
 
-## Podpora
 
-Velmi dobře podporovaná vlastnost. Nefunguje v akorát v pomalu mizícím **IE 11**.
 
-Řešení pro **IE 11** je buď použít JavaScript, nebo *sticky* oželet, pokud to není nezbytné pro ovládání webu.
+<p>Vlastnost <a href="/position"><code>position</code></a> měla dlouhé roky 4 možné hodnoty:</p>
 
-Pro starší verse ostatních prohlížečů se hodí přidat [CSS prefix](/css-prefixy) – `position: -webkit-static`.
+<ol>
+  <li><code>position: static</code> – výchozí hodnota</li>
+  <li><code>position: relative</code> – relativní posun oproti původnímu umístění bez ovlivnění okolí</li>
+  <li><code>position: absolute</code> – vyjmutí z původního místa</li>
+  <li><code>position: fixed</code> – vyjmutí z původního místa + zafixování</li>
+</ol>
 
-  ## Použití
+<p>Hodnota <code>sticky</code> je tak trochu kombinací výše uvedeného. </p>
 
-  Použití je na první pohled velmi jednoduché, stačí elementu přidat `position: sticky` a nějaké umístění, např. `top: 0`.
+<p>Když je <i>sticky</i> element uvnitř <i>viewportu</i>, chová se jako <code>static</code>/<code>relative</code>, tedy se nijak neprojevuje.</p>
 
+<p>Po opuštění okna se potom chová jako <code>absolute</code> (zobrazení mimo přirozené umístění) a <code>fixed</code> (zafixování na jednom místě).</p>
+
+<h2 id="podpora">Podpora</h2>
+
+<p>Velmi dobře podporovaná vlastnost. Nefunguje v akorát v pomalu mizícím <b>IE 11</b>.</p>
+
+<p>Řešení pro <b>IE 11</b> je buď použít JavaScript, nebo <i>sticky</i> oželet, pokud to není nezbytné pro ovládání webu.</p>
+
+<p>Pro starší verse ostatních prohlížečů se hodí přidat <a href="/css-prefixy">CSS prefix</a> – <code>position: -webkit-static</code>.</p>
+
+<div>
+
+  <h2 id="pouziti">Použití</h2>
+
+  <p>Použití je na první pohled velmi jednoduché, stačí elementu přidat <code>position: sticky</code> a nějaké umístění, např. <code>top: 0</code>.</p>
+
+  <div class="live">
+  <style>
     .sticky-element {
       position: sticky;
       position: -webkit-sticky;
       top: 0;
     }
-
+  </style>
+  <span class="sticky-element">
     Nefunkční sticky element
+  </span>
+  </div>
 
-  Jak je vidět na předchozím příkladu, nic to nedělá.
+  <p>Jak je vidět na předchozím příkladu, nic to nedělá.</p>
 
-  Co takhle? Funkční sticky element.
+  <div class="live sticky-element">Co takhle? Funkční sticky element.</div>
   
-  [Samostatná živá ukázka](http://kod.djpw.cz/bgvc) – nejjednodušší sticky element
+  <p><a href="http://kod.djpw.cz/bgvc">Samostatná živá ukázka</a> – nejjednodušší sticky element</p>
 
-  Trik je v tom, že *sticky* element si **automaticky určí svého rodiče jako oblast pro přilepování**.
+  <p>Trik je v tom, že <i>sticky</i> element si <b>automaticky určí svého rodiče jako oblast pro přilepování</b>.</p>
 
-  Pokud tedy v nadřazeném elementu není žádný další obsah, nic se nestane:
+  <p>Pokud tedy v nadřazeném elementu není žádný další obsah, nic se nestane:</p>
 
-  ```
-&lt;div&gt;
+  <pre><code>&lt;div&gt;
   &lt;div class="sticky-element"&gt;
     Nic se nestane
   &lt;/div&gt;
-&lt;/div&gt;
-```
-
-  Je třeba to udělat následovně:
-
-  ```
-&lt;div&gt; &lt;!-- sticky kontejner --&gt;
+&lt;/div&gt;</code></pre>
+  
+  <p>Je třeba to udělat následovně:</p>
+  
+  <pre><code>&lt;div&gt; &lt;!-- sticky kontejner --&gt;
   &lt;div class="sticky-element"&gt;
     Funkční sticky obsah
   &lt;/div&gt;
   Další obsah
-&lt;/div&gt;
-```
+&lt;/div&gt;</code></pre>
 
-  Toto chování se hodí k tomu, že se *sticky* element může zase odlepit, když celý jeho rodič (sticky kontejner) opustí viewport.
+  <p>Toto chování se hodí k tomu, že se <i>sticky</i> element může zase odlepit, když celý jeho rodič (sticky kontejner) opustí viewport.</p>
+</div>
 
-[Živá ukázka](http://kod.djpw.cz/kfvc) – přichytávání nadpisů
+<p><a href="http://kod.djpw.cz/kfvc">Živá ukázka</a> – přichytávání nadpisů</p>
 
-### Umístění sticky elementu
+<h3 id="umisteni">Umístění sticky elementu</h3>
 
-Obsah není nutné přichytávat jen nahoru (`top: 0`). Není problém použít `bottom: 0`:
+<p>Obsah není nutné přichytávat jen nahoru (<code>top: 0</code>). Není problém použít <code>bottom: 0</code>:</p>
 
-[Živá ukázka](http://kod.djpw.cz/lfvc) – přichytávání patičky
+<p><a href="http://kod.djpw.cz/lfvc">Živá ukázka</a> – přichytávání patičky</p>
+  
+<p>V případě vodorovného scrollování se hodí i vlastnosti <code>right</code> nebo <code>left</code>.</p>
 
-V případě vodorovného scrollování se hodí i vlastnosti `right` nebo `left`.
+<p>Hodnoty potom mohou být běžné délkové jednotky, nemusí to být nutně jen <code>0</code>.</p>
 
-Hodnoty potom mohou být běžné délkové jednotky, nemusí to být nutně jen `0`.
+<h3 id="z-index">Vlastnost <code>z-index</code></h3>
 
-### Vlastnost `z-index`
+<p>Umístění v ose Z funguje stejně jako <a href="/z-index"><code>z-index</code></a> u ostatních způsobů posicování.</p>
 
-Umístění v ose Z funguje stejně jako [`z-index`](/z-index) u ostatních způsobů posicování.
 
-## Využití
 
-*Lepkavá* posice je velmi užitečná k nahrazení leckdy komplikovaných JS řešení:
+<h2 id="vyuziti">Využití</h2>
 
-    - [Fixní menu při rolování](/fixni-menu)
+<p><i>Lepkavá</i> posice je velmi užitečná k nahrazení leckdy komplikovaných JS řešení:</p>
 
-    - [Jak vytvořit fixovaný banner?](/sidebar)
+<div class="internal-content">
+  <ul>
+    <li><a href="/fixni-menu">Fixní menu při rolování</a></li>
+    <li><a href="/sidebar">Jak vytvořit fixovaný banner?</a></li>
+  </ul>
+</div>
 
-Podobné věci jde udělat pouze v CSS.
 
-[Živá ukázka](http://kod.djpw.cz/agvc) – přichytávací fixní menu
 
-## Fixní sloupce a řádky tabulky
 
-Hodně užitečná je `sticky` posice u [tabulek](/html-tabulky). Jde tak elegantně zafixovat řádek i sloupec bez dalších omezení (výška/šířka obsahu).
 
-U tabulek se sticky chová trochu jinak – `position: sticky` se aplikuje na buňky (`&lt;tr&gt;` a `&lt;th&gt;`) a celá tabulka je potom *sticky kontejner*.
+<p>Podobné věci jde udělat pouze v CSS.</p>
 
-Není možné fixovat přímo značku `&lt;thead&gt;`.
 
-### Fixní řádek
+<p><a href="http://kod.djpw.cz/agvc">Živá ukázka</a> – přichytávací fixní menu</p>
 
-Pro **zafixování řádku** nahoru tedy stačí jeho buňkám nastavit `position: sticky` a `top: 0`:
 
-[Živá ukázka](http://kod.djpw.cz/ofvc) – fixní záhlaví tabulky
 
-### Fixní sloupec
 
-Pro **přichycení sloupce** je postup velmi podobný.
 
-Sloupci, který má být fixovaný, se přidá `position: sticky` a `right: 0` nebo `left: 0` (podle toho, jestli jde o první/poslední sloupec řádku).
 
-Aby celá stránka **neměla posuvník**, je třeba ještě obalit tabulku do něčeho s `overflow-x: auto`:
 
-[Živá ukázka](http://kod.djpw.cz/vfvc) – fixní sloupec tabulky
 
-### Fixní řádek i sloupec zároveň
 
-Kombinací obou postupů jde fixovat řádek i sloupec zároveň.
 
-Je k tomu ale nejspíš nutné nastavit obalu tabulky pevnou nebo maximální výšku a `overflow: auto`, aby se měl řádek kam přichytit.
 
-Pro maximální výšku se hodí použít viewport jednotky (např. `100vh` pro tabulku přes celou výšku).
 
-Nevýhoda tohoto postupu je v tom, že jsou na stránce dva svislé posuvníky:
 
-[Živá ukázka](http://kod.djpw.cz/ufvc) – tabulka s fixní řádkem i sloupcem.
+<h2 id="tabulky">Fixní sloupce a řádky tabulky</h2>
 
-## Odkazy jinam
+<p>Hodně užitečná je <code>sticky</code> posice u <a href="/html-tabulky">tabulek</a>. Jde tak elegantně zafixovat řádek i sloupec bez dalších omezení (výška/šířka obsahu).</p>
 
-  - [CSS Position Sticky - How It Really Works!](https://medium.com/@elad/css-position-sticky-how-it-really-works-54cd01dc2d46)
+<p>U tabulek se sticky chová trochu jinak – <code>position: sticky</code> se aplikuje na buňky (<code>&lt;tr&gt;</code> a <code>&lt;th&gt;</code>) a celá tabulka je potom <i>sticky kontejner</i>.</p>
 
-  - Google Developers: [An event for CSS position:sticky](https://developers.google.com/web/updates/2017/09/sticky-headers)
+<p>Není možné fixovat přímo značku <code>&lt;thead&gt;</code>.</p>
 
-  - [position: sticky](http://html5-demos.appspot.com/static/css/sticky.html)
+<h3 id="fixni-radek">Fixní řádek</h3>
 
-  - [Sticky Positioning with Nothing but CSS](http://webdesign.tutsplus.com/tutorials/sticky-positioning-with-nothing-but-css--cms-24042)
+<p>Pro <b>zafixování řádku</b> nahoru tedy stačí jeho buňkám nastavit <code>position: sticky</code> a <code>top: 0</code>:</p>
 
-  - [How to Create Sticky Navigation with CSS or jQuery](http://designmodo.com/sticky-navigation-css-jquery/)
+<p><a href="http://kod.djpw.cz/ofvc">Živá ukázka</a> – fixní záhlaví tabulky</p>
+
+<h3 id="fixni-sloupec">Fixní sloupec</h3>
+
+<p>Pro <b>přichycení sloupce</b> je postup velmi podobný.</p>
+
+<p>Sloupci, který má být fixovaný, se přidá <code>position: sticky</code> a <code>right: 0</code> nebo <code>left: 0</code> (podle toho, jestli jde o první/poslední sloupec řádku).</p>
+
+<p>Aby celá stránka <b>neměla posuvník</b>, je třeba ještě obalit tabulku do něčeho s <code>overflow-x: auto</code>:</p>
+
+<p><a href="http://kod.djpw.cz/vfvc">Živá ukázka</a> – fixní sloupec tabulky</p>
+
+
+
+
+
+
+
+
+<h3 id="fixni-radek-sloupec">Fixní řádek i sloupec zároveň</h3>
+
+<p>Kombinací obou postupů jde fixovat řádek i sloupec zároveň.</p>
+
+<p>Je k tomu ale nejspíš nutné nastavit obalu tabulky pevnou nebo maximální výšku a <code>overflow: auto</code>, aby se měl řádek kam přichytit.</p>
+
+<p>Pro maximální výšku se hodí použít viewport jednotky (např. <code>100vh</code> pro tabulku přes celou výšku).</p>
+
+<p>Nevýhoda tohoto postupu je v tom, že jsou na stránce dva svislé posuvníky:</p>
+
+<p><a href="http://kod.djpw.cz/ufvc">Živá ukázka</a> – tabulka s fixní řádkem i sloupcem.</p>
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="https://medium.com/@elad/css-position-sticky-how-it-really-works-54cd01dc2d46">CSS Position Sticky - How It Really Works!</a></li>
+  <li>Google Developers: <a href="https://developers.google.com/web/updates/2017/09/sticky-headers">An event for CSS position:sticky</a></li>
+  <li><a href="http://html5-demos.appspot.com/static/css/sticky.html">position: sticky</a></li>
+  
+  <li><a href="http://webdesign.tutsplus.com/tutorials/sticky-positioning-with-nothing-but-css--cms-24042">Sticky Positioning with Nothing but CSS</a></li>
+  
+  <li><a href="http://designmodo.com/sticky-navigation-css-jquery/">How to Create Sticky Navigation with CSS or jQuery</a></li>
+</ul>

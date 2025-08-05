@@ -6,12 +6,12 @@ date: "2015-11-07"
 last_modification: "2015-11-07"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Zobrazení pohledů
+<h2 id="views">Zobrazení pohledů</h2>
 
-```
-    function tablesPrint($tables) {
+<pre><code>    function tablesPrint($tables) {
       echo "&lt;p id='tables' onmouseover='menuOver(this, event);' onmouseout='menuOut(this);'>\n";
       foreach ($tables as $row) {
         $name = $this->tableName($row);
@@ -28,5 +28,4 @@ tags: []
     // function fieldName($field, $order = 0) {
     //   // only columns with comments will be displayed and only the first five in select
     //   return (!preg_match('~_(md5|sha1)$~', $field["field"]) ? h($field["comment"]) : "");
-    // }
-```
+    // }</code></pre>

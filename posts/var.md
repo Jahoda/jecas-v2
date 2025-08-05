@@ -5,102 +5,87 @@ description: "Proměnné přímo v CSS přes funkci <code>var()</code>."
 date: "2013-12-17"
 last_modification: "2013-12-17"
 status: 1
-tags: ["CSS", "CSS funkce"]
+tags: ["css", "css-funkce"]
+format: "html"
 ---
 
-**Firefox 29** začal podporovat deklaraci a používání proměnných přímo v **čistém CSS** (bez CSS preprocesorů).
+<p><b>Firefox 29</b> začal podporovat deklaraci a používání proměnných přímo v <b>čistém CSS</b> (bez CSS preprocesorů).</p>
 
-## Použití
+<h2 id="pouziti">Použití</h2>
+<ol>
+  <li>
+    <p>Nejprve je potřeba proměnnou <b>nadeklarovat</b>:</p>
+    <pre><code>body {
+  <b>var-</b><i>promenna</i>: 1em;
+}</code></pre>
+    <p>To se dělá klíčovým slovem <code>var</code>, spojovníkem a samotným názvem.</p>
+  </li>
+  
+  <li>
+    <p>Při použití se jako hodnota CSS vlastnosti proměnná vyvolá.</p>
+    <pre><code>p {
+  padding: <b>var</b>(<i>promenna</i>);
+}</code></pre>  
+    <p><a href="http://kod.djpw.cz/uzx">Ukázka</a></p>
+  </li>
+</ol>
 
-    Nejprve je potřeba proměnnou **nadeklarovat**:
+<h2 id="vlastnosti">Vlastnosti CSS proměnných</h2>
 
-    ```
-body {
-  **var-***promenna*: 1em;
-}
-```
+<h3 id="dedicnost">Dědičnost</h3>
+<p>I proměnné se v CSS <b>dědí</b>. Aby u nějakého elementu šla proměnná vyvolat, musí být deklarována u rodiče. Pro proměnné platné napříč <b>celým dokumentem</b> se hodí použít selektor značky <code>&lt;html></code> (nebo <a href="/css-selektory#korenovy"><code>:root</code></a>).</p>
 
-    To se dělá klíčovým slovem `var`, spojovníkem a samotným názvem.
+<h3 id="prebijeni">Přebíjení proměnných</h3>
+<p>Podobně funguje i <b>přebíjení</b>. Hodnotu proměnné je možné libovolně přepisovat. Projeví se ale jen v potomcích elementu, který ji <b>přepisuje</b>.</p>
 
-    Při použití se jako hodnota CSS vlastnosti proměnná vyvolá.
+<p>Na následující <a href="http://kod.djpw.cz/wzx">ukázce</a> proto bude v <b>prohlížeči podporujícím proměnné</b> prostřední odstavec modře orámován.</p>
 
-    ```
-p {
-  padding: **var**(*promenna*);
-}
-```
+<h3 id="nedeklarovana">Nenastavená proměnná</h3>
+<p>V případě, že proměnná, kterou chceme pomocí <code>var()</code> vyvolat, neexistuje, je možné uvést <i>fallback</i> jako druhý argument této funkce:</p>
 
-    [Ukázka](http://kod.djpw.cz/uzx)
-
-## Vlastnosti CSS proměnných
-
-### Dědičnost
-
-I proměnné se v CSS **dědí**. Aby u nějakého elementu šla proměnná vyvolat, musí být deklarována u rodiče. Pro proměnné platné napříč **celým dokumentem** se hodí použít selektor značky `&lt;html>` (nebo [`:root`](/css-selektory#korenovy)).
-
-### Přebíjení proměnných
-
-Podobně funguje i **přebíjení**. Hodnotu proměnné je možné libovolně přepisovat. Projeví se ale jen v potomcích elementu, který ji **přepisuje**.
-
-Na následující [ukázce](http://kod.djpw.cz/wzx) proto bude v **prohlížeči podporujícím proměnné** prostřední odstavec modře orámován.
-
-### Nenastavená proměnná
-
-V případě, že proměnná, kterou chceme pomocí `var()` vyvolat, neexistuje, je možné uvést *fallback* jako druhý argument této funkce:
-
-```
-p {
+<pre><code>p {
   color: var(neexistuje, green);
-}
-```
+}</code></pre>
 
-Pokud proměnná `neexistuje` nebude existovat, barva se nastaví na `green`.
+<p>Pokud proměnná <code>neexistuje</code> nebude existovat, barva se nastaví na <code>green</code>.</p>
 
-### Používání s dalšími CSS funkcemi
+<h3 id="funkce">Používání s dalšími CSS funkcemi</h3>
+<p>Proměnné je možné propojit třeba s <a href="/calc">funkcí <code>calc()</code></a> a rozměry počítat <b>násobením</b> nějaké základní hodnoty (<a href="http://kod.djpw.cz/aay">ukázka</a>).</p>
 
-Proměnné je možné propojit třeba s [funkcí `calc()`](/calc) a rozměry počítat **násobením** nějaké základní hodnoty ([ukázka](http://kod.djpw.cz/aay)).
+<pre><code>:root {var-hodnota: 100px}
+p {width: calc(var(hodnota) * 2)}</code></pre>
 
-```
-:root {var-hodnota: 100px}
-p {width: calc(var(hodnota) * 2)}
-```
+<p>Naopak používání <code>calc()</code> při deklarování proměnných, zdá se, zatím nefunguje.</p>
 
-Naopak používání `calc()` při deklarování proměnných, zdá se, zatím nefunguje.
+<h2 id="js">CSS proměnné a JavaScript</h2>
+<p>S CSS proměnnými by mělo jít manipulovat pomocí JavaScriptu (<code>style.var</code>).</p>
 
-## CSS proměnné a JavaScript
-
-S CSS proměnnými by mělo jít manipulovat pomocí JavaScriptu (`style.var`).
-
-  `get`
+<dl>
+  <dt id="get"><code>get</code></dt>
+  <dd>
+    <p>Získat <b>hodnotu</b> proměnné u <code>element</code>u zařídí:</p>
+    <pre><code>element.style.var.get("promenna");</code></pre>
+  </dd>
   
-    Získat **hodnotu** proměnné u `element`u zařídí:
-
-    ```
-element.style.var.get("promenna");
-```
-
-  `set`
+  <dt id="set"><code>set</code></dt>
+  <dd>
+    <p>Nastaví CSS proměnnou:</p>
+    <pre><code>element.style.var.set("promenna", "hodnota");</code></pre>
+  </dd>
   
-    Nastaví CSS proměnnou:
-
-    ```
-element.style.var.set("promenna", "hodnota");
-```
-
-  `has`
-  
-    Zkontroluje, jestli má element proměnnou nastavenou:
-
-    ```
-if (element.style.var.has("promenna")) {
+  <dt id="has"><code>has</code></dt>
+  <dd>
+    <p>Zkontroluje, jestli má element proměnnou nastavenou:</p>
+    <pre><code>if (element.style.var.has("promenna")) {
   // má proměnnou „promenna“
-}
-```
-
-  `delete`
+}</code></pre>
+  </dd>
   
-    Odstraní proměnnou s daným názvem.
+  <dt id="delete"><code>delete</code></dt>
+  <dd>
+    <p>Odstraní proměnnou s daným názvem.</p>
+    <pre><code>element.style.var.delete("promenna");</code></pre>
+  </dd>
+</dl>
 
-    ```
-element.style.var.delete("promenna");
-```
+<!-- Přepínání vzhledu: http://kod.djpw.cz/jhpc -->

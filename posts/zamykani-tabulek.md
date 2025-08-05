@@ -5,138 +5,132 @@ description: "K čemu slouží, kdy a proč používat zamykání tabulek přík
 date: "2014-03-10"
 last_modification: "2014-03-11"
 status: 1
-tags: ["PHP", "PHP a PDO", "SQL"]
+tags: ["php", "php-pdo", "sql"]
+format: "html"
 ---
 
-Zatímco [používání transakcí v PDO](/pdo-transakce) řeší problém, kdy skript selže před dokončením všech potřebných SQL dotazů. Zamykání tabulek slouží k zajištění konsistence při používání aplikace **více uživateli**.
+<p>Zatímco <a href="/pdo-transakce">používání transakcí v PDO</a> řeší problém, kdy skript selže před dokončením všech potřebných SQL dotazů. Zamykání tabulek slouží k zajištění konsistence při používání aplikace <b>více uživateli</b>.</p>
 
-Problematiku zamykání tabulek značná část tvůrců aplikací vůbec neřeší. Problém vzniklý nezamykáním se totiž **vyskytuje celkem vzácně**. O to hůře se ale může potom vzniklá neočekávaná situace řešit. Kromě toho u běžných typů webových aplikací jako je **redakční systém** nebo diskusní **fórum** nekonsistentní data zase tolik nevadí.
+<p>Problematiku zamykání tabulek značná část tvůrců aplikací vůbec neřeší. Problém vzniklý nezamykáním se totiž <b>vyskytuje celkem vzácně</b>. O to hůře se ale může potom vzniklá neočekávaná situace řešit. Kromě toho u běžných typů webových aplikací jako je <b>redakční systém</b> nebo diskusní <b>fórum</b> nekonsistentní data zase tolik nevadí.</p>
 
-## V čem je problém?
+<h2 id="problem">V čem je problém?</h2>
 
-Vznikne-li mezi *souvisejícími dotazy* vyšší časová prodleva. Může se do ní *dostat* jiný požadavek dalšího uživatele, který bude odbaven dřív, než se odbaví požadavek první. Druhý požadavek tedy tomu prvnímu *za běhu* změní data.
+<p>Vznikne-li mezi <i>souvisejícími dotazy</i> vyšší časová prodleva. Může se do ní <i>dostat</i> jiný požadavek dalšího uživatele, který bude odbaven dřív, než se odbaví požadavek první. Druhý požadavek tedy tomu prvnímu <i>za běhu</i> změní data.</p>
 
-```
-// Zjištění součtu všech položek
+
+<pre><code>// Zjištění součtu všech položek
 $dotaz = $pdo->prepare('SELECT sum(kolik) suma FROM polozky');
 $dotaz->execute();
 $data = $dotaz->fetch();
 // Update celkového počtu
 $dotaz = $pdo->prepare('UPDATE soucet SET celkem = ?');
-$dotaz->execute(array($data["suma"]));
-```
+$dotaz->execute(array($data["suma"]));</code></pre>
 
-V případě, že mezi provedením `SELECT`u a `UPDATE` bude **prodleva**, do které se *trefí* jiný požadavek měnící tabulku `polozky`, celkový součet nebude souhlasit (zjišťoval se ještě před druhým požadavkem), změny provedené v prodlevě **se nezohlední**.
+<p>V případě, že mezi provedením <code>SELECT</code>u a <code>UPDATE</code> bude <b>prodleva</b>, do které se <i>trefí</i> jiný požadavek měnící tabulku <code>polozky</code>, celkový součet nebude souhlasit (zjišťoval se ještě před druhým požadavkem), změny provedené v prodlevě <b>se nezohlední</b>.</p>
 
-Kromě **zamykání tabulek** je problému někdy možné předejít.
+<p>Kromě <b>zamykání tabulek</b> je problému někdy možné předejít.</p>
 
-    Použít vnořený dotaz:
-
-    ```
-UPDATE soucet SET celkem = (
+<ol>
+  <li>
+    <p>Použít vnořený dotaz:</p>
+    <pre><code>UPDATE soucet SET celkem = (
   SELECT sum(kolik) FROM polozky
-)
-```
+)</code></pre>
+  </li>
+  
+  <li>
+    <p>Součty měnit v SQL <i>inkrementálně</i>:</p>
+    <pre><code>UPDATE soucet SET celkem = celkem + <b>:zmenaHodnoty</b></code></pre>
+  </li>
+  
+  <li>
+    <p>Využít <a href="http://php.vrana.cz/vyuziti-unikatnich-klicu-v-databazi.php">unikátní klíče</a> a podobně.</p>
+  </li>
+</ol>
 
-    Součty měnit v SQL *inkrementálně*:
+<h2 id="reseni">Jak zamykat</h2>
 
-    ```
-UPDATE soucet SET celkem = celkem + **:zmenaHodnoty**
-```
+<p>(Popsaný postup se týká MySQL, úložiště InnoDB a PHP rozhraní pro práci s SQL – <a href="/pdo">PDO</a>.)</p>
 
-    Využít [unikátní klíče](http://php.vrana.cz/vyuziti-unikatnich-klicu-v-databazi.php) a podobně.
+<h3 id="select-for-update"><code>SELECT … FOR UPDATE</code></h3>
+<p>Nejjednodušší je v <b>případě používání transakcí</b> přidat za dotaz <code>SELECT</code> příkaz <code>FOR UPDATE</code>. To způsobí, že v mezidobí mezi příkazy <code>SELECT</code> a <code>UPDATE</code> se pokus o vložení/úpravu <b>odloží</b> až po dokončení <code>UPDATE</code>.</p>
 
-## Jak zamykat
+<p>Požadavek druhého uživatele tedy bude obsloužen až po dokončení požadavku uživatele prvního.</p>
 
-(Popsaný postup se týká MySQL, úložiště InnoDB a PHP rozhraní pro práci s SQL – [PDO](/pdo).)
+<h3 id="lock-tables"><code>LOCK TABLES</code></h3>
 
-### `SELECT … FOR UPDATE`
+<pre><code>$pdo->exec('LOCK TABLES polozky WRITE');</code></pre>
 
-Nejjednodušší je v **případě používání transakcí** přidat za dotaz `SELECT` příkaz `FOR UPDATE`. To způsobí, že v mezidobí mezi příkazy `SELECT` a `UPDATE` se pokus o vložení/úpravu **odloží** až po dokončení `UPDATE`.
+<p>Tento příkaz rovněž způsobí, že při pokusu měnit data (<code>INSERT</code>, <code>UPDATE</code>) z tabulky <code>polozky</code> v případě, že už pracuje jiný požadavek, se <b>počká na jeho dokončení</b>.</p>
 
-Požadavek druhého uživatele tedy bude obsloužen až po dokončení požadavku uživatele prvního.
+<p>Po vykonání skriptu je možné ještě (všechny) tabulky zpátky odemknout:</p>
 
-### `LOCK TABLES`
+<pre><code>$pdo->exec('UNLOCK TABLES');</code></pre>
 
-```
-$pdo->exec('LOCK TABLES polozky WRITE');
-```
+<p>(Poznámka: Při používání MySQL, InnoDB úložiště a výchozím nastavení <code>autocommit = 1</code> se nic nestane, když se <code>UNLOCK TABLES</code> vynechá. Podle <a href="https://dev.mysql.com/doc/refman/5.6/en/lock-tables-and-transactions.html">dokumentace</a> má InnoDB vlastní zámek, který se odemkne při <code>commit</code>nutí nebo při <b>ukončení skriptu</b> (v případě defaultně zapnutého <code>autocommit</code> režimu).)</p>
 
-Tento příkaz rovněž způsobí, že při pokusu měnit data (`INSERT`, `UPDATE`) z tabulky `polozky` v případě, že už pracuje jiný požadavek, se **počká na jeho dokončení**.
+<p>Tabulku/tabulky je možné <b>zamknout i pro čtení</b>, to dělá příkaz <code>READ</code> místo <code>WRITE</code>. Při takovém použití bude druhý požadavek čekat na dokončení prvního i v případě, že druhý požadavek chce pouze data číst.</p>
 
-Po vykonání skriptu je možné ještě (všechny) tabulky zpátky odemknout:
+<h2 id="transakce">Zamykání a transakce</h2>
 
-```
-$pdo->exec('UNLOCK TABLES');
-```
+<p>Chceme-li použít <b>zamykání i transakce</b> zároveň. Doporučený postup je následující:</p>
 
-(Poznámka: Při používání MySQL, InnoDB úložiště a výchozím nastavení `autocommit = 1` se nic nestane, když se `UNLOCK TABLES` vynechá. Podle [dokumentace](https://dev.mysql.com/doc/refman/5.6/en/lock-tables-and-transactions.html) má InnoDB vlastní zámek, který se odemkne při `commit`nutí nebo při **ukončení skriptu** (v případě defaultně zapnutého `autocommit` režimu).)
+<ol>
+  <li>
+    <p>Vypnout <code>autocommit</code> (je možné řešení i se zapnutým <code>autocommit</code>em, ale prý to může způsobovat <a href="http://cs.wikipedia.org/wiki/Deadlock">deadlocky</a>):</p>
+    <pre><code>$pdo->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);</code></pre>
+  </li>
+  <li>
+    <p>Zamknout tabulky:</p>
+    <pre><code>$pdo->query('LOCK TABLES polozky WRITE');</code></pre>
+  </li>
+  <li>
+    <p>Provést <i>související dotazy</i>.</p>
+  </li>
+  <li>
+    <p>Provést <code>COMMIT</code> a odemknout tabulky.</p>
+    <pre><code>$pdo->query('COMMIT');
+$pdo->query('UNLOCK TABLES');</code></pre>
+  </li>
+  <li>
+    <p>Případně ještě zpátky zapnout automatické <i>commitování</i>:</p>
+    <pre><code>$pdo->setAttribute(PDO::ATTR_AUTOCOMMIT, 1);</code></pre>
+  </li>
+</ol>
 
-Tabulku/tabulky je možné **zamknout i pro čtení**, to dělá příkaz `READ` místo `WRITE`. Při takovém použití bude druhý požadavek čekat na dokončení prvního i v případě, že druhý požadavek chce pouze data číst.
+<!--
+<ol>
+  <li>Zamknout tabulku.</li>
+  <li>Otevřít transakci.</li>
+</ol>
 
-## Zamykání a transakce
+<p>Toto pořadí je důležité. Když se prohodí, tak bude fungovat jen zamykání, ale <b>transakce už nikoliv</b>. Zamknutí tabulek totiž zároveň <i>commituje</i>, takže by se transakce ihned ukončila.</p>
 
-Chceme-li použít **zamykání i transakce** zároveň. Doporučený postup je následující:
+<pre><code>$pdo->exec('LOCK TABLES polozky WRITE');
+$pdo->beginTransaction();</code></pre>
 
-    Vypnout `autocommit` (je možné řešení i se zapnutým `autocommit`em, ale prý to může způsobovat [deadlocky](http://cs.wikipedia.org/wiki/Deadlock)):
+<p>Potom provést související dotazy. A v případě úspěchu zavolat <code>commit</code>.</p>
 
-    ```
-$pdo->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
-```
+<pre><code>$pdo->commit();</code></pre>-->
 
-    Zamknout tabulky:
+<h2 id="testovani">Testování</h2>
 
-    ```
-$pdo->query('LOCK TABLES polozky WRITE');
-```
+<h3 id="testovani-transakce">Transakce</h3>
 
-    Provést *související dotazy*.
+<p>Testovat, zda transakce správně fungují jde třeba tak, že rozbijeme nějaký dotaz před <code>commit</code>em. SQL dotazy před tím rozbitým by neměly ovlivnit data v MySQL. Kromě rozbití dotazu je možné i ukončit mezi <i>souvisejícími dotazy</i> skript (funkce <code>die()</code>, vyhodit výjimku a podobně).</p>
 
-    Provést `COMMIT` a odemknout tabulky.
+<h3 id="testovani-zamykani">Zamykání tabulek</h3>
 
-    ```
-$pdo->query('COMMIT');
-$pdo->query('UNLOCK TABLES');
-```
+<p>Zkusit vytvořit více požadavků zároveň je možné použitím PHP funkce <code>sleep</code>.</p>
 
-    Případně ještě zpátky zapnout automatické *commitování*:
-
-    ```
-$pdo->setAttribute(PDO::ATTR_AUTOCOMMIT, 1);
-```
-
-exec('LOCK TABLES polozky WRITE');
-$pdo->beginTransaction();
-```
-
-Potom provést související dotazy. A v případě úspěchu zavolat `commit`.
-
-```
-$pdo->commit();
-```
-
--->
-
-## Testování
-
-### Transakce
-
-Testovat, zda transakce správně fungují jde třeba tak, že rozbijeme nějaký dotaz před `commit`em. SQL dotazy před tím rozbitým by neměly ovlivnit data v MySQL. Kromě rozbití dotazu je možné i ukončit mezi *souvisejícími dotazy* skript (funkce `die()`, vyhodit výjimku a podobně).
-
-### Zamykání tabulek
-
-Zkusit vytvořit více požadavků zároveň je možné použitím PHP funkce `sleep`.
-
-```
-// První dotaz
+<pre><code>// První dotaz
 if (isset($_GET["cekat"])) {
   sleep(5); // Počká se 5 vteřin
 }
-// Další dotaz
-```
+// Další dotaz</code></pre>
 
-Teď si daný skript stačí spustit nejprve s parametrem v URL „`?cekat`“ a následně si ho zároveň spustit bez tohoto parametru. Při správném fungování bude druhý požadavek **čekat na odemčení tabulek**, takže doběhne až po prvním požadavku.
+<p>Teď si daný skript stačí spustit nejprve s parametrem v URL „<code>?cekat</code>“ a následně si ho zároveň spustit bez tohoto parametru. Při správném fungování bude druhý požadavek <b>čekat na odemčení tabulek</b>, takže doběhne až po prvním požadavku.</p>
 
-## Zamykání ve vnořených dotazech
+<h2 id="vnorene-dotazy">Zamykání ve vnořených dotazech</h2>
 
-Při používání vnořených dotazů je nutné [zamknout i alias](http://bugs.mysql.com/bug.php?id=31080).
+<p>Při používání vnořených dotazů je nutné <a href="http://bugs.mysql.com/bug.php?id=31080">zamknout i alias</a>.</p>

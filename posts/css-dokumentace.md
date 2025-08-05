@@ -6,6 +6,9 @@ date: "2018-05-28"
 last_modification: "2018-05-28"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [An overview of Pattern Library Generators](https://github.com/davidhund/styleguide-generators) – přehled hromady hotových řešení pro generování stylguide
+<ul>
+  <li><a href="https://github.com/davidhund/styleguide-generators">An overview of Pattern Library Generators</a> – přehled hromady hotových řešení pro generování stylguide</li>
+</ul>

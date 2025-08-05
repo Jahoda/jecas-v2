@@ -5,35 +5,43 @@ description: "Jak zjistit element, který vyvolal JS událost."
 date: "2015-01-24"
 last_modification: "2015-01-24"
 status: 1
-tags: ["JavaScript", "JS události"]
+tags: ["js", "js-udalosti"]
+format: "html"
 ---
 
-Kromě přístupu, kdy se na jednotlivé elementy [připojují události](/pripojeni-udalosti), existuje ještě jedna možnost. Události odchytávat na celém dokumentu a až následně zkoumat, který element **událost vyvolal**.
+<p>Kromě přístupu, kdy se na jednotlivé elementy <a href="/pripojeni-udalosti">připojují události</a>, existuje ještě jedna možnost. Události odchytávat na celém dokumentu a až následně zkoumat, který element <b>událost vyvolal</b>.</p>
 
-Zjistit takový element jde z objektu `event`.
+<p>Zjistit takový element jde z objektu <code>event</code>.</p>
 
-Aktivní element se potom nachází v `event.**target**` nebo `event.**srcElement**` ve starších prohlížečích. Kromě toho je nutné sjednotit i práci se samotným `event`em.
+<p>Aktivní element se potom nachází v <code>event.<b>target</b></code> nebo <code>event.<b>srcElement</b></code> ve starších prohlížečích. Kromě toho je nutné sjednotit i práci se samotným <code>event</code>em.</p>
 
-```
-function akce(e, el) {
+<pre><code>function akce(e, el) {
   e = window.event || e;
   var aktivni = (e.target || e.srcElement);
 }
-document.onclick = akce;
-```
+document.onclick = akce;</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/jvjb)
+<p><a href="http://kod.djpw.cz/jvjb">Živá ukázka</a></p>
 
-## Využití
 
-Občas může použití tohoto způsobu zpracovávání událostí **usnadnit práci**. Není potřeba připojovat obsluhu události pro jednotlivé elementy, ale naopak se až v připojené funkci rozhodne, že se má *něco dělat*.
 
-Třeba při používání [klávesových zkratek](/klavesy) se tak snadno vytvoří výjimka pro formulářová pole.
 
+
+
+
+
+
+<h2 id="vyuziti">Využití</h2>
+
+<p>Občas může použití tohoto způsobu zpracovávání událostí <b>usnadnit práci</b>. Není potřeba připojovat obsluhu události pro jednotlivé elementy, ale naopak se až v připojené funkci rozhodne, že se má <i>něco dělat</i>.</p>
+
+<p>Třeba při používání <a href="/klavesy">klávesových zkratek</a> se tak snadno vytvoří výjimka pro formulářová pole.</p>
+
+<style>
   *[data-oznacen] {
     outline: 5px solid #0D6AB7;
-  }
-
+  }</style>
+<script>
 function akce(e, el) {
   e = window.event || e;
   var target = (e.target || e.srcElement);
@@ -45,4 +53,5 @@ function akce(e, el) {
   }
 }
 
-document.onclick = akce;
+document.onclick = akce;  
+</script>

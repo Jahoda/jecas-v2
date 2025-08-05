@@ -6,8 +6,11 @@ date: "2015-04-11"
 last_modification: "2015-04-11"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - [How to Create a Beautiful Fullscreen Single Scrolling Page like Huge Inc](http://www.onextrapixel.com/2015/04/09/how-to-create-a-beautiful-fullscreen-single-scrolling-page-like-huge-inc/)
+<ul>
+  <li><a href="http://www.onextrapixel.com/2015/04/09/how-to-create-a-beautiful-fullscreen-single-scrolling-page-like-huge-inc/">How to Create a Beautiful Fullscreen Single Scrolling Page like Huge Inc</a></li>
+</ul>

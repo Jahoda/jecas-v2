@@ -5,17 +5,20 @@ description: "Jak vytvořit universální <code>:hover</code> efekt pro různě 
 date: "2014-04-19"
 last_modification: "2014-04-20"
 status: 1
-tags: ["CSS", "Hotová řešení", "Rady a nápady"]
+tags: ["css", "hotova-reseni", "napady"]
+format: "html"
 ---
 
-V případě, že na webové stránce používáme **různě barevné** odkazy nebo tlačítka, je trochu nepohodlné pro každou barvu zvlášť vytvářet samostatný efekt při najetí myší (`:hover`).
+<p>V případě, že na webové stránce používáme <b>různě barevné</b> odkazy nebo tlačítka, je trochu nepohodlné pro každou barvu zvlášť vytvářet samostatný efekt při najetí myší (<code>:hover</code>).</p>
 
-Dát uživateli *potvrzení*, že na tlačítko najel změnou stylu, bývá docela vhodné. Jak tedy pohodlně na to?
+<p>Dát uživateli <i>potvrzení</i>, že na tlačítko najel změnou stylu, bývá docela vhodné. Jak tedy pohodlně na to?</p>
 
-## Průhlednost (`opacity`)
+<h2 id="opacity">Průhlednost (<code>opacity</code>)</h2>
 
-Jako příklad mohou posloužit [tlačítka sociálních sítí](/sdileci-tlacitka):
+<p>Jako příklad mohou posloužit <a href="/sdileci-tlacitka">tlačítka sociálních sítí</a>:</p>
 
+<div class="live">
+  <style>
 .tlacitka a {
     display: inline-block; 
     text-align: center; 
@@ -31,26 +34,36 @@ Jako příklad mohou posloužit [tlačítka sociálních sítí](/sdileci-tlacit
 .tlacitka .twitter-share-button:hover {background: #00ACEE}
 .tlacitka .g-plusone,
 .tlacitka .g-plusone:hover {background: #DD4B39}
+  </style>
+  <p class="tlacitka">
+    <a href="http://www.facebook.com/sharer.php?u=http://jecas.cz/" class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false">Facebook</a>
+    <a href="http://twitter.com/share?text=Poznámky+k+webdesignu&amp;url=http://jecas.cz/" class="twitter-share-button">Tweet</a>
+    <a href="https://plus.google.com/share?url=http://jecas.cz/" class="g-plusone" data-size="medium">Google +</a>
+  </p>
+</div>
 
-    [Facebook](http://www.facebook.com/sharer.php?u=http://jecas.cz/)
-    [Tweet](http://twitter.com/share?text=Poznámky+k+webdesignu&amp;url=http://jecas.cz/)
-    [Google +](https://plus.google.com/share?url=http://jecas.cz/)
+<p>Cílem je, aby každé tlačítko mělo <code>:hover</code> ve své barvě, aniž by se musela konkrétní barva pro každý jeden odkaz nastavovat.</p>
 
-Cílem je, aby každé tlačítko mělo `:hover` ve své barvě, aniž by se musela konkrétní barva pro každý jeden odkaz nastavovat.
+<p>Nejjednodušší řešení je asi měnit <a href="/opacity">průhlednost</a> (<code>opacity</code>). Buď ji při <code>:hover</code>u snižovat.</p>
 
-Nejjednodušší řešení je asi měnit [průhlednost](/opacity) (`opacity`). Buď ji při `:hover`u snižovat.
-
+<div class="live">
+  <style>
     .opacity a:hover {
       filter: alpha(opacity=70); 
       opacity: .7
     }
+  </style>
+  <p class="tlacitka opacity">
+    <a href="http://www.facebook.com/sharer.php?u=http://jecas.cz/" class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false">Facebook</a>
+    <a href="http://twitter.com/share?text=Poznámky+k+webdesignu&amp;url=http://jecas.cz/" class="twitter-share-button">Tweet</a>
+    <a href="https://plus.google.com/share?url=http://jecas.cz/" class="g-plusone" data-size="medium">Google +</a>
+  </p>
+</div>
 
-    [Facebook](http://www.facebook.com/sharer.php?u=http://jecas.cz/)
-    [Tweet](http://twitter.com/share?text=Poznámky+k+webdesignu&amp;url=http://jecas.cz/)
-    [Google +](https://plus.google.com/share?url=http://jecas.cz/)
+<p>Nebo naopak zvyšovat.</p>
 
-Nebo naopak zvyšovat.
-
+<div class="live">
+  <style>
     .opacity-zvysit a {
       filter: alpha(opacity=70); 
       opacity: .7
@@ -59,19 +72,23 @@ Nebo naopak zvyšovat.
       filter: alpha(opacity=100); 
       opacity: 1
     }
+  </style>
+  <p class="tlacitka opacity-zvysit">
+    <a href="http://www.facebook.com/sharer.php?u=http://jecas.cz/" class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false">Facebook</a>
+    <a href="http://twitter.com/share?text=Poznámky+k+webdesignu&amp;url=http://jecas.cz/" class="twitter-share-button">Tweet</a>
+    <a href="https://plus.google.com/share?url=http://jecas.cz/" class="g-plusone" data-size="medium">Google +</a>
+  </p>
+</div>
 
-    [Facebook](http://www.facebook.com/sharer.php?u=http://jecas.cz/)
-    [Tweet](http://twitter.com/share?text=Poznámky+k+webdesignu&amp;url=http://jecas.cz/)
-    [Google +](https://plus.google.com/share?url=http://jecas.cz/)
+<h2 id="prekryti">Překrytí průhledným elementem</h2>
 
-## Překrytí průhledným elementem
+<p>Výše uvedená změna průhlednosti přecejenom nemusí být vždy ideální. Hezčí efekt jde vykouzlit <b>překrytím jednobarevným elementem</b>, vloženým přes <a href="/css-selektory#before-after"><code>:before/:after</code></a>.</p>
 
-Výše uvedená změna průhlednosti přecejenom nemusí být vždy ideální. Hezčí efekt jde vykouzlit **překrytím jednobarevným elementem**, vloženým přes [`:before/:after`](/css-selektory#before-after).
+<p>Tento pseudoelement se <a href="/position#absolute">absolutně naposicuje</a> přes původní obsah, nastaví se mu pozadí (např. bílá v případě zesvětlení, černá v případě ztmavení) a celé se to hodně zprůhlední (<code>opacity: 0.1</code>).</p>
 
-Tento pseudoelement se [absolutně naposicuje](/position#absolute) přes původní obsah, nastaví se mu pozadí (např. bílá v případě zesvětlení, černá v případě ztmavení) a celé se to hodně zprůhlední (`opacity: 0.1`).
-
-### Zesvětlení
-
+<h3>Zesvětlení</h3>
+<div class="live">
+  <style>
 .prekryt a:hover:before {
     content: "";
     background: #fff;
@@ -84,13 +101,17 @@ Tento pseudoelement se [absolutně naposicuje](/position#absolute) přes původn
     filter: alpha(opacity=10); 
     opacity: .1;
 }
+  </style>
+  <p class="tlacitka prekryt">
+    <a href="http://www.facebook.com/sharer.php?u=http://jecas.cz/" class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false">Facebook</a>
+    <a href="http://twitter.com/share?text=Poznámky+k+webdesignu&amp;url=http://jecas.cz/" class="twitter-share-button">Tweet</a>
+    <a href="https://plus.google.com/share?url=http://jecas.cz/" class="g-plusone" data-size="medium">Google +</a>
+  </p>
+</div>
 
-    [Facebook](http://www.facebook.com/sharer.php?u=http://jecas.cz/)
-    [Tweet](http://twitter.com/share?text=Poznámky+k+webdesignu&amp;url=http://jecas.cz/)
-    [Google +](https://plus.google.com/share?url=http://jecas.cz/)
-
-### Ztmavení
-
+<h3>Ztmavení</h3>
+<div class="live">
+  <style>
 .prekryt-tma a:hover:before {
     content: "";
     background: #000;
@@ -103,41 +124,42 @@ Tento pseudoelement se [absolutně naposicuje](/position#absolute) přes původn
     filter: alpha(opacity=10); 
     opacity: .1;
 }
+  </style>
+  <p class="tlacitka prekryt-tma">
+    <a href="http://www.facebook.com/sharer.php?u=http://jecas.cz/" class="fb-like" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false">Facebook</a>
+    <a href="http://twitter.com/share?text=Poznámky+k+webdesignu&amp;url=http://jecas.cz/" class="twitter-share-button">Tweet</a>
+    <a href="https://plus.google.com/share?url=http://jecas.cz/" class="g-plusone" data-size="medium">Google +</a>
+  </p>
+</div>
 
-    [Facebook](http://www.facebook.com/sharer.php?u=http://jecas.cz/)
-    [Tweet](http://twitter.com/share?text=Poznámky+k+webdesignu&amp;url=http://jecas.cz/)
-    [Google +](https://plus.google.com/share?url=http://jecas.cz/)
+<p><a href="http://kod.djpw.cz/ktcb">Samostatná ukázka</a></p>
 
-[Samostatná ukázka](http://kod.djpw.cz/ktcb)
+<h3 id="ie8">Internet Explorer 8 a 9</h3>
+<p>Alternativně k <code>opacity</code> by šlo rovnou použít <a href="/opacity#rgba"><code>rgba</code></a>, ale to funguje až od <b>IE 9</b>.</p>
 
-### Internet Explorer 8 a 9
+<p>Vytvoření pseudo-elementu přes <code>:before</code>/<code>:after</code> sice funguje už v <b>IE 8</b>, nicméně u pseudo-elementů v tomto prohlížeči není možné nastavovat průhlednost. Takže je stejně nejspíš nutné použít další element uvnitř odkazu. <a href="http://kod.djpw.cz/rtcb">Ukázka</a>.</p>
 
-Alternativně k `opacity` by šlo rovnou použít [`rgba`](/opacity#rgba), ale to funguje až od **IE 9**.
+<h3 id="vylepseni">Vylepšení <code>:hover</code>u</h3>
 
-Vytvoření pseudo-elementu přes `:before`/`:after` sice funguje už v **IE 8**, nicméně u pseudo-elementů v tomto prohlížeči není možné nastavovat průhlednost. Takže je stejně nejspíš nutné použít další element uvnitř odkazu. [Ukázka](http://kod.djpw.cz/rtcb).
+<p>Samotnou podobou <b>hover efektu</b> může ještě vyšperkovat obrázkový <a href="/gradient">CSS gradient</a> (<a href="http://kod.djpw.cz/ltcb">ukázka</a>) nebo <a href="/transition">přechodový efekt <code>transition</code></a>.</p>
 
-### Vylepšení `:hover`u
+<h2 id="filter">CSS vlasnost <code>filter</code></h2>
 
-Samotnou podobou **hover efektu** může ještě vyšperkovat obrázkový [CSS gradient](/gradient) ([ukázka](http://kod.djpw.cz/ltcb)) nebo [přechodový efekt `transition`](/transition).
+<p>Dle CSS specifikace by se k ztmavení/rozsvícení báječně hodil CSS filter <code>brightness</code>:</p>
 
-## CSS vlasnost `filter`
-
-Dle CSS specifikace by se k ztmavení/rozsvícení báječně hodil CSS filter `brightness`:
-
-```
-.ztmavit a:hover {
+<pre><code>.ztmavit a:hover {
   filter: brightness(90%);
 }
 .zesvetlit a:hover {
   filter: brightness(110%);
 }
+</code></pre>
 
-```
+<p>Bohužel ale momentálně funguje jen ve <b>Webkitu</b> (s <a href="/css-prefixy">prefixem <code>-webkit-</code></a>). <a href="http://kod.djpw.cz/qtcb">Ukázka</a>.</p>
 
-Bohužel ale momentálně funguje jen ve **Webkitu** (s [prefixem `-webkit-`](/css-prefixy)). [Ukázka](http://kod.djpw.cz/qtcb).
 
-## Použití `:focus` a `:active`
+<h2 id="focus-active">Použití <code>:focus</code> a <code>:active</code></h2>
 
-Při vytváření `:hover` stylu je dobrou volbou rovnou stejný styl přidat i pro [`:focus` a `:active`](/css-selektory#uzivatelske-akce), pokud tedy `:focus` a `:active` nemají už styly vlastní.
+<p>Při vytváření <code>:hover</code> stylu je dobrou volbou rovnou stejný styl přidat i pro <a href="/css-selektory#uzivatelske-akce"><code>:focus</code> a <code>:active</code></a>, pokud tedy <code>:focus</code> a <code>:active</code> nemají už styly vlastní.</p>
 
-Nedá to moc práce navíc a zlepší to **uživatelský dojem**.
+<p>Nedá to moc práce navíc a zlepší to <b>uživatelský dojem</b>.</p>

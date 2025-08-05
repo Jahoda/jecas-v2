@@ -5,79 +5,136 @@ description: "Je lepší psát před desetinou tečnou u čísla <code>0.5</code
 date: "2018-04-17"
 last_modification: "2018-06-01"
 status: 1
-tags: ["CSS", "Rady a nápady", "Style guide"]
+tags: ["css", "napady", "style-guide"]
+format: "html"
 ---
 
-Při zápisu desetinných čísel bývá v programování volitelné uvádět nulu před desetinnou tečkou. Číslo `0.5` se tedy rovná `.5`.
+<p>Při zápisu desetinných čísel bývá v programování volitelné uvádět nulu před desetinnou tečkou. Číslo <code>0.5</code> se tedy rovná <code>.5</code>.</p>
 
-V CSS se s tím jde setkat např. při používání `em` jednotek:
+<p>V CSS se s tím jde setkat např. při používání <code>em</code> jednotek:</p>
 
-```
-element {
+<pre><code>element {
   padding: .5em;
-}
-```
+}</code></pre>
 
-Výše uvedený kód je ekvivalentem:
 
-```
-element {
-  padding: **0**.5em;
-}
-```
 
-Je ale lepší nulu psát, nebo vynechávat?
 
-    - [CSS zbytečnosti](/css-zbytecnosti) – další zbytečně psané znaky v CSS
 
-Předně jsem toho názoru, že je to jedno, jen je dobré se domluvit na **jednotném stylu napříč projektem**.
 
-## Vynechání počáteční `0`
 
-Pro vynechání nuly hovoří 3 věci:
 
-  Je to o jeden znak rychlejší na zápis.
 
-  Nemusí se po síti k návštěvníkovi přenášet zbytečný znak.
+<p>Výše uvedený kód je ekvivalentem:</p>
 
-  Pro prohlížeč může být teoreticky rychlejší nevyhodnocovat číselnou část před tečkou.
+<pre><code>element {
+  padding: <b>0</b>.5em;
+}</code></pre>
 
-          W3C: [CSS syntax: number token diagram](https://www.w3.org/TR/css-syntax-3/#number-token-diagram)
 
-Dvě poslední ze tří věcí může automaticky zajistit automatisace v podobě CSS pre/post-procesoru.
 
-## Psaní s `0`
 
-    Někomu může přijít psaní s nulou přehlednější:
 
-```
-element {
+
+
+
+
+<p>Je ale lepší nulu psát, nebo vynechávat?</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/css-zbytecnosti">CSS zbytečnosti</a> – další zbytečně psané znaky v CSS</li>
+  </ul>
+</div>
+
+<p>Předně jsem toho názoru, že je to jedno, jen je dobré se domluvit na <b>jednotném stylu napříč projektem</b>.</p>
+
+
+<h2 id="bez-nuly">Vynechání počáteční <code>0</code></h2>
+
+
+<p>Pro vynechání nuly hovoří 3 věci:</p>
+
+<ol>
+  <li><p>Je to o jeden znak rychlejší na zápis.</p></li>
+  <li><p>Nemusí se po síti k návštěvníkovi přenášet zbytečný znak.</p></li>
+  <li><p>Pro prohlížeč může být teoreticky rychlejší nevyhodnocovat číselnou část před tečkou.</p>
+  
+  <div class="external-content">
+    <ul>
+        <li>
+          <p>W3C: <a href="https://www.w3.org/TR/css-syntax-3/#number-token-diagram">CSS syntax: number token diagram</a></p>
+        </li>
+    </ul>
+  </div></li>
+</ol>
+
+<p>Dvě poslední ze tří věcí může automaticky zajistit automatisace v podobě CSS pre/post-procesoru.</p>
+
+
+
+
+
+<h2 id="s-nulou">Psaní s <code>0</code></h2>
+
+<ol>
+  <li>
+    <p>Někomu může přijít psaní s nulou přehlednější:</p>
+
+<pre><code>element {
   padding: 5em 0 .5em;
-}
-```
+}</code></pre>
 
-Oproti:
 
-```
-element {
+
+
+
+
+
+
+<p>Oproti:</p>
+
+<pre><code>element {
   padding: 5em 0.5em;
-}
-```
+}</code></pre>
+    
+    
+    
+    
+    
+    
+    
+    
+    <p>Kdy až na tu mezeru relativně podobné kusy kódu dělají úplně něco jiného.</p>
+  </li>
+    
+  
+  <li>
+    <p>Méně zkušeným lidem může přijít takový zápis <a href="http://www.lamer.cz/quote/72668">nejasný nebo nezvyklý</a>.</p>
+  </li>
+</ol>
 
-    Kdy až na tu mezeru relativně podobné kusy kódu dělají úplně něco jiného.
+<p>Přehlednost je v tomto případě dost subjektivní. Když si člověk zvykne zbytečnou nulu nepsat, přijde mu potom <code>0.5</code> také divné.</p>
 
-    Méně zkušeným lidem může přijít takový zápis [nejasný nebo nezvyklý](http://www.lamer.cz/quote/72668).
 
-Přehlednost je v tomto případě dost subjektivní. Když si člověk zvykne zbytečnou nulu nepsat, přijde mu potom `0.5` také divné.
 
-## Populární Style Guide
+<h2 id="sg">Populární Style Guide</h2>
 
-V style guidech větších skupin vývojářů se lze setkat s oběma přístupy:
+<p>V style guidech větších skupin vývojářů se lze setkat s oběma přístupy:</p>
 
-    - Google HTML/CSS Style Guide: [Leading 0s](https://google.github.io/styleguide/htmlcssguide.html#Leading_0s) – **nepsat** počáteční nulu
+<div class="external-content">
+  <ul>  
+    <li>Google HTML/CSS Style Guide: <a href="https://google.github.io/styleguide/htmlcssguide.html#Leading_0s">Leading 0s</a> – <b>nepsat</b> počáteční nulu</li>
 
-    - Sass Guidelines: [nuly](https://sass-guidelin.es/cz/#nuly) – **psát** počáteční nulu
+    <li>Sass Guidelines: <a href="https://sass-guidelin.es/cz/#nuly">nuly</a> – <b>psát</b> počáteční nulu</li>
+  </ul>
+</div>
 
-Těžko tak proto jednoznačně určit, že je ten nebo ten přístup lepší. 
 
-**Co preferujete vy? A proč?**
+<p>Těžko tak proto jednoznačně určit, že je ten nebo ten přístup lepší. </p>
+
+<p><b>Co preferujete vy? A proč?</b></p>
+
+
+
+

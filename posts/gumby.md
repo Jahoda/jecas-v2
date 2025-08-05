@@ -6,6 +6,7 @@ date: "2013-12-13"
 last_modification: "2013-12-13"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://gumbyframework.com/

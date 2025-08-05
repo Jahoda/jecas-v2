@@ -5,35 +5,41 @@ description: "CSS rozlišuje statickou, relativní, absolutní a fixní posici. 
 date: "2013-09-09"
 last_modification: "2015-10-06"
 status: 1
-tags: ["CSS", "CSS vlastnosti"]
+tags: ["css", "css-vlastnosti"]
+format: "html"
 ---
 
-## Statická (`position: static`)
+<h2 id=static>Statická (<code>position: static</code>)</h2>
 
-Výchozí hodnota všech elementů. Má tedy smysl jen pro *přebíjení* dříve přenastavených hodnot…
+<p>Výchozí hodnota všech elementů. Má tedy smysl jen pro <i>přebíjení</i> dříve přenastavených hodnot…</p>
 
-Vlastnosti `top`, `left`, `right` a `bottom` jsou ignorovány.
+<p>Vlastnosti <code>top</code>, <code>left</code>, <code>right</code> a <code>bottom</code> jsou ignorovány.</p>
 
-## Relativní (`position: relative`)
 
-Umožňuje snadno posunout element ze svého přirozeného umístění.
 
-```
-element {position: relative; top: -2px; left: -2px}
-```
 
-Tučné **slovo** je relativně posunuto o 2 pixely nahoru a vlevo.
+<h2 id="relative">Relativní (<code>position: relative</code>)</h2>
 
-var reltest = document.getElementById("reltest");
+<p>Umožňuje snadno posunout element ze svého přirozeného umístění.</p>
 
-Zapnout/vypnout relativní posici
+<pre><code>element {position: relative; top: -2px; left: -2px}</code></pre>
 
-### Využití
 
-Občas se hodí k [drobným posunům](/stejne-vysoke-sloupce#ramecek), výhoda je, že relativním posunem **není ovlivňován** žádný další prvek na stránce — tudíž všechno ostatní zůstane na svém místě. Relativně posicovaný element zabere na původním místě prostor, ale klidně je ve skutečnosti někde jinde.
 
-  Problém ale může být, že výchozí umístění relativně posicovaného elementu **je ovlivňována okolím**, proto je `position: relative` krajně nevhodné třeba pro stavbu celého layoutu, ač by se to na první pohled mohlo zdát jako dobrý nápad.
+<p class="live">Tučné <b id="reltest" style="position: relative; top: -2px; left: -2px">slovo</b> je relativně posunuto o 2 pixely nahoru a vlevo.</p>
+<script>var reltest = document.getElementById("reltest");</script>
 
+<p><button onclick="reltest.style.position = reltest.style.position == 'relative' ? 'static' : 'relative'">Zapnout/vypnout relativní posici</button></p>
+
+
+
+<h3>Využití</h3>
+
+<p>Občas se hodí k <a href="/stejne-vysoke-sloupce#ramecek">drobným posunům</a>, výhoda je, že relativním posunem <b>není ovlivňován</b> žádný další prvek na stránce — tudíž všechno ostatní zůstane na svém místě. Relativně posicovaný element zabere na původním místě prostor, ale klidně je ve skutečnosti někde jinde.</p>
+
+  <p>Problém ale může být, že výchozí umístění relativně posicovaného elementu <b>je ovlivňována okolím</b>, proto je <code>position: relative</code> krajně nevhodné třeba pro stavbu celého layoutu, ač by se to na první pohled mohlo zdát jako dobrý nápad.</p>
+
+<style>
 .relativni-layout div {background: #efefef; padding: 10px; border: 1px solid #ccc;
   margin: 10px; line-height: 20px}
 
@@ -41,169 +47,215 @@ Občas se hodí k [drobným posunům](/stejne-vysoke-sloupce#ramecek), výhoda j
 .pravy {width: 400px; position: relative;
   top: -52px; left: 130px
 }
+</style>
+<div class="live relativni-layout" id="relayout">
+  <div class="levy">Levý</div>
+  <div class="pravy">Pravý</div>
+</div>
+<script>var relayout = document.getElementById("relayout").getElementsByTagName("div")[0];</script>
 
-  Levý
-  Pravý
+<p>Nicméně stačí <button onclick="relayout.innerHTML = relayout.innerHTML == 'Levý' ? 'Levý<br>dlouhý' : 'Levý'">přidat nějaký obsah</button> do levého sloupce, což změní výšku, což odsune pravý element níže, a celá <i>křehká sestava</i> se rozpadne.</p>
 
-var relayout = document.getElementById("relayout").getElementsByTagName("div")[0];
+<p>Občas se relativní posun může hodit k <b>rychlému <i>zalepení</i> rozhozeného vzhledu</b>, ale z výše uvedeného důvodu to moc systémové řešení není.</p>
 
-Nicméně stačí přidat nějaký obsah do levého sloupce, což změní výšku, což odsune pravý element níže, a celá *křehká sestava* se rozpadne.
+<p>Mnohem častěji se <code>position: relative</code> používá při posicování absolutním pro omezení rámce, kde se absolutně posicuje.</p>
 
-Občas se relativní posun může hodit k **rychlému *zalepení* rozhozeného vzhledu**, ale z výše uvedeného důvodu to moc systémové řešení není.
 
-Mnohem častěji se `position: relative` používá při posicování absolutním pro omezení rámce, kde se absolutně posicuje.
+<h2 id="absolute">Absolutní (<code>position: absolute</code>)</h2>
 
-## Absolutní (`position: absolute`)
+<p>Zatímco elementy s hodnotami <code>static</code> a <code>relative</code> jsou ovlivňovány okolím a stejně tak okolní elementy ovlivňují – <i>zabírají jim místo</i> – <b>absolutní posice</b> element <b>vyjme z běžného toku dokumentu</b>.</p>
 
-Zatímco elementy s hodnotami `static` a `relative` jsou ovlivňovány okolím a stejně tak okolní elementy ovlivňují – *zabírají jim místo* – **absolutní posice** element **vyjme z běžného toku dokumentu**.
+<p>Najednou se všechno s neabsolutní posicí začne (skoro) chovat jako by tam absolutně posicovaný element vůbec nebyl.</p>
 
-Najednou se všechno s neabsolutní posicí začne (skoro) chovat jako by tam absolutně posicovaný element vůbec nebyl.
+<pre><code>element {position: absolute; top: -5px; left: 20px}</code></pre>
+<p class="live" style="position: relative">Tučné <b style="position: absolute; top: -5px; left: 20px" id="abstest">slovo</b> je absolutně umístěno.</p>
+<script>var abstest = document.getElementById("abstest");</script>
 
-```
-element {position: absolute; top: -5px; left: 20px}
-```
+<p><button onclick="abstest.style.position = abstest.style.position == 'absolute' ? 'static' : 'absolute'">Zapnout/vypnout absolutní posici</button></p>
 
-Tučné **slovo** je absolutně umístěno.
 
-var abstest = document.getElementById("abstest");
 
-Zapnout/vypnout absolutní posici
 
-### Hranice
 
-Konkrétní umístění (vlastnosti `top`, `left`, `right`, `bottom`) se nepočítají nijak náhodně, ale od nejbližšího elementu, který *vytváří hranice* — to je libovolný nadřazený element s `position: relative`, `position: absolute` nebo `position: fixed`.
+<h3 id=hranice>Hranice</h3>
 
-Nejvyšší hranicí je *okno prohlížeče*, proto v případě, že se na stránce relativní nebo absolutní posice zatím nepoužívají, přidání čemukoliv `position: absolute; left: 0; top: 0` *vyhodí* tento element do levého horního rohu.
+<p>Konkrétní umístění (vlastnosti <code>top</code>, <code>left</code>, <code>right</code>, <code>bottom</code>) se nepočítají nijak náhodně, ale od nejbližšího elementu, který <i>vytváří hranice</i> — to je libovolný nadřazený element s <code>position: relative</code>, <code>position: absolute</code> nebo <code>position: fixed</code>.</p>
 
-### Bez umístění
+<p>Nejvyšší hranicí je <i>okno prohlížeče</i>, proto v případě, že se na stránce relativní nebo absolutní posice zatím nepoužívají, přidání čemukoliv <code>position: absolute; left: 0; top: 0</code> <i>vyhodí</i> tento element do levého horního rohu.</p>
 
-Zvláštní případ použití je `position: absolute` bez zadání konkrétního umístění (`left`, `top`, `bottom`, `right`). V takovém případě zůstane element na svém místě, ale neovlivňuje své okolí.
 
-Tučné **slovo** je absolutně umístěno bez umístění.
 
-var abstest2 = document.getElementById("abstest2");
+<h3>Bez umístění</h3>
 
-Zapnout/vypnout absolutní posici
+<p>Zvláštní případ použití je <code>position: absolute</code> bez zadání konkrétního umístění (<code>left</code>, <code>top</code>, <code>bottom</code>, <code>right</code>). V takovém případě zůstane element na svém místě, ale neovlivňuje své okolí.</p>
 
-### Využití
+<p class="live" style="position: relative">Tučné <b style="position: absolute" id="abstest2">slovo</b> je absolutně umístěno bez umístění.</p>
+<script>var abstest2 = document.getElementById("abstest2");</script>
 
-Absolutní posicování má výhodu, že lze obsah v kódu uvedený někde na konci umístit na začátek stránky. Rovněž se `position: absolute` hodí všude tam, kde je potřeba něco umístit na přesné místo, **nezávisle na okolí**.
+<p><button onclick="abstest2.style.position = abstest2.style.position == 'absolute' ? 'static' : 'absolute'">Zapnout/vypnout absolutní posici</button></p>
 
-Na druhou stranu to může být i nevýhoda — absolutně posicovaný element je vyjmut z toku dokumentu, a tudíž **nemůže reagovat na změny rozměrů** ostatních prvků.
 
-Absolutní posici jde teoreticky i [relativně rozumně](/stejne-vysoke-sloupce#absolute) využít ke stavbě rozložení stránky, i když obtékání bývá zpravidla výhodnější.
+<h3>Využití</h3>
 
-## Fixní posice (`position: fixed`)
+<p>Absolutní posicování má výhodu, že lze obsah v kódu uvedený někde na konci umístit na začátek stránky. Rovněž se <code>position: absolute</code> hodí všude tam, kde je potřeba něco umístit na přesné místo, <b>nezávisle na okolí</b>.</p>
 
-Poslední druh umístění je fixní. To je dobré k tomu, když má nějaký element být viděn neustále (nezávisle na případném odrolování stránky).
+<p>Na druhou stranu to může být i nevýhoda — absolutně posicovaný element je vyjmut z toku dokumentu, a tudíž <b>nemůže reagovat na změny rozměrů</b> ostatních prvků.</p>
 
-Tato vlastnost není podporovaná v Internet Exploreru běžícím v [QUIRK režimu](/doctype#quirk).
+<p>Absolutní posici jde teoreticky i <a href="/stejne-vysoke-sloupce#absolute">relativně rozumně</a> využít ke stavbě rozložení stránky, i když obtékání bývá zpravidla výhodnější.
 
-Od absolutního posicování se kromě fixování elementu liší ještě v tom, že cokoliv s `position: fixed` má jako *hranici* okno prohlížeče. Tedy **není možné vytvořit *hranici* vlastní**.
 
-### Využití
+  
+    
+  
+<h2 id="fixed">Fixní posice (<code>position: fixed</code>)</h2>
 
-Fixovaná posice se hodí pro neustále viditelnou navigaci, hlavičku či nějakou reklamu.
+<p>Poslední druh umístění je fixní. To je dobré k tomu, když má nějaký element být viděn neustále (nezávisle na případném odrolování stránky).</p>
 
-Nastavit element jako fixní je také možné až v momentě, kdy by měl [zmizet z viditelné části obrazovky](/sidebar) (obdobně se dá i vytvořit [fixní menu](/fixni-menu)).
 
-## Sticky posice (`position: sticky`)
+<p><small>Tato vlastnost není podporovaná v Internet Exploreru běžícím v <a href="/doctype#quirk">QUIRK režimu</a>.</small></p>
 
-Nejnovější hodnota vlastnosti `position` sloužící k přilepení elementu ke kraji okna při scrollování. Věnuje se jí celý samostatný článek:
 
-      [Jak funguje CSS `position: sticky`](/position-sticky)
+<p>Od absolutního posicování se kromě fixování elementu liší ještě v tom, že cokoliv s <code>position: fixed</code> má jako <i>hranici</i> okno prohlížeče. Tedy <b>není možné vytvořit <i>hranici</i> vlastní</b>.</p>
 
-## Překrývání `z-index`
 
-    Jednotlivé elementy se mohou překrývat, což řeší vlastnost `z-index`.
 
-    Bez jejího použití jsou nejvýše ty elementy, které jsou **později v kódu**. Jejím užitím lze toto chování změnit.
+<h3>Využití</h3>
 
-    V případě **záporné hodnoty** (např. `z-index: -1`) se absolutně posicovaný element dostane za běžný text.
+<p>Fixovaná posice se hodí pro neustále viditelnou navigaci, hlavičku či nějakou reklamu.</p>
+<p>Nastavit element jako fixní je také možné až v momentě, kdy by měl <a href="/sidebar">zmizet z viditelné části obrazovky</a> (obdobně se dá i vytvořit <a href="/fixni-menu">fixní menu</a>).</p>
 
-    Vlastnost `z-index` se projeví **jen** u elementů s absolutní, relativní nebo fixní posicí. Pokud je tedy překrýváno něco, co nechceme, a není to posicované, řešení je přidat `position: relative` a vyšší `z-index`.
 
-    Relativní posice totiž bez uvedení `left`/`top`/`bottom`/`right` **nezmění umístění elementu**. Je ale třeba dát pozor na to, že `position: relative` změní počátek pro posicování **absolutní**.
 
-### Ukázka
+<h2 id="sticky">Sticky posice (<code>position: sticky</code>)</h2>
 
-Jednotlivé elementy jsou v kódu v pořadí červená, modrá, zelená; kliknutím lze `z-index` zvýšit.
+<p>Nejnovější hodnota vlastnosti <code>position</code> sloužící k přilepení elementu ke kraji okna při scrollování. Věnuje se jí celý samostatný článek:</p>
 
-  0
-  0
-  0
+<div class="internal-content">
+  <ul>
+    <li>
+      <a href="/position-sticky">Jak funguje CSS <code>position: sticky</code></a>
+    </li>
+  </ul>
+</div>
 
-Jak je vidět z ukázky, při nastavování `z-index`ů je třeba myslet na to, že *pozdější vyhrává*.
 
-Další zajímavosti ohledně `z-index`u jsou v anglickém článku:
+<h2 id="z-index">Překrývání <code>z-index</code></h2>
+<ul>
+  <li>
+    <p>Jednotlivé elementy se mohou překrývat, což řeší vlastnost <code>z-index</code>.</p>
+  </li>
 
-    - [What You May Not Know About the Z-Index Property](http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/what-you-may-not-know-about-the-z-index-property/) – co jste možná nevěděli o vlastnosti `z-index`
+  <li>
+    <p>Bez jejího použití jsou nejvýše ty elementy, které jsou <b>později v kódu</b>. Jejím užitím lze toto chování změnit.</p></li>
 
-## `top`, `left`, `bottom`, `right`
+  <li>
+    <p>V případě <b>záporné hodnoty</b> (např. <code>z-index: -1</code>) se absolutně posicovaný element dostane za běžný text.</p></li>
+  
+  <li>
+    <p>Vlastnost <code>z-index</code> se projeví <b>jen</b> u elementů s absolutní, relativní nebo fixní posicí. Pokud je tedy překrýváno něco, co nechceme, a není to posicované, řešení je přidat <code>position: relative</code> a vyšší <code>z-index</code>.</p>
+  
+    <p>Relativní posice totiž bez uvedení <code>left</code>/<code>top</code>/<code>bottom</code>/<code>right</code> <b>nezmění umístění elementu</b>. Je ale třeba dát pozor na to, že <code>position: relative</code> změní počátek pro posicování <b>absolutní</b>.</p>
+  </li>
+</ul>
 
-CSS vlastnosti `top`, `left`, `bottom` a `right` se používají pouze pro posicování.
+<h3>Ukázka</h3>
+<p>Jednotlivé elementy jsou v kódu v pořadí červená, modrá, zelená; kliknutím lze <code>z-index</code> zvýšit.</p>
 
-U statického elementu (`position: static`) nedělají nic.
+<div class="live no-source" style="position: relative; min-height: 100px">
+  <div class="z-index">
+  <div class="prvni" onclick="umisteni(this)">0</div>
+  <div class="druhy" onclick="umisteni(this)">0</div>
+  <div class="treti" onclick="umisteni(this)">0</div>
+</div>
+</div>
 
-Hodnota za těmito vlastnostmi určuje **vzdálenost** shora (`top`), zleva (`left`), zdola (`bottom`), zprava (`right`).
+<p>Jak je vidět z ukázky, při nastavování <code>z-index</code>ů je třeba myslet na to, že <i>pozdější vyhrává</i>.</p>
 
-Následující element bude **10 pixelů** od horní hranice vymezené nadřazeným posicovaným elementem.
+<p>Další zajímavosti ohledně <code>z-index</code>u jsou v anglickém článku:</p>
 
-```
-element {
+<div class="external-content">
+  <ul>
+    <li><a href="http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/what-you-may-not-know-about-the-z-index-property/">What You May Not Know About the Z-Index Property</a> – co jste možná nevěděli o vlastnosti <code>z-index</code></li>
+  </ul>
+</div>
+
+
+<h2 id="tlbr"><code>top</code>, <code>left</code>, <code>bottom</code>, <code>right</code></h2>
+
+<p>CSS vlastnosti <code>top</code>, <code>left</code>, <code>bottom</code> a <code>right</code> se používají pouze pro posicování.</p>
+
+<p>U statického elementu (<code>position: static</code>) nedělají nic.</p>
+
+<p>Hodnota za těmito vlastnostmi určuje <b>vzdálenost</b> shora (<code>top</code>), zleva (<code>left</code>), zdola (<code>bottom</code>), zprava (<code>right</code>).</p>
+
+<p>Následující element bude <b>10 pixelů</b> od horní hranice vymezené nadřazeným posicovaným elementem.</p>
+
+<pre><code>element {
   position: absolute;
   top: 10px;
-}
-```
+}</code></pre>
 
-### Záporná hodnota
 
-Délková hodnota může být i záporná, tím se element dostane **mimo hranice** (v případě, že nebude oříznut pomocí `overflow: hidden`).
+<h3 id="zaporna">Záporná hodnota</h3>
 
-```
-element {
+<p>Délková hodnota může být i záporná, tím se element dostane <b>mimo hranice</b> (v případě, že nebude oříznut pomocí <code>overflow: hidden</code>).</p>
+
+<pre><code>element {
   position: absolute;
-  top: **-10px**;
-}
-```
+  top: <b>-10px</b>;
+}</code></pre>
 
-### 100% hodnota
 
-Někdy se používají konstrukce:
 
-```
-top: 100%
-```
 
-Tím se horní hrana absolutně posicovaného elementu dostane přesně pod dolní hranu posicovaného rodiče.
 
-Analogicky to funguje pro `left`, `bottom` a `right`.
 
-### Priorita směrů
 
-  - Umístění zleva (`left`) má přednost před `right`.
+<h3 id="stoprocent">100% hodnota</h3>
 
-  - Umístění shora (`top`) má přednost před `bottom`.
+<p>Někdy se používají konstrukce:</p>
 
-Tento element tedy bude umístěn 10 pixelů zleva a shora:
+<pre><code>top: 100%</code></pre>
 
-```
-element {
+<p>Tím se horní hrana absolutně posicovaného elementu dostane přesně pod dolní hranu posicovaného rodiče.</p>
+
+<p>Analogicky to funguje pro <code>left</code>, <code>bottom</code> a <code>right</code>.</p>
+
+
+
+
+
+<h3 id="priorita">Priorita směrů</h3>
+
+<ul>
+  <li>Umístění zleva (<code>left</code>) má přednost před <code>right</code>.</li>
+  <li>Umístění shora (<code>top</code>) má přednost před <code>bottom</code>.</li>
+</ul>
+
+<p>Tento element tedy bude umístěn 10 pixelů zleva a shora:</p>
+
+<pre><code>element {
   width: 10px;
   height: 10px;
-  **left: 10px;**
+  <b>left: 10px;</b>
   right: 10px;
-  **top: 10px;**
+  <b>top: 10px;</b>
   bottom: 10px;
-}
-```
+}</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/kuqb) – přebíjení směrů posicování
 
-Jde si tím **zkrátit zápis při posicování dvou prvků**, kdy jeden má být vlevo a druhý vpravo:
 
-```
-.levy, .pravy {
+
+
+
+
+
+
+<p><a href="http://kod.djpw.cz/kuqb">Živá ukázka</a> – přebíjení směrů posicování</p>
+
+<p>Jde si tím <b>zkrátit zápis při posicování dvou prvků</b>, kdy jeden má být vlevo a druhý vpravo:</p>
+
+<pre><code>.levy, .pravy {
   position: absolute;
   right: 0;
   width: 10px;
@@ -211,26 +263,39 @@ Jde si tím **zkrátit zápis při posicování dvou prvků**, kdy jeden má bý
 }
 .levy {
   left: 0;
-}
-```
+}</code></pre>
 
-Nemusí se tak psát:
 
-```
-.levy, .pravy {
+
+
+
+
+
+
+
+<p>Nemusí se tak psát:</p>
+
+<pre><code>.levy, .pravy {
   …
   left: 0;
 }
 .pravy {
   left: auto;
   right: 0;
-}
-```
+}</code></pre>
 
-Toto chování platí pouze pro případ, že **absolutně posicovaný element  má nastaveny rozměry**. V opačném případě uvedení hodnot všech stran způsobí **roztažení**.
 
-[Živá ukázka](http://kod.djpw.cz/muqb) – roztažení elementu
 
+
+
+
+
+
+<p>Toto chování platí pouze pro případ, že <b>absolutně posicovaný element  má nastaveny rozměry</b>. V opačném případě uvedení hodnot všech stran způsobí <b>roztažení</b>.</p>
+
+<p><a href="http://kod.djpw.cz/muqb">Živá ukázka</a> – roztažení elementu</p>
+
+  <style>
 .z-index div {position: absolute; width: 50px; height: 50px;
   text-align: center; line-height: 50px; color: #fff; cursor: pointer;
   z-index: 0; border-radius: 50%}
@@ -239,8 +304,10 @@ Toto chování platí pouze pro případ, že **absolutně posicovaný element  
 .prvni {background: red; left: 5px; top: 5px}
 .druhy {background: blue; left: 45px; top: 5px}
 .treti {background: green; left: 25px; top: 40px}
-
+  </style>
+  <script>
 function umisteni(el) {
   el.innerHTML++;
   el.style.zIndex = el.innerHTML;
 }
+  </script>

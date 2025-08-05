@@ -6,6 +6,7 @@ date: "2017-04-03"
 last_modification: "2017-04-03"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://kod.djpw.cz/hggc

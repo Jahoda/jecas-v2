@@ -6,6 +6,7 @@ date: "2014-08-10"
 last_modification: "2014-08-10"
 status: 0
 tags: []
+format: "html"
 ---
 
 https://www.mapbox.com/blog/mapbox-gl-js/

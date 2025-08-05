@@ -6,8 +6,11 @@ date: "2014-01-11"
 last_modification: "2014-01-11"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Hogan.js](http://twitter.github.io/hogan.js/) – šablonovací systém Twitteru
-
-  - Sitepoint: [An Overview of JavaScript Templating Engines](http://www.sitepoint.com/overview-javascript-templating-engines/)
+<ul>
+  <li><a href="http://twitter.github.io/hogan.js/">Hogan.js</a> – šablonovací systém Twitteru</li>
+  
+  <li>Sitepoint: <a href="http://www.sitepoint.com/overview-javascript-templating-engines/">An Overview of JavaScript Templating Engines</a></li>
+</ul>

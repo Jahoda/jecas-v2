@@ -5,114 +5,231 @@ description: "Jak stáhnout celou webovou stránku a převést ji do statické H
 date: "2015-02-04"
 last_modification: "2015-10-22"
 status: 1
-tags: ["Produktivita", "Offline"]
+tags: ["offline", "produktivita"]
+format: "html"
 ---
 
-Z nejrůznějších důvodů může být vhodné, aby celý web byl ve **statických souborech**:
+<p>Z nejrůznějších důvodů může být vhodné, aby celý web byl ve <b>statických souborech</b>:</p>
 
-  - rychlost,
+<ul>
+  <li>rychlost,</li>
+  
+  <li>nenáročnost na hosting,</li>
+  
+  <li>plnohodnotná offline varianta webu</li>
+</ul>
 
-  - nenáročnost na hosting,
+<p>Tvorba statického webu je poměrně <b>náročná na údržbu</b>. Společné prvky stránek jako hlavička, menu nebo patička je nutné nějakým způsobem synchronisovat mezi sebou.</p>
 
-  - plnohodnotná offline varianta webu
+<p>Jedna z možností tak může být využití klasického redakčního systému a <b>uložení jeho výstupu</b>.</p>
 
-Tvorba statického webu je poměrně **náročná na údržbu**. Společné prvky stránek jako hlavička, menu nebo patička je nutné nějakým způsobem synchronisovat mezi sebou.
 
-Jedna z možností tak může být využití klasického redakčního systému a **uložení jeho výstupu**.
+<h2 id="httrack">HTTrack</h2>
 
-## HTTrack
+<p>Program HTTrack dokáže projít zadanou URL a stáhnout veškerý obsah, na který <b>vedou odkazy</b>.</p>
 
-Program HTTrack dokáže projít zadanou URL a stáhnout veškerý obsah, na který **vedou odkazy**.
+<p><a href="http://www.httrack.com/page/2/en/index.html" class="button">Stáhnout</a></p>
 
-[Stáhnout](http://www.httrack.com/page/2/en/index.html)
+<p>Pokud stránka rozlišuje mezi návštěvníky na základě HTTP hlavičky <code>user-agent</code>, je dobré tuto hodnotu změnit na podobu obvyklou pro dnešní internetové prohlížeče.</p>
 
-Pokud stránka rozlišuje mezi návštěvníky na základě HTTP hlavičky `user-agent`, je dobré tuto hodnotu změnit na podobu obvyklou pro dnešní internetové prohlížeče.
+<div class="internal-content">
+  <ul>
+    <li><a href="/ua">Zjištění <code>user-agent</code> hlavičky prohlížeče</a></li>
+  </ul>
+</div>
 
-    - [Zjištění `user-agent` hlavičky prohlížeče](/ua)
 
-Nastavit tuto hlavičku jde v nabídce *Předvolby*:
 
-Po zadání požadované URL by mělo začít stahování:
+<p>Nastavit tuto hlavičku jde v nabídce <i>Předvolby</i>:</p>
 
-Stáhnout rozsáhlejší web může trvat i několik desítek minut.
 
-Před začátkem stahování je dobré dát pozor na **omezení úrovně domén**, které se budou stahovat. Typicky pouze na doménu webu, který je cílem stáhnout.
+<p><img src="/files/stazeni-webu/predvolby.png" alt="Předvolby HTTrack" class="border"></p>
 
-Jinak HTTrack dokáže stahovat i stránky z **externích odkazů**, takže nakonec může stáhnout „celý internet“.
 
-Stahování jecas.cz s externími zdroji nebylo dokončeno ani po 8 hodinách:
 
-## URL bez „.html“
 
-HTTrack standardně stahuje obsah do `.*html` souborů, na které potom vedou i [odkazy](/odkaz). Pokud je cílem mít odkazy bez HTML koncovky, dá se využít přepis adres pomocí `mod_rewrite` a v souborech hromadně změnit cíle všech odkazů (`href`).
 
-### Soubor `.htaccess`
 
-Následující obsah v `.htaccess` zajistí, že se po zadání `example.com/obsah` zobrazí obsah stránky `obsah**.html**`.
 
-```
-RewriteEngine On
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Po zadání požadované URL by mělo začít stahování:</p>
+
+
+<p><img src="/files/stazeni-webu/stahovani.png" alt="Stahování pomocí HTTrack" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Stáhnout rozsáhlejší web může trvat i několik desítek minut.</p>
+
+<p>Před začátkem stahování je dobré dát pozor na <b>omezení úrovně domén</b>, které se budou stahovat. Typicky pouze na doménu webu, který je cílem stáhnout.</p>
+
+<p>Jinak HTTrack dokáže stahovat i stránky z <b>externích odkazů</b>, takže nakonec může stáhnout „celý internet“.</p>
+
+<p>Stahování jecas.cz s externími zdroji nebylo dokončeno ani po 8 hodinách:</p>
+
+<p><img src="/files/stazeni-webu/cizi-domeny.png" alt="Stahování pomocí HTTrack" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="zmena-odkazu">URL bez „.html“</h2>
+
+<p>HTTrack standardně stahuje obsah do <code>.*html</code> souborů, na které potom vedou i <a href="/odkaz">odkazy</a>. Pokud je cílem mít odkazy bez HTML koncovky, dá se využít přepis adres pomocí <code>mod_rewrite</code> a v souborech hromadně změnit cíle všech odkazů (<code>href</code>).</p>
+
+
+
+<h3 id="htaccess">Soubor <code>.htaccess</code></h3>
+
+<p>Následující obsah v <code>.htaccess</code> zajistí, že se po zadání <code>example.com/obsah</code> zobrazí obsah stránky <code>obsah<b>.html</b></code>.</p>
+
+<pre><code>RewriteEngine On
 RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([^.]+)$    $1.html    [L]
-```
+RewriteRule ^([^.]+)$    $1.html    [L]</code></pre>
 
-Pro stránky v **podadresářích**.
 
-```
-RewriteEngine On
+
+
+<p>Pro stránky v <b>podadresářích</b>.</p>
+
+<pre><code>RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.*)$ $1.html [NC,L]
-```
+RewriteRule ^(.*)$ $1.html [NC,L]</code></pre>
 
-### Nahrazení `.html` v odkazech
 
-Odchytit všechny výskyty `.html` v běžných cílech odkazu jde následujícím regulárním výrazem:
 
-```
-href="([A-z0-9\-]*)\.html"
-```
 
-Vyhovující `href` se nahradí za:
 
-```
-href="$1"
-```
 
-Pro podadresáře:
+<h3 id="nahrazeni">Nahrazení <code>.html</code> v odkazech</h3>
 
-```
-href="(\.\.\/[A-z0-9\-\/]*)\.html"
-```
+<p>Odchytit všechny výskyty <code>.html</code> v běžných cílech odkazu jde následujícím regulárním výrazem:</p>
 
-```
-href="(\.\.\/\.\.\/[A-z0-9\-\/]*)\.html"
-```
+<pre><code>href="([A-z0-9\-]*)\.html"</code></pre>
 
-## Nástroj wget
+<p>Vyhovující <code>href</code> se nahradí za:</p>
 
-Stáhnout celé stránky jde i nástrojem wget. Ve **Windows** k tomu jde použít program [Cygwin](http://www.cygwin.com/) a následně při instalaci nechat nainstalovat **balíček wget**.
+<pre><code>href="$1"</code></pre>
 
-Příkaz pro stažení obsahu stránky může vypadat následovně:
+<p>Pro podadresáře:</p>
 
-```
-wget -np -e robots=off --mirror --domains=example.com http://example.com
-```
+<pre><code>href="(\.\.\/[A-z0-9\-\/]*)\.html"</code></pre>
 
-## Stažení cizí stránky
+<pre><code>href="(\.\.\/\.\.\/[A-z0-9\-\/]*)\.html"</code></pre>
 
-Kromě vlastních webů jde těmito postupy pochopitelně rovněž **stahovat stránky cizí**.
 
-Pokud se stahování nebude dít ve velké míře a opakovaně, provozovatel webu si toho nejspíš nevšimne a v zásadě mu to ani **nemusí moc vadit**.
 
-Stažení celého webu se nároky na server příliš neliší od situace, kdy by si člověk celý web proklikal.
 
-Někteří autoři své weby přímo nabízí ke stažení:
 
-  - [Jak psát web](http://www.jakpsatweb.cz/download.html)
 
-  - [HTML sémantika](http://semantika.name/download.html)
 
-  - [PHP triky](http://php.vrana.cz/verze-ke-stazeni.php)
 
-Typicky si ale **nepřejí další šíření** – tj. publikování staženého obsahu na jiném webu. To bývá problém kvůli [vyhledávačům](/seo), protože vzniká **duplicitní obsah**.
+<h2 id="wget">Nástroj wget</h2>
+
+<p>Stáhnout celé stránky jde i nástrojem wget. Ve <b>Windows</b> k tomu jde použít program <a href="http://www.cygwin.com/">Cygwin</a> a následně při instalaci nechat nainstalovat <b>balíček wget</b>.</p>
+
+<p><img src="/files/stazeni-webu/cygwin-wget.png" alt="Cygwin wget package" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Příkaz pro stažení obsahu stránky může vypadat následovně:</p>
+
+<pre><code>wget -np -e robots=off --mirror --domains=example.com http://example.com</code></pre>
+
+
+
+
+
+
+<h2 id="cizi">Stažení cizí stránky</h2>
+
+<p>Kromě vlastních webů jde těmito postupy pochopitelně rovněž <b>stahovat stránky cizí</b>.</p>
+
+<p>Pokud se stahování nebude dít ve velké míře a opakovaně, provozovatel webu si toho nejspíš nevšimne a v zásadě mu to ani <b>nemusí moc vadit</b>.</p>
+
+<p>Stažení celého webu se nároky na server příliš neliší od situace, kdy by si člověk celý web proklikal.</p>
+
+<p>Někteří autoři své weby přímo nabízí ke stažení:</p>
+
+<ul>
+  <li><a href="http://www.jakpsatweb.cz/download.html">Jak psát web</a></li>
+  
+  <li><a href="http://semantika.name/download.html">HTML sémantika</a></li>
+  
+  <li><a href="http://php.vrana.cz/verze-ke-stazeni.php">PHP triky</a></li>
+</ul>
+
+
+
+<p>Typicky si ale <b>nepřejí další šíření</b> – tj. publikování staženého obsahu na jiném webu. To bývá problém kvůli <a href="/seo">vyhledávačům</a>, protože vzniká <b>duplicitní obsah</b>.</p>

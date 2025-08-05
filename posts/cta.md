@@ -6,6 +6,9 @@ date: "2015-04-07"
 last_modification: "2015-04-07"
 status: 0
 tags: []
+format: "html"
 ---
 
-- Sitepoint: [14 Rules for Creating CTA Buttons That Work](http://www.sitepoint.com/cta-buttons-that-work/)
+<ul>
+  <li>Sitepoint: <a href="http://www.sitepoint.com/cta-buttons-that-work/">14 Rules for Creating CTA Buttons That Work</a></li>
+</ul>

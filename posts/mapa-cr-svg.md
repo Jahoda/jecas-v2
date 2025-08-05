@@ -6,8 +6,15 @@ date: "2016-12-21"
 last_modification: "2016-12-21"
 status: 0
 tags: []
+format: "html"
 ---
 
-[Živá ukázka](http://kod.djpw.cz/amdc)
+<p><a href="http://kod.djpw.cz/amdc">Živá ukázka</a></p>
 
-    [REST GIS](https://restgis.com) – api pro získání map celého světa
+<img src="/files/mapa-cr-svg/cz-kraje.svg" alt="">
+
+<ul>
+  <li>
+    <a href="https://restgis.com">REST GIS</a> – api pro získání map celého světa
+  </li>
+</ul>

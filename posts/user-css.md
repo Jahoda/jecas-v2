@@ -6,6 +6,9 @@ date: "2015-10-27"
 last_modification: "2015-10-27"
 status: 0
 tags: []
+format: "html"
 ---
 
-- Viget: [Inline Styles, User Style Sheets and Accessibility](https://viget.com/inspire/inline-styles-user-style-sheets-and-accessibility)
+<ul>
+  <li>Viget: <a href="https://viget.com/inspire/inline-styles-user-style-sheets-and-accessibility">Inline Styles, User Style Sheets and Accessibility</a></li>
+</ul>

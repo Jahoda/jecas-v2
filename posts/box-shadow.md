@@ -5,23 +5,23 @@ description: "Vlastnost <code>box-shadow</code> umí vytvořit CSS stín kolem e
 date: "2014-04-24"
 last_modification: "2019-10-14"
 status: 1
-tags: ["CSS", "CSS vlastnosti"]
+tags: ["css", "css-vlastnosti"]
+format: "html"
 ---
 
-Pro vytvoření stínu kolem textu slouží CSS vlastnost [`text-shadow`](/text-shadow).
+<p>Pro vytvoření stínu kolem textu slouží CSS vlastnost <a href="/text-shadow"><code>text-shadow</code></a>.</p>
 
-## Podpora
+<h2 id="podpora">Podpora</h2>
 
-Dobře podporovaná vlastnost napříč všemi běžnými prohlížeči.
+<p>Dobře podporovaná vlastnost napříč všemi běžnými prohlížeči.</p>
 
-## Zápis
+<h2 id="zapis">Zápis</h2>
 
-```
-element {
-  box-shadow: **10px 5px** *5px* red;
-}
-```
+<pre id="test" style="box-shadow: 10px 5px 5px #1081DD;"><code>element {
+  box-shadow: <span id="test-css"><b>10px 5px</b> <i>5px</i> red</span>;
+}</code></pre>
 
+<script>
   function el(id) {
     return document.getElementById(id);
   }
@@ -30,58 +30,77 @@ element {
     el("test").style.boxShadow = css;
     el("test-css").innerHTML = css;
   }
+</script>
 
-  Vnitřní stín
+<dl>
   
-    Jako první hodnotu je ještě možné zadat `inset`, což vytvoří stín uvnitř elementu.
-
-    Tuto hodnotu jde uvést i jako poslední. V některých prohlížečích funguje i kdekoliv jinde mezi umístěním a barvou, ale minimálně **Edge** nebo **Safari** si s tím neporadí.
-
-  Umístění
+  <dt id="inset">Vnitřní stín</dt>
+  <dd>
+    <p>Jako první hodnotu je ještě možné <label class="live no-source"><input type="checkbox" id="umisteni" value="inset" onchange="upravitStin()">zadat <code>inset</code></label>, což vytvoří stín uvnitř elementu.</p>
+    
+    <p>Tuto hodnotu jde uvést i jako poslední. V některých prohlížečích funguje i kdekoliv jinde mezi umístěním a barvou, ale minimálně <b>Edge</b> nebo <b>Safari</b> si s tím neporadí.</p>
+  </dd>
   
-    V ukázce výše první dvě hodnoty udávají umístění stínu.
-
-        První hodnota je **horisontální** (vodorovná). Čím větší hodnota bude nastavená, tím **vpravo** bude stín větší. Přehodit stín **doleva** je možné zadáním záporné hodnoty. -100  100        
-
-        Druhá hodnota je **vertikální** (svislá). Nastavuje velikost stínu **dole**. Nebo **nahoře** při zadání záporné hodnoty. -100  100
-
-  Rozmazání
+  <dt id="offset">Umístění</dt>
+  <dd>
+    <p>V ukázce výše první dvě hodnoty udávají umístění stínu.</p>
+    
+    <ul>
+      <li>
+        <p>První hodnota je <b>horisontální</b> (vodorovná). Čím větší hodnota bude nastavená, tím <b>vpravo</b> bude stín větší. Přehodit stín <b>doleva</b> je možné zadáním záporné hodnoty. <span class="live no-source">-100 <input oninput="upravitStin()" onchange="upravitStin()" type="range" min="-100" max="100" id="x" value="10"> 100</span>        </p>
+      </li>
+      <li>
+        <p>Druhá hodnota je <b>vertikální</b> (svislá). Nastavuje velikost stínu <b>dole</b>. Nebo <b>nahoře</b> při zadání záporné hodnoty. <span class="live no-source">-100 <input oninput="upravitStin()" onchange="upravitStin()" type="range" min="-100" max="100" id="y" value="10"> 100</span></p>
+      </li>
+    </ul>
+  </dd>
   
-    Další hodnota určuje, jak moc bude stín rozmazaný. Při nulové hodnotě tedy bude vypadat jako obyčejný rámeček. 0  100
-
-  Velikost
+  <dt id="blur">Rozmazání</dt>
+  <dd>
+    <p>Další hodnota určuje, jak moc bude stín rozmazaný. Při nulové hodnotě tedy bude vypadat jako obyčejný rámeček. <span class="live no-source">0 <input oninput="upravitStin()" onchange="upravitStin()" type="range" min="0" max="100" id="rozmazani" value="5"> 100</span></p>
+    
+  </dd>
   
-    Dokáže roztáhnout stín všemi směry. 0  100
-
-  Barva
+  <dt id="spread">Velikost</dt>
+  <dd>
+    <p>Dokáže roztáhnout stín všemi směry. <span class="live no-source">0 <input oninput="upravitStin()" onchange="upravitStin()" type="range" min="0" max="100" id="velikost" value="0"> 100</span></p>
+  </dd>
   
-    Poslední hodnota je barva stínu. 
+  <dt id="color">Barva</dt>
+  <dd>
+    <p>Poslední hodnota je barva stínu. <span class="live no-source"><input oninput="upravitStin()" onchange="upravitStin()" type="color" value="#1081DD" id="barva"></span></p>    
+  </dd>
+</dl>
 
-## Pokročilé
+<h2 id="pokrocile">Pokročilé</h2>
 
-### Průhledný stín
+<h3 id="pruhlednost">Průhledný stín</h3>
 
-Barvu stínu je možná zadávat přes [`rgba()`](/opacity#rgba), to může vytvořit poloprůhledný stín.
+<p>Barvu stínu je možná zadávat přes <a href="/opacity#rgba"><code>rgba()</code></a>, to může vytvořit poloprůhledný stín.</p>
 
-### Kulaté rohy
+<h3 id="kulate-rohy">Kulaté rohy</h3>
 
-Vlastnost `box-shadow` ctí i [`border-radius`](/border-radius). Kolem kulatého rohu proto bude kulatý stín.
+<p>Vlastnost <code>box-shadow</code> ctí i <a href="/border-radius"><code>border-radius</code></a>. Kolem kulatého rohu proto bude kulatý stín.</p>
 
-## Vícenásobné stíny
 
-Pro jeden element je možné zadat více stínů. Stačí je oddělit čárkami.
 
-```
-element {
+
+<h2 id="vice">Vícenásobné stíny</h2>
+
+<p>Pro jeden element je možné zadat více stínů. Stačí je oddělit čárkami.</p>
+
+<pre><code>element {
   box-shadow: 0 1px 1px rgba(0, 0, 0, .1), 
               0 2px 2px rgba(0, 0, 0, .1), 
               0 4px 4px rgba(0, 0, 0, .1), 
               0 8px 8px rgba(0, 0, 0, .1);
-}
-```
+}</code></pre>
 
-Je poměrně běžné tímto způsobem docílit *hezčích*/plynulejších stínů:
 
+<p>Je poměrně běžné tímto způsobem docílit <i>hezčích</i>/plynulejších stínů:</p>
+
+<div class="live">
+<style>
   .obycejny-stin {
     box-shadow: 0 4px 4px rgba(0, 0, 0, .3);
   }
@@ -92,23 +111,32 @@ Je poměrně běžné tímto způsobem docílit *hezčích*/plynulejších stín
                 0 4px 4px rgba(0, 0, 0, .1), 
                 0 8px 8px rgba(0, 0, 0, .1);
   }  
-
+</style>  
+<p class="obycejny-stin" style="padding: 1em">
   Obyčejný jeden stín
-
+</p>
+<p class="hezci-stin" style="padding: 1em">
   Hezčí vícenásobný stín
+</p>
+</div>
 
-Více třeba v samostatném článku:
+<p>Více třeba v samostatném článku:</p>
 
-    - Tobias Bjerrome Ahlin: [Smoother &amp; sharper shadows with layered box-shadows](https://tobiasahlin.com/blog/layered-smooth-box-shadows/)
+<div class="external-content">
+  <ul>
+    <li>Tobias Bjerrome Ahlin: <a href="https://tobiasahlin.com/blog/layered-smooth-box-shadows/">Smoother &amp; sharper shadows with layered box-shadows</a></li>
+  </ul>
+</div>
 
-## Historie
+<h2 id="historie">Historie</h2>
 
-CSS stíny fungují od **IE 9**. Ve starších Internet Explorerech šlo stín vytvořit přes [*starou* CSS vlastnost `filter`](http://msdn.microsoft.com/en-us/library/ms533086(v=vs.85).aspx). Pro starší **Webkit**, **Firefox** nebo **Operu** se používala vlastnost s [CSS prefixy](/css-prefixy).
+<p>CSS stíny fungují od <b>IE 9</b>. Ve starších Internet Explorerech šlo stín vytvořit přes <a href="http://msdn.microsoft.com/en-us/library/ms533086(v=vs.85).aspx"><i>starou</i> CSS vlastnost <code>filter</code></a>. Pro starší <b>Webkit</b>, <b>Firefox</b> nebo <b>Operu</b> se používala vlastnost s <a href="/css-prefixy">CSS prefixy</a>.</p>
 
-Když `box-shadow` ještě moc nefungoval, řešily se stíny buď obrázky, nebo mnoha obalovými elementy, které měly například 1px rámečky, což stín simulovalo.
+<p>Když <code>box-shadow</code> ještě moc nefungoval, řešily se stíny buď obrázky, nebo mnoha obalovými elementy, které měly například 1px rámečky, což stín simulovalo.</p>
 
-## Odkazy
+<h2 id="odkazy">Odkazy</h2>
 
-  - [Shine.js](http://bigspaceship.github.io/shine.js/) – dynamické generování stínů v JavaScriptu.
-
-  - [brumm.af/shadows](https://brumm.af/shadows) – nástroj pro generování hezkých stínů
+<ul>
+  <li><a href="http://bigspaceship.github.io/shine.js/">Shine.js</a> – dynamické generování stínů v JavaScriptu.</li>
+  <li><a href="https://brumm.af/shadows">brumm.af/shadows</a> – nástroj pro generování hezkých stínů</li>
+</ul>

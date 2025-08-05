@@ -5,33 +5,34 @@ description: "Klíčové slovo <code>currentColor</code> obsahuje aktuální bar
 date: "2014-11-27"
 last_modification: "2014-11-28"
 status: 1
-tags: ["CSS", "Rady a nápady"]
+tags: ["css", "napady"]
+format: "html"
 ---
 
-„Barva“ `currentColor` se používá jako jiné hodnoty pro **nastavení barvy v CSS**.
+<p>„Barva“ <code>currentColor</code> se používá jako jiné hodnoty pro <b>nastavení barvy v CSS</b>.</p>
 
-```
-element {
-  border: 1px solid **currentColor**; 
-}
-```
+<pre><code>element {
+  border: 1px solid <b>currentColor</b>; 
+}</code></pre>
 
-Element bude mít rámeček v *aktuální barvě*. Hodnota `currentColor` bývá u řady vlastností výchozí, takže je možné její uvedení vypustit. Následující konstrukce se proto zobrazí stejně jako ta předchozí.
+<p>Element bude mít rámeček v <i>aktuální barvě</i>. Hodnota <code>currentColor</code> bývá u řady vlastností výchozí, takže je možné její uvedení vypustit. Následující konstrukce se proto zobrazí stejně jako ta předchozí.</p>
 
-```
-element {
+<pre><code>element {
   border: 1px solid; 
-}
-```
+}</code></pre>
 
-## Podpora
 
-Klíčové slovo / „barva“ `currentColor` funguje od **IE 9**. Ve starších prohlížečích je možné využít **výchozí barvy** (bez přímého uvedení).
+<h2 id="podpora">Podpora</h2>
 
-## Využití
+<p>Klíčové slovo / „barva“ <code>currentColor</code> funguje od <b>IE 9</b>. Ve starších prohlížečích je možné využít <b>výchozí barvy</b> (bez přímého uvedení).</p>
 
-Použitím `currentColor` si můžeme usnadnit práci při kopírování barev. Typický příklad nastane u tlačítka, kterému chceme při `:hover`u a `:focus`u změnit barvu písma i rámečku:
 
+<h2 id="vyuziti">Využití</h2>
+
+<p>Použitím <code>currentColor</code> si můžeme usnadnit práci při kopírování barev. Typický příklad nastane u tlačítka, kterému chceme při <code>:hover</code>u a <code>:focus</code>u změnit barvu písma i rámečku:</p>
+
+<div class="live">
+  <style>
     .zmenaBarvy {
       color: #0D6AB7;
       border: 2px solid #0D6AB7;
@@ -48,41 +49,41 @@ Použitím `currentColor` si můžeme usnadnit práci při kopírování barev. 
       border-color: #0B8A14;
       background: #fff;
     }    
-  
-  Tlačítko
+  </style>
+  <button class="zmenaBarvy">Tlačítko</button>
+</div>
 
-V CSS pro každý stav budeme deklarovat tutéž barvu pro písmo (color) i rámeček (`border-color`).
+<p>V CSS pro každý stav budeme deklarovat tutéž barvu pro písmo (<color>color</color>) i rámeček (<code>border-color</code>).</p>
 
-```
-button {
-  color: **blue**;
-  border: 2px solid **blue**;
+<pre><code>button {
+  color: <b>blue</b>;
+  border: 2px solid <b>blue</b>;
 }
 button:hover {
-  color: **red**;
-  border-color: **red**;
+  color: <b>red</b>;
+  border-color: <b>red</b>;
 }
 button:focus, button:active {
-  color: **green**;
-  border-color: **green**;
-}
-```
+  color: <b>green</b>;
+  border-color: <b>green</b>;
+}</code></pre>
 
-Zabránit nutnosti duplikovat barvy mohou [CSS proměnné](/var) nebo **proměnné v preprocesorech**. Použití `currentColor` ale umožní udělat totéž **mnohem elegantněji** – nastavit jako barvu `currentColor` (nebo *nic* – vůbec ji neuvést) a měnit pouze `color`.
+<p>Zabránit nutnosti duplikovat barvy mohou <a href="/var">CSS proměnné</a> nebo <b>proměnné v preprocesorech</b>. Použití <code>currentColor</code> ale umožní udělat totéž <b>mnohem elegantněji</b> – nastavit jako barvu <code>currentColor</code> (nebo <i>nic</i> – vůbec ji neuvést) a měnit pouze <code>color</code>.</p>
 
-```
-button {
-  color: **blue**;
-  border: 2px solid **currentColor**;
+<pre><code>button {
+  color: <b>blue</b>;
+  border: 2px solid <b>currentColor</b>;
 }
 button:hover {
-  color: **red**;
+  color: <b>red</b>;
 }
 button:focus, button:active {
-  color: **green**;
-}
-```
+  color: <b>green</b>;
+}</code></pre>
 
+
+<div class="live">
+  <style>
     .currentColor {
       color: #0D6AB7;
       border: 2px solid currentColor;
@@ -97,25 +98,28 @@ button:focus, button:active {
       color: #0B8A14;
       background: #fff;
     }    
-  
-  Tlačítko
+  </style>
+  <button class="currentColor">Tlačítko</button>
+</div>
 
-Jelikož se barva (`color`) **dědí**, lze tohoto chování využít i pro **vnořené elementy** nebo [pseudo-elementy](/css-selektory#before-after).
+<p>Jelikož se barva (<code>color</code>) <b>dědí</b>, lze tohoto chování využít i pro <b>vnořené elementy</b> nebo <a href="/css-selektory#before-after">pseudo-elementy</a>.</p>
 
-[Samostatná ukázka](http://kod.djpw.cz/aeib) využití `currentColor`
+<p><a href="http://kod.djpw.cz/aeib">Samostatná ukázka</a> využití <code>currentColor</code></p>
 
-Klíčové slovo `currentColor` je u řady vlastností **zbytečné uvádět**. Kvůli podpoře pro **IE 8** a starších dokonce nežádoucí.
+<p>Klíčové slovo <code>currentColor</code> je u řady vlastností <b>zbytečné uvádět</b>. Kvůli podpoře pro <b>IE 8</b> a starších dokonce nežádoucí.</p>
 
-  - `border: 1px solid`
+<ul>
+  <li><code>border: 1px solid</code></li>
+  <li><code>outline: 1px solid</code></li>
+  <li><code><a href="/box-shadow">box-shadow</a>: 10px 5px 5px</code></li>
+  <li><code><a href="/text-shadow">text-shadow</a>: 10px 10px 5px</code></li>
+</ul>
 
-  - `outline: 1px solid`
+<p><a href="http://kod.djpw.cz/vfib">Živá ukázka</a> bez uvádění barev</p>
 
-  - `[box-shadow](/box-shadow): 10px 5px 5px`
 
-  - `[text-shadow](/text-shadow): 10px 10px 5px`
+<h2 id="odkazy">Odkazy jinam</h2>
 
-[Živá ukázka](http://kod.djpw.cz/vfib) bez uvádění barev
-
-## Odkazy jinam
-
-  - [Extending the Color Cascade with the CSS currentColor Variable](http://blogs.adobe.com/dreamweaver/2015/02/extending-the-color-cascade-with-the-css-currentcolor-variable.html)
+<ul>
+  <li><a href="http://blogs.adobe.com/dreamweaver/2015/02/extending-the-color-cascade-with-the-css-currentcolor-variable.html">Extending the Color Cascade with the CSS currentColor Variable</a></li>
+</ul>

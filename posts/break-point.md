@@ -6,6 +6,7 @@ date: "2015-03-12"
 last_modification: "2015-03-12"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [All your base, are belong to us — or what base size do em-based media queries use?](http://blog.w3conversions.com/2015/03/all-your-base-are-belong-to-us-—-or-what-base-size-do-em-based-media-queries-use/)
+<li><a href="http://blog.w3conversions.com/2015/03/all-your-base-are-belong-to-us-—-or-what-base-size-do-em-based-media-queries-use/">All your base, are belong to us — or what base size do em-based media queries use?</a></li>

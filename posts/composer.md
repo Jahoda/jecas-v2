@@ -6,8 +6,10 @@ date: "2019-05-06"
 last_modification: "2019-05-06"
 status: 0
 tags: []
+format: "html"
 ---
 
+<pre>
 Instalace composeru na Windows
 - stáhnout PHP: https://windows.php.net/download/#php-7.3-ts-VC15-x64
 - stánhout Composer: https://getcomposer.org/download/
@@ -16,6 +18,7 @@ Instalace composeru na Windows
 - vytvořit php.ini přejmenováním php.ini-production
 - nastavit cestu k rozšířením extension_dir = "ext"
 - povolit rozšíření pro ssl - extension=openssl
+
 
 ===
 
@@ -27,6 +30,7 @@ bin/console graphql:compile
 docker ps
 
  winpty docker exec -it c60fcfb1de2c bash
+
 
 cd cockpit-portal-api
 make init-dev
@@ -49,3 +53,6 @@ Nahodit:
 
 Nahodit po pádu
 docker start $(docker ps -aq)
+
+
+</pre>

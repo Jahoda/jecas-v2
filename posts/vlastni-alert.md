@@ -5,39 +5,43 @@ description: "Jak si v JavaScriptu vytvořit vlastní hlášky jako je výchozí
 date: "2013-12-19"
 last_modification: "2017-02-17"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "Animace"]
+tags: ["hotova-reseni", "js", "webove-animace"]
+format: "html"
 ---
 
-V **JavaScriptové aplikaci** bývá často potřeba uživatele informovat o nějaké akci, která proběhla [AJAXem](/ajax) na pozadí.
+<p>V <b>JavaScriptové aplikaci</b> bývá často potřeba uživatele informovat o nějaké akci, která proběhla <a href="/ajax">AJAXem</a> na pozadí.</p>
 
-  Zobrazit hlášku
+<div class="live">
+  <button onclick="alert('Text hlášky')">Zobrazit hlášku</button>
+</div>
 
-To není úplně špatné, ale někdy je výchozí podoba `alert`u moc agresívní. Pokud vyskočí, **nejde zpravidla dále na stránce nic dělat**. (S tím souvisí i jedna vlastnost `alert`u, která nejde nahradit, to jest **pozastavení skriptů**.)
+<p>To není úplně špatné, ale někdy je výchozí podoba <code>alert</code>u moc agresívní. Pokud vyskočí, <b>nejde zpravidla dále na stránce nic dělat</b>. (S tím souvisí i jedna vlastnost <code>alert</code>u, která nejde nahradit, to jest <b>pozastavení skriptů</b>.)</p>
 
-## Přepsání `alert`u
+<h2 id="prepsani-alertu">Přepsání <code>alert</code>u</h2>
+<p>První možnost je funkci <code>alert</code> nahradit, jeho překrytí může vypadat zhruba takto:</p>
 
-První možnost je funkci `alert` nahradit, jeho překrytí může vypadat zhruba takto:
-
-```
-window.alert = function (hlaska) {
+<pre><code>window.alert = function (hlaska) {
   // nějaké vypsání hlášky
-}
-```
+}</code></pre>
 
-Nepřijde mi to ale moc chytré. Není-li problém všude na stránce volat vlastní funkci, je vhodnější si originální `alert` ponechat.
+<p>Nepřijde mi to ale moc chytré. Není-li problém všude na stránce volat vlastní funkci, je vhodnější si originální <code>alert</code> ponechat.</p>
 
-## Vlastní hláška
+<h2 id="hlaska">Vlastní hláška</h2>
+<p>Jak si vlastní hlášku vyrobit.</p>
 
-Jak si vlastní hlášku vyrobit.
-
+<style>
   /* reset */ 
   #hlaska {margin: 0; font-size: 100%}
-
+</style>
+<div class="live">
+<style>
 #hlaska {background: #DA3F94; color: #fff; position: fixed; width: 50%; left: 50%; margin-left: -25%; padding: .5em; top: -3em; transition: top 1s}
 #hlaska.zobrazit {top: 0}
-
-Hláška
-
+</style>
+  
+<div id="hlaska"></div>
+<button onclick="hlaska('Text vlastní hlášky', 5)">Hláška</button>
+<script>
 function hlaska(text, vycistit) {
   var casovac;
   vycistit = (typeof vycistit === "undefined") ? 3 : vycistit;
@@ -52,46 +56,44 @@ function hlaska(text, vycistit) {
     h.className = "";
   }, vycistit * 1000)
 }
+</script>
+</div>
 
-  - Na stránku se přidá prázdný `&lt;div>`, který bude mít ID, aby ho JavaScript [našel](/queryselector).
+<ol>
+  <li>Na stránku se přidá prázdný <code>&lt;div></code>, který bude mít ID, aby ho JavaScript <a href="/queryselector">našel</a>.</li>
+  <li>Tento element se vhodně nastyluje. Například se může <a href="/position#fixed">fixně naposicovat</a> k horní straně okna a třeba ještě <a href="/centrovani#absolute">vycentrovat</a>.</li>
+  <li><a href="/zobrazit-skryt">Skrývání/zobrazování</a> potom bude řešené <a href="/prepinani-trid">přepínáním tříd</a> (je možné provést i <a href="/animace-skryt">plynulé skrývání</a>).</li>
+  <li>Vlastní JS funkce potom nastaví dle parametru obsah (<code>innerHTML</code>) a přepne třídu.</li>
+  <li>Automatické <b>schování hlášky</b> po nějaké době může zajistit <a href="/odpocitavani">časovač</a> <code>setTimeout</code>.</li>
+</ol>
 
-  - Tento element se vhodně nastyluje. Například se může [fixně naposicovat](/position#fixed) k horní straně okna a třeba ještě [vycentrovat](/centrovani#absolute).
+<p>Použití je prosté. První parametr je text. Druhý je volitelný a určuje <b>čas, po kterém se hláška skryje</b> (ve vteřinách):</p>
+<pre><code>hlaska('Text první hlášky', 5);</code></pre>
 
-  - [Skrývání/zobrazování](/zobrazit-skryt) potom bude řešené [přepínáním tříd](/prepinani-trid) (je možné provést i [plynulé skrývání](/animace-skryt)).
 
-  - Vlastní JS funkce potom nastaví dle parametru obsah (`innerHTML`) a přepne třídu.
+<p><a href="http://kod.djpw.cz/eny">Samostatná ukázka</a></p>
 
-  - Automatické **schování hlášky** po nějaké době může zajistit [časovač](/odpocitavani) `setTimeout`.
+<h2 id="prepsani-zachovani">Přepsání i zachování výchozího <code>alert</code>u</h2>
+<p>Pan <b>Kubo2</b> přišel s dobrou připomínkou, že není problém výchozí <code>alert</code> přepsat vlastní hláškou, ale zároveň si ho <b>nejprve uložit</b> do proměnné.</p>
 
-Použití je prosté. První parametr je text. Druhý je volitelný a určuje **čas, po kterém se hláška skryje** (ve vteřinách):
+<p>Potom můžeme vytvářet <i>hezké</i> hlášky funkcí pojmenovanou <code>alert</code>, ale mít původní <code>alert</code> stále k disposici.</p>
 
-```
-hlaska('Text první hlášky', 5);
-```
+<p>Snad jediné risiko je, že na tuto změnu chování zapomeneme nebo bude kód pro někoho jiného méně srozumitelný.</p>
 
-[Samostatná ukázka](http://kod.djpw.cz/eny)
-
-## Přepsání i zachování výchozího `alert`u
-
-Pan **Kubo2** přišel s dobrou připomínkou, že není problém výchozí `alert` přepsat vlastní hláškou, ale zároveň si ho **nejprve uložit** do proměnné.
-
-Potom můžeme vytvářet *hezké* hlášky funkcí pojmenovanou `alert`, ale mít původní `alert` stále k disposici.
-
-Snad jediné risiko je, že na tuto změnu chování zapomeneme nebo bude kód pro někoho jiného méně srozumitelný.
-
-```
-function hlaska(text) {
+<pre><code>function hlaska(text) {
   // vlastní hláška
 }
 // Uložíme si originální alert
 var puvodniAlert = window.alert;
 // Přepíšeme ho vlastní funkcí
 window.alert = hlaska;
+</code></pre>
 
-```
+<p><a href="http://kod.djpw.cz/bgab">Ukázka</a></p>
 
-[Ukázka](http://kod.djpw.cz/bgab)
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - [sweetAlert 2](https://github.com/limonte/sweetalert2) – vlastní alert s plynulou animací
+<ul>
+  <li><a href="https://github.com/limonte/sweetalert2">sweetAlert 2</a> – vlastní alert s plynulou animací</li>
+</ul>

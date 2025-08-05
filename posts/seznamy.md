@@ -5,272 +5,419 @@ description: "Přehled všech typů seznamů, které se v HTML používají."
 date: "2015-07-10"
 last_modification: "2015-07-23"
 status: 1
-tags: ["HTML", "HTML značky"]
+tags: ["html", "html-tagy"]
+format: "html"
 ---
 
-Seznamy jsou na webových stránkách užitečný nástroj, jak **zpřehlednit** obsah – zvlášť u delšího textu.
+<p>Seznamy jsou na webových stránkách užitečný nástroj, jak <b>zpřehlednit</b> obsah – zvlášť u delšího textu.</p>
 
-Řada návštěvníků nečte web písmeno po písmenku, řádek po řádku, ale hledá různé **visuálně odlišné prvky**, kterých se mohou očima *chytit*.
+<p><img src="/files/article-large/seznamy.png" alt="Přehled HTML seznamů" class="border"></p>
 
-To může být:
 
-  - **tučný** text,
 
-  - [nadpis](/nadpisy),
 
-  - [citace](/citace),
 
-  - obrázek,
 
-  - tabulky
 
-A právě **seznamy**.
 
-## Položka seznamu `&lt;li>`
 
-Základním prvkem seznamů je položka `&lt;li>`.
 
-Příklad zápisu:
 
-```
-&lt;li>Položka seznamu&lt;/li>
-```
 
-Pro obalení jednotlivých položek seznamu se používá značka `&lt;li>` – anglicky *list item* (položka seznamu).
 
-Jedná se o značku s [nepovinnou koncovou značkou](/html-znacky#koncova-volitelna). Zápis tak může vypadat i následovně (položka se sama ukončí o další `&lt;li>` nebo konec seznamu):
 
-```
-&lt;li>Položka
-&lt;li>Další položka
-```
 
-Měla by být umístěna v obalu definujícím seznam – např. `&lt;ul>` nebo `&lt;ol>`, teoreticky ale funguje i bez toho.
 
-    - Položka mimo seznam
+<p>Řada návštěvníků nečte web písmeno po písmenku, řádek po řádku, ale hledá různé <b>visuálně odlišné prvky</b>, kterých se mohou očima <i>chytit</i>.</p>
 
-    - Jiná položka
+<p>To může být:</p>
 
-Značka `&lt;li>` má v CSS stejnojmennou hodnotu vlastnosti [`display`](/display) – `display: list-item`.
-
-### Obsah značky `&lt;li>`
-
-Do položky seznamu jde vložit v podstatě libovolnou jinou značku – odstavce, nadpisy nebo **další seznam**.
-
-### Atributy značky `&lt;li>`
-
-Kromě [obecných atributů](/obecne-atributy) jako je `class`, `id`, `title` a podobně, existují další dva:
-
-  `value`
+<ul>
+  <li><b>tučný</b> text,</li>
   
-    U číslovaného seznamu `&lt;ol>` slouží k nastavení pořadí položky.
-
-    ```
-&lt;ol>
-  &lt;li **value**="5">Položka s pořadovým číslem 5&lt;/li>
-&lt;ol>
-```
-
-    Číslo se nastavuje i v případě, že je seznam nečíselného typu. Pořadí se potom převede třeba na písmena:
-
-      - Pátá položka
-
-      - Šestá položka
-
-      - Druhá položka
-
-  `type`
+  <li><a href="/nadpisy">nadpis</a>,</li>
   
-    Jde použít pro změnu stylu *číslování* pro konkrétní položku seznamu `&lt;ol>`.
+  <li><a href="/citace">citace</a>,</li>
+  
+  <li>obrázek,</li>
+  
+  <li>tabulky</li>
+</ul>
 
-      - písmena
+<p>A právě <b>seznamy</b>.</p>
 
-      - římské číslice
 
-      - číslice
 
-    Případně pro změnu stylu odrážek v `&lt;ul>`.
 
-      - puntík
+<h2 id="li">Položka seznamu <code>&lt;li></code></h2>
 
-      - kruh
+<p>Základním prvkem seznamů je položka <code>&lt;li></code>.</p>
 
-      - čtvereček
+<p>Příklad zápisu:</p>
 
-    V HTML 5 je atribut `type` u položky `&lt;li>` považován za **zastaralý a je [nevalidní](/validita)**.
+<pre><code>&lt;li>Položka seznamu&lt;/li></code></pre>
 
-    Pro vyhovění specifikaci je nutné používat CSS vlastnost [`list-style-type`](/list-style#type).
 
-    Přímo u seznamu `&lt;ol>` je atribut `type` validní i v HTML 5, na rozdíl od HTML 4.01 Strict.
 
-## Nečíslovaný seznam `&lt;ul>`
 
-Asi nejčastěji je používán nečíslovaný seznam `&lt;ul>`. Jednotlivé odrážky seznamu, které tvoří značka `&lt;li>`, bývají typicky označeny puntíkem.
+<p>Pro obalení jednotlivých položek seznamu se používá značka <code>&lt;li></code> – anglicky <i lang="en">list item</i> (položka seznamu).</p>
 
-    - Položka
+<p>Jedná se o značku s <a href="/html-znacky#koncova-volitelna">nepovinnou koncovou značkou</a>. Zápis tak může vypadat i následovně (položka se sama ukončí o další <code>&lt;li></code> nebo konec seznamu):</p>
 
-    - Jiná položka
+<pre><code>&lt;li>Položka
+&lt;li>Další položka</code></pre>
 
-Styl odrážek jde změnit atributem `type` nebo CSS vlastností `list-style-type`.
 
-## Číslovaný seznam `&lt;ol>`
 
-Význam zkratky `&lt;ol>` je *ordered list* – číslovaný seznam.
 
-Oproti seznamu `&lt;ul>` má zvláštní schopnost – odrážky **číslují pořadí** bez přičinění tvůrce kódu. To je pohodlné, protože není potřeba číslování **ručně přepisovat**, když se změní pořadí odrážek.
+<p>Měla by být umístěna v obalu definujícím seznam – např. <code>&lt;ul></code> nebo <code>&lt;ol></code>, teoreticky ale funguje i bez toho.</p>
 
-```
-&lt;ol>
+<div class="live">
+    <li>Položka mimo seznam</li>
+    
+    <li>Jiná položka</li>  
+</div>
+
+<p>Značka <code>&lt;li></code> má v CSS stejnojmennou hodnotu vlastnosti <a href="/display"><code>display</code></a> – <code>display: list-item</code>.</p>
+
+
+<h3 id="li-obsah">Obsah značky <code>&lt;li></code></h3>
+
+<p>Do položky seznamu jde vložit v podstatě libovolnou jinou značku – odstavce, nadpisy nebo <b>další seznam</b>.</p>
+
+
+<h3 id="li-atributy">Atributy značky <code>&lt;li></code></h3>
+
+<p>Kromě <a href="/obecne-atributy">obecných atributů</a> jako je <code>class</code>, <code>id</code>, <code>title</code> a podobně, existují další dva:</p>
+
+<dl>
+  <dt id="value"><code>value</code></dt>
+  <dd>
+    <p>U číslovaného seznamu <code>&lt;ol></code> slouží k nastavení pořadí položky.</p>
+    
+    <pre><code>&lt;ol>
+  &lt;li <b>value</b>="5">Položka s pořadovým číslem 5&lt;/li>
+&lt;ol></code></pre>
+    
+    
+    
+    <p>Číslo se nastavuje i v případě, že je seznam nečíselného typu. Pořadí se potom převede třeba na písmena:</p>
+    
+    <div class="live"><ol type="a">
+      <li value="5">Pátá položka</li>
+      <li>Šestá položka</li>
+      <li value="2">Druhá položka</li>
+    </ol></div>
+  </dd>
+  
+  
+  
+  
+  <dt id="type"><code>type</code></dt>
+  <dd>
+    <p>Jde použít pro změnu stylu <i>číslování</i> pro konkrétní položku seznamu <code>&lt;ol></code>.</p>
+    
+    <div class="live"><ol>
+      <li type="a">písmena</li>
+      <li type="I">římské číslice</li>
+      <li type="1">číslice</li>
+    </ol></div>
+    
+    
+    
+    
+    <p>Případně pro změnu stylu odrážek v <code>&lt;ul></code>.</p>
+    
+    <div class="live"><ul>
+      <li type="disc">puntík</li>
+      <li type="circle">kruh</li>
+      <li type="square">čtvereček</li>
+    </ul></div>
+    
+    
+    
+       
+    <p>V HTML 5 je atribut <code>type</code> u položky <code>&lt;li></code> považován za <b>zastaralý a je <a href="/validita">nevalidní</a></b>.</p>
+    
+    <p><img src="/files/seznamy/li-type.png" alt="Nevalidní atribut type" class="border"></p>
+  
+    
+     
+    
+    
+    <p>Pro vyhovění specifikaci je nutné používat CSS vlastnost <a href="/list-style#type"><code>list-style-type</code></a>.</p>
+    
+    <p>Přímo u seznamu <code>&lt;ol></code> je atribut <code>type</code> validní i v HTML 5, na rozdíl od HTML 4.01 Strict.</p>
+  </dd>
+</dl>
+
+
+<h2 id="ul">Nečíslovaný seznam <code>&lt;ul></code></h2>
+
+<p>Asi nejčastěji je používán nečíslovaný seznam <code>&lt;ul></code>. Jednotlivé odrážky seznamu, které tvoří značka <code>&lt;li></code>, bývají typicky označeny puntíkem.</p>
+
+<div class="live">
+  <ul>
+    <li>Položka</li>
+    
+    <li>Jiná položka</li>
+  </ul>  
+</div>
+
+
+
+<p>Styl odrážek jde změnit atributem <code>type</code> nebo CSS vlastností <code>list-style-type</code>.</p>
+
+
+
+<h2 id="ol">Číslovaný seznam <code>&lt;ol></code></h2>
+
+<p>Význam zkratky <code>&lt;ol></code> je <i lang="en">ordered list</i> – číslovaný seznam.</p>
+
+
+<p>Oproti seznamu <code>&lt;ul></code> má zvláštní schopnost – odrážky <b>číslují pořadí</b> bez přičinění tvůrce kódu. To je pohodlné, protože není potřeba číslování <b>ručně přepisovat</b>, když se změní pořadí odrážek.</p>
+
+
+<pre><code>&lt;ol>
   &lt;li>První položka&lt;/li>
   &lt;li>Druhá položka&lt;/li>
-&lt;/ol>
-```
+&lt;/ol></code></pre>
 
-    - [CSS `counter`](/counter) – způsob, jak automaticky číslovat i jiné věci než **číslovaný seznam**
 
-### Atributy `&lt;ol>`
 
-  `start`
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/counter">CSS <code>counter</code></a> – způsob, jak automaticky číslovat i jiné věci než <b>číslovaný seznam</b></li>
+  </ul>
+</div>
+
+<h3 id="ol-atributy">Atributy <code>&lt;ol></code></h3>
+
+<dl>
+  <dt id="start"><code>start</code></dt>
+  <dd>
+    <p>Položky jsou standardně číslovány od 1 (případně od <i>a</i> nebo <i>I</i> v případě písmen nebo římských číslic).</p>
+    
+    <p>Změnit počátek číslování umí atribut <code>start</code>. Zapisuje se <b>vždy jako číslo</b> (i v případě použití římských číslic nebo písmen).</p>    
+    
+    <div class="live"><ol start="5">
+  <li>První položka</li>
+  <li>Druhá položka</li>
+  <li value="18">Třetí položka</li>
+      </ol></div>    
+    
+    <p>Upravená číslice pořadí atributem <code>start</code> jde <i>přebít</i> atributem <code>value</code> pro položku <code>&lt;li></code>.</p>
+  </dd>
   
-    Položky jsou standardně číslovány od 1 (případně od *a* nebo *I* v případě písmen nebo římských číslic).
+  <dt id="reversed"><code>reversed</code></dt>
+  <dd>
+    <p>Slouží pro otočení pořadí číslování. Čísluje se potom <b>od konce</b> seznamu:</p>
+    
+    <div class="live"><ol reversed>
+  <li>První položka</li>
+  <li>Druhá položka</li>
+  <li>Třetí položka</li>
+      </ol></div>
+  </dd>
+</dl>
 
-    Změnit počátek číslování umí atribut `start`. Zapisuje se **vždy jako číslo** (i v případě použití římských číslic nebo písmen).
 
-  - První položka
 
-  - Druhá položka
 
-  - Třetí položka
 
-    Upravená číslice pořadí atributem `start` jde *přebít* atributem `value` pro položku `&lt;li>`.
 
-  `reversed`
-  
-    Slouží pro otočení pořadí číslování. Čísluje se potom **od konce** seznamu:
+<h2 id="stylovani">Stylování seznamů</h2>
 
-  - První položka
+<p>Pro změnu vzhledu seznamů, <b>obrázkové odrážky</b> a další se používá CSS vlastnost <code>list-style</code>, podrobněji se jí věnuje samostatný článek:</p>
 
-  - Druhá položka
+<div class="internal-content">
+  <ul>
+    <li><a href="/list-style">Styl odrážkového seznamu</a> – kompletní přehled CSS vlastnosti <code>list-style</code></li>
+  </ul>
+</div>
 
-  - Třetí položka
 
-## Stylování seznamů
 
-Pro změnu vzhledu seznamů, **obrázkové odrážky** a další se používá CSS vlastnost `list-style`, podrobněji se jí věnuje samostatný článek:
 
-    - [Styl odrážkového seznamu](/list-style) – kompletní přehled CSS vlastnosti `list-style`
+<h2 id="rucni">Ruční vytváření seznamů</h2>
 
-## Ruční vytváření seznamů
+<p>Obsah vypadající jako seznam jde vytvářet i bez značek <code>&lt;ul></code>, <code>&lt;ol></code> a <code>&lt;li></code>.</p>
 
-Obsah vypadající jako seznam jde vytvářet i bez značek `&lt;ul>`, `&lt;ol>` a `&lt;li>`.
+<p>Číslovaný:</p>
 
-Číslovaný:
+<div class="live">
+  <p>1. První položka<br>
+2. Druhá položka</p>
+</div>
 
-  1. První položka
 
-2. Druhá položka
 
-Nečíslovaný:
 
-  • Položka
 
-• Další položka
+<p>Nečíslovaný:</p>
 
-Sémanticky čistší a většinou **pohodlnější** je používání skutečných seznamů. V některých primitivnějších systémech pro psaní obsahu ale nemusí být jiná možnost.
+<div class="live">
+  <p>• Položka<br>
+• Další položka</p>
+</div>
 
-## Definiční seznam `&lt;dl>`
 
-Definiční seznam je něco mezi nečíslovaným seznamem a jednoduchou tabulkou o dvou sloupcích.
 
-Hodí se pro případy, kde existují dvojice typu *termín* — *definice*.
 
-```
-&lt;dl>
+<p>Sémanticky čistší a většinou <b>pohodlnější</b> je používání skutečných seznamů. V některých primitivnějších systémech pro psaní obsahu ale nemusí být jiná možnost.</p>
+
+
+
+
+
+<h2 id="dl">Definiční seznam <code>&lt;dl></code></h2>
+
+<p>Definiční seznam je něco mezi nečíslovaným seznamem a jednoduchou tabulkou o dvou sloupcích.</p>
+
+<p>Hodí se pro případy, kde existují dvojice typu <i>termín</i> — <i>definice</i>.</p>
+
+
+<pre><code>&lt;dl>
   &lt;dt>Je čas&lt;/dt>
   &lt;dd>Web o moderní tvorbě webových stránek&lt;/dd>
-&lt;/dl>
-```
+&lt;/dl></code></pre>
 
-Samotná značka `&lt;dl>` (*definition list*) tedy slouží jako **obal** pro značky `&lt;dt>` a `&lt;dd>`  – podobně jako `&lt;ul>` a `&lt;ol>` je obal pro `&lt;li>`.
 
-  `&lt;dt>` (*definition term*)
+
+
+<p>Samotná značka <code>&lt;dl></code> (<i lang="en">definition list</i>) tedy slouží jako <b>obal</b> pro značky <code>&lt;dt></code> a <code>&lt;dd></code>  – podobně jako <code>&lt;ul></code> a <code>&lt;ol></code> je obal pro <code>&lt;li></code>.</p>
+
+<dl>
+  <dt id="dt"><code>&lt;dt></code> (<i lang="en">definition term</i>)</dt>
+  <dd>
+    <p>Označuje termín, který se bude definovat.</p>
+  </dd>
   
-    Označuje termín, který se bude definovat.
+  <dt id="dd"><code>&lt;dd></code> (<i lang="en">definition description</i>)</dt>
+  <dd>
+    <p>Obsahuje popis dříve definovaného termínu.</p>
+  </dd>  
+</dl>
 
-  `&lt;dd>` (*definition description*)
-  
-    Obsahuje popis dříve definovaného termínu.
+<p>K jednomu termínu (<code>&lt;dt></code>) může být více definic (<code>&lt;dd></code>), stejně tak více termínů může mít jedinou definici nebo více termínů může mít více definic.</p>
 
-K jednomu termínu (`&lt;dt>`) může být více definic (`&lt;dd>`), stejně tak více termínů může mít jedinou definici nebo více termínů může mít více definic.
 
-```
-&lt;dl>
+<pre><code>&lt;dl>
   &lt;dt>Je čas&lt;/dt>
   &lt;dd>Web o moderní tvorbě webových stránek&lt;/dd>
   &lt;dd>Nějaký další význam&lt;/dd>
-&lt;/dl>
-```
+&lt;/dl></code></pre>
 
-Výchozí vzhled definičního seznamu odsazuje zleva popis (`&lt;dd>`), definice a popis jsou potom na zvláštních řádcích – všechny tři značky definičního seznamu jsou blokové ([`display: block`](/display#block)).
 
-Pomocí [obtékání](/float) jde `&lt;dt>` a `&lt;dd>` umístit i vedle sebe.
 
-### HTML značky v definičních seznamech
 
-Do značek `&lt;dt>` a `&lt;dd>` jde umístit prakticky jakýkoliv další element nebo další **definiční seznam**.
+<p>Výchozí vzhled definičního seznamu odsazuje zleva popis (<code>&lt;dd></code>), definice a popis jsou potom na zvláštních řádcích – všechny tři značky definičního seznamu jsou blokové (<a href="/display#block"><code>display: block</code></a>).</p>
 
-### Využití
+<p>Pomocí <a href="/float">obtékání</a> jde <code>&lt;dt></code> a <code>&lt;dd></code> umístit i vedle sebe.</p>
 
-Kromě vysvětlování pojmů bývají definiční seznamy někdy používány i pro:
 
-  Formuláře
+<h3 id="dl-znacky">HTML značky v definičních seznamech</h3>
 
-        Políčko
+<p>Do značek <code>&lt;dt></code> a <code>&lt;dd></code> jde umístit prakticky jakýkoliv další element nebo další <b>definiční seznam</b>.</p>
 
-  Diskusní příspěvky / komentáře
 
-        Autor
-        Text příspěvku
+<h3 id="vyuziti">Využití</h3>
 
-  Seznam zdrojů
+<p>Kromě vysvětlování pojmů bývají definiční seznamy někdy používány i pro:</p>
 
-        [HTML seznamy](/seznamy)
-        Kompletní přehled používání seznamů v HTML
+<dl>
+  <dt id="formulare">Formuláře</dt>
+  <dd>
+    <div class="live">
+      <dl>
+        <dt><label for="policko">Políčko</label></dt>
+        <dd><input type="text" id="policko"></dd>
+      </dl>
+    </div>
+  </dd>
+  
+  <dt id="diskuse">Diskusní příspěvky / komentáře</dt>
+  <dd>
+    <div class="live">
+      <dl>
+        <dt>Autor</dt>
+        <dd>Text příspěvku</dd>
+      </dl>
+    </div>
+  </dd>
+  
+  <dt id="zdroje">Seznam zdrojů</dt>
+  <dd>
+    <div class="live">
+      <dl>
+        <dt><a href="/seznamy">HTML seznamy</a></dt>
+        <dd>Kompletní přehled používání seznamů v HTML</dd>
+      </dl>
+    </div>
+  </dd>    
+</dl>
 
-## Vliv seznamů na SEO
 
-Existují názory, že používání seznamů má **positivní vliv** na umístění stránky ve **výsledcích vyhledávání**. Jelikož používání seznamů zpravidla **přináší kladný efekt** pro návštěvníky, dává smysl, aby přítomnost seznamů přinášela SEO výhodu.
+<h2 id="seo">Vliv seznamů na SEO</h2>
 
-      404m.com: [Seznamy s puntíky a čísly vs SEO](http://404m.com/2015/06/08/seznamy-s-puntiky-a-cisly-vs-seo/)
+<p>Existují názory, že používání seznamů má <b>positivní vliv</b> na umístění stránky ve <b>výsledcích vyhledávání</b>. Jelikož používání seznamů zpravidla <b>přináší kladný efekt</b> pro návštěvníky, dává smysl, aby přítomnost seznamů přinášela SEO výhodu.</p>
 
-## Seznam `&lt;menu>`
+<div class="external-content">
+  <ul>
+    <li>
+      404m.com: <a href="http://404m.com/2015/06/08/seznamy-s-puntiky-a-cisly-vs-seo/">Seznamy s puntíky a čísly vs SEO</a>
+    </li>
+  </ul>
+</div>
 
-Značka `&lt;menu>` se v praxi zobrazuje obdobně jako nečíslovaný seznam `&lt;ul>`.
 
-V HTML 4 byla zavržena (*deprecated*), v HTML 5.1 jí byl vymyšlen nový způsob užití – pro označení ovládacích prvků, kontextových a jiných nabídek.
+<h2 id="menu">Seznam <code>&lt;menu></code></h2>
 
-Místo položek `&lt;li>` se v této nové podobě `&lt;menu>` používají značky `&lt;menuitem>`.
+<p>Značka <code>&lt;menu></code> se v praxi zobrazuje obdobně jako nečíslovaný seznam <code>&lt;ul></code>.</p>
 
-    - [Kontextová nabídka `&lt;menuitem>`](/menuitem)
+<p>V HTML 4 byla zavržena (<i lang="en">deprecated</i>), v HTML 5.1 jí byl vymyšlen nový způsob užití – pro označení ovládacích prvků, kontextových a jiných nabídek.</p>
 
-## Výpis souborů `&lt;dir>`
+<p>Místo položek <code>&lt;li></code> se v této nové podobě <code>&lt;menu></code> používají značky <code>&lt;menuitem></code>.</p>
 
-V prohlížečích se chová obdobně jako `&lt;ul>` a `&lt;menu>`. Značka `&lt;dir>` je dle HTML specifikace překonaná a měl by se místo ní používat seznam `&lt;ul>`.
+<div class="internal-content">
+  <ul>
+    <li><a href="/menuitem">Kontextová nabídka <code>&lt;menuitem></code></a></li>
+  </ul>
+</div>
 
-V minulosti sloužila pro označení **výpisu souborů ze složky**. Nabízí se analogie k příkazu `dir` z **příkazové řádky**.
 
-## Atribut `compact`
 
-V dávné minulosti fungoval u seznamů atribut `compact` pro **zhuštění informací** v seznamu.
+<h2 id="dir">Výpis souborů <code>&lt;dir></code></h2>
 
-Při použití na definiční seznam se zobrazoval termín i jeho popis vedle sebe.
+<p>V prohlížečích se chová obdobně jako <code>&lt;ul></code> a <code>&lt;menu></code>. Značka <code>&lt;dir></code> je dle HTML specifikace překonaná a měl by se místo ní používat seznam <code>&lt;ul></code>.</p>
 
-Funguje v **Internet Exploreru 7**, v novějších už ne. [Ukázka](http://kod.djpw.cz/qdob).
+<p>V minulosti sloužila pro označení <b>výpisu souborů ze složky</b>. Nabízí se analogie k příkazu <code>dir</code> z <b>příkazové řádky</b>.</p>
 
-## Odkazy
 
-  - [Listify](http://enrmarc.github.io/listify/) – převede prostý text na `&lt;ul>` či `&lt;ol>` seznam
 
-.live dt {
+
+
+<h2 id="compact">Atribut <code>compact</code></h2>
+
+<p>V dávné minulosti fungoval u seznamů atribut <code>compact</code> pro <b>zhuštění informací</b> v seznamu.</p>
+
+<p>Při použití na definiční seznam se zobrazoval termín i jeho popis vedle sebe.</p>
+
+<p>Funguje v <b>Internet Exploreru 7</b>, v novějších už ne. <a href="http://kod.djpw.cz/qdob">Ukázka</a>.</p>
+
+
+
+<h2 id="odkazy">Odkazy</h2>
+
+<ul>
+  <li><a href="http://enrmarc.github.io/listify/">Listify</a> – převede prostý text na <code>&lt;ul></code> či <code>&lt;ol></code> seznam</li>
+</ul>
+
+
+<style>.live dt {
     list-style: none;
-}
+}</style>
+
+
+<!-- Náhled: http://kod.djpw.cz/wlob -->

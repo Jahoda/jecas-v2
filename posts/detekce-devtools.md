@@ -6,8 +6,8 @@ date: "2020-01-13"
 last_modification: "2020-01-13"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [https://stackoverflow.com/questions/7798748/find-out-whether-chrome-console-is-open](https://stackoverflow.com/questions/7798748/find-out-whether-chrome-console-is-open)
-
-- []()
+<li><a href="https://stackoverflow.com/questions/7798748/find-out-whether-chrome-console-is-open">https://stackoverflow.com/questions/7798748/find-out-whether-chrome-console-is-open</a></li>
+<li><a href=""></a></li>

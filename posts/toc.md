@@ -5,60 +5,55 @@ description: "Automatické generování obsahu HTML stránky v JavaScriptu i PHP
 date: "2014-03-18"
 last_modification: "2014-03-30"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "PHP"]
+tags: ["hotova-reseni", "js", "php"]
+format: "html"
 ---
 
-Obsah stránky (anglicky: *table of contents*, zkráceně **TOC**) může zpřehlednit čtení delšího článku na **obsahovém webu**.
+<p>Obsah stránky (anglicky: <i>table of contents</i>, zkráceně <b>TOC</b>) může zpřehlednit čtení delšího článku na <b>obsahovém webu</b>.</p>
 
-Takový obsah například běžně používá Wikipedie, kdy se na začátku stránky zobrazuje seznam obsahující odkazy na jednotlivé části dané stránky.
+<p>Takový obsah například běžně používá Wikipedie, kdy se na začátku stránky zobrazuje seznam obsahující odkazy na jednotlivé části dané stránky.</p>
 
-## Jak na to
+<h2 id="jak">Jak na to</h2>
 
-Prvním předpokladem pro automatickou tvorbu *Obsahu* je důsledné používání kotev/záložek u nadpisů. Tj. u každého nadpisu **mít identifikátor**.
+<p>Prvním předpokladem pro automatickou tvorbu <i>Obsahu</i> je důsledné používání kotev/záložek u nadpisů. Tj. u každého nadpisu <b>mít identifikátor</b>.</p>
 
-```
-&lt;h1 **id="nadpis"**>
+<pre><code>&lt;h1 <b>id="nadpis"</b>>
   Text nadpisu
-&lt;/h1>
-```
+&lt;/h1></code></pre>
 
-Chybí-li identifikátory, není nic ztraceno. I identifikátor je možné automaticky vygenerovat. Stačí projít nadpisy a v jejich textu převést **mezery na spojovníky** a **odstranit diakritiku** (více v článku [Vytvoření přátelského URL](http://php.vrana.cz/vytvoreni-pratelskeho-url.php)).
+<p>Chybí-li identifikátory, není nic ztraceno. I identifikátor je možné automaticky vygenerovat. Stačí projít nadpisy a v jejich textu převést <b>mezery na spojovníky</b> a <b>odstranit diakritiku</b> (více v článku <a href="http://php.vrana.cz/vytvoreni-pratelskeho-url.php">Vytvoření přátelského URL</a>).</p>
 
-TOC (table of contents) umí generovat i nástroje typu [Texy!](http://texy.info).
+<p>TOC (table of contents) umí generovat i nástroje typu <a href="http://texy.info">Texy!</a>.</p>
 
-### Generování obsahu stránky
+<h3 id="generovani">Generování obsahu stránky</h3>
 
-Z nadpisů (nebo obecně z elementů, které mají atirbut `id`) je potom celkem jednoduché sestavit výsledný seznam.
+<p>Z nadpisů (nebo obecně z elementů, které mají atirbut <code>id</code>) je potom celkem jednoduché sestavit výsledný seznam.</p>
 
-### Sestavování obsahu
+<h3 id="sestavovani">Sestavování obsahu</h3>
 
-V zásadě existují dvě možnosti, jak výsledný obsah sestavit.
+<p>V zásadě existují dvě možnosti, jak výsledný obsah sestavit.</p>
 
-  - Použít HTML seznam (`&lt;ul>`/`&lt;ol>`) a různé úrovně nadpisů do sebe zanořovat.
+<ol>
+  <li>Použít HTML seznam (<code>&lt;ul></code>/<code>&lt;ol></code>) a různé úrovně nadpisů do sebe zanořovat.</li>
+  <li>Zanoření znázornit <b>jen CSS styly</b>.</li>
+</ol>
 
-  - Zanoření znázornit **jen CSS styly**.
+<p>Druhů způsob vypsání obsahů značně <b>zjednodušuje</b>. Stačí v podsatě ke každé položce s <a href="/id-class"><code>id</code></a> přiřadit CSS třídu odpovídajícího názvu. A zbytek zařídit <b>kaskádovými styly</b>.</p>
 
-Druhů způsob vypsání obsahů značně **zjednodušuje**. Stačí v podsatě ke každé položce s [`id`](/id-class) přiřadit CSS třídu odpovídajícího názvu. A zbytek zařídit **kaskádovými styly**.
-
-```
-&lt;ul>
+<pre><code>&lt;ul>
   &lt;li class="uroven-h1">&lt;/li>
   &lt;li class="uroven-h2">&lt;/li>
-&lt;/ul>
-```
+&lt;/ul></code></pre>
 
-## JavaScript
+<h2 id="js">JavaScript</h2>
 
-Na straně klienta v JS je to asi nejsnazší. Zvlášť za pomoci [`querySelector`u](/queryselector) (od **IE 8**) je vybrání potřebných elementů hodně **elegantní**.
+<p>Na straně klienta v JS je to asi nejsnazší. Zvlášť za pomoci <a href="/queryselector"><code>querySelector</code>u</a> (od <b>IE 8</b>) je vybrání potřebných elementů hodně <b>elegantní</b>.</p>
 
-```
-var polozky = document.querySelectorAll("[id]");
-```
+<pre><code>var polozky = document.querySelectorAll("[id]");</code></pre>
 
-Tyto položky [projedeme cyklem](/js-cykly):
+<p>Tyto položky <a href="/js-cykly">projedeme cyklem</a>:</p>
 
-```
-var obsah = "&lt;h2>Obsah&lt;/h2>&lt;ul>";
+<pre><code>var obsah = "&lt;h2>Obsah&lt;/h2>&lt;ul>";
 for (var i = 0; i &lt; polozky.length; i++) {
   var uroven = polozky[i].tagName.toLowerCase();
   obsah += "&lt;li class='level-" + 
@@ -68,30 +63,24 @@ for (var i = 0; i &lt; polozky.length; i++) {
             polozky[i].innerHTML + "&lt;/a>";    
 }
 obsah += "&lt;/ul>";
+</code></pre>
 
-```
+<p>Nyní stačí obsah proměnné vypsat do nějakého <code>&lt;div></code>u.</p>
 
-Nyní stačí obsah proměnné vypsat do nějakého `&lt;div>`u.
-
-```
-&lt;div class="obsah">&lt;/div>
+<pre><code>&lt;div class="obsah">&lt;/div>
 &lt;script>
   document.querySelector(".obsah").innerHTML = obsah;
-&lt;/script>
-```
+&lt;/script></code></pre>
 
-V případě, že se na stránce používají [identifikátory](/id-class) i pro stylování, je vhodné některé značky buď přeskočit (`&lt;div>` a `&lt;span>`), nebo napak vytvářet odkazy jen pro nadpisy (`&lt;h1>`, `&lt;h2>`, …). Stačí k tomu kontrolovat vlastnost `tagName` (v ukázce hodnotu proměnné `uroven`).
+<p>V případě, že se na stránce používají <a href="/id-class">identifikátory</a> i pro stylování, je vhodné některé značky buď přeskočit (<code>&lt;div></code> a <code>&lt;span></code>), nebo napak vytvářet odkazy jen pro nadpisy (<code>&lt;h1></code>, <code>&lt;h2></code>, …). Stačí k tomu kontrolovat vlastnost <code>tagName</code> (v ukázce hodnotu proměnné <code>uroven</code>).</p>
 
-```
-if (uroven == "div" || uroven == "span") continue;
-```
+<pre><code>if (uroven == "div" || uroven == "span") continue;</code></pre>
 
-## PHP
+<h2 id="php">PHP</h2>
 
-Podobný seznam může *vyzobat* z HTML i PHP.
+<p>Podobný seznam může <i>vyzobat</i> z HTML i PHP.</p>
 
-```
-function tableOfContents($html) {
+<pre><code>function tableOfContents($html) {
   $pattern = '/&lt;h([2-5]) id=["\'](.*?)["\'].*?>(.*?)&lt;\/h\1>/';
   preg_match_all($pattern, $html, $matches, PREG_SET_ORDER);
 
@@ -106,11 +95,10 @@ function tableOfContents($html) {
   return (!empty($output)) ? 
     "&lt;ul class='summary'>" . $output . "&lt;/ul>" : 
     "";
-}
-```
+}</code></pre>
 
-Funkční ukázka na [GitHubu](https://github.com/Jahoda/toc).
+<p>Funkční ukázka na <a href="https://github.com/Jahoda/toc">GitHubu</a>.</p>
 
-## Zvýraznění aktuální části
+<h2 id="zvyrazneni">Zvýraznění aktuální části</h2>
 
-Zajímavé vylepšení může být [zvýraznění aktivní části](/zvyrazneni-odrolovani), pokud je na ní odrolováno. Pochopitelně v případě, že je prostor pro [fixní umístění](/position-fixed) seznamu nadpisů.
+<p>Zajímavé vylepšení může být <a href="/zvyrazneni-odrolovani">zvýraznění aktivní části</a>, pokud je na ní odrolováno. Pochopitelně v případě, že je prostor pro <a href="/position-fixed">fixní umístění</a> seznamu nadpisů.</p>

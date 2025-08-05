@@ -6,6 +6,7 @@ date: "2015-03-21"
 last_modification: "2015-03-21"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://stackoverflow.com/questions/19979205/installing-abpcrawler-for-ad-block-plus-fails

@@ -6,6 +6,7 @@ date: "2014-11-11"
 last_modification: "2014-11-11"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://www.seoblog.com/2014/02/approving-wordpress-trackbacks-devastating-seo/

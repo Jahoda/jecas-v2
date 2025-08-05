@@ -5,78 +5,105 @@ description: "Pravidlo <code>@media</code> se používá k omezení platnosti CS
 date: "2014-10-14"
 last_modification: "2015-12-17"
 status: 1
-tags: ["CSS", "Responsivní design", "CSS pravidla"]
+tags: ["css", "css-pravidla", "responsive"]
+format: "html"
 ---
 
-Typický **příklad užití** vypadá nějak takto:
+<p>Typický <b>příklad užití</b> vypadá nějak takto:</p>
 
-```
-@media (max-width: 40em) {
+<pre><code>@media (max-width: 40em) {
   .obsah {
     width: 50%;
   }
-}
-```
+}</code></pre>
 
-Kód výše zajistí, že se obsah bloku `@media` aplikuje jen za podmínky, kdy je maximální šířka (`max-width`) okna prohlížeče `40em`.
 
-Do `@media` bloku se mezi složené závorky zapisují běžné [CSS selektory](/css-selektory), takže v tomto případě bude značka s třídou `.obsah` při splnění podmínek široká 50 %.
 
-Nejčastěji se pravidlo `@media` využívá v případě [responsivního layoutu](/responsive), kdy umožňuje stránku upravovat v závislosti na **velikosti obrazovky** (okna prohlížeče – tzv. *viewportu*).
 
-## Media queries
 
-Kvůli tomu, že se do závorek za `@media` zadávají **dotazy na splnění určitých podmínek**, nazývá se tato technologie často anglickým termínem **media queries** (doslovný překlad *media dotazy*).
 
-Další častá označení jsou *conditional rules* (podmíněná pravidla) nebo *media rules* (media pravidla).
+<p>Kód výše zajistí, že se obsah bloku <code>@media</code> aplikuje jen za podmínky, kdy je maximální šířka (<code>max-width</code>) okna prohlížeče <code>40em</code>.</p>
 
-## Podpora
+<p>Do <code>@media</code> bloku se mezi složené závorky zapisují běžné <a href="/css-selektory">CSS selektory</a>, takže v tomto případě bude značka s třídou <code>.obsah</code> při splnění podmínek široká 50 %.</p>
 
-Základní `@media` podmínky jsou podporovány od **Internet Exploreru 9**. Případná nefunkčnost v **IE 8** nebo jiných starších prohlížečích nemusí moc vadit v případě, že se media queries používají pouze pro přizpůsobení stylu pro **mobilní zařízení** a styl mimo `@media` je určen pro desktopové monitory.
+<p>Nejčastěji se pravidlo <code>@media</code> využívá v případě <a href="/responsive">responsivního layoutu</a>, kdy umožňuje stránku upravovat v závislosti na <b>velikosti obrazovky</b> (okna prohlížeče – tzv. <i>viewportu</i>).</p>
 
-Starší **IE** než **8** se na mobilech prakticky nepoužívají, takže nepodporování tolik nevadí.
 
-## Použití v praxi
 
-Velmi častý případ je, že stránka má pro zobrazení na velkém monitoru **vícesloupcové rozvržení**, které by se na malou obrazovku mobilu nevešlo.
 
-Bude-li rozložení například následující dvousloupcové:
+<h2 id="media-queries">Media queries</h2>
 
-```
-.levy {
+
+<p>Kvůli tomu, že se do závorek za <code>@media</code> zadávají <b>dotazy na splnění určitých podmínek</b>, nazývá se tato technologie často anglickým termínem <b lang="en">media queries</b> (doslovný překlad <i>media dotazy</i>).</p>
+
+<p>Další častá označení jsou <i lang="en">conditional rules</i> (podmíněná pravidla) nebo <i lang="en">media rules</i> (media pravidla).</p>
+
+
+
+<h2 id="podpora">Podpora</h2>
+
+<p>Základní <code>@media</code> podmínky jsou podporovány od <b>Internet Exploreru 9</b>. Případná nefunkčnost v <b>IE 8</b> nebo jiných starších prohlížečích nemusí moc vadit v případě, že se media queries používají pouze pro přizpůsobení stylu pro <b>mobilní zařízení</b> a styl mimo <code>@media</code> je určen pro desktopové monitory.</p>
+
+<p>Starší <b>IE</b> než <b>8</b> se na mobilech prakticky nepoužívají, takže nepodporování tolik nevadí.</p>
+
+
+
+
+<h2 id="praxe">Použití v praxi</h2>
+
+<p>Velmi častý případ je, že stránka má pro zobrazení na velkém monitoru <b>vícesloupcové rozvržení</b>, které by se na malou obrazovku mobilu nevešlo.</p>
+
+<p>Bude-li rozložení například následující dvousloupcové:</p>
+
+<pre><code>.levy {
   width: 30%;
   float: left;
 }
 .pravy {
   width: 70%;,
   float: right;
-}
-```
+}</code></pre>
 
-Pro užší šířku (`40em`) se bude hodit sloupce přeskládat pod sebe. Toho se docílí třeba nastavením 100% šířky:
 
-```
-@media (max-width: 40em) {
+
+
+
+
+
+
+
+
+
+
+<p>Pro užší šířku (<code>40em</code>) se bude hodit sloupce přeskládat pod sebe. Toho se docílí třeba nastavením 100% šířky:</p>
+
+<pre><code>@media (max-width: 40em) {
   .levy, .pravy {
     width: 100%;
   }
-}
-```
+}</code></pre>
 
-[Samostatná živá ukázka](http://kod.djpw.cz/txob)
 
-Možný je i obrácený postup, kdy jsou *výchozí* styly určené pro zobrazení na mobilu a až v `@media` je doplněno vícesloupcové rozložení.
 
-```
-.levy, .pravy {
+
+<p><a href="http://kod.djpw.cz/txob">Samostatná živá ukázka</a></p>
+
+
+
+<p>Možný je i obrácený postup, kdy jsou <i>výchozí</i> styly určené pro zobrazení na mobilu a až v <code>@media</code> je doplněno vícesloupcové rozložení.</p>
+
+<pre><code>.levy, .pravy {
   /* společné deklarace */
-}
-```
+}</code></pre>
 
-Pro šířku `40em` a větší se sloupce přeskládají vedle sebe.
 
-```
-@media (min-width: 40em) {
+
+
+
+
+<p>Pro šířku <code>40em</code> a větší se sloupce přeskládají vedle sebe.</p>
+
+<pre><code>@media (min-width: 40em) {
   .levy {
     width: 30%;
     float: left;
@@ -85,101 +112,218 @@ Pro šířku `40em` a větší se sloupce přeskládají vedle sebe.
     width: 70%;,
     float: right;
   }
-}
-```
+}</code></pre>
 
-## Jaké breakpointy zvolit?
 
-Místa, kde se mají začít aplikovat určitá pravidla, se nazývají *break-pointy* – body zlomu, kde se díky `@media` podmínkám mění zobrazení.
 
-Existují 3 postupy, jak `@media` podmínky používat:
 
-    Začít od **nejmenší šířky** mobilních zařízení (cca 320 pixelů). Postupně rozšiřovat okno a ve chvíli, kdy už je prostor značně nevyužitý, přidat podmínku:
 
-    ```
-@media (**min-width**: *XX*em) {
-}
-```
 
-    Začít od velikosti, kterou na webu uvidí nejvíce návštěvníků ([Jak široký web udělat?](/sirka-stranky)).
 
-    Pomocí `@media` pravidel potom upravovat styly:
 
-        Směrem **dolu**:
 
-            ```
-@media (**max-width**: *XX*em) {
-}
-```
 
-        Směrem **nahoru**:
 
-            ```
-@media (**min-width**: *XX*em) {
-}
-```
 
-    Začít od **největší šířky** a postupně přidávat break-pointy dle omezení maximální šířky:
+<h2 id="breakpointy">Jaké breakpointy zvolit?</h2>
 
-    ```
-@media (**max-width**: *XX*em) {
-}
-```
+<p>Místa, kde se mají začít aplikovat určitá pravidla, se nazývají <i>break-pointy</i> – body zlomu, kde se díky <code>@media</code> podmínkám mění zobrazení.</p>
 
-### Nepodporované prohlížeče
+<p>Existují 3 postupy, jak <code>@media</code> podmínky používat:</p>
 
-Konkrétní postup se většinou volí s ohledem na prohlížeče neznalé media-queries.
+<ol>
+  <li>
+    <p>Začít od <b>nejmenší šířky</b> mobilních zařízení (cca 320 pixelů). Postupně rozšiřovat okno a ve chvíli, kdy už je prostor značně nevyužitý, přidat podmínku:</p>
+    
+    <pre><code><code>@media (<b>min-width</b>: <i>XX</i>em) {
+}</code></code></pre>
+    
+      
+        
 
-Pokud výchozí styl, který **IE 8** uvidí, bude pro mobily, ale tento prohlížeč se používá výhradně na desktopu, bude jeho uživatel zbytečně odbyt osekaným vzhledem. Proto by se nabízelo začít běžnou desktopovou velikostí a zobrazení na mobilech mít až `@media`.
+  </li>  
+  <li>
+    <p>Začít od velikosti, kterou na webu uvidí nejvíce návštěvníků (<a href="/sirka-stranky">Jak široký web udělat?</a>).</p>
+    
+    <p>Pomocí <code>@media</code> pravidel potom upravovat styly:</p>
+    
+    <ol>
+      <li>
+        <p>Směrem <b>dolu</b>:</p>
+            <pre><code><code>@media (<b>max-width</b>: <i>XX</i>em) {
+}</code></code></pre>
+      </li>
+      <li>
+        <p>Směrem <b>nahoru</b>:</p>
+            <pre><code><code>@media (<b>min-width</b>: <i>XX</i>em) {
+}</code></code></pre>
+      </li>      
+    </ol>
+  </li>
+  
+  
+  <li>
+    <p>Začít od <b>největší šířky</b> a postupně přidávat break-pointy dle omezení maximální šířky:</p>
+    
+    <pre><code><code>@media (<b>max-width</b>: <i>XX</i>em) {
+}</code></code></pre>
+  </li>
+</ol>
 
-Někdy se tento postup volí záměrně, aby se ve starých prohlížečích nemuselo řešit špatné zobrazení layoutu – zkrátka se tam žádný layout nezobrazí.
 
-Jiná možnost je psát CSS [mobile-first](/mobile-first) (nejdříve pro mobily) a nějakým automatisačním nástrojem vyřešit vygenerování desktopového CSS bez `@media` pravidel pro prohlížeče typu **IE 8**.
+<h3 id="nepodporovane">Nepodporované prohlížeče</h3>
 
-Nakonec je možné podporu `@media` pro staré prohlížeče vyřešit JavaScriptem. Ten si stránku přeměří, stáhne AJAXem CSS soubor, vypreparuje z něj příslušné styly a aplikuje na stránku.
+<p>Konkrétní postup se většinou volí s ohledem na prohlížeče neznalé media-queries.</p>
 
-Nevýhoda je, že staré prohlížeče běží většinou na slabém HW a další JS jim dvakrát nepomůže.
 
-    - [Respond.js](https://github.com/scottjehl/Respond) – doplnění podpory `min-width`/`max-width` media-queries do **IE 6–8**
+<p>Pokud výchozí styl, který <b>IE 8</b> uvidí, bude pro mobily, ale tento prohlížeč se používá výhradně na desktopu, bude jeho uživatel zbytečně odbyt osekaným vzhledem. Proto by se nabízelo začít běžnou desktopovou velikostí a zobrazení na mobilech mít až <code>@media</code>.</p>
 
-## Proč `em` jednotky
 
-Hodnoty v `@media` podmínkách je dobré zadávat v `em` jednotkách, protože se dobře vypořádají s případnou změnou velikosti písma.
 
-Pokud by byly v pixelech, při změně výchozí velikosti písma by přestaly prostorově odpovídat.
+<p>Někdy se tento postup volí záměrně, aby se ve starých prohlížečích nemuselo řešit špatné zobrazení layoutu – zkrátka se tam žádný layout nezobrazí.</p>
 
-Breakpointy se nejčastěji vytváří s ohledem na textový obsah. Zvětšení písma v operačním systému nebo v prohlížeči ovlivní výchozí hodnotu, z které se počítají rozměry `em` v `@media` pravidlech.
 
-### Příklad
 
-**Výchozí velikost písma** je typicky **16 pixelů**. Platí tak tedy, že `1em = 16px`.
+<p>Jiná možnost je psát CSS <a href="/mobile-first">mobile-first</a> (nejdříve pro mobily) a nějakým automatisačním nástrojem vyřešit vygenerování desktopového CSS bez <code>@media</code> pravidel pro prohlížeče typu <b>IE 8</b>.</p>
 
-Pokud se sloupce mají přeskládat při šířce 800 px, kdy už má text ve sloupcích příliš málo prostoru, nabízelo by se použít:
 
-```
-@media (max-width: 800px) {
+<p>Nakonec je možné podporu <code>@media</code> pro staré prohlížeče vyřešit JavaScriptem. Ten si stránku přeměří, stáhne AJAXem CSS soubor, vypreparuje z něj příslušné styly a aplikuje na stránku.</p>
+
+<p>Nevýhoda je, že staré prohlížeče běží většinou na slabém HW a další JS jim dvakrát nepomůže.</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://github.com/scottjehl/Respond">Respond.js</a> – doplnění podpory <code>min-width</code>/<code>max-width</code> media-queries do <b>IE 6–8</b></li>
+  </ul>
+</div>
+
+
+<h2 id="em">Proč <code>em</code> jednotky</h2>
+
+<p>Hodnoty v <code>@media</code> podmínkách je dobré zadávat v <code>em</code> jednotkách, protože se dobře vypořádají s případnou změnou velikosti písma.</p>
+
+<p>Pokud by byly v pixelech, při změně výchozí velikosti písma by přestaly prostorově odpovídat.</p>
+
+<p>Breakpointy se nejčastěji vytváří s ohledem na textový obsah. Zvětšení písma v operačním systému nebo v prohlížeči ovlivní výchozí hodnotu, z které se počítají rozměry <code>em</code> v <code>@media</code> pravidlech.</p>
+
+
+
+
+<h3 id="priklad">Příklad</h3>
+
+<p><b>Výchozí velikost písma</b> je typicky <b>16 pixelů</b>. Platí tak tedy, že <code>1em = 16px</code>.</p>
+
+<p>Pokud se sloupce mají přeskládat při šířce 800 px, kdy už má text ve sloupcích příliš málo prostoru, nabízelo by se použít:</p>
+
+<pre><code>@media (max-width: 800px) {
   .levy, .pravy {
     width: 100%;
   }
-}
-```
+}</code></pre>
 
-Problém je v tom, že při větší výchozí velikosti písma by to chtělo přeskládat dřív – s ohledem na velikost písma.
 
-Správné zobrazení v momentě před přeskládáním při výchozí velikosti písma:
 
-Co ale když se zvětší písmo při `@media` pravidlech v pixelech?
 
-Pokud by hodnota byla přepočítaná do `em`, stránka by se ve stejné velikosti okna už dávno přeskládala pod sebe:
 
-[Ukázka](http://kod.djpw.cz/slsb-) – problematické nastavení break-pointů v pixelech
+<p>Problém je v tom, že při větší výchozí velikosti písma by to chtělo přeskládat dřív – s ohledem na velikost písma.</p>
 
-## Kam psát breakpointy
+<p>Správné zobrazení v momentě před přeskládáním při výchozí velikosti písma:</p>
 
-V počátcích responsivního designu se pomocí `@media` pravidel často dělil vzhled **třemi breakpointy** na desktop, tablet a mobil.
+<p><img src="/files/media/media-px-ok.png" alt="Dvousloupcové rozložení" class="border"></p>
 
-```
-/* všechny styly pro desktop */
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Co ale když se zvětší písmo při <code>@media</code> pravidlech v pixelech?</p>
+
+
+<p><img src="/files/media/media-px.png" alt="Dvousloupcové rozložení" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Pokud by hodnota byla přepočítaná do <code>em</code>, stránka by se ve stejné velikosti okna už dávno přeskládala pod sebe:</p>
+
+<p><img src="/files/media/preskladani.png" alt="Přeskládání pod sebe" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><a href="http://kod.djpw.cz/slsb-">Ukázka</a> – problematické nastavení break-pointů v pixelech</p>
+
+
+<h2 id="kam-psat">Kam psát breakpointy</h2>
+
+<p>V počátcích responsivního designu se pomocí <code>@media</code> pravidel často dělil vzhled <b>třemi breakpointy</b> na desktop, tablet a mobil.</p>
+
+<pre><code>/* všechny styly pro desktop */
 …
 @media (max-width: 960px) {
   /* všechny styly pro tablet */
@@ -188,17 +332,25 @@ V počátcích responsivního designu se pomocí `@media` pravidel často dělil
 @media (max-width: 480x) {
   /* všechny styly pro mobil */
   …
-}
-```
+}</code></pre>
 
-Postupně se od tohoto postupu upustilo, protože [šířka stránky](/sirka-stranky) je značně proměnlivá napříč zařízeními a **hranice mezi mobilem, tabletem a desktopem nejsou ostré**.
 
-Break-pointy se tedy v ideálním případě nepoužívají přesně 3, ale přidávají se v momentě, kdy je to potřeba – když obsah neoptimálně využívá dostupný prostor.
 
-Z tohoto důvodu je nejspíš i přehlednější psát `@media` podmínky ke každému elementu (komponentě).
 
-```
-/* výchozí styl */
+
+
+
+
+
+
+
+<p>Postupně se od tohoto postupu upustilo, protože <a href="/sirka-stranky">šířka stránky</a> je značně proměnlivá napříč zařízeními a <b>hranice mezi mobilem, tabletem a desktopem nejsou ostré</b>.</p>
+
+<p>Break-pointy se tedy v ideálním případě nepoužívají přesně 3, ale přidávají se v momentě, kdy je to potřeba – když obsah neoptimálně využívá dostupný prostor.</p>
+
+<p>Z tohoto důvodu je nejspíš i přehlednější psát <code>@media</code> podmínky ke každému elementu (komponentě).</p>
+
+<pre><code>/* výchozí styl */
 .hlavicka {…}
 @media (max-width: 60em) {
   /* styl pro menší šířku */
@@ -207,188 +359,250 @@ Z tohoto důvodu je nejspíš i přehlednější psát `@media` podmínky ke ka�
 @media (max-width: 40em) {
   /* styl pro ještě menší šířku */
   .hlavicka {…}
-}
-```
+}</code></pre>
 
-Pomocí CSS preprocesorů je možné používat nějaký jiný zápis bez nutnosti opakovat selektory, který se následně do standardního CSS automaticky přeloží.
 
-## Podmínky na šířku elementu
 
-Praktické by bylo, kdyby šlo kromě podmínek zohledňující velikost okna reagovat i na rozměry elementu.
 
-To bohužel není momentálně čistě v CSS možné.
 
-## Všechny `@media` podmínky
 
-Byť se `@media` nejčastěji používá v souvislosti s podmínkou na **minimální nebo maximální šířku**, existuje celá řada dalších pravidel, která jsou **různě podporována v prohlížečích**.
 
-### Media typy
 
-Dřívější návrhy CSS specifikace počítaly s různými typy `@media` pravidel vázanými na konkrétní **typ koncového zařízení** – typicky obrazovka, tisk, televise, projektor a podobně.
 
-Aktuálně se ve specifikaci nachází a v praxi používá:
 
-  `all`
+
+
+<p>Pomocí CSS preprocesorů je možné používat nějaký jiný zápis bez nutnosti opakovat selektory, který se následně do standardního CSS automaticky přeloží.</p>
+
+
+
+
+<h2 id="element">Podmínky na šířku elementu</h2>
+
+<p>Praktické by bylo, kdyby šlo kromě podmínek zohledňující velikost okna reagovat i na rozměry elementu.</p>
+
+<p>To bohužel není momentálně čistě v CSS možné.</p>
+
+
+
+
+<h2 id="seznam">Všechny <code>@media</code> podmínky</h2>
+
+<p>Byť se <code>@media</code> nejčastěji používá v souvislosti s podmínkou na <b>minimální nebo maximální šířku</b>, existuje celá řada dalších pravidel, která jsou <b>různě podporována v prohlížečích</b>.</p>
+
+
+
+
+<h3 id="typy">Media typy</h3>
+
+<p>Dřívější návrhy CSS specifikace počítaly s různými typy <code>@media</code> pravidel vázanými na konkrétní <b>typ koncového zařízení</b> – typicky obrazovka, tisk, televise, projektor a podobně.</p>
+
+<p>Aktuálně se ve specifikaci nachází a v praxi používá:</p>
+
+<dl>
+  <dt id="all"><code>all</code></dt>
+  <dd>
+    <p>Pro všechna zařízení.</p>
+  </dd>  
   
-    Pro všechna zařízení.
-
-  `screen`
+  <dt id="screen"><code>screen</code></dt>
+  <dd>
+    <p>Pro všechny obrazovky.</p>
+  </dd>
   
-    Pro všechny obrazovky.
-
-  `print`
-  
-    Pro vytvoření [tiskového stylu](/tisk):
-
-    ```
-@media print {
+  <dt id="print"><code>print</code></dt>
+  <dd>
+    <p>Pro vytvoření <a href="/tisk">tiskového stylu</a>:</p>
+    
+    <pre><code>@media print {
   * {color: black; background: #fff}
-}
-```
-
-  `speech`
+}</code></pre>
+  </dd>  
   
-    Hlasové čtečky.
+  <dt id="speech"><code>speech</code></dt>
+  <dd>
+    <p>Hlasové čtečky.</p>
+  </dd>
+</dl>
 
-Ve starší CSS 2.1 specifikaci se nacházely ještě následující typy, které jsou nyní zavržené: `tty`, `tv`, `projection`, `handheld`, `braille`, `embossed`, `aural`
 
-### Media vlastnosti
+<p>Ve starší CSS 2.1 specifikaci se nacházely ještě následující typy, které jsou nyní zavržené: <code>tty</code>, <code>tv</code>, <code>projection</code>, <code>handheld</code>, <code>braille</code>, <code>embossed</code>, <code>aural</code></p>
 
-Protože **odlišovat styly podle typu zařízení** je podobně nešikovné kvůli přílišné obecnosti jako odlišování podle **názvu prohlížeče**, byly vymyšleny tzv. media vlastnosti.
 
-Pro podmínku (ne)aplikování stylu tak jde použít jednotlivé vlastnosti zařízení; řada věcí není moc dobře podporovaná:
 
-      Název
-      Význam
 
-    `width`
-      Šířka viewportu
-    
-    `height`
-      Výška viewportu
-    
-    `aspect-ratio`
-      Poměr výšky a šířky
-    
-    `orientation`
-      Orientace zařízení, existují dvě hodnoty:
-      
-        - `portrait` – na výšku
+<h3 id="vlastnosti">Media vlastnosti</h3>
 
-        - `landscape` – na šířku
+<p>Protože <b>odlišovat styly podle typu zařízení</b> je podobně nešikovné kvůli přílišné obecnosti jako odlišování podle <b>názvu prohlížeče</b>, byly vymyšleny tzv. media vlastnosti.</p>
 
-    `resolution`
-      Hustota pixelů daného zařízení. Typicky uváděné v jednotkách `dpi`.
-    
-    `scan`
-      Způsob zobrazování například na TV (`interlace`/`progressive`).
-    
-    `grid`
-      Detekce primitivních displejů, co zobrazují pouze v mřížce.
-    
-    `update-frequency`
-      Obnovovací frekvence zařízení (`none`, `slow`, `normal`).
-    
-    `overflow-block`
-      Co udělá zařízení s blokem, který se dostane mimo viewport (`none`, `scroll`, `optional-paged`, `page`).
-    
-    `overflow-inline`
-      Půjde řádek, který přeteče z viewportu doscrollovat (`none`, `scroll`).
-    
-    `color`
-      Počet bitů barev, které zvládá cílové zařízení.
-    
-    `color-index`
-      Počet barev, které zvládá cílové zařízení.
-    
-    `monochrome`
-      Detekce černobílé obrazovky.
-    
-    `inverted-colors`
-      Detekce invertovaných barev (`none`/`inverted`).
-    
-    `pointer`
-      Je primární vstupní zařízení *ukazatel* (myš, prst) a jak je přesný (`none`, `coarse` – nepřesný, `fine` – přesný).
-    
-    `hover`
-      Umí primární vstupní zařízení vytvořit `hover` (`none` – neumí, `on-demand` – je to trochu komplikovanější, např. delší podržení prstu na mobilech, `hover` – v pořádku, např. myš).
-    
-    [`any-pointer`](/media-any#pointer)
-      Je k disposici alespoň nějaký ukazatel a jak je přesný.
-    
-    [`any-hover`](/media-any#hover)
-      Existuje alespoň nějaká možnost, jak vyvolat hover.
-    
-    `light-level`
-      Intensita okolního světla (hodnoty `dim`, `normal` a `washed`).
-    
-    `scripting`
-      Podpora JavaScriptu.
-    
-    `device-width`
-      (Zavržené)
-    
-    `device-height`
-      (Zavržené)
-    
-    `device-aspect-ratio`
-      (Zavržené)
+<p>Pro podmínku (ne)aplikování stylu tak jde použít jednotlivé vlastnosti zařízení; řada věcí není moc dobře podporovaná:</p>
 
-      `-webkit-transform-3d`
-      
+<table>
+  <thead>
+    <tr>
+      <th>Název</th>
+      <th>Význam</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id="width"><td><code>width</code></td>
+      <td>Šířka viewportu</td>
+    </tr>
+    <tr id="height"><td><code>height</code></td>
+      <td>Výška viewportu</td>
+    </tr>
+    <tr id="aspect-ratio"><td><code>aspect-ratio</code></td>
+      <td>Poměr výšky a šířky</td>
+    </tr>
+    <tr id="orientation"><td><code>orientation</code></td>
+      <td>Orientace zařízení, existují dvě hodnoty:
+      <ul>
+        <li><code>portrait</code> – na výšku</li>
+        <li><code>landscape</code> – na šířku</li>
+      </ul></td>
+    </tr>
+    <tr id="resolution"><td><code>resolution</code></td>
+      <td>Hustota pixelů daného zařízení. Typicky uváděné v jednotkách <code>dpi</code>.</td>
+    </tr>
+    <tr id="scan"><td><code>scan</code></td>
+      <td>Způsob zobrazování například na TV (<code>interlace</code>/<code>progressive</code>).</td>
+    </tr>
+    <tr id="grid"><td><code>grid</code></td>
+      <td>Detekce primitivních displejů, co zobrazují pouze v mřížce.</td>
+    </tr>
+    <tr id="update-frequency"><td><code>update-frequency</code></td>
+      <td>Obnovovací frekvence zařízení (<code>none</code>, <code>slow</code>, <code>normal</code>).</td>
+    </tr>
+    <tr id="overflow-block"><td><code>overflow-block</code></td>
+      <td>Co udělá zařízení s blokem, který se dostane mimo viewport (<code>none</code>, <code>scroll</code>, <code>optional-paged</code>, <code>page</code>).</td>
+    </tr>
+    <tr id="overflow-inline"><td><code>overflow-inline</code></td>
+      <td>Půjde řádek, který přeteče z viewportu doscrollovat (<code>none</code>, <code>scroll</code>).</td>
+    </tr>
+    <tr id="color"><td><code>color</code></td>
+      <td>Počet bitů barev, které zvládá cílové zařízení.</td>
+    </tr>
+    <tr id="color-index"><td><code>color-index</code></td>
+      <td>Počet barev, které zvládá cílové zařízení.</td>
+    </tr>
+    <tr id="monochrome"><td><code>monochrome</code></td>
+      <td>Detekce černobílé obrazovky.</td>
+    </tr>
+    <tr id="inverted-colors"><td><code>inverted-colors</code></td>
+      <td>Detekce invertovaných barev (<code>none</code>/<code>inverted</code>).</td>
+    </tr>
+    <tr id="pointer"><td><code>pointer</code></td>
+      <td>Je primární vstupní zařízení <i>ukazatel</i> (myš, prst) a jak je přesný (<code>none</code>, <code>coarse</code> – nepřesný, <code>fine</code> – přesný).</td>
+    </tr>
+    <tr id="hover"><td><code>hover</code></td>
+      <td>Umí primární vstupní zařízení vytvořit <code>hover</code> (<code>none</code> – neumí, <code>on-demand</code> – je to trochu komplikovanější, např. delší podržení prstu na mobilech, <code>hover</code> – v pořádku, např. myš).</td>
+    </tr>
+    <tr id="any-pointer"><td><a href="/media-any#pointer"><code>any-pointer</code></a></td>
+      <td>Je k disposici alespoň nějaký ukazatel a jak je přesný.</td>
+    </tr>
+    <tr id="any-hover"><td><a href="/media-any#hover"><code>any-hover</code></a></td>
+      <td>Existuje alespoň nějaká možnost, jak vyvolat hover.</td>
+    </tr>
+    <tr id="light-level"><td><code>light-level</code></td>
+      <td>Intensita okolního světla (hodnoty <code>dim</code>, <code>normal</code> a <code>washed</code>).</td>
+    </tr>
+    <tr id="scripting"><td><code>scripting</code></td>
+      <td>Podpora JavaScriptu.</td>
+    </tr>
+    <tr id=""><td><code>device-width</code></td>
+      <td>(Zavržené)</td>
+    </tr>
+    <tr id=""><td><code>device-height</code></td>
+      <td>(Zavržené)</td>
+    </tr>
+    <tr id=""><td><code>device-aspect-ratio</code></td>
+      <td>(Zavržené)</td>
+    </tr>
+    <tr>
+      <td><code>-webkit-transform-3d</code></td>
+      <td>
         Podpora 3D transformací.
-
-      `-webkit-transform-2d`
-      
+      </td>
+    </tr>
+    <tr>
+      <td><code>-webkit-transform-2d</code></td>
+      <td>
         Podpora 2D transformací.
+      </td>
+    </tr>
+    <tr>
+      <td><code>-webkit-transition</code></td>
+      <td>
+        Podpora <a href="/transition"><code>transition</code></a>.
+      </td>
+    </tr>
+    <tr>
+      <td><code>-webkit-animation</code></td>
+      <td>
+        Podpora animací přes CSS vlastnost <a href="/animation"><code>animation</code></a>.
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-      `-webkit-transition`
-      
-        Podpora [`transition`](/transition).
 
-      `-webkit-animation`
-      
-        Podpora animací přes CSS vlastnost [`animation`](/animation).
 
-## Spojování `@media` pravidel
+<h2 id="spojovani">Spojování <code>@media</code> pravidel</h2>
 
-V některých případech je potřeba pravidla spojovat. Ve smyslu logických operátorů `and` a `or`.
+<p>V některých případech je potřeba pravidla spojovat. Ve smyslu logických operátorů <code>and</code> a <code>or</code>.</p>
 
-### And
 
-Musí platit obě podmínky:
+<h3 id="and">And</h3>
 
-```
-@media 
+<p>Musí platit obě podmínky:</p>
+
+<pre><code>@media 
   (min-width: 20em) and (max-width: 30em) {
   /* Aplikuje se jen při šířce 20–30em */
-}
-```
+}</code></pre>
 
-### Or
 
-Pro vyznačení *nebo* se **nepoužívá** klíčové slovo `or`, ale pravidla se oddělují čárkou:
 
-```
-@media 
+
+
+
+<h3 id="or">Or</h3>
+
+<p>Pro vyznačení <i>nebo</i> se <b>nepoužívá</b> klíčové slovo <code>or</code>, ale pravidla se oddělují čárkou:</p>
+
+<pre><code>@media 
   (min-width: 30em) and (max-width: 40em),
   (max-width: 20em) {
   /* Aplikuje se jen při šířce 30–40em nebo do šířky 20 em */
-}
-```
+}</code></pre>
 
-Tento zápis se v praxi hodí v případě, kdy při nějaké šířce například zmizí široký sloupec, čímž se uvolní místo v hlavním obsahu.
 
-    - StackOverflow: [Media queries: max-width OR max-height](http://stackoverflow.com/questions/11404744/media-queries-max-width-or-max-height)
 
-V **IE 9** až **[IE 11](/ie11)** nastává zajímavá věc při spojení `@media (min-width: 9999px) and (min-width: 0)`, pravidla se totiž aplikují:
 
-      - [Živá ukázka](http://kod.djpw.cz/xurb) – chyba `and` v **Internet Exploreru**
+<p>Tento zápis se v praxi hodí v případě, kdy při nějaké šířce například zmizí široký sloupec, čímž se uvolní místo v hlavním obsahu.</p>
 
-## Odkazy jinam
+<div class="external-content">
+  <ul>
+    <li>StackOverflow: <a href="http://stackoverflow.com/questions/11404744/media-queries-max-width-or-max-height">Media queries: max-width OR max-height</a></li>
+  </ul>
+</div>
 
-  - CSS Tricks: [The At-Rules of CSS](https://css-tricks.com/the-at-rules-of-css/)
+<p>V <b>IE 9</b> až <b><a href="/ie11">IE 11</a></b> nastává zajímavá věc při spojení <code>@media (min-width: 9999px) and (min-width: 0)</code>, pravidla se totiž aplikují:</p>
 
-  - Vzhůru dolů: [CSS3 Media Queries – podmíněné zobrazení pro média](http://www.vzhurudolu.cz/prirucka/css3-media-queries)
+<div class="external-content">
+  <ul>
+      <li><a href="http://kod.djpw.cz/xurb">Živá ukázka</a> – chyba <code>and</code> v <b>Internet Exploreru</b></li>
+  </ul>
+</div>
 
-  - DevDocs: [`@media`](http://devdocs.io/css/@media)
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>CSS Tricks: <a href="https://css-tricks.com/the-at-rules-of-css/">The At-Rules of CSS</a></li>
+  
+  <li>Vzhůru dolů: <a href="http://www.vzhurudolu.cz/prirucka/css3-media-queries">CSS3 Media Queries – podmíněné zobrazení pro média</a></li>
+  
+  <li>DevDocs: <a href="http://devdocs.io/css/@media"><code>@media</code></a></li>
+
+</ul>

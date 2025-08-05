@@ -5,72 +5,97 @@ description: "Jaké jsou v prohlížečích omezení pro velikost (složitost) C
 date: "2018-03-08"
 last_modification: "2018-03-12"
 status: 1
-tags: ["CSS", "CSS selektory", "Prohlížeče"]
+tags: ["css", "selektory-css", "webove-prohlizece"]
+format: "html"
 ---
 
-V praxi na to většina lidí nejspíš nenarazí, ale existují jisté limity pro počet CSS selektorů.
+<p>V praxi na to většina lidí nejspíš nenarazí, ale existují jisté limity pro počet CSS selektorů.</p>
 
-## Internet Explorer 9 a starší
+<h2 id="ie9">Internet Explorer 9 a starší</h2>
 
-Aktuálně je limituje hlavně **IE 9** (a nižší) s maximálním počtem **4095** selektorů. Další selektor v pořadí již bude ignorován.
+<p>Aktuálně je limituje hlavně <b>IE 9</b> (a nižší) s maximálním počtem <b>4095</b> selektorů. Další selektor v pořadí již bude ignorován.</p>
 
-Tento limit je většinou dostatečný, nicméně pro složitější a rozsáhlejší weby už nemusí stačit. Zvlášť při použití nějakého CSS [frameworku](/knihovny) nebo při generování CSS se počet selektorů může tomuto limitu přiblížit.
+<p>Tento limit je většinou dostatečný, nicméně pro složitější a rozsáhlejší weby už nemusí stačit. Zvlášť při použití nějakého CSS <a href="/knihovny">frameworku</a> nebo při generování CSS se počet selektorů může tomuto limitu přiblížit.</p>
 
-Spočítat CSS selektory dokáže např. následující nástroj:
+<p>Spočítat CSS selektory dokáže např. následující nástroj:</p>
 
-    - [CSS selector counter](http://snippet.bevey.com/css/selectorCount.php)
+<div class="external-content">
+  <ul>
+    <li><a href="http://snippet.bevey.com/css/selectorCount.php">CSS selector counter</a></li>
+  </ul>
+</div>
 
-Do tohoto limitu se podle všeho nepočítají [`@media`](/media) pravidla:
+<p>Do tohoto limitu se podle všeho nepočítají <a href="/media"><code>@media</code></a> pravidla:</p>
 
-    StackOverflow: How are media queries counted in IE's CSS selectors limit?
+<div class="external-content">
+  <ul>
+    <li>StackOverflow: <a href="https://stackoverflow.com/questions/25052610/how-are-media-queries-counted-in-ies-css-selectors-limit">How are media queries counted in IE's CSS selectors limit?
+</a></li>
+  </ul>
+</div>
 
-V případě, že je selektorů 4096 a víc, nezbývá než je rozdělit do více souborů. Zde jsou limity následující:
 
-  - lze připojit až 31 externích stylů,
+<p>V případě, že je selektorů 4096 a víc, nezbývá než je rozdělit do více souborů. Zde jsou limity následující:</p>
 
-  - každý styl může přes `@import` připojit dalších 31 externích stylů,
+<ul>
+  <li>lze připojit až 31 externích stylů,</li>
+  <li>každý styl může přes <code>@import</code> připojit dalších 31 externích stylů,</li>
+  <li><code>@import</code>y lze zanořovat do 4 úrovní</li>
+</ul>
 
-  - `@import`y lze zanořovat do 4 úrovní
+<p>Z toho plyne, že při rozdělování je limit dostatečný.</p>
 
-Z toho plyne, že při rozdělování je limit dostatečný.
+<h3 id="automatisace">Automatisace limitu</h3>
 
-### Automatisace limitu
+<p>Pokud se všechny styly <a href="/slouceni-js-css">spojují do jednoho souboru</a> a hrozí, že by se počet selektorů přiblížil hranici 4095, může se hodit Node.js plugin <a href="https://github.com/accordionpeas/css-selector-limit">css-selector-limit</a>.</p>
 
-Pokud se všechny styly [spojují do jednoho souboru](/slouceni-js-css) a hrozí, že by se počet selektorů přiblížil hranici 4095, může se hodit Node.js plugin [css-selector-limit](https://github.com/accordionpeas/css-selector-limit).
 
-## Nové prohlížeče
+<h2 id="nove">Nové prohlížeče</h2>
 
-Od **IE 10** jsou limity vyšší — selektorů může být až **65 534**. Dále platí:
+<p>Od <b>IE 10</b> jsou limity vyšší — selektorů může být až <b>65 534</b>. Dále platí:</p>
 
-  - připojit jde až 4095 externích stylů,
+<ul>
+  <li>připojit jde až 4095 externích stylů,</li>
+  <li>každý může na<code>@import</code>ovat dalších 4095,</li>
+  <li>zanořovat <code>@import</code>y jde do 4095 úrovní</li>
+</ul>
 
-  - každý může na`@import`ovat dalších 4095,
 
-  - zanořovat `@import`y jde do 4095 úrovní
+<div class="external-content">
+  <ul>
+    <li>IEInternals: <a href="https://blogs.msdn.microsoft.com/ieinternals/2011/05/14/stylesheet-limits-in-internet-explorer/">Stylesheet Limits in Internet Explorer</a></li>
+  </ul>
+</div>
 
-    - IEInternals: [Stylesheet Limits in Internet Explorer](https://blogs.msdn.microsoft.com/ieinternals/2011/05/14/stylesheet-limits-in-internet-explorer/)
 
-Pro ostatní prohlížeče se mi žádné přesné limity nepodařilo dohledat.
 
-Zdá se, že počet 4096 je relativně bezpečný.
+<p>Pro ostatní prohlížeče se mi žádné přesné limity nepodařilo dohledat.</p>
 
-V **Chrome** může záležet také na délce selektoru, navíc bývá problém u selektorů na jednom řádku. Takže místo:
+<p>Zdá se, že počet 4096 je relativně bezpečný.</p>
 
-```
-.selektor1, .selektor2, …, .selektor1000 {}
-```
+<p>V <b>Chrome</b> může záležet také na délce selektoru, navíc bývá problém u selektorů na jednom řádku. Takže místo:</p>
 
-Pomůže napsat:
+<pre><code>.selektor1, .selektor2, …, .selektor1000 {}</code></pre>
 
-```
-.selektor1,
+
+
+
+<p>Pomůže napsat:</p>
+
+<pre><code>.selektor1,
 .selektor2,
 …,
-.selektor1000 {}
-```
+.selektor1000 {}</code></pre>
 
-    StackOverflow: How long can a CSS selector be?
+<div class="external-content">
+  <ul>
+    <li>StackOverflow: <a href="https://stackoverflow.com/questions/20828995/how-long-can-a-css-selector-be">How long can a CSS selector be?
+</a></li>
+  </ul>
+</div>
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - Space Ninja: [The Many Exciting CSS Limits of Internet Explorer](https://spaceninja.com/2015/03/31/ie-css-limits/)
+<ul>
+  <li>Space Ninja: <a href="https://spaceninja.com/2015/03/31/ie-css-limits/">The Many Exciting CSS Limits of Internet Explorer</a></li>
+</ul>

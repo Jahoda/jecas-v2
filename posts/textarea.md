@@ -5,110 +5,120 @@ description: "HTML značka <code>&lt;textarea></code> – jaká jsou její speci
 date: "2014-06-24"
 last_modification: "2014-07-05"
 status: 1
-tags: ["HTML", "HTML značky", "Formuláře"]
+tags: ["formulare", "html", "html-tagy"]
+format: "html"
 ---
 
-Pro psaní delších textů na webu:
+<p>Pro psaní delších textů na webu:</p>
 
-  - článků,
+<ul>
+  <li>článků,</li>
+  <li>komentářů,</li>
+  <li>diskusních příspěvků,</li>
+  <li>zpráv do chatu</li>
+</ul>
 
-  - komentářů,
+<p>A pro další případy, kdy potřebujeme <b>více řádků</b> editovatelného textu, se používá značka <code>&lt;textarea></code> (v překladu textová oblast).</p>
 
-  - diskusních příspěvků,
+<div class="live">
+  <textarea>Obsah</textarea>
+</div>
 
-  - zpráv do chatu
 
-A pro další případy, kdy potřebujeme **více řádků** editovatelného textu, se používá značka `&lt;textarea>` (v překladu textová oblast).
+<h2 id="atributy">Atributy</h2>
 
+<p>Většinu atributů má <code>&lt;textarea></code> <a href="/input#obecne-atributy">společných</a> se značkou <code>&lt;input></code>.</p>
+
+<p>Textarea nemá atribut <code>value</code>, obsah se zadává mezi počáteční a koncovou značku (počáteční i koncová značka je <a href="/html-znacky#povinne">povinná</a>).</p>
+
+<pre><code>&lt;textarea>
   Obsah
+&lt;/textarea></code></pre>
 
-## Atributy
 
-Většinu atributů má `&lt;textarea>` [společných](/input#obecne-atributy) se značkou `&lt;input>`.
-
-Textarea nemá atribut `value`, obsah se zadává mezi počáteční a koncovou značku (počáteční i koncová značka je [povinná](/html-znacky#povinne)).
-
-```
-&lt;textarea>
-  Obsah
-&lt;/textarea>
-```
-
-  `name`
-  Jméno políčka, podle kterého se dá následně zpracovávat na serveru.
+<dl>
+  <dt id="name"><code>name</code></dt>
+  <dd>Jméno políčka, podle kterého se dá následně zpracovávat na serveru.</dd>
   
-  `cols`
-  Počet *sloupců*. V podstatě nastavuje šířku pole. Je možné nahradit CSS vlastností `width`.
+  <dt id="cols"><code>cols</code></dt>
+  <dd>Počet <i>sloupců</i>. V podstatě nastavuje šířku pole. Je možné nahradit CSS vlastností <code>width</code>.</dd>
   
-  `rows`
-  Počet *řádků*. Stanovuje výšku políčka. Je možné nahradit CSS vlastností [`height`](/height). Někdo tyto atributy důsledně vyplňuje kvůli **zobrazení bez kaskádových stylů**.  
+  <dt id="rows"><code>rows</code></dt>
+  <dd>Počet <i>řádků</i>. Stanovuje výšku políčka. Je možné nahradit CSS vlastností <a href="/height"><code>height</code></a>. Někdo tyto atributy důsledně vyplňuje kvůli <b>zobrazení bez kaskádových stylů</b>.</dd>  
   
-  `wrap`
-  Atribut `wrap` může nabývat hodnoty `soft` (výchozí) a `hard`. Použití `wrap=hard` spolu s omezením počtu znaků na řádek (atribut `cols`) by mělo zajistit, že v `&lt;textarea>` nemůže vzniknout řádek delší než hodnota v `cols`. Podpora napříč prohlížeči je špatná. Navíc vždy takové ošetření musíme dělat na straně serveru. [Zalamovat slova](/zalamovani-slov) jde i v CSS přes `word-wrap: break-word`.    
+  <dt id="wrap"><code>wrap</code></dt>
+  <dd>Atribut <code>wrap</code> může nabývat hodnoty <code>soft</code> (výchozí) a <code>hard</code>. Použití <code>wrap=hard</code> spolu s omezením počtu znaků na řádek (atribut <code>cols</code>) by mělo zajistit, že v <code>&lt;textarea></code> nemůže vzniknout řádek delší než hodnota v <code>cols</code>. Podpora napříč prohlížeči je špatná. Navíc vždy takové ošetření musíme dělat na straně serveru. <a href="/zalamovani-slov">Zalamovat slova</a> jde i v CSS přes <code>word-wrap: break-word</code>.</dd>    
   
-  `disabled`
-  Pole je úplně zablokované. Nejde na něm vyvolat `onclick` a neodešle se na server.  
+  <dt id="disabled"><code>disabled</code></dt>
+  <dd>Pole je úplně zablokované. Nejde na něm vyvolat <code>onclick</code> a neodešle se na server.</dd>  
   
-  `autofocus`
-  Po načtení stránky dá políčku rovnou `focus` ([ukázka](http://kod.djpw.cz/zbeb)). Osobně takové chování nemám příliš rád, neboť **přesun kursoru** do pole typicky **zablokuje ovládání klávesami**.  
+  <dt id="autofocus"><code>autofocus</code></dt>
+  <dd>Po načtení stránky dá políčku rovnou <code>focus</code> (<a href="http://kod.djpw.cz/zbeb">ukázka</a>). Osobně takové chování nemám příliš rád, neboť <b>přesun kursoru</b> do pole typicky <b>zablokuje ovládání klávesami</b>.</dd>  
   
-  `placeholder`
-  Předvyplní políčko hodnotou, která **po aktivování zmizí**. Zároveň se nebude odesílat na server. Detailní popis [atributu `placehodler`](/placeholder) je na samostatné stránce.  
+  <dt id="placeholder"><code>placeholder</code></dt>
+  <dd>Předvyplní políčko hodnotou, která <b>po aktivování zmizí</b>. Zároveň se nebude odesílat na server. Detailní popis <a href="/placeholder">atributu <code>placehodler</code></a> je na samostatné stránce.</dd>  
   
-  `spellcheck`
-  Zapne nebo vypne **kontrolu pravopisu**.   
+  <dt id="spellcheck"><code>spellcheck</code></dt>
+  <dd>Zapne nebo vypne <b>kontrolu pravopisu</b>.</dd>   
   
-  `maxlength`
-  Maximální počet znaků, co lze do políčka napsat.
+  <dt id="maxlength"><code>maxlength</code></dt>
+  <dd>Maximální počet znaků, co lze do políčka napsat.</dd>
   
-  `required`
-  Pole musí být vyplněno.  
+  <dt id="required"><code>required</code></dt>
+  <dd>Pole musí být vyplněno.</dd>  
+</dl>
 
-## Změna velikosti
 
-Kromě **IE** umí prohlížeče automaticky měnit velikost `&lt;textarea>` přes tažením za okraje. Zakázat to jde CSS vlastností [`resize`](/resize).
 
-## Přístup v JavaScriptu
+<h2 id="zmena-velikosti">Změna velikosti</h2>
 
-Aktuální obsah pole se nachází ve vlastnosti `value`.
+<p>Kromě <b>IE</b> umí prohlížeče automaticky měnit velikost <code>&lt;textarea></code> přes tažením za okraje. Zakázat to jde CSS vlastností <a href="/resize"><code>resize</code></a>.</p>
 
-```
-var textarea = document.getElementsByTagName("textarea")[0];
-alert(textarea.value);
-```
+<h2 id="js">Přístup v JavaScriptu</h2>
 
-V případě, že je v poli nějaký předvyplněný text, je možné ho získat i přes [`innerHTML`](/innerhtml). Také jde obsah do `innerHTML` nastavit, ovšem po jakékoliv editaci už nebude vidět – **přebije** ho `value`, která se potom i odešle na server.
+<p>Aktuální obsah pole se nachází ve vlastnosti <code>value</code>.</p>
 
-[Ukázka rozdílů `innerHTML` a `value`](http://kod.djpw.cz/bceb)
+<pre><code>var textarea = document.getElementsByTagName("textarea")[0];
+alert(textarea.value);</code></pre>
 
-Původní hodnota (`value`) v době načtení stránky je dostupná skrz JS vlastnost `defaultValue`.
+<p>V případě, že je v poli nějaký předvyplněný text, je možné ho získat i přes <a href="/innerhtml"><code>innerHTML</code></a>. Také jde obsah do <code>innerHTML</code> nastavit, ovšem po jakékoliv editaci už nebude vidět – <b>přebije</b> ho <code>value</code>, která se potom i odešle na server.</p>
 
-```
-alert(textarea.**defaultValue**);
-```
+<p><a href="http://kod.djpw.cz/bceb">Ukázka rozdílů <code>innerHTML</code> a <code>value</code></a></p>
 
-## Formátování
+<p>Původní hodnota (<code>value</code>) v době načtení stránky je dostupná skrz JS vlastnost <code>defaultValue</code>.</p>
 
-Textarea jde docela dobře stylovat ([ukázka](http://kod.djpw.cz/fceb)).
+<pre><code>alert(textarea.<b>defaultValue</b>);</code></pre>
 
-Častým přáním je v ní odlišně zvýrazňovat jednotlivá slova. To běžně možné není. Je nutné použít [element s `contenteditable`](/vlastni-wysiwyg).
 
-## Výchozí posuvník v IE
 
-V **Internet Exploreru** má `&lt;textarea>` automaticky svislý posuvník. Zbavit se ho můžeme nastavení `overflow: auto`. [Ukázka](http://kod.djpw.cz/cceb).
+<h2 id="formatovani">Formátování</h2>
 
-## Počet znaků a slov
+<p>Textarea jde docela dobře stylovat (<a href="http://kod.djpw.cz/fceb">ukázka</a>).</p>
 
-Jak počítat [počty znaků a slov](/pocet-znaku) je popsáno na samostatné stránce.
+<p>Častým přáním je v ní odlišně zvýrazňovat jednotlivá slova. To běžně možné není. Je nutné použít <a href="/vlastni-wysiwyg">element s <code>contenteditable</code></a>.</p>
 
-## Neinterpretování HTML značek
 
-Zvláštní vlastnost textového pole tkví v jisté podobnosti se značkou `&lt;xmp>`. Do `&lt;textarea>` je totiž možné stejně tak vepsat prakticky libovolné HTML bez převádění na entity, aniž by se provedlo.
+<h2 id="vychozi-posuvnik">Výchozí posuvník v IE</h2>
 
-    # Nadpis
+<p>V <b>Internet Exploreru</b> má <code>&lt;textarea></code> automaticky svislý posuvník. Zbavit se ho můžeme nastavení <code>overflow: auto</code>. <a href="http://kod.djpw.cz/cceb">Ukázka</a>.</p>
 
-    Odstavec.
 
-Jediný problém je další `&lt;textarea>`, přesněji řečeno její koncová značka. [Ukázka `&lt;textarea>`](http://kod.djpw.cz/dceb) / [ukázka značky `&lt;xmp>`](http://kod.djpw.cz/eceb).
+<h2 id="pocet-znaku">Počet znaků a slov</h2>
 
-Někdy se `&lt;textarea>` také používá pro [pohodlné označování textu](/oznaceni-textu).
+<p>Jak počítat <a href="/pocet-znaku">počty znaků a slov</a> je popsáno na samostatné stránce.</p>
+
+
+<h2 id="neinterpretovani-html">Neinterpretování HTML značek</h2>
+
+<p>Zvláštní vlastnost textového pole tkví v jisté podobnosti se značkou <code>&lt;xmp></code>. Do <code>&lt;textarea></code> je totiž možné stejně tak vepsat prakticky libovolné HTML bez převádění na entity, aniž by se provedlo.</p>
+
+<div class="live">
+  <textarea name="" id="" cols="30" rows="3">
+    <h1>Nadpis</h1>
+    <p>Odstavec.</p>
+  </textarea>
+</div>
+
+<p>Jediný problém je další <code>&lt;textarea></code>, přesněji řečeno její koncová značka. <a href="http://kod.djpw.cz/dceb">Ukázka <code>&lt;textarea></code></a> / <a href="http://kod.djpw.cz/eceb">ukázka značky <code>&lt;xmp></code></a>.</p>
+
+<p>Někdy se <code>&lt;textarea></code> také používá pro <a href="/oznaceni-textu">pohodlné označování textu</a>.</p>

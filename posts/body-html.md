@@ -6,8 +6,12 @@ date: "2015-04-19"
 last_modification: "2015-04-19"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - CSS Tricks: [HTML vs Body in CSS](https://css-tricks.com/html-vs-body-in-css/)
+<ul>
+  <li>CSS Tricks: <a href="https://css-tricks.com/html-vs-body-in-css/">HTML vs Body in CSS</a></li>
+</ul>
+

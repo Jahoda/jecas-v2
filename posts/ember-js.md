@@ -6,6 +6,7 @@ date: "2014-02-23"
 last_modification: "2014-02-23"
 status: 0
 tags: []
+format: "html"
 ---
 
 https://hacks.mozilla.org/2014/02/ember-js-what-it-is-and-why-we-need-to-care-about-it/

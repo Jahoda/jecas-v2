@@ -6,8 +6,9 @@ date: "2015-10-27"
 last_modification: "2015-10-27"
 status: 0
 tags: []
+format: "html"
 ---
 
-**UltraEdit** není zdarma, ale jde vyzkoušet jeho trial verse.
+<p><b>UltraEdit</b> není zdarma, ale jde vyzkoušet jeho trial verse.</p>
 
-[Stáhnout UltraEdit](http://www.ultraedit.com/downloads.html)
+<p><a href="http://www.ultraedit.com/downloads.html" class="button">Stáhnout UltraEdit</a></p>

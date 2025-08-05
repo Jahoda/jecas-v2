@@ -5,72 +5,57 @@ description: "HTML tag <code>&lt;template></code> slouží k připravení HTML k
 date: "2013-11-28"
 last_modification: "2013-12-11"
 status: 1
-tags: ["HTML", "HTML značky"]
+tags: ["html", "html-tagy"]
+format: "html"
 ---
 
-Při vytváření aplikace v JavaScriptu se může hodit mít po ruce kód HTML, který se použije až později při nějaké události. *Šablony* pomocí `&lt;template>` zatím fungují ve **Firefoxu** a **Chrome**. V **IE** ani **Opeře 12** ne.
+<p>Při vytváření aplikace v JavaScriptu se může hodit mít po ruce kód HTML, který se použije až později při nějaké události. <i>Šablony</i> pomocí <code>&lt;template></code> zatím fungují ve <b>Firefoxu</b> a <b>Chrome</b>. V <b>IE</b> ani <b>Opeře 12</b> ne.</p>
 
-## Šablona `&lt;template>`
+<h2 id="sablony">Šablona <code>&lt;template></code></h2>
+<p>Cokoliv je umístěné do značky <code>&lt;template></code> podporující prohlížeče neřeší do té doby, než obsah JavaScript někde použije. Šablonu je možné umístit takřka <b>kamkoliv do kódu</b> (do <code>&lt;head></code>, <code>&lt;body></code>, do tabulky a podobně).</p>
 
-Cokoliv je umístěné do značky `&lt;template>` podporující prohlížeče neřeší do té doby, než obsah JavaScript někde použije. Šablonu je možné umístit takřka **kamkoliv do kódu** (do `&lt;head>`, `&lt;body>`, do tabulky a podobně).
+<h3 id="vlastnosti">Vlastnosti šablony</h3>
+<ul>
+  <li><b>DOM</b> šablony se nevyhodnocuje.</li>
+  <li><b>CSS</b> se na šablonu neaplikuje.</li>
+  <li><b>Obrázky</b> se před použitím <b>nenačítají</b>.</li>
+</ul>
 
-### Vlastnosti šablony
+<p>Použití <b>šablony</b> může vypadat následovně:</p>
 
-  - **DOM** šablony se nevyhodnocuje.
-
-  - **CSS** se na šablonu neaplikuje.
-
-  - **Obrázky** se před použitím **nenačítají**.
-
-Použití **šablony** může vypadat následovně:
-
-```
-&lt;template>
+<pre><code>&lt;template>
   &lt;p>Obsah ukrytý v šabloně&lt;/p>
-&lt;/template>
-```
+&lt;/template></code></pre>
 
-„Aktivování“ obsahu šablony potom může proběhnout jeho **naklonováním** do stránky. Obsah z šablony je nutné dolovat přes `sablona.**content**` (protože není v DOMu stránky).
+<p>„Aktivování“ obsahu šablony potom může proběhnout jeho <b>naklonováním</b> do stránky. Obsah z šablony je nutné dolovat přes <code>sablona.<b>content</b></code> (protože není v DOMu stránky).</p>
 
-```
-var sablona = document.querySelector('#id-sablony');
-document.body.appendChild(sablona.content.cloneNode(true));
-```
+<pre><code>var sablona = document.querySelector('#id-sablony');
+document.body.appendChild(sablona.content.cloneNode(true));</code></pre>
 
-Před *vložením* do stránky je možné šablony libovolně **JavaScriptem modifikovat**. Třeba **naplnit daty** nějak skriptem vypočtenými a podobně.
+<p>Před <i>vložením</i> do stránky je možné šablony libovolně <b>JavaScriptem modifikovat</b>. Třeba <b>naplnit daty</b> nějak skriptem vypočtenými a podobně.</p>
+<pre><code>sablona.content.querySelector("p").innerHTML = 'Ahoj';</code></pre>
 
-```
-sablona.content.querySelector("p").innerHTML = 'Ahoj';
-```
+<p><a href="http://kod.djpw.cz/onv">Ukázka</a></p>
 
-[Ukázka](http://kod.djpw.cz/onv)
+<p>Poznámka: V obsahu šablony (vlastnost <code>content</code>) není možné nacházet elementy metodami typu <code>getElementsByTagName</code>, je <b>nutné použít</b> <a href="/queryselector"><code>querySelector</code></a>.</p>
 
-Poznámka: V obsahu šablony (vlastnost `content`) není možné nacházet elementy metodami typu `getElementsByTagName`, je **nutné použít** [`querySelector`](/queryselector).
+<h3 id="preload">Přednačtení (preload)</h3>
+<p>Načíst nějaký obsah z šablony <b>dopředu</b> nejspíš není možné.</p>
 
-### Přednačtení (preload)
+<p>Kvůli špatné podpoře šablony napříč prohlížeči <b>existují alternativy</b>…</p>
 
-Načíst nějaký obsah z šablony **dopředu** nejspíš není možné.
+<h2 id="skryty-div">Skrytý element</h2>
+<p>Obsahu se přidá <code>display: none</code>. Nevýhoda tohoto řešení je, že se tento element přidá do DOMu už při načtení, ačkoliv to není zatím potřeba. Zároveň se <b>stáhnou případné obrázky</b> v elementu umístěné.</p>
 
-Kvůli špatné podpoře šablony napříč prohlížeči **existují alternativy**…
+<h2 id="js-type-nesmysl">JS značka <code>&lt;script></code> s nesmyslným <code>type</code></h2>
+<p>Zajímavější možnost je umístit obsah k <b>pozdějšímu použití</b> do značky <code>&lt;script></code>, které se dá nesmyslný <code>type</code>, takže její obsah prohlížeč jako JS kód nevyhodnotí.</p>
 
-## Skrytý element
-
-Obsahu se přidá `display: none`. Nevýhoda tohoto řešení je, že se tento element přidá do DOMu už při načtení, ačkoliv to není zatím potřeba. Zároveň se **stáhnou případné obrázky** v elementu umístěné.
-
-## JS značka `&lt;script>` s nesmyslným `type`
-
-Zajímavější možnost je umístit obsah k **pozdějšímu použití** do značky `&lt;script>`, které se dá nesmyslný `type`, takže její obsah prohlížeč jako JS kód nevyhodnotí.
-
-```
-&lt;script id="sablona" type="nejaky/nesmysl">
+<pre><code>&lt;script id="sablona" type="nejaky/nesmysl">
   &lt;p>Skrytý obsah, který obnoví JavaScript.&lt;/p>
-&lt;/script>
-```
+&lt;/script></code></pre>
 
-Obsah se později může vytáhnout přes `innerHTML`.
+<p>Obsah se později může vytáhnout přes <code>innerHTML</code>.</p>
 
-```
-document.getElementById("sablona").innerHTML
-```
+<pre><code>document.getElementById("sablona").innerHTML</code></pre>
 
-[Ukázka](http://kod.djpw.cz/snv)
+<p><a href="http://kod.djpw.cz/snv">Ukázka</a></p>

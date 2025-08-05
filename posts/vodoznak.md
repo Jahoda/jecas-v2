@@ -6,6 +6,9 @@ date: "2015-05-13"
 last_modification: "2015-05-13"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [How to Watermark Images and Videos](http://davidwalsh.name/watermark-images-videos)
+<ul>
+  <li><a href="http://davidwalsh.name/watermark-images-videos">How to Watermark Images and Videos</a></li>
+</ul>

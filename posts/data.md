@@ -5,51 +5,64 @@ description: "HTML značka <code>&lt;data></code> slouží k označení strojov�
 date: "2015-01-02"
 last_modification: "2015-02-22"
 status: 1
-tags: ["HTML", "HTML značky"]
+tags: ["html", "html-tagy"]
+format: "html"
 ---
 
-V určitých případech se může hodit umístit nějaká data, která **nejsou na stránce přímo vidět**, do HTML kódu stránky. Typicky s nimi potom bude manipulovat JavaScript.
+<p>V určitých případech se může hodit umístit nějaká data, která <b>nejsou na stránce přímo vidět</b>, do HTML kódu stránky. Typicky s nimi potom bude manipulovat JavaScript.</p>
 
-## Zápis
 
-Značka `&lt;data>` má volitelný atribut `value`.
 
-```
-&lt;data value="hodnota">
+
+<h2 id="zapis">Zápis</h2>
+
+<p>Značka <code>&lt;data></code> má volitelný atribut <code>value</code>.</p>
+
+<pre><code>&lt;data value="hodnota">
   Obsah značky
-&lt;/data>
-```
+&lt;/data></code></pre>
 
-Obsah mezi `&lt;data>` a `&lt;/data>` se standardně vypíše (a to i ve starých prohlížečích, které budou značku brát jako neznámou / [vlastní značku](/vlastni-html-znacky)). Element `&lt;data>` je řádkový (`display: inline`).
 
-Použít `&lt;data>` jde i v režimu bez obsahu, potom se na stránce nezobrazí nic.
 
-```
-&lt;data id="data" value="hodnota">&lt;/data>
-```
 
-## Využití
+<p>Obsah mezi <code>&lt;data></code> a <code>&lt;/data></code> se standardně vypíše (a to i ve starých prohlížečích, které budou značku brát jako neznámou / <a href="/vlastni-html-znacky">vlastní značku</a>). Element <code>&lt;data></code> je řádkový (<code>display: inline</code>).</p>
 
-Dosáhnout podobného výsledku jde i jinými značkami a [vlastními HTML atributy](/vlastni-html-atributy). Značka `&lt;data>` má ale pro takové případy speciální sémantický význam.
+<p>Použít <code>&lt;data></code> jde i v režimu bez obsahu, potom se na stránce nezobrazí nic.</p>
 
-Pro některé případy dat existují vhodnější značky než obecný element `&lt;data>`. Třeba pro zapsání času existuje značka [`&lt;time>`](/time).
+<pre><code>&lt;data id="data" value="hodnota">&lt;/data></code></pre>
 
-## Přístup v JavaScriptu
 
-Značka `&lt;data>` je podporovaná pouze ve **Firefoxu 22**+. Tam se dá získat hodnota přímo z vlastnosti `value` (podobně jako u [`&lt;input>`](/input)).
 
-```
-document.getElementById("data").value
-```
 
-V ostatních prohlížečích je `&lt;data>` element neznámý (`HTMLUnknownElement`), jediné řešení je tedy použít metodu `getAttribute`.
 
-```
-document.getElementById("data").getAttribute("value")
-```
 
-    - [Živá ukázka](http://kod.djpw.cz/hukb) – test podpory značky `&lt;data>`
+<h2 id="vyuziti">Využití</h2>
 
-## Odkazy
+<p>Dosáhnout podobného výsledku jde i jinými značkami a <a href="/vlastni-html-atributy">vlastními HTML atributy</a>. Značka <code>&lt;data></code> má ale pro takové případy speciální sémantický význam.</p>
 
-  - MDN: [`&lt;data>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data)
+<p>Pro některé případy dat existují vhodnější značky než obecný element <code>&lt;data></code>. Třeba pro zapsání času existuje značka <a href="/time"><code>&lt;time></code></a>.</p>
+
+
+
+<h2 id="js">Přístup v JavaScriptu</h2>
+
+<p>Značka <code>&lt;data></code> je podporovaná pouze ve <b>Firefoxu 22</b>+. Tam se dá získat hodnota přímo z vlastnosti <code>value</code> (podobně jako u <a href="/input"><code>&lt;input></code></a>).</p>
+
+<pre><code>document.getElementById("data").value</code></pre>
+
+<p>V ostatních prohlížečích je <code>&lt;data></code> element neznámý (<code>HTMLUnknownElement</code>), jediné řešení je tedy použít metodu <code>getAttribute</code>.</p>
+
+<pre><code>document.getElementById("data").getAttribute("value")</code></pre>
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/hukb">Živá ukázka</a> – test podpory značky <code>&lt;data></code></li>
+  </ul>
+</div>
+
+
+<h2 id="odkazy">Odkazy</h2>
+
+<ul>
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/data"><code>&lt;data></code></a></li>
+</ul>

@@ -5,25 +5,31 @@ description: "Má-li se delší text vyjít do přesného místa, je třeba kous
 date: "2013-10-30"
 last_modification: "2013-10-31"
 status: 1
-tags: ["CSS", "Hotová řešení", "Animace"]
+tags: ["css", "hotova-reseni", "webove-animace"]
+format: "html"
 ---
 
-Pro **oříznutí jednořádkového textu čistě v CSS** stačí:
+<p>Pro <b>oříznutí jednořádkového textu čistě v CSS</b> stačí:</p>
+<ul>
+  <li>zrušit zalamování (<code>white-space: nowrap</code>),</li>
+  <li>omezit šířku (<code>width</code>),</li>
+  <li>element oříznout (<code>overflow: hidden</code>).</li>
+</ul>
 
-  - zrušit zalamování (`white-space: nowrap`),
-
-  - omezit šířku (`width`),
-
-  - element oříznout (`overflow: hidden`).
-
+<div class="live">
+  <style>
     .oriznuti {width: 220px; overflow: hidden; white-space: nowrap; background: #fff}
-
+  </style>
+  <div class="oriznuti">
     Text, který bude na konci uříznutý a další text nebude vidět.
+  </div>
+</div>
 
-## Plynulé uříznutí do ztracena
+<h2 id="plynule">Plynulé uříznutí do ztracena</h2>
+<p>Aby nebyl text nepěkně useknut <b>uprostřed písmene</b>, může vzhled zlepšit překrytí <b>plynulým přechodem</b>. To zajistí element s přechodem na pozadí, který se <a href="/position#absolute">absolutně naposicuje</a>. Napříč prohlížeči funkční CSS přechod lze <a href="http://www.colorzilla.com/gradient-editor/">snadno vygenerovat</a>.</p>
 
-Aby nebyl text nepěkně useknut **uprostřed písmene**, může vzhled zlepšit překrytí **plynulým přechodem**. To zajistí element s přechodem na pozadí, který se [absolutně naposicuje](/position#absolute). Napříč prohlížeči funkční CSS přechod lze [snadno vygenerovat](http://www.colorzilla.com/gradient-editor/).
-
+<div class="live">
+  <style>
   .oriznuti {width: 220px; overflow: hidden; white-space: nowrap; background: #fff; position: relative;}
   .prechod {
   position: absolute; right: 0; top: 0; width: 30px; height: 100%;
@@ -36,25 +42,33 @@ Aby nebyl text nepěkně useknut **uprostřed písmene**, může vzhled zlepšit
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );;
 }
-
+  </style>
+  <div class="oriznuti">
+  <span class="prechod"></span>
+  <div class="text">
     Text, který bude na konci uříznutý a další text nebude vidět.
+  </div>
+</div>
+</div>
 
-## Tři tečky (vlastnost `text-overflow`)
+<h2 id="text-overflow">Tři tečky (vlastnost <code>text-overflow</code>)</h2>
+<p>CSS umí přebytečný text nahradit výpustkou (<code>…</code>) při uvedení:</p>
+<pre><code>.text {text-overflow: ellipsis}</code></pre>
 
-CSS umí přebytečný text nahradit výpustkou (`…`) při uvedení:
-
-```
-.text {text-overflow: ellipsis}
-```
-
+<div class="live">
+  <style>
     .oriznuti {width: 220px; overflow: hidden; white-space: nowrap; background: #fff}
-
+  </style>
+  <div class="oriznuti" style="text-overflow: ellipsis">
     Text, který bude na konci uříznutý a další text nebude vidět.
+  </div>
+</div>
 
-## Animované odkrývání textu
+<h2 id="odkryti">Animované odkrývání textu</h2>
+<p>Ve výše uvedených řešeních je trochu nepraktické, že se k oříznutému textu <b>nepůjde dostat</b>. Co takhle <b>po najetí myší text posunout</b>, aby byl vidět celý?</p>
 
-Ve výše uvedených řešeních je trochu nepraktické, že se k oříznutému textu **nepůjde dostat**. Co takhle **po najetí myší text posunout**, aby byl vidět celý?
-
+<div class="live">
+<style>
 .oriznuty {width: 220px; overflow: hidden; white-space: nowrap; 
     position: relative; height: 2em; background: #fff}
 .prechod {
@@ -77,26 +91,33 @@ Ve výše uvedených řešeních je trochu nepraktické, že se k oříznutému 
 transition: 2s max-width .5s}
 .oriznuty:hover .text {max-width: 440px}
 .oriznuty:hover .prechod {opacity: 0}
+ 
 
+</style>
+<div class="oriznuty">
+  <span class="prechod"></span>
+  <div class="text">
     Text, který bude na konci uříznutý a další text nebude vidět.
+  </div>
+</div>
+</div>
 
-Využívá se triku s CSS vlastností [`transition`](/transition), kdy se [mění `max-width`](/animace-skryt#zmenseni). Pro přesnou animaci by proto bylo nejspíš nutné **použít JavaSript**.
+<p>Využívá se triku s CSS vlastností <a href="/transition"><code>transition</code></a>, kdy se <a href="/animace-skryt#zmenseni">mění <code>max-width</code></a>. Pro přesnou animaci by proto bylo nejspíš nutné <b>použít JavaSript</b>.</p>
 
-## Oříznutí v PHP/MySQL
+<h2 id="server">Oříznutí v PHP/MySQL</h2>
+<p>Oříznout text je možné i <b>na straně serveru</b>. Přesné ořezávání na serveru je ale složitější na údržbu. Stačí u textu třeba jen změnit velikost písma nebo jeho font a shodný počet znaků bude mít různé rozměry.</p>
+<h3 id="php">PHP</h3>
+<pre><code>$pocetZnaku = 10;
+$text = mb_substr($text, 0, $pocetZnaku);</code></pre>
 
-Oříznout text je možné i **na straně serveru**. Přesné ořezávání na serveru je ale složitější na údržbu. Stačí u textu třeba jen změnit velikost písma nebo jeho font a shodný počet znaků bude mít různé rozměry.
+<h3 id="sql">MySQL</h3>
+<pre><code>SELECT SUBSTR(sloupec, 1, 10) FROM tabulka;</code></pre>
+<p>Zkrácení textu s HTML značkami je <a href="http://php.vrana.cz/zkraceni-textu-s-xhtml-znackami.php">trochu komplikovanější</a>.</p>
 
-### PHP
+<!-- 
 
-```
-$pocetZnaku = 10;
-$text = mb_substr($text, 0, $pocetZnaku);
-```
+http://kod.djpw.cz/euc
+http://kod.djpw.cz/fuc
+http://kod.djpw.cz/guc
 
-### MySQL
-
-```
-SELECT SUBSTR(sloupec, 1, 10) FROM tabulka;
-```
-
-Zkrácení textu s HTML značkami je [trochu komplikovanější](http://php.vrana.cz/zkraceni-textu-s-xhtml-znackami.php).
+-->

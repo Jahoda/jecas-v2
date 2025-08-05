@@ -5,13 +5,13 @@ description: "Jak v JavaScriptu zjistit aktuální souřadnice myši (kursoru)."
 date: "2013-09-14"
 last_modification: "2013-11-14"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-V některých situací (jako třeba u [efektu baterky](/baterka) nebo [kontextové nabídky](/kontextova-nabidka)) je třeba skriptem sledovat, **kde je umístěn kursor**. Universální JS funkce sjednocující chování napříč prohlížeči (hlavně **IE** a ostatní prohlížeče) může vypadat takto:
+<p>V některých situací (jako třeba u <a href="/baterka">efektu baterky</a> nebo <a href="/kontextova-nabidka">kontextové nabídky</a>) je třeba skriptem sledovat, <b>kde je umístěn kursor</b>. Universální JS funkce sjednocující chování napříč prohlížeči (hlavně <b>IE</b> a ostatní prohlížeče) může vypadat takto:</p>
 
-```
-function getPosition(e) {
+<pre><code>function getPosition(e) {
     e = e || window.event;
     var cursor = {x:0, y:0};
 
@@ -30,33 +30,23 @@ function getPosition(e) {
             document.documentElement.clientTop;
     }
     return cursor;
-}
-```
+}</code></pre>
 
-Použití je potom následovné:
+<p>Použití je potom následovné:</p>
+<pre><code>var souradnice = getPosition(e);</code></pre>
+<ul>
+  <li>V <code>souradnice.x</code> bude <b>X-ová souřadnice</b> (nebo také <code>left</code> hodnota).</li>
+  <li>V <code>souradnice.y</code> bude <b>Y-ová souřadnice</b> (nebo také <code>top</code> hodnota).</li>  
+</ul>
 
-```
-var souradnice = getPosition(e);
-```
+<p>Při nastavování CSS se <b>nesmí zapomenout</b> na přidání jednotky <code>px</code>.</p>
+<pre><code>neco.style.left = souradnice.x + "px";
+neco.style.top = souradnice.y + "px";</code></pre>
 
-  - V `souradnice.x` bude **X-ová souřadnice** (nebo také `left` hodnota).
-
-  - V `souradnice.y` bude **Y-ová souřadnice** (nebo také `top` hodnota).
-
-Při nastavování CSS se **nesmí zapomenout** na přidání jednotky `px`.
-
-```
-neco.style.left = souradnice.x + "px";
-neco.style.top = souradnice.y + "px";
-```
-
-Při používání funkce je nutné předávat `event`.
-
-```
-&lt;script>
-function funkce(**e**) {
-  var souradnice = getPosition(**e**);
+<p>Při používání funkce je nutné předávat <code>event</code>.</p>
+<pre><code>&lt;script>
+function funkce(<b>e</b>) {
+  var souradnice = getPosition(<b>e</b>);
 }
 &lt;/script>
-&lt;p onclick='funkce(**event**)'>
-```
+&lt;p onclick='funkce(<b>event</b>)'></code></pre>

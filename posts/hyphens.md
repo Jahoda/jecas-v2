@@ -5,50 +5,48 @@ description: "Vlastnosti <code>hyphens</code> ovlivňuje rozdělování slov spo
 date: "2013-11-29"
 last_modification: "2013-11-29"
 status: 1
-tags: ["CSS", "CSS vlastnosti"]
+tags: ["css", "css-vlastnosti"]
+format: "html"
 ---
 
-V HTML je možné určitými znaky vytvořit uprostřed slova místo, kde se může **zalomit řádek** uprostřed slova.
+<p>V HTML je možné určitými znaky vytvořit uprostřed slova místo, kde se může <b>zalomit řádek</b> uprostřed slova.</p>
 
-  - entitou `&amp;shy;`,
+<ul>
+  <li>entitou <code>&amp;shy;</code>,</li>
+  <li>číselnou entitou <code>&amp;#173;</code>,</li>
+  <li>číselnou entitou <code>&amp;#8203;</code>,</li>
+  <li>další mezery jsou na <a href="http://en.wikipedia.org/wiki/Space_(punctuation)#Spaces_in_Unicode">Wikipedii</a>.</li>
+</ul>
 
-  - číselnou entitou `&amp;#173;`,
+<pre><code>&lt;p>
+  Text odstavce, který se může za<b>&amp;shy;</b>lo<b>&amp;shy;</b>mit uprostřed slova „zalomit“.
+&lt;/p></code></pre>
 
-  - číselnou entitou `&amp;#8203;`,
+<p>CSS vlastnost <code>hyphens</code> může nabývat hodnoty:</p>
 
-  - další mezery jsou na [Wikipedii](http://en.wikipedia.org/wiki/Space_(punctuation)#Spaces_in_Unicode).
+<dl>
+  <dt id="none"><code>none</code></dt>
+  <dd>Prohlížeč bude <i>příležitosti k zalomení</i> (např. entitu <code>&amp;shy;</code> uprostřed slova) ignorovat.</dd>
 
-```
-&lt;p>
-  Text odstavce, který se může za**&amp;shy;**lo**&amp;shy;**mit uprostřed slova „zalomit“.
-&lt;/p>
-```
+  <dt id="manual"><code>manual</code></dt>
+  <dd><b>Výchozí</b> hodnota. Slova se zalamují v místech, kde je <i>příležitost</i> vytvořená zalamovací entitou.</dd>
 
-CSS vlastnost `hyphens` může nabývat hodnoty:
+  <dt id="auto"><code>auto</code></dt>
+  <dd>Prohlížeč může slovo rozdělit spojovníkem, kde <b>uzná za vhodné</b>. Prohlížeče, které umí rozdělovat slo-va po slabikách, při nastavení <code>hyphens: auto</code> toto rozdělování <i>zapnou</i> i bez nutnosti zanést kód <b>rozdělovacími entitami</b>.</dd>  
+</dl>
 
-  `none`
-  Prohlížeč bude *příležitosti k zalomení* (např. entitu `&amp;shy;` uprostřed slova) ignorovat.
+<p>Zajímavá je kombinace <code>hyphens: auto</code> s <code>text-align: justify</code> (zarovnání do bloku). Výsledný text vypadá lépe, protože <b>zalamování slov</b> nevytváří takové <i>řeky</i> (nepěkně velké mezery mezi slovy).</p>
 
-  `manual`
-  **Výchozí** hodnota. Slova se zalamují v místech, kde je *příležitost* vytvořená zalamovací entitou.
+<h2 id="podpora">Podpora</h2>
+<p>Momentálně nejlepší podpora (s <a href="/css-prefixy">prefixy</a>) pro český text je v <b>IE 10</b> a <b><a href="/ie11">IE 11</a></b>. <b>Opera</b> a <b>Chrome</b> nastavení <code>hyphens</code>, zdá se, ignoruje. A ve <b>Firefoxu</b> se u češtiny chová <code>manual</code> i <code>auto</code> stejně (v jiných jazycích rozdělovat umí).</p>
 
-  `auto`
-  Prohlížeč může slovo rozdělit spojovníkem, kde **uzná za vhodné**. Prohlížeče, které umí rozdělovat slo-va po slabikách, při nastavení `hyphens: auto` toto rozdělování *zapnou* i bez nutnosti zanést kód **rozdělovacími entitami**.  
+<p><a href="http://kod.djpw.cz/kwt">Živá ukázka</a> (zdroj <a href="/lipsum"><i>českého</i> lipsum textu</a>), varianta <a href="http://kod.djpw.cz/pwt">zarovnaná do bloku</a>.</p>
 
-Zajímavá je kombinace `hyphens: auto` s `text-align: justify` (zarovnání do bloku). Výsledný text vypadá lépe, protože **zalamování slov** nevytváří takové *řeky* (nepěkně velké mezery mezi slovy).
+<h2 id="doporuceni">Doporučení</h2>
+<p>Příliš nedoporučuji <b>zanášet kód entitami pro rozdělování</b>. Může to způsobit problém při <b>hledání slov na stránce</b>, při <b>kopírování textu</b> nebo (možná) u <b>vyhledávačů</b> (související diskuse <a href="http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=13&amp;topic=104038">Má někdo zkušenosti s entitou shy?</a>).</p>
 
-## Podpora
-
-Momentálně nejlepší podpora (s [prefixy](/css-prefixy)) pro český text je v **IE 10** a **[IE 11](/ie11)**. **Opera** a **Chrome** nastavení `hyphens`, zdá se, ignoruje. A ve **Firefoxu** se u češtiny chová `manual` i `auto` stejně (v jiných jazycích rozdělovat umí).
-
-[Živá ukázka](http://kod.djpw.cz/kwt) (zdroj [*českého* lipsum textu](/lipsum)), varianta [zarovnaná do bloku](http://kod.djpw.cz/pwt).
-
-## Doporučení
-
-Příliš nedoporučuji **zanášet kód entitami pro rozdělování**. Může to způsobit problém při **hledání slov na stránce**, při **kopírování textu** nebo (možná) u **vyhledávačů** (související diskuse [Má někdo zkušenosti s entitou shy?](http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=13&amp;topic=104038)).
-
-## Odkazy
-
-  - W3C: [CSS specifikace `hyphens`](http://dev.w3.org/csswg/css-text/#hyphens)
-
-  - [Hyphenator](http://code.google.com/p/hyphenator/) (JS doplňující entity `&amp;shy;`)
+<h2 id="odkazy">Odkazy</h2>
+<ul>
+  <li>W3C: <a href="http://dev.w3.org/csswg/css-text/#hyphens">CSS specifikace <code>hyphens</code></a></li>
+  <li><a href="http://code.google.com/p/hyphenator/">Hyphenator</a> (JS doplňující entity <code>&amp;shy;</code>)</li>
+</ul>

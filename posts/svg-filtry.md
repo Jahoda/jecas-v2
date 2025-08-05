@@ -6,10 +6,12 @@ date: "2019-05-21"
 last_modification: "2019-05-21"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [opacity](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/opacity)
-
-  - [feColorMatrix](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feColorMatrix)
-
-  - [gray  scale](https://www.hongkiat.com/blog/grayscale-image-web/)
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/opacity">opacity</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feColorMatrix">feColorMatrix</a></li>
+  
+  <li><a href="https://www.hongkiat.com/blog/grayscale-image-web/">gray  scale</a></li>
+</ul>

@@ -5,41 +5,143 @@ description: "Jak pouze v CSS měnit pozadí elementu v závislosti na odscrollo
 date: "2020-03-13"
 last_modification: "2020-03-15"
 status: 1
-tags: ["CSS", "Hotová řešení", "Scrollování"]
+tags: ["css", "hotova-reseni", "scroll"]
+format: "html"
 ---
 
-Poměrně zajímavý efekt mají zprávy ve [Facebook](/facebook) Messengeru:
+<p>Poměrně zajímavý efekt mají zprávy ve <a href="/facebook">Facebook</a> Messengeru:</p>
 
-V závislosti na umístění ve *viewportu* mají různou barvu. Tentýž element je dole červený a nahoře modrý. **Během rolování mění svoji barvu**.
+<p><img src="/files/pozadi-podle-rolovani/fb-messenger-gradient.jpg" alt="Gradient na pozadí ve FB Messengeru" class="border"></p>
 
-Je až skoro překvapivé, jak jednoduché je takový efekt vyrobit. Stačí k tomu pouhé 2 vlastnosti:
 
-  - obrázkové pozadí s barevným přechodem – lze vytvořit přímo v CSS pomocí [gradientu](/gradient): `background-image: linear-gradient(#0D6AB7, #DA3F94)`
 
-  - fixní obrázkové pozadí – obrázkový gradient se zafixuje pomocí `background-attachment: fixed`
 
-Jako obrázek samozřejmě nemusí posloužit pouze CSS gradient, ale může jít o **obrázek libovolný**.
 
-[Samostatná živá ukázka](http://kod.djpw.cz/pevc)
 
-## Využití
 
-Kromě již zmíněných zpráv na Facebooku se podobný efekt může hodit pro zvýraznění čehokoliv během scrollování.
 
-[Ukázka zvýraznění nadpisů](http://kod.djpw.cz/qevc) při *příjezdu* elementu do viewportu.
 
-## Řešení v JavaScriptu
 
-V JS jde zjistit počet pixelů, o které [je odrolováno](/odrolovani#odrolovano), a podle toho s barvou libovolně manipulovat.
 
-CSS řešení je ale podstatně jednodušší.
 
-## Výkon
 
-V dávných dobách bývaly s v CSS fixovaným pozadím přes `background-attachment: fixed` značné výkonnostní problémy:
 
-  Na pomalejších počítačích (CPU pod 400, záleží hlavně na grafické kartě) způsobuje hodnota fixed pomalejší rolování, protože se to musí přepočítávat.
 
-    **Yuhů**, [Background-attachment](https://www.jakpsatweb.cz/css/background-attachment.html) na JPW
 
-Dnes už to takový problém není. Nicméně fakt, že se plocha s obrázkovým fixním pozadím musí neustále přepočítávat ([překreslovat](/vykreslovani)), platí stále. Je dobré si to při používání podobných efektů uvědomit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>V závislosti na umístění ve <i>viewportu</i> mají různou barvu. Tentýž element je dole červený a nahoře modrý. <b>Během rolování mění svoji barvu</b>.</p>
+
+<div class="live">
+  <div style="background-attachment: fixed; background-image: linear-gradient(#0D6AB7, #DA3F94); height: 1em;"></div>
+</div>
+
+<p>Je až skoro překvapivé, jak jednoduché je takový efekt vyrobit. Stačí k tomu pouhé 2 vlastnosti:</p>
+
+<ol>
+  <li>obrázkové pozadí s barevným přechodem – lze vytvořit přímo v CSS pomocí <a href="/gradient">gradientu</a>: <code>background-image: linear-gradient(#0D6AB7, #DA3F94)</code></li>
+  <li>fixní obrázkové pozadí – obrázkový gradient se zafixuje pomocí <code>background-attachment: fixed</code></li>
+</ol>
+
+<p>Jako obrázek samozřejmě nemusí posloužit pouze CSS gradient, ale může jít o <b>obrázek libovolný</b>.</p>
+
+<p><a href="http://kod.djpw.cz/pevc">Samostatná živá ukázka</a></p>
+
+
+
+<h2>Využití</h2>
+
+<p>Kromě již zmíněných zpráv na Facebooku se podobný efekt může hodit pro zvýraznění čehokoliv během scrollování.</p>
+
+<p><a href="http://kod.djpw.cz/qevc">Ukázka zvýraznění nadpisů</a> při <i>příjezdu</i> elementu do viewportu.</p>
+
+
+
+
+
+
+
+<h2>Řešení v JavaScriptu</h2>
+
+<p>V JS jde zjistit počet pixelů, o které <a href="/odrolovani#odrolovano">je odrolováno</a>, a podle toho s barvou libovolně manipulovat.</p>
+
+<p>CSS řešení je ale podstatně jednodušší.</p>
+
+
+
+
+
+<h2>Výkon</h2>
+
+<p>V dávných dobách bývaly s v CSS fixovaným pozadím přes <code>background-attachment: fixed</code> značné výkonnostní problémy:</p>
+
+<blockquote>
+  <p>Na pomalejších počítačích (CPU pod 400, záleží hlavně na grafické kartě) způsobuje hodnota fixed pomalejší rolování, protože se to musí přepočítávat.</p>
+  <p class="autor">
+    <b>Yuhů</b>, <a href="https://www.jakpsatweb.cz/css/background-attachment.html">Background-attachment</a> na JPW
+  </p>
+</blockquote>
+
+<p>Dnes už to takový problém není. Nicméně fakt, že se plocha s obrázkovým fixním pozadím musí neustále přepočítávat (<a href="/vykreslovani">překreslovat</a>), platí stále. Je dobré si to při používání podobných efektů uvědomit.</p>

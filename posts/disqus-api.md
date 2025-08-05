@@ -5,52 +5,65 @@ description: "Jak vypsat nejnovější komentáře z diskusní platformy Disqus.
 date: "2014-09-26"
 last_modification: "2014-09-27"
 status: 1
-tags: ["Hotová řešení", "Rady a nápady"]
+tags: ["hotova-reseni", "napady"]
+format: "html"
 ---
 
-[Disqus](http://disqus.com) je populární nástroj pro zajištění **komentářů** na webu **prostřednictvím třetí strany**.
+<p><a href="http://disqus.com">Disqus</a> je populární nástroj pro zajištění <b>komentářů</b> na webu <b>prostřednictvím třetí strany</b>.</p>
 
-V případě, že ho na stránce použijeme, může se hodit někde zobrazit **přehled posledních komentářů**.
+<p>V případě, že ho na stránce použijeme, může se hodit někde zobrazit <b>přehled posledních komentářů</b>.</p>
 
-Kromě toho, že **Disqus** nabízí [rozsáhlé API](https://disqus.com/api/docs/), pro výpis posledních komentářů existuje přímo *widget*.
+<p>Kromě toho, že <b>Disqus</b> nabízí <a href="https://disqus.com/api/docs/">rozsáhlé API</a>, pro výpis posledních komentářů existuje přímo <i>widget</i>.</p>
 
-```
-&lt;script 
-src="http://**jecas**.disqus.com/recent_comments_widget.js">
-&lt;/script>
-```
+<pre><code>&lt;script 
+src="http://<b>jecas</b>.disqus.com/recent_comments_widget.js">
+&lt;/script></code></pre>
 
-Stačí jen jako subdoménu (obsah mezi „`http://`“ a „`.disqus.com`“) uvést vlastní název.
+<p>Stačí jen jako subdoménu (obsah mezi „<code>http://</code>“ a „<code>.disqus.com</code>“) uvést vlastní název.</p>
 
-Ten se nastavuje při **vytváření nové diskuse**. Zjisti potřebnou část URL je možné při najetí na název diskuse na [domácí stránce Disqusu](https://disqus.com/home).
+<p>Ten se nastavuje při <b>vytváření nové diskuse</b>. Zjisti potřebnou část URL je možné při najetí na název diskuse na <a href="https://disqus.com/home">domácí stránce Disqusu</a>.</p>
 
-Po vložení skriptu na **povolené doméně** by se poslední komentáře měly objevit.
+<p><img src="/files/disqus-api/url.png" alt="Zobrazení URL" class="border"></p>
 
-## Nastavení
+<p>Po vložení skriptu na <b>povolené doméně</b> by se poslední komentáře měly objevit.</p>
 
-Výsledný výpis příspěvků jde ovlivňovat přidáváním parametrů do URL vkládaného skriptu (widgetu).
+<div class="live" style="overflow: hidden"><script 
+src="http://jecas.disqus.com/recent_comments_widget.js
+?num_items=3
+&hide_avatars=1
+&excerpt_length=10">
+</script></div>
 
-```
-http://jecas.disqus.com/recent_comments_widget.js
-?**num_items**=3
-&amp;**hide_avatars**=1
-&amp;**excerpt_length**=10
-```
 
-  - `num_items` – počet zobrazených komentářů
+<h2 id="nastaveni">Nastavení</h2>
 
-  - `hide_avatars` – zobrazit/skrýt avatary
+<p>Výsledný výpis příspěvků jde ovlivňovat přidáváním parametrů do URL vkládaného skriptu (widgetu).</p>
 
-  - `excerpt_length` – omezení délky příspěvků
+<pre><code>http://jecas.disqus.com/recent_comments_widget.js
+?<b>num_items</b>=3
+&amp;<b>hide_avatars</b>=1
+&amp;<b>excerpt_length</b>=10</code></pre>
 
-Kromě tohoto *widgetu* existuje ještě jeden, kde je i přehled **top komentátorů** a **populárních debat**.
+<ul>
+  <li><code>num_items</code> – počet zobrazených komentářů</li>
+  <li><code>hide_avatars</code> – zobrazit/skrýt avatary</li>
+  <li><code>excerpt_length</code> – omezení délky příspěvků</li>
+</ul>
 
-## Stylování
+<p>Kromě tohoto <i>widgetu</i> existuje ještě jeden, kde je i přehled <b>top komentátorů</b> a <b>populárních debat</b>.</p>
 
-Ačkoliv **vložený skript** vloží do stránky i nějaké to CSS, úplně dobře bez zásahu komentáře nevypadají. Naštěstí se JavaScriptem vytvořený **HTML kód** dá rozumně stylovat.
+<div class="live" style="overflow: hidden"><script 
+src="http://jecas.disqus.com/combination_widget.js?num_items=3&hide_mods=0&color=white&default_tab=recent&excerpt_length=50">
+</script></div>
 
-```
-.dsq-widget-list .dsq-widget-avatar {
+
+
+
+<h2 id="styl">Stylování</h2>
+
+<p>Ačkoliv <b>vložený skript</b> vloží do stránky i nějaké to CSS, úplně dobře bez zásahu komentáře nevypadají. Naštěstí se JavaScriptem vytvořený <b>HTML kód</b> dá rozumně stylovat.</p>
+
+<pre><code>.dsq-widget-list .dsq-widget-avatar {
   border-radius: 50%; 
   margin-right: 0.5em
 }
@@ -66,7 +79,7 @@ Ačkoliv **vložený skript** vloží do stránky i nějaké to CSS, úplně dob
 .dsq-widget-meta {
   margin-left: 2.5em; 
   text-align: right
-}
-```
+}</code></pre>
 
-Výsledek můžete vidět na stránce s [posledními komentáři na Je čas.cz](/posledni).
+
+<p>Výsledek můžete vidět na stránce s <a href="/posledni">posledními komentáři na Je čas.cz</a>.</p>

@@ -6,6 +6,7 @@ date: "2019-08-24"
 last_modification: "2019-08-24"
 status: 0
 tags: []
+format: "html"
 ---
 
 https://www.remotemouse.net

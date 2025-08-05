@@ -5,99 +5,149 @@ description: "Jak oříznout dlouhý text po stanoveném počtu řádek."
 date: "2014-09-13"
 last_modification: "2014-12-13"
 status: 1
-tags: ["CSS", "Hotová řešení"]
+tags: ["css", "hotova-reseni"]
+format: "html"
 ---
 
-Zatímco [oříznutí jednoho řádku textu](/oriznuti-textu) není zase taková věda, zajistit totéž u **delšího odstavce** s více řádky je komplikovanější.
+<p>Zatímco <a href="/oriznuti-textu">oříznutí jednoho řádku textu</a> není zase taková věda, zajistit totéž u <b>delšího odstavce</b> s více řádky je komplikovanější.</p>
 
-Standardní elegantní řešení je poměrně obtížné najít.
+<p>Standardní elegantní řešení je poměrně obtížné najít.</p>
 
-Ve staré **Opeře 12** existuje nestandardní hodnota CSS `text-overflow` ([ukázka](http://kod.djpw.cz/wqfb)):
+<p>Ve staré <b>Opeře 12</b> existuje nestandardní hodnota CSS <code>text-overflow</code> (<a href="http://kod.djpw.cz/wqfb">ukázka</a>):</p>
 
-```
-.tri-tecky-opera {
-  text-overflow: **-o-ellipsis-lastline**;
-}
-```
+<pre><code>.tri-tecky-opera {
+  text-overflow: <b>-o-ellipsis-lastline</b>;
+}</code></pre>
 
-V **Chrome** je možné využít nestandardní vlastnost `-webkit-line-clamp` ([ukázka](http://kod.djpw.cz/yqfb)):
+<p>V <b>Chrome</b> je možné využít nestandardní vlastnost <code>-webkit-line-clamp</code> (<a href="http://kod.djpw.cz/yqfb">ukázka</a>):</p>
 
-```
-.tri-tecky-chrome {
+<pre><code>.tri-tecky-chrome {
   display: -webkit-box;
   -webkit-line-clamp: 8; /* počet řádků */
   -webkit-box-orient: vertical;
-}
-```
+}</code></pre>
 
-Toto řešení není úplně **šikovné**, protože je závislé například na **velikosti písma** – velké písmo vyplní prostor menším počtem řádků řádku.
+<p>Toto řešení není úplně <b>šikovné</b>, protože je závislé například na <b>velikosti písma</b> – velké písmo vyplní prostor menším počtem řádků řádku.</p>
 
-## Řešení
 
-Oříznout obsah tak nezbývá než pomocí `overflow: hidden`.
 
-```
-.oriznuty {
+
+
+
+
+
+
+
+<h2 id="reseni">Řešení</h2>
+
+<p>Oříznout obsah tak nezbývá než pomocí <code>overflow: hidden</code>.</p>
+
+<pre><code>.oriznuty {
   max-height: 5em;
   line-height: 1.25em;
   overflow: hidden;
-}
-```
+}</code></pre>
 
-Oříznutí vždy **po celém řádku** zajistí **maximální výška** (`max-height`) v hodnotě násobku **výšky řádku** (`line-height`). Kvůli **zvětšování písma** se hodí použít například jednotky `em`.
+<p>Oříznutí vždy <b>po celém řádku</b> zajistí <b>maximální výška</b> (<code>max-height</code>) v hodnotě násobku <b>výšky řádku</b> (<code>line-height</code>). Kvůli <b>zvětšování písma</b> se hodí použít například jednotky <code>em</code>.</p>
 
-Kód z tohoto příkladu tak ořízne obsah po 4 řádcích (`1.25em` * **4 řádky** = `5em`).
+<p>Kód z tohoto příkladu tak ořízne obsah po 4 řádcích (<code>1.25em</code> * <b>4 řádky</b> = <code>5em</code>).</p>
 
-[Živá ukázka](http://kod.djpw.cz/doib)
+<p><a href="http://kod.djpw.cz/doib">Živá ukázka</a></p>
 
-### Znázornění oříznutí
 
-Na řešení výše bude nešikovná skutečnost, že uživatel nepozná, že je **obsah oříznutý** — zkrátka najednou skončí.
 
-Zde se **komplikovanost řešení** zásadně liší na základě dvou případů:
 
-  - Text **vždy přeteče** výšku elementu.
 
-  - Text se občas **vejde**.
 
-V prvním případě stačí do **pravého dolního rohu** [absolutně naposicovat](/position#absolute) překryvný element s **výpustkou** (`…`).
 
-Aby byla jistota, že text neskončí kvůli **zalomení řádku** příliš brzy, je dobré překryvnému elementu nastavit větší šířku.
 
-Jediný potenciální problém je tak **useknutí uprostřed písmena**.
 
-[Živá ukázka](http://kod.djpw.cz/coib)
 
-Problémem useknutí uprostřed písmena netrpí překrytí **plynulým obrázkových přechodem** do ztracena – jde toho docílit pomocí [CSS gradientu](/gradient).
 
-[Živá ukázka](http://kod.djpw.cz/foib)
+<h3 id="znazorneni">Znázornění oříznutí</h3>
 
-### Neznámá délka textu
+<p>Na řešení výše bude nešikovná skutečnost, že uživatel nepozná, že je <b>obsah oříznutý</b> — zkrátka najednou skončí.</p>
 
-V případě, že se obsah někdy vejde a někdy ne, je situace komplikovanější. Chování vylepší naposicování **překryvného elementu** shora na poslední řádek. Když potom bude obsah vlivem krátkého obsahu nižší, element s **výpustkou** bude mimo oříznutý element a **nebude vidět**.
+<p>Zde se <b>komplikovanost řešení</b> zásadně liší na základě dvou případů:</p>
 
-[Živá ukázka s výpustkou](http://kod.djpw.cz/moib) / [přechodem](http://kod.djpw.cz/noib)
+<ol>
+  <li>Text <b>vždy přeteče</b> výšku elementu.</li>
+  
+  <li>Text se občas <b>vejde</b>.</li>
+</ol>
 
-## Zobrazit více
+<p>V prvním případě stačí do <b>pravého dolního rohu</b> <a href="/position#absolute">absolutně naposicovat</a> překryvný element s <b>výpustkou</b> (<code>…</code>).</p>
 
-Je-li dobré, aby se **návštěvník** k oříznutému obsahu **mohl dostat**, hodí se přidat odkaz *Zobrazit více*.
+<p>Aby byla jistota, že text neskončí kvůli <b>zalomení řádku</b> příliš brzy, je dobré překryvnému elementu nastavit větší šířku.</p>
 
-S trochou snahy by to šlo od **IE 9** s využitím [`checkboxu`](/stylovani-checked) a selektoru `:checked ~ element` vytvořit čistě v CSS:
+<p><img src="/files/oriznuti-radek/oriznuti.png" alt="Oříznutí a překrytí" class="border"></p>
 
-[Živá ukázka](http://kod.djpw.cz/ooib)
 
-Elegantnější ale vypadá řešení s trochou JavaScriptu:
 
-[Živá ukázka](http://kod.djpw.cz/koib)
 
-Jediným nedostatkem je zobrazení **zbytečného odkazu** v případě, že text vyjde přesně na stanovený počet řádků. Tomu by šlo předejít zobrazením *Zobrazit více* přes celý **poslední řádek**.
 
-[Živá ukázka](http://kod.djpw.cz/loib)
 
-## Odkazy jinam
 
-  [Řešení čistě v CSS](http://www.mobify.com/blog/multiline-ellipsis-in-pure-css/) – využívá triku s pomocí obtékání
 
-  - [jquery.autoellipsis](http://pvdspek.github.io/jquery.autoellipsis/) – Plugin do jQuery
 
-  - [Diskuse na JPW](http://diskuse.jakpsatweb.cz/?action=vthread&forum=4&topic=159021)
+
+
+
+
+
+
+
+
+
+<p>Jediný potenciální problém je tak <b>useknutí uprostřed písmena</b>.</p>
+
+<p><a href="http://kod.djpw.cz/coib">Živá ukázka</a></p>
+
+<p>Problémem useknutí uprostřed písmena netrpí překrytí <b>plynulým obrázkových přechodem</b> do ztracena – jde toho docílit pomocí <a href="/gradient">CSS gradientu</a>.</p>
+
+<p><a href="http://kod.djpw.cz/foib">Živá ukázka</a></p>
+
+
+
+
+
+<h3 id="neznama-delka">Neznámá délka textu</h3>
+
+<p>V případě, že se obsah někdy vejde a někdy ne, je situace komplikovanější. Chování vylepší naposicování <b>překryvného elementu</b> shora na poslední řádek. Když potom bude obsah vlivem krátkého obsahu nižší, element s <b>výpustkou</b> bude mimo oříznutý element a <b>nebude vidět</b>.</p>
+
+<p><a href="http://kod.djpw.cz/moib">Živá ukázka s výpustkou</a> / <a href="http://kod.djpw.cz/noib">přechodem</a></p>
+
+<!--http://kod.djpw.cz/goib / http://kod.djpw.cz/hoib -->
+
+
+
+<h2 id="zobrazit-vice">Zobrazit více</h2>
+
+<p>Je-li dobré, aby se <b>návštěvník</b> k oříznutému obsahu <b>mohl dostat</b>, hodí se přidat odkaz <i>Zobrazit více</i>.</p>
+
+<p>S trochou snahy by to šlo od <b>IE 9</b> s využitím <a href="/stylovani-checked"><code>checkboxu</code></a> a selektoru <code>:checked ~ element</code> vytvořit čistě v CSS:</p>
+
+<p><a href="http://kod.djpw.cz/ooib">Živá ukázka</a></p>
+
+<p>Elegantnější ale vypadá řešení s trochou JavaScriptu:</p>
+
+<p><a href="http://kod.djpw.cz/koib">Živá ukázka</a></p>
+
+<p>Jediným nedostatkem je zobrazení <b>zbytečného odkazu</b> v případě, že text vyjde přesně na stanovený počet řádků. Tomu by šlo předejít zobrazením <i>Zobrazit více</i> přes celý <b>poslední řádek</b>.</p>
+
+<p><a href="http://kod.djpw.cz/loib">Živá ukázka</a></p>
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<!--http://kod.djpw.cz/zqfb-->
+
+<ul>
+  <li><a href="http://www.mobify.com/blog/multiline-ellipsis-in-pure-css/">Řešení čistě v CSS</a> – využívá triku s pomocí obtékání
+  </li>
+  
+  <li><a href="http://pvdspek.github.io/jquery.autoellipsis/">jquery.autoellipsis</a> – Plugin do jQuery</li>
+  
+  <li><a href="http://diskuse.jakpsatweb.cz/?action=vthread&forum=4&topic=159021">Diskuse na JPW</a></li>
+</ul>

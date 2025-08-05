@@ -5,60 +5,65 @@ description: "Jak v JS, PHP nebo CSS správně vytvořit skloňování slov pro 
 date: "2015-01-26"
 last_modification: "2015-01-27"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "PHP"]
+tags: ["hotova-reseni", "js", "php"]
+format: "html"
 ---
 
-Pokud se má na stránce automaticky vypisovat něco ve stylu „5 nových komentářů“, je třeba **řešit skloňování**.
+<p>Pokud se má na stránce automaticky vypisovat něco ve stylu „5 nových komentářů“, je třeba <b>řešit skloňování</b>.</p>
 
-Bez správného ohýbání slov by web mohly hyzdit texty typu:
+<p>Bez správného ohýbání slov by web mohly hyzdit texty typu:</p>
 
-  - 2 nových komentářů
+<ul>
+  <li>2 nových komentářů</li>
+  <li>Nových komentářů: 1</li>
+</ul>
 
-  - Nových komentářů: 1
 
-## Skloňování počtu v češtině
 
-Zatímco angličtina rozlišuje mezi jedničkou a vším ostatním (*1 comment* vs. *2 comment**s***), čeština je v tomto komplikovanější.
+<h2 id="cestina">Skloňování počtu v češtině</h2>
 
-  - *1 komentář*
+<p>Zatímco angličtina rozlišuje mezi jedničkou a vším ostatním (<i>1 comment</i> vs. <i>2 comment<b>s</b></i>), čeština je v tomto komplikovanější.</p>
 
-  - *2, 3, 4 komentáře*
+<ul>
+  <li><i>1 komentář</i></li>
+  <li><i>2, 3, 4 komentáře</i></li>
+  <li><i>5</i> a více <i>komentářů</i></li>
+</ul>
 
-  - *5* a více *komentářů*
+<p>Při psaní českého textu aplikace jsou proto potřeba <b>tři různé tvary</b>.</p>
 
-Při psaní českého textu aplikace jsou proto potřeba **tři různé tvary**.
 
-## Skloňování v JavaScriptu
 
-Funkce zajišťující správné skloňování musí zvolit česky korektní tvar na základě **počtu**. Aby funkce fungovala i pro **záporná čísla** převádí se počet na číslo **kladné** – absolutní hodnotu (`Math.abs`).
 
-```
-function sklonovani(pocet, slova) {
+<h2 id="js">Skloňování v JavaScriptu</h2>
+
+<p>Funkce zajišťující správné skloňování musí zvolit česky korektní tvar na základě <b>počtu</b>. Aby funkce fungovala i pro <b>záporná čísla</b> převádí se počet na číslo <b>kladné</b> – absolutní hodnotu (<code>Math.abs</code>).</p>
+
+<pre><code>function sklonovani(pocet, slova) {
   pocet = Math.abs(pocet);
   if (pocet == 1) return slova[0];
   if (pocet &lt; 5 &amp;&amp; pocet > 0) return slova[1];
   return slova[2];
-}
-```
+}</code></pre>
 
-Použití je následovné (tvary pro jednotlivé počty se předávají jako pole):
+<p>Použití je následovné (tvary pro jednotlivé počty se předávají jako pole):</p>
 
-```
-var pocetKomentaru = 5;
+<pre><code>var pocetKomentaru = 5;
 alert(
   sklonovani(
-    **pocetKomentaru**, 
+    <b>pocetKomentaru</b>, 
     ['komentář', 'komentáře', 'komentářů']
   )
-);
-```
+);</code></pre>
 
-webů
 
+<div class="live no-source">
+<input type="number" oninput="pocet(this)" value="0" size="5"><span style="margin-left: .5em">webů</span>
+<script>
 function sklonovani(pocet, slova) {
   pocet = Math.abs(pocet);
   if (pocet == 1) return slova[0];
-  if (pocet  0) return slova[1];
+  if (pocet < 5 && pocet > 0) return slova[1];
   return slova[2];
 }
 function pocet(el) {
@@ -67,39 +72,53 @@ function pocet(el) {
         ['web', 'weby', 'webů']
     );
 }
+</script>
+</div>
 
-[Samostatná ukázka](http://kod.djpw.cz/bxjb)
+<p><a href="http://kod.djpw.cz/bxjb">Samostatná ukázka</a></p>
 
-## Skloňování slov v PHP
 
-PHP a JS jsou si hodně podobné.
+<h2 id="php">Skloňování slov v PHP</h2>
 
-    - [Převedení PHP do JavaScriptu](/php2js)
+<p>PHP a JS jsou si hodně podobné.</p>
 
-Skloňující funkce tedy bude velmi podobná jako v JavaScriptu.
+<div class="internal-content">
+  <ul>
+    <li><a href="/php2js">Převedení PHP do JavaScriptu</a></li>
+  </ul>
+</div>
 
-```
-function sklonovani($pocet, $slova) {
+
+<p>Skloňující funkce tedy bude velmi podobná jako v JavaScriptu.</p>
+
+<pre><code>function sklonovani($pocet, $slova) {
   $pocet = abs($pocet);
   if ($pocet == 1) return $slova[0];
   if ($pocet &lt; 5 &amp;&amp; $pocet > 0) return $slova[1];
   return $slova[2];
-}
-```
+}</code></pre>
 
-Použití:
 
-```
-echo sklonovani(
+
+<p>Použití:</p>
+
+<pre><code>echo sklonovani(
   3, // tři komentáře 
   array('komentář', 'komentáře', 'komentářů')
-);
-```
+);</code></pre>
 
-## Správný tvar slov v CSS
 
-I v prostém HTML/CSS jde skloňování nouzově vyřešit.
 
-Dá-li se zajistit výpis počtu do CSS třídy, správného tvaru slov se docílí vypsáním v CSS vlastností [`content`](/content).
 
-    - [Skloňování v CSS](/programovani-css)
+<h2 id="css">Správný tvar slov v CSS</h2>
+
+<p>I v prostém HTML/CSS jde skloňování nouzově vyřešit.</p>
+
+<p>Dá-li se zajistit výpis počtu do CSS třídy, správného tvaru slov se docílí vypsáním v CSS vlastností <a href="/content"><code>content</code></a>.</p>
+
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/programovani-css">Skloňování v CSS</a></li>
+  </ul>
+</div>

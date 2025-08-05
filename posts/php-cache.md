@@ -6,14 +6,15 @@ date: "2013-12-14"
 last_modification: "2013-12-14"
 status: 0
 tags: []
+format: "html"
 ---
 
-Při vytváření složitější **serverové aplikace** můžeme dojít do stavu, že se výsledná stránka **dlouho zpracovává**.
+<p>Při vytváření složitější <b>serverové aplikace</b> můžeme dojít do stavu, že se výsledná stránka <b>dlouho zpracovává</b>.</p>
 
-To se může stát u komplikovaných výpočtů typu:
+<p>To se může stát u komplikovaných výpočtů typu:</p>
 
-  - Generování složité **statistiky** za delší období.
-
-  - Komplikovaný **výpis z databáse** napříč několika tabulkami.
-
-  - Zpracovávání dat z [cizí stránky](/stazeni-stranky).
+<ul>
+  <li>Generování složité <b>statistiky</b> za delší období.</li>
+  <li>Komplikovaný <b>výpis z databáse</b> napříč několika tabulkami.</li>
+  <li>Zpracovávání dat z <a href="/stazeni-stranky">cizí stránky</a>.</li>
+</ul>

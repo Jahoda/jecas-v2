@@ -6,6 +6,7 @@ date: "2014-09-17"
 last_modification: "2014-09-17"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://kod.djpw.cz/qsfb
@@ -22,12 +23,15 @@ http://codepen.io/dats-wassup/pen/FsGtu
 
 http://codepen.io/jackrugile/pen/bjuCf
 
-[CSS Glitched text](http://codepen.io/lbebber/pen/ypgql)
+<a href="http://codepen.io/lbebber/pen/ypgql">CSS Glitched text</a>
 
-[Chrome Experiments: MOSH](https://www.chromeexperiments.com/experiment/mosh)
+<a href="https://www.chromeexperiments.com/experiment/mosh">Chrome Experiments: MOSH</a>
 
-## Odkazy jinam
 
-  - [Glitch images](http://snorpey.github.io/jpg-glitch/) – efekt založený na rozbíjení některých bytů JPG obrázku
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - [https://web.br.de/interaktiv/winnti/english/](https://web.br.de/interaktiv/winnti/english/)
+<ul>
+  <li><a href="http://snorpey.github.io/jpg-glitch/">Glitch images</a> – efekt založený na rozbíjení některých bytů JPG obrázku</li>
+  
+  <li><a href="https://web.br.de/interaktiv/winnti/english/">https://web.br.de/interaktiv/winnti/english/</a></li>
+</ul>

@@ -5,83 +5,98 @@ description: "Jak se z poslední položky pole dostat na první a obráceně."
 date: "2015-01-07"
 last_modification: "2015-01-08"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-Při vytváření např. **obrázkových galerií v JavaScriptu** je často cílem dosáhnout zdánlivě nekonečné smyčky, kdy při kliknutí na „*Další*“ po posledním obrázku následuje obrázek první a naopak při kliknutí na „*Předchozí*“ se před prvním obrázkem objeví ten poslední.
+<p>Při vytváření např. <b>obrázkových galerií v JavaScriptu</b> je často cílem dosáhnout zdánlivě nekonečné smyčky, kdy při kliknutí na „<i>Další</i>“ po posledním obrázku následuje obrázek první a naopak při kliknutí na „<i>Předchozí</i>“ se před prvním obrázkem objeví ten poslední.</p>
 
-Základ takového kódu může vypadat následovně:
+<img class="border" src="/files/pole-posun/pole.png" alt="Posun v rámci pole">
 
-```
-var obrazky = document.[querySelectorAll](/queryselector)("#galerie img");
+<p>Základ takového kódu může vypadat následovně:</p>
+
+<pre><code>var obrazky = document.<a href="/queryselector">querySelectorAll</a>("#galerie img");
 var pocetObrazku = obrazky.length;
-var aktualniObrazek = 1;
-```
+var aktualniObrazek = 1;</code></pre>
 
-Asi první řešení, co člověka napadne, je při změně hodnoty `aktualniObrazek`, kontrolovat, jestli není **mimo rozsah**.
+<p>Asi první řešení, co člověka napadne, je při změně hodnoty <code>aktualniObrazek</code>, kontrolovat, jestli není <b>mimo rozsah</b>.</p>
 
-  - není vyšší než počet obrázků (`pocetObrazku`),
+<ul>
+  <li>není vyšší než počet obrázků (<code>pocetObrazku</code>),</li>
+  
+  <li>není nižší než <code>1</code> (první obrázek)</li>
+</ul>
 
-  - není nižší než `1` (první obrázek)
+<p>Jde proto použít obyčejné <code>if</code> podmínky ve stylu:</p>
 
-Jde proto použít obyčejné `if` podmínky ve stylu:
-
-```
-aktualniObrazek = aktualniObrazek + posun;
+<pre><code>aktualniObrazek = aktualniObrazek + posun;
 if (aktualniObrazek > pocetObrazku) {
   aktualniObrazek = 1;
 }
 else if (aktualniObrazek &lt; 1) {
   aktualniObrazek = pocetObrazku;
-}
-```
+}</code></pre>
 
-V proměnné `posun` bude hodnota `1` pro posun dopředu a `-1` pro posun v zpátky.
+<p>V proměnné <code>posun</code> bude hodnota <code>1</code> pro posun dopředu a <code>-1</code> pro posun v zpátky.</p>
 
-[Živá ukázka](http://kod.djpw.cz/lijb)
+<p><a href="http://kod.djpw.cz/lijb">Živá ukázka</a></p>
 
-## Posun o více než 1
 
-Pokud je potřebné se v poli posouvat o **více než jednu položku**, bylo by původní řešení složitě rozšiřitelné. Bude tedy lepší vymyslet něco jiného.
 
-### Modulo
 
-Šikovná funkce je pro tento případ **modulo**, které vrátí celočíselný [zbytek po dělení](http://cs.wikipedia.org/wiki/Zbytek_po_dělení). V JS se zapisuje znakem procenta `%`.
 
-```
-10 % 3 = 1
+
+
+
+
+
+
+
+<h2 id="vetsi-posun">Posun o více než 1</h2>
+
+<p>Pokud je potřebné se v poli posouvat o <b>více než jednu položku</b>, bylo by původní řešení složitě rozšiřitelné. Bude tedy lepší vymyslet něco jiného.</p>
+
+
+<h3 id="modulo">Modulo</h3>
+
+<p>Šikovná funkce je pro tento případ <b>modulo</b>, které vrátí celočíselný <a href="http://cs.wikipedia.org/wiki/Zbytek_po_dělení">zbytek po dělení</a>. V JS se zapisuje znakem procenta <code>%</code>.</p>
+
+<pre><code>10 % 3 = 1
 7 % 4 = 3
-10 % 5 = 0
-```
+10 % 5 = 0</code></pre>
 
-Pro posun po poli tedy stačí sečíst `pocetObrazku` + `aktualniObrazek` + `posun` a zjistit zbytek po vydělení hodnotou `pocetObrazku`.
+<p>Pro posun po poli tedy stačí sečíst <code>pocetObrazku</code> + <code>aktualniObrazek</code> + <code>posun</code> a zjistit zbytek po vydělení hodnotou <code>pocetObrazku</code>.</p>
 
-```
-aktualniObrazek = 
-  (pocetObrazku + aktualniObrazek + posun) % pocetObrazku;
-```
+<pre><code>aktualniObrazek = 
+  (pocetObrazku + aktualniObrazek + posun) % pocetObrazku;</code></pre>
 
-Když bude celkem 5 obrázků, aktuální bude 4 a cíl je se posunout o 2 dopředu:
+<p>Když bude celkem 5 obrázků, aktuální bude 4 a cíl je se posunout o 2 dopředu:</p>
 
-```
-5 + 4 + 2 = 11
-11 % 5 = **1**
-```
+<pre><code>5 + 4 + 2 = 11
+11 % 5 = <b>1</b></code></pre>
 
-Výsledek tak bude obrázek 1.
+<p>Výsledek tak bude obrázek 1.</p>
 
-Pro případy, že by záporný `posun` byl větší než `pocetObrazku`, je vhodné aplikovat „`% (modulo) pocetObrazku`“ i na `posun`.
+<p>Pro případy, že by záporný <code>posun</code> byl větší než <code>pocetObrazku</code>, je vhodné aplikovat „<code>% (modulo) pocetObrazku</code>“ i na <code>posun</code>.</p>
 
-```
-aktualniObrazek = (
-  pocetObrazku + aktualniObrazek + (**posun % pocetObrazku**)
-) % pocetObrazku;
-```
+<pre><code>aktualniObrazek = (
+  pocetObrazku + aktualniObrazek + (<b>posun % pocetObrazku</b>)
+) % pocetObrazku;</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/kijb)
+<p><a href="http://kod.djpw.cz/kijb">Živá ukázka</a></p>
 
-## Číslování indexů
 
-Při používání **číselných indexů** je nutné dbát na to, že bývají číslovány od nuly. Naopak živý člověk bude preferovat **číslování od jedničky**.
 
-Čísla indexů vytvářejí trochu záludnou situaci, kdy počet prvků (`polozky.length`) bude třeba 5, ale nejvyšší index 4.
+
+
+
+
+
+
+
+
+<h2 id="indexy">Číslování indexů</h2>
+
+<p>Při používání <b>číselných indexů</b> je nutné dbát na to, že bývají číslovány od nuly. Naopak živý člověk bude preferovat <b>číslování od jedničky</b>.</p>
+
+<p>Čísla indexů vytvářejí trochu záludnou situaci, kdy počet prvků (<code>polozky.length</code>) bude třeba 5, ale nejvyšší index 4.</p>

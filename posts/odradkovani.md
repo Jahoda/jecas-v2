@@ -5,117 +5,170 @@ description: "Jak v HTML, HTML atributu nebo CSS vložit nový řádek."
 date: "2015-03-04"
 last_modification: "2015-03-08"
 status: 1
-tags: ["HTML", "CSS", "Rady a nápady"]
+tags: ["css", "html", "napady"]
+format: "html"
 ---
 
-## Značka `&lt;br>`
 
-Jelikož je běžné odřádkování klávesou Enter v HTML kódu většinou chápáno jako *nějaký bílý znak* **bez zvláštního významu**, pro vynucení nového řádku slouží značka `&lt;br>` (má zakázanou [koncovou značku](/html-znacky#koncova-zakazana)).
+<h2 id="br">Značka <code>&lt;br></code></h2>
 
-```
-&lt;p>
-  První řádek**&lt;br>**Druhý řádek
-&lt;/p>
-```
+<p>Jelikož je běžné odřádkování klávesou <kbd>Enter</kbd> v HTML kódu většinou chápáno jako <i>nějaký bílý znak</i> <b>bez zvláštního významu</b>, pro vynucení nového řádku slouží značka <code>&lt;br></code> (má zakázanou <a href="/html-znacky#koncova-zakazana">koncovou značku</a>).</p>
 
-Výjimkou, kdy se na odřádkování a jiné bílé znaky dbá, je použití CSS předpisu `white-space: pre` – takový styl má jako výchozí značka [`&lt;pre>`](/vypis-kodu).
+<pre><code>&lt;p>
+  První řádek<b>&lt;br></b>Druhý řádek
+&lt;/p></code></pre>
 
-Následující kód se tak zobrazí stejně jako při použití `&lt;br>`. Každá mezera nebo odřádkování hraje svou roli, proto se konec a začátek značky `&lt;p>` musí *nalepit* na obsah.
 
-```
-&lt;p 
-  style="**white-space: pre**"
-*>*První řádek
-Druhý řádek*&lt;*/p>
-```
 
-Takový postup je lehce riskantní, protože bílé znaky může narušit editor při formátování kódu nebo případná minifikace HTML kódu.
 
-Značka `&lt;br>` by se neměla používat k vytváření odsazení – k tomu slouží CSS vlastnost [`margin`](/margin). Nový řádek jde vytvořit i obalením obsahu do blokového elementu (CSS předpis [`display: block`](/display#block)).
 
-```
-&lt;div>První řádek&lt;/div>
-&lt;div>Druhý řádek&lt;/div>
-```
 
-Elegantnější je ale většinou použít `&lt;br>` a členit textu do odstavců (`&lt;p>`).
+<p>Výjimkou, kdy se na odřádkování a jiné bílé znaky dbá, je použití CSS předpisu <code>white-space: pre</code> – takový styl má jako výchozí značka <a href="/vypis-kodu"><code>&lt;pre></code></a>.</p>
 
-## Nový řádek v HTML atributu
+<p>Následující kód se tak zobrazí stejně jako při použití <code>&lt;br></code>. Každá mezera nebo odřádkování hraje svou roli, proto se konec a začátek značky <code>&lt;p></code> musí <i>nalepit</i> na obsah.</p>
 
-V některých případech je potřeba přidat **zalomení řádku** do HTML atributu – nejčastěji do obecného atributu `title`. Existuje více možností.
+<pre><code>&lt;p 
+  style="<b>white-space: pre</b>"
+<i>></i>První řádek
+Druhý řádek<i>&lt;</i>/p></code></pre>
 
-### Entita `&amp;#10;`
 
-Nejvýhodnější se zdá být entita `&amp;#10;`, která na daném místě vytvoří nový řádek.
 
-```
-&lt;span 
-  title="První řádek**&amp;#10;**Druhý řádek"
+
+
+<p>Takový postup je lehce riskantní, protože bílé znaky může narušit editor při formátování kódu nebo případná minifikace HTML kódu.</p>
+
+<p>Značka <code>&lt;br></code> by se neměla používat k vytváření odsazení – k tomu slouží CSS vlastnost <a href="/margin"><code>margin</code></a>. Nový řádek jde vytvořit i obalením obsahu do blokového elementu (CSS předpis <a href="/display#block"><code>display: block</code></a>).</p>
+
+<pre><code>&lt;div>První řádek&lt;/div>
+&lt;div>Druhý řádek&lt;/div></code></pre>
+
+
+
+
+
+<p>Elegantnější je ale většinou použít <code>&lt;br></code> a členit textu do odstavců (<code>&lt;p></code>).</p>
+
+
+<h2 id="atribut">Nový řádek v HTML atributu</h2>
+
+<p>V některých případech je potřeba přidat <b>zalomení řádku</b> do HTML atributu – nejčastěji do obecného atributu <code>title</code>. Existuje více možností.</p>
+
+
+
+
+<h3 id="entita">Entita <code>&amp;#10;</code></h3>
+
+<p>Nejvýhodnější se zdá být entita <code>&amp;#10;</code>, která na daném místě vytvoří nový řádek.</p>
+
+<pre><code>&lt;span 
+  title="První řádek<b>&amp;#10;</b>Druhý řádek"
 >
   Text
-&lt;/span>
-```
+&lt;/span></code></pre>
 
-  Entita `&amp;#10;`
+<div class="live">
+<p><span 
+  title="První řádek&#10;Druhý řádek"
+  class="help"
+>
+  Entita <code>&amp;#10;</code>
+  </span></p>
 
-Kromě v atributu funguje toto zalomení i ve značce s nastaveným zachováváním bílých znaků (`white-space: pre`). Místo zalomení řádku v kódu stačí přidat entitu `&amp;#10;` a výsledek je stejný.
+</div>
 
-### Odřádkování v kódu
 
-Nový řádek v atributu se vytvoří i v případě, že bude odřádkování přímo ve zdrojovém HTML kódu.
 
-```
-&lt;span 
+<p>Kromě v atributu funguje toto zalomení i ve značce s nastaveným zachováváním bílých znaků (<code>white-space: pre</code>). Místo zalomení řádku v kódu stačí přidat entitu <code>&amp;#10;</code> a výsledek je stejný.</p>
+
+
+
+
+<h3 id="odradkovani">Odřádkování v kódu</h3>
+
+<p>Nový řádek v atributu se vytvoří i v případě, že bude odřádkování přímo ve zdrojovém HTML kódu.</p>
+
+<pre><code>&lt;span 
   title="První řádek
 Druhý řádek"
 >
   Text
-&lt;/span>
-```
+&lt;/span></code></pre>
 
+<div class="live">
+
+<p><span 
+  title="První řádek
+Druhý řádek"
+  class="help"
+>
   Odřádkování v kódu
+  </span></p>
+</div>
 
-### Odřádkování `\n` nefunguje
+<h3 id="n">Odřádkování <code>\n</code> nefunguje</h3>
 
-V programovacích jazycích se často pro nový řádek používá sekvence znaků `\n`. Jelikož se v HTML pro escapování používají [entity s `&amp;` na začátku](/entity), **nebude** tento postup fungovat a `\n` se normálně vypíše.
+<p>V programovacích jazycích se často pro nový řádek používá sekvence znaků <code>\n</code>. Jelikož se v HTML pro escapování používají <a href="/entity">entity s <code>&amp;</code> na začátku</a>, <b>nebude</b> tento postup fungovat a <code>\n</code> se normálně vypíše.</p>
 
-  Odřádkování pomocí `\n`
+<div class="live"> 
+<p><span 
+  title="První řádek \n Druhý řádek"
+  class="help"
+>
+  Odřádkování pomocí <code>\n</code>
+  </span></p>  
+</div>
 
-## Odřádkování v `&lt;textarea>`
 
-Textová oblast pro psaní textu – [`&lt;textarea>`](/textarea) – má výchozí styl `white-space: pre`, takže se v ní nový řádek vytvoří buď odřádkováním přímo v kódu nebo entitou `&amp;#10;`.
+<h2 id="textarea">Odřádkování v <code>&lt;textarea></code></h2>
 
-```
-&lt;textarea>První řádek
-Druhý řádek**&amp;#10;**Třetí řádek&lt;/textarea>
-```
+<p>Textová oblast pro psaní textu – <a href="/textarea"><code>&lt;textarea></code></a> – má výchozí styl <code>white-space: pre</code>, takže se v ní nový řádek vytvoří buď odřádkováním přímo v kódu nebo entitou <code>&amp;#10;</code>.</p>
 
-### Atribut `placeholder`
+<pre><code>&lt;textarea>První řádek<b>
+</b>Druhý řádek<b>&amp;#10;</b>Třetí řádek&lt;/textarea></code></pre>
 
-U atributu placeholder je postup stejný jako u `&lt;textarea>` – nový řádek v kódu i entita `&amp;#10;`. Zalomení řádku v `placeholder`u ale nefunguje ve staré **Opeře 12** a ani ve **Firefoxu 38**.
 
-    - [Test zalomení obsahu atributu `placehoder`](http://kod.djpw.cz/vglb)
+<h3 id="placeholder">Atribut <code>placeholder</code></h3>
 
-### Počet řádků
+<p>U atributu placeholder je postup stejný jako u <code>&lt;textarea></code> – nový řádek v kódu i entita <code>&amp;#10;</code>. Zalomení řádku v <code>placeholder</code>u ale nefunguje ve staré <b>Opeře 12</b> a ani ve <b>Firefoxu 38</b>.</p>
 
-Počet řádků v `&lt;textarea>` jde spočítat JavaScriptem:
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/vglb">Test zalomení obsahu atributu <code>placehoder</code></a></li>
+  </ul>
+</div>
 
-    - [Počet znaků a slov v textu](/pocet-znaku) – počítání nejen odřádkování v textu
 
-## Zalomení řádku v CSS
+<h3 id="pocet">Počet řádků</h3>
 
-V CSS se potřeba vypsání nového řádku týká například vlastnosti [`content`](/content-attr) (při použití přes `:before`/`:after`). Kaskádové styly nepodporují uvnitř hodnoty vlastnosti řádek zalomit a ani HTML entity, takže se na to musí jít jinak. Řešením je řetězec „`\a`“. Zároveň je nutné přidat `white-space: pre`, aby se zalomení vykreslilo.
+<p>Počet řádků v <code>&lt;textarea></code> jde spočítat JavaScriptem:</p>
 
-```
-element:before {
-  content: 'První řádek **\a** Druhý řádek';
+<div class="internal-content">
+  <ul>
+    <li><a href="/pocet-znaku">Počet znaků a slov v textu</a> – počítání nejen odřádkování v textu</li>
+  </ul>
+</div>
+
+
+<h2 id="css">Zalomení řádku v CSS</h2>
+
+<p>V CSS se potřeba vypsání nového řádku týká například vlastnosti <a href="/content-attr"><code>content</code></a> (při použití přes <code>:before</code>/<code>:after</code>). Kaskádové styly nepodporují uvnitř hodnoty vlastnosti řádek zalomit a ani HTML entity, takže se na to musí jít jinak. Řešením je řetězec „<code>\a</code>“. Zároveň je nutné přidat <code>white-space: pre</code>, aby se zalomení vykreslilo.</p>
+
+<pre><code>element:before {
+  content: 'První řádek <b>\a</b> Druhý řádek';
   white-space: pre;
-}
-```
+}</code></pre>
 
-Tak jde vypsat víceřádkový text do vlastnosti `content`.
 
+<p>Tak jde vypsat víceřádkový text do vlastnosti <code>content</code>.</p>
+
+<div class="live">
+  <style>
     .zalomeny:before {
       content: 'První řádek \a Druhý řádek';
       white-space: pre;
     }
+  </style>
+  <span class="zalomeny"></span>
+</div>
+

@@ -5,85 +5,122 @@ description: "HTML značka <code>&lt;menuitem></code> umožňuje vytvořit <i>na
 date: "2014-10-07"
 last_modification: "2014-10-07"
 status: 1
-tags: ["HTML", "HTML značky"]
+tags: ["html", "html-tagy"]
+format: "html"
 ---
 
-Stručně řečeno umí značka `&lt;menuitem>` vytvořit nabídku, která se objeví po stisknutí **pravého tlačítka myši**, bez nutnosti používat JavaScript.
+<p>Stručně řečeno umí značka <code>&lt;menuitem></code> vytvořit nabídku, která se objeví po stisknutí <b>pravého tlačítka myši</b>, bez nutnosti používat JavaScript.</p>
 
-[Kontextová nabídka v JavaScriptu](/kontextova-nabidka) je popsána v samostatném článku.
+<p class="rel"><a href="/kontextova-nabidka">Kontextová nabídka v JavaScriptu</a> je popsána v samostatném článku.</p>
 
-## Podpora
 
-Zatím funguje jen ve **Firefoxu** (od verse 8).
+<h2 id="podpora">Podpora</h2>
 
-## Zápis
+<p>Zatím funguje jen ve <b>Firefoxu</b> (od verse 8).</p>
 
-Nejjednodušší příklad, který vytvoří *kontextové menu* o jedné položce, vypadá následovně.
+<p><img src="/files/menuitem/kontextove-menu.png" alt="Nativní vlastní kontextová nabídka ve Firefoxu" class="border"></p>
 
-```
-&lt;menu **type="context"** id="*kontextove-menu*">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="zapis">Zápis</h2>
+
+<p>Nejjednodušší příklad, který vytvoří <i>kontextové menu</i> o jedné položce, vypadá následovně.</p>
+
+<pre><code>&lt;menu <b>type="context"</b> id="<i>kontextove-menu</i>">
   &lt;menuitem label="Popisek" onclick="alert(1)">
   &lt;/menuitem>
-&lt;/menu>
-```
+&lt;/menu></code></pre>
 
-  - Jako *obal* se používá stará dobrá značka `&lt;menu>`.
+<ul>
+  <li>Jako <i>obal</i> se používá stará dobrá značka <code>&lt;menu></code>.</li>
+  
+  <li>Atribut <code>type</code> nastavený na <code>context</code> určuje, že se jedná o kontextovou nabídku, což v <b>podporovaných prohlížečích</b> skryje vnitřek <code>&lt;menu></code>.</li>
+  
+  <li>Identifikátor (<code>id</code>) je důležitý pro pozdější <b>navázání kontextové nabídky</b> ke kontextu (nějakému elementu, kde se má menu zobrazit).</li>
+</ul>
 
-  - Atribut `type` nastavený na `context` určuje, že se jedná o kontextovou nabídku, což v **podporovaných prohlížečích** skryje vnitřek `&lt;menu>`.
 
-  - Identifikátor (`id`) je důležitý pro pozdější **navázání kontextové nabídky** ke kontextu (nějakému elementu, kde se má menu zobrazit).
+<h3 id="pripojeni">Připojení k elementu</h3>
 
-### Připojení k elementu
-
-```
-&lt;div **contextmenu**="*kontextove-menu*">
+<pre><code>&lt;div <b>contextmenu</b>="<i>kontextove-menu</i>">
   Obsah
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/xdgb) (funkční ve **Firefoxu 8+**)
+<p><a href="http://kod.djpw.cz/xdgb">Živá ukázka</a> (funkční ve <b>Firefoxu 8+</b>)</p>
 
-## Značka `&lt;menuitem>`
 
-Element `&lt;menuitem>` má řadu atributů.
 
-  `label`
+<h2 id="menuitem">Značka <code>&lt;menuitem></code></h2>
+
+<p>Element <code>&lt;menuitem></code> má řadu atributů.</p>
+
+
+<dl>
+  <dt id="label"><code>label</code></dt>
+  <dd>
+    <p>Popisek nabídky.</p>
+  </dd>
   
-    Popisek nabídky.
-
-  `onclick`
+  <dt id="onclick"><code>onclick</code></dt>
+  <dd>
+    <p>JavaScriptová akce, co se provede po kliknutí. Kvůli přehlednosti je lepší <b>volat nějakou funkci</b> než přímo od atributu psát složitější JS kód.</p>
+  </dd>
   
-    JavaScriptová akce, co se provede po kliknutí. Kvůli přehlednosti je lepší **volat nějakou funkci** než přímo od atributu psát složitější JS kód.
-
-  `icon`
+  <dt id="icon"><code>icon</code></dt>
+  <dd>
+    <p>URL ikonky pro danou akci.</p>
+  </dd>
   
-    URL ikonky pro danou akci.
+  <dt id="disabled"><code>disabled</code></dt>
+  <dd>
+    <p>Deaktivuje položku.</p>
+  </dd>
+</dl>
 
-  `disabled`
-  
-    Deaktivuje položku.
 
-## Více úrovní
+<h2 id="urovne">Více úrovní</h2>
 
-Do značky `&lt;menu>` se dajší zanořovat další `&lt;menu>`. Když se vnořené značce `&lt;menu>` přidá atribut `label`, její obsah se stane nižší úrovní.
+<p>Do značky <code>&lt;menu></code> se dajší zanořovat další <code>&lt;menu></code>. Když se vnořené značce <code>&lt;menu></code> přidá atribut <code>label</code>, její obsah se stane nižší úrovní.</p>
 
-```
-&lt;menu type="context" id="kontextove-menu">
-  &lt;menu **label="Více"**>
+<pre><code>&lt;menu type="context" id="kontextove-menu">
+  &lt;menu <b>label="Více"</b>>
     &lt;menuitem label="Popisek" onclick="alert(1)">
     &lt;/menuitem>
   &lt;/menu>
-&lt;/menu>
-```
+&lt;/menu></code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/ydgb)
+<p><img src="/files/menuitem/vnorena-nabidka.png" alt="Vnořená kontextová nabídka ve Firefoxu" class="border"></p>
 
-## Oddělení nabídek
+<p><a href="http://kod.djpw.cz/ydgb">Živá ukázka</a></p>
 
-Použitím `&lt;menu>` bez `label` atributu potom může vzniknout **nová sekce** oddělená vodorovným rámečkem.
 
-```
-&lt;menu type="context" id="kontextove-menu">
+
+<h2 id="oddeleni">Oddělení nabídek</h2>
+
+<p>Použitím <code>&lt;menu></code> bez <code>label</code> atributu potom může vzniknout <b>nová sekce</b> oddělená vodorovným rámečkem.</p>
+
+<p><img src="/files/menuitem/oddeleni.png" alt="Oddělení nabídek ve Firefoxu" class="border"></p>
+
+
+<pre><code>&lt;menu type="context" id="kontextove-menu">
   &lt;menu>
     &lt;menuitem label="Popisek" onclick="alert(1)">
     &lt;/menuitem>
@@ -92,13 +129,17 @@ Použitím `&lt;menu>` bez `label` atributu potom může vzniknout **nová sekce
     &lt;menuitem label="Popisek oddělený" onclick="alert(1)">
     &lt;/menuitem>
   &lt;/menu>
-&lt;/menu>
-```
+&lt;/menu></code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/zdgb)
 
-## Odkazy jinam
 
-  - DevDocs: [&lt;menuitem>](http://devdocs.io/html/element/menuitem)
+<p><a href="http://kod.djpw.cz/zdgb">Živá ukázka</a></p>
 
-  - Mozilla Hacks: [HTML5 context menus in Firefox](https://hacks.mozilla.org/2011/11/html5-context-menus-in-firefox-screencast-and-code/)
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  
+  <li>DevDocs: <a href="http://devdocs.io/html/element/menuitem">&lt;menuitem></a></li>
+  <li>Mozilla Hacks: <a href="https://hacks.mozilla.org/2011/11/html5-context-menus-in-firefox-screencast-and-code/">HTML5 context menus in Firefox</a></li>
+</ul>

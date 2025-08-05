@@ -6,6 +6,9 @@ date: "2015-11-10"
 last_modification: "2015-11-10"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [CZACCENT/Ohákování](https://nlp.fi.muni.cz/cz_accent/) – pokus automatické přidání diakritiky do *cestiny*
+<ul>
+  <li><a href="https://nlp.fi.muni.cz/cz_accent/">CZACCENT/Ohákování</a> – pokus automatické přidání diakritiky do <i>cestiny</i></li>
+</ul>

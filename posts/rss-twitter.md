@@ -6,12 +6,16 @@ date: "2015-09-07"
 last_modification: "2015-09-07"
 status: 0
 tags: []
+format: "html"
 ---
 
-Většina blogů a webových služeb nabízí pro sledování příspěvků RSS.
+<p>Většina blogů a webových služeb nabízí pro sledování příspěvků RSS.</p>
 
-  - [dlvr.it](https://dlvr.it/) – zdarma
-
-  - [Twitter Feed](http://twitterfeed.com/) – oficální služba
-
-  - [Twibble.io](https://twibble.io/) – obsahuje hodně funkcí (filtrování příspěvků, posílání obrázků), ve versi zdarma zobrazuje odkaz/reklamu na twibble.io
+<ul>
+  <li><a href="https://dlvr.it/">dlvr.it</a> – zdarma</li>
+  
+  <li><a href="http://twitterfeed.com/">Twitter Feed</a> – oficální služba</li>
+  
+  <li><a href="https://twibble.io/">Twibble.io</a> – obsahuje hodně funkcí (filtrování příspěvků, posílání obrázků), ve versi zdarma zobrazuje odkaz/reklamu na twibble.io</li>
+  
+</ul>

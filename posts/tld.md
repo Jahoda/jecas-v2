@@ -5,25 +5,23 @@ description: "Seznam všech TLD – domén prvního řádu."
 date: "2014-05-07"
 last_modification: "2014-05-18"
 status: 1
-tags: ["Domény"]
+tags: ["domeny"]
+format: "html"
 ---
 
-```
-http://*jecas*.**cz**/tld
-```
+<pre><code>http://<i>jecas</i>.<b>cz</b>/tld</code></pre>
 
-Doména **prvního řádu** je to, co se nachází za poslední tečkou před lomítkem – v tomto případě „`**cz**`“, samotné `*jecas*` je potom doména **druhého řádu**.
+<p>Doména <b>prvního řádu</b> je to, co se nachází za poslední tečkou před lomítkem – v tomto případě „<code><b>cz</b></code>“, samotné <code><i>jecas</i></code> je potom doména <b>druhého řádu</b>.</p>
 
-Při některých případech, třeba při důslednějším ověřování e-mailových adres, se může hodit seznam všech existujících domén.
+<p>Při některých případech, třeba při důslednějším ověřování e-mailových adres, se může hodit seznam všech existujících domén.</p>
 
-Vždy akutální seznam je na [této stránce](/tld-list) dostupný i v JSONu nebo jako PHP pole ([zdroj dat](http://data.iana.org/TLD/tlds-alpha-by-domain.txt)).
+<p>Vždy akutální seznam je na <a href="/tld-list">této stránce</a> dostupný i v JSONu nebo jako PHP pole (<a href="http://data.iana.org/TLD/tlds-alpha-by-domain.txt">zdroj dat</a>).</p>
 
-Více detailů k jednotlivým **top-level doménám** je na [Wikipedii](http://en.wikipedia.org/wiki/List_of_Internet_top-level_domains).
+<p>Více detailů k jednotlivým <b>top-level doménám</b> je na <a href="http://en.wikipedia.org/wiki/List_of_Internet_top-level_domains">Wikipedii</a>.</p>
 
-## Seznam domén
+<h2 id="seznam">Seznam domén</h2>
 
-```
-AC
+<pre style="max-height: 500px; overflow: auto" id="seznam-domen"><code>AC
 ACADEMY
 ACTOR
 AD
@@ -590,5 +588,4 @@ ZA
 ZM
 ZONE
 ZW
-
-```
+</code></pre>

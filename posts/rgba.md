@@ -5,82 +5,84 @@ description: "Zadávání barev v CSS pomocí <code>rgba()</code> umožňuje vyt
 date: "2014-02-15"
 last_modification: "2014-05-23"
 status: 1
-tags: ["CSS", "CSS funkce"]
+tags: ["css", "css-funkce"]
+format: "html"
 ---
 
-```
-element {
+<pre><code>element {
   background: rgba(255, 255, 255, 0.5);
 }
+</code></pre>
 
-```
+<p>První tři parametry (v rozsahu <code>0–255</code>) jsou intensity červené (<code>r</code>), zelené (<code>g</code>) a modré (<code>b</code>) barvy. Čtvrtý parametr je <i>alpha</i> — průhlednost. Průhlednost se zadává v rozmezí <code>0–1</code>, nulu před desetinnou tečkou je možné vypustit, tj. „<code>0.5</code>“ je totéž co „<code>.5</code>“.</p>
 
-První tři parametry (v rozsahu `0–255`) jsou intensity červené (`r`), zelené (`g`) a modré (`b`) barvy. Čtvrtý parametr je *alpha* — průhlednost. Průhlednost se zadává v rozmezí `0–1`, nulu před desetinnou tečkou je možné vypustit, tj. „`0.5`“ je totéž co „`.5`“.
+<p>Tento způsob nastavování barvy funguje od <b>IE 9</b>, pro starší prohlížeče existuje jednoduchý <i>fallback</i>, kdy se podobná barva, ale <b>bez průhlednosti</b>, zadá před tu průhlednou.</p>
 
-Tento způsob nastavování barvy funguje od **IE 9**, pro starší prohlížeče existuje jednoduchý *fallback*, kdy se podobná barva, ale **bez průhlednosti**, zadá před tu průhlednou.
-
-```
-element {
+<pre><code>element {
   background: gray; /* pro IE 8 a starší */
   background: rgba(255, 255, 255, 0.5);
 }
+</code></pre>
 
-```
+<h2 id="proc">Proč průhledné barvy?</h2>
 
-## Proč průhledné barvy?
+<p>Kromě vytváření <a href="/opacity">průhledného obsahu</a> existuje ještě jeden důvod. Vhodným kombinováním:</p>
 
-Kromě vytváření [průhledného obsahu](/opacity) existuje ještě jeden důvod. Vhodným kombinováním:
+<ul>
+  <li><b>průhledné černé</b> – <code>rgba(0, 0, 0, .5)</code></li>
+  <li>a <b>průhledné bílé</b> – <code>rgba(255, 255, 255, .5)</code></li>
+</ul>
 
-  - **průhledné černé** – `rgba(0, 0, 0, .5)`
+<p>Je možné vytvořit barvy typu „o trochu tmavší/světlejší“. Celá stránka potom jde <i>přebarvit</i> na jednom místě – na pozadí. Ostatní elementy se relativně přizpůsobí.</p>
 
-  - a **průhledné bílé** – `rgba(255, 255, 255, .5)`
-
-Je možné vytvořit barvy typu „o trochu tmavší/světlejší“. Celá stránka potom jde *přebarvit* na jednom místě – na pozadí. Ostatní elementy se relativně přizpůsobí.
-
+<div class="live">
+  <style>
     .obal {background: red; padding: .5em}
     .obal div {padding: .1em .5em; color: #fff;}   
     .svetly {background: rgba(255, 255, 255, .5)}
     .tmavy {background: rgba(0, 0, 0, .5)}
     .stredni {background: rgba(0, 0, 0, .2)}
-
+  </style>
+  <script>
     function styl(barva) {
         document.getElementById("obal").style.background = barva;
     }
+  </script>
+  <div class="obal" id="obal">
+    <p>
+        <button onclick="styl('red')">Červená</button> <button onclick="styl('blue')">Modrá</button> <button onclick="styl('green')">Zelená</button>
+    </p>    
+    <div class="svetly">
+        <p>Světlý obsah</p>
+    </div>    
+    <div class="tmavy">
+        <p>Tmavy obsah</p>
+    </div>    
+    <div class="stredni">
+        <p>Něco mezi</p>
+    </div>
+</div></div>
 
-        Červená Modrá Zelená
+<p><a href="http://kod.djpw.cz/xybb">Samostatná ukázka</a>.</p>
 
-        Světlý obsah
+<h2 id="ie8">IE 8 a starší</h2>
 
-        Tmavy obsah
+<p>Pro podporu v <b>IE 8</b> a starších je možné použít například <a href="/gradient">gradient filtr</a> (se stejnou počáteční i koncovou barvou), kterému se dá nastavit <b>průhlednost</b> (určují ji první dva znaky barvy).</p>
 
-        Něco mezi
-
-[Samostatná ukázka](http://kod.djpw.cz/xybb).
-
-## IE 8 a starší
-
-Pro podporu v **IE 8** a starších je možné použít například [gradient filtr](/gradient) (se stejnou počáteční i koncovou barvou), kterému se dá nastavit **průhlednost** (určují ji první dva znaky barvy).
-
-### Zesvětlení
-
-```
-filter: progid:DXImageTransform.Microsoft.gradient(
+<h3 id="zesvetleni">Zesvětlení</h3>
+<pre><code>filter: progid:DXImageTransform.Microsoft.gradient(
   GradientType=0,
-  startColorstr='#**4c**ffffff', 
-  endColorstr='#**4c**ffffff'
-)
-```
+  startColorstr='#<b>4c</b>ffffff', 
+  endColorstr='#<b>4c</b>ffffff'
+)</code></pre>
 
-### Ztmavení
-
-```
-filter: progid:DXImageTransform.Microsoft.gradient(
+<h3 id="ztmaveni">Ztmavení</h3>
+<pre><code>filter: progid:DXImageTransform.Microsoft.gradient(
   GradientType=0,
-  startColorstr='#**4c**000000', 
-  endColorstr='#**4c**000000'
-)
-```
+  startColorstr='#<b>4c</b>000000', 
+  endColorstr='#<b>4c</b>000000'
+)</code></pre>
 
-[Ukázka pro IE 8](http://kod.djpw.cz/yldb)
+<p><a href="http://kod.djpw.cz/yldb">Ukázka pro IE 8</a></p>
 
-Nesmí se zapomenout, že **IE 9** podporuje filtry i `rgba`, takže by se efekt při současném použití zdvojil. Nabízí se tedy **průhledný filtr** připojit s využitím [podmíněných komentářů](/podminene-komentare) jen pro **IE 8**.
+<p>Nesmí se zapomenout, že <b>IE 9</b> podporuje filtry i <code>rgba</code>, takže by se efekt při současném použití zdvojil. Nabízí se tedy <b>průhledný filtr</b> připojit s využitím <a href="/podminene-komentare">podmíněných komentářů</a> jen pro <b>IE 8</b>.</p>

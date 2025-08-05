@@ -6,14 +6,13 @@ date: "2014-10-27"
 last_modification: "2014-10-27"
 status: 0
 tags: []
+format: "html"
 ---
 
-### Jedna úroveň
+<h3>Jedna úroveň</h3>
+<p><a href="http://kod.djpw.cz/dwgb">Živá ukázka</a></p>
 
-[Živá ukázka](http://kod.djpw.cz/dwgb)
+<h3>Více úrovní</h3>
+<p><a href="http://kod.djpw.cz/fwgb">Živá ukázka</a></p>
 
-### Více úrovní
-
-[Živá ukázka](http://kod.djpw.cz/fwgb)
-
-[Inspirováno](http://codepen.io/Creaticode/pen/ijExL) ([ukázka](http://kod.djpw.cz/ewgb))
+<p><a href="http://codepen.io/Creaticode/pen/ijExL">Inspirováno</a> (<a href="http://kod.djpw.cz/ewgb">ukázka</a>)</p>

@@ -6,6 +6,9 @@ date: "2015-11-10"
 last_modification: "2015-11-10"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Dirty Markup](http://www.dirtymarkup.com/) – online nástroj pro formátování HTML/CS/JS
+<ul>
+  <li><a href="http://www.dirtymarkup.com/">Dirty Markup</a> – online nástroj pro formátování HTML/CS/JS</li>
+</ul>

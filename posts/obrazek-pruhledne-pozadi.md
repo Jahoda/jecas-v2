@@ -6,8 +6,18 @@ date: "2019-05-12"
 last_modification: "2019-05-12"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [remove.bg](https://www.remove.bg) (Remove Image Background) – online služba k zprůhlednění pozadí
+<div class="external-content">
+  <ul>
+    <li><a href="https://www.remove.bg">remove.bg</a> (Remove Image Background) – online služba k zprůhlednění pozadí</li>
+  </ul>
+</div>
 
-    - [JPNG.svg](https://codepen.io/shshaw/full/LVKEdv) (Transparent PNG with JPEG Compression) – zkomibnování PNG a JPG do SVG
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://codepen.io/shshaw/full/LVKEdv">JPNG.svg</a> (Transparent PNG with JPEG Compression) – zkomibnování PNG a JPG do SVG</li>
+  </ul>
+</div>

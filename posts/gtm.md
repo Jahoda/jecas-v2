@@ -6,6 +6,9 @@ date: "2016-03-09"
 last_modification: "2016-03-09"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Google Tag Manager: 18x nejpoužívanější nastavení](https://www.danielnytra.cz/nastaveni-google-tag-manager/)
+<ul>
+  <li><a href="https://www.danielnytra.cz/nastaveni-google-tag-manager/">Google Tag Manager: 18x nejpoužívanější nastavení</a></li>
+</ul>

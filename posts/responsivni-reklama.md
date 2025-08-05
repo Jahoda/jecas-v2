@@ -5,100 +5,131 @@ description: "Jak se vypořádat s reklamami při vytváření responsivního we
 date: "2015-09-14"
 last_modification: "2016-01-13"
 status: 1
-tags: ["Responsivní design", "Reklama"]
+tags: ["reklama", "responsive"]
+format: "html"
 ---
 
-Reklamy zpravidla každého jenom otravují, ale pro provozovatele webů je to jeden ze způsobů, **jak vydělat na provoz**.
+<p>Reklamy zpravidla každého jenom otravují, ale pro provozovatele webů je to jeden ze způsobů, <b>jak vydělat na provoz</b>.</p>
 
-Základní možnosti, co s reklamou na mobilu udělat, jsou:
+<p>Základní možnosti, co s reklamou na mobilu udělat, jsou:</p>
 
-    **Skrýt ji** – to ocení návštěvníci díky rychlejšímu načítání a méně rolování pro přeskočení reklamních bloků.
+<ol>
+  <li>
+    <p><b>Skrýt ji</b> – to ocení návštěvníci díky rychlejšímu načítání a méně rolování pro přeskočení reklamních bloků.</p>
+  </li>  
+  <li>
+    <p><b>Přizpůsobit ji</b> – to ocení provozovatel, protože něco vydělá i na mobilech. Na mobilních zařízeních bývá reklama méně často blokována.</p>
+  </li>
+</ol>
 
-    **Přizpůsobit ji** – to ocení provozovatel, protože něco vydělá i na mobilech. Na mobilních zařízeních bývá reklama méně často blokována.
+<h2 id="skryt">Schování reklamy</h2>
 
-## Schování reklamy
-
-```
-.reklama {
+<pre><code>.reklama {
   display: none;
-}
-```
+}</code></pre>
 
-Může se nabízet reklamní blok skrýt pomocí CSS konstrukce `[display](/display): none`.
 
-To sice **visuálně reklamu skryje**, ale stále se mohou úplně **zbytečně načítat** skripty, styly a obrázky.
+<p>Může se nabízet reklamní blok skrýt pomocí CSS konstrukce <code><a href="/display">display</a>: none</code>.</p>
 
-Lepší je proto zvolit jednu ze dvou možností:
+<p>To sice <b>visuálně reklamu skryje</b>, ale stále se mohou úplně <b>zbytečně načítat</b> skripty, styly a obrázky.</p>
 
-  Na straně serveru [detekovat mobilní prohlížeče](/mobilni-web-url#detekce) a vůbec jim reklamní skripty nepřipojovat.
+<p>Lepší je proto zvolit jednu ze dvou možností:</p>
 
-  Detekovat mobily by šlo i u klienta v JavaScriptu a podle toho následně dynamicky (ne)připojovat `*.js` soubory s reklamou.
+<ol>
+  <li><p>Na straně serveru <a href="/mobilni-web-url#detekce">detekovat mobilní prohlížeče</a> a vůbec jim reklamní skripty nepřipojovat.</p></li>
+  <li><p>Detekovat mobily by šlo i u klienta v JavaScriptu a podle toho následně dynamicky (ne)připojovat <code>*.js</code> soubory s reklamou.</p></li>
+</ol>
 
-    - [How to Hide AdSense Ads on your Website](http://www.labnol.org/internet/hide-adsense-ads/17822/) – jak skrýt AdSense reklamu od Google na webu
 
-## Přizpůsobení
 
-Při [předělávání desktopového webu na responsivní](/prevod-responsivni-design) se je často nutné vypořádat s různými reklamními bloky a upravit je tak, aby nepřesahovaly dostupnou šířku stránky.
+<div class="external-content">
+  <ul>
+    <li><a href="http://www.labnol.org/internet/hide-adsense-ads/17822/">How to Hide AdSense Ads on your Website</a> – jak skrýt AdSense reklamu od Google na webu</li>
+  </ul>
+</div>
 
-Když je **reklamní banner** širší než dostupný prostor, stránka získá nehezký vodorovný posuvník.
+<h2 id="prizpusobeni">Přizpůsobení</h2>
 
-Co s tím?
+<p>Při <a href="/prevod-responsivni-design">předělávání desktopového webu na responsivní</a> se je často nutné vypořádat s různými reklamními bloky a upravit je tak, aby nepřesahovaly dostupnou šířku stránky.</p>
 
-### Oříznutí
+<p>Když je <b>reklamní banner</b> širší než dostupný prostor, stránka získá nehezký vodorovný posuvník.</p>
 
-Nejsnazší je široký obsah jednoduše oříznout:
 
-```
-.obal-reklamy {
+<p>Co s tím?</p>
+
+
+
+
+<h3 id="oriznout">Oříznutí</h3>
+
+<p>Nejsnazší je široký obsah jednoduše oříznout:</p>
+
+<pre><code>.obal-reklamy {
   overflow-x: hidden;
-}
-```
+}</code></pre>
 
-Stačí řezat pouze vodorovným směrem (osa X) pomocí `overflow**-x**: hidden`.
 
-Nevýhoda tohoto postupu je zásadní – část obsahu reklamy nebude vidět.
 
-### Zmenšení
+<p>Stačí řezat pouze vodorovným směrem (osa X) pomocí <code>overflow<b>-x</b>: hidden</code>.</p>
 
-Lepší řešení je tak zmenšit reklamu, aby se na displej vešla.
 
-Sestává-li reklama z prostého obrázku `&lt;img>`, je situace velmi snadná. Stačí použít stejné řešení jako u [responsivních obrázků](/responsivni-obrazky):
+<p>Nevýhoda tohoto postupu je zásadní – část obsahu reklamy nebude vidět.</p>
 
-```
-.obal-reklamy img {
+
+
+<h3 id="zmenseni">Zmenšení</h3>
+
+<p>Lepší řešení je tak zmenšit reklamu, aby se na displej vešla.</p>
+
+<p>Sestává-li reklama z prostého obrázku <code>&lt;img></code>, je situace velmi snadná. Stačí použít stejné řešení jako u <a href="/responsivni-obrazky">responsivních obrázků</a>:</p>
+
+<pre><code>.obal-reklamy img {
   max-width: 100%; 
   box-sizing: border-box; 
   height: auto
-}
-```
+}</code></pre>
 
-S ohledem na [vykreslovaní stránky](/vykreslovani) není tento postup úplně ideální, protože prohlížeč do doby načtení obrázku neví, jak velký prostor zabere:
 
-    - [Nastavení výšky responsivního obrázku](/rozmery-responsivniho-obrazku) – řešení poskakování obrázku
 
-U některých reklamních systému se poskakování nejde vyhnout, protože sám systém v momentě žádosti o reklamní banner nemusí vědět, jak velký objekt dostane.
 
-### Zmenšení `&lt;iframe>`
 
-Docela časté je, že se reklama vkládá pomocí [rámu `&lt;iframe>`](/ramy#iframe).
+<p>S ohledem na <a href="/vykreslovani">vykreslovaní stránky</a> není tento postup úplně ideální, protože prohlížeč do doby načtení obrázku neví, jak velký prostor zabere:</p>
 
-Při použití rámu jde využít trik s [výškou podle šířky](/vyska-podle-sirky). Rám se potom dokáže přizpůsobovat šířce, aby si **zachoval poměr stran**.
+<div class="internal-content">
+  <ul>
+    <li><a href="/rozmery-responsivniho-obrazku">Nastavení výšky responsivního obrázku</a> – řešení poskakování obrázku</li>
+  </ul>
+</div>
 
-HTML kód bude obsahovat dva obaly pro omezení maximální šířky.
+<p>U některých reklamních systému se poskakování nejde vyhnout, protože sám systém v momentě žádosti o reklamní banner nemusí vědět, jak velký objekt dostane.</p>
 
-```
-&lt;div style="max-width: 728px">
+
+
+
+<h3 id="ram">Zmenšení <code>&lt;iframe></code></h3>
+
+<p>Docela časté je, že se reklama vkládá pomocí <a href="/ramy#iframe">rámu <code>&lt;iframe></code></a>.</p>
+
+<p>Při použití rámu jde využít trik s <a href="/vyska-podle-sirky">výškou podle šířky</a>. Rám se potom dokáže přizpůsobovat šířce, aby si <b>zachoval poměr stran</b>.</p>
+
+
+<p>HTML kód bude obsahovat dva obaly pro omezení maximální šířky.</p>
+
+<pre><code>&lt;div style="max-width: 728px">
   &lt;div class="obal-reklamy">
     &lt;iframe … width='728' height='90'>
     &lt;/iframe>
   &lt;/div>
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-V CSS se potom připraví kontejner s nastavenou proporcí, kam se [absolutně naposicuje](/position#absolute) rám:
 
-```
-.obal-reklamy {
+
+
+
+
+<p>V CSS se potom připraví kontejner s nastavenou proporcí, kam se <a href="/position#absolute">absolutně naposicuje</a> rám:</p>
+
+<pre><code>.obal-reklamy {
     position: relative;
     height: 0;
     padding-bottom: 12.3626%;
@@ -109,105 +140,252 @@ V CSS se potom připraví kontejner s nastavenou proporcí, kam se [absolutně n
     left: 0;
     width: 100%;
     height: 100%;
-}
-```
+}</code></pre>
 
-Procentuální hodnota pro `padding-bottom` se spočítá jako výška / šířka * 100. Vytvořil jsem si k tomu generátor kódu:
 
-    - [Generátor CSS kódu pro přepočet poměru stran v px na procenta](/rozmery-responsivniho-obrazku#ratio-generator)
 
-Stejný postup jde použít i pro jiné objekty jako je video nebo Flash.
 
-## Best practice
 
-Ideální je udělat reklamu přizpůsobitelnou pro různě velké obrazovky.
 
-### Textová reklama
 
-V případě textové reklamy je situace nejsnazší. Text se dokáže naprosto bez problému přizpůsobovat velikosti displeje.
 
-### SVG
 
-Nejmodernější postup pro grafické bannery je použít [SVG](/svg). Mezi drobné nevýhody patří jeho nepodporování prohlížeči **IE 8** a starší a vyšší nároky na hardware oproti klasickému [PNG/GIF obrázku](/format-obrazku).
 
-Hlavní výhoda je dokonalá ostrost při libovolném zmenšování či zvětšování. Jde navíc [animovat](/webove-animace) nebo stylovat v CSS.
 
-Pomocí [`@media`](/media) pravidel jde potom v závislosti na velikosti měnit uspořádání prvků na obrázku.
 
-### Více obrázků
+<p>Procentuální hodnota pro <code>padding-bottom</code> se spočítá jako výška / šířka * 100. Vytvořil jsem si k tomu generátor kódu:</p>
 
-Horšího ale nejspíš výrobně levnějšího výsledku jde docílit vytvořením více obrázků pro různé šířky.
+<div class="internal-content">
+  <ul>
+    <li><a href="/rozmery-responsivniho-obrazku#ratio-generator">Generátor CSS kódu pro přepočet poměru stran v px na procenta</a></li>
+  </ul>
+</div>
 
-Přepínat mezi různými velikostmi obrázků jde potom buď přes `@media` pravidla a obrázky vložené přes CSS `background`, nebo zvláštní HTML značkou `&lt;picture>`.
+<p>Stejný postup jde použít i pro jiné objekty jako je video nebo Flash.</p>
 
-Důležité je zajistit, aby se zbytečně nestahovaly obrázky, které nejsou potřeba:
 
-    - [Kdy začne stahování `&lt;img>` obrázku](/zacatek-stahovani-obrazku)
+<h2 id="best-practice">Best practice</h2>
 
-## Neřešitelné cizí reklamy
+<p>Ideální je udělat reklamu přizpůsobitelnou pro různě velké obrazovky.</p>
 
-Bohužel existují případy, kdy responsivní podobu reklamy nejde zajistit.
 
-Jedná se o cizí reklamy vkládané do `&lt;iframe>`. Pokud vložená stránka s reklamou není responsivní a má **fixní šířku**, neexistuje dobré řešení – styly cizí stránky v rámu nejde měnit.
+<h3 id="text">Textová reklama</h3>
 
-Nabízí se tak:
+<p>V případě textové reklamy je situace nejsnazší. Text se dokáže naprosto bez problému přizpůsobovat velikosti displeje.</p>
 
-  - Reklamu oříznout (vlastností `overflow`).
 
-  - Reklamu [zmenšit](/zoom) pomocí CSS transformace (např. `transform: scale(0.5)`).
+<h3 id="svg">SVG</h3>
 
-  - Zobrazit jinou reklamu, která si s malou šířkou poradí.
+<p>Nejmodernější postup pro grafické bannery je použít <a href="/svg">SVG</a>. Mezi drobné nevýhody patří jeho nepodporování prohlížeči <b>IE 8</b> a starší a vyšší nároky na hardware oproti klasickému <a href="/format-obrazku">PNG/GIF obrázku</a>.</p>
 
-  - Přemluvit tvůrce reklam k vytvoření responsivní reklamy.
+<p>Hlavní výhoda je dokonalá ostrost při libovolném zmenšování či zvětšování. Jde navíc <a href="/webove-animace">animovat</a> nebo stylovat v CSS.</p>
 
-## Umístění reklamy na mobilu
+<p>Pomocí <a href="/media"><code>@media</code></a> pravidel jde potom v závislosti na velikosti měnit uspořádání prvků na obrázku.</p>
 
-Vzhledem k tomu, že mobilní web je typicky v jediném sloupci, není tolik možností, kam reklamu dát.
 
-### Reklama nad stránkou
+<h3 id="vice-obrazku">Více obrázků</h3>
 
-U desktopových podob webu je běžné, že je nad stránkou reklamní banner.
+<p>Horšího ale nejspíš výrobně levnějšího výsledku jde docílit vytvořením více obrázků pro různé šířky.</p>
 
-Na mobilech je to trochu problematičtější, protože se tím ukrojí obzvlášť drahocenný prostor pro obsah.
+<p>Přepínat mezi různými velikostmi obrázků jde potom buď přes <code>@media</code> pravidla a obrázky vložené přes CSS <code>background</code>, nebo zvláštní HTML značkou <code>&lt;picture></code>.</p>
 
-V jistých případech to může být i matoucí, protože banner může vypadat jako záhlaví stránky.
+<p>Důležité je zajistit, aby se zbytečně nestahovaly obrázky, které nejsou potřeba:</p>
 
-### Reklama v textu
+<div class="internal-content">
+  <ul>
+    <li><a href="/zacatek-stahovani-obrazku">Kdy začne stahování <code>&lt;img></code> obrázku</a></li>
+  </ul>
+</div>
 
-Na první pohled méně otravné je vložit reklamní banner mezi text nebo obsahové bloky na stránce.
 
-Návštěvník nedostane reklamní smršť na přivítanou hned po načtení stránky, ale až v průběhu listování.
+<h2 id="neresitelne">Neřešitelné cizí reklamy</h2>
 
-### Fixní banner
+<p>Bohužel existují případy, kdy responsivní podobu reklamy nejde zajistit.</p>
 
-Docela zajímavý koncept reklamy se zdá být fixní banner na spodku obrazovky, který disponuje zavíracím tlačítkem:
 
-Taková reklama se může zobrazit třeba až při odrolování stránky o určitý kus, čímž na sebe upozorní.
+<p>Jedná se o cizí reklamy vkládané do <code>&lt;iframe></code>. Pokud vložená stránka s reklamou není responsivní a má <b>fixní šířku</b>, neexistuje dobré řešení – styly cizí stránky v rámu nejde měnit.</p>
 
-Tlačítko pro skrytí fixní reklamy je docela důležité – jinak bude banner neustále zabírat značnou část prostoru.
 
-## Otravnost reklamy
+<p>Nabízí se tak:</p>
 
-Při umisťování reklamy je nutné volit kompromis mezi otravováním uživatelů a zdánlivým příjmem z reklamy.
+<ol>
+  <li>Reklamu oříznout (vlastností <code>overflow</code>).</li>
+  <li>Reklamu <a href="/zoom">zmenšit</a> pomocí CSS transformace (např. <code>transform: scale(0.5)</code>).</li>
+  <li>Zobrazit jinou reklamu, která si s malou šířkou poradí.</li>
+  
+  <li>Přemluvit tvůrce reklam k vytvoření responsivní reklamy.</li>
+</ol>
 
-Hodně otravná reklama může být navíc postupem času důvodem, proč lidé začnou hledat způsob, jak ji blokovat, nebo přestanou web navštěvovat.
 
-Vývoj příjmů z reklamy v závislosti na její otravnosti může vypadat jako na následujícím grafu:
 
-Se zvyšující se otravností reklamy se nejprve zvyšují příjmy (čím dál tím pomaleji), potom reklama začne uživatele štvát, že se jí začnou vyhýbat:
 
-  - [blokováním reklam AdBlockem](/zapnuty-adblock),
+<h2 id="umisteni">Umístění reklamy na mobilu</h2>
 
-  - přechodem k méně otravné konkurenci
+<p>Vzhledem k tomu, že mobilní web je typicky v jediném sloupci, není tolik možností, kam reklamu dát.</p>
 
-Tím se web dostane do stavu, kdy je **zahlcen otravnou reklamou**, ale příjmy z ní se začnou snižovat.
 
-Je velmi obtížné trefit bod, ve kterém se web právě nachází.
+<h3 id="nad">Reklama nad stránkou</h3>
 
-Navíc instalace AdBlocku postihne i *nevinné* weby, které reklamou své návštěvníky tolik neobtěžují.
+<p>U desktopových podob webu je běžné, že je nad stránkou reklamní banner.</p>
 
-## Odkazy jinam
 
-  - [Rady pro tvůrce HTML bannerů](http://1gr.cz/reklama/)
+<p>Na mobilech je to trochu problematičtější, protože se tím ukrojí obzvlášť drahocenný prostor pro obsah.</p>
 
-  - [Standard Web Banners](http://designerstoolbox.com/designresources/banners/) – běžné rozměry reklamních bannerů
+<p>V jistých případech to může být i matoucí, protože banner může vypadat jako záhlaví stránky.</p>
+
+<p><img src="/files/responsivni-reklama/nahore.png" alt="Banner nahoře" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="text">Reklama v textu</h3>
+
+<p>Na první pohled méně otravné je vložit reklamní banner mezi text nebo obsahové bloky na stránce.</p>
+
+<p>Návštěvník nedostane reklamní smršť na přivítanou hned po načtení stránky, ale až v průběhu listování.</p>
+
+<p><img src="/files/responsivni-reklama/mobile-banner.png" alt="Reklama v textu" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="fixni">Fixní banner</h3>
+
+<p>Docela zajímavý koncept reklamy se zdá být fixní banner na spodku obrazovky, který disponuje zavíracím tlačítkem:</p>
+
+<p><img src="/files/responsivni-reklama/fixni.png" alt="Reklama v textu" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Taková reklama se může zobrazit třeba až při odrolování stránky o určitý kus, čímž na sebe upozorní.</p>
+
+<p>Tlačítko pro skrytí fixní reklamy je docela důležité – jinak bude banner neustále zabírat značnou část prostoru.</p>
+
+
+
+<h2 id="otravnost">Otravnost reklamy</h2>
+
+
+<p>Při umisťování reklamy je nutné volit kompromis mezi otravováním uživatelů a zdánlivým příjmem z reklamy.</p>
+
+<p>Hodně otravná reklama může být navíc postupem času důvodem, proč lidé začnou hledat způsob, jak ji blokovat, nebo přestanou web navštěvovat.</p>
+
+<p>Vývoj příjmů z reklamy v závislosti na její otravnosti může vypadat jako na následujícím grafu:</p>
+
+
+<p><img src="/files/responsivni-reklama/otravnost-reklamy.png" alt="Závislost příjmů z reklamy na otravnosti" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Se zvyšující se otravností reklamy se nejprve zvyšují příjmy (čím dál tím pomaleji), potom reklama začne uživatele štvát, že se jí začnou vyhýbat:</p>
+
+<ul>
+  <li><a href="/zapnuty-adblock">blokováním reklam AdBlockem</a>,</li>
+  <li>přechodem k méně otravné konkurenci</li>
+</ul>
+
+
+
+<p>Tím se web dostane do stavu, kdy je <b>zahlcen otravnou reklamou</b>, ale příjmy z ní se začnou snižovat.</p>
+
+<p>Je velmi obtížné trefit bod, ve kterém se web právě nachází.</p>
+
+<p>Navíc instalace AdBlocku postihne i <i>nevinné</i> weby, které reklamou své návštěvníky tolik neobtěžují.</p>
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="http://1gr.cz/reklama/">Rady pro tvůrce HTML bannerů</a></li>
+  <li><a href="http://designerstoolbox.com/designresources/banners/">Standard Web Banners</a> – běžné rozměry reklamních bannerů</li>
+</ul>

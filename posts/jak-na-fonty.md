@@ -6,28 +6,42 @@ date: "2018-07-13"
 last_modification: "2018-07-13"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Načítání písem
+<h2 id="nacitani">Načítání písem</h2>
 
-### CSS vlastnost `font-display`
 
-  - [ Controlling Font Display Per Font-Face: the `font-display` descriptor](https://tabatkins.github.io/specs/css-font-display/#font-display-desc) – CSS vlastnost `font-display` umožňuje určit, jak se má prohlížeč chovat k (ne)načtenému fontu (kolik mu dát času na načtení)
+<h3 id="font-display">CSS vlastnost <code>font-display</code></h3>
 
-  - [Font Face Observer](https://github.com/bramstein/fontfaceobserver) – detekuje stav, kdy se písmo načetlo
+<ul>
+  <li><a href="https://tabatkins.github.io/specs/css-font-display/#font-display-desc"> Controlling Font Display Per Font-Face: the <code>font-display</code> descriptor</a> – CSS vlastnost <code>font-display</code> umožňuje určit, jak se má prohlížeč chovat k (ne)načtenému fontu (kolik mu dát času na načtení)</li>
+</ul>
 
-  - [How We Load Web Fonts Progressively](https://www.filamentgroup.com/lab/font-events.html)
+<ul>
+  <li><a href="https://github.com/bramstein/fontfaceobserver">Font Face Observer</a> – detekuje stav, kdy se písmo načetlo</li>
+  
+  <li><a href="https://www.filamentgroup.com/lab/font-events.html">How We Load Web Fonts Progressively</a></li>
+</ul>
 
-## Generátory webových fontů
 
-  - [Font Squirrel – Webfont Generator](https://www.fontsquirrel.com/tools/webfont-generator)
+<h2 id="generatory">Generátory webových fontů</h2>
 
-  - [Online Font Converter](https://onlinefontconverter.com)
+<ul>
+  <li><a href="https://www.fontsquirrel.com/tools/webfont-generator">Font Squirrel – Webfont Generator</a></li>
+  
+  <li><a href="https://onlinefontconverter.com">Online Font Converter</a></li>
+  
+  <li><a href="https://transfonter.org">Transfonter &mdash; online @font-face generator</a></li>
+  
+  <li><a href="https://fontie.pixelsvsbytes.com/webfont-generator">Fontie – Easy web-font generator</a></li>
+</ul>
 
-  - [Transfonter &mdash; online @font-face generator](https://transfonter.org)
 
-  - [Fontie – Easy web-font generator](https://fontie.pixelsvsbytes.com/webfont-generator)
+<h2 id="parovani">Párování písem</h2>
 
-## Párování písem
-
+<ul>
+  <li><a href="http://fontjoy.com">
 Font pairing made simple
+</a></li>
+</ul>

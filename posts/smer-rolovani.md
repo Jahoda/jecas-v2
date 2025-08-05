@@ -5,44 +5,46 @@ description: "Jak JavaScriptem zjistit, jakým směrem uživatel na stránce rol
 date: "2014-09-23"
 last_modification: "2014-09-23"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "Scrollování"]
+tags: ["hotova-reseni", "js", "scroll"]
+format: "html"
 ---
 
-## Událost `onscroll`
+<h2 id="onscroll">Událost <code>onscroll</code></h2>
 
-JS událost, která se provede při každém **posunu po stránce**, se jmenuje `onscroll`.
+<p>JS událost, která se provede při každém <b>posunu po stránce</b>, se jmenuje <code>onscroll</code>.</p>
 
-```
-window.onscroll = function () {
+<pre><code>window.onscroll = function () {
   // kód se vykoná při rolování
-}
-```
+}</code></pre>
 
-## Vlastnosti `scrollTop` a `scrollLeft`
 
-Údaje o odrolování jsou ve vlastnostech:
 
-  - `scrollTop` – odrolováno **shora**
+<h2 id="scroll">Vlastnosti <code>scrollTop</code> a <code>scrollLeft</code></h2>
+<p>Údaje o odrolování jsou ve vlastnostech:</p>
 
-  - `scrollLeft` – **zleva**
+<ul>
+  <li><code>scrollTop</code> – odrolováno <b>shora</b></li>
+  <li><code>scrollLeft</code> – <b>zleva</b></li>
+</ul>
 
-Pokud nás zajímá rolování vrámci celé stránky, budeme zjišťovat `scrollTop` a `scrollLeft` u elementu `&lt;body>`.
+<p>Pokud nás zajímá rolování vrámci celé stránky, budeme zjišťovat <code>scrollTop</code> a <code>scrollLeft</code> u elementu <code>&lt;body></code>.</p>
 
-```
-var zleva = document.documentElement.scrollLeft + document.body.scrollLeft;
-var shora = document.documentElement.scrollTop + document.body.scrollTop;
-```
+<pre><code>var zleva = document.documentElement.scrollLeft + document.body.scrollLeft;
+var shora = document.documentElement.scrollTop + document.body.scrollTop;</code></pre>
 
-Proč se pro spočítání `scrollX` sčítá `document.body` s `document.documentElement`? Je to kvůli **Chrome**, kde je potřebná hodnota v `document.body.scrollX`, zatímco v ostatních prohlížečích v `document.documentElement.scrollX`.
+<p>Proč se pro spočítání <code>scrollX</code> sčítá <code>document.body</code> s <code>document.documentElement</code>? Je to kvůli <b>Chrome</b>, kde je potřebná hodnota v <code>document.body.scrollX</code>, zatímco v ostatních prohlížečích v <code>document.documentElement.scrollX</code>.</p>
 
-## Určení směru
 
-Směr rolování určíme na základě změny hodnot `zleva` a `shora` při porovnávání s předchozím rolováním.
 
-  - V případě, že se nerovná minulá a současná **vodorovná** (`scrollLeft`) posice => roluje se do strany.
+<h2 id="smer">Určení směru</h2>
 
-  - V případě, že se nerovná minulá a současná **svislá** (`scrollTop`) posice => roluje se svisle.
+<p>Směr rolování určíme na základě změny hodnot <code>zleva</code> a <code>shora</code> při porovnávání s předchozím rolováním.</p>
 
-Porovnáním **větší**/**menší** potom zjistíme i směr.
+<ul>
+  <li>V případě, že se nerovná minulá a současná <b>vodorovná</b> (<code>scrollLeft</code>) posice => roluje se do strany.</li>
+  <li>V případě, že se nerovná minulá a současná <b>svislá</b> (<code>scrollTop</code>) posice => roluje se svisle.</li>
+</ul>
 
-[Živá ukázka](http://kod.djpw.cz/pwfb) (při rolování se vypíše směr)
+<p>Porovnáním <b>větší</b>/<b>menší</b> potom zjistíme i směr.</p>
+
+<p><a href="http://kod.djpw.cz/pwfb">Živá ukázka</a> (při rolování se vypíše směr)</p>

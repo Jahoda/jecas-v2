@@ -6,6 +6,7 @@ date: "2015-08-27"
 last_modification: "2015-08-27"
 status: 0
 tags: []
+format: "html"
 ---
 
-[Ukázka `white-space: pre-line`](http://kod.djpw.cz/zipb)
+<p><a href="http://kod.djpw.cz/zipb">Ukázka <code>white-space: pre-line</code></a></p>

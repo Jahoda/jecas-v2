@@ -5,37 +5,42 @@ description: "Zajímavé <code>:hover</code> efekty s využitím CSS vlastnosti 
 date: "2014-08-11"
 last_modification: "2014-08-11"
 status: 1
-tags: ["CSS", "Hotová řešení", "Animace", "Menu v CSS"]
+tags: ["css", "hotova-reseni", "menu", "webove-animace"]
+format: "html"
 ---
 
-CSS vlastnost pro **vytváření stínů** [`box-shadow`](/box-shadow) je popsána na samostatné stránce i s **generátorem stínů**.
+<p>CSS vlastnost pro <b>vytváření stínů</b> <a href="/box-shadow"><code>box-shadow</code></a> je popsána na samostatné stránce i s <b>generátorem stínů</b>.</p>
 
-Kromě klasických stínů jde použít `box-shadow` v kombinaci s [`transition`](/transition) i k zajímavým efektům po **najetí myši** ([`:hover`](/css-selektory#uzivatelske-akce)).
+<p>Kromě klasických stínů jde použít <code>box-shadow</code> v kombinaci s <a href="/transition"><code>transition</code></a> i k zajímavým efektům po <b>najetí myši</b> (<a href="/css-selektory#uzivatelske-akce"><code>:hover</code></a>).</p>
 
-Jak to **funguje**?
+<p>Jak to <b>funguje</b>?</p>
 
-    Stín se nastaví jako vnitřní (`inset`).
+<ol>
+  <li>
+    <p>Stín se nastaví jako vnitřní (<code>inset</code>).</p>
+    <pre><code>box-shadow: <b>inset</b> …;</code></pre>
+  </li>
+  <li>
+    <p>Vynulují se <b>všechny hodnoty</b> (vodorovná posice, svislá posice, rozmazání, velikost).</p>
+    
+  </li>
+  
+  <li>
+    <p>Při <code>:hover</code>u se svislá/vodorovná hodnota <b>změní</b> (kladně nebo záporně), čímž docílíme požadovaného efektu.</p>
+    <pre><code>box-shadow: inset <b>100px</b> 0 0 0 #0D6AB7;</code></pre>
+  </li>
+  
+  <li>
+    <p>Plynulou změnu <code>box-shadow</code> během 300 milisekund (0,3 vteřiny) zajistí <code>transition</code>.</p>
+    <pre><code>transition: box-shadow .3s;</code></pre>
+  </li>
+</ol>
 
-    ```
-box-shadow: **inset** …;
-```
 
-    Vynulují se **všechny hodnoty** (vodorovná posice, svislá posice, rozmazání, velikost).
+<h2 id="vodorovne">Vodorovné přebarvení</h2>
 
-    Při `:hover`u se svislá/vodorovná hodnota **změní** (kladně nebo záporně), čímž docílíme požadovaného efektu.
-
-    ```
-box-shadow: inset **100px** 0 0 0 #0D6AB7;
-```
-
-    Plynulou změnu `box-shadow` během 300 milisekund (0,3 vteřiny) zajistí `transition`.
-
-    ```
-transition: box-shadow .3s;
-```
-
-## Vodorovné přebarvení
-
+<div class="live">
+<style>
 .vodorovne a {
     display: block;
     font-family: Segoe UI;
@@ -55,17 +60,24 @@ transition: box-shadow .3s;
     color: #fff;
     background: #1081DD;
 }
+</style>
+  <div class="vodorovne">
+    <a href="">Odkaz</a>
+    <a href="">Odkaz</a>
+    <a href="">Odkaz</a>      
+  </div>
+</div>
 
-    [Odkaz]()
-    [Odkaz]()
-    [Odkaz]()      
+<p><a href="http://kod.djpw.cz/oxeb">Samostatná ukázka</a></p>
 
-[Samostatná ukázka](http://kod.djpw.cz/oxeb)
 
-## Svislé přebarvení
 
-### Shora
+<h2 id="svisle">Svislé přebarvení</h2>
 
+
+<h3 id="shora">Shora</h3>
+<div class="live">
+<style>
 .svisle a {
     display: inline-block;
     font-family: Segoe UI;
@@ -85,13 +97,19 @@ transition: box-shadow .3s;
     color: #fff;
     background: #1081DD;
 }
+</style>
+  <div class="svisle">
+    <a href="">Odkaz</a>
+    <a href="">Odkaz</a>
+    <a href="">Odkaz</a>      
+  </div>
+</div>
 
-    [Odkaz]()
-    [Odkaz]()
-    [Odkaz]()      
 
-### Zdola
+<h3 id="zdola">Zdola</h3>
 
+<div class="live">
+<style>
 .svisle-nahoru a {
     display: inline-block;
     font-family: Segoe UI;
@@ -111,13 +129,19 @@ transition: box-shadow .3s;
     color: #fff;
     background: #1081DD;
 }
+</style>
+  <div class="svisle-nahoru">
+    <a href="">Odkaz</a>
+    <a href="">Odkaz</a>
+    <a href="">Odkaz</a>      
+  </div>
+</div>
 
-    [Odkaz]()
-    [Odkaz]()
-    [Odkaz]()      
 
-### Jenom trochu
+<h3 id="trochu">Jenom trochu</h3>
 
+<div class="live">
+<style>
 .svisle-nahoru-malo a {
     display: inline-block;
     font-family: Segoe UI;
@@ -137,13 +161,18 @@ transition: box-shadow .3s;
     color: #fff;
     background: #1081DD;
 }
+</style>
+  <div class="svisle-nahoru-malo">
+    <a href="">Odkaz</a>
+    <a href="">Odkaz</a>
+    <a href="">Odkaz</a>      
+  </div>
+</div>
 
-    [Odkaz]()
-    [Odkaz]()
-    [Odkaz]()      
+<p><a href="http://kod.djpw.cz/oxeb">Samostatná ukázka</a></p>
 
-[Samostatná ukázka](http://kod.djpw.cz/oxeb)
+<p>Podobný <code>:hover</code> efekt je možné vidět na <b>Twitteru</b>, ale tam je to řešené změnou tloušťky spodního okraje (<code>border-bottom-width</code>)</p>
 
-Podobný `:hover` efekt je možné vidět na **Twitteru**, ale tam je to řešené změnou tloušťky spodního okraje (`border-bottom-width`)
+<p><img src="/files/hover-efekty-box-shadow/twitter.gif" alt="Hover efekt na Twitteru" class="border"></p>
 
-Kromě slabší podpory pro `box-shadow` v prohlížečích (**IE 9**+) se zdá řešení používající stín výhodnější, protože se nemusí řešit **ovlivnění okolních elementů**.
+<p>Kromě slabší podpory pro <code>box-shadow</code> v prohlížečích (<b>IE 9</b>+) se zdá řešení používající stín výhodnější, protože se nemusí řešit <b>ovlivnění okolních elementů</b>.</p>

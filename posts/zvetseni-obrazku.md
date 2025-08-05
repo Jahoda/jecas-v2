@@ -5,64 +5,85 @@ description: "Jakými způsoby řešit zvětšení malého obrázku."
 date: "2015-07-01"
 last_modification: "2015-07-01"
 status: 1
-tags: ["Responsivní design", "Obrázky"]
+tags: ["obrazky", "responsive"]
+format: "html"
 ---
 
-V době [responsivních webů](/responsive) je nejistá velikost prostoru, kde se může běžný obrázek vložený značkou `&lt;img>` zobrazovat.
+<p>V době <a href="/responsive">responsivních webů</a> je nejistá velikost prostoru, kde se může běžný obrázek vložený značkou <code>&lt;img></code> zobrazovat.</p>
 
-Zpravidla se obrázkům nastavuje maximální šířka na 100 % a *automatická* výška, aby se prostoru přizpůsobily a byl zachován poměr stran.
+<p>Zpravidla se obrázkům nastavuje maximální šířka na 100 % a <i>automatická</i> výška, aby se prostoru přizpůsobily a byl zachován poměr stran.</p>
 
-```
-img {
+<pre><code>img {
   max-width: 100%;
   height: auto;
-}
-```
+}</code></pre>
 
-    - [Responsivní obrázky](/responsivni-obrazky) – různé způsoby přizpůsobení obrázků velikosti okna
 
-## Čitelnost obrázků
+<div class="internal-content">
+  <ul>
+    <li><a href="/responsivni-obrazky">Responsivní obrázky</a> – různé způsoby přizpůsobení obrázků velikosti okna</li>
+  </ul>
+</div>
 
-Problém nastane, když obrázek **obsahuje nějaký text**, který by si chtěl návštěvník přečíst. Bude-li obrázek výrazně širší než dostupný prostor (což u mobilu s malým displejem může být třeba 320 pixelů), bude nutné, aby si ho návštěvník **zvětšil**.
 
-To znamená, že nesmí být [`&lt;meta>` značkou `viewport`](/meta-viewport) zakázané zoomování stránky.
 
-Bohužel některé prohlížeče (například mobilní **IE**) mohou kvůli úsporám prostředků zmenšit obrázek takovým způsobem, že kvůli snížení kvality nebude čitelný ani po následném ručním zvětšení.
+<h2 id="citelnost">Čitelnost obrázků</h2>
 
-Na desktopu potom někteří uživatelé **nemusí vědět, jak obrázek zvětšit**. Případně bude nepohodlné, že se při použití zoomu bude zvětšovat úplně celá stránka.
+<p>Problém nastane, když obrázek <b>obsahuje nějaký text</b>, který by si chtěl návštěvník přečíst. Bude-li obrázek výrazně širší než dostupný prostor (což u mobilu s malým displejem může být třeba 320 pixelů), bude nutné, aby si ho návštěvník <b>zvětšil</b>.</p>
 
-Celou situaci jde řešit různými způsoby:
 
-    Mít **různé obrázky pro různé velikosti** obrazovky. V závislosti na rozměru dostupné plochy se zobrazují různé obrázky, které jsou vytvořené tak, aby na nich pořád bylo to podstatné dobře viditelné.
+<p>To znamená, že nesmí být <a href="/meta-viewport"><code>&lt;meta></code> značkou <code>viewport</code></a> zakázané zoomování stránky.</p>
 
-    Tento způsob je **velmi pracný**, protože vyžaduje ruční vybírání požadovaného výřezu nejpodstatnější části.
 
-    Použít [lightbox](/lightbox) skript. To je dobře funkční na desktopu. Na mobilech je u responsivních webů problém, že obrázek typicky už **není kam zvětšit**, protože rovnou zabírá celou šířku.
+<p>Bohužel některé prohlížeče (například mobilní <b>IE</b>) mohou kvůli úsporám prostředků zmenšit obrázek takovým způsobem, že kvůli snížení kvality nebude čitelný ani po následném ručním zvětšení.</p>
 
-    Někdy tak otevření obrázku do lightboxu na mobilu paradoxně obrázek zmenší o okraje a ovládací prvky lightbox skriptu.
 
-    Řešením je **zvětšování obrázku pomocí gest**, které zajišťuje přímo skript lightboxu – dobře funkční je **PhotoSwipe**.
+<p>Na desktopu potom někteří uživatelé <b>nemusí vědět, jak obrázek zvětšit</b>. Případně bude nepohodlné, že se při použití zoomu bude zvětšovat úplně celá stránka.</p>
 
-          [PhotoSwipe](http://photoswipe.com/) – responsivní skript pro fotogalerii s podporou dotykových gest
+<p>Celou situaci jde řešit různými způsoby:</p>
 
-    **Prostý odkaz** na stejnou URL, jako je `src` obrázku, nabízí poměrně jednoduché řešení, jak obrázek otevřít přes celou stránku.
+<ol>
+  <li>
+    <p>Mít <b>různé obrázky pro různé velikosti</b> obrazovky. V závislosti na rozměru dostupné plochy se zobrazují různé obrázky, které jsou vytvořené tak, aby na nich pořád bylo to podstatné dobře viditelné.</p>
+    <p>Tento způsob je <b>velmi pracný</b>, protože vyžaduje ruční vybírání požadovaného výřezu nejpodstatnější části.</p>
+  </li>
+  
+  <li>
+    <p>Použít <a href="/lightbox">lightbox</a> skript. To je dobře funkční na desktopu. Na mobilech je u responsivních webů problém, že obrázek typicky už <b>není kam zvětšit</b>, protože rovnou zabírá celou šířku.</p>
+    
+    <p>Někdy tak otevření obrázku do lightboxu na mobilu paradoxně obrázek zmenší o okraje a ovládací prvky lightbox skriptu.</p>
 
-    ```
-&lt;a href="obrazek.jpg">
+    
+    <p>Řešením je <b>zvětšování obrázku pomocí gest</b>, které zajišťuje přímo skript lightboxu – dobře funkční je <b>PhotoSwipe</b>.</p>
+    
+    <div class="external-content">
+      <ul>
+        <li>
+          <p><a href="http://photoswipe.com/">PhotoSwipe</a> – responsivní skript pro fotogalerii s podporou dotykových gest</p>
+        </li>
+      </ul>
+    </div>
+  </li>
+  
+  <li>
+    <p><b>Prostý odkaz</b> na stejnou URL, jako je <code>src</code> obrázku, nabízí poměrně jednoduché řešení, jak obrázek otevřít přes celou stránku.</p>
+    
+    <pre><code>&lt;a href="obrazek.jpg">
   &lt;img src="obrazek.jpg" alt="Popis obrázku">
-&lt;/a>
-```
+&lt;/a></code></pre>
+    
+    <p>Podle <a href="http://www.jakpsatweb.cz/"><b>Dušana Janovského</b></a> je ale takový postup pro řadu návštěvníků z mobilů a tabletů nešťastný tím, že <b>nemají zažitý způsob</b>, jak se z otevřeného obrázku dostat zpátky na předchozí stránku.</p>
+  </li>
+</ol>
 
-    Podle [**Dušana Janovského**](http://www.jakpsatweb.cz/) je ale takový postup pro řadu návštěvníků z mobilů a tabletů nešťastný tím, že **nemají zažitý způsob**, jak se z otevřeného obrázku dostat zpátky na předchozí stránku.
 
-## Automatické vytvoření odkazu
+<h2 id="odkaz">Automatické vytvoření odkazu</h2>
 
-Pořád je ale možnost otevřít URL obrázku po kliknutí asi lepším řešením než nic.
+<p>Pořád je ale možnost otevřít URL obrázku po kliknutí asi lepším řešením než nic.</p>
 
-Pomocí pár řádků JavaScriptu jde zjistit, zda byl obrázek zmenšen – pomocí porovnání skutečné šířky ([`naturalWidth`](/skutecne-rozmery-obrazku)) s tou aktuální. A v takovém případě obrázek **obalit odkazem**.
+<p>Pomocí pár řádků JavaScriptu jde zjistit, zda byl obrázek zmenšen – pomocí porovnání skutečné šířky (<a href="/skutecne-rozmery-obrazku"><code>naturalWidth</code></a>) s tou aktuální. A v takovém případě obrázek <b>obalit odkazem</b>.</p>
 
-```
-(function(images){
+<pre><code>(function(images){
     var solveSize = function(el) {
         if (el.naturalWidth > el.width) {
             var link = document.createElement("a");
@@ -76,7 +97,10 @@ Pomocí pár řádků JavaScriptu jde zjistit, zda byl obrázek zmenšen – pom
     for (var i = images.length; i--; ) {
         solveSize(images[i]);
     }
-})(document.querySelectorAll("img"));
-```
+})(document.querySelectorAll("img"));</code></pre>
 
-    - [Živá ukázka](http://kod.djpw.cz/jznb)
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/jznb">Živá ukázka</a></li>
+  </ul>
+</div>

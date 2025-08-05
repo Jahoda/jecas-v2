@@ -5,31 +5,64 @@ description: "Vlastnost <code>mask</code> dokáže vytvářet elementy s texturo
 date: "2014-10-17"
 last_modification: "2015-02-14"
 status: 1
-tags: ["CSS", "CSS vlastnosti", "Obrázky"]
+tags: ["css", "css-vlastnosti", "obrazky"]
+format: "html"
 ---
 
-Má-li být na stránce nějaký **obsah nepravidelných tvarů** (něco jiného než obdélník), existují možnosti:
+<p>Má-li být na stránce nějaký <b>obsah nepravidelných tvarů</b> (něco jiného než obdélník), existují možnosti:</p>
 
-  - [`border-radius`](/border-radius) – zaoblené rohy, kterými jde vytvořit i kruh
+<ul>
+  <li><a href="/border-radius"><code>border-radius</code></a> – zaoblené rohy, kterými jde vytvořit i kruh</li>
+  
+  <li><a href="/clip"><code>clip</code></a> – pomocí funkce <code>polygon</code> jde vytvořit nejrůznější oříznutí (<b>Chrome 24</b>+, <b>Opera 15</b>+)</li>
+</ul>
 
-  - [`clip`](/clip) – pomocí funkce `polygon` jde vytvořit nejrůznější oříznutí (**Chrome 24**+, **Opera 15**+)
+<p>CSS vlasnost <code>mask</code> se hodí pro vytvoření například obrázku s nepravidelným okrajem.</p>
 
-CSS vlasnost `mask` se hodí pro vytvoření například obrázku s nepravidelným okrajem.
+<p><img src="/files/mask/vysledek.png" alt="Obrázek s nepravidelným okrajem" class="border"></p>
 
-Takový obrázek je sice možné *natvrdo* nakreslit, ale má to značné nevýhody:
 
-  - Každý obrázek se bude muset odpovídajícím způsobem **upravit**.
 
-  - Při **změně tvaru** bude nutné všechny obrázky **přegenerovat**.
 
-  - Kombinovat na jednom obrázku souvislé plochy jedné barvy (okolí) a malé plochy různých barev (fotka) je nevýhoda z hlediska [datové optimalisace obrázků](/optimalisace-obrazku). Ve formátu JPG bude přechod nekvalitní, v případě PNG bude datová velikost enormní.
 
-## Překrytí
 
-Lepší řešení bez `mask` je tedy naposicování samotného okraje přes původní obrázek.
 
-Zobrazit/skrýt „masku“
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Takový obrázek je sice možné <i>natvrdo</i> nakreslit, ale má to značné nevýhody:</p>
+
+<ul>
+  <li>Každý obrázek se bude muset odpovídajícím způsobem <b>upravit</b>.</li>
+  
+  <li>Při <b>změně tvaru</b> bude nutné všechny obrázky <b>přegenerovat</b>.</li>
+  
+  <li>Kombinovat na jednom obrázku souvislé plochy jedné barvy (okolí) a malé plochy různých barev (fotka) je nevýhoda z hlediska <a href="/optimalisace-obrazku">datové optimalisace obrázků</a>. Ve formátu JPG bude přechod nekvalitní, v případě PNG bude datová velikost enormní.</li>
+</ul>
+
+
+
+
+<h2 id="prekryti">Překrytí</h2>
+
+<p>Lepší řešení bez <code>mask</code> je tedy naposicování samotného okraje přes původní obrázek.</p>
+
+<p><button onclick="toggle(document.querySelector('.obrazek-maska span'), 'skryt')">Zobrazit/skrýt „masku“</button></p>
+
+<div class="live">
+  <style>
     .obrazek-maska {
       position: relative;
     }
@@ -45,51 +78,75 @@ Zobrazit/skrýt „masku“
     .obrazek-maska span.skryt {
       display: none;
     }
+  </style>
+  <p class="obrazek-maska">
+    <img src="/files/mask/obrazek.jpg" alt="Příklad obrázku" class="border">
+    <span></span>
+  </p>
+</div>
 
-V hodně případech si jde s takovým postupem vystačit, bohužel trpí docela vážným nedostatkem – okraj **nemůže být průhledný** – musí tam být nějaká barva, aby překryla obrázek. V případě webu s jednobarevným pozadím to nevadí, ale jinak to není ideální.
 
-## Oříznutí pomocí `mask`
 
-Vlastnost `mask` všechny tyto problémy řeší. Bohužel v **IE** není podporována vůbec, ve **Firefoxu** podporuje pouze [SVG](/svg) a v **Chrome**/**Opeře**/**Safari** funguje částečně.
 
-Kromě SVG a jiných obrázků jde použít i [CSS gradient](/gradient).
 
-### Zápis
 
-CSS vlastnost `mask` je zkratkou pro různé další `mask-*` vlastnosti.
+<p>V hodně případech si jde s takovým postupem vystačit, bohužel trpí docela vážným nedostatkem – okraj <b>nemůže být průhledný</b> – musí tam být nějaká barva, aby překryla obrázek. V případě webu s jednobarevným pozadím to nevadí, ale jinak to není ideální.</p>
 
-```
-element {
+
+
+
+<h2 id="oriznuti-mask">Oříznutí pomocí <code>mask</code></h2>
+
+<p>Vlastnost <code>mask</code> všechny tyto problémy řeší. Bohužel v <b>IE</b> není podporována vůbec, ve <b>Firefoxu</b> podporuje pouze <a href="/svg">SVG</a> a v <b>Chrome</b>/<b>Opeře</b>/<b>Safari</b> funguje částečně.</p>
+
+<p>Kromě SVG a jiných obrázků jde použít i <a href="/gradient">CSS gradient</a>.</p>
+
+
+<h3 id="zapis">Zápis</h3>
+
+<p>CSS vlastnost <code>mask</code> je zkratkou pro různé další <code>mask-*</code> vlastnosti.</p>
+
+<pre><code>element {
   mask: url(maska.png);
-}
-```
+}</code></pre>
 
-  - `mask-type` – může mít hodnoty `alpha` a `luminance`, které stanovují způsob, kterým se určí obsah, který zůstane vidět (zdá se mi, že nic nedělá)
+<ul>
+  <li><code>mask-type</code> – může mít hodnoty <code>alpha</code> a <code>luminance</code>, které stanovují způsob, kterým se určí obsah, který zůstane vidět (zdá se mi, že nic nedělá)</li>
+  
+  <li><code>mask-image</code> – obrázek, který se použije jako maska</li>
+  <li><code>mask-size</code> – velikost masky (funguje podobně jako <a href="/obrazkove-pozadi"><code>background-size</code></a>)</li>
+  <li><code>mask-position</code>, <code>mask-repeat</code> – stejné jako u <code>background-*</code></li>  
+  
+  <li><code>mask-border</code> – obdoba <a href="/border-image"><code>border-image</code></a></li>
+</ul>
 
-  - `mask-image` – obrázek, který se použije jako maska
+<p><a href="http://kod.djpw.cz/wjkb">Živá ukázka</a> (funguje jen v <b>Chrome</b>, nové <b>Opeře</b> apod.)</p>
 
-  - `mask-size` – velikost masky (funguje podobně jako [`background-size`](/obrazkove-pozadi))
 
-  - `mask-position`, `mask-repeat` – stejné jako u `background-*`
 
-  - `mask-border` – obdoba [`border-image`](/border-image)
 
-[Živá ukázka](http://kod.djpw.cz/wjkb) (funguje jen v **Chrome**, nové **Opeře** apod.)
 
-## Textura
+<h2 id="textura">Textura</h2>
 
-Kromě „oříznutí“ obsahu lze využít masku i k *živému* **překrytí texturou**.
+<p>Kromě „oříznutí“ obsahu lze využít masku i k <i>živému</i> <b>překrytí texturou</b>.</p>
 
-Výsledek v podporovaných prohlížečích:
+<p><img src="/files/mask/textura.png" alt="Obrázek překrytý texturou" class="border"></p>
 
-[Živá ukázka](http://kod.djpw.cz/bkkb)
+<p>Výsledek v podporovaných prohlížečích:</p>
 
-## Odkazy jinam
+<p><img src="/files/mask/obrazek-textura.jpg" alt="Obrázek překrytý texturou" class="border"></p>
 
-  - Viget: [Easy Textures with CSS Masks](http://viget.com/inspire/easy-textures-with-css-masks)
+<p><a href="http://kod.djpw.cz/bkkb">Živá ukázka</a></p>
 
-  - HTML5 Rocks: [CSS Masking](http://www.html5rocks.com/en/tutorials/masking/adobe/)
 
-  - CSS-Tricks: [Clipping and Masking in CSS](http://css-tricks.com/clipping-masking-css/)
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - Adobe Web Platform Team: [Praktické použití `mask`](http://blogs.adobe.com/webplatform/2014/01/16/making-the-web-sweeter/)
+<ul>  
+  <li>Viget: <a href="http://viget.com/inspire/easy-textures-with-css-masks">Easy Textures with CSS Masks</a></li>
+  
+  <li>HTML5 Rocks: <a href="http://www.html5rocks.com/en/tutorials/masking/adobe/">CSS Masking</a></li>
+  
+  <li>CSS-Tricks: <a href="http://css-tricks.com/clipping-masking-css/">Clipping and Masking in CSS</a></li>
+  
+  <li>Adobe Web Platform Team: <a href="http://blogs.adobe.com/webplatform/2014/01/16/making-the-web-sweeter/">Praktické použití <code>mask</code></a></li>  
+</ul>

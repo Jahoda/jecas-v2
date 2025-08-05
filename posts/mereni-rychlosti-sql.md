@@ -5,32 +5,30 @@ description: "Měření rychlosti provedení SQL dotazu."
 date: "2014-03-25"
 last_modification: "2014-04-01"
 status: 1
-tags: ["PHP", "PHP a PDO", "SQL"]
+tags: ["php", "php-pdo", "sql"]
+format: "html"
 ---
 
-V případě, že se stránka dotazující se na data do databáse pomalu načítá, je vhodné měřit dobu jednotlivých SQL dotazů a ty nejpomalejší prověřit, zda by nemohly být **rychlejší**.
+<p>V případě, že se stránka dotazující se na data do databáse pomalu načítá, je vhodné měřit dobu jednotlivých SQL dotazů a ty nejpomalejší prověřit, zda by nemohly být <b>rychlejší</b>.</p>
 
-## Doba provedení v PHP
+<h2 id="doba-provedeni">Doba provedení v PHP</h2>
 
-V PHP vypadá měření doby následovně:
+<p>V PHP vypadá měření doby následovně:</p>
 
-```
-$zacatek = microtime(true); 
+<pre><code>$zacatek = microtime(true); 
 // Nějaký kód, který meříme
 $konec = microtime(true);
-$rozdil = ($konec - $zacatek) * 1000;
-```
+$rozdil = ($konec - $zacatek) * 1000;</code></pre>
 
-V proměnné `$rozdil` bude čas provedení kódu v milisekundách. Stačí tedy obdobné měření provést při každém SQL dotazu.
+<p>V proměnné <code>$rozdil</code> bude čas provedení kódu v milisekundách. Stačí tedy obdobné měření provést při každém SQL dotazu.</p>
 
-## Měření SQL dotazů
+<h2 id="mereni-dotazu">Měření SQL dotazů</h2>
 
-Jelikož přidávat výše uvedený kód ke každému dotazu by nebylo moc elegantní, nabízí se vytvořit si **jednu funkci** pro provádění všech SQL příkazů.
+<p>Jelikož přidávat výše uvedený kód ke každému dotazu by nebylo moc elegantní, nabízí se vytvořit si <b>jednu funkci</b> pro provádění všech SQL příkazů.</p>
 
-Funkce měřicí rychlost SQL dotazů v [PDO](/pdo) by mohla vypadat takto:
+<p>Funkce měřicí rychlost SQL dotazů v <a href="/pdo">PDO</a> by mohla vypadat takto:</p>
 
-```
-$seznamDotazu = array();
+<pre><code>$seznamDotazu = array();
 $celkovaDoba = 0;
 
 function query($dotaz, $data = array()) {
@@ -56,19 +54,19 @@ function query($dotaz, $data = array()) {
   $celkovaDoba += $rozdil;
   
   return $sql;
-}
-```
+}</code></pre>
 
-Nyní se při zavolání funkce `query`:
+<p>Nyní se při zavolání funkce <code>query</code>:</p>
 
-  - do pole `$seznamDotazu` uloží všechny SQL dotazy a čas jejich provedení,
+<ol>
+  <li>do pole <code>$seznamDotazu</code> uloží všechny SQL dotazy a čas jejich provedení,</li>
+  
+  <li>v proměnné <code>$celkovaDoba</code> potom bude celková doba všech dotazů.</li>
+</ol>
 
-  - v proměnné `$celkovaDoba` potom bude celková doba všech dotazů.
+<h3 id="vypis">Výpis dotazů</h3>
 
-### Výpis dotazů
-
-```
-function vypisDotazu() {
+<pre><code>function vypisDotazu() {
   global $seznamDotazu, $celkovaDoba;
   echo "&lt;ol>";
   foreach ($seznamDotazu as $dotaz) {
@@ -77,21 +75,19 @@ function vypisDotazu() {
           " %)&lt;br>"  . $dotaz["sql"];
   }
   echo "&lt;/ol>";
-}
-```
+}</code></pre>
 
-Seznam SQL dotazů je vhodné umístit do [fixně posicovaného elementu](/position-fixed), aby neovlivňoval okolí stránky.
+<p>Seznam SQL dotazů je vhodné umístit do <a href="/position-fixed">fixně posicovaného elementu</a>, aby neovlivňoval okolí stránky.</p>
 
-Funkční skripty jsou na [GitHubu](https://github.com/Jahoda/mereni-rychlosti-sql).
+<p>Funkční skripty jsou na <a href="https://github.com/Jahoda/mereni-rychlosti-sql">GitHubu</a>.</p>
 
-## Měření dotazů v JSONu
+<h2 id="json">Měření dotazů v JSONu</h2>
 
-V případě, že aplikace, kde se má měřit doba, nebo její část, funguje na principu získávání data JavaScriptem ze souboru, který vrací [JSON](/json), není možné použít výše uvedený HTML výpis. JSON by potom byl nevalidní.
+<p>V případě, že aplikace, kde se má měřit doba, nebo její část, funguje na principu získávání data JavaScriptem ze souboru, který vrací <a href="/json">JSON</a>, není možné použít výše uvedený HTML výpis. JSON by potom byl nevalidní.</p>
 
-Nezbývá tedy než i dobu SQL dotazů vracet v JSONu a následně vypsat JavaScriptem. Například si připravit funkci `json`, která k původnímu poli potřebných dat **připojí pole s dobou SQL dotazů**:
+<p>Nezbývá tedy než i dobu SQL dotazů vracet v JSONu a následně vypsat JavaScriptem. Například si připravit funkci <code>json</code>, která k původnímu poli potřebných dat <b>připojí pole s dobou SQL dotazů</b>:</p>
 
-```
-function json($pole) {
+<pre><code>function json($pole) {
   global $seznamDotazu, $celkovaDoba;
   $pole = array_merge(
     $pole, 
@@ -101,13 +97,11 @@ function json($pole) {
     )
   );
   echo json_encode($pole);
-}
-```
+}</code></pre>
 
-[AJAXem](/ajax) získaná data z JSONu se potom v JavaScriptu předají mj. funkci, která zajistí výpis doby **SQL dotazů**.
+<p><a href="/ajax">AJAXem</a> získaná data z JSONu se potom v JavaScriptu předají mj. funkci, která zajistí výpis doby <b>SQL dotazů</b>.</p>
 
-```
-var vypisDotazu = function(data) {
+<pre><code>var vypisDotazu = function(data) {
   var vystup = "&lt;b>Celková doba SQL:&lt;/b> " + 
                 data.doba + " ms&lt;ol>";
   for (key in data.sql) {
@@ -117,5 +111,4 @@ var vypisDotazu = function(data) {
               " %)&lt;br>" + data.sql[key]["sql"];
   }
   document.getElementById('debugVypis').innerHTML = vystup;
-}
-```
+}</code></pre>

@@ -5,53 +5,97 @@ description: "Jak jen některé části webu roztáhnout přes celou šířku."
 date: "2015-02-24"
 last_modification: "2015-02-27"
 status: 1
-tags: ["CSS", "Hotová řešení", "Layout"]
+tags: ["css", "hotova-reseni", "layout"]
+format: "html"
 ---
 
-Rozlišení monitorů často nabízí mnohem **větší šířku**, než by pro webovou stránku stačila – pokud je na stránce hodně textového obsahu, stejně není s ohledem na čitelnost rozumné mít text v dlouhých řádcích.
+<p>Rozlišení monitorů často nabízí mnohem <b>větší šířku</b>, než by pro webovou stránku stačila – pokud je na stránce hodně textového obsahu, stejně není s ohledem na čitelnost rozumné mít text v dlouhých řádcích.</p>
 
-    - Responsivní design webu: [Maximální délka řádků](/responsivni-web#typografie) kolem 80 znaků
+<div class="internal-content">
+  <ul>
+    <li>Responsivní design webu: <a href="/responsivni-web#typografie">Maximální délka řádků</a> kolem 80 znaků</li>
+  </ul>
+</div>
 
-Proto se maximální šířka zpravidla omezuje. Slouží k tomu CSS vlastnost `max-width`.
+<p>Proto se maximální šířka zpravidla omezuje. Slouží k tomu CSS vlastnost <code>max-width</code>.</p>
 
-Někdy se pro atraktivnější vzhled roztahují hlavička, patička nebo nějaká jiná část přes celou šířku s tím, že samotný obsah má šířku omezenou a je [vycentrován](/centrovani).
+<p>Někdy se pro atraktivnější vzhled roztahují hlavička, patička nebo nějaká jiná část přes celou šířku s tím, že samotný obsah má šířku omezenou a je <a href="/centrovani">vycentrován</a>.</p>
 
-## CSS řešení
+<p><img src="/files/cela-sirka/cela-sirka.png" alt="Roztažení hlavičky a patičky přes celou šířku" class="border"></p>
 
-Docílit roztažení mimo hlavní centrovaný blok jde více způsoby.
 
-Jako výchozí bod může posloužit tento obyčejný centrovaný layout s maximální šířkou:
 
-    - [Obyčejná centrovaná stránka](http://kod.djpw.cz/dzkb)
 
-### Obrázkové pozadí
 
-Na vršek a spodek webu se nastaví barevné pozadí o výšce hlavičky/patičky. Právě kvůli nutnosti **pevné výšky** se jedná o řešení hodně nepraktické.
 
-Nastavování výšky na pevnou hodnotu ve většině případů nevěstí nic dobrého.
 
-### Posicování
 
-Vytvořit *barevné pozadí* pomocí [absolutního posicování](/position#absolute) se hodí zvlášť v případě, kdy by bylo problematické upravovat HTML kód.
 
-Toto řešení využívá toho, že se na základě výšky patičky/hlavičky vytvoří element s hodně velkou šířkou, nastaví se mu levá záporná posice a pomocí `z-index`u se zastrčí za obsah.
 
-Aby posicované pozadí **nevytvořilo vodorovný posuvník**, ořízne se stránka ve vodorovném směru (`overflow-x: hidden`).
 
-    - [Ukázka s využitím posicování](http://kod.djpw.cz/azkb)
 
-### Použití obalu
 
-Nejlepší řešení se zdá použít pro každou část stránky, která má mít pozadí přes celou šířku, další obalový element a každou část **centrovat samostatně**.
 
-```
-&lt;div style="background: blue">
+
+
+
+
+
+
+
+<h2 id="css">CSS řešení</h2>
+
+<p>Docílit roztažení mimo hlavní centrovaný blok jde více způsoby.</p>
+
+<p>Jako výchozí bod může posloužit tento obyčejný centrovaný layout s maximální šířkou:</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/dzkb">Obyčejná centrovaná stránka</a></li>
+  </ul>
+</div>
+
+
+<h3 id="pozadi">Obrázkové pozadí</h3>
+
+<p>Na vršek a spodek webu se nastaví barevné pozadí o výšce hlavičky/patičky. Právě kvůli nutnosti <b>pevné výšky</b> se jedná o řešení hodně nepraktické.</p>
+
+<p>Nastavování výšky na pevnou hodnotu ve většině případů nevěstí nic dobrého.</p>
+
+
+
+
+
+
+<h3 id="posicovani">Posicování</h3>
+
+<p>Vytvořit <i>barevné pozadí</i> pomocí <a href="/position#absolute">absolutního posicování</a> se hodí zvlášť v případě, kdy by bylo problematické upravovat HTML kód.</p>
+
+<p>Toto řešení využívá toho, že se na základě výšky patičky/hlavičky vytvoří element s hodně velkou šířkou, nastaví se mu levá záporná posice a pomocí <code>z-index</code>u se zastrčí za obsah.</p>
+
+<p>Aby posicované pozadí <b>nevytvořilo vodorovný posuvník</b>, ořízne se stránka ve vodorovném směru (<code>overflow-x: hidden</code>).</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/azkb">Ukázka s využitím posicování</a></li>
+  </ul>
+</div>
+
+
+<h3 id="obal">Použití obalu</h3>
+
+<p>Nejlepší řešení se zdá použít pro každou část stránky, která má mít pozadí přes celou šířku, další obalový element a každou část <b>centrovat samostatně</b>.</p>
+
+<pre><code>&lt;div style="background: blue">
   &lt;div style="max-width: 900px; margin: auto">
     Hlavička
   &lt;/div>
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-Obalový element potom má nastavenou pouze barvu pruhu *mimo obsah* a veškeré další stylování (centrování, nastavení maximální šířky a podobně) se provádí u vnitřního elementu.
+<p>Obalový element potom má nastavenou pouze barvu pruhu <i>mimo obsah</i> a veškeré další stylování (centrování, nastavení maximální šířky a podobně) se provádí u vnitřního elementu.</p>
 
-    - [Ukázka s využitím obalového elementu](http://kod.djpw.cz/czkb)
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/czkb">Ukázka s využitím obalového elementu</a></li>
+  </ul>
+</div>

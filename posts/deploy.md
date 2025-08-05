@@ -6,16 +6,19 @@ date: "2019-04-03"
 last_modification: "2019-04-03"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Render.com](https://render.com)
-
-  - [Buddy](https://buddy.works)
-
-  - [Fly](https://fly.io)
-
-  - [CircleCI](https://circleci.com)
-
-  - [Netlify](https://www.netlify.com)
-
-  - [Now](https://zeit.co/now) — Global Serverless Deployments
+<ul>
+  <li><a href="https://render.com">Render.com</a></li>
+  
+  <li><a href="https://buddy.works">Buddy</a></li>
+  
+  <li><a href="https://fly.io">Fly</a></li>
+  
+  <li><a href="https://circleci.com">CircleCI</a></li>
+  
+  <li><a href="https://www.netlify.com">Netlify</a></li>
+  
+  <li><a href="https://zeit.co/now">Now</a> — Global Serverless Deployments</li>
+</ul>

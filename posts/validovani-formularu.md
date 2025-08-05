@@ -6,6 +6,9 @@ date: "2015-09-29"
 last_modification: "2015-09-29"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [12 Useful jQuery Form Validation – Techniques and Tutorials](http://designmodo.com/jquery-form-validation/)
+<ul>
+  <li><a href="http://designmodo.com/jquery-form-validation/">12 Useful jQuery Form Validation – Techniques and Tutorials</a></li>
+</ul>

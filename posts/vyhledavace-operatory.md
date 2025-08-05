@@ -6,6 +6,9 @@ date: "2015-11-10"
 last_modification: "2015-11-10"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Pokročilé vyhledávání na Google a Seznam](http://www.tyinternety.cz/prirucka-marketera/pokrocile-vyhledavani-na-google-a-seznam/)
+<ul>
+  <li><a href="http://www.tyinternety.cz/prirucka-marketera/pokrocile-vyhledavani-na-google-a-seznam/">Pokročilé vyhledávání na Google a Seznam</a></li>
+</ul>

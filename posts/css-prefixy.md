@@ -5,115 +5,186 @@ description: "Některé CSS vlastnosti se zapisují s prefixy. Proč tomu tak je
 date: "2013-09-11"
 last_modification: "2016-05-08"
 status: 1
-tags: ["CSS", "Prohlížeče"]
+tags: ["css", "webove-prohlizece"]
+format: "html"
 ---
 
-Jedná se o zápisy typu `-moz-`, `-webkit-`, `-ms-` nebo `-o-` před samotnými CSS vlastnostmi.
+<p>Jedná se o zápisy typu <code>-moz-</code>, <code>-webkit-</code>, <code>-ms-</code> nebo <code>-o-</code> před samotnými CSS vlastnostmi.</p>
 
-## K čemu je to dobré
 
-Při **vývoji** jednotlivých prohlížečů se přidávají různé nové vlastnosti. Protože se může zjistit, že by nová vlastnost měla fungovat **ve finální podobě jinak**, nejprve se přidá ve zkušební podobě s prefixem.
 
-    Nehrozí potom tolik, že finální podoba dané vlastnosti **rozbije již dříve vytvořený web**.
+<h2>K čemu je to dobré</h2>
 
-    Pro autora webu je prefix **varování**, že se může něco změnit.
+<p>Při <b>vývoji</b> jednotlivých prohlížečů se přidávají různé nové vlastnosti. Protože se může zjistit, že by nová vlastnost měla fungovat <b>ve finální podobě jinak</b>, nejprve se přidá ve zkušební podobě s prefixem.</p>
 
-    Na první pohled je jasné, který prohlížeč danou vlastnost podporuje.
+<ol>
+  <li>
+    <p>Nehrozí potom tolik, že finální podoba dané vlastnosti <b>rozbije již dříve vytvořený web</b>.</p>
+  </li>
+  <li>
+    <p>Pro autora webu je prefix <b>varování</b>, že se může něco změnit.</p>
+  </li>
+  <li>
+    <p>Na první pohled je jasné, který prohlížeč danou vlastnost podporuje.</p>
+  </li>
+</ol>
 
-## Prefixy v CSS
 
-  Internet Explorer
-  Používá od verse 9 prefix `-ms-`.
 
-  Firefox
-  Používá prefix `-moz-`.
+<h2 id="css">Prefixy v CSS</h2>
 
-  Webkit/Blink
-  Prohlížeče s jádrem Blink (**Chrome**, **Safari**, **Opera** od verse 15) používají prefix `-webkit-`.
+<dl>
+  <dt>Internet Explorer</dt>
+  <dd><p>Používá od verse 9 prefix <code>-ms-</code>.</p></dd>
+  
+  <dt>Firefox</dt>
+  <dd><p>Používá prefix <code>-moz-</code>.</p></dd>
+  
+  <dt>Webkit/Blink</dt>
+  <dd><p>Prohlížeče s jádrem Blink (<b>Chrome</b>, <b>Safari</b>, <b>Opera</b> od verse 15) používají prefix <code>-webkit-</code>.</p></dd>
+  
+  <dt>Opera</dt>
+  <dd><p>Starší verse (<a href="/opera"><b>Opera 12</b></a>) používají prefix <code>-o-</code>. Nicméně Opera u drtivé většiny vlastností, kde ostatní používají prefixy, žádný prefix nepotřebuje.</p></dd>
+</dl>
 
-  Opera
-  Starší verse ([**Opera 12**](/opera)) používají prefix `-o-`. Nicméně Opera u drtivé většiny vlastností, kde ostatní používají prefixy, žádný prefix nepotřebuje.
+<p>Pokud je potřeba zapsat nějakou <i>CSS novinku</i> pro všechny prohlížeče, dost nepěkně nám kód nabobtná.</p>
 
-Pokud je potřeba zapsat nějakou *CSS novinku* pro všechny prohlížeče, dost nepěkně nám kód nabobtná.
+<p>Příklad oprefixovaného zápisu <a href="/rotace">rotační transformace</a>.</p>
 
-Příklad oprefixovaného zápisu [rotační transformace](/rotace).
-
-```
--webkit-transform: rotate(-90deg);
+<pre><code>-webkit-transform: rotate(-90deg);
 -moz-transform: rotate(-90deg);
 -ms-transform: rotate(-90deg);
 -o-transform: rotate(-90deg);
-transform: rotate(-90deg);
-```
+transform: rotate(-90deg);</code></pre>
 
-## Pořadí vlastností
 
-Existuje dilema ohledně volby pořadí CSS vlastností s a bez prefixu.
 
-Na jednu stranu dává smysl umístit vlastnost bez prefixu jako poslední, aby přepsala experimentální implementace s prefixy a podporující prohlížeče tak použili optimální variantu.
 
-Na stranu druhou je **použití neprefixované vlastnosti jako poslední** menším krokem do neznáma. Pokud by se změnilo chování finální vlastnosti bez prefixu oproti té s prefixem, mohl by se v novějších prohlížečích web rozbít.
 
-## Prefixy v JavaScriptu
 
-Mají-li se nastavovat vlastnosti funkční jen s prefixy prostřednictvím JS, stačí převést vlastnost s prefixem dle obvyklé konvence:
 
-  - **písmeno za pomlčkou** (spojovníkem) se **zapíše velké**,
 
-  - **pomlčka se vypustí**
 
-Tedy jako se z `background-color` udělá `backgroundColor`, analogicky z `-webkit-transform` bude `WebkitTransform`.
 
-Aby to nebylo tak jednoduché, tak **Internet Explorer** první písmeno na začátku nezvětšuje, takže v něm funguje `msTransform`.
 
-JS zápis výše uvedeného CSS by mohl vypadat následovně.
 
-```
-element.style.WebkitTransform =
+
+
+
+
+<h2 id="poradi">Pořadí vlastností</h2>
+
+<p>Existuje dilema ohledně volby pořadí CSS vlastností s a bez prefixu.</p>
+
+<p>Na jednu stranu dává smysl umístit vlastnost bez prefixu jako poslední, aby přepsala experimentální implementace s prefixy a podporující prohlížeče tak použili optimální variantu.</p>
+
+
+<p>Na stranu druhou je <b>použití neprefixované vlastnosti jako poslední</b> menším krokem do neznáma. Pokud by se změnilo chování finální vlastnosti bez prefixu oproti té s prefixem, mohl by se v novějších prohlížečích web rozbít.</p>
+
+
+
+
+<h2 id="js">Prefixy v JavaScriptu</h2>
+
+<p>Mají-li se nastavovat vlastnosti funkční jen s prefixy prostřednictvím JS, stačí převést vlastnost s prefixem dle obvyklé konvence:</p>
+
+<ol>
+  <li><b>písmeno za pomlčkou</b> (spojovníkem) se <b>zapíše velké</b>,</li>
+  <li><b>pomlčka se vypustí</b></li>
+</ol>
+
+
+
+<p>Tedy jako se z <code>background-color</code> udělá <code>backgroundColor</code>, analogicky z <code>-webkit-transform</code> bude <code>WebkitTransform</code>.</p>
+
+<p>Aby to nebylo tak jednoduché, tak <b>Internet Explorer</b> první písmeno na začátku nezvětšuje, takže v něm funguje <code>msTransform</code>.</p>
+
+<p>JS zápis výše uvedeného CSS by mohl vypadat následovně.</p>
+
+<pre><code>element.style.WebkitTransform =
 element.style.MozTransform =
-element.style.**m**sTransform =
+element.style.<b>m</b>sTransform =
 element.style.oTransform =
-element.style.transform = "rotate(-90deg)";
-```
+element.style.transform = "rotate(-90deg)";</code></pre>
 
-Lze si vypomoci hotovými knihovnami, které **sjednocují výše uvedený zápis**, nebo se, pokud je to jen trochu možné, **snažit skriptem nastavovat jen třídu** a styly nastavit přímo v CSS — tam nám může pomoci se psaním prefixů [snippet](/sublime-text#snippet) nebo CSS preprocesor.
 
-## Hotová řešení
 
-  [Prefix free](http://leaverou.github.io/prefixfree/#)
-  Stačí připojit jeden JS soubor a připojené CSS bude automaticky oprefixováno.
 
-  [Autoprefixer](https://github.com/postcss/autoprefixer)
 
-    Automatické doplnění potřebných prefixů v různých programovacích jazycích.
 
-  [LESS Hat](http://lesshat.com/)
+
+
+
+
+
+<p>Lze si vypomoci hotovými knihovnami, které <b>sjednocují výše uvedený zápis</b>, nebo se, pokud je to jen trochu možné, <b>snažit skriptem nastavovat jen třídu</b> a styly nastavit přímo v CSS — tam nám může pomoci se psaním prefixů <a href="/sublime-text#snippet">snippet</a> nebo CSS preprocesor.</p>
+
+
+
+
+<h2 id="hotova-reseni">Hotová řešení</h2>
+<dl>
+  <dt><a href="http://leaverou.github.io/prefixfree/#">Prefix free</a>
+  <dd><p>Stačí připojit jeden JS soubor a připojené CSS bude automaticky oprefixováno.</p>
   
-  Předpřipravené oprefixované vlastnosti pro CSS preprocesor [LESS](http://lesscss.org/).
-
-    Vytvořit [rozmazání](/blur) je potom otázka zápisu:
-
-    ```
-div {
+  <dt><a href="https://github.com/postcss/autoprefixer">Autoprefixer</a></dt>
+  
+  <dd>
+    <p>Automatické doplnění potřebných prefixů v různých programovacích jazycích.</p>
+  </dd>
+  
+  <dt><a href="http://lesshat.com/">LESS Hat</a></dt>
+  
+  <dd><p>Předpřipravené oprefixované vlastnosti pro CSS preprocesor <a href="http://lesscss.org/">LESS</a>.</p>
+    <p>Vytvořit <a href="/blur">rozmazání</a> je potom otázka zápisu:</p>
+    <pre><code>div {
  .blur(5px);
-}
-```
-
-    **Výsledek:**
-
-    ```
-div {
+}</code></pre>
+    
+    
+    
+    <p><b>Výsledek:</b></p>
+    <pre><code>div {
  -webkit-filter: blur(5px);
  -moz-filter: blur(5px);
  -ms-filter: blur(5px);
  filter: blur(5px);
-}
-```
+}</code></pre>
+  </dd>
+</dl>
 
-      - David Walsh: [Say Goodbye to Vendor Prefixes](http://davidwalsh.name/goodbye-vendor-prefixes)
 
-## Budoucnost prefixů
 
-Lze očekávat, že se do budoucna bude od používání prefixů ustupovat. Místo toho by měly fungovat obyčejné názvy CSS vlastností, jejichž funkci bude nutné zapnout v nastavení, než se stanou standardně podporovanými.
 
-    - WebKit: [Updating Our Prefixing Policy](https://webkit.org/blog/6131/updating-our-prefixing-policy/) – upouštění od prefixů
+
+
+
+
+
+
+
+
+
+
+
+<div class="external-content">
+  <ul>
+      <li>David Walsh: <a href="http://davidwalsh.name/goodbye-vendor-prefixes">Say Goodbye to Vendor Prefixes</a></li>
+  </ul>
+</div>
+
+
+
+<h2 id="budoucnost">Budoucnost prefixů</h2>
+
+<p>Lze očekávat, že se do budoucna bude od používání prefixů ustupovat. Místo toho by měly fungovat obyčejné názvy CSS vlastností, jejichž funkci bude nutné zapnout v nastavení, než se stanou standardně podporovanými.</p>
+
+<div class="external-content">
+  <ul>
+    <li>WebKit: <a href="https://webkit.org/blog/6131/updating-our-prefixing-policy/">Updating Our Prefixing Policy</a> – upouštění od prefixů</li>
+
+  </ul>  
+</div>
+
+<!--<h2 id="odkazy">Odkazy jinam</h2>-->
+

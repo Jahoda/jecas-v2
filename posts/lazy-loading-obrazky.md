@@ -5,78 +5,71 @@ description: "Načtení obrázků, až když je na ně odrolováno. Různé post
 date: "2013-11-27"
 last_modification: "2017-02-07"
 status: 1
-tags: ["Lazy loading", "JavaScript", "Hotová řešení", "Obrázky", "Zrychlování webu"]
+tags: ["hotova-reseni", "js", "lazy-loading", "obrazky", "zrychlovani"]
+format: "html"
 ---
 
-V případě, že je na stránce **hodně obrázků**, které nejsou ihned po příchodu na stránku vidět, jsou tzv. *pod ohybem*, může být rozumné je načítat až v momentě, kdy na ně návštěvník **odroluje**.
+<p>V případě, že je na stránce <b>hodně obrázků</b>, které nejsou ihned po příchodu na stránku vidět, jsou tzv. <i>pod ohybem</i>, může být rozumné je načítat až v momentě, kdy na ně návštěvník <b>odroluje</b>.</p>
 
-Sníží se tak **objem přenesených dat** i počet **HTTP spojení**.
+<p>Sníží se tak <b>objem přenesených dat</b> i počet <b>HTTP spojení</b>.</p>
 
-## Postup
+<h2 id="postup">Postup</h2>
+<p>Jak zmíněné načítání při odrolování vytvořit v JavaScriptu:</p>
 
-Jak zmíněné načítání při odrolování vytvořit v JavaScriptu:
+<ol>
+  <li>Obrázky mimo <b>viditelnou oblast</b> stránky se po načtení skryjí.</li>
+  <li>Při rolování (<code>window.onscroll</code>) se zkontroluje, které obrázky mají být vidět, a zobrazí se (donačtou se).</li>
+</ol>
 
-  - Obrázky mimo **viditelnou oblast** stránky se po načtení skryjí.
+<h2 id="skryt-obrazek">Skrytí obrázku</h2>
+<p>První zádrhel je v tom, že skrytí přes <code>display: none</code> nestačí, tj. něco jako:</p>
 
-  - Při rolování (`window.onscroll`) se zkontroluje, které obrázky mají být vidět, a zobrazí se (donačtou se).
+<pre><code>&lt;img src='obrazek.png' style='display: none'></code></pre>
 
-## Skrytí obrázku
+<p>Sice obrázek skryje, ale fysickému <b>stažení obrázku</b> nezabrání. Naštěstí ale existují <a href="http://diskuse.jakpsatweb.cz/?action=vthread&forum=3&topic=153269">další postupy</a>, jak <b>načtení opravdu zabránit</b>:</p>
 
-První zádrhel je v tom, že skrytí přes `display: none` nestačí, tj. něco jako:
-
-```
-&lt;img src='obrazek.png' style='display: none'>
-```
-
-Sice obrázek skryje, ale fysickému **stažení obrázku** nezabrání. Naštěstí ale existují [další postupy](http://diskuse.jakpsatweb.cz/?action=vthread&forum=3&topic=153269), jak **načtení opravdu zabránit**:
-
-  Obrázku dát **prázdný/nesmyslný atribut `src`** a ten skutečný až v momentě, kdy se na obrázek odscrolluje. Původní `src` může být v nějakém [vlastním atributu](/vlastni-html-znacky), ze kterého se hodnota skriptem přesune.
-
-  Vložit obrázek jako **CSS pozadí**.
-
-    ```
-&lt;div class='obal-obrazku' style="display: none">
+<ol>
+  <li><p>Obrázku dát <b>prázdný/nesmyslný atribut <code>src</code></b> a ten skutečný až v momentě, kdy se na obrázek odscrolluje. Původní <code>src</code> může být v nějakém <a href="/vlastni-html-znacky">vlastním atributu</a>, ze kterého se hodnota skriptem přesune.</p></li>
+  
+  <li><p>Vložit obrázek jako <b>CSS pozadí</b>.</p>
+    <pre><code>&lt;div class='obal-obrazku' style="display: none">
   &lt;div style="width: 100px; height: 100px; background: url(obrazek.png)">
   &lt;/div
-&lt;div
-```
+&lt;div</code></pre>
+    <p>Tady už <code>display: none</code> zafunguje a obrázek se automaticky nenačte.</p>
+    
+    <p>Důležité ale je <code>display: none</code> přidat rodiči <code>&lt;div></code>u s <code>background</code> obrázkem. Jinak se i tak v <b>některých prohlížečích obrázek stáhne</b> (test s <a href="http://kod.djpw.cz/jxab">rodičem</a> / <a href="http://kod.djpw.cz/hxab">elementem s pozadím</a>).</p>
+  </li>
+  
+  <li>
+    <p>Použít značku <code>&lt;noscript></code>. Její obsah se při <b>zapnutém JS</b> nevyhodnocuje. Nevýhoda je, že v <b>IE 7</b> se z ní nedá přečíst <code>innerHTML</code>. I tak ale jde přečíst hodnotu <code>&lt;noscript></code> atributu, což pro uložení adresy obrázku k <b>pozdějšímu načtení</b> může stačit (<a href="http://kod.djpw.cz/gqt">ukázka</a>).</p>
+    <p><a href="https://github.com/luis-almeida/unveil">Hotové řešení</a> založené na jQuery, které využívá tuto techniku.</p>
+  </li>
+  
+  <li>Vypsat kolem obrázku JavaScriptem <a href="/responsivni-komentare#script">značku <code>&lt;script></code> s neznámým <i>MIME typem</i></a>. Prohlížeč takový kód nevyhodnotí, ale jeho obsah půjde spolehlivě vydolovat z <code>innerHTML</code> (<a href="http://kod.djpw.cz/iqt">ukázka</a>).</li>
+  
+  <li><p>Použít <a href="/template">značku <code>&lt;template></code></a>. Ta zatím ale nefuguje v žádném <b>IE</b>, jen v <b>Chrome</b> a <b>Firefoxu</b>.</p></li>
+</ol>
 
-    Tady už `display: none` zafunguje a obrázek se automaticky nenačte.
+<p>Konkrétní <b>volba řešení</b> by měla záviset na požadavcích, zejména s ohledem na <b>vyhledávače</b>:</p>
 
-    Důležité ale je `display: none` přidat rodiči `&lt;div>`u s `background` obrázkem. Jinak se i tak v **některých prohlížečích obrázek stáhne** (test s [rodičem](http://kod.djpw.cz/jxab) / [elementem s pozadím](http://kod.djpw.cz/hxab)).
+<ul>
+  <li>První a druhá možnost obrázky pro roboty v podstatě <b>zneviditelní</b>. Proto je vhodná jen v případě, že to nevadí / vyhledávač se může k obrázku dostat někde jinde.</li>
+  
+  <li>U značky <code>&lt;template></code> není jasné, jak se k ní budou v budoucnu roboti chovat. Zatím je ale <b>Googlem indexována</b>.</li>
+  
+  <li>Vypsání <code>&lt;script></code>u z neznámým MIME typem je značně <b>nestandardní</b>.</li>
+</ul>
 
-    Použít značku `&lt;noscript>`. Její obsah se při **zapnutém JS** nevyhodnocuje. Nevýhoda je, že v **IE 7** se z ní nedá přečíst `innerHTML`. I tak ale jde přečíst hodnotu `&lt;noscript>` atributu, což pro uložení adresy obrázku k **pozdějšímu načtení** může stačit ([ukázka](http://kod.djpw.cz/gqt)).
-
-    [Hotové řešení](https://github.com/luis-almeida/unveil) založené na jQuery, které využívá tuto techniku.
-
-  - Vypsat kolem obrázku JavaScriptem [značku `&lt;script>` s neznámým *MIME typem*](/responsivni-komentare#script). Prohlížeč takový kód nevyhodnotí, ale jeho obsah půjde spolehlivě vydolovat z `innerHTML` ([ukázka](http://kod.djpw.cz/iqt)).
-
-  Použít [značku `&lt;template>`](/template). Ta zatím ale nefuguje v žádném **IE**, jen v **Chrome** a **Firefoxu**.
-
-Konkrétní **volba řešení** by měla záviset na požadavcích, zejména s ohledem na **vyhledávače**:
-
-  - První a druhá možnost obrázky pro roboty v podstatě **zneviditelní**. Proto je vhodná jen v případě, že to nevadí / vyhledávač se může k obrázku dostat někde jinde.
-
-  - U značky `&lt;template>` není jasné, jak se k ní budou v budoucnu roboti chovat. Zatím je ale **Googlem indexována**.
-
-  - Vypsání `&lt;script>`u z neznámým MIME typem je značně **nestandardní**.
-
-## Hotové řešení
-
-### HTML
-
-```
-&lt;div class="img">
+<h2 id="reseni">Hotové řešení</h2>
+<h3>HTML</h3>
+<pre><code>&lt;div class="img">
   &lt;script>document.write("&lt;script type='text/lazy-loading'>")&lt;/script>
     &lt;img src="obrazek.png" width="100" height="100">
   &lt;script>document.write("&lt;\/script>")&lt;/script>
-&lt;/div>
-```
-
-### JS
-
-```
-var lazyImages = [];
+&lt;/div></code></pre>
+<h3>JS</h3>
+<pre><code>var lazyImages = [];
 function inViewPort(img) {
 	var coords = img.getBoundingClientRect();
 	return (coords.top >= 0 &amp;&amp; coords.left >= 0 &amp;&amp; coords.top) &lt;= (window.innerHeight || document.documentElement.clientHeight);
@@ -99,25 +92,23 @@ window.onscroll = function() {
 			lazyImages.splice(i, 1);
 		}
 	}
-}
-```
+}</code></pre>
 
-## Alternativní řešení
+<h2 id="alternativni-reseni">Alternativní řešení</h2>
+<p>Problém výše uvedeného postupu může být v tom, že při jakémkoliv rolování se budou vždy procházet všechny obrázky a bude se <b>kontrolovat jejich posice</b> a zda jsou vidět (funkce <code>inViewPort</code>).</p>
 
-Problém výše uvedeného postupu může být v tom, že při jakémkoliv rolování se budou vždy procházet všechny obrázky a bude se **kontrolovat jejich posice** a zda jsou vidět (funkce `inViewPort`).
+<p>Pokud by to stránku zpomalovalo, nabízí se si při načtení a změně rozměrů stránky ukládat posici obrázků.</p>
 
-Pokud by to stránku zpomalovalo, nabízí se si při načtení a změně rozměrů stránky ukládat posici obrázků.
+<p>Ještě mě napadl jeden postup. K obrázkům vytvořeným jako <b>CSS pozadí</b> uložit jejich přibližnou posici do CSS třídy (zaokrouhlenou třeba na stovky — například <code>top-2000</code> pro <i>obrázky</i>, co jsou přibližně 2000 pixelů od začátku stránky). A při rolování <a href="/css-vyhledavani#js-css-styl">vytvořit skriptem CSS</a>, které obrázek/obrázky s danou třídou zviditelní.</p>
 
-Ještě mě napadl jeden postup. K obrázkům vytvořeným jako **CSS pozadí** uložit jejich přibližnou posici do CSS třídy (zaokrouhlenou třeba na stovky — například `top-2000` pro *obrázky*, co jsou přibližně 2000 pixelů od začátku stránky). A při rolování [vytvořit skriptem CSS](/css-vyhledavani#js-css-styl), které obrázek/obrázky s danou třídou zviditelní.
+<p>Něco ve smyslu:</p>
+<pre><code>pridatCss(".top-" + zaokrouhlit(odrolovanoShora + vyskaOkna) + " {display: block}");</code></pre>
 
-Něco ve smyslu:
 
-```
-pridatCss(".top-" + zaokrouhlit(odrolovanoShora + vyskaOkna) + " {display: block}");
-```
+<h2 id="odkazy">Odkazy jinam</h2>
 
-## Odkazy jinam
-
-  - [be]Lazy.js](http://dinbror.dk/blazy/) – miniaturní knihovna pro lazy loading obrázků; skutečný `src` obrázku maskuje do `data-atributu`
-
-  - [Unveil](http://luis-almeida.github.io/unveil/) – lazy loading plugin pro jQuery/[Zepto](/framework-zepto)
+<ul>
+  <li><a href="http://dinbror.dk/blazy/">be]Lazy.js</a> – miniaturní knihovna pro lazy loading obrázků; skutečný <code>src</code> obrázku maskuje do <code>data-atributu</code></li>
+  
+  <li><a href="http://luis-almeida.github.io/unveil/">Unveil</a> – lazy loading plugin pro jQuery/<a href="/framework-zepto">Zepto</a></li>
+</ul>

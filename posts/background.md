@@ -6,38 +6,45 @@ date: "2014-09-22"
 last_modification: "2014-09-22"
 status: 0
 tags: []
+format: "html"
 ---
 
 -webkit-background-clip: text; -- http://codepen.io/dghez/pen/ItxKE
 
-## Umístění pozadí `background-position`
 
-Nastavit umístění obrázku jde pomocí klíčových slov `top`, `right`, `bottom`, `left` a `center`.
 
-```
-background-position: top left;
-```
+<h2 id="position">Umístění pozadí <code>background-position</code></h2>
 
-Rovněž také délkovými jednotkami:
+<p>Nastavit umístění obrázku jde pomocí klíčových slov <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> a <code>center</code>.</p>
 
-```
-background-position: 10px 10px;
-```
+<pre><code>background-position: top left;</code></pre>
 
-Délkové jednotky se počítají zleva a shora, takže umístit přesně obrázek zprava nebo zdola je komplikovanější:
+<p>Rovněž také délkovými jednotkami:</p>
 
-    Novější prohlížeče podporují uvedení klíčového slova pro směr:
+<pre><code>background-position: 10px 10px;</code></pre>
 
-    ```
-background-position: **right** 10px top;
-```
+<p>Délkové jednotky se počítají zleva a shora, takže umístit přesně obrázek zprava nebo zdola je komplikovanější:</p>
 
-    Pro pevné rozměry elementu jde potřebná hodnota zleva/shora spočítat z šířky obrázku tak, aby ve výsledku byl obrázek požadovanou vzálenost od pravého/dolního okraje.
+<ol>
+  <li>
+    <p>Novější prohlížeče podporují uvedení klíčového slova pro směr:</p>
+    
+    <pre><code>background-position: <b>right</b> 10px top;</code></pre>
+  </li>
+  
+  <li>
+    <p>Pro pevné rozměry elementu jde potřebná hodnota zleva/shora spočítat z šířky obrázku tak, aby ve výsledku byl obrázek požadovanou vzálenost od pravého/dolního okraje.</p>
+  </li>
+  
+  <li>
+    <p>Přibližného výsledku jde docílit s použitím procent:</p>
+    
+    <pre><code>background-position: 95% top;</code></pre>
+  </li>
+</ol>
 
-    Přibližného výsledku jde docílit s použitím procent:
-
-    ```
-background-position: 95% top;
-```
-
-    - CSS Tricks: [Positioning Offset Background Images](http://css-tricks.com/positioning-offset-background-images/)
+<div class="external-content">
+  <ul>
+    <li>CSS Tricks: <a href="http://css-tricks.com/positioning-offset-background-images/">Positioning Offset Background Images</a></li>
+  </ul>
+</div>

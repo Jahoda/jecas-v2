@@ -6,8 +6,14 @@ date: "2015-07-28"
 last_modification: "2015-07-28"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Odkazy jinam
 
-  - [The Difference Between Minification and Gzipping](https://css-tricks.com/the-difference-between-minification-and-gzipping/)
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="https://css-tricks.com/the-difference-between-minification-and-gzipping/">The Difference Between Minification and Gzipping</a></li>
+</ul>

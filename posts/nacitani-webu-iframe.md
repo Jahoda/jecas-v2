@@ -5,83 +5,184 @@ description: "Je rozumné blokovat načítání webu v <code>&lt;iframe></code>?
 date: "2016-03-03"
 last_modification: "2016-03-04"
 status: 1
-tags: ["HTML", "Rady a nápady", "Bezpečnost"]
+tags: ["html", "napady", "zabezpeceni"]
+format: "html"
 ---
 
-Značkou [`&lt;iframe>`](/ramy#iframe) jde do jedné stránky vložit obsah cizí, aniž by se obě stránky ovlivňovaly. Stránka v rámu se chová podobně jako by byla načtená v jiné záložce – návštěvník je v ní přihlášen a podobně.
+<p>Značkou <a href="/ramy#iframe"><code>&lt;iframe></code></a> jde do jedné stránky vložit obsah cizí, aniž by se obě stránky ovlivňovaly. Stránka v rámu se chová podobně jako by byla načtená v jiné záložce – návštěvník je v ní přihlášen a podobně.</p>
 
-Kvůli tomu se do rámů běžně vkládají různé prvky jako videa z [YouTube](/youtube), [sdílecí tlačítka](/sdileci-tlacitka) z [Facebooku](/facebook) nebo [Twitteru](/twitter) a další věci.
+<p>Kvůli tomu se do rámů běžně vkládají různé prvky jako videa z <a href="/youtube">YouTube</a>, <a href="/sdileci-tlacitka">sdílecí tlačítka</a> z <a href="/facebook">Facebooku</a> nebo <a href="/twitter">Twitteru</a> a další věci.</p>
 
-Řada webů se snaží bránit tomu, aby šly do `&lt;iframe>` načíst (a prohlížeče tomu jdou vstříc). Proč?
+<p>Řada webů se snaží bránit tomu, aby šly do <code>&lt;iframe></code> načíst (a prohlížeče tomu jdou vstříc). Proč?</p>
 
-## Clickjacking
 
-Clickjacking je postup, kdy útočník přiměje oběť kliknout na nějaký prvek – třeba tlačítko, avšak místo kliknutí na tlačítko se na dané místo umístí obsah jiné stránky v `&lt;iframe>`.
+<h2 id="clickjacking">Clickjacking</h2>
 
-Obsah rámu, kam se ve skutečnosti klikne, se 100% zprůhlední pomocí [`opacity`](/opacity). Oběť tak nemusí nic poznat.
+<p>Clickjacking je postup, kdy útočník přiměje oběť kliknout na nějaký prvek – třeba tlačítko, avšak místo kliknutí na tlačítko se na dané místo umístí obsah jiné stránky v <code>&lt;iframe></code>.</p>
 
-Díky tomu jde s trochou snahy zajistit, aby uživatel vykonal nějakou akci. Často se clickjacking používá pro získávání *Like* na Facebooku:
+<p>Obsah rámu, kam se ve skutečnosti klikne, se 100% zprůhlední pomocí <a href="/opacity"><code>opacity</code></a>. Oběť tak nemusí nic poznat.</p>
 
-    - [Clickjacking na Facebooku](/clickjacking)
+<p>Díky tomu jde s trochou snahy zajistit, aby uživatel vykonal nějakou akci. Často se clickjacking používá pro získávání <i>Like</i> na Facebooku:</p>
 
-## Zabránění načítání do rámu
+<div class="internal-content">
+  <ul>
+    <li><a href="/clickjacking">Clickjacking na Facebooku</a></li>
+  </ul>
+</div>
 
-Zabránit načtení do rámu z cizích domén (a ochránit se tak před clickjackingem) jde pomocí HTTP hlavičky:
 
-```
-X-FRAME-OPTIONS: SAMEORIGIN
-```
 
-Funguje to od **IE 8**, **Chrome 4**, **Firefox 3.6** a **Safari 4**.
 
-V [PHP](/php) to může vypadat následovně:
+<h2 id="zabraneni">Zabránění načítání do rámu</h2>
 
-```
-&lt;?php
+<p>Zabránit načtení do rámu z cizích domén (a ochránit se tak před clickjackingem) jde pomocí HTTP hlavičky:</p>
+
+<pre><code>X-FRAME-OPTIONS: SAMEORIGIN</code></pre>
+
+<p>Funguje to od <b>IE 8</b>, <b>Chrome 4</b>, <b>Firefox 3.6</b> a <b>Safari 4</b>.</p>
+
+
+
+<p>V <a href="/php">PHP</a> to může vypadat následovně:</p>
+
+<pre><code>&lt;?php
 header('X-Frame-Options: SAMEORIGIN');
-?>
-```
+?></code></pre>
 
-Případně jde přímo stanovit doménu, která může web do rámu načíst (nepodporuje **Chrome** a **Safari**):
 
-```
-X-FRAME-OPTIONS: ALLOW-FROM http://jecas.cz/
-```
 
-## Je clickjacking problém?
 
-Řada tvůrců brání načtení do rámu automaticky nezávisle na povaze stránky.
+<p>Případně jde přímo stanovit doménu, která může web do rámu načíst (nepodporuje <b>Chrome</b> a <b>Safari</b>):</p>
 
-U typických **obsahových stránek** nebo aplikací (kde není uživatel přihlášen) ale kliknutí na místo, které si útočník vybral, nepřináší významné risiko.
+<pre><code>X-FRAME-OPTIONS: ALLOW-FROM http://jecas.cz/</code></pre>
 
-Hlavička omezující zobrazení v rámu se tak může aplikovat jen na důvěrných stránkách.
 
-Blokováním načtení stránky v rámu se totiž provozovatel webu připravuje o některé **hezké možnosti**, byť nejde o kritické věci:
 
-### Přebarvení stránky
 
-Před časem jsem vytvořil nástroj pro rychlé přebarvení stránky pomocí [filtru `hue-rotate`](/filter#hue-rotate):
+<h2 id="problem">Je clickjacking problém?</h2>
 
-    - [Přebarvení webu](http://kod.djpw.cz/jgub-)
 
-### Google Analytics
+<p>Řada tvůrců brání načtení do rámu automaticky nezávisle na povaze stránky.</p>
 
-Například [Google Analytics](/ga) umožňuje na stránce zobrazené v rámu zobrazit informace ohledně četnosti klikání.
+<p>U typických <b>obsahových stránek</b> nebo aplikací (kde není uživatel přihlášen) ale kliknutí na místo, které si útočník vybral, nepřináší významné risiko.</p>
 
-Při blokování rámů se musí náhled stránky zobrazit mimo Google Analytics.
+<p>Hlavička omezující zobrazení v rámu se tak může aplikovat jen na důvěrných stránkách.</p>
 
-### Responsivní náhledy
+<p>Blokováním načtení stránky v rámu se totiž provozovatel webu připravuje o některé <b>hezké možnosti</b>, byť nejde o kritické věci:</p>
 
-Díky načtení do rámu jde rychle najednou zhodnotit zobrazení stránky v různých rozlišeních. Umí to třeba [Google Resizer](http://design.google.com/resizer).
 
-Nástroj Google Resizer není ale zdaleka kritický. Pro podrobnější testování responsivních webů je užitečnější použít [vývojářské nástroje](/vyvojarske-nastroje) (F12).
 
-## Blokovaní obsahu
 
-Některé weby proti zobrazování v rámu bojují z jiného důvodu – nechtějí být například spojovány se stránkou, která jejich obsah zobrazuje.
 
-Tomu se bohužel nejde na úrovni webových technologií bránit, protože vždycky jde stránku stáhnout/[zkopírovat](/kopirovani):
+<h3 id="prebarveni">Přebarvení stránky</h3>
 
-    - [Získání obsahu cizí stránky](/stazeni-stranky)
+<p>Před časem jsem vytvořil nástroj pro rychlé přebarvení stránky pomocí <a href="/filter#hue-rotate">filtru <code>hue-rotate</code></a>:</p>
 
-Zobrazení staženého obsahu tak může být ve finále ještě horší, než vložení pomocí `&lt;iframe>`.
+<div class="external-content">
+  <ul>
+    <li><a href="http://kod.djpw.cz/jgub-">Přebarvení webu</a></li>
+  </ul>
+</div>
+
+
+<p><img src="/files/nacitani-webu-iframe/prebarveni.png" alt="Přebarvení webu" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="ga">Google Analytics</h3>
+
+<p>Například <a href="/ga">Google Analytics</a> umožňuje na stránce zobrazené v rámu zobrazit informace ohledně četnosti klikání.</p>
+
+<p><img src="/files/nacitani-webu-iframe/cetnost-kliku.png" alt="Četnost klikání" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Při blokování rámů se musí náhled stránky zobrazit mimo Google Analytics.</p>
+
+
+
+<h3 id="rwd">Responsivní náhledy</h3>
+
+<p>Díky načtení do rámu jde rychle najednou zhodnotit zobrazení stránky v různých rozlišeních. Umí to třeba <a href="http://design.google.com/resizer">Google Resizer</a>.</p>
+
+<p>Nástroj Google Resizer není ale zdaleka kritický. Pro podrobnější testování responsivních webů je užitečnější použít <a href="/vyvojarske-nastroje">vývojářské nástroje</a> (<kbd>F12</kbd>).</p>
+
+<p><img src="/files/nacitani-webu-iframe/resizer.png" alt="Google Resizer" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="blokovani">Blokovaní obsahu</h2>
+
+<p>Některé weby proti zobrazování v rámu bojují z jiného důvodu – nechtějí být například spojovány se stránkou, která jejich obsah zobrazuje.</p>
+
+<p>Tomu se bohužel nejde na úrovni webových technologií bránit, protože vždycky jde stránku stáhnout/<a href="/kopirovani">zkopírovat</a>:</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/stazeni-stranky">Získání obsahu cizí stránky</a></li>
+  </ul>
+</div>
+
+<p>Zobrazení staženého obsahu tak může být ve finále ještě horší, než vložení pomocí <code>&lt;iframe></code>.</p>

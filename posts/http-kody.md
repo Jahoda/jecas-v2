@@ -6,6 +6,7 @@ date: "2015-07-24"
 last_modification: "2015-07-24"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://webdesign.tutsplus.com/tutorials/http-status-codes-in-60-seconds--cms-24317

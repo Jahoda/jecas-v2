@@ -6,6 +6,7 @@ date: "2019-08-02"
 last_modification: "2019-08-02"
 status: 0
 tags: []
+format: "html"
 ---
 
 https://imgbot.net

@@ -5,296 +5,303 @@ description: "Abecední seznam všech 144 HTML značek."
 date: "2014-05-30"
 last_modification: "2014-05-31"
 status: 1
-tags: ["HTML", "HTML značky"]
+tags: ["html", "html-tagy"]
+format: "html"
 ---
 
-- [`&lt;a>`](/odkaz)
+<p id="vypis"></p>
 
-  - [`&lt;abbr>`](/dfn#abbr)
+<ol id="znacky">
+  <li><a href="/odkaz"><code>&lt;a></code></a></li>
+  
+  <li><a href="/dfn#abbr"><code>&lt;abbr></code></a></li>
 
-- `&lt;acronym>`
+<li><code>&lt;acronym></code></li>
+  
+  <li><a href="/adresa-mapa"><code>&lt;address></code></a></li>
 
-  - [`&lt;address>`](/adresa-mapa)
+<li><code>&lt;applet></code></li>
 
-- `&lt;applet>`
+<li><code>&lt;area></code></li>
 
-- `&lt;area>`
+  <li><a href="/html-kostra#article"><code>&lt;article></code></a></li>
 
-  - [`&lt;article>`](/html-kostra#article)
+  <li><a href="/html-kostra#aside"><code>&lt;aside></code></a></li>
 
-  - [`&lt;aside>`](/html-kostra#aside)
+<li><a href="/audio"><code>&lt;audio></code></a></li>
 
-- [`&lt;audio>`](/audio)
+<li><code>&lt;b></code></li>
+  
+  <li><a href="/base"><code>&lt;base></code></a></li>
 
-- `&lt;b>`
+  <li><a href="/font#basefont"><code>&lt;basefont></code></a></li>
 
-  - [`&lt;base>`](/base)
+  <li><a href="/zprava-doleva#bdi"><code>&lt;bdi></code></a></li>
 
-  - [`&lt;basefont>`](/font#basefont)
+  <li><a href="/zprava-doleva#bdo"><code>&lt;bdo></code></a></li>
 
-  - [`&lt;bdi>`](/zprava-doleva#bdi)
+<li><a href="/audio#bgsound"><code>&lt;bgsound></code></a></li>
 
-  - [`&lt;bdo>`](/zprava-doleva#bdo)
+<li><code>&lt;big></code></li>
 
-- [`&lt;bgsound>`](/audio#bgsound)
+<li><code>&lt;blink></code></li>
+  
+  <li><a href="/citace#blockquote"><code>&lt;blockquote></code></a></li>
 
-- `&lt;big>`
+  <li><a href="/html-kostra#body"><code>&lt;body></code></a></li>
+  
+  <li><a href="/odradkovani#br"><code>&lt;br></code></a></li>
+  
+  <li><a href="/button"><code>&lt;button></code></a></li>
 
-- `&lt;blink>`
+<li><a href="/canvas"><code>&lt;canvas></code></a></li>
 
-  - [`&lt;blockquote>`](/citace#blockquote)
+<li><a href="/html-tabulky#caption"><code>&lt;caption></code></a></li>
 
-  - [`&lt;body>`](/html-kostra#body)
+<li><code>&lt;center></code></li>
+  
+  <li><a href="/citace#cite"><code>&lt;cite></code></a></li>
+  
+  <li><a href="/vypis-kodu#code"><code>&lt;code></code></a></li>
 
-  - [`&lt;br>`](/odradkovani#br)
+<li><a href="/html-tabulky#col"><code>&lt;col></code></a></li>
 
-  - [`&lt;button>`](/button)
+<li><a href="/html-tabulky#colgroup"><code>&lt;colgroup></code></a></li>
 
-- [`&lt;canvas>`](/canvas)
+<li><code>&lt;command></code></li>
 
-- [`&lt;caption>`](/html-tabulky#caption)
+<li><code>&lt;comment></code></li>
 
-- `&lt;center>`
+<li><code>&lt;content></code></li>
+  
+  <li><a href="/data"><code>&lt;data></code></a></li>
+  
+  <li><a href="/datalist"><code>&lt;datalist></code></a></li>
 
-  - [`&lt;cite>`](/citace#cite)
+  <li><a href="/seznamy#dd"><code>&lt;dd></code></a></li>
 
-  - [`&lt;code>`](/vypis-kodu#code)
+<li><code>&lt;decorator></code></li>
+  
+  <li><a href="/s#rozdil"><code>&lt;del></code></a></li>
+  
+  <li><a href="/details"><code>&lt;details></code></a></li>
+  
+  <li><a href="/dfn"><code>&lt;dfn></code></a></li>
+  
+  <li><a href="/dialog"><code>&lt;dialog></code></a></li>
+  
+  <li><a href="/seznamy#dir"><code>&lt;dir></code></a></li>
 
-- [`&lt;col>`](/html-tabulky#col)
+  <li><a href="/div-span#div"><code>&lt;div></code></a></li>
 
-- [`&lt;colgroup>`](/html-tabulky#colgroup)
+  <li><a href="/seznamy#dl"><code>&lt;dl></code></a></li>
 
-- `&lt;command>`
+  <li><a href="/seznamy#dt"><code>&lt;dt></code></a></li>
 
-- `&lt;comment>`
+<li><code>&lt;element></code></li>
 
-- `&lt;content>`
+<li><code>&lt;em></code></li>
 
-  - [`&lt;data>`](/data)
+<li><code>&lt;embed></code></li>
 
-  - [`&lt;datalist>`](/datalist)
+<li><code>&lt;fieldset></code></li>
 
-  - [`&lt;dd>`](/seznamy#dd)
+<li><code>&lt;figcaption></code></li>
 
-- `&lt;decorator>`
+<li><code>&lt;figure></code></li>
 
-  - [`&lt;del>`](/s#rozdil)
+  <li><a href="/font#font"><code>&lt;font></code></a></li>
 
-  - [`&lt;details>`](/details)
+  <li><a href="/html-kostra#footer"><code>&lt;footer></code></a></li>
 
-  - [`&lt;dfn>`](/dfn)
+<li><code>&lt;form></code></li>
 
-  - [`&lt;dialog>`](/dialog)
+  <li><a href="/ramy#frameset"><code>&lt;frame></code></a></li>
 
-  - [`&lt;dir>`](/seznamy#dir)
+  <li><a href="/ramy#frameset"><code>&lt;frameset></code></a></li>
+  
+  <li><a href="/nadpisy"><code>&lt;h1></code></a></li>
+  
+  <li><a href="/nadpisy"><code>&lt;h2></code></a></li>
+  
+  <li><a href="/nadpisy"><code>&lt;h3></code></a></li>
+  
+  <li><a href="/nadpisy"><code>&lt;h4></code></a></li>
+  
+  <li><a href="/nadpisy"><code>&lt;h5></code></a></li>
+  
+  <li><a href="/nadpisy"><code>&lt;h6></code></a></li>
 
-  - [`&lt;div>`](/div-span#div)
+  <li><a href="/html-kostra#head"><code>&lt;head></code></a></li>
 
-  - [`&lt;dl>`](/seznamy#dl)
+  <li><a href="/html-kostra#header"><code>&lt;header></code></a></li>
+  
+  <li><a href="/nadpisy#hgroup"><code>&lt;hgroup></code></a></li>
 
-  - [`&lt;dt>`](/seznamy#dt)
+<li><code>&lt;hr></code></li>
 
-- `&lt;element>`
+  <li><a href="/html-kostra#html"><code>&lt;html></code></a></li>
 
-- `&lt;em>`
+<li><code>&lt;i></code></li>
 
-- `&lt;embed>`
+  <li><a href="/ramy#iframe"><code>&lt;iframe></code></a></li>
 
-- `&lt;fieldset>`
+<li><code>&lt;image></code></li>
 
-- `&lt;figcaption>`
+<li><code>&lt;img></code></li>
+  
+  <li><a href="/input"><code>&lt;input></code></a></li>
 
-- `&lt;figure>`
+<li><code>&lt;ins></code></li>
 
-  - [`&lt;font>`](/font#font)
+<li><code>&lt;isindex></code></li>
 
-  - [`&lt;footer>`](/html-kostra#footer)
+<li><code>&lt;kbd></code></li>
 
-- `&lt;form>`
+<li><code>&lt;keygen></code></li>
+  
+  <li><a href="/label-for"><code>&lt;label></code></a></li>
 
-  - [`&lt;frame>`](/ramy#frameset)
+<li><code>&lt;legend></code></li>
 
-  - [`&lt;frameset>`](/ramy#frameset)
+  <li><a href="/seznamy#li"><code>&lt;li></code></a></li>
 
-  - [`&lt;h1>`](/nadpisy)
+<li><code>&lt;link></code></li>
+  
+  <li><a href="/vypis-kodu#listing"><code>&lt;listing></code></a></li>
 
-  - [`&lt;h2>`](/nadpisy)
+  <li><a href="/html-kostra#main"><code>&lt;main></code></a></li>
 
-  - [`&lt;h3>`](/nadpisy)
+<li><code>&lt;map></code></li>
+  
+  <li><a href="/mark"><code>&lt;mark></code></a></li>
 
-  - [`&lt;h4>`](/nadpisy)
+<li><code>&lt;marquee></code></li>
 
-  - [`&lt;h5>`](/nadpisy)
+  <li><a href="/seznamy#menu"><code>&lt;menu></code></a></li>
+  
+  <li><a href="/menuitem"><code>&lt;menuitem></code></a></li>
 
-  - [`&lt;h6>`](/nadpisy)
+<li><code>&lt;meta></code></li>
+  
+  <li><a href="/meter"><code>&lt;meter></code></a></li>
 
-  - [`&lt;head>`](/html-kostra#head)
+  <li><a href="/html-kostra#nav"><code>&lt;nav></code></a></li>
 
-  - [`&lt;header>`](/html-kostra#header)
+<li><code>&lt;nobr></code></li>
 
-  - [`&lt;hgroup>`](/nadpisy#hgroup)
+  <li><a href="/ramy#noframes"><code>&lt;noframes></code></a></li>
 
-- `&lt;hr>`
+<li><code>&lt;noembed></code></li>
+  
+  <li><a href="/vypnuty-js#noscript"><code>&lt;noscript></code></a></li>
 
-  - [`&lt;html>`](/html-kostra#html)
+<li><code>&lt;object></code></li>
 
-- `&lt;i>`
+  <li><a href="/seznamy#ol"><code>&lt;ol></code></a></li>
 
-  - [`&lt;iframe>`](/ramy#iframe)
+  <li><a href="/select"><code>&lt;optgroup></code></a></li>
 
-- `&lt;image>`
+  <li><a href="/select"><code>&lt;option></code></a></li>
+  
+  <li><a href="/output"><code>&lt;output></code></a></li>
 
-- `&lt;img>`
+  <li><a href="/odstavec"><code>&lt;p></code></a></li>
 
-  - [`&lt;input>`](/input)
+<li><code>&lt;param></code></li>
+  
+  <li><a href="/vypis-kodu#plaintext"><code>&lt;plaintext></code></a></li>
+  
+  <li><a href="/vypis-kodu#pre"><code>&lt;pre></code></a></li>
+  
+  <li><a href="/progress"><code>&lt;progress></code></a></li>
+  
+  <li><a href="/citace#q"><code>&lt;q></code></a></li>
 
-- `&lt;ins>`
+  <li><a href="/ruby#rb"><code>&lt;rb></code></a></li>
+  
+  <li><a href="/ruby#rp"><code>&lt;rp></code></a></li>
 
-- `&lt;isindex>`
+  <li><a href="/ruby#rt"><code>&lt;rt></code></a></li>
+  
+  <li><a href="/ruby#rtc"><code>&lt;rtc></code></a></li>
 
-- `&lt;kbd>`
+  <li><a href="/ruby"><code>&lt;ruby></code></a></li>
+  
+  <li><a href="/s"><code>&lt;s></code></a></li>
+  
+  <li><a href="/vypis-kodu#samp"><code>&lt;samp></code></a></li>
 
-- `&lt;keygen>`
+<li><code>&lt;script></code></li>
 
-  - [`&lt;label>`](/label-for)
+  <li><a href="/html-kostra#section"><code>&lt;section></code></a></li>
+  
+  <li><a href="/select"><code>&lt;select></code></a></li>
 
-- `&lt;legend>`
+<li><code>&lt;shadow></code></li>
 
-  - [`&lt;li>`](/seznamy#li)
+<li><code>&lt;small></code></li>
 
-- `&lt;link>`
+<li><code>&lt;source></code></li>
 
-  - [`&lt;listing>`](/vypis-kodu#listing)
+<li><code>&lt;spacer></code></li>
 
-  - [`&lt;main>`](/html-kostra#main)
+  <li><a href="/div-span#span"><code>&lt;span></code></a></li>
 
-- `&lt;map>`
+<li><code>&lt;strike></code></li>
 
-  - [`&lt;mark>`](/mark)
+<li><code>&lt;strong></code></li>
 
-- `&lt;marquee>`
+  <li><a href="/css-zaklady#style"><code>&lt;style></code></a></li>
 
-  - [`&lt;menu>`](/seznamy#menu)
+  <li><a href="/horni-dolni-index"><code>&lt;sub></code></a></li>
+  
+  <li><a href="/details"><code>&lt;summary></code></a></li>
 
-  - [`&lt;menuitem>`](/menuitem)
+  <li><a href="/horni-dolni-index"><code>&lt;sup></code></a></li>
 
-- `&lt;meta>`
+  <li><a href="/svg"><code>&lt;svg></code></a></li>
 
-  - [`&lt;meter>`](/meter)
+<li><a href="/html-tabulky#table"><code>&lt;table></code></a></li>
 
-  - [`&lt;nav>`](/html-kostra#nav)
+<li><a href="/html-tabulky#tbody"><code>&lt;tbody></code></a></li>
 
-- `&lt;nobr>`
+<li><a href="/html-tabulky#td"><code>&lt;td></code></a></li>
+  
+  <li><a href="/template"><code>&lt;template></code></a></li>
+  
+  <li><a href="/textarea"><code>&lt;textarea></code></a></li>
 
-  - [`&lt;noframes>`](/ramy#noframes)
+<li><a href="/html-tabulky#tfoot"><code>&lt;tfoot></code></a></li>
 
-- `&lt;noembed>`
+<li><a href="/html-tabulky#th"><code>&lt;th></code></a></li>
 
-  - [`&lt;noscript>`](/vypnuty-js#noscript)
+<li><a href="/html-tabulky#thead"><code>&lt;thead></code></a></li>
+  
+  <li><a href="/time"><code>&lt;time></code></a></li>
 
-- `&lt;object>`
+  <li><a href="/html-kostra#title"><code>&lt;title></code></a></li>
 
-  - [`&lt;ol>`](/seznamy#ol)
+<li><a href="/html-tabulky#tr"><code>&lt;tr></code></a></li>
 
-  - [`&lt;optgroup>`](/select)
+<li><code>&lt;track></code></li>
+  
+  <li><a href="/vypis-kodu#tt"><code>&lt;tt></code></a></li>
 
-  - [`&lt;option>`](/select)
+<li><code>&lt;u></code></li>
 
-  - [`&lt;output>`](/output)
+  <li><a href="/seznamy#ul"><code>&lt;ul></code></a></li>
+  
+  <li><a href="/vypis-kodu#var"><code>&lt;var></code></a></li>
 
-  - [`&lt;p>`](/odstavec)
+<li><code>&lt;video></code></li>
 
-- `&lt;param>`
+<li><code>&lt;wbr></code></li>
+  
+  <li><a href="/vypis-kodu#xmp"><code>&lt;xmp></code></a></li>
+</ol>
 
-  - [`&lt;plaintext>`](/vypis-kodu#plaintext)
-
-  - [`&lt;pre>`](/vypis-kodu#pre)
-
-  - [`&lt;progress>`](/progress)
-
-  - [`&lt;q>`](/citace#q)
-
-  - [`&lt;rb>`](/ruby#rb)
-
-  - [`&lt;rp>`](/ruby#rp)
-
-  - [`&lt;rt>`](/ruby#rt)
-
-  - [`&lt;rtc>`](/ruby#rtc)
-
-  - [`&lt;ruby>`](/ruby)
-
-  - [`&lt;s>`](/s)
-
-  - [`&lt;samp>`](/vypis-kodu#samp)
-
-- `&lt;script>`
-
-  - [`&lt;section>`](/html-kostra#section)
-
-  - [`&lt;select>`](/select)
-
-- `&lt;shadow>`
-
-- `&lt;small>`
-
-- `&lt;source>`
-
-- `&lt;spacer>`
-
-  - [`&lt;span>`](/div-span#span)
-
-- `&lt;strike>`
-
-- `&lt;strong>`
-
-  - [`&lt;style>`](/css-zaklady#style)
-
-  - [`&lt;sub>`](/horni-dolni-index)
-
-  - [`&lt;summary>`](/details)
-
-  - [`&lt;sup>`](/horni-dolni-index)
-
-  - [`&lt;svg>`](/svg)
-
-- [`&lt;table>`](/html-tabulky#table)
-
-- [`&lt;tbody>`](/html-tabulky#tbody)
-
-- [`&lt;td>`](/html-tabulky#td)
-
-  - [`&lt;template>`](/template)
-
-  - [`&lt;textarea>`](/textarea)
-
-- [`&lt;tfoot>`](/html-tabulky#tfoot)
-
-- [`&lt;th>`](/html-tabulky#th)
-
-- [`&lt;thead>`](/html-tabulky#thead)
-
-  - [`&lt;time>`](/time)
-
-  - [`&lt;title>`](/html-kostra#title)
-
-- [`&lt;tr>`](/html-tabulky#tr)
-
-- `&lt;track>`
-
-  - [`&lt;tt>`](/vypis-kodu#tt)
-
-- `&lt;u>`
-
-  - [`&lt;ul>`](/seznamy#ul)
-
-  - [`&lt;var>`](/vypis-kodu#var)
-
-- `&lt;video>`
-
-- `&lt;wbr>`
-
-  - [`&lt;xmp>`](/vypis-kodu#xmp)
-
+<script>
   var znacky = document.getElementById("znacky");
-  vypis.innerHTML = "Popsáno je **" + znacky.getElementsByTagName("a").length + " značek**.";
+  vypis.innerHTML = "Popsáno je <b>" + znacky.getElementsByTagName("a").length + " značek</b>.";
+</script>

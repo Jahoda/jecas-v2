@@ -5,53 +5,65 @@ description: "Test události <code>onclick</code> na různých elementech při v
 date: "2013-10-17"
 last_modification: "2013-10-17"
 status: 1
-tags: ["JavaScript", "Formuláře", "Prohlížeče"]
+tags: ["formulare", "js", "webove-prohlizece"]
+format: "html"
 ---
 
-Při začleňování nějaké JS události vyvolávané kliknutím (`onclick`) je třeba brát v úvahu, že uživatel **navigující se klávesnicí** (což například u **formulářů** nemusí být marginální procento) některé `onclick`y běžně nevyvolá nebo je **dokonce vůbec vyvolat nemůže**.
+<p>Při začleňování nějaké JS události vyvolávané kliknutím (<code>onclick</code>) je třeba brát v úvahu, že uživatel <b>navigující se klávesnicí</b> (což například u <b>formulářů</b> nemusí být marginální procento) některé <code>onclick</code>y běžně nevyvolá nebo je <b>dokonce vůbec vyvolat nemůže</b>.</p>
 
-    `&lt;span&gt;` s `tabindex`em, 
-    `&lt;span&gt;` **bez** `tabindex`u, 
-    [odkaz `&lt;a&gt;` **bez** `tabindex`u](#).
+<div class="live">
+  <ol>
+    <li><span tabindex=1 onclick="alert('kliknuto')"><code>&lt;span&gt;</code> s <code>tabindex</code>em</span>, 
+    <li><span onclick="alert('kliknuto')"><code>&lt;span&gt;</code> <b>bez</b> <code>tabindex</code>u</span>, 
+    <li><a href="#" onclick="alert('kliknuto')">odkaz <code>&lt;a&gt;</code> <b>bez</b> <code>tabindex</code>u</a>.
 
-`&lt;input&gt;`
-`&lt;input type=checkbox&gt;`
-`&lt;input type=submit&gt;`
-`&lt;input type=radio&gt;`
-`&lt;input type=button&gt;`
-  - `&lt;input type=image&gt;`
 
-`&lt;select onclick&gt;` s `tabindex`em + `&lt;option onclick&gt;`
+<li><label><code>&lt;input&gt;</code><input onclick="alert('kliknuto')"></label>
+<li><label><code>&lt;input type=checkbox&gt;</code><input onclick="alert('kliknuto')" type=checkbox></label>
+<li><label><code>&lt;input type=submit&gt;</code><input onclick="alert('kliknuto')" type=submit></label>
+<li><label><code>&lt;input type=radio&gt;</code><input onclick="alert('kliknuto')" type=radio></label>
+<li><label><code>&lt;input type=button&gt;</code><input onclick="alert('kliknuto')" type=button></label>
+  <li><label><code>&lt;input type=image&gt;</code><input type=image src="http://jecas.cz/images/logo2.png" onclick="alert('kliknuto')"></label></li>
+<li><label><code>&lt;select onclick&gt;</code> s <code>tabindex</code>em + <code>&lt;option onclick&gt;</code>
+<select onclick="alert('kliknuto')" tabindex=1>
+<option onclick="alert('kliknuto')">— volba —
+<option onclick="alert('kliknuto')">2
+<option onclick="alert('kliknuto')">3
+</select></label></li>
+<li><label><code>&lt;option onclick&gt;</code>
+<select>
+<option onclick="alert('kliknuto')">— volba —
+<option onclick="alert('kliknuto')">2
+<option onclick="alert('kliknuto')">3
+</select></label></li>
 
-— volba —
-2
-3
 
-`&lt;option onclick&gt;`
+<li><label><code>&lt;textarea onclick&gt;</code>
+<textarea onclick="alert('kliknuto')"></textarea></label></li>
 
-— volba —
-2
-3
+<li><label><code>&lt;textarea onclick&gt;</code>
+<button onclick="alert('kliknuto')">Button</button></label></li>
 
-`&lt;textarea onclick&gt;`
+  
+<li><label><code>&lt;img tabindex&gt;</code>
+<img src="http://jecas.cz/images/logo2.png" tabindex=1></label></li>
+ </ol>
+<form action="#" onclick='alert("Baf")'>
+<ol start=15>
+<li><label><code>&lt;form onclick&gt;</code><input></label></li>
+</ol>
+  </form>
+ 
+</div>
 
-`&lt;textarea onclick&gt;`
-Button
+<h2 id="poznamky">Poznámky</h2>
+<ul>
+  <li>Při <b>přechodu mezi políčky</b> klávesou <kbd>Tab</kbd> se <code>onclick</code> nevyvolá. Při <i>skočení</i> do políčka se ale vyvolá <code>onfocus</code>.</li>
+  <li>Běžné (neformulářové) elementy jde roz<code>onclick</code>ovat přidáním <code>tabindex</code>u.</li>
+  <li><b>Opera</b> umí vyvolat <code>onclick</code> z klávesnice snad úplně na čemkoliv mimo elementů, <b>kam se píše text</b> (<code>&lt;input type=text></code>, <code>&lt;textarea></code>) nebo <code>&lt;select&gt;</code>u. (Při procházení <code>Tab</code>em (když je element o<code>tabindex</code>ovaný) i přes <code>Shift</code>.) Dokonce ten <code>onclick</code> vyvolá na <code>&lt;option&gt;</code>u, i když se jen vybere šipkami ze <code>&lt;select&gt;</code>u (bez nějakého výběru z roletového seznamu).
+    <li><b>IE v <a href="/doctype#quirk">quirku</a></b> to umí snad na všem, čemu se přidá <code>tabindex</code>. A na většině <code>&lt;input&gt;</code>ů (snad mimo <code>radio</code> a <code>checkbox</code>). Na <code>&lt;select&gt;</code>u ne.
+  <li><b>Explorer ve standardním režimu</b> navíc <code>onclick</code>uje i na <code>&lt;input type=text&gt;</code>.</li>
+      <li><b>Firefox a Chrome</b> se chovají víceméně podobně. <code>Onclick</code>ují na odesílacích prvcích (<code>&lt;input type=image|submit|button&gt;</code>, <code>&lt;button&gt;</code>) a odkazech.
 
-`&lt;img tabindex&gt;`
-
-- `&lt;form onclick&gt;`
-
-## Poznámky
-
-  - Při **přechodu mezi políčky** klávesou Tab se `onclick` nevyvolá. Při *skočení* do políčka se ale vyvolá `onfocus`.
-
-  - Běžné (neformulářové) elementy jde roz`onclick`ovat přidáním `tabindex`u.
-
-  **Opera** umí vyvolat `onclick` z klávesnice snad úplně na čemkoliv mimo elementů, **kam se píše text** (`&lt;input type=text>`, `&lt;textarea>`) nebo `&lt;select&gt;`u. (Při procházení `Tab`em (když je element o`tabindex`ovaný) i přes `Shift`.) Dokonce ten `onclick` vyvolá na `&lt;option&gt;`u, i když se jen vybere šipkami ze `&lt;select&gt;`u (bez nějakého výběru z roletového seznamu).
-    **IE v [quirku](/doctype#quirk)** to umí snad na všem, čemu se přidá `tabindex`. A na většině `&lt;input&gt;`ů (snad mimo `radio` a `checkbox`). Na `&lt;select&gt;`u ne.
-  - **Explorer ve standardním režimu** navíc `onclick`uje i na `&lt;input type=text&gt;`.
-
-      **Firefox a Chrome** se chovají víceméně podobně. `Onclick`ují na odesílacích prvcích (`&lt;input type=image|submit|button&gt;`, `&lt;button&gt;`) a odkazech.
-
-- **Chrome** nekliká na `&lt;option>`ech.
+<li><b>Chrome</b> nekliká na <code>&lt;option></code>ech.</li>  
+</ul>

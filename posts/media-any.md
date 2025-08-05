@@ -5,173 +5,217 @@ description: "CSS pravidla <code>@media</code> <code>any-pointer</code> a <code>
 date: "2015-03-11"
 last_modification: "2019-12-04"
 status: 1
-tags: ["CSS", "Hotová řešení", "CSS pravidla"]
+tags: ["css", "css-pravidla", "hotova-reseni"]
+format: "html"
 ---
 
-Kromě toho, že se koncová zařízení pro prohlížení webových stránek liší **rozměry obrazovky** (například od cca 4" mobilů po 50" televise), odlišují se také **způsobem ovládání**. Zjednodušeně se weby ovládají:
+<p>Kromě toho, že se koncová zařízení pro prohlížení webových stránek liší <b>rozměry obrazovky</b> (například od cca 4" mobilů po 50" televise), odlišují se také <b>způsobem ovládání</b>. Zjednodušeně se weby ovládají:</p>
 
-  - myší,
+<ul>
+  <li>myší,</li>
+  <li>dotyky prstů,</li>
+  <li>dotykovým perem (stylusem)</li>
+</ul>
 
-  - dotyky prstů,
 
-  - dotykovým perem (stylusem)
+<p>Některá zařízení navíc umožňují způsoby ovládání kombinovat – typicky notebooky s dotykovou obrazovkou nebo tablet s připojenou myší.</p>
 
-Některá zařízení navíc umožňují způsoby ovládání kombinovat – typicky notebooky s dotykovou obrazovkou nebo tablet s připojenou myší.
 
-Pro případné odlišení ovládacích prvků pomocí CSS v závislosti na **schopnostech ukazatele** byla zavedena `@media` pravidla `any-*`.
+<p>Pro případné odlišení ovládacích prvků pomocí CSS v závislosti na <b>schopnostech ukazatele</b> byla zavedena <code>@media</code> pravidla <code>any-*</code>.</p>
 
-## Test podpory
 
-Zatím je podporuje **Chrome 41+** a **Opera 28+**.
 
-V podporovaných prohlížečích budou některá z následujících políček zelená v závislosti na dostupných způsobech ovládání.
+<h2 id="test">Test podpory</h2>
 
-### `any-hover`
+<p>Zatím je podporuje <b>Chrome 41+</b> a <b>Opera 28+</b>.</p>
 
-`any-hover`
+<p>V podporovaných prohlížečích budou některá z následujících políček zelená v závislosti na dostupných způsobech ovládání.</p>
 
-`any-hover: none`
 
-`any-hover: on-demand`
 
-`any-hover: hover`
 
-### `any-pointer`
+<div class="live-any">
+<h3><code>any-hover</code></h3>
 
-`any-pointer`
+<p class="any-hover"><code>any-hover</code></p>
+<p class="any-hover-none"><code>any-hover: none</code></p>
+<p class="any-hover-on-demand"><code>any-hover: on-demand</code></p>
+<p class="any-hover-hover"><code>any-hover: hover</code></p>  
 
-`any-pointer: coarse`
+<h3><code>any-pointer</code></h3>
 
-`any-hover: fine`
+<p class="any-pointer"><code>any-pointer</code></p>
+<p class="any-pointer-coarse"><code>any-pointer: coarse</code></p>
+<p class="any-pointer-fine"><code>any-hover: fine</code></p>
 
-### `hover`
+<h3><code>hover</code></h3>
 
-`hover: hover`
+<p class="hover-hover"><code>hover: hover</code></p>
+<p class="hover-none"><code>hover: none</code></p>
+</div>
 
-`hover: none`
 
-[Samostatná živá ukázka](http://kod.djpw.cz/rypb) – rozlišení dotykového zařízení a ovládání myší
+<p><a href="http://kod.djpw.cz/rypb">Samostatná živá ukázka</a> – rozlišení dotykového zařízení a ovládání myší</p>
 
-## Zápis
 
-```
-@media (any-hover: hover) {
+<h2 id="zapis">Zápis</h2>
+
+
+<pre><code>@media (any-hover: hover) {
   /* zařízení je schopno :hoveru */
-}
-```
+}</code></pre>
 
-Pravidla `any-*` se dělí na `hover` (najetí) a `pointer` (ukazatel).
 
-## `any-hover`
+<p>Pravidla <code>any-*</code> se dělí na <code>hover</code> (najetí) a <code>pointer</code> (ukazatel).</p>
 
-První pravidlo dokáže detekovat, jestli je zařízení schopno `:hover`u.
 
-  `@media (any-hover)`
+
+<h2 id="hover"><code>any-hover</code></h2>
+
+<p>První pravidlo dokáže detekovat, jestli je zařízení schopno <code>:hover</code>u.</p>
+
+
+<dl>
+  <dt id="any-hover"><code>@media (any-hover)</code></dt>
+  <dd>
+    <p>Zařízení dokáže nějak hover vytvořit.</p>
+  </dd>
   
-    Zařízení dokáže nějak hover vytvořit.
-
-  `@media (any-hover: none)`
+  <dt id="any-hover-none"><code>@media (any-hover: none)</code></dt>
+  <dd>
+    <p>Hover není podporován.</p>
+  </dd>
   
-    Hover není podporován.
-
-  `@media (any-hover: on-demand)`
+  <dt id="any-hover-on-demand"><code>@media (any-hover: on-demand)</code></dt>
+  <dd>
+    <p>Hover je možné vyvolat, byť komplikovanějším způsobem. Typicky mobilní prohlížeče vyvolávají <code>:hover</code> po <b>delším podržení prstu</b>.</p>
+  </dd>  
   
-    Hover je možné vyvolat, byť komplikovanějším způsobem. Typicky mobilní prohlížeče vyvolávají `:hover` po **delším podržení prstu**.
+  <dt id="any-hover-hover"><code>@media (any-hover: hover)</code></dt>
+  <dd>
+    <p>Zařízení nemá žádný limit ve vyvolávání hoveru. Typicky počítač/notebook/tablet s myší.</p>
+  </dd>  
+</dl>
 
-  `@media (any-hover: hover)`
+
+<h2 id="pointer"><code>any-pointer</code></h2>
+
+<p>Pravidlo <code>any-pointer</code> slouží k vytvoření podmínky na <b>přesnost ukazatele</b>.</p>
+
+<dl>
+  <dt id="any-pointer"><code>@media (any-pointer)</code></dt>
+  <dd>
+    <p>Zařízení má nějaký ukazatel.</p>
+  </dd>
   
-    Zařízení nemá žádný limit ve vyvolávání hoveru. Typicky počítač/notebook/tablet s myší.
-
-## `any-pointer`
-
-Pravidlo `any-pointer` slouží k vytvoření podmínky na **přesnost ukazatele**.
-
-  `@media (any-pointer)`
+  <dt id="any-pointer-coarse"><code>@media (any-pointer: coarse)</code></dt>
+  <dd>
+    <p>Přesnost ukazatele není nic moc (<i lang="en">coarse</i> je anglicky <i>hrubý</i>). Týká se zejména ovládání prsty u dotykových obrazovek (mobily,  tablety, …).</p>
+  </dd> 
   
-    Zařízení má nějaký ukazatel.
-
-  `@media (any-pointer: coarse)`
   
-    Přesnost ukazatele není nic moc (*coarse* je anglicky *hrubý*). Týká se zejména ovládání prsty u dotykových obrazovek (mobily,  tablety, …).
+  <dt id="any-pointer-fine"><code>@media (any-pointer: fine)</code></dt>
+  <dd>
+    <p>Ukazatel je velmi přesný. Typicky ovládání myší na desktopu/notebooku.</p>
+  </dd>   
+</dl>
 
-  `@media (any-pointer: fine)`
-  
-    Ukazatel je velmi přesný. Typicky ovládání myší na desktopu/notebooku.
 
-## `hover`
 
-Existuje ještě pravidlo `hover` bez `any`:
 
-```
-@media (hover: hover) {
+<h2 id="hover"><code>hover</code></h2>
+
+<p>Existuje ještě pravidlo <code>hover</code> bez <code>any</code>:</p>
+
+<pre><code>@media (hover: hover) {
     /* primární ovládání umí hover (myš/touchpad) */
 }
 
 @media (hover: none) {
     /* primární ovládání neumí hover (dotyková obrazovka) */
-}
-```
+}</code></pre>
 
-Dle specifikace by `hover` mělo znamenat, že primární ovládání umí *hover*, zatímco `any-hover`, že nějaký způsob ovládání umí *hover*.
 
-V praxi se mi nepodařilo zpozorovat rozdíl.
+<p>Dle specifikace by <code>hover</code> mělo znamenat, že primární ovládání umí <i lang="en">hover</i>, zatímco <code>any-hover</code>, že nějaký způsob ovládání umí <i lang="en">hover</i>.</p>
 
-## Detekce dotykové obrazovky
+<p>V praxi se mi nepodařilo zpozorovat rozdíl.</p>
 
-Asi nejzajímavější využití `any-hover` a `any-pointer` je detekce dotykového způsobu ovládání, které je jinak obtížně proveditelné.
 
-Jde sice provést něco jako:
 
-```
-if ('ontouchstart' in window) {
+<h2 id="detekce-dotyku">Detekce dotykové obrazovky</h2>
+
+<p>Asi nejzajímavější využití <code>any-hover</code> a <code>any-pointer</code> je detekce dotykového způsobu ovládání, které je jinak obtížně proveditelné.</p>
+
+<p>Jde sice provést něco jako:</p>
+
+<pre><code>if ('ontouchstart' in window) {
   // podporuje dotyky
-}
-```
+}</code></pre>
 
-Ale to skončí positivně i na noteboocích s dotykovou obrazovkou, kde je připojena myš / dostupný trackpoint nebo touchpad.
 
-Detekovat `:hover` by se zase nabízelo například při `onmousemove`. Tuto událost ale z důvodů kompatibility provádějí i dotyková zařízení. Při *tapnutí* se vyvolají následující události v uvedeném pořadí:
 
-  - touchstart
 
-  - touchmove
 
-  - touchend
+<p>Ale to skončí positivně i na noteboocích s dotykovou obrazovkou, kde je připojena myš / dostupný trackpoint nebo touchpad.</p>
 
-  - mouseover
 
-  - mousemove
+<p>Detekovat <code>:hover</code> by se zase nabízelo například při <code>onmousemove</code>. Tuto událost ale z důvodů kompatibility provádějí i dotyková zařízení. Při <i>tapnutí</i> se vyvolají následující události v uvedeném pořadí:</p>
 
-  - mousedown
+<ol>
+  <li>touchstart</li>
+  <li>touchmove</li>
+  <li>touchend</li>
+  <li>mouseover</li>
+  <li>mousemove</li>
+  <li>mousedown</li>
+  <li>mouseup</li>
+  <li>click</li>
+</ol>
 
-  - mouseup
 
-  - click
 
-Nabízí se tak pro určení *hoveru* na stránce poslouchat pohyb myši (`mousemove`) a v případě, že nejde o pohyb mezi `touchstart` a `click`, považovat zařízení za schopné hoveru.
 
-### Toto zařízení
 
-`Podporuje dotyky`
 
-`Podporuje hover`
+<p>Nabízí se tak pro určení <i>hoveru</i> na stránce poslouchat pohyb myši (<code>mousemove</code>) a v případě, že nejde o pohyb mezi <code>touchstart</code> a <code>click</code>, považovat zařízení za schopné hoveru.</p>
 
-[Samostatná živá ukázka](http://kod.djpw.cz/bzpb) – detekce podpory dotyků a hoveru v JavaScriptu
+<div class="live-any">
+<h3>Toto zařízení</h3>
 
-Hlavní problém této detekce je v tom, že se provede až v okamžiku, když návštěvník **pohne myší**.
+<p id="touchTest"><code>Podporuje dotyky</code></p>
+<p id="hoverTest"><code>Podporuje hover</code></p>
+</div>
 
-## Odkazy jinam
+<p><a href="http://kod.djpw.cz/bzpb">Samostatná živá ukázka</a> – detekce podpory dotyků a hoveru v JavaScriptu</p>
 
-  - Dev.Opera: [Opera 28 released](https://dev.opera.com/blog/opera-28/)
+<p>Hlavní problém této detekce je v tom, že se provede až v okamžiku, když návštěvník <b>pohne myší</b>.</p>
 
-  - Dev.Opera: [Interaction Media Features and their potential (for incorrect assumptions)](https://dev.opera.com/articles/media-features/)
+<!-- stará ukázka: http://kod.djpw.cz/azpb -->
 
-  - Frontendisti.cz: [Detekce dotykové obrazovky](https://www.facebook.com/groups/frontendisti/permalink/1658422237702627/)
+<!--
+<p>Mohlo by se zdát, že by šla použít událost <code>mouseenter</code>. I tu ale dotyková zařízení dokáží vyvolat.</p>
 
-  - CSS specifikace: [any-pointer and any-hover](http://dev.w3.org/csswg/mediaqueries-4/#any-input)
+<p><a href="http://kod.djpw.cz/rzpb">Živá ukázka</a> – detekce hoveru pomocí <code>mouseenter</code></p>
+-->
 
-  - ['any-pointer' and 'any-hover' Media Queries Sample](https://googlechrome.github.io/samples/media-hover-pointer/)
 
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>Dev.Opera: <a href="https://dev.opera.com/blog/opera-28/">Opera 28 released</a></li>
+  
+  <li>Dev.Opera: <a href="https://dev.opera.com/articles/media-features/">Interaction Media Features and their potential (for incorrect assumptions)</a></li>
+  
+  <li>Frontendisti.cz: <a href="https://www.facebook.com/groups/frontendisti/permalink/1658422237702627/">Detekce dotykové obrazovky</a></li>
+  
+  <li>CSS specifikace: <a href="http://dev.w3.org/csswg/mediaqueries-4/#any-input">any-pointer and any-hover</a></li>
+  
+  <li><a href="https://googlechrome.github.io/samples/media-hover-pointer/">'any-pointer' and 'any-hover' Media Queries Sample</a></li>
+</ul>
+
+
+<style>
 .live-any p {
     background: #FF9999;
     padding: .5em .3em;
@@ -210,7 +254,10 @@ Hlavní problém této detekce je v tom, že se provede až v okamžiku, když n
 @media (any-pointer: fine) {
 	.live-any .any-pointer-fine {background: #99FF99}
 }
+</style>
 
+
+<script>
 if ('ontouchstart' in window) {
     touchTest.style.background = "#99FF99";
 }
@@ -233,4 +280,5 @@ document.documentElement.addEventListener("touchstart", function() {
 
 document.documentElement.addEventListener("click", function() {
     clicked = false;
-});
+});  
+</script>

@@ -6,12 +6,15 @@ date: "2014-11-17"
 last_modification: "2014-11-17"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - [Fulltextové vyhledávání v MySQL](http://php.vrana.cz/fulltextove-vyhledavani-v-mysql.php)
-
-  - [Nastavení fulltextového vyhledávání MySQL](http://php.vrana.cz/nastaveni-fulltextoveho-vyhledavani-mysql.php)
-
-  - [SuggestInputv2](http://addons.nette.org/peci1/suggestinput)
+<ul>
+  <li><a href="http://php.vrana.cz/fulltextove-vyhledavani-v-mysql.php">Fulltextové vyhledávání v MySQL</a></li>
+  
+  <li><a href="http://php.vrana.cz/nastaveni-fulltextoveho-vyhledavani-mysql.php">Nastavení fulltextového vyhledávání MySQL</a></li>
+  
+  <li><a href="http://addons.nette.org/peci1/suggestinput">SuggestInputv2</a></li>
+</ul>

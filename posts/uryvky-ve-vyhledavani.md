@@ -6,6 +6,9 @@ date: "2015-09-28"
 last_modification: "2015-09-28"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Google Glossary: Revenge of Mega-SERP](https://moz.com/blog/google-glossary)
+<ul>
+  <li><a href="https://moz.com/blog/google-glossary">Google Glossary: Revenge of Mega-SERP</a></li>
+</ul>

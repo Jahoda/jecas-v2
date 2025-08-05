@@ -5,129 +5,168 @@ description: "Jaký je ebook o CSS3 od Martina Michálka."
 date: "2015-07-27"
 last_modification: "2016-07-11"
 status: 1
-tags: ["CSS", "Produktivita", "Recense"]
+tags: ["css", "produktivita", "recense"]
+format: "html"
 ---
 
-E-book je k disposici ve formátech **PDF, ePUB a MOBI/Kindle**.
+<p><img src="/files/article-large/vzhuru-do-css3.png" alt="Vzhůru do CSS3" class="border"></p>
 
-  - Cena: 249 Kč
 
-  - Počet stran: 110
 
-  - Doba čtení: cca 100 minut
 
-    - **[Vzhůru do CSS3](http://www.vzhurudolu.cz/ebook)** – Ebook o 22 nových CSS vlastnostech plný tutoriálů a referenčních příruček.
 
-E-kniha je vhodná především pro **HTML/CSS kodéry**, kteří poslední roky nesledovali, co je možné v závislosti na podpoře v prohlížečích používat.
 
-Pro poctivé čtenáře jecas.cz bude e-book spíš pěkné **ucelené opakování**, ale i tak se dozví spousto věcí, o kterých se zde nepíše.
 
-Značná část obsahu knihy pochází z Martinovy příručky, která je dostupná online:
 
-    - Vzhůru dolů: [CSS3 Příručka](http://www.vzhurudolu.cz/prirucka/css3)
 
-Texty z původní online příručky jsou **vylepšeny a upraveny** – nejedná se tedy o pouhou kopii obsahu z webu.
 
-## Obsah e-knihy
 
-Kniha se dá rozdělit na čtyři části:
 
-    **Proměny kódeřiny** – popisuje změny v procesu tvorby webu způsobené zejména **rozšířením mobilních zařízení** a nutností tvořit web [responsivně](/responsive).
 
-    Při návrhu webu se již neuvažuje o **3 různých prohlížečích a 3 různých rozlišeních**, ale cílová zařízení jsou tak rozmanitá, že je nutné tvořit stránky **universálně**.
 
-    **Nástroje, postupy, technologie** – pro mě nejzajímavější část. Obsahuje cenné rady, jak si **zefektivnit** samotný proces kódování využitím:
 
-      - preprocesorů,
 
-      - postprocesorů,
+<p>E-book je k disposici ve formátech <b>PDF, ePUB a MOBI/Kindle</b>.</p>
 
-      - autoprefixeru (nástroj automaticky přidávající potřebné [CSS prefixy](/css-prefixy)),
+<ul>
+  <li>Cena: 249 Kč</li>
+  <li>Počet stran: 110</li>
+  <li>Doba čtení: cca 100 minut</li>
+</ul>
 
-      - CSS frameworků typu **Bootstrap**
+<div class="external-content">
+  <ul>
+    <li><b><a href="http://www.vzhurudolu.cz/ebook">Vzhůru do CSS3</a></b> – Ebook o 22 nových CSS vlastnostech plný tutoriálů a referenčních příruček.</li>
+  </ul>
+</div>
 
-    Dále je zmíněn postup, jak [testovat v různých prohlížečích](/prohlizece). Nebo mít během psaní kódu **okamžitý náhled výsledku** v prohlížeči díky nástroji [Browsersync](http://www.browsersync.io/). Ten prý navíc umožňuje i pohodlné **testování webu v rámci lokální sítě** na více zařízeních zároveň.
+<p>E-kniha je vhodná především pro <b>HTML/CSS kodéry</b>, kteří poslední roky nesledovali, co je možné v závislosti na podpoře v prohlížečích používat.</p>
 
-    Pro živý náhled CSS používám [rozšíření LiveStyle](/zivy-nahled-css) do [Sublime Text](/st), ale **Browsersync** by mohl stát za vyzkoušení.
+<p>Pro poctivé čtenáře jecas.cz bude e-book spíš pěkné <b>ucelené opakování</b>, ale i tak se dozví spousto věcí, o kterých se zde nepíše.</p>
 
-    **Fallback strategie pro starší prohlížeče** – celkem 5 způsobů, jak řešit situace, kdy **prohlížeč něco nezná**.
+<p>Značná část obsahu knihy pochází z Martinovy příručky, která je dostupná online:</p>
 
-    Od prostého oželení lepšího výsledku (např. CSS přechody [`transition`](/transition)), přes ignorování neznámých vlastností (např. nastavování rozměrů pomocí [`calc`](/calc#starsi)) až po [polyfilly v JS](/polyfill) a automatické generátory fallbacků.
+<div class="external-content">
+  <ul>
+    <li>Vzhůru dolů: <a href="http://www.vzhurudolu.cz/prirucka/css3">CSS3 Příručka</a></li>
+  </ul>
+</div>
 
-    **Referenční příručka CSS3** – nejrozsáhlejší část knihy.
 
-    Většinu vlastností jsem zde sice již popsal (vedou na ně odkazy v následujícím seznamu), ale je zajímavé mít názor i od někoho jiného.
+<p>Texty z původní online příručky jsou <b>vylepšeny a upraveny</b> – nejedná se tedy o pouhou kopii obsahu z webu.</p>
 
-Vlastnosti textu
-	
-      - [Text Overflow](/oriznuti-textu) – způsob přetékání textu
 
-      - [Text Shadow](/text-shadow) – stín textu
 
-		- Font Face – vlastní fonty, tipy a triky, netechnické aspekty
 
-Vlastnosti pozadí
-	
-      - [Background Clip](/background-clip) – míra roztažení pozadí
+<h2 id="cast">Obsah e-knihy</h2>
 
-		- Background Origin – pozice začátku pozadí
+<p>Kniha se dá rozdělit na čtyři části:</p>
 
-      - [Background Size](/obrazkove-pozadi) – velikost obrázku na pozadí
-
-      - [Gradients](/gradient) – barevné přechody
-
-      - [Multiple Backgrounds](/vice-obrazku) – více obrázků na pozadí
-
-Vlastnosti rámečků
+<ol>
+  <li>
+    <p><b>Proměny kódeřiny</b> – popisuje změny v procesu tvorby webu způsobené zejména <b>rozšířením mobilních zařízení</b> a nutností tvořit web <a href="/responsive">responsivně</a>.</p>
+    <p>Při návrhu webu se již neuvažuje o <b>3 různých prohlížečích a 3 různých rozlišeních</b>, ale cílová zařízení jsou tak rozmanitá, že je nutné tvořit stránky <b>universálně</b>.</p>
+  </li>
   
-    - [Border Image](/border-image) – rámeček vykreslený obrázkem
-
-    - [Border Radius](/border-radius) – poloměr rohu rámečku
-
-Vlastnosti boxu
   
-    - [Box Shadow](/box-shadow) – stínování elementu
-
-    - [Box Sizing](/box-sizing) – způsob počítání velikosti boxu
-
-  - [Media Queries](/responsivni-web#media) – podmíněné zobrazení pro média
-
-CSS transformace
+  <li>
+    <p><b>Nástroje, postupy, technologie</b> – pro mě nejzajímavější část. Obsahuje cenné rady, jak si <b>zefektivnit</b> samotný proces kódování využitím:</p>
+    
+    <ul>
+      <li>preprocesorů,</li>
+      <li>postprocesorů,</li>
+      <li>autoprefixeru (nástroj automaticky přidávající potřebné <a href="/css-prefixy">CSS prefixy</a>),</li>
+      <li>CSS frameworků typu <b>Bootstrap</b></li>
+    </ul>
+    
+    <p>Dále je zmíněn postup, jak <a href="/prohlizece">testovat v různých prohlížečích</a>. Nebo mít během psaní kódu <b>okamžitý náhled výsledku</b> v prohlížeči díky nástroji <a href="http://www.browsersync.io/">Browsersync</a>. Ten prý navíc umožňuje i pohodlné <b>testování webu v rámci lokální sítě</b> na více zařízeních zároveň.</p>
+    
+    <p>Pro živý náhled CSS používám <a href="/zivy-nahled-css">rozšíření LiveStyle</a> do <a href="/st">Sublime Text</a>, ale <b>Browsersync</b> by mohl stát za vyzkoušení.</p>
+  </li>
   
-    - Transforms – proměny objektu
-
-CSS animace
-
-  - [Transitions](/transition) – jednoduché animace přechodu
-
-  - [Animations](/animation) – plnohodnotné animace
-
-Layout v CSS3
-
-- Multi-column Layout – vícesloupcová sazba textu
-
-  - [Flexbox](/flexbox) – layout pomocí pružných boxů
-
-Vybrané další CSS3 vlastnosti
-
-- Nové CSS3 jednotky – rem, vw, vh
-
-  - [RGBa barva](/rgba) – barva s poloprůhledností
   
-  - [Selektory](/css-selektory)
+  <li>
+    <p><b>Fallback strategie pro starší prohlížeče</b> – celkem 5 způsobů, jak řešit situace, kdy <b>prohlížeč něco nezná</b>.</p>
+    
+    <p>Od prostého oželení lepšího výsledku (např. CSS přechody <a href="/transition"><code>transition</code></a>), přes ignorování neznámých vlastností (např. nastavování rozměrů pomocí <a href="/calc#starsi"><code>calc</code></a>) až po <a href="/polyfill">polyfilly v JS</a> a automatické generátory fallbacků.</p>
+  </li>  
+  
+  <li>
+    <p><b>Referenční příručka CSS3</b> – nejrozsáhlejší část knihy.</p>
+    
+    <p>Většinu vlastností jsem zde sice již popsal (vedou na ně odkazy v následujícím seznamu), ale je zajímavé mít názor i od někoho jiného.</p>    
+<ul>
+<li>Vlastnosti textu
+	<ul>
+      <li><a href="/oriznuti-textu">Text Overflow</a> – způsob přetékání textu</li>
+      <li><a href="/text-shadow">Text Shadow</a> – stín textu</li>
+		<li>Font Face – vlastní fonty, tipy a triky, netechnické aspekty</li>
+	</ul>
+</li>	
+<li>Vlastnosti pozadí
+	<ul>
+      <li><a href="/background-clip">Background Clip</a> – míra roztažení pozadí</li>
+		<li>Background Origin – pozice začátku pozadí</li>
+      <li><a href="/obrazkove-pozadi">Background Size</a> – velikost obrázku na pozadí</li>
+      <li><a href="/gradient">Gradients</a> – barevné přechody</li>
+      <li><a href="/vice-obrazku">Multiple Backgrounds</a> – více obrázků na pozadí</li>
+	</ul>
+</li>
+<li>Vlastnosti rámečků
+  <ul>
+    <li><a href="/border-image">Border Image</a> – rámeček vykreslený obrázkem</li>
+    <li><a href="/border-radius">Border Radius</a> – poloměr rohu rámečku</li>    
+  </ul>
+</li>
+<li>Vlastnosti boxu
+  <ul>
+    <li><a href="/box-shadow">Box Shadow</a> – stínování elementu</li>
+    <li><a href="/box-sizing">Box Sizing</a> – způsob počítání velikosti boxu</li>    
+  </ul>
+</li>
+  <li><a href="/responsivni-web#media">Media Queries</a> – podmíněné zobrazení pro média</li>
+<li>CSS transformace
+  <ul>
+    <li>Transforms – proměny objektu</li>  
+  </ul></li>
+<li>CSS animace
+<ul>
+  <li><a href="/transition">Transitions</a> – jednoduché animace přechodu</li>
+  <li><a href="/animation">Animations</a> – plnohodnotné animace</li>  
+</ul></li>
+<li>Layout v CSS3
+<ul>
+<li>Multi-column Layout – vícesloupcová sazba textu</li>
+  <li><a href="/flexbox">Flexbox</a> – layout pomocí pružných boxů</li>  
+</ul></li>
 
- Nestandardní vlastnosti
+<li>Vybrané další CSS3 vlastnosti
+<ul>
+<li>Nové CSS3 jednotky – rem, vw, vh</li>
+  <li><a href="/rgba">RGBa barva</a> – barva s poloprůhledností</li>  
+  <li><a href="/css-selektory">Selektory</a></li>
+</ul>
+</li>
+<li> Nestandardní vlastnosti
+<ul>
+  <li><a href="/box-reflect">Box Reflection</a> – odlesk</li>
+</ul></li>
+</ul>    
+  </li>
+</ol>
 
-  - [Box Reflection](/box-reflect) – odlesk
 
-## Závěr
 
-Ačkoliv by se mohlo zdát, že značná část obsahu e-booku se dá najít jinde, pro nastudování si současných **CSS 3 postupů** půjde v češtině těžko najít lepší **kompletní přehled**.
+<h2 id="zaver">Závěr</h2>
 
-E-kniha Vzhůru do CSS3 se navíc dobře čte a ani neobsahuje překlepy, kterých bych si všiml.
+<p>Ačkoliv by se mohlo zdát, že značná část obsahu e-booku se dá najít jinde, pro nastudování si současných <b>CSS 3 postupů</b> půjde v češtině těžko najít lepší <b>kompletní přehled</b>.</p>
 
-Nenarazil jsem ani na nějaké vážné faktické chyby nebo případy, že by autor něco podstatného zamlčel.
+<p>E-kniha Vzhůru do CSS3 se navíc dobře čte a ani neobsahuje překlepy, kterých bych si všiml.</p>
 
-Pro webové tvůrce, kteří začínají nebo jsou mírně pokročilí či o CSS 3 mnoho neslyšeli, proto **doporučuji** e-book **[Vzhůru do CSS3](http://www.vzhurudolu.cz/ebook)** k přečtení.
+<p>Nenarazil jsem ani na nějaké vážné faktické chyby nebo případy, že by autor něco podstatného zamlčel.</p>
 
-  Poznámka: E-book jsem si koupil v předprodeji. Za napsání této recense nejsem autorem knihy placený.
+<p>Pro webové tvůrce, kteří začínají nebo jsou mírně pokročilí či o CSS 3 mnoho neslyšeli, proto <b>doporučuji</b> e-book <b><a href="http://www.vzhurudolu.cz/ebook">Vzhůru do CSS3</a></b> k přečtení.</p>
+
+<div class="">
+  <p><small>Poznámka: E-book jsem si koupil v předprodeji. Za napsání této recense nejsem autorem knihy placený.</small></p>
+</div>

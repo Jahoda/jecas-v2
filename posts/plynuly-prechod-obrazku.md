@@ -6,6 +6,7 @@ date: "2017-06-28"
 last_modification: "2017-06-28"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://kod.djpw.cz/qbic

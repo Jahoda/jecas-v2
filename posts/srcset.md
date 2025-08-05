@@ -6,12 +6,16 @@ date: "2015-11-01"
 last_modification: "2015-11-01"
 status: 0
 tags: []
+format: "html"
 ---
 
-Pro responsivní design jsou obrázky jedním z nejsložitějších problémů.
+<p>Pro responsivní design jsou obrázky jedním z nejsložitějších problémů.</p>
 
-Jediný obrázek se těžko bude hodit pro všechna zařízení s různě **velkou obrazovkou** a různou **hustotou pixelů**.
+<p>Jediný obrázek se těžko bude hodit pro všechna zařízení s různě <b>velkou obrazovkou</b> a různou <b>hustotou pixelů</b>.</p>
 
-## Odkazy jinam
 
-  - Sitepoint: [How to Build Responsive Images with srcset](http://www.sitepoint.com/how-to-build-responsive-images-with-srcset/)
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>Sitepoint: <a href="http://www.sitepoint.com/how-to-build-responsive-images-with-srcset/">How to Build Responsive Images with srcset</a></li>
+</ul>

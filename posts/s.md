@@ -5,56 +5,65 @@ description: "Značka <code>&lt;s></code> slouží k označení obsahu, který u
 date: "2014-10-31"
 last_modification: "2014-10-31"
 status: 1
-tags: ["HTML", "HTML značky", "Hotová řešení"]
+tags: ["hotova-reseni", "html", "html-tagy"]
+format: "html"
 ---
 
-HTML element `&lt;s>` má počáteční i koncovou značku [povinnou](/html-znacky#povinne). Jedná se o značku řádkovou – podobně jako například `&lt;span>`. Nemá **specifické atributy**, podporuje pouze ty *globální*/obecné (`title`, `class`, `id` a podobně).
+<p>HTML element <code>&lt;s></code> má počáteční i koncovou značku <a href="/html-znacky#povinne">povinnou</a>. Jedná se o značku řádkovou – podobně jako například <code>&lt;span></code>. Nemá <b>specifické atributy</b>, podporuje pouze ty <i>globální</i>/obecné (<code>title</code>, <code>class</code>, <code>id</code> a podobně).</p>
 
-```
-&lt;s>Obsah&lt;/s>
-```
+<pre><code>&lt;s>Obsah&lt;/s></code></pre>
 
-Funguje snad ve všech prohlížečích, ve výchozím stylu je obsah **přeškrtnutý** (`text-decoration: line-through`).
+<p>Funguje snad ve všech prohlížečích, ve výchozím stylu je obsah <b>přeškrtnutý</b> (<code>text-decoration: line-through</code>).</p>
 
-  Obsah značky `&lt;s>` je přeškrtnutý.
+<div class="live">
+  <p><s>Obsah značky <code>&lt;s></code> je přeškrtnutý.</s></p>
+</div>
 
-## Využití
 
-Značka `&lt;s>` má **sémantický význam** pro označení obsahu, který je již neaktuální či nerelevantní. Nabízí se například pro označení původní ceny před slevou.
+<h2 id="vyuziti">Využití</h2>
 
-```
-&lt;p>
+<p>Značka <code>&lt;s></code> má <b>sémantický význam</b> pro označení obsahu, který je již neaktuální či nerelevantní. Nabízí se například pro označení původní ceny před slevou.</p>
+
+<pre><code>&lt;p>
   &lt;s>Fytopuf stojí 900 Kč.&lt;/s>
 &lt;/p>
 &lt;p>
   Fytopuf je nyní jen za 800 Kč.
-&lt;/p>
-```
+&lt;/p></code></pre>
 
-[Ukázka](http://kod.djpw.cz/rahb)
+<p><a href="http://kod.djpw.cz/rahb">Ukázka</a></p>
 
-## Podobné značky
 
-Repertoár HTML značek obsahuje ještě další dvě, které mají stejný výchozí styl (jsou přeškrtnuté).
 
-  - `&lt;strike>`
 
-  - `&lt;del>`
+<h2 id="podobne">Podobné značky</h2>
 
-Značka `&lt;strike>` je tzv. *obsolete* (zastaralá/překonaná), protože podle HTML specifikace nemá na rozdíl od `&lt;s>` sémantický význam.
+<p>Repertoár HTML značek obsahuje ještě další dvě, které mají stejný výchozí styl (jsou přeškrtnuté).</p>
 
-Element `&lt;del>` potom slouží pro označení obsahu, který **byl ze stránky vymazán**. Má zvláštní atributy `datetime` (pro označení času smazání) a `cite` pro uvedení URL zdůvodňující **důvod smazání**.
+<ul>
+  <li><code>&lt;strike></code></li>
+  <li><code>&lt;del></code></li>  
+</ul>
 
-## Rozdíl `&lt;s>` a `&lt;del>`
+<p>Značka <code>&lt;strike></code> je tzv. <i>obsolete</i> (zastaralá/překonaná), protože podle HTML specifikace nemá na rozdíl od <code>&lt;s></code> sémantický význam.</p>
 
-Do jisté míry se dá říci, že obě značky jsou si významově **hodně podobné**. Asi největší odlišnost je, že značka `&lt;s>` by se na rozdíl od `&lt;del>` neměla používat ke znázorňování změn stránky – k tomu je určena právě značka `&lt;del>` v kombinaci s jejím protějškem – značkou `&lt;ins>`.
+<p>Element <code>&lt;del></code> potom slouží pro označení obsahu, který <b>byl ze stránky vymazán</b>. Má zvláštní atributy <code>datetime</code> (pro označení času smazání) a <code>cite</code> pro uvedení URL zdůvodňující <b>důvod smazání</b>.</p>
 
-## Šikmé přeškrtnutí
 
-Pokud se nespokojíme s výchozím přeškrtnutím přes `text-decoration: line-through`, můžeme si udělat přeškrtnutí vlastní. Třeba absolutně posicovaným `border`em přes obsah.
 
-Šikmého škrtnutí dosáhneme [otočením](/rotace) čáry o několik stupňů.
+<h2 id="rozdil">Rozdíl <code>&lt;s></code> a <code>&lt;del></code></h2>
 
+<p>Do jisté míry se dá říci, že obě značky jsou si významově <b>hodně podobné</b>. Asi největší odlišnost je, že značka <code>&lt;s></code> by se na rozdíl od <code>&lt;del></code> neměla používat ke znázorňování změn stránky – k tomu je určena právě značka <code>&lt;del></code> v kombinaci s jejím protějškem – značkou <code>&lt;ins></code>.</p>
+
+
+
+<h2 id="sikme-preskrtnuti">Šikmé přeškrtnutí</h2>
+
+<p>Pokud se nespokojíme s výchozím přeškrtnutím přes <code>text-decoration: line-through</code>, můžeme si udělat přeškrtnutí vlastní. Třeba absolutně posicovaným <code>border</code>em přes obsah.</p>
+
+<p>Šikmého škrtnutí dosáhneme <a href="/rotace">otočením</a> čáry o několik stupňů.</p>
+
+<div class="live"><style>
 .sikme s {
     position: relative;
     text-decoration: none;
@@ -73,21 +82,25 @@ Pokud se nespokojíme s výchozím přeškrtnutím přes `text-decoration: line-
     -o-transform:rotate(-5deg);
     transform:rotate(-5deg);
 }
+</style>
+<p class="sikme"><s>Fytopuf stojí 900 Kč</s></p></div>
 
-Fytopuf stojí 900 Kč
+<p><a href="http://kod.djpw.cz/sahb">Živá ukázka</a></p>
 
-[Živá ukázka](http://kod.djpw.cz/sahb)
+<p>Když kromě <code>:before</code> použijeme i <code>:after</code>, dá se snadno docílit <b>dvojitého škrtnutí</b>.</p>
 
-Když kromě `:before` použijeme i `:after`, dá se snadno docílit **dvojitého škrtnutí**.
+<p><a href="http://kod.djpw.cz/tahb">Živá ukázka</a></p>
 
-[Živá ukázka](http://kod.djpw.cz/tahb)
 
-### Starší prohlížeče
+<h3 id="starsi-prohlizece">Starší prohlížeče</h3>
 
-Co se stane v prohlížečích, co **neznají** *transformaci* pro otočení (**IE 8**)? Přeškrtnutí bude zkrátka **rovné**, což ale nemusí tolik vadit.
+<p>Co se stane v prohlížečích, co <b>neznají</b> <i>transformaci</i> pro otočení (<b>IE 8</b>)? Přeškrtnutí bude zkrátka <b>rovné</b>, což ale nemusí tolik vadit.</p>
 
-## Odkazy jinam
 
-  - W3C: [The `s` element](https://html.spec.whatwg.org/multipage/semantics.html#the-s-element)
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - [DevDocs: `&lt;s>`](http://devdocs.io/html/element/s)
+<ul>
+  <li>W3C: <a href="https://html.spec.whatwg.org/multipage/semantics.html#the-s-element">The <code>s</code> element</a></li>
+  
+  <li><a href="http://devdocs.io/html/element/s">DevDocs: <code>&lt;s></code></a></li>
+</ul>

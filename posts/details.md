@@ -5,53 +5,72 @@ description: "K čemu slouží HTML značky <code>&lt;details></code> a <code>&l
 date: "2014-09-01"
 last_modification: "2014-09-02"
 status: 1
-tags: ["HTML", "HTML značky"]
+tags: ["html", "html-tagy"]
+format: "html"
 ---
 
-Stručně řečeno fungují tyto značky k [rozklikávání obsahu](/prepinani-vzhledu) bez nutnosti používat JavaScript.
+<p>Stručně řečeno fungují tyto značky k <a href="/prepinani-vzhledu">rozklikávání obsahu</a> bez nutnosti používat JavaScript.</p>
 
-## Použití
+<p><img src="/files/details/details-ukazka.gif" alt="Ukázka použití details a summary" class="border"></p>
 
-```
-&lt;details **open**>
+
+
+<h2 id="pouziti">Použití</h2>
+
+<pre><code>&lt;details <b>open</b>>
   &lt;summary>Název položky&lt;/summary>
   &lt;p>Samotný obsah&lt;/p>
-&lt;/details>
-```
+&lt;/details></code></pre>
 
-Značka `&lt;details>` má atribut `open`, který zajistí **automatické rozbalení** po načtení stránky.
+<p>Značka <code>&lt;details></code> má atribut <code>open</code>, který zajistí <b>automatické rozbalení</b> po načtení stránky.</p>
 
-Element `&lt;summary>` je potom **volitelný** a umožňuje stanovit text (nadpis) pro rozbalení obsahu. Zajímavostí je, že při jeho **absenci** se sice vyrobí jakýsi automatický `&lt;summary>` s textem *Podrobnosti* (v závislosti na jazyku prohlížeče), ale **není možné ho stylovat**.
+<p>Element <code>&lt;summary></code> je potom <b>volitelný</b> a umožňuje stanovit text (nadpis) pro rozbalení obsahu. Zajímavostí je, že při jeho <b>absenci</b> se sice vyrobí jakýsi automatický <code>&lt;summary></code> s textem <i>Podrobnosti</i> (v závislosti na jazyku prohlížeče), ale <b>není možné ho stylovat</b>.</p>
 
-## Podpora
 
-Zamýšleným způsobem fungují tyto značky zatím pouze ve **Webkitu** (od versí **Opera 23**, **Chrome 27**, **Safari 6.1**).
 
-Existuje i přímý [fallback](https://gist.github.com/remy/370590) pro starší prohlížeče.
+<h2 id="podpora">Podpora</h2>
 
-## Ukázka
+<p>Zamýšleným způsobem fungují tyto značky zatím pouze ve <b>Webkitu</b> (od versí <b>Opera 23</b>, <b>Chrome 27</b>, <b>Safari 6.1</b>).</p>
 
-  Název položky
-  Samotný obsah
+<p>Existuje i přímý <a href="https://gist.github.com/remy/370590">fallback</a> pro starší prohlížeče.</p>
 
-[Samostatná živá ukázka](http://kod.djpw.cz/zifb) (ukázka s [JS fallbackem](http://kod.djpw.cz/ajfb))
 
-## Využití
 
-Kromě úkolů, které obvykle používají JS řešení [přepínání CSS třídy](/prepinani-trid) nebo postupu [zneužívající `checkbox`](/css-rozbalovani), vypadá zajímavě především **libovolné zanořování** ([ukázka](http://kod.djpw.cz/bjfb)).
+<h2 id="ukazka">Ukázka</h2>
 
-Přepínání mezi souvisejícími bloky tak, aby se [ostatní zavřely](/zobrazit-skryt#rozklikavani), zatím možné není.
+<div class="live">
+<details open>
+  <summary>Název položky</summary>
+  <p>Samotný obsah</p>
+</details>
+</div>
+<p><a href="http://kod.djpw.cz/zifb">Samostatná živá ukázka</a> (ukázka s <a href="http://kod.djpw.cz/ajfb">JS fallbackem</a>)</p>
 
-Jelikož se v nepodporovaných prohlížečích značky `&lt;details>` a `&lt;summary>` **nijak neprojeví** (chovají se jako [vlastní HTML značky](/vlastni-html-znacky) – např. v **IE 8** se musí skriptem pomoci, aby je šlo stylovat), nabízí se je používat s JS doplňkem pro **starší prohlížeče** už dnes.
 
-Osobně bych to příliš **nedoporučoval** protože:
 
-  - V **podporujících prohlížečích** se bude muset odstranit podpora, aby se používalo stejné – na JS nebo `checkbox`u závislé řešení.
+<h2 id="vyuziti">Využití</h2>
 
-  - Zařídit **odkrývací/skrývací animaci** je momentálně dost omezené (jde maximálně animovat otevření – [ukázka](http://kod.djpw.cz/cjfb)).
+<p>Kromě úkolů, které obvykle používají JS řešení <a href="/prepinani-trid">přepínání CSS třídy</a> nebo postupu <a href="/css-rozbalovani">zneužívající <code>checkbox</code></a>, vypadá zajímavě především <b>libovolné zanořování</b> (<a href="http://kod.djpw.cz/bjfb">ukázka</a>).</p>
 
-## Odkazy
+<p>Přepínání mezi souvisejícími bloky tak, aby se <a href="/zobrazit-skryt#rozklikavani">ostatní zavřely</a>, zatím možné není.</p>
 
-  - Whatwg.org: [Specifikace](http://www.whatwg.org/specs/web-apps/current-work/multipage/forms.html#the-details-element)
+<p>Jelikož se v nepodporovaných prohlížečích značky <code>&lt;details></code> a <code>&lt;summary></code> <b>nijak neprojeví</b> (chovají se jako <a href="/vlastni-html-znacky">vlastní HTML značky</a> – např. v <b>IE 8</b> se musí skriptem pomoci, aby je šlo stylovat), nabízí se je používat s JS doplňkem pro <b>starší prohlížeče</b> už dnes.</p>
 
-  - Can I use: [Podpora v prohlížečích](http://caniuse.com/#feat=details)
+<p>Osobně bych to příliš <b>nedoporučoval</b> protože:</p>
+
+<ol>
+  <li>V <b>podporujících prohlížečích</b> se bude muset odstranit podpora, aby se používalo stejné – na JS nebo <code>checkbox</code>u závislé řešení.</li>
+  
+  <li>Zařídit <b>odkrývací/skrývací animaci</b> je momentálně dost omezené (jde maximálně animovat otevření – <a href="http://kod.djpw.cz/cjfb">ukázka</a>).</li>
+</ol>
+
+
+
+
+<h2 id="odkazy">Odkazy</h2>
+
+<ul>
+  <li>Whatwg.org: <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/forms.html#the-details-element">Specifikace</a></li>
+  
+  <li>Can I use: <a href="http://caniuse.com/#feat=details">Podpora v prohlížečích</a></li>
+</ul>

@@ -5,134 +5,231 @@ description: "Nastavování výšky v CSS a proč ho raději nepoužívat."
 date: "2015-12-21"
 last_modification: "2015-12-21"
 status: 1
-tags: ["CSS", "CSS vlastnosti"]
+tags: ["css", "css-vlastnosti"]
+format: "html"
 ---
 
-CSS vlastnost `height` je jedna z [často používaných](/cetnost-css).
+<p>CSS vlastnost <code>height</code> je jedna z <a href="/cetnost-css">často používaných</a>.</p>
 
-Výšku jde nastavit pro elementy, které **nejsou řádkové** (tj. nejsou [`display: inline`](/display#inline)), obvykle se používají běžné délkové jednotky jako `px`, `em` nebo procenta:
+<p>Výšku jde nastavit pro elementy, které <b>nejsou řádkové</b> (tj. nejsou <a href="/display#inline"><code>display: inline</code></a>), obvykle se používají běžné délkové jednotky jako <code>px</code>, <code>em</code> nebo procenta:</p>
 
-```
-div {
+<pre><code>div {
   height: 50px;
-}
-```
+}</code></pre>
 
-U řádkových prvků (např. `&lt;span>`) je pro nastavení výšky nutné:
 
-  - Přidat `display: inline-block`.
 
-  - Nebo použít vlastnost `line-height` (výška řádku).
+<p>U řádkových prvků (např. <code>&lt;span></code>) je pro nastavení výšky nutné:</p>
 
-## Proč nepoužívat `height`
+<ol>
+  <li>Přidat <code>display: inline-block</code>.</li>
+  
+  <li>Nebo použít vlastnost <code>line-height</code> (výška řádku).</li>
+</ol>
 
-Zvlášť začátečníci mají v oblibě výšku hojně nastavovat. Nastavovat něčemu `height` by ale ideálně mělo být poslední možné řešení.
 
-Proč?
 
-Obsah webových stránek většinou plyne shora dolů a není rozumné spoléhat na to, že textový obsah bude mít **stejnou velikost** za všech okolností.
 
-    Rozhodne-li se někdo přidat nebo smazat pár slov nebo vět, výsledná výška odstavce se změní.
+<h2 id="nepouzivat">Proč nepoužívat <code>height</code></h2>
 
-    Nastavování výšky se spoléhá na neměnnost obsahu.
+<p>Zvlášť začátečníci mají v oblibě výšku hojně nastavovat. Nastavovat něčemu <code>height</code> by ale ideálně mělo být poslední možné řešení.</p>
 
-    Návštěvník může mít nastavenu **jinou velikost písma**, která opět může způsobit odlišnou výšku odstavce. Stejně tak odlišnou výšku někdy způsobí třeba jiný font.
 
-Výsledkem je nehezké *vytečení obsahu* z prostoru s pevnou výškou.
+<p>Proč?</p>
 
-Takhle třeba vypadají dlaždice s nastavenou výškou na webu České televise.
 
-Situace, kdy toto risiko při nastavování `height` nehrozí, jsou relativně vzácné:
 
-## Kdy nastavit `height`
+<p>Obsah webových stránek většinou plyne shora dolů a není rozumné spoléhat na to, že textový obsah bude mít <b>stejnou velikost</b> za všech okolností.</p>
 
-Většinou se jedná o malé objekty jako jsou [obrázky](/obrazky), ikony, videa, reklamní bannery a podobně. U těch nehrozí zvětšení písma a z toho plynoucí přetečení.
+<ol>
+  <li>
+    <p>Rozhodne-li se někdo přidat nebo smazat pár slov nebo vět, výsledná výška odstavce se změní.</p>
+    <p>Nastavování výšky se spoléhá na neměnnost obsahu.</p>
+  </li>
+  <li>
+    <p>Návštěvník může mít nastavenu <b>jinou velikost písma</b>, která opět může způsobit odlišnou výšku odstavce. Stejně tak odlišnou výšku někdy způsobí třeba jiný font.</p>
+  </li>
+</ol>
 
-### Výška v pixelech
+<p>Výsledkem je nehezké <i>vytečení obsahu</i> z prostoru s pevnou výškou.</p>
 
-Pokud už se výška nastavuje, je dobré použít alespoň jednotky `em`, které se dokáží přizpůsobit velikosti písma.
+<p>Takhle třeba vypadají dlaždice s nastavenou výškou na webu České televise.</p>
 
-Nastavit `height` v pixelech se ale hodí například pro ikonky v případě, že nejsou v [SVG](/svg), potom je potřeba držet skutečné rozměry dle obrázku, má-li být výsledný obrázek ostrý.
+<p><img src="/files/height/ct.png" alt="Useknutí textu na webu ČT" class="border"></p>
 
-### Maximální výška
 
-Není-li problém, že se přetékající obsah ořízne, může se nastavení výšky hodit pro:
 
-    - [Oříznutí víceřádkového obsahu](/oriznuti-radek)
 
-### Nulová výška
 
-Spolu s `padding`em se nulová výška používá jako trik pro vytvoření elementu s proměnlivými rozměry, ale daným poměrem stran:
 
-```
-.box {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Situace, kdy toto risiko při nastavování <code>height</code> nehrozí, jsou relativně vzácné:</p>
+
+
+
+<h2 id="pouzit">Kdy nastavit <code>height</code></h2>
+
+<p>Většinou se jedná o malé objekty jako jsou <a href="/obrazky">obrázky</a>, ikony, videa, reklamní bannery a podobně. U těch nehrozí zvětšení písma a z toho plynoucí přetečení.</p>
+
+
+
+
+<h3 id="px">Výška v pixelech</h3>
+
+<p>Pokud už se výška nastavuje, je dobré použít alespoň jednotky <code>em</code>, které se dokáží přizpůsobit velikosti písma.</p>
+
+<p>Nastavit <code>height</code> v pixelech se ale hodí například pro ikonky v případě, že nejsou v <a href="/svg">SVG</a>, potom je potřeba držet skutečné rozměry dle obrázku, má-li být výsledný obrázek ostrý.</p>
+
+
+
+<h3 id="maximalni-vyska">Maximální výška</h3>
+
+<p>Není-li problém, že se přetékající obsah ořízne, může se nastavení výšky hodit pro:</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/oriznuti-radek">Oříznutí víceřádkového obsahu</a></li>
+  </ul>
+</div>
+
+
+<h3 id="nulova">Nulová výška</h3>
+
+<p>Spolu s <code>padding</code>em se nulová výška používá jako trik pro vytvoření elementu s proměnlivými rozměry, ale daným poměrem stran:</p>
+
+<pre><code>.box {
   height: 0;
   padding-bottom: 25%;
-}
-```
+}</code></pre>
 
-Výše uvedený box bude mít čtvrtinovou (25 %) výšku oproti šířce; více v samostatném článku:
 
-    - [Výška závislá na šířce](/vyska-podle-sirky)
 
-### Výška políčka a tlačítka
 
-U tlačítka nebo textového [`&lt;input>`u](/input) se může zdát, že nikdy nebude obsahovat tolik textu, aby se roztáhl na dva řádky.
 
-Většinou s tím problém není a nastavení `height` i usnadňuje stylování napříč prohlížeči:
+<p>Výše uvedený box bude mít čtvrtinovou (25 %) výšku oproti šířce; více v samostatném článku:</p>
 
-    - [Stylování formulářových políček a tlačítek](/stylovani-inputu)
+<div class="internal-content">
+  <ul>
+    <li><a href="/vyska-podle-sirky">Výška závislá na šířce</a></li>
+  </ul>
+</div>
 
-    - [Vyšší tlačítko ve Firefoxu](/firefox-vyssi-tlacitko)
 
-### Počítání v JavaScriptu
 
-Spočítá-li se výška obsahu JavaScriptem, není problém výšku následně nastavit. Používá se to často pro plynulé rozbalení obsahu. Je ale dobré přepočítání provést i při změně velikosti okna, které může situaci změnit.
+<h3 id="tlacitka">Výška políčka a tlačítka</h3>
 
-    - [Animované skrytí obsahu](/animace-skryt)
+<p>U tlačítka nebo textového <a href="/input"><code>&lt;input></code>u</a> se může zdát, že nikdy nebude obsahovat tolik textu, aby se roztáhl na dva řádky.</p>
 
-## Chybné použití `height`
+<p>Většinou s tím problém není a nastavení <code>height</code> i usnadňuje stylování napříč prohlížeči:</p>
 
-### Odsazení
+<div class="internal-content">
+  <ul>
+    <li><a href="/stylovani-inputu">Stylování formulářových políček a tlačítek</a></li>
+    <li><a href="/firefox-vyssi-tlacitko">Vyšší tlačítko ve Firefoxu</a></li>
+  </ul>
+</div>
 
-Je-li cílem, aby kolem boxu bylo volné místo, je lepší použít [`margin`](/margin)/`padding`.
+<h3 id="js">Počítání v JavaScriptu</h3>
 
-### Stejně vysoké sloupce
+<p>Spočítá-li se výška obsahu JavaScriptem, není problém výšku následně nastavit. Používá se to často pro plynulé rozbalení obsahu. Je ale dobré přepočítání provést i při změně velikosti okna, které může situaci změnit.</p>
 
-Použít `height` může svádět v případě snahy o vytvoření stejně vysokých sloupců. Existují lepší řešení:
 
-    - [Sloupce stejně vysoké](/stejne-vysoke-sloupce)
+<div class="internal-content">
+  <ul>
+    <li><a href="/animace-skryt">Animované skrytí obsahu</a></li>
+  </ul>
+</div>
 
-### Problém zarovnání
 
-Bude-li mít nějaký objekt fixní výšku, při změně velikosti písma nebude text svisle vycentrovaný.
+<h2 id="chyby">Chybné použití <code>height</code></h2>
 
-Tímto problémem trpí třeba lišta na [Facebooku](/facebook), která se při větším písmu nezobrazuje zrovna ideálně:
 
-## Vliv box-modelu
+<h3 id="odsazeni">Odsazení</h3>
 
-Na počítání výšky má stejně jako u šířky vliv [`box-model`](/box-model). Při používání výchozího obsahového box-modelu (`box-sizing: content-box`) se nastavené výšce přičte hodnota `padding`u a `border`u.
+<p>Je-li cílem, aby kolem boxu bylo volné místo, je lepší použít <a href="/margin"><code>margin</code></a>/<code>padding</code>.</p>
 
-Většinou je výhodnější box model přepnout na okrajový. Element je potom vysoký přesně podle `height`:
 
-```
-* {
+<h3 id="sloupce">Stejně vysoké sloupce</h3>
+
+<p>Použít <code>height</code> může svádět v případě snahy o vytvoření stejně vysokých sloupců. Existují lepší řešení:</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/stejne-vysoke-sloupce">Sloupce stejně vysoké</a></li>
+  </ul>
+</div>
+
+<h3 id="zarovnani">Problém zarovnání</h3>
+
+<p>Bude-li mít nějaký objekt fixní výšku, při změně velikosti písma nebude text svisle vycentrovaný.</p>
+
+<p>Tímto problémem trpí třeba lišta na <a href="/facebook">Facebooku</a>, která se při větším písmu nezobrazuje zrovna ideálně:</p>
+
+<p><img src="/files/height/fb-lista.png" alt="FB lišta se zvětšeným písmem" class="border"></p>
+
+
+
+
+<h2 id="box-model">Vliv box-modelu</h2>
+
+<p>Na počítání výšky má stejně jako u šířky vliv <a href="/box-model"><code>box-model</code></a>. Při používání výchozího obsahového box-modelu (<code>box-sizing: content-box</code>) se nastavené výšce přičte hodnota <code>padding</code>u a <code>border</code>u.</p>
+
+<p>Většinou je výhodnější box model přepnout na okrajový. Element je potom vysoký přesně podle <code>height</code>:</p>
+
+<pre><code>* {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-}
-```
+}</code></pre>
 
-## Další hodnoty `height`
 
-Některé novější prohlížeče podporují zvláštní klíčová slova pro nastavení výšky/šířky:
 
-    - Can I Use: [Intrinsic &amp; Extrinsic Sizing](http://caniuse.com/#feat=intrinsic-width)
 
-Kvůli nedostatečné podpoře tato klíčová slova `border-box`, `content-box`, `max-content`, `min-content`, `available`, `fit-content`  ale zatím nemají moc využití.
 
-    - DevDocs: [`height`](http://devdocs.io/css/height)
 
-## Odkazy jinam
 
-  - Jak psát web: [Height](http://www.jakpsatweb.cz/css/height.html) – chování `height` ve starších prohlížečích
+
+<h2 id="hodnoty">Další hodnoty <code>height</code></h2>
+
+<p>Některé novější prohlížeče podporují zvláštní klíčová slova pro nastavení výšky/šířky:</p>
+
+<div class="external-content">
+  <ul>
+    <li>Can I Use: <a href="http://caniuse.com/#feat=intrinsic-width">Intrinsic &amp; Extrinsic Sizing</a></li>
+  </ul>
+</div>
+
+<p>Kvůli nedostatečné podpoře tato klíčová slova <code>border-box</code>, <code>content-box</code>, <code>max-content</code>, <code>min-content</code>, <code>available</code>, <code>fit-content</code>  ale zatím nemají moc využití.</p>
+
+
+<div class="external-content">
+  <ul>
+    <li>DevDocs: <a href="http://devdocs.io/css/height"><code>height</code></a></li>
+  </ul>
+</div>
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>Jak psát web: <a href="http://www.jakpsatweb.cz/css/height.html">Height</a> – chování <code>height</code> ve starších prohlížečích</li>
+</ul>

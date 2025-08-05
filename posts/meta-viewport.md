@@ -5,96 +5,131 @@ description: "K čemu používat <code>&lt;meta></code> tag <code>name=viewport<
 date: "2013-06-28"
 last_modification: "2015-08-16"
 status: 1
-tags: ["HTML", "HTML značky", "Prohlížeče", "Responsivní design"]
+tags: ["html", "html-tagy", "responsive", "webove-prohlizece"]
+format: "html"
 ---
 
-Dává smysl pro [responsivní weby](/responsivni-web), jelikož prohlížeče v chytrých telefonech a tabletech běžně **zobrazují web „zmenšený“**, aby byl celý vidět, a do čitelné velikosti si jej musí zvětšit až sám uživatel.
+<p>Dává smysl pro <a href="/responsivni-web">responsivní weby</a>, jelikož prohlížeče v chytrých telefonech a tabletech běžně <b>zobrazují web „zmenšený“</b>, aby byl celý vidět, a do čitelné velikosti si jej musí zvětšit až sám uživatel.</p>
 
-**Běžné použití**:
+<p><b>Běžné použití</b>:</p>
 
-```
-&lt;meta name="viewport" content="width=device-width,initial-scale=1">
-```
+<pre><code>&lt;meta name="viewport" content="width=device-width,initial-scale=1"></code></pre>
 
-## Proč `&lt;meta>` viewport?
 
-Takový mobilní prohlížeč v orientaci na výšku má například skutečnou šířku 480 px, ale tváří se, že má třeba 1024 px. Web se potom vykreslí v rozlišení 1024 pixelů a je **zmenšen** na 480, aby měl návštěvník po načtení přehled o celé stránce a mohl si následně přiblížit, co potřebuje.
 
-Meta tagem `&lt;meta name=viewport&gt;` jde *přemluvit* k jinému chování. To se hodí u responsivních webů, kdy není nutné, aby prohlížeč **předstíral vyšší rozlišení**.
 
-Docílit toho lze zadáváním určitých parametrů do atributu `content`. Pro kombinaci více vlastností je stačí oddělit čárkami.
 
-  `width=device-width`
+<h2 id="proc">Proč <code>&lt;meta></code> viewport?</h2>
 
-    Za `=` se zadává buď přesná hodnota v pixelech bez jednotek (pokud je web udělán na nějaké přesné rozlišení), nebo `device-width`, což je skutečná šířka zařízení.
+<p>Takový mobilní prohlížeč v orientaci na výšku má například skutečnou šířku 480 px, ale tváří se, že má třeba 1024 px. Web se potom vykreslí v rozlišení 1024 pixelů a je <b>zmenšen</b> na 480, aby měl návštěvník po načtení přehled o celé stránce a mohl si následně přiblížit, co potřebuje.</p>
 
-    ```
-&lt;!-- šířka 480 px --&gt;
-&lt;meta name="*viewport*" content="**width=480**"&gt;
-```
 
-    Stavět web pro **přesnou šířku** je v době obrovské rozmanitosti rozlišení značně problematické. Lepší je šířku nastavit podle zařízení.
 
-    ```
-&lt;!-- šířka dle zařízení --&gt;
-&lt;meta name="*viewport*" content="width=**device-width**"&gt;
-```
+<p>Meta tagem <code>&lt;meta name=viewport&gt;</code> jde <i>přemluvit</i> k jinému chování. To se hodí u responsivních webů, kdy není nutné, aby prohlížeč <b>předstíral vyšší rozlišení</b>.</p>
 
-    Správné zobrazení na malém displeji se potom zajistí v CSS. To se typicky dělá s využitím [Media Queries](/mobilni-web#media-queries).
 
-  `initial-scale=1`
 
-    Měřítko, ve kterém se web automaticky zobrazí. Měřítko 1:1 je `initial-scale=**1**`, vyšší hodnoty jsou zvětšení, menší zmenšení. Stránku nebývá možné zmenšit pod stanovené měřítko, proto je dobré jej zvolit tak, aby stránka nebyla zbytečně velká.
+<p>Docílit toho lze zadáváním určitých parametrů do atributu <code>content</code>. Pro kombinaci více vlastností je stačí oddělit čárkami.</p>
 
-    Měřítko na `1` bývá dobré nastavit i při kombinaci s `width=device-width`. Bez něj může nastat problém s elementy, které jsou mimo plochu – třeba navigace, co „odtlačuje“ obsah.
 
-  `maximum-scale=5`
+<dl>
+  <dt><code>width=device-width</code></dt>
+  
+  <dd>
+    <p>Za <code>=</code> se zadává buď přesná hodnota v pixelech bez jednotek (pokud je web udělán na nějaké přesné rozlišení), nebo <code>device-width</code>, což je skutečná šířka zařízení.</p>
+    
+    <pre><code>&lt;!-- šířka 480 px --&gt;
+&lt;meta name="<i>viewport</i>" content="<b>width=480</b>"&gt;</code></pre>  
+    
+    
+    <p>Stavět web pro <b>přesnou šířku</b> je v době obrovské rozmanitosti rozlišení značně problematické. Lepší je šířku nastavit podle zařízení.</p>
+    
+    <pre><code>&lt;!-- šířka dle zařízení --&gt;
+&lt;meta name="<i>viewport</i>" content="width=<b>device-width</b>"&gt;</code></pre>
+    
+    
+    <p>Správné zobrazení na malém displeji se potom zajistí v CSS. To se typicky dělá s využitím <a href="/mobilni-web#media-queries">Media Queries</a>.</p>  
+    
+  </dd>    
+  
+  
+  <dt><code>initial-scale=1</code></dt>
+  
+  <dd>
+    <p>Měřítko, ve kterém se web automaticky zobrazí. Měřítko 1:1 je <code>initial-scale=<b>1</b></code>, vyšší hodnoty jsou zvětšení, menší zmenšení. Stránku nebývá možné zmenšit pod stanovené měřítko, proto je dobré jej zvolit tak, aby stránka nebyla zbytečně velká.</p>
+    
+    <p>Měřítko na <code>1</code> bývá dobré nastavit i při kombinaci s <code>width=device-width</code>. Bez něj může nastat problém s elementy, které jsou mimo plochu – třeba navigace, co „odtlačuje“ obsah.</p>
+  </dd>
+  
+  
+  <dt><code>maximum-scale=5</code></dt>
+  
+  <dd>
+    <p>Maximální zvětšení. Zadáním hodnoty <code>0.1</code> vytvoříme nečitelný a nezvětšitelný web. :–) Analogicky funguje <code><b>min</b>imum-scale</code>.</p>
+  </dd>
+  
+  <dt><code>user-scalable=no</code></dt>
+  
+  <dd>
+    <p>Zabránění měnit velikost.</p>
+  </dd>
+</dl>
 
-    Maximální zvětšení. Zadáním hodnoty `0.1` vytvoříme nečitelný a nezvětšitelný web. :–) Analogicky funguje `**min**imum-scale`.
 
-  `user-scalable=no`
 
-    Zabránění měnit velikost.
+<h2 id="pouziti">Co a kdy použít?</h2>
 
-## Co a kdy použít?
+<p>Na stránce, která má CSS styly pro malé displeje, je osvědčené:</p>
 
-Na stránce, která má CSS styly pro malé displeje, je osvědčené:
+<pre><code>&lt;meta name="viewport" content="width=device-width,initial-scale=1"></code></pre>
 
-```
-&lt;meta name="viewport" content="width=device-width,initial-scale=1">
-```
+<p>Změnou ostatních hodnot lze lehce zlepšit zážitek z běžného webu bez vytváření speciálních CSS pravidel. Při špatném použití ale také výrazně zhoršit (nezmenšitelná nebo nezvětšitelná stránka).</p>
 
-Změnou ostatních hodnot lze lehce zlepšit zážitek z běžného webu bez vytváření speciálních CSS pravidel. Při špatném použití ale také výrazně zhoršit (nezmenšitelná nebo nezvětšitelná stránka).
 
-## Změna měřítka stránky
 
-U **stránek s fixními rozměry** (třeba šířka 960 pixelů) se může nabízet vyřešit zobrazení na mobilu tak, že se změní měřítko.
 
-Problém je v tom, že různá zařízení mají **různá rozlišení**, takže je nemožné odlišné měřítko od 1:1 nastavit, aby **fungovalo universálně**.
 
-Teoreticky by šlo **měřit rozlišení JavaScriptem** a podle toho nastavovat měřítko. Jde ale spíš o nouzové a ne moc dobré řešení – se skutečným responsivním webem půjde dosáhnout lepších výsledků.
+<h2 id="zmena">Změna měřítka stránky</h2>
 
-    - [Jak předělat web na responsivní](/prevod-responsivni-design) – postupy, jak ze starého webu udělat responsivní
+<p>U <b>stránek s fixními rozměry</b> (třeba šířka 960 pixelů) se může nabízet vyřešit zobrazení na mobilu tak, že se změní měřítko.</p>
 
+<p>Problém je v tom, že různá zařízení mají <b>různá rozlišení</b>, takže je nemožné odlišné měřítko od 1:1 nastavit, aby <b>fungovalo universálně</b>.</p>
+
+<p>Teoreticky by šlo <b>měřit rozlišení JavaScriptem</b> a podle toho nastavovat měřítko. Jde ale spíš o nouzové a ne moc dobré řešení – se skutečným responsivním webem půjde dosáhnout lepších výsledků.</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/prevod-responsivni-design">Jak předělat web na responsivní</a> – postupy, jak ze starého webu udělat responsivní</li>
+  </ul>
+</div>
+
+<!--
+<li>
+  
 								Safari 9 now has a 
-  
-    `shrink-to-fit: no`
+  <a href="http://jsbin.com/fubunucopi/4/edit?html,output">
+    <code>shrink-to-fit: no</code>
      property in the viewport
-
-    [5](#5)
-  
+  </a>
+  <sup class="po" id="note-5">
+    <a href="#5">5</a>
+  </sup>
    meta element 
-  
+  <a href="https://www.reddit.com/r/web_design/comments/3la04p/psa_safari_on_ios9_has_a_media_query_bug/">
     as the 
-    `initial-scale`
+    <code>initial-scale</code>
      property has been changed on purpose
-
-    [6](#6)
-  
+  </a>
+  <sup class="po" id="note-6">
+    <a href="#6">6</a>
+  </sup>
    in the new WebKit version.			
-
+</li>
 -->
 
-## Odkazy jinam
 
-  - Vzhůru dolů: [Viewport na Windows 8 a 8.1](http://www.vzhurudolu.cz/prirucka/viewport-windows)
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>Vzhůru dolů: <a href="http://www.vzhurudolu.cz/prirucka/viewport-windows">Viewport na Windows 8 a 8.1</a></li>
+</ul>

@@ -5,21 +5,31 @@ description: "Jednoduché řešení vícebarevného pozadí absolutním posicov�
 date: "2013-06-21"
 last_modification: "2013-06-22"
 status: 1
-tags: ["CSS", "Hotová řešení"]
+tags: ["css", "hotova-reseni"]
+format: "html"
 ---
 
-Pokud by se pozadí nějakého elementu mělo skládat z různých barev, je nejjednodušší použít vícebarevný obrázek velkých rozměrů a nechat jej opakovat. Jak si poradit i bez obrázku pomocí CSS?
+<p>Pokud by se pozadí nějakého elementu mělo skládat z různých barev, je nejjednodušší použít vícebarevný obrázek velkých rozměrů a nechat jej opakovat. Jak si poradit i bez obrázku pomocí CSS?</p>
 
+<div class=live>
+<!-- Kód ukázky -->
+<style>
 .obal {position: relative; color: #fff; z-index: 0; padding: 1em}
 .pozadi {position: absolute; right: 0; top: 0; width: 50%; height: 100%; z-index: -1; background: #0D6AB7;}
 .tmave {background: #1081DD; left: 0;}
+</style>
 
-	Řešení spočívá ve vytvoření absolutně posicovaných boxů `pozadi` (v `obal`u s `position: relative`) s rozměry 50 % na šířku a 100 % na výšku (funkční od Internet Exploreru 7). Jeden se umístí doleva (`left: 0`) a druhý doprava (`right: 0`).
+<div class='obal'>	
+	<p>Řešení spočívá ve vytvoření absolutně posicovaných boxů <code>pozadi</code> (v <code>obal</code>u s <code>position: relative</code>) s rozměry 50 % na šířku a 100 % na výšku (funkční od Internet Exploreru 7). Jeden se umístí doleva (<code>left: 0</code>) a druhý doprava (<code>right: 0</code>).
+<dl>
+<dt><code>z-index</code>
+<dd>Naprosto podstatné pro funkčnost je správné užití <code>z-index</code>u, tj. schovat <i>pozadí</i> za text, ale ne za další element.
 
-`z-index`
-Naprosto podstatné pro funkčnost je správné užití `z-index`u, tj. schovat *pozadí* za text, ale ne za další element.
-
-```
-.obal {position: relative; z-index: 0}
-.pozadi {position: absolute; z-index: -1}
-```
+<pre><code>.obal {position: relative; z-index: 0}
+.pozadi {position: absolute; z-index: -1}</code></pre>
+</dl>
+	<div class="pozadi"></div>
+	<div class="pozadi tmave"></div>
+</div>
+<!-- / konec ukázky -->
+</div>

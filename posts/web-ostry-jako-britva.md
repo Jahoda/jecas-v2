@@ -6,110 +6,141 @@ date: "2015-09-10"
 last_modification: "2015-09-10"
 status: 0
 tags: []
+format: "html"
 ---
 
-## (Ne)důležitost grafického designu
+<h2 id="dulezitost">(Ne)důležitost grafického designu</h2>
 
-  Existují dvě specifické sorty návštěvníků, kteří chodí na webu kvůli grafickému designu. Jsou to webdesigneři a majitelé webů.
+<blockquote>
+  <p>Existují dvě specifické sorty návštěvníků, kteří chodí na webu kvůli grafickému designu. Jsou to webdesigneři a majitelé webů.</p>
+</blockquote>
 
-Klienti a začátečníci si webdesign představují hlavně jako grafický návrh hlavní strany.
+<p>Klienti a začátečníci si webdesign představují hlavně jako grafický návrh hlavní strany.</p>
 
-Ve skutečnosti je to spíš špička ledovce.
+<p>Ve skutečnosti je to spíš špička ledovce.</p>
 
-## Jak nepřistupovat k obsahu
 
-  - Nevyplnit web **náhodnými obrázky a výpnovými texty** (*lorem ipsum*) s tím, že si je klient v budoucnu doplní. **Nedoplní.**
+<h2 id="ne-obsah">Jak nepřistupovat k obsahu</h2>
 
-  - Zkopírované texty z katalogů a letáku se zpravidla pro použití na webu nehodí.
+<ul>
+  <li>Nevyplnit web <b>náhodnými obrázky a výpnovými texty</b> (<i>lorem ipsum</i>) s tím, že si je klient v budoucnu doplní. <b>Nedoplní.</b></li>
+  
+  <li>Zkopírované texty z katalogů a letáku se zpravidla pro použití na webu nehodí.</li>
+  
+  <li><b>Nepoužívat fotky z fotobank</b>, ale autentické vlastní fotografie. Lidé to poznají.</li>
+</ul>
 
-  - **Nepoužívat fotky z fotobank**, ale autentické vlastní fotografie. Lidé to poznají.
+<h2 id="o-nas">Sekce „O nás“</h2>
 
-## Sekce „O nás“
+<p>Často se webový tvůrce setká s problémem, že pro některé stránky chybí obsah.</p>
 
-Často se webový tvůrce setká s problémem, že pro některé stránky chybí obsah.
+<p>Pro příklad stránky o nás:</p>
 
-Pro příklad stránky o nás:
+<ul>
+  <li><b>Cíl</b>: Podpořit důvěryhodnost</li>
+  
+  <li><b>Zpráva</b>: Máme za se bou skoro 100 let vývoje, víme co děláme</li>
+  
+  <li><b>Akce</b>: Přejít na ohlasy spokojených zákazníků</li>
+</ul>
 
-  - **Cíl**: Podpořit důvěryhodnost
+<p>Stránka <b>musí mít smysl</b>.</p>
 
-  - **Zpráva**: Máme za se bou skoro 100 let vývoje, víme co děláme
+<div class="external-content">
+  <ul>
+    <li><a href="http://speckyboy.com/2015/11/12/about-page-that-sells/">Five Steps to an About Page That Sells</a></li>
+  </ul>
+</div>
 
-  - **Akce**: Přejít na ohlasy spokojených zákazníků
 
-Stránka **musí mít smysl**.
+<h2 id="duveryhodnost">Podpora důvěryhodnosti</h2>
 
-    - [Five Steps to an About Page That Sells](http://speckyboy.com/2015/11/12/about-page-that-sells/)
+<p>Jak podpořit důvěryhodnost klienta:</p>
 
-## Podpora důvěryhodnosti
+<ul>
+  <li><b>velká čísla</b> – stovky úspěšných projektů, desítky lidí v týmu</li>
+  
+  <li><b>certifikace</b> – účasti na školení až po ISO</li>
+  
+  <li><b>členství v asociacích</b></li>
+  
+  <li><b>reference či případové studie</b></li>
+  
+  <li><b>přednášky a odobrné publikace</b></li>
+  
+  <li><b>podpora neziskovek</b></li>
+  
+  <li><b>neznámou značku</b> jde podpořit silnými brandy partnerů</li>
+</ul>
 
-Jak podpořit důvěryhodnost klienta:
 
-  - **velká čísla** – stovky úspěšných projektů, desítky lidí v týmu
+<h2 id="klient">Neposlouchat klienta</h2>
 
-  - **certifikace** – účasti na školení až po ISO
+<blockquote>
+  <p>Více než jednou jsem se stetkal s přístupem, kdy klient zavelel, jak se bude dělat jeho web.</p>
+  
+  <p>Poprvé jsem skákal, jak klient pískal a výsledek dodnes neexistuje.</p>
+  
+  <p>I v případech, kdy klient vypadá, že ví, co chce, tak jsem to já, kdo nastavuje manntinely tvorby webu a říká, co se kdy a jak bude dělat.</p>
+</blockquote>
 
-  - **členství v asociacích**
+<p>Je k tomu ale nutné mít pro svou práci potřebné argumenty, znalosti a vystupování. V začátcích je tak výhodné pracovat v týmu.</p>
 
-  - **reference či případové studie**
+<ul>
+  <li>Nemá smysl se ptát klienta, co chce na webu. Je třeba zjistit, proč má pocit, že něco na web patří.</li>
+  
+  <li>Najít skutečné motivace zákazníků.</li>
+  
+  <li>Nutné pochopit klienta a jeho záměr.</li>
+</ul>
 
-  - **přednášky a odobrné publikace**
 
-  - **podpora neziskovek**
+<p>Někdy je vhodné udělat ústupek, aby klient následně ustoupil v něčem důležitějším. Klient má vždy poslední slovo, protože to celé platí.</p>
 
-  - **neznámou značku** jde podpořit silnými brandy partnerů
 
-## Neposlouchat klienta
 
-  Více než jednou jsem se stetkal s přístupem, kdy klient zavelel, jak se bude dělat jeho web.
+<h2 id="smysluplnost">Smysluplnost webu</h2>
 
-  Poprvé jsem skákal, jak klient pískal a výsledek dodnes neexistuje.
+<p>Před tvrobou webu je nutné se zamyslet nad otázkou: <b>Proč to celé děláme?</b></p>
 
-  I v případech, kdy klient vypadá, že ví, co chce, tak jsem to já, kdo nastavuje manntinely tvorby webu a říká, co se kdy a jak bude dělat.
+<ol>
+  <li>Řeší web nečí problém?</li>
+  
+  <li>Pálí ten problém dostatek lidí?</li>
+  
+  <li>Jsou tito lidé ochotni dostatečně zaplatit? (Aby se tvroba webu vyplatila.)</li>
+</ol>
 
-Je k tomu ale nutné mít pro svou práci potřebné argumenty, znalosti a vystupování. V začátcích je tak výhodné pracovat v týmu.
 
-  - Nemá smysl se ptát klienta, co chce na webu. Je třeba zjistit, proč má pocit, že něco na web patří.
+<h2 id="bezpeci">Pocit bezpečí</h2>
 
-  - Najít skutečné motivace zákazníků.
+<p>Pro zvýšení důvěryhodnosti pomůže visuální podpora pocitu bezpečí. Např. poznámka při placení kartou online, že je to bezpečné, používá se <a href="/https">HTTPS</a> a podbně.</p>
 
-  - Nutné pochopit klienta a jeho záměr.
+<p>Stejně tak pro získání e-mailu je dobré člověku sdělit, co se s ním bude dál dít.</p>
 
-Někdy je vhodné udělat ústupek, aby klient následně ustoupil v něčem důležitějším. Klient má vždy poslední slovo, protože to celé platí.
 
-## Smysluplnost webu
+<h2 id="zduvodnovani">Zdůvodňování slovem „protože“</h2>
 
-Před tvrobou webu je nutné se zamyslet nad otázkou: **Proč to celé děláme?**
+<p>Známá poučka, že lidé mají vyšší tendenci vyhovět, když se použije slovo „protože“.</p>
 
-  - Řeší web nečí problém?
 
-  - Pálí ten problém dostatek lidí?
 
-  - Jsou tito lidé ochotni dostatečně zaplatit? (Aby se tvroba webu vyplatila.)
 
-## Pocit bezpečí
+<h2 id="zapamatovani">Zapamatování webu</h2>
 
-Pro zvýšení důvěryhodnosti pomůže visuální podpora pocitu bezpečí. Např. poznámka při placení kartou online, že je to bezpečné, používá se [HTTPS](/https) a podbně.
+<p>Lidé si snadněji zapamatují web/službu, která vzbudí nějakou emoci.</p>
 
-Stejně tak pro získání e-mailu je dobré člověku sdělit, co se s ním bude dál dít.
+<p>O stránce, kterou si zapamatují, potom mohou mluvit s o statním a šířit tak její povědomí.</p>
 
-## Zdůvodňování slovem „protože“
+<p>K zapamatování může pomoci tzv. <b>avatar</b>, nějaká postavička, která s návštěvníkem komunikuje.</p>
 
-Známá poučka, že lidé mají vyšší tendenci vyhovět, když se použije slovo „protože“.
+<p>Příklad je třeba služba pro rozesílání e-mailu <b>Mailchimp</b>, která všude používá svého opičáka. V české prostředí potom třeba internetový obchod Alza.cz s postavičkou alzáka.</p>
 
-## Zapamatování webu
 
-Lidé si snadněji zapamatují web/službu, která vzbudí nějakou emoci.
+<h2 id="faa">Bod fáá</h2>
 
-O stránce, kterou si zapamatují, potom mohou mluvit s o statním a šířit tak její povědomí.
+<p>Situace před dokončením webu, kdy webdesigner <b>resignuje na své představy</b> a dokončí web podle šílených představ klienta:</p>
 
-K zapamatování může pomoci tzv. **avatar**, nějaká postavička, která s návštěvníkem komunikuje.
+<p>Přidá na firemní web výpis „dnes má svátek X“, přebarví ho na <font style="background: #CDF455">ostrou zelenou</font>, změní písmo na <font style="font-family: 'Comic Sans MS', cursive">comics sans</font> a podobně.</p>
 
-Příklad je třeba služba pro rozesílání e-mailu **Mailchimp**, která všude používá svého opičáka. V české prostředí potom třeba internetový obchod Alza.cz s postavičkou alzáka.
-
-## Bod fáá
-
-Situace před dokončením webu, kdy webdesigner **resignuje na své představy** a dokončí web podle šílených představ klienta:
-
-Přidá na firemní web výpis „dnes má svátek X“, přebarví ho na ostrou zelenou, změní písmo na comics sans a podobně.
-
-Druhá možnost je spolupráci ukončit a skončit bez peněz.
+<p>Druhá možnost je spolupráci ukončit a skončit bez peněz.</p>

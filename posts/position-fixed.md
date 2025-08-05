@@ -5,35 +5,32 @@ description: "Různé způsoby využití fixované posice v CSS."
 date: "2014-03-02"
 last_modification: "2014-03-02"
 status: 1
-tags: ["CSS", "Fixní posice"]
+tags: ["css", "fixed"]
+format: "html"
 ---
 
-Kromě [zafixování elementu](/position#fixed) na stránce:
+<p>Kromě <a href="/position#fixed">zafixování elementu</a> na stránce:</p>
 
-```
-div.fixovany {
+<pre><code>div.fixovany {
   position: fixed;
-}
-```
+}</code></pre>
 
-Má `position: fixed` ještě jedno zajímavé využití.
+<p>Má <code>position: fixed</code> ještě jedno zajímavé využití.</p>
 
-Pro **fixně umístěný** element není možné vytvořit vlastní *rámec*, jako to jde při posicování absolutním. Rodiči absolutně umístěného prvku se přidá `position: relative`, čímž se *vynulují* souřadnice pro následné absolutní posicování. Tohle pro `fixed` nefunguje.
+<p>Pro <b>fixně umístěný</b> element není možné vytvořit vlastní <i>rámec</i>, jako to jde při posicování absolutním. Rodiči absolutně umístěného prvku se přidá <code>position: relative</code>, čímž se <i>vynulují</i> souřadnice pro následné absolutní posicování. Tohle pro <code>fixed</code> nefunguje.</p>
 
-Fixní element má nulový bod souřadnic vždy v **levém horním okraji stránky** a nejde změnit. Mimochodem, tento *bod* není určen ani elementem `&lt;body>` a ani elementem `&lt;html>`, nemá na něj vliv žádný `margin` nebo `padding`, zkrátka nic.
+<p>Fixní element má nulový bod souřadnic vždy v <b>levém horním okraji stránky</b> a nejde změnit. Mimochodem, tento <i>bod</i> není určen ani elementem <code>&lt;body></code> a ani elementem <code>&lt;html></code>, nemá na něj vliv žádný <code>margin</code> nebo <code>padding</code>, zkrátka nic.</p>
 
-[Ukázka](http://kod.djpw.cz/udcb)
+<p><a href="http://kod.djpw.cz/udcb">Ukázka</a></p>
 
-Popsané chování někdy může vadit, ale také je v určitých případech **velmi výhodné**. Zvlášť u vytváření universálních JavaScriptů typu lightboxů nám `position: fixed` hezky zaručí, že se náš skript nerozbije při [stylování značky `&lt;body>`](/stylovani-body) a podobně.
+<p>Popsané chování někdy může vadit, ale také je v určitých případech <b>velmi výhodné</b>. Zvlášť u vytváření universálních JavaScriptů typu lightboxů nám <code>position: fixed</code> hezky zaručí, že se náš skript nerozbije při <a href="/stylovani-body">stylování značky <code>&lt;body></code></a> a podobně.</p>
 
-Vytvořit element přesně **překrývající celou stránku** je potom otázkou prostého:
+<p>Vytvořit element přesně <b>překrývající celou stránku</b> je potom otázkou prostého:</p>
 
-```
-.presCelouStranku {
+<pre><code>.presCelouStranku {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-}
-```
+}</code></pre>

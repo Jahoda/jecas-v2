@@ -6,10 +6,14 @@ date: "2015-10-27"
 last_modification: "2015-10-27"
 status: 0
 tags: []
+format: "html"
 ---
 
-[Stažení Visual Studio Code](https://www.visualstudio.com/)
+<p><a href="https://www.visualstudio.com/" class="button">Stažení Visual Studio Code</a></p>
 
-## Odkazy jinam
 
-  - Zdroják: [Konečně nadupaný editor kódu pro Linux, OS X i Windows zdarma?](https://www.zdrojak.cz/clanky/konecne-nadupany-editor-kodu-pro-linux-os-x-i-windows-zdarma/)
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>Zdroják: <a href="https://www.zdrojak.cz/clanky/konecne-nadupany-editor-kodu-pro-linux-os-x-i-windows-zdarma/">Konečně nadupaný editor kódu pro Linux, OS X i Windows zdarma?</a></li>
+</ul>

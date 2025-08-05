@@ -6,6 +6,9 @@ date: "2016-03-30"
 last_modification: "2016-03-30"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [JavaScript Rounding Recipes](http://thenewcode.com/895/JavaScript-Rounding-Recipes)
+<ul>
+  <li><a href="http://thenewcode.com/895/JavaScript-Rounding-Recipes">JavaScript Rounding Recipes</a></li>
+</ul>

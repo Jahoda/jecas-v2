@@ -5,64 +5,70 @@ description: "Popis, možnosti a vylepšení rozbalovacího výběru, HTML znač
 date: "2013-10-08"
 last_modification: "2013-10-08"
 status: 1
-tags: ["HTML", "HTML značky", "Formuláře", "Rady a nápady"]
+tags: ["formulare", "html", "html-tagy", "napady"]
+format: "html"
 ---
 
-Značka `&lt;select&gt;` se běžně používá ve formulářích pro roletový výběr více položek. Jednotlivé položky se zapisují do [nepovinně párových](/html-znacky#koncova-volitelna) značek `&lt;option&gt;`.
+<p>Značka <code>&lt;select&gt;</code> se běžně používá ve formulářích pro roletový výběr více položek. Jednotlivé položky se zapisují do <a href="/html-znacky#koncova-volitelna">nepovinně párových</a> značek <code>&lt;option&gt;</code>.</p>
 
-Použít: 
-  
-    – vybrat –
-    HTML
-    CSS
-    JavaScript
+<div class="live">Použít: 
+  <select name="jmenoSelectu">
+    <option value="nic">– vybrat –</option>
+    <option value="hodnotaHTML">HTML</option>
+    <option value="hodnotaCSS">CSS</option>
+    <option value="hodnotaJS">JavaScript</option>
+  </select>
+</div>
 
-## Rozbalení `&lt;select&gt;`u
+<h2 id="rozbaleni-selectu">Rozbalení <code>&lt;select&gt;</code>u</h2>
+<p>Rozbalovací seznamy bývají na stránkách podle mého názoru <b>často zneužívány</b>. Myslím tím situaci, kdy má rozbalovací výběr jen pár položek, ale je kvůli jejich odkrytí <b>nutno nejprve kliknout</b>. V takovém případě mi přijde vhodnější použít pár radio přepínačů (<code>&lt;input type=radio&gt;</code>).</p>
 
-Rozbalovací seznamy bývají na stránkách podle mého názoru **často zneužívány**. Myslím tím situaci, kdy má rozbalovací výběr jen pár položek, ale je kvůli jejich odkrytí **nutno nejprve kliknout**. V takovém případě mi přijde vhodnější použít pár radio přepínačů (`&lt;input type=radio&gt;`).
+<div class="internal-content">
+  <ul>
+    <li><a href="/select-pouzitelnost">Proč nepoužívat selectbox</a></li>
+  </ul>
+</div>
 
-    - [Proč nepoužívat selectbox](/select-pouzitelnost)
+<p>Kromě horší použitelnosti se značka <code>&lt;select&gt;</code> i <a href="/stylovani-selectu">hůře styluje</a>.</p>
 
-Kromě horší použitelnosti se značka `&lt;select&gt;` i [hůře styluje](/stylovani-selectu).
+<h3 id="rozbaleni-mysi">Rozbalení po najetí myší</h3>
+<p>Trochu pomoci si teoreticky lze JavaScriptem a provést <b>rozbalení po najetí myši</b>. (Využívá se nastavení atributu <code>size</code> podle počtu vnořených položek spolu s <a href="/position#absolute">absolutním posicováním</a>.)</p>
 
-### Rozbalení po najetí myší
+<div class="live">
+  <div style='position: relative'>Použít: 
+<select onmouseover="this.size=this.length; this.focus()" onblur="this.size=1" style="position: absolute">
+    <option value="nic">– vybrat –</option>
+    <option onclick="this.parentNode.size=1" value="hodnotaHTML">HTML</option>
+    <option onclick="this.parentNode.size=1" value="hodnotaCSS">CSS</option>
+    <option onclick="this.parentNode.size=1" value="hodnotaJS">JavaScript</option>
+  </select>
+</div>
+</div>
 
-Trochu pomoci si teoreticky lze JavaScriptem a provést **rozbalení po najetí myši**. (Využívá se nastavení atributu `size` podle počtu vnořených položek spolu s [absolutním posicováním](/position#absolute).)
+<p>Otázka je, jestli <b>je to skutečně pomoc</b> — narušení výchozího chování může být matoucí.</p>
 
-  Použít: 
+<h2 id="vybrana-polozka">Získání vybrané položky JavaScriptem</h2>
 
-    – vybrat –
-    HTML
-    CSS
-    JavaScript
+<p>Možný důvod, proč tvůrci webů upřednostňují roletový výběr, je <b>jeho snadné zpracovávání JavaScriptem</b>. Získání vybrané volby je otázkou jednoduchého:</p>
 
-Otázka je, jestli **je to skutečně pomoc** — narušení výchozího chování může být matoucí.
 
-## Získání vybrané položky JavaScriptem
+<pre><code>document.getElementById('jmenoSelectu').value</code></pre>
 
-Možný důvod, proč tvůrci webů upřednostňují roletový výběr, je **jeho snadné zpracovávání JavaScriptem**. Získání vybrané volby je otázkou jednoduchého:
+<p>Případně:</p>
 
-```
-document.getElementById('jmenoSelectu').value
-```
+<pre><code>document.formular.jmenoSelectu.value</code></pre>
 
-Případně:
+<p>U <code>&lt;input type=radio&gt;</code> je nutné projít cyklem všechny dané <code>&lt;input&gt;</code>y a hlídat u nich vlastnost <code>checked</code> (či použít nástroj typu jQuery — <code>$('input[name=jmeno]:checked').val()</code>).</p>
 
-```
-document.formular.jmenoSelectu.value
-```
 
-U `&lt;input type=radio&gt;` je nutné projít cyklem všechny dané `&lt;input&gt;`y a hlídat u nich vlastnost `checked` (či použít nástroj typu jQuery — `$('input[name=jmeno]:checked').val()`).
 
-### Vybraný element
+<h3 id="vybrany-element">Vybraný element</h3>
 
-Někdy je potřeba vybrat ze `&lt;select>`u celý vybraný element `&lt;option>`, to jde pomocí vlastnosti `selectedIndex`:
+<p>Někdy je potřeba vybrat ze <code>&lt;select></code>u celý vybraný element <code>&lt;option></code>, to jde pomocí vlastnosti <code>selectedIndex</code>:</p>
 
-```
-function vybranyOption(select) {
+<pre><code>function vybranyOption(select) {
   // první element „– vybrat –“ se bere jako nic
   if (select.selectedIndex == 0) return false;
   // vrátí se vybraný element
   return select.options[select.selectedIndex];
-}
-```
+}</code></pre>

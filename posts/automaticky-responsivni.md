@@ -6,6 +6,7 @@ date: "2017-03-21"
 last_modification: "2017-03-21"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://kod.djpw.cz/vyfc-

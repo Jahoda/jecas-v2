@@ -5,35 +5,44 @@ description: "Jak zajistit, aby se výška textového pole přizpůsobovala dél
 date: "2014-07-18"
 last_modification: "2016-05-29"
 status: 1
-tags: ["JavaScript", "Hotová řešení", "Formuláře"]
+tags: ["formulare", "hotova-reseni", "js"]
+format: "html"
 ---
 
-Při použití pole pro psaní delšího textu ([`&lt;textarea>`](/textarea)) čelíme dilematu, jak ho udělat vysoké. Nízká výška způsobí uživateli, co bude chtít zapsat **delší text**, značné nepohodlí. Naopak vysoká `&lt;textarea>` bude zase zabírat možná zbytečně hodně místa.
+<p>Při použití pole pro psaní delšího textu (<a href="/textarea"><code>&lt;textarea></code></a>) čelíme dilematu, jak ho udělat vysoké. Nízká výška způsobí uživateli, co bude chtít zapsat <b>delší text</b>, značné nepohodlí. Naopak vysoká <code>&lt;textarea></code> bude zase zabírat možná zbytečně hodně místa.</p>
 
-Prohlížeče kromě **IE 11** a starších umožňují provést změnu velikosti **tažením myši**, slouží k tomu CSS vlastnost [`resize`](/resize).
+<p>Prohlížeče kromě <b>IE 11</b> a starších umožňují provést změnu velikosti <b>tažením myši</b>, slouží k tomu CSS vlastnost <a href="/resize"><code>resize</code></a>.</p>
 
-Co ale velikost uzpůsobovat automaticky v závislosti na **obsahu**?
+<p>Co ale velikost uzpůsobovat automaticky v závislosti na <b>obsahu</b>?</p>
 
-## Počítání znaků
 
-Asi první, co člověka napadne, je [počítat v `&lt;textarea>` znaky](/pocet-znaku) a **odřádkování** a nějak podle toho vypočítat výšku.
 
-Přepočet výšky je nutný provádět při události [`oninput`](/oninput) (pro starší prohlížeče `onkeyup` + `onpaste` + `oncut` + `onfocus`).
+<h2 id="pocitani">Počítání znaků</h2>
 
-Vzhledem k různým proporcím různých písmen je téměř nemožné dosáhnout přesného výsledku.
+<p>Asi první, co člověka napadne, je <a href="/pocet-znaku">počítat v <code>&lt;textarea></code> znaky</a> a <b>odřádkování</b> a nějak podle toho vypočítat výšku.</p>
 
-## Zjištění výšky `scrollHeight`
+<p>Přepočet výšky je nutný provádět při události <a href="/oninput"><code>oninput</code></a> (pro starší prohlížeče <code>onkeyup</code> + <code>onpaste</code> + <code>oncut</code> + <code>onfocus</code>).</p>
 
-Asi nejlepší možnost je při změně obsahu nastavit výšku na `0` a z vlastnosti `scrollHeight` získat rozměry, které se následně nastaví jako výška.
+<p>Vzhledem k různým proporcím různých písmen je téměř nemožné dosáhnout přesného výsledku.</p>
 
-V případě okrajového [box modelu](/box-model) je ještě nutno připočíst `offsetHeight`.
 
-Skript si při inicialisaci nastaví pro `&lt;textarea>` do `data-*` atributu aktuální výšku, která se bude brát jako minimální. Výchozí minimální výšku tak jde zadat přes `height` nebo atributem `rows`.
+<h2 id="vyska">Zjištění výšky <code>scrollHeight</code></h2>
 
+<p>Asi nejlepší možnost je při změně obsahu nastavit výšku na <code>0</code> a z vlastnosti <code>scrollHeight</code> získat rozměry, které se následně nastaví jako výška.</p>
+
+<p>V případě okrajového <a href="/box-model">box modelu</a> je ještě nutno připočíst <code>offsetHeight</code>.</p>
+
+<p>Skript si při inicialisaci nastaví pro <code>&lt;textarea></code> do <code>data-*</code> atributu aktuální výšku, která se bude brát jako minimální. Výchozí minimální výšku tak jde zadat přes <code>height</code> nebo atributem <code>rows</code>.</p>
+
+<div class="live"><style>
 .pole {
     box-sizing: border-box;
 }
 
+
+</style>
+
+<script>
 var AutoHeightArea = function() {
     var originalArea;
     
@@ -66,35 +75,50 @@ var AutoHeightArea = function() {
         init : init
     };
 }();
+</script>
+<textarea name="pole" id="pole" cols="30" rows="3" class="pole"></textarea>
 
+<script>
     AutoHeightArea.init(document.getElementById("pole"));
+</script>
+</div>
 
-[Samostatná živá ukázka](http://kod.djpw.cz/rhyb)
+<p><a href="http://kod.djpw.cz/rhyb">Samostatná živá ukázka</a></p>
 
-## Využití `contenteditable`
 
-Poslední možnost je použít `contenteditable` atrapu. Skutečná `&lt;textarea>` se schová pomocí `display: none` a místo ní se vloží obyčejný `&lt;div>`, který umožňuje zapisovat text. Při **odeslání formuláře** se potom obsah `&lt;div>`u překopíruje do skutečného pole, které se tak řádně odešle na server.
+<h2 id="contenteditable">Využití <code>contenteditable</code></h2>
 
-Jde si tak vytvořit i primitivní [WYSIWYG editor](/vlastni-wysiwyg).
+<p>Poslední možnost je použít <code>contenteditable</code> atrapu. Skutečná <code>&lt;textarea></code> se schová pomocí <code>display: none</code> a místo ní se vloží obyčejný <code>&lt;div></code>, který umožňuje zapisovat text. Při <b>odeslání formuláře</b> se potom obsah <code>&lt;div></code>u překopíruje do skutečného pole, které se tak řádně odešle na server.</p>
 
-Jelikož se jedná o obyčejný `&lt;div>`, automatické roztahování bude jeho běžná vlastnost.
 
+<p>Jde si tak vytvořit i primitivní <a href="/vlastni-wysiwyg">WYSIWYG editor</a>.</p>
+
+<p>Jelikož se jedná o obyčejný <code>&lt;div></code>, automatické roztahování bude jeho běžná vlastnost.</p>
+
+<div class="live">
+  <style>
     .div-contenteditable {
       background: #fff;
       border: 1px solid #ccc;
       padding: .2em;
     }
+  </style>
+  <div contenteditable="true" class="div-contenteditable">Automatická výška „&lt;textarea>“</div>
+</div>
+
+<p><a href="http://kod.djpw.cz/wmeb-">Živá ukázka</a></p>
+
+<p>Nevýhoda tohoto postupu tkví ve větší pracnosti s převedením obsahu do požadované formy. Z políčka vyleze míst <i>plain textu</i> HTML, které se navíc bude lišit napříč prohlížeči.</p>
+
+<p>Například odřádkování někde vytváří nové odstavce (<code>&lt;p></code>), jinde <code>&lt;div></code> a někde pro změnu <code>&lt;br></code>.</p>
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="http://www.jacklmoore.com/autosize/">jQuery Autosize</a> – plugin do <b>jQuery</b> zajišťující automatickou výšku (může být i <b>plynule animovaná</b>).</li>
   
-  Automatická výška „&lt;textarea>“
+  <li><a href="http://leaverou.github.io/stretchy/">Stretchy</a> – automatická velikost elementů <code>&lt;textarea></code> i <a href="/input"><code>&lt;input></code></a></li>
+</ul>
 
-[Živá ukázka](http://kod.djpw.cz/wmeb-)
-
-Nevýhoda tohoto postupu tkví ve větší pracnosti s převedením obsahu do požadované formy. Z políčka vyleze míst *plain textu* HTML, které se navíc bude lišit napříč prohlížeči.
-
-Například odřádkování někde vytváří nové odstavce (`&lt;p>`), jinde `&lt;div>` a někde pro změnu `&lt;br>`.
-
-## Odkazy jinam
-
-  - [jQuery Autosize](http://www.jacklmoore.com/autosize/) – plugin do **jQuery** zajišťující automatickou výšku (může být i **plynule animovaná**).
-
-  - [Stretchy](http://leaverou.github.io/stretchy/) – automatická velikost elementů `&lt;textarea>` i [`&lt;input>`](/input)
+<!-- http://kod.djpw.cz/qagb -->

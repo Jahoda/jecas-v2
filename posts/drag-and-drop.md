@@ -6,6 +6,7 @@ date: "2014-02-14"
 last_modification: "2014-02-14"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://css-tricks.com/draggable-elements-push-others-way/

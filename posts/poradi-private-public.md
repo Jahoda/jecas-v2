@@ -6,26 +6,60 @@ date: "2020-01-09"
 last_modification: "2020-01-09"
 status: 0
 tags: []
+format: "html"
 ---
 
-Při psaní kódu je vhodné se držet nějakého *jednotného stylu* (zvlášť v případě, kdy se na něm podílí vícero autorů). K tomu patří i předvídatelné pořadí privátních a veřejných metod.
+<p>Při psaní kódu je vhodné se držet nějakého <i>jednotného stylu</i> (zvlášť v případě, kdy se na něm podílí vícero autorů). K tomu patří i předvídatelné pořadí privátních a veřejných metod.</p>
 
-Nejčastěji se lze setkat s těmito postupy:
+<p>Nejčastěji se lze setkat s těmito postupy:</p>
 
-    Související metody u sebe.
+<ol>
+  <li>
+    <p>Související metody u sebe.</p>
+  </li>
+  <li>
+    <p>Nejdřív <code>public</code>, potom <code>private</code>.</p>
+  </li>
+  <li>
+    <p>Náhodné pořadí.</p>
+  </li>
+</ol>
 
-    Nejdřív `public`, potom `private`.
+<p>Hlavní argument pro <b>řazení</b> <code>public</code> → <code>private</code> je v tom, že při pohledu do třídy je jasnější, jaké metody nabízí směrem <i>ven</i>, aniž by se člověk musel prokousávat hromadou vnitřní logiky v <i>private</i> metodách.</p>
 
-    Náhodné pořadí.
+<p>Další výhoda je v možnosti vyžadování tohoto pravidla automatickým nástrojem. Lze tak zabránit, aby se špatně seřazený kód dostal do hlavní větve aplikace.</p>
 
-Hlavní argument pro **řazení** `public` → `private` je v tom, že při pohledu do třídy je jasnější, jaké metody nabízí směrem *ven*, aniž by se člověk musel prokousávat hromadou vnitřní logiky v *private* metodách.
+<p>Výhoda <b>souvisejících metod u sebe</b> je zase v lepší čitelnosti při psaní a upravování třídy (související kód je blízko u sebe). Odpadá tím i situace, kdy se kvůli změně z public na private nebo obráceně musí přesouvat metody napříč souborem. Čímž se znehodnocuje historie v Gitu.</p>
 
-Další výhoda je v možnosti vyžadování tohoto pravidla automatickým nástrojem. Lze tak zabránit, aby se špatně seřazený kód dostal do hlavní větve aplikace.
+<p>Při použití vhodného IDE, např. PhpStormu, je potom řazení poměrně zbytečné, protože ho dokáže vyřešit sám editor. V přehledu <b>struktury</b> souboru (klávesová zkratka <kbd>Alt</kbd> + <kbd>7</kbd>) jde zobrazit všechny metody dané třídy a řadit je dle <i>viditelnosti</i>:</p>
 
-Výhoda **souvisejících metod u sebe** je zase v lepší čitelnosti při psaní a upravování třídy (související kód je blízko u sebe). Odpadá tím i situace, kdy se kvůli změně z public na private nebo obráceně musí přesouvat metody napříč souborem. Čímž se znehodnocuje historie v Gitu.
+<p><img src="/files/poradi-private-public/phpstorm-structure.png" alt="Struktura v PhpStormu" class="border"></p>
 
-Při použití vhodného IDE, např. PhpStormu, je potom řazení poměrně zbytečné, protože ho dokáže vyřešit sám editor. V přehledu **struktury** souboru (klávesová zkratka Alt + 7) jde zobrazit všechny metody dané třídy a řadit je dle *viditelnosti*:
 
-**Náhodnému řazení** je potom dobré se vyhnout, protože snižuje dobrou čitelnost kódu. Proto je dobré dát přednost konsistenci.
 
-Volba mezi řazením *public* → *private* a seskupování souvisejících metod bez ohledu na viditelnost potom není úplně jednoznačná. Oboje má své výhody i nevýhody a je třeba je zvážit podle aktuální situace.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><b>Náhodnému řazení</b> je potom dobré se vyhnout, protože snižuje dobrou čitelnost kódu. Proto je dobré dát přednost konsistenci.</p>
+
+<p>Volba mezi řazením <i>public</i> → <i>private</i> a seskupování souvisejících metod bez ohledu na viditelnost potom není úplně jednoznačná. Oboje má své výhody i nevýhody a je třeba je zvážit podle aktuální situace.</p>

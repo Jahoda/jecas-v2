@@ -6,6 +6,7 @@ date: "2014-07-09"
 last_modification: "2014-07-09"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://www.sitepoint.com/closer-look-piwik-google-analytics-alternative/

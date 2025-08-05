@@ -6,5 +6,6 @@ date: "2025-03-26"
 last_modification: "2025-03-26"
 status: 0
 tags: []
+format: "html"
 ---
 

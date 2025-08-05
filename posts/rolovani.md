@@ -6,28 +6,34 @@ date: "2014-11-12"
 last_modification: "2014-11-12"
 status: 0
 tags: []
+format: "html"
 ---
 
-Nepoužívat událost `window.scroll`, ale časovou smyčku, která otestuje, zda došlo k posunu. Pokud k posunu nedojde (na základě `window.pageYOffset`), nebude se nic dělat.
+<p>Nepoužívat událost <code>window.scroll</code>, ale časovou smyčku, která otestuje, zda došlo k posunu. Pokud k posunu nedojde (na základě <code>window.pageYOffset</code>), nebude se nic dělat.</p>
 
-Smyčku zajistí [`requestAnimationFrame`](/requestanimationframe) nebo fallback přes `setTimeout` pro starší prohlížeče.
+<p>Smyčku zajistí <a href="/requestanimationframe"><code>requestAnimationFrame</code></a> nebo fallback přes <code>setTimeout</code> pro starší prohlížeče.</p>
 
-Rolování je jedna z **nejčastějších náročných akcí**, které uživatel na stránce vykoná. Prohlížeč se po rozebrání [DOMu](/dom) snaží určit, které části budou při rolování vypadat stále stejně. Z nich potom vytvoří *obrázek* (vrstvu). Těchto vrstev může být na stránce více a různě se seskupovat. Když se potom na stránce při rolování něco změní, prohlížeč překreslí jen danou část.
+<p>Rolování je jedna z <b>nejčastějších náročných akcí</b>, které uživatel na stránce vykoná. Prohlížeč se po rozebrání <a href="/dom">DOMu</a> snaží určit, které části budou při rolování vypadat stále stejně. Z nich potom vytvoří <i>obrázek</i> (vrstvu). Těchto vrstev může být na stránce více a různě se seskupovat. Když se potom na stránce při rolování něco změní, prohlížeč překreslí jen danou část.</p>
 
-V ideálním případě toho prohlížeč při rolování **překresluje co nejméně**, což má positivní efekt na plynulost rolování.
+<p>V ideálním případě toho prohlížeč při rolování <b>překresluje co nejméně</b>, což má positivní efekt na plynulost rolování.</p>
 
-Momentálně je to značný problém *parallax* efektů, kdy se při rolování s něčím hýbe.
+<p>Momentálně je to značný problém <i>parallax</i> efektů, kdy se při rolování s něčím hýbe.</p>
 
-## Přehled ve vývojářských nástrojích
 
-Ve [vývojářských nástrojích](/vyvojarske-nastroje) Chrome je na kartě *Timeline* možné pozorovat právě překreslování stránky. Nástroj umí i napsat rozměry překreslované oblasti a po **najetí myší** ji zvýraznit na stránce.
+<h2 id="timeline">Přehled ve vývojářských nástrojích</h2>
 
-Rozhodně je dobré si tuto kartu při testování webu otevřít a operace, co sníží počet snímků za sekundu pod 60 snímků (60 fps), prozkoumat.
+<p>Ve <a href="/vyvojarske-nastroje">vývojářských nástrojích</a> Chrome je na kartě <i>Timeline</i> možné pozorovat právě překreslování stránky. Nástroj umí i napsat rozměry překreslované oblasti a po <b>najetí myší</b> ji zvýraznit na stránce.</p>
 
-## Příklad
+<p>Rozhodně je dobré si tuto kartu při testování webu otevřít a operace, co sníží počet snímků za sekundu pod 60 snímků (60 fps), prozkoumat.</p>
 
-```
-var raf = window.requestAnimationFrame || 
+<p><img src="/files/rolovani/timeline.png" alt="Časová osa vykreslování stránky" class="border"></p>
+
+
+
+
+<h2 id="priklad">Příklad</h2>
+
+<pre><code>var raf = window.requestAnimationFrame || 
   window.mozRequestAnimationFrame  ||
   window.webkitRequestAnimationFrame  ||
   setTimeout;
@@ -44,29 +50,30 @@ document.body.className = (
 odrolovano > coords.top
 ) ? "body-fixed-menu" : "";
 });
-}
-```
+}</code></pre>
 
-## Odkazy jinam
 
-  - [How to make faster scroll effects?](https://gist.github.com/Warry/4254579)
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - HTML5 Rocks: [Leaner, Meaner, Faster Animations with requestAnimationFrame](http://www.html5rocks.com/en/tutorials/speed/animations/)
-
-  - HTML5 Rocks: [Scrolling Performance](http://www.html5rocks.com/en/tutorials/speed/scrolling/)
-
-  - HTML5 Rocks: [Jank Busting for Better Rendering Performance](http://www.html5rocks.com/en/tutorials/speed/rendering/)
-
-  - HTML5 Rocks: [High Performance Animations](http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/)
-
-  - [requestAnimationFrame API: now with sub-millisecond precision](http://updates.html5rocks.com/2012/05/requestAnimationFrame-API-now-with-sub-millisecond-precision)
-
-  - [Learning from Twitter](http://ejohn.org/blog/learning-from-twitter/)
-
-  - [Jank Free: Let's Make the Web Silky Smooth!](http://jankfree.org/)
-
-  - [Explainer](https://github.com/w3c/frame-timing/wiki/Explainer) – měření FPS na stránce
-
-  - [Everybody Scrolls.](http://hugeinc.com/ideas/perspective/everybody-scrolls)
-
-  - [Auto-Hide Sticky Header](http://osvaldas.info/auto-hide-sticky-header)
+<ul>
+  <li><a href="https://gist.github.com/Warry/4254579">How to make faster scroll effects?</a></li>
+  
+  <li>HTML5 Rocks: <a href="http://www.html5rocks.com/en/tutorials/speed/animations/">Leaner, Meaner, Faster Animations with requestAnimationFrame</a></li>
+  
+  <li>HTML5 Rocks: <a href="http://www.html5rocks.com/en/tutorials/speed/scrolling/">Scrolling Performance</a></li>
+  
+  <li>HTML5 Rocks: <a href="http://www.html5rocks.com/en/tutorials/speed/rendering/">Jank Busting for Better Rendering Performance</a></li>
+  
+  <li>HTML5 Rocks: <a href="http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/">High Performance Animations</a></li>
+  
+  <li><a href="http://updates.html5rocks.com/2012/05/requestAnimationFrame-API-now-with-sub-millisecond-precision">requestAnimationFrame API: now with sub-millisecond precision</a></li>
+  
+  <li><a href="http://ejohn.org/blog/learning-from-twitter/">Learning from Twitter</a></li>
+  <li><a href="http://jankfree.org/">Jank Free: Let's Make the Web Silky Smooth!</a></li>
+  
+  <li><a href="https://github.com/w3c/frame-timing/wiki/Explainer">Explainer</a> – měření FPS na stránce</li>
+  
+  <li><a href="http://hugeinc.com/ideas/perspective/everybody-scrolls">Everybody Scrolls.</a></li>
+  
+  <li><a href="http://osvaldas.info/auto-hide-sticky-header">Auto-Hide Sticky Header</a></li>
+</ul>

@@ -6,6 +6,7 @@ date: "2015-06-15"
 last_modification: "2015-06-15"
 status: 0
 tags: []
+format: "html"
 ---
 
 .

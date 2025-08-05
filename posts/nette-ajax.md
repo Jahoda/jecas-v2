@@ -6,79 +6,114 @@ date: "2015-11-05"
 last_modification: "2015-11-05"
 status: 0
 tags: []
+format: "html"
 ---
 
-Pro používání [AJAXu](/ajax) je **Nette Framework** velmi dobře připraven.
+<p>Pro používání <a href="/ajax">AJAXu</a> je <b>Nette Framework</b> velmi dobře připraven.</p>
 
-Načítat jednotlivé stránky AJAXem je tak otázka:
+<p>Načítat jednotlivé stránky AJAXem je tak otázka:</p>
 
-  - Vytvoření *snippetu* – místa na stránce, kde se bude obsah měnit
+<ol>
+  <li>Vytvoření <i>snippetu</i> – místa na stránce, kde se bude obsah měnit</li>
+  
+  <li>Přidání informace do presenteru, kterou část má vracet pro použití ve snippetu.</li>
+  
+  <li>Obsluha odkazů JavaScriptem.</li>
+</ol>
 
-  - Přidání informace do presenteru, kterou část má vracet pro použití ve snippetu.
 
-  - Obsluha odkazů JavaScriptem.
 
-## Snippet
+<h2 id="snippet">Snippet</h2>
 
-Označuje blok, který se bude měnit bez znovunačtení celé stránky.
+<p>Označuje blok, který se bude měnit bez znovunačtení celé stránky.</p>
 
-Pro zajaxování celé stránky tak bude v šabloně `@laytou.latte` například následující:
+<p>Pro zajaxování celé stránky tak bude v šabloně <code>@laytou.latte</code> například následující:</p>
 
-```
-{snippet pageContent}
+<pre><code>{snippet pageContent}
   {include #content}
-{/snippet}
-```
+{/snippet}</code></pre>
 
-Po uložení by se na stránce měl objevit nový element s identifikátorem `snippet--nazevSnippetu`:
 
-Pokud by vadilo přidání dalšího `&lt;div>`u, jde udělat snippet i z existující značky atributem `n:snippet`:
 
-```
-&lt;div n:snippet="pageContent">
-```
 
-## Vrácení snippetu
+<p>Po uložení by se na stránce měl objevit nový element s identifikátorem <code>snippet--nazevSnippetu</code>:</p>
 
-Teoreticky pro načtení samotného obsahu AJAXem není potřeba na serveru nic upravovat. Může se v JS stáhnout celá HTML stránka, vybrat z ní potřebný obsah a ten vlepit do stránky původní.
+<p><img src="/files/nette-ajax/snippet-kod.png" alt="Vložení snippetu" class="border"></p>
 
-Elegantnější a rychlejší ale je přenášet **jen potřebná data**. Toho se docílí přidáním metody `redrawControl` do presenteru:
 
-```
-public function renderDefault() {
+
+
+
+
+
+
+
+<p>Pokud by vadilo přidání dalšího <code>&lt;div></code>u, jde udělat snippet i z existující značky atributem <code>n:snippet</code>:</p>
+
+<pre><code>&lt;div n:snippet="pageContent"></code></pre>
+
+
+
+
+
+<h2 id="vraceni-snippetu">Vrácení snippetu</h2>
+
+<p>Teoreticky pro načtení samotného obsahu AJAXem není potřeba na serveru nic upravovat. Může se v JS stáhnout celá HTML stránka, vybrat z ní potřebný obsah a ten vlepit do stránky původní.</p>
+
+
+<p>Elegantnější a rychlejší ale je přenášet <b>jen potřebná data</b>. Toho se docílí přidáním metody <code>redrawControl</code> do presenteru:</p>
+
+
+<pre><code>public function renderDefault() {
   $this->redrawControl('pageContent');
   /* samotné nastavování proměnných pro šablonu */
-}
-```
+}</code></pre>
 
-Nette potom při AJAXovém požadavku nevypíše celou stránku, ale pouze požadovanou oblast. AJAXový požadavek pozná podle HTTP hlavičky `X-Requested-With`.
 
-Výsledkem bude navíc JSON:
 
-```
-{"state":[],"snippets":{"snippet--pageContent":"HTML kód"}}
-```
 
-Případně je možné si přímo nastavit, jaká data v JSONu se mají posílat. Potom není vůbec potřeba šablona. Více v dokumentaci:
 
-    - Nette dokumentace: [AJAX &amp; snippety](https://doc.nette.org/cs/2.3/ajax)
+<p>Nette potom při AJAXovém požadavku nevypíše celou stránku, ale pouze požadovanou oblast. AJAXový požadavek pozná podle HTTP hlavičky <code>X-Requested-With</code>.</p>
 
-## Obsluha odkazu
+<p>Výsledkem bude navíc JSON:</p>
 
-Zavedenou praxí je odkazům, které mají být obslouženy AJAXem, přidat CSS třídu `.ajax`.
+<pre><code>{"state":[],"snippets":{"snippet--pageContent":"HTML kód"}}</code></pre>
 
-**Nette** přímo v sobě obslužnou funkci pro AJAX neobsahuje.
 
-Je doporučeno použít knihovnu využívající **jQuery**:
 
-    - [nette.ajax.js](https://addons.nette.org/vojtech-dobes/nette-ajax-js)
+<p>Případně je možné si přímo nastavit, jaká data v JSONu se mají posílat. Potom není vůbec potřeba šablona. Více v dokumentaci:</p>
 
-Tu stačí připojit po jQuery do stránky a inicialisovat pomocí:
+<div class="external-content">
+  <ul>
+    <li>Nette dokumentace: <a href="https://doc.nette.org/cs/2.3/ajax">AJAX &amp; snippety</a></li>
+  </ul>
+</div>
 
-```
-$(function () {
+
+<h2 id="obsluha">Obsluha odkazu</h2>
+
+<p>Zavedenou praxí je odkazům, které mají být obslouženy AJAXem, přidat CSS třídu <code>.ajax</code>.</p>
+
+<p><b>Nette</b> přímo v sobě obslužnou funkci pro AJAX neobsahuje.</p>
+
+<p>Je doporučeno použít knihovnu využívající <b>jQuery</b>:</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://addons.nette.org/vojtech-dobes/nette-ajax-js">nette.ajax.js</a></li>
+  </ul>
+</div>
+
+<p>Tu stačí připojit po jQuery do stránky a inicialisovat pomocí:</p>
+
+<pre><code>$(function () {
   $.nette.init();
-});
-```
+});</code></pre>
 
-Odkazy s třídou `.ajax` by nyní měly být načítány AJAXem.
+
+
+
+
+
+
+<p>Odkazy s třídou <code>.ajax</code> by nyní měly být načítány AJAXem.</p>

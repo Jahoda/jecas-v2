@@ -5,13 +5,16 @@ description: "Jak skrývat a odkrývat části stránky v čistém CSS bez jaké
 date: "2014-01-15"
 last_modification: "2014-01-15"
 status: 1
-tags: ["CSS", "Hotová řešení", "Přepínání vzhledu"]
+tags: ["css", "hotova-reseni", "prepinani-vzhledu"]
+format: "html"
 ---
 
-Když chceme na stránce vytvořit obsah, který **nemá být ihned viditelný**, existuje relativně prosté řešení [skrývání a odkrývání v JavaScriptu](/zobrazit-skryt), které díky [animacím](/animace) může být i [plynulé](/animace-skryt) (ideální je skriptem jen [přepínat třídy](/prepinani-trid)).
+<p>Když chceme na stránce vytvořit obsah, který <b>nemá být ihned viditelný</b>, existuje relativně prosté řešení <a href="/zobrazit-skryt">skrývání a odkrývání v JavaScriptu</a>, které díky <a href="/animace">animacím</a> může být i <a href="/animace-skryt">plynulé</a> (ideální je skriptem jen <a href="/prepinani-trid">přepínat třídy</a>).</p>
 
-Kromě toho je možné od **IE 9** tuto funkci zajistit **čistě v CSS**.
+<p>Kromě toho je možné od <b>IE 9</b> tuto funkci zajistit <b>čistě v CSS</b>.</p>
 
+<div class="live">
+<style>
 /* Přepínání */
 input.rozbalovac {display: none;} /* skrytí inputu */
 input[type=checkbox]:checked + .rozbalovaci .obsah {display: block} /* zobrazení obsahu */
@@ -32,29 +35,30 @@ input[type=checkbox]:checked + .rozbalovaci label {background: #1081DD;}
 input[type=checkbox]:checked + .rozbalovaci label:before {content: "−"}
 
 .rozbalovaci > .obsah {background: #fff; padding: .5em}
+</style>
+<input type="checkbox" class="rozbalovac" id="box1">
+<div class="rozbalovaci">
+  <label for="box1">Klikací nadpis obsahu</label>
+  <div class="obsah">
+    <p>Obsah, který se objeví po kliknutí.</p>
+  </div>
+</div>
+</div>
 
-  Klikací nadpis obsahu
-  
-    Obsah, který se objeví po kliknutí.
+<p><a href="http://kod.djpw.cz/ifbb">Živá ukázka</a></p>
 
-[Živá ukázka](http://kod.djpw.cz/ifbb)
+<h2 id="selektor-checked">Selektor <code>:checked</code></h2>
+<p>Řešení využívá <a href="/css-selektory#checked">selektoru zaškrtnutí</a> (proto je funkčnost limitována tímto selektorem na <b>IE 9+</b>), kdy se před skrývaný <code>&lt;div></code> umístí <a href="/input#type-checkbox"><code>&lt;input type=checkbox></code></a>, který v závislosti na svém <b>zaškrtnutí</b> požadovaný obsah skryje/zobrazí.</p>
 
-## Selektor `:checked`
+<p>Totožného principu lze využít i k:</p>
+<ul>
+  <li><a href="/css-filtrovani-dat">jednoduchému filtrování dat</a> nebo k </li>
+  <li><a href="/stylovani-checked">zajímavějšímu stylu zaškrtávátek</a>.</li>
+</ul>
 
-Řešení využívá [selektoru zaškrtnutí](/css-selektory#checked) (proto je funkčnost limitována tímto selektorem na **IE 9+**), kdy se před skrývaný `&lt;div>` umístí [`&lt;input type=checkbox>`](/input#type-checkbox), který v závislosti na svém **zaškrtnutí** požadovaný obsah skryje/zobrazí.
+<p>Zmíněný <code>checkbox</code> je potom <b>skrytý</b> a <i>ovládá se</i> značkou <a href="/label-for"><code>&lt;label></code> s atributem <code>for</code></a>. Symboly plus a <a href="/ceska-klavesnice#kody">mínus</a> jsou vytvořeny <a href="/content-attr">atributem <code>content</code></a>, nicméně může se jednat o prosté <code>&lt;span></code>y, které snadno v <code>&lt;label>u</code> zaměříme:</p>
 
-Totožného principu lze využít i k:
+<pre><code>input[type=checkbox]:checked + .rozbalovaci label > <b>span</b> {}</code></pre>
 
-  - [jednoduchému filtrování dat](/css-filtrovani-dat) nebo k 
-
-  - [zajímavějšímu stylu zaškrtávátek](/stylovani-checked).
-
-Zmíněný `checkbox` je potom **skrytý** a *ovládá se* značkou [`&lt;label>` s atributem `for`](/label-for). Symboly plus a [mínus](/ceska-klavesnice#kody) jsou vytvořeny [atributem `content`](/content-attr), nicméně může se jednat o prosté `&lt;span>`y, které snadno v `&lt;label>u` zaměříme:
-
-```
-input[type=checkbox]:checked + .rozbalovaci label > **span** {}
-```
-
-## Fallback pro starší IE
-
-Záleží-li nám i na starších prohlížečích (**IE 8** a starší), nezbývá než použít JS řešení nebo doplnit podporu [CSS 3 selektorů v IE](/css3-ie).
+<h2 id="fallback">Fallback pro starší IE</h2>
+<p>Záleží-li nám i na starších prohlížečích (<b>IE 8</b> a starší), nezbývá než použít JS řešení nebo doplnit podporu <a href="/css3-ie">CSS 3 selektorů v IE</a>.</p>

@@ -5,64 +5,93 @@ description: "Jak souborem <code>.htaccess</code> jednoduše omezit přístup na
 date: "2015-08-19"
 last_modification: "2015-10-10"
 status: 1
-tags: ["Hotová řešení", "Hesla"]
+tags: ["hesla", "hotova-reseni"]
+format: "html"
 ---
 
-Je-li cílem **omezit přístup na stránku** pouze pro uživatele, kteří znají **jméno a heslo**, existuje řada způsobů:
+<p>Je-li cílem <b>omezit přístup na stránku</b> pouze pro uživatele, kteří znají <b>jméno a heslo</b>, existuje řada způsobů:</p>
 
-  - Naprogramovat si přihlašování na straně serveru.
+<ol>
+  <li>Naprogramovat si přihlašování na straně serveru.</li>
+  
+  <li>Vytvořit stránku na tajné URL. (Zde je velmi snadné vyzrazení.)</li>
+  
+  <li>Použít autorisaci na straně serveru.</li>
+</ol>
 
-  - Vytvořit stránku na tajné URL. (Zde je velmi snadné vyzrazení.)
 
-  - Použít autorisaci na straně serveru.
+<p>Webový server <b>Apache</b> nabízí poměrně snadný způsob, jak primitivním způsobem <b>stránku zaheslovat</b>.</p>
 
-Webový server **Apache** nabízí poměrně snadný způsob, jak primitivním způsobem **stránku zaheslovat**.
+<p>Jde využít <b>HTTP autorisace</b>, která v prohlížeči vyvolá speciální formulář, takže se ani není potřeba obtěžovat s vytvářením vlastního.</p>
 
-Jde využít **HTTP autorisace**, která v prohlížeči vyvolá speciální formulář, takže se ani není potřeba obtěžovat s vytvářením vlastního.
+<p><img src="/files/http-autorisace/overeni.png" alt="Oveření uživatele v prohlížeči" class="border"></p>
 
-## Příklad
 
-### `.htaccess`
 
-V souboru `.htaccess` umístěném ve složce, kam se má omezit přístup, bude následující:
 
-```
-AuthType Basic
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="priklad">Příklad</h2>
+
+
+<h3 id="htaccess"><code>.htaccess</code></h3>
+<p>V souboru <code>.htaccess</code> umístěném ve složce, kam se má omezit přístup, bude následující:</p>
+
+<pre><code>AuthType Basic
 AuthName "Název autorisace"
-AuthUserFile "/cesta/k/souboru/**.htpasswd**"
-Require valid-user
-```
+AuthUserFile "/cesta/k/souboru/<b>.<!-- -->htpasswd</b>"
+Require valid-user</code></pre>
 
-Cesta k souboru `.htpasswd` musí být **absolutní (plná)**, nikoliv relativní ([doplnil](https://twitter.com/CechVeVietnamu/status/653055278456291330) Čech ve Vietnamu).
 
-Za zmínku stojí soubor `.htpasswd`, kde jsou uložena přihlašovací data:
 
-### `.htpasswd`
+<p>Cesta k souboru <code>.<!-- -->htpasswd</code> musí být <b>absolutní (plná)</b>, nikoliv relativní (<a href="https://twitter.com/CechVeVietnamu/status/653055278456291330">doplnil</a> Čech ve Vietnamu).</p>
 
-Soubor `.htpasswd` vypadá symbolicky takto:
+<p>Za zmínku stojí soubor <code>.<!-- -->htpasswd</code>, kde jsou uložena přihlašovací data:</p>
 
-```
-jmeno:heslo
-```
 
-Heslo je nutné hashovat. Stačí k tomu použít nějaký online nástroj:
+<h3 id="htpasswd"><code>.<!-- -->htpasswd</code></h3>
 
-    - [Javascript Htpasswd Generator](http://lakin.weckers.net/code/htpasswd/)
+<p>Soubor <code>.<!-- -->htpasswd</code> vypadá symbolicky takto:</p>
 
-    - [htpasswd generator - password encryption](http://aspirine.org/htpasswd_en.html)
 
-    - [Generátor hesla do .htpasswd](http://generator-hesel.station.cz/)
+<pre><code>jmeno:heslo</code></pre>
 
-    - [Htpasswd Generator – Create htpasswd](http://www.htaccesstools.com/htpasswd-generator/)
+<p>Heslo je nutné hashovat. Stačí k tomu použít nějaký online nástroj:</p>
 
-## Problémy v prohlížečích
+<div class="external-content">
+  <ul>
+    <li><a href="http://lakin.weckers.net/code/htpasswd/">Javascript Htpasswd Generator</a></li>
+    
+    <li><a href="http://aspirine.org/htpasswd_en.html">htpasswd generator - password encryption</a></li>
+    
+    <li><a href="http://generator-hesel.station.cz/">Generátor hesla do .<!-- -->htpasswd</a></li>
+    
+    <li><a href="http://www.htaccesstools.com/htpasswd-generator/">Htpasswd Generator – Create htpasswd</a></li>
+  </ul>
+</div>
 
-Některé prohlížeče nemají **rozhraní pro přihlášení**, takže se z nich do webů zaheslovaných pomocí `.htaccess` vůbec nejde dostat.
 
-To je případ například [mobilního **MS Edge**](/edge-mobile). V některých případech (třeba na **iPadu**) jde autorisací projít zadáním „`jmeno:heslo@`“ před doménu.
 
-Použití tohoto způsobu zaheslování je proto spíš **nouzové řešení**.
+<h2 id="problemy">Problémy v prohlížečích</h2>
 
-## Odkazy jinam
+<p>Některé prohlížeče nemají <b>rozhraní pro přihlášení</b>, takže se z nich do webů zaheslovaných pomocí <code>.htaccess</code> vůbec nejde dostat.</p>
 
-  - Apache HTTP Server: [Authentication and Authorization](http://httpd.apache.org/docs/2.2/howto/auth.html)
+<p>To je případ například <a href="/edge-mobile">mobilního <b>MS Edge</b></a>. V některých případech (třeba na <b>iPadu</b>) jde autorisací projít zadáním „<code>jmeno:heslo@</code>“ před doménu.</p>
+
+<p>Použití tohoto způsobu zaheslování je proto spíš <b>nouzové řešení</b>.</p>
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>Apache HTTP Server: <a href="http://httpd.apache.org/docs/2.2/howto/auth.html">Authentication and Authorization</a></li>
+</ul>

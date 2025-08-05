@@ -5,68 +5,79 @@ description: "Jak v CSS zoomovat (zvětšovat a zmenšovat) elementy."
 date: "2013-12-09"
 last_modification: "2015-02-15"
 status: 1
-tags: ["CSS", "CSS vlastnosti", "Hotová řešení"]
+tags: ["css", "css-vlastnosti", "hotova-reseni"]
+format: "html"
 ---
 
-Již v prastarých **Internet Explorerech** bylo možné cokoliv zvětšit nestandardní CSS vlastností `zoom`. V **IE**, **Chrome** a nové **Opeře** funguje `zoom` dodnes. Pro zvětšení/zmenšení se zadává buď poměr změny velikosti, nebo procenta.
+<p>Již v prastarých <b>Internet Explorerech</b> bylo možné cokoliv zvětšit nestandardní CSS vlastností <code>zoom</code>. V <b>IE</b>, <b>Chrome</b> a nové <b>Opeře</b> funguje <code>zoom</code> dodnes. Pro zvětšení/zmenšení se zadává buď poměr změny velikosti, nebo procenta.</p>
 
-```
-.dvakrat-vetsi {
+<pre><code>.dvakrat-vetsi {
   zoom: 2;
   /* totéž jako */
   zoom: 200%;
-}
-```
+}</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/dkkb)
 
-CSS vlastnost `zoom` funguje v podstatě stejně, jako by se danému elementu zvětšily nebo zmenšily rozměry, písmo a podobně.
 
-Vlastností `zoom` upravený element tak **ovlivní i své okolí**.
 
-## Transformace `scale`
 
-Modernější a podporovaný i ve **Firefoxu** je způsob změny velikosti pomocí CSS transformace `scale`. Element upravený transformací **neovlivňuje své okolí**, což činí úpravy méně náročné na výpočetní výkon (nemusí se přepočítávat umístění okolí).
 
-    - [Jak funguje vykreslování stránky](/vykreslovani) – co prohlížeč dělá se stránkou při načítání a změnách
+<p><a href="http://kod.djpw.cz/dkkb">Živá ukázka</a></p>
 
-Z neovlivňování okolí plyne fakt, že zvětšený element bude okolí překrývat.
+<p>CSS vlastnost <code>zoom</code> funguje v podstatě stejně, jako by se danému elementu zvětšily nebo zmenšily rozměry, písmo a podobně.</p>
 
-## Zápis
+<p>Vlastností <code>zoom</code> upravený element tak <b>ovlivní i své okolí</b>.</p>
 
-```
-.dvakrat-vetsi {
+
+
+<h2 id="scale">Transformace <code>scale</code></h2>
+
+<p>Modernější a podporovaný i ve <b>Firefoxu</b> je způsob změny velikosti pomocí CSS transformace <code>scale</code>. Element upravený transformací <b>neovlivňuje své okolí</b>, což činí úpravy méně náročné na výpočetní výkon (nemusí se přepočítávat umístění okolí).</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/vykreslovani">Jak funguje vykreslování stránky</a> – co prohlížeč dělá se stránkou při načítání a změnách</li>
+  </ul>
+</div>
+
+<p>Z neovlivňování okolí plyne fakt, že zvětšený element bude okolí překrývat.</p>
+
+
+<h2 id="zapis">Zápis</h2>
+
+<pre><code>.dvakrat-vetsi {
   transform: scale(2);
-}
-```
+}</code></pre>
 
-Funkce `scale` může element zvětšovat zvlášť ve směru vodorovném a zvlášť ve směru svislém při zadání dvou parametrů.
+<p>Funkce <code>scale</code> může element zvětšovat zvlášť ve směru vodorovném a zvlášť ve směru svislém při zadání dvou parametrů.</p>
 
-```
-.dvakrat-sirsi-ctyrikrat-vyssi {
+<pre><code>.dvakrat-sirsi-ctyrikrat-vyssi {
   transform: scale(2, 4);
-}
-```
+}</code></pre>
 
-Pro změnu velikosti pouze v ose X nebo ose Y existují ještě funkce:
+<p>Pro změnu velikosti pouze v ose X nebo ose Y existují ještě funkce:</p>
 
-  - `scaleX()`
+<ul>
+  <li><code>scaleX()</code></li>
+  <li><code>scaleY()</code></li>
+</ul>
 
-  - `scaleY()`
 
-```
-.dvakrat-sirsi-ctyrikrat-vyssi {
+<pre><code>.dvakrat-sirsi-ctyrikrat-vyssi {
   transform: scaleX(2) scaleY(4);
-}
-```
+}</code></pre>
 
+
+<div class="live">
+  <style>
     button {
       -webkit-transition: -webkit-transform .5s;
       -moz-transition: .5s -moz-transform;
       -o-transition: .5s -o-transform;
       transition: .5s transform;
     }
-
+  </style>
+  <script>
     function zvetsit(el) {
       var pomer = (Math.random() * 8) + 0.2;
       var transformace = "scale(" + pomer + ")";
@@ -76,51 +87,60 @@ Pro změnu velikosti pouze v ose X nebo ose Y existují ještě funkce:
       el.style.MsTransform = transformace;
       el.style.transform = transformace;
     }
+  </script>
+  <p>
+    <button onclick="zvetsit(this)">Náhodně změnit velikost</button>
+  </p>
+</div>
 
-    Náhodně změnit velikost
+<p>Hezké na změně velikosti pomocí <code>tranform: scale</code> je možnost animace pomocí <a href="/transition"><code>transition</code></a>. Stačí přidat jeden řádek (plus případné vlastnosti s <a href="/css-prefixy">CSS prefixy</a>) a změny velikosti jsou <b>plynulé</b>.</p>
 
-Hezké na změně velikosti pomocí `tranform: scale` je možnost animace pomocí [`transition`](/transition). Stačí přidat jeden řádek (plus případné vlastnosti s [CSS prefixy](/css-prefixy)) a změny velikosti jsou **plynulé**.
+<pre><code>element {
+  transition: 5.s <b>transform</b>;
+}</code></pre>
 
-```
-element {
-  transition: 5.s **transform**;
-}
-```
 
-## Podpora v prohlížečích
+<h2 id="podpora">Podpora v prohlížečích</h2>
 
-Transformace pro zvětšení nebo zmenšení fungují od:
+<p>Transformace pro zvětšení nebo zmenšení fungují od:</p>
 
-  - **IE 9**,
+<ul>
+  <li><b>IE 9</b>,</li>
+  <li><b>Chrome 4</b>,</li>
+  <li><b>Opera 11.5</b>,</li>
+  <li><b>Firefox 3.5</b>,</li>
+  <li><b>Safari 3.1</b></li>
+</ul>
 
-  - **Chrome 4**,
+<p>Pro podporu i ve starších prohlížečích se používají CSS prefixy:</p>
 
-  - **Opera 11.5**,
-
-  - **Firefox 3.5**,
-
-  - **Safari 3.1**
-
-Pro podporu i ve starších prohlížečích se používají CSS prefixy:
-
-```
-.zvetseny {
+<pre><code>.zvetseny {
   -webkit-transform: scale(1.5);
   -moz-transform: scale(1.5);
   -o-transform: scale(1.5);
   -ms-transform: scale(1.5);
   transform: scale(1.5);
-}
-```
+}</code></pre>
 
-## Využití
 
-Transformace `scale` se asi nejvíc hodí pro animované efekty.
 
-### Plynulé zobrazení přes celou obrazovku
 
-Po kliknutí na tlačítko se přes celou obrazovku plynule zobrazí obsah.
 
+
+
+
+
+<h2 id="vyuziti">Využití</h2>
+
+<p>Transformace <code>scale</code> se asi nejvíc hodí pro animované efekty.</p>
+
+
+<h3 id="cela-obrazovka">Plynulé zobrazení přes celou obrazovku</h3>
+
+<p>Po kliknutí na tlačítko se přes celou obrazovku plynule zobrazí obsah.</p>
+
+<div class="live">
+<style>
 #hlaska {
     position: fixed;
     top: 0;
@@ -138,42 +158,73 @@ Po kliknutí na tlačítko se přes celou obrazovku plynule zobrazí obsah.
 #hlaska.zobrazit {
     transform: scale(1);
 }
-
-Zobrazit
-
+</style>
+<button 
+  onclick="document.getElementById('hlaska').style.display = 'block'; setTimeout(function(){document.getElementById('hlaska').className = 'zobrazit'}, 10)">Zobrazit</button>
+<div id="hlaska">
+  <p>
     Obsah přes celou obrazovku.
+  </p>    
+  <p>
+    <button onclick="document.getElementById('hlaska').className = ''">Skrýt</button>
+  </p>
+</div>  
+</div>
 
-    Skrýt
 
-### Náhled webu
+<h3 id="nahled-webu">Náhled webu</h3>
 
-Zmenšením webu v `&lt;iframe>` jde vytvořit okamžitý náhled webu.
+<p>Zmenšením webu v <code>&lt;iframe></code> jde vytvořit okamžitý náhled webu.</p>
 
+<script>
   function zobrazitRam(form) {
     document.getElementById("ram").src = form.url.value;
   }
+</script>
+<form onsubmit="zobrazitRam(this); return false">
+  <p><label>URL: <input type="url" value="http://jakpsatweb.cz" name="url"></label> <button>Načíst</button></p>
+</form>
 
-  URL:  Načíst
-
+<div class="live">
+  <style>
   .nahled {
       transform: scale(.25);
       transform-origin: 0 0;
       width: 200;
       height: 100px;
   }
+  </style>
+  <div class="nahled">
+    <iframe id="ram" width="800" height="400" frameborder="0">
+    </iframe>
+  </div>  
+</div>
 
-Není to ale úplně ideální řešení, protože:
+<p>Není to ale úplně ideální řešení, protože:</p>
 
-  - stránka může **blokovat zobrazení v rámu**,
+<ul>
+  <li>stránka může <b>blokovat zobrazení v rámu</b>,</li>
+  
+  <li>celý obsah stránky se bude muset <b>stáhnout</b>, což bude poměrně datově náročné</li>
+</ul>
 
-  - celý obsah stránky se bude muset **stáhnout**, což bude poměrně datově náročné
+<p>Náhled webu se dá snadno získat i jako obrázek:</p>
 
-Náhled webu se dá snadno získat i jako obrázek:
+<div class="internal-content">
+  <ul>
+    <li><a href="/nahled-webu">Jak získat náhled webu?</a></li>
+  </ul>
+</div>
 
-    - [Jak získat náhled webu?](/nahled-webu)
+<p>Pomocí zvětšování/zmenšování jde docílit i různých pěkných efektů.</p>
 
-Pomocí zvětšování/zmenšování jde docílit i různých pěkných efektů.
+<div class="external-content">
+  <ul>
+    <li><a href="http://mark-rolich.github.io/Magnifier.js/">Magnifier.js</a> – zvětšování části obrázku</li>
+    
+    <li><a href="http://yyx990803.github.io/zoomerang/">Zoomerang</a> – zvětšení čehokoliv na stránce po kliknutí</li>
+  </ul>
+</div>
 
-    - [Magnifier.js](http://mark-rolich.github.io/Magnifier.js/) – zvětšování části obrázku
 
-    - [Zoomerang](http://yyx990803.github.io/zoomerang/) – zvětšení čehokoliv na stránce po kliknutí
+

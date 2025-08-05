@@ -5,85 +5,81 @@ description: "Atribut <code>tabindex</code> slouží k uspořádání položek p
 date: "2014-09-13"
 last_modification: "2014-09-13"
 status: 1
-tags: ["HTML", "Formuláře", "HTML atributy"]
+tags: ["formulare", "html", "html-atributy"]
+format: "html"
 ---
 
-Tabindex je universální – lze ho použít na **každém elementu**.
+<p>Tabindex je universální – lze ho použít na <b>každém elementu</b>.</p>
 
-```
-&lt;div **tabindex="0"**>
-&lt;/div>
-```
+<pre><code>&lt;div <b>tabindex="0"</b>>
+&lt;/div></code></pre>
 
-## Využití
 
-Použití `tabindexu` jsou tři:
 
-  - **změna pořadí** procházení klávesou Tab,
+<h2 id="vyuziti">Využití</h2>
 
-  - **umožnění procházení**/`:focus`u,
+<p>Použití <code>tabindexu</code> jsou tři:</p>
 
-  - **zabránění označení** Tabem
+<ol>
+  <li><b>změna pořadí</b> procházení klávesou <kbd>Tab</kbd>,</li>
+  <li><b>umožnění procházení</b>/<code>:focus</code>u,</li>
+  <li><b>zabránění označení</b> <kbd>Tab</kbd>em</li>
+</ol>
 
-## Změna pořadí
 
-Bez použití `tabindexu` se *Tabování* zachytí jen na určitých prvcích (**formuláře** a **odkazy**). Pořadí je potom řízeno umístěním jednotlivých prvků v **HTML kódu**.
 
-Chceme-li toto pořadí upravit, což se v případě [nelogického pořadí](/chyby-formularu#klavesnice) může hodit, začneme hodnoty `tabindex`u zvyšovat nad nulu (nula je u standardně Tabovatelných elementů výchozí hodnota).
+<h2 id="poradi">Změna pořadí</h2>
 
-```
-&lt;input value="Druhý">
-&lt;input **tabindex="1"** value="První">
-&lt;input value="Třetí">
-```
+<p>Bez použití <code>tabindexu</code> se <i>Tabování</i> zachytí jen na určitých prvcích (<b>formuláře</b> a <b>odkazy</b>). Pořadí je potom řízeno umístěním jednotlivých prvků v <b>HTML kódu</b>.</p>
 
-[Samostatná ukázka](http://kod.djpw.cz/nqfb)
+<p>Chceme-li toto pořadí upravit, což se v případě <a href="/chyby-formularu#klavesnice">nelogického pořadí</a> může hodit, začneme hodnoty <code>tabindex</code>u zvyšovat nad nulu (nula je u standardně <kbd>Tab</kbd>ovatelných elementů výchozí hodnota).</p>
 
-*Tabindex* se nemusí (a ani to není příliš vhodné) nastavovat všem položkám, ale jen těm, kterým chceme **zvýšit prioritu**.
+<pre><code>&lt;input value="Druhý">
+&lt;input <b>tabindex="1"</b> value="První">
+&lt;input value="Třetí"></code></pre>
 
-Při řazení pomocí vyšší hodnoty `tabindex`u není nutné neustále hodnotu zvyšovat (ve smyslu 1, 2, 3, …), ale lze využít pravidla, že při stejné hodnotě se pořadí řídí **umístěním v kódu**.
+<p><a href="http://kod.djpw.cz/nqfb">Samostatná ukázka</a></p>
 
-V této ukázce proto s klidem můžeme použít jako hodnoty `tabindex`u jen samé jedničky ([ukázka](http://kod.djpw.cz/pqfb)) místo:
+<p><i>Tabindex</i> se nemusí (a ani to není příliš vhodné) nastavovat všem položkám, ale jen těm, kterým chceme <b>zvýšit prioritu</b>.</p>
 
-```
-&lt;input value="Čtvrtý">
+<p>Při řazení pomocí vyšší hodnoty <code>tabindex</code>u není nutné neustále hodnotu zvyšovat (ve smyslu 1, 2, 3, …), ale lze využít pravidla, že při stejné hodnotě se pořadí řídí <b>umístěním v kódu</b>.</p>
+
+<p>V této ukázce proto s klidem můžeme použít jako hodnoty <code>tabindex</code>u jen samé jedničky (<a href="http://kod.djpw.cz/pqfb">ukázka</a>) místo:</p>
+
+<pre><code>&lt;input value="Čtvrtý">
 &lt;input tabindex="1" value="První">
-&lt;input tabindex="**2**" value="Druhý">
-&lt;input tabindex="**3**" value="Třetí">
-```
+&lt;input tabindex="<b>2</b>" value="Druhý">
+&lt;input tabindex="<b>3</b>" value="Třetí"></code></pre>
 
-## Umožnění procházení
 
-Pro elementy mimo **formulářové prvky a odkazy** způsobí přidání atributu `tabindex` schopnost se na element odTabovat nebo prvku udělit `focus`. To se hodí v případě, že chceme mít *klikací* `&lt;span>` nebo `&lt;div>` a umožnit ho **vybrat jen pomocí klávesnice**.
 
-```
-&lt;div tabindex="0">
+<h2 id="umozneni">Umožnění procházení</h2>
+
+<p>Pro elementy mimo <b>formulářové prvky a odkazy</b> způsobí přidání atributu <code>tabindex</code> schopnost se na element od<kbd>Tab</kbd>ovat nebo prvku udělit <code>focus</code>. To se hodí v případě, že chceme mít <i>klikací</i> <code>&lt;span></code> nebo <code>&lt;div></code> a umožnit ho <b>vybrat jen pomocí klávesnice</b>.</p>
+
+<pre><code>&lt;div tabindex="0">
     Tabovatelný DIV
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-Hodnota `0` zajistí, že se prvek vloží do pořadí dle umístění v HTML kódu.
+<p>Hodnota <code>0</code> zajistí, že se prvek vloží do pořadí dle umístění v HTML kódu.</p>
 
-[Ukázka](http://kod.djpw.cz/qqfb)
+<p><a href="http://kod.djpw.cz/qqfb">Ukázka</a></p>
 
-## Zabránění označení
 
-Poslední možnost je `tabindex` nastavit na zápornou hodnotu:
+<h2 id="zabraneni">Zabránění označení</h2>
 
-```
-&lt;input tabindex="**-1**" value="Nepůjde vybrat">
-```
+<p>Poslední možnost je <code>tabindex</code> nastavit na zápornou hodnotu:</p>
 
-U formulářových prvků mě využití moc nenapadá. Když se pole skryje (`display: none` nebo `visibility: hidden`) či zablokuje (atribut [`disabled`](/input#disabled)), tak se na něj dostat nedá. A jinak je poměrně žádoucí, aby se na prvek **dostat dalo**.
+<pre><code>&lt;input tabindex="<b>-1</b>" value="Nepůjde vybrat"></code></pre>
 
-U **neformulářových** elementů to ale smysl dávat může.
+<p>U formulářových prvků mě využití moc nenapadá. Když se pole skryje (<code>display: none</code> nebo <code>visibility: hidden</code>) či zablokuje (atribut <a href="/input#disabled"><code>disabled</code></a>), tak se na něj dostat nedá. A jinak je poměrně žádoucí, aby se na prvek <b>dostat dalo</b>.</p>
 
-Záporným `tabindex`em získá element možnost být `:focus`ován – z čehož plyne využití v CSS pomocí příslušného [selektoru `:focus`](/css-selektory#uzivatelske-akce).
+<p>U <b>neformulářových</b> elementů to ale smysl dávat může.</p>
 
-Rovněž v JavaScriptu jde elementu `focus` udělit.
+<p>Záporným <code>tabindex</code>em získá element možnost být <code>:focus</code>ován – z čehož plyne využití v CSS pomocí příslušného <a href="/css-selektory#uzivatelske-akce">selektoru <code>:focus</code></a>.</p>
 
-```
-element.focus();
-```
+<p>Rovněž v JavaScriptu jde elementu <code>focus</code> udělit.</p>
 
-[Ukázka](http://kod.djpw.cz/rqfb)
+<pre><code>element.focus();</code></pre>
+
+<p><a href="http://kod.djpw.cz/rqfb">Ukázka</a></p>

@@ -6,6 +6,7 @@ date: "2014-11-30"
 last_modification: "2014-11-30"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://diskuse.jakpsatweb.cz/.sandbox/?action=vthread&forum=8&topic=160348

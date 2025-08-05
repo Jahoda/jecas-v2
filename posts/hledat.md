@@ -6,10 +6,12 @@ date: "2013-11-09"
 last_modification: "2013-11-09"
 status: 0
 tags: []
+format: "html"
 ---
 
-Loading
-
+<div id='cse' style='width: 100%;'>Loading</div>
+<script src='//www.google.com/jsapi' type='text/javascript'></script>
+<script type='text/javascript'>
 google.load('search', '1', {language: 'cs', style: google.loader.themes.V2_DEFAULT});
 google.setOnLoadCallback(function() {
   var customSearchOptions = {};
@@ -27,7 +29,8 @@ google.setOnLoadCallback(function() {
   options.setAutoComplete(true);
   customSearchControl.draw('cse', options);
 }, true);
-
+</script>
+<style type='text/css'>
   .gsc-control-cse {
     font-family: "Trebuchet MS", sans-serif;
     border-color: #FFFFFF;
@@ -146,3 +149,4 @@ google.setOnLoadCallback(function() {
   .gs-promotion .gs-visibleUrl,.gs-promotion .gs-visibleUrl-short  {
     color: #0D6AB7;
   }
+</style>

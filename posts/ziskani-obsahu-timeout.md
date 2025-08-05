@@ -5,75 +5,71 @@ description: "Jak omezit maximální čas získávání obsahu stránky z URL."
 date: "2014-05-10"
 last_modification: "2014-05-11"
 status: 1
-tags: ["Hotová řešení", "PHP", "Získávání obsahu"]
+tags: ["hotova-reseni", "php", "ziskavani-obsahu"]
+format: "html"
 ---
 
-V případě, že je potřeba [stáhnout obsah](/stazeni-stranky) z nějaké cizí stránky, hodí se k tomu PHP funkce `file_get_contents`.
+<p>V případě, že je potřeba <a href="/stazeni-stranky">stáhnout obsah</a> z nějaké cizí stránky, hodí se k tomu PHP funkce <code>file_get_contents</code>.</p>
 
-## Čekání na odpověď
+<h2 id="cekani">Čekání na odpověď</h2>
 
-Problém tohoto postupu nastane ve chvíli, kdy cílová stránka **nebude odpovídat**. V takovém případě se PHP bude marně snažit až do vyčerpání časového limitu (*Maximum execution time*), což může být třeba 30 vteřin.
+<p>Problém tohoto postupu nastane ve chvíli, kdy cílová stránka <b>nebude odpovídat</b>. V takovém případě se PHP bude marně snažit až do vyčerpání časového limitu (<i>Maximum execution time</i>), což může být třeba 30 vteřin.</p>
 
-Většinou to ale je tak, že když stránka nevrátí obsah do **několika stovek milisekund**, nejspíš ho nevrátí vůbec (má výpadek a podobně).
+<p>Většinou to ale je tak, že když stránka nevrátí obsah do <b>několika stovek milisekund</b>, nejspíš ho nevrátí vůbec (má výpadek a podobně).</p>
 
-Proto u akcí, které vyvolává běžný návštěvník, je dobré **nastavit časový limit**. Běžný uživatel často nebude ochotný čekat déle než řádově **několik vteřin**.
+<p>Proto u akcí, které vyvolává běžný návštěvník, je dobré <b>nastavit časový limit</b>. Běžný uživatel často nebude ochotný čekat déle než řádově <b>několik vteřin</b>.</p>
 
-## Doporučený postup
+<h2 id="doporuceny-postup">Doporučený postup</h2>
 
-Získávání obsahu, které by mohlo **blokovat vykreslení stránky**, nastavit s nízkým časovým limitem a v případě neúspěchu zkusit data donačíst později [AJAXem](/ajax).
+<p>Získávání obsahu, které by mohlo <b>blokovat vykreslení stránky</b>, nastavit s nízkým časovým limitem a v případě neúspěchu zkusit data donačíst později <a href="/ajax">AJAXem</a>.</p>
 
-A nebo použít *cache*.
+<p>A nebo použít <i>cache</i>.</p>
 
-## Nastavení timeoutu
+<h2 id="timeout">Nastavení timeoutu</h2>
 
-```
-**$context** = stream_context_create(
+<pre><code><b>$context</b> = stream_context_create(
   array('http' =>
     array(
       'timeout' => 1 // Timeout ve vteřinách
     )
   )
 );
-$soubor = *@*file_get_contents(
+$soubor = <i>@</i>file_get_contents(
   "http://example.com", 
   false, 
-  **$context**
+  <b>$context</b>
 );
+</code></pre>
 
-```
 
-Timeout se funkci `file_get_contents` dá nastavit přes tzv. *context*, jenž se předá jako třetí argument.
+<p>Timeout se funkci <code>file_get_contents</code> dá nastavit přes tzv. <i>context</i>, jenž se předá jako třetí argument.</p>
 
-Zajímavé chování má **časová jednotka** pro `timeout`, která v praxi trvá dvakrát víc sekund, než se nastaví. Uvedená ukázka má tedy skutečný *timeout* 2 sekundy.
+<p>Zajímavé chování má <b>časová jednotka</b> pro <code>timeout</code>, která v praxi trvá dvakrát víc sekund, než se nastaví. Uvedená ukázka má tedy skutečný <i>timeout</i> 2 sekundy.</p>
 
-V případě, že časový limit znemožní stažení stránky, vrátí `file_get_contents` varování:
+<p>V případě, že časový limit znemožní stažení stránky, vrátí <code>file_get_contents</code> varování:</p>
 
-```
-Warning: file_get_contents(…): 
-  failed to open stream: HTTP request failed!
-```
+<pre><code>Warning: file_get_contents(…): 
+  failed to open stream: HTTP request failed!</code></pre>
+  
+<p>To je proto <b>potlačeno zavináčem</b>. V případě chyby bude v proměnné <code>$soubor</code> hodnota <code>false</code> (jinak získaný obsah).</p>
 
-To je proto **potlačeno zavináčem**. V případě chyby bude v proměnné `$soubor` hodnota `false` (jinak získaný obsah).
+<h2 id="https">HTTPS</h2>
 
-## HTTPS
+<p>Přestože se v poli při vytváření kontextu (<code>stream_context_create</code>) píše <code>http</code>, získání obsahu včetně nastavení limitu může fungovat i na <b>HTTPS</b>.</p>
 
-Přestože se v poli při vytváření kontextu (`stream_context_create`) píše `http`, získání obsahu včetně nastavení limitu může fungovat i na **HTTPS**.
+<h2 id="curl">cURL</h2>
 
-## cURL
+<p>S využitím <a href="http://www.php.net/manual/en/ref.curl.php">cURL</a> se timeout nastavuje takto:</p>
 
-S využitím [cURL](http://www.php.net/manual/en/ref.curl.php) se timeout nastavuje takto:
-
-```
-function curlObsah($url) {
+<pre><code>function curlObsah($url) {
   $c = curl_init();
-  curl_setopt($c, **CURLOPT_TIMEOUT**, 1);
+  curl_setopt($c, <b>CURLOPT_TIMEOUT</b>, 1);
   curl_setopt($c, CURLOPT_URL, $url);
   $result = curl_exec($c);
   curl_close($c);
   return $result;
-}
-```
+}</code></pre>
 
-Existuje i nastavení `CURLOPT_TIMEOUT_MS` pro zadávání času v milisekundách. Nicméně často **nižší timeout než 1 vteřinu** není možné nastavit (nastavení v milisekundách by mělo fungovat od cURL 7.16.2 – od PHP 5.2.3).
+<p>Existuje i nastavení <code>CURLOPT_TIMEOUT_MS</code> pro zadávání času v milisekundách. Nicméně často <b>nižší timeout než 1 vteřinu</b> není možné nastavit (nastavení v milisekundách by mělo fungovat od cURL 7.16.2 – od PHP 5.2.3).</p>
 
-Test obou postupů je na [GitHubu](https://github.com/Jahoda/get-contents-timeout).
+<p>Test obou postupů je na <a href="https://github.com/Jahoda/get-contents-timeout">GitHubu</a>.</p>

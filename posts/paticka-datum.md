@@ -5,89 +5,134 @@ description: "Jaké datum uvádět v patičce a jak automaticky zajistit, aby by
 date: "2015-01-05"
 last_modification: "2016-01-07"
 status: 1
-tags: ["Rady a nápady"]
+tags: ["napady"]
+format: "html"
 ---
 
-Na webových stránkách bývá zvykem, že na konci stránky v patičce bývá mj. uvedené **datum**.
+<p>Na webových stránkách bývá zvykem, že na konci stránky v patičce bývá mj. uvedené <b>datum</b>.</p>
 
-Otázka je, co by mělo **datum symbolisovat**, napříč internetem se je možné setkat s různými způsoby:
+<p>Otázka je, co by mělo <b>datum symbolisovat</b>, napříč internetem se je možné setkat s různými způsoby:</p>
 
-  - aktuální rok,
+<ol>
+  <li>aktuální rok,</li>
+  
+  <li>datum vzniku webu,</li>
+  
+  <li>rozsah mezi rokem založení a aktuální,</li>
+  
+  <li>datum poslední aktualisace</li>
+</ol>
 
-  - datum vzniku webu,
+<h2 id="aktualni">Aktuální rok</h2>
 
-  - rozsah mezi rokem založení a aktuální,
+<p>Zobrazení <b>aktuálního roku</b> používá řada populárních služeb. Je trochu k úvaze k čemu je taková informace dobrá.</p>
 
-  - datum poslední aktualisace
+<p>Smysl asi má, že aktuální datum značí, že je <b>webová stránka aktuální</b>, což může být trochu <i>podvod</i> v případě, že se letopočet mění automaticky.</p>
 
-## Aktuální rok
+<ul>
+  <li>
+    <p><a href="/facebook">Facebook</a></p>
+    
+    <p><img src="/files/paticka-datum/fb.png" alt="Datum v patičce na Facebooku" class="border"></p>
+  </li>
+  
+  <li>
+    <p><a href="/twitter">Twitter</a></p>
+    
+    <p><img src="/files/paticka-datum/twitter.png" alt="Datum v patičce na Twitteru" class="border"></p>
+  </li>  
+  
+  <li>
+    <p><a href="/ga">Google Analytics</a></p>
+    
+    <p><img src="/files/paticka-datum/ga.png" alt="Datum v patičce v Google Analytics" class="border"></p>
+  </li>  
+  
+  
+  <li>
+    <p>Outlook.com od Microsoftu</p>
+    
+    <p><img src="/files/paticka-datum/ms.png" alt="Datum v patičce na Outlook.com" class="border"></p>
+  </li>    
+</ul>
 
-Zobrazení **aktuálního roku** používá řada populárních služeb. Je trochu k úvaze k čemu je taková informace dobrá.
 
-Smysl asi má, že aktuální datum značí, že je **webová stránka aktuální**, což může být trochu *podvod* v případě, že se letopočet mění automaticky.
 
-    [Facebook](/facebook)
+<h2 id="rozsah">Rozsah od–do</h2>
 
-    [Twitter](/twitter)
+<p>Další rozšířeným typem je použití rozsahu let, kdy je webová stránka funkční. Stáří stránky může zvýšit její <b>důvěryhodnost</b> a předat návštěvníkovi informaci, kdy byl web založen.</p>
 
-    [Google Analytics](/ga)
+<p>Rozsah dvou letopočtů se typograficky správně píše s <b>–pomlčkou–</b> (nikoliv se -spojovníkem-) a <b>bez mezer</b>:</p>
 
-    Outlook.com od Microsoftu
+<div class="live">
+  <p>2013&ndash;2016</p>
+</div>
 
-## Rozsah od–do
 
-Další rozšířeným typem je použití rozsahu let, kdy je webová stránka funkční. Stáří stránky může zvýšit její **důvěryhodnost** a předat návštěvníkovi informaci, kdy byl web založen.
 
-Rozsah dvou letopočtů se typograficky správně píše s **–pomlčkou–** (nikoliv se -spojovníkem-) a **bez mezer**:
 
-  2013&ndash;2016
+<p><a href="/ceska-klavesnice#kody">Pomlčka</a> se zapíše <b>HTML entitami</b> <code>&amp;ndash;</code> (krátká) nebo <code>&amp;mdash;</code> (dlouhá).</p>
 
-[Pomlčka](/ceska-klavesnice#kody) se zapíše **HTML entitami** `&amp;ndash;` (krátká) nebo `&amp;mdash;` (dlouhá).
+<p>Příklad stránek používající rozsah:</p>
 
-Příklad stránek používající rozsah:
+<ul>
+  <li>
+    <p><a href="/seznam">Seznam</a></p>
+    
+    <p><img src="/files/paticka-datum/seznam.png" alt="Rozsah letopočtů v patičce na Seznamu" class="border"></p>
+  </li>
+  
+  <li>
+    <p><a href="http://disqus.com">Disqus</a></p>
+    
+    <p><img src="/files/paticka-datum/disqus.png" alt="Datum v patičce na Disqus" class="border"></p>
+  </li>  
+</ul>
 
-    [Seznam](/seznam)
 
-    [Disqus](http://disqus.com)
+<h2 id="datum-update">Datum poslední aktualisace</h2>
 
-## Datum poslední aktualisace
+<p>Z pohledu návštěvníka asi nejužitečnější informace. U článků ale typicky bývá datum vytvoření nebo poslední změny uveden už výše, takže ta samá informace v patičce může být <b>duplicitní</b>.</p>
 
-Z pohledu návštěvníka asi nejužitečnější informace. U článků ale typicky bývá datum vytvoření nebo poslední změny uveden už výše, takže ta samá informace v patičce může být **duplicitní**.
 
-    Wikipedie
 
-    [Jak psát web](http://jakpsatweb.cz) – značí update celého webu
+<ul>
+  <li>
+    <p>Wikipedie</p>
+    
+    <p><img src="/files/paticka-datum/wiki.png" alt="Datum poslední aktualisace na Wikipedii" class="border"></p>
+  </li>
+  
+  <li>
+    <p><a href="http://jakpsatweb.cz">Jak psát web</a> – značí update celého webu</p>
+    
+    <p><img src="/files/paticka-datum/jpw.png" alt="Datum v patičce na Disqus" class="border"></p>
+  </li>  
+</ul>
 
-## Automatická změna
 
-Pokud je cílem zobrazovat v patičce aktuální rok, jde to zajistit automaticky.
+<h2 id="automaticky-rok">Automatická změna</h2>
 
-V **PHP**:
+<p>Pokud je cílem zobrazovat v patičce aktuální rok, jde to zajistit automaticky.</p>
 
-```
-&lt;?php echo date("Y");?>
-```
+<p>V <b>PHP</b>:</p>
 
-Finální použití může vypadat třeba takto:
+<pre><code>&lt;?php echo date("Y");?></code></pre>
 
-```
-&lt;p>
+<p>Finální použití může vypadat třeba takto:</p>
+
+<pre><code>&lt;p>
   2013&amp;ndash;&lt;?=date("Y")?>
-&lt;/p>
-```
+&lt;/p></code></pre>
 
-Při použití Nette a šablonovacího systému **Latte** se aktuální rok vypíše pomocí:
+<p>Při použití Nette a šablonovacího systému <b>Latte</b> se aktuální rok vypíše pomocí:</p>
 
-```
-{date("Y")}
-```
+<pre><code>{date("Y")}</code></pre>
 
-V **JavaScriptu** je aktuální rok dostupný přes:
+<p>V <b>JavaScriptu</b> je aktuální rok dostupný přes:</p>
 
-```
-var rok = new Date().getFullYear();
-```
+<pre><code>var rok = new Date().getFullYear();</code></pre>
 
-Jak už bylo naznačeno dříve, v případě neaktualisovaného (opuštěného) webu to pro návštěvníky vytvoří **klamný dojem**.
+<p>Jak už bylo naznačeno dříve, v případě neaktualisovaného (opuštěného) webu to pro návštěvníky vytvoří <b>klamný dojem</b>.</p>
 
-Pro *nejférovější* automatickou změnu se tak nabízí používat rok **poslední změny obsahu**, který by rovněž mělo být možné získat automaticky.
+<p>Pro <i>nejférovější</i> automatickou změnu se tak nabízí používat rok <b>poslední změny obsahu</b>, který by rovněž mělo být možné získat automaticky.</p>

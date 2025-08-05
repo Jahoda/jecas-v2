@@ -5,31 +5,35 @@ description: "Jak cacheovat výsledky obsahu staženého z cizí stránky."
 date: "2014-05-17"
 last_modification: "2014-05-20"
 status: 1
-tags: ["Hotová řešení", "PHP", "Získávání obsahu"]
+tags: ["hotova-reseni", "php", "ziskavani-obsahu"]
+format: "html"
 ---
 
-Když potřebujeme [stáhnout obsah z cizí URL](/stazeni-stranky) (mimo náš web), jedná se většinou o **časově náročnější operaci**. Je sice možné [nastavit časový limit](/ziskani-obsahu-timeout), ale stejně je lepší výsledek *cacheovat*, je-li to možné a nepotřebujeme skutečně co nejnovější data.
+<p>Když potřebujeme <a href="/stazeni-stranky">stáhnout obsah z cizí URL</a> (mimo náš web), jedná se většinou o <b>časově náročnější operaci</b>. Je sice možné <a href="/ziskani-obsahu-timeout">nastavit časový limit</a>, ale stejně je lepší výsledek <i>cacheovat</i>, je-li to možné a nepotřebujeme skutečně co nejnovější data.</p>
 
-Cílem je časově náročnou *cizí stránku* odbourat a použít místo toho **cache na vlastním webu**.
+<p><img src="/files/ziskani-obsahu-cache/graf.png" alt="Požadavek na získání cizí stránky" class="border"></p>
 
-## Postup
+<p>Cílem je časově náročnou <i>cizí stránku</i> odbourat a použít místo toho <b>cache na vlastním webu</b>.</p>
 
-Jak na to? Obsah se bude stále získávat funkcí `file_**get**_contents`, ale zároveň se bude funkcí `file_**put**_contents` ukládat k nám na web.
+<h2 id="postup">Postup</h2>
 
-Ukládání ale proběhne jen v případě, že:
+<p>Jak na to? Obsah se bude stále získávat funkcí <code>file_<b>get</b>_contents</code>, ale zároveň se bude funkcí <code>file_<b>put</b>_contents</code> ukládat k nám na web.</p>
 
-  - kopie na našem webu **ještě není vytvořená** (funkce `file_exist`),
+<p>Ukládání ale proběhne jen v případě, že:</p>
 
-  - kopie (soubor cache) už je moc **starý** (porovná se stáří souboru – funkce `filemtime`)
+<ul>
+  <li>kopie na našem webu <b>ještě není vytvořená</b> (funkce <code>file_exist</code>),</li>
+  
+  <li>kopie (soubor cache) už je moc <b>starý</b> (porovná se stáří souboru – funkce <code>filemtime</code>)</li>
+</ul>
 
-V takovém případě (soubor na našem serveru neexistuje nebo je starý) se stáhne a uloží aktuální obsah, jinak se pouze zobrazí výsledek z *cache*, což **bude rychlé**.
+<p>V takovém případě (soubor na našem serveru neexistuje nebo je starý) se stáhne a uloží aktuální obsah, jinak se pouze zobrazí výsledek z <i>cache</i>, což <b>bude rychlé</b>.</p>
 
-## Řešení
+<h2 id="reseni">Řešení</h2>
 
-```
-function ziskatSouborCache($url) {
+<pre><code>function ziskatSouborCache($url) {
   $platnost = 60 * 60; // 60 s * 60 min = 1 hodina
-  $soubor = "**cache/**" . urlencode($url);
+  $soubor = "<b>cache/</b>" . urlencode($url);
 
   if (
       file_exists($soubor) &amp;&amp; 
@@ -47,17 +51,14 @@ function ziskatSouborCache($url) {
     }
     return $obsah;
   }
-}
-```
+}</code></pre>
 
-Použití je potom prosté:
+<p>Použití je potom prosté:</p>
 
-```
-echo ziskatSouborCache(
+<pre><code>echo ziskatSouborCache(
   "http://jecas.cz/ziskani-obsahu-cache"
-);
-```
+);</code></pre>
 
-A funkce `ziskatSouborCache` zařídí, jestli se soubor načte z **cizí URL** nebo z našeho serveru.
+<p>A funkce <code>ziskatSouborCache</code> zařídí, jestli se soubor načte z <b>cizí URL</b> nebo z našeho serveru.</p>
 
-Pro funkčnost výše uvedeného skriptu je nutné vytvořit adresář `cache`, jinak pokus o uložení souboru **skončí chybou**.
+<p>Pro funkčnost výše uvedeného skriptu je nutné vytvořit adresář <code>cache</code>, jinak pokus o uložení souboru <b>skončí chybou</b>.</p>

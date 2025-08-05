@@ -5,30 +5,32 @@ description: "Jak v CSS/JS vytvořit u navigace plynule přesouvaný hover efekt
 date: "2014-09-26"
 last_modification: "2014-09-28"
 status: 1
-tags: ["JavaScript", "CSS", "Hotová řešení", "Animace"]
+tags: ["css", "hotova-reseni", "js", "webove-animace"]
+format: "html"
 ---
 
-Cílem je vytvořit `:hover` efekt, který se bude **plynule** přesouvat mezi jednotlivými položkami ve **vodorovném menu**.
+<p><img src="/files/hover-posun/menu.gif" alt="Plynulé přesouvání hoveru" class="border"></p>
 
-## Čisté CSS
+<p>Cílem je vytvořit <code>:hover</code> efekt, který se bude <b>plynule</b> přesouvat mezi jednotlivými položkami ve <b>vodorovném menu</b>.</p>
 
-HTML kostra bude vypadat následovně:
 
-```
-&lt;div class="menu">
+
+<h2 id="css">Čisté CSS</h2>
+
+<p>HTML kostra bude vypadat následovně:</p>
+
+<pre><code>&lt;div class="menu">
     &lt;a href="">Odkaz&lt;/a>
     &lt;a href="">Odkaz&lt;/a>
     &lt;a href="">Odkaz&lt;/a>
     &lt;span>&lt;/span>
-&lt;/div>
-```
+&lt;/div></code></pre>
 
-Zvýrazňující prvek bude prázdný element (`&lt;span>`) například (záleží na fantasii při tvorbě) s nastaveným pozadím (`background`) a spodním rámečkem (`border-bottom`), který se [absolutně](/position#absolute) naposicuje za odkaz (pomocí `z-index`u).
+<p>Zvýrazňující prvek bude prázdný element (<code>&lt;span></code>) například (záleží na fantasii při tvorbě) s nastaveným pozadím (<code>background</code>) a spodním rámečkem (<code>border-bottom</code>), který se <a href="/position#absolute">absolutně</a> naposicuje za odkaz (pomocí <code>z-index</code>u).</p>
 
-Rozměry se mu nastaví s ohledem na velikost jednotlivých odkazů v menu. To tedy implikuje, že **šířka odkazů bude pevná**.
+<p>Rozměry se mu nastaví s ohledem na velikost jednotlivých odkazů v menu. To tedy implikuje, že <b>šířka odkazů bude pevná</b>.</p>
 
-```
-.menu a {
+<pre><code>.menu a {
   width: 100px;
   float: left;
   position: relative;
@@ -40,66 +42,62 @@ Rozměry se mu nastaví s ohledem na velikost jednotlivých odkazů v menu. To t
   width: 100px;
   background: #1081DD;
 }
+</code></pre>
 
-```
 
-### `:hover`
+<h3 id="css-hover"><code>:hover</code></h3>
 
-Při najetí na odkaz (`.menu a:hover`) nastavíme zvýrazňovacímu `&lt;span>`u posici dle odkazu, na který se najelo.
+<p>Při najetí na odkaz (<code>.menu a:hover</code>) nastavíme zvýrazňovacímu <code>&lt;span></code>u posici dle odkazu, na který se najelo.</p>
 
-Pro zaměření konkrétní položky využijeme od **IE 9** [selektor `nth-child`](/css-selektory#n-ty-potomek) (případně obyčejné třídy pro starší prohlížeče):
+<p>Pro zaměření konkrétní položky využijeme od <b>IE 9</b> <a href="/css-selektory#n-ty-potomek">selektor <code>nth-child</code></a> (případně obyčejné třídy pro starší prohlížeče):</p>
 
-```
-.menu a:nth-child(1) {/* první odkaz */}
-```
+<pre><code>.menu a:nth-child(1) {/* první odkaz */}</code></pre>  
+  
+<p>Pro zaměření zvýrazňovacího <code>&lt;span></code>u potom poslouží <a href="/css-selektory#libovolny-sourozenec">selektor libovolného sourozence</a> (od <b>IE 7</b>) – to je ta vlnovka (<a href="/ceska-klavesnice#pravy-alt">takto ji lze napsat</a>):</p>
 
-Pro zaměření zvýrazňovacího `&lt;span>`u potom poslouží [selektor libovolného sourozence](/css-selektory#libovolny-sourozenec) (od **IE 7**) – to je ta vlnovka ([takto ji lze napsat](/ceska-klavesnice#pravy-alt)):
-
-```
-.menu a:nth-child(1):hover **~** span {
+<pre><code>.menu a:nth-child(1):hover <b>~</b> span {
   /* zvýrazňovací span při hoveru 1. odkazu */
-}
-```
+}</code></pre>
 
-Tato pravidla se musí vytvořit pro **každý jeden odkaz**, lišit se budou jen hodnotou `left`, která umístí *zvýrazňovač* na požadovanou posici.
+<p>Tato pravidla se musí vytvořit pro <b>každý jeden odkaz</b>, lišit se budou jen hodnotou <code>left</code>, která umístí <i>zvýrazňovač</i> na požadovanou posici.</p>
 
-### Animace
 
-Nyní zbývá už jen zajisti plynulý přechod k čemuž využijeme [`transition`](/transition) vlastnosti `left`.
+<h3 id="animace">Animace</h3>
 
-```
-.menu span {
+<p>Nyní zbývá už jen zajisti plynulý přechod k čemuž využijeme <a href="/transition"><code>transition</code></a> vlastnosti <code>left</code>.</p>
+
+<pre><code>.menu span {
   transition: left .2s;
-}
-```
+}</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/byfb)
 
-## Řešení v JavaScriptu
+<p><a href="http://kod.djpw.cz/byfb">Živá ukázka</a></p>
 
-Jelikož řešení v *čistém CSS* trpí **řadou problémů**:
 
-  - **pevná šířka**,
 
-  - **neelegantní CSS kód**,
+<h2 id="js">Řešení v JavaScriptu</h2>
 
-  - nemožnost mít odkazy ve **více řádcích**,
+<p>Jelikož řešení v <i>čistém CSS</i> trpí <b>řadou problémů</b>:</p>
 
-  - při odjetí a najetí z/na menu *zvýrazňovač* přiletí z levé záporné posice.
+<ul>
+  <li><b>pevná šířka</b>,</li>
+  <li><b>neelegantní CSS kód</b>,</li>
+  <li>nemožnost mít odkazy ve <b>více řádcích</b>,</li>
+  <li>při odjetí a najetí z/na menu <i>zvýrazňovač</i> přiletí z levé záporné posice.</li>
+</ul>
 
-Hodí se pro jejich odstranění využít špetky **JS**.
+<p>Hodí se pro jejich odstranění využít špetky <b>JS</b>.</p>
 
-Stačí jen při najetí na odkaz (`onmouseover`) *překopírovat* výšku, šířku, umístění zleva a umístění shora od odkazu do zvýrazňovacího `&lt;span>`u.
+<p>Stačí jen při najetí na odkaz (<code>onmouseover</code>) <i>překopírovat</i> výšku, šířku, umístění zleva a umístění shora od odkazu do zvýrazňovacího <code>&lt;span></code>u.</p>
 
-```
-zvyraznovac.style.left = this.offsetLeft + "px";
+<pre><code>zvyraznovac.style.left = this.offsetLeft + "px";
 zvyraznovac.style.top = this.offsetTop + "px";
 zvyraznovac.style.width = this.offsetWidth + "px";
-zvyraznovac.style.height = this.offsetHeight + "px";
-```
+zvyraznovac.style.height = this.offsetHeight + "px";</code></pre>
 
-Původní `transition` zajistí **plynulý přesun**.
+<p>Původní <code>transition</code> zajistí <b>plynulý přesun</b>.</p>
 
-[Živá ukázka](http://kod.djpw.cz/cyfb)
+<p><a href="http://kod.djpw.cz/cyfb">Živá ukázka</a></p>
 
-Tento JS kód bude fungovat i pro **navigaci svislou** – [ukázka](http://kod.djpw.cz/dyfb) či **víceřádkovou** – [ukázka](http://kod.djpw.cz/eyfb).
+
+<p>Tento JS kód bude fungovat i pro <b>navigaci svislou</b> – <a href="http://kod.djpw.cz/dyfb">ukázka</a> či <b>víceřádkovou</b> – <a href="http://kod.djpw.cz/eyfb">ukázka</a>.</p>

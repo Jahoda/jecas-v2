@@ -6,121 +6,190 @@ date: "2014-08-05"
 last_modification: "2014-08-05"
 status: 0
 tags: []
+format: "html"
 ---
 
-Chcete mít na svých stránkách zde uvedená řešení a nechcete tím **ztrácet čas** nebo se vlastnoručně **trápit spoustu hodin** s nejistým výsledkem? **Udělám to za vás**.
+<p>Chcete mít na svých stránkách zde uvedená řešení a nechcete tím <b>ztrácet čas</b> nebo se vlastnoručně <b>trápit spoustu hodin</b> s nejistým výsledkem? <b>Udělám to za vás</b>.</p>
 
-Běžná doba vyhotovení je **do 2 dní**.
+<p>Běžná doba vyhotovení je <b>do 2 dní</b>.</p>
 
-    Do košíku
-    ## Fixní boční banner
+<div class="produkty" id="produkty">
+  <div class="produkt">
+    <button>Do košíku</button>
+    <h2 id="banner">Fixní boční banner</h2>
+    <p class="cena">890 Kč</p>
+    <div class="popis">
+      <p>Skript zajišťuje <b>zafixování</b> postranního panelu při odrolování a následné <i>zaseknutí</i> o patičku / jiný blok.</p>  
+      
+      <p>Vhodné pro <b>reklamní bannery</b>, důležité informace na stránce a podobně.</p>
+           
+      <p class="ukazka"><img src="/files/obchod/ukazky/sidebar.png" alt="Postranní panel" class="border"></p>
+    </div>  
+    
+  </div>  
+  
+  <div class="produkt">
+    <button>Do košíku</button>
+    <h2 id="zalozky">Přepínání záložek</h2>
+    <p class="cena">590 Kč</p>
+    <div class="popis">
+      <p>Přepínání obsahu pomocí <i>karet</i> s možností na jednotlivé části odkázat.</p>
+      
+      <p class="ukazka"><img src="/files/obchod/ukazky/karty.png" alt="Přepínání záložek" class="border"></p>
+    </div>  
+  </div>   
+  
+  
+  <div class="produkt">    
+    <button>Do košíku</button>    
+    <h2 id="galerie">Lightboxová galerie</h2>
+    <p class="cena">690 Kč</p>
+    <div class="popis">
+      <p>Vytvoření obrázkové galeriie pomocí lightboxu.</p>
+    </div>  
+  </div> 
+  
+  <div class="produkt">
+    <button>Do košíku</button>
+    <h2 id="odkryvani">Odkrývání textu</h2>
+    <p class="cena">390 Kč</p>
+    <div class="popis">
+      <p>Dynamické rozklikávání textu.</p>
+      
+      <p class="ukazka"><img src="/files/obchod/ukazky/odkryvani.png" alt="Odkrývání obsahu" class="border"></p>
+    </div>  
+  </div>  
+  
+  <div class="produkt">
+    <button>Do košíku</button>
+    <h2 id="tutorial">Živý tutorial na webu</h2>
+    <p class="cena">890 Kč</p>
+    <div class="popis">
+      <p>Potřebujete vytvořit pro návštěvníky <b>průvodce</b> jednotlivými části webu/aplikace?</p>
+      
+      <p>Nabízím hotové řešení, které je snadno upravitelné.</p>
+      
+      <p class="ukazka"><img src="/files/obchod/ukazky/tutorial.png" alt="Tutorial" class="border"></p>
+    </div>  
+  </div>
+  
+  <div class="produkt">
+    <button>Do košíku</button>
+    <h2 id="odpocitavani">Odpočítávání</h2>
+    <p class="cena">390 Kč</p>
+    <div class="popis">
+      <p>Dynamické odpočítávání typu „proběhne za X dní / hodin / minut“.</p>
+      
+      <p>Plně přizpůsobené pro české stránky včetně <b>správného skloňování</b>.</p>
+      
+      <p class="ukazka"><img src="/files/obchod/ukazky/odpocet.png" alt="Odpočítávání" class="border"></p>
+      <p class="ukazka">
+      <img src="/files/obchod/ukazky/odpocet2.png" alt="Odpočítávání" class="border"></p>
+    </div>  
+  </div>  
+  
+  <div class="produkt">
+    <button>Do košíku</button>
+    <h2 id="tooltip">Efektní tooltip</h2>
+    <p class="cena">390 Kč</p>
+    <div class="popis">
+      <p>Efektní popisek po najetí myši na daný element.</p>
+      
+      <p>Může obsahovat i HTML značky, obrázky a podobně.</p>
+      
+      <p class="ukazka"><img src="/files/obchod/ukazky/tooltip.png" alt="Popisek po najetí myši" class="border"></p>
+    </div>  
+  </div>  
+  
+  <div class="produkt">
+    <button>Do košíku</button>
+    <h2 id="sdileni">Sdílení na sociálních sítích</h2>
+    <p class="cena">290 Kč</p>
+    <div class="popis">
+      <p>Vložení tlačítek pro sdílení na nejznámnějších sociálních sítích.</p>
+      
+      <ul>
+        <li>Facebook</li>
+        <li>Twitter</li>
+        <li>Google Plus</li>
+      </ul>
+      
+    </div>  
+  </div>    
+</div>
 
-    890 Kč
 
-      Skript zajišťuje **zafixování** postranního panelu při odrolování a následné *zaseknutí* o patičku / jiný blok.
+<h2 id="jak">Jak to funguje?</h2>
 
-      Vhodné pro **reklamní bannery**, důležité informace na stránce a podobně.
+<ol>
+  <li>Sdělíte mi adresu webu, <b>přístup k FTP</b> a já provedu změny.</li>
+  <li><b>Nechcete-li sdělovat údaje k FTP</b>, připravím okomentovanou funkční ukázku <b>na základě vaší stránky</b>, kde bude popsáno, co se má kam vložit.</li>
+</ol>
 
-    Do košíku
-    ## Přepínání záložek
+<h2 id="doba">Doba vyhotovení</h2>
 
-    590 Kč
+<p>Standardní doba vyhotovení je <b>do 48 hodin</b>. V případě <b>nadstandarních úprav</b> se může prodloužit.</p>
 
-      Přepínání obsahu pomocí *karet* s možností na jednotlivé části odkázat.
 
-    Do košíku    
-    ## Lightboxová galerie
+<div class="kosik-obal">
 
-    690 Kč
+  <div class="obal-formulare" id="dokonceni">
+    <div class="formular">
+      <h2>Dokončit objednávku</h2>
+      <form onsubmit="return Obchod.odeslat(this)">
+        <p>
+          <label for="email">Váš email</label>
+          <input type="email" name="email" id="email" placeholder="email@domena.cz">          
+          <i>Zadejte email, kam vám mohu odepsat.</i>
+        </p>
+        <p>
+          <label for="zprava">Zpráva</label>
+          <textarea name="zprava" id="zprava" cols="30" rows="10" placeholder="Text zprávy, adresa vašeho webu a podobně."></textarea>
+          <i>Komentář k objednávce.</i>
+        </p>
+        <div id="hlaska" class="hlaska"></div>
+        <p><button>Odeslat objednávku</button>
+          <a href="javascript:Obchod.prepnoutDokoncit();//Zrušit" title="Prozatím objednávku zrušit">Zrušit</a>
+        </p>
+      </form>
+    </div>
+  </div>
+  
+  <div class="kosik">
+    <h2>Košík</h2>
 
-      Vytvoření obrázkové galeriie pomocí lightboxu.
+    <div id="kosik" class="polozky">
+      
+    </div>
 
-    Do košíku
-    ## Odkrývání textu
+    <div class="celkem" id="celkem">
+      <p id="prazdny"><i>(košík je prázdný)</i> <br> Potřebujete-li něco, co tu není,<br> napište mi.</p>
+      <button onclick="Obchod.prepnoutDokoncit();">Objednat za <span class="cena">? Kč</span></button>
+    </div>
+        
+    <div class="nabidka">
+      <p>
+        <img src="/files/nabidka/fotka.jpg">
+        
+        Bohumil Jahoda (k disposici)<br> 
+        IČ: 02649497<br>
+        <i><a href="mailto:jahoda&#064;jecas.cz">jahoda&#064;jecas.cz</a></i>
+      </p>
+    </div>
+  </div>  
+</div>
 
-    390 Kč
 
-      Dynamické rozklikávání textu.
 
-    Do košíku
-    ## Živý tutorial na webu
 
-    890 Kč
-
-      Potřebujete vytvořit pro návštěvníky **průvodce** jednotlivými části webu/aplikace?
-
-      Nabízím hotové řešení, které je snadno upravitelné.
-
-    Do košíku
-    ## Odpočítávání
-
-    390 Kč
-
-      Dynamické odpočítávání typu „proběhne za X dní / hodin / minut“.
-
-      Plně přizpůsobené pro české stránky včetně **správného skloňování**.
-
-    Do košíku
-    ## Efektní tooltip
-
-    390 Kč
-
-      Efektní popisek po najetí myši na daný element.
-
-      Může obsahovat i HTML značky, obrázky a podobně.
-
-    Do košíku
-    ## Sdílení na sociálních sítích
-
-    290 Kč
-
-      Vložení tlačítek pro sdílení na nejznámnějších sociálních sítích.
-
-        - Facebook
-
-        - Twitter
-
-        - Google Plus
-
-## Jak to funguje?
-
-  - Sdělíte mi adresu webu, **přístup k FTP** a já provedu změny.
-
-  - **Nechcete-li sdělovat údaje k FTP**, připravím okomentovanou funkční ukázku **na základě vaší stránky**, kde bude popsáno, co se má kam vložit.
-
-## Doba vyhotovení
-
-Standardní doba vyhotovení je **do 48 hodin**. V případě **nadstandarních úprav** se může prodloužit.
-
-      ## Dokončit objednávku
-
-          Váš email
-                    
-          *Zadejte email, kam vám mohu odepsat.*
-
-          Zpráva
-          
-          *Komentář k objednávce.*
-
-        Odeslat objednávku
-          [Zrušit](javascript:Obchod.prepnoutDokoncit();//Zrušit)
-
-    ## Košík
-
-      *(košík je prázdný)* 
- Potřebujete-li něco, co tu není,
- napište mi.
-
-      Objednat za ? Kč
-
-        Bohumil Jahoda (k disposici)
- 
-        IČ: 02649497
-
-        *[jahoda&#064;jecas.cz](mailto:jahoda&#064;jecas.cz)*
-
+<script src="/files/obchod/obchod.js?v1"></script>
+<script>
 Obchod.init(document.getElementById("produkty"), document.getElementById("kosik"));
+</script>
 
+
+
+<style>
 .produkt .ukazka {
     position: relative;
     min-height: 150px;
@@ -493,3 +562,5 @@ Obchod.init(document.getElementById("produkty"), document.getElementById("kosik"
 .formular .hlaska[data-zobrazit] {
     display: block;
 }
+
+</style>

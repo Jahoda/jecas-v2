@@ -6,6 +6,9 @@ date: "2015-11-10"
 last_modification: "2015-11-10"
 status: 0
 tags: []
+format: "html"
 ---
 
-- [Readability](www.readability.com) – připravení webu k lepšímu čtení
+<ul>
+  <li><a href="www.readability.com">Readability</a> – připravení webu k lepšímu čtení</li>
+</ul>

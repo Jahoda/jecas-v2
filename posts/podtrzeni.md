@@ -5,84 +5,126 @@ description: "Jak si vytvořit hezčí podtržení textu odkazu, než je výchoz
 date: "2014-11-15"
 last_modification: "2018-01-22"
 status: 1
-tags: ["CSS", "Hotová řešení", "Rady a nápady", "Odkazy"]
+tags: ["css", "hotova-reseni", "napady", "odkazy"]
+format: "html"
 ---
 
-Odkazy na webových stránkách je většinou **vhodné podtrhávat**. Standardní podtržení vlastností [`text-decoration`](/text-decoration) ale nenabízí příliš možností **upravení vzhledu**.
+<p>Odkazy na webových stránkách je většinou <b>vhodné podtrhávat</b>. Standardní podtržení vlastností <a href="/text-decoration"><code>text-decoration</code></a> ale nenabízí příliš možností <b>upravení vzhledu</b>.</p>
 
-S podtržením vytvořeným pomocí `text-decoration: underline` není v podstatě možné nic moc dále dělat.
+<p>S podtržením vytvořeným pomocí <code>text-decoration: underline</code> není v podstatě možné nic moc dále dělat.</p>
 
-Řešení je tuto *dekoraci* vypnout a **podtržení** si zajistit po svém.
+<p>Řešení je tuto <i>dekoraci</i> vypnout a <b>podtržení</b> si zajistit po svém.</p>
 
-## Vlastní podtržení
 
-Existuje spousta možností, jak vlastní podtržení realisovat, například:
 
-    Rámečkem pod odkazem – `border-bottom`.
 
-    ```
-a {
+<h2 id="vlastni">Vlastní podtržení</h2>
+
+<p>Existuje spousta možností, jak vlastní podtržení realisovat, například:</p>
+
+<ol>
+  <li>
+    <p>Rámečkem pod odkazem – <code>border-bottom</code>.</p>
+    
+    <pre><code>a {
   text-decoration: none;
   border-bottom: 1px solid;
-}
-```
+}</code></pre>
+    
+    <p>Bez uvedení barvy se použije <a href="/currentcolor">aktuální barva</a>. <a href="http://kod.djpw.cz/niib">Ukázka</a>.</p>
+  </li>
+  
+  <li>Stínem <a href="/box-shadow"><code>box-shadow</code></a> (<b>IE 9+</b>). <a href="http://kod.djpw.cz/llib">Ukázka</a>.</li>
+  
+  <li>
+    <p>Podtržení vytvořit <b>obrázkem na pozadí</b>. Nemusí se jednat o skutečný obrázek – jde použít i <a href="/gradient">gradient</a>.</p>
+  </li>
+  
+  <li>
+    <p>Pseudo-elementem <code>:before</code>/<code>:after</code>, který se <a href="/position#absolute">absolutně naposicuje</a> podle odkazu. Problém tohoto řešení bude s <b>delšími odkazy</b>, které by se rozdělily na dva řádky. Bude nutné zakázat jejich <a href="/zalamovani-slov">zalamovaní</a>.</p>
+  </li>
+</ol>
 
-    Bez uvedení barvy se použije [aktuální barva](/currentcolor). [Ukázka](http://kod.djpw.cz/niib).
+<h2 id="preskrtnuti">Přeškrtnutí písmen</h2>
 
-  - Stínem [`box-shadow`](/box-shadow) (**IE 9+**). [Ukázka](http://kod.djpw.cz/llib).
+<p>Ne úplně hezky může působit skutečnost, že podtržení přeškrtává písmena, která sahají pod <b>úroveň řádku</b>.</p>
 
-    Podtržení vytvořit **obrázkem na pozadí**. Nemusí se jednat o skutečný obrázek – jde použít i [gradient](/gradient).
+<p><img src="/files/text-decoration/preskrtnuti-pismen.png" alt="Přeškrtnutí písmen" class="border"></p>
 
-    Pseudo-elementem `:before`/`:after`, který se [absolutně naposicuje](/position#absolute) podle odkazu. Problém tohoto řešení bude s **delšími odkazy**, které by se rozdělily na dva řádky. Bude nutné zakázat jejich [zalamovaní](/zalamovani-slov).
+<p>Vyřešit tuto situaci jde přidáním <a href="/text-shadow">stínu textu</a> v barvě pozadí, který podtržení <b>překryje</b>.</p>
 
-## Přeškrtnutí písmen
-
-Ne úplně hezky může působit skutečnost, že podtržení přeškrtává písmena, která sahají pod **úroveň řádku**.
-
-Vyřešit tuto situaci jde přidáním [stínu textu](/text-shadow) v barvě pozadí, který podtržení **překryje**.
-
-```
-a {
+<pre><code>a {
   text-shadow: 2px 0 #fff, -2px 0 #fff;
-}
-```
+}</code></pre>
 
-Toto řešení půjde použít pouze v případě, že je **pozadí jednolité**.
+<p>Toto řešení půjde použít pouze v případě, že je <b>pozadí jednolité</b>.</p>
 
-[Živá ukázka](http://kod.djpw.cz/siib)
+<p><a href="http://kod.djpw.cz/siib">Živá ukázka</a></p>
 
-## `text-decoration-skip`
+<!--
+<p><a href="http://kod.djpw.cz/kmhb">Živá ukázka</a></p>
 
-Do budoucna počítá **CSS specifikace** s možnostmi ovlivnit výchozí podtržení pomocí *nové* vlastnosti `text-decoration`.
 
-  - [`text-decoration-color`](/text-decoration#color) – přímé nastavení barvy podtržení
+<h2 id="starsi-prohlizece">Starší prohlížeče</h2>
 
-  - [`text-decoration-skip`](/text-decoration#skip) – umožní nepřeškrtnout pod řádek sahající písmena
+<p>Při použit</p>-->
 
-  - [`text-underline-position`](/text-decoration#position) – umožní přesun podtržení až pod písmena sahající pod úroveň řádku
 
-Podpora v prohlížečích se pomalu rozšiřuje.
 
-## Nepřeškrtnutí s `text-decoration-skip: ink`
 
-Zvlášť hezká je možnost zbavit se ošklivého přeškrtávání písmen při podtržení.
+<h2 id="text-decoration-skip"><code>text-decoration-skip</code></h2>
 
-Prohlížeče **Chrome 57** a **Opera 44** (a novější verse) už si vystačí s prostým:
+<p>Do budoucna počítá <b>CSS specifikace</b> s možnostmi ovlivnit výchozí podtržení pomocí <i>nové</i> vlastnosti <code>text-decoration</code>.</p>
 
-```
-a {
+<ul>
+  <li><a href="/text-decoration#color"><code>text-decoration-color</code></a> – přímé nastavení barvy podtržení</li>
+  
+  <li><a href="/text-decoration#skip"><code>text-decoration-skip</code></a> – umožní nepřeškrtnout pod řádek sahající písmena</li>
+  
+  <li><a href="/text-decoration#position"><code>text-underline-position</code></a> – umožní přesun podtržení až pod písmena sahající pod úroveň řádku</li>  
+</ul>
+
+
+
+
+<p>Podpora v prohlížečích se pomalu rozšiřuje.</p>
+
+
+
+<h2 id="skip-ink">Nepřeškrtnutí s <code>text-decoration-skip: ink</code></h2>
+
+<p>Zvlášť hezká je možnost zbavit se ošklivého přeškrtávání písmen při podtržení.</p>
+
+<img src="/files/text-decoration/nepreskrtnuti-pismen.png" alt="Nepřeškrtávání písmen" class="border">
+
+
+
+
+
+
+
+<p>Prohlížeče <b>Chrome 57</b> a <b>Opera 44</b> (a novější verse) už si vystačí s prostým:</p>
+
+<pre><code>a {
   text-decoration-skip: ink;    
-}
-```
+}</code></pre>
 
-Není tak potřeba používat různé hacky, pro zamaskování podtržení okolo písmen. [Ukázka](http://kod.djpw.cz/ixlc).
 
-## Odkazy jinam
 
-  - CSS-Tricks: [Styling Underlines on the Web](https://css-tricks.com/styling-underlines-web/)
 
-  - Sitepoint: [The Secret to Underlined Links That Don’t Sting Your Eyes?](http://www.sitepoint.com/secret-underlined-links-dont-sting-eyes/)
 
-  - Adam Schwartz: [Smarter Link Underlines For Every Website](https://eager.io/blog/smarter-link-underlines/)
 
-  - [Crafting link underlines on Medium](https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9#8e94-7f28cf83d214)
+<p>Není tak potřeba používat různé hacky, pro zamaskování podtržení okolo písmen. <a href="http://kod.djpw.cz/ixlc">Ukázka</a>.</p>
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>CSS-Tricks: <a href="https://css-tricks.com/styling-underlines-web/">Styling Underlines on the Web</a></li>
+  <li>Sitepoint: <a href="http://www.sitepoint.com/secret-underlined-links-dont-sting-eyes/">The Secret to Underlined Links That Don’t Sting Your Eyes?</a></li>
+  
+  <li>Adam Schwartz: <a href="https://eager.io/blog/smarter-link-underlines/">Smarter Link Underlines For Every Website</a></li>
+  
+  <li><a href="https://medium.com/designing-medium/crafting-link-underlines-on-medium-7c03a9274f9#8e94-7f28cf83d214">Crafting link underlines on Medium</a></li>
+</ul>

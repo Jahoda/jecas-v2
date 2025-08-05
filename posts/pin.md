@@ -5,97 +5,217 @@ description: "Kdy a proč používat ve webových aplikacích přihlašování p
 date: "2015-09-01"
 last_modification: "2016-12-21"
 status: 1
-tags: ["Formuláře", "Bezpečnost", "Hesla"]
+tags: ["formulare", "hesla", "zabezpeceni"]
+format: "html"
 ---
 
-PIN je zkratka anglického *personal identification number* – tedy **osobní identifikační číslo**.
+<p>PIN je zkratka anglického <i lang="en">personal identification number</i> – tedy <b>osobní identifikační číslo</b>.</p>
 
-Nejčastěji se používá u **platebních karet** nebo **SIM karet mobilních telefonů**. Většinou sestává ze čtyř číslic, takže je relativně **snadný na zapsání**, a to je asi hlavní výhoda.
+<p>Nejčastěji se používá u <b>platebních karet</b> nebo <b>SIM karet mobilních telefonů</b>. Většinou sestává ze čtyř číslic, takže je relativně <b>snadný na zapsání</b>, a to je asi hlavní výhoda.</p>
 
-Při přihlašování pomocí PINu stačí vyťukat 4 číslice – to je velké zjednodušení oproti klasickým heslům, které často musí obsahovat 8 a více znaků, velká i malá písmena, číslici nebo nějaký speciální znak.
+<p>Při přihlašování pomocí PINu stačí vyťukat 4 číslice – to je velké zjednodušení oproti klasickým heslům, které často musí obsahovat 8 a více znaků, velká i malá písmena, číslici nebo nějaký speciální znak.</p>
 
-Umožnit přihlášení číslem (PINem) se tak hodí hlavně v situacích, kdy se **uživatel velmi často ohlašuje/přihlašuje**.
+<p>Umožnit přihlášení číslem (PINem) se tak hodí hlavně v situacích, kdy se <b>uživatel velmi často ohlašuje/přihlašuje</b>.</p>
 
-## Bezpečnost
 
-Na první pohled se může zdát, že čtyřmístné číselné heslo není dostatečně bezpečné – existuje pouze 10 000 kombinací (104).
 
-Tento problém je řešen **omezeným počtem pokusů**. Například po 3 neúspěšných pokusech je nutné minutu počkat. Tento čas se s přibývajícími neplatnými pokusy může prodlužovat a **vést k zablokování přihlašování**.
 
-Odblokování se potom provede zadáním *plného hesla* nebo zasláním odkazu pro zadání nového PINu na e-mail.
 
-## Implementace
+<h2 id="bezpecnost">Bezpečnost</h2>
 
-Na straně serveru je nutné zajistit, aby byl omezený počet špatných pokusů. Na straně klienta je asi nejdůležitější použít vhodný typ formulářového políčka.
+<p>Na první pohled se může zdát, že čtyřmístné číselné heslo není dostatečně bezpečné – existuje pouze 10 000 kombinací (10<sup>4</sup>).</p>
 
-Zatímco pro zařízení s fysickou klávesnicí stačí použít [`&lt;input type="password">`](/input#type-password), pro dotyková zařízení je řešení složitější:
+<p>Tento problém je řešen <b>omezeným počtem pokusů</b>. Například po 3 neúspěšných pokusech je nutné minutu počkat. Tento čas se s přibývajícími neplatnými pokusy může prodlužovat a <b>vést k zablokování přihlašování</b>.</p>
 
-Pro zadávání čísla je vhodné přepnout na numerickou klávesnici. To ale není úplně jednoduché:
+<p>Odblokování se potom provede zadáním <i>plného hesla</i> nebo zasláním odkazu pro zadání nového PINu na e-mail.</p>
 
-## Klávesnice pro zadávání čísel
 
-Universální spolehlivý postup, jak připravit políčko pro pohodlné dotykové zadávání číslic, funkční na **Androidu**, **iOS** i **Windows Phone** je použít `&lt;input type="number">` + [atribut `pattern`](/atribut-pattern):
 
-```
-&lt;input type="number" pattern="[0-9]*">
-```
 
-Bez `pattern`u se na iOS zobrazuje klávesnice i s dalšími speciálními znaky:
 
-Po jeho použití už je klávesnice jen s číslicemi:
+<h2 id="implementace">Implementace</h2>
 
-Na **Androidu** a **WP** se jde bez atributu `pattern` obejít.
+<p>Na straně serveru je nutné zajistit, aby byl omezený počet špatných pokusů. Na straně klienta je asi nejdůležitější použít vhodný typ formulářového políčka.</p>
 
-Docílit numerické klávesnice jde i s `&lt;input type="tel">` určeným pro zadávání telefonních čísel – na iOS to nastaví velmi podobnou klávesnici jako typ `number` s atributem `pattern` omezeným na čísla.
+<p>Zatímco pro zařízení s fysickou klávesnicí stačí použít <a href="/input#type-password"><code>&lt;input type="password"></code></a>, pro dotyková zařízení je řešení složitější:</p>
 
-Na Androidu se typy `number` a `tel` liší následovně:
+<p>Pro zadávání čísla je vhodné přepnout na numerickou klávesnici. To ale není úplně jednoduché:</p>
 
-    Number
 
-    Tel
+<h2 id="number">Klávesnice pro zadávání čísel</h2>
 
-### Atribut `inputmode`
+<p>Universální spolehlivý postup, jak připravit políčko pro pohodlné dotykové zadávání číslic, funkční na <b>Androidu</b>, <b>iOS</b> i <b>Windows Phone</b> je použít <code>&lt;input type="number"></code> + <a href="/atribut-pattern">atribut <code>pattern</code></a>:</p>
 
-Specifikace HTML 5.2 [popisuje](http://w3c.github.io/html/single-page.html#input-modalities-the-inputmode-attribute) atribut `inputmode`, který by měl sloužit k nastavení typu vstupu nezávisle na typu políčka.
+<pre><code>&lt;input type="number" pattern="[0-9]*"></code></pre>
 
-Šel by tak použít i pro typ `password`:
 
-```
-&lt;input type="password" **inputmode="numeric"**>
-```
 
-Bohužel ale tento způsob není prohlížeči podporován.
+<p>Bez <code>pattern</code>u se na iOS zobrazuje klávesnice i s dalšími speciálními znaky:</p>
 
-### Odeslání `&lt;input type="number">`
+<p><img src="/files/pin/ios-type-number.png" alt="Klávesnice type=number na iOS" class="border"></p>
 
-V některých prohlížečích (např. stará **Opera 12**) se u políčka typu `number` neodesílají na server počáteční nuly. Ze vstupu `007` se tak na server může odeslat jen `7`.
 
-Není-li stanoven **pevný počet míst PINu**, může s tím být problém.
 
-### Maskování hesla
 
-Ačkoliv je [maskování hesel](/maskovani-hesla) u běžných hesel spíš otravné (risiko překlepu), u krátkého PINu to takový problém být nemusí.
 
-Problém ale je, že pro maskování hesla je nutný `type=password` a pro zobrazení správné klávesnice zase `type=number`. Existují následující možnosti:
 
-    Vlastnost `text-security` – Webkit podporuje s [prefixem](/css-prefixy) CSS vlastnost pro maskování:
 
-    ```
-input[type=number].jako-password {
+
+
+
+
+
+
+
+
+
+
+<p>Po jeho použití už je klávesnice jen s číslicemi:</p>
+
+<p><img src="/files/pin/ios-type-number-pattern.png" alt="Klávesnice type=number a pattern na iOS" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Na <b>Androidu</b> a <b>WP</b> se jde bez atributu <code>pattern</code> obejít.</p>
+
+
+<p>Docílit numerické klávesnice jde i s <code>&lt;input type="tel"></code> určeným pro zadávání telefonních čísel – na iOS to nastaví velmi podobnou klávesnici jako typ <code>number</code> s atributem <code>pattern</code> omezeným na čísla.</p>
+
+<p><img src="/files/pin/ios-type-tel.png" alt="Klávesnice type=number a pattern na iOS" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Na Androidu se typy <code>number</code> a <code>tel</code> liší následovně:</p>
+
+
+
+<ol>
+  <li>
+    <p>Number</p>
+    <p><img src="/files/pin/android-type-number.png" alt="Klávesnice type=number na Androidu" class="border"></p>
+  </li>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <li>
+    <p>Tel</p>
+    
+<p><img src="/files/pin/android-type-tel.png" alt="Klávesnice type=tel na Androidu" class="border"></p>
+  </li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3 id="inputmode">Atribut <code>inputmode</code></h3>
+
+<p>Specifikace HTML 5.2 <a href="http://w3c.github.io/html/single-page.html#input-modalities-the-inputmode-attribute">popisuje</a> atribut <code>inputmode</code>, který by měl sloužit k nastavení typu vstupu nezávisle na typu políčka.</p>
+
+<p>Šel by tak použít i pro typ <code>password</code>:</p>
+
+<pre><code>&lt;input type="password" <b>inputmode="numeric"</b>></code></pre>
+
+
+
+
+
+
+
+
+<p>Bohužel ale tento způsob není prohlížeči podporován.</p>
+
+
+
+<h3 id="odeslani">Odeslání <code>&lt;input type="number"></code></h3>
+
+<p>V některých prohlížečích (např. stará <b>Opera 12</b>) se u políčka typu <code>number</code> neodesílají na server počáteční nuly. Ze vstupu <code>007</code> se tak na server může odeslat jen <code>7</code>.</p>
+
+<p>Není-li stanoven <b>pevný počet míst PINu</b>, může s tím být problém.</p>
+
+
+
+
+
+<h3 id="maskovani">Maskování hesla</h3>
+
+<p>Ačkoliv je <a href="/maskovani-hesla">maskování hesel</a> u běžných hesel spíš otravné (risiko překlepu), u krátkého PINu to takový problém být nemusí.</p>
+
+<p>Problém ale je, že pro maskování hesla je nutný <code>type=password</code> a pro zobrazení správné klávesnice zase <code>type=number</code>. Existují následující možnosti:</p>
+
+
+<ol>
+  <li>
+    <p>Vlastnost <code>text-security</code> – Webkit podporuje s <a href="/css-prefixy">prefixem</a> CSS vlastnost pro maskování:</p>
+    
+    <pre><code>input[type=number].jako-password {
      -webkit-text-security: disc;
-}
-```
-
-    Ta jde mimochodem aplikovat i na běžný text, takže není problém cokoliv zapuntíkovat nebo začtverečkovat.
-
-    Heslo/PIN nemaskovat.
-
-    Teoreticky by šlo použít skrytý `type="number"` pro nastavení správné klávesnice a kopírovat jeho obsah do viditelného `type="password"`.
-
-    Bude ale problém se zobrazováním kursoru – [ukázka](http://kod.djpw.cz/xldc).
-
-    Použít speciální font přes [`@font-face`](/font-face) pro `&lt;input>`, kde bude jakýkoliv znak vypadat jako puntík.
-
+}</code></pre>
+    
+    
+    
+    
+    
+    <p id="testTextSecurity">Ta jde mimochodem aplikovat i na běžný text, takže není problém cokoliv <button onclick="toggle(testTextSecurity, 'zapuntikovat')">zapuntíkovat</button> nebo <button onclick="toggle(testTextSecurity, 'zactvereckovat')">začtverečkovat</button>.</p>
+  </li>
+  
+  <li>
+    <p>Heslo/PIN nemaskovat.</p>
+  </li>
+  
+  <li>
+    <p>Teoreticky by šlo použít skrytý <code>type="number"</code> pro nastavení správné klávesnice a kopírovat jeho obsah do viditelného <code>type="password"</code>.</p>
+    
+    <p>Bude ale problém se zobrazováním kursoru – <a href="http://kod.djpw.cz/xldc">ukázka</a>.</p>
+  </li>
+  
+  <li>
+    <p>Použít speciální font přes <a href="/font-face"><code>@font-face</code></a> pro <code>&lt;input></code>, kde bude jakýkoliv znak vypadat jako puntík.</p>
+    
+    <div class="live">
+<style>
 @font-face {
   font-family: 'password';
   src: url('/files/pin/password-webfont.woff2') format('woff2'),
@@ -107,11 +227,23 @@ input[type=number].jako-password {
   font-family: 'password';
   height: 1em;
 }
+</style>
+<div class="number-password">
+  <input type="number" pattern="[0-9]*">
+</div>
+    </div>
+  </li>
+</ol>
 
-## Odkazy
 
-  - [Živá ukázka](http://kod.djpw.cz/wldc) – test různých `&lt;input>`ů pro zadávání PINu
 
+<h2 id="odkazy">Odkazy</h2>
+
+<ul>
+  <li><a href="http://kod.djpw.cz/wldc">Živá ukázka</a> – test různých <code>&lt;input></code>ů pro zadávání PINu</li>
+</ul>
+
+<style>
 .zapuntikovat {
   -webkit-text-security: disc;
 }
@@ -122,3 +254,4 @@ input[type=number].jako-password {
 #testTextSecurity button {
   -webkit-text-security: none;
 }
+</style>

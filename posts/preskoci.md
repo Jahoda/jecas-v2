@@ -6,12 +6,13 @@ date: "2015-02-11"
 last_modification: "2015-02-11"
 status: 0
 tags: []
+format: "html"
 ---
 
-Pokud chce návštěvník web ovládat klávesnicí, hodí se při odTabování zobrazovat rychlé odkazy pro navigaci v rámci dané stránky.
+<p>Pokud chce návštěvník web ovládat klávesnicí, hodí se při od<kbd>Tab</kbd>ování zobrazovat rychlé odkazy pro navigaci v rámci dané stránky.</p>
 
-[New York Times - tabbing reveals accesibility interface elements](https://www.youtube.com/watch?v=1rv5AL_tTz0)
+<p><a href="https://www.youtube.com/watch?v=1rv5AL_tTz0" class="yt">New York Times - tabbing reveals accesibility interface elements</a></p>
 
-- [nytimes.com’s Skip Link Design](http://a11ywins.tumblr.com/post/116335338923/nytimes-coms-skip-link-design)
+<li><a href="http://a11ywins.tumblr.com/post/116335338923/nytimes-coms-skip-link-design">nytimes.com’s Skip Link Design</a></li>
 
-- [A Skip Link Primer](http://viget.com/inspire/skip-link-primer)
+<li><a href="http://viget.com/inspire/skip-link-primer">A Skip Link Primer</a></li>

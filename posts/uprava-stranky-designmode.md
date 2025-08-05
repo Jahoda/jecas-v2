@@ -5,23 +5,39 @@ description: "Jednoduchý bookmarklet pro okamžité přepsání libovolného te
 date: "2013-05-10"
 last_modification: "2016-03-27"
 status: 1
-tags: ["JavaScript"]
+tags: ["js"]
+format: "html"
 ---
 
-javascript:void(document.designMode = 'on');
+<p><img class="border" src="/files/uprava-stranky-designmode/designmode.png" alt="Zapnutí design mode"></p>
 
-Zapne se tak vlastnost `designMode`, která umožní přepisovat text atd.
 
-Mimochodem lze tímto způsobem [vytvářet WYSIWYG editory](/vlastni-wysiwyg).
 
+
+
+
+
+
+<pre>javascript:void(document.designMode = 'on');</pre>
+
+<p>Zapne se tak vlastnost <code>designMode</code>, která umožní přepisovat text atd.</p>
+
+<p>Mimochodem lze tímto způsobem <a href="/vlastni-wysiwyg">vytvářet WYSIWYG editory</a>.</p>
+
+<div class="live">
+  <p>
+    <a class="button" href="javascript:void(document.designMode = 'on')">
       Upravit stránku
+    </a>
+  </p>
+</div>
 
-## Atribut `contenteditable`
 
-Stejného efektu lze docílit atributem `contenteditable`.
 
-Kromě editování již existující stránky, si lze v prohlížečích podporující [`data:*` protokol](/data-uri) ad hoc vytvořit stránku pro psaní. Stačí zkopírovat do adresního řádku:
+<h2 id="contenteditable">Atribut <code>contenteditable</code></h2>
 
-```
-data:text/html,&lt;html contenteditable>
-```
+<p>Stejného efektu lze docílit atributem <code>contenteditable</code>.</p>
+
+<p>Kromě editování již existující stránky, si lze v prohlížečích podporující <a href="/data-uri"><code>data:*</code> protokol</a> ad hoc vytvořit stránku pro psaní. Stačí zkopírovat do adresního řádku:</p>
+
+<pre><code>data:text/html,&lt;html contenteditable></code></pre>

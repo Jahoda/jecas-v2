@@ -5,152 +5,249 @@ description: "Při tvorbě webu je potřeba zvážit, jestli a jak má fungovat 
 date: "2015-09-15"
 last_modification: "2015-09-28"
 status: 1
-tags: ["JavaScript", "Rady a nápady"]
+tags: ["js", "napady"]
+format: "html"
 ---
 
-Názory na to, jestli se mají podporovat **lidé s vypnutým JavaScriptem**, se mohou lišit. Od snahy, aby web bez JS fungoval, až po názory na návštěvníky bez JS typu:
+<p>Názory na to, jestli se mají podporovat <b>lidé s vypnutým JavaScriptem</b>, se mohou lišit. Od snahy, aby web bez JS fungoval, až po názory na návštěvníky bez JS typu:</p>
 
-  Takový lidi si zaslouží chcípnout.
+<blockquote>
+  <p>Takový lidi si zaslouží chcípnout.</p>
+  
+  <p class="autor">– <a href="http://hatak.cz/">Zdeněk Haták</a>, front-end developer
+    <!--– <a href="http://havrlant.cz/">Lukáš Havrlant</a>, autor nejlepšího <a href="http://programio.havrlant.cz/">českého blogu</a> o programování--></p>
+</blockquote>
 
-  – [Zdeněk Haták](http://hatak.cz/), front-end developer
 
-Desktopový Facebook zastává podobný názor:
 
-Na Alza.cz si **bez JS** nejde nic objednat, protože tlačítko *Koupit* je závislé na JS akci:
 
-## Selhání JavaScriptu
+<p>Desktopový Facebook zastává podobný názor:</p>
 
-Jelikož **podíl zařízení nepodporujících JavaScript** je naprosté minimum, může se zdát zbytečné situace bez dostupného JS řešit.
+<p><img src="/files/bez-javascriptu/facebook.png" alt="Facebook bez JS" class="border"></p>
 
-Nicméně:
 
-  Stránky funkční bez JavaScriptu se nedělají pro návštěvníky s vypnutým JS. Dělají se hlavně pro **případ jeho selhání**.
 
-I u zařízení plně podporující JS se mohou stát dvě věci:
 
-    Soubor se skriptem se **nepovede načíst**. Buď se vůbec nestáhne vlivem pomalého/přerušeného spojení, nebo se načte později, než jeho funkce uživatel potřebuje.
 
-    Do skriptu **programátor zanese chybu**, která v určitých případech způsobí celkové selhání. JS není tolik tolerantní k chybám jako HTML/CSS.
 
-Řešit danou věc v CSS nebo nejlépe v HTML **přináší vyšší stabilitu a odolnost** stránky.
 
-## Rozšiřování funkčnosti
 
-Ideální je tak všechno řešit co nejblíže HTML/CSS a JavaScriptem zajišťovat až **rozšířenou/vylepšenou funkcionalitu**.
 
-Nicméně v praxi může být tento přístup hodně pracný, takže typicky **dochází ke kompromisům**, kdy něco bez JavaScriptu tak dobře nefunguje.
 
-Je třeba si **určit priority**, aby bez JS fungovaly alespoň stěžejní součásti webu:
 
-  - V případě obsahové stránky by se měl zobrazit obsah. To je dost důležité i s ohledem na [SEO](/seo), protože některé vyhledávače mají s **obsahem vypisovaným skriptem** problém.
 
-  - U služby pro nahrávání obrázků by kromě [drag &amp; drop](/upload) uploadu v AJAXu měl existovat klasický formulář s `&lt;input type="file">`.
+<p>Na Alza.cz si <b>bez JS</b> nejde nic objednat, protože tlačítko <i>Koupit</i> je závislé na JS akci:</p>
 
-  - Při použití [AJAXového](/ajax) objednávkového formuláře by měla existovat standardní cesta, jak formulář odeslat.
+<p><img src="/files/bez-javascriptu/alza.png" alt="Alza bez JS" class="border"></p>
 
-A tak dál…
 
-## Jak vypnout JavaScript
 
-Pro ověření, že je web bez JS použitelný, je vhodné skriptování pro otestování vypnout.
 
-Jde to ve [vývojářských nástrojích](/vyvojarske-nastroje) po stisku F12. Postup v **Chrome**:
 
-    Vpravo nahoře je ikona pro *Nastavení*:
 
-    Na začátku je přímo volba *Disable JavaScript*
 
-## Detekce JS
 
-Jak detekovat, že je JavaScript vypnutý, popisuje následující samostatný článek:
 
-    - [Detekce zapnutého JavaScriptu](/vypnuty-js)
 
-Pokud je web na JS existenčně závislý, je dobré na to upozornit ve značce `&lt;noscript>`. Návštěvník může mít omylem **vypnuté skriptování**, aniž by si to uvědomoval.
 
-## Skrývání obsahu
+<h2 id="selhani">Selhání JavaScriptu</h2>
 
-Jedna z nejčastějších chyb webových tvůrců nastává při skrývání obsahu, který následně má zobrazit JS funkce.
+<p>Jelikož <b>podíl zařízení nepodporujících JavaScript</b> je naprosté minimum, může se zdát zbytečné situace bez dostupného JS řešit.</p>
 
-```
-&lt;div id="skryty" style="display: none">
+<p>Nicméně:</p>
+
+<blockquote>
+  <p>Stránky funkční bez JavaScriptu se nedělají pro návštěvníky s vypnutým JS. Dělají se hlavně pro <b>případ jeho selhání</b>.</p>
+</blockquote>
+
+<p>I u zařízení plně podporující JS se mohou stát dvě věci:</p>
+
+<ol>
+  <li>
+    <p>Soubor se skriptem se <b>nepovede načíst</b>. Buď se vůbec nestáhne vlivem pomalého/přerušeného spojení, nebo se načte později, než jeho funkce uživatel potřebuje.</p>
+  </li>
+  
+  <li>
+    <p>Do skriptu <b>programátor zanese chybu</b>, která v určitých případech způsobí celkové selhání. JS není tolik tolerantní k chybám jako HTML/CSS.</p>
+  </li>
+</ol>
+
+<p>Řešit danou věc v CSS nebo nejlépe v HTML <b>přináší vyšší stabilitu a odolnost</b> stránky.</p>
+
+
+
+
+<h2 id="rosirovani">Rozšiřování funkčnosti</h2>
+
+<p>Ideální je tak všechno řešit co nejblíže HTML/CSS a JavaScriptem zajišťovat až <b>rozšířenou/vylepšenou funkcionalitu</b>.</p>
+
+<p>Nicméně v praxi může být tento přístup hodně pracný, takže typicky <b>dochází ke kompromisům</b>, kdy něco bez JavaScriptu tak dobře nefunguje.</p>
+
+<p>Je třeba si <b>určit priority</b>, aby bez JS fungovaly alespoň stěžejní součásti webu:</p>
+
+<ul>
+  <li>V případě obsahové stránky by se měl zobrazit obsah. To je dost důležité i s ohledem na <a href="/seo">SEO</a>, protože některé vyhledávače mají s <b>obsahem vypisovaným skriptem</b> problém.</li>
+  
+  <li>U služby pro nahrávání obrázků by kromě <a href="/upload">drag &amp; drop</a> uploadu v AJAXu měl existovat klasický formulář s <code>&lt;input type="file"></code>.</li>
+  
+  <li>Při použití <a href="/ajax">AJAXového</a> objednávkového formuláře by měla existovat standardní cesta, jak formulář odeslat.</li>
+</ul>
+
+<p>A tak dál…</p>
+
+
+
+
+
+
+<h2 id="jak-vypnout">Jak vypnout JavaScript</h2>
+
+<p>Pro ověření, že je web bez JS použitelný, je vhodné skriptování pro otestování vypnout.</p>
+
+<p>Jde to ve <a href="/vyvojarske-nastroje">vývojářských nástrojích</a> po stisku <kbd>F12</kbd>. Postup v <b>Chrome</b>:</p>
+
+<ol>
+  <li>
+    <p>Vpravo nahoře je ikona pro <i>Nastavení</i>:</p>
+    
+    <p><img src="/files/bez-javascriptu/nastaveni.png" alt="Nastavení ve vývojářských nástrojích" class="border"></p>
+  </li>
+  
+  
+  <li>
+    <p>Na začátku je přímo volba <i lang="en">Disable JavaScript</i></p>
+    
+    <p><img src="/files/bez-javascriptu/disable.png" alt="Vypnutí JS ve vývojářských nástrojích" class="border"></p>
+  </li>
+</ol>
+
+
+
+
+
+
+
+
+<h2 id="detekce">Detekce JS</h2>
+
+<p>Jak detekovat, že je JavaScript vypnutý, popisuje následující samostatný článek:</p>
+
+<div class="internal-content">
+  <ul>
+    <li><a href="/vypnuty-js">Detekce zapnutého JavaScriptu</a></li>
+  </ul>
+</div>
+
+
+<p>Pokud je web na JS existenčně závislý, je dobré na to upozornit ve značce <code>&lt;noscript></code>. Návštěvník může mít omylem <b>vypnuté skriptování</b>, aniž by si to uvědomoval.</p>
+
+
+
+
+<h2 id="skryvani">Skrývání obsahu</h2>
+
+<p>Jedna z nejčastějších chyb webových tvůrců nastává při skrývání obsahu, který následně má zobrazit JS funkce.</p>
+
+<pre><code>&lt;div id="skryty" style="display: none">
   Skrytý obsah
 &lt;/div>
 &lt;button onclick="$('#skryty').show()">
   Zobrazit
-&lt;/button>
-```
+&lt;/button></code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/eiqb)
 
-Bez JS se nikdo ke skrytému obsahu nedostane.
 
-### Řešení
 
-Lepší postup je přidat třídu `js` pro element `&lt;body>`:
 
-```
-&lt;body>
+
+
+<p><a href="http://kod.djpw.cz/eiqb">Živá ukázka</a></p>
+
+<p>Bez JS se nikdo ke skrytému obsahu nedostane.</p>
+
+
+
+<h3 id="reseni">Řešení</h3>
+
+<p>Lepší postup je přidat třídu <code>js</code> pro element <code>&lt;body></code>:</p>
+
+<pre><code>&lt;body>
 &lt;script>
 document.body.className+= ' js';
-&lt;/script>
-```
+&lt;/script></code></pre>
 
-A skrývání provádět přes CSS:
 
-```
-.js #skryty {
+
+
+
+
+<p>A skrývání provádět přes CSS:</p>
+
+<pre><code>.js #skryty {
   display: none;
-}
-```
+}</code></pre>
 
-Ani tento postup není úplně ideální, protože třída `js` se typicky nastaví dříve, než se stáhne ostatní JavaScript umožňující zobrazení skrytého obsahu.
 
-Nabízelo by se tedy obsah skrývat až v momentě, kdy bude **připravena funkce pro jeho zobrazení**.
 
-To by ale zase způsobilo **poskakování stránky** při načítání skrývajících skriptů.
 
-Proto je šikovné problém obejít a řešit co nejvíce věcí v HTML/CSS. Případně dát na stažení obslužného JS nějaký časový limit – třeba **3 vteřiny** – po kterém se `js` třída zase odebere.
+<p>Ani tento postup není úplně ideální, protože třída <code>js</code> se typicky nastaví dříve, než se stáhne ostatní JavaScript umožňující zobrazení skrytého obsahu.</p>
 
-```
-var jsCasovac = setTimeout(function() {
+
+<p>Nabízelo by se tedy obsah skrývat až v momentě, kdy bude <b>připravena funkce pro jeho zobrazení</b>.</p>
+
+<p>To by ale zase způsobilo <b>poskakování stránky</b> při načítání skrývajících skriptů.</p>
+
+
+<p>Proto je šikovné problém obejít a řešit co nejvíce věcí v HTML/CSS. Případně dát na stažení obslužného JS nějaký časový limit – třeba <b>3 vteřiny</b> – po kterém se <code>js</code> třída zase odebere.</p>
+
+<pre><code>var jsCasovac = setTimeout(function() {
   document.body.className = 
     document.body.className.replace(" js", "");
-}, 3 * 1000);
-```
+}, 3 * 1000);</code></pre>
 
-Po stažení obslužné JS funkce se případně tento časovač zruší:
 
-```
-clearTimeout(jsCasovac);
-```
 
-A opět se přidá JS třída:
 
-```
-document.body.className+= ' js';
-```
 
-**Poznámka**: Pro práci s třídami by bylo lepší v podporovaných prohlížečích (**IE 10+**) použít vlastnost [`classList`](/prepinani-trid#classlist).
 
-## Řešení bez JavaScriptu
 
-Postupem času jde více a více věcí řešit v HTML/CSS bez použití JavaScriptu:
+<p>Po stažení obslužné JS funkce se případně tento časovač zruší:</p>
 
-  - Animace přes [`animation`](/animation) a [`transition`](/transition)
+<pre><code>clearTimeout(jsCasovac);</code></pre>
 
-  - [Rozbalování a sbalování obahu v CSS](/css-rozbalovani) – využívá se `&lt;input type=checkbox>` a CSS [selektor `:checked`](/css-selektory#checked)
 
-  - [Jednoduché filtrování dat v čistém CSS](/css-filtrovani-dat) – používá se `radio` [`&lt;input>`](/input) a selektor `:checked`
+<p>A opět se přidá JS třída:</p>
 
-  - [Přepínání záložek pomocí `:target`](/zvyrazneni-kotvy)
+<pre><code>document.body.className+= ' js';</code></pre>
 
-  - [Popisek/tooltip pouze v CSS](/tooltip)
 
-  - [Odpočítávání času](/odpocitavani#css) – používá se CSS animace
+<p><b>Poznámka</b>: Pro práci s třídami by bylo lepší v podporovaných prohlížečích (<b>IE 10+</b>) použít vlastnost <a href="/prepinani-trid#classlist"><code>classList</code></a>.</p>
 
-## Odkazy jinam
 
-  - [Maybe we could tone down the JavaScript](https://eev.ee/blog/2016/03/06/maybe-we-could-tone-down-the-javascript/) – popis problémů nefunkčnosti bez JS
 
-  - [The Website Obesity Crisis](http://idlewords.com/talks/website_obesity.htm) – úvaha ohledně přeplácání webů zbytečnými obrázky a skripty
+<h2 id="bez-js">Řešení bez JavaScriptu</h2>
+
+<p>Postupem času jde více a více věcí řešit v HTML/CSS bez použití JavaScriptu:</p>
+
+<div class="internal-content">
+<ul>
+  <li>Animace přes <a href="/animation"><code>animation</code></a> a <a href="/transition"><code>transition</code></a></li>
+  
+  <li><a href="/css-rozbalovani">Rozbalování a sbalování obahu v CSS</a> – využívá se <code>&lt;input type=checkbox></code> a CSS <a href="/css-selektory#checked">selektor <code>:checked</code></a></li>
+  
+  <li><a href="/css-filtrovani-dat">Jednoduché filtrování dat v čistém CSS</a> – používá se <code>radio</code> <a href="/input"><code>&lt;input></code></a> a selektor <code>:checked</code></li>
+  
+  <li><a href="/zvyrazneni-kotvy">Přepínání záložek pomocí <code>:target</code></a></li>
+  
+  <li><a href="/tooltip">Popisek/tooltip pouze v CSS</a></li>
+  
+  <li><a href="/odpocitavani#css">Odpočítávání času</a> – používá se CSS animace</li>
+</ul>  
+</div>
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="https://eev.ee/blog/2016/03/06/maybe-we-could-tone-down-the-javascript/">Maybe we could tone down the JavaScript</a> – popis problémů nefunkčnosti bez JS</li>
+  <li><a href="http://idlewords.com/talks/website_obesity.htm">The Website Obesity Crisis</a> – úvaha ohledně přeplácání webů zbytečnými obrázky a skripty</li>
+</ul>

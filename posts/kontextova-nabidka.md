@@ -5,23 +5,24 @@ description: "Jak po stisknutí pravého tlačítka myši zobrazit vlastní nab�
 date: "2013-10-22"
 last_modification: "2013-11-15"
 status: 1
-tags: ["JavaScript", "Hotová řešení"]
+tags: ["hotova-reseni", "js"]
+format: "html"
 ---
 
-Ve **složitější webové aplikaci** často bývá problém najít volné místo pro umístění potřebných funkcí. Řešením může být právě **vlastní kontextová nabídka**, která se objeví po **stisknutí pravého tlačítka myši**.
+<p>Ve <b>složitější webové aplikaci</b> často bývá problém najít volné místo pro umístění potřebných funkcí. Řešením může být právě <b>vlastní kontextová nabídka</b>, která se objeví po <b>stisknutí pravého tlačítka myši</b>.</p>
+<p>Ta bude fungovat tak, že <i>vystornuje</i> výchozí nabídku prohlížeče a zobrazí vlastní kolekci vhodně nastylovaných elementů. Proto je třeba vlastní nabídku pravého tlačítka zavádět s rozmyslem, neboť to je významný zásah do <b>výchozího chování prohlížeče</b>.</p>
 
-Ta bude fungovat tak, že *vystornuje* výchozí nabídku prohlížeče a zobrazí vlastní kolekci vhodně nastylovaných elementů. Proto je třeba vlastní nabídku pravého tlačítka zavádět s rozmyslem, neboť to je významný zásah do **výchozího chování prohlížeče**.
+<h2 id="reseni">Řešení v čistém JavaScriptu</h2>
+<p>Zachytit <b>stisknutí pravého tlačítka myši</b> na požadovaném elementu je možné přes událost <code>oncontextmenu</code>, potom jen stačí vytvořit příslušné elementy (<code>document.createElement</code>), <a href="/souradnice-mysi">zjistit souřadnice</a>, kde se má nabídka objevit. A zajistit zrušení nabídky po kliknutí mimo (je třeba řešit <a href="/klikaci-menu#bubble">probublávání</a>).</p>
+<p>Nakonec přihodit trochu CSS, aby nabídka trochu vypadala (<a href="http://kod.djpw.cz/cwq">živá ukázka</a>).</p>
 
-## Řešení v čistém JavaScriptu
-
-Zachytit **stisknutí pravého tlačítka myši** na požadovaném elementu je možné přes událost `oncontextmenu`, potom jen stačí vytvořit příslušné elementy (`document.createElement`), [zjistit souřadnice](/souradnice-mysi), kde se má nabídka objevit. A zajistit zrušení nabídky po kliknutí mimo (je třeba řešit [probublávání](/klikaci-menu#bubble)).
-
-Nakonec přihodit trochu CSS, aby nabídka trochu vypadala ([živá ukázka](http://kod.djpw.cz/cwq)).
-
+<div class="live">
+  <style>
     .nabidka {border: 1px solid #ccc; width: 150px; position: absolute; z-index: 10; background: #fff;}
     .nabidka a {text-decoration: none; display: block; cursor: pointer; padding: .1em .5em;}
     .nabidka a:hover {background: #1081DD; color: #fff}
-
+  </style>
+  <script>
     function zavritNabidku() {
       if (document.getElementById("nabidka")) {
         document.body.removeChild(document.getElementById("nabidka"));
@@ -61,33 +62,44 @@ Nakonec přihodit trochu CSS, aby nabídka trochu vypadala ([živá ukázka](htt
       var cursorPos = getPosition(e); // zjištění posice kursoru
       nabidka.style.left = 5 + cursorPos.x + "px";
       nabidka.style.top = 5 + cursorPos.y + "px";
-      for (var i = 0; i 
-  Text s **kontextovou nabídkou** po kliknutí pravým tlačítkem.
+      for (var i = 0; i < polozky.length; i++) {
+        var polozka = document.createElement("a");
+        var atributy = polozky[i];  
+        for (vlastnost in atributy) {
+          polozka[vlastnost] = atributy[vlastnost];
+        }
+        nabidka.appendChild(polozka);
+      }
+      document.body.appendChild(nabidka);
+      return false;
+    }
+    
+    document.documentElement.onclick = zavritNabidku;
+  </script>
+  <p oncontextmenu="return nabidka(event, [
+  {innerHTML: 'Hlavní strana', href: 'http://jecas.cz'},
+  {innerHTML: 'Bafnout', onclick: function() {alert('Baf')}}
+  ])">Text s <b>kontextovou nabídkou</b> po kliknutí pravým tlačítkem.</p>
 
-  Text s jinou **kontextovou nabídkou**.
-
-Položky se předávají jako **JS objekt**, ze kterého se automaticky nastaví všechny parametry:
-
-```
-[
+  <p oncontextmenu="return nabidka(event, [
+  {innerHTML: 'Saints Row IV', href: 'http://saintsrow.cz'},
+  {innerHTML: 'Živé ukázky', href: 'http://kod.djpw.cz'}
+  ])">Text s jinou <b>kontextovou nabídkou</b>.</p>
+</div>
+<p>Položky se předávají jako <b>JS objekt</b>, ze kterého se automaticky nastaví všechny parametry:</p>
+<pre><code>[
   {innerHTML: 'Zpět', href: 'http://jecas.cz'},
   {innerHTML: 'Bafnout', onclick: function() {alert('Baf')}}
 ]
+</code></pre>
+<p>Není proto problém po kliknutí přejít na <b>odkaz</b>, vyvolat <b>další JS funkci</b> nebo třeba položce přidat třídu (<code>className</code>) nebo popisek (<code>title</code>).</p>
 
-```
 
-Není proto problém po kliknutí přejít na **odkaz**, vyvolat **další JS funkci** nebo třeba položce přidat třídu (`className`) nebo popisek (`title`).
-
-## ContextJS
-
-Také existují hotová řešení v jQuery — třeba ContextJS.
-
-[Web](http://lab.jakiestfu.com/contextjs/#)
-
-Nástroj **ContextJS** je na jQuery založené hotové řešení usnadňující tvorbu kontextových menu. Tvorba takových nabídek je podobná (ale nepoužívá přímo vlastnosti HTML objektů):
-
-```
-context.attach('.trida-elementu-kde-se-bude-menu-objevovat', [
+<h2 id="contextjs">ContextJS</h2>
+<p>Také existují hotová řešení v jQuery — třeba ContextJS.</p>
+<p><a href="http://lab.jakiestfu.com/contextjs/#" class="button">Web</a></p>
+<p>Nástroj <b>ContextJS</b> je na jQuery založené hotové řešení usnadňující tvorbu kontextových menu. Tvorba takových nabídek je podobná (ale nepoužívá přímo vlastnosti HTML objektů):</p>
+<pre><code>context.attach('.trida-elementu-kde-se-bude-menu-objevovat', [
     {header: 'Záhlaví'},
     {text: 'Popis položky', href: '#cil-odkazu'},
     {divider: true},
@@ -95,11 +107,8 @@ context.attach('.trida-elementu-kde-se-bude-menu-objevovat', [
     {text: 'Vyvolá vlastní JS akci', action: function(e){
       alert("Baf");
     }}
-]);
-```
+]);</code></pre>
 
-## Zakázat pravé tlačítko myši
-
-Kromě nabídky výše uvedený postup i **blokuje** pravé tlačítko / kontextovou nabídku. V žádném případě není vhodné pravé tlačítko blokovat z důvodů jako je **kopírování textu nebo obrázků**.
-
-Takový zákaz stejně nebude účinný, protože znalejší návštěvník ho snadno obejde prostým [vypnutím JavaScriptu](/vyvojarske-nastroje#zakazani).
+<h2 id="zakazat">Zakázat pravé tlačítko myši</h2>
+<p>Kromě nabídky výše uvedený postup i <b>blokuje</b> pravé tlačítko / kontextovou nabídku. V žádném případě není vhodné pravé tlačítko blokovat z důvodů jako je <b>kopírování textu nebo obrázků</b>.</p>
+<p>Takový zákaz stejně nebude účinný, protože znalejší návštěvník ho snadno obejde prostým <a href="/vyvojarske-nastroje#zakazani">vypnutím JavaScriptu</a>.</p>

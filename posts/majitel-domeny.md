@@ -6,6 +6,7 @@ date: "2015-01-07"
 last_modification: "2015-01-07"
 status: 0
 tags: []
+format: "html"
 ---
 
 Jak zjisti majitele domény

@@ -5,70 +5,83 @@ description: "Jak v CSS nastavit výšku v závislosti na procentuální i pevn�
 date: "2014-09-10"
 last_modification: "2014-09-10"
 status: 1
-tags: ["CSS", "Hotová řešení", "Rady a nápady"]
+tags: ["css", "hotova-reseni", "napady"]
+format: "html"
 ---
 
-Při tvorbě webu, který má být [responsivní](/mobilni-web), se můžeme dostat do situace, kdy je šířka neznámá (zadána **v procentech**) a výšku potřebujeme takovou, aby se v určitém poměru odvozovala od výšky.
+<p>Při tvorbě webu, který má být <a href="/mobilni-web">responsivní</a>, se můžeme dostat do situace, kdy je šířka neznámá (zadána <b>v procentech</b>) a výšku potřebujeme takovou, aby se v určitém poměru odvozovala od výšky.</p>
 
-**Poznámka**: Nastavování výšky (`height`) často značí špatný postup. V případě, že v elementu s *natvrdo* nastavenou výškou bude nějaký text, je prakticky nemožné zajistit, aby se při **různých velikostech písma** řádně vešel.
+<p><img src="/files/vyska-podle-sirky/stanoveni-vysky.png" alt="Stanovení výšky podle šířky" class="border"></p>
 
-## Řešení
+<p><small><b>Poznámka</b>: Nastavování výšky (<code>height</code>) často značí špatný postup. V případě, že v elementu s <i>natvrdo</i> nastavenou výškou bude nějaký text, je prakticky nemožné zajistit, aby se při <b>různých velikostech písma</b> řádně vešel.</small></p>
 
-Celý trik spočívá v tom, že procentuální hodnota vlastnosti `padding` se **počítá z šířky rodiče**. Stačí tedy:
 
-  - výšku vynulovat (`height: 0`),
+<h2 id="reseni">Řešení</h2>
 
-  - spodní `padding` nastavit na požadovaný procentuální podíl na šířce,
+<p>Celý trik spočívá v tom, že procentuální hodnota vlastnosti <code>padding</code> se <b>počítá z šířky rodiče</b>. Stačí tedy:</p>
 
-  - použít obsahový [box model](/box-model) (`box-sizing: content-box` – výchozí), který sčítá okraje a právě `padding` připočítává do výsledných rozměrů (výška je ale nulová, takže ji celou zajistí právě `padding`).
+<ol>
+  <li>výšku vynulovat (<code>height: 0</code>),</li>
+  <li>spodní <code>padding</code> nastavit na požadovaný procentuální podíl na šířce,</li>
+  <li>použít obsahový <a href="/box-model">box model</a> (<code>box-sizing: content-box</code> – výchozí), který sčítá okraje a právě <code>padding</code> připočítává do výsledných rozměrů (výška je ale nulová, takže ji celou zajistí právě <code>padding</code>).</li>
+</ol>
 
-```
-.box {
+<pre><code>.box {
   height: 0;
   padding-bottom: 25%;
-}
-```
+}</code></pre>
 
-Níže uvedený `&lt;div>` má vždy čtvrtinovou výšku (25 %) oproti šířce, přesvědčte se změnou šířky jeho rodiče.
-
+<p>Níže uvedený <code>&lt;div></code> má vždy čtvrtinovou výšku (25 %) oproti šířce, přesvědčte se změnou šířky jeho rodiče.</p>
+<script>
   function upravitSirku(el) {
     document.querySelector(".podle-vysky").parentNode.style.width = el.value + "%";
   }
+</script>
+<p><span class="live">0 % <input oninput="upravitSirku(this)" onchange="upravitSirku(this)" type="range" min="0" max="100" id="rozmazani" value="100"> 100 %</span></p>
 
-0 %  100 %
-
+<div class="live">
+  <style>
     .podle-vysky {
       height: 0;
       padding-bottom: 25%;
       background: #0D6AB7;
     }
+  </style>
+  <div class="podle-vysky"></div>
+</div>
 
-## Pevná šířka v pixelech
 
-Je-li potřeba, aby byla výška závislá na šířce, ale ta má být **zadaná v pixelech**, není to problém. Obal elementu, co má mít výšku podle šířky, zkrátka bude mít rozměry v `px`. [Ukázka](http://kod.djpw.cz/aofb).
 
-## Proč spodní `padding?`
+<h2 id="pevna-sirka">Pevná šířka v pixelech</h2>
 
-**Natáhnout výšku** je možné i horním `padding`em nebo kombinací (`padding-top` + `padding-bottom`). V případě samostatného `padding-top` to však má nevýhodu, že do elementu nepůjde rozumně **vkládat obsah**, protože celý začátek obsahu zabere právě `padding`.
+<p>Je-li potřeba, aby byla výška závislá na šířce, ale ta má být <b>zadaná v pixelech</b>, není to problém. Obal elementu, co má mít výšku podle šířky, zkrátka bude mít rozměry v <code>px</code>. <a href="http://kod.djpw.cz/aofb">Ukázka</a>.</p>
 
-Teoreticky to jde řešit odečtením [`margin`u](/margin) ([ukázka](http://kod.djpw.cz/cofb)) nebo [absolutně posicovaným](/position: absolute) dalším elementem uvnitř ([ukázka](http://kod.djpw.cz/dofb)).
 
-Použít kombinaci může mít smysl právě pro **cílené odsazení** obsahu shora bez dalšího vnořeného `&lt;div>`u ([ukázka](http://kod.djpw.cz/bofb)).
 
-## Přetečení
+<h2 id="proc-padding-bottom">Proč spodní <code>padding?</code></h2>
 
-V případě, že by se obsah náhodou nevešel do vymezeného prostoru, nabízí se:
+<p><b>Natáhnout výšku</b> je možné i horním <code>padding</code>em nebo kombinací (<code>padding-top</code> + <code>padding-bottom</code>). V případě samostatného <code>padding-top</code> to však má nevýhodu, že do elementu nepůjde rozumně <b>vkládat obsah</b>, protože celý začátek obsahu zabere právě <code>padding</code>.</p>
 
-  - **oříznutí** (`overflow: hidden` – [ukázka](http://kod.djpw.cz/fofb)),
+<p>Teoreticky to jde řešit odečtením <a href="/margin"><code>margin</code>u</a> (<a href="http://kod.djpw.cz/cofb">ukázka</a>) nebo <a href="/position: absolute">absolutně posicovaným</a> dalším elementem uvnitř (<a href="http://kod.djpw.cz/dofb">ukázka</a>).</p>
 
-  - **zobrazení rolovací lišty** (`overflow: auto` – [ukázka](http://kod.djpw.cz/gofb)), k tomu se ale hodí spíš ono *absolutní posicování*, jinak by se spodní `padding` započítal do výšky a vytvořil by ve **Webkitu** nežádoucí prostor na konci obsahu ([ukázka](http://kod.djpw.cz/eofb)).
+<p>Použít kombinaci může mít smysl právě pro <b>cílené odsazení</b> obsahu shora bez dalšího vnořeného <code>&lt;div></code>u (<a href="http://kod.djpw.cz/bofb">ukázka</a>).</p>
 
-## Řešení v JavaScriptu
 
-Ve stanoveném podílu lze výšku nastavovat i **JavaScriptem**. Jako výška se v takovém případě použije vydělená vlastnost `clientWidth`.
 
-```
-el.style.height = (el.clientWidth / 4) + "px";
-```
+<h2 id="preteceni">Přetečení</h2>
 
-[Ukázka obou postupů](http://kod.djpw.cz/hofb)
+<p>V případě, že by se obsah náhodou nevešel do vymezeného prostoru, nabízí se:</p>
+
+<ul>
+  <li><b>oříznutí</b> (<code>overflow: hidden</code> – <a href="http://kod.djpw.cz/fofb">ukázka</a>),</li>
+  <li><b>zobrazení rolovací lišty</b> (<code>overflow: auto</code> – <a href="http://kod.djpw.cz/gofb">ukázka</a>), k tomu se ale hodí spíš ono <i>absolutní posicování</i>, jinak by se spodní <code>padding</code> započítal do výšky a vytvořil by ve <b>Webkitu</b> nežádoucí prostor na konci obsahu (<a href="http://kod.djpw.cz/eofb">ukázka</a>).</li>
+</ul>
+
+
+<h2 id="js">Řešení v JavaScriptu</h2>
+
+<p>Ve stanoveném podílu lze výšku nastavovat i <b>JavaScriptem</b>. Jako výška se v takovém případě použije vydělená vlastnost <code>clientWidth</code>.</p>
+
+<pre><code>el.style.height = (el.clientWidth / 4) + "px";</code></pre>
+
+<p><a href="http://kod.djpw.cz/hofb">Ukázka obou postupů</a></p>

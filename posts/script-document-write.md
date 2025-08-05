@@ -6,14 +6,15 @@ date: "2014-10-28"
 last_modification: "2014-10-28"
 status: 0
 tags: []
+format: "html"
 ---
 
-```
-&lt;script>
+<p></p>
+
+<pre><code>&lt;script>
   document.write(
     "\x3Cscript>
       alert(1)
     \x3C/script>"
   );
-&lt;/script>
-```
+&lt;/script></code></pre>

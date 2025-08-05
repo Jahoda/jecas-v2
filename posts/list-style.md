@@ -5,111 +5,135 @@ description: "CSS vlastnost <code>list-style</code> upravuje vzhled seznamů <co
 date: "2015-01-21"
 last_modification: "2015-02-23"
 status: 1
-tags: ["CSS", "Stylování elementů", "CSS vlastnosti", "Hotová řešení", "CSS pravidla"]
+tags: ["css", "css-pravidla", "css-vlastnosti", "hotova-reseni", "stylovani"]
+format: "html"
 ---
 
-Pro lepší přehlednost se obsah webových stránek kromě do nadpisů a odstavců zadává i do **seznamů**.
+<p>Pro lepší přehlednost se obsah webových stránek kromě do nadpisů a odstavců zadává i do <b>seznamů</b>.</p>
 
-  Pokročilejší čtenáři mohou v klidu přeskočit na:
+<div class="soft">
+  <p>Pokročilejší čtenáři mohou v klidu přeskočit na:</p>
+  <ul>
+    <li><a href="#counter-style-symbols">Pravidlo <code>@counter-style</code> a <code>symbols</code></a></li>
+  </ul>
+</div>
 
-    - [Pravidlo `@counter-style` a `symbols`](#counter-style-symbols)
+<p>Používají se dva základní typy odrážkových seznamů:</p>
 
-Používají se dva základní typy odrážkových seznamů:
+<ol>
+  <li>
+    <p><code>&lt;ul></code> (<i>unordered list</i>) – nečíslovaný seznam</p>
+    
+    <div class="live">
+      <ul>
+        <li>Položka</li>
+        <li>Položka</li>
+        <li>Položka</li>
+      </ul>
+    </div>
+  </li>
+  <li>
+    <p><code>&lt;ol></code> (<i>ordered list</i>) – číslovaný seznam</p>
+    
+    <div class="live">
+      <ol>
+        <li>Položka</li>
+        <li>Položka</li>
+        <li>Položka</li>
+      </ol>
+    </div>    
+  </li>
+</ol>
 
-    `&lt;ul>` (*unordered list*) – nečíslovaný seznam
+<p>Kromě toho existují ještě značky <code>&lt;menu></code> a <code>&lt;dir></code>. Obě se v prohlížečích chovají přibližně stejně jako <code>&lt;ul></code>. Element <code>&lt;dir></code> je „<i>obsolete</i>“ – zastaralý, překonaný. Značku <code>&lt;menu></code> původně čekal stejný osud, ale nakonec byla znovuzrozena pro <a href="/menuitem">kontextovou nabídku</a> s využitím značky <code>&lt;menuitem></code>.</p>
 
-        - Položka
+<p><a href="http://kod.djpw.cz/dwkb">Srovnání</a> seznamů <code>&lt;ul></code>, <code>&lt;menu></code> a <code>&lt;dir></code>.</p>
 
-        - Položka
+<p>Nakonec existujte ještě seznam definiční – <code>&lt;dl></code>, ten ale ve výchozím stylu žádné odrážky nemá.</p>
 
-        - Položka
 
-    `&lt;ol>` (*ordered list*) – číslovaný seznam
 
-        - Položka
+<h2 id="stylovani">Stylování</h2>
 
-        - Položka
+<p>Pro jiný než výchozí styl seznamů existuje vlastnost <code>list-style</code>. Pomocí <code>list-style</code> v kombinaci s <code>display: list-item</code> jde také vytvořit odrážky z jiných elementů než <code>&lt;li></code> (<a href="http://kod.djpw.cz/bvkb">ukázka</a>).</p>
 
-        - Položka
+<h3 id="zapis">Zápis</h3>
 
-Kromě toho existují ještě značky `&lt;menu>` a `&lt;dir>`. Obě se v prohlížečích chovají přibližně stejně jako `&lt;ul>`. Element `&lt;dir>` je „*obsolete*“ – zastaralý, překonaný. Značku `&lt;menu>` původně čekal stejný osud, ale nakonec byla znovuzrozena pro [kontextovou nabídku](/menuitem) s využitím značky `&lt;menuitem>`.
+<pre><code>ul {
+  list-style: <b>typ</b> <b>umístění</b> <b>obrázek</b>;
+}</code></pre>
 
-[Srovnání](http://kod.djpw.cz/dwkb) seznamů `&lt;ul>`, `&lt;menu>` a `&lt;dir>`.
 
-Nakonec existujte ještě seznam definiční – `&lt;dl>`, ten ale ve výchozím stylu žádné odrážky nemá.
 
-## Stylování
 
-Pro jiný než výchozí styl seznamů existuje vlastnost `list-style`. Pomocí `list-style` v kombinaci s `display: list-item` jde také vytvořit odrážky z jiných elementů než `&lt;li>` ([ukázka](http://kod.djpw.cz/bvkb)).
+<p>Vlastnost <code>list-style</code> je zkratkou pro další <code>list-style-*</code> vlastnosti:</p>
 
-### Zápis
+<ul>
+  <li><code>list-style-type</code> (typ),</li>
+  <li><code>list-style-position</code> (umístění),</li>
+  <li><code>list-style-image</code> (obrázek)</li>
+</ul>
 
-```
-ul {
-  list-style: **typ** **umístění** **obrázek**;
-}
-```
+<p>Vzhled stylu seznamu jde nastavovat pro <b>celý seznam</b> (<code>&lt;ul></code>/<code>&lt;ol></code>) nebo pro <b>jednotlivé položky</b> <code>&lt;li></code> (položky mají vyšší váhu).</p>
 
-Vlastnost `list-style` je zkratkou pro další `list-style-*` vlastnosti:
 
-  - `list-style-type` (typ),
 
-  - `list-style-position` (umístění),
 
-  - `list-style-image` (obrázek)
 
-Vzhled stylu seznamu jde nastavovat pro **celý seznam** (`&lt;ul>`/`&lt;ol>`) nebo pro **jednotlivé položky** `&lt;li>` (položky mají vyšší váhu).
+<h3 id="type"><code>list-style-type</code></h3>
 
-### `list-style-type`
+<p>Stanovuje typ odrážky. Pro nečíslovaný seznam (<code>&lt;ul></code>) připadají v úvahu.</p>
 
-Stanovuje typ odrážky. Pro nečíslovaný seznam (`&lt;ul>`) připadají v úvahu.
+<ul>
+<li style="list-style-type: disc">puntík – <code>list-style-type: disc</code></li>
+<li style="list-style-type: circle">kolečko – <code>list-style-type: circle</code></li>
+<li style="list-style-type: square">čtvereček – <code>list-style-type: square</code></li>  
+</ul>
 
-- puntík – `list-style-type: disc`
+<p>Pro <b>číslované seznamy</b> je potom plno několik stylů čísel.</p>
 
-- kolečko – `list-style-type: circle`
+<ol>
+<li style="list-style-type: decimal">číslo – <code>list-style-type: decimal</code></li>
+<li style="list-style-type: decimal-leading-zero">číslo s nulou na začátku – <code>list-style-type: decimal-leading-zero</code></li>
+<li style="list-style-type: lower-roman">římské číslice – <code>list-style-type: lower-roman</code></li>
+<li style="list-style-type: upper-roman">velké římské číslice – <code>list-style-type: upper-roman</code></li>
+<li style="list-style-type: lower-greek">malá řecká písmena – <code>list-style-type: lower-greek</code></li>
+<li style="list-style-type: lower-latin">malá písmena – <code>list-style-type: lower-latin</code></li>
+<li style="list-style-type: upper-latin">velká písmena – <code>list-style-type: upper-latin</code></li>
+<li style="list-style-type: lower-alpha">malá písmena – <code>list-style-type: lower-alpha</code></li>
+<li style="list-style-type: upper-alpha">velká písmena – <code>list-style-type: upper-alpha</code></li>  
+</ol>
 
-- čtvereček – `list-style-type: square`
+<p>Existuje jich ještě mnohem víc pro různé exotické jazyky (např. <code>hiragana</code>, <code>katakana</code>, <code>mongolian</code> atd.).</p>
 
-Pro **číslované seznamy** je potom plno několik stylů čísel.
+<p>Zajímavé je, že <code>list-style-type</code> je <b>nezávislý</b> na typu seznamu (<code>&lt;ul></code>/<code>&lt;ol></code>). Číslovaný seznam se tak může stát nečíslovaným a obráceně.</p>
 
-- číslo – `list-style-type: decimal`
+<p>V případě <b>zanoření více seznamů</b> do sebe se typicky (dle výchozích stylů prohlížečů) mění styly jednotlivých úrovní.</p>
 
-- číslo s nulou na začátku – `list-style-type: decimal-leading-zero`
+<p>U <b>nečíslovaných seznamů</b> (<code>&lt;ul></code>) se v prvních třech úrovních vyskytne tečka, kolečko a čtvereček. V následujících úrovních už je pouze čtvereček.</p>
 
-- římské číslice – `list-style-type: lower-roman`
 
-- velké římské číslice – `list-style-type: upper-roman`
+<p><img src="/files/list-style/zmena-odrazek.png" alt="Rozdílný styl odrážek v zanořeném seznamu" class="border"></p>
 
-- malá řecká písmena – `list-style-type: lower-greek`
 
-- malá písmena – `list-style-type: lower-latin`
 
-- velká písmena – `list-style-type: upper-latin`
 
-- malá písmena – `list-style-type: lower-alpha`
 
-- velká písmena – `list-style-type: upper-alpha`
 
-Existuje jich ještě mnohem víc pro různé exotické jazyky (např. `hiragana`, `katakana`, `mongolian` atd.).
 
-Zajímavé je, že `list-style-type` je **nezávislý** na typu seznamu (`&lt;ul>`/`&lt;ol>`). Číslovaný seznam se tak může stát nečíslovaným a obráceně.
 
-V případě **zanoření více seznamů** do sebe se typicky (dle výchozích stylů prohlížečů) mění styly jednotlivých úrovní.
+<p>Nastavit pro všechny úrovně to samé (puntík – <code>disc</code>) dokáže prostý kód:</p>
 
-U **nečíslovaných seznamů** (`&lt;ul>`) se v prvních třech úrovních vyskytne tečka, kolečko a čtvereček. V následujících úrovních už je pouze čtvereček.
-
-Nastavit pro všechny úrovně to samé (puntík – `disc`) dokáže prostý kód:
-
-```
-ul {
+<pre><code>ul {
     list-style: disc;
-}
-```
+}</code></pre>
 
-Nastavit si vlastní styl pro **jednotlivé úrovně** jde nějak takto:
 
-```
-ul {
+
+
+<p>Nastavit si vlastní styl pro <b>jednotlivé úrovně</b> jde nějak takto:</p>
+
+<pre><code>ul {
     list-style: circle;
 }
 ul ul {
@@ -117,51 +141,86 @@ ul ul {
 }
 ul ul ul {
     list-style: disc;
-}
-```
+}</code></pre>
 
-U **číslovaných seznamů** se podobná změna stylu na základě úrovně ve všech rozšířenějších prohlížečích nekoná.
 
-  [Ukázka](http://kod.djpw.cz/zukb) – testovací stránka zanořených seznamů
 
-### Umístění `list-style-position`
 
-Odrážky položek seznamu mohou mít dvojí umístění.
 
-- mimo – `list-style-position: outside`
 
-- uvnitř – `list-style-position: inside`
 
-Rozdíl `outside` (výchozí) a `inside` je zvlášť patrný u víceřádkových položek, kde vypadá `inside` většinou špatně.
 
-Odrážka/číslo v případě umístění venku (`outside`) se zobrazuje **mimo element** `&lt;li>`, je tedy nutné, aby byl okolo prostor, má-li se odrážka zobrazit. Ve výchozím CSS proto mají prohlížeče pro seznamy levý `padding` o hodnotě 40 pixelů.
 
-### Obrázková odrážka `list-style-image`
 
-Jako odrážku jde použít i obrázek.
+<p>U <b>číslovaných seznamů</b> se podobná změna stylu na základě úrovně ve všech rozšířenějších prohlížečích nekoná.</p>
 
-```
-ul {
+<div class="external-content">
+  <p><a href="http://kod.djpw.cz/zukb">Ukázka</a> – testovací stránka zanořených seznamů</p>
+</div>
+
+
+
+<h3 id="position">Umístění <code>list-style-position</code></h3>
+
+<p>Odrážky položek seznamu mohou mít dvojí umístění.</p>
+
+<ul>
+<li style="list-style-position: outside">mimo – <code>list-style-position: outside</code></li>
+<li style="list-style-position: inside">uvnitř – <code>list-style-position: inside</code></li>  
+</ul>
+
+<p>Rozdíl <code>outside</code> (výchozí) a <code>inside</code> je zvlášť patrný u víceřádkových položek, kde vypadá <code>inside</code> většinou špatně.</p>
+
+<p><img src="/files/list-style/umisteni.png" alt="Rozdílné umístění odrážek seznamu" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+<p>Odrážka/číslo v případě umístění venku (<code>outside</code>) se zobrazuje <b>mimo element</b> <code>&lt;li></code>, je tedy nutné, aby byl okolo prostor, má-li se odrážka zobrazit. Ve výchozím CSS proto mají prohlížeče pro seznamy levý <code>padding</code> o hodnotě 40 pixelů.</p>
+
+
+
+<h3 id="image">Obrázková odrážka <code>list-style-image</code></h3>
+
+<p>Jako odrážku jde použít i obrázek.</p>
+
+<pre><code>ul {
   list-style-image: url(odrazka.png);
-}
-```
+}</code></pre>
 
-V drtivé většině případů ale není `list-style-image` k užitku, protože chybí **kontrola nad umístěním** obrázku. Pokud není obrázek odrážky ve velikosti řádku, nebude správně zarovnaný. Jelikož písmo může být **různě velké**, nejde na to spoléhat, takže je lepší `list-style-image` vůbec **nepoužívat**.
 
-Pro **obrázkové odrážky** se proto používá využívá běžné pozadí (`background`) pro `&lt;li>` nebo absolutně posicované [`:before`/`:after`](/css-selektory#before-after) elementy, kde si jde s požadovaným umístěním vyhrát.
 
-    - [Obrázkové odrážky stejné ve všech prohlížečích](http://teststranek.kvalitne.cz/odrazky1/) – srovnání odrážek přes `list-style-image` a `background`
 
-## Pravidlo `@counter-style` a `symbols`
+<p>V drtivé většině případů ale není <code>list-style-image</code> k užitku, protože chybí <b>kontrola nad umístěním</b> obrázku. Pokud není obrázek odrážky ve velikosti řádku, nebude správně zarovnaný. Jelikož písmo může být <b>různě velké</b>, nejde na to spoléhat, takže je lepší <code>list-style-image</code> vůbec <b>nepoužívat</b>.</p>
 
-Pro možnost si nadefinovat vlastní styl odrážek a číslování bez používání různých hacků v podobě `:before`/`:after`, obrázků a posicování jde od **Firefoxu 33** používat `@counter-style` a `symbols`.
+<p>Pro <b>obrázkové odrážky</b> se proto používá využívá běžné pozadí (<code>background</code>) pro <code>&lt;li></code> nebo absolutně posicované <a href="/css-selektory#before-after"><code>:before</code>/<code>:after</code></a> elementy, kde si jde s požadovaným umístěním vyhrát.</p>
 
-### `@counter-style`
+<div class="external-content">
+  <ul>
+    <li><a href="http://teststranek.kvalitne.cz/odrazky1/">Obrázkové odrážky stejné ve všech prohlížečích</a> – srovnání odrážek přes <code>list-style-image</code> a <code>background</code></li>
+  </ul>
+</div>
 
-Zápis celého stylu může vypadat následovně:
 
-```
-@counter-style **cisla** {
+
+<h2 id="counter-style-symbols">Pravidlo <code>@counter-style</code> a <code>symbols</code></h2>
+
+<p>Pro možnost si nadefinovat vlastní styl odrážek a číslování bez používání různých hacků v podobě <code>:before</code>/<code>:after</code>, obrázků a posicování jde od <b>Firefoxu 33</b> používat <code>@counter-style</code> a <code>symbols</code>.</p>
+
+
+
+<h3 id="counter-style"><code>@counter-style</code></h3>
+
+<p>Zápis celého stylu může vypadat následovně:</p>
+
+<pre><code>@counter-style <b>cisla</b> {
 /* opakování symbolů (cyclic, fixed, …) */
   system: cyclic;
 /* symboly */
@@ -174,43 +233,80 @@ Zápis celého stylu může vypadat následovně:
   range: 2 3;
 /* co má číst hlasová čtečka */
   speak-as: numbers;
-}
-```
+}</code></pre>
 
-Styl se potom připojí podle svého názvu do `list-style`:
 
-```
-ul {
-  list-style: **cisla**;
-}
-```
 
-Výsledek bude následovný:
 
-[Živá ukázka](http://kod.djpw.cz/vukb) – **Firefox 33**+
 
-### Funkce `symbols`
 
-Symbols je potom funkce, která se dá použít přímo v `list-style` bez nutnosti deklarovat styl pomocí `@counter-style`. Stejných výsledků jde dosáhnout oběma způsoby – `@counter-style` se hodí pro deklaraci stylů v rámci celého CSS, aby se styly nemusely v kódu opakovat a šly snadno **změnit na jednom místě**.
 
-Příklad použití `smybols`:
 
-```
-ul {
+
+
+
+
+
+
+<p>Styl se potom připojí podle svého názvu do <code>list-style</code>:</p>
+
+<pre><code>ul {
+  list-style: <b>cisla</b>;
+}</code></pre>
+
+
+
+
+<p>Výsledek bude následovný:</p>
+
+<p><img src="/files/list-style/counter-style.png" alt="Upravený styl odrážek seznamu" class="border"></p>
+
+
+
+
+
+
+
+<p><a href="http://kod.djpw.cz/vukb">Živá ukázka</a> – <b>Firefox 33</b>+</p>
+
+
+
+
+<h3 id="symbols">Funkce <code>symbols</code></h3>
+
+<p>Symbols je potom funkce, která se dá použít přímo v <code>list-style</code> bez nutnosti deklarovat styl pomocí <code>@counter-style</code>. Stejných výsledků jde dosáhnout oběma způsoby – <code>@counter-style</code> se hodí pro deklaraci stylů v rámci celého CSS, aby se styly nemusely v kódu opakovat a šly snadno <b>změnit na jednom místě</b>.</p>
+
+<p>Příklad použití <code>smybols</code>:</p>
+
+<pre><code>ul {
     list-style: symbols(cyclic '✔');
-}
-```
+}</code></pre>
 
-[Živá ukázka](http://kod.djpw.cz/wukb) – použití `symbols`
 
-[Živá ukázka](http://kod.djpw.cz/tukb) – totéž s `@counter-style`
 
-  - Hacks.mozilla.org: [Introducing @counter-style](https://hacks.mozilla.org/2015/02/introducing-counter-styles/) – kompletní přehled vlastností použitelných v `@counter-style`/`symbols`
 
-## Vlastní styl odrážky
 
-Ve starších prohlížečích jde vlastní textové odrážky dosáhnout [absolutním posicováním](/position#absolute) pseudo-elementu `:before` nebo `:after`.
 
+
+<p><a href="http://kod.djpw.cz/wukb">Živá ukázka</a> – použití <code>symbols</code></p>
+
+<p><a href="http://kod.djpw.cz/tukb">Živá ukázka</a> – totéž s <code>@counter-style</code></p>
+
+<div class="external-content">
+<ul>
+  <li>Hacks.mozilla.org: <a href="https://hacks.mozilla.org/2015/02/introducing-counter-styles/">Introducing @counter-style</a> – kompletní přehled vlastností použitelných v <code>@counter-style</code>/<code>symbols</code></li>
+</ul>  
+</div>
+
+
+
+
+<h2 id="vlastni">Vlastní styl odrážky</h2>
+
+<p>Ve starších prohlížečích jde vlastní textové odrážky dosáhnout <a href="/position#absolute">absolutním posicováním</a> pseudo-elementu <code>:before</code> nebo <code>:after</code>.</p>
+
+<div class="live">
+<style>
 ul.fajfka {
     list-style: none;
 }
@@ -224,23 +320,36 @@ ul.fajfka {
     content: "✔";
     left: -1.5em;
 }
+</style>
+  <ul class="fajfka">
+    <li>Odrážka</li>
+    <li>Odrážka</li>
+  </ul>
+</div>
 
-    - Odrážka
+<p><a href="http://kod.djpw.cz/xukb">Samostatná živá ukázka</a></p>
 
-    - Odrážka
 
-[Samostatná živá ukázka](http://kod.djpw.cz/xukb)
+<h3 id="odlisna-barva">Odlišná barva odrážky</h3>
 
-### Odlišná barva odrážky
+<p>Ani pro <b>jinou barvu odrážky a obsahu položky</b> neexistuje elegantní řešení. Jedna možnost je <b>obalit</b> obsah v <code>&lt;li></code>:</p>
 
-Ani pro **jinou barvu odrážky a obsahu položky** neexistuje elegantní řešení. Jedna možnost je **obalit** obsah v `&lt;li>`:
-
+<div class="live">
+  <ul>
+    <li style="color: #DA3F94">
+      <span style="color: #0D6AB7">
         Text položky
+      </span>
+    </li>
+  </ul>
+</div>
 
-**Barva odrážky** se bere z barvy (`color`) položky. Takže není možné nastavit jednu barvu pro `&lt;ul>`/`&lt;ul>` a druhou pro `&lt;li>`.
+<p><b>Barva odrážky</b> se bere z barvy (<code>color</code>) položky. Takže není možné nastavit jednu barvu pro <code>&lt;ul></code>/<code>&lt;ul></code> a druhou pro <code>&lt;li></code>.</p>
 
-Pokud je komplikované měnit HTML kód (aby byl kolem obsahu v `&lt;li>` další element), nezbývá něž opět odrážku vytvořit pomocí `:before` a vhodně ji naposicovat.
+<p>Pokud je komplikované měnit HTML kód (aby byl kolem obsahu v <code>&lt;li></code> další element), nezbývá něž opět odrážku vytvořit pomocí <code>:before</code> a vhodně ji naposicovat.</p>
 
+<div class="live">
+<style>
 ul.ruzna-barva {
     list-style: none;
 }
@@ -256,15 +365,20 @@ ul.ruzna-barva {
     left: -1em;
     color: #DA3F94;
 }
+</style>
+  <ul class="ruzna-barva">
+    <li>Odrážka</li>
+    <li>Odrážka</li>
+  </ul>
+</div>
 
-    - Odrážka
 
-    - Odrážka
+<h3 id="cislovani">Odlišný styl a číslování</h3>
 
-### Odlišný styl a číslování
+<p>S využitím CSS vlastnosti <a href="/counter"><code>counter</code></a> (<b>IE8</b>+) jde postup s <code>:before</code> odrážkou použít i pro číslování v odlišném stylu.</p>
 
-S využitím CSS vlastnosti [`counter`](/counter) (**IE8**+) jde postup s `:before` odrážkou použít i pro číslování v odlišném stylu.
-
+<div class="live">
+<style>
 ol.ruzna-barva-cislo {
     list-style: none;
     counter-reset: seznam;
@@ -282,15 +396,21 @@ ol.ruzna-barva-cislo {
     left: -1em;
     color: #DA3F94;
 }
+</style>
+  <ol class="ruzna-barva-cislo">
+    <li>Odrážka</li>
+    <li>Odrážka</li>
+  </ol>
+</div>
 
-    - Odrážka
 
-    - Odrážka
+<p><a href="http://kod.djpw.cz/yukb">Samostatná živá ukázka</a> – zajímavější styl číslování</p>
 
-[Samostatná živá ukázka](http://kod.djpw.cz/yukb) – zajímavější styl číslování
 
-## Odkazy jinam
+<h2 id="odkazy">Odkazy jinam</h2>
 
-  - MDN: [`list-style`](http://devdocs.io/css/list-style)
-
-  - Jak psát web: [Vlastnost `list-style`](http://www.jakpsatweb.cz/css/list-style.html), [Seznamy v HTML](http://www.jakpsatweb.cz/html/seznamy.html)
+<ul>
+  <li>MDN: <a href="http://devdocs.io/css/list-style"><code>list-style</code></a></li>
+  
+  <li>Jak psát web: <a href="http://www.jakpsatweb.cz/css/list-style.html">Vlastnost <code>list-style</code></a>, <a href="http://www.jakpsatweb.cz/html/seznamy.html">Seznamy v HTML</a></li>
+</ul>

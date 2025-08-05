@@ -6,20 +6,20 @@ date: "2014-11-17"
 last_modification: "2014-11-17"
 status: 0
 tags: []
+format: "html"
 ---
 
-## Přidání dní
+<h2 id="pridani-dni">Přidání dní</h2>
 
-```
-var datum = new Date();
+<pre><code>var datum = new Date();
 var pridatDni = 4;
-datum.setDate(datum.getDate() + pridatDni); 
-```
+datum.setDate(datum.getDate() + pridatDni); </code></pre>
 
-[Knihovna Date.js](http://www.datejs.com/)
 
-[Date.js na CDN](http://cs.cdnjs.com/libraries/datejs)
+<a href="http://www.datejs.com/">Knihovna Date.js</a>
 
-[Živá ukázka](http://kod.djpw.cz/ephb)
+<a href="http://cs.cdnjs.com/libraries/datejs">Date.js na CDN</a>
 
-[Knihovna Moment.js](http://momentjs.com/)
+<a href="http://kod.djpw.cz/ephb">Živá ukázka</a>
+
+<a href="http://momentjs.com/">Knihovna Moment.js</a>

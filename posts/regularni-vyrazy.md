@@ -6,20 +6,21 @@ date: "2014-04-07"
 last_modification: "2014-04-07"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://www.regexr.com/
 
-- [RexEgg.com ](http://www.rexegg.com/)
+<li><a href="http://www.rexegg.com/">RexEgg.com </a></li>
 
-- [Online regex tester and debugger: JavaScript, Python, PHP, and PCRE](https://regex101.com/)
+<li><a href="https://regex101.com/">Online regex tester and debugger: JavaScript, Python, PHP, and PCRE</a></li>
 
 http://davidwalsh.name/string-replace-javascript
 
 http://jex.im/regulex/
 
-[Learn Regular Expressions in 20 Minutes](http://tutorialzine.com/2014/12/learn-regular-expressions-in-20-minutes/)
+<a href="http://tutorialzine.com/2014/12/learn-regular-expressions-in-20-minutes/">Learn Regular Expressions in 20 Minutes</a>
 
-[David Grudl - Regulární výrazy (PixDevDay)](https://www.youtube.com/watch?v=uzHIXuGzaaY)
+<a href="https://www.youtube.com/watch?v=uzHIXuGzaaY">David Grudl - Regulární výrazy (PixDevDay)</a>
 
-- Sitepoint: [Demystifying RegEx with Practical Examples](http://www.sitepoint.com/demystifying-regex-with-practical-examples/)
+<li>Sitepoint: <a href="http://www.sitepoint.com/demystifying-regex-with-practical-examples/">Demystifying RegEx with Practical Examples</a></li>

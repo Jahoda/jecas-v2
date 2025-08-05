@@ -6,6 +6,7 @@ date: "2014-01-04"
 last_modification: "2014-01-04"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://www.vzhurudolu.cz/prirucka/fallback

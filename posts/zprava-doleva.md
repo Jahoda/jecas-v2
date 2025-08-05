@@ -5,84 +5,139 @@ description: "HTML značky, HTML, atributy a CSS vlastnosti pro text psaný zpra
 date: "2016-01-27"
 last_modification: "2016-02-01"
 status: 1
-tags: ["HTML", "CSS", "HTML značky"]
+tags: ["css", "html", "html-tagy"]
+format: "html"
 ---
 
-Běžný český nebo evropský kodér se s nimi setkat nemusí, ale v HTML a CSS existuje řada prvků určených pro jazyky psané zprava doleva.
+<p>Běžný český nebo evropský kodér se s nimi setkat nemusí, ale v HTML a CSS existuje řada prvků určených pro jazyky psané zprava doleva.</p>
 
-## Atribut `dir`
 
-Jedná se o [globální atribut](/obecne-atributy#dir) použitelný na kterékoliv blokové značce. U webů psaných zprava doleva se obvykle používá u značky [`&lt;html>`](/html-kostra#html).
 
-Jeho použitím jde docílit, že obsah elementu bude vypisován:
+<h2 id="dir">Atribut <code>dir</code></h2>
 
-  Zprava doleva.
+<p>Jedná se o <a href="/obecne-atributy#dir">globální atribut</a> použitelný na kterékoliv blokové značce. U webů psaných zprava doleva se obvykle používá u značky <a href="/html-kostra#html"><code>&lt;html></code></a>.</p>
 
-## `&lt;bdi>`
 
-Zkratka BDI znamená *Bi-Directional Isolation*.
 
-Řádková značka hodící se k obalení slova, u kterého není známé, jestli se píše zleva doprava nebo zprava doleva.
+<p>Jeho použitím jde docílit, že obsah elementu bude vypisován:</p>
 
-Teoreticky by se tak měl obalovat každý uživatelem zadaný řetězec, který může být zapsán oběma směry.
+<div class="live">
+  <p dir="rtl">Zprava doleva.</p>
+</div>
 
-Prohlížeče mají algoritmus pro **automatické rozpoznávání směru textu**. Bez použití `&lt;bdi>` například pro obalení přezdívky uživatele může dojít k nežádoucímu jevu, kdy „přepnutí“ mezi oběma směry proběhne jinde, než by mělo.
 
-   Uživatel **fytopuf**: 5 příspěvků.
-   Uživatel **إيان**: 3 příspěvky.
 
-Bez použití `&lt;bdi>` se dvojtečka a číslo zobrazí vlevo od přezdívky. S `&lt;bdi>` se to nestane, protože obsah této značky bude isolován od okolí:
 
-   Uživatel **fytopuf**: 5 příspěvků.
-   Uživatel **إيان**: 3 příspěvky.
 
-Podporuje pouze **Chrome 16+** a **Firefox 10+**.
+<h2 id="bdi"><code>&lt;bdi></code></h2>
 
-## `&lt;bdo>`
+<p>Zkratka BDI znamená <i lang="en">Bi-Directional Isolation</i>.</p>
 
-Zkratka BDO znamená *Bi-Directional Override*. Podporuje atribut `dir` pro nastavení směru textu (`ltr`/`rtl`) nezávisle na algoritmu prohlížeče, který požadovaný směr hádá dle obsahu.
+<p>Řádková značka hodící se k obalení slova, u kterého není známé, jestli se píše zleva doprava nebo zprava doleva.</p>
 
-  Uprostřed věty bude slovo zprava doleva.
+<p>Teoreticky by se tak měl obalovat každý uživatelem zadaný řetězec, který může být zapsán oběma směry.</p>
 
-Značka `&lt;bdo>` je velmi dobře podporovaná.
 
-V praxi by se mohla hodit v případech, kdy algoritmus prohlížeče špatně určí žádoucí směr.
+<p>Prohlížeče mají algoritmus pro <b>automatické rozpoznávání směru textu</b>. Bez použití <code>&lt;bdi></code> například pro obalení přezdívky uživatele může dojít k nežádoucímu jevu, kdy „přepnutí“ mezi oběma směry proběhne jinde, než by mělo.</p>
 
-Další možné využití je pro různé legrácky.
+<div class="live">
+  <ul>
+   <li>Uživatel <b>fytopuf</b>: 5 příspěvků.
+   <li>Uživatel <b>إيان</b>: 3 příspěvky.
+  </ul>
+</div>
 
-## CSS vlastnosti
 
-### CSS `direction`
 
-V CSS totéž dělá vlastnost `direction` to samé jako HTML atribut `dir`:
 
-  Zprava doleva.
+<p>Bez použití <code>&lt;bdi></code> se dvojtečka a číslo zobrazí vlevo od přezdívky. S <code>&lt;bdi></code> se to nestane, protože obsah této značky bude isolován od okolí:</p>
+<div class="live">
+  <ul>
+   <li>Uživatel <bdi><b>fytopuf</b></bdi>: 5 příspěvků.
+   <li>Uživatel <bdi><b>إيان</b></bdi>: 3 příspěvky.
+  </ul>
+</div>
 
-### `unicode-bidi`
 
-Pro dosažení výsledku značek `&lt;bdi>` nebo `&lt;bdo>` potom existuje CSS vlastnost `unicode-bidi`. Je možné ji kombinovat s `direction`:
 
-    `unicode-bidi: isolate` – ekvivalent značky `&lt;bdi>`. Isoluje obsah, aby ho správně pochopil automatický algoritmus pro určování textu psaného zprava/zleva.
 
-    `unicode-bidi: bidi-override` – ekvivalent `&lt;bdo dir="rtl">`.
+<p>Podporuje pouze <b>Chrome 16+</b> a <b>Firefox 10+</b>.</p>
 
-    ```
-element {
+
+
+
+<h2 id="bdo"><code>&lt;bdo></code></h2>
+
+<p>Zkratka BDO znamená <i lang="en">Bi-Directional Override</i>. Podporuje atribut <code>dir</code> pro nastavení směru textu (<code>ltr</code>/<code>rtl</code>) nezávisle na algoritmu prohlížeče, který požadovaný směr hádá dle obsahu.</p>
+
+<div class="live">
+  <p>Uprostřed věty bude slovo <bdo dir="rtl">zprava</bdo> doleva.</p>
+</div>
+
+
+
+
+<p>Značka <code>&lt;bdo></code> je velmi dobře podporovaná.</p>
+
+
+<p>V praxi by se mohla hodit v případech, kdy algoritmus prohlížeče špatně určí žádoucí směr.</p>
+
+<p>Další možné využití je pro různé legrácky.</p>
+
+
+
+
+<h2 id="css">CSS vlastnosti</h2>
+
+
+<h3 id="direction">CSS <code>direction</code></h3>
+
+<p>V CSS totéž dělá vlastnost <code>direction</code> to samé jako HTML atribut <code>dir</code>:</p>
+
+<div class="live">
+  <p style="direction: rtl">Zprava doleva.</p>
+</div>
+
+
+
+
+<h3 id="unicode-bidi"><code>unicode-bidi</code></h3>
+
+<p>Pro dosažení výsledku značek <code>&lt;bdi></code> nebo <code>&lt;bdo></code> potom existuje CSS vlastnost <code>unicode-bidi</code>. Je možné ji kombinovat s <code>direction</code>:</p>
+
+
+<ul>
+  <li>
+    <p><code>unicode-bidi: isolate</code> – ekvivalent značky <code>&lt;bdi></code>. Isoluje obsah, aby ho správně pochopil automatický algoritmus pro určování textu psaného zprava/zleva.</p>
+  </li>
+  
+  <li>
+    <p><code>unicode-bidi: bidi-override</code> – ekvivalent <code>&lt;bdo dir="rtl"></code>.</p>
+    
+    <pre><code>element {
   direction: rtl;
   unicode-bidi: bidi-override;
-}
-```
+}</code></pre>
+  </li>
+</ul>
 
-Další hodnoty jsou popsány na MDN:
 
-    - MDN: [`unicode-bidi`](https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi)
 
-### `text-align`
+<p>Další hodnoty jsou popsány na MDN:</p>
 
-V případě webu psaného zprava doleva by tomu mělo odpovídat i zarovnání textu vlastností `text-align`.
+<div class="external-content">
+  <ul>
+    <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi"><code>unicode-bidi</code></a></li>
+  </ul>
+</div>
 
-Pro vícejazyčné weby jde použít universální hodnoty `start` a `end` (místo `left` a `right` při psaní zleva doprava), které se přizpůsobí nastavenému směru.
+<h3 id="text-align"><code>text-align</code></h3>
 
-Tyto hodnoty nepodporuje [**MS Edge**](/microsoft-edge), všechny **IE** a stará **Opera 12**.
+<p>V případě webu psaného zprava doleva by tomu mělo odpovídat i zarovnání textu vlastností <code>text-align</code>.</p>
 
-[Živá ukázka](http://kod.djpw.cz/fztb)
+<p>Pro vícejazyčné weby jde použít universální hodnoty <code>start</code> a <code>end</code> (místo <code>left</code> a <code>right</code> při psaní zleva doprava), které se přizpůsobí nastavenému směru.</p>
+
+<p>Tyto hodnoty nepodporuje <a href="/microsoft-edge"><b>MS Edge</b></a>, všechny <b>IE</b> a stará <b>Opera 12</b>.</p>
+
+<p><a href="http://kod.djpw.cz/fztb">Živá ukázka</a></p>
+

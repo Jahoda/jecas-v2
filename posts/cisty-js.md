@@ -6,6 +6,7 @@ date: "2014-01-21"
 last_modification: "2014-01-21"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://blog.adtile.me/2014/01/16/a-dive-into-plain-javascript/

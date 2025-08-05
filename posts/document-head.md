@@ -5,38 +5,45 @@ description: "Přístup k hlavičce stránky v JavaScriptu je možný konstrukc�
 date: "2014-12-11"
 last_modification: "2014-12-12"
 status: 1
-tags: ["JavaScript", "Rady a nápady"]
+tags: ["js", "napady"]
+format: "html"
 ---
 
-Podobně jako se dá se k tělu stránky – značce `&lt;body>` dostat pomocí [`document.body`](/documentelement-body), existuje podobný způsob i pro hlavičku (`&lt;head>`).
+<p>Podobně jako se dá se k tělu stránky – značce <code>&lt;body></code> dostat pomocí <a href="/documentelement-body"><code>document.body</code></a>, existuje podobný způsob i pro hlavičku (<code>&lt;head></code>).</p>
 
-```
-var hlavicka = document.head;
-```
+<pre><code>var hlavicka = document.head;</code></pre>
 
-## Využití
 
-Použít `document.head` se nabízí typicky pro **zkrácení kódu** přidávajícího do hlavičky styly nebo skripty.
 
-```
-var styl = document.createElement("link");
+
+<h2 id="vyuziti">Využití</h2>
+
+<p>Použít <code>document.head</code> se nabízí typicky pro <b>zkrácení kódu</b> přidávajícího do hlavičky styly nebo skripty.</p>
+
+<pre><code>var styl = document.createElement("link");
 styl.rel = "stylesheet";
 styl.href = url;
-**document.head**.appendChild(styl);
-```
+<b>document.head</b>.appendChild(styl);</code></pre>
 
-## Podpora
 
-Jelikož `document.head` funguje až od **IE 9**, nemusí se s ohledem na **IE 8** a starší tento *zkrácený zápis* vyplatit. Lepší je volit dobře podporovanou konstrukci:
 
-```
-document.getElementsByTagName("head")[0]
-```
 
-[Test `document.head`](http://kod.djpw.cz/jnib)
 
-## Odkazy jinam
+<h2 id="podpora">Podpora</h2>
 
-  - W3C: [document.head](https://html.spec.whatwg.org/multipage/dom.html#dom-document-head)
+<p>Jelikož <code>document.head</code> funguje až od <b>IE 9</b>, nemusí se s ohledem na <b>IE 8</b> a starší tento <i>zkrácený zápis</i> vyplatit. Lepší je volit dobře podporovanou konstrukci:</p>
 
-  - MDN: [Document.head](https://developer.mozilla.org/en-US/docs/Web/API/document.head)
+<pre><code>document.getElementsByTagName("head")[0]</code></pre>
+
+<p><a href="http://kod.djpw.cz/jnib">Test <code>document.head</code></a></p>
+
+
+
+
+<h2 id="odkazy">Odkazy jinam</h2>
+
+<ul>
+  <li>W3C: <a href="https://html.spec.whatwg.org/multipage/dom.html#dom-document-head">document.head</a></li>
+  
+  <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/API/document.head">Document.head</a></li>
+</ul>

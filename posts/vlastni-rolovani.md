@@ -6,6 +6,7 @@ date: "2014-01-27"
 last_modification: "2014-01-27"
 status: 0
 tags: []
+format: "html"
 ---
 
 http://kod.djpw.cz/tmbb
