@@ -78,15 +78,3 @@ export async function getRelatedPostsByMostTags(
 ): Promise<Post[]> {
 	return await getMarkdownRelatedPosts(tagNames, postSlug);
 }
-
-// Note: Create and update operations for markdown files would be handled
-// by direct file system operations or through a separate admin interface
-// These functions are removed as they require different approach for markdown files
-
-export async function createPost(post: PostIn) {
-	throw new Error('createPost not implemented for markdown files - use file system operations');
-}
-
-export async function updatePost(post: PostIn, id: number) {
-	throw new Error('updatePost not implemented for markdown files - use file system operations');
-}

@@ -3,10 +3,6 @@
 
 	import Container from '$lib/container/Container.svelte';
 	import Logo from '$lib/logo/Logo.svelte';
-	import type { User } from '@supabase/supabase-js';
-	import IconUserCircle from '$lib/icon/IconUserCircle.svelte';
-
-	export let user: User | null = null;
 </script>
 
 <div class="bg-blue-light dark:bg-blue-light/30 py-2 shadow-lg">
@@ -33,15 +29,6 @@
 			>
 				O webu
 			</a>
-
-			{#if user}
-				<a
-					href="/admin/dashboard"
-					class="hover:bg-blue-dark dark:hover:bg-blue-dark/30 rounded-md p-2 transition-colors"
-				>
-					<IconUserCircle />
-				</a>
-			{/if}
 		</div>
 	</Container>
 </div>

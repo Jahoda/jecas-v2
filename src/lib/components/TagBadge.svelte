@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { PowerfulTag } from '$lib/tag/tags';
+	import type { Tag } from '$lib/tag/tags';
 
-	export let tag: PowerfulTag;
+	export let tag: Tag;
 	export let size: 'sm' | 'md' | 'lg' = 'md';
 	export let showCount = false;
 

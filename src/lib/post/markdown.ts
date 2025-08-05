@@ -75,7 +75,7 @@ export async function getAllPosts(
 	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
 
 	const filteredPosts = posts
-		.filter((post) => post.status === status && post.url_slug !== 'home')
+		.filter((post) => post.status === status)
 		.sort((a, b) => b.last_modification.getTime() - a.last_modification.getTime());
 
 	return limit ? filteredPosts.slice(0, limit) : filteredPosts;

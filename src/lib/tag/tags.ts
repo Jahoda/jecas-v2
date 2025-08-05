@@ -31,10 +31,6 @@ export interface TagPost {
 	page_slug: string;
 }
 
-// Legacy interfaces for backward compatibility
-export interface PowerfulTag extends Tag {} // PowerfulTag is now just an alias
-export interface MarkdownTag extends Tag {} // MarkdownTag is now just an alias
-
 export interface PostCount {
 	count: number;
 }
@@ -330,12 +326,6 @@ export const getPowerfulTagBySlug = getSingleTagBySlug;
 export const getTagsByPostSlug = getAllTagsByPageId;
 export const getPostsByTagSlug = getPostsForTag;
 
-// MarkdownTag aliases
-export const getAllMarkdownTags = getAllTags;
-export const getMarkdownTagBySlug = getSingleTagBySlug;
-export const getMarkdownTagsByPostSlug = getAllTagsByPageId;
-export const getMarkdownPostsForTag = getPostsForTag;
-
 // Generate TagPost relationships for compatibility
 export async function getPagesTags(posts: any[]): Promise<TagPost[]> {
 	const pagesTags: TagPost[] = [];
@@ -391,68 +381,6 @@ export function invalidateTagCaches(): void {
 	lastModified = 0;
 	usageCountsLastCalculated = 0;
 	tagPostsLastCalculated = 0;
-}
-
-// Disabled functions for markdown-based system
-export function createTag(data: any) {
-	throw new Error(
-		'createTag not implemented for markdown files - create tag files in content/tags/'
-	);
-}
-
-export function updateTagBySlug(slug: string, data: any) {
-	throw new Error(
-		'updateTagBySlug not implemented for markdown files - edit tag files in content/tags/'
-	);
-}
-
-export function deleteTagBySlug(slug: string) {
-	throw new Error(
-		'deleteTagBySlug not implemented for markdown files - delete tag files in content/tags/'
-	);
-}
-
-export function createPageTags(pageId: number, tags: string[]) {
-	throw new Error(
-		'createPageTags not implemented for markdown files - manage tags in post frontmatter'
-	);
-}
-
-export function removePageTags(pageId: number) {
-	throw new Error(
-		'removePageTags not implemented for markdown files - manage tags in post frontmatter'
-	);
-}
-
-// Legacy PowerfulTag functions that are now disabled
-export function createPowerfulTag(tagData: any) {
-	throw new Error(
-		'createPowerfulTag is disabled - create tags using markdown files in content/tags/'
-	);
-}
-
-export function updatePowerfulTag(slug: string, updates: any) {
-	throw new Error(
-		'updatePowerfulTag is disabled - update tags using markdown files in content/tags/'
-	);
-}
-
-export function deletePowerfulTag(slug: string) {
-	throw new Error('deletePowerfulTag is disabled - delete tag markdown files in content/tags/');
-}
-
-export function addTagToPost(postSlug: string, tagSlug: string) {
-	throw new Error('addTagToPost is disabled - manage tags in post markdown frontmatter');
-}
-
-export function removeTagFromPost(postSlug: string, tagSlug: string) {
-	throw new Error('removeTagFromPost is disabled - manage tags in post markdown frontmatter');
-}
-
-export function migrateFromSimpleTags(postSlug: string, tagNames: string[]) {
-	throw new Error(
-		'migrateFromSimpleTags is disabled - use markdown frontmatter for tag relationships'
-	);
 }
 
 export { calculateAllUsageCounts };

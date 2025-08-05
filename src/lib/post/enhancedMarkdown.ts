@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
-import { getTagsByPostSlug, type PowerfulTag } from '$lib/tag/tags';
+import { getTagsByPostSlug, type Tag } from '$lib/tag/tags';
 
 export interface EnhancedMarkdownPost {
 	id: string;
@@ -15,7 +15,7 @@ export interface EnhancedMarkdownPost {
 	last_modification: Date;
 	comments: number;
 	status: number;
-	tags: PowerfulTag[]; // Rich tag objects instead of simple strings
+	tags: Tag[]; // Rich tag objects instead of simple strings
 	word_count?: number;
 }
 
@@ -152,7 +152,7 @@ export async function getEnhancedPostsByTag(tagSlug: string): Promise<EnhancedMa
 }
 
 export async function getEnhancedRelatedPostsByMostTags(
-	tags: PowerfulTag[],
+	tags: Tag[],
 	currentSlug: string
 ): Promise<EnhancedMarkdownPost[]> {
 	const allPosts = await getAllEnhancedPosts();
