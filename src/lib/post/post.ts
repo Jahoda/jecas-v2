@@ -11,6 +11,10 @@ import {
 } from './markdown';
 import type { TagPost, Tag } from '$lib/tag/tags';
 
+function removeDiacritics(str: string): string {
+	return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
 export interface Post {
 	id: string | number;
 	title: string;
@@ -91,8 +95,11 @@ export async function getRelatedPostsByMostTags(tags: Tag[], currentSlug: string
 			const postTags = post.tags || [];
 			const commonTagSlugs = postTags
 				.map((tagName: string) => {
-					// Try to find matching tag by name
-					const matchingTag = tags.find((t) => t.name.toLowerCase() === tagName.toLowerCase());
+					// Try to find matching tag by name (with diacritics normalization)
+					const matchingTag = tags.find(
+						(t) =>
+							removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
+					);
 					return matchingTag?.url_slug;
 				})
 				.filter((slug: string | undefined) => slug && tagSlugs.includes(slug));

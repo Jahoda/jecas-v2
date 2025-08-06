@@ -35,7 +35,10 @@
 </script>
 
 <div
-	class="prose dark:prose-invert prose-code:before:hidden prose-code:after:hidden prose-a:text-blue-dark prose-a:hover:no-underline m-auto w-full max-w-3xl"
+	class="
+		prose dark:prose-invert prose-code:before:hidden prose-code:after:hidden prose-a:text-blue-dark prose-a:hover:no-underline prose-blockquote:bg-slate-200 prose-blockquote:p-4 prose-blockquote:rounded-md
+		prose-blockquote:border-l-4 prose-blockquote:border-slate-300 m-auto w-full max-w-3xl
+		"
 	bind:this={postContent}
 >
 	{@html content}

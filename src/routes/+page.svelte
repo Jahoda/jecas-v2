@@ -35,7 +35,7 @@
 		<div class="lg:grid-cols-homepage-2 xl:grid-cols-homepage-3 grid grid-cols-1 gap-8">
 			<div class="xlx:col-span-6">
 				<div class="grid grid-cols-1 gap-8">
-					<div class="grid grid-cols-1 gap-8">
+					<div class="grid grid-cols-1 gap-4 md:gap-8">
 						{#each data.posts.slice(0, 3) as post, index (post.url_slug)}
 							<div class="grid">
 								<MainPost

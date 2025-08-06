@@ -1,6 +1,10 @@
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
+function removeDiacritics(str: string): string {
+	return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
 // Unified Tag interface (replaces both Tag and PowerfulTag)
 export interface Tag {
 	url_slug: string;
@@ -146,9 +150,9 @@ async function calculateAllUsageCounts(): Promise<Map<string, number>> {
 			const processedSlugs = new Set<string>(); // Prevent double counting same tag in one post
 
 			for (const tagName of post.tags) {
-				// Try exact name match first
+				// Try exact name match first (with diacritics normalization)
 				let matchingTag = Array.from(tags.values()).find(
-					(t) => t.name.toLowerCase() === tagName.toLowerCase()
+					(t) => removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
 				);
 
 				// If not found, try slug match
@@ -198,9 +202,9 @@ async function calculateAllTagPosts(): Promise<Map<string, string[]>> {
 			const processedSlugs = new Set<string>(); // Prevent double adding same tag
 
 			for (const tagName of post.tags) {
-				// Try exact name match first
+				// Try exact name match first (with diacritics normalization)
 				let matchingTag = Array.from(tags.values()).find(
-					(t) => t.name.toLowerCase() === tagName.toLowerCase()
+					(t) => removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
 				);
 
 				// If not found, try slug match
@@ -279,9 +283,9 @@ export async function getAllTagsByPageId(postSlug: string): Promise<Tag[]> {
 	const matchingTags: Tag[] = [];
 
 	for (const tagName of post.tags) {
-		// Try exact title match first
+		// Try exact title match first (with diacritics normalization)
 		let matchingTag = Array.from(tags.values()).find(
-			(t) => t.name.toLowerCase() === tagName.toLowerCase()
+			(t) => removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
 		);
 
 		// If not found, try slug match
@@ -336,8 +340,12 @@ export async function getPagesTags(posts: any[]): Promise<TagPost[]> {
 					return;
 				}
 
-				// Try to find tag by exact name first
-				let tag = tagsByName.get(tagName.toLowerCase());
+				// Try to find tag by exact name first (with diacritics normalization)
+				let tag = Array.from(allTags.values()).find(
+					(t) =>
+						removeDiacritics(t.name?.toLowerCase() || '') ===
+						removeDiacritics(tagName.toLowerCase())
+				);
 
 				// If not found, try by converting name to slug
 				if (!tag) {

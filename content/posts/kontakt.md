@@ -1,7 +1,7 @@
 ---
 title: "O ječas.cz a kontakt"
 headline: "O webu a kontakt"
-description: "?"
+description: "🍓"
 date: "2013-04-26"
 last_modification: "2013-04-26"
 status: 0
@@ -124,7 +124,7 @@ format: "html"
 
 <p>Chcete-li použít nějaký z triků nebo ukázek, <b>použijte je</b> dle libosti. Pokud máte potřebu se mi za jejich použítí nějak odměnit, třeba odkažte na tento web ze svých stránek.</p>
 
-<pre><code>&lt;a href="http://jecas.cz">
+<pre><code>&lt;a href="https://jecas.cz">
   Je čas – moderní tvorba webových stránek
 &lt;/a></code></pre>
   
