@@ -8,4 +8,11 @@
 	$: postImageUrl = `/files/article/${slug}.png`;
 </script>
 
-<img src={postImageUrl} loading={lazy ? 'lazy' : null} alt="" width="200" height="200" />
+<img
+	src={postImageUrl}
+	fetchpriority={!lazy ? 'high' : null}
+	loading={lazy ? 'lazy' : null}
+	alt=""
+	width="200"
+	height="200"
+/>

@@ -47,7 +47,7 @@
 						: 'h-[200px] w-[200px]'}"
 				>
 					{#if href}
-						<PostImage slug={href} lazy={!neutral && !small} />
+						<PostImage slug={href} lazy={false} />
 					{/if}
 				</div>
 			{/if}
