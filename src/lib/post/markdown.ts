@@ -152,6 +152,23 @@ export async function getRelatedPostsByMostTags(
 	return scoredPosts.map((item) => item.post);
 }
 
+export async function getPrevNextPosts(currentSlug: string): Promise<{
+	prev: MarkdownPost | null;
+	next: MarkdownPost | null;
+}> {
+	const allPosts = await getAllPosts();
+	const currentIndex = allPosts.findIndex((post) => post.url_slug === currentSlug);
+
+	if (currentIndex === -1) {
+		return { prev: null, next: null };
+	}
+
+	return {
+		prev: currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null,
+		next: currentIndex > 0 ? allPosts[currentIndex - 1] : null
+	};
+}
+
 export async function getAllUsedTags(): Promise<string[]> {
 	const postFiles = getPostFiles();
 	const allTags = new Set<string>();

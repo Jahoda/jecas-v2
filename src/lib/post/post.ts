@@ -6,6 +6,7 @@ import {
 	getPostsCount as getMarkdownPostsCount,
 	getPostsByTag,
 	getRelatedPostsByMostTags as getMarkdownRelatedPosts,
+	getPrevNextPosts as getMarkdownPrevNextPosts,
 	type MarkdownPost
 } from './markdown';
 import type { TagPost, Tag } from '$lib/tag/tags';
@@ -109,4 +110,11 @@ export async function getRelatedPostsByMostTags(tags: Tag[], currentSlug: string
 		.slice(0, 4);
 
 	return scoredPosts.map((item) => item.post);
+}
+
+export async function getPrevNextPosts(currentSlug: string): Promise<{
+	prev: Post | null;
+	next: Post | null;
+}> {
+	return await getMarkdownPrevNextPosts(currentSlug);
 }

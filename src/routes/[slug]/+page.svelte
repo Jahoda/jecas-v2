@@ -4,6 +4,7 @@
 	import PostList from '$lib/post/PostList.svelte';
 	import PostComments from '$lib/postComments/PostComments.svelte';
 	import PostToc from '$lib/toc/PostToc.svelte';
+	import PostNavigation from '$lib/postNavigation/PostNavigation.svelte';
 	import type { PageData } from './$types';
 	import HeroPost from '$lib/mainPost/HeroPost.svelte';
 
@@ -13,9 +14,9 @@
 </script>
 
 <svelte:head>
-	<title>{post?.headline || (post && 'title' in post ? post.title : post?.name)}</title>
+	<title>{post && 'title' in post ? post.title : post?.name}</title>
 	<meta name="description" content={post && 'description' in post ? post.description : ''} />
-	{#if !data.tag && post}
+	{#if !data.tag && post && post.url_slug === 'ASDJDSFJGIJHIDFGJHKFDG'}
 		<meta property="og:image" content="/api/og?slug={post.url_slug}" />
 	{/if}
 </svelte:head>
@@ -49,6 +50,9 @@
 			<PostList posts={data.tagPosts} tags={data.allTags} pagesTags={data.pagesTags} />
 		{:else}
 			<div class="m-auto w-full max-w-3xl grid-cols-1">
+				{#if post && data.prevNextPosts}
+					<PostNavigation prev={data.prevNextPosts.prev} next={data.prevNextPosts.next} />
+				{/if}
 				{#if post}
 					<PostComments slug={post.url_slug} />
 				{/if}

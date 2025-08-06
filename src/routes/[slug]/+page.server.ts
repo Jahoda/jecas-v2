@@ -3,6 +3,7 @@ import {
 	getRelatedPostsByMostTags,
 	getSinglePostBySlug,
 	getPagesTags,
+	getPrevNextPosts,
 	type Post
 } from '$lib/post/post';
 import { getAllTagsByPageId, getSingleTagBySlug, getAllUsedTags, type Tag } from '$lib/tag/tags';
@@ -19,6 +20,7 @@ export const load = (async ({ params }) => {
 	let relatedPosts: Post[] | undefined;
 	let allTags: Tag[] = [];
 	let pagesTags: Record<string, string[]> = {};
+	let prevNextPosts: { prev: Post | null; next: Post | null } | undefined;
 
 	const page = await getSinglePostBySlug(slug);
 
@@ -28,6 +30,8 @@ export const load = (async ({ params }) => {
 		if (tags.length > 0) {
 			relatedPosts = await getRelatedPostsByMostTags(tags, page.url_slug);
 		}
+
+		prevNextPosts = await getPrevNextPosts(page.url_slug);
 
 		// Load all tags and pagesTags for the PostList component
 		allTags = await getAllUsedTags();
@@ -62,6 +66,7 @@ export const load = (async ({ params }) => {
 		tagPosts,
 		relatedPosts,
 		allTags,
-		pagesTags
+		pagesTags,
+		prevNextPosts
 	};
 }) satisfies PageServerLoad;
