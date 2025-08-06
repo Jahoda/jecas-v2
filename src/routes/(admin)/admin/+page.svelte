@@ -25,6 +25,7 @@
 			<IconPlus slot="icon" />
 			Nový článek
 		</Button>
+		<Button href="/admin/logout">Logout</Button>
 		<Input
 			name="search"
 			placeholder="Hledaný název článku"

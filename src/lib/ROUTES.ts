@@ -11,6 +11,8 @@
 const PAGES = {
   "/": `/`,
   "/admin": `/admin`,
+  "/admin/login": `/admin/login`,
+  "/admin/logout": `/admin/logout`,
   "/[slug]": (params: { slug: (string | number) }) => {
     return `/${params['slug']}`
   },
@@ -33,7 +35,8 @@ const SERVERS = {
  * ACTIONS
  */
 const ACTIONS = {
-  
+  "default /admin/login": `/admin/login`,
+  "default /admin/logout": `/admin/logout`
 }
 
 /**
@@ -148,9 +151,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/admin': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/vypocet-procent-sloupcu': never }
+  PAGES: { '/': never, '/admin': never, '/admin/login': never, '/admin/logout': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/vypocet-procent-sloupcu': never }
   SERVERS: { 'GET /algolia': never, 'GET /api/og': never, 'GET /rss': never, 'GET /sitemap.xml': never }
-  ACTIONS: Record<string, never>
+  ACTIONS: { 'default /admin/login': never, 'default /admin/logout': never }
   LINKS: Record<string, never>
   Params: { 'slug': never }
 }

@@ -5,6 +5,7 @@
 	export let small = false;
 	export let large = false;
 	export let disabled = false;
+	export let type: 'button' | 'submit' | 'reset' = 'button';
 </script>
 
 <svelte:element
@@ -22,6 +23,7 @@
 			: large
 				? 'px-5 py-4'
 				: 'px-4 py-2'} leading-5 {xSmall ? 'text-sm font-normal' : 'font-semibold'} text-white"
+	{type}
 	on:click
 	on:keypress
 >
