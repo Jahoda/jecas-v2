@@ -27,7 +27,7 @@
 		? 'shadow-2xl shadow-blue-500/30'
 		: ''} @container p-2 shadow {small ? '' : ''} {neutral
 		? 'bg-gray-50 dark:bg-slate-700 dark:text-white'
-		: 'text-white dark:text-white'}"
+		: ' dark:text-white'}"
 	style="--image: url({`/files/article/${href}.png`});{neutral
 		? ''
 		: background
@@ -39,7 +39,7 @@
 			? 'bg-blue-light/30'
 			: neutral
 				? 'bg-slate-500/10 dark:bg-slate-900/50'
-				: 'bg-slate-900/50'} rounded-xl {small ? 'p-3' : 'p-6'} h-full"
+				: 'bg-white/70'} rounded-xl {small ? 'p-3' : 'p-6'} h-full"
 	>
 		<div
 			class="bg-blur pointer-events-none absolute top-0 left-0 -z-10 hidden h-full w-full opacity-50 transition-all"
