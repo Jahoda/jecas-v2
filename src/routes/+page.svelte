@@ -66,7 +66,9 @@
 			<div class="xlx:col-span-2">
 				<div class="grid grid-cols-1 gap-8">
 					<TagCloud tags={data.tags} />
-					<LatestComments />
+					{#await data.comments then comments}
+						<LatestComments {comments} />
+					{/await}
 				</div>
 			</div>
 
