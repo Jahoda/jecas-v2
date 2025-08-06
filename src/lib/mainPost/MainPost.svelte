@@ -16,6 +16,7 @@
 	export let selected = false;
 	export let noImage = false;
 	export let wordCount: number | null = null;
+	export let lazy = true;
 
 	$: tagsColors = tags?.map((tag) => tag.background).filter((color) => color) || [];
 
@@ -57,7 +58,7 @@
 						: 'h-[200px] w-[200px]'}"
 				>
 					{#if href}
-						<PostImage slug={href} lazy={!neutral && !small} />
+						<PostImage slug={href} {lazy} />
 					{/if}
 				</a>
 			{/if}
