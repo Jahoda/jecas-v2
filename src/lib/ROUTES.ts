@@ -10,22 +10,15 @@
  */
 const PAGES = {
   "/": `/`,
+  "/admin": `/admin`,
+  "/admin/login": `/admin/login`,
+  "/admin/logout": `/admin/logout`,
   "/[slug]": (params: { slug: (string | number) }) => {
     return `/${params['slug']}`
   },
-  "/admin": `/admin`,
-  "/admin/dashboard": `/admin/dashboard`,
-  "/admin/post/[slug]": (params: { slug: (string | number) }) => {
-    return `/admin/post/${params['slug']}`
-  },
-  "/admin/tag/[slug]": (params: { slug: (string | number) }) => {
-    return `/admin/tag/${params['slug']}`
-  },
   "/archiv": `/archiv`,
-  "/logging-in": `/logging-in`,
   "/nastroje/preklady-prevod-textu": `/nastroje/preklady-prevod-textu`,
-  "/nastroje/vypocet-procent-sloupcu": `/nastroje/vypocet-procent-sloupcu`,
-  "/profil": `/profil`
+  "/nastroje/vypocet-procent-sloupcu": `/nastroje/vypocet-procent-sloupcu`
 }
 
 /**
@@ -42,14 +35,8 @@ const SERVERS = {
  * ACTIONS
  */
 const ACTIONS = {
-  "default /admin/post/[slug]": (params: { slug: (string | number) }) => {
-    return `/admin/post/${params['slug']}`
-  },
-  "default /admin/tag/[slug]": (params: { slug: (string | number) }) => {
-    return `/admin/tag/${params['slug']}`
-  },
-  "update /profil": `/profil?/update`,
-  "signout /profil": `/profil?/signout`
+  "default /admin/login": `/admin/login`,
+  "default /admin/logout": `/admin/logout`
 }
 
 /**
@@ -164,9 +151,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/[slug]': 'slug', '/admin': never, '/admin/dashboard': never, '/admin/post/[slug]': 'slug', '/admin/tag/[slug]': 'slug', '/archiv': never, '/logging-in': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/vypocet-procent-sloupcu': never, '/profil': never }
+  PAGES: { '/': never, '/admin': never, '/admin/login': never, '/admin/logout': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/vypocet-procent-sloupcu': never }
   SERVERS: { 'GET /algolia': never, 'GET /api/og': never, 'GET /rss': never, 'GET /sitemap.xml': never }
-  ACTIONS: { 'default /admin/post/[slug]': 'slug', 'default /admin/tag/[slug]': 'slug', 'update /profil': never, 'signout /profil': never }
+  ACTIONS: { 'default /admin/login': never, 'default /admin/logout': never }
   LINKS: Record<string, never>
   Params: { 'slug': never }
 }

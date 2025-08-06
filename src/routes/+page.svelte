@@ -11,9 +11,13 @@
 	import { groupByPageId } from '$lib/tags/tags';
 	import PostList from '$lib/post/PostList.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: pagesTags = groupByPageId(data.pagesTags);
+	let { data }: Props = $props();
+
+	const pagesTags = $derived(groupByPageId(data.pagesTags));
 </script>
 
 <svelte:head>
@@ -31,7 +35,7 @@
 		<div class="lg:grid-cols-homepage-2 xl:grid-cols-homepage-3 grid grid-cols-1 gap-8">
 			<div class="xlx:col-span-6">
 				<div class="grid grid-cols-1 gap-8">
-					<div class="grid grid-cols-1 gap-8">
+					<div class="grid grid-cols-1 gap-4 md:gap-8">
 						{#each data.posts.slice(0, 3) as post, index (post.url_slug)}
 							<div class="grid">
 								<MainPost
@@ -42,13 +46,13 @@
 									neutral={index > 1}
 									small={index > 0}
 									wordCount={post.word_count}
-									tags={data.tags.filter((tag) => pagesTags[post.id]?.includes(tag.id))}
+									tags={data.tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
 								/>
 							</div>
 						{/each}
 					</div>
 
-					<PostList posts={data.posts.slice(3)} />
+					<PostList posts={data.posts.slice(3)} tags={data.tags} {pagesTags} />
 
 					<div class="flex justify-center">
 						<Button large href="/archiv" arrow

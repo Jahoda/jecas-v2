@@ -2,7 +2,7 @@
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import PostImage from '$lib/postImage/PostImage.svelte';
 	import ReadingTime from '$lib/readingTime/ReadingTime.svelte';
-	import type { Tag } from '$lib/tag/tag';
+	import type { Tag } from '$lib/tag/tags';
 	import Tags from '$lib/tags/Tags.svelte';
 	import { postGradient } from './postGradient';
 
@@ -41,8 +41,7 @@
 	<div class="relative m-auto h-full max-w-[74em] rounded-xl bg-slate-900/50 p-6">
 		<div class="flex flex-col max-md:items-center md:flex-row {small ? 'gap-4' : 'gap-8'}">
 			{#if !noImage}
-				<a
-					{href}
+				<div
 					class="flex flex-shrink-0 overflow-hidden rounded-lg shadow {small
 						? 'h-[100px] w-[100px]'
 						: 'h-[200px] w-[200px]'}"
@@ -50,15 +49,13 @@
 					{#if href}
 						<PostImage slug={href} lazy={!neutral && !small} />
 					{/if}
-				</a>
+				</div>
 			{/if}
 
 			<div class="{small ? 'gap-4' : 'gap-8'} flex flex-col max-md:items-center">
-				<svelte:element this={href ? 'a' : 'div'} {href} class={href ? 'hover:underline' : ''}>
-					<h1 class="{small ? 'text-2xl' : 'text-3xl sm:text-5xl'} font-bold">
-						{@html title}
-					</h1>
-				</svelte:element>
+				<h1 class="{small ? 'text-2xl' : 'text-3xl sm:text-5xl'} font-bold">
+					{@html title}
+				</h1>
 				{#if description}
 					<p class={small ? 'text-sm' : 'text-xl sm:text-2xl'}>
 						{@html description}

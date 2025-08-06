@@ -2,9 +2,12 @@ import {
 	getPostsByTagId,
 	getRelatedPostsByMostTags,
 	getSinglePostBySlug,
+	getPagesTags,
+	getPrevNextPosts,
 	type Post
 } from '$lib/post/post';
-import { getAllTagsByPageId, getSingleTagBySlug, type Tag } from '$lib/tag/tag';
+import { getAllTagsByPageId, getSingleTagBySlug, getAllUsedTags, type Tag } from '$lib/tag/tags';
+import { groupByPageId } from '$lib/tags/tags';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
@@ -15,24 +18,32 @@ export const load = (async ({ params }) => {
 	let tag: Tag | undefined;
 	let tagPosts: Post[] | undefined;
 	let relatedPosts: Post[] | undefined;
+	let allTags: Tag[] = [];
+	let pagesTags: Record<string, string[]> = {};
+	let prevNextPosts: { prev: Post | null; next: Post | null } | undefined;
 
 	const page = await getSinglePostBySlug(slug);
 
-	if (page?.id) {
-		tags = await getAllTagsByPageId(page.id);
+	if (page?.url_slug) {
+		tags = await getAllTagsByPageId(page.url_slug);
 
 		if (tags.length > 0) {
-			relatedPosts = await getRelatedPostsByMostTags(
-				tags.map((tag) => tag.id),
-				page.id
-			);
+			relatedPosts = await getRelatedPostsByMostTags(tags, page.url_slug);
 		}
+
+		prevNextPosts = await getPrevNextPosts(page.url_slug);
+
+		// Load all tags and pagesTags for the PostList component
+		allTags = await getAllUsedTags();
+		const allPosts = relatedPosts || [];
+		const pagesTagsArray = await getPagesTags(allPosts);
+		pagesTags = groupByPageId(pagesTagsArray);
 	} else {
 		// Try to find tag
 		tag = await getSingleTagBySlug(slug);
 
-		if (tag?.id) {
-			tagPosts = await getPostsByTagId(tag.id);
+		if (tag?.name) {
+			tagPosts = await getPostsByTagId(tag.url_slug);
 		}
 
 		if (!tag) {
@@ -40,6 +51,12 @@ export const load = (async ({ params }) => {
 				message: 'Not found'
 			});
 		}
+
+		// Load all tags and pagesTags for the PostList component
+		allTags = await getAllUsedTags();
+		const allPosts = tagPosts || [];
+		const pagesTagsArray = await getPagesTags(allPosts);
+		pagesTags = groupByPageId(pagesTagsArray);
 	}
 
 	return {
@@ -47,6 +64,9 @@ export const load = (async ({ params }) => {
 		tag,
 		tags,
 		tagPosts,
-		relatedPosts
+		relatedPosts,
+		allTags,
+		pagesTags,
+		prevNextPosts
 	};
 }) satisfies PageServerLoad;

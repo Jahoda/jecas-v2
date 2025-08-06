@@ -7,6 +7,19 @@
 	export let disabled: boolean = false;
 	export let required: boolean = false;
 	export let full: boolean = false;
+	export let type:
+		| 'text'
+		| 'password'
+		| 'email'
+		| 'number'
+		| 'tel'
+		| 'url'
+		| 'search'
+		| 'date'
+		| 'time'
+		| 'datetime-local'
+		| 'month'
+		| 'week' = 'text';
 </script>
 
 <div>
@@ -25,7 +38,7 @@
 			</div>
 		{/if}
 		<input
-			type="text"
+			{type}
 			bind:value
 			{name}
 			{disabled}

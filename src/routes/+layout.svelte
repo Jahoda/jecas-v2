@@ -3,11 +3,6 @@
 	import Footer from '$lib/footer/Footer.svelte';
 	import Header from '$lib/header/Header.svelte';
 	import '../app.css';
-	import { invalidate } from '$app/navigation';
-	import { onMount } from 'svelte';
-	import type { LayoutData } from './$types';
-
-	export let data: LayoutData;
 
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
@@ -26,21 +21,11 @@
 	});
 
 	inject({ mode: dev ? 'development' : 'production' });
-
-	$: ({ supabase } = data);
-
-	onMount(() => {
-		const { data } = supabase.auth.onAuthStateChange(() => {
-			invalidate('supabase:auth');
-		});
-
-		return () => data.subscription.unsubscribe();
-	});
 </script>
 
 <ScrollbarWidthSetter />
 
-<Header user={data?.session?.user} />
+<Header />
 
 <div class="bg -mb-72 h-72 w-full opacity-20">
 	<div class="h-full w-full bg-gradient-to-t from-white dark:from-slate-900"></div>

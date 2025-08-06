@@ -1,9 +1,22 @@
-import { connection } from '$lib/server/database';
-import type { PostCount, TagPost } from '$lib/tag/tag';
-import type { ResultSetHeader, RowDataPacket } from 'mysql2';
+import {
+	getAllPosts as getMarkdownPosts,
+	getAllDrafts as getMarkdownDrafts,
+	getPostsBySlug as getMarkdownPostsBySlug,
+	getSinglePostBySlug as getMarkdownSinglePostBySlug,
+	getPostsCount as getMarkdownPostsCount,
+	getPostsByTag,
+	getRelatedPostsByMostTags as getMarkdownRelatedPosts,
+	getPrevNextPosts as getMarkdownPrevNextPosts,
+	type MarkdownPost
+} from './markdown';
+import type { TagPost, Tag } from '$lib/tag/tags';
 
-export interface Post extends RowDataPacket {
-	id: number;
+function removeDiacritics(str: string): string {
+	return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+export interface Post {
+	id: string | number;
 	title: string;
 	url_slug: string;
 	headline: string;
@@ -13,6 +26,8 @@ export interface Post extends RowDataPacket {
 	last_modification: Date;
 	comments: number;
 	status: number;
+	tags?: string[];
+	word_count?: number;
 }
 
 export interface PostIn {
@@ -30,197 +45,83 @@ export interface PostIn {
 }
 
 export async function getAllPosts(limit: number | null = null, status = 1): Promise<Post[]> {
-	const [posts] = await connection.execute<Post[]>(`
-		SELECT
-			id,
-			title,
-			headline,
-			url_slug,
-			description,
-			last_modification,
-			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
-		FROM pages 
-		WHERE status = ${status}
-			AND url_slug != 'home'
-		ORDER BY last_modification DESC
-		${limit ? `LIMIT ${limit}` : ''}
-	`);
-
-	return posts;
+	return await getMarkdownPosts(limit, status);
 }
 
 export async function getAllDrafts(limit: number | null = null): Promise<Post[]> {
-	return getAllPosts(limit, 0);
+	return await getMarkdownDrafts(limit);
 }
 
 export async function getPostsBySlug(slugs: string[]): Promise<Post[]> {
-	const [posts] = await connection.execute<Post[]>(
-		`
-		SELECT *
-		FROM
-			pages
-		WHERE url_slug IN (${slugs.map((_item) => '?').join(',')})
-		`,
-		slugs
-	);
-
-	return posts;
+	return await getMarkdownPostsBySlug(slugs);
 }
 
-export async function getSinglePostBySlug(slug: string): Promise<Post> {
-	const [post] = await connection.execute<Post[]>(
-		`
-		SELECT 
-			id,
-			headline,
-			title,
-			url_slug,
-			description,
-			last_modification,
-			text_html,
-			status,
-			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
-		FROM pages
-		WHERE url_slug = ?
-		`,
-		[slug]
-	);
-
-	return post[0];
+export async function getSinglePostBySlug(slug: string): Promise<Post | undefined> {
+	return await getMarkdownSinglePostBySlug(slug);
 }
 
 export async function getPostsCount(): Promise<number> {
-	const [postCount] = await connection.execute<PostCount[]>(
-		`SELECT COUNT(*) as count FROM pages WHERE status = 1`
-	);
-
-	return postCount[0].count;
+	return await getMarkdownPostsCount();
 }
 
 export async function getPagesTags(posts: Post[]): Promise<TagPost[]> {
-	const [pagesTags] = await connection.execute(
-		`
-		SELECT
-			tag_id,
-			page_id
-		FROM
-			pages_tags
-		WHERE page_id IN (${posts.map((_item) => '?').join(',')})`,
-		posts.map((post) => post.id)
-	);
-
-	return pagesTags as TagPost[];
+	const { getPagesTags: getMarkdownPagesTags } = await import('$lib/tag/tags');
+	return await getMarkdownPagesTags(posts as any);
 }
 
-export async function getPostsByTagId(id: number): Promise<Post[]> {
-	const [posts] = await connection.execute<Post[]>(
-		`
-		SELECT
-			id,
-			headline,
-			url_slug,
-			description,
-			last_modification,
-			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
-		FROM pages
-		WHERE id IN (
-			SELECT page_id FROM pages_tags WHERE tag_id = ?
-		)
-		ORDER BY last_modification DESC
-		`,
-		[id]
-	);
+export async function getPostsByTagId(tagSlug: string): Promise<Post[]> {
+	const { getPostsByTagSlug } = await import('$lib/tag/tags');
+	const postSlugs = await getPostsByTagSlug(tagSlug);
 
-	return posts;
+	const posts: Post[] = [];
+	for (const slug of postSlugs) {
+		const post = await getSinglePostBySlug(slug);
+		if (post && post.status === 1) {
+			posts.push(post);
+		}
+	}
+
+	return posts.sort((a, b) => b.last_modification.getTime() - a.last_modification.getTime());
 }
 
-export async function getRelatedPostsByMostTags(tagIds: number[], postId: number): Promise<Post[]> {
-	const [posts] = await connection.execute<Post[]>(
-		`
-		SELECT
-			id,
-			headline,
-			url_slug,
-			description,
-			last_modification,
-			(LENGTH(text_html) - LENGTH(REPLACE(text_html, ' ', '')) + 1) AS word_count
-		FROM pages
-		WHERE id IN (
-			SELECT
-				page_id
-			FROM
-				pages_tags
-			WHERE tag_id IN (${tagIds.map((_item) => '?').join(',')})
-		)
-		AND id != ?
-		AND status = 1
-		GROUP BY id
-		ORDER BY COUNT(*) DESC, last_modification DESC
-		LIMIT 4
-		`,
-		[...tagIds, postId]
-	);
+export async function getRelatedPostsByMostTags(tags: Tag[], currentSlug: string): Promise<Post[]> {
+	const allPosts = await getAllPosts();
+	const tagSlugs = tags.map((tag) => tag.url_slug);
 
-	return posts;
+	const scoredPosts = allPosts
+		.filter((post) => post.url_slug !== currentSlug)
+		.map((post) => {
+			// Get the tags for this post
+			const postTags = post.tags || [];
+			const commonTagSlugs = postTags
+				.map((tagName: string) => {
+					// Try to find matching tag by name (with diacritics normalization)
+					const matchingTag = tags.find(
+						(t) =>
+							removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
+					);
+					return matchingTag?.url_slug;
+				})
+				.filter((slug: string | undefined) => slug && tagSlugs.includes(slug));
+
+			return {
+				post,
+				score: commonTagSlugs.length
+			};
+		})
+		.filter((item) => item.score > 0)
+		.sort((a, b) => {
+			if (a.score !== b.score) return b.score - a.score;
+			return b.post.last_modification.getTime() - a.post.last_modification.getTime();
+		})
+		.slice(0, 4);
+
+	return scoredPosts.map((item) => item.post);
 }
 
-export async function createPost(post: PostIn) {
-	const [result] = await connection.execute<ResultSetHeader>(
-		`
-		INSERT INTO pages (
-			title,
-			url_slug,
-			headline,
-			text_html,
-			description,
-			status,
-			date,
-			last_modification,
-			comments
-		)
-		VALUES
-			(?, ?, ?, ?, ?, ?, ?, ?, 0)
-		`,
-		[
-			post.title,
-			post.url_slug,
-			post.headline,
-			post.text_html,
-			post.description,
-			post.status,
-			new Date(),
-			new Date()
-		]
-	);
-
-	return result.insertId;
-}
-
-export async function updatePost(post: PostIn, id: number) {
-	const [result] = await connection.execute<ResultSetHeader>(
-		`
-		UPDATE pages
-		SET
-			title = ?,
-			url_slug = ?,
-			headline = ?,
-			text_html = ?,
-			description = ?,
-			status = ?,
-			last_modification = ?
-		WHERE id = ?
-		`,
-		[
-			post.title,
-			post.url_slug,
-			post.headline,
-			post.text_html,
-			post.description,
-			post.status,
-			new Date(post.last_modification),
-			id
-		]
-	);
-
-	return result.affectedRows;
+export async function getPrevNextPosts(currentSlug: string): Promise<{
+	prev: Post | null;
+	next: Post | null;
+}> {
+	return await getMarkdownPrevNextPosts(currentSlug);
 }

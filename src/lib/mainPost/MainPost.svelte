@@ -2,7 +2,7 @@
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import PostImage from '$lib/postImage/PostImage.svelte';
 	import ReadingTime from '$lib/readingTime/ReadingTime.svelte';
-	import type { Tag } from '$lib/tag/tag';
+	import type { Tag } from '$lib/tag/tags';
 	import Tags from '$lib/tags/Tags.svelte';
 
 	export let title: string;

@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
 
 @theme {
 	/* Custom Colors - Lochmara */
@@ -93,12 +94,12 @@
 	border-bottom-style: dotted;
 }
 
-.prose a[href^='http://kod.djpw.cz']:not(.button)
+.prose a[href^='https://kod.djpw.cz']:not(.button)
 {
 	padding-left: 24px;
 }
 
-.prose a[href^='http://kod.djpw.cz']:not(.button)
+.prose a[href^='https://kod.djpw.cz']:not(.button)
 {
 	background: url('/external-favicons/kod.djpw.cz.ico') no-repeat left 2px center;
 	background-size: 1em 1em;
@@ -265,4 +266,16 @@ code {
 	color-scheme: light !important;
 	color: white !important;
 	background-color: black !important;
+}
+
+@utility prose {
+	blockquote {
+		/* Disable adding quote marks to block-quotes: https://github.com/tailwindlabs/tailwindcss-typography/issues/66 */
+		p {
+			&:first-of-type::before,
+			&:last-of-type::after {
+				content: none;
+			}
+		}
+	}
 }

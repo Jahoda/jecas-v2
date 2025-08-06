@@ -1,6 +1,6 @@
 import OgPreview from '$lib/ogPreview/OgPreview.svelte';
 import { getSinglePostBySlug } from '$lib/post/post';
-import { getAllTagsByPageId, type Tag } from '$lib/tag/tag';
+import { getAllTagsByPageId, type Tag } from '$lib/tag/tags';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ url }) => {
@@ -10,8 +10,8 @@ export const GET: RequestHandler = async ({ url }) => {
 
 	let tags: Tag[] = [];
 	const post = await getSinglePostBySlug(slug);
-	if (post?.id) {
-		tags = await getAllTagsByPageId(post.id);
+	if (post?.url_slug) {
+		tags = await getAllTagsByPageId(post.url_slug);
 	}
 
 	if (!post) return new Response('Not found', { status: 404 });
@@ -21,7 +21,6 @@ export const GET: RequestHandler = async ({ url }) => {
 		// @ts-ignore
 		return await ImageResponse(OgPreview, { post, tags });
 	} catch (error) {
-		console.error('Failed to generate OG image:', error);
 		return new Response('Failed to generate image', { status: 500 });
 	}
 };

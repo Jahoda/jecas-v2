@@ -1,12 +1,12 @@
-import type { TagPost } from '$lib/tag/tag';
+import type { TagPost } from '$lib/tag/tags';
 
 export function groupByPageId(pagesTags: TagPost[]) {
-	const grouped = pagesTags.reduce<Record<string, number[]>>((acc, pageTag) => {
-		const pageId = pageTag.page_id.toString();
-		if (!acc[pageId]) {
-			acc[pageId] = [];
+	const grouped = pagesTags.reduce<Record<string, string[]>>((acc, pageTag) => {
+		const pageSlug = pageTag.page_slug.toString(); // This is now the post slug
+		if (!acc[pageSlug]) {
+			acc[pageSlug] = [];
 		}
-		acc[pageId].push(pageTag.tag_id);
+		acc[pageSlug].push(pageTag.tag_slug.toString());
 		return acc;
 	}, {});
 

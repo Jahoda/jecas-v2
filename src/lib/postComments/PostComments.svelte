@@ -49,4 +49,4 @@
 	});
 </script>
 
-<div class="rounded-md bg-black/10 p-8 dark:bg-gray-800" id="disqus_thread"></div>
+<div class="rounded-md bg-black/10 p-8 text-[#000000] dark:bg-gray-800" id="disqus_thread"></div>

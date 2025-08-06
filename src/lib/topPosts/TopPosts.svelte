@@ -1,11 +1,11 @@
 <script lang="ts">
 	import MainPost from '$lib/mainPost/MainPost.svelte';
 	import type { Post } from '$lib/post/post';
-	import type { Tag } from '$lib/tag/tag';
+	import type { Tag } from '$lib/tag/tags';
 
 	export let posts: Post[];
 	export let tags: Tag[];
-	export let pagesTags: Record<string, number[]>;
+	export let pagesTags: Record<string, string[]>;
 </script>
 
 <div class="grid gap-4">
@@ -15,7 +15,7 @@
 			title={post.title}
 			description={post.description}
 			href={post.url_slug}
-			tags={tags.filter((tag) => pagesTags[post.id]?.includes(tag.id))}
+			tags={tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
 		/>
 	{/each}
 </div>

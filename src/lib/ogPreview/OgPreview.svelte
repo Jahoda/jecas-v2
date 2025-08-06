@@ -2,7 +2,7 @@
 	import Logo from '$lib/logo/Logo.svelte';
 	import { postGradient } from '$lib/mainPost/postGradient';
 	import type { Post } from '$lib/post/post';
-	import type { Tag } from '$lib/tag/tag';
+	import type { Tag } from '$lib/tag/tags';
 
 	export let post: Post;
 	export let tags: Tag[];

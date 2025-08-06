@@ -34,7 +34,7 @@ export async function GET() {
 			</news:news>
 			<image:image>
 			  <image:loc>https://jecas.cz/files/article/${post.url_slug}.png</image:loc>
-			  <image:caption>${sanizite(post.desription)}</image:caption>
+			  					<image:caption>${sanizite(post.description)}</image:caption>
 			  <image:title>${sanizite(post.title)}</image:title>
 			</image:image>
 		  </url>

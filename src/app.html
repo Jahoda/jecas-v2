@@ -1,13 +1,67 @@
 <!doctype html>
+<!-- Přepne starší prohlížeče do standardního režimu: https://jecas.cz/doctype -->
 <html lang="cs">
 	<head>
+		<!-- Aby správně fungovala čeština: https://jecas.cz/html-kostra#cestina -->
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon-196x196.png" />
-		<meta name="viewport" content="width=device-width" />
+
+		<!-- Pro hezčí sdílení na Twitteru: https://jecas.cz/nahled-twitter -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@Jahoda" />
+		<meta name="twitter:creator" content="@Jahoda" />
+		<!-- OpenGraph pro hezčí sdílení na Facebooku: https://jecas.cz/nahled-odkazu -->
+		<meta property="og:url" content="https://jecas.cz/" />
+		<meta property="og:title" content="Je čas.cz – moderní tvorba webových stránek" />
+		<meta
+			property="og:description"
+			content="Poznámky o moderním webdesignu, hotová řešení, experimenty a návody."
+		/>
+		<!-- FB stránka: https://www.facebook.com/jecascz -->
+		<meta property="fb:pages" content="596929163702137" />
+
+		<!-- Zázračný SEO <meta> tag pro první místo na Seznamu -->
+		<meta
+			name="seznam-ranking-position"
+			content="query-exact: 1.0; query-broad: 1.3; (Google compatible)"
+		/>
+
+		<!-- ================================================================
+			| Hledáte meta značku viewport pro lepší zobrazení na mobilech?	|
+			| Její vysvětlení je v článku: https://jecas.cz/meta-viewport	|
+			| Je tady ↓ o řádek níž. Stačí si ji zkopírovat do hlavičky. 	|
+			================================================================= -->
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+		<!-- Barva horní lišty prohlížeče na Androidu: https://jecas.cz/barva-mobilniho-prohlizece -->
+		<meta name="theme-color" content="#1079CF" />
+
+		<!-- Odkaz na RSS -->
+		<link rel="alternate" type="application/rss+xml" title="Je čas.cz" href="/rss" />
+
 		%sveltekit.head%
 	</head>
 
 	<body data-sveltekit-preload-data="hover" class="dark:bg-slate-900 dark:text-gray-100">
 		<div style="display: contents">%sveltekit.body%</div>
+
+		<script>
+			var toplist = new Image();
+			toplist.src =
+				'https://toplist.cz/dot.asp?id=1589887&http=' +
+				escape(document.referrer) +
+				'&t=' +
+				escape(document.title) +
+				'&wi=' +
+				escape(window.screen.width) +
+				'&he=' +
+				escape(window.screen.height);
+			toplist.alt = '';
+			toplist.style.display = 'none';
+			document.body.appendChild(toplist);
+		</script>
+		<noscript>
+			<img src="https://toplist.cz/dot.asp?id=1589887" alt="TOPlist" width="1" height="1" />
+		</noscript>
 	</body>
 </html>
