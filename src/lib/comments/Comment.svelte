@@ -15,7 +15,7 @@
 			class="flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border bg-slate-50 dark:border-slate-600 dark:bg-slate-900"
 		>
 			{#if comment.author.avatar.isCustom}
-				<img src={comment.author.avatar?.large?.cache} alt="" />
+				<img src={comment.author.avatar?.large?.cache} width="40" height="40" alt="" />
 			{:else}
 				<AvatarByName name={comment.author.name} />
 			{/if}
