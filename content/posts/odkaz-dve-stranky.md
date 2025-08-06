@@ -75,7 +75,7 @@ onclick="window.open('http://djpw.cz');">
 <p>I tuto případnou možnost, jak odhalit odkaz vedoucí jinam, než se očekává, jde ale obejít:</p>
 
 <div class="live">
-  <a href="http://jecas.cz" onmousedown="this.href = 'http://kod.djpw.cz'">Odkaz na jecas.cz, nebo kod.djpw.cz?</a>
+  <a href="http://jecas.cz" onmousedown="this.href = 'https://kod.djpw.cz'">Odkaz na jecas.cz, nebo kod.djpw.cz?</a>
 </div>
 
 <p>Stačí k tomu jen při <code>onmousedown</code> prohodit cíl odkazu.</p>

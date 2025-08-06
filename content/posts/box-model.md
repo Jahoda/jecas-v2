@@ -82,7 +82,7 @@ format: "html"
 
 <h2 id="min-maw-width-height">Vlastnosti <code>min</code>/<code>max-width</code>/<code>height</code></h2>
 <p>CSS vlastnosti pro minimální/maximální šířku/výšku (<code>min-width</code>/<code>max-width</code> a <code>min-height</code>/<code>max-height</code>) hodnotu vlastnosti <code>box-sizing</code> ignorují v <b>Internet Exploreru 8</b> a možná ještě v nějakých starších prohlížečích.</p>
-<p>I přes nastavený <code>border-box</code> (okrajový box model) počítají rozměry v obsahovém. <a href="http://kod.djpw.cz/yvb">Ukázka</a>.</p>
+<p>I přes nastavený <code>border-box</code> (okrajový box model) počítají rozměry v obsahovém. <a href="https://kod.djpw.cz/yvb">Ukázka</a>.</p>
 
 <h2 id="vyvoj">Historický vývoj</h2>
 <p>Historický vývoj jednotlivých box modelů je hezky popsán ve článku <a href="http://webylon.info/K.10">V kaskádovém ringu</a>.</p>

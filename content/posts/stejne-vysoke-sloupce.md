@@ -96,7 +96,7 @@ format: "html"
 
 <p>Simulovat sloupce je možné i pseudo-elementy (<code>before</code>/<code>after</code>). Kdy se pomocí <code>z-index</code>u umístí za sloupce absolutně posicované <i>barvy</i>, které se roztáhnou po celé výšce. Toto řešení funguje od <b>IE 8</b>.</p>
 
-<p><a href="http://kod.djpw.cz/cocb">Samostatná ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/cocb">Samostatná ukázka</a>.</p>
 
 <h2 id="js">Dopočítání výšky JavaScriptem</h2>
 <p>Lze využít toho, že JS může přeměřit oba sloupce (<code>offsetHeight</code>) a vyšší hodnotu potom nižšímu sloupci nastavit. Nevýhoda může být, že takový rozměr přestane platit, pokud se na stránce bude s něčím manipulovat (třeba <a href="/zobrazit-skryt">skrývat a odkrývat</a>).</p>

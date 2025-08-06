@@ -65,7 +65,7 @@ format: "html"
 <div class="external-content">
   <ul>
     <li>
-      <a href="http://kod.djpw.cz/kedb">Živá ukázka</a> (funguje pouze v <b>Chrome</b>)
+      <a href="https://kod.djpw.cz/kedb">Živá ukázka</a> (funguje pouze v <b>Chrome</b>)
     </li>
   </ul>
 </div>

@@ -38,13 +38,13 @@ format: "html"
 &lt;input <b>tabindex="1"</b> value="První">
 &lt;input value="Třetí"></code></pre>
 
-<p><a href="http://kod.djpw.cz/nqfb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/nqfb">Samostatná ukázka</a></p>
 
 <p><i>Tabindex</i> se nemusí (a ani to není příliš vhodné) nastavovat všem položkám, ale jen těm, kterým chceme <b>zvýšit prioritu</b>.</p>
 
 <p>Při řazení pomocí vyšší hodnoty <code>tabindex</code>u není nutné neustále hodnotu zvyšovat (ve smyslu 1, 2, 3, …), ale lze využít pravidla, že při stejné hodnotě se pořadí řídí <b>umístěním v kódu</b>.</p>
 
-<p>V této ukázce proto s klidem můžeme použít jako hodnoty <code>tabindex</code>u jen samé jedničky (<a href="http://kod.djpw.cz/pqfb">ukázka</a>) místo:</p>
+<p>V této ukázce proto s klidem můžeme použít jako hodnoty <code>tabindex</code>u jen samé jedničky (<a href="https://kod.djpw.cz/pqfb">ukázka</a>) místo:</p>
 
 <pre><code>&lt;input value="Čtvrtý">
 &lt;input tabindex="1" value="První">
@@ -63,7 +63,7 @@ format: "html"
 
 <p>Hodnota <code>0</code> zajistí, že se prvek vloží do pořadí dle umístění v HTML kódu.</p>
 
-<p><a href="http://kod.djpw.cz/qqfb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/qqfb">Ukázka</a></p>
 
 
 <h2 id="zabraneni">Zabránění označení</h2>
@@ -82,4 +82,4 @@ format: "html"
 
 <pre><code>element.focus();</code></pre>
 
-<p><a href="http://kod.djpw.cz/rqfb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/rqfb">Ukázka</a></p>

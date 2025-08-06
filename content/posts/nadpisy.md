@@ -82,7 +82,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/halb">Ukázková stránka se všemi nadpisy</a></li>
+    <li><a href="https://kod.djpw.cz/halb">Ukázková stránka se všemi nadpisy</a></li>
   </ul>
 </div>
 
@@ -201,7 +201,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/kalb">Živá ukázka nedostatečné výšky řádku</a></li>
+    <li><a href="https://kod.djpw.cz/kalb">Živá ukázka nedostatečné výšky řádku</a></li>
   </ul>
 </div>
 
@@ -267,7 +267,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/malb">Ukázka maskování H1 pomocí CSS</a></li>
+    <li><a href="https://kod.djpw.cz/malb">Ukázka maskování H1 pomocí CSS</a></li>
   </ul>
 </div>
 
@@ -367,7 +367,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/dblb">Příklad nadpisu v odkazu a odkazu v nadpisu</a></li>
+    <li><a href="https://kod.djpw.cz/dblb">Příklad nadpisu v odkazu a odkazu v nadpisu</a></li>
   </ul>
 </div>
 
@@ -408,4 +408,4 @@ format: "html"
   }  
 </script>
 
-<!-- o-b-r: http://kod.djpw.cz/lalb -->
+<!-- o-b-r: https://kod.djpw.cz/lalb -->

@@ -36,7 +36,7 @@ else {
 }
 </script>
 
-<iframe src="http://kod.djpw.cz/ggrb-" frameborder="0"></iframe>
+<iframe src="https://kod.djpw.cz/ggrb-" frameborder="0"></iframe>
 
 
 <pre><code>var CSSReload = {

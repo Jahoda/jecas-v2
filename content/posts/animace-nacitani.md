@@ -47,7 +47,7 @@ var prubeh = function(cas, obal) {
 </script>
 </div>
 
-<p><a href="http://kod.djpw.cz/pdcb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/pdcb">Samostatná ukázka</a></p>
 
 <h2 id="jak">Jak to funguje?</h2>
 <p>Postup je docela jednoduchý.</p>
@@ -89,7 +89,7 @@ var prubehNacitani = function(cas, postup) {
 </script>
 </div>
 
-<p><a href="http://kod.djpw.cz/qdcb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/qdcb">Samostatná ukázka</a></p>
 
 
 <h2 id="skutecny-prubeh">Skutečný stav načítání</h2>

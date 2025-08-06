@@ -64,7 +64,7 @@ var rect = element.getBoundingClientRect();</code></pre>
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/qjkc-">Test Intersection Observer API</a> – živá ukázka nejjednoduššího použití</li>
+    <li><a href="https://kod.djpw.cz/qjkc-">Test Intersection Observer API</a> – živá ukázka nejjednoduššího použití</li>
   </ul>
 </div>
 

@@ -9,7 +9,7 @@ tags: []
 format: "html"
 ---
 
-<p><a href="http://kod.djpw.cz/amdc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/amdc">Živá ukázka</a></p>
 
 <img src="/files/mapa-cr-svg/cz-kraje.svg" alt="">
 

@@ -118,7 +118,7 @@ presouvany.style.top = y + "px";</code></pre>
   </li>
 </ol>
 
-<p><a href="http://kod.djpw.cz/xmhb">Ukázka s využitím posicování</a> / <a href="http://kod.djpw.cz/ljjb">transformace</a></p>
+<p><a href="https://kod.djpw.cz/xmhb">Ukázka s využitím posicování</a> / <a href="https://kod.djpw.cz/ljjb">transformace</a></p>
 
 
 <h3 id="touch">Dotyková zařízení</h3>
@@ -141,7 +141,7 @@ presouvany.style.top = y + "px";</code></pre>
   <li><code>event.pageY</code> = <code>event.touches[0].pageY</code></li>
 </ul>
 
-<p><a href="http://kod.djpw.cz/mjjb">Ukázka pro dotyková zařízení</a></p>
+<p><a href="https://kod.djpw.cz/mjjb">Ukázka pro dotyková zařízení</a></p>
 
 
 

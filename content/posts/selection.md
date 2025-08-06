@@ -84,4 +84,4 @@ format: "html"
   background: red;
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/skjb-">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/skjb-">Živá ukázka</a></p>

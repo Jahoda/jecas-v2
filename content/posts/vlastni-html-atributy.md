@@ -18,7 +18,7 @@ format: "html"
   Červený div.
 &lt;/div></code></pre>
 
-<p><a href="http://kod.djpw.cz/erbb">Živá ukázka</a>. Použití je bezproblémové. Pochopitelně v případě, že se omylem náhodou netrefíme do existujícího atributu. Prohlížeče neznámý atribut nijak neřeší, ale <b>umožní stylování</b> <a href="/css-selektory#atributovy">atributovým selektorem</a>.</p>
+<p><a href="https://kod.djpw.cz/erbb">Živá ukázka</a>. Použití je bezproblémové. Pochopitelně v případě, že se omylem náhodou netrefíme do existujícího atributu. Prohlížeče neznámý atribut nijak neřeší, ale <b>umožní stylování</b> <a href="/css-selektory#atributovy">atributovým selektorem</a>.</p>
 
 <p>Jediná nevýhoda bude možná <b>teoreticky lehce nižší rychlost</b> než při klasickém stylování <a href="/id-class">třídami nebo identifikátory</a>, ale zatím jsem nic takového nepostřehl. Otázka je spíš, co to v CSS přinese navíc.</p>
 
@@ -43,7 +43,7 @@ format: "html"
 
 <pre><code>var cerveneDivy = document.querySelectorAll("<b>*</b>[barva=cervena]");</code></pre>
 
-<p><a href="http://kod.djpw.cz/grbb">Živá ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/grbb">Živá ukázka</a>.</p>
 
 <h3 id="nastavovani-cteni">Nastavování a čtení atributů</h3>
 
@@ -55,7 +55,7 @@ format: "html"
 element.getAttribute("barva"); // obsah atributu „barva“
 element.setAttribute("barva", "<b>novaHodnota</b>); // nastaví obsah</code></pre>
 
-<p><a href="http://kod.djpw.cz/hrbb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/hrbb">Ukázka</a></p>
 
 <h2 id="data">Data atributy, nebo vlastní?</h2>
 <p>Podle specifikace by <i>vlastní atributy</i> měly začínat prefixem <code>data-</code>. Má smysl se tohoto držet?</p>

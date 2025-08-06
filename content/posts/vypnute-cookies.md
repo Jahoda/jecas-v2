@@ -27,7 +27,7 @@ format: "html"
   alert("Cookies jsou vypnuté");
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/oucb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/oucb">Živá ukázka</a></p>
 
 <p>Podle mých testů se <a href="/ie11"><b>Internet Explorer 11</b></a> při určitém zablokování cookies může stále tvářit, že jsou zapnuté – <code>navigator.cookieEnabled</code> vrací <code>true</code>.</p>
 
@@ -89,7 +89,7 @@ format: "html"
   return (document.cookie.indexOf("testovaci-cookie") > 0);
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/tqib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/tqib">Živá ukázka</a></p>
 
 <p>Možná by se nabízelo na začátku testovat, jestli už nějaká cookie v prohlížeči není.</p>
 

@@ -17,4 +17,4 @@ format: "html"
 <h2 id="promenliva-vyska">Proměnlivá výška</h2>
 <p>V případě proměnlivé výšky lze od <b>IE 8</b> použít <code>table-*</code> hodnoty pro vlastnost <code>display</code>.</p>
 
-http://kod.djpw.cz/wtc
+https://kod.djpw.cz/wtc

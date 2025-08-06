@@ -9,5 +9,5 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/wggc
+https://kod.djpw.cz/wggc
 http://stackoverflow.com/questions/16952526/detect-if-an-input-has-text-in-it-using-css-on-a-page-i-am-visiting-and-do-no

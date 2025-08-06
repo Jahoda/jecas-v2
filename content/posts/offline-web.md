@@ -49,7 +49,7 @@ file_put_contents("nazev-souboru.html", ob_get_clean());</code></pre>
 <p><a href="http://jecas.cz/files/download/jecas.cz.html" class="button">Ukázka tohoto webu</a> </p>
 
 <ul>
-  <li><a href="http://kod.djpw.cz/fhv">Zjednodušená ukázka principu</a></li>
+  <li><a href="https://kod.djpw.cz/fhv">Zjednodušená ukázka principu</a></li>
   <li><a href="https://github.com/Jahoda/web-jeden-soubor">Zdrojový PHP kód</a></li>  
 </ul>
 

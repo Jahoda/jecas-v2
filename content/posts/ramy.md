@@ -106,7 +106,7 @@ format: "html"
     
     <div class="external-content">
       <ul>
-        <li><p><a href="http://kod.djpw.cz/ddob">Test atributu <code>allowfullscreen</code></a></p></li></ul></div>
+        <li><p><a href="https://kod.djpw.cz/ddob">Test atributu <code>allowfullscreen</code></a></p></li></ul></div>
   </li>
   
   <li id="frameborder">

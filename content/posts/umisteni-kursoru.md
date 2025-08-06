@@ -78,4 +78,4 @@ posice = sel.text.length;</code></pre>
 
 <p>Oba postupy potom stačí zkombinovat.</p>
 
-<p><a href="http://kod.djpw.cz/qpkb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/qpkb">Živá ukázka</a></p>

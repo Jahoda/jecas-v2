@@ -49,7 +49,7 @@ format: "html"
   width: calc(100% / 3)
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/svfb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/svfb">Samostatná ukázka</a></p>
 
 
 
@@ -57,11 +57,11 @@ format: "html"
 
 <p>Výše uvedená ukázka je sice hezká, ale v praxi nejspíš budeme potřebovat mít mezi boxy <b>mezeru, rámeček</b> a podobně.</p>
 
-<p>Mezeru je možné zajistit snížením procentuální šířky a použitím ubrané hodnoty do <a href="/margin"><code>margin</code>u</a>. Na pixel <b>přesného řešení</b> tím ale nedocílíme – <a href="http://kod.djpw.cz/tvfb">ukázka</a>.</p>
+<p>Mezeru je možné zajistit snížením procentuální šířky a použitím ubrané hodnoty do <a href="/margin"><code>margin</code>u</a>. Na pixel <b>přesného řešení</b> tím ale nedocílíme – <a href="https://kod.djpw.cz/tvfb">ukázka</a>.</p>
 
-<p>Další možnost je použít <b>rámeček</b> (<code>border</code>). Při přepnutí <a href="/box-model">box modelu</a> na <code>border-box</code> (<i>okrajový</i> = <code>padding</code> a rámeček se k šířce nepřičítá) lze dosáhnout uspokojivého výsledku – <a href="http://kod.djpw.cz/uvfb">ukázka</a>.</p>
+<p>Další možnost je použít <b>rámeček</b> (<code>border</code>). Při přepnutí <a href="/box-model">box modelu</a> na <code>border-box</code> (<i>okrajový</i> = <code>padding</code> a rámeček se k šířce nepřičítá) lze dosáhnout uspokojivého výsledku – <a href="https://kod.djpw.cz/uvfb">ukázka</a>.</p>
 
-<p>Poslední možnost je potom použít další <b>vnořený element</b>, což prakticky umožní si libovolně nastavovat cokoliv – <a href="http://kod.djpw.cz/wvfb">ukázka</a>.</p>
+<p>Poslední možnost je potom použít další <b>vnořený element</b>, což prakticky umožní si libovolně nastavovat cokoliv – <a href="https://kod.djpw.cz/wvfb">ukázka</a>.</p>
 
 
 <h2 id="ramecek">Stejně tlustý rámeček</h2>
@@ -72,7 +72,7 @@ format: "html"
 
 <p>S využitím obalového elementu potom dosáhneme relativně rozumného kódu.</p>
 
-<p><a href="http://kod.djpw.cz/qnfb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/qnfb">Živá ukázka</a></p>
 
 
 
@@ -93,4 +93,4 @@ format: "html"
   <li><code>.polozka:nth-child(<b>5</b>) ~ .polozka</code> – každá položka následující po páté</li>
 </ul>
 
-<p><a href="http://kod.djpw.cz/xvfb">Ukázka</a> stejně tlustého rámečku u všech boxů s využitím <code>nth-child</code> selektoru.</p>
+<p><a href="https://kod.djpw.cz/xvfb">Ukázka</a> stejně tlustého rámečku u všech boxů s využitím <code>nth-child</code> selektoru.</p>

@@ -300,7 +300,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/yvjc">Živá ukážka</a> – test experimentálního selektoru pro <b>Firefox</b></li>
+    <li><a href="https://kod.djpw.cz/yvjc">Živá ukážka</a> – test experimentálního selektoru pro <b>Firefox</b></li>
     <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-focusring"><code>:-moz-focusring</code></a></li>
   </ul>
 </div>

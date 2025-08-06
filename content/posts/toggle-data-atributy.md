@@ -36,7 +36,7 @@ format: "html"
 </code></pre>
 
 <ul>
-  <li><a href="http://kod.djpw.cz/jzbb">Živá ukázka</a></li>
+  <li><a href="https://kod.djpw.cz/jzbb">Živá ukázka</a></li>
   <li>Kód na <a href="https://github.com/Jahoda/js-data-attr-toggle">GitHubu</a></li>
 </ul>
 

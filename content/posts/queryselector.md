@@ -26,7 +26,7 @@ var odkazyVTabulkach = document.querySelectorAll("table a");</code></pre>
 </ul>
 
 <h2 id="podpora">Podpora</h2>
-<p>Funguje <i>částečně</i> (nebo spíš <i>neúplně</i>) už v <b>IE 8</b>. Částečně v tom smyslu, že <i>zná</i> jen ty selektory, co fungují ve stejném prohlížeči i v CSS. Tedy jen částečně funguje třeba i v <b>IE 9</b>, kde nebude znát např. <a href="/css-selektory#validace">pseudotřídu <code>:valid</code></a> (<a href="http://kod.djpw.cz/pts">test</a>).</p>
+<p>Funguje <i>částečně</i> (nebo spíš <i>neúplně</i>) už v <b>IE 8</b>. Částečně v tom smyslu, že <i>zná</i> jen ty selektory, co fungují ve stejném prohlížeči i v CSS. Tedy jen částečně funguje třeba i v <b>IE 9</b>, kde nebude znát např. <a href="/css-selektory#validace">pseudotřídu <code>:valid</code></a> (<a href="https://kod.djpw.cz/pts">test</a>).</p>
 
 <p>Nicméně většina CSS selektorů už v IE 8 funguje. Proto je i třeba <code>querySelectorAll</code> výhodnější než metoda <code>getElementsBy<b>ClassName</b></code>, která funguje až od <b>IE 9</b>.</p>
 
@@ -38,7 +38,7 @@ var odkazyVTabulkach = document.querySelectorAll("table a");</code></pre>
   <li><code>document.querySelector<b>All</b>(".trida")</code> — vrátí <b>kolekci všech elementů</b> s třídou <code>trida</code>.</li>  
 </ol>
 
-<p>Procházet pole elementů je možné klasickým způsobem (<a href="http://kod.djpw.cz/rws">ukázka</a>):</p>
+<p>Procházet pole elementů je možné klasickým způsobem (<a href="https://kod.djpw.cz/rws">ukázka</a>):</p>
 <pre><code>var znacky = document.querySelectorAll(".trida");
 for (var i = 0; i &lt; znacky.length; i++) {
   // znacky[i]
@@ -46,7 +46,7 @@ for (var i = 0; i &lt; znacky.length; i++) {
 </code></pre>
 
 <h2 id="dolar">Zápis <code>$("element")</code></h2>
-<p>S využitím <code>querySelector</code>u je možné docílit <i>dolarového</i> zápisu, který se stal populární v JS frameworcích (<a href="http://kod.djpw.cz/oobb">ukázka</a>).</p>
+<p>S využitím <code>querySelector</code>u je možné docílit <i>dolarového</i> zápisu, který se stal populární v JS frameworcích (<a href="https://kod.djpw.cz/oobb">ukázka</a>).</p>
 <pre><code>function $(selektor, el) {
   if (!el) el = document;
   var elementy = el.querySelectorAll(selektor);

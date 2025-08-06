@@ -63,7 +63,7 @@ format: "html"
 
 <p>Nastavení <b>málo kontrastního</b> nebo dokonce průhledného <i>caretu</i> (<code>caret-color: transparent</code>) potom může uživatele dost mást.</p>
 
-<!-- náhled: http://kod.djpw.cz/txqc -->
+<!-- náhled: https://kod.djpw.cz/txqc -->
 
 
 <h2 id="odkazy">Odkazy jinam</h2>

@@ -13,13 +13,13 @@ format: "html"
 
 <p>Standardní elegantní řešení je poměrně obtížné najít.</p>
 
-<p>Ve staré <b>Opeře 12</b> existuje nestandardní hodnota CSS <code>text-overflow</code> (<a href="http://kod.djpw.cz/wqfb">ukázka</a>):</p>
+<p>Ve staré <b>Opeře 12</b> existuje nestandardní hodnota CSS <code>text-overflow</code> (<a href="https://kod.djpw.cz/wqfb">ukázka</a>):</p>
 
 <pre><code>.tri-tecky-opera {
   text-overflow: <b>-o-ellipsis-lastline</b>;
 }</code></pre>
 
-<p>V <b>Chrome</b> je možné využít nestandardní vlastnost <code>-webkit-line-clamp</code> (<a href="http://kod.djpw.cz/yqfb">ukázka</a>):</p>
+<p>V <b>Chrome</b> je možné využít nestandardní vlastnost <code>-webkit-line-clamp</code> (<a href="https://kod.djpw.cz/yqfb">ukázka</a>):</p>
 
 <pre><code>.tri-tecky-chrome {
   display: -webkit-box;
@@ -52,7 +52,7 @@ format: "html"
 
 <p>Kód z tohoto příkladu tak ořízne obsah po 4 řádcích (<code>1.25em</code> * <b>4 řádky</b> = <code>5em</code>).</p>
 
-<p><a href="http://kod.djpw.cz/doib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/doib">Živá ukázka</a></p>
 
 
 
@@ -101,11 +101,11 @@ format: "html"
 
 <p>Jediný potenciální problém je tak <b>useknutí uprostřed písmena</b>.</p>
 
-<p><a href="http://kod.djpw.cz/coib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/coib">Živá ukázka</a></p>
 
 <p>Problémem useknutí uprostřed písmena netrpí překrytí <b>plynulým obrázkových přechodem</b> do ztracena – jde toho docílit pomocí <a href="/gradient">CSS gradientu</a>.</p>
 
-<p><a href="http://kod.djpw.cz/foib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/foib">Živá ukázka</a></p>
 
 
 
@@ -115,9 +115,9 @@ format: "html"
 
 <p>V případě, že se obsah někdy vejde a někdy ne, je situace komplikovanější. Chování vylepší naposicování <b>překryvného elementu</b> shora na poslední řádek. Když potom bude obsah vlivem krátkého obsahu nižší, element s <b>výpustkou</b> bude mimo oříznutý element a <b>nebude vidět</b>.</p>
 
-<p><a href="http://kod.djpw.cz/moib">Živá ukázka s výpustkou</a> / <a href="http://kod.djpw.cz/noib">přechodem</a></p>
+<p><a href="https://kod.djpw.cz/moib">Živá ukázka s výpustkou</a> / <a href="https://kod.djpw.cz/noib">přechodem</a></p>
 
-<!--http://kod.djpw.cz/goib / http://kod.djpw.cz/hoib -->
+<!--https://kod.djpw.cz/goib / https://kod.djpw.cz/hoib -->
 
 
 
@@ -127,21 +127,21 @@ format: "html"
 
 <p>S trochou snahy by to šlo od <b>IE 9</b> s využitím <a href="/stylovani-checked"><code>checkboxu</code></a> a selektoru <code>:checked ~ element</code> vytvořit čistě v CSS:</p>
 
-<p><a href="http://kod.djpw.cz/ooib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ooib">Živá ukázka</a></p>
 
 <p>Elegantnější ale vypadá řešení s trochou JavaScriptu:</p>
 
-<p><a href="http://kod.djpw.cz/koib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/koib">Živá ukázka</a></p>
 
 <p>Jediným nedostatkem je zobrazení <b>zbytečného odkazu</b> v případě, že text vyjde přesně na stanovený počet řádků. Tomu by šlo předejít zobrazením <i>Zobrazit více</i> přes celý <b>poslední řádek</b>.</p>
 
-<p><a href="http://kod.djpw.cz/loib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/loib">Živá ukázka</a></p>
 
 
 
 <h2 id="odkazy">Odkazy jinam</h2>
 
-<!--http://kod.djpw.cz/zqfb-->
+<!--https://kod.djpw.cz/zqfb-->
 
 <ul>
   <li><a href="http://www.mobify.com/blog/multiline-ellipsis-in-pure-css/">Řešení čistě v CSS</a> – využívá triku s pomocí obtékání

@@ -161,7 +161,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/eiqb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/eiqb">Živá ukázka</a></p>
 
 <p>Bez JS se nikdo ke skrytému obsahu nedostane.</p>
 

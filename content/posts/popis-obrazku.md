@@ -61,7 +61,7 @@ format: "html"
     &lt;figcaption>Popis obrázku&lt;/figcaption>
 &lt;/figure></code></pre>
 
-<p><a href="http://kod.djpw.cz/fmjb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/fmjb">Ukázka</a></p>
 
 <p>Jediná nevýhoda je absence podpory v <b>IE8</b> a starších, kterou je kvůli stylování nutné <a href="/vlastni-html-znacky#html5">doplnit skriptem</a>.</p>
 

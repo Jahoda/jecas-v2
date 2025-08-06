@@ -208,7 +208,7 @@ format: "html"
   <li>
     <p>Teoreticky by šlo použít skrytý <code>type="number"</code> pro nastavení správné klávesnice a kopírovat jeho obsah do viditelného <code>type="password"</code>.</p>
     
-    <p>Bude ale problém se zobrazováním kursoru – <a href="http://kod.djpw.cz/xldc">ukázka</a>.</p>
+    <p>Bude ale problém se zobrazováním kursoru – <a href="https://kod.djpw.cz/xldc">ukázka</a>.</p>
   </li>
   
   <li>
@@ -240,7 +240,7 @@ format: "html"
 <h2 id="odkazy">Odkazy</h2>
 
 <ul>
-  <li><a href="http://kod.djpw.cz/wldc">Živá ukázka</a> – test různých <code>&lt;input></code>ů pro zadávání PINu</li>
+  <li><a href="https://kod.djpw.cz/wldc">Živá ukázka</a> – test různých <code>&lt;input></code>ů pro zadávání PINu</li>
 </ul>
 
 <style>

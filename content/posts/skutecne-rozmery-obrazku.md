@@ -64,4 +64,4 @@ alert(
 </div>  
 <p><button onclick="vypisSkutecnyRozmer(document.getElementById('obrazek2'))">Skutečný rozměr</button></p>
 
-<!-- http://kod.djpw.cz/cegb -->
+<!-- https://kod.djpw.cz/cegb -->

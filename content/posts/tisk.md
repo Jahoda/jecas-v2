@@ -214,7 +214,7 @@ format: "html"
 </code></pre>
 
 
-<p><a href="http://kod.djpw.cz/jygb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jygb">Živá ukázka</a></p>
 
 
 
@@ -253,7 +253,7 @@ document.getElementsByTagName('head')[0].appendChild(link);</code></pre>
 }
 </code></pre>
     
-    <p><a href="http://kod.djpw.cz/lygb-">Živá ukázka</a></p>
+    <p><a href="https://kod.djpw.cz/lygb-">Živá ukázka</a></p>
   </li>
 </ul>
 

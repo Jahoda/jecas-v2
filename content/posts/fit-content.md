@@ -39,7 +39,7 @@ format: "html"
   <div class="div fit-content">obsah</div>
 </div>
 
-<p><a href="http://kod.djpw.cz/svjb">Živá ukázka</a> – centrování menu s neznámou šířkou pomocí <code>fit-content</code></p>
+<p><a href="https://kod.djpw.cz/svjb">Živá ukázka</a> – centrování menu s neznámou šířkou pomocí <code>fit-content</code></p>
 
 
 <h2 id="podpora">Podpora</h2>
@@ -67,7 +67,7 @@ format: "html"
   width: <b>intrinsic</b>;
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/rvjb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/rvjb">Živá ukázka</a></p>
 
 <p>Pro prohlížeče nepodporující <code>fit-content</code> existují následující možnosti.</p>
 
@@ -88,7 +88,7 @@ format: "html"
 
 <p>V případě, že je cílem takový obsah <a href="/centrovani">vycentrovat</a>, jde použít prosté <code>text-align: center</code> pro rodiče.</p>
 
-<p><a href="http://kod.djpw.cz/ovjb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ovjb">Živá ukázka</a></p>
 
 <p>Problém řešení s <code>inline-block</code> mohou být <a href="/inline-block-whitespace">bílé znaky</a>.</p>
 
@@ -96,5 +96,5 @@ format: "html"
 
 <p>Obdobně jako <code>width: fit-content</code> zafunguje i <code>display: table</code>.</p>
 
-<p><a href="http://kod.djpw.cz/pvjb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/pvjb">Živá ukázka</a></p>
 

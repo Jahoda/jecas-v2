@@ -34,7 +34,7 @@ format: "html"
 
 
 <h2 id="chrome">Chrome</h2>
-<p><a href="http://kod.djpw.cz/yoc" class="button">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/yoc" class="button">Ukázka</a></p>
 <p>Chrome (a jiné prohlížeče založené na Webkitu) podporují novou podobu CSS vlastnosti <code>filter</code> (zatím s <a href="/css-prefixy">prefixem</a>). Rozmazání potom vypadá následovně:</p>
 <pre><code>element {
   <i>-webkit-</i>filter: blur<b>(</b>2px<b>)</b>;
@@ -56,7 +56,7 @@ format: "html"
 
 <h2 id="firefox">Firefox</h2>
 
-<p><a href="http://kod.djpw.cz/xoc" class="button">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/xoc" class="button">Ukázka</a></p>
 <p>Firefox (jádro Gecko) podporuje vytvoření filtru v <a href="/svg">SVG</a> (stačí umístit do HTML kódu nebo přes protokol <code>data:</code>):
   <pre><code>&lt;svg>
     &lt;filter id="rozmazany-filtr">
@@ -73,7 +73,7 @@ format: "html"
 <pre><code>&lt;meta http-equiv="X-UA-Compatible" content="IE=9"></code></pre>
 <p><b>Filtr</b>:</p>
 <pre><code>filter:progid:DXImageTransform.Microsoft.Blur(pixelradius='2', shadowopacity='0.0');</code></pre>
-<p><a href="http://kod.djpw.cz/qqc-" class="button">Ukázka</a> (Měla by kromě Opery fungovat všude.)</p>
+<p><a href="https://kod.djpw.cz/qqc-" class="button">Ukázka</a> (Měla by kromě Opery fungovat všude.)</p>
   
   
 <h2 id="jine">Jiné způsoby rozmazávání</h2>  
@@ -99,7 +99,7 @@ format: "html"
 </div>
   
 <p>Duplikování obsahu by s ohledem na smysluplnost HTML kódu měl dělat JavaScript.</p>  
-<p><a href="http://kod.djpw.cz/epc" class="button">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/epc" class="button">Ukázka</a></p>
 
 <h2 id="odkazy">Odkazy</h2>
 <ul>

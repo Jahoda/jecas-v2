@@ -13,15 +13,15 @@ format: "html"
 
 <p>Bez <code>object-fit</code> si je někdy možné vystačit s nastavení pouze jednoho rozměru (šířky nebo výšky) s tím, že druhý se <b>dopočítá</b> – tak je možné alespoň <b>zachovat poměr stran</b>.</p>
 
-<p><a href="http://kod.djpw.cz/dmoc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/dmoc">Živá ukázka</a></p>
 
 
 
 
 <p>Pokud by se nastavil <b>pevný rozměr</b> pro každý obrázek, <b>deformace</b> by byla značná:</p>
 
-<p><a href="http://kod.djpw.cz/emoc">Živá ukázka</a></p>
-<!-- http://kod.djpw.cz/cmoc -->
+<p><a href="https://kod.djpw.cz/emoc">Živá ukázka</a></p>
+<!-- https://kod.djpw.cz/cmoc -->
 
 
 
@@ -49,9 +49,9 @@ format: "html"
     
   </style>
   <div class="obrazky">
-    <img src="http://kod.djpw.cz/i/100x200">
-    <img src="http://kod.djpw.cz/i/200x150">
-    <img src="http://kod.djpw.cz/i/100x100">
+    <img src="https://kod.djpw.cz/i/100x200">
+    <img src="https://kod.djpw.cz/i/200x150">
+    <img src="https://kod.djpw.cz/i/100x100">
   </div>
 </div>
 
@@ -83,7 +83,7 @@ format: "html"
   </dd>     
 </dl>
 
-<p><a href="http://kod.djpw.cz/amoc">Samostatná živá ukázka</a> s použitím <code>object-fit: contain</code></p>
+<p><a href="https://kod.djpw.cz/amoc">Samostatná živá ukázka</a> s použitím <code>object-fit: contain</code></p>
 
 
 <h2 id="podpora">Podpora v prohlížečích</h2>
@@ -119,7 +119,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/fmoc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/fmoc">Živá ukázka</a></p>
 
 <h2 id="odkazy">Odkazy jinam</h2>
 
@@ -130,5 +130,5 @@ format: "html"
 <!--
 <h2 id="bez">Řešení bez <code>object-fit</code></h2>
 
--i-l-u-s-t-r-a-c-e: http://kod.djpw.cz/gsjb
+-i-l-u-s-t-r-a-c-e: https://kod.djpw.cz/gsjb
 -->

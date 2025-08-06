@@ -160,7 +160,7 @@ format: "html"
 
 <p>Pro klasické stránkování s odkazy „Předchozí“/„Další“ i čísly stránek je asi nejlepší použít CSS <a href="/display#tabulkove">tabulkové hodnoty</a> vlastnosti <a href="/display#tabulkove"><code>display</code></a> a některé položky v <a href="/media"><code>@media</code> pravidlu</a> skrýt:</p>
 
-<p><a href="http://kod.djpw.cz/mbpb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/mbpb">Živá ukázka</a></p>
 
 
 <p>Kvůli nedostatku místa se obvykle klasická podoba stránkování musí redukovat. To ve finále znamená ponechat třeba jen tlačítka předchozí a další.</p>

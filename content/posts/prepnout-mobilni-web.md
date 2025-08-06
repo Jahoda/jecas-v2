@@ -171,7 +171,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/zrsb-">Živá ukázka</a> – zapnutí/vypnutí responsivního webu</li>
+    <li><a href="https://kod.djpw.cz/zrsb-">Živá ukázka</a> – zapnutí/vypnutí responsivního webu</li>
   </ul>
 </div>
 
@@ -183,7 +183,7 @@ format: "html"
 
 
 <div class="soft">
-  <p>Přepínání bez obnovení stránky <b>na mobilních zařízeních</b> z <a href="http://kod.djpw.cz/zrsb-">ukázky</a> nemám moc otestované. Budu moc rád, když to vyzkoušíte a dáte mi vědět do komentářů s informací o prohlížeči/OS.</p>
+  <p>Přepínání bez obnovení stránky <b>na mobilních zařízeních</b> z <a href="https://kod.djpw.cz/zrsb-">ukázky</a> nemám moc otestované. Budu moc rád, když to vyzkoušíte a dáte mi vědět do komentářů s informací o prohlížeči/OS.</p>
   
   <ul>
     <li><p>Při testování jsme narazili na problém v mobilním <b>Firefoxu</b>, kde přepínání <code>viewport</code>u JavaScriptem neprobíhá korektně.</p></li>

@@ -264,5 +264,5 @@ format: "html"
 <h2 id="odkazy">Odkazy jinam</h2>
 
 <ul>
-  <li><a href="http://kod.djpw.cz/kxvb">Samostatná živá ukázka</a> – test různých způsobů</li>
+  <li><a href="https://kod.djpw.cz/kxvb">Samostatná živá ukázka</a> – test různých způsobů</li>
 </ul>

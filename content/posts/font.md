@@ -116,7 +116,7 @@ format: "html"
 
 <p>Jelikož většina písem má pouze dva stupně tučnosti, nemají klíčová slova <code>lighter</code> a <code>bolder</code> přílišné využití.</p>
 
-<p><a href="http://kod.djpw.cz/wnjb">Test hodnot</a> <code>bolder</code> a <code>lighter</code></p>
+<p><a href="https://kod.djpw.cz/wnjb">Test hodnot</a> <code>bolder</code> a <code>lighter</code></p>
 
 
 <h2 id="size"><code>font-size</code></h2>
@@ -160,7 +160,7 @@ format: "html"
 
 <p>Při použití procent, relativních délkových jednotek (např. <code>em</code>) nebo <code>larger</code>/<code>smaller</code> jde šikovně využívat <b>dědičnosti</b>, klidně na jednom místě změnit velikost písma celého webu a velikosti jednotlivých částí se tomu přizpůsobí.</p>
 
-<p><a href="http://kod.djpw.cz/ynjb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ynjb">Živá ukázka</a></p>
 
 
 <h2 id="line-height"><code>line-height</code></h2>
@@ -175,7 +175,7 @@ format: "html"
 
 <p>Výška řádku je hodně důležitá vlastnost s ohledem na <b>dobrou čitelnost</b> textu. Při nastavení <code>line-height</code> společnému obalu stránky (<code>&lt;html></code>/<a href="/stylovani-body"><code>&lt;body></code>/<code>&lt;div class="obal"></code></a>) se snadno stane, že pro <b>velké písmo</b> bude výška řádku malá a pro <b>malá písmena</b> zase moc velká.</p>
 
-<p><a href="http://kod.djpw.cz/bojb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/bojb">Živá ukázka</a></p>
 
 
 
@@ -279,7 +279,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/twtb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/twtb">Živá ukázka</a></p>
 
 <p>Podporuje 3 atributy:</p>
 
@@ -310,7 +310,7 @@ format: "html"
 
 <pre><code>&lt;basefont face="Arial" color="red"></code></pre>
 
-<p>Značka je považována za zastaralou a není v prohlížečích moc podporovaná. Posledním prohlížečem, kde má vliv, je <b>Internet Explorer 9</b>. <a href="http://kod.djpw.cz/rwtb">Ukázka</a>.</p>
+<p>Značka je považována za zastaralou a není v prohlížečích moc podporovaná. Posledním prohlížečem, kde má vliv, je <b>Internet Explorer 9</b>. <a href="https://kod.djpw.cz/rwtb">Ukázka</a>.</p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>

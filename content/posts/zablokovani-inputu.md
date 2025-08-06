@@ -53,9 +53,9 @@ format: "html"
 
 <p>Zaměřit <i>disablované</i> pole v CSS jde rovněž <b>atributovým selektorem</b> (<code>input[readonly]</code> – <b>IE 7+</b>) nebo méně podporovaným <a href="/css-selektory#disabled"><code>input:disabled</code></a> (<b>IE 9+</b>).</p>
 
-<p>V <b>IE 9</b> a starších a <b>Opeře 12</b> nejde <code>disabled</code> plně stylovat. Barvu (<code>color</code>) zablokovaného políčka tam nezměníme. <a href="http://kod.djpw.cz/ldgb">Ukázka</a>.</p>
+<p>V <b>IE 9</b> a starších a <b>Opeře 12</b> nejde <code>disabled</code> plně stylovat. Barvu (<code>color</code>) zablokovaného políčka tam nezměníme. <a href="https://kod.djpw.cz/ldgb">Ukázka</a>.</p>
 
-<p>Také na zablokovaném <code>&lt;input></code>u není možné vyvolat například <a href="/udalosti-mysi#onclick">událost onclick</a> (<a href="http://kod.djpw.cz/mdgb">ukázka</a>), <a href="/tabindex">od<kbd>Tab</kbd>ovat na něj</a> nebo u něj vyvolat <code>:focus</code>.</p>
+<p>Také na zablokovaném <code>&lt;input></code>u není možné vyvolat například <a href="/udalosti-mysi#onclick">událost onclick</a> (<a href="https://kod.djpw.cz/mdgb">ukázka</a>), <a href="/tabindex">od<kbd>Tab</kbd>ovat na něj</a> nebo u něj vyvolat <code>:focus</code>.</p>
 
 
 <h3 id="zadny-input">Nepoužívat <code>&lt;input></code></h3>
@@ -163,6 +163,6 @@ policko.<b>disabled</b> = true;</code></pre>
   <input type="text" name="pole" value="Obsah políčka">
 </form></div>
 
-<p><a href="http://kod.djpw.cz/odgb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/odgb">Samostatná ukázka</a></p>
 
-<!-- titulní obrázek: http://kod.djpw.cz/ndgb -->
+<!-- titulní obrázek: https://kod.djpw.cz/ndgb -->

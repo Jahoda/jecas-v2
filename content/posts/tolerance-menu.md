@@ -105,7 +105,7 @@ format: "html"
 
 <p><b>Nevýhoda</b> je právě ta časová prodleva v případě, že je cílem rozevřít jinou podnabídku.</p>
 
-<p><a href="http://kod.djpw.cz/wwkb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/wwkb">Živá ukázka</a></p>
 
 <p>Také není dobré časovou prodlevou kombinovat s navigací, kde položky první úrovně po kliknutí způsobí přechod na jinou stránku. Mohlo by se stát, že by uživatel nevydržel čekat a kliknul, začala by se načítat nová stránka, během toho by se třeba už konečně zobrazilo podmenu, načež by se přešlo na novou stránku. Takové chování je hodně <b>otravné</b>.</p>
 
@@ -227,7 +227,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/ywkb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ywkb">Živá ukázka</a></p>
 
 
 

@@ -13,7 +13,7 @@ format: "html"
 
 <p><a href="http://dummyimage.com/" class="button">Web</a></p>
 
-<p>Kromě pohodlného <i>vytváření</i> obrázků (či spíš placeholderů) zadáváním URL, je možné celou <b>službu stáhnout</b> a provozovat na vlastním serveru (využito na <a href="http://kod.djpw.cz/puc">kod.djpw.cz</a>).</p>
+<p>Kromě pohodlného <i>vytváření</i> obrázků (či spíš placeholderů) zadáváním URL, je možné celou <b>službu stáhnout</b> a provozovat na vlastním serveru (využito na <a href="https://kod.djpw.cz/puc">kod.djpw.cz</a>).</p>
 
 
 <div class="live"><img src="http://dummyimage.com/200x100/0D6AB7/fff"></div>

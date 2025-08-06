@@ -58,10 +58,10 @@ format: "html"
 </table>
 
 <ul>
-  <li><a href="http://kod.djpw.cz/wow">Ukázka</a> časovače (<code>setInterval</code>), který každou vteřinu vypíše do stránky „Ahoj“. 
+  <li><a href="https://kod.djpw.cz/wow">Ukázka</a> časovače (<code>setInterval</code>), který každou vteřinu vypíše do stránky „Ahoj“. 
   </li>
-  <li>Použití <code>set<b>Timeout</b></code> by <a href="http://kod.djpw.cz/bpw">vypadalo podobně</a>.</li>
-  <li>A vytvoření opakovaného <code>set<b>Timeout</b></code>u <a href="http://kod.djpw.cz/cpw">takto</a>.
+  <li>Použití <code>set<b>Timeout</b></code> by <a href="https://kod.djpw.cz/bpw">vypadalo podobně</a>.</li>
+  <li>A vytvoření opakovaného <code>set<b>Timeout</b></code>u <a href="https://kod.djpw.cz/cpw">takto</a>.
   </li>
 </ul>
 
@@ -128,11 +128,11 @@ function odpocet(el) {
 </script>  
 </div>
 
-<p><a href="http://kod.djpw.cz/xby">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/xby">Samostatná ukázka</a></p>
 
 
 <h2 id="css">CSS odpočítávání</h2>
-<p>S příchodem <a href="/animation">CSS animací</a> (funkční od <b>IE 10</b>) se nabízí nové možnosti, jak jednoduché odpočítávání realisovat čistě v CSS (<a href="http://kod.djpw.cz/gfc">samostatná ukázka</a>).</p>
+<p>S příchodem <a href="/animation">CSS animací</a> (funkční od <b>IE 10</b>) se nabízí nové možnosti, jak jednoduché odpočítávání realisovat čistě v CSS (<a href="https://kod.djpw.cz/gfc">samostatná ukázka</a>).</p>
 
 <div class="live">
   <style>
@@ -166,7 +166,7 @@ function odpocet(el) {
 
 <p>Řešení spočívá ve vytvoření si pásu čteverčků s jednotlivými čísly, které se potom posouvají, čímž se vytvoří efekt odpočítávání.</p>
 
-<p>Díky časovaným animacím je možné vytvořit i visuálně zajímavější „odpočítávání“. Třeba <i>hodiny</i>. (<a href="http://kod.djpw.cz/sow">Samostatná ukázka</a>)</p>
+<p>Díky časovaným animacím je možné vytvořit i visuálně zajímavější „odpočítávání“. Třeba <i>hodiny</i>. (<a href="https://kod.djpw.cz/sow">Samostatná ukázka</a>)</p>
 
 <div class="live">
   <style>

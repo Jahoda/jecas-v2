@@ -254,4 +254,4 @@ nacistJs('velkyJavaScript.js');
 
 
 
-<!-- http://kod.djpw.cz/leub -->
+<!-- https://kod.djpw.cz/leub -->

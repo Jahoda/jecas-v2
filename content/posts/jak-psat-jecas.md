@@ -42,7 +42,7 @@ format: "html"
     <p><b>Obrázky</b> je ideální poslat jako přílohu nebo je do HTML kódu článku linkovat z veřejných úložišť typu <a href="http://img.djpw.cz">img.djpw.cz</a>.</p>
   </li>
   <li>
-    <p><b>Živé ukázky</b> prosím ideálně vytvářejte na <a href="http://kod.djpw.cz">kod.djpw.cz</a>. Menší ukázky mohou být přímo v HTML kódu článku.</p>
+    <p><b>Živé ukázky</b> prosím ideálně vytvářejte na <a href="https://kod.djpw.cz">kod.djpw.cz</a>. Menší ukázky mohou být přímo v HTML kódu článku.</p>
   </li>
   <li>
     <p><b>Nadpisy</b> by při psaní v HTML měly mít <code>id</code>, aby šlo na ně odkazovat.</p>

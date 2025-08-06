@@ -369,7 +369,7 @@ END:VCARD</code></pre>
 
 <div class="external-content">
 <ul>
-  <li><a href="http://kod.djpw.cz/lzkb">Generování QR kódu přes Google Charts</a></li>
+  <li><a href="https://kod.djpw.cz/lzkb">Generování QR kódu přes Google Charts</a></li>
 </ul>  
 </div>
 
@@ -381,7 +381,7 @@ END:VCARD</code></pre>
 
 <div class="external-content">
   <ul>
-    <li><a href="https://github.com/educastellano/qr-code">qr-code</a> – Nástroj pro generování QR kódu v JavaScriptu, <a href="http://kod.djpw.cz/qzkb">ukázka</a></li>
+    <li><a href="https://github.com/educastellano/qr-code">qr-code</a> – Nástroj pro generování QR kódu v JavaScriptu, <a href="https://kod.djpw.cz/qzkb">ukázka</a></li>
   </ul>
 </div>
 
@@ -389,8 +389,8 @@ END:VCARD</code></pre>
 
 <div class="external-content">
   <ul>
-    <li><a href="http://davidshimjs.github.io/qrcodejs/">qrcode.js</a> – <a href="http://kod.djpw.cz/pzkb">ukázka qrcode.js</a></li>
-    <li><a href="http://neocotic.com/qr.js/">neocotic.com/qr.js</a> – <a href="http://kod.djpw.cz/nzkb">ukázka qr.js</a></li>
+    <li><a href="http://davidshimjs.github.io/qrcodejs/">qrcode.js</a> – <a href="https://kod.djpw.cz/pzkb">ukázka qrcode.js</a></li>
+    <li><a href="http://neocotic.com/qr.js/">neocotic.com/qr.js</a> – <a href="https://kod.djpw.cz/nzkb">ukázka qr.js</a></li>
   </ul>
 </div>
 

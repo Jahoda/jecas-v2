@@ -12,7 +12,7 @@ format: "html"
 <p>Chceme-li stránku oživit nějakým <b>grafem</b> místo <i>nudného</i> výpisu čísel, existují různé možnosti.</p>
 <ol>
   <li>Vygenerovat obrázek grafu <b>na straně serveru</b>.</li>
-  <li><a href="/css-kresleni">Nakreslit</a> graf v HTML a CSS. Pro sloupcové grafy je to <a href="/progress">docela jednoduché</a>. I komplikovanější grafy je možné nakreslit po kouskách spousty pár-pixelovými elementy (<a href="http://kod.djpw.cz/ivc">ukázka</a>).</li>
+  <li><a href="/css-kresleni">Nakreslit</a> graf v HTML a CSS. Pro sloupcové grafy je to <a href="/progress">docela jednoduché</a>. I komplikovanější grafy je možné nakreslit po kouskách spousty pár-pixelovými elementy (<a href="https://kod.djpw.cz/ivc">ukázka</a>).</li>
   <li>Použít <b>hotové JS řešení</b>, kterému se jen předhodí data a o vykreslení grafu je postaráno.</li>
 </ol>
 

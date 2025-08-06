@@ -35,7 +35,7 @@ styl.href = url;
 
 <pre><code>document.getElementsByTagName("head")[0]</code></pre>
 
-<p><a href="http://kod.djpw.cz/jnib">Test <code>document.head</code></a></p>
+<p><a href="https://kod.djpw.cz/jnib">Test <code>document.head</code></a></p>
 
 
 

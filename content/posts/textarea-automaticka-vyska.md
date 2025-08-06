@@ -83,7 +83,7 @@ var AutoHeightArea = function() {
 </script>
 </div>
 
-<p><a href="http://kod.djpw.cz/rhyb">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/rhyb">Samostatná živá ukázka</a></p>
 
 
 <h2 id="contenteditable">Využití <code>contenteditable</code></h2>
@@ -106,7 +106,7 @@ var AutoHeightArea = function() {
   <div contenteditable="true" class="div-contenteditable">Automatická výška „&lt;textarea>“</div>
 </div>
 
-<p><a href="http://kod.djpw.cz/wmeb-">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/wmeb-">Živá ukázka</a></p>
 
 <p>Nevýhoda tohoto postupu tkví ve větší pracnosti s převedením obsahu do požadované formy. Z políčka vyleze míst <i>plain textu</i> HTML, které se navíc bude lišit napříč prohlížeči.</p>
 
@@ -121,4 +121,4 @@ var AutoHeightArea = function() {
   <li><a href="http://leaverou.github.io/stretchy/">Stretchy</a> – automatická velikost elementů <code>&lt;textarea></code> i <a href="/input"><code>&lt;input></code></a></li>
 </ul>
 
-<!-- http://kod.djpw.cz/qagb -->
+<!-- https://kod.djpw.cz/qagb -->

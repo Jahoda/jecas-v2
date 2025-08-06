@@ -133,7 +133,7 @@ format: "html"
   </script>  
 </div>
 
-<p><a href="http://kod.djpw.cz/bikb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/bikb">Samostatná ukázka</a></p>
 
 
 <h3 id="css">Označení sloupce v CSS</h3>
@@ -158,7 +158,7 @@ format: "html"
   </li>
 </ol>
 
-<p><a href="http://kod.djpw.cz/jhkb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jhkb">Živá ukázka</a></p>
 
 <p>Těžko soudit, které řešení je lepší. Čistě CSS způsob je možná trochu <b>snazší na implementaci</b> (stačí pouze přidat CSS), spoléhání se na velkou výšku ale není úplně stoprocentní.</p>
 
@@ -175,7 +175,7 @@ format: "html"
 
 <p>Vygenerovat podobné CSS je ideální nějakým CSS preprocesorem, co umí cykly.</p>
 
-<p><a href="http://kod.djpw.cz/cikb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/cikb">Živá ukázka</a></p>
 
 
 <h3 id="hruba-sila">Hrubá síla</h3>

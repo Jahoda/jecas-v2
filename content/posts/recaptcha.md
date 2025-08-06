@@ -86,7 +86,7 @@ format: "html"
   </li>
 </ol>
 
-<p><a href="http://kod.djpw.cz/rmib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/rmib">Živá ukázka</a></p>
 
 
 

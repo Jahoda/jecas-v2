@@ -9,7 +9,7 @@ tags: []
 format: "html"
 ---
 
-<p><a href="http://kod.djpw.cz/usib">Dědičnost</a></p>
+<p><a href="https://kod.djpw.cz/usib">Dědičnost</a></p>
 
 <ul>
   <li><a href="http://blog.typekit.com/2016/04/29/combining-typefaces-free-guide-to-great-typography/">Combining Typefaces: Free guide to great typography</a> – kombinování písem</li>

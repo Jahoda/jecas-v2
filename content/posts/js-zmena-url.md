@@ -119,7 +119,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/afob-?utm_source=rss&utm_medium=feed&utm_campaign=jecas">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/afob-?utm_source=rss&utm_medium=feed&utm_campaign=jecas">Samostatná ukázka</a></p>
 
 <p>Při používání <a href="/ga">Google Analytics</a> se hodí funkci pro odstranění parametrů zavolat až jako <i lang="en">callback</i> po započítání návštěvy:</p>
 

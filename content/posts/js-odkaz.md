@@ -95,7 +95,7 @@ function kliknuti(e, el) {
 </div>
 
 
-<p><a href="http://kod.djpw.cz/oljb">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/oljb">Samostatná živá ukázka</a></p>
 
 
 <h2 id="bez-url">Akce bez URL</h2>

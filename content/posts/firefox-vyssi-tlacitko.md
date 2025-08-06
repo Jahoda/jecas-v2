@@ -78,7 +78,7 @@ input[type=reset]::-moz-focus-inner {
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/pvqb">Živá ukázka</a> – vyšší tlačítko ve <b>Firefoxu</b></li>
+    <li><a href="https://kod.djpw.cz/pvqb">Živá ukázka</a> – vyšší tlačítko ve <b>Firefoxu</b></li>
   </ul>
 </div>
 
@@ -96,7 +96,7 @@ input[type=reset]::-moz-focus-inner {
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/xwqb">Živá ukázka</a> – srovnání velikosti tlačítek s <code>height</code></li>
+    <li><a href="https://kod.djpw.cz/xwqb">Živá ukázka</a> – srovnání velikosti tlačítek s <code>height</code></li>
   </ul>
 </div>
 

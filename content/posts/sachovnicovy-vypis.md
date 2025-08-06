@@ -73,7 +73,7 @@ format: "html"
     text-align: center;
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/yygb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/yygb">Živá ukázka</a></p>
 
 <p>Pro zobrazení na malých zařízeních se potom tabulka <a href="/responsivni-tabulky#rozlamani">„rozláme“</a>.</p>
 
@@ -138,7 +138,7 @@ format: "html"
 
 <p>Druhý parametr funkce <code>translate</code> určuje svislé posunutí, to je nulové, protože potřebujeme posouvat jen <b>vodorovně</b>.</p>
 
-<p><a href="http://kod.djpw.cz/fzgb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/fzgb">Živá ukázka</a></p>
 
 
 
@@ -149,7 +149,7 @@ format: "html"
 
 <p>Podobného efektu jde ale obdobným způsobem docílit i <a href="/position#relative">relativním posicováním</a> s daleko lepší podporou.</p>
 
-<p><a href="http://kod.djpw.cz/gzgb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/gzgb">Živá ukázka</a></p>
 
 
 
@@ -162,10 +162,10 @@ format: "html"
 
 <p>Měnit <code>direction</code> je nutné pro <b>celou tabulku</b>, nestačí to jen pro samostatný řádek.</p>
 
-<p><a href="http://kod.djpw.cz/hzgb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/hzgb">Živá ukázka</a></p>
 
 <p>Tento postup jde kromě <b>skutečných tabulek</b> využít i u „CSS tabulek“, čímž vznikne asi nejlepší řešení tohoto problému.</p>
 
-<p><a href="http://kod.djpw.cz/izgb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/izgb">Živá ukázka</a></p>
 
 <!-- TL: http://www.tlachtace.cz/privatni-tematicke-3/coding-gypsy-4086/2/#p178994 -->

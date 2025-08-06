@@ -61,7 +61,7 @@ format: "html"
 
 
 
-<p>Ten se v podporovaných prohlížečích (např. <b>Firefox 44</b>) zobrazí následovně (<a href="http://kod.djpw.cz/eztb">ukázka</a>):</p>
+<p>Ten se v podporovaných prohlížečích (např. <b>Firefox 44</b>) zobrazí následovně (<a href="https://kod.djpw.cz/eztb">ukázka</a>):</p>
 
 <p><img src="/files/ruby/rtc-zobrazeni.png" alt="Zobrazení se značkou RTC" class="border"></p>
 

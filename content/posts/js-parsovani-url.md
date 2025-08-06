@@ -89,7 +89,7 @@ odkaz.href = adresa;</code></pre>
   </dd>     
 </dl>
 
-<p><a href="http://kod.djpw.cz/bphb-">Zjednodušená ukázka</a> pro testování ve starých prohlížečích.</p>
+<p><a href="https://kod.djpw.cz/bphb-">Zjednodušená ukázka</a> pro testování ve starých prohlížečích.</p>
   
 <h2 id="url">URL API</h2>
   

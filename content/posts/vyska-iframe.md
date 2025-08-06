@@ -78,7 +78,7 @@ ram.onload = function() {
 
 
 <div class="external-content">
-  <p><a href="http://kod.djpw.cz/fupb">Samostatná živá ukázka</a></p>
+  <p><a href="https://kod.djpw.cz/fupb">Samostatná živá ukázka</a></p>
 </div>
 
 
@@ -86,14 +86,14 @@ ram.onload = function() {
 
 <p>Pokud by šířka iframu nebyla fixní, při zúžení/rozšíření okna se výška obsahu v rámu natáhne nebo zmenší.</p>
 
-<p>Pro docílení lepšího výsledku stačí přepočet provést kromě po načtení obsahu i při <code>window.onresize</code>. <a href="http://kod.djpw.cz/gupb">Ukázka</a></p>
+<p>Pro docílení lepšího výsledku stačí přepočet provést kromě po načtení obsahu i při <code>window.onresize</code>. <a href="https://kod.djpw.cz/gupb">Ukázka</a></p>
 
 
 <h3 id="animace">Plynulá změna</h3>
 
 <p>Nastavení výšky rámu by navíc ještě šlo <b>animovat</b> pomocí <a href="/transition">CSS transition</a>:</p>
 
-<p><a href="http://kod.djpw.cz/dupb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/dupb">Živá ukázka</a></p>
 
 
 
@@ -166,8 +166,8 @@ ram.onload = function() {
         
     
     <p>
-      <button onclick="ram.src='http://kod.djpw.cz/udrb-'">Připojit stránku s absolutní URL</button>
-      <button onclick="ram.src='http://kod.djpw.cz/mdrb-'">Připojit stránku s relativní změnou #hashe</button>
+      <button onclick="ram.src='https://kod.djpw.cz/udrb-'">Připojit stránku s absolutní URL</button>
+      <button onclick="ram.src='https://kod.djpw.cz/mdrb-'">Připojit stránku s relativní změnou #hashe</button>
     </p>
 
   </li>

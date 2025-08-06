@@ -34,7 +34,7 @@ format: "html"
   Obsah bude zablokován jako reklama.
 &lt;/div></code></pre>
 
-<p>Když tedy takový testovací <code>&lt;div></code> vložíme na web a po načtení stránky (<code>window.onload</code>) spustíme <a href="/odpocitavani">časovačem</a> třeba s prodlevou 1000 milisekund test, zda je tento <code>&lt;div></code> viditelný, v případě negativního výsledku byl obsah skryt Adblockem. <a href="http://kod.djpw.cz/qzab">Ukázka</a>.</p>
+<p>Když tedy takový testovací <code>&lt;div></code> vložíme na web a po načtení stránky (<code>window.onload</code>) spustíme <a href="/odpocitavani">časovačem</a> třeba s prodlevou 1000 milisekund test, zda je tento <code>&lt;div></code> viditelný, v případě negativního výsledku byl obsah skryt Adblockem. <a href="https://kod.djpw.cz/qzab">Ukázka</a>.</p>
 
 <pre><code>window.onload = function() {
   setTimeout(function() {

@@ -336,7 +336,7 @@ format: "html"
 <p>Mobilní varianta <b>IE 9</b> se nachází ve Windows Phone 7, který ve starších telefonech již nejde updatovat na WP 8 s <b>IE 11</b>.</p>
   
   
-<p>Finální řešení je tedy následující (<a href="http://kod.djpw.cz/yqmb">ukázka</a>).</p>
+<p>Finální řešení je tedy následující (<a href="https://kod.djpw.cz/yqmb">ukázka</a>).</p>
 
 <pre><code>@media screen and (max-width: 600px) {
   /* rozlámání tabulek */
@@ -567,5 +567,5 @@ function prepocitat(el) {
     }
 }  
   
-  // http://kod.djpw.cz/ipmb
+  // https://kod.djpw.cz/ipmb
 </script>

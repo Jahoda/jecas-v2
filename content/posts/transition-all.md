@@ -62,9 +62,9 @@ a:hover {
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/offc-">Živá ukázka #1</a> – animace tří CSS vlastností klíčovým slovem <code>all</code></li>
+    <li><a href="https://kod.djpw.cz/offc-">Živá ukázka #1</a> – animace tří CSS vlastností klíčovým slovem <code>all</code></li>
     
-    <li><a href="http://kod.djpw.cz/pffc-">Živá ukázka #2</a> – totožná animace s výčtem vlastností</li>
+    <li><a href="https://kod.djpw.cz/pffc-">Živá ukázka #2</a> – totožná animace s výčtem vlastností</li>
   </ul>
 </div>
 

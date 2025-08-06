@@ -48,7 +48,7 @@ format: "html"
   <progress></progress>
 </div>
 
-<p><a href="http://kod.djpw.cz/wxib">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/wxib">Samostatná živá ukázka</a></p>
 
 
 <h2 id="stylovani">Stylování</h2>

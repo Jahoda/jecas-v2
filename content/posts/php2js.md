@@ -19,7 +19,7 @@ format: "html"
 
 <h2 id="funkce">Funkce</h2>
 
-<p>Funkce jsou mezi oběma jazyky asi nejpodobnější. Následující kód například funguje v obou jazycích bez úpravy (<a href="http://kod.djpw.cz/qqcb">ukázka</a>).</p>
+<p>Funkce jsou mezi oběma jazyky asi nejpodobnější. Následující kód například funguje v obou jazycích bez úpravy (<a href="https://kod.djpw.cz/qqcb">ukázka</a>).</p>
 
 <pre><code>function pozdrav($text) {
     return ($text);
@@ -62,7 +62,7 @@ foreach ($polozky as $polozka) {
   // $polozka
 }</code></pre>
 
-<p>Vypadá v JS následovně (<a href="http://kod.djpw.cz/rqcb">ukázka</a>):</p>
+<p>Vypadá v JS následovně (<a href="https://kod.djpw.cz/rqcb">ukázka</a>):</p>
 
 <pre><code>var polozky = ["jedna", "dva", "tri"];
 for (var polozka in polozky) {

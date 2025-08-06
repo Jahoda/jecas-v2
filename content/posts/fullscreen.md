@@ -146,7 +146,7 @@ element:-ms-fullscreen {/* styly */}</code></pre>
 
 <p>Pseudo-třídu <code>:fullscreen</code> dostane <b>pouze element</b>, na který se použije JS metoda <code>requestFullscreen</code>.</p>
 
-<p><a href="http://kod.djpw.cz/wpjb-">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/wpjb-">Živá ukázka</a></p>
 
 
 
@@ -165,7 +165,7 @@ element:-ms-fullscreen {/* styly */}</code></pre>
 
 <p>Kód <kbd>Esc</kbd> je <code>27</code> a <kbd>F11</kbd> <code>122</code>, v režimu přes celou obrazovku je napříč prohlížeči nejde odchytávat (<kbd>Esc</kbd> ruší fullscreen, <kbd>F11</kbd> v <b>Chrome</b> funguje jako <kbd>Esc</kbd>).</p>
 
-<p><a href="http://kod.djpw.cz/cqjb-">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/cqjb-">Živá ukázka</a></p>
 
 
 
@@ -182,7 +182,7 @@ element:-ms-fullscreen {/* styly */}</code></pre>
 
 <p>Přepnout do fullscreenu bez <b>přímé akce uživatele</b> není možné.</p>
 
-<p><a href="http://kod.djpw.cz/hqjb-">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/hqjb-">Živá ukázka</a></p>
 
 <p>Vysvětluje to <b>chybové varování</b>, které takový pokus vyvolá:</p>
 
@@ -200,4 +200,4 @@ element:-ms-fullscreen {/* styly */}</code></pre>
   
 </ul>
 
-<!-- i-l-u-s-t-r-a-c-e: http://kod.djpw.cz/xpjb -->
+<!-- i-l-u-s-t-r-a-c-e: https://kod.djpw.cz/xpjb -->

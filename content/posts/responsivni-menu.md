@@ -31,7 +31,7 @@ format: "html"
   <li><p>A nakonec se s využitím <a href="/prepinani-trid">přepínání třídy JavaScriptem</a> bude toto menu po klikání na tlačítko <i>Menu</i> zobrazovat/skrývat.</p></li>
 </ol>
 
-<p><a href="http://kod.djpw.cz/jqdb">Samostatná živá ukázka</a> (projeví se při šířce do 480 px)</p>
+<p><a href="https://kod.djpw.cz/jqdb">Samostatná živá ukázka</a> (projeví se při šířce do 480 px)</p>
 
 <p>Samotný HTML kód navigace je tedy společný pro mobily i desktop, odlišnou podobu mu může zařídit <b>změna CSS</b>.</p>
 
@@ -59,7 +59,7 @@ format: "html"
 
 <p>V takovém případě je nutné nezapomenout na možnost <b>okno s navigací zavřít</b>. Například původní tlačítko naposicovat nahoru s popiskem <i>Zavřít</i>.</p>
 
-<p><a href="http://kod.djpw.cz/wzdb">Samostatná živá ukázka</a> (pro 480 px na šířku)</p>
+<p><a href="https://kod.djpw.cz/wzdb">Samostatná živá ukázka</a> (pro 480 px na šířku)</p>
 
 <h3 id="odtlaceni">„Odtlačení“ obsahu</h3>
 
@@ -81,6 +81,6 @@ format: "html"
 </ol>
 
 
-<p><a href="http://kod.djpw.cz/zzdb">Samostatná živá ukázka odtlačení</a> (pro 480 px na šířku)</p>
+<p><a href="https://kod.djpw.cz/zzdb">Samostatná živá ukázka odtlačení</a> (pro 480 px na šířku)</p>
 
 <p>Vylepšit <b>ovladatelnost stránky</b> při odsouvání obsahu lze umístěním klikací plochy nad zbytek obsahu, který je vidět. A po kliknutí na tuto plochu zase menu <b>zasunout zpátky</b>.</p>

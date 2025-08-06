@@ -66,7 +66,7 @@ function statistiky(el) {
 
 
 <h2 id="reseni">Jak to udělat?</h2>
-<p>Jak všechny uvedené věci <b>zjišťovat JavaScriptem</b>? Samostatná <a href="http://kod.djpw.cz/stt">ukázka</a>.</p>
+<p>Jak všechny uvedené věci <b>zjišťovat JavaScriptem</b>? Samostatná <a href="https://kod.djpw.cz/stt">ukázka</a>.</p>
 
 <h3 id="znaku">Počet znaků</h3>
 <p>Pro formulářové pole (jako je použitá <code>&lt;textarea></code>) stačí prosté:</p>
@@ -110,4 +110,4 @@ function statistiky(el) {
   <li><a href="https://github.com/RadLikeWhoa/Countable">Countable</a></li>
 </ul>
 
-<!-- Stará ukázka: http://kod.djpw.cz/vft http://kod.djpw.cz/vjt -->
+<!-- Stará ukázka: https://kod.djpw.cz/vft https://kod.djpw.cz/vjt -->

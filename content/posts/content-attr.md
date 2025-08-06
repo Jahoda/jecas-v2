@@ -77,4 +77,4 @@ p:after {content: ": „" attr(<b>mujAtribut</b>) ' ' attr(<i>data-mujAtribut</i
   
   <pre><code>img:after {content: attr(alt)}</code></pre>
   
-<p><a href="http://kod.djpw.cz/bycb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/bycb">Ukázka</a></p>

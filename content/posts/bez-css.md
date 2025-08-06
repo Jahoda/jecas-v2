@@ -65,7 +65,7 @@ format: "html"
     <p><img src="/files/bez-css/prerusit.png" alt="Přerušit načítání stránky" class="border"></p>
   </li>
   <li>
-    <p>V CSS je <b>syntaktická chyba</b> – přestože je CSS relativně tolerantní k chybám, jde skoro celé rozbít tím, že na začátku bude deklarace s chybějícím <kbd>}</kbd>. To vyřadí všechna následující pravidla (<a href="http://kod.djpw.cz/fbsb">ukázka</a>).</p>
+    <p>V CSS je <b>syntaktická chyba</b> – přestože je CSS relativně tolerantní k chybám, jde skoro celé rozbít tím, že na začátku bude deklarace s chybějícím <kbd>}</kbd>. To vyřadí všechna následující pravidla (<a href="https://kod.djpw.cz/fbsb">ukázka</a>).</p>
     
     <pre><code>h1 {
     color: green;

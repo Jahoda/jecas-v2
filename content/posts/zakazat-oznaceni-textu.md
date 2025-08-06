@@ -99,7 +99,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/jslb">Samostatná ukázka zamezení výběru textu</a></li>
+    <li><a href="https://kod.djpw.cz/jslb">Samostatná ukázka zamezení výběru textu</a></li>
   </ul>
 </div>
 

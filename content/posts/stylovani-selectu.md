@@ -172,7 +172,7 @@ format: "html"
   </div>  
 </div>
 
-<p><a href="http://kod.djpw.cz/tnzb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/tnzb">Samostatná ukázka</a></p>
 
 
 

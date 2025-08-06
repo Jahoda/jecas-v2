@@ -31,7 +31,7 @@ format: "html"
 var stranka = window.open("", "_self");
 stranka.document.write(html);</code></pre>
 
-<p><a href="http://kod.djpw.cz/ojkb-">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ojkb-">Živá ukázka</a></p>
 
 <p>Bohužel v prohlížečích <b>Chrome</b> a <b>Opera</b> nefunguje funkce zpět. V <b>IE</b>/<a href="/microsoft-edge"><b>Edge</b></a>, <b>Firefoxu</b> a staré <b>Opeře</b> řešení funguje, jak má.</p>
 

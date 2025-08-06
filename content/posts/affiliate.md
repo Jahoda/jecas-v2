@@ -11,7 +11,7 @@ format: "html"
 
 http://www.affilblog.cz/seznam-prednasek-z-oblasti-affiliate-marketingu-youtube/
 
-<a href="http://kod.djpw.cz/txib">Maskování odkazu</a>
+<a href="https://kod.djpw.cz/txib">Maskování odkazu</a>
 
 http://seopizza.cz/jak-vydelat-na-affiliate/
 

@@ -90,7 +90,7 @@ function prehrat(url) {
 
 </div>
     
-<p><a href="http://kod.djpw.cz/dqfb">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/dqfb">Samostatná živá ukázka</a></p>
 
 
 

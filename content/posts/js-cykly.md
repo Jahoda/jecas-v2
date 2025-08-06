@@ -23,7 +23,7 @@ for (var i = 0; i &lt; znacky.length; i++) {
   // znacky[i]
 }</code></pre>
 
-<p>V případě, že chceme položky <b>procházet odzadu</b>, bude <code>for</code> vypadat následovně (<a href="http://kod.djpw.cz/xws">ukázka</a>):</p>
+<p>V případě, že chceme položky <b>procházet odzadu</b>, bude <code>for</code> vypadat následovně (<a href="https://kod.djpw.cz/xws">ukázka</a>):</p>
 
 <pre><code>for (var i = znacky.length - 1; i >= 0; i--) {
   // znacky[i]
@@ -31,14 +31,14 @@ for (var i = 0; i &lt; znacky.length; i++) {
 
 <p>Tento postup <b>zezadu</b> by měl být <b>rychlejší</b> (nemusí se neustále procházet všechny značky a zjišťovat jejich počet — <code>znacky.length</code>).</p>
 
-<p>Zrychlit první způsob cyklu <code>for</code> by šlo uložením <i>délky</i> do <b>pomocné proměnné</b> (<a href="http://kod.djpw.cz/ixs">ukázka</a>).</p>
+<p>Zrychlit první způsob cyklu <code>for</code> by šlo uložením <i>délky</i> do <b>pomocné proměnné</b> (<a href="https://kod.djpw.cz/ixs">ukázka</a>).</p>
 
 <pre><code>for (var i = 0, delka = znacky.length; i &lt; delka; i++) {
   // znacky[i]
 }</code></pre>
 
 <h2 id="for-in">Cyklus <code>for … in</code></h2>
-<p>Při použití <code>for</code>/<code>in</code> cyklu by projití všech elementů mohlo vypadat následovně (<a href="http://kod.djpw.cz/wws">ukázka</a>):</p>
+<p>Při použití <code>for</code>/<code>in</code> cyklu by projití všech elementů mohlo vypadat následovně (<a href="https://kod.djpw.cz/wws">ukázka</a>):</p>
 
 <pre><code>for (var i in znacky) {
   // znacky[i]
@@ -47,7 +47,7 @@ for (var i = 0; i &lt; znacky.length; i++) {
 <p>Nebezpečí hrozí při používání <code>for … in</code> pro <a href="http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=8&amp;topic=149917">procházení polí</a>. Druhá nevýhoda je, že směr procházení elementů <b>nemusí být shodný napříč prohlížeči</b>.</p>
 
 <h2 id="while">Cyklus <code>while</code></h2>
-<p>Po <code>for … in</code> má asi nejstručnější zápis. Někdy může být nevýhoda, že prochází značky <b>od konce</b> a <b>srozumitelnost zápisu</b> nemusí být pro každého (<a href="http://kod.djpw.cz/gxs">ukázka</a>).</p>
+<p>Po <code>for … in</code> má asi nejstručnější zápis. Někdy může být nevýhoda, že prochází značky <b>od konce</b> a <b>srozumitelnost zápisu</b> nemusí být pro každého (<a href="https://kod.djpw.cz/gxs">ukázka</a>).</p>
 <pre><code>var i = znacky.length; 
 while (i--) {
   // znacky[i]

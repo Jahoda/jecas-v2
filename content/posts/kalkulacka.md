@@ -9,4 +9,4 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/ywjb-
+https://kod.djpw.cz/ywjb-

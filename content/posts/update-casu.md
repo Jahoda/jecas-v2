@@ -23,7 +23,7 @@ format: "html"
   <li>Tato funkce se bude spouštět opakovaně (například každou minutu).</li>
 </ol>
 
-<p><a href="http://kod.djpw.cz/nleb">Živá ukázka hotového řešení</a></p>
+<p><a href="https://kod.djpw.cz/nleb">Živá ukázka hotového řešení</a></p>
 
 
 <h2 id="time">Element <code>&lt;time></code></h2>

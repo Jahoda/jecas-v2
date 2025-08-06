@@ -45,7 +45,7 @@ input[type=checkbox]:checked + .rozbalovaci label:before {content: "−"}
 </div>
 </div>
 
-<p><a href="http://kod.djpw.cz/ifbb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ifbb">Živá ukázka</a></p>
 
 <h2 id="selektor-checked">Selektor <code>:checked</code></h2>
 <p>Řešení využívá <a href="/css-selektory#checked">selektoru zaškrtnutí</a> (proto je funkčnost limitována tímto selektorem na <b>IE 9+</b>), kdy se před skrývaný <code>&lt;div></code> umístí <a href="/input#type-checkbox"><code>&lt;input type=checkbox></code></a>, který v závislosti na svém <b>zaškrtnutí</b> požadovaný obsah skryje/zobrazí.</p>

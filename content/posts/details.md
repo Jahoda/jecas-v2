@@ -44,13 +44,13 @@ format: "html"
   <p>Samotný obsah</p>
 </details>
 </div>
-<p><a href="http://kod.djpw.cz/zifb">Samostatná živá ukázka</a> (ukázka s <a href="http://kod.djpw.cz/ajfb">JS fallbackem</a>)</p>
+<p><a href="https://kod.djpw.cz/zifb">Samostatná živá ukázka</a> (ukázka s <a href="https://kod.djpw.cz/ajfb">JS fallbackem</a>)</p>
 
 
 
 <h2 id="vyuziti">Využití</h2>
 
-<p>Kromě úkolů, které obvykle používají JS řešení <a href="/prepinani-trid">přepínání CSS třídy</a> nebo postupu <a href="/css-rozbalovani">zneužívající <code>checkbox</code></a>, vypadá zajímavě především <b>libovolné zanořování</b> (<a href="http://kod.djpw.cz/bjfb">ukázka</a>).</p>
+<p>Kromě úkolů, které obvykle používají JS řešení <a href="/prepinani-trid">přepínání CSS třídy</a> nebo postupu <a href="/css-rozbalovani">zneužívající <code>checkbox</code></a>, vypadá zajímavě především <b>libovolné zanořování</b> (<a href="https://kod.djpw.cz/bjfb">ukázka</a>).</p>
 
 <p>Přepínání mezi souvisejícími bloky tak, aby se <a href="/zobrazit-skryt#rozklikavani">ostatní zavřely</a>, zatím možné není.</p>
 
@@ -61,7 +61,7 @@ format: "html"
 <ol>
   <li>V <b>podporujících prohlížečích</b> se bude muset odstranit podpora, aby se používalo stejné – na JS nebo <code>checkbox</code>u závislé řešení.</li>
   
-  <li>Zařídit <b>odkrývací/skrývací animaci</b> je momentálně dost omezené (jde maximálně animovat otevření – <a href="http://kod.djpw.cz/cjfb">ukázka</a>).</li>
+  <li>Zařídit <b>odkrývací/skrývací animaci</b> je momentálně dost omezené (jde maximálně animovat otevření – <a href="https://kod.djpw.cz/cjfb">ukázka</a>).</li>
 </ol>
 
 

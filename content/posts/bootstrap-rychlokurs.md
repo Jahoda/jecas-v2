@@ -27,7 +27,7 @@ format: "html"
 
 <p>Ten zajistí, že například <a href="/nadpisy">nadpisy</a> budou větším a tučným písmem, <a href="/odkaz">odkaz</a> bude barevně odlišen, <a href="/tabulky">tabulka</a> bude vypadat jako tabulka a podobně.</p>
 
-<p>Výchozí formátování některých HTML elementů je vidět na následující <a href="http://kod.djpw.cz/sutb">ukázce</a>:</p>
+<p>Výchozí formátování některých HTML elementů je vidět na následující <a href="https://kod.djpw.cz/sutb">ukázce</a>:</p>
 
 <p><img src="/files/bootstrap-rychlokurs/vychozi.png" alt="Výchozí vzhled" class="border"></p>
 
@@ -67,7 +67,7 @@ format: "html"
 
 <p>Soubor <code>bootstrap.min.css</code> má po zagzipování docela přijatelných cca 25 kB.</p>
 
-<p>Stránka se při načtení tohoto CSS zobrazí… <a href="http://kod.djpw.cz/avtb">jinak</a>:</p>
+<p>Stránka se při načtení tohoto CSS zobrazí… <a href="https://kod.djpw.cz/avtb">jinak</a>:</p>
 
 
 <p><img src="/files/bootstrap-rychlokurs/pripojeni.png" alt="Výchozí vzhled Bootstrapu" class="border"></p>
@@ -149,7 +149,7 @@ format: "html"
 
 
 
-<p>Tak jde snadno původní ukázku během pár minut zkrášlit (<a href="http://kod.djpw.cz/uutb">ukázka</a>):</p>
+<p>Tak jde snadno původní ukázku během pár minut zkrášlit (<a href="https://kod.djpw.cz/uutb">ukázka</a>):</p>
 
 
 <p><img src="/files/bootstrap-rychlokurs/uprava.png" alt="Výsledek po použití BS" class="border"></p>

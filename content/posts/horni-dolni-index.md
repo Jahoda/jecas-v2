@@ -99,7 +99,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/gfpb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/gfpb">Živá ukázka</a></p>
 
 
 <p>Existuje několik možných řešení:</p>
@@ -127,7 +127,7 @@ sup {top: -0.4em}</code></pre>
   
     <p>Tento postup funguje i v prastarých <b>IE</b>.</p>
     
-  <p><a href="http://kod.djpw.cz/hfpb">Srovnávací ukázka</a></p>
+  <p><a href="https://kod.djpw.cz/hfpb">Srovnávací ukázka</a></p>
     
     
   </li>

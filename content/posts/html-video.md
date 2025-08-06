@@ -198,7 +198,7 @@ else {
 
 
 
-<p><a href="http://kod.djpw.cz/knob-">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/knob-">Živá ukázka</a></p>
 
 
 <h2 id="html5">HTML 5 <code>&lt;video></code></h2>
@@ -520,7 +520,7 @@ V práci jako záchranný formát používám WebM. Konverze videa jde zautomati
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/zkob-">Zablokování pravého tlačítka na videu</a></li>
+    <li><a href="https://kod.djpw.cz/zkob-">Zablokování pravého tlačítka na videu</a></li>
   </ul>
 </div>
 

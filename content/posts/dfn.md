@@ -58,7 +58,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/uwnb">Příklad zobrazení obsahu <code>title</code> po kliknutí</a></li>
+    <li><a href="https://kod.djpw.cz/uwnb">Příklad zobrazení obsahu <code>title</code> po kliknutí</a></li>
   </ul>
 </div>
 

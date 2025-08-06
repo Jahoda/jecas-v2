@@ -9,7 +9,7 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/xdbb
+https://kod.djpw.cz/xdbb
 
 IE: onclik, onmousedown při posouvání
 

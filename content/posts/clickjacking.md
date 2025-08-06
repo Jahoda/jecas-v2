@@ -29,7 +29,7 @@ format: "html"
 
 <p><img src="/files/clickjacking/priklad.jpg" alt="Příklad clickjackingu" class="border"></p>
 
-<a href="http://kod.djpw.cz/noeb">Živá ukázka</a> zjednodušeného postupu clickjackingu.
+<a href="https://kod.djpw.cz/noeb">Živá ukázka</a> zjednodušeného postupu clickjackingu.
 
 
 

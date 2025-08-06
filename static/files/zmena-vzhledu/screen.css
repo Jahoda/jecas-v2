@@ -31,8 +31,8 @@ a {color: #272822; text-decoration: underline;}
 .text a[href^="/"] {background: #FDF2A8}
 .text .live a[href^="/"] {background: none}
 
-.text a[href^="http://kod.djpw.cz"]:not(.button) {padding-left: 20px; }
-.text a[href^="http://kod.djpw.cz"]:not(.button):not(:hover) {background: #E0EFFC url("http://kod.djpw.cz/favicon.ico") no-repeat; background-size: 1em 100%}
+.text a[href^="https://kod.djpw.cz"]:not(.button) {padding-left: 20px; }
+.text a[href^="https://kod.djpw.cz"]:not(.button):not(:hover) {background: #E0EFFC url("https://kod.djpw.cz/favicon.ico") no-repeat; background-size: 1em 100%}
 
 /* barvy */
 .light-blue .header, .light-blue a:hover, .light-blue a:focus {background-color: #0D6AB7; color: #fff;}

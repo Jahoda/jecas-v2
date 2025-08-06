@@ -76,7 +76,7 @@ format: "html"
 
 <pre><code>&lt;td colspan="4"></code></pre>
 
-<p><a href="http://kod.djpw.cz/hjeb">Živá ukázka</a> naplnění jednoduché tabulky.</p>
+<p><a href="https://kod.djpw.cz/hjeb">Živá ukázka</a> naplnění jednoduché tabulky.</p>
 
 
 
@@ -86,7 +86,7 @@ format: "html"
 
 <p>U starších prohlížečů (<b>IE 7</b>) není možné vkládat řádky přímo do <code>&lt;table></code>, ale musí se použít <code>&lt;thead></code>, <code>&lt;tbody></code> nebo <code>&lt;tfoot></code>.</p>
 
-<p><a href="http://kod.djpw.cz/gjeb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/gjeb">Živá ukázka</a></p>
 
 <p>Zaměřit <code>&lt;tbody></code> značku jde kromě metody <a href="/getelement#tagname"><code>getElementsByTagName</code></a> i přes <code>tBodies</code>.</p>
 

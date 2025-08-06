@@ -55,7 +55,7 @@ format: "html"
   width: 300px;
 }</code></pre>
 
-<p>Uvedený kód rovnou <b>vynuluje případný horní a dolní</b> <code>margin</code>, protože hodnota <code>auto</code> se pro <code>margin-top</code>/<code>margin-bottom</code> projeví jako nula. <a href="http://kod.djpw.cz/oubb">Ukázka</a>.</p>
+<p>Uvedený kód rovnou <b>vynuluje případný horní a dolní</b> <code>margin</code>, protože hodnota <code>auto</code> se pro <code>margin-top</code>/<code>margin-bottom</code> projeví jako nula. <a href="https://kod.djpw.cz/oubb">Ukázka</a>.</p>
 
 <h2 id="vychozi-hodnoty">Výchozí hodnoty</h2>
 <p>Hodně elementů má nějakou nenulovou výchozí hodnotu <code>margin</code>u, která může způsobovat problémy ve <b>správném zobrazení</b>. Proto se někdy hodí <a href="/css-reset">resetování a sjednocování</a> napříč prohlížeči.</p>
@@ -86,7 +86,7 @@ ul ul, ol ol</code></td><td><code>margin-top: 0px; margin-bottom: 0px</code></td
 <p><small>(Pozn.: podle <a href="http://www.plavacek.net"><b>Plaváčka</b></a> je tato situace v české CSS hantýrce známá spíš jako <b>slučování okrajů</b>.)</small></p>
 <p>Zajímavá <i>vlastnost</i> <code>margin</code>u nastává v situaci, kdy jsou v kódu za sebou elementy, co mají nenulové horní a dolní odsazení.</p>
 
-<p>Potom se výsledná velikost <i>mezery</i> slije. To funguje tak, že se pro odsazení vybere ta vyšší z dvou hodnot (v případě stejného odsazení zkrátka jen jedna). <a href="http://kod.djpw.cz/vsbb">Samostatná ukázka</a>.</p>
+<p>Potom se výsledná velikost <i>mezery</i> slije. To funguje tak, že se pro odsazení vybere ta vyšší z dvou hodnot (v případě stejného odsazení zkrátka jen jedna). <a href="https://kod.djpw.cz/vsbb">Samostatná ukázka</a>.</p>
 
 <p>Mezera mezi prvním a druhým odstavcem proto není 55 px (15 px + 40 px), ale jen čtyřicet.</p>
 
@@ -114,7 +114,7 @@ ul ul, ol ol</code></td><td><code>margin-top: 0px; margin-bottom: 0px</code></td
 
 <p>Toto chování už je vidět na předchozí ukázce. Oč jde? V případě, že má první element <code>margin-top</code> (horní odsazení) nebo poslední element <code>margin-bottom</code> (spodní odsazení), přenese se toto odsazení na rodiče těchto elementů. Přesněji řečeno se opět <b>slije</b> (velikost odsazení bude rovna vyšší z hodnot <code>margin</code>ů rodiče a jeho prvního potomka).</p>
 
-<p>Jak je vidět na <a href="http://kod.djpw.cz/ysbb">ukázce</a>, zelený element <code>.obal</code> má horní i dolní odsazení i přes <code>margin: 0</code>.</p>
+<p>Jak je vidět na <a href="https://kod.djpw.cz/ysbb">ukázce</a>, zelený element <code>.obal</code> má horní i dolní odsazení i přes <code>margin: 0</code>.</p>
 
 <div class="live">
   <style>
@@ -132,11 +132,11 @@ ul ul, ol ol</code></td><td><code>margin-top: 0px; margin-bottom: 0px</code></td
   </div>
 </div>
 
-<p>Typicky se tento <i>problém</i> může projevovat na začátku stránky, kdy nadpis nebo i obyčejný <code>&lt;div></code> s <code>margin-top</code> stránku odsune. <a href="http://kod.djpw.cz/webb">Ukázka</a>.</p>
+<p>Typicky se tento <i>problém</i> může projevovat na začátku stránky, kdy nadpis nebo i obyčejný <code>&lt;div></code> s <code>margin-top</code> stránku odsune. <a href="https://kod.djpw.cz/webb">Ukázka</a>.</p>
 
 <p>Předávání <code>margin</code>u na rodiče nenastane v situaci, kdy <b>rodičovský element</b> bude mít <code>padding</code> nebo <code>border</code>.</p>
 
-<p>Jiný způsob odstranění tohoto problému je změna <code>overflow</code> na hodnotu <code>auto</code> nebo <code>hidden</code>.  Margin potom zůstane uvnitř. <a href="http://kod.djpw.cz/etdb">Ukázka</a>.</p>
+<p>Jiný způsob odstranění tohoto problému je změna <code>overflow</code> na hodnotu <code>auto</code> nebo <code>hidden</code>.  Margin potom zůstane uvnitř. <a href="https://kod.djpw.cz/etdb">Ukázka</a>.</p>
 
 <h2 id="clear">Vlastnost <code>clear</code> a <code>margin</code></h2>
 
@@ -145,6 +145,6 @@ ul ul, ol ol</code></td><td><code>margin-top: 0px; margin-bottom: 0px</code></td
 <p></p>
 
 <ul>
-  <li><a href="http://kod.djpw.cz/atbb">Ukázka</a></li>
+  <li><a href="https://kod.djpw.cz/atbb">Ukázka</a></li>
   <li><a href="http://diskuse.jakpsatweb.cz/?action=vthread&topic=65135&forum=7">Diskuse</a></li>
 </ul>

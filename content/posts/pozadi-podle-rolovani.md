@@ -107,7 +107,7 @@ format: "html"
 
 <p>Jako obrázek samozřejmě nemusí posloužit pouze CSS gradient, ale může jít o <b>obrázek libovolný</b>.</p>
 
-<p><a href="http://kod.djpw.cz/pevc">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/pevc">Samostatná živá ukázka</a></p>
 
 
 
@@ -115,7 +115,7 @@ format: "html"
 
 <p>Kromě již zmíněných zpráv na Facebooku se podobný efekt může hodit pro zvýraznění čehokoliv během scrollování.</p>
 
-<p><a href="http://kod.djpw.cz/qevc">Ukázka zvýraznění nadpisů</a> při <i>příjezdu</i> elementu do viewportu.</p>
+<p><a href="https://kod.djpw.cz/qevc">Ukázka zvýraznění nadpisů</a> při <i>příjezdu</i> elementu do viewportu.</p>
 
 
 

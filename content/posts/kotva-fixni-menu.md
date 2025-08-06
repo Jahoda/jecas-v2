@@ -9,7 +9,7 @@ tags: ["css", "fixed", "hotova-reseni", "js", "scroll"]
 format: "html"
 ---
 
-<p>Problém je v tom, že prohlížeč odroluje <b>přesně na kotvu</b> a její cíl (třeba nadpis) je tím pádem skryt pod fixním prvkem. <a href="http://kod.djpw.cz/syab">Živá ukázka</a> problému.</p>
+<p>Problém je v tom, že prohlížeč odroluje <b>přesně na kotvu</b> a její cíl (třeba nadpis) je tím pádem skryt pod fixním prvkem. <a href="https://kod.djpw.cz/syab">Živá ukázka</a> problému.</p>
 
 <p><img src="/files/kotva-fixni-menu/kotva-fixni-hlavicka.gif" alt="Fixní hlavička překrývá cíl kotvy" class="border"></p>
 
@@ -17,13 +17,13 @@ format: "html"
 <ol>
   <li>
     <p>
-      Přidat nadpisu, který má kotvu, vrchní <code>padding</code> ve výšce <b>fixního prvku</b> a elementu před stejný rozměr odečíst záporným <code>margin-bottom</code> (<a href="http://kod.djpw.cz/tyab">ukázka</a>).
+      Přidat nadpisu, který má kotvu, vrchní <code>padding</code> ve výšce <b>fixního prvku</b> a elementu před stejný rozměr odečíst záporným <code>margin-bottom</code> (<a href="https://kod.djpw.cz/tyab">ukázka</a>).
     </p>
   </li>
   
   <li>
     <p>
-      Do nadpisu umístit <b>další element</b>, který bude mít ID místo nadpisu. Tento element se <a href="/position#relative">relativně posune</a> o výšku fixní navigace nahoru (<a href="http://kod.djpw.cz/uyab">ukázka</a>).
+      Do nadpisu umístit <b>další element</b>, který bude mít ID místo nadpisu. Tento element se <a href="/position#relative">relativně posune</a> o výšku fixní navigace nahoru (<a href="https://kod.djpw.cz/uyab">ukázka</a>).
     </p>
     <p>
       Pravděpodobně není možné použít <a href="/css-selektory#before-after"><code>::before</code>.</a>
@@ -43,7 +43,7 @@ format: "html"
 
 <p>Co tedy udělá JS? Po kliknutí na odkaz spočítá výšku fixního menu (<code>offsetHeight</code>) a o tuto výšku <a href="/odrolovani">odroluje</a>.</p>
 
-<p><a href="http://kod.djpw.cz/aibb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/aibb">Živá ukázka</a></p>
 
 <pre><code>function kotva(kotva) {
   location.hash = kotva.hash;
@@ -53,5 +53,5 @@ format: "html"
   return false;
 }</code></pre>
 
-<!-- http://kod.djpw.cz/xyab 
+<!-- https://kod.djpw.cz/xyab 
 <p>Poznámka: <b>IE 7</b> a starší vrátí po použítí <code>kotva.getAttribute("href")</code> absolutní adresu, ne jen <code>#kotvu</code>, jak by bylo žádoucí.</p> -->

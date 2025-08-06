@@ -51,13 +51,13 @@ xhr.send();</code></pre>
   xhr.send();
 }</code></pre>
 
-<p><b>Použití</b> pro JSON obsah <code>{url: "http://jecas.cz", nazev: "Je čas"}</code> (<a href="http://kod.djpw.cz/cir">živá ukázka</a>):</p>
+<p><b>Použití</b> pro JSON obsah <code>{url: "http://jecas.cz", nazev: "Je čas"}</code> (<a href="https://kod.djpw.cz/cir">živá ukázka</a>):</p>
 <pre><code>ajax("url-stranky", function(data) {
   alert(data.url); // vypíše „http://jecas.cz“
   alert(data.nazev); // vypíše „Je čas“
 });</code></pre>
 
-<p>Pro zpracovávání <b>prostého textu nebo HTML</b> stačí z funkce <code>ajax</code> odstranit <code>eval</code> a pracovat s textovým řetězcem (<a href="http://kod.djpw.cz/eir">ukázka</a>).</p>
+<p>Pro zpracovávání <b>prostého textu nebo HTML</b> stačí z funkce <code>ajax</code> odstranit <code>eval</code> a pracovat s textovým řetězcem (<a href="https://kod.djpw.cz/eir">ukázka</a>).</p>
 
 <h2 id="jina-domena">AJAX na jinou doménu</h2>
 <p>Kvůli bezpečnosti je možné používat AJAX jen v rámci <b>stejné domény</b>. Tedy z domény <code>example.com</code> se dostaneme na stránku <code>example.com/stranka</code>. Ale už ne na <code><i>jiny.</i>example.com</code>, <code><i>www.</i>example.com</code> (AJAX nefunguje ani na <b>subdoménách</b>) nebo <code><i>jiny-</i>example.com</code>.</p>
@@ -89,7 +89,7 @@ xhr.send();</code></pre>
   document.getElementsByTagName("head")[0].appendChild(s);
 }
 </code></pre>
-<p><a href="http://kod.djpw.cz/elr">Živá ukázka</a> JSONP řešení.</p>
+<p><a href="https://kod.djpw.cz/elr">Živá ukázka</a> JSONP řešení.</p>
 
 <h2 id="indikace">Indikace průběhu</h2>
 <p>Po vyvolání akce, která začne AJAXem stahovat nějaká data, zvlášť v případě, že to bude <b>trvat déle</b>, je vhodné dát uživateli najevo, <i>že se něco děje</i>; to může znázorňovat.</p>

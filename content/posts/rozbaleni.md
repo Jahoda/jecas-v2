@@ -160,7 +160,7 @@ else {
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/yolb">Ukázka plynulé změny výšky</a></li>
+    <li><a href="https://kod.djpw.cz/yolb">Ukázka plynulé změny výšky</a></li>
   </ul>
 </div>
 

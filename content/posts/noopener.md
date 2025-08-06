@@ -16,7 +16,7 @@ format: "html"
 <p>Po návratu z následující stránky otevřené do nového okna se to této stránky přidá <code>#hash</code> do URL:</p>
 
 <div class="live">
-  <p><a href="http://kod.djpw.cz/mxxb-" target="_blank">Odkaz na testovací stránku</a></p>
+  <p><a href="https://kod.djpw.cz/mxxb-" target="_blank">Odkaz na testovací stránku</a></p>
 </div>
 
 
@@ -79,7 +79,7 @@ format: "html"
 
 
 <div class="live">
-  <p><a href="http://kod.djpw.cz/oxxb-" target="_blank" rel="noopener">Odkaz na testovací stránku</a></p>
+  <p><a href="https://kod.djpw.cz/oxxb-" target="_blank" rel="noopener">Odkaz na testovací stránku</a></p>
 </div>
 
 

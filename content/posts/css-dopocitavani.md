@@ -130,7 +130,7 @@ format: "html"
 
 <p>Zajímavé věci se potom dějí u zkratek více vlastností s ohledem na <b>výchozí/zděděné hodnoty</b>.</p>
 
-<p>Třeba následující kód vytvoří (nejspíš) <span style="border: solid">3 pixely tlustý černý rámeček</span>. <a href="http://kod.djpw.cz/kiib">Nevěříte</a>?</p>
+<p>Třeba následující kód vytvoří (nejspíš) <span style="border: solid">3 pixely tlustý černý rámeček</span>. <a href="https://kod.djpw.cz/kiib">Nevěříte</a>?</p>
 
 <pre><code>div {
   border: solid;
@@ -152,7 +152,7 @@ format: "html"
   border: dotted;
 }</code></pre>
 
-<p>Tento <code>&lt;div></code> tedy nebude mít <span style="border: 10px dotted red">10px tečkovaný červený rámeček</span>, ale <span style="border: dotted">3px tečkovaný černý</span>. Všechny konkrétnější deklarace se přepíší – <a href="http://kod.djpw.cz/liib">ukázka</a>.</p>
+<p>Tento <code>&lt;div></code> tedy nebude mít <span style="border: 10px dotted red">10px tečkovaný červený rámeček</span>, ale <span style="border: dotted">3px tečkovaný černý</span>. Všechny konkrétnější deklarace se přepíší – <a href="https://kod.djpw.cz/liib">ukázka</a>.</p>
 
 <p>Poznámka: <b>IE 7</b> a starší neuvedené hodnoty neresetují, ale dědí, takže ukázka v nich bude 10px tlustá, červená a <b>tečkovaná</b> (<code>dotted</code>).</p>
 

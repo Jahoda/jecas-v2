@@ -29,7 +29,7 @@ format: "html"
 
 
 
-<p>A je to. Je potřeba myslet na <a href="/box-model">box model</a>. V případě výchozího okrajového se přičte případný <code>padding</code> nebo <code>border</code> (<a href="http://kod.djpw.cz/iebb">ukázka</a>). Zároveň je nutné nechat dopočítat výšku podle té nové šířky. Takže spíš použít:</p>
+<p>A je to. Je potřeba myslet na <a href="/box-model">box model</a>. V případě výchozího okrajového se přičte případný <code>padding</code> nebo <code>border</code> (<a href="https://kod.djpw.cz/iebb">ukázka</a>). Zároveň je nutné nechat dopočítat výšku podle té nové šířky. Takže spíš použít:</p>
 
 <pre><code>img {
   max-width: 100%; 

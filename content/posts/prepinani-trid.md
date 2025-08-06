@@ -172,8 +172,8 @@ element.className = "vlastni-trida";</code></pre>
 <p>Důležitá otázka je, kterému elementu třídu měnit/prohazovat/přepínat.</p>
 
 <ol>
-  <li>Pokud je tlačítko k přepínání <b>uvnitř elementu</b>, dá se na něj elegantně dostat přes <code>parentNode</code> (<a href="http://kod.djpw.cz/fzr">ukázka</a>).</li>
-  <li>V ostatních případech je většinou nejlepší <b>najít element</b> přes <code>document.getElementById("idecko")</code> (<a href="http://kod.djpw.cz/hzr">ukázka</a>).</li>
+  <li>Pokud je tlačítko k přepínání <b>uvnitř elementu</b>, dá se na něj elegantně dostat přes <code>parentNode</code> (<a href="https://kod.djpw.cz/fzr">ukázka</a>).</li>
+  <li>V ostatních případech je většinou nejlepší <b>najít element</b> přes <code>document.getElementById("idecko")</code> (<a href="https://kod.djpw.cz/hzr">ukázka</a>).</li>
 </ol>
 
 
@@ -184,7 +184,7 @@ element.className = "vlastni-trida";</code></pre>
   <li><code>element.classList.contains("nazevTridy")</code> — zjistí, zda element má <b>nastavenou třídu</b>,</li>
   <li><code>element.classList.add("nazevTridy")</code> — <b>přidá třídu</b>,</li>  
   <li><code>element.classList.remove("nazevTridy")</code> — <b>odebere třídu</b>,</li>  
-  <li><code>element.classList.toggle("nazevTridy")</code> — <b>přepne třídu</b> (<a href="http://kod.djpw.cz/izr">ukázka</a>).</li>    
+  <li><code>element.classList.toggle("nazevTridy")</code> — <b>přepne třídu</b> (<a href="https://kod.djpw.cz/izr">ukázka</a>).</li>    
 </ul>
 
 <p>Testovat podporu <code>classListu</code> lze třeba přes:</p>

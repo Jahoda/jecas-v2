@@ -59,7 +59,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/npqb-">Živá ukázka</a> – změna velikosti písma pomocí <code>@media</code></p>
+<p><a href="https://kod.djpw.cz/npqb-">Živá ukázka</a> – změna velikosti písma pomocí <code>@media</code></p>
 
 <p>Tento postup se vyznačuje několika <b>skoky mezi velikostmi</b>. Teoreticky by šlo nějakým CSS preprocesorem vygenerovat desítky různých variant pro různé šířky, ale v případě více elementů na stránce to může být datově náročné.</p>
 
@@ -81,7 +81,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/ppqb-">Živá ukázka</a> – viewport jednotky pro písmo</p>
+<p><a href="https://kod.djpw.cz/ppqb-">Živá ukázka</a> – viewport jednotky pro písmo</p>
 
 
 <p>Jednotku <code>vw</code> se nabízí zkombinovat s <code>@media</code> pravidly, aby se velikost nedostala do nesmyslně malých/velkých hodnot.</p>
@@ -106,7 +106,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/upqb-">Živá ukázka</a> – omezení hranic, kdy se velikost písma přizpůsobuje šířce</p>
+<p><a href="https://kod.djpw.cz/upqb-">Živá ukázka</a> – omezení hranic, kdy se velikost písma přizpůsobuje šířce</p>
 
 
 <h3 id="sirka-elementu">Šířka elementu, ne viewportu</h3>
@@ -156,7 +156,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/ypqb-">Živá ukázka</a> – změna velikosti písma podle šířky v JavaScriptu</p>
+<p><a href="https://kod.djpw.cz/ypqb-">Živá ukázka</a> – změna velikosti písma podle šířky v JavaScriptu</p>
 
 <p>Největší problém JS řešení bude v tom, že do jeho vykonání bude mít písmo <b>jinou velikost</b>. To nejspíš způsobí nepěkné <b>poskočení</b> po přepočtu.</p>
 

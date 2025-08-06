@@ -75,6 +75,6 @@ format: "html"
 
 
 <ul>
-  <li><a href="http://kod.djpw.cz/aedc">Živá ukázka</a> – různé velikosti </li>
-  <li><a href="http://kod.djpw.cz/cedc">Živá ukázka</a></li>
+  <li><a href="https://kod.djpw.cz/aedc">Živá ukázka</a> – různé velikosti </li>
+  <li><a href="https://kod.djpw.cz/cedc">Živá ukázka</a></li>
 </ul>

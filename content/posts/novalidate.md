@@ -27,7 +27,7 @@ format: "html"
 <pre><code>&lt;form novalidate>
 &lt;/form></code></pre>
 
-<p><a href="http://kod.djpw.cz/bzjb">Živá ukázka</a> – test formuláře s/bez výchozí validace</p>
+<p><a href="https://kod.djpw.cz/bzjb">Živá ukázka</a> – test formuláře s/bez výchozí validace</p>
 
 
 <h2 id="vypnout">Proč validaci vypnout</h2>

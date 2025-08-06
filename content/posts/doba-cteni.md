@@ -139,7 +139,7 @@ echo $minut;
 
 
 <div class="external-content">
-  <p><a href="http://kod.djpw.cz/fbqb">Živá ukázka</a> – průběžné zobrazování zbývajícího času</p>
+  <p><a href="https://kod.djpw.cz/fbqb">Živá ukázka</a> – průběžné zobrazování zbývajícího času</p>
 </div>
 
 

@@ -18,17 +18,17 @@ format: "html"
 <dl>
   <dt id="initial"><code>initial</code></dt>
   <dd>
-    <p>Vyresetuje úplně všechno včetně hodnot z <b>uživatelských stylů</b> nebo výchozích stylů prohlížeče. <a href="http://kod.djpw.cz/iox">Ukázka</a> — text nebude červený ani modrý, ale černý.</p>
+    <p>Vyresetuje úplně všechno včetně hodnot z <b>uživatelských stylů</b> nebo výchozích stylů prohlížeče. <a href="https://kod.djpw.cz/iox">Ukázka</a> — text nebude červený ani modrý, ale černý.</p>
   </dd>
   
   <dt id="inherit"><code>inherit</code></dt>
   <dd>
-    <p>Vlastnost se zdědí. <a href="http://kod.djpw.cz/jox">Ukázka</a> — text nebude modrý, ale červený (zdědí hodnotu od rodiče).</p>
+    <p>Vlastnost se zdědí. <a href="https://kod.djpw.cz/jox">Ukázka</a> — text nebude modrý, ale červený (zdědí hodnotu od rodiče).</p>
   </dd>
   
   <dt id="unset"><code>unset</code></dt>
   <dd>
-    <p>V případě, že existuje hodnota k dědění, chová se jako <code>inherit</code>, jinak jako <code>initial</code>. <a href="http://kod.djpw.cz/kox">Ukázka</a>.</p>
+    <p>V případě, že existuje hodnota k dědění, chová se jako <code>inherit</code>, jinak jako <code>initial</code>. <a href="https://kod.djpw.cz/kox">Ukázka</a>.</p>
   </dd>
 </dl>
 
@@ -41,4 +41,4 @@ format: "html"
 &lt;/style>
 &lt;p id="text">Text&lt;/p></code></pre>
 
-<p>Protože ID přebije obyčejný kontext. Podobně to dopadne i s <code>!important</code> (<a href="http://kod.djpw.cz/nox">ukázka</a>).</p>
+<p>Protože ID přebije obyčejný kontext. Podobně to dopadne i s <code>!important</code> (<a href="https://kod.djpw.cz/nox">ukázka</a>).</p>

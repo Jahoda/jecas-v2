@@ -26,9 +26,9 @@ format: "html"
 <p>První myšlenka pro animovaný přesun tak může znít, že se spočítá cílové umístění, element se tam pouze visuálně přemístí transformací <code>translate</code> (nebo hůře <a href="/position#absolute">absolutním posicováním</a>) a po dokončení přesunu se provede skutečné přemístění v <a href="/dom">DOMu</a> přes <code>appendChild</code> a transformace se zruší.</p>
 
 
-<p><a href="http://kod.djpw.cz/orsb">Živá ukázka</a> – přesun transformací a přehození elementu</p>
+<p><a href="https://kod.djpw.cz/orsb">Živá ukázka</a> – přesun transformací a přehození elementu</p>
 
-<p><a href="http://kod.djpw.cz/lhdb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/lhdb">Živá ukázka</a></p>
 
 
 

@@ -337,7 +337,7 @@ input[type=number] {
 </p>
 </div>
 
-<p><a href="http://kod.djpw.cz/uymb">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/uymb">Samostatná živá ukázka</a></p>
 
 <p>Pro <b>změnu hodnoty</b> tak není nutné rozevírat nabídku, ale jde přímo upravovat hodnotu po stanoveném kroku. Velkou změnu počtu jde zajistit přímo přepsáním hodnoty, která se z tohoto důvodu po vybrání označí, aby šla rovnou přepsat.</p>
 

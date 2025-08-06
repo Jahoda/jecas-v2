@@ -294,4 +294,4 @@ format: "html"
   <li><a href="http://ie.microsoft.com/testdrive/graphics/cssgradientbackgroundmaker/">CSS Gradient Background Maker</a></li>
 </ul>
 
-<p>Nutno přiznat, že výsledný kód plný prefixů není <b>úplně elegantní</b> (<a href="http://kod.djpw.cz/fncb">ukázka</a>).</p>
+<p>Nutno přiznat, že výsledný kód plný prefixů není <b>úplně elegantní</b> (<a href="https://kod.djpw.cz/fncb">ukázka</a>).</p>

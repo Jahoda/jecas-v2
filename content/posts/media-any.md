@@ -55,7 +55,7 @@ format: "html"
 </div>
 
 
-<p><a href="http://kod.djpw.cz/rypb">Samostatná živá ukázka</a> – rozlišení dotykového zařízení a ovládání myší</p>
+<p><a href="https://kod.djpw.cz/rypb">Samostatná živá ukázka</a> – rozlišení dotykového zařízení a ovládání myší</p>
 
 
 <h2 id="zapis">Zápis</h2>
@@ -186,16 +186,16 @@ format: "html"
 <p id="hoverTest"><code>Podporuje hover</code></p>
 </div>
 
-<p><a href="http://kod.djpw.cz/bzpb">Samostatná živá ukázka</a> – detekce podpory dotyků a hoveru v JavaScriptu</p>
+<p><a href="https://kod.djpw.cz/bzpb">Samostatná živá ukázka</a> – detekce podpory dotyků a hoveru v JavaScriptu</p>
 
 <p>Hlavní problém této detekce je v tom, že se provede až v okamžiku, když návštěvník <b>pohne myší</b>.</p>
 
-<!-- stará ukázka: http://kod.djpw.cz/azpb -->
+<!-- stará ukázka: https://kod.djpw.cz/azpb -->
 
 <!--
 <p>Mohlo by se zdát, že by šla použít událost <code>mouseenter</code>. I tu ale dotyková zařízení dokáží vyvolat.</p>
 
-<p><a href="http://kod.djpw.cz/rzpb">Živá ukázka</a> – detekce hoveru pomocí <code>mouseenter</code></p>
+<p><a href="https://kod.djpw.cz/rzpb">Živá ukázka</a> – detekce hoveru pomocí <code>mouseenter</code></p>
 -->
 
 

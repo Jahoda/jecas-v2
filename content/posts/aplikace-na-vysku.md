@@ -9,7 +9,7 @@ tags: []
 format: "html"
 ---
 
-<a href="http://kod.djpw.cz/hbic-">Živá ukázka – výška viewportu</a>
+<a href="https://kod.djpw.cz/hbic-">Živá ukázka – výška viewportu</a>
 
 <uli>
   <li>Vzhůru dolů: <a href="http://www.vzhurudolu.cz/prirucka/viewport-mobily">Tři viewporty na mobilních zařízeních</a></li>

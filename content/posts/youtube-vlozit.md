@@ -190,4 +190,4 @@ format: "html"
 
 <pre><code>/https:\/\/www\.youtube\.com\/watch\?v=(<b>[A-z0-9_-]*</b>)/</code></pre>
 
-<p><a href="http://kod.djpw.cz/hfob">Živá ukázka v JavaScriptu</a></p>
+<p><a href="https://kod.djpw.cz/hfob">Živá ukázka v JavaScriptu</a></p>

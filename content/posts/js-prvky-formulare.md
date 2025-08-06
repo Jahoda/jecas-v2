@@ -51,7 +51,7 @@ var tlacitko = jmenoFormulare.<b>jmenoTlacitka</b>;</code></pre>
   </li>
 </ol>
 
-<p><a href="http://kod.djpw.cz/omcb">Samostatná ukázka</a> nastavení barev formuláři při přístupu přes hodnoty atributů <code>name</code>.</p>
+<p><a href="https://kod.djpw.cz/omcb">Samostatná ukázka</a> nastavení barev formuláři při přístupu přes hodnoty atributů <code>name</code>.</p>
 
 <h3 id="jiny-zpusob">Alternativní způsob</h3>
 
@@ -123,7 +123,7 @@ var ciselnaHodnota = parseInt(policko.value);</code></pre>
 }</code></pre>
 
 
-<p><a href="http://kod.djpw.cz/ancb">Živá ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/ancb">Živá ukázka</a>.</p>
 
 <h3 id="onclick">Událost <code>onclick</code></h3>
 

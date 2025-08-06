@@ -11,7 +11,7 @@ format: "html"
 
 <p>Vlastnost <code>tab-size</code> umožňuje čistě z CSS změnit šířku (<b>počet mezer</b>), kterou bude zabírat <b>tabulátor</b>.</p>
 
-<p>Tato vlastnost má smysl zejména u <b>zdrojových kódů</b> (elementu <code>&lt;pre></code> nebo nečeho s <code>white-space: pre</code>). Pro maximální funkčnost napříč prohlížeči je nutné používat <a href="/css-prefixy">prefixy</a> pro <b>Operu</b> a <b>Firefox</b> (<b>Chrome</b> umí <code>tab-size</code> bez prefixu a <b>IE</b> (ani <a href="/ie11">IE 11</a>) si <i>neškrtá</i>). <a href="http://kod.djpw.cz/ips">Samostatná ukázka</a>.</p>
+<p>Tato vlastnost má smysl zejména u <b>zdrojových kódů</b> (elementu <code>&lt;pre></code> nebo nečeho s <code>white-space: pre</code>). Pro maximální funkčnost napříč prohlížeči je nutné používat <a href="/css-prefixy">prefixy</a> pro <b>Operu</b> a <b>Firefox</b> (<b>Chrome</b> umí <code>tab-size</code> bez prefixu a <b>IE</b> (ani <a href="/ie11">IE 11</a>) si <i>neškrtá</i>). <a href="https://kod.djpw.cz/ips">Samostatná ukázka</a>.</p>
 
 <div class="live">
   <style>

@@ -15,7 +15,7 @@ format: "html"
   <li><a href="/sublime-text">Submile Text</a>,</li>
   <li>PsPad,</li>
   <li>NetBeans</li>
-  <li>webové služby pro psaní sdílení kódu (jako např. <a href="http://kod.djpw.cz">Živá ukázka</a>).</li>
+  <li>webové služby pro psaní sdílení kódu (jako např. <a href="https://kod.djpw.cz">Živá ukázka</a>).</li>
 </ul>
 
 <p>… už píšu zásadně s ním. Některé CSS vlastnosti se tedy pro mě <i>přejmenovaly</i>.</p>

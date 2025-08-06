@@ -111,7 +111,7 @@ var styl = document.createElement("style");
 styl.innerHTML = css;
 document.getElementsByTagName("head")[0].appendChild(styl);</code></pre>
 
-<p><a href="http://kod.djpw.cz/kcsb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/kcsb">Ukázka</a></p>
 
 
 
@@ -130,7 +130,7 @@ document.getElementsByTagName('head')[0].appendChild(div.childNodes[1]);</code><
 
 
 
-<p><a href="http://kod.djpw.cz/lcsb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/lcsb">Ukázka</a></p>
 
 
 <p>Tento postup jde použít třeba pro <a href="/css-vyhledavani#vyhledavani">vyhledávání pomocí CSS selektorů</a>.</p>

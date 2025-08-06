@@ -66,7 +66,7 @@ format: "html"
     
     <p>Funguje zatím pouze v jádru Blink (<b>Chrome</b>, <b>Opera</b>). Obrázek se jako pozadí písmen objeví při zprůhlednění barvy (<code>color</code>) nebo po zprůhlednění vlastností <code>text-fill-color</code>.</p>
     
-    <p><a href="http://kod.djpw.cz/anhb">Živá ukázka</a></p>
+    <p><a href="https://kod.djpw.cz/anhb">Živá ukázka</a></p>
     
     <p>Obrázek, jak to přbližně vypadá v podporujícím prohlížeči.</p>
     

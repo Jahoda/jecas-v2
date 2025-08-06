@@ -98,8 +98,8 @@ function zobrazitLimit(el) {
 </script>
 </div>
 
-<p><a href="http://kod.djpw.cz/fwjb">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/fwjb">Samostatná živá ukázka</a></p>
 
 <p>U jednořádkových polí by šlo použít něco jako <a href="/progress">progress</a> bar.</p>
 
-<p><a href="http://kod.djpw.cz/gwjb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/gwjb">Živá ukázka</a></p>

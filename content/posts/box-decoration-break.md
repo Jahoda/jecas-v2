@@ -67,7 +67,7 @@ format: "html"
   <span class="dekorace dekorace-clone">Text<br> s <i>dekorací</i> se zalomí do několika řádků.</span>
 </div>
 
-<p><a href="http://kod.djpw.cz/hlgb">Samostatná ukázka</a> (<a href="http://kod.djpw.cz/mlgb">ukázka s obrázkovým gradientem</a> – přechod začne odznovu na každém řádku)</p>
+<p><a href="https://kod.djpw.cz/hlgb">Samostatná ukázka</a> (<a href="https://kod.djpw.cz/mlgb">ukázka s obrázkovým gradientem</a> – přechod začne odznovu na každém řádku)</p>
 
 <p>V ideálním případě by se měla výše uvedená ukázka zobrazovat takto:</p>
 
@@ -106,7 +106,7 @@ format: "html"
   </div>    
 </div>
 
-<p><a href="http://kod.djpw.cz/ilgb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ilgb">Samostatná ukázka</a></p>
 
 <p>Vypadat by to mělo následovně.</p>
 
@@ -122,4 +122,4 @@ format: "html"
 </ul>
 
 
-<!-- obrázek: http://kod.djpw.cz/jlgb -->
+<!-- obrázek: https://kod.djpw.cz/jlgb -->

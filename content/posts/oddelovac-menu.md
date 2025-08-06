@@ -174,7 +174,7 @@ format: "html"
 
 <h3 id="bez-first-child">Řešení bez <code>:first-child</code></h3>
 
-<p>V dávných dobách, kdy se ještě ladily weby pro <b>Internet Explorer 6</b>, který selektor <code>:first-child</code> neznal, šlo skrýt první oddělovač záporným <a href="/margin"><code>margin</code>em</a> v šířce rámečku a <code>oveflow: hidden</code> – <a href="http://kod.djpw.cz/afqb">ukázka</a>.</p>
+<p>V dávných dobách, kdy se ještě ladily weby pro <b>Internet Explorer 6</b>, který selektor <code>:first-child</code> neznal, šlo skrýt první oddělovač záporným <a href="/margin"><code>margin</code>em</a> v šířce rámečku a <code>oveflow: hidden</code> – <a href="https://kod.djpw.cz/afqb">ukázka</a>.</p>
 
 <p>Tento postup funguje dodnes, ale může být špatně srozumitelný.</p>
 

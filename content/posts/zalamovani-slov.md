@@ -128,7 +128,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/yahc">Živá ukázka</a> – zalamování dlouhých slov v <code>inline-block</code></li>
+    <li><a href="https://kod.djpw.cz/yahc">Živá ukázka</a> – zalamování dlouhých slov v <code>inline-block</code></li>
   </ul>
 </div>
 

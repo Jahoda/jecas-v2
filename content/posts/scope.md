@@ -34,7 +34,7 @@ var funkce = function() {
 
 
 
-<!--<p>Kromě funkcí vytvoří nové lokální scope i <a href="/js-cykly">cykly</a> (<a href="http://kod.djpw.cz/otbb">ukázka</a>).</p>-->
+<!--<p>Kromě funkcí vytvoří nové lokální scope i <a href="/js-cykly">cykly</a> (<a href="https://kod.djpw.cz/otbb">ukázka</a>).</p>-->
 
 
 
@@ -51,7 +51,7 @@ var funkce = function() {
 })();
 </code></pre>
 
-<p>To právě vytvoří <b>nepojmenovanou funkci</b>, která se rovnou zavolá, ale všechen kód se bude odehrávat ve <b>vlastním privátním scope</b>. Proto se na <a href="http://kod.djpw.cz/ptbb">ukázce</a> proměnná v globálním <i>rámci</i> nepřenastaví na jinou hodnotu.</p>
+<p>To právě vytvoří <b>nepojmenovanou funkci</b>, která se rovnou zavolá, ale všechen kód se bude odehrávat ve <b>vlastním privátním scope</b>. Proto se na <a href="https://kod.djpw.cz/ptbb">ukázce</a> proměnná v globálním <i>rámci</i> nepřenastaví na jinou hodnotu.</p>
 
 
 
@@ -80,7 +80,7 @@ objekt.dalsiFunkce = function() {
   // element, na který bylo kliknuto je v this
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/qtbb">Ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/qtbb">Ukázka</a>.</p>
 
 
 <p>Pozor, pokud v této funkci vytvoříme funkci další (zanoříme další scope), v <code>this</code> bude už něco jiného.</p>
@@ -138,7 +138,7 @@ for (var i = 0; i &lt; odkazy.length; i++) {
   }
 }</code></pre>
 
-<p>Uvedený kód možná trochu překvapivě u všech odkazů vypíše stejné číslo – <b>index po posledním průchodu cyklem</b>. <a href="http://kod.djpw.cz/hegb">Živá ukázka</a></p>
+<p>Uvedený kód možná trochu překvapivě u všech odkazů vypíše stejné číslo – <b>index po posledním průchodu cyklem</b>. <a href="https://kod.djpw.cz/hegb">Živá ukázka</a></p>
 
 <p>Řešení je vytvořit další <i>scope</i>.</p>
 
@@ -148,4 +148,4 @@ for (var i = 0; i &lt; odkazy.length; i++) {
   })(i)
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/jegb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jegb">Živá ukázka</a></p>

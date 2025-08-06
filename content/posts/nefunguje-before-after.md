@@ -64,7 +64,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/afmb">Test pseudo-elementů u různých značek</a></li>
+    <li><a href="https://kod.djpw.cz/afmb">Test pseudo-elementů u různých značek</a></li>
   </ul>
 </div>
 

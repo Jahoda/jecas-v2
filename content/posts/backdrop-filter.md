@@ -33,7 +33,7 @@ format: "html"
   </div>
 </div>
 
-<p><a href="http://kod.djpw.cz/icsc">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/icsc">Samostatná živá ukázka</a></p>
 
 
 

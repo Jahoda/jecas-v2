@@ -80,8 +80,8 @@ format: "html"
 }</code></pre>
     
     <ul>
-      <li><a href="http://kod.djpw.cz/vreb">Živá ukázka obtékáním</a></li>
-      <li><a href="http://kod.djpw.cz/wreb">Živá ukázka posicováním</a></li>
+      <li><a href="https://kod.djpw.cz/vreb">Živá ukázka obtékáním</a></li>
+      <li><a href="https://kod.djpw.cz/wreb">Živá ukázka posicováním</a></li>
     </ul>    
   </li>
   
@@ -92,13 +92,13 @@ format: "html"
   content: " (povinné)";
 }</code></pre>
     
-    <p><a href="http://kod.djpw.cz/xreb">Živá ukázka</a></p>
+    <p><a href="https://kod.djpw.cz/xreb">Živá ukázka</a></p>
   </li>
   
   <li>
     <p>Použít JavaScript, který projde všechna pole a prázdný element tam <b>přidá</b>. Zbývající postup je stejný.</p>
     
-    <p><a href="http://kod.djpw.cz/jreb">Živá ukázka</a> (využívá <a href="/queryselector"><code>querySelectorAll</code></a>)</p>
+    <p><a href="https://kod.djpw.cz/jreb">Živá ukázka</a> (využívá <a href="/queryselector"><code>querySelectorAll</code></a>)</p>
   </li>
 </ol>
 

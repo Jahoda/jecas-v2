@@ -111,4 +111,4 @@ Tooltip.init();
 </script>
 </div>
 
-<p><a href="http://kod.djpw.cz/tbeb">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/tbeb">Samostatná živá ukázka</a></p>

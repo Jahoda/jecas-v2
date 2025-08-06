@@ -32,7 +32,7 @@ format: "html"
 <p>Nic ale nebrání je ručně zapsat.</p>
   <p>Jedná se o značky jako <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code> nebo <code>&lt;tbody&gt;</code>.</p>
     
-<p>Tyto elementy se vytvářejí a ukončují rovněž <b>na základě kontextu</b>. Pokud zapíšeme <a href="http://kod.djpw.cz/vgc">následující kód</a> (v <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fkod.djpw.cz%2Fvgc-&charset=%28detect+automatically%29&doctype=HTML5&group=0">HTML 5 validní</a>).</p>
+<p>Tyto elementy se vytvářejí a ukončují rovněž <b>na základě kontextu</b>. Pokud zapíšeme <a href="https://kod.djpw.cz/vgc">následující kód</a> (v <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fkod.djpw.cz%2Fvgc-&charset=%28detect+automatically%29&doctype=HTML5&group=0">HTML 5 validní</a>).</p>
     <pre><code>&lt;title&gt;Titulek stránky&lt;/title&gt;
 &lt;table&gt;
   &lt;tr&gt;

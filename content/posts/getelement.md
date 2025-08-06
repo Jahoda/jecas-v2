@@ -69,7 +69,7 @@ for (var i = 0; i &lt; znacky.length; i++) {
                       .getElementsByTagName("div")[1]
                       .getElementsByClassName("zluty")[0];</code></pre>
 
-<p><a href="http://kod.djpw.cz/socb">Ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/socb">Ukázka</a>.</p>
 
 <p>Zde už je elegance <code>querySelector</code>u jasně patrná. Ekvivalentní kód s jeho využitím by mohl být:</p>
 
@@ -77,7 +77,7 @@ for (var i = 0; i &lt; znacky.length; i++) {
   "#idecko > div:nth-child(2) > .zluty:first-child"
 );</code></pre>
 
-<p><a href="http://kod.djpw.cz/tocb">Ukázka</a>. I když to vyžaduje znalost pokročilejších CSS selektorů. A podpora napříč prohlížeči je limitována nejen podporou <code>querySelectoru</code> (<b>IE 8+</b>), ale i <a href="/css-selektory#n-ty-potomek">selektoru n-tého potomka</a> (<b>IE 9</b> a novější).</p>
+<p><a href="https://kod.djpw.cz/tocb">Ukázka</a>. I když to vyžaduje znalost pokročilejších CSS selektorů. A podpora napříč prohlížeči je limitována nejen podporou <code>querySelectoru</code> (<b>IE 8+</b>), ale i <a href="/css-selektory#n-ty-potomek">selektoru n-tého potomka</a> (<b>IE 9</b> a novější).</p>
 
 <p>Ještě větší rozdíl je u komplikovanějších selektorů jako třeba přímý potomek (<code>.rodic > .potomek</code>), selektor sourozence (<code>.prvni + .druhy</code>) a podobně. Zde už je nutné bez <code>querySelector</code>u testovat <code>parentNode</code>, <code>previousSibling</code>, <code>nextSibling</code>, regulárními výrazy <code>className</code> u komplikovanějších <b>atributových selektorů</b> a podobně.</p>
 

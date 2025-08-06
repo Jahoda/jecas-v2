@@ -72,7 +72,7 @@ format: "html"
 
   <div class="live sticky-element">Co takhle? Funkční sticky element.</div>
   
-  <p><a href="http://kod.djpw.cz/bgvc">Samostatná živá ukázka</a> – nejjednodušší sticky element</p>
+  <p><a href="https://kod.djpw.cz/bgvc">Samostatná živá ukázka</a> – nejjednodušší sticky element</p>
 
   <p>Trik je v tom, že <i>sticky</i> element si <b>automaticky určí svého rodiče jako oblast pro přilepování</b>.</p>
 
@@ -96,13 +96,13 @@ format: "html"
   <p>Toto chování se hodí k tomu, že se <i>sticky</i> element může zase odlepit, když celý jeho rodič (sticky kontejner) opustí viewport.</p>
 </div>
 
-<p><a href="http://kod.djpw.cz/kfvc">Živá ukázka</a> – přichytávání nadpisů</p>
+<p><a href="https://kod.djpw.cz/kfvc">Živá ukázka</a> – přichytávání nadpisů</p>
 
 <h3 id="umisteni">Umístění sticky elementu</h3>
 
 <p>Obsah není nutné přichytávat jen nahoru (<code>top: 0</code>). Není problém použít <code>bottom: 0</code>:</p>
 
-<p><a href="http://kod.djpw.cz/lfvc">Živá ukázka</a> – přichytávání patičky</p>
+<p><a href="https://kod.djpw.cz/lfvc">Živá ukázka</a> – přichytávání patičky</p>
   
 <p>V případě vodorovného scrollování se hodí i vlastnosti <code>right</code> nebo <code>left</code>.</p>
 
@@ -132,7 +132,7 @@ format: "html"
 <p>Podobné věci jde udělat pouze v CSS.</p>
 
 
-<p><a href="http://kod.djpw.cz/agvc">Živá ukázka</a> – přichytávací fixní menu</p>
+<p><a href="https://kod.djpw.cz/agvc">Živá ukázka</a> – přichytávací fixní menu</p>
 
 
 
@@ -158,7 +158,7 @@ format: "html"
 
 <p>Pro <b>zafixování řádku</b> nahoru tedy stačí jeho buňkám nastavit <code>position: sticky</code> a <code>top: 0</code>:</p>
 
-<p><a href="http://kod.djpw.cz/ofvc">Živá ukázka</a> – fixní záhlaví tabulky</p>
+<p><a href="https://kod.djpw.cz/ofvc">Živá ukázka</a> – fixní záhlaví tabulky</p>
 
 <h3 id="fixni-sloupec">Fixní sloupec</h3>
 
@@ -168,7 +168,7 @@ format: "html"
 
 <p>Aby celá stránka <b>neměla posuvník</b>, je třeba ještě obalit tabulku do něčeho s <code>overflow-x: auto</code>:</p>
 
-<p><a href="http://kod.djpw.cz/vfvc">Živá ukázka</a> – fixní sloupec tabulky</p>
+<p><a href="https://kod.djpw.cz/vfvc">Živá ukázka</a> – fixní sloupec tabulky</p>
 
 
 
@@ -187,7 +187,7 @@ format: "html"
 
 <p>Nevýhoda tohoto postupu je v tom, že jsou na stránce dva svislé posuvníky:</p>
 
-<p><a href="http://kod.djpw.cz/ufvc">Živá ukázka</a> – tabulka s fixní řádkem i sloupcem.</p>
+<p><a href="https://kod.djpw.cz/ufvc">Živá ukázka</a> – tabulka s fixní řádkem i sloupcem.</p>
 
 <h2 id="odkazy">Odkazy jinam</h2>
 

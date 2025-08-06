@@ -73,9 +73,9 @@ format: "html"
 
 
 
-<p>To je popis situace, kdy se ani dané písmo nepoužívá a nestahuje. Už jen samotné stažení toho CSS má tento negativní dopad – <a href="http://kod.djpw.cz/qofd">ukázka</a>.</p>
+<p>To je popis situace, kdy se ani dané písmo nepoužívá a nestahuje. Už jen samotné stažení toho CSS má tento negativní dopad – <a href="https://kod.djpw.cz/qofd">ukázka</a>.</p>
 
-<p>Potom podobnou dobu může zabrat samotné stažení fontu – <a href="http://kod.djpw.cz/oofd">ukázka</a></p>
+<p>Potom podobnou dobu může zabrat samotné stažení fontu – <a href="https://kod.djpw.cz/oofd">ukázka</a></p>
 
 <p>To přináší ještě další risiko v případě výpadku nebo zpomalení dané služby, že bude prohlížeč čekat s vykreslením, až tento styl stáhne.</p>
 
@@ -301,11 +301,11 @@ font.load().then(function() {
 
 
 
-<p>Výsledkem je trochu méně poskakování – <a href="http://kod.djpw.cz/xofd">ukázka</a>.</p>
+<p>Výsledkem je trochu méně poskakování – <a href="https://kod.djpw.cz/xofd">ukázka</a>.</p>
 
 <p>Existuje nástroj <a href="https://deploy-preview-15--upbeat-shirley-608546.netlify.app/perfect-ish-font-fallback/?font=Montserrat">Automatic font matching</a>, který dokáže k některým fontům tyto vlastnosti stanovit automaticky.</p>
 
-<p>Případně si to jde nastavit ručně a zkontrolovat, že se obě písma přibližně překrývají – <a href="http://kod.djpw.cz/yofd">ukázka</a>.</p>
+<p>Případně si to jde nastavit ručně a zkontrolovat, že se obě písma přibližně překrývají – <a href="https://kod.djpw.cz/yofd">ukázka</a>.</p>
 
 
 <p>Bohužel to je pořád jen zmírnění dopadů než <b>opravdové vyřešení problému</b>.</p>
@@ -352,7 +352,7 @@ font.load().then(function() {
     font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/pofd">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/pofd">Ukázka</a></p>
 
 <p>Pro aktuální styl se doporučuji podívat třeba na <a href="https://tailwindcss.com/docs/font-family">Tailwind</a>.</p>
 

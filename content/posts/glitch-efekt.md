@@ -9,7 +9,7 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/qsfb
+https://kod.djpw.cz/qsfb
 
 http://css-tricks.com/glitch-effect-text-images-svg/
 

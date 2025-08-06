@@ -128,7 +128,7 @@ select {
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/jzwb">Živá ukázka</a> – zabránění automatickému zoomu políčka</li>
+    <li><a href="https://kod.djpw.cz/jzwb">Živá ukázka</a> – zabránění automatickému zoomu políčka</li>
   </ul>
 </div>
 

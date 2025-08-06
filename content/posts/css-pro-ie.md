@@ -98,7 +98,7 @@ format: "html"
 <h3 id="selektorove">IE 9, IE 10 — Selektorové hacky</h3>
 <p>Novější Internet Explorery lze odlišit na základě znalosti pokročilejších <a href="/css-selektory">CSS selektorů</a>.</p>
 
-<p>Hezky se k tomu dá zneužít třeba <a href="/css-selektory#korenovy"><code>:root</code></a>, který funguje až od <b>IE 9</b>. Ve starších prohlížečích se proto daná vlastnost neprojeví (<a href="http://kod.djpw.cz/exab">ukázka</a>).</p>
+<p>Hezky se k tomu dá zneužít třeba <a href="/css-selektory#korenovy"><code>:root</code></a>, který funguje až od <b>IE 9</b>. Ve starších prohlížečích se proto daná vlastnost neprojeví (<a href="https://kod.djpw.cz/exab">ukázka</a>).</p>
 
 <pre><code>element {color: blue} /* vlastnosti pro IE 8 a starší */
 :root element {color: red} /* IE 9+ */</code></pre>
@@ -112,9 +112,9 @@ format: "html"
 
 
 
-<p>Pro <b>IE 10</b> jde zase zneužít třeba selektor <a href="/css-selektory#required"><code>:required</code></a>, který ve starších prohlížečích nefunguje (<a href="http://kod.djpw.cz/dxab">ukázka</a>).</p>
+<p>Pro <b>IE 10</b> jde zase zneužít třeba selektor <a href="/css-selektory#required"><code>:required</code></a>, který ve starších prohlížečích nefunguje (<a href="https://kod.djpw.cz/dxab">ukázka</a>).</p>
 
-<p>Jelikož v <b>IE 8</b> tyto selektory ještě nefungují, je možné vytvořit sestavu, co nabídne pro IE 7, 8, 9 a 10 různou podobu (<a href="http://kod.djpw.cz/gxab">ukázka</a>).</p>
+<p>Jelikož v <b>IE 8</b> tyto selektory ještě nefungují, je možné vytvořit sestavu, co nabídne pro IE 7, 8, 9 a 10 různou podobu (<a href="https://kod.djpw.cz/gxab">ukázka</a>).</p>
 
 <pre><code>element {color: red /* IE 8 */; =color: blue /* IE 7 */}
 :root element {color: green /* IE 9 */}
@@ -128,7 +128,7 @@ input.hack:required + element {color: yellow /* IE 10+ */}</code></pre>
 
 
 <h3 id="rovnitko">IE 7 — rovnítkový hack</h3>
-<p>V případě, že nějaká vlastnost má platit jen v <b>IE 7</b>, není nic jednodušší než před ním připsat rovná se (<a href="http://kod.djpw.cz/zwab">ukázka</a>).</p>
+<p>V případě, že nějaká vlastnost má platit jen v <b>IE 7</b>, není nic jednodušší než před ním připsat rovná se (<a href="https://kod.djpw.cz/zwab">ukázka</a>).</p>
 <pre><code>element {<b>=</b>color: red}</code></pre>
 
 
@@ -259,7 +259,7 @@ elseif (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 7') !== false) // IE 7</code><
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/fykc-">Živá ukázka</a> – selektory závislé na user-agentovi</li>
+    <li><a href="https://kod.djpw.cz/fykc-">Živá ukázka</a> – selektory závislé na user-agentovi</li>
   </ul>
 </div>
 

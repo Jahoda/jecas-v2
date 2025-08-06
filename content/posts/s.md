@@ -31,7 +31,7 @@ format: "html"
   Fytopuf je nyní jen za 800 Kč.
 &lt;/p></code></pre>
 
-<p><a href="http://kod.djpw.cz/rahb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/rahb">Ukázka</a></p>
 
 
 
@@ -85,11 +85,11 @@ format: "html"
 </style>
 <p class="sikme"><s>Fytopuf stojí 900 Kč</s></p></div>
 
-<p><a href="http://kod.djpw.cz/sahb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/sahb">Živá ukázka</a></p>
 
 <p>Když kromě <code>:before</code> použijeme i <code>:after</code>, dá se snadno docílit <b>dvojitého škrtnutí</b>.</p>
 
-<p><a href="http://kod.djpw.cz/tahb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/tahb">Živá ukázka</a></p>
 
 
 <h3 id="starsi-prohlizece">Starší prohlížeče</h3>

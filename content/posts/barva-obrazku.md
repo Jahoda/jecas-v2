@@ -52,7 +52,7 @@ format: "html"
     }
   </script>
 </div>
-<p><a href="http://kod.djpw.cz/imvb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/imvb">Živá ukázka</a></p>
 
 
 <h3 id="dominantni">Dominantní barva</h3>

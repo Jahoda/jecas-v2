@@ -57,7 +57,7 @@ format: "html"
     
     <p>Týká se to kontroly ve <b>formulářových polích</b> (<a href="/input"><code>&lt;input></code></a> a <a href="/textarea"><code>&lt;textarea></code></a>) nebo <a href="/uprava-stranky-designmode"><code>contenteditable</code></a>.</p>
     
-    <p>Tato funkčnost dle mých testů funguje momentálně jen ve <b>Firefoxu</b>. <a href="http://kod.djpw.cz/kvfb">Pokusná stránka</a> – v podporovaném prohlížeči při dostupnosti českého i anglického slovníku díky <code>&lt;html <b>lang="en"</b>></code> podtrhá jako chyby češtinu.</p>
+    <p>Tato funkčnost dle mých testů funguje momentálně jen ve <b>Firefoxu</b>. <a href="https://kod.djpw.cz/kvfb">Pokusná stránka</a> – v podporovaném prohlížeči při dostupnosti českého i anglického slovníku díky <code>&lt;html <b>lang="en"</b>></code> podtrhá jako chyby češtinu.</p>
   </li>
   
   <li>

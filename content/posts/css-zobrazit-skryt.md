@@ -19,6 +19,6 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/zhcc">Živá ukázka</a> – zobrazit/skrýt v CSS</li>
+    <li><a href="https://kod.djpw.cz/zhcc">Živá ukázka</a> – zobrazit/skrýt v CSS</li>
   </ul>
 </div>

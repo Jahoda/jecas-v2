@@ -36,7 +36,7 @@ format: "html"
 
 <h2 id="zavisle">Závislé <code>datalist</code>y</h2>
 
-<p><a href="http://kod.djpw.cz/pmeb">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/pmeb">Samostatná živá ukázka</a></p>
 
 
 <h2 id="napovidani">Napovídání napříč prohlížeči</h2>

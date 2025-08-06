@@ -70,7 +70,7 @@ format: "html"
 
 <p>Všechny kromě aktivního obrázku budou <b>100% průhledné</b> (<code>opacity: 0</code>). Aktivní bude naopak neprůhledný (<code>opacity: 1</code>). Přidáním <a href="/transition"><code>transition</code></a> pro průhlednost potom dosáhneme <b>efektu prolnutí</b>.</p>
 
-<p><a href="http://kod.djpw.cz/qzib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/qzib">Živá ukázka</a></p>
 
 
 <h3 id="responsivni">Responsivní</h3>
@@ -152,7 +152,7 @@ format: "html"
 </script>
 </div>
 
-<p><a href="http://kod.djpw.cz/rzib">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/rzib">Samostatná živá ukázka</a></p>
 
 
 <h2 id="problemy">Možné problémy</h2>

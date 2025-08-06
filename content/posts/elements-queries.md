@@ -31,7 +31,7 @@ format: "html"
 
 <h2 id="priklad">Příklad problému</h2>
 
-<p>Pro zjednodušení jde uvažovat dvousloupcový layout, který se při šířce pod 40 em přeskládá pod sebe. <a href="http://kod.djpw.cz/ucsb">Ukázka</a>.</p>
+<p>Pro zjednodušení jde uvažovat dvousloupcový layout, který se při šířce pod 40 em přeskládá pod sebe. <a href="https://kod.djpw.cz/ucsb">Ukázka</a>.</p>
 
 <pre><code>.sloupec {
   width: 50%;

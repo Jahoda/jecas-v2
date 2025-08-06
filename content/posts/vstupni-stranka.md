@@ -21,7 +21,7 @@ format: "html"
 
 <h2 id=jak>Jak na to?</h2>
 <h3 id="lightbox">Lightbox</h3>
-<p>První možnost je použít nějaký <b>lightbox skript</b> — třeba <a href="/magnific-popup">Magnific Popup</a> ihned po načtení stránky (<a href="http://kod.djpw.cz/gnv">ukázka</a>).</p>
+<p>První možnost je použít nějaký <b>lightbox skript</b> — třeba <a href="/magnific-popup">Magnific Popup</a> ihned po načtení stránky (<a href="https://kod.djpw.cz/gnv">ukázka</a>).</p>
 <pre><code>$.magnificPopup.open({
     items: [
       {

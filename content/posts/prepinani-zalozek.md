@@ -9,6 +9,6 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/pjbb
+https://kod.djpw.cz/pjbb
 
 <li><a href="http://codepen.io/jakealbaugh/pen/KBsIo">Řešení pouze v CSS</a></li>

@@ -40,31 +40,31 @@ format: "html"
 
 <p>Proč se to tedy do obalu o šířce 310 pixelů ↑ nevejde a třetí odkaz <b>odskočí na další řádek</b>?</p>
 
-<p>Na vině jsou <b>mezery/odřádkování mezi jednotlivými odkazy</b> (<a href="http://kod.djpw.cz/gvcb">samostatná ukázka</a>).</p>
+<p>Na vině jsou <b>mezery/odřádkování mezi jednotlivými odkazy</b> (<a href="https://kod.djpw.cz/gvcb">samostatná ukázka</a>).</p>
 
 <pre><code>&lt;a href="#">Odkaz&lt;/a><b> </b>&lt;a href="#">Odkaz&lt;/a></code></pre>
 
 <h2 id="reseni">Řešení</h2>
 
-<p>První možnost je v HTML kódu mezery odstranit (<a href="http://kod.djpw.cz/hvcb">ukázka</a>):</p>
+<p>První možnost je v HTML kódu mezery odstranit (<a href="https://kod.djpw.cz/hvcb">ukázka</a>):</p>
 
 <pre><code>&lt;a href="#">Odkaz&lt;/a>&lt;a href="#">Odkaz&lt;/a></code></pre>
 
-<p>Případně pro lepší přehlednost posunout <b>koncovou značku</b> (<a href="http://kod.djpw.cz/kigb">ukázka</a>).</p>
+<p>Případně pro lepší přehlednost posunout <b>koncovou značku</b> (<a href="https://kod.djpw.cz/kigb">ukázka</a>).</p>
 
 <pre><code>&lt;a href="#">Odkaz&lt;/a
 >&lt;a href="#">Odkaz&lt;/a></code></pre>
 
-<p>Nebo zakomentovat (<a href="http://kod.djpw.cz/ivcb">ukázka</a>). Moc elegantní se mi to ale nezdá.</p>
+<p>Nebo zakomentovat (<a href="https://kod.djpw.cz/ivcb">ukázka</a>). Moc elegantní se mi to ale nezdá.</p>
 
 <pre><code>&lt;a href="#">Odkaz&lt;/a>&lt;!--
  -->&lt;a href="#">Odkaz&lt;/a></code></pre>
 
-<p>Ještě je možné se mezer zbavit <b>nulovou velikostí písma</b> (<code>font-size: 0</code>) pro rodiče a následným <i>obnovením</i> velikosti pro položky s <code>inline-block</code> (<a href="http://kod.djpw.cz/ligb">ukázka</a>). Není to ale úplně spolehlivé a nenávratně se tím rozhodí <b>relativní velikosti písma</b>.</p>
+<p>Ještě je možné se mezer zbavit <b>nulovou velikostí písma</b> (<code>font-size: 0</code>) pro rodiče a následným <i>obnovením</i> velikosti pro položky s <code>inline-block</code> (<a href="https://kod.djpw.cz/ligb">ukázka</a>). Není to ale úplně spolehlivé a nenávratně se tím rozhodí <b>relativní velikosti písma</b>.</p>
 
 <p>Jinak se nabízí na <code>inline-block</code> resignovat a použít:</p>
 
 <ul>
-  <li>Tabulkové zobrazení <code>display: table-cell</code> (<a href="http://kod.djpw.cz/jvcb">ukázka</a>). Funkční od <b>IE 8</b>.</li>
-  <li>Odkazy <a href="/float"><code>float</code>ovat</a> (<a href="http://kod.djpw.cz/lwcb">ukázka</a>). Funkční všude.</li>
+  <li>Tabulkové zobrazení <code>display: table-cell</code> (<a href="https://kod.djpw.cz/jvcb">ukázka</a>). Funkční od <b>IE 8</b>.</li>
+  <li>Odkazy <a href="/float"><code>float</code>ovat</a> (<a href="https://kod.djpw.cz/lwcb">ukázka</a>). Funkční všude.</li>
 </ul>

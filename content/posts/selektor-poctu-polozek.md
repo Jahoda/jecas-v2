@@ -159,7 +159,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/melb">Samostatná ukázka závislosti písma na počtu položek</a></li>
+    <li><a href="https://kod.djpw.cz/melb">Samostatná ukázka závislosti písma na počtu položek</a></li>
   </ul>
 </div>
 

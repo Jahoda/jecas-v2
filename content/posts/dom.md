@@ -37,7 +37,7 @@ format: "html"
 
 <h2 id="zdroj-vs-dom">Zdrojový kód vs. DOM</h2>
 
-<p>Například tento zdrojový kód. Obsahuje otevírací HTML značku pro odstavec (<code>&lt;p></code>) a trochu JS, který přidá do stránky nadpis (<code>&lt;h1></code>). (<a href="http://kod.djpw.cz/utbb">Ukázka</a>.)</p>
+<p>Například tento zdrojový kód. Obsahuje otevírací HTML značku pro odstavec (<code>&lt;p></code>) a trochu JS, který přidá do stránky nadpis (<code>&lt;h1></code>). (<a href="https://kod.djpw.cz/utbb">Ukázka</a>.)</p>
 
 <pre><code>&lt;p>Odstavec
 &lt;script>
@@ -73,8 +73,8 @@ format: "html"
     </ul>
     <p>Kolekce získané metodami <code>getElement<b>s</b></code> se potom většinou <a href="/js-cykly">procházejí cykly</a>.</p>
   </li>
-  <li><p>Obrázky na stránce je možné získat z <code>document.images</code> (<a href="http://kod.djpw.cz/vtbb">ukázka</a>).</p></li>
-  <li><p>K formulářům se dostaneme přes <code>document.jmenoFormulare</code> a k jejich políčkům přes <code>document.jmenoFormulare.jmenoPolicka</code> (<a href="http://kod.djpw.cz/wtbb">ukázka</a>).</p></li>
+  <li><p>Obrázky na stránce je možné získat z <code>document.images</code> (<a href="https://kod.djpw.cz/vtbb">ukázka</a>).</p></li>
+  <li><p>K formulářům se dostaneme přes <code>document.jmenoFormulare</code> a k jejich políčkům přes <code>document.jmenoFormulare.jmenoPolicka</code> (<a href="https://kod.djpw.cz/wtbb">ukázka</a>).</p></li>
 </ul>
 
 <p>Ještě existují další možnosti, ale ty se zase tak moc nepoužívají a koneckonců jdou nahradit <code>querySelectorem</code> / <code>getElement*</code> metodami.</p>

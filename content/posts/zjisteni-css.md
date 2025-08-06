@@ -35,7 +35,7 @@ element.style.backgroundColor = "red";</code></pre>
   );
 &lt;/script></code></pre>
 
-<p>Tento kód nevyhodí v <code>alert</code>u hodnotu <code>red</code>, jak by se mohlo očekávat. <a href="http://kod.djpw.cz/tlbb">Ukázka</a>.</p>
+<p>Tento kód nevyhodí v <code>alert</code>u hodnotu <code>red</code>, jak by se mohlo očekávat. <a href="https://kod.djpw.cz/tlbb">Ukázka</a>.</p>
 
 <h2 id="reseni">Řešení</h2>
 <p>Co tedy s tím? Existují vlastnosti <code>getComputedStyle</code> a do <b>IE 8</b> <code>currentStyle</code>. Ve starších <b>IE</b> je ještě drobná odlišnost v tom, že potřebuje název CSS vlastnosti v <i>camelCase</i> a ne <i>se-spojovníkem</i>.</p>
@@ -64,8 +64,8 @@ element.style.backgroundColor = "red";</code></pre>
 var sktuecnyRamecek = getStyle(div).border;</code></pre>
 
 <!--
-<p><a href="http://kod.djpw.cz/wlbb">Živá ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/wlbb">Živá ukázka</a>.</p>
 -->
 
-<p><a href="http://kod.djpw.cz/gobb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/gobb">Živá ukázka</a></p>
 

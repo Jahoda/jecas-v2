@@ -82,7 +82,7 @@ format: "html"
 
 <p>Toto zaměří všechny odkazy a <a href="/div-span#span"><code>&lt;span></code>y</a> v elementech s třídami <code>header</code> a <code>footer</code>.</p>
 
-<p><a href="http://kod.djpw.cz/pzad">Živá ukázka</a> – různé pokusy s <code>:is</code></p>
+<p><a href="https://kod.djpw.cz/pzad">Živá ukázka</a> – různé pokusy s <code>:is</code></p>
 
 
 <h2 id="vyuziti">Využití</h2>

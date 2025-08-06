@@ -9,4 +9,4 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/bgnb
+https://kod.djpw.cz/bgnb

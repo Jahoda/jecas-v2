@@ -11,7 +11,7 @@ format: "html"
 
 <li>Zdroják: <a href="http://www.zdrojak.cz/clanky/tuk-tuk-prohlizec-mate-tu-rekomando/">Ťuk, ťuk. -Kdo tam? -Prohlížeč, máte tu rekomando!</a></li>
 
-<li><a href="http://kod.djpw.cz/sbeb">Živá ukázka</a></li>
+<li><a href="https://kod.djpw.cz/sbeb">Živá ukázka</a></li>
 
 <li>Sitepoint: <a href="http://www.sitepoint.com/creating-nice-notifications-jquery/">Creating Nice Notifications with jQuery</a></li>
   

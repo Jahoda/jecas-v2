@@ -52,7 +52,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/pwlb">Živá ukázka obou způsobů</a></li>
+    <li><a href="https://kod.djpw.cz/pwlb">Živá ukázka obou způsobů</a></li>
   </ul>
 </div>
 

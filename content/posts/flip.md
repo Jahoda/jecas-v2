@@ -121,7 +121,7 @@ format: "html"
 </div>
 </div>
 
-<p><a href="http://kod.djpw.cz/epfb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/epfb">Samostatná ukázka</a></p>
 
 
 
@@ -131,4 +131,4 @@ format: "html"
 
 <p><img src="/files/flip/animace-otoceni.gif" alt="Ukázka animace" class="border"></p>
 
-<p><a href="http://kod.djpw.cz/fpfb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/fpfb">Živá ukázka</a></p>

@@ -43,7 +43,7 @@ format: "html"
     10px 10px 15px green
 }</code></pre>
 
-<p>(Ve <b>Webkitech</b> existuje i lehce podobná vlastnost <a href="/text-stroke"><code>text-stroke</code></a>, která textu umí vytvořit obrys, právě tuto vlastnost jde do jisté míry vícenásobnými stíny simulovat – <a href="http://kod.djpw.cz/xmfb">ukázka</a>.)</p>
+<p>(Ve <b>Webkitech</b> existuje i lehce podobná vlastnost <a href="/text-stroke"><code>text-stroke</code></a>, která textu umí vytvořit obrys, právě tuto vlastnost jde do jisté míry vícenásobnými stíny simulovat – <a href="https://kod.djpw.cz/xmfb">ukázka</a>.)</p>
 
 
 <h2 id="generator">Generátor</h2>
@@ -114,9 +114,9 @@ format: "html"
   <img src="/files/text-shadow/horsi.jpg" onmouseover="this.src=this.src.replace('horsi','lepsi')" onmouseout="this.src=this.src.replace('lepsi','horsi')" alt="Test čitelnosti">
 </div>
 
-<!-- Ukázka: http://kod.djpw.cz/pmfb -->
+<!-- Ukázka: https://kod.djpw.cz/pmfb -->
 
-<p>Asi nejlepších výsledků lze docílit při rozmazání okolo 10 px. Pro silnější efekt by se hodila zatím mimo <b>IE 10</b> a <b>IE 11</b> nepodporovaná <b>intensita stínu</b> nebo využít <b>vícenásobného stínu</b> (<a href="http://kod.djpw.cz/anfb">ukázka</a>).</p>
+<p>Asi nejlepších výsledků lze docílit při rozmazání okolo 10 px. Pro silnější efekt by se hodila zatím mimo <b>IE 10</b> a <b>IE 11</b> nepodporovaná <b>intensita stínu</b> nebo využít <b>vícenásobného stínu</b> (<a href="https://kod.djpw.cz/anfb">ukázka</a>).</p>
 
 <p>Naopak při dobře kontrastním jednobarevném pozadí stín písmo spíš <b>rozmaže</b> a <b>čitelnost může utrpět</b>.</p>
 

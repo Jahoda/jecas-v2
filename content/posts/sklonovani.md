@@ -75,7 +75,7 @@ function pocet(el) {
 </script>
 </div>
 
-<p><a href="http://kod.djpw.cz/bxjb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/bxjb">Samostatná ukázka</a></p>
 
 
 <h2 id="php">Skloňování slov v PHP</h2>

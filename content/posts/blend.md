@@ -101,7 +101,7 @@ function namichat() {
 </script>  
 </div>
 
-<p><a href="http://kod.djpw.cz/bogb-">Test na samostatné stránce</a></p>
+<p><a href="https://kod.djpw.cz/bogb-">Test na samostatné stránce</a></p>
 
 
 <h2 id="mix-blend-mode">Vlastnost <code>mix-blend-mode</code></h2>

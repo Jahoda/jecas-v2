@@ -11,7 +11,7 @@ format: "html"
 
 http://toddmotto.com/stratos-js-simplifying-object-manipulation/
 
-http://kod.djpw.cz/odjb
+https://kod.djpw.cz/odjb
 
 <pre><code>var array1 = ["Vijendra","Singh"];
 var array2 = ["Singh", "Shakya"];

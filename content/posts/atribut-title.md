@@ -77,7 +77,7 @@ format: "html"
 <h2 id="js">Stornování JavaScriptem</h2>
 <p>Výchozí <code>title</code> lze <i>vypnout</i>, tj. nastavit jej skriptem na prázdnou hodnotu.</p>
 
-<p>Teoreticky by šlo popisek z <code>title</code> <b>přešoupnout do vlastního atributu</b> a ten použít místo <code>title</code> v CSS kódu výše uvedeném (<a href='http://kod.djpw.cz/pyp'>ukázka</a>).</p>
+<p>Teoreticky by šlo popisek z <code>title</code> <b>přešoupnout do vlastního atributu</b> a ten použít místo <code>title</code> v CSS kódu výše uvedeném (<a href='https://kod.djpw.cz/pyp'>ukázka</a>).</p>
 
 <p>Otázka ale je, zda když už se stejně JS do řešení zapojuje, nevytvořit popisek celý skriptem. Tedy udělat z <code>title</code> běžný element a ten umístit k elementu s popiskem při <a href="/udalosti-mysi#onmouseover"><code>onmouseover</code></a> (najetí myši).</p>
       

@@ -23,7 +23,7 @@ format: "html"
     h1 {color: red}
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/gfgb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/gfgb">Živá ukázka</a></p>
 
 <p>Kromě omezení na <code>domain</code> existují i omezení na <b>přesnou URL</b>, <b>začátek URL</b> nebo <b>regulární výraz</b>.</p>
 

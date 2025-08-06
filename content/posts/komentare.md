@@ -110,7 +110,7 @@ format: "html"
   <li><a href="https://developers.facebook.com/docs/plugins/comments">Facebook Comments Plugin</a> – stránka pro získání kódu přidávajícího komentáře na web</li>
   
   
-  <li><a href="http://kod.djpw.cz/mbnb">Ukázka Facebook komentářů</a></li>
+  <li><a href="https://kod.djpw.cz/mbnb">Ukázka Facebook komentářů</a></li>
 </ul>  
 </div>
 
@@ -150,7 +150,7 @@ format: "html"
 <div class="external-content">
 <ul>
   <li><a href="https://disqus.com">Hlavní stránka Disqus</a> – jde tam získat kód pro vložení diskusí na stránky</li>
-  <li><a href="http://kod.djpw.cz/nbnb">Živá ukázka Disqus komentářů</a></li>
+  <li><a href="https://kod.djpw.cz/nbnb">Živá ukázka Disqus komentářů</a></li>
 </ul>
 </div>
 
@@ -211,7 +211,7 @@ format: "html"
 <div class="external-content">
 <ul>
   <li><a href="https://intensedebate.com/">Hlavní stránka IntenseDebate</a></li>
-  <li><a href="http://kod.djpw.cz/obnb">Ukázka komentování pomocí IntenseDebate</a></li>
+  <li><a href="https://kod.djpw.cz/obnb">Ukázka komentování pomocí IntenseDebate</a></li>
 </ul>
 </div>
 

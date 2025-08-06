@@ -233,7 +233,7 @@ format: "html"
 
 <p>Maximální povolená velikost je 128 × 128, větší <b>bude ignorován</b>.</p>
 
-<p><b>IE</b> podporuje pouze ICO, CUR a ANI (ten umožňuje i animaci – <a href="http://kod.djpw.cz/xkhb">ukázka</a> pouze pro <b>IE</b> – funguje i v <a href="/ie11"><b>IE 11</b></a>).</p>
+<p><b>IE</b> podporuje pouze ICO, CUR a ANI (ten umožňuje i animaci – <a href="https://kod.djpw.cz/xkhb">ukázka</a> pouze pro <b>IE</b> – funguje i v <a href="/ie11"><b>IE 11</b></a>).</p>
 
 <div class="external-content">
   <p>Převést PNG na ikonu umí například online nástroj <a href="http://www.convertico.com/">ConvertIco</a>.</p>
@@ -274,7 +274,7 @@ format: "html"
 <p style="cursor: url('/files/cursor/velky-kursor.png') 64 64, default;">Element má vlastní kursor jako *.png rozměrů 128 × 128 a nastaveny souřadnice doprostřed.</p>
 </div>
 
-<p><a href="http://kod.djpw.cz/rkhb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/rkhb">Samostatná ukázka</a></p>
 
 
 

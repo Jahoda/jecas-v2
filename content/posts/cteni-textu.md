@@ -93,7 +93,7 @@ echo $data;</code></pre>
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/hoob">Přehrávání textu pomocí Google překladače</a></li>
+    <li><a href="https://kod.djpw.cz/hoob">Přehrávání textu pomocí Google překladače</a></li>
   </ul>
 </div>
 

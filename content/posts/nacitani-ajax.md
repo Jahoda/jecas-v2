@@ -53,7 +53,7 @@ format: "html"
   <ul>  
     <li><a href="/animace-nacitani">CSS animace průběhu načítání</a> – <i>progress bar</i> jako je na YouTube</li>
     
-    <li><a href="/progress">HTML značka <code>&lt;progress></code></a> – element znázorňující načítání (<b>IE 10</b>+), <a href="http://kod.djpw.cz/wxib">ukázka</a></li>
+    <li><a href="/progress">HTML značka <code>&lt;progress></code></a> – element znázorňující načítání (<b>IE 10</b>+), <a href="https://kod.djpw.cz/wxib">ukázka</a></li>
     
     <li><a href="/css-spinner">CSS spinner</a> – točící se kolečko</li>
   </ul>
@@ -174,8 +174,8 @@ function nacist(url) {
 
 <h2 id="reseni">Hotové řešení</h2>
 
-<p><a href="http://kod.djpw.cz/jwib">Živá ukázka</a> řešení, kdy je před novým požadavkem nutné čekat na ten předchozí.</p>
-<!-- ukázka bez zpožděné animace: http://kod.djpw.cz/iwib -->
+<p><a href="https://kod.djpw.cz/jwib">Živá ukázka</a> řešení, kdy je před novým požadavkem nutné čekat na ten předchozí.</p>
+<!-- ukázka bez zpožděné animace: https://kod.djpw.cz/iwib -->
 
 <o>Animace se spouští <b>s prodlevou 0,5 vteřiny</b>, aby v případě rychlého načtení neobtěžovala. Během načítání <b>nejde vytvořit nový požadavek</b>.</o>
 

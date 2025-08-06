@@ -21,7 +21,7 @@ format: "html"
 
 <p>Výše uvedené styly se v podporovaných prohlížečích aplikují na <code>&lt;div class="trida"></code>, <code>&lt;div class="TRIDA"></code> a podobně.</p>
 
-<p><a href="http://kod.djpw.cz/nmvb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/nmvb">Živá ukázka</a></p>
 
 
 

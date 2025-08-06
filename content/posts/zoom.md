@@ -22,7 +22,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/dkkb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/dkkb">Živá ukázka</a></p>
 
 <p>CSS vlastnost <code>zoom</code> funguje v podstatě stejně, jako by se danému elementu zvětšily nebo zmenšily rozměry, písmo a podobně.</p>
 

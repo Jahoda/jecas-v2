@@ -392,7 +392,7 @@ format: "html"
 
 </ul>
 
-<!-- Změna plynulým probliknutím: http://kod.djpw.cz/udsb 
+<!-- Změna plynulým probliknutím: https://kod.djpw.cz/udsb 
 
-Náhled: http://kod.djpw.cz/vdsb
+Náhled: https://kod.djpw.cz/vdsb
 -->

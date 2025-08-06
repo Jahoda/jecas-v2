@@ -31,7 +31,7 @@ format: "html"
 <div class="kolecko"></div>
 </div>
 
-<p><a href="http://kod.djpw.cz/nhcb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/nhcb">Samostatná ukázka</a></p>
 
 <p>Funguje to tak, že se element zakulatí vlastností <a href="/border-radius"><code>border-radius</code></a>. Na jednu stranu (např. <code>border-bottom</code>) se přidá rámeček.</p>
 

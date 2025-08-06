@@ -38,15 +38,15 @@ format: "html"
 &lt;div</code></pre>
     <p>Tady už <code>display: none</code> zafunguje a obrázek se automaticky nenačte.</p>
     
-    <p>Důležité ale je <code>display: none</code> přidat rodiči <code>&lt;div></code>u s <code>background</code> obrázkem. Jinak se i tak v <b>některých prohlížečích obrázek stáhne</b> (test s <a href="http://kod.djpw.cz/jxab">rodičem</a> / <a href="http://kod.djpw.cz/hxab">elementem s pozadím</a>).</p>
+    <p>Důležité ale je <code>display: none</code> přidat rodiči <code>&lt;div></code>u s <code>background</code> obrázkem. Jinak se i tak v <b>některých prohlížečích obrázek stáhne</b> (test s <a href="https://kod.djpw.cz/jxab">rodičem</a> / <a href="https://kod.djpw.cz/hxab">elementem s pozadím</a>).</p>
   </li>
   
   <li>
-    <p>Použít značku <code>&lt;noscript></code>. Její obsah se při <b>zapnutém JS</b> nevyhodnocuje. Nevýhoda je, že v <b>IE 7</b> se z ní nedá přečíst <code>innerHTML</code>. I tak ale jde přečíst hodnotu <code>&lt;noscript></code> atributu, což pro uložení adresy obrázku k <b>pozdějšímu načtení</b> může stačit (<a href="http://kod.djpw.cz/gqt">ukázka</a>).</p>
+    <p>Použít značku <code>&lt;noscript></code>. Její obsah se při <b>zapnutém JS</b> nevyhodnocuje. Nevýhoda je, že v <b>IE 7</b> se z ní nedá přečíst <code>innerHTML</code>. I tak ale jde přečíst hodnotu <code>&lt;noscript></code> atributu, což pro uložení adresy obrázku k <b>pozdějšímu načtení</b> může stačit (<a href="https://kod.djpw.cz/gqt">ukázka</a>).</p>
     <p><a href="https://github.com/luis-almeida/unveil">Hotové řešení</a> založené na jQuery, které využívá tuto techniku.</p>
   </li>
   
-  <li>Vypsat kolem obrázku JavaScriptem <a href="/responsivni-komentare#script">značku <code>&lt;script></code> s neznámým <i>MIME typem</i></a>. Prohlížeč takový kód nevyhodnotí, ale jeho obsah půjde spolehlivě vydolovat z <code>innerHTML</code> (<a href="http://kod.djpw.cz/iqt">ukázka</a>).</li>
+  <li>Vypsat kolem obrázku JavaScriptem <a href="/responsivni-komentare#script">značku <code>&lt;script></code> s neznámým <i>MIME typem</i></a>. Prohlížeč takový kód nevyhodnotí, ale jeho obsah půjde spolehlivě vydolovat z <code>innerHTML</code> (<a href="https://kod.djpw.cz/iqt">ukázka</a>).</li>
   
   <li><p>Použít <a href="/template">značku <code>&lt;template></code></a>. Ta zatím ale nefuguje v žádném <b>IE</b>, jen v <b>Chrome</b> a <b>Firefoxu</b>.</p></li>
 </ol>

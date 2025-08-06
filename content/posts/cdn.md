@@ -58,7 +58,7 @@ format: "html"
 
 
 
-<p>Pro rychlé testování se tak připojování skriptů z CDN hodí. Často se skripty z CDN připojují u různých online editorů pro psaní HTML/CSS/JS ukázek typu <a href="http://kod.djpw.cz">kod.djpw.cz</a>.</p>
+<p>Pro rychlé testování se tak připojování skriptů z CDN hodí. Často se skripty z CDN připojují u různých online editorů pro psaní HTML/CSS/JS ukázek typu <a href="https://kod.djpw.cz">kod.djpw.cz</a>.</p>
 
 <p>Prakticky každou známou knihovnu jde najít na CDN. Tvůrci tomu chodí hodně naproti, protože bez nabízení CDN si značná část lidí připojí knihovnu z umístění, které se používá jako ukázka dané knihovny na jejím webu, a při masovém používání to může být problém.</p>
 

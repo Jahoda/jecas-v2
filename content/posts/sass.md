@@ -405,7 +405,7 @@ a:after {
 
 
 
-<p>Výsledkem bude pulsující animace od měřítka 1 do měřítka 2 – <a href="http://kod.djpw.cz/cnhc">živá ukázka</a>.</p>
+<p>Výsledkem bude pulsující animace od měřítka 1 do měřítka 2 – <a href="https://kod.djpw.cz/cnhc">živá ukázka</a>.</p>
 
 <p>Obecně se mixiny hodí hlavně pro <b>automatické generování parametrizovaného kódu</b>.</p>
 

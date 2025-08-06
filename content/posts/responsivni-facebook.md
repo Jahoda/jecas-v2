@@ -111,7 +111,7 @@ format: "html"
 
 <p>Page Plugin se potom bude přizpůsobovat dostupné šířce. To se týká pouze momentu <b>načtení webu</b> – při změně velikosti okna se nic měnit nebude.</p>
 
-<p><a href="http://kod.djpw.cz/jppb">Živá ukázka</a> – přizpůsobení FB Page pluginu šířce</p>
+<p><a href="https://kod.djpw.cz/jppb">Živá ukázka</a> – přizpůsobení FB Page pluginu šířce</p>
 
 
 
@@ -131,7 +131,7 @@ format: "html"
 
 <p>Pro <b>urychlení překreslování</b> jde do <code>FB.XFBML.parse()</code> zadat jako argument element, ve kterém se má překreslovat, aby se nemusel procházet celý dokument.</p>
 
-<p><a href="http://kod.djpw.cz/ippb">Živá ukázka</a> překreslování FB pluginu při změně velikosti okna</p>
+<p><a href="https://kod.djpw.cz/ippb">Živá ukázka</a> překreslování FB pluginu při změně velikosti okna</p>
 
 <p>V praxi by bylo vhodné při zmněně rozměrů okna použít nějakou <b>časovou prodlevu</b> (<code>setTimeout</code>), aby se plugin neustále nepřekresloval během tažení myší při změně velikosti.</p>
 
@@ -171,7 +171,7 @@ fbCover.getElementsByTagName("div")[0].setAttribute(
 
 
 
-<p><a href="http://kod.djpw.cz/lppb">Živá ukázka</a> Facebook Like tlačítka</p>
+<p><a href="https://kod.djpw.cz/lppb">Živá ukázka</a> Facebook Like tlačítka</p>
 
 <p>Pro přizpůsobení velikosti při změně šířky okna je nutné výše uvedený kód počítající dostupný prostor opětovně spustit a <i>To se mi líbí</i> tlačítko nechat vykreslit znovu přes <code>FB.XFBML.parse()</code>.</p>
 

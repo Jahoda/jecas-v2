@@ -44,7 +44,7 @@ format: "html"
 <p>Příklad na obrázku ukazuje validaci <b>uživatelského jména</b>, kde se po zadání každého znaku objeví, jestli má jméno dostatečnou délku a je obsazené nebo k disposici.</p>
 
 <p><img src="/files/okamzita-validace/validace.png" alt="Příklad validace" class="border"></p>
-<!-- k-o-d: http://kod.djpw.cz/iclb -->
+<!-- k-o-d: https://kod.djpw.cz/iclb -->
 
 
 

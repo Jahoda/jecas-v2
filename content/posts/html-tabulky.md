@@ -116,7 +116,7 @@ format: "html"
 
 <p>Většinou je ale řádků potřeba více, takže je nutné <code>&lt;tr></code> používat.</p>
 
-<p><a href="http://kod.djpw.cz/xbub">Ukázka</a> – tabulka bez <code>&lt;tr></code></p>
+<p><a href="https://kod.djpw.cz/xbub">Ukázka</a> – tabulka bez <code>&lt;tr></code></p>
 
 
 
@@ -127,7 +127,7 @@ format: "html"
 
 <p>Zajímavé jsou atributy <code>rowspan</code> a <code>colspan</code> sloužící k slučování buněk tabulky.</p>
 
-<p id="colspan">V následujícím příkladu bude buňka v prvním řádku tabulky roztažena přes dva sloupce řádku následujícího (<a href="http://kod.djpw.cz/fytb">ukázka</a>):</p>
+<p id="colspan">V následujícím příkladu bude buňka v prvním řádku tabulky roztažena přes dva sloupce řádku následujícího (<a href="https://kod.djpw.cz/fytb">ukázka</a>):</p>
 
 <pre><code>&lt;table>
   &lt;tr>
@@ -151,7 +151,7 @@ format: "html"
 
 
 
-<p id="colspan">Sloučení buněk po řádcích by vypadalo následovně (<a href="http://kod.djpw.cz/gytb">ukázka</a>):</p>
+<p id="colspan">Sloučení buněk po řádcích by vypadalo následovně (<a href="https://kod.djpw.cz/gytb">ukázka</a>):</p>
 
 <pre><code>&lt;table>
   &lt;tr>
@@ -231,7 +231,7 @@ format: "html"
 
 <p>Dříve se to dělalo HTML atributem <code>align="bottom"</code>. Ve <b>Firefoxu</b> jde <code>&lt;caption></code> umístit i vlevo či vpravo hodnotami <code>left</code> a <code>right</code>.</p>
 
-<p><a href="http://kod.djpw.cz/mytb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/mytb">Ukázka</a></p>
 
 
 
@@ -241,7 +241,7 @@ format: "html"
 
 <p>Značka <code>&lt;col></code> se zdá být skoro k ničemu. Jde ale použít k pohodlnějšímu stylování všech buněk ve sloupci.</p>
 
-<p>V následující <a href="http://kod.djpw.cz/hytb">ukázce</a> budou mít buňky „Druhá“ šedivé pozadí.</p>
+<p>V následující <a href="https://kod.djpw.cz/hytb">ukázce</a> budou mít buňky „Druhá“ šedivé pozadí.</p>
 
 <pre><code>&lt;table>
   &lt;col>&lt;col style="background: gray">
@@ -286,7 +286,7 @@ format: "html"
 
 <p>„Skupin sloupců“ může být v kódu i víc.</p>
 
-<p>Pro pochopení rozdílu <code>&lt;colgroup></code> a <code>&lt;col></code> poslouží následující <a href="http://kod.djpw.cz/jytb">ukázka</a>.</p>
+<p>Pro pochopení rozdílu <code>&lt;colgroup></code> a <code>&lt;col></code> poslouží následující <a href="https://kod.djpw.cz/jytb">ukázka</a>.</p>
 
 
 

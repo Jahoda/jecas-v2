@@ -26,7 +26,7 @@ format: "html"
     <pre><code>p {
   padding: <b>var</b>(<i>promenna</i>);
 }</code></pre>  
-    <p><a href="http://kod.djpw.cz/uzx">Ukázka</a></p>
+    <p><a href="https://kod.djpw.cz/uzx">Ukázka</a></p>
   </li>
 </ol>
 
@@ -38,7 +38,7 @@ format: "html"
 <h3 id="prebijeni">Přebíjení proměnných</h3>
 <p>Podobně funguje i <b>přebíjení</b>. Hodnotu proměnné je možné libovolně přepisovat. Projeví se ale jen v potomcích elementu, který ji <b>přepisuje</b>.</p>
 
-<p>Na následující <a href="http://kod.djpw.cz/wzx">ukázce</a> proto bude v <b>prohlížeči podporujícím proměnné</b> prostřední odstavec modře orámován.</p>
+<p>Na následující <a href="https://kod.djpw.cz/wzx">ukázce</a> proto bude v <b>prohlížeči podporujícím proměnné</b> prostřední odstavec modře orámován.</p>
 
 <h3 id="nedeklarovana">Nenastavená proměnná</h3>
 <p>V případě, že proměnná, kterou chceme pomocí <code>var()</code> vyvolat, neexistuje, je možné uvést <i>fallback</i> jako druhý argument této funkce:</p>
@@ -50,7 +50,7 @@ format: "html"
 <p>Pokud proměnná <code>neexistuje</code> nebude existovat, barva se nastaví na <code>green</code>.</p>
 
 <h3 id="funkce">Používání s dalšími CSS funkcemi</h3>
-<p>Proměnné je možné propojit třeba s <a href="/calc">funkcí <code>calc()</code></a> a rozměry počítat <b>násobením</b> nějaké základní hodnoty (<a href="http://kod.djpw.cz/aay">ukázka</a>).</p>
+<p>Proměnné je možné propojit třeba s <a href="/calc">funkcí <code>calc()</code></a> a rozměry počítat <b>násobením</b> nějaké základní hodnoty (<a href="https://kod.djpw.cz/aay">ukázka</a>).</p>
 
 <pre><code>:root {var-hodnota: 100px}
 p {width: calc(var(hodnota) * 2)}</code></pre>
@@ -88,4 +88,4 @@ p {width: calc(var(hodnota) * 2)}</code></pre>
   </dd>
 </dl>
 
-<!-- Přepínání vzhledu: http://kod.djpw.cz/jhpc -->
+<!-- Přepínání vzhledu: https://kod.djpw.cz/jhpc -->

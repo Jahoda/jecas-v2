@@ -251,7 +251,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/kuqb">Živá ukázka</a> – přebíjení směrů posicování</p>
+<p><a href="https://kod.djpw.cz/kuqb">Živá ukázka</a> – přebíjení směrů posicování</p>
 
 <p>Jde si tím <b>zkrátit zápis při posicování dvou prvků</b>, kdy jeden má být vlevo a druhý vpravo:</p>
 
@@ -293,7 +293,7 @@ format: "html"
 
 <p>Toto chování platí pouze pro případ, že <b>absolutně posicovaný element  má nastaveny rozměry</b>. V opačném případě uvedení hodnot všech stran způsobí <b>roztažení</b>.</p>
 
-<p><a href="http://kod.djpw.cz/muqb">Živá ukázka</a> – roztažení elementu</p>
+<p><a href="https://kod.djpw.cz/muqb">Živá ukázka</a> – roztažení elementu</p>
 
   <style>
 .z-index div {position: absolute; width: 50px; height: 50px;

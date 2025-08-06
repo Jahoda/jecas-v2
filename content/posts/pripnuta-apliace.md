@@ -17,4 +17,4 @@ http://dajbych.net/internet-explorer-javascript-api
 
 <li><a href="https://msdn.microsoft.com/en-us/library/ie/dn455117(v=vs.85).aspx">Pinned sites for the desktop</a></li>
 
-<p><a href="http://kod.djpw.cz/uvjb">Rozblikání</a></p>
+<p><a href="https://kod.djpw.cz/uvjb">Rozblikání</a></p>

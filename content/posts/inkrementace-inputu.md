@@ -31,7 +31,7 @@ format: "html"
 <h2 id="plus-minus">Tlačítka +/−</h2>
 <p>Kvůli slabší a nejednoznačné podpoře nativních formulářových plus/mínus tlačítek si je můžeme <b>vytvořit v JavaScriptu</b>.</p>
 
-<p>Taková funkce volaná při <a href="/udalosti-mysi#onclick">kliknutí myši</a> (<code>onclick</code>) bude velmi prostá. Nejvíce kódu bude sloužit k převodu <code>value</code> na číslo a <b>zaokrouhlování</b> (<a href="http://kod.djpw.cz/pfy">ukázka</a>).</p>
+<p>Taková funkce volaná při <a href="/udalosti-mysi#onclick">kliknutí myši</a> (<code>onclick</code>) bude velmi prostá. Nejvíce kódu bude sloužit k převodu <code>value</code> na číslo a <b>zaokrouhlování</b> (<a href="https://kod.djpw.cz/pfy">ukázka</a>).</p>
 
 <div class="live">
 <input type="text" value="5" id="cislo">
@@ -61,7 +61,7 @@ function pridavat(kam, kolik)  {
 
 <p>Změna hodnot <code>&lt;inputu></code>u kolečkem bude ale nejspíš <b>méně intuitivní</b> než tlačítka.</p>
 
-<p><a href="http://kod.djpw.cz/vfy">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/vfy">Ukázka</a></p>
 
 <div class="live">
 <input type="text" value="0" id="pole-kolecko" onmousewheel="kolecko(event, this, 0.1); return false">
@@ -98,7 +98,7 @@ function nalozit(kam, kolik) {
 </div>
 
 <h2 id="zrychlena-tlacitka">Tlačítka plus/mínus se zrychlením</h2>
-<p>Vylepšit obyčejná tlačítka pro snižování nebo zvyšování hodnoty je možné <b>akcelerací</b>. Při stisknutém tlačítku (<code>onmousedown</code>) se bude hodnota stále upravovat a čím déle bude tlačítko stisknuté, tím to bude rychlejší (docílí se toho <a href="/odpocitavani">časovačem</a>). <a href="http://kod.djpw.cz/lfy">Ukázka</a> (sloučená varianta i s <a href="http://kod.djpw.cz/wfy">kolečkem</a>).</p>
+<p>Vylepšit obyčejná tlačítka pro snižování nebo zvyšování hodnoty je možné <b>akcelerací</b>. Při stisknutém tlačítku (<code>onmousedown</code>) se bude hodnota stále upravovat a čím déle bude tlačítko stisknuté, tím to bude rychlejší (docílí se toho <a href="/odpocitavani">časovačem</a>). <a href="https://kod.djpw.cz/lfy">Ukázka</a> (sloučená varianta i s <a href="https://kod.djpw.cz/wfy">kolečkem</a>).</p>
 
 <div class="live">
 <input type="text" value="0" id="pole">
@@ -133,4 +133,4 @@ function stopNakladator() {
 </script>  
 </div>
 
-<!-- Nakladator http://kod.djpw.cz/yfy -->
+<!-- Nakladator https://kod.djpw.cz/yfy -->

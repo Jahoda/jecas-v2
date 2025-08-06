@@ -278,7 +278,7 @@ audio.play();</code></pre>
 
 <h3 id="bgsound"><code>&lt;bgsound></code></h3>
 
-<p>Pro zvuk na pozadí vymyslel <b>Internet Explorer</b> speciální značku <code>&lt;bgsound></code>. Funguje ještě v <a href="/ie11"><b>IE 11</b></a> – <a href="http://kod.djpw.cz/iwtb">ukázka</a>. Nastupující prohlížeč <b>Edge</b> už ji nepodporuje.</p>
+<p>Pro zvuk na pozadí vymyslel <b>Internet Explorer</b> speciální značku <code>&lt;bgsound></code>. Funguje ještě v <a href="/ie11"><b>IE 11</b></a> – <a href="https://kod.djpw.cz/iwtb">ukázka</a>. Nastupující prohlížeč <b>Edge</b> už ji nepodporuje.</p>
 
 <p>Takto zadaný zvuk se začne přehrávat ihned po navštívení stránky.</p>
 
@@ -306,7 +306,7 @@ audio.play();</code></pre>
 
 
 
-<p><a href="http://kod.djpw.cz/jwtb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jwtb">Živá ukázka</a></p>
 
 
 

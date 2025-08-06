@@ -141,4 +141,4 @@ init();
 </div>
 <!-- / konec ukázky -->
 
-<!-- Přepínání záložek v jQuery: http://kod.djpw.cz/hzw- -->
+<!-- Přepínání záložek v jQuery: https://kod.djpw.cz/hzw- -->

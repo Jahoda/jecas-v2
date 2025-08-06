@@ -77,25 +77,25 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/djdc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/djdc">Živá ukázka</a></p>
 
 <h3 id="vyska">Omezení výšky</h3>
 
-<li><a href="http://kod.djpw.cz/hxnb">Živá ukázka</a> – přeskupování položek</li>
+<li><a href="https://kod.djpw.cz/hxnb">Živá ukázka</a> – přeskupování položek</li>
 
-<li><a href="http://kod.djpw.cz/xnqb">Živá ukázka</a> – zobrazení <i>Více</i>, jen když je potřeba</li>
+<li><a href="https://kod.djpw.cz/xnqb">Živá ukázka</a> – zobrazení <i>Více</i>, jen když je potřeba</li>
 
 <h3 id="pocitani">Počítání šířky skriptem</h3>
-<li><a href="http://kod.djpw.cz/rxnb">Živá ukázka</a> – zobrazení další položek dole</li>
+<li><a href="https://kod.djpw.cz/rxnb">Živá ukázka</a> – zobrazení další položek dole</li>
 
 <h3 id="jquery">Řešení v jQuery</h3>
 
-<li><a href="http://kod.djpw.cz/tkob">Živá ukázka</a></li>
+<li><a href="https://kod.djpw.cz/tkob">Živá ukázka</a></li>
 
 <h2 id="odkazy">Odkazy jinam</h2>
 
 
 <ul>
-  <li><a href="http://codepen.io/olach/pen/adeMzP/">CSS only priority navigation</a> – řešení pouze v CSS <a href="http://kod.djpw.cz/wjwb">ukázka</a></li>
+  <li><a href="http://codepen.io/olach/pen/adeMzP/">CSS only priority navigation</a> – řešení pouze v CSS <a href="https://kod.djpw.cz/wjwb">ukázka</a></li>
   <li><a href="http://blog.teamtreehouse.com/challenges-solutions-responsive-navigation">Challenges &amp; Solutions for Your Responsive Navigation</a></li>
 </ul>#

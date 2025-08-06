@@ -46,7 +46,7 @@ format: "html"
 
 <p>Sice nelze ve všech prohlížečích standardně přímo něco nastavit uživateli do schránky, lze však ovlivnit obsah, který si zkopíruje (když kopírování sám vyvolá – <kbd>Ctrl</kbd> + <kbd>C</kbd> a podobně).</p>
 
-<p><a href="http://kod.djpw.cz/qwcb">Ukázka</a> funkční v <b>Chrome</b>, <b>Firefoxu</b> a <b>Opeře</b> (nefunkční v <b>IE</b>).</p>
+<p><a href="https://kod.djpw.cz/qwcb">Ukázka</a> funkční v <b>Chrome</b>, <b>Firefoxu</b> a <b>Opeře</b> (nefunkční v <b>IE</b>).</p>
 
 <p>Napříč prohlížeči funkční je podstrčit uživateli jiný obsah, než se zdá, a který si potom <b>sám zkopíruje</b>. To se dělá tak, že při kopírovací události (<code>oncopy</code>) vyvolané uživatelem se vytvoří neviditelný HTML element s požadovaným obsahem – ten se standardní cestou zkopíruje – a potom už stačí jen „zahladit stopy“ (element pro kopírování odstranit, vrátit původní výběr textu a podobně).</p>
 
@@ -85,7 +85,7 @@ window.getSelection().removeAllRanges(); </code></pre>
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/homb">Živá ukázka</a> – kopírování do schránky pomocí <i>range</i></li>
+    <li><a href="https://kod.djpw.cz/homb">Živá ukázka</a> – kopírování do schránky pomocí <i>range</i></li>
   </ul>
 </div>
 
@@ -170,7 +170,7 @@ client.on("ready", function( readyEvent) {
   <li>Potřebný JavaScript a Flash jde kromě lokálního umístění taktéž <a href="http://cdnjs.com/libraries/zeroclipboard/">načíst z CDN</a> (<a href="/cdn">co je to CDN?</a>).</li>
 </ol>
 
-<p><a href="http://kod.djpw.cz/rwcb">Samostatná ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/rwcb">Samostatná ukázka</a>.</p>
 
 <p>Pro příznivce <b>jQuery</b> existuje nadstavba nad ZeroClipboard právě v tomto frameworku. Jmenuje se <a href="http://www.steamdev.com/zclip/">zClip</a>.</p>
 
@@ -218,7 +218,7 @@ client.on("ready", function(readyEvent) {
     <p>Text <b>ke zkopírování</b> se vezme z atributu <code>data-clipboard-text</code> daného tlačítka.</p>
     
     
-    <p><a href="http://kod.djpw.cz/cehb">Živá ukázka</a></p>
+    <p><a href="https://kod.djpw.cz/cehb">Živá ukázka</a></p>
     
     <p>Kromě předávání jednotlivých tlačítek to může být i kolekce elementů. Dobře se k tomu hodí <a href="/queryselector"><code>querySelector</code></a> (od <b>IE 8</b>).</p>
     
@@ -226,7 +226,7 @@ client.on("ready", function(readyEvent) {
   document.querySelectorAll("button[data-clipboard-text]")
 );</code></pre>
     
-    <p><a href="http://kod.djpw.cz/dehb">Živá ukázka</a></p>
+    <p><a href="https://kod.djpw.cz/dehb">Živá ukázka</a></p>
   </li>
 </ol>
 
@@ -244,7 +244,7 @@ client.on("ready", function(readyEvent) {
 
 <p>Ve <b>Firefoxu 40</b> a starších potom nezbývá jiné řešení než Flash.</p>
 
-<p>V případě, že nechceme používat řešení s Flashem, dá se řešení využívající <code>execCommand</code> alespoň zkombinovat s <code>prompt</code>em pro nepodporující prohlížeče (<a href="http://kod.djpw.cz/etmb">ukázka</a>).</p>
+<p>V případě, že nechceme používat řešení s Flashem, dá se řešení využívající <code>execCommand</code> alespoň zkombinovat s <code>prompt</code>em pro nepodporující prohlížeče (<a href="https://kod.djpw.cz/etmb">ukázka</a>).</p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>

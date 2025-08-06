@@ -9,5 +9,5 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/uyic
-http://kod.djpw.cz/tyic
+https://kod.djpw.cz/uyic
+https://kod.djpw.cz/tyic

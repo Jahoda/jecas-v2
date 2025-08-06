@@ -99,7 +99,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/etkb">Skript pro výpočet četnosti</a></p>
+<p><a href="https://kod.djpw.cz/etkb">Skript pro výpočet četnosti</a></p>
 
 <p>Je-li cílem dostat místo 0–9 číslo z rozsahu 1 až 10, stačí přičíst jedničku.</p>
 
@@ -135,11 +135,11 @@ format: "html"
 
 <p>Pokud prvek náhody nemusí být matematicky <b>přesný</b>, ale jde hlavně o dojem uživatele, dá se tomu trochu pomoci. Například zabránit vygenerování téhož čísla dvakrát po sobě.</p>
 
-<p><a href="http://kod.djpw.cz/otkb">Ukázka</a> – nikdy se nevygeneruje stejné číslo dvakrát za sebou</p>
+<p><a href="https://kod.djpw.cz/otkb">Ukázka</a> – nikdy se nevygeneruje stejné číslo dvakrát za sebou</p>
 
 <p>Pokud je navíc cílem <b>zobrazit všechny náhodné</b> položky, hodí se ještě požadovat, aby se nějaké číslo mohlo vygenerovat podruhé až v okamžiku, kdy každé číslo z rozsahu už alespoň jednou padlo.</p>
 
-<p><a href="http://kod.djpw.cz/stkb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/stkb">Živá ukázka</a></p>
 
 <p>V případě <b>PHP</b> je nutné vygenerovaná náhodná čísla někam ukládat – například do pole <code>$_SESSION</code>.</p>
 

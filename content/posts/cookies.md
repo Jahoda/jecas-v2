@@ -318,4 +318,4 @@ else {
 </div>
 
 
-<!-- test nastavení a výpis cookie: http://kod.djpw.cz/ferb- -->
+<!-- test nastavení a výpis cookie: https://kod.djpw.cz/ferb- -->

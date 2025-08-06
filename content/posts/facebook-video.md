@@ -36,7 +36,7 @@ data-href="https://www.facebook.com/video.php?v=<b>796588687069516</b>"
 &lt;/div>
 </code></pre>
 
-<p>Po vložení na stránku to vypadá takto (<a href="http://kod.djpw.cz/yuhb">živá ukázka</a>):</p>
+<p>Po vložení na stránku to vypadá takto (<a href="https://kod.djpw.cz/yuhb">živá ukázka</a>):</p>
 
 <p><img src="/files/facebook-video/vysledek.png" alt="Ukázka embedování videa" class="border"></p>
 
@@ -53,7 +53,7 @@ data-href="https://www.facebook.com/video.php?v=<b>796588687069516</b>"
 >
 &lt;/iframe></code></pre>
 
-<p><a href="http://kod.djpw.cz/avhb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/avhb">Samostatná ukázka</a></p>
 
 <p>URL stránky vložitelné do <i>frame</i> je tedy: <code>https://www.facebook.com/video/embed?video_id=<b>796588687069516</b></code></p>
 
@@ -74,7 +74,7 @@ data-href="https://www.facebook.com/video.php?v=<b>796588687069516</b>"
 
 <h2 id="automaticke-prehravani">Automatické přehrávání Facebook videa</h2>
 
-<p>Spustit video rovnou při načtení není normálně dosažitelné. Jde ale využít <b>mobilní verse</b>, kde to funkční je (<a href="http://kod.djpw.cz/bvhb">ukázka</a>).</p>
+<p>Spustit video rovnou při načtení není normálně dosažitelné. Jde ale využít <b>mobilní verse</b>, kde to funkční je (<a href="https://kod.djpw.cz/bvhb">ukázka</a>).</p>
 
 <pre><code>&lt;iframe 
   src="https://<i>m</i>.facebook.com/video/video.php?v=<b>796588687069516</b>" 

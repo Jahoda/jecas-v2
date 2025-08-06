@@ -138,7 +138,7 @@ format: "html"
   // jsme v &lt;input>u
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/rkcb">Živá ukázka</a> povolení zpracování zkratky <kbd>Ctrl</kbd> + <kbd>S</kbd> mimo formulářová políčka.</p>
+<p><a href="https://kod.djpw.cz/rkcb">Živá ukázka</a> povolení zpracování zkratky <kbd>Ctrl</kbd> + <kbd>S</kbd> mimo formulářová políčka.</p>
 
 <h2 id="vice-zkratek">Přidávání více zkratek</h2>
 <p>Při používání více zkratek je vhodné vymyslet nějaký <b>elegantnější postup</b>. Třeba si vytvořit JS objekt se všemi zkratkami a jejich akcemi a ten předat funkci, která bude požadované funkce volat podle čísla klávesy.</p>
@@ -154,7 +154,7 @@ format: "html"
 // Volání funkce při document.onkeydown
 zkratky[kodKlavesy]();</code></pre>
 
-<p><a href="http://kod.djpw.cz/clcb">Živá ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/clcb">Živá ukázka</a>.</p>
 
 <h2 id="odkazy">Odkazy jinam</h2>
 

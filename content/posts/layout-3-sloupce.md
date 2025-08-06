@@ -10,7 +10,7 @@ format: "html"
 ---
 
 <h2 id="float">Obtékání <code>float</code></h2>
-<p>První možnost pro řešení s <b>pevnou šířkou</b> je nechat všechny tři sloupce <a href="/float">obtékat</a> (<a href="http://kod.djpw.cz/zet-">ukázka</a>).</p>
+<p>První možnost pro řešení s <b>pevnou šířkou</b> je nechat všechny tři sloupce <a href="/float">obtékat</a> (<a href="https://kod.djpw.cz/zet-">ukázka</a>).</p>
 
 <div class="live">
   <style>
@@ -36,12 +36,12 @@ format: "html"
 
 <p><b>Obal</b>, který zároveň pomocí <code>overflow: hidden</code> <a href="/float#overflow">ukončuje obtékání</a>, je <a href="/centrovani#margin-auto">vodorovně vycentrovaný</a>.</p>
 
-<p>Nevýhoda tohoto řešení může být, že obsah, má-li být v <b>prostředním sloupci</b>, není (a nemůže být) v kódu nejvíce nahoře při <b>zachování stejné struktury HTML</b>. Je potřeba dva ze tří sloupců <a href="http://kod.djpw.cz/nkt">obalit do dalšího <code>&lt;div></code>u</a> (je tak možné docílit libovolného uspořádání v kódu, ale vždy se musí předělat HTML – přesunout <i>obal</i>).</p>
+<p>Nevýhoda tohoto řešení může být, že obsah, má-li být v <b>prostředním sloupci</b>, není (a nemůže být) v kódu nejvíce nahoře při <b>zachování stejné struktury HTML</b>. Je potřeba dva ze tří sloupců <a href="https://kod.djpw.cz/nkt">obalit do dalšího <code>&lt;div></code>u</a> (je tak možné docílit libovolného uspořádání v kódu, ale vždy se musí předělat HTML – přesunout <i>obal</i>).</p>
 
 <p><a href="/stejne-vysoke-sloupce">Stejně vysoké sloupce</a> se dají řešit obrázkem.</p>
 
 <h3 id="procenta">Proměnlivá šířka</h3>
-<p>Přizpůsobování šířky sloupců oknu se docílí použitím <b>procent</b> místo pixelů (<a href="http://kod.djpw.cz/bft">ukázka</a>).</p>
+<p>Přizpůsobování šířky sloupců oknu se docílí použitím <b>procent</b> místo pixelů (<a href="https://kod.djpw.cz/bft">ukázka</a>).</p>
 
 <div class="live">
   <style>
@@ -79,7 +79,7 @@ format: "html"
 <h3>Řešení</h3>
 <p>Není rozumné posicovat absolutně <b>všechny sloupce</b>. Komplikuje to třeba umístění patičky pod všechen obsah, protože <b>vyjmutí z toku dokumentu</b> způsobí, že se stránka nebude <i>natahovat</i>.</p>
 
-<p>Proto nejdeleší (typicky sloupec s obsahem) <b>nebude</b> obtékaný nebo posicovaný (<a href="http://kod.djpw.cz/dft">samostatná ukázka</a>).</p>
+<p>Proto nejdeleší (typicky sloupec s obsahem) <b>nebude</b> obtékaný nebo posicovaný (<a href="https://kod.djpw.cz/dft">samostatná ukázka</a>).</p>
 
 <div class="live">
   <style>
@@ -120,7 +120,7 @@ format: "html"
   <li>V případě <b>dvousloupcového layoutu</b> se omezením šířky sloupce vytvoří vedle něj místo.</li>
 </ul>
 
-<p>Dosažení <b>stejně vysokých sloupců</b> je potom velmi prosté. Stačí <b>posicovaným sloupcům</b> <button onclick="toggle(sv, 'stejne-vysoke')">nastavit</button> <code>height: 100%</code> (<a href="http://kod.djpw.cz/eft">ukázka</a>) nebo současně <code>top: 0</code> a i <code>bottom: 0</code> (<a href="http://kod.djpw.cz/fft">ukázka</a>).</p>
+<p>Dosažení <b>stejně vysokých sloupců</b> je potom velmi prosté. Stačí <b>posicovaným sloupcům</b> <button onclick="toggle(sv, 'stejne-vysoke')">nastavit</button> <code>height: 100%</code> (<a href="https://kod.djpw.cz/eft">ukázka</a>) nebo současně <code>top: 0</code> a i <code>bottom: 0</code> (<a href="https://kod.djpw.cz/fft">ukázka</a>).</p>
 
 
 <h2 id="css-tabulky">CSS tabulky</h2>
@@ -131,7 +131,7 @@ format: "html"
 
 <p>Na druhou stranu <i>tabulky</i> řeší problém <b>stejně vysokých sloupců</b>. Rovněž jde i určit některé sloupce <b>s pevnou šířkou</b> a ostatní se podle toho dopočítají.</p>
 
-<p><a href="http://kod.djpw.cz/fahb">Živá ukázka</a> (prostřední sloupec má nastaveno <code>width: 1000px</code>)</p>
+<p><a href="https://kod.djpw.cz/fahb">Živá ukázka</a> (prostřední sloupec má nastaveno <code>width: 1000px</code>)</p>
 
 <p>Šířka (<code>width</code>) v tabulce standardně funguje jako <i>doporučená</i>. Pokud nějaký sloupec bude mít širší obsah, roztáhne se na úkor toho s nastavenou šířkou, co se <b>ještě má jak zmenšit</b>. Toto chování jde změnit vlastností <code>table-layout</code>:</p>
 
@@ -141,7 +141,7 @@ format: "html"
 
 <p>Taková tabulka bude více respektovat zadané rozměry. Někdy to může být na škodu.</p>
 
-<p><a href="http://kod.djpw.cz/gahb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/gahb">Živá ukázka</a></p>
 
 
 <h2 id="flex">Flex</h2>

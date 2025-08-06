@@ -16,7 +16,7 @@ format: "html"
 
 <p>V aktuálních prohlížečích funguje <code>text-align</code> pouze na řádkové (<code><a href="/display">display</a>: inline</code>) nebo řádkově-blokové (<code>display: inline-block</code>) prvky.</p>
 
-<p>Dříve šlo v <b>IE</b> v <a href="/doctype#quirk">QUIRK režimu</a> přes <code>text-align</code> zarovnávat i bloky. Ve <b>Firefoxu</b> a <b>Chrome</b> jde toto chování simulovat hodnotami s <a href="/css-prefixy">CSS prefixy</a>. <a href="http://kod.djpw.cz/gcib">Ukázka</a>.</p>
+<p>Dříve šlo v <b>IE</b> v <a href="/doctype#quirk">QUIRK režimu</a> přes <code>text-align</code> zarovnávat i bloky. Ve <b>Firefoxu</b> a <b>Chrome</b> jde toto chování simulovat hodnotami s <a href="/css-prefixy">CSS prefixy</a>. <a href="https://kod.djpw.cz/gcib">Ukázka</a>.</p>
 
 <p>Různým způsobům centrování se věnuje samostatný článek.</p>
 
@@ -39,7 +39,7 @@ format: "html"
   &lt;/div>
 &lt;/div></code></pre>
 
-<p><a href="http://kod.djpw.cz/jdib">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jdib">Ukázka</a></p>
 
 
 <h2 id="zakladni">Základní zarovnávání</h2>
@@ -113,7 +113,7 @@ format: "html"
 
 <p>Nastavení zarovnání posledního řádku funguje ve všech <b>IE</b> (od <b>IE 5.5</b>) a ve <b>Firefoxu</b> s prefixem.</p>
 
-<p><a href="http://kod.djpw.cz/mcib">Ukázka</a> centrovaného posledního řádku.</p>
+<p><a href="https://kod.djpw.cz/mcib">Ukázka</a> centrovaného posledního řádku.</p>
 
 
 <h2 id="specifikace">Specifikace</h2>
@@ -196,7 +196,7 @@ text-align: "." end;</code></pre>
 </ul>  
 </div>
 
-<p><a href="http://kod.djpw.cz/jcib">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jcib">Samostatná ukázka</a></p>
 
 
 <p>To funguje zdánlivě hezky, ale jen do chvíle, kdy bude nutné <b>text kopírovat</b> — rozdělení do sloupců totiž způsobí vložení tabulátorů mezi ně.</p>
@@ -224,7 +224,7 @@ text-align: "." end;</code></pre>
 </ul>  
 </div>
 
-<p><a href="http://kod.djpw.cz/kcib">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/kcib">Samostatná ukázka</a></p>
 
 <p>Potřebný HTML kód pro správné zarovnání je potom ideální <b>generovat na straně serveru</b>.</p>
 
@@ -272,7 +272,7 @@ text-align: "." end;</code></pre>
 </script>
 </div>
 
-<p><a href="http://kod.djpw.cz/ncib">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ncib">Samostatná ukázka</a></p>
 
 
 <h2 id="odkazy">Odkazy</h2>

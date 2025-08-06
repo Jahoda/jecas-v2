@@ -53,7 +53,7 @@ format: "html"
   </li>
 </ul>
 
-<p><a href="http://kod.djpw.cz/jbub">Živá ukázka</a> – nejjednodušší použití CSS na HTML dokument</p>
+<p><a href="https://kod.djpw.cz/jbub">Živá ukázka</a> – nejjednodušší použití CSS na HTML dokument</p>
 
 
 

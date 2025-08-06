@@ -127,7 +127,7 @@ format: "html"
 
 <p>S použitím <b>jQuery</b> je to otázka pár řádků kódu.</p>
 
-<p><a href="http://kod.djpw.cz/cjhb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/cjhb">Ukázka</a></p>
 
 <p>V čistém JS není narozdíl od jQuery funkce pro animování. Dá se vytvořit třeba tak, že se na základě požadovaného počtu snímků za vteřinu (například 60) vypočítá počet kroků na základě požadované doby animace.</p>
 
@@ -153,7 +153,7 @@ var vzdalenostCile = souradniceCile.top;</code></pre>
 
 <p>V proměnné <code>rozdilKroku</code> tak nyní bude hodnota, kterou je nutné přičítat k hodnotě <code>odrolovano</code>. To nám dá pro každý krok hodnotu pro částečný <b>posun směrem k cíli</b>. Se známou novou hodnotou pro posun už jen použijeme <code>window.scrollTo</code>.</p>
 
-<p><a href="http://kod.djpw.cz/ijhb">Celá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ijhb">Celá ukázka</a></p>
 
 
 <h3 id="delka">Délka animace</h3>

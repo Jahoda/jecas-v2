@@ -44,7 +44,7 @@ function odebrat(el) {
   
 </div>
 
-<p><a href="http://kod.djpw.cz/azhb">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/azhb">Samostatná živá ukázka</a></p>
 
 
 
@@ -133,7 +133,7 @@ var sablona = prvniPolozka.<b>cloneNode</b>(true);</code></pre>
     <p>Pohrát si s <a href="/tabindex"><code>tabindex</code>em</a>, aby po vyplnění posledního políčka položky klávesa <kbd>Tab</kbd> aktivovala tlačítko <i>Přidat</i> namísto <i>Odebrat</i>.</p>
     <p>Špatné pořadí políček je <a href="/chyby-formularu#klavesnice">častou chybou formulářů</a>.</p>
     
-    <p><a href="http://kod.djpw.cz/bzhb">Upravená ukázka</a></p>
+    <p><a href="https://kod.djpw.cz/bzhb">Upravená ukázka</a></p>
   </li>
   
   <li>

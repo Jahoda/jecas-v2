@@ -88,7 +88,7 @@ format: "html"
   identifikator.innerHTML = 'Text';
 &lt;/script></code></pre>
     
-    <p>Do uvedeného <code>&lt;div></code>u se tak nastaví obsah „Text“ – <a href="http://kod.djpw.cz/ajhc">ukázka</a>.</p>
+    <p>Do uvedeného <code>&lt;div></code>u se tak nastaví obsah „Text“ – <a href="https://kod.djpw.cz/ajhc">ukázka</a>.</p>
     
     <p>Obecně na to není moc dobré spoléhat, protože je velmi snadné si tuto proměnnou přepsat jiným obsahem.</p>
   </li>

@@ -272,7 +272,7 @@ ním někdo v těsné blízkosti stojí, stačí se inspirovat třeba u bankomat
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/qcjc">Živá ukázka</a> – test různých variant s/bez vypnutého <code>autocomplete</code></li>
+    <li><a href="https://kod.djpw.cz/qcjc">Živá ukázka</a> – test různých variant s/bez vypnutého <code>autocomplete</code></li>
   </ul>
 </div>
 
@@ -414,4 +414,4 @@ ním někdo v těsné blízkosti stojí, stačí se inspirovat třeba u bankomat
 </ul>
 
 
-<!-- náhled: http://kod.djpw.cz/mwqb -->
+<!-- náhled: https://kod.djpw.cz/mwqb -->

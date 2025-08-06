@@ -113,7 +113,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/seqb-">Chyba zaokrouhlování procent u <code>calc</code> v IE/Edge</a></li>
+    <li><a href="https://kod.djpw.cz/seqb-">Chyba zaokrouhlování procent u <code>calc</code> v IE/Edge</a></li>
   </ul>
 </div>
 
@@ -148,7 +148,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><p><a href="http://kod.djpw.cz/djqb-">Živá ukázka výsledku</a> – proměnlivý počet obtékaných boxů s šířkou v procentech</p></li>
+    <li><p><a href="https://kod.djpw.cz/djqb-">Živá ukázka výsledku</a> – proměnlivý počet obtékaných boxů s šířkou v procentech</p></li>
   </ul>
 </div>
 
@@ -222,7 +222,7 @@ format: "html"
 
 <p>To zajistí vytvoření rozestupů mezi položkami, aby vyplnily celou šířku. Bohužel to neřeší poslední řádek, který se v případě, že na něj zbude méně položek, zobrazí odlišně.</p>
 
-<p><a href="http://kod.djpw.cz/uasb">Živá ukázka</a> – zarovnání do bloku</p>
+<p><a href="https://kod.djpw.cz/uasb">Živá ukázka</a> – zarovnání do bloku</p>
 
 
 
@@ -237,7 +237,7 @@ format: "html"
 
 <p>Bude ale stejně potřeba řešit situaci, kdy na posledním řádku zbude počet boxů neodpovídající počtu sloupců.</p>
 
-<p><a href="http://kod.djpw.cz/uytb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/uytb">Živá ukázka</a></p>
 
 
 

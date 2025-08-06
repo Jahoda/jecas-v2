@@ -232,16 +232,16 @@ format: "html"
   <dd>Využití se najde hlavně u <b>dotykových zařízení</b> se SW klávesnicí. Atribut <code>inputmode</code> by měl umět přepnout typ klávesnice, která se u daného pole objeví.</dd>
 
   <dt id="autofocus"><code>autofocus</code></dt>
-  <dd>Po načtení stránky dá políčku rovnou <code>focus</code> (<a href="http://kod.djpw.cz/ges">ukázka</a>).</dd>  
+  <dd>Po načtení stránky dá políčku rovnou <code>focus</code> (<a href="https://kod.djpw.cz/ges">ukázka</a>).</dd>  
   
   <dt id="placeholder"><code>placeholder</code></dt>
-  <dd>Předvyplní políčko hodnotou, která <b>po aktivování zmizí</b>. Zároveň se nebude odesílat na server (<a href="http://kod.djpw.cz/hes">ukázka</a>). Detailní popis <a href="/placeholder">atributu <code>placehodler</code></a> je na samostatné stránce.</dd>    
+  <dd>Předvyplní políčko hodnotou, která <b>po aktivování zmizí</b>. Zároveň se nebude odesílat na server (<a href="https://kod.djpw.cz/hes">ukázka</a>). Detailní popis <a href="/placeholder">atributu <code>placehodler</code></a> je na samostatné stránce.</dd>    
   
   <dt id="autocomplete"><code>autocomplete</code></dt>
   <dd>Některé prohlížeče si pamatují <b>vyplněná data</b> a umí je později nabízet. Hodnota <code>on</code> napovídání zapne, hodnota <code>off</code> vypne.</dd> 
   
   <dt id="spellcheck"><code>spellcheck</code></dt>
-  <dd>Zapne nebo vypne <b>kontrolu pravopisu</b> (<a href="http://kod.djpw.cz/ies">ukázka</a>).</dd>   
+  <dd>Zapne nebo vypne <b>kontrolu pravopisu</b> (<a href="https://kod.djpw.cz/ies">ukázka</a>).</dd>   
 </dl>
 
 <h2 id="overovani">Ověřování a omezení hodnot</h2>
@@ -310,4 +310,4 @@ format: "html"
 </ul>
 
 
-<!-- http://kod.djpw.cz/tes -->
+<!-- https://kod.djpw.cz/tes -->

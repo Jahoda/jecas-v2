@@ -41,7 +41,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/rnxb">Samostatná ukázka</a></li>
+    <li><a href="https://kod.djpw.cz/rnxb">Samostatná ukázka</a></li>
     <li>Funkční JS/PHP řešení na <a href="https://github.com/Jahoda/upload">GitHubu</a></li>
   </ul>
 </div>

@@ -76,7 +76,7 @@ format: "html"
   <li><code>:-moz-any</code> – <b>Firefox 4+</b></li>
 </ul>
 
-<p><a href="http://kod.djpw.cz/sijb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/sijb">Živá ukázka</a></p>
 
 <p><b>Poznámka</b>: Selektory s prefixy není možné sdružovat, musí se duplikovat. Tohle proto <b>fungovat nebude</b>:</p>
 
@@ -95,7 +95,7 @@ a:-moz-any(:hover, :focus) {
 
 <p>V JavaScriptu obdobně slouží metoda <code>matchesSelector</code>. Zatím je podporovaná s prefixy, případně jde doplnit <a href="/queryselector"><code>querySelectorem</code></a>.</p>
 
-<p><a href="http://kod.djpw.cz/tijb">Živá ukázka</a> s využitím <a href="/polyfill">polyfillu</a></p>
+<p><a href="https://kod.djpw.cz/tijb">Živá ukázka</a> s využitím <a href="/polyfill">polyfillu</a></p>
 
 
 

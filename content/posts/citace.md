@@ -297,7 +297,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/mcob">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/mcob">Živá ukázka</a></p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>

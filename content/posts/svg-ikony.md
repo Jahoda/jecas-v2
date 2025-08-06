@@ -60,7 +60,7 @@ format: "html"
   filter: brightness(0) invert(1);
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/xpvc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/xpvc">Živá ukázka</a></p>
 
 <h2 id="odkazy">Odkazy</h2>
 

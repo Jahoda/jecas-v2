@@ -64,7 +64,7 @@ format: "html"
   Obsah
 &lt;/div></code></pre>
 
-<p><a href="http://kod.djpw.cz/xdgb">Živá ukázka</a> (funkční ve <b>Firefoxu 8+</b>)</p>
+<p><a href="https://kod.djpw.cz/xdgb">Živá ukázka</a> (funkční ve <b>Firefoxu 8+</b>)</p>
 
 
 
@@ -109,7 +109,7 @@ format: "html"
 
 <p><img src="/files/menuitem/vnorena-nabidka.png" alt="Vnořená kontextová nabídka ve Firefoxu" class="border"></p>
 
-<p><a href="http://kod.djpw.cz/ydgb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ydgb">Živá ukázka</a></p>
 
 
 
@@ -133,7 +133,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/zdgb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/zdgb">Živá ukázka</a></p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>

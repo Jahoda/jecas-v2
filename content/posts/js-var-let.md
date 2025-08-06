@@ -252,7 +252,7 @@ console.log(i); // ReferenceError: i is not defined</code></pre>
 
 
 
-<p>Co by se stalo s <code>var</code>? Vypsalo by to pětkrát pětku – <a href="http://kod.djpw.cz/rkvc">živá ukázka</a>.</p>
+<p>Co by se stalo s <code>var</code>? Vypsalo by to pětkrát pětku – <a href="https://kod.djpw.cz/rkvc">živá ukázka</a>.</p>
 
 <p>Proč?</p>
 

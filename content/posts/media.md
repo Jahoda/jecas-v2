@@ -86,7 +86,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/txob">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/txob">Samostatná živá ukázka</a></p>
 
 
 
@@ -316,7 +316,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/slsb-">Ukázka</a> – problematické nastavení break-pointů v pixelech</p>
+<p><a href="https://kod.djpw.cz/slsb-">Ukázka</a> – problematické nastavení break-pointů v pixelech</p>
 
 
 <h2 id="kam-psat">Kam psát breakpointy</h2>
@@ -591,7 +591,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-      <li><a href="http://kod.djpw.cz/xurb">Živá ukázka</a> – chyba <code>and</code> v <b>Internet Exploreru</b></li>
+      <li><a href="https://kod.djpw.cz/xurb">Živá ukázka</a> – chyba <code>and</code> v <b>Internet Exploreru</b></li>
   </ul>
 </div>
 

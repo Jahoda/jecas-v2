@@ -33,8 +33,8 @@ format: "html"
 
 <ul>
   <li>Zvýraznit nějaké slovo v HTML kódu pomocí PHP jde <a href="http://php.vrana.cz/zvyrazneni-vysledku-vyhledavani.php">následovně</a>.</li>
-  <li>V JavaScriptu existuje nástroj <a href="https://github.com/padolsey/findAndReplaceDOMText">findAndReplaceDOMText</a> (<a href="http://kod.djpw.cz/qhgb">ukázka</a>).</li>
-  <li><small>Vtipné, i když ne moc použitelné, je zvýraznění pomocí zapnutí <code>designMode</code> (<a href="http://kod.djpw.cz/phgb">ukázka</a>).</small></li>
+  <li>V JavaScriptu existuje nástroj <a href="https://github.com/padolsey/findAndReplaceDOMText">findAndReplaceDOMText</a> (<a href="https://kod.djpw.cz/qhgb">ukázka</a>).</li>
+  <li><small>Vtipné, i když ne moc použitelné, je zvýraznění pomocí zapnutí <code>designMode</code> (<a href="https://kod.djpw.cz/phgb">ukázka</a>).</small></li>
 </ul>
 
 <h3 id="citace">Zvýraznění v citacích</h3>
@@ -51,4 +51,4 @@ format: "html"
 </ul>
 
 
-<!-- obrázek: http://kod.djpw.cz/rhgb -->
+<!-- obrázek: https://kod.djpw.cz/rhgb -->

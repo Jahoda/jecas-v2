@@ -127,7 +127,7 @@ format: "html"
 
 <div class="external-content">
   <ul>    
-    <li><a href="http://kod.djpw.cz/hwqb-">Živá ukázka</a> – použití všech dostupných AMP komponent</li>
+    <li><a href="https://kod.djpw.cz/hwqb-">Živá ukázka</a> – použití všech dostupných AMP komponent</li>
   </ul>
 </div>
 
@@ -150,7 +150,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/gwqb-#development=1">Živá ukázka</a> – prostá AMP stránka s textem a obrázkem</li>
+    <li><a href="https://kod.djpw.cz/gwqb-#development=1">Živá ukázka</a> – prostá AMP stránka s textem a obrázkem</li>
 
   </ul>
 </div>

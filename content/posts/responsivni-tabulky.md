@@ -74,7 +74,7 @@ format: "html"
 </script>
 
 <ul>
-  <li><i>Popis</i> můžeme na malé obrazovce <button onclick="toggle(zjednodusit, 'vypnout-popis')">oželet</button> (<a href="http://kod.djpw.cz/dis-">ukázka</a> – zmenšit pod 500px).</li>
+  <li><i>Popis</i> můžeme na malé obrazovce <button onclick="toggle(zjednodusit, 'vypnout-popis')">oželet</button> (<a href="https://kod.djpw.cz/dis-">ukázka</a> – zmenšit pod 500px).</li>
   <li><i>Funkci</i> lze znázornit <b>podbarvením buňky</b> anebo <b>ikonou</b>.</li>
   <li>Obdobně <i>akce</i> mohou být na mobilu <button onclick="toggle(zjednodusit, 'zjednodusit')">representovány</button> jen <b>menší ikonou</b>.</li>
 </ul>
@@ -169,7 +169,7 @@ format: "html"
 <pre><code>.popisky td:nth-of-type(1):before {content: "Popis první buňky"}
 .popisky td:nth-of-type(2):before {content: "Popis druhé buňky"}</code></pre>
 
-<p>Nebo přiřazením popisků do <a href="/vlastni-html-znacky">vlastních atributů</a> všech buněk a následné dolování přes <code>content: attr(vlastni-atribut)</code>. To by mohlo zajistit i <a href="http://kod.djpw.cz/lts">pár řádku JavaScriptu</a>.</p>
+<p>Nebo přiřazením popisků do <a href="/vlastni-html-znacky">vlastních atributů</a> všech buněk a následné dolování přes <code>content: attr(vlastni-atribut)</code>. To by mohlo zajistit i <a href="https://kod.djpw.cz/lts">pár řádku JavaScriptu</a>.</p>
 
 <h2 id="transformace">Transformace tabulky</h2>
 <p>Poslední možnost je tabulku projít skriptem a převést ji třeba na <b>definiční seznam</b> (značka <code>&lt;dl></code>), případně ji převést už na straně serveru při <a href="/mobilni-web#detekce">detekci</a> mobilního prohlížeče.</p>

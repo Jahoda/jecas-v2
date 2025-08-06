@@ -98,7 +98,7 @@ nacist(url);</code></pre>
 
 <p>Celý postup demonstruje živá ukázka. Kde se po stisknutí tlačítka myši začne načítat obsah do přednačítacího <code>&lt;div></code>u a po dokončení akce se přesune na <b>cílové umístění</b>.</p>
 
-<p><a href="http://kod.djpw.cz/bzib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/bzib">Živá ukázka</a></p>
 
 
 <h3 id="zpusob">Způsob přednačítání</h3>

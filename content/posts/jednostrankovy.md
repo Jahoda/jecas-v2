@@ -137,7 +137,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/bxrb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/bxrb">Živá ukázka</a></p>
 
 <p>Docílit toho jde snadno jednotkami <code>vh</code> (<i lang="en">viewport height</i>) – fungují od <b>IE 9</b>:</p>
 
@@ -167,7 +167,7 @@ format: "html"
 
 <p>Po kliknutí na odkaz v navigaci, který míří na tutéž stránku, se místo přeskočení odroluje plynule.</p>
 
-<p id="spatna-ukazka"><a href="http://kod.djpw.cz/cxrb">Živá ukázka</a> – plynulé rolování</p>
+<p id="spatna-ukazka"><a href="https://kod.djpw.cz/cxrb">Živá ukázka</a> – plynulé rolování</p>
 
 <p><img src="/files/jednostrankovy/plynule.gif" alt="Plynulé odrolování" class="border"></p>
 

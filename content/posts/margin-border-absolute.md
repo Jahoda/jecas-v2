@@ -33,7 +33,7 @@ format: "html"
 <p>To na jednu stranu může být výhodné chování, na stranu druhou to může nepříjemně překvapit u elementů, které mají různý <code>margin</code> <b>napříč prohlížeči</b>. To je třeba <a href="/button">element <code>&lt;button></code></a>, který má v <b>Chrome</b> 2px <code>margin</code> a jinde má nulu.</p>
 
 
-<p><a href="http://kod.djpw.cz/algb">Živá ukázka</a> rozdílu v <b>Chrome</b>.</p>
+<p><a href="https://kod.djpw.cz/algb">Živá ukázka</a> rozdílu v <b>Chrome</b>.</p>
 
 <p><img src="/files/margin-border-absolute/margin-button.png" alt="Výchozí margin tlačítka v Chrome" class="border"></p>
 
@@ -52,14 +52,14 @@ format: "html"
 
 <p>Řešení je buď <b>záporný <code>margin</code></b> o rozměrech rámečku, nebo záporné souřadnice <code>top</code>/<code>bottom</code>, <code>left</code>/<code>right</code> – rovněž o tloušťku rámečku.</p>
 
-<p><a href="http://kod.djpw.cz/blgb">Ukázka obou postupů</a></p>
+<p><a href="https://kod.djpw.cz/blgb">Ukázka obou postupů</a></p>
 
 <p>Problém nastane, když budeme potřebovat obalu nastavit <code>overflow: hidden</code>, protože rámeček se v podstatě nachází mimo <span style="background: #8AB3BF">obsah</span> + <code style="background: #C1CD89">padding</code> (jak znázorňuje předchozí obrázek), takže bude <b>oříznut</b>.</p>
 
 <p><img src="/files/margin-border-absolute/tlacitko-okraj-overflow.png" alt="Splývání okrajů" class="border"></p>
 
-<p><a href="http://kod.djpw.cz/clgb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/clgb">Živá ukázka</a></p>
 
-<p>Řešení je umístit oba prvky s rámečkem na stejnou úroveň v HTML kódu. <a href="http://kod.djpw.cz/dlgb">Ukázka</a>.</p>
+<p>Řešení je umístit oba prvky s rámečkem na stejnou úroveň v HTML kódu. <a href="https://kod.djpw.cz/dlgb">Ukázka</a>.</p>
 
-<p>Nebo rámeček vytvořit vlastností <a href="/box-shadow"><code>box-shadow</code></a> (<b>IE 9+</b>). <a href="http://kod.djpw.cz/flgb">Ukázka</a>.</p>
+<p>Nebo rámeček vytvořit vlastností <a href="/box-shadow"><code>box-shadow</code></a> (<b>IE 9+</b>). <a href="https://kod.djpw.cz/flgb">Ukázka</a>.</p>

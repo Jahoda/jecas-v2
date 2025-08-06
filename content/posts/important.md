@@ -67,7 +67,7 @@ format: "html"
 <pre><code>#idecko {
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/bfrb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/bfrb">Ukázka</a></p>
 
 
 

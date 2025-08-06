@@ -152,7 +152,7 @@ format: "html"
   <div class="kulaty" style="border: 5px solid #000; box-shadow: 0px 0px 0px 5px #5EAA11"></div>
 </div>
 
-<p>Pomocí <code>box-shadow</code> můžeme vytvořit i <b>více <i>rámečků</i> najednou</b>, jak ve <a href="http://kod.djpw.cz/glc">své ukázce</a> předvedl pan <a href="http://teststranek.kvalitne.cz/">Bubák</a>.</p>
+<p>Pomocí <code>box-shadow</code> můžeme vytvořit i <b>více <i>rámečků</i> najednou</b>, jak ve <a href="https://kod.djpw.cz/glc">své ukázce</a> předvedl pan <a href="http://teststranek.kvalitne.cz/">Bubák</a>.</p>
 
 <div class="live">
   <style>

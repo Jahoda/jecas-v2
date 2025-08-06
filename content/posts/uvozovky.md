@@ -343,7 +343,7 @@ EOT;</code></pre>
     
     
     
-    <p><a href="http://kod.djpw.cz/bbtb">Živá ukázka</a> – zanoření více uvozovek</p>
+    <p><a href="https://kod.djpw.cz/bbtb">Živá ukázka</a> – zanoření více uvozovek</p>
   </li>
 </ol>
 
@@ -407,4 +407,4 @@ element.onclick = funkce;</code></pre>
 
 <p>Ve <a href="/windows"><b>Windows</b></a> pro ně ale žádná jednoduchá klávesová zkratka neexistuje.</p>
 
-<!-- Ukázka http://kod.djpw.cz/dbtb -->
+<!-- Ukázka https://kod.djpw.cz/dbtb -->

@@ -24,7 +24,7 @@ format: "html"
 </form>  
 </div>
 
-<p><a href="http://kod.djpw.cz/fhkb">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/fhkb">Samostatná živá ukázka</a></p>
 
 <p>Políčko výše bude vyžadovat <b>5 a více znaků</b>. Trochu zajímavé chování nastane při nevyplnění políčka – v takovém případě <b>validace úspěšně projde</b> – proto se může hodit kombinace s <a href="/required"><code>required</code></a>.</p>
 

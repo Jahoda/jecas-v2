@@ -117,7 +117,7 @@ A nakonec obrázek:
 
 
 
-<p><a href="http://kod.djpw.cz/ymvb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ymvb">Ukázka</a></p>
 
 
 
@@ -293,7 +293,7 @@ alert(s);
 </div>
 
 
-<p><a href="http://kod.djpw.cz/zpvb">Živá ukázka</a> – jednoduchý editor převádějící Markdown do HTML</p>
+<p><a href="https://kod.djpw.cz/zpvb">Živá ukázka</a> – jednoduchý editor převádějící Markdown do HTML</p>
 
 
 <h2 id="editory">Editory</h2>

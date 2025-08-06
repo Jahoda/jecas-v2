@@ -21,7 +21,7 @@ format: "html"
 </ol>
 
 <div class="live">
-  <a href="http://kod.djpw.cz">Odkaz na vyzkoušení</a>
+  <a href="https://kod.djpw.cz">Odkaz na vyzkoušení</a>
 </div>
 
 <p>Osobně se ale domnívám, že značná část návštěvníků toto <b>nezná</b> a v případech, kdy je nežádoucí přechodem na další stránku v podstatě <b>zavřít tu původní</b>, je <b>otevření nového okna</b> rozumné řešení. (Nechtěnému zavření může zabránit <a href="/onbeforeunload">událost <code>onbeforeunload</code></a> a nebo alespoň minimalisovat následky dokáže <a href="/zalohovani-formularu">ukládání formulářů do <code>localStorage</code></a>.)</p>
@@ -57,11 +57,11 @@ format: "html"
   document.getElementById("tlacitko").click();
 &lt;/script></code></pre>
 
-<p><a href="http://kod.djpw.cz/jfcb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jfcb">Ukázka</a></p>
 
 <h3 id="zmena-url">Změna URL okna</h3>
 
-<p>Měnit URL zobrazenou v okně <b>otevřeném skriptem</b> je možné přes <code>location.href</code> (<a href="http://kod.djpw.cz/kfcb">ukázka</a>):</p>
+<p>Měnit URL zobrazenou v okně <b>otevřeném skriptem</b> je možné přes <code>location.href</code> (<a href="https://kod.djpw.cz/kfcb">ukázka</a>):</p>
 
 <pre><code>var okno = window.open();
 okno.location.href = "http://example.com";</code></pre>

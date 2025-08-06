@@ -73,7 +73,7 @@ format: "html"
 
 <p>Při <b>absolutním</b> <a href="/position">posicování</a> se hodnoty pro <code>left</code>/<code>right</code> a <code>top</code>/<code>bottom</code> počítají z šířky/výšky nejbližšího nadřazeného elementu s nestatickou posicí (<code>position: relative</code>/<code>absolute</code>/<code>fixed</code>), případně z šířky okna.</p>
 
-<p><a href="http://kod.djpw.cz/kojb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/kojb">Živá ukázka</a></p>
 
 <p><b>Relativně</b> posicovaný element počítá běžně rozměry z šířky/výšky rodiče.</p>
 
@@ -82,7 +82,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/elnb">Odsazení v procentech</a></li>
+    <li><a href="https://kod.djpw.cz/elnb">Odsazení v procentech</a></li>
   </ul>
 </div>
 

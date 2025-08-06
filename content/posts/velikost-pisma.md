@@ -67,7 +67,7 @@ format: "html"
 
 <h2 id="vychozi">Výchozí velikosti</h2>
 
-<p><a href="http://kod.djpw.cz/phad">Živý test</a> – test výchozích velikostí písma se <b>změřením ve vašem prohlížeči</b></p>
+<p><a href="https://kod.djpw.cz/phad">Živý test</a> – test výchozích velikostí písma se <b>změřením ve vašem prohlížeči</b></p>
 
 <p>Z <a href="/html-znacky">HTML značek</a> existují tyto, které jsou běžné používané a nějak ovlivňují velikost písma.</p>
 
@@ -134,12 +134,12 @@ format: "html"
 
 <p>Realita bude ale většinou 13 px, což je v prohlížečích výchozí velikost pro <code>font-family: monospace</code>.</p>
 
-<p><a href="http://kod.djpw.cz/vhad">Ukázka</a> – výchozí velikost 13 px</p>
+<p><a href="https://kod.djpw.cz/vhad">Ukázka</a> – výchozí velikost 13 px</p>
 
 
 <p>Má to ale jednoduché řešení, uvést kromě <code>monospace</code> ještě něco dalšího, klidně další <code>monospace</code> a velikost by měla být 16 px:</p>
 
-<p><a href="http://kod.djpw.cz/uhad">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/uhad">Živá ukázka</a></p>
 
 
 <p>Případně rovnou nastavit nějaká hezčí písma dostupná v operačních systémech pro zdrojové kódy. Zde používám toto:</p>
@@ -214,7 +214,7 @@ button {
 
 
 
-<p><a href="http://kod.djpw.cz/xhad">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/xhad">Živá ukázka</a></p>
 
 <p>Případně dává smysl nastavit specifický <code>font-family</code>, pokud má být u formulářových prvků jiný.</p>
 
@@ -304,7 +304,7 @@ button {
 
 
 
-<p><a href="http://kod.djpw.cz/aiad">Živá ukázka</a> – při změně velikosti písma by měl první text zůstat stále 32 px velký</p>
+<p><a href="https://kod.djpw.cz/aiad">Živá ukázka</a> – při změně velikosti písma by měl první text zůstat stále 32 px velký</p>
 
 
 
@@ -385,9 +385,9 @@ button {
 
 
 
-<p><a href="http://kod.djpw.cz/ciad">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ciad">Živá ukázka</a></p>
 
-<p>Další možnost v CSS bez preprocesoru je použít <a href="/var">nativní proměnné <code>var</code></a> a nadeklarovat si proměnné s potřebnými velikostmi pro pozdější pohodlné použití – <a href="http://kod.djpw.cz/diad">příklad</a>. (Nefunguje v <b>IE 11</b>.)</p>
+<p>Další možnost v CSS bez preprocesoru je použít <a href="/var">nativní proměnné <code>var</code></a> a nadeklarovat si proměnné s potřebnými velikostmi pro pozdější pohodlné použití – <a href="https://kod.djpw.cz/diad">příklad</a>. (Nefunguje v <b>IE 11</b>.)</p>
 
 
 <p>Protože dříve toto nebylo možné, používal <b>trik 62,5%</b>:</p>
@@ -416,7 +416,7 @@ button {
 
 
 
-<p><a href="http://kod.djpw.cz/fiad">Živá ukázka – 62,5 % trik</a></p>
+<p><a href="https://kod.djpw.cz/fiad">Živá ukázka – 62,5 % trik</a></p>
 
 
 <p>Problém je, že se hodnoty <b>počítají relativně vůči rodiči</b>, takže v elementu <code>.text</code> už bude nastavování pomocí procent opět vyžadovat kalkulačku.</p>
@@ -454,7 +454,7 @@ button {
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/okqb">Živá ukázka</a> – pohodlná změna velikosti <code>em</code> layoutu</li>
+    <li><a href="https://kod.djpw.cz/okqb">Živá ukázka</a> – pohodlná změna velikosti <code>em</code> layoutu</li>
   </ul>
 </div>
 
@@ -649,7 +649,7 @@ button {
 <p>Mění si uživatelé velikost písma v prohlížeči? Můžete si to zkusit změřit na svém webu.</p>
 
 <ul>
-  <li><a href="http://kod.djpw.cz/laoc-">Příklad měření velikost</a> – zobrazí se aktuální velikost</li>
+  <li><a href="https://kod.djpw.cz/laoc-">Příklad měření velikost</a> – zobrazí se aktuální velikost</li>
 </ul>
 
 <p>Podle některých měření to mohou být jednotky procent návštěvníků.</p>

@@ -18,7 +18,7 @@ format: "html"
 
 <p>Přesto jsem v červenci 2013 spustil svůj vlastní nástroj.</p>
 
-<p>Momentálně běží na adrese <a href="http://kod.djpw.cz">kod.djpw.cz</a></p>
+<p>Momentálně běží na adrese <a href="https://kod.djpw.cz">kod.djpw.cz</a></p>
 
 <p>Proč? Protože ostatní řešení trpěla a stále trpí věcmi značně komplikujícími používání.</p>
 
@@ -101,13 +101,13 @@ format: "html"
 <ul>
   <li><a href="http://codepen.io/anon/pen/KsfEH">Codepen</a></li>
   <li><a href="http://jsfiddle.net/7cSkp/">JSFiddle</a></li>
-  <li><a href="http://kod.djpw.cz/eueb">kod.djpw.cz</a></li>
+  <li><a href="https://kod.djpw.cz/eueb">kod.djpw.cz</a></li>
 </ul>
 
 
 <h2 id="obrazky">Obrázky</h2>
 
-<p>Ve svém nástroji vložím obrázek 200 × 200 px zadáním url „<code>/i/200</code>“. <a href="http://kod.djpw.cz/cueb">Ukázka</a></p>
+<p>Ve svém nástroji vložím obrázek 200 × 200 px zadáním url „<code>/i/200</code>“. <a href="https://kod.djpw.cz/cueb">Ukázka</a></p>
 
 
 

@@ -94,12 +94,12 @@
 	border-bottom-style: dotted;
 }
 
-.prose a[href^='http://kod.djpw.cz']:not(.button)
+.prose a[href^='https://kod.djpw.cz']:not(.button)
 {
 	padding-left: 24px;
 }
 
-.prose a[href^='http://kod.djpw.cz']:not(.button)
+.prose a[href^='https://kod.djpw.cz']:not(.button)
 {
 	background: url('/external-favicons/kod.djpw.cz.ico') no-repeat left 2px center;
 	background-size: 1em 1em;

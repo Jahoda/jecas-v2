@@ -9,4 +9,4 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/ljic
+https://kod.djpw.cz/ljic

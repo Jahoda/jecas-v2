@@ -131,7 +131,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/hkqb">Samostatná živá ukázka</a> – obtékané sloupce s fixní a proměnlivou šířkou</li>
+    <li><a href="https://kod.djpw.cz/hkqb">Samostatná živá ukázka</a> – obtékané sloupce s fixní a proměnlivou šířkou</li>
   </ul>
 </div>
 
@@ -147,7 +147,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/jkqb">Živá ukázka</a> – fixní a gumový sloupec pomocí <code>display: table</code></li>
+    <li><a href="https://kod.djpw.cz/jkqb">Živá ukázka</a> – fixní a gumový sloupec pomocí <code>display: table</code></li>
   </ul>
 </div>
 
@@ -165,7 +165,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/kkqb">Živá ukázka</a> – absolutně posicovaný sloupec s fixní šířkou</li>
+    <li><a href="https://kod.djpw.cz/kkqb">Živá ukázka</a> – absolutně posicovaný sloupec s fixní šířkou</li>
   </ul>
 </div>
 

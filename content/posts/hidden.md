@@ -65,7 +65,7 @@ format: "html"
 <pre><code>document.getElementById("prihlaseni").hidden = true;
 document.getElementById("obsah").hidden = false;</code></pre>
 
-<p><a href="http://kod.djpw.cz/kmkb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/kmkb">Živá ukázka</a></p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>

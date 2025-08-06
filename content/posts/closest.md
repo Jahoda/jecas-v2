@@ -81,7 +81,7 @@ var predek = potomek.<b>closest('.predek')</b>;</code></pre>
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/pmlb">Polyfill funkce closest</a></li>
+    <li><a href="https://kod.djpw.cz/pmlb">Polyfill funkce closest</a></li>
   </ul>
 </div>
 

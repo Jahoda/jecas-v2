@@ -11,4 +11,4 @@ format: "html"
 
 https://www.firebase.com/
 
-http://kod.djpw.cz/kgnb
+https://kod.djpw.cz/kgnb

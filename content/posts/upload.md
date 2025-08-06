@@ -52,13 +52,13 @@ format: "html"
 <p><b>Firefox</b> takto umí dokonce i vkládat zkopírované soubory.</p>
 
 
-<p><a href="http://kod.djpw.cz/rchb">Živá ukázka</a> – vložení obrázku ze schránky do <code>contenteditable</code></p>
+<p><a href="https://kod.djpw.cz/rchb">Živá ukázka</a> – vložení obrázku ze schránky do <code>contenteditable</code></p>
 
 <p>Jinde to ale nefunguje. Ve staré <b>Opeře 12</b> a starších <b>IE</b> není možnost obrázek ze schránky vložit (jen s využitím HTML a JS) v jakékoliv podobě bez použití nějakých <b>pluginů</b> v Javě nebo Flashi.</p>
 
 <p>V <b>Chrome</b> jde použít <code>clipboardData</code>.</p>
 
-<p><a href="http://kod.djpw.cz/ovpb">Živá ukázka</a> – získání souboru z <code>clipboardData</code></p>
+<p><a href="https://kod.djpw.cz/ovpb">Živá ukázka</a> – získání souboru z <code>clipboardData</code></p>
 
 
 
@@ -92,7 +92,7 @@ window.addEventListener("drop", prevent, false);</code></pre>
 
 <p>Přetažený soubor (nebo soubory) se získají z <code>event.dataTransfer.files</code> při události <code>ondrop</code> (upuštění obrázku).</p>
 
-<p><a href="http://kod.djpw.cz/cchb">Živá ukázka</a> – výpis přetažených souborů</p>
+<p><a href="https://kod.djpw.cz/cchb">Živá ukázka</a> – výpis přetažených souborů</p>
 
 
 
@@ -183,7 +183,7 @@ reader.readAsDataURL(<b>soubor</b>);</code></pre>
 
 <p>Hotové řešení zobrazení obrázku po drag &amp; drop může vypadat následovně:</p>
 
-<p><a href="http://kod.djpw.cz/gchb">Živá ukázka</a> – zobrazení obrázku před uploadem</p>
+<p><a href="https://kod.djpw.cz/gchb">Živá ukázka</a> – zobrazení obrázku před uploadem</p>
 
 
 <h3 id="input">Zobrazení souboru z <code>&lt;input></code>u</h3>
@@ -195,14 +195,14 @@ reader.readAsDataURL(<b>soubor</b>);</code></pre>
 
 <p>Funkci <code>zobrazit</code> se předává nahrávací políčko (<code>this</code>) právě kvůli následnému získání souboru z <code>input.files</code>.</p>
 
-<p><a href="http://kod.djpw.cz/tbhb">Živá ukázka</a> – okamžitého zobrazení obrázku z <code>&lt;input type="file"></code></p>
+<p><a href="https://kod.djpw.cz/tbhb">Živá ukázka</a> – okamžitého zobrazení obrázku z <code>&lt;input type="file"></code></p>
 
 
 <h3 id="multiple">Více souborů najednou</h3>
 
 <p>Pro upload více souborů existuje HTML atribut <code>multiple</code>. V takovém případě bude záhodno zobrazit náhledy všech souborů. Počet souborů se zjistí z <code>input.files.length</code>. Potom stačí soubory projít <a href="/js-cykly">běžným cyklem <code>for</code></a> a místo nuly na místě indexu použít index každého jednoho souboru.</p>
 
-<p><a href="http://kod.djpw.cz/xbhb">Živá ukázka</a> – zobrazení více souboru z <code>multiple</code> upload políčka.</p>
+<p><a href="https://kod.djpw.cz/xbhb">Živá ukázka</a> – zobrazení více souboru z <code>multiple</code> upload políčka.</p>
 
 <p>Zobrazení více (datově větších) souborů <b>zabere nějaký čas</b>. Tudíž by bylo dobré dát uživateli vědět, že se něco děje.</p>
 
@@ -236,7 +236,7 @@ ctx.<b>drawImage</b>(obrazek, 0, 0);</code></pre>
 <p>Druhý a třetí parametr funkce <code>drawImage</code> <b>určuje souřadnice</b>, kam se má obrázek nakreslit – cílem je ho umístit hned do levého horního rohu, proto ty dvě nuly. Proměnná <code>obrazek</code> je <code>&lt;img></code> element.</p>
 
 
-<p><a href="http://kod.djpw.cz/ubhb">Živá ukázka</a> – překreslení obrázku do <code>&lt;canvas></code>u</p>
+<p><a href="https://kod.djpw.cz/ubhb">Živá ukázka</a> – překreslení obrázku do <code>&lt;canvas></code>u</p>
 
 
 <p>Kvůli <b>IE</b> musí obrázek na stránce skutečně existovat (být přidán do <a href="/dom">DOMu</a>), byť třeba skrytý.</p>
@@ -244,7 +244,7 @@ ctx.<b>drawImage</b>(obrazek, 0, 0);</code></pre>
 <pre><code>var obrazek = new Image();
 obrazek.src = e.target.result;</code></pre>
 
-<p>Tato elegantnější konstrukce proto nebude v <b>IE</b> fungovat (<a href="http://kod.djpw.cz/vbhb">ukázka</a>).</p>
+<p>Tato elegantnější konstrukce proto nebude v <b>IE</b> fungovat (<a href="https://kod.djpw.cz/vbhb">ukázka</a>).</p>
 
 
 
@@ -254,7 +254,7 @@ obrazek.src = e.target.result;</code></pre>
 
 <p>Místo metody <code>readAsDataURL</code> k tomu slouží <b>přečtení souboru jako text</b> – <code>readAs<b>Text</b></code> a výsledek se nastaví jako <a href="/innerhtml"><code>innerHTML</code></a> nějakého elementu.</p>
 
-<p><a href="http://kod.djpw.cz/ybhb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ybhb">Živá ukázka</a></p>
 
 
 
@@ -263,7 +263,7 @@ obrazek.src = e.target.result;</code></pre>
 
 <p>V <b>IE 9</b> a starších není možné použít <code>FileReader</code>. Pro zobrazení náhledu tak nezbývá než soubor <b>nahrát na server</b> a až ten zobrazit. Případně použít nějaký plugin ve Flashi nebo Javě.</p>
 
-<p>Údajně by ve starších <b>IE</b> mohlo fungovat <a href="http://forums.asp.net/t/1320559.aspx">tohle</a> – <a href="http://kod.djpw.cz/wbhb">ukázka</a> – v <b>IE 9</b> to ale funkčně nevypadá.</p>
+<p>Údajně by ve starších <b>IE</b> mohlo fungovat <a href="http://forums.asp.net/t/1320559.aspx">tohle</a> – <a href="https://kod.djpw.cz/wbhb">ukázka</a> – v <b>IE 9</b> to ale funkčně nevypadá.</p>
 
 
 <h2 id="upload">Upload souboru</h2>

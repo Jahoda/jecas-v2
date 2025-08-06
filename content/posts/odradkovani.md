@@ -134,7 +134,7 @@ Druhý řádek"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/vglb">Test zalomení obsahu atributu <code>placehoder</code></a></li>
+    <li><a href="https://kod.djpw.cz/vglb">Test zalomení obsahu atributu <code>placehoder</code></a></li>
   </ul>
 </div>
 

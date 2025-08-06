@@ -56,7 +56,7 @@ format: "html"
         <li><a href="https://code.google.com/p/svg-edit/">svg-edit</a> (<a href="http://svg-edit.googlecode.com/svn/branches/stable/editor/svg-editor.html">demo</a>)</li>
       </ul>
     </div>
-    <p><a href="http://kod.djpw.cz/jehb">Živá ukázka</a> převodu SVG na <i>data URL</i></p>
+    <p><a href="https://kod.djpw.cz/jehb">Živá ukázka</a> převodu SVG na <i>data URL</i></p>
   </li>
 </ol>
 

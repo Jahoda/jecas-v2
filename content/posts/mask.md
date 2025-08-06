@@ -120,7 +120,7 @@ format: "html"
   <li><code>mask-border</code> – obdoba <a href="/border-image"><code>border-image</code></a></li>
 </ul>
 
-<p><a href="http://kod.djpw.cz/wjkb">Živá ukázka</a> (funguje jen v <b>Chrome</b>, nové <b>Opeře</b> apod.)</p>
+<p><a href="https://kod.djpw.cz/wjkb">Živá ukázka</a> (funguje jen v <b>Chrome</b>, nové <b>Opeře</b> apod.)</p>
 
 
 
@@ -136,7 +136,7 @@ format: "html"
 
 <p><img src="/files/mask/obrazek-textura.jpg" alt="Obrázek překrytý texturou" class="border"></p>
 
-<p><a href="http://kod.djpw.cz/bkkb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/bkkb">Živá ukázka</a></p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>

@@ -161,7 +161,7 @@ onclick="this.href = 'data:text/html,&lt;meta http-equiv=refresh content=\'0;url
   Je čas bez referera
 &lt;/a></code></pre>
 
-<p><a href="http://kod.djpw.cz/qhub">Živá ukázka</a> – nepřenášení referera pomocí data URI</p>
+<p><a href="https://kod.djpw.cz/qhub">Živá ukázka</a> – nepřenášení referera pomocí data URI</p>
 
 
 

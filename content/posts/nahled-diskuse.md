@@ -37,4 +37,4 @@ format: "html"
 <a href="https://www.youtube.com/watch?v=m_t4_6eHFdk" class="yt">Vylepšení stromových diskusí</a>
 
 <p>Jelikož byl skript vytvářen jako uživatelský JS pro <a href='/opera'>Operu</a>, nefunguje nejspíš úplně ideálně napříč prohlížeči. Živá ukázka v HTML je tedy <i>na vlastní nebezpečí</i>.
-<p><a href='http://kod.djpw.cz/uuhb-' rel=nofollow class=button>Ukázka</a> <a href="http://jecas.cz/files/df/df.js" class="button">Samotný user JS</a> <a href="http://jecas.cz/files/df/df-opera.js" class="button">User JS pro Operu</a>
+<p><a href='https://kod.djpw.cz/uuhb-' rel=nofollow class=button>Ukázka</a> <a href="http://jecas.cz/files/df/df.js" class="button">Samotný user JS</a> <a href="http://jecas.cz/files/df/df-opera.js" class="button">User JS pro Operu</a>

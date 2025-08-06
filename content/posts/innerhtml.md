@@ -28,7 +28,7 @@ format: "html"
   alert(el.innerHTML); // vypíše „<i>Obsah</i>“
 &lt;/script></code></pre>
 
-<p><a href="http://kod.djpw.cz/wmgb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/wmgb">Ukázka</a></p>
 
 
 
@@ -47,7 +47,7 @@ format: "html"
   el.innerHTML = "<i>Obsah</i>";
 &lt;/script></code></pre>
 
-<p>Tento kód vloží do prázdného <code>&lt;div></code>u <i>Obsah</i>. <a href="http://kod.djpw.cz/vmgb">Ukázka</a></p>
+<p>Tento kód vloží do prázdného <code>&lt;div></code>u <i>Obsah</i>. <a href="https://kod.djpw.cz/vmgb">Ukázka</a></p>
 
 <p><b>Upozornění</b>: Důležitý obsah by měl být přímo v HTML. S obsahem vypsaným JavaScriptem mohou mít problémy vyhledávače.</p>
 
@@ -80,7 +80,7 @@ for (var i = 1; i &lt;= 10; i++) {
   element.innerHTML += "&lt;li>" + i + "&lt;/li>";
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/xmgb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/xmgb">Ukázka</a></p>
 
 <p>Funkční to bude, ale <b>zbytečně neefektivní</b> – každý jednotlivý průchod cyklu bude manipulovat s <i>DOMem</i> celého elementu.</p>
 
@@ -93,7 +93,7 @@ for (var i = 1; i &lt;= 10; i++) {
 }
 element.innerHTML = obsah;</code></pre>
 
-<p><a href="http://kod.djpw.cz/ymgb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ymgb">Ukázka</a></p>
 
 
 
@@ -112,7 +112,7 @@ element.innerHTML = obsah;</code></pre>
 
 <p>Kvůli přidání <i>něčeho</i> se musí <b>znovu vytvořit celý DOM</b> <code>element</code>u. Kromě toho, že to u složitějších věcí dlouho trvá, se tím <i>zresetuje</i> dosavadní stav – například vyplněná <b>políčka formulářů</b> a podobně. (Někdy se to ale může hodit – třeba u <a href="/input-file">resetování <code>&lt;input type="file"></code></a>.)</p>
 
-<p><a href="http://kod.djpw.cz/angb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/angb">Ukázka</a></p>
 <!--
 <p>Řešením je metodou <code>createElement</code> element vytvořit a přidat ho přes <code>appendChild</code>:</p>
 
@@ -120,7 +120,7 @@ element.innerHTML = obsah;</code></pre>
 neco.innerHTML = "něco";
 element.appendChild(neco);</code></pre>
 
-<p><a href="http://kod.djpw.cz/bngb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/bngb">Ukázka</a></p>
 
 <p>Kromě vytvoření celých elementů (<code>createTextNode</code>) lze vytvořit i samotný text – metodou <code>create<b>TextNode</b></code>.</p>
 
@@ -164,7 +164,7 @@ element.appendChild(text);</code></pre>
 
 <p>Druhý parametr <code>obsah</code> je potom text / HTML kód, který se má vložit.</p>
 
-<p><a href="http://kod.djpw.cz/engb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/engb">Ukázka</a></p>
 
 
 
@@ -193,7 +193,7 @@ element.appendChild(text);</code></pre>
   <li><code>innerText</code> – funguje všude kromě <b>Firefoxu</b></li>
 </ol>
 
-<p><a href="http://kod.djpw.cz/dngb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/dngb">Ukázka</a></p>
 
 <p>Kvůli těmto rozdílům je snazší používat <code>innerHTML</code>. V případě, že je vyloženě cílem získat obsah <b>bez HTML značek</b>, je možné obě vlastnosti sjednotit.</p>
 

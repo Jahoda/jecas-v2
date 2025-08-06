@@ -17,7 +17,7 @@ format: "html"
 
 <p>Zvlášť v případě vodorovného obsahu umístěného nahoře nebo dole se ještě <b>zmenší dostupná výška</b>, která je už tak hojně ukrajována <b>rozhraním prohlížeče</b> nebo módou <b>širokoúhlých monitorů</b>.</p>
 
-<p><a href="http://kod.djpw.cz/hpob">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/hpob">Živá ukázka</a></p>
 
 <h2 id="odkazy">Odkazy jinam</h2>
 

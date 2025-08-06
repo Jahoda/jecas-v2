@@ -106,7 +106,7 @@ format: "html"
   </li>
 </ol>
 
-<p><a href="http://kod.djpw.cz/ovrb">Živá ukázka</a> – test pokusů o zabránění načtení obrázku</p>
+<p><a href="https://kod.djpw.cz/ovrb">Živá ukázka</a> – test pokusů o zabránění načtení obrázku</p>
 
 
 

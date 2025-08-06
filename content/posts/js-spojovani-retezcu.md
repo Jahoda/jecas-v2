@@ -25,7 +25,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/gaqb">Živá ukázka</a> – vytváření HTML šablon</p>
+<p><a href="https://kod.djpw.cz/gaqb">Živá ukázka</a> – vytváření HTML šablon</p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>

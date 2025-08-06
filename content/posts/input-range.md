@@ -132,7 +132,7 @@ input[type=range]::-webkit-slider-thumb {
   </div>
 </div>
 
-<p><a href="http://kod.djpw.cz/izid">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/izid">Samostatná živá ukázka</a></p>
 
 <p>Ukázka <b>nefunguje</b> ve <b>Firefoxu</b>, ten má pro stylování vlastní selektory:</p>
 
@@ -157,7 +157,7 @@ input[type=range]::-webkit-slider-runnable-track {
 
 <p>Řešení je tak kód zduplikovat nebo použít nějaký <a href="/preprocesory">CSS preprocesor</a>, co problém s duplicitou vyřeší.</p>
 
-<p><a href="http://kod.djpw.cz/lzid">Samostatná živá ukázka</a> – funkční v <b>Chrome</b>, <b>Firefoxu</b>, <b>Safari</b>, <b>Edge</b></p>
+<p><a href="https://kod.djpw.cz/lzid">Samostatná živá ukázka</a> – funkční v <b>Chrome</b>, <b>Firefoxu</b>, <b>Safari</b>, <b>Edge</b></p>
 
 
 <div class="external-content">
@@ -209,7 +209,7 @@ input[type=range]::-ms-thumb {}</code></pre>
   </div>
 </div>
 
-<p><a href="http://kod.djpw.cz/pzid">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/pzid">Samostatná živá ukázka</a></p>
 
 <p>Zdá se ale, že pokročilejší stylování obsahu v <code>&lt;datalist></code> není možné v <b>Safari</b>.</p>
 

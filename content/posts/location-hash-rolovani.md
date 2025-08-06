@@ -27,7 +27,7 @@ element.id = puvodniId + "-nesmysl";
 location.hash = "#" + puvodniId;
 element.id = puvodniId;
 </code></pre>
-    <p><a href="http://kod.djpw.cz/zuab">Ukázka</a></p>
+    <p><a href="https://kod.djpw.cz/zuab">Ukázka</a></p>
     <p>Problém s <code>:target</code> selektorem ale přetrvává.</p>
   </li>
   <li>
@@ -37,7 +37,7 @@ element.id = puvodniId;
 location.hash = "#" + idElementu;
 document.body.scrollTop = document.documentElement.scrollTop = top;</code></pre>
     <p>V některých prohlížečích je třeba <a href="/zvyrazneni-odrolovani#quirk">používat</a> <code>body.scrollTop</code> a jinde <code>documentElement.scrollTop</code>.</p>
-    <p><a href="http://kod.djpw.cz/avab">Ukázka</a></p>
+    <p><a href="https://kod.djpw.cz/avab">Ukázka</a></p>
   </li>
 </ol>
 

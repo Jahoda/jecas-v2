@@ -82,7 +82,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/lelc">Živá ukázka</a> – pokus o změnu barvy záhlaví mobilních prohlížečů</li>
+    <li><a href="https://kod.djpw.cz/lelc">Živá ukázka</a> – pokus o změnu barvy záhlaví mobilních prohlížečů</li>
   </ul>
 </div>
 

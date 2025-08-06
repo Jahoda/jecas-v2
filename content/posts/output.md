@@ -19,7 +19,7 @@ format: "html"
   <output name="vysledek">8</output>
 </form></div>
 
-<p>V této jednoduché <a href="http://kod.djpw.cz/yjgb">ukázce</a> se značka <code>&lt;output></code> použije pro zobrazení <b>výsledku</b>. Jedná se tedy o jeden ze způsobů, jak vytvořit <a href="/zablokovani-inputu">„&lt;input>“, do kterého se nedá psát</a>.</p>
+<p>V této jednoduché <a href="https://kod.djpw.cz/yjgb">ukázce</a> se značka <code>&lt;output></code> použije pro zobrazení <b>výsledku</b>. Jedná se tedy o jeden ze způsobů, jak vytvořit <a href="/zablokovani-inputu">„&lt;input>“, do kterého se nedá psát</a>.</p>
 
 <p>Obsah <code>&lt;output></code>u se podobně jako u <code>&lt;input type="disabled"></code> v případě odeslání formuláře <b>neodesílá na server</b>. <b>Výchozí vzhled</b> značky je neutrální.</p>
 
@@ -37,7 +37,7 @@ format: "html"
 
 <p>V nepodporujících prohlížečích se chová jako ostatní <a href="/vlastni-html-znacky#html5">neznámé značky</a>.</p>
 
-<p>S trochou úprav může původní ukázka fungovat i ve <b>starších prohlížečích</b> – <a href="http://kod.djpw.cz/bkgb">ukázka</a>.</p>
+<p>S trochou úprav může původní ukázka fungovat i ve <b>starších prohlížečích</b> – <a href="https://kod.djpw.cz/bkgb">ukázka</a>.</p>
 
 
 
@@ -104,7 +104,7 @@ format: "html"
   10
 &lt;/output></code></pre>
     
-    <p><a href="http://kod.djpw.cz/wjgb">Ukázka</a> přečtení obsahu pomocí <code>value</code>.</p>
+    <p><a href="https://kod.djpw.cz/wjgb">Ukázka</a> přečtení obsahu pomocí <code>value</code>.</p>
   </li>
 </ol>
 
@@ -145,4 +145,4 @@ format: "html"
   <li>W3C: <a href="http://www.w3.org/TR/html5/forms.html#the-output-element">The <code>output</code> element</a></li>
 </ul>
 
-<!-- obrázek: http://kod.djpw.cz/akgb -->
+<!-- obrázek: https://kod.djpw.cz/akgb -->

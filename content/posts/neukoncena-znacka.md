@@ -54,7 +54,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/bwrb">Živá ukázka</a> s neukončeným <code>&lt;div></code>em</p>
+<p><a href="https://kod.djpw.cz/bwrb">Živá ukázka</a> s neukončeným <code>&lt;div></code>em</p>
 
 
 

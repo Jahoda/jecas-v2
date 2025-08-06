@@ -139,5 +139,5 @@ format: "html"
 
 <p>Tyto hodnoty nepodporuje <a href="/microsoft-edge"><b>MS Edge</b></a>, všechny <b>IE</b> a stará <b>Opera 12</b>.</p>
 
-<p><a href="http://kod.djpw.cz/fztb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/fztb">Živá ukázka</a></p>
 

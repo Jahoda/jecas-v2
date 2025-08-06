@@ -171,7 +171,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/aaob">Atributy <code>href</code>, <code>name</code> a <code>id</code> u odkazu</a></li>
+    <li><a href="https://kod.djpw.cz/aaob">Atributy <code>href</code>, <code>name</code> a <code>id</code> u odkazu</a></li>
   </ul>
 </div>
 
@@ -516,7 +516,7 @@ format: "html"
   </p>
 </div>
 
-<p><a href="http://kod.djpw.cz/vipb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/vipb">Samostatná ukázka</a></p>
 
 <h3 id="testovani">Testování stavů</h3>
 

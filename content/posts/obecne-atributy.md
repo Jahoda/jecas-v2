@@ -272,7 +272,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/scob">Kód ukázky</a></p>
+<p><a href="https://kod.djpw.cz/scob">Kód ukázky</a></p>
 
 
 

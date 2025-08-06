@@ -21,7 +21,7 @@ druhy = 'jinaHodnota'
 console.log(prvni) // hodnota
 console.log(druhy) // jinaHodnota</code></pre>
 
-<p><a href="http://kod.djpw.cz/yyyc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/yyyc">Živá ukázka</a></p>
 
 
 
@@ -73,7 +73,7 @@ console.log(druhy) // {"vlastnost":"jinaHodnota"}</code></pre>
 
 
 
-<p><a href="http://kod.djpw.cz/bzyc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/bzyc">Živá ukázka</a></p>
 
 <p>Jak je vidět z výstupu <a href="/konsole-varovani">JS konsole</a>, oba objekty jsou stejné. Proč?</p>
 
@@ -96,7 +96,7 @@ druhy.vlastnost = 'jinaHodnota'
 console.log(prvni) // {"vlastnost":"hodnota"}
 console.log(druhy) // {"vlastnost":"jinaHodnota"}</code></pre>
 
-<p><a href="http://kod.djpw.cz/xyyc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/xyyc">Živá ukázka</a></p>
 
 
 
@@ -131,7 +131,7 @@ var druhy = { ...prvni, ...{ vlastnost: 'jinaHodnota' } }</code></pre>
 <pre><code>var druhy = JSON.parse(JSON.stringify(prvni))</code></pre>
 
 
-<p>Funguje to trochu jinak než třítečkový operátor, ale v tomto případě to účel plní stejně. <a href="http://kod.djpw.cz/gzyc">Živá ukázka</a></p>
+<p>Funguje to trochu jinak než třítečkový operátor, ale v tomto případě to účel plní stejně. <a href="https://kod.djpw.cz/gzyc">Živá ukázka</a></p>
 
 <p>Vzhledem k tomu, že to nejprve převádí objekt na řetězec a následně parsuje zpět na objekt, není to výkonově úplně nejlepší. Spíš nouzové řešení.</p>
 
@@ -140,7 +140,7 @@ var druhy = { ...prvni, ...{ vlastnost: 'jinaHodnota' } }</code></pre>
 
 <pre><code>var druhy = Object.assign({}, prvni)</code></pre>
 
-<p><a href="http://kod.djpw.cz/izyc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/izyc">Živá ukázka</a></p>
 
 
 
@@ -172,7 +172,7 @@ druhy.vlastnost = 'jinaHodnota'
 console.log(prvni) // {"vlastnost":"hodnota","dalsiVlastnost":{<b>"text":"fytopuf"</b>}}
 console.log(druhy) // {"vlastnost":"jinaHodnota","dalsiVlastnost":{<b>"text":"fytopuf"</b>}}</code></pre>
 
-<p><a href="http://kod.djpw.cz/jzyc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jzyc">Živá ukázka</a></p>
 
 
 
@@ -201,7 +201,7 @@ console.log(druhy) // {"vlastnost":"jinaHodnota","dalsiVlastnost":{<b>"text":"fy
 
 <p>Asi nejjednodušší řešení bez používání cizích knihoven je již výše zmíněný <code>JSON.parse(JSON.stringify(objekt))</code>.</p>
 
-<p><a href="http://kod.djpw.cz/mzyc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/mzyc">Živá ukázka</a></p>
 
 
 
@@ -233,7 +233,7 @@ console.log(prvni) // {"vlastnost":"hodnota","dalsiVlastnost":{"text":"ahoj"}}
 console.log(druhy) // {"vlastnost":"jinaHodnota","dalsiVlastnost":{"text":"fytopuf"}}
 </code></pre>
 
-<p><a href="http://kod.djpw.cz/qzyc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/qzyc">Živá ukázka</a></p>
 
 
 
@@ -255,7 +255,7 @@ console.log(druhy) // {"vlastnost":"jinaHodnota","dalsiVlastnost":{"text":"fytop
 <pre><code>var druhy = $.extend(true, {}, prvni);</code></pre>
 
 
-<p><a href="http://kod.djpw.cz/szyc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/szyc">Živá ukázka</a></p>
 
 
 

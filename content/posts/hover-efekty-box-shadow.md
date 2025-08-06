@@ -68,7 +68,7 @@ format: "html"
   </div>
 </div>
 
-<p><a href="http://kod.djpw.cz/oxeb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/oxeb">Samostatná ukázka</a></p>
 
 
 
@@ -169,7 +169,7 @@ format: "html"
   </div>
 </div>
 
-<p><a href="http://kod.djpw.cz/oxeb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/oxeb">Samostatná ukázka</a></p>
 
 <p>Podobný <code>:hover</code> efekt je možné vidět na <b>Twitteru</b>, ale tam je to řešené změnou tloušťky spodního okraje (<code>border-bottom-width</code>)</p>
 

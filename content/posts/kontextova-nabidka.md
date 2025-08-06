@@ -14,7 +14,7 @@ format: "html"
 
 <h2 id="reseni">Řešení v čistém JavaScriptu</h2>
 <p>Zachytit <b>stisknutí pravého tlačítka myši</b> na požadovaném elementu je možné přes událost <code>oncontextmenu</code>, potom jen stačí vytvořit příslušné elementy (<code>document.createElement</code>), <a href="/souradnice-mysi">zjistit souřadnice</a>, kde se má nabídka objevit. A zajistit zrušení nabídky po kliknutí mimo (je třeba řešit <a href="/klikaci-menu#bubble">probublávání</a>).</p>
-<p>Nakonec přihodit trochu CSS, aby nabídka trochu vypadala (<a href="http://kod.djpw.cz/cwq">živá ukázka</a>).</p>
+<p>Nakonec přihodit trochu CSS, aby nabídka trochu vypadala (<a href="https://kod.djpw.cz/cwq">živá ukázka</a>).</p>
 
 <div class="live">
   <style>
@@ -83,7 +83,7 @@ format: "html"
 
   <p oncontextmenu="return nabidka(event, [
   {innerHTML: 'Saints Row IV', href: 'http://saintsrow.cz'},
-  {innerHTML: 'Živé ukázky', href: 'http://kod.djpw.cz'}
+  {innerHTML: 'Živé ukázky', href: 'https://kod.djpw.cz'}
   ])">Text s jinou <b>kontextovou nabídkou</b>.</p>
 </div>
 <p>Položky se předávají jako <b>JS objekt</b>, ze kterého se automaticky nastaví všechny parametry:</p>

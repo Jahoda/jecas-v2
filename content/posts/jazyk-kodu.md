@@ -64,7 +64,7 @@ format: "html"
   <ul>
     <li><a href="/zvlastni-znaky-class">Diakritika v názvu CSS třídy</a></li>
     
-    <li><a href="http://kod.djpw.cz/onjb">Živá ukázka podpory diakritiky</a> – HTML, CSS, JavaScript</li>
+    <li><a href="https://kod.djpw.cz/onjb">Živá ukázka podpory diakritiky</a> – HTML, CSS, JavaScript</li>
   </ul>
 </div>
 

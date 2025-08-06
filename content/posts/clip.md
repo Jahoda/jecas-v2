@@ -47,7 +47,7 @@ format: "html"
 
 <p>Oříznutí je <b>skutečné</b>, tj. například po najetí myši bude oříznutý obsah reagovat jen na ploše, která po oříznutí zbyla.</p>
 
-<p><a href="http://kod.djpw.cz/xpgb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/xpgb">Živá ukázka</a></p>
 
 
 <h2 id="nastroje">Nástroje</h2>

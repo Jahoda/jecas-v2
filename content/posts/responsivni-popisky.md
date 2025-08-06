@@ -211,7 +211,7 @@ format: "html"
 
 <p>Podpora v prohlížečích je limitována od <b>IE 9</b> kvůli media queries a od <b>IE 8</b> kvůli <code>:before</code>.</p>
 
-<p><a href="http://kod.djpw.cz/rgwb-">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/rgwb-">Samostatná živá ukázka</a></p>
 
 
 

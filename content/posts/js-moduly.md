@@ -28,7 +28,7 @@ format: "html"
   alert(hlaska);
 }</code></pre>
 
-<p>Pokud by byla deklarována proměnná <code>hlaska</code> mimo funkci, nebude tato proměnná (mimo funkci) přepsána (<a href="http://kod.djpw.cz/etbb">ukázka</a>).</p>
+<p>Pokud by byla deklarována proměnná <code>hlaska</code> mimo funkci, nebude tato proměnná (mimo funkci) přepsána (<a href="https://kod.djpw.cz/etbb">ukázka</a>).</p>
 
 <pre><code>var hlaska = "Ahoj";
 function funkce() {
@@ -69,7 +69,7 @@ alert(hlaska);</code></pre>
 
 <pre><code>&lt;button onclick="Modul.funkce('parametr')">Tlačítko&lt;/button></code></pre>
 
-<p><a href="http://kod.djpw.cz/jtbb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jtbb">Živá ukázka</a></p>
 
 <h3 id="jiny-zpusob">Jiný způsob</h3>
 
@@ -87,7 +87,7 @@ alert(hlaska);</code></pre>
 
 <p>Tento kód dělá to samé, co dříve uvedený, s tím rozdílem, že se nepůjde dostat k <code>Modul.slovo</code> (ven se vrací jen funkce <code>funkce</code>).</p>
 
-<p><a href="http://kod.djpw.cz/itbb">Živá ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/itbb">Živá ukázka</a>.</p>
 
 <p>Výhoda tohoto postupu je v tom, že kvůli nutnosti <code>return</code>ovat obsah přístupný zvenčí, je ihned patrné, jak se modul používá. Proto je vhodné vracet opravdu jen to, co se dál využívá. Zároveň není možné <b>manipulovat s modulem zvenčí</b> způsobem, který nebyl zamýšlen.</p>
 
@@ -114,4 +114,4 @@ var funkce = function() {
 }
 funkce(); // alert(F)</code></pre>
 
-<p>Druhů způsob s tímto problém nemá. <a href="http://kod.djpw.cz/pqcb">Ukázka</a>.</p>
+<p>Druhů způsob s tímto problém nemá. <a href="https://kod.djpw.cz/pqcb">Ukázka</a>.</p>

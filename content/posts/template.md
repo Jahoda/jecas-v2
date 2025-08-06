@@ -35,7 +35,7 @@ document.body.appendChild(sablona.content.cloneNode(true));</code></pre>
 <p>Před <i>vložením</i> do stránky je možné šablony libovolně <b>JavaScriptem modifikovat</b>. Třeba <b>naplnit daty</b> nějak skriptem vypočtenými a podobně.</p>
 <pre><code>sablona.content.querySelector("p").innerHTML = 'Ahoj';</code></pre>
 
-<p><a href="http://kod.djpw.cz/onv">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/onv">Ukázka</a></p>
 
 <p>Poznámka: V obsahu šablony (vlastnost <code>content</code>) není možné nacházet elementy metodami typu <code>getElementsByTagName</code>, je <b>nutné použít</b> <a href="/queryselector"><code>querySelector</code></a>.</p>
 
@@ -58,4 +58,4 @@ document.body.appendChild(sablona.content.cloneNode(true));</code></pre>
 
 <pre><code>document.getElementById("sablona").innerHTML</code></pre>
 
-<p><a href="http://kod.djpw.cz/snv">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/snv">Ukázka</a></p>

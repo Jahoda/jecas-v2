@@ -97,4 +97,4 @@ var potvrdit = function(text, el) {
 <a href="http://djpw.cz" onclick="return potvrdit('Opravdu?', this)">Přejít na DJPW</a>
 </div>
 
-<p><a href="http://kod.djpw.cz/ikcb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ikcb">Samostatná ukázka</a></p>

@@ -104,7 +104,7 @@ button:focus, button:active {
 
 <p>Jelikož se barva (<code>color</code>) <b>dědí</b>, lze tohoto chování využít i pro <b>vnořené elementy</b> nebo <a href="/css-selektory#before-after">pseudo-elementy</a>.</p>
 
-<p><a href="http://kod.djpw.cz/aeib">Samostatná ukázka</a> využití <code>currentColor</code></p>
+<p><a href="https://kod.djpw.cz/aeib">Samostatná ukázka</a> využití <code>currentColor</code></p>
 
 <p>Klíčové slovo <code>currentColor</code> je u řady vlastností <b>zbytečné uvádět</b>. Kvůli podpoře pro <b>IE 8</b> a starších dokonce nežádoucí.</p>
 
@@ -115,7 +115,7 @@ button:focus, button:active {
   <li><code><a href="/text-shadow">text-shadow</a>: 10px 10px 5px</code></li>
 </ul>
 
-<p><a href="http://kod.djpw.cz/vfib">Živá ukázka</a> bez uvádění barev</p>
+<p><a href="https://kod.djpw.cz/vfib">Živá ukázka</a> bez uvádění barev</p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>

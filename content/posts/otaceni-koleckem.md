@@ -55,7 +55,7 @@ format: "html"
 
 <p>Funkce do proměnné <code>smer</code> nastaví <code>1</code> při rolování nahoru a <code>-1</code> při rolování dolů.</p>
 
-<p><a href="http://kod.djpw.cz/pbkb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/pbkb">Živá ukázka</a></p>
 
 
 
@@ -112,11 +112,11 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/qbkb">Test principu</a> (místo rolování se kliká)</p>
+<p><a href="https://kod.djpw.cz/qbkb">Test principu</a> (místo rolování se kliká)</p>
 
 <p>Nyní stačí jen spojit obě ukázky v jednu.</p>
 
-<p><a href="http://kod.djpw.cz/obkb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/obkb">Živá ukázka</a></p>
 
 
 

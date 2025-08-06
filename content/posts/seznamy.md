@@ -404,7 +404,7 @@ format: "html"
 
 <p>Při použití na definiční seznam se zobrazoval termín i jeho popis vedle sebe.</p>
 
-<p>Funguje v <b>Internet Exploreru 7</b>, v novějších už ne. <a href="http://kod.djpw.cz/qdob">Ukázka</a>.</p>
+<p>Funguje v <b>Internet Exploreru 7</b>, v novějších už ne. <a href="https://kod.djpw.cz/qdob">Ukázka</a>.</p>
 
 
 
@@ -420,4 +420,4 @@ format: "html"
 }</style>
 
 
-<!-- Náhled: http://kod.djpw.cz/wlob -->
+<!-- Náhled: https://kod.djpw.cz/wlob -->

@@ -44,7 +44,7 @@ format: "html"
 
 <pre><code>&lt;body oncontextmenu="return false"></code></pre>
 
-<p><a href="http://kod.djpw.cz/kxt">Ukázka</a> se všemi těmito překážkami.</p>
+<p><a href="https://kod.djpw.cz/kxt">Ukázka</a> se všemi těmito překážkami.</p>
 
 <p>Zásadní problém těchto <b>blokací</b> (kromě otravného nabourání výchozích funkcí prohlížeče) je skutečnost, že všechny může uživatel vypnout prostým <a href="/vyvojarske-nastroje#zakazani">zakázáním JS</a>. Případně si stránku uložit na disk a tam text získat ze <b>zdrojového kódu</b>.</p>
 
@@ -129,7 +129,7 @@ RewriteRule \.(jpg|jpeg|png|gif)$ <b>novy-obrazek.jpg</b> [NC,R,L]</code></pre>
 
 <p>Doplnění názvů proměnných (a mnohdy úspěšně) zkouší dělat nástroj <a href="http://www.jsnice.org/">JS NICE</a>.</p>
 
-<p>Použití několika různých obfuskátorů vytvoří tak nečitelný kód, že se často spíš vyplatí napsat ho znovu od nuly. <a href="http://kod.djpw.cz/ycu">Takto</a> může vypadat funkce pro <a href="/prepinani-trid">přepínání tříd</a>.</p>
+<p>Použití několika různých obfuskátorů vytvoří tak nečitelný kód, že se často spíš vyplatí napsat ho znovu od nuly. <a href="https://kod.djpw.cz/ycu">Takto</a> může vypadat funkce pro <a href="/prepinani-trid">přepínání tříd</a>.</p>
 
 <p>O <b>dekódování obfuskovaného kódu</b> jsou zajímavé postřehy na <a href="http://diskuse.jakpsatweb.cz/?action=vthread&forum=8&topic=153249">diskusi</a>.</p>
 
@@ -159,7 +159,7 @@ RewriteRule \.(jpg|jpeg|png|gif)$ <b>novy-obrazek.jpg</b> [NC,R,L]</code></pre>
 <p>Co se týče HTML a CSS kódu, je situace dost složitá. V zásadě lze jen obfuskovat názvy <a href="/id-class">identifikátorů a tříd</a>. Jinak je možné odstranit jen <b>komentáře</b> a <b>bílé znaky</b> (mezery a tabulátory), třeba nástrojem <a href="http://www.cleancss.com/">Clean CSS</a> — ty je ale možné snadno navrátit (v <a href="http://www.dirtymarkup.com/">HTML</a> i v <a href="http://cssbeautify.com/">CSS</a>). Umí to i <a href="/vycisteni-kodu">Texy! nebo HTML Purifier</a>.</p>
 
 <h3 id="zakodovani-css">Zakódování CSS</h3>
-<p>CSS jde trochu <b>znečitelnit zakódováním</b> do <a href="http://www.freeformatter.com/base64-encoder.html">Base64</a> při použití <a href="/data-uri">data URI</a>, jde použít <code>&lt;link></code> nebo <code>@import</code> (<a href="http://kod.djpw.cz/ihu">živé</a> <a href="http://kod.djpw.cz/mhu">ukázky</a>):</p>
+<p>CSS jde trochu <b>znečitelnit zakódováním</b> do <a href="http://www.freeformatter.com/base64-encoder.html">Base64</a> při použití <a href="/data-uri">data URI</a>, jde použít <code>&lt;link></code> nebo <code>@import</code> (<a href="https://kod.djpw.cz/ihu">živé</a> <a href="https://kod.djpw.cz/mhu">ukázky</a>):</p>
 
 <pre><code>@import url("data:text/css;<b>base64</b>,<i>zakódovanýŘetězec</i>");</code></pre>
 

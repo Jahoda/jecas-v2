@@ -150,7 +150,7 @@ format: "html"
 
 <p>Nicméně například pro umístění různě širokých boxů, které mají <b>vyplnit celou šířku</b>, je to poměrně vhodné řešení.</p>
 
-<p><a href="http://kod.djpw.cz/hldb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/hldb">Ukázka</a></p>
 
 <h2 id="flexbox">Flexboxy</h2>
 
@@ -177,7 +177,7 @@ format: "html"
 
 <p>Pro rodiče s <code>grid</code>em se nadefinují jednotlivé části, do kterých se pohodlně přiřazují potomci.</p>
 
-<p><a href="http://kod.djpw.cz/fldb">Živá ukázka</a> (pouze <b>IE 10+</b>)</p>
+<p><a href="https://kod.djpw.cz/fldb">Živá ukázka</a> (pouze <b>IE 10+</b>)</p>
 
 <p><img src="/files/display/grid.png" alt="Použití gridu v IE 10, 11" class="border"></p>
 
@@ -201,7 +201,7 @@ format: "html"
   <dd>
     <p>Poměrně málo známá hodnota <code>display</code>. Umožňuje, aby element <i>vtekl</i> do následujícího sourozence.</p>
     
-    <p><a href="http://kod.djpw.cz/gldb">Ukázka</a> (<b>IE 8+</b>, <b>Opera 12</b>)</p>
+    <p><a href="https://kod.djpw.cz/gldb">Ukázka</a> (<b>IE 8+</b>, <b>Opera 12</b>)</p>
     
     <p><img src="/files/display/run-in.png" alt="Použití display: run-in v IE a Opeře" class="border"></p>    
   </dd>

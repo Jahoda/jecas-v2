@@ -10,7 +10,7 @@ format: "html"
 ---
 
 <ul>
-  <li><a href="http://kod.djpw.cz/ecrb">Živá ukázka</a></li>
+  <li><a href="https://kod.djpw.cz/ecrb">Živá ukázka</a></li>
   
   <li><a href="http://thomaspark.co/project/expandingalbums/#intheaeroplane">Demo</a></li>
 </ul>

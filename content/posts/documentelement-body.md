@@ -23,8 +23,8 @@ format: "html"
 <p>Nezávisle na <a href="/doctype">vykreslovacích režimech</a>.</p>
 
 <ul>
-  <li><a href="http://kod.djpw.cz/bubb">Ukázka ve standardním režimu</a></li>
-  <li><a href="http://kod.djpw.cz/aubb">Ukázka v QUIRKu</a></li>
+  <li><a href="https://kod.djpw.cz/bubb">Ukázka ve standardním režimu</a></li>
+  <li><a href="https://kod.djpw.cz/aubb">Ukázka v QUIRKu</a></li>
 </ul>
 
 <h2 id="vyuzit">Využití</h2>

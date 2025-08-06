@@ -15,7 +15,7 @@ format: "html"
 
 <p>Hodnota HTML atributu <code>media</code> bude obdobná jako u <a href="/mobilni-web#media-queries">CSS pravidla <code>@media</code></a> a měla by i tak fungovat.</p>
 
-<p><a href="http://kod.djpw.cz/cndb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/cndb">Živá ukázka</a></p>
 
 
 <h2 id="podpora">Podpora</h2>

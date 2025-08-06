@@ -20,6 +20,6 @@ datum.setDate(datum.getDate() + pridatDni); </code></pre>
 
 <a href="http://cs.cdnjs.com/libraries/datejs">Date.js na CDN</a>
 
-<a href="http://kod.djpw.cz/ephb">Živá ukázka</a>
+<a href="https://kod.djpw.cz/ephb">Živá ukázka</a>
 
 <a href="http://momentjs.com/">Knihovna Moment.js</a>

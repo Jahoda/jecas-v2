@@ -50,7 +50,7 @@ format: "html"
   </div>
 </div>
 
-<p><a href="http://kod.djpw.cz/rxeb">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/rxeb">Samostatná živá ukázka</a></p>
 
 <h2 id="zdola">Zdola</h2>
 
@@ -148,7 +148,7 @@ format: "html"
   </div>
 </div>
 
-<p><a href="http://kod.djpw.cz/sxeb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/sxeb">Ukázka</a></p>
 
 
 <h3 id="vsechny-strany">Všechny strany</h3>
@@ -182,4 +182,4 @@ format: "html"
   </div>
 </div>
 
-<p><a href="http://kod.djpw.cz/txeb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/txeb">Ukázka</a></p>

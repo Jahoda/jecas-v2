@@ -124,5 +124,5 @@ naprocenta(polozky);
     margin: 0 1em;
   }</style>
 
-<!-- samostatná ukázka: http://kod.djpw.cz/ekqb -->
+<!-- samostatná ukázka: https://kod.djpw.cz/ekqb -->
 

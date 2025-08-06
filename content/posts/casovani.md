@@ -35,7 +35,7 @@ format: "html"
   1000
 );</code></pre>
     
-    <p><a href="http://kod.djpw.cz/lihb">Ukázka</a></p>
+    <p><a href="https://kod.djpw.cz/lihb">Ukázka</a></p>
     
     <p>Psaní kódu <b>do řetězce</b> ale nezančí nic dobrého (jedná se o ekvivalent <code>eval</code>u). Proto je lepší se tomuto případu vyhnout. Kromě možných risik při <b>vyhodnocování</b> takového kódu si zbytečně snižujeme čitelnost, protože obsah v řetězci neumí většina editorů správně obarvit.</p>
   </li>
@@ -51,7 +51,7 @@ format: "html"
   1000
 );</code></pre>
 
-<p><a href="http://kod.djpw.cz/kihb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/kihb">Ukázka</a></p>
   </li>
   
   <li>
@@ -66,7 +66,7 @@ var casovac = setInterval(vypsat, 1000);</code></pre>
     
     <p>Pro pozdější <b>zrušení časovače</b> je užitečné si ho přiřadit do proměnné.</p>
 
-    <p><a href="http://kod.djpw.cz/mihb">Ukázka</a></p>
+    <p><a href="https://kod.djpw.cz/mihb">Ukázka</a></p>
   </li>  
 </ol>
 
@@ -77,7 +77,7 @@ var casovac = setInterval(vypsat, 1000);</code></pre>
 
 <pre><code>clearInterval(casovac);</code></pre>
 
-<p><a href="http://kod.djpw.cz/nihb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/nihb">Ukázka</a></p>
 
 
 
@@ -100,7 +100,7 @@ var casovac = setInterval(vypsat, 1000);</code></pre>
 
 <pre><code>clearTimeout(casovac);</code></pre>
 
-<p><a href="http://kod.djpw.cz/oihb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/oihb">Ukázka</a></p>
 
 <p>Zajímavá je skutečnost, že je možné rušit rovněž <code>setInterval</code> pomocí <code>clearTimeout</code> a obráceně.</p>
 
@@ -120,9 +120,9 @@ vypsat();</code></pre>
 <p>Jelikož tento kód by <b>běžel nekonečně</b>, možná budeme potřebovat způsob, jak ho zastavit. Existují dvě možnosti.</p>
 
 <ol>
-  <li>Použít <code>clearTimeout</code>. <a href="http://kod.djpw.cz/rihb">Ukázka</a></li>
+  <li>Použít <code>clearTimeout</code>. <a href="https://kod.djpw.cz/rihb">Ukázka</a></li>
   
-  <li>Ve funkci <code>vypsat</code> na základě splnění nějaké podmínky další časovač nevytvářet. <a href="http://kod.djpw.cz/sihb">Ukázka</a></li>
+  <li>Ve funkci <code>vypsat</code> na základě splnění nějaké podmínky další časovač nevytvářet. <a href="https://kod.djpw.cz/sihb">Ukázka</a></li>
 </ol>
 
 

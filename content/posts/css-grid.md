@@ -115,7 +115,7 @@ format: "html"
 }</code></pre>
 
 
-<p><a href="http://kod.djpw.cz/npfd">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/npfd">Živá ukázka</a></p>
 
 
 
@@ -174,7 +174,7 @@ format: "html"
     grid-area: header;
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/spfd">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/spfd">Živá ukázka</a></p>
 
 
 

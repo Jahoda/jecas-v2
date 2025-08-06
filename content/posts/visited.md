@@ -329,7 +329,7 @@ if (item) {
   </li>
 </ol>
 
-<p><a href="http://kod.djpw.cz/bqob-">Živá ukázka</a> – po poklikání na odkazy a vyčkání by to mělo zobrazovat <b>dobu od poslední návštěvy</b>:</p>
+<p><a href="https://kod.djpw.cz/bqob-">Živá ukázka</a> – po poklikání na odkazy a vyčkání by to mělo zobrazovat <b>dobu od poslední návštěvy</b>:</p>
 
 <p><img src="/files/visited/vysledek.png" alt="Zobrazení doby od načtení" class="border"></p>
 

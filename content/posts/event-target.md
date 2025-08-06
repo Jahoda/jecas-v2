@@ -21,7 +21,7 @@ format: "html"
 }
 document.onclick = akce;</code></pre>
 
-<p><a href="http://kod.djpw.cz/jvjb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jvjb">Živá ukázka</a></p>
 
 
 

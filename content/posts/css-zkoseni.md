@@ -44,7 +44,7 @@ format: "html"
   <p class="sikmy sikmy-trojuhelnik">Obsah se šikmou hranou</p>
 </div>
 
-<p><a href="http://kod.djpw.cz/morb">Samostatná ukázka</a> – šikmá hrana</p>
+<p><a href="https://kod.djpw.cz/morb">Samostatná ukázka</a> – šikmá hrana</p>
 
 <p><b>Podpora</b> tohoto řešení je vynikající (rámečky fungují všude). Horší je to s vyhlazováním – šikmá hrana může vypadat kostrbatě.</p>
 
@@ -129,7 +129,7 @@ format: "html"
   </p>
 </div>
 
-<p><a href="http://kod.djpw.cz/porb">Samostatná ukázka</a> – zkosení na obou stranách</p>
+<p><a href="https://kod.djpw.cz/porb">Samostatná ukázka</a> – zkosení na obou stranách</p>
 
 <p></p>
 
@@ -137,7 +137,7 @@ format: "html"
 
 <p>Bez použití pseudo-elementu by šlo případně jednu šikmou stranu oříznout:</p>
 
-<p><a href="http://kod.djpw.cz/sorb">Živá ukázka</a> – oříznutí jedné zkosené hrany</p>
+<p><a href="https://kod.djpw.cz/sorb">Živá ukázka</a> – oříznutí jedné zkosené hrany</p>
 
 <h2 id="rotace">Rotace</h2>
 

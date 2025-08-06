@@ -75,7 +75,7 @@ format: "html"
   document.querySelector(".prvni")
 );</code></pre>
 
-<p><a href="http://kod.djpw.cz/mjnb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/mjnb">Živá ukázka</a></p>
 
 
 

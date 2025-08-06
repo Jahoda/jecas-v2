@@ -51,7 +51,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/dzkb">Obyčejná centrovaná stránka</a></li>
+    <li><a href="https://kod.djpw.cz/dzkb">Obyčejná centrovaná stránka</a></li>
   </ul>
 </div>
 
@@ -77,7 +77,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/azkb">Ukázka s využitím posicování</a></li>
+    <li><a href="https://kod.djpw.cz/azkb">Ukázka s využitím posicování</a></li>
   </ul>
 </div>
 
@@ -96,6 +96,6 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/czkb">Ukázka s využitím obalového elementu</a></li>
+    <li><a href="https://kod.djpw.cz/czkb">Ukázka s využitím obalového elementu</a></li>
   </ul>
 </div>

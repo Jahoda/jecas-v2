@@ -59,7 +59,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/htob">Živá ukázka</a> – při změně dostupné velikosti se mění počet sloupců</li>
+    <li><a href="https://kod.djpw.cz/htob">Živá ukázka</a> – při změně dostupné velikosti se mění počet sloupců</li>
   </ul>
 </div>
 
@@ -77,7 +77,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/mtob-">Responsivní navigace pomocí <code>column</code></a> – příklad navigace měnící počet sloupců</li>
+    <li><a href="https://kod.djpw.cz/mtob-">Responsivní navigace pomocí <code>column</code></a> – příklad navigace měnící počet sloupců</li>
   </ul>
 </div>
 

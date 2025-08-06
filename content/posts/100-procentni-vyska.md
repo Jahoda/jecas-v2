@@ -9,4 +9,4 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/stcc
+https://kod.djpw.cz/stcc

@@ -40,8 +40,8 @@ format: "html"
 <p><b>Poznámka</b>: vlastnost <code>text-align</code> se dědí, tj. všechny elementy v předkovi s <code>text-align: center</code> budou obsah centrovat, nepřepíše-li se jim <code>text-align</code>.</p>
 
 <h3 id="rozdily-inline-block">Rozdíly napříč prohlížeči</h3>
-<p><b>Internet Explorery</b> do verse 7 (včetně) mají problémy s elementy, co jsou ve výchozím stavu blokové (<code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, …). V těchto prohlížečích jim normálně <b>nelze nastavit hodnotu <code>display</code> na <code>inline-block</code></b> (elementy budou stále pod sebou — <a href="http://kod.djpw.cz/awb">ukázka</a>).</p>
-<p>Nicméně docílit <code>inline-block</code>u pro blokové elementy v starších Explorerech (6 a 7) by <a href="http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=7&amp;topic=144085#9">mohlo jít</a> použitím <code>display: inline</code> a <a href="/haslayout">zapnutím <code>hasLayout</code>u</a> (třeba použitím <code>zoom: 1</code>) — <a href="http://kod.djpw.cz/hwb">ukázka</a>.</p>
+<p><b>Internet Explorery</b> do verse 7 (včetně) mají problémy s elementy, co jsou ve výchozím stavu blokové (<code>&lt;div&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, …). V těchto prohlížečích jim normálně <b>nelze nastavit hodnotu <code>display</code> na <code>inline-block</code></b> (elementy budou stále pod sebou — <a href="https://kod.djpw.cz/awb">ukázka</a>).</p>
+<p>Nicméně docílit <code>inline-block</code>u pro blokové elementy v starších Explorerech (6 a 7) by <a href="http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=7&amp;topic=144085#9">mohlo jít</a> použitím <code>display: inline</code> a <a href="/haslayout">zapnutím <code>hasLayout</code>u</a> (třeba použitím <code>zoom: 1</code>) — <a href="https://kod.djpw.cz/hwb">ukázka</a>.</p>
 
 <h2 id="line-height">Vertikální centrování řádku</h2>
 <p>Máme-li jeden řádek textu, který má být uprostřed pevně dané výšky, řešení je <code>line-height</code> rovný výšce (případně se <code>height</code> může vypustit).</p>
@@ -66,7 +66,7 @@ format: "html"
 <h2 id="margin-auto">Vodorovné centrování bloků (<code>margin: auto</code>)</h2>
 <p>Pokud je nám <b>známa šířka</b>, stačí ji blokovému elementu nastavit spolu s <code>margin: auto</code> (nezkrácený zápis: <code>margin-left: auto; margin-right: auto</code>).</p>
 
-<p>V případě, že element není blokový (<code>display: block</code>), musíme ho na blokový <i>přepnout</i>. Jinak centrování nebude fungovat. <a href="http://kod.djpw.cz/subb">Ukázka</a>.</p>
+<p>V případě, že element není blokový (<code>display: block</code>), musíme ho na blokový <i>přepnout</i>. Jinak centrování nebude fungovat. <a href="https://kod.djpw.cz/subb">Ukázka</a>.</p>
 
 <p>Stejně tak nebude centrování přes <code>margin: auto</code> fungovat pro <a href="/float">obtékané elementy</a> (vlastnost <code>float</code>).</p>
 
@@ -206,9 +206,9 @@ Známe li rozměry bloku (pozn. absolutně posicovaný element je vždy <code>bl
 
 <p>Je-li cílem umístit do okna (s neznámou výškou – <code>height: 100%</code>) element s neznámou výškou, od <b>Internet Exploreru 8</b> jde využít triku s pseudo-elementem <code>:before</code>.</p>
 
-<p><a href="http://kod.djpw.cz/zagb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/zagb">Živá ukázka</a></p>
 
-<p>Element může být i <a href="/position">posicovaný</a> <a href="http://kod.djpw.cz/abgb">absolutně</a> či <a href="http://kod.djpw.cz/bbgb">fixně</a>.</p>
+<p>Element může být i <a href="/position">posicovaný</a> <a href="https://kod.djpw.cz/abgb">absolutně</a> či <a href="https://kod.djpw.cz/bbgb">fixně</a>.</p>
 
 
 
@@ -245,7 +245,7 @@ Známe li rozměry bloku (pozn. absolutně posicovaný element je vždy <code>bl
 </ol>
 <p>Speicální kód pro tyto staré prohlížeče lze připojit třeba <a href="/podminene-komentare">podmíněnými komentáři</a> nebo jiným hackem.</p>
 <p>
-  <a href="http://kod.djpw.cz/qnb">Ukázka</a> (funkční <b>jen do</b> IE 7)
+  <a href="https://kod.djpw.cz/qnb">Ukázka</a> (funkční <b>jen do</b> IE 7)
 </p>
 
 <h3 id="neznama-sirka">Neznámá šířka</h3>
@@ -294,7 +294,7 @@ display: table-cell; text-align: center; position: relative; background: #efefef
 <h2 id="flex">Centrování flexboxy</h2>
 <p>Nejelegantnější je nejspíš použití <a href="/flexbox">flexboxů</a>, jenže podpora <b>až od IE 10</b> je většinou nedostatečná.</p>
 
-<p><a href="http://kod.djpw.cz/thnb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/thnb">Živá ukázka</a></p>
 
 <h2 id="transformace">Transformace</h2>
 <p>Ještě existuje způsob s využitím CSS transformace:</p>

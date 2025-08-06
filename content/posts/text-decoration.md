@@ -48,7 +48,7 @@ format: "html"
   <dd>
     <p><span style="text-decoration: underline">Podtrhne</span> text. Obecně není moc dobré texty kromě odkazů podtrhávat, protože uživatelé bývají zvyklí, že právě <b>podtržení značí odkaz</b>. Navíc podtržení textu snižuje <b>čitelnost</b>.</p>
     
-    <p>Někdy se podtrhávání odkazů řeší tak, že se <code>text-decoration</code> vypne a podtržení zajistí spodní rámeček (<code>border-bottom</code>) nebo obrázek (<code>background</code>). Umožňuje si to lépe pohrát se vzdáleností podtržení od textu nebo vytvořit jinou <b>barvu</b> podtržení než textu — s <code>text-decoration: underline</code> to jde jen pomocí vnořeného elementu (<a href="http://kod.djpw.cz/iohb">ukázka</a>).</p>
+    <p>Někdy se podtrhávání odkazů řeší tak, že se <code>text-decoration</code> vypne a podtržení zajistí spodní rámeček (<code>border-bottom</code>) nebo obrázek (<code>background</code>). Umožňuje si to lépe pohrát se vzdáleností podtržení od textu nebo vytvořit jinou <b>barvu</b> podtržení než textu — s <code>text-decoration: underline</code> to jde jen pomocí vnořeného elementu (<a href="https://kod.djpw.cz/iohb">ukázka</a>).</p>
     
     <p>Kromě odkazů jsou ve výchozím stylu podtrženy i značky <code>&lt;u></code> a <code>&lt;ins></code>.</p>   
     
@@ -83,7 +83,7 @@ format: "html"
 
 <h3 id="skladani">Skládání dekorací</h3>
 
-<p>Jednotlivé <i>dekorace</i> jde skládat, takže jde vytvořit text, který je <span style="text-decoration: underline overline line-through">podtržený, přeškrtnutý i nadtržený</span> (<a href="http://kod.djpw.cz/johb">ukázka</a>).</p>
+<p>Jednotlivé <i>dekorace</i> jde skládat, takže jde vytvořit text, který je <span style="text-decoration: underline overline line-through">podtržený, přeškrtnutý i nadtržený</span> (<a href="https://kod.djpw.cz/johb">ukázka</a>).</p>
 
 
 <h2 id="nove">Nové <code>text-decoration</code></h2>
@@ -127,12 +127,12 @@ format: "html"
   <li><code>wavy</code> — <span style="text-decoration: underline;-moz-text-decoration-style: wavy; -webkit-text-decoration-style: wavy; text-decoration-style: wavy">vlnovka</span></li>  
 </ul>
 
-<p><a href="http://kod.djpw.cz/kohb">Samostatná ukázka</a> (nepodporuje <b>Edge</b>/<b>IE</b> a starší verse ostatních prohlížečů)</p>
+<p><a href="https://kod.djpw.cz/kohb">Samostatná ukázka</a> (nepodporuje <b>Edge</b>/<b>IE</b> a starší verse ostatních prohlížečů)</p>
 
 
 <h3 id="color"><code>text-decoration-color</code></h3>
 
-<p>Jedná se o nastavení barvy čáry. Díky tomu lze elegantně řešit problém různé barvy odkazu a podtržení (<a href="http://kod.djpw.cz/nohb">ukázka</a>).</p>
+<p>Jedná se o nastavení barvy čáry. Díky tomu lze elegantně řešit problém různé barvy odkazu a podtržení (<a href="https://kod.djpw.cz/nohb">ukázka</a>).</p>
 
 <p>Případně v kombinaci s <code>text-decoration-style: wavy</code> konečně vytvořit <b>podtržení červenou vlnovkou</b> bez nutnosti používat obrázek.</p>
 
@@ -201,7 +201,7 @@ format: "html"
 
 <p><img src="/files/text-decoration/underline-position-under.png" alt="Nepřeškrtnutí písmen" class="border"></p>
 
-<!-- náhled: http://kod.djpw.cz/erhb -->
+<!-- náhled: https://kod.djpw.cz/erhb -->
 
 
 
@@ -212,7 +212,7 @@ format: "html"
 
 <p>Podpora se postupně zlepšuje. U některých vlastností jde podporu brát jako <i lang="en">nice to have</i> – drobně zlepší uživatelských dojem v podporovaných prohlížečích bez zhoršení stavu v těch ostatních.</p>
 
-<p>Staré prohlížeče, co znají <code>text-decoration</code> jako samostatnou vlastnost a ne zkratku, budou brát nové vlastnosti jako <b>neznámé hodnoty</b>, takže zahodí celou deklaraci (<a href="http://kod.djpw.cz/mohb">ukázka</a>).</p>
+<p>Staré prohlížeče, co znají <code>text-decoration</code> jako samostatnou vlastnost a ne zkratku, budou brát nové vlastnosti jako <b>neznámé hodnoty</b>, takže zahodí celou deklaraci (<a href="https://kod.djpw.cz/mohb">ukázka</a>).</p>
 
 <p>Takže pro to, aby se zobrazila alespoň <b>základní čára</b>, je nutné zdvojení jako například u <a href="/rgba"><code>rgba()</code> barev</a>.</p>
 

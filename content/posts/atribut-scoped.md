@@ -49,6 +49,6 @@ format: "html"
   &lt;/div&gt;
 &lt;/body></code></pre>
 
-<p><a href="http://kod.djpw.cz/fmhb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/fmhb">Živá ukázka</a></p>
 
 <p>Zatím se ale nabízí spíš využití ve formě <b>umlčení HTML 5 validátoru</b> při používání <code>&lt;style></code> v těle dokumentu. Je zde ale risiko, že prohlížeče začnou <code>scoped</code> podporovat. A takto zapsaný styl začne fungovat jinak, než bylo očekáváno.</p>

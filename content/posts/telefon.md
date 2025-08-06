@@ -11,6 +11,6 @@ format: "html"
 
 http://www.sitepoint.com/working-phone-numbers-javascript/
 
-http://kod.djpw.cz/jpkb
+https://kod.djpw.cz/jpkb
 
-<a href="http://kod.djpw.cz/npkb">Pole number pro zadávání čísel</a>
+<a href="https://kod.djpw.cz/npkb">Pole number pro zadávání čísel</a>

@@ -14,7 +14,7 @@ format: "html"
 <p>Pro optimalisaci počtu HTTP spojení a pro zajištění, že další obrázky <b>budou včas načtené</b>, může být vhodné umístit všechny náhledy z různých částí videa do jednoho obrázku (tzv. CSS spritu). V následujících ukázkách náhledů ze <b>serveru YouTube</b> ale budou použity <b>jednotlivé obrázky</b>, protože je tak YT <a href="/youtube-lazy-loading#nahledy">přímo nabízí</a>, nicméně zásadní rozdíl mezi řešením CSS spritem a jednotlivými obrázky není.</p>
 
 <h2 id="smycka">Automatická smyčka náhledů</h2>
-<p>První možnost je při najetí myší (v CSS <code>:hover</code>, v JavaScriptu <code>onmouseover</code>) <b>s prodlevou</b> obrázky prohazovat. To může řešit buď JS <b>časovač</b>, nebo <b>od IE 10</b> <a href="/animation">animace v CSS</a>. V <a href="http://kod.djpw.cz/bwc">ukázce</a> se používá JS časovač.</p>
+<p>První možnost je při najetí myší (v CSS <code>:hover</code>, v JavaScriptu <code>onmouseover</code>) <b>s prodlevou</b> obrázky prohazovat. To může řešit buď JS <b>časovač</b>, nebo <b>od IE 10</b> <a href="/animation">animace v CSS</a>. V <a href="https://kod.djpw.cz/bwc">ukázce</a> se používá JS časovač.</p>
 
 <style>
   /* reset stylů webu */
@@ -67,7 +67,7 @@ format: "html"
 <p>Předchozí řešení není úplně špatné, ale možná by bylo lepší, kdyby si šlo nějak <b>zvolit, který obrázek si chci prohlédnout</b>.</p>
 <p>Nabízí se proto umístit <i>do náhledu</i> pro každý jeden obrázek nějakou plochu, která <b>po najetí</b> zobrazí vybraný náhled.</p>
 
-<p>Řešení je <b>čistě v CSS</b> (<a href="http://kod.djpw.cz/gwc">samostatná ukázka</a>).</p>
+<p>Řešení je <b>čistě v CSS</b> (<a href="https://kod.djpw.cz/gwc">samostatná ukázka</a>).</p>
 <ol>
   <li>V obalovém <code>&lt;div></code>u jsou vedle sebe <a href="/position#absolute">absolutně naposicovány</a> plochy reagující na <code>:hover</code>.</li>
   <li>Kromě <b>prvního obrázku</b> jsou nejprve všechny ostatní skryté.</li>

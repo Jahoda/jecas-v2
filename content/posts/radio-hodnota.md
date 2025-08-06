@@ -90,8 +90,8 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/duub">Samostatná ukázka získání <code>value</code> pomocí cyklu</a></li>
-    <li><a href="http://kod.djpw.cz/euub">Samostatná ukázka získání hodnoty querySelectorem</a></li>
+    <li><a href="https://kod.djpw.cz/duub">Samostatná ukázka získání <code>value</code> pomocí cyklu</a></li>
+    <li><a href="https://kod.djpw.cz/euub">Samostatná ukázka získání hodnoty querySelectorem</a></li>
   </ul>
 </div>
 

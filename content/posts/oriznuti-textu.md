@@ -116,8 +116,8 @@ $text = mb_substr($text, 0, $pocetZnaku);</code></pre>
 
 <!-- 
 
-http://kod.djpw.cz/euc
-http://kod.djpw.cz/fuc
-http://kod.djpw.cz/guc
+https://kod.djpw.cz/euc
+https://kod.djpw.cz/fuc
+https://kod.djpw.cz/guc
 
 -->

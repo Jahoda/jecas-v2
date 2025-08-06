@@ -59,4 +59,4 @@ function vykreslit() {
 </script>
 </div>
 
-<p><a href="http://kod.djpw.cz/pfbb">Samostatný generátor</a>.</p>
+<p><a href="https://kod.djpw.cz/pfbb">Samostatný generátor</a>.</p>

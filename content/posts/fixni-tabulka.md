@@ -29,7 +29,7 @@ format: "html"
 
 <h3 id="absolute">Absolutní posicování</h3>
 
-http://kod.djpw.cz/amrc
+https://kod.djpw.cz/amrc
 
 
 

@@ -57,7 +57,7 @@ format: "html"
 
 <p>Vlastností <code>min-height</code> lze zadat minimální výšku obsahu na hodnotu, která posuvník vytvoří. Může to být ale <b>matoucí/nepříjemné pro uživatele</b>, protože mohou kvůli tomu <b>zbytečně rolovat</b>.</p>
 
-<p><a href="http://kod.djpw.cz/frib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/frib">Živá ukázka</a></p>
 
 
 
@@ -74,7 +74,7 @@ format: "html"
   overflow-y: scroll;
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/erib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/erib">Živá ukázka</a></p>
 
 
 
@@ -107,7 +107,7 @@ format: "html"
 <p>Tím se zajistí, že prohlížeč pro daný element <b>vždy</b> vyhradí místo pro posuvník.</p>
 
 
-<p><a href="http://kod.djpw.cz/exjd">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/exjd">Živá ukázka</a></p>
 
 <p>Trochu problém u ní je, že v případě aplikování přímo pro <code>&lt;html></code> logicky vyhrazuje místo u ní.</p>
 
@@ -115,7 +115,7 @@ format: "html"
 
 <p>Pokud se tedy pozadí stránky nastavuje až v nějakém vnořeném elementu, výsledek může být visuálně dost podobný jako neaktivní posuvník.</p>
 
-<p><a href="http://kod.djpw.cz/fxjd">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/fxjd">Živá ukázka</a></p>
 
 <div class="external-content">
   <ul>
@@ -165,7 +165,7 @@ format: "html"
 
 <p>V případě <b>dlouhé stránky</b> bude <i>viewport</i> šírší o šířku posuvníku. O tuto šířku se potom dlouhá stránka <i>odšťouchne</i> zleva.</p>
 
-<p><a href="http://kod.djpw.cz/jrib-">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jrib-">Živá ukázka</a></p>
 
 
 
@@ -203,7 +203,7 @@ setScrollbarWidthVariable()</code></pre>
   width: var(--scrollbar-width);
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/hxjd">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/hxjd">Živá ukázka</a></p>
 
 
 
@@ -249,7 +249,7 @@ setScrollbarWidthVariable()</code></pre>
 
 <p><b>Chamurappi</b> vytvořil jednoduchý JavaScript, který <b>změří šířku posuvníku</b> a přidá ji u krátkých stránek jako pravé <a href="/margin">odsazení</a> (<code>margin-right</code>).</p>
 
-<p><a href="http://kod.djpw.cz/hrib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/hrib">Živá ukázka</a></p>
 
 <h2 id="mobilni-zarizeni">Mobilní zařízení</h2>
 

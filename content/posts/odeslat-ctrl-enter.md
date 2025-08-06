@@ -9,4 +9,4 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/lrbc
+https://kod.djpw.cz/lrbc

@@ -25,7 +25,7 @@ Obsah stránky.</code></pre>
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/mqlb-">Živá ukázka nejjednodušší HTML stránky</a></li>
+    <li><a href="https://kod.djpw.cz/mqlb-">Živá ukázka nejjednodušší HTML stránky</a></li>
   </ul>
 </div>
 
@@ -243,7 +243,7 @@ Obsah stránky.</code></pre>
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/lhrb">Ukázka</a> – formátování stránky bez CSS</li>
+    <li><a href="https://kod.djpw.cz/lhrb">Ukázka</a> – formátování stránky bez CSS</li>
     
     <li><a href="http://www.jakpsatweb.cz/html/struktura.html#body">Struktura dokument: body</a> – přehled formátovacích atributů na Jak psát web</li>
   </ul>

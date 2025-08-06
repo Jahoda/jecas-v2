@@ -151,7 +151,7 @@ fetch(url)
 
 <p>Třeba populární <a href="https://github.com/inikulin/parse5">parse5</a> si v tomto případě myslí, že HTML funguje jinak. <a href="https://astexplorer.net/#/gist/348ec2af554ee77f2d6bb75eb6a593b3/4a0a58af209cb1a1ed65ed7acf62c6cf7fd1a8ad">Ukázka</a></p>
 
-<p>Stejně se chová i nativní DOMParser v prohlížeč – <a href="http://kod.djpw.cz/txid">ukázka</a>.</p>
+<p>Stejně se chová i nativní DOMParser v prohlížeč – <a href="https://kod.djpw.cz/txid">ukázka</a>.</p>
 
 <p>Například jiný parser – <a href="https://github.com/fb55/htmlparser2">htmlparser2</a> – si poradí i s touto konstrukcí. <a href="https://astexplorer.net/#/gist/ea0e6360354eaadcf9ad97019fb6aeca/7807f07f5cd722c1bc93e29f36b81c81a9cb89d4">Ukázka</a></p>
 

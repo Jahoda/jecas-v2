@@ -47,4 +47,4 @@ var shora = document.documentElement.scrollTop + document.body.scrollTop;</code>
 
 <p>Porovnáním <b>větší</b>/<b>menší</b> potom zjistíme i směr.</p>
 
-<p><a href="http://kod.djpw.cz/pwfb">Živá ukázka</a> (při rolování se vypíše směr)</p>
+<p><a href="https://kod.djpw.cz/pwfb">Živá ukázka</a> (při rolování se vypíše směr)</p>

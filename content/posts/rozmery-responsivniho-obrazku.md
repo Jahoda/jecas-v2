@@ -170,7 +170,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/tbpb">Živá ukázka</a> vygenerovaného kódu kolem obrázků</li>
+    <li><a href="https://kod.djpw.cz/tbpb">Živá ukázka</a> vygenerovaného kódu kolem obrázků</li>
   </ul>
 </div>
 
@@ -189,7 +189,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/sbpb">Živá ukázka</a> – vytvoření placeholderů pro responsivní obrázky</li>
+    <li><a href="https://kod.djpw.cz/sbpb">Živá ukázka</a> – vytvoření placeholderů pro responsivní obrázky</li>
   </ul>
 </div>
 
@@ -230,7 +230,7 @@ format: "html"
 </ul>
 
 <!--
-<p><a href="http://kod.djpw.cz/pnob">Živá ukázka</a> – příklad použití u responsivní mřížky</p>
+<p><a href="https://kod.djpw.cz/pnob">Živá ukázka</a> – příklad použití u responsivní mřížky</p>
 -->
 
 <script>

@@ -226,4 +226,4 @@ format: "html"
   background: transparent;
 }</style>
 
-<!-- http://kod.djpw.cz/ygub -->
+<!-- https://kod.djpw.cz/ygub -->

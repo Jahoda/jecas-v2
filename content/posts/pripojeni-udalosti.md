@@ -33,7 +33,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/tecb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/tecb">Ukázka</a></p>
 
 <p>Výhodné je, že z HTML kódu je ihned patrné, že se tlačítko používá pro spouštění JS akcí.</p>
 
@@ -62,7 +62,7 @@ format: "html"
   Odkaz
 &lt;/a></code></pre>
 
-<p><a href="http://kod.djpw.cz/uecb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/uecb">Ukázka</a></p>
 
 <p>Puntičkářům se na tomto způsobu nebude líbit, že bez podpory JavaScriptu je na stránce <b>nefunkční odkaz</b>. Řešení je toto tlačítko při absenci JS <a href="/vypnuty-js">skrýt přes CSS</a>.</p>
 
@@ -107,7 +107,7 @@ element.<b>onclick</b> = akce;
 
 
 
-<p><a href="http://kod.djpw.cz/vecb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/vecb">Ukázka</a></p>
 
 <p>Trochu ošemetné je, že nás může svádět napsat dle zvyku z HTML atributů něco jako:</p>
 
@@ -176,11 +176,11 @@ element.<b>onclick</b> = akce;
   akce();
 });</code></pre>
 
-<p>Asi hlavní výhoda tohoto postupu je, že umožňuje pohodlně navazovat do jedné události několik funkcí (<a href="http://kod.djpw.cz/xecb">ukázka</a>). Obdobný <a href="http://kod.djpw.cz/wecb">postup</a> by u předchozího způsobu nastavil jen tu poslední akci.</p>
+<p>Asi hlavní výhoda tohoto postupu je, že umožňuje pohodlně navazovat do jedné události několik funkcí (<a href="https://kod.djpw.cz/xecb">ukázka</a>). Obdobný <a href="https://kod.djpw.cz/wecb">postup</a> by u předchozího způsobu nastavil jen tu poslední akci.</p>
 
 <!--
  
-http://kod.djpw.cz/froc
+https://kod.djpw.cz/froc
 https://medium.com/@DavideRama/removeeventlistener-and-anonymous-functions-ab9dbabd3e7b
 https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener#Matching_event_listeners_for_removal
 

@@ -37,6 +37,6 @@ format: "html"
   <p class="nadpis">Text s barevným okrajem.</p>
 </div>
 
-<p><a href="http://kod.djpw.cz/zadb">Samostatná ukázka</a> (v podporovaných prohlížečích se zobrazí cca to samé co na obrázku výše).</p>
+<p><a href="https://kod.djpw.cz/zadb">Samostatná ukázka</a> (v podporovaných prohlížečích se zobrazí cca to samé co na obrázku výše).</p>
 
 <p>Aby se efekt rozumně projevil, je zapotřebí celkem velké písmo, zhruba 40 pixelů a víc.</p>

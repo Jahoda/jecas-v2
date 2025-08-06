@@ -10,5 +10,5 @@ format: "html"
 ---
 
 <uli>
-  <li><a href="http://kod.djpw.cz/puqb">Živá ukázka</a> – šikmý stín</li>
+  <li><a href="https://kod.djpw.cz/puqb">Živá ukázka</a> – šikmý stín</li>
 </uli>

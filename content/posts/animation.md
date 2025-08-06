@@ -87,7 +87,7 @@ format: "html"
 
 <h2 id=demo>Test animace</h2>
 <p>Prostor pro vyzkoušení (nefunguje ve starších Explorerech než 10).</p>
-<!-- http://kod.djpw.cz/wfc -->
+<!-- https://kod.djpw.cz/wfc -->
 <style>
 @keyframes animace
 {
@@ -186,7 +186,7 @@ function projit(els) {
 
 <h2 id="odkazy">Odkazy a zajímavé animace</h2>
 <ul>
-  <li><a href="http://kod.djpw.cz/gfc">Odpočítávání</a> (<a href="http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=3&amp;topic=151050">vlákno na DJPW</a>)</li>
+  <li><a href="https://kod.djpw.cz/gfc">Odpočítávání</a> (<a href="http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=3&amp;topic=151050">vlákno na DJPW</a>)</li>
   <li><a href="http://bennettfeely.com/cssynth/">CSSNTH</a></li>
   <li><a href="https://medium.com/p/3d1b0a9b810e">Improve the payment experience with animations</a></li>
   <li><a href="http://bouncejs.com/">Bounce.js</a>: Generátor CSS animací</li>

@@ -60,7 +60,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/nwib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/nwib">Živá ukázka</a></p>
 
 
 
@@ -86,7 +86,7 @@ format: "html"
 </ul>
 
 
-<p><a href="http://kod.djpw.cz/pwib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/pwib">Živá ukázka</a></p>
 
 <p>Popis jednotlivých částí posuvníku ve starých <b>IE</b>.</p>
 
@@ -133,7 +133,7 @@ format: "html"
 
 
 
-<p><a href="http://kod.djpw.cz/swib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/swib">Živá ukázka</a></p>
 
 <p>O barvení posuvníku ve starších <b>IE</b>:</p>
 
@@ -179,7 +179,7 @@ Bugzilla: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=77790">Style the
 
 <p>Aby bylo zachováno <b>standardní chování</b> – rychlost posunu, ovládání dotykem a setrvačnost, jde využít elementu s <code>overflow: auto</code> obaleného do elementu s nižší šířkou o rozměr posuvníku, čímž se výchozí <i>scrollbar</i> ořízne.</p>
 
-<p><a href="http://kod.djpw.cz/twib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/twib">Živá ukázka</a></p>
 
 <p>JavaScript potom slouží pouze pro <b>indikaci a drag &amp; drop posouvání</b>.</p>
 

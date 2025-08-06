@@ -72,7 +72,7 @@ format: "html"
 </button>  
 </div>
 
-<p><a href="http://kod.djpw.cz/wrfb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/wrfb">Samostatná ukázka</a></p>
 
 <p>Rozdíl mezi <code>show</code> a <code>showModal</code> je v:</p>
 
@@ -153,7 +153,7 @@ format: "html"
 
 <pre><code>&lt;dialog <i>onclose</i>="alert(this.<b>returnValue</b>)"></code></pre>
 
-<p><a href="http://kod.djpw.cz/yrfb">Samostatná ukázka</a> / <a href="http://kod.djpw.cz/zrfb">Zadání a zpracování textové hodnoty</a></p>
+<p><a href="https://kod.djpw.cz/yrfb">Samostatná ukázka</a> / <a href="https://kod.djpw.cz/zrfb">Zadání a zpracování textové hodnoty</a></p>
 
 
 

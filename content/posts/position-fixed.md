@@ -21,7 +21,7 @@ format: "html"
 
 <p>Fixní element má nulový bod souřadnic vždy v <b>levém horním okraji stránky</b> a nejde změnit. Mimochodem, tento <i>bod</i> není určen ani elementem <code>&lt;body></code> a ani elementem <code>&lt;html></code>, nemá na něj vliv žádný <code>margin</code> nebo <code>padding</code>, zkrátka nic.</p>
 
-<p><a href="http://kod.djpw.cz/udcb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/udcb">Ukázka</a></p>
 
 <p>Popsané chování někdy může vadit, ale také je v určitých případech <b>velmi výhodné</b>. Zvlášť u vytváření universálních JavaScriptů typu lightboxů nám <code>position: fixed</code> hezky zaručí, že se náš skript nerozbije při <a href="/stylovani-body">stylování značky <code>&lt;body></code></a> a podobně.</p>
 

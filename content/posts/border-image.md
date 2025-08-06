@@ -179,8 +179,8 @@ format: "html"
   <p>Nezdá se mi ale, že by někde fungovala.</p>
 </dd>
 
-<p><a href="http://kod.djpw.cz/waib">Živá ukázka</a> (díky <a href="/resize"><code>resize</code></a> jde i měnit velikost)</p>
-<!-- Opera 12 zná pouze sdruženou vlastnost -o-border-image, jinak http://kod.djpw.cz/vaib -->
+<p><a href="https://kod.djpw.cz/waib">Živá ukázka</a> (díky <a href="/resize"><code>resize</code></a> jde i měnit velikost)</p>
+<!-- Opera 12 zná pouze sdruženou vlastnost -o-border-image, jinak https://kod.djpw.cz/vaib -->
 
 
 

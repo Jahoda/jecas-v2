@@ -190,7 +190,7 @@ p {
 
 
 
-<p>Zleva bude odsazen pouze odstavec, který následuje po odstavci. <a href="http://kod.djpw.cz/efob">Ukázka</a>.</p>
+<p>Zleva bude odsazen pouze odstavec, který následuje po odstavci. <a href="https://kod.djpw.cz/efob">Ukázka</a>.</p>
 
 
 

@@ -80,7 +80,7 @@ format: "html"
 <p><button onclick='nastavit(".live .radek > span", "height", "3em")'>Vysoký element</button>
 <button onclick='nastavit(".live .radek > span", "height", ".4em")'>Malý čtvereček</button></p>
 
-<p><a href="http://kod.djpw.cz/yiub">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/yiub">Samostatná živá ukázka</a></p>
 
 <p>Kromě klíčových slov je možné používat i délkové jednotky a procenta. Ty se odvíjí od výchozího umístění <code>baseline</code>. Kladné hodnoty posunou element směrem nad <i>baseline</i>, záporné pod baseline.</p>
 
@@ -109,7 +109,7 @@ format: "html"
 </table>  
 </div>
 
-<p><a href="http://kod.djpw.cz/ziub">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ziub">Samostatná živá ukázka</a></p>
 
 <h2 id="div">Zarovnání v <code>&lt;div></code>u</h2>
 
@@ -136,7 +136,7 @@ format: "html"
 
 <p>Světle šedý obal má nastavenou výšku, <code>display: table-cell</code> a <code>vertical-align: middle</code>.</p>
 
-<p><a href="http://kod.djpw.cz/ajub">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ajub">Samostatná živá ukázka</a></p>
 
 <p>Naprosto klíčové je použít tabulkové zobrazení <code>table-cell</code> pro obalující <code>&lt;div></code>, jinak se <code>vertical-align</code> neprojeví.</p>
 

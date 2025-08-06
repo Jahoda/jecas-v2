@@ -47,7 +47,7 @@ format: "html"
 
 <p>Docela funkční mi přijde postup, kdy se při <code>onmousedown</code> požadovaná akce připraví do <code>onmouseup</code> (puštění tlačítka nad elementem) a <code>onmouseout</code> (odjetí myší z elementu). A z <code>onmouseout</code> se akce po nějaké době (cca 80 milisekund) vyhodí <a href="/odpocitavani">časovačem</a>.</p>
 
-<p><a href="http://kod.djpw.cz/ymbb">Živá ukázka</a> srovnávající oba přístupy.</p>
+<p><a href="https://kod.djpw.cz/ymbb">Živá ukázka</a> srovnávající oba přístupy.</p>
 
 <p>Pokud se výsledek akce má získávat <a href="/ajax">AJAXem</a>, nabízí se požadavek na soubor zavolat již při <code>onmousedown</code>, ale zobrazit až při <i>potvrzení</i> kliknutí (<code>onmouseup</code>/<code>onmouseout</code>).</p>
 

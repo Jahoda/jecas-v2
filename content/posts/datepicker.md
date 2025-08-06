@@ -123,7 +123,7 @@ format: "html"
     
     <p><img src="/files/datepicker/rome.png" alt="Výběr data prostřednictvím kalendáře" class="border"></p>
 
-<p><a href="http://kod.djpw.cz/coeb">Samostatná zjednodušená ukázka</a></p>
+<p><a href="https://kod.djpw.cz/coeb">Samostatná zjednodušená ukázka</a></p>
   </li>
 </ul>
 

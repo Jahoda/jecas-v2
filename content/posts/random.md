@@ -56,7 +56,7 @@ alert(<b>polozky</b>[<i>nahodne</i>]);</code></pre>
 
 <pre><code>var polozky = [
   {"<b>obrazek</b>" : "prvni.jpg", "<i>url</i>" : "http://jeacas.cz"},
-  {"<b>obrazek</b>" : "druhy.jpg", "<i>url</i>" : "http://kod.djpw.cz"},
+  {"<b>obrazek</b>" : "druhy.jpg", "<i>url</i>" : "https://kod.djpw.cz"},
   {"<b>obrazek</b>" : "treti.jpg", "<i>url</i>" : "http://djpw.cz"}
 ];
 var nahodne = Math.floor(Math.random() * polozky.length);
@@ -71,7 +71,7 @@ alert(polozky[nahodne].<i>url</i>);</code></pre>
 
 
 
-<p><a href="http://kod.djpw.cz/oyeb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/oyeb">Samostatná ukázka</a></p>
 
 
 
@@ -100,7 +100,7 @@ alert(polozky[nahodne].<i>url</i>);</code></pre>
 
 <pre><code>$polozky = array(
   array("obrazek" => "prvni.jpg", "url" => "http://jecas.cz"),
-  array("obrazek" => "druhy.jpg", "url" => "http://kod.djpw.cz"),
+  array("obrazek" => "druhy.jpg", "url" => "https://kod.djpw.cz"),
   array("obrazek" => "treti.jpg", "url" => "http://djpw.cz")
 );
 $nahodne = $polozky[array_rand($polozky)];

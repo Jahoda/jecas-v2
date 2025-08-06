@@ -82,4 +82,4 @@ input:focus + label.zapvyp > .status {outline: #000 dotted 1px}
   <li><a href="http://codepen.io/maturo/pen/dxAhE">Switch Button #2</a></li>
 </ul>
 
-<!-- Ukázka: http://kod.djpw.cz/rjsb -->
+<!-- Ukázka: https://kod.djpw.cz/rjsb -->

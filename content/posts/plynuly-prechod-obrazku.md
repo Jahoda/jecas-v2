@@ -9,5 +9,5 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/qbic
-http://kod.djpw.cz/baic - box-shadow
+https://kod.djpw.cz/qbic
+https://kod.djpw.cz/baic - box-shadow

@@ -127,7 +127,7 @@ header("Location: stranka.html<b>#kotva</b>");
 
 <p>Skrýt políčko, aby nestrašilo, nestačí přes <a href="/display"><code>display: none</code></a>, protože by nedostalo <code>focus</code>.</p>
 
-<p><a href="http://kod.djpw.cz/wxcc-">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/wxcc-">Živá ukázka</a></p>
 
 
 <p>Výhoda tohoto postupu je, že prohlížeč inteligentně řeší odrolování na element v rámci viewportu.</p>

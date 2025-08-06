@@ -182,7 +182,7 @@ function vyhledat(slovo) {
     <li>Jak získat náhled webu?	
     <li>Testování webů v různých prohlížečích
   </ul>
-  <p>Separátní <a href="http://kod.djpw.cz/eac">živá ukázka</a>.</p>
+  <p>Separátní <a href="https://kod.djpw.cz/eac">živá ukázka</a>.</p>
 <script>
 var zaznam = document.getElementById("hledane").getElementsByTagName("li");
 

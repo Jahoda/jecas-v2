@@ -71,7 +71,7 @@ function hlaska(text, vycistit) {
 <pre><code>hlaska('Text první hlášky', 5);</code></pre>
 
 
-<p><a href="http://kod.djpw.cz/eny">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/eny">Samostatná ukázka</a></p>
 
 <h2 id="prepsani-zachovani">Přepsání i zachování výchozího <code>alert</code>u</h2>
 <p>Pan <b>Kubo2</b> přišel s dobrou připomínkou, že není problém výchozí <code>alert</code> přepsat vlastní hláškou, ale zároveň si ho <b>nejprve uložit</b> do proměnné.</p>
@@ -89,7 +89,7 @@ var puvodniAlert = window.alert;
 window.alert = hlaska;
 </code></pre>
 
-<p><a href="http://kod.djpw.cz/bgab">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/bgab">Ukázka</a></p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>

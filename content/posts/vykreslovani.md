@@ -161,7 +161,7 @@ element.style.height = novaVyska;</code></pre>
 
 <p>U změny vlastností <b>500 elementů</b> oběma způsoby je rozdíl poměrně dobře patrný. Vytvořit dva cykly (jeden si uloží hodnoty všech prvků a druhý je změní) místo jednoho se vyplatí.</p>
 
-<p><a href="http://kod.djpw.cz/ckhb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ckhb">Ukázka</a></p>
 
 
 

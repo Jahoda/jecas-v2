@@ -206,7 +206,7 @@ ul li:last-child {color: blue}</code></pre><td class=center><span class=help tit
   <p>První nadpis první úrovně na stránce bude červený.
     <pre><code>h1:first-of-type {color: red}</code></pre>
     <p>Poslední nadpis první úrovně bude modrý.
- <pre><code>h1:last-of-type {color: blue}</code></pre><td class=center>IE 9+<br><a href="http://kod.djpw.cz/lcgb">Ukázka</a>
+ <pre><code>h1:last-of-type {color: blue}</code></pre><td class=center>IE 9+<br><a href="https://kod.djpw.cz/lcgb">Ukázka</a>
    
    
 
@@ -235,7 +235,7 @@ p:only-of-type {color: blue}</code></pre>
   &lt;p>Text.
 &lt;/div>
 &lt;h1>Nadpis 3&lt;/h1>
-&lt;p>Text 3</code></pre><td class=center>IE 9+<br><a href="http://kod.djpw.cz/qzvb">Ukázka</a>
+&lt;p>Text 3</code></pre><td class=center>IE 9+<br><a href="https://kod.djpw.cz/qzvb">Ukázka</a>
 
    
 
@@ -253,7 +253,7 @@ p:only-of-type {color: blue}</code></pre>
     <td class=top><code>E:valid</code><br><code>E:invalid</code><p><a href="#validace">validace</a>
 
       <td class=meaning>Zachytí, zda je <code>&lt;input></code> řádně vyplněn. Buď v souladu s <a href="/atribut-pattern">atributem <code>pattern</code></a> nebo s nějakým typem <code>&lt;input></code>u (<code>url</code>, <code>email</code> apod.).
-    <td class=center>IE 10+<br><a href="http://kod.djpw.cz/ees">Ukázka</a>      
+    <td class=center>IE 10+<br><a href="https://kod.djpw.cz/ees">Ukázka</a>      
        
 
   <tr id="odkazove-pseudotridy">
@@ -299,7 +299,7 @@ a:visited {color: blue} /* navštívené odkazy budou modré */</code></pre><td 
 
    <td class=meaning>Element <code>E</code>, ve kterém se nachází nějaký prvek, který má <code>:focus</code>.
      <p>Hodí se pro vytváření rozklikávacích nabídek nezávislých na JavaScriptu.</p>
-    <td class=center><span class=help title='Firefox 52, Chrome 60, Opera 47'>Mimo <b>IE</b>/<b>Edge</b><br><a href="http://kod.djpw.cz/sojc">Ukázka</a></span>     
+    <td class=center><span class=help title='Firefox 52, Chrome 60, Opera 47'>Mimo <b>IE</b>/<b>Edge</b><br><a href="https://kod.djpw.cz/sojc">Ukázka</a></span>     
 
 
    
@@ -333,7 +333,7 @@ a:visited {color: blue} /* navštívené odkazy budou modré */</code></pre><td 
 
    <td class=meaning>Tímto selektorem lze ovlivnit vzhled formulářových polí, která (ne)jsou zablokována atributem <code>disabled</code>.
 
-    <pre><code>input:disabled {color: red} /* zablokvaný &lt;input> bude červený */</code></pre><td class=center>IE 9+, nejde v Opeře<br><a href="http://kod.djpw.cz/vlb">Ukázka</a>
+    <pre><code>input:disabled {color: red} /* zablokvaný &lt;input> bude červený */</code></pre><td class=center>IE 9+, nejde v Opeře<br><a href="https://kod.djpw.cz/vlb">Ukázka</a>
    
 
   <tr id="checked">
@@ -458,7 +458,7 @@ p:before {content: "Nepřehlédněte: "}</code></pre>
 
    <td class=meaning>Element <code>E</code> při zobrazení ve fullscreenu (<b>režimu celé obrazovky</b>).
      <p>Selektor <code>:fullscreen</code> by měl umožňit zvláštní styl v celo-obrazovkovém režimu. Zapisuje se s <a href="/css-prefixy">prefixy</a>, ve <b>Firefoxu</b> a <b>Chrome</b> navíc se spojovníkem mezi „full“ a „screen“ — <code>:-moz-full<b>-</b>screen</code>, <code>:-webkit-full<b>-</b>screen</code> a <code>:-ms-fullscreen</code>.</p>
-     <p>Bohužel se mi tuto funkčnost nepodařilo v žádném prohlížeči spustit (<a href="http://kod.djpw.cz/dqs">kód pro FF</a>). Nějaký popis <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen"><code>:fullscreen</code></a>u je na MDN.</p>
+     <p>Bohužel se mi tuto funkčnost nepodařilo v žádném prohlížeči spustit (<a href="https://kod.djpw.cz/dqs">kód pro FF</a>). Nějaký popis <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:fullscreen"><code>:fullscreen</code></a>u je na MDN.</p>
 <td class=center>IE 11+
 
     <tr id="indeterminate">
@@ -470,7 +470,7 @@ p:before {content: "Nepřehlédněte: "}</code></pre>
       <p>Nastavit <i>neurčitý</i> stav je možné jen JavaScriptem.</p>
       <pre><code>document.getElementById("checkbox").indeterminate = true;</code></pre>
     </td>
-    <td class=center>IE 9+<br><a href="http://kod.djpw.cz/jxs">Ukázka</a></td>
+    <td class=center>IE 9+<br><a href="https://kod.djpw.cz/jxs">Ukázka</a></td>
   </tr>
   
   
@@ -480,7 +480,7 @@ p:before {content: "Nepřehlédněte: "}</code></pre>
       <p>Funguje jen u značek <a href="/input"><code>&lt;input></code></a>, které není povinné vyplnit, tj. nemají atribut <a href="/input#required"><code>required</code></a>.</p>
       <p><b>Opakem</b> je selektor <a href="#required"><code>:required</code></a>.</p>
     </td>
-    <td class=center>IE 10+<br><a href="http://kod.djpw.cz/oys">Ukázka</a></td>
+    <td class=center>IE 10+<br><a href="https://kod.djpw.cz/oys">Ukázka</a></td>
   </tr>  
   
       <tr id="required">
@@ -490,7 +490,7 @@ p:before {content: "Nepřehlédněte: "}</code></pre>
       <p>Opakem je selektor <a href="#optional"><code>:optional</code></a>.</p>
       <p>Pro zaměření políčka, které je správně/špatně vyplněno slouží selektory <a href="#validace">validace</a> (<code>:valid</code>/<code>:invalid</code>).</p>
     </td>
-    <td class=center>IE 10+<br><a href="http://kod.djpw.cz/pys">Ukázka</a></td>
+    <td class=center>IE 10+<br><a href="https://kod.djpw.cz/pys">Ukázka</a></td>
   </tr>  
     
         <tr id="placeholder">
@@ -498,7 +498,7 @@ p:before {content: "Nepřehlédněte: "}</code></pre>
     <td class=meaning>
       <p>Umožnuje stylovat obsah <a href="/placeholder">atributu <code>placeholder</code></a> (zástupný znak v <a href="/input"><code>&lt;input></code>u</a>).</p>
     </td>
-    <td class=center>IE 10+<br><a href="http://kod.djpw.cz/nldb">Ukázka</a></td>
+    <td class=center>IE 10+<br><a href="https://kod.djpw.cz/nldb">Ukázka</a></td>
   </tr>  
   
   
@@ -513,7 +513,7 @@ p:before {content: "Nepřehlédněte: "}</code></pre>
       
       <pre><code>input[readonly] {}</code></pre>
     </td>
-    <td class=center>Chrome, Firefox<br><a href="http://kod.djpw.cz/qldb">Ukázka</a></td>
+    <td class=center>Chrome, Firefox<br><a href="https://kod.djpw.cz/qldb">Ukázka</a></td>
   </tr>
   
           <tr id="read-write">
@@ -527,7 +527,7 @@ p:before {content: "Nepřehlédněte: "}</code></pre>
       
       <pre><code>input[type=text]:not([readonly]) {}</code></pre>
     </td>
-    <td class=center>Chrome, Firefox<br><a href="http://kod.djpw.cz/rldb">Ukázka</a></td>
+    <td class=center>Chrome, Firefox<br><a href="https://kod.djpw.cz/rldb">Ukázka</a></td>
   </tr>  
   
           <tr id="default">
@@ -537,7 +537,7 @@ p:before {content: "Nepřehlédněte: "}</code></pre>
       
       <p>Zvýrazněné bude to, které by se <i>použilo</i> při stiknutí <kbd>Enter</kbd>u.</p>
     </td>
-    <td class=center>Chrome, Firefox<br><a href="http://kod.djpw.cz/sldb">Ukázka</a></td>
+    <td class=center>Chrome, Firefox<br><a href="https://kod.djpw.cz/sldb">Ukázka</a></td>
   </tr>   
 </table>
       

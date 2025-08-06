@@ -39,7 +39,7 @@ else if (aktualniObrazek &lt; 1) {
 
 <p>V proměnné <code>posun</code> bude hodnota <code>1</code> pro posun dopředu a <code>-1</code> pro posun v zpátky.</p>
 
-<p><a href="http://kod.djpw.cz/lijb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/lijb">Živá ukázka</a></p>
 
 
 
@@ -83,7 +83,7 @@ else if (aktualniObrazek &lt; 1) {
   pocetObrazku + aktualniObrazek + (<b>posun % pocetObrazku</b>)
 ) % pocetObrazku;</code></pre>
 
-<p><a href="http://kod.djpw.cz/kijb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/kijb">Živá ukázka</a></p>
 
 
 

@@ -113,7 +113,7 @@ format: "html"
     <p><b>Různá velikost čísel</b> – někdy může lépe vypadat, když mají číslice různou velikost.</p>
     <pre><code>font-feature-settings: "onum" 1</code></pre>
     
-    <p>Zkratka <code>onum</code> znamená <i><b>O</b>ldstyle <b>num</b>ber</i> (starý styl čísel). Tento styl používá například písmo <b>Georgia</b> (<a href="http://kod.djpw.cz/phib">ukázka</a>).</p>
+    <p>Zkratka <code>onum</code> znamená <i><b>O</b>ldstyle <b>num</b>ber</i> (starý styl čísel). Tento styl používá například písmo <b>Georgia</b> (<a href="https://kod.djpw.cz/phib">ukázka</a>).</p>
     
     <p><img src="/files/font-feature-settings/onum.gif" alt="Různé varianty čísel" class="border"></p>
   </li>

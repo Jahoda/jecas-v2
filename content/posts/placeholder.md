@@ -22,7 +22,7 @@ format: "html"
   </label>
 </div>
 
-<p><a href="http://kod.djpw.cz/rybb">Samostatná ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/rybb">Samostatná ukázka</a>.</p>
 
 <p>Je otázka, jestli je současná implementace tohoto atributu v prohlížečích vyhovující. <b>Firefox</b> a <b>Chrome</b> totiž obsah <code>placeholder</code>u neodstraní <b>ihned po kliknutí</b>, ale až když se v poli začne psát.</p>
 
@@ -46,7 +46,7 @@ format: "html"
   value="email@example.com"
 ></div>
 
-<p><a href="http://kod.djpw.cz/sybb">Samostatná ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/sybb">Samostatná ukázka</a>.</p>
 
 <h3 id="oznaceni">Označení obsahu</h3>
 
@@ -59,7 +59,7 @@ format: "html"
   value="email@example.com"
 ></div>
 
-<p><a href="http://kod.djpw.cz/jgcb">Samostatná ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/jgcb">Samostatná ukázka</a>.</p>
 
 
 <h3 id="animovany">Animovaný placeholder</h3>
@@ -101,7 +101,7 @@ format: "html"
     <pre><code><b>:</b>:-moz-placeholder {
   /* styl */ 
 }</code></pre>
-    <p>Pan <b>habendorf</b> doplnil, že ve <b>Firefoxu</b> má <i>placeholder</i> poloviční <a href="/opacity">průhlednost</a> (<code>opacity: 0.5</code>), která způsobuje, že barvy nastavené pro placeholder nemají ve výsledku plnou sytost. <a href="http://kod.djpw.cz/fmcb">Ukázka</a>. Není-li takové chování žádoucí, stačí přidat <code>opacity: 1</code>.</p>
+    <p>Pan <b>habendorf</b> doplnil, že ve <b>Firefoxu</b> má <i>placeholder</i> poloviční <a href="/opacity">průhlednost</a> (<code>opacity: 0.5</code>), která způsobuje, že barvy nastavené pro placeholder nemají ve výsledku plnou sytost. <a href="https://kod.djpw.cz/fmcb">Ukázka</a>. Není-li takové chování žádoucí, stačí přidat <code>opacity: 1</code>.</p>
   </dd>
   
   <dt id="ie">Internet Explorer</dt>
@@ -113,7 +113,7 @@ format: "html"
   </dd>
 </dl>
 
-<p><a href="http://kod.djpw.cz/vybb">Ukázka</a> pro všechny prohlížeče.</p>
+<p><a href="https://kod.djpw.cz/vybb">Ukázka</a> pro všechny prohlížeče.</p>
 
 <p>Pozor, zápis se sloučením všech selektorů k jedné deklaraci nebude fungovat. Prohlížeče si <i>vylámou zuby</i> na selektorech konkurence a <b>styly se neaplikují</b>.</p>
 

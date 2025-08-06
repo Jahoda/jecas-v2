@@ -9,4 +9,4 @@ tags: []
 format: "html"
 ---
 
-<p><a href="http://kod.djpw.cz/zipb">Ukázka <code>white-space: pre-line</code></a></p>
+<p><a href="https://kod.djpw.cz/zipb">Ukázka <code>white-space: pre-line</code></a></p>

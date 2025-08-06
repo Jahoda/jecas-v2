@@ -177,5 +177,5 @@ format: "html"
   function skryt() {
     if (zvyrazneno) zvyrazneno.className = "";
   }
-  // http://kod.djpw.cz/lvmb
+  // https://kod.djpw.cz/lvmb
 </script>

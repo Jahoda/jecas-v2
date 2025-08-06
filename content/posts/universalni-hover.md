@@ -132,16 +132,16 @@ format: "html"
   </p>
 </div>
 
-<p><a href="http://kod.djpw.cz/ktcb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ktcb">Samostatná ukázka</a></p>
 
 <h3 id="ie8">Internet Explorer 8 a 9</h3>
 <p>Alternativně k <code>opacity</code> by šlo rovnou použít <a href="/opacity#rgba"><code>rgba</code></a>, ale to funguje až od <b>IE 9</b>.</p>
 
-<p>Vytvoření pseudo-elementu přes <code>:before</code>/<code>:after</code> sice funguje už v <b>IE 8</b>, nicméně u pseudo-elementů v tomto prohlížeči není možné nastavovat průhlednost. Takže je stejně nejspíš nutné použít další element uvnitř odkazu. <a href="http://kod.djpw.cz/rtcb">Ukázka</a>.</p>
+<p>Vytvoření pseudo-elementu přes <code>:before</code>/<code>:after</code> sice funguje už v <b>IE 8</b>, nicméně u pseudo-elementů v tomto prohlížeči není možné nastavovat průhlednost. Takže je stejně nejspíš nutné použít další element uvnitř odkazu. <a href="https://kod.djpw.cz/rtcb">Ukázka</a>.</p>
 
 <h3 id="vylepseni">Vylepšení <code>:hover</code>u</h3>
 
-<p>Samotnou podobou <b>hover efektu</b> může ještě vyšperkovat obrázkový <a href="/gradient">CSS gradient</a> (<a href="http://kod.djpw.cz/ltcb">ukázka</a>) nebo <a href="/transition">přechodový efekt <code>transition</code></a>.</p>
+<p>Samotnou podobou <b>hover efektu</b> může ještě vyšperkovat obrázkový <a href="/gradient">CSS gradient</a> (<a href="https://kod.djpw.cz/ltcb">ukázka</a>) nebo <a href="/transition">přechodový efekt <code>transition</code></a>.</p>
 
 <h2 id="filter">CSS vlasnost <code>filter</code></h2>
 
@@ -155,7 +155,7 @@ format: "html"
 }
 </code></pre>
 
-<p>Bohužel ale momentálně funguje jen ve <b>Webkitu</b> (s <a href="/css-prefixy">prefixem <code>-webkit-</code></a>). <a href="http://kod.djpw.cz/qtcb">Ukázka</a>.</p>
+<p>Bohužel ale momentálně funguje jen ve <b>Webkitu</b> (s <a href="/css-prefixy">prefixem <code>-webkit-</code></a>). <a href="https://kod.djpw.cz/qtcb">Ukázka</a>.</p>
 
 
 <h2 id="focus-active">Použití <code>:focus</code> a <code>:active</code></h2>

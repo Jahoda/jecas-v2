@@ -258,7 +258,7 @@ format: "html"
 
 <p>Není potom nutné přemýšlet nad slučováním a neprojevením se <code>margin</code>u, ale počítat s tím, že se odsazení sčítá.</p>
 
-<p><a href="http://kod.djpw.cz/rqub">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/rqub">Živá ukázka</a></p>
 
 <p>V řadě případů to ale znamená komplikovanější HTML kód – používat zvláštní obaly jen pro odsazení.</p>
 

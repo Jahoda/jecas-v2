@@ -36,7 +36,7 @@ format: "html"
 
 <h2 id="pouziti">Použití</h2>
 
-<p>Nasimulování číslování v běžném <code>&lt;ol></code> by vypadalo následovně (<a href="http://kod.djpw.cz/rrcb">ukázka</a>):</p>
+<p>Nasimulování číslování v běžném <code>&lt;ol></code> by vypadalo následovně (<a href="https://kod.djpw.cz/rrcb">ukázka</a>):</p>
 
 <pre><code>ol {
   counter-reset: <b>seznam</b>;
@@ -67,7 +67,7 @@ li:before {
   content: counter(seznam) "." counter(druhySeznam)
 }</code></pre>
     
-    <p>Výše uvedený kód tedy zvýší čítač <code>seznam</code> o <code>2</code> a čítač <code>druhySeznam</code> sníží o <code>4</code>. Ano, dá se <b>zvyšovat více čítačů naráz</b>. Že tento (nejspíš absurdní) příklad funguje dokládá <a href="http://kod.djpw.cz/srcb">živá ukázka</a>.</p>
+    <p>Výše uvedený kód tedy zvýší čítač <code>seznam</code> o <code>2</code> a čítač <code>druhySeznam</code> sníží o <code>4</code>. Ano, dá se <b>zvyšovat více čítačů naráz</b>. Že tento (nejspíš absurdní) příklad funguje dokládá <a href="https://kod.djpw.cz/srcb">živá ukázka</a>.</p>
   </dd>
   
   <dt id="counter"><code>counter</code></dt>
@@ -76,7 +76,7 @@ li:before {
 
 <h2 id="kapitoly">Číslování kapitol</h2>
 
-<p>Zajímavější příklad <code>counter</code>u je například číslování nadpisů. <a href="http://kod.djpw.cz/wucb">Ukázka</a>.</p>
+<p>Zajímavější příklad <code>counter</code>u je například číslování nadpisů. <a href="https://kod.djpw.cz/wucb">Ukázka</a>.</p>
 
 <h2 id="styl">Styl číslování</h2>
 
@@ -89,7 +89,7 @@ li:before {
 
 <p>Tento čítač bude používat <b>římské číslice</b>. Ty mohou být velká (<code>upper-roman</code>) nebo malá (<code>lower-roman</code>). Stejně tak jde použít <i>číslování</i> písmeny (<code>upper-alpha</code> a <code>lower-alpha</code>).</p>
 
-<p>Upravená <a href="http://kod.djpw.cz/vucb">živá ukázka</a> to hezky ilustruje.</p>
+<p>Upravená <a href="https://kod.djpw.cz/vucb">živá ukázka</a> to hezky ilustruje.</p>
 
 <h2 id="odkazy">Odkazy jinam</h2>
 

@@ -80,7 +80,7 @@ header('X-Frame-Options: SAMEORIGIN');
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/jgub-">Přebarvení webu</a></li>
+    <li><a href="https://kod.djpw.cz/jgub-">Přebarvení webu</a></li>
   </ul>
 </div>
 

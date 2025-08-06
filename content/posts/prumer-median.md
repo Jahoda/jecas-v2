@@ -126,7 +126,7 @@ alert(median(
 }</code></pre>
 
 
-<p><a href="http://kod.djpw.cz/ybub">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/ybub">Živá ukázka</a></p>
 
 
 
@@ -161,6 +161,6 @@ alert(median(
   <div id="vysledek"></div>
   <script>
     spocitat(cislaArea.value);
-    // http://kod.djpw.cz/amub
+    // https://kod.djpw.cz/amub
   </script>
 </div>

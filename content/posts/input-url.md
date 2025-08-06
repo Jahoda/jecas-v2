@@ -116,7 +116,7 @@ format: "html"
 
 <p>Takže v momentě, kdy obsah políčka vypadá, že by mohl obsahovat doménu, stačí <code>favicon.ico</code> vložit jako obrázek.</p>
 
-<p><a href="http://kod.djpw.cz/djkb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/djkb">Živá ukázka</a></p>
 
 <p>Tento způsob není úplně spolehlivý, protože favicona může být i na jiném umístění. Pro positivní potvrzení se to ale může hodit.</p>
 

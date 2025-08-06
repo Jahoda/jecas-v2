@@ -162,7 +162,7 @@ function zmenaMedia(mql) {
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/mohc">Živá ukázka</a> – načtení media queries z CSS do JavaScript</li>
+    <li><a href="https://kod.djpw.cz/mohc">Živá ukázka</a> – načtení media queries z CSS do JavaScript</li>
   </ul>
 </div>
 
@@ -201,7 +201,7 @@ function zmenaMedia(mql) {
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/sajc">Živá ukázka</a> – hotová funkce parsující JSON z CSS</li>
+    <li><a href="https://kod.djpw.cz/sajc">Živá ukázka</a> – hotová funkce parsující JSON z CSS</li>
   </ul>
 </div>
 

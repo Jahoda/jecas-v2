@@ -33,7 +33,7 @@ format: "html"
 
 <h2 id="priklady">Příklady použití</h2>
 <h3>Vstupní stránka</h3>
-<p>Kromě zobrazení na vyžádání (po kliknutí na tlačítko a podobně) je možné lightbox zobrazit <b>ihned po načtení</b>. <a href="http://kod.djpw.cz/gnv">Ukázka</a> (další možnosti <a href="/vstupni-stranka">vytvoření vstupní stránky</a>).</p>
+<p>Kromě zobrazení na vyžádání (po kliknutí na tlačítko a podobně) je možné lightbox zobrazit <b>ihned po načtení</b>. <a href="https://kod.djpw.cz/gnv">Ukázka</a> (další možnosti <a href="/vstupni-stranka">vytvoření vstupní stránky</a>).</p>
 
 <p>Jako <code>src</code> je možné nastavit i <b>kus HTML kódu</b>.</p>
 
@@ -51,7 +51,7 @@ format: "html"
 <p>Docílit se dá nejen zobrazování obrázků, ale i jiných HTML stránek.</p>
 
 <ul>
-  <li>V <code>&lt;iframe></code>. <a href="http://kod.djpw.cz/env">Ukázka</a>.
+  <li>V <code>&lt;iframe></code>. <a href="https://kod.djpw.cz/env">Ukázka</a>.
   <pre><code>$("#tlacitko").magnificPopup({
     items: [{
         type: 'iframe',

@@ -574,7 +574,7 @@ format: "html"
 
 <p>Díky tomu, že rozměry i posice obrázku jsou v <code>em</code> jednotkách, stačí pro změnu velikosti změnit <a href="/font#size"><code>font-size</code></a>.</p>
 
-<p><a href="http://kod.djpw.cz/kprb">Živá ukázka</a> – změna velikosti SVG ikonek ve spritu</p>
+<p><a href="https://kod.djpw.cz/kprb">Živá ukázka</a> – změna velikosti SVG ikonek ve spritu</p>
 
 <p><img src="/files/svg/svg-sprite.png" alt="Sprite z SVG ikonkami" class="border"></p>
 

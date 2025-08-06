@@ -148,7 +148,7 @@ image-rendering: -webkit-optimize-contrast;</code></pre>
   </p>  
 </div>
 
-<p><a href="http://kod.djpw.cz/nllb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/nllb">Samostatná ukázka</a></p>
 
 <h3 id="crisp-edges"><code>image-rendering: crisp-edges</code></h3>
 

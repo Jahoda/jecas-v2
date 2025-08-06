@@ -31,7 +31,7 @@ format: "html"
 </ul>
 
 <p>Nejlepší je si to vyzkoušet:</p>
-<!-- http://kod.djpw.cz/hbc -->
+<!-- https://kod.djpw.cz/hbc -->
 <div class="live">
 <script>
 function obnovit() {
@@ -135,7 +135,7 @@ function obnovit() {
 
 <h2 id="layout">Jednoduchý <code>float</code>ovaný layout</h2>
 <p>Jednoduchý dvousloupcový layout stránky pomocí obtékání může vypadat následovně (ještě je přidáno <a href="/centrovani#centrovani-stranky">centrování</a>):</p>
-<p><a href="http://kod.djpw.cz/rec" class="button">Ukázka</a>
+<p><a href="https://kod.djpw.cz/rec" class="button">Ukázka</a>
   <p><i>(<a href="/stejne-vysoke-sloupce#obrazek">Stejně vysoké sloupce</a> by šlo vyřešit obrázkem.)</i></p>
 <h3>HTML</h3>
 <pre><code>&lt;div class="stranka">
@@ -177,7 +177,7 @@ function obnovit() {
   <p>Funguje dodnes a je to velmi rychlý způsob, jak obtékání ukončit.</p></dd>
   <dt id="overflow"><code>overflow: hidden</code></dt>
   <dd><p>U clearování pomocí přenastavení <code>overflow</code> z výchozí hodnoty <code>visible</code> (<code>overflow: hidden|auto|scroll</code>) pro rodiče <code>float</code>ovaných elementů je skoro s podivem, že to funguje.</p>
-    <p>Vhodné řešení, pokud se nám nechce / není možné <b>měnit HTML kód</b> (<a href="http://kod.djpw.cz/sec">ukázka</a>).</p>
+    <p>Vhodné řešení, pokud se nám nechce / není možné <b>měnit HTML kód</b> (<a href="https://kod.djpw.cz/sec">ukázka</a>).</p>
     <pre><code>&lt;div style="overflow: hidden"&gt;
   &lt;div style="float: left; width: 50%"&gt;&lt;/div&gt;
   &lt;div style="float: right; width: 50%"&gt;&lt;/div&gt;
@@ -197,7 +197,7 @@ function obnovit() {
     <pre><code>.rodic {
 	zoom: 1
 }</code></pre>
-    <p>Tím získáme rovněž řešení, kdy se nemusí zasahovat do HTML kódu a přidávat <i>čistič</i> (<a href="http://kod.djpw.cz/cfc">ukázka</a>).</p>
+    <p>Tím získáme rovněž řešení, kdy se nemusí zasahovat do HTML kódu a přidávat <i>čistič</i> (<a href="https://kod.djpw.cz/cfc">ukázka</a>).</p>
   </dd>
 </dl>
 
@@ -269,7 +269,7 @@ function prohodit(element, trida) {
     <p><button onclick='prohodit(this.parentNode.parentNode, "zvyraznit")'>Zvýraznit <i>překážející</i> elementy</button></p>
   </div>  
 </div>
-<p><a href="http://kod.djpw.cz/dfc" class="button">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/dfc" class="button">Samostatná ukázka</a></p>
 
 <h2 id="neznama-sirka">Obtékání s neznámou šířkou</h2>
 <p>Mohou se obtékat i <b>elementy s neurčenou šířkou</b>, je to ale takové nejisté, neb nevíme, kdy se ten či ten element roztáhne a sloupce tak skončí nechtěně pod sebou.</p>

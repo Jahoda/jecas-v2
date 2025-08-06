@@ -64,4 +64,4 @@ format: "html"
   </script>
 </div>
 
-<p><a href="http://kod.djpw.cz/yvab">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/yvab">Ukázka</a></p>

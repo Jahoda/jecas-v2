@@ -71,7 +71,7 @@ format: "html"
 }</code></pre>
 
 
-<p><a href="http://kod.djpw.cz/byfb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/byfb">Živá ukázka</a></p>
 
 
 
@@ -97,7 +97,7 @@ zvyraznovac.style.height = this.offsetHeight + "px";</code></pre>
 
 <p>Původní <code>transition</code> zajistí <b>plynulý přesun</b>.</p>
 
-<p><a href="http://kod.djpw.cz/cyfb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/cyfb">Živá ukázka</a></p>
 
 
-<p>Tento JS kód bude fungovat i pro <b>navigaci svislou</b> – <a href="http://kod.djpw.cz/dyfb">ukázka</a> či <b>víceřádkovou</b> – <a href="http://kod.djpw.cz/eyfb">ukázka</a>.</p>
+<p>Tento JS kód bude fungovat i pro <b>navigaci svislou</b> – <a href="https://kod.djpw.cz/dyfb">ukázka</a> či <b>víceřádkovou</b> – <a href="https://kod.djpw.cz/eyfb">ukázka</a>.</p>

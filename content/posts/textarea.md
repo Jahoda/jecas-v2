@@ -53,7 +53,7 @@ format: "html"
   <dd>Pole je úplně zablokované. Nejde na něm vyvolat <code>onclick</code> a neodešle se na server.</dd>  
   
   <dt id="autofocus"><code>autofocus</code></dt>
-  <dd>Po načtení stránky dá políčku rovnou <code>focus</code> (<a href="http://kod.djpw.cz/zbeb">ukázka</a>). Osobně takové chování nemám příliš rád, neboť <b>přesun kursoru</b> do pole typicky <b>zablokuje ovládání klávesami</b>.</dd>  
+  <dd>Po načtení stránky dá políčku rovnou <code>focus</code> (<a href="https://kod.djpw.cz/zbeb">ukázka</a>). Osobně takové chování nemám příliš rád, neboť <b>přesun kursoru</b> do pole typicky <b>zablokuje ovládání klávesami</b>.</dd>  
   
   <dt id="placeholder"><code>placeholder</code></dt>
   <dd>Předvyplní políčko hodnotou, která <b>po aktivování zmizí</b>. Zároveň se nebude odesílat na server. Detailní popis <a href="/placeholder">atributu <code>placehodler</code></a> je na samostatné stránce.</dd>  
@@ -83,7 +83,7 @@ alert(textarea.value);</code></pre>
 
 <p>V případě, že je v poli nějaký předvyplněný text, je možné ho získat i přes <a href="/innerhtml"><code>innerHTML</code></a>. Také jde obsah do <code>innerHTML</code> nastavit, ovšem po jakékoliv editaci už nebude vidět – <b>přebije</b> ho <code>value</code>, která se potom i odešle na server.</p>
 
-<p><a href="http://kod.djpw.cz/bceb">Ukázka rozdílů <code>innerHTML</code> a <code>value</code></a></p>
+<p><a href="https://kod.djpw.cz/bceb">Ukázka rozdílů <code>innerHTML</code> a <code>value</code></a></p>
 
 <p>Původní hodnota (<code>value</code>) v době načtení stránky je dostupná skrz JS vlastnost <code>defaultValue</code>.</p>
 
@@ -93,14 +93,14 @@ alert(textarea.value);</code></pre>
 
 <h2 id="formatovani">Formátování</h2>
 
-<p>Textarea jde docela dobře stylovat (<a href="http://kod.djpw.cz/fceb">ukázka</a>).</p>
+<p>Textarea jde docela dobře stylovat (<a href="https://kod.djpw.cz/fceb">ukázka</a>).</p>
 
 <p>Častým přáním je v ní odlišně zvýrazňovat jednotlivá slova. To běžně možné není. Je nutné použít <a href="/vlastni-wysiwyg">element s <code>contenteditable</code></a>.</p>
 
 
 <h2 id="vychozi-posuvnik">Výchozí posuvník v IE</h2>
 
-<p>V <b>Internet Exploreru</b> má <code>&lt;textarea></code> automaticky svislý posuvník. Zbavit se ho můžeme nastavení <code>overflow: auto</code>. <a href="http://kod.djpw.cz/cceb">Ukázka</a>.</p>
+<p>V <b>Internet Exploreru</b> má <code>&lt;textarea></code> automaticky svislý posuvník. Zbavit se ho můžeme nastavení <code>overflow: auto</code>. <a href="https://kod.djpw.cz/cceb">Ukázka</a>.</p>
 
 
 <h2 id="pocet-znaku">Počet znaků a slov</h2>
@@ -119,6 +119,6 @@ alert(textarea.value);</code></pre>
   </textarea>
 </div>
 
-<p>Jediný problém je další <code>&lt;textarea></code>, přesněji řečeno její koncová značka. <a href="http://kod.djpw.cz/dceb">Ukázka <code>&lt;textarea></code></a> / <a href="http://kod.djpw.cz/eceb">ukázka značky <code>&lt;xmp></code></a>.</p>
+<p>Jediný problém je další <code>&lt;textarea></code>, přesněji řečeno její koncová značka. <a href="https://kod.djpw.cz/dceb">Ukázka <code>&lt;textarea></code></a> / <a href="https://kod.djpw.cz/eceb">ukázka značky <code>&lt;xmp></code></a>.</p>
 
 <p>Někdy se <code>&lt;textarea></code> také používá pro <a href="/oznaceni-textu">pohodlné označování textu</a>.</p>

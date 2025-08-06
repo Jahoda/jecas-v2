@@ -66,7 +66,7 @@ var ctx = canvas.getContext("2d");</code></pre>
 
 <p>První řádek <a href="/getelement">vybere</a> značku <code>&lt;canvas></code>, druhý si vytáhne její 2D kontext (existuje ještě 3D kontext).</p>
 
-<p>Do <i>kontextu</i> je nyní možné psát a kreslit. <a href="http://kod.djpw.cz/oiqb">Ukázka</a>:</p>
+<p>Do <i>kontextu</i> je nyní možné psát a kreslit. <a href="https://kod.djpw.cz/oiqb">Ukázka</a>:</p>
 
 <div class="live">
   <canvas width="300" height="110" id="platno">

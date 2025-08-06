@@ -131,7 +131,7 @@ format: "html"
 
 <h3 id="zablokovani-odkazu">Zablokování odkazu</h3>
 <p>Není problém <i>vystornovat</i> přechod na adresu <code>href</code>u z odkazů.</p>
-<p>Hodnotu <code>false</code> může vracet i přímo <code>vlastniFunkce</code> (<a href="http://kod.djpw.cz/bav">ukázka</a>):</p>
+<p>Hodnotu <code>false</code> může vracet i přímo <code>vlastniFunkce</code> (<a href="https://kod.djpw.cz/bav">ukázka</a>):</p>
 
 <pre><code>function vlastniFunkce() {
   // nějaký kód
@@ -145,14 +145,14 @@ format: "html"
 
 <pre><code>&lt;span oncontextmenu="return false">Kliknout&lt;/span></code></pre>
 
-<p>Že bylo pravé tlačítko stisknuto následně <b>odchytne</b> <a href="#onmousedown">událost <code>onmousedown</code></a> (<a href="http://kod.djpw.cz/lav">ukázka</a>).</p>
+<p>Že bylo pravé tlačítko stisknuto následně <b>odchytne</b> <a href="#onmousedown">událost <code>onmousedown</code></a> (<a href="https://kod.djpw.cz/lav">ukázka</a>).</p>
 
 <h3 id="zablokovani-kolecka">Zablokování kolečka</h3>
 <p>Chceme-li <b>tlačítko kolečka</b> zapojit do ovládání aplikace, je potřeba stornovat jeho běžnou funkci — zobrazení <b>čtyřsměrné šipky</b> pro posouvání po stránce pohybem kursoru.</p>
 
 <p>Kolečko / prostřední tlačítko je trochu problematické, protože ne každý návštěvník dokáže <b>vyvolat jeho stisknutí</b>.</p>
 
-<p>Blokaci vytvoří <code>return false</code> v události <code>onmousedown</code> (<a href="http://kod.djpw.cz/mav">ukázka</a>). Nefunguje v <b>Opeře 12</b>.</p>
+<p>Blokaci vytvoří <code>return false</code> v události <code>onmousedown</code> (<a href="https://kod.djpw.cz/mav">ukázka</a>). Nefunguje v <b>Opeře 12</b>.</p>
 
 <h2 id="pohyb">Pohyb myši</h2>
 <p>Kromě mačkání tlačítek je možné reagovat i na <b>posouvání kursoru</b>.</p>
@@ -205,7 +205,7 @@ format: "html"
       <li>V <b>IE</b> se spustí v okamžiku, kdy se alespoň něco vybere.</li>
     </ul>
     
-    <p>V <b>IE</b> a <b>Chrome</b> tak lze pomocí <code>return false</code> <b>znemožnit výběr textu</b> (<a href="http://kod.djpw.cz/wav">ukázka</a>).</p>
+    <p>V <b>IE</b> a <b>Chrome</b> tak lze pomocí <code>return false</code> <b>znemožnit výběr textu</b> (<a href="https://kod.djpw.cz/wav">ukázka</a>).</p>
   </dd>
 </dl>
 
@@ -223,9 +223,9 @@ format: "html"
 </div>
 
 <h4 id="user-select">Zablokování v CSS</h4>
-<p>V CSS k blokování výběru slouží vlastnost <code>user-select</code>. Funguje od <b>IE 10</b>, nefunguje v <b>Opeře 12</b>. V ostatních prohlížečích funguje jen s <a href="/css-prefixy">CSS prefixy</a> (<a href="http://kod.djpw.cz/bbv">ukázka</a>).</p>
+<p>V CSS k blokování výběru slouží vlastnost <code>user-select</code>. Funguje od <b>IE 10</b>, nefunguje v <b>Opeře 12</b>. V ostatních prohlížečích funguje jen s <a href="/css-prefixy">CSS prefixy</a> (<a href="https://kod.djpw.cz/bbv">ukázka</a>).</p>
 
-<p>Kromě vlastnosti <code>user-select</code> by mohlo jít označování zakamuflovat pseudo-elementem <code>::selection</code> (<a href="http://kod.djpw.cz/wbv">ukázka</a>).</p>
+<p>Kromě vlastnosti <code>user-select</code> by mohlo jít označování zakamuflovat pseudo-elementem <code>::selection</code> (<a href="https://kod.djpw.cz/wbv">ukázka</a>).</p>
 
 <pre><code>elment::selection {background-color: transparent}</code></pre>
 
@@ -248,12 +248,12 @@ format: "html"
       <li><b>Firefox</b> nezná událost <code>onmousewheel</code>. Dá se v něm ale využít událost <code>DOMMouseScroll</code> nebo nová událost <a href="https://developer.mozilla.org/en-US/docs/Web/Reference/Events/wheel"><code>onweel</code></a>.</li>
       <li>Směr rolování se získává z <code>wheelDelta</code> (<b>Webkit</b> umí rozlišit směr rolování (vodorovně/svisle) na základě hodnot <code>wheelDelta<b>X</b></code> a <code>wheelDelta<b>Y</b></code>).</li>
       <li>Ve starších <b>IE</b> a ve <b>Firefoxu</b> při použití <code>DOMMouseScroll</code> je směr ve vlastnosti <code>detail</code>.</li>
-      <li><b>Firefox</b> a <b>Webkit</b> při použití <code>onweel</code> zná dokonce <code>deltaX</code>, <code>deltaY</code>, <code>deltaZ</code> (<a href="http://kod.djpw.cz/rbv">ukázka</a>).</li>
+      <li><b>Firefox</b> a <b>Webkit</b> při použití <code>onweel</code> zná dokonce <code>deltaX</code>, <code>deltaY</code>, <code>deltaZ</code> (<a href="https://kod.djpw.cz/rbv">ukázka</a>).</li>
     </ul>
   </dd>
 </dl>
 
-<p>Kód určující, <b>kterým směrem se roluje</b>, funkční ve všech prohlížečích, by mohl vypadat následovně — <a href="http://kod.djpw.cz/ubv">živá ukázka</a>.</p>
+<p>Kód určující, <b>kterým směrem se roluje</b>, funkční ve všech prohlížečích, by mohl vypadat následovně — <a href="https://kod.djpw.cz/ubv">živá ukázka</a>.</p>
 
 <h2 id="drag-drop">Drag and drop události</h2>
 <p>Další události, které je možné vyvolat myší, jsou ty pro přetahování elementů po stránce bez <b>většího množství JS kódu</b>.</p>
@@ -263,7 +263,7 @@ format: "html"
 <dl>
   <dt id="ondragstart"><code>ondragstart</code></dt>
   <dd>
-    <p>Vyvolá se při započatí tažení (<a href="http://kod.djpw.cz/xdv">ukázka</a>).</p>
+    <p>Vyvolá se při započatí tažení (<a href="https://kod.djpw.cz/xdv">ukázka</a>).</p>
     
     <pre><code>&lt;div
   <b>draggable</b>="true"
@@ -296,7 +296,7 @@ format: "html"
   <dt id="ondragleave"><code>ondragleave</code></dt>
   <dd>
     <p>Aktivuje se, když se při tažení opustí element s touto událostí. Může například zrušit signalisaci, kterou vyvolá <code>ondragstart</code>.</p>
-    <p><a href="http://kod.djpw.cz/fev">Ukázka</a> kombinace <code>ondragenter</code> a <code>ondragleave</code>.</p>
+    <p><a href="https://kod.djpw.cz/fev">Ukázka</a> kombinace <code>ondragenter</code> a <code>ondragleave</code>.</p>
   </dd>
   
   <dt id="ondrag"><code>ondrag</code></dt>
@@ -331,9 +331,9 @@ format: "html"
   <li>Přesouvat v <code>event.dataTransfer</code> jen identifikátor přetahovatelného elementu. A po skončení <code>drag</code>ování si ho najít nějakou <a href="/queryselector">metodou DOMu</a>.</li>
 </ul>
 
-<p>Samostatná <a href="http://kod.djpw.cz/qqv">ukázka</a>. Přesouvací <b>kursor</b> se zapíše přes <code>cursor: move</code>.</p>
+<p>Samostatná <a href="https://kod.djpw.cz/qqv">ukázka</a>. Přesouvací <b>kursor</b> se zapíše přes <code>cursor: move</code>.</p>
 
-<!-- http://kod.djpw.cz/qev, http://kod.djpw.cz/bfv -->
+<!-- https://kod.djpw.cz/qev, https://kod.djpw.cz/bfv -->
 <div class="live">
   <script>
     function stav(text) {

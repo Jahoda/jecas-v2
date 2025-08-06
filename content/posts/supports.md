@@ -23,7 +23,7 @@ format: "html"
 
 
 
-<p>Pokud prohlížeč podporuje <b>vlastnost</b> <code>color</code> a je možné jí dát <b>hodnotu</b> <code>#000</code> (a pokud podporuje <code>@supports</code>, pochopitelně), nastaví se barva odstavce na <font color=red>červenou</font>. <a href="http://kod.djpw.cz/vns">Ukázka</a>.</p>
+<p>Pokud prohlížeč podporuje <b>vlastnost</b> <code>color</code> a je možné jí dát <b>hodnotu</b> <code>#000</code> (a pokud podporuje <code>@supports</code>, pochopitelně), nastaví se barva odstavce na <font color=red>červenou</font>. <a href="https://kod.djpw.cz/vns">Ukázka</a>.</p>
 
 
 
@@ -78,7 +78,7 @@ format: "html"
 
 
 
-<p>Na následující <a href="http://kod.djpw.cz/aos">ukázce</a> bude mít odstavec v <b>IE</b>, <b>Opeře 12</b>, <b>Firefoxu 22+</b> a <b>Chromu 28+</b> různé barvy.</p>
+<p>Na následující <a href="https://kod.djpw.cz/aos">ukázce</a> bude mít odstavec v <b>IE</b>, <b>Opeře 12</b>, <b>Firefoxu 22+</b> a <b>Chromu 28+</b> různé barvy.</p>
 
 
 
@@ -91,6 +91,6 @@ format: "html"
 
 
 <h2 id="js">JavaScriptové testování podpory</h2>
-<p>V prohlížečích znalých <code>@suppport</code>u (kromě <b>Opery 12</b>) je možné používat i elegantní <b>testování CSS vlastností</b> v JS (<a href="http://kod.djpw.cz/eos">ukázka</a>):</p>
+<p>V prohlížečích znalých <code>@suppport</code>u (kromě <b>Opery 12</b>) je možné používat i elegantní <b>testování CSS vlastností</b> v JS (<a href="https://kod.djpw.cz/eos">ukázka</a>):</p>
 <pre><code>if (CSS.supports("vlastnost", "hodnota")) {
 }</code></pre>

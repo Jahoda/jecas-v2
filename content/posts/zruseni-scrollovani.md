@@ -71,4 +71,4 @@ function closeDialog(id) {
   <li><b>neřešit to</b> — při překrytí černým pozadím si toho člověk stejně nejspíš nevšimne.</li>
 </ol>
 
-<!-- http://kod.djpw.cz/knb -->
+<!-- https://kod.djpw.cz/knb -->

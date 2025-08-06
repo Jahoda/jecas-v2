@@ -80,8 +80,8 @@ format: "html"
 <p>Masku lze vytvořit více způsoby (ukázky fungují pouze v <b>Chrome</b> a <b>Opeře</b>):</p>
 
 <ul>
-  <li><a href="/gradient">CSS gradientem</a> – klíčové slovo pro průhlednou barvu je <code>transparent</code> (<a href="http://kod.djpw.cz/wikb">živá ukázka</a>),</li>
-  <li>průhledným obrázkem (<a href="http://kod.djpw.cz/xikb">živá ukázka</a>)</li>
+  <li><a href="/gradient">CSS gradientem</a> – klíčové slovo pro průhlednou barvu je <code>transparent</code> (<a href="https://kod.djpw.cz/wikb">živá ukázka</a>),</li>
+  <li>průhledným obrázkem (<a href="https://kod.djpw.cz/xikb">živá ukázka</a>)</li>
 </ul>
 
 
@@ -175,7 +175,7 @@ format: "html"
   background: -moz-element(#zdroj);
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/yikb">Živá ukázka</a> (pouze pro Firefox)</p>
+<p><a href="https://kod.djpw.cz/yikb">Živá ukázka</a> (pouze pro Firefox)</p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>

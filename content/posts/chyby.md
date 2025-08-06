@@ -137,7 +137,7 @@ format: "html"
   
   <p>A protože „<code>red background: yellow</code>“ není vyhovující barva, zbude jediná platná deklarace <code>font-weight: bold</code>.</p>
   
-  <p><a href="http://kod.djpw.cz/qxjb">Živá ukázka</a></p>
+  <p><a href="https://kod.djpw.cz/qxjb">Živá ukázka</a></p>
   
   
   <p>Taková chyba se objeví u stylů při prozkoumávání elementů:</p>

@@ -127,7 +127,7 @@ format: "html"
 <p>Možný problém tohoto řešení nastane v případě, že má <code>position: relative</code> i něco mezi odkazem a společným obalem, potom nepůjde <code>:before</code> umístit potřebným způsobem.</p>
 
 
-<p><a href="http://kod.djpw.cz/zfrb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/zfrb">Živá ukázka</a></p>
 
 
 

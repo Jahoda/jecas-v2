@@ -152,7 +152,7 @@ format: "html"
 <p>Změnit maximální šířku: <span class="live"><input onchange="zmenit(this.value)" oninput="zmenit(this.value)" type="range" max="100" min="20" value="80"></span></p>
 
 
-<p><a href="http://kod.djpw.cz/baob">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/baob">Samostatná živá ukázka</a></p>
 
 <h2 id="rozbaleni">Rozbalení vyhledávání</h2>
 
@@ -175,7 +175,7 @@ format: "html"
 
 <p><img src="/files/responsivni-hledani/prekryti.gif" alt="Změna velikosti hledání podle dostupné šířky" class="border"></p>
 
-<p><a href="http://kod.djpw.cz/jzob">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jzob">Živá ukázka</a></p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>
@@ -206,5 +206,5 @@ format: "html"
 
 
 <!-- 
-Původní se styly: http://kod.djpw.cz/fzob 
-Pokus: http://kod.djpw.cz/ezob -->
+Původní se styly: https://kod.djpw.cz/fzob 
+Pokus: https://kod.djpw.cz/ezob -->

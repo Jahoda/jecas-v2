@@ -19,7 +19,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/uvqb">Živá ukázka</a> – nastavení výšky políčka a tlačítka pomocí <code>height</code> a <code>line-height</code></li>
+    <li><a href="https://kod.djpw.cz/uvqb">Živá ukázka</a> – nastavení výšky políčka a tlačítka pomocí <code>height</code> a <code>line-height</code></li>
   </ul>
 </div>
 
@@ -52,9 +52,9 @@ format: "html"
   </dd>
 </dl>
 
-<p><a href="http://kod.djpw.cz/jxw">Živá ukázka</a> funkční od <b>IE 8</b>.</p>
+<p><a href="https://kod.djpw.cz/jxw">Živá ukázka</a> funkční od <b>IE 8</b>.</p>
 <p>Pro znázornění <code>:focus</code>u je možné použít třeba <code>box-shadow</code> a resetovat <code>outline</code>, který je v některých prohlížečích výchozí (<b>Chrome</b>).</p>
-<!-- Starší http://kod.djpw.cz/tkw -->
+<!-- Starší https://kod.djpw.cz/tkw -->
 
 <div class="live">
   <style>
@@ -89,8 +89,8 @@ format: "html"
   </div>
 </div>
 
-<p>I v <b>IE 7</b> by požadovaného vzhledu šlo docílit <a href="/float">obtékáním</a> (vlastností <code>float</code>). <a href="http://kod.djpw.cz/ixw">Ukázka</a>.</p>
-<!-- Starší http://kod.djpw.cz/zkw -->
+<p>I v <b>IE 7</b> by požadovaného vzhledu šlo docílit <a href="/float">obtékáním</a> (vlastností <code>float</code>). <a href="https://kod.djpw.cz/ixw">Ukázka</a>.</p>
+<!-- Starší https://kod.djpw.cz/zkw -->
 
 <div class="live">
   <style>

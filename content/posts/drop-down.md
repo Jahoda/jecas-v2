@@ -9,4 +9,4 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/ftdb
+https://kod.djpw.cz/ftdb

@@ -101,6 +101,6 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/jznb">Živá ukázka</a></li>
+    <li><a href="https://kod.djpw.cz/jznb">Živá ukázka</a></li>
   </ul>
 </div>

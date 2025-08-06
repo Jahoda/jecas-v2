@@ -47,7 +47,7 @@ format: "html"
 
 <p>Kromě toho existují ještě značky <code>&lt;menu></code> a <code>&lt;dir></code>. Obě se v prohlížečích chovají přibližně stejně jako <code>&lt;ul></code>. Element <code>&lt;dir></code> je „<i>obsolete</i>“ – zastaralý, překonaný. Značku <code>&lt;menu></code> původně čekal stejný osud, ale nakonec byla znovuzrozena pro <a href="/menuitem">kontextovou nabídku</a> s využitím značky <code>&lt;menuitem></code>.</p>
 
-<p><a href="http://kod.djpw.cz/dwkb">Srovnání</a> seznamů <code>&lt;ul></code>, <code>&lt;menu></code> a <code>&lt;dir></code>.</p>
+<p><a href="https://kod.djpw.cz/dwkb">Srovnání</a> seznamů <code>&lt;ul></code>, <code>&lt;menu></code> a <code>&lt;dir></code>.</p>
 
 <p>Nakonec existujte ještě seznam definiční – <code>&lt;dl></code>, ten ale ve výchozím stylu žádné odrážky nemá.</p>
 
@@ -55,7 +55,7 @@ format: "html"
 
 <h2 id="stylovani">Stylování</h2>
 
-<p>Pro jiný než výchozí styl seznamů existuje vlastnost <code>list-style</code>. Pomocí <code>list-style</code> v kombinaci s <code>display: list-item</code> jde také vytvořit odrážky z jiných elementů než <code>&lt;li></code> (<a href="http://kod.djpw.cz/bvkb">ukázka</a>).</p>
+<p>Pro jiný než výchozí styl seznamů existuje vlastnost <code>list-style</code>. Pomocí <code>list-style</code> v kombinaci s <code>display: list-item</code> jde také vytvořit odrážky z jiných elementů než <code>&lt;li></code> (<a href="https://kod.djpw.cz/bvkb">ukázka</a>).</p>
 
 <h3 id="zapis">Zápis</h3>
 
@@ -155,7 +155,7 @@ ul ul ul {
 <p>U <b>číslovaných seznamů</b> se podobná změna stylu na základě úrovně ve všech rozšířenějších prohlížečích nekoná.</p>
 
 <div class="external-content">
-  <p><a href="http://kod.djpw.cz/zukb">Ukázka</a> – testovací stránka zanořených seznamů</p>
+  <p><a href="https://kod.djpw.cz/zukb">Ukázka</a> – testovací stránka zanořených seznamů</p>
 </div>
 
 
@@ -267,7 +267,7 @@ ul ul ul {
 
 
 
-<p><a href="http://kod.djpw.cz/vukb">Živá ukázka</a> – <b>Firefox 33</b>+</p>
+<p><a href="https://kod.djpw.cz/vukb">Živá ukázka</a> – <b>Firefox 33</b>+</p>
 
 
 
@@ -288,9 +288,9 @@ ul ul ul {
 
 
 
-<p><a href="http://kod.djpw.cz/wukb">Živá ukázka</a> – použití <code>symbols</code></p>
+<p><a href="https://kod.djpw.cz/wukb">Živá ukázka</a> – použití <code>symbols</code></p>
 
-<p><a href="http://kod.djpw.cz/tukb">Živá ukázka</a> – totéž s <code>@counter-style</code></p>
+<p><a href="https://kod.djpw.cz/tukb">Živá ukázka</a> – totéž s <code>@counter-style</code></p>
 
 <div class="external-content">
 <ul>
@@ -327,7 +327,7 @@ ul.fajfka {
   </ul>
 </div>
 
-<p><a href="http://kod.djpw.cz/xukb">Samostatná živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/xukb">Samostatná živá ukázka</a></p>
 
 
 <h3 id="odlisna-barva">Odlišná barva odrážky</h3>
@@ -404,7 +404,7 @@ ol.ruzna-barva-cislo {
 </div>
 
 
-<p><a href="http://kod.djpw.cz/yukb">Samostatná živá ukázka</a> – zajímavější styl číslování</p>
+<p><a href="https://kod.djpw.cz/yukb">Samostatná živá ukázka</a> – zajímavější styl číslování</p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>

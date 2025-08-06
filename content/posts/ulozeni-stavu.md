@@ -167,7 +167,7 @@ function spustitUlozeni() {
   &lt;/script>
 &lt;/form></code></pre>
 
-<!-- Test: http://kod.djpw.cz/ytsb- -->
+<!-- Test: https://kod.djpw.cz/ytsb- -->
 
 
 

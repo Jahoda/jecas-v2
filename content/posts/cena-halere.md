@@ -9,7 +9,7 @@ tags: []
 format: "html"
 ---
 
-http://kod.djpw.cz/hggc
+https://kod.djpw.cz/hggc
 
 https://css-tricks.com/forums/topic/solved-a-more-interesting-price-display-using-css/
 

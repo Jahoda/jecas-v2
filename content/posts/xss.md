@@ -83,7 +83,7 @@ onmousemove="alert('XSS'); this.parentNode.removeChild(this)"
 style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: transparent">
 &lt;/span></code></pre>
 
-<p><a href="http://kod.djpw.cz/gxdb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/gxdb">Živá ukázka</a></p>
 
 <p>Při vypisování obsahu <b>uvnitř HTML atributů</b> je tedy nutné myslet na to, že když v kódu:</p>
 

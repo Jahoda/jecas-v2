@@ -31,7 +31,7 @@ format: "html"
 })();</code></pre>
 
 
-<p><a href="http://kod.djpw.cz/cwoc">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/cwoc">Živá ukázka</a></p>
 
 
-<p><a href="http://kod.djpw.cz/dwoc">Živá ukázka</a> – zobrazení názvu souboru bez JS (pouze <b>Chrome</b>)</p>
+<p><a href="https://kod.djpw.cz/dwoc">Živá ukázka</a> – zobrazení názvu souboru bez JS (pouze <b>Chrome</b>)</p>

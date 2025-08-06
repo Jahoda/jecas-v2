@@ -129,7 +129,7 @@ přes více řádků<b>&lt;/code>&lt;/pre></b></code></pre>
   &lt;p>Zde může být HTML, které &lt;b>nebude&lt;/b> interpretováno.&lt;/p>
 &lt;xmp></code></pre>
 
-<p><a href="http://kod.djpw.cz/kqib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/kqib">Živá ukázka</a></p>
 
 
 
@@ -139,7 +139,7 @@ přes více řádků<b>&lt;/code>&lt;/pre></b></code></pre>
 
 <p>Značka <code>&lt;plaintext></code> potom funguje jako <code>&lt;xmp></code> jen ji není možné uzavřít. Veškerý obsah za ní až do konce dokumentu se <b>nebude interpretovat jako HTML</b>.</p>
 
-<p><a href="http://kod.djpw.cz/jqib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/jqib">Živá ukázka</a></p>
 
 
 
@@ -152,7 +152,7 @@ přes více řádků<b>&lt;/code>&lt;/pre></b></code></pre>
   <p>Používá ji <b>Chamurappi</b> na <a href="http://webylon.info/">Webylonu</a>.</p>
 </div>
 
-<p><a href="http://kod.djpw.cz/lqib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/lqib">Živá ukázka</a></p>
 
 
 

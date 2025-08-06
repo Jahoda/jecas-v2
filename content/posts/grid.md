@@ -11,7 +11,7 @@ format: "html"
 
 http://www.adamkaplan.me/grid/
 
-http://kod.djpw.cz/ulgb
+https://kod.djpw.cz/ulgb
 
 http://www.sitepoint.com/understanding-css-grid-systems/
 

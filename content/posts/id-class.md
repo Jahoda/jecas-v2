@@ -17,7 +17,7 @@ format: "html"
     <pre><code>var element = document.getElementById("id-elementu");</code></pre>
     <p>Hledání podle třídy (<code>getElement<b>s</b>By<b>ClassName</b></code>) funguje přímo až od <b>Exploreru 9</b>.</p>
     </li>
-  <li><p>Identifikátor má <b>v CSS vyšší prioritu</b>. Následující kód proto zbarví odstavec na červenou, nikoliv na modrou (<a href="http://kod.djpw.cz/mzb">ukázka</a>).</p>
+  <li><p>Identifikátor má <b>v CSS vyšší prioritu</b>. Následující kód proto zbarví odstavec na červenou, nikoliv na modrou (<a href="https://kod.djpw.cz/mzb">ukázka</a>).</p>
     <pre><code>p#cerveny {color: red}
 p.modry {color: blue}</code></pre>
   </li>
@@ -29,7 +29,7 @@ p.modry {color: blue}</code></pre>
 <p>Tak nějak praví specifikace.</p>
 <p>V praktickém používání na tom moc nezáleží:</p>
 <ol><li><p>V samotném CSS je to <b>úplně jedno</b>, přiřazení stejných ID k více elementům <b>všude funguje</b>.</p></li>
-<li>U kotev a hledání elementu dle ID v JavaScriptu zase <b>první vyhrává</b>, tj. prohlížeč odroluje na první #kotvu a JS vrátí první element s daným #identifikátorem (<a href="http://kod.djpw.cz/pzb">ukázka</a>).</li>
+<li>U kotev a hledání elementu dle ID v JavaScriptu zase <b>první vyhrává</b>, tj. prohlížeč odroluje na první #kotvu a JS vrátí první element s daným #identifikátorem (<a href="https://kod.djpw.cz/pzb">ukázka</a>).</li>
 </ol>
 <p>Mohlo by se zdát, že radím používat opakované používání stejných ID. <b>Není tomu tak.</b> Užitím jednoho identifikátoru vícekrát riskujeme obtížně odhalitelnou chybu.</p>
 

@@ -12,7 +12,7 @@ format: "html"
 <p>Jeden z celkem populárních efektů je <b>rozdělit</b> stránku na jednotlivé <i>obrazovky</i> – obsah takové stránky je typicky rozdělen do několika <code>&lt;div></code>ů, kde každý zabírá 100 % výšky. To jde od <b>Internet Exploreru 9</b> snadno zajistit jednotkou „výška viewportu“ – <code>vh</code> (<i>viewport height</i>).</p>
 
 
-<p><a href="http://kod.djpw.cz/dpob">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/dpob">Živá ukázka</a></p>
 
 <p>Efekt <code>scroll-snap</code> potom spočívá v <b>převzetí kontroly rolování</b>, kdy se při odrolování dolů rovnou přeskočí celá stránka.</p>
 
@@ -65,7 +65,7 @@ format: "html"
 
 <h2 id="scroll-snap">Vlastnosti <code>scroll-snap-*</code></h2>
 
-<p><a href="http://kod.djpw.cz/wqub">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/wqub">Živá ukázka</a></p>
 
 
 <h3 id="scroll-snap-type"><code>scroll-snap-type</code></h3>
@@ -82,7 +82,7 @@ format: "html"
   <dd>
     <p>Hodí se pro případy, kdy má každé rolování vyvolat <i>snap</i> (přichycení) na další místo.</p>
     
-    <p><a href="http://kod.djpw.cz/yqub">Živá ukázka <code>mandatory</code></a></p>
+    <p><a href="https://kod.djpw.cz/yqub">Živá ukázka <code>mandatory</code></a></p>
   </dd>
   
   <dt id="proximity"><code>proximity</code></dt>
@@ -91,7 +91,7 @@ format: "html"
     
     <p>Je možné rolovat i mezi jednotlivými <i>snap pointy</i>. Při přiblížení se k nim rolování přichytne.</p>
     
-    <p><a href="http://kod.djpw.cz/zqub">Živá ukázka <code>proximity</code></a></p>
+    <p><a href="https://kod.djpw.cz/zqub">Živá ukázka <code>proximity</code></a></p>
   </dd>
 </dl>
 

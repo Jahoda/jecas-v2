@@ -17,7 +17,7 @@ format: "html"
 <h3>Co hotové řešení dělá?</h3>
 <p>Projde na stránce všechny odkazy na YouTube videa s třídou <code>yt</code> a nahradí je atrapou, která při najetí myší donačte originál.</p>
 <pre><code>&lt;a class="<b>yt</b>" href="http://www.youtube.com/watch?v=m_t4_6eHFdk"&gt;Název videa&lt;/a&gt;</code></pre>
-<p><a href="http://saintsrow.cz/videa" class="button">Ukázka na webu o hře Saints Row</a> <a href="http://kod.djpw.cz/smb" class="button">Živá ukázka</a></p>
+<p><a href="http://saintsrow.cz/videa" class="button">Ukázka na webu o hře Saints Row</a> <a href="https://kod.djpw.cz/smb" class="button">Živá ukázka</a></p>
 
 <h3>CSS</h3>
 <pre><code>.yt {background: #000 center 65%}

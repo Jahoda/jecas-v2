@@ -52,7 +52,7 @@ $("#psc").mask("999 99", {placeholder: " "});
 </script>
 </div>
 
-<p><a href="http://kod.djpw.cz/aobb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/aobb">Samostatná ukázka</a></p>
 
 <p>Je dobré si <b>určit přínos</b>, který automatické vložení mezery přináší. Asi by to mělo být <b>minimalisování chyb při zadávání</b>, kdy vložení mezery celé <i>PSČ</i> zpřehlední.</p>
 

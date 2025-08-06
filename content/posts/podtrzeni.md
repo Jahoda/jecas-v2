@@ -31,10 +31,10 @@ format: "html"
   border-bottom: 1px solid;
 }</code></pre>
     
-    <p>Bez uvedení barvy se použije <a href="/currentcolor">aktuální barva</a>. <a href="http://kod.djpw.cz/niib">Ukázka</a>.</p>
+    <p>Bez uvedení barvy se použije <a href="/currentcolor">aktuální barva</a>. <a href="https://kod.djpw.cz/niib">Ukázka</a>.</p>
   </li>
   
-  <li>Stínem <a href="/box-shadow"><code>box-shadow</code></a> (<b>IE 9+</b>). <a href="http://kod.djpw.cz/llib">Ukázka</a>.</li>
+  <li>Stínem <a href="/box-shadow"><code>box-shadow</code></a> (<b>IE 9+</b>). <a href="https://kod.djpw.cz/llib">Ukázka</a>.</li>
   
   <li>
     <p>Podtržení vytvořit <b>obrázkem na pozadí</b>. Nemusí se jednat o skutečný obrázek – jde použít i <a href="/gradient">gradient</a>.</p>
@@ -59,10 +59,10 @@ format: "html"
 
 <p>Toto řešení půjde použít pouze v případě, že je <b>pozadí jednolité</b>.</p>
 
-<p><a href="http://kod.djpw.cz/siib">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/siib">Živá ukázka</a></p>
 
 <!--
-<p><a href="http://kod.djpw.cz/kmhb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/kmhb">Živá ukázka</a></p>
 
 
 <h2 id="starsi-prohlizece">Starší prohlížeče</h2>
@@ -114,7 +114,7 @@ format: "html"
 
 
 
-<p>Není tak potřeba používat různé hacky, pro zamaskování podtržení okolo písmen. <a href="http://kod.djpw.cz/ixlc">Ukázka</a>.</p>
+<p>Není tak potřeba používat různé hacky, pro zamaskování podtržení okolo písmen. <a href="https://kod.djpw.cz/ixlc">Ukázka</a>.</p>
 
 
 

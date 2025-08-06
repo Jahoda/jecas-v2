@@ -132,7 +132,7 @@ format: "html"
 <pre><code>.obal-menu {word-spacing: 1em}
 .obal-menu a {word-spacing: 0}</code></pre>
 
-<p><a href="http://kod.djpw.cz/nnqb">Samostatná ukázka</a></p>
+<p><a href="https://kod.djpw.cz/nnqb">Samostatná ukázka</a></p>
 
 
 <h3 id="blok">Zarovnání do bloku</h3>
@@ -156,7 +156,7 @@ format: "html"
 
 <p><img src="/files/word-spacing/opera-12.png" alt="Špatné zobrazení ve staré Opeře 12" class="border"></p>
 
-<!-- ukázka: http://kod.djpw.cz/tnqb -->
+<!-- ukázka: https://kod.djpw.cz/tnqb -->
 
 
 

@@ -327,7 +327,7 @@ body {
   <li>
     <p>Nejprve se nadeklarují výchozí proměnné světlého režimu pro selektor <code>:root</code>.</p>
 
-    <p>Bývá zvykem pro CSS proměnné používat <a href="/css-selektory#korenovy">kořenový selektor <code>:root</code></a>, ten u HTML stránky odpovídá selektoru <code>html</code>, jen je silnější (<a href="http://kod.djpw.cz/wowc">ukázka</a>).</p>
+    <p>Bývá zvykem pro CSS proměnné používat <a href="/css-selektory#korenovy">kořenový selektor <code>:root</code></a>, ten u HTML stránky odpovídá selektoru <code>html</code>, jen je silnější (<a href="https://kod.djpw.cz/wowc">ukázka</a>).</p>
 
     <p>Teoreticky je universálnější – třeba kdyby se styly potom připojily do <a href="/svg"><code>&lt;svg></code></a>, kde žádný <code>&lt;html></code> element není. V praxi se tedy může použít klidně i <code>html</code>.</p>    
   </li>
@@ -644,7 +644,7 @@ div {
 
 <p>Není problém barvu přepínat JavaScriptem, takže může reagovat i na přepínání a detekci režimu.</p>
 
-<p>Akorát to nejde jen v CSS, ale musí se skriptem měnit atribut <code>content</code> – <a href="http://kod.djpw.cz/ksed">živá ukázka</a>.</p>
+<p>Akorát to nejde jen v CSS, ale musí se skriptem měnit atribut <code>content</code> – <a href="https://kod.djpw.cz/ksed">živá ukázka</a>.</p>
 
 
 <h2 id="narocnost">Jak je přechod náročný?</h2>

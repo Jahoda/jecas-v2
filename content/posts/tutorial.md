@@ -27,7 +27,7 @@ format: "html"
 
 <p>Jako řešení se nabízí (kromě vytváření dvou versí) jakýsi <b>tutoriál</b>, který projde v několika krocích jednotlivé části aplikace a podrobněji je vysvětlí.</p>
 
-<p><button onclick="tutorial()" data-tutorial-step="5" data-tutorial="Tímto tlačítkem se spouští tutorial.">Spustit ukázku tutoriálu</button> nebo <a href="https://github.com/Jahoda/tutorial" class="">zobrazit na GitHubu</a> (<a href="http://kod.djpw.cz/pmbb">samostatná živá ukázka</a>)</p>
+<p><button onclick="tutorial()" data-tutorial-step="5" data-tutorial="Tímto tlačítkem se spouští tutorial.">Spustit ukázku tutoriálu</button> nebo <a href="https://github.com/Jahoda/tutorial" class="">zobrazit na GitHubu</a> (<a href="https://kod.djpw.cz/pmbb">samostatná živá ukázka</a>)</p>
 
 <h2 id="pouziti">Použití</h2>
 <p>Po připojení potřebného JS a CSS, se vybrané elementy „k vysvětlení“ přidají do tutoriálu pomocí <a href="/vlastni-html-znacky">vlastního atributu</a> <code>data-tutorial</code>.</p>
@@ -54,7 +54,7 @@ format: "html"
 
 <p>Zavoláním tohoto kódu před <code>tutorial()</code> první a druhý <code>&lt;div></code> na stránce utvoří jednotlivé kroky celého tutoriálu. Oba postupy není momentálně možné kombinovat.</p>
 
-<p><a href="http://kod.djpw.cz/qmbb">Ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/qmbb">Ukázka</a>.</p>
 
 <h2 id="reseni">Jak to funguje?</h2>
 
@@ -64,11 +64,11 @@ format: "html"
 
 <ol>
   <li>
-    <p><a href="/position#absolute">Absolutní posice</a>, 100% výška a šířka a relativní posice pro <code>&lt;body></code>. <a href="http://kod.djpw.cz/xhbb">Ukázka</a>.
+    <p><a href="/position#absolute">Absolutní posice</a>, 100% výška a šířka a relativní posice pro <code>&lt;body></code>. <a href="https://kod.djpw.cz/xhbb">Ukázka</a>.
     </p>
   </li>
   <li>
-    <p>V případě, že se jako <a href="/stylovani-body">obal stránky</a> používá přímo <code>&lt;body></code>, je problém se absolutním posicováním dostat <i>mimo</i>. Může pomoci <a href="/position#fixed">fixní posice</a>. <a href="http://kod.djpw.cz/yhbb">Ukázka</a>.
+    <p>V případě, že se jako <a href="/stylovani-body">obal stránky</a> používá přímo <code>&lt;body></code>, je problém se absolutním posicováním dostat <i>mimo</i>. Může pomoci <a href="/position#fixed">fixní posice</a>. <a href="https://kod.djpw.cz/yhbb">Ukázka</a>.
     </p>
   </li>
   <li>
@@ -117,9 +117,9 @@ tutorial();</code></pre>
 <p>Skript při <code>window.resize</code> přepočítává umístění popisku a zda je ve viewportu.</p>
 
 <!--
-http://kod.djpw.cz/lfbb
-http://kod.djpw.cz/mfbb
-http://kod.djpw.cz/nfbb
+https://kod.djpw.cz/lfbb
+https://kod.djpw.cz/mfbb
+https://kod.djpw.cz/nfbb
 
     // No background
     if (getStyle(el, "background-image") == "none" && getStyle(el, "background-color") == "transparent") {

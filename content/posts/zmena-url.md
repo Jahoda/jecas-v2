@@ -35,7 +35,7 @@ format: "html"
   "url-stranky"
 );</code></pre>
 
-<p>Ideální proto je do něj <b>uložit obsah stránky</b>, který se mění (nadpis, obsah, …). K uloženým hodnotám objektu se dá dostat z <code>history.state</code>. Zjistit, že se má načíst obsah z <code>history.state</code>, je možné z události <code>window.onpopstate</code>. Testovací <a href="http://kod.djpw.cz/apq-">ukázka</a>.</p>
+<p>Ideální proto je do něj <b>uložit obsah stránky</b>, který se mění (nadpis, obsah, …). K uloženým hodnotám objektu se dá dostat z <code>history.state</code>. Zjistit, že se má načíst obsah z <code>history.state</code>, je možné z události <code>window.onpopstate</code>. Testovací <a href="https://kod.djpw.cz/apq-">ukázka</a>.</p>
 
 <pre><code>window.onpopstate = function(<i>event</i>) {
   alert(<i>event</i>.state.<b>nadpis</b>);

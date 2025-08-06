@@ -53,7 +53,7 @@ readfile($soubor);</code></pre>
   </li>
   
   <li>
-    <p>Stahování lze vyvolat <b>na straně klienta</b>. Stačí obsah uložit do odkazu přes <a href="/data-uri">data URL</a> a přidat <code>download</code>. Po kliknutí prohlížeč nabídne stahování. <a href="http://kod.djpw.cz/ducb-">Ukázka</a> stažení obrázku nakresleného do <a href="/canvas"><code>&lt;canvas></code>u</a>.
+    <p>Stahování lze vyvolat <b>na straně klienta</b>. Stačí obsah uložit do odkazu přes <a href="/data-uri">data URL</a> a přidat <code>download</code>. Po kliknutí prohlížeč nabídne stahování. <a href="https://kod.djpw.cz/ducb-">Ukázka</a> stažení obrázku nakresleného do <a href="/canvas"><code>&lt;canvas></code>u</a>.
     </p>
   </li>
 </ol>
@@ -87,7 +87,7 @@ readfile($soubor);</code></pre>
 
 <h2 id="js">Stažení souboru v JavaScriptu</h2>
 
-<p>Využít <code>download</code> atributu jde i v JS. Je tak možné uživateli umožnit cokoliv stáhnout po kliknutí jako soubor. <a href="http://kod.djpw.cz/kngd">Ukázka</a></p>
+<p>Využít <code>download</code> atributu jde i v JS. Je tak možné uživateli umožnit cokoliv stáhnout po kliknutí jako soubor. <a href="https://kod.djpw.cz/kngd">Ukázka</a></p>
 
 <pre><code>function download(text, filename) {
     const anchor = document.createElement('a');

@@ -22,7 +22,7 @@ format: "html"
 
 <p>Tato značka zajistí, že prohlížeč zobrazí stránku v měřítku 1:1. Mobilní prohlížeče obvykle stránku bez tohoto <code>&lt;meta></code> tagu zobrazí v jiném měřítku a přidají <b>posuvník</b>.</p>
 
-<p>Zobrazení prostého HTML na mobilním zařízení s vhodnou podobou <code>&lt;meta name="viewport"></code> (<a href="http://kod.djpw.cz/olgb-">ukázka</a>):</p>
+<p>Zobrazení prostého HTML na mobilním zařízení s vhodnou podobou <code>&lt;meta name="viewport"></code> (<a href="https://kod.djpw.cz/olgb-">ukázka</a>):</p>
 
 <p><img src="/files/responsivni-web/s-meta.png" alt="Zobrazení s meta značkou viewport" class="border"></p>
 
@@ -65,7 +65,7 @@ format: "html"
 <p>Prostý text formátovaný základními HTML značkami, jako jsou <b>nadpisy</b>, <b>odstavce</b> nebo <b>seznamy</b>, se bude krásně přizpůsobovat prostoru viewportu.</p>
 
 
-<p>A téže stránka bez této <code>&lt;meta></code> značky (<a href="http://kod.djpw.cz/nlgb-">ukázka</a>).</p>
+<p>A téže stránka bez této <code>&lt;meta></code> značky (<a href="https://kod.djpw.cz/nlgb-">ukázka</a>).</p>
 
 <p><img src="/files/responsivni-web/bez-meta.png" alt="Zobrazení bez meta značkou viewport" class="border"></p>
 
@@ -117,7 +117,7 @@ format: "html"
 
 <h3 id="obrazky">Obrázky</h3>
 
-<p>Nejjednodušší způsob, jak omezit rozměry obrázku, je pomocí <code>max-width: 100%</code>. Automatická <b>výška</b> (<code>height: auto</code>) potom zajistí, že se výška dopočítá na základě šířky, takže nedojde ke změně poměru výšky a šířky, což by vedlo k <b>deformaci</b> (<a href="http://kod.djpw.cz/rlgb">ukázka</a>).</p>
+<p>Nejjednodušší způsob, jak omezit rozměry obrázku, je pomocí <code>max-width: 100%</code>. Automatická <b>výška</b> (<code>height: auto</code>) potom zajistí, že se výška dopočítá na základě šířky, takže nedojde ke změně poměru výšky a šířky, což by vedlo k <b>deformaci</b> (<a href="https://kod.djpw.cz/rlgb">ukázka</a>).</p>
 
 <pre><code>img {
   max-width: 100%;
@@ -169,7 +169,7 @@ format: "html"
   &lt;/div>
 &lt;/div></code></pre>
 
-<p><a href="http://kod.djpw.cz/wrgb">Ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/wrgb">Ukázka</a>.</p>
 
 
 
@@ -211,7 +211,7 @@ format: "html"
   overflow-y: auto;
 }</code></pre>
 
-<p>Široká tabulka potom bude mít <b>vodorovný posuvník</b>, takže nerozhodí šířku celé stránky. <a href="http://kod.djpw.cz/orgb">Ukázka</a>.</p>
+<p>Široká tabulka potom bude mít <b>vodorovný posuvník</b>, takže nerozhodí šířku celé stránky. <a href="https://kod.djpw.cz/orgb">Ukázka</a>.</p>
 
 <p>Pokročilejší postup je potom <a href="/responsivni-tabulky#rozlamani">tabulku <i>rozlámat</i></a>.</p>
 
@@ -245,7 +245,7 @@ format: "html"
   </li>
 </ul>
 
-<p><a href="http://kod.djpw.cz/vrgb">Ukázka obou postupů</a> (funkční od <b>IE 8</b>)</p>
+<p><a href="https://kod.djpw.cz/vrgb">Ukázka obou postupů</a> (funkční od <b>IE 8</b>)</p>
 
 <p><a href="https://github.com/Jahoda/responsivni-web">Celý příklad responsivního webu na GitHubu</a></p>
 
@@ -296,7 +296,7 @@ format: "html"
   font-size: 300%;
 }</code></pre>
 
-<p>Nadpis <code>&lt;h1></code> bude mít trojnásobek (300 %) základní velikosti, tedy <i>nejspíš</i> 3 × 16 pixelů = 48 px. <a href="http://kod.djpw.cz/qrgb">Ukázka</a>.</p>
+<p>Nadpis <code>&lt;h1></code> bude mít trojnásobek (300 %) základní velikosti, tedy <i>nejspíš</i> 3 × 16 pixelů = 48 px. <a href="https://kod.djpw.cz/qrgb">Ukázka</a>.</p>
 
 <p>Určovat velikost je dobré primárně pro <b>hlavní obsah stránky</b> a začít při nastavování písma právě tím. V případě, že je výchozí velikost pro použitý font příliš <b>velká nebo malá</b>, lehce ji upravíme pro <code>&lt;html></code> nebo <code>&lt;body></code>.</p>
 
@@ -304,7 +304,7 @@ format: "html"
   font-size: 90%;
 }</code></pre>
 
-<p>Potom přejdeme k nastavování dalších částí obsahu (nadpisy a podobně). Velikost písma se <b>dědí</b>, takže předchozí <b>nadpis s 300% velikostí</b> bude mít při globálním zmenšení písma pro <code>&lt;html></code> ve finále velikost jen 90 % z té předchozí (48 pixelů), tedy přibližně 43 px (48 * 0.9). <a href="http://kod.djpw.cz/srgb">Ukázka</a>.</p>
+<p>Potom přejdeme k nastavování dalších částí obsahu (nadpisy a podobně). Velikost písma se <b>dědí</b>, takže předchozí <b>nadpis s 300% velikostí</b> bude mít při globálním zmenšení písma pro <code>&lt;html></code> ve finále velikost jen 90 % z té předchozí (48 pixelů), tedy přibližně 43 px (48 * 0.9). <a href="https://kod.djpw.cz/srgb">Ukázka</a>.</p>
 
 
 
@@ -353,7 +353,7 @@ format: "html"
 }</code></pre>
 
 
-<p><a href="http://kod.djpw.cz/vlgb">Výsledek</a></p>
+<p><a href="https://kod.djpw.cz/vlgb">Výsledek</a></p>
 
 
 
@@ -391,7 +391,7 @@ format: "html"
   }
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/wlgb">Ukázka</a> (projeví se při změně velikosti okna kolem 700 px)</p>
+<p><a href="https://kod.djpw.cz/wlgb">Ukázka</a> (projeví se při změně velikosti okna kolem 700 px)</p>
 
 <p>Jak je vidět, při zmenšení okna pod cca 700 px se menu přesune nad obsah. Pokud by bylo moc dlouhé, nabízí se ho <a href="/responsivni-menu">schovat do tlačítka</a>.</p>
 
@@ -445,7 +445,7 @@ format: "html"
 
 
 
-<p>Obrázek ilustruje, jak při <b>zvětšení písma</b> ze strany uživatele u předchozí <a href="http://kod.djpw.cz/wlgb">ukázky</a> bude <i>break-point</i> v pixelech totálně mimo. Šířka menu je při větším písmu nedostatečná a přeskládání pod sebe by mělo <b>nastat dříve</b>. V tomto případě to není tak strašné, ale často to může významně rozhodit layout nebo způsobit <b>nečitelnost</b> některých částí stránky, když je překryje něco, co nemá.</p>
+<p>Obrázek ilustruje, jak při <b>zvětšení písma</b> ze strany uživatele u předchozí <a href="https://kod.djpw.cz/wlgb">ukázky</a> bude <i>break-point</i> v pixelech totálně mimo. Šířka menu je při větším písmu nedostatečná a přeskládání pod sebe by mělo <b>nastat dříve</b>. V tomto případě to není tak strašné, ale často to může významně rozhodit layout nebo způsobit <b>nečitelnost</b> některých částí stránky, když je překryje něco, co nemá.</p>
 
 <p>Takto třeba vypadá hlavní stránka Seznamu při hraniční šířce a <b>zvětšeném písmu</b>:</p>
 
@@ -504,7 +504,7 @@ format: "html"
   </form>
 </div>
 
-<p><a href="http://kod.djpw.cz/zlgb">Ukázka</a> předchozího dvou-sloupcového layoutu s převedenými <i>break-pointy</i> do <code>em</code> rozměrů.</p>
+<p><a href="https://kod.djpw.cz/zlgb">Ukázka</a> předchozího dvou-sloupcového layoutu s převedenými <i>break-pointy</i> do <code>em</code> rozměrů.</p>
 
 <p>Při srovnatelné šířce, bude už dávno menu a obsah pod sebou.</p>
 
@@ -520,7 +520,7 @@ format: "html"
 
 <h3 id="omezeni-sirky">Omezení šířky layoutu</h3>
 
-<p>Kvůli maximálnímu počtu znaků na řádek byla nastavena <code>max-width</code> pro odstavec (<code>&lt;p></code>). Když se ale podíváme na <a href="http://kod.djpw.cz/zlgb-">poslední podobu</a> příkladu responsivního layoutu na <b>větším monitoru</b>, vidíme pořád spoustu nevyužitého prostoru.</p>
+<p>Kvůli maximálnímu počtu znaků na řádek byla nastavena <code>max-width</code> pro odstavec (<code>&lt;p></code>). Když se ale podíváme na <a href="https://kod.djpw.cz/zlgb-">poslední podobu</a> příkladu responsivního layoutu na <b>větším monitoru</b>, vidíme pořád spoustu nevyužitého prostoru.</p>
 
 <p>Možná by bylo hezčí <b>omezit šířku</b> celého layoutu a třeba to ještě celé <a href="/centrovani#margin-auto">horisontálně vycentrovat</a>.</p>
 
@@ -529,7 +529,7 @@ format: "html"
   margin: auto; /* vodorovné vycentrování */
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/cmgb-">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/cmgb-">Ukázka</a></p>
 
 
 

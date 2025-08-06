@@ -40,7 +40,7 @@ format: "html"
 <h2 id="podpora">Podpora</h2>
 <p>Momentálně nejlepší podpora (s <a href="/css-prefixy">prefixy</a>) pro český text je v <b>IE 10</b> a <b><a href="/ie11">IE 11</a></b>. <b>Opera</b> a <b>Chrome</b> nastavení <code>hyphens</code>, zdá se, ignoruje. A ve <b>Firefoxu</b> se u češtiny chová <code>manual</code> i <code>auto</code> stejně (v jiných jazycích rozdělovat umí).</p>
 
-<p><a href="http://kod.djpw.cz/kwt">Živá ukázka</a> (zdroj <a href="/lipsum"><i>českého</i> lipsum textu</a>), varianta <a href="http://kod.djpw.cz/pwt">zarovnaná do bloku</a>.</p>
+<p><a href="https://kod.djpw.cz/kwt">Živá ukázka</a> (zdroj <a href="/lipsum"><i>českého</i> lipsum textu</a>), varianta <a href="https://kod.djpw.cz/pwt">zarovnaná do bloku</a>.</p>
 
 <h2 id="doporuceni">Doporučení</h2>
 <p>Příliš nedoporučuji <b>zanášet kód entitami pro rozdělování</b>. Může to způsobit problém při <b>hledání slov na stránce</b>, při <b>kopírování textu</b> nebo (možná) u <b>vyhledávačů</b> (související diskuse <a href="http://diskuse.jakpsatweb.cz/?action=vthread&amp;forum=13&amp;topic=104038">Má někdo zkušenosti s entitou shy?</a>).</p>

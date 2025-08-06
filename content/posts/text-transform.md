@@ -9,7 +9,7 @@ tags: []
 format: "html"
 ---
 
-<p><a href="http://kod.djpw.cz/xipb">Test hodnoty <code>full-width</code></a></p>
+<p><a href="https://kod.djpw.cz/xipb">Test hodnoty <code>full-width</code></a></p>
 
 <div class="internal-content">
   <ul>

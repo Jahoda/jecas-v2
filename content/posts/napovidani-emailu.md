@@ -74,7 +74,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><p><a href="http://kod.djpw.cz/iwub">Živá ukázka</a> (hotové řešení na <a href="https://github.com/Jahoda/email-hint">GitHubu</a>)</p></li>
+    <li><p><a href="https://kod.djpw.cz/iwub">Živá ukázka</a> (hotové řešení na <a href="https://github.com/Jahoda/email-hint">GitHubu</a>)</p></li>
   </ul>
 </div>
 

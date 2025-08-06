@@ -74,7 +74,7 @@ format: "html"
     }
 }</code></pre>
 
-<p><a href="http://kod.djpw.cz/rycb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/rycb">Ukázka</a></p>
 
 <h3 id="title">Přes <code>title</code></h3>
 
@@ -82,7 +82,7 @@ format: "html"
 
 <pre><code>&lt;input pattern="[a-z]*" title='Zadejte pouze malá písmena'></code></pre>
 
-<p><a href="http://kod.djpw.cz/qycb">Ukázka</a></p>
+<p><a href="https://kod.djpw.cz/qycb">Ukázka</a></p>
 
 
 <h2 id="praxe">Použití v praxi</h2>

@@ -56,7 +56,7 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="http://kod.djpw.cz/hukb">Živá ukázka</a> – test podpory značky <code>&lt;data></code></li>
+    <li><a href="https://kod.djpw.cz/hukb">Živá ukázka</a> – test podpory značky <code>&lt;data></code></li>
   </ul>
 </div>
 

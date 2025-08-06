@@ -92,7 +92,7 @@ format: "html"
 
 <p>Zbavit se tohoto chování jde pomocí <code><a href="/font#size">font-size</a>: 100%</code> pro tabulku.</p>
 
-<p><a href="http://kod.djpw.cz/cuub">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/cuub">Živá ukázka</a></p>
 
 
 

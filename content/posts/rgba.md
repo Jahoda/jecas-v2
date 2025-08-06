@@ -63,7 +63,7 @@ format: "html"
     </div>
 </div></div>
 
-<p><a href="http://kod.djpw.cz/xybb">Samostatná ukázka</a>.</p>
+<p><a href="https://kod.djpw.cz/xybb">Samostatná ukázka</a>.</p>
 
 <h2 id="ie8">IE 8 a starší</h2>
 
@@ -83,6 +83,6 @@ format: "html"
   endColorstr='#<b>4c</b>000000'
 )</code></pre>
 
-<p><a href="http://kod.djpw.cz/yldb">Ukázka pro IE 8</a></p>
+<p><a href="https://kod.djpw.cz/yldb">Ukázka pro IE 8</a></p>
 
 <p>Nesmí se zapomenout, že <b>IE 9</b> podporuje filtry i <code>rgba</code>, takže by se efekt při současném použití zdvojil. Nabízí se tedy <b>průhledný filtr</b> připojit s využitím <a href="/podminene-komentare">podmíněných komentářů</a> jen pro <b>IE 8</b>.</p>

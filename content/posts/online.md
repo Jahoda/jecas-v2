@@ -118,7 +118,7 @@ else {
 </script>  
 </div>
 
-<p>Samostatná <a href="http://kod.djpw.cz/rmqb">ukázka</a> použití <code>navigator.onLine</code>.</p>
+<p>Samostatná <a href="https://kod.djpw.cz/rmqb">ukázka</a> použití <code>navigator.onLine</code>.</p>
 
 
 <h3 id="ajax">AJAX</h3>

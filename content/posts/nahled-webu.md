@@ -69,7 +69,7 @@ $nahled = file_get_contents("http://adresa-sluzby.com/?url=$url");
 file_put_contents("cesta/k/nahledum" . $url. ".jpg", $nahled);</code></pre>
 
 <h2 id="zivy-nahled">Živý náhled stránky</h2>
-<p>Je to spíš taková kuriosita, ale zmenšeninu webu je možné vytvořit i ze stránky vložené do <code>&lt;iframe></code> a jeho <b>zmenšením v CSS</b>: <code>transform: scale(.3)</code> (s příslušnými <a href="/css-prefixy">prefixy</a>). <a href="http://kod.djpw.cz/wqv">Ukázka</a>.</p>
+<p>Je to spíš taková kuriosita, ale zmenšeninu webu je možné vytvořit i ze stránky vložené do <code>&lt;iframe></code> a jeho <b>zmenšením v CSS</b>: <code>transform: scale(.3)</code> (s příslušnými <a href="/css-prefixy">prefixy</a>). <a href="https://kod.djpw.cz/wqv">Ukázka</a>.</p>
 
 <p>Takový <i>náhled</i> bude živý. Nevýhoda je, že to dost zpomalí načítání stránky, kde bude <i>náhled</i> umístěn, protože se bude načítat i ta kompletní stránka v rámu.</p>
 

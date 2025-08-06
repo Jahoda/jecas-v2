@@ -169,7 +169,7 @@ if (!haveEvents) {
 </script>
 </div>
 
-<p><a href="http://kod.djpw.cz/bfdb">Živá ukázka</a></p>
+<p><a href="https://kod.djpw.cz/bfdb">Živá ukázka</a></p>
 
 <h2 id="odkazy">Odkazy</h2>
 
