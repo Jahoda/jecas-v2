@@ -8,7 +8,7 @@
 	export let pagesTags: Record<string, string[]> = {};
 </script>
 
-<div class="grid-cols-repeat-48 grid gap-8">
+<div class="grid-cols-repeat-48 grid gap-4 md:gap-8">
 	{#each posts as post (post.url_slug)}
 		<div class="grid grid-cols-1">
 			<MainPost
