@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="title desc">
+  <title>Query string v URL</title>
+  <desc>Ilustrace URL s částí za otazníkem zvýrazněnou.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f7f8fb"/>
+      <stop offset="100%" stop-color="#eef1f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#bg)"/>
+  <g transform="translate(12,16)">
+    <rect x="0" y="0" width="176" height="32" rx="8" fill="#ffffff" stroke="#d0d5dd"/>
+    <circle cx="14" cy="16" r="4" fill="#ff5f57"/>
+    <circle cx="28" cy="16" r="4" fill="#febc2e"/>
+    <circle cx="42" cy="16" r="4" fill="#28c840"/>
+    <text x="56" y="21" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial" font-size="11" fill="#667085">https://example.com</text>
+  </g>
+  <g transform="translate(12,60)">
+    <rect x="0" y="0" width="176" height="128" rx="12" fill="#ffffff" stroke="#d0d5dd"/>
+    <rect x="12" y="20" width="152" height="26" rx="6" fill="#f2f4f7"/>
+    <text x="18" y="36" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial" font-size="13" fill="#98a2b3">/search</text>
+    <text x="68" y="36" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial" font-size="13" fill="#16a34a">?</text>
+    <text x="76" y="36" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial" font-size="13" fill="#344054">q=je+cas</text>
+    <text x="132" y="36" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial" font-size="13" fill="#16a34a">&amp;</text>
+    <text x="140" y="36" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial" font-size="13" fill="#344054">sort=desc</text>
+
+    <g transform="translate(12,90)">
+      <rect x="0" y="0" width="32" height="20" rx="5" fill="#16a34a"/>
+      <text x="16" y="14" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial" font-size="12" fill="#ffffff">?</text>
+      <text x="40" y="14" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial" font-size="11" fill="#344054">Query string</text>
+    </g>
+  </g>
+</svg>
+
