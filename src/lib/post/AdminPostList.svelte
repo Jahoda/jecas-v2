@@ -23,16 +23,18 @@
 
 	<div class="space-y-4">
 		{#each filtredPosts as post (post.id)}
-			<div
-				class="flex items-center justify-between gap-8 rounded-lg bg-slate-100 p-2 dark:bg-slate-600"
-			>
+			<div class="flex items-center gap-4 rounded-lg bg-slate-100 p-2 dark:bg-slate-600">
+				<div
+					class="h-8 w-8 shrink-0 rounded-full"
+					style="background: url('/files/article/{post.url_slug}.png') no-repeat center center; background-size: cover"
+				></div>
 				<a
 					href="/{post.url_slug}"
 					class="text-blue-dark dark:text-blue-light underline hover:no-underline"
 				>
 					{post.title}
 				</a>
-				<div class="flex justify-end">
+				<div class="ml-auto flex justify-end">
 					<div class="inline-flex">
 						<Button href="/admin/post/{post.url_slug}">Upravit</Button>
 					</div>
