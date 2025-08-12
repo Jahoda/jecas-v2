@@ -26,6 +26,14 @@
 		name="description"
 		content="Poznámky o moderním webdesignu, hotová řešení, experimenty a návody."
 	/>
+
+	<!-- OpenGraph pro hezčí sdílení na Facebooku: https://jecas.cz/nahled-odkazu -->
+	<meta property="og:url" content="https://jecas.cz/" />
+	<meta property="og:title" content="Je čas.cz – moderní tvorba webových stránek" />
+	<meta
+		property="og:description"
+		content="Poznámky o moderním webdesignu, hotová řešení, experimenty a návody."
+	/>
 </svelte:head>
 
 <section>

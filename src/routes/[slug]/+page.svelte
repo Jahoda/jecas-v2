@@ -16,8 +16,15 @@
 <svelte:head>
 	<title>{post && 'title' in post ? post.title : post?.name}</title>
 	<meta name="description" content={post && 'description' in post ? post.description : ''} />
-	{#if !data.tag && post && post.url_slug === 'ASDJDSFJGIJHIDFGJHKFDG'}
-		<meta property="og:image" content="/api/og?slug={post.url_slug}" />
+	{#if data.page}
+		<meta property="og:url" content={`https://jecas.cz/${data.page.url_slug}`} />
+		<meta property="og:title" content={data.page.title} />
+		<meta property="og:description" content={data.page.description} />
+		<meta
+			property="og:image"
+			content={`https://jecas.cz/files/article/${data.page.url_slug}.png`}
+		/>
+		<meta property="og:type" content="article" />
 	{/if}
 </svelte:head>
 
