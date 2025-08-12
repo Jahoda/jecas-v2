@@ -160,6 +160,13 @@
 	background-size: 1rem 1rem;
 }
 
+.prose a[href^='https://caniuse.com']
+{
+	padding-left: 1.25rem;
+	background: url('https://caniuse.com/img/favicon-128.png') center left no-repeat;
+	background-size: 1rem 1rem;
+}
+
 .prose a[href^='https://www.npmjs.com']
 {
 	padding-left: 1.25rem;
