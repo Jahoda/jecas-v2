@@ -4,8 +4,8 @@ headline: "Odkaz na hlavní stranu"
 description: "Má smysl umisťovat na web odkaz na hlavní stranu? Na jakém místě ho návštěvník očekává?"
 date: "2015-07-13"
 last_modification: "2015-07-13"
-status: 0
-tags: []
+status: 1
+tags: ["ux", "napady"]
 format: "html"
 ---
 
@@ -58,5 +58,3 @@ format: "html"
 <p>Je pochopitelně možné, že to komplikace přineslo – například v <b>delší době přechodu</b> na hlavní stránku způsobené absencí jasného pokynu <i>Hlavní strana</i>. To bohužel v <a href="/ga">Google Analytics</a> změřit nedokážu.</p>
 
 <p>Dalším faktorem, na který je při dělání závěrů nutné myslet, je <b>skladba zdejších návštěvníků</b>. Jsou technicky pokročilejší, což může znamenat i lepší povědomí o tom, že <i>logo kliká na hlavní stranu</i>.</p>
-
-13.7. - vyhození Hlavní strana
