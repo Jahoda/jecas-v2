@@ -3,8 +3,8 @@ title: "Odeslání formuláře tlačítkem mimo něj"
 headline: "Odeslání formuláře tlačítkem mimo něj"
 description: "Jak odeslat formulář tlačítkem, které je mimo formulář."
 date: "2020-09-01"
-last_modification: "2025-08-12"
-status: 0
+last_modification: "2025-08-13"
+status: 1
 tags: ["html", "html-atributy", "formulare"]
 format: "html"
 ---
@@ -26,7 +26,7 @@ format: "html"
 
 &lt;button type="submit" form="kontakt">Odeslat&lt;/button></code></pre>
 
-<h3 id="kdy-se-hodi">Kdy se to hodí</h3>
+<h2 id="kdy-se-hodi">Kdy se to hodí</h2>
 
 <ul>
   <li>Akční lišta nebo sticky hlavička/patička stránky s tlačítkem pro odeslání.</li>
@@ -38,7 +38,7 @@ format: "html"
   
   </ul>
 
-<h3 id="pretizeni">Přetížení atributů formuláře</h3>
+<h2 id="pretizeni">Přetížení atributů formuláře</h2>
 
 <p>Atributy na tlačítku mohou přepsat chování formuláře pro konkrétní odeslání.</p>
 
@@ -54,7 +54,7 @@ format: "html"
   <li><code>type="submit"</code> je nutné; <code>type="button"</code> neodešle nic.</li>
   <li>Tlačítko uvnitř elementu <code>&lt;form></code> atribut <code>form</code> nepotřebuje.</li>
 </ul>
-<h3 id="podpora">Podpora v prohlížečích</h3>
+<h2 id="podpora">Podpora v prohlížečích</h2>
 
 <p>Atribut <code>form</code> je podporován ve všech moderních prohlížečích včetně mobilních. Nepodporuje jej pouze starý Internet Explorer (včetně verse&nbsp;11).</p>
 <div class="external-content">
