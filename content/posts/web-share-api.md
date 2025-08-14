@@ -3,9 +3,9 @@ title: "Sdílení stránky přes Web Share API"
 headline: "Sdílení stránky přes Web Share API"
 description: "Web Share API nabízí možnost sdílet odkaz na stránku nebo soubor přes rozhraní prohlížeče/systému."
 date: "2021-11-26"
-last_modification: "2025-08-12"
-status: 0
-tags: []
+last_modification: "2025-08-14"
+status: 1
+tags: ["js", "webove-prohlizece", "ux"]
 format: "html"
 ---
 
@@ -287,7 +287,7 @@ if (navigator.canShare &amp;&amp; navigator.canShare({ files: soubory })) {
   alert('Sdílení souborů není na tomto zařízení podporováno')
 }</code></pre>
 
-
+<p><a href="https://kod.djpw.cz/xynd">Živá ukázka</a></p>
 
 
 
