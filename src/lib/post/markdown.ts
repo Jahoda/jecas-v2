@@ -8,7 +8,7 @@ export interface MarkdownPost {
 	text_html: string;
 	description: string;
 	date: Date;
-	last_modification: Date;
+	last_modification: Date | null;
 	comments: number;
 	status: number;
 	tags?: string[];
@@ -33,6 +33,10 @@ const postModules = import.meta.glob('/content/posts/*.md', {
 
 function getPostFiles(): string[] {
 	return Object.keys(postModules).map((path) => path.split('/').pop()!);
+}
+
+function getEffectiveModificationDate(post: MarkdownPost): Date {
+	return post.last_modification || post.date;
 }
 
 async function parseMarkdownFile(fileName: string): Promise<MarkdownPost> {
@@ -60,7 +64,7 @@ async function parseMarkdownFile(fileName: string): Promise<MarkdownPost> {
 		date: new Date(frontmatter.date),
 		last_modification: frontmatter.last_modification
 			? new Date(frontmatter.last_modification)
-			: new Date(frontmatter.date),
+			: null,
 		comments: 0,
 		status: frontmatter.status !== undefined ? frontmatter.status : 1,
 		tags: frontmatter.tags || [],
@@ -76,9 +80,17 @@ export async function getAllPosts(
 
 	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
 
+	const now = new Date();
 	const filteredPosts = posts
-		.filter((post) => post.status === status)
-		.sort((a, b) => b.last_modification.getTime() - a.last_modification.getTime());
+		.filter((post) => {
+			if (post.status !== status) return false;
+			if (status === 1 && getEffectiveModificationDate(post) > now) return false;
+			return true;
+		})
+		.sort(
+			(a, b) =>
+				getEffectiveModificationDate(b).getTime() - getEffectiveModificationDate(a).getTime()
+		);
 
 	return limit ? filteredPosts.slice(0, limit) : filteredPosts;
 }
@@ -89,6 +101,7 @@ export async function getAllDrafts(limit: number | null = null): Promise<Markdow
 
 export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
 	const posts: MarkdownPost[] = [];
+	const now = new Date();
 
 	for (const slug of slugs) {
 		const fileName = `${slug}.md`;
@@ -96,8 +109,8 @@ export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
 
 		if (postModules[fullPath]) {
 			const post = await parseMarkdownFile(fileName);
-			// Only include published posts in lists
-			if (post.status === 1) {
+			// Only include published posts in lists that are not in the future
+			if (post.status === 1 && getEffectiveModificationDate(post) <= now) {
 				posts.push(post);
 			}
 		}
@@ -145,7 +158,10 @@ export async function getRelatedPostsByMostTags(
 		.filter((item) => item.score > 0)
 		.sort((a, b) => {
 			if (a.score !== b.score) return b.score - a.score;
-			return b.post.last_modification.getTime() - a.post.last_modification.getTime();
+			return (
+				getEffectiveModificationDate(b.post).getTime() -
+				getEffectiveModificationDate(a.post).getTime()
+			);
 		})
 		.slice(0, 4);
 
@@ -172,11 +188,12 @@ export async function getPrevNextPosts(currentSlug: string): Promise<{
 export async function getAllUsedTags(): Promise<string[]> {
 	const postFiles = getPostFiles();
 	const allTags = new Set<string>();
+	const now = new Date();
 
 	for (const fileName of postFiles) {
 		const post = await parseMarkdownFile(fileName);
-		// Only include tags from published posts
-		if (post.status === 1 && post.tags) {
+		// Only include tags from published posts that are not in the future
+		if (post.status === 1 && getEffectiveModificationDate(post) <= now && post.tags) {
 			post.tags.forEach((tag) => allTags.add(tag));
 		}
 	}

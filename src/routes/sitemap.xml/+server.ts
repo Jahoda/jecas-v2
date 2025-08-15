@@ -1,6 +1,10 @@
 import { getAllPosts } from '$lib/post/post';
 import { sanizite } from '$lib/xml/xml';
 
+function getEffectiveModificationDate(post: any): Date {
+	return post.last_modification || post.date;
+}
+
 export async function GET() {
 	const posts = await getAllPosts();
 
@@ -20,7 +24,7 @@ export async function GET() {
 				(post) => `
 		  <url>
 			<loc>https://jecas.cz/${post.url_slug}</loc>
-			<lastmod>${post.last_modification.toISOString()}</lastmod>
+			<lastmod>${getEffectiveModificationDate(post).toISOString()}</lastmod>
 			<changefreq>monthly</changefreq>
 			<priority>1</priority>
 			<news:news>
@@ -28,7 +32,7 @@ export async function GET() {
 				<news:name>Bohumil Jahoda</news:name>
 				<news:language>cs</news:language>
 			  </news:publication>
-			  <news:publication_date>${post.last_modification.toISOString()}</news:publication_date>
+			  <news:publication_date>${getEffectiveModificationDate(post).toISOString()}</news:publication_date>
 			  <news:title>${sanizite(post.title)}</news:title>
 			  <news:keywords>${sanizite(post.description)}</news:keywords>
 			</news:news>

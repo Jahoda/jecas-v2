@@ -15,6 +15,10 @@ function removeDiacritics(str: string): string {
 	return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
+function getEffectiveModificationDate(post: Post): Date {
+	return post.last_modification || post.date;
+}
+
 export interface Post {
 	id: string | number;
 	title: string;
@@ -23,7 +27,7 @@ export interface Post {
 	text_html: string;
 	description: string;
 	date: Date;
-	last_modification: Date;
+	last_modification: Date | null;
 	comments: number;
 	status: number;
 	tags?: string[];
@@ -74,14 +78,17 @@ export async function getPostsByTagId(tagSlug: string): Promise<Post[]> {
 	const postSlugs = await getPostsByTagSlug(tagSlug);
 
 	const posts: Post[] = [];
+	const now = new Date();
 	for (const slug of postSlugs) {
 		const post = await getSinglePostBySlug(slug);
-		if (post && post.status === 1) {
+		if (post && post.status === 1 && getEffectiveModificationDate(post) <= now) {
 			posts.push(post);
 		}
 	}
 
-	return posts.sort((a, b) => b.last_modification.getTime() - a.last_modification.getTime());
+	return posts.sort(
+		(a, b) => getEffectiveModificationDate(b).getTime() - getEffectiveModificationDate(a).getTime()
+	);
 }
 
 export async function getRelatedPostsByMostTags(tags: Tag[], currentSlug: string): Promise<Post[]> {
@@ -112,7 +119,10 @@ export async function getRelatedPostsByMostTags(tags: Tag[], currentSlug: string
 		.filter((item) => item.score > 0)
 		.sort((a, b) => {
 			if (a.score !== b.score) return b.score - a.score;
-			return b.post.last_modification.getTime() - a.post.last_modification.getTime();
+			return (
+				getEffectiveModificationDate(b.post).getTime() -
+				getEffectiveModificationDate(a.post).getTime()
+			);
 		})
 		.slice(0, 4);
 
