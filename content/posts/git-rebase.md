@@ -59,6 +59,10 @@ format: "html"
 
 <pre><code>git push -f</code></pre>
 
+<p>Případně jde rebase <i>naklikat</i> ve VS Code:</p>
+
+<p><img src="/files/git-rebase/git-rebase-vs-code.png" class="border" alt="Rebase ve VS Code" /></p>
+
 <h2 id="onto">Rebase <code>--onto</code></h2>
 
 <p>Příkaz <code>git rebase --onto</code> se hodí pro případy, kdy moje větev vychází z větve, na které pracuje někdo jiný. A ten tam mění historii. To se obecně nepovažuje za dobrý postup, ale s rebase --onto to není problém.</p>

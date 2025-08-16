@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { dev } from '$app/environment';
 	import Container from '$lib/container/Container.svelte';
 	import PostContent from '$lib/post/PostContent.svelte';
 	import PostList from '$lib/post/PostList.svelte';
@@ -7,6 +8,7 @@
 	import PostNavigation from '$lib/postNavigation/PostNavigation.svelte';
 	import type { PageData } from './$types';
 	import HeroPost from '$lib/mainPost/HeroPost.svelte';
+	import ImageUploadManager from '$lib/imageUpload/ImageUploadManager.svelte';
 
 	export let data: PageData;
 
@@ -42,6 +44,9 @@
 	/>
 {/if}
 <Container verticalSpace>
+	{#if dev && data.page}
+		<ImageUploadManager slug={data.page.url_slug} />
+	{/if}
 	<div class="grid grid-cols-1 gap-8 md:gap-16">
 		<div class="xl:grid-cols-post grid grid-cols-1 gap-8">
 			<div class="max-md:hidden"></div>
