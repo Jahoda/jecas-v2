@@ -3,7 +3,7 @@ title: "Znázornění možnosti scrollování"
 headline: "Znázornění možnosti scrollování"
 description: "Jak dát uživateli informaci, že je možné někam scrollovat."
 date: "2025-06-08"
-last_modification: null
+last_modification: "2025-06-08"
 status: 1
 tags: ["js", "scroll", "css", "ux"]
 format: "html"

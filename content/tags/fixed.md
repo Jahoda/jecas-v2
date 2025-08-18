@@ -1,7 +1,7 @@
 ---
 title: "Fixní posice"
 headline: null
-background: "null"
+background: "#0271BB"
 color: "null"
 status: 0
 ---

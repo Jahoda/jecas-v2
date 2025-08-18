@@ -1,7 +1,7 @@
 ---
 title: "Písma"
 headline: null
-background: "null"
+background: "#1F2937"
 color: "null"
 status: 0
 ---

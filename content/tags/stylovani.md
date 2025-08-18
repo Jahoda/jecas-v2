@@ -1,7 +1,7 @@
 ---
 title: "Stylování elementů"
 headline: null
-background: "null"
+background: "#0271BB"
 color: "null"
 status: 0
 ---
