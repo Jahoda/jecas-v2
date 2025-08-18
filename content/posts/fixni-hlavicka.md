@@ -4,7 +4,7 @@ headline: "Proč nepoužívat fixní hlavičku"
 description: "Proč se vyhnout fixování záhlaví/menu k hornímu okraji obrazovky."
 date: "2015-08-22"
 last_modification: "2025-08-18"
-status: 0
+status: 1
 tags: ["fixed", "responsive", "ux"]
 format: "html"
 ---
