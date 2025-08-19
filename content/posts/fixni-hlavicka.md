@@ -165,6 +165,9 @@ format: "html"
     window.addEventListener('resize', updateHeights);
     updateHeights();
   </script>
+  <script data-cleanup>
+    window.removeEventListener('resize', updateHeights);
+  </script>
 </div>
 
 <p>Výška fixní hlavičky může mít třeba <b>50-80 pixelů</b> (moderní navigace jsou často vyšší kvůli touch-friendly designu), což znamená, že bude neustále <b>užírat 8-12 % dostupného místa</b>.</p>

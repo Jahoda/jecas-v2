@@ -5,6 +5,7 @@
 	import IconCopy from '$lib/icon/IconCopy.svelte';
 	import IconCheckCircle from '$lib/icon/IconCheckCircle.svelte';
 	import { onMount, onDestroy } from 'svelte';
+	import { beforeNavigate } from '$app/navigation';
 
 	interface Props {
 		content: string;
@@ -15,22 +16,30 @@
 
 	let isShowSource = $state(false);
 	let addedScripts: HTMLScriptElement[] = $state([]);
+	let cleanupScriptContent: string | undefined = $state();
 
 	function handleToggleSource() {
 		isShowSource = !isShowSource;
 	}
 
-	function getContentWithoutScripts(content: string) {
+	function createTempDiv(content: string): HTMLDivElement {
 		const tempDiv = document.createElement('div');
 		tempDiv.innerHTML = content;
+		return tempDiv;
+	}
 
-		const scripts = tempDiv.querySelectorAll('script');
+	function getContentWithoutScripts(content: string, selector: string = 'script') {
+		const tempDiv = createTempDiv(content);
+		const scripts = tempDiv.querySelectorAll(selector);
 		scripts.forEach((script) => script.remove());
-
 		return tempDiv.innerHTML;
 	}
 
-	let sourceCode = $derived(content.replace(/^\n/g, ''));
+	function getSourceCodeWithoutCleanUp(content: string) {
+		return getContentWithoutScripts(content, 'script[data-cleanup]').trim();
+	}
+
+	let sourceCode = $derived(getSourceCodeWithoutCleanUp(content));
 
 	function handleCopyToClipboard() {
 		navigator.clipboard.writeText(sourceCode);
@@ -43,45 +52,58 @@
 
 	let isCopied = $state(false);
 
+	function createScriptElement(script: HTMLScriptElement): HTMLScriptElement {
+		const newScript = document.createElement('script');
+
+		if (script.src) {
+			newScript.src = script.src;
+		} else if (script.textContent) {
+			newScript.textContent = script.textContent;
+		}
+
+		return newScript;
+	}
+
 	function extractAndExecuteScripts() {
 		if (!liveContainer) return;
 
-		const tempDiv = document.createElement('div');
-		tempDiv.innerHTML = content;
+		const tempDiv = createTempDiv(content);
+		const scripts = tempDiv.querySelectorAll('script:not([data-cleanup])');
 
-		const scripts = tempDiv.querySelectorAll('script');
 		scripts.forEach((script) => {
-			const newScript = document.createElement('script');
-
-			if (script.src) {
-				newScript.src = script.src;
-			} else if (script.textContent) {
-				newScript.textContent = script.textContent;
-			}
+			const scriptElement = script as HTMLScriptElement;
+			const newScript = createScriptElement(scriptElement);
 
 			liveContainer.appendChild(newScript);
 			addedScripts.push(newScript);
 		});
 	}
 
-	const contentWithoutScripts = $derived(getContentWithoutScripts(content));
+	function storeCleanupScript() {
+		const tempDiv = createTempDiv(content);
+		const cleanupElement = tempDiv.querySelector('[data-cleanup]');
 
-	function cleanupScripts() {
-		addedScripts.forEach((script) => {
-			if (script.parentNode) {
-				script.parentNode.removeChild(script);
-			}
-		});
-		addedScripts = [];
+		if (cleanupElement && cleanupElement.textContent) {
+			cleanupScriptContent = cleanupElement.textContent;
+		}
 	}
+
+	const contentWithoutScripts = $derived(getContentWithoutScripts(content));
 
 	onMount(() => {
 		extractAndExecuteScripts();
+		storeCleanupScript();
 	});
 
-	onDestroy(() => {
-		cleanupScripts();
-	});
+	function executeCleanupScript() {
+		if (cleanupScriptContent) {
+			const newScript = document.createElement('script');
+			newScript.textContent = cleanupScriptContent;
+			liveContainer.appendChild(newScript);
+		}
+	}
+
+	beforeNavigate(executeCleanupScript);
 </script>
 
 <div class="absolute top-0 right-0">
