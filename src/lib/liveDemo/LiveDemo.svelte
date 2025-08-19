@@ -159,7 +159,9 @@
 				{/if}
 			</Button>
 		</div>
-		{#await getFormatedSourceCode(sourceCode) then code}
+		{#await getFormatedSourceCode(sourceCode)}
+			<pre class="mb-0 rounded-md bg-gray-100 p-4"><code>{sourceCode}</code></pre>
+		{:then code}
 			{@html code}
 		{/await}
 	</div>
