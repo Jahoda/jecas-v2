@@ -4,8 +4,11 @@
 	import { slide } from 'svelte/transition';
 	import IconCopy from '$lib/icon/IconCopy.svelte';
 	import IconCheckCircle from '$lib/icon/IconCheckCircle.svelte';
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 	import { beforeNavigate } from '$app/navigation';
+	import { codeToHtml } from 'shiki';
+	import prettier from 'prettier/standalone';
+	import parserHtml from 'prettier/plugins/html';
 
 	interface Props {
 		content: string;
@@ -36,10 +39,14 @@
 	}
 
 	function getSourceCodeWithoutCleanUp(content: string) {
-		return getContentWithoutScripts(content, 'script[data-cleanup]').trim();
+		return getContentWithoutScripts(content, 'script[data-cleanup]');
 	}
 
-	let sourceCode = $derived(getSourceCodeWithoutCleanUp(content));
+	const sourceCode = $derived(getSourceCodeWithoutCleanUp(content));
+
+	const prettierSourceCode = $derived(
+		prettier.format(getSourceCodeWithoutCleanUp(content), { parser: 'html', plugins: [parserHtml] })
+	);
 
 	function handleCopyToClipboard() {
 		navigator.clipboard.writeText(sourceCode);
@@ -90,6 +97,19 @@
 
 	const contentWithoutScripts = $derived(getContentWithoutScripts(content));
 
+	async function getFormatedSourceCode(content: string) {
+		const formatedCode = await prettier.format(getSourceCodeWithoutCleanUp(content), {
+			parser: 'html',
+			plugins: [parserHtml]
+		});
+		const highlightedCode = await codeToHtml(formatedCode.trim(), {
+			lang: 'html',
+			theme: 'vitesse-dark'
+		});
+
+		return highlightedCode;
+	}
+
 	onMount(() => {
 		extractAndExecuteScripts();
 		storeCleanupScript();
@@ -139,6 +159,8 @@
 				{/if}
 			</Button>
 		</div>
-		<pre class="mb-0 rounded-md bg-gray-100 p-4"><code>{sourceCode}</code></pre>
+		{#await getFormatedSourceCode(sourceCode) then code}
+			{@html code}
+		{/await}
 	</div>
 {/if}
