@@ -38,24 +38,24 @@ format: "html"
 <p>Nakonec tak zbude pro samotný obsah webu často jen něco přes 600 pixelů na výšku, což není mnoho.</p>
 
 <div class="live">
-  <div class="bg-white border rounded-lg p-6 shadow-sm">
-    <h3 class="text-lg font-semibold mb-4 mt-0">Kalkulátor dostupné výšky</h3>
+  <div class="bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-lg p-6 shadow-sm">
+    <h3 class="text-lg font-semibold mb-4 mt-0 dark:text-white">Kalkulátor dostupné výšky</h3>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="space-y-4">
-        <div class="bg-gray-50 p-4 rounded">
-          <h4 class="font-medium mb-2 mt-0">Rozlišení obrazovky</h4>
-          <div class="text-sm space-y-1">
+        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded">
+          <h4 class="font-medium mb-2 mt-0 dark:text-white">Rozlišení obrazovky</h4>
+          <div class="text-sm space-y-1 dark:text-gray-300">
             <div><strong>Celková výška:</strong> <span id="screen-height">-</span>px</div>
             <div><strong>Dostupná výška:</strong> <span id="available-height">-</span>px</div>
             <div><strong>UI prohlížeče:</strong> <span id="browser-ui">-</span>px</div>
           </div>
         </div>
 
-        <div class="bg-blue-50 p-4 rounded">
-          <h4 class="font-medium mb-2 mt-0">Fixní hlavička</h4>
+        <div class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded">
+          <h4 class="font-medium mb-2 mt-0 dark:text-white">Fixní hlavička</h4>
           <div class="space-y-2">
-            <label class="block text-sm">
+            <label class="block text-sm dark:text-gray-300">
               Výška hlavičky (px):
               <input 
                 type="range" 
@@ -66,35 +66,35 @@ format: "html"
                 class="w-full mt-1"
                 oninput="updateCalculations()"
               />
-              <span class="text-lg font-bold text-blue-600" id="header-display">60px</span>
+              <span class="text-lg font-bold text-blue-600 dark:text-blue-400" id="header-display">60px</span>
             </label>
           </div>
         </div>
       </div>
 
-      <div class="bg-green-50 p-4 rounded">
-        <h4 class="font-medium mb-2 mt-0">Výsledek</h4>
+      <div class="bg-green-50 dark:bg-green-900/30 p-4 rounded">
+        <h4 class="font-medium mb-2 mt-0 dark:text-white">Výsledek</h4>
         <div class="space-y-3">
           <div class="text-center">
-            <div class="text-2xl font-bold text-green-600" id="content-height">-</div>
-            <div class="text-sm text-gray-600">Dostupná výška pro obsah</div>
+            <div class="text-2xl font-bold text-green-600 dark:text-green-400" id="content-height">-</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Dostupná výška pro obsah</div>
           </div>
           
           <div class="text-center">
-            <div class="text-lg font-semibold text-green-600" id="available-percent">-</div>
-            <div class="text-sm text-gray-600">Procento dostupného prostoru</div>
+            <div class="text-lg font-semibold text-green-600 dark:text-green-400" id="available-percent">-</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Procento dostupného prostoru</div>
           </div>
 
           <div class="text-center">
-            <div class="text-lg font-semibold text-red-600" id="header-percent">-</div>
-            <div class="text-sm text-gray-600">Procento zabrané hlavičkou</div>
+            <div class="text-lg font-semibold text-red-600 dark:text-red-400" id="header-percent">-</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">Procento zabrané hlavičkou</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="mt-6 p-4 bg-yellow-50 rounded border-l-4 border-yellow-400">
-      <div class="relative bg-gray-200 rounded h-32 overflow-hidden">
+    <div class="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/30 rounded border-l-4 border-yellow-400 dark:border-yellow-500">
+      <div class="relative bg-gray-200 dark:bg-gray-600 rounded h-32 overflow-hidden">
         <div class="absolute top-0 left-0 right-0 bg-blue-400 text-white text-xs p-1 text-center" id="browser-ui-visual" style="height: 0px">
           UI prohlížeče
         </div>
@@ -105,7 +105,7 @@ format: "html"
           Obsah
         </div>
       </div>
-      <div class="flex gap-4 mt-3 text-xs flex-wrap">
+      <div class="flex gap-4 mt-3 text-xs flex-wrap dark:text-gray-300">
         <div class="flex items-center gap-2">
           <div class="w-4 h-4 bg-blue-400 rounded"></div>
           <span>UI prohlížeče</span>
@@ -119,7 +119,7 @@ format: "html"
           <span>Dostupný obsah</span>
         </div>
       </div>
-      <div class="text-xs text-gray-600 mt-2">
+      <div class="text-xs text-gray-600 dark:text-gray-400 mt-2">
         Vizualizace je proporcionální k celkové výšce obrazovky
       </div>
     </div>
