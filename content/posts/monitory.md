@@ -3,7 +3,7 @@ title: "Kolik monitorů je ideální na vývoj webů?"
 headline: "Kolik monitorů potřebujete pro vývoj webů?"
 description: "Jakou konfiguraci monitorů zvolit pro co nejefektivnější vývoj webů."
 date: "2020-05-20"
-last_modification: "2025-08-19"
+last_modification: "2025-09-01"
 status: 1
 tags: []
 format: "html"

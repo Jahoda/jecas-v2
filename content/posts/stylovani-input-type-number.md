@@ -3,7 +3,7 @@ title: "Stylování číselného <input>u"
 headline: "Stylování <code>&lt;input type=number></code>"
 description: "Jak stylovat <code>&lt;input></code> pro zadávání čísel."
 date: "2020-01-13"
-last_modification: "2020-01-13"
+last_modification: "2025-08-20"
 status: 0
 tags: [css, stylovani, formulare]
 format: "html"

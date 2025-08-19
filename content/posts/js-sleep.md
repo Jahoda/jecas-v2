@@ -2,9 +2,9 @@
 title: "Sleep v JavaScriptu"
 headline: "Sleep v JavaScriptu"
 description: "Jak implementovat sleep/delay funkcionalitu v JavaScriptu pomocí <code>Promise</code> a <code>async</code>/<code>await</code>"
-date: "2025-08-20"
-last_modification: "2025-08-20"
-status: 0
+date: "2025-08-19"
+last_modification: "2025-08-19"
+status: 1
 tags: ["javascript", "napady"]
 format: "html"
 ---
