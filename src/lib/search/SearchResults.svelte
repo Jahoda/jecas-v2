@@ -1,13 +1,19 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { goto } from '$app/navigation';
 	import type { HitPost } from '$lib/search/searchQueryAlgolia';
 	import SearchHit from '$lib/search/SearchHit.svelte';
 	import { flip } from 'svelte/animate';
 
-	export let hits: HitPost[] = [];
-	export let query: string;
+	interface Props {
+		hits?: HitPost[];
+		query: string;
+	}
 
-	let currentIndex = 0;
+	let { hits = [], query }: Props = $props();
+
+	let currentIndex = $state(0);
 
 	const handleKeydown = (event: KeyboardEvent) => {
 		if (event.key === 'Enter') {
@@ -26,7 +32,9 @@
 		}
 	}
 
-	$: scrollToElement(currentIndex);
+	run(() => {
+		scrollToElement(currentIndex);
+	});
 </script>
 
 {#each hits as hit, index (hit.url_slug)}
@@ -43,4 +51,4 @@
 	</p>
 {/each}
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} />

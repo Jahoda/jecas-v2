@@ -2,9 +2,13 @@
 	import { dev } from '$app/environment';
 	import { onMount } from 'svelte';
 
-	export let slug: string;
+	interface Props {
+		slug: string;
+	}
 
-	let images: string[] = [];
+	let { slug }: Props = $props();
+
+	let images: string[] = $state([]);
 	let loading = true;
 
 	async function loadImages() {
@@ -37,14 +41,13 @@
 		<h4 class="mb-3 text-sm font-medium text-gray-700">Nahrané obrázky pro tento článek:</h4>
 		<div class="grid grid-cols-2 gap-3 md:grid-cols-4">
 			{#each images as image}
-				<div class="group relative">
+				<button onclick={() => copyImagePath(image)} class="group relative">
 					<img
 						src={image}
 						alt="Nahraný obrázek"
 						class="h-24 w-full cursor-pointer rounded border object-cover transition-opacity hover:opacity-75"
-						on:click={() => copyImagePath(image)}
 					/>
-				</div>
+				</button>
 			{/each}
 		</div>
 		<p class="mt-2 text-xs text-gray-500">Klikněte na obrázek pro zkopírování cesty do schránky</p>

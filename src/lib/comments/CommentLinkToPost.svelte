@@ -1,6 +1,10 @@
 <script lang="ts">
-	export let title: string;
-	export let href: string;
+	interface Props {
+		title: string;
+		href: string;
+	}
+
+	let { title, href }: Props = $props();
 </script>
 
 <div class="text-blue-dark dark:text-blue-light flex min-w-0 items-center gap-1">

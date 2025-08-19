@@ -1,17 +1,23 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 
-	export let show = false;
-	export let defaultName = '';
+	interface Props {
+		show?: boolean;
+		defaultName?: string;
+	}
+
+	let { show = $bindable(false), defaultName = '' }: Props = $props();
 
 	const dispatch = createEventDispatcher<{
 		confirm: { filename: string };
 		cancel: void;
 	}>();
 
-	let filename = '';
-	let inputElement: HTMLInputElement;
+	let filename = $state('');
+	let inputElement: HTMLInputElement | undefined = $state();
 
 	function handleSubmit() {
 		if (filename.trim()) {
@@ -34,16 +40,20 @@
 		}
 	}
 
-	$: if (show && inputElement) {
-		setTimeout(() => {
-			inputElement.focus();
-			inputElement.select();
-		}, 100);
-	}
+	run(() => {
+		if (show && inputElement) {
+			setTimeout(() => {
+				inputElement?.focus();
+				inputElement?.select();
+			}, 100);
+		}
+	});
 
-	$: if (show) {
-		filename = defaultName;
-	}
+	run(() => {
+		if (show) {
+			filename = defaultName;
+		}
+	});
 </script>
 
 {#if show}
@@ -51,7 +61,8 @@
 		class="bg-opacity-50 fixed inset-0 z-50 flex items-center justify-center bg-black"
 		transition:fade
 	>
-		<div class="mx-4 w-full max-w-md rounded-lg bg-white p-6" on:keydown={handleKeydown}>
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
+		<div class="mx-4 w-full max-w-md rounded-lg bg-white p-6" onkeydown={handleKeydown}>
 			<h3 class="mb-4 text-lg font-semibold text-gray-900">Zadejte název souboru</h3>
 
 			<div class="mb-4">
@@ -74,14 +85,14 @@
 			<div class="flex justify-end space-x-3">
 				<button
 					type="button"
-					on:click={handleCancel}
+					onclick={handleCancel}
 					class="rounded-md bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200"
 				>
 					Zrušit
 				</button>
 				<button
 					type="button"
-					on:click={handleSubmit}
+					onclick={handleSubmit}
 					class="rounded-md bg-blue-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-600"
 				>
 					Potvrdit

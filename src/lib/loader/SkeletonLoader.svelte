@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let line = 1;
+	interface Props {
+		line?: number;
+	}
+
+	let { line = 1 }: Props = $props();
 </script>
 
 {#each Array(line) as _}

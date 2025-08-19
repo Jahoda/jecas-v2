@@ -2,7 +2,11 @@
 	import type { CommentContent } from '$lib/comments/comment';
 	import Comment from '$lib/comments/Comment.svelte';
 
-	export let comments: CommentContent[] = [];
+	interface Props {
+		comments?: CommentContent[];
+	}
+
+	let { comments = [] }: Props = $props();
 </script>
 
 {#if comments?.length > 0}

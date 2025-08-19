@@ -4,17 +4,21 @@
 	import { slugify } from '$lib/form/form';
 	import FileNameDialog from './FileNameDialog.svelte';
 
-	export let slug: string;
-	export let type: 'preview' | 'content' = 'content';
+	interface Props {
+		slug: string;
+		type?: 'preview' | 'content';
+	}
+
+	let { slug, type = 'content' }: Props = $props();
 
 	const dispatch = createEventDispatcher<{
 		upload: { file: File; type: 'preview' | 'content'; filename: string };
 	}>();
 
-	let dropZone: HTMLElement;
-	let isDragOver = false;
-	let isUploading = false;
-	let showFileNameDialog = false;
+	let dropZone: HTMLElement | undefined = $state();
+	let isDragOver = $state(false);
+	let isUploading = $state(false);
+	let showFileNameDialog = $state(false);
 	let pendingFile: File | null = null;
 
 	function handleDragOver(event: DragEvent) {
@@ -102,17 +106,18 @@
 	}
 </script>
 
-<svelte:document on:paste={handlePaste} />
+<svelte:document onpaste={handlePaste} />
 
 {#if dev}
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		bind:this={dropZone}
 		class="relative rounded-lg border-2 border-dashed border-gray-300 p-8 text-center transition-colors {isDragOver
 			? 'border-blue-500 bg-blue-50'
 			: 'border-gray-300 hover:border-gray-400'}"
-		on:dragover={handleDragOver}
-		on:dragleave={handleDragLeave}
-		on:drop={handleDrop}
+		ondragover={handleDragOver}
+		ondragleave={handleDragLeave}
+		ondrop={handleDrop}
 	>
 		{#if isUploading}
 			<div class="flex items-center justify-center">
@@ -157,7 +162,7 @@
 						type="file"
 						accept="image/*"
 						class="hidden"
-						on:change={handleFileInput}
+						onchange={handleFileInput}
 					/>
 				</div>
 			</div>

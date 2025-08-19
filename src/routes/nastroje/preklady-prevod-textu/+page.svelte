@@ -3,8 +3,8 @@
 	import IconClipboardDocument from '$lib/icon/IconClipboardDocument.svelte';
 	import MainPost from '$lib/mainPost/MainPost.svelte';
 
-	let value = "Text to translation key\nHello world's.";
-	let textarea: HTMLTextAreaElement;
+	let value = $state("Text to translation key\nHello world's.");
+	let textarea: HTMLTextAreaElement | undefined = $state();
 
 	function camelize(str: string) {
 		return str
@@ -34,7 +34,7 @@
 		lines = lines;
 	}
 
-	$: lines = convertToTranslations(value);
+	let lines = $derived(convertToTranslations(value));
 
 	const title = 'Převod textu na překlady';
 	const description = 'Ze zadaného textu vytvoří automaticky překladové klíče';
@@ -47,12 +47,14 @@
 
 <MainPost noImage {title} {description} />
 
-<textarea bind:value bind:this={textarea} on:focus={() => textarea.select()} rows="10" cols="50"
+<textarea bind:value bind:this={textarea} onfocus={() => textarea?.select()} rows="10" cols="50"
 ></textarea>
 
 <div class="inline-flex">
-	<Button on:click={() => navigator.clipboard.writeText(lines.join('\n'))}>
-		<IconClipboardDocument slot="icon" />
+	<Button onclick={() => navigator.clipboard.writeText(lines.join('\n'))}>
+		{#snippet icon()}
+			<IconClipboardDocument />
+		{/snippet}
 		Zkopírovat překlady
 	</Button>
 </div>
@@ -63,7 +65,7 @@
 	{#each lines as line, index}
 		<code class="flex items-center gap-1">
 			<div class="select-none">
-				<Button on:click={() => remove(index)} small>×</Button>
+				<Button onclick={() => remove(index)} small>×</Button>
 			</div>
 			{line}
 		</code>

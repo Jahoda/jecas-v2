@@ -4,13 +4,17 @@
 	import ImageGallery from './ImageGallery.svelte';
 	import { createEventDispatcher } from 'svelte';
 
-	export let slug: string;
+	interface Props {
+		slug: string;
+	}
+
+	let { slug }: Props = $props();
 
 	const dispatch = createEventDispatcher<{
 		insertImage: { path: string; filename: string };
 	}>();
 
-	let uploadStatus = '';
+	let uploadStatus = $state('');
 
 	async function handleUpload(
 		event: CustomEvent<{ file: File; type: 'preview' | 'content'; filename: string }>

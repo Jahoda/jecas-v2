@@ -1,11 +1,16 @@
 <script lang="ts">
 	import type { Tag } from '$lib/tag/tags';
 
-	export let title: Tag['name'];
-	export let background: Tag['background'];
-	export let color: Tag['color'];
-	export let href: Tag['url_slug'] | null = null;
-	export let small = false;
+	interface Props {
+		title: Tag['name'];
+		background: Tag['background'];
+		color: Tag['color'];
+		href?: Tag['url_slug'] | null;
+		small?: boolean;
+		children?: import('svelte').Snippet;
+	}
+
+	let { title, background, color, href = null, small = false, children }: Props = $props();
 </script>
 
 <svelte:element
@@ -21,5 +26,5 @@
 	>
 		{title}
 	</div>
-	<slot />
+	{@render children?.()}
 </svelte:element>

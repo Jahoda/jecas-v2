@@ -10,9 +10,13 @@
 	import HeroPost from '$lib/mainPost/HeroPost.svelte';
 	import ImageUploadManager from '$lib/imageUpload/ImageUploadManager.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: post = data.page || data.tag;
+	let { data }: Props = $props();
+
+	let post = $derived(data.page || data.tag);
 </script>
 
 <svelte:head>

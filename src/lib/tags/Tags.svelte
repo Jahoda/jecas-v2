@@ -2,8 +2,12 @@
 	import type { Tag } from '$lib/tag/tags';
 	import TagItem from '$lib/tag/TagItem.svelte';
 
-	export let tags: Tag[];
-	export let small = false;
+	interface Props {
+		tags: Tag[];
+		small?: boolean;
+	}
+
+	let { tags, small = false }: Props = $props();
 </script>
 
 <div class="flex flex-wrap {small ? 'gap-2' : 'gap-4'}">

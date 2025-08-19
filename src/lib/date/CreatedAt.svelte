@@ -1,12 +1,18 @@
 <script lang="ts">
-	export let date: Date;
-	export let small = false;
+	interface Props {
+		date: Date;
+		small?: boolean;
+	}
 
-	$: formatedDate = new Date(date).toLocaleDateString('cs-CZ', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric'
-	});
+	let { date, small = false }: Props = $props();
+
+	let formatedDate = $derived(
+		new Date(date).toLocaleDateString('cs-CZ', {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric'
+		})
+	);
 </script>
 
 <div class="flex flex-shrink-0 items-center gap-2">

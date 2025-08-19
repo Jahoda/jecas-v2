@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let wordCount: number;
+	interface Props {
+		wordCount: number;
+	}
+
+	let { wordCount }: Props = $props();
 
 	function pluralize(count: number, singular: string, plural: string, many: string) {
 		return count === 1 ? singular : count > 4 ? many : plural;

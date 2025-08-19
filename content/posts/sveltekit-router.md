@@ -291,7 +291,7 @@ export const isCurrent = derived([page], ([$page]) => {
 
 <p>SvelteKit k tomu má funkci <code>goto</code>.</p>
 
-<pre><code>&lt;button on:click="{() => goto(route('/blog/[slug]', { slug: 'prvni-clanek' }))}">
+<pre><code>&lt;button onclick="{() => goto(route('/blog/[slug]', { slug: 'prvni-clanek' }))}">
   Tlačítko
 &lt;/button></code></pre>
 

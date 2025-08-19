@@ -1,11 +1,19 @@
 <script lang="ts">
-	export let slug: string;
-	export let lazy = true;
+	import { run } from 'svelte/legacy';
 
-	let postImageUrl: string | null = null;
+	interface Props {
+		slug: string;
+		lazy?: boolean;
+	}
+
+	let { slug, lazy = true }: Props = $props();
+
+	let postImageUrl: string | null = $state(null);
 
 	//$: postImageUrl = `https://upipiocepvscgharpdkz.supabase.co/storage/v1/object/public/post-thumbnails/${slug}.png`;
-	$: postImageUrl = `/files/article/${slug}.png`;
+	run(() => {
+		postImageUrl = `/files/article/${slug}.png`;
+	});
 </script>
 
 <img

@@ -5,22 +5,41 @@
 	import type { Tag } from '$lib/tag/tags';
 	import Tags from '$lib/tags/Tags.svelte';
 
-	export let title: string;
-	export let description: string;
-	export let date: Date | null = null;
-	export let href: string | null = null;
-	export let background: string | null = null;
-	export let tags: Tag[] | null = null;
-	export let small = false;
-	export let neutral = false;
-	export let selected = false;
-	export let noImage = false;
-	export let wordCount: number | null = null;
-	export let lazy = true;
+	interface Props {
+		title: string;
+		description: string;
+		date?: Date | null;
+		href?: string | null;
+		background?: string | null;
+		tags?: Tag[] | null;
+		small?: boolean;
+		neutral?: boolean;
+		selected?: boolean;
+		noImage?: boolean;
+		wordCount?: number | null;
+		lazy?: boolean;
+	}
 
-	$: tagsColors = tags?.map((tag) => tag.background).filter((color) => color) || [];
+	let {
+		title,
+		description,
+		date = null,
+		href = null,
+		background = null,
+		tags = null,
+		small = false,
+		neutral = false,
+		selected = false,
+		noImage = false,
+		wordCount = null,
+		lazy = true
+	}: Props = $props();
 
-	$: backgroundGradient = `linear-gradient(to right top, ${tagsColors.join(',')}, #5b63b9)`;
+	let tagsColors = $derived(tags?.map((tag) => tag.background).filter((color) => color) || []);
+
+	let backgroundGradient = $derived(
+		`linear-gradient(to right top, ${tagsColors.join(',')}, #5b63b9)`
+	);
 </script>
 
 <div

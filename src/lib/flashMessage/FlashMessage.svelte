@@ -3,9 +3,14 @@
 	import IconCheckCircle from '$lib/icon/IconCheckCircle.svelte';
 	import IconXMark from '$lib/icon/IconXMark.svelte';
 
-	export let error = false;
+	interface Props {
+		error?: boolean;
+		children?: import('svelte').Snippet;
+	}
 
-	let hide = false;
+	let { error = false, children }: Props = $props();
+
+	let hide = $state(false);
 
 	function handleClose() {
 		hide = true;
@@ -24,13 +29,13 @@
 		>
 			<div class="flex gap-2">
 				<IconCheckCircle />
-				<slot />
+				{@render children?.()}
 			</div>
 
 			<button
 				aria-label="Zavřít"
 				class="{error ? 'hover:bg-red-100' : 'hover:bg-green-100'} rounded-sm transition-colors"
-				on:click={handleClose}
+				onclick={handleClose}
 			>
 				<IconXMark />
 			</button>

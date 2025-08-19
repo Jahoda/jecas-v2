@@ -4,8 +4,12 @@
 	import type { Post } from '$lib/post/post';
 	import type { Tag } from '$lib/tag/tags';
 
-	export let post: Post;
-	export let tags: Tag[];
+	interface Props {
+		post: Post;
+		tags: Tag[];
+	}
+
+	let { post, tags }: Props = $props();
 
 	function stripTags(str: string) {
 		return str.replace(/(<([^>]+)>)/gi, '');

@@ -1,11 +1,32 @@
 <script lang="ts">
-	export let href: string | null = null;
-	export let arrow = false;
-	export let xSmall = false;
-	export let small = false;
-	export let large = false;
-	export let disabled = false;
-	export let type: 'button' | 'submit' | 'reset' = 'button';
+	import { createBubbler } from 'svelte/legacy';
+
+	const bubble = createBubbler();
+	interface Props {
+		href?: string | null;
+		arrow?: boolean;
+		xSmall?: boolean;
+		small?: boolean;
+		large?: boolean;
+		disabled?: boolean;
+		type?: 'button' | 'submit' | 'reset';
+		icon?: import('svelte').Snippet;
+		children?: import('svelte').Snippet;
+		onclick?: () => void;
+	}
+
+	let {
+		href = null,
+		arrow = false,
+		xSmall = false,
+		small = false,
+		large = false,
+		disabled = false,
+		type = 'button',
+		icon,
+		children,
+		onclick
+	}: Props = $props();
 </script>
 
 <svelte:element
@@ -24,12 +45,12 @@
 				? 'px-5 py-4'
 				: 'px-4 py-2'} leading-5 {xSmall ? 'text-sm font-normal' : 'font-semibold'} text-white"
 	{type}
-	on:click
-	on:keypress
+	{onclick}
+	onkeypress={bubble('keypress')}
 >
-	<slot name="icon" />
+	{@render icon?.()}
 
-	<slot />
+	{@render children?.()}
 
 	{#if arrow}
 		<svg

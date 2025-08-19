@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import PostImage from '$lib/postImage/PostImage.svelte';
 	import ReadingTime from '$lib/readingTime/ReadingTime.svelte';
@@ -6,27 +8,43 @@
 	import Tags from '$lib/tags/Tags.svelte';
 	import { postGradient } from './postGradient';
 
-	export let title: string;
-	export let description: string;
-	export let date: Date | null = null;
-	export let href: string | null = null;
-	export let tags: Tag[] | null = null;
-	export let small = false;
-	export let neutral = false;
-	export let noImage = false;
-	export let background: string | null = null;
-	export let isTag = false;
-	export let wordCount: number | null = null;
+	interface Props {
+		title: string;
+		description: string;
+		date?: Date | null;
+		href?: string | null;
+		tags?: Tag[] | null;
+		small?: boolean;
+		neutral?: boolean;
+		noImage?: boolean;
+		background?: string | null;
+		isTag?: boolean;
+		wordCount?: number | null;
+	}
 
-	let backgroundGradient: string | null = null;
+	let {
+		title,
+		description,
+		date = null,
+		href = null,
+		tags = null,
+		small = false,
+		neutral = false,
+		noImage = false,
+		background = null,
+		isTag = false,
+		wordCount = null
+	}: Props = $props();
 
-	$: {
+	let backgroundGradient: string | null = $state(null);
+
+	run(() => {
 		if (isTag) {
 			backgroundGradient = `linear-gradient(to right top, ${background}, #5b63b9)`;
 		} else if (tags) {
 			backgroundGradient = postGradient(tags);
 		}
-	}
+	});
 </script>
 
 <div

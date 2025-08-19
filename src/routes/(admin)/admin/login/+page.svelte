@@ -6,7 +6,11 @@
 	import Input from '$lib/input/Input.svelte';
 	import type { ActionData } from './$types';
 
-	export let form: ActionData;
+	interface Props {
+		form: ActionData;
+	}
+
+	let { form }: Props = $props();
 
 	const redirectTo = $page.url.searchParams.get('redirect') || '/admin';
 </script>

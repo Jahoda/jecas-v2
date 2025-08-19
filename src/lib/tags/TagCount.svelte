@@ -1,10 +1,14 @@
 <script lang="ts">
 	import type { Tag } from '$lib/tag/tags';
 
-	export let tag: Tag;
-	export let max: number;
+	interface Props {
+		tag: Tag;
+		max: number;
+	}
 
-	$: percent = ((tag.count || 0) / max) * 100;
+	let { tag, max }: Props = $props();
+
+	let percent = $derived(((tag.count || 0) / max) * 100);
 </script>
 
 <a href={tag.url_slug} class="group relative flex overflow-hidden rounded-md">

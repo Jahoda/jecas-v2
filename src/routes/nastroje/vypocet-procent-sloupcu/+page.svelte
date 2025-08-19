@@ -5,7 +5,7 @@
 	import IconTrash from '$lib/icon/IconTrash.svelte';
 	import MainPost from '$lib/mainPost/MainPost.svelte';
 
-	let items = [834, 306];
+	let items = $state([834, 306]);
 
 	function sum(arr: number[]) {
 		return arr.reduce((acc, cur) => acc + cur, 0);
@@ -45,10 +45,12 @@
 						{calcPercent(item)}
 					</p>
 
-					<input type="number" bind:value={item} />
+					<input type="number" bind:value={items[index]} />
 
-					<Button on:click={() => handleRemove(index)}>
-						<IconTrash slot="icon" />
+					<Button onclick={() => handleRemove(index)}>
+						{#snippet icon()}
+							<IconTrash />
+						{/snippet}
 						Smazat
 					</Button>
 				</div>
@@ -58,8 +60,10 @@
 </div>
 
 <div class="m-auto max-w-xs">
-	<Button on:click={handleAdd}>
-		<IconPlusCircle slot="icon" />
+	<Button onclick={handleAdd}>
+		{#snippet icon()}
+			<IconPlusCircle />
+		{/snippet}
 		Přidat sloupec
 	</Button>
 </div>

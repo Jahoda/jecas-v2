@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let name: string;
+	interface Props {
+		name: string;
+	}
+
+	let { name }: Props = $props();
 
 	function hashCode(str: string) {
 		let hash = 0;
@@ -21,8 +25,8 @@
 
 	const parts = name.split(' ');
 
-	$: first = parts[0] ? parts[0][0] : '';
-	$: second = parts[1] ? parts[1][0] : '';
+	let first = $derived(parts[0] ? parts[0][0] : '');
+	let second = $derived(parts[1] ? parts[1][0] : '');
 </script>
 
 <div

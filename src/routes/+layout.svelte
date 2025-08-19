@@ -8,6 +8,11 @@
 	import { inject } from '@vercel/analytics';
 
 	import { onNavigate } from '$app/navigation';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
@@ -32,7 +37,7 @@
 </div>
 
 <main class="relative z-10">
-	<slot />
+	{@render children?.()}
 </main>
 
 <div class="bg -mt-72 h-72 w-full opacity-20">

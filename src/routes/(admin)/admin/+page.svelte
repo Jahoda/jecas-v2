@@ -12,7 +12,11 @@
 	import TagItem from '$lib/tag/TagItem.svelte';
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 </script>
 
 <svelte:head>
@@ -22,7 +26,9 @@
 <Container verticalSpace>
 	<div class="flex items-center gap-4">
 		<Button href="/admin/post/new" large>
-			<IconPlus slot="icon" />
+			{#snippet icon()}
+				<IconPlus />
+			{/snippet}
 			Nový článek
 		</Button>
 		<Button href="/admin/logout">Logout</Button>
@@ -33,7 +39,9 @@
 			label="Hledat"
 			bind:value={$searchText}
 		>
-			<IconMagnifyingGlass slot="icon" />
+			{#snippet icon()}
+				<IconMagnifyingGlass />
+			{/snippet}
 		</Input>
 	</div>
 
@@ -61,7 +69,9 @@
 						</div>
 
 						<Button href="/admin/tag/new">
-							<IconPlusCircle slot="icon" />
+							{#snippet icon()}
+								<IconPlusCircle />
+							{/snippet}
 							Nový tag
 						</Button>
 					</div>

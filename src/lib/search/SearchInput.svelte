@@ -1,9 +1,16 @@
 <script lang="ts">
+	import { createBubbler } from 'svelte/legacy';
+
+	const bubble = createBubbler();
 	import Kbd from '$lib/kbd/Kbd.svelte';
 	import { createEventDispatcher } from 'svelte';
 	import SearchIcon from './SearchIcon.svelte';
 
-	export let query: string;
+	interface Props {
+		query: string;
+	}
+
+	let { query = $bindable() }: Props = $props();
 
 	const searchExamples = [
 		'svg',
@@ -32,7 +39,7 @@
 	<label for="search">
 		<SearchIcon />
 	</label>
-	<!-- svelte-ignore a11y-autofocus -->
+	<!-- svelte-ignore a11y_autofocus -->
 	<input
 		autocomplete="off"
 		autocorrect="off"
@@ -46,10 +53,10 @@
 		name="search"
 		class="flex h-12 flex-1 border-none outline-none focus:ring-0 dark:bg-slate-800"
 		placeholder={`např. ${getRandomItem(searchExamples)}`}
-		on:input
+		oninput={bubble('input')}
 	/>
 
-	<button class="flex" on:click={handleEscClick}>
+	<button class="flex" onclick={handleEscClick}>
 		<Kbd>ESC</Kbd>
 	</button>
 </div>

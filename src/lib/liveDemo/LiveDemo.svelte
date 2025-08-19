@@ -6,15 +6,19 @@
 	import IconCopy from '$lib/icon/IconCopy.svelte';
 	import IconCheckCircle from '$lib/icon/IconCheckCircle.svelte';
 
-	export let content = 'default content';
+	interface Props {
+		content?: string;
+	}
 
-	let isShowSource = false;
+	let { content = 'default content' }: Props = $props();
+
+	let isShowSource = $state(false);
 
 	function handleToggleSource() {
 		isShowSource = !isShowSource;
 	}
 
-	$: sourceCode = content.replace(/^\n/g, '');
+	let sourceCode = $derived(content.replace(/^\n/g, ''));
 
 	function handleCopyToClipboard() {
 		navigator.clipboard.writeText(sourceCode);
@@ -25,12 +29,14 @@
 		}, 2000);
 	}
 
-	let isCopied = false;
+	let isCopied = $state(false);
 </script>
 
 <div class="absolute top-0 right-0">
-	<Button xSmall on:click={handleToggleSource}>
-		<IconCode slot="icon" />
+	<Button xSmall onclick={handleToggleSource}>
+		{#snippet icon()}
+			<IconCode />
+		{/snippet}
 		{#if isShowSource}
 			Skrýt zdroj
 		{:else}
@@ -44,14 +50,14 @@
 {#if isShowSource}
 	<div class="relative pt-4" transition:slide={{ duration: 200 }}>
 		<div class="absolute top-10 right-0 m-1">
-			<Button xSmall on:click={handleCopyToClipboard}>
-				<svelte:fragment slot="icon">
+			<Button xSmall onclick={handleCopyToClipboard}>
+				{#snippet icon()}
 					{#if isCopied}
 						<IconCheckCircle />
 					{:else}
 						<IconCopy />
 					{/if}
-				</svelte:fragment>
+				{/snippet}
 				{#if isCopied}
 					Zkopírováno
 				{:else}

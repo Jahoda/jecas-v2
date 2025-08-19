@@ -1,17 +1,25 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { searchText } from '$lib/adminSearch/adminSearch';
 	import Box from '$lib/box/Box.svelte';
 	import Button from '$lib/button/Button.svelte';
 	import type { Post } from '$lib/post/post';
 
-	export let title: string;
-	export let posts: Post[];
+	interface Props {
+		title: string;
+		posts: Post[];
+	}
 
-	let filtredPosts: Post[] = [];
+	let { title, posts }: Props = $props();
 
-	$: filtredPosts = posts.filter((post) =>
-		post.title.toLowerCase().includes($searchText.toLowerCase())
-	);
+	let filtredPosts: Post[] = $state([]);
+
+	run(() => {
+		filtredPosts = posts.filter((post) =>
+			post.title.toLowerCase().includes($searchText.toLowerCase())
+		);
+	});
 </script>
 
 <Box>

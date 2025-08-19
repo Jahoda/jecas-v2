@@ -6,7 +6,11 @@
 	import ShowAll from '$lib/showAll/ShowAll.svelte';
 	import type { CommentContent } from './comment';
 
-	export let comment: CommentContent;
+	interface Props {
+		comment: CommentContent;
+	}
+
+	let { comment }: Props = $props();
 </script>
 
 <div class="flex gap-4 text-sm">

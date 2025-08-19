@@ -1,9 +1,13 @@
 <script lang="ts">
 	import type { Tag } from '$lib/tag/tags';
 
-	export let tag: Tag;
-	export let size: 'sm' | 'md' | 'lg' = 'md';
-	export let showCount = false;
+	interface Props {
+		tag: Tag;
+		size?: 'sm' | 'md' | 'lg';
+		showCount?: boolean;
+	}
+
+	let { tag, size = 'md', showCount = false }: Props = $props();
 
 	const sizeClasses = {
 		sm: 'px-2 py-1 text-xs',

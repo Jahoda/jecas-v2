@@ -1,10 +1,19 @@
 <script lang="ts">
-	export let value: string;
-	export let name: string;
-	export let label: string;
-	export let required: boolean = false;
-	let className: string = '';
-	export { className as class };
+	interface Props {
+		value: string;
+		name: string;
+		label: string;
+		required?: boolean;
+		class?: string;
+	}
+
+	let {
+		value = $bindable(),
+		name,
+		label,
+		required = false,
+		class: className = ''
+	}: Props = $props();
 </script>
 
 <div>

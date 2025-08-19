@@ -3,9 +3,13 @@
 	import type { Post } from '$lib/post/post';
 	import type { Tag } from '$lib/tag/tags';
 
-	export let posts: Post[];
-	export let tags: Tag[] = [];
-	export let pagesTags: Record<string, string[]> = {};
+	interface Props {
+		posts: Post[];
+		tags?: Tag[];
+		pagesTags?: Record<string, string[]>;
+	}
+
+	let { posts, tags = [], pagesTags = {} }: Props = $props();
 </script>
 
 <div class="grid-cols-repeat-48 grid gap-4 md:gap-8">

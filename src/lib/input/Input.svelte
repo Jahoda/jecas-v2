@@ -1,25 +1,44 @@
 <script lang="ts">
-	export let value: string | null = null;
-	export let name: string;
-	export let label: string;
-	export let showLabel = true;
-	export let placeholder: string | null = null;
-	export let disabled: boolean = false;
-	export let required: boolean = false;
-	export let full: boolean = false;
-	export let type:
-		| 'text'
-		| 'password'
-		| 'email'
-		| 'number'
-		| 'tel'
-		| 'url'
-		| 'search'
-		| 'date'
-		| 'time'
-		| 'datetime-local'
-		| 'month'
-		| 'week' = 'text';
+	import { createBubbler } from 'svelte/legacy';
+
+	const bubble = createBubbler();
+	interface Props {
+		value?: string | null;
+		name: string;
+		label: string;
+		showLabel?: boolean;
+		placeholder?: string | null;
+		disabled?: boolean;
+		required?: boolean;
+		full?: boolean;
+		type?:
+			| 'text'
+			| 'password'
+			| 'email'
+			| 'number'
+			| 'tel'
+			| 'url'
+			| 'search'
+			| 'date'
+			| 'time'
+			| 'datetime-local'
+			| 'month'
+			| 'week';
+		icon?: import('svelte').Snippet;
+	}
+
+	let {
+		value = $bindable(null),
+		name,
+		label,
+		showLabel = true,
+		placeholder = null,
+		disabled = false,
+		required = false,
+		full = false,
+		type = 'text',
+		icon
+	}: Props = $props();
 </script>
 
 <div>
@@ -30,11 +49,11 @@
 	{/if}
 
 	<div class="relative">
-		{#if $$slots.icon}
+		{#if icon}
 			<div
 				class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"
 			>
-				<slot name="icon" />
+				{@render icon?.()}
 			</div>
 		{/if}
 		<input
@@ -47,9 +66,9 @@
 			class="rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600 {full
 				? 'w-full'
 				: ''}
-            {$$slots.icon ? 'pl-10' : ''}"
+            {icon ? 'pl-10' : ''}"
 			{required}
-			on:input
+			oninput={bubble('input')}
 		/>
 	</div>
 </div>

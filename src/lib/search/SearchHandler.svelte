@@ -1,17 +1,19 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import SearchInput from '$lib/search/SearchInput.svelte';
 
 	import { searchQueryAlgolia, type HitPost } from '$lib/search/searchQueryAlgolia';
 	import SearchResults from '$lib/search/SearchResults.svelte';
 
-	let query = '';
-	let result: HitPost[] = [];
+	let query = $state('');
+	let result: HitPost[] = $state([]);
 
-	$: {
+	run(() => {
 		searchQueryAlgolia(query).then((response: any) => {
 			result = response.results?.[0]?.hits || response.hits || [];
 		});
-	}
+	});
 </script>
 
 <div class="px-3">

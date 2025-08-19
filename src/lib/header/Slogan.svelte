@@ -3,7 +3,7 @@
 
 	const loadingPhrases = ['webů', 'aplikací', 'formulářů', 'v JavaScriptu'];
 
-	let phraseIndex = 0;
+	let phraseIndex = $state(0);
 
 	function changePhrase() {
 		phraseIndex = (phraseIndex + 1) % loadingPhrases.length;

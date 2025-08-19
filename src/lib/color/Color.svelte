@@ -1,7 +1,12 @@
 <script lang="ts">
-	export let value: string;
-	export let name: string;
-	export let label: string;
+	interface Props {
+		value: string;
+		name: string;
+		label: string;
+		children?: import('svelte').Snippet;
+	}
+
+	let { value = $bindable(), name, label, children }: Props = $props();
 </script>
 
 <div>
@@ -11,7 +16,7 @@
 	<div class="flex items-center gap-2">
 		<input type="color" id={name} {name} class="h-10" bind:value />
 
-		<slot />
+		{@render children?.()}
 	</div>
 </div>
 

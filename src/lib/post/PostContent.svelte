@@ -1,12 +1,16 @@
 <script lang="ts">
-	import { afterUpdate } from 'svelte';
 	import { mount } from 'svelte';
 	import { toggle, toggleClass, zkopirovat } from '$lib/post/utils';
 	import LiveDemo from '$lib/liveDemo/LiveDemo.svelte';
+	import { afterNavigate } from '$app/navigation';
 
-	export let content: string;
+	interface Props {
+		content: string;
+	}
 
-	let postContent: HTMLDivElement;
+	let { content }: Props = $props();
+
+	let postContent: HTMLDivElement | undefined = $state();
 
 	function attachLiveCode() {
 		if (postContent) {
@@ -25,7 +29,7 @@
 		}
 	}
 
-	afterUpdate(() => {
+	afterNavigate(() => {
 		window.toggleClass = toggleClass;
 		window.toggle = toggle;
 		window.zkopirovat = zkopirovat;

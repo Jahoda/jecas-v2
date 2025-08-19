@@ -1,12 +1,18 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { onMount } from 'svelte';
+	import { afterNavigate } from '$app/navigation';
 
-	export let slug: string;
+	interface Props {
+		slug: string;
+	}
 
-	let headlines: TocHeadlineType[];
-	let loaded = false;
+	let { slug }: Props = $props();
+
+	let headlines: TocHeadlineType[] | undefined = $state();
 	let observer: IntersectionObserver;
-	let intersectingId: string | null = null;
+	let intersectingId: string | null = $state(null);
 
 	interface TocHeadlineType {
 		id: string;
@@ -41,19 +47,13 @@
 		}
 	}
 
-	onMount(() => {
-		loaded = true;
+	afterNavigate(() => {
 		initObserver();
+		headlines = getHeadlinesFromPage();
 	});
-
-	$: {
-		if (loaded) {
-			(slug, (headlines = getHeadlinesFromPage()));
-		}
-	}
 </script>
 
-{#if headlines?.length > 0}
+{#if headlines && headlines.length > 0}
 	<div class="inline-flex flex-col rounded-xl bg-black/10 p-4 dark:bg-white/10">
 		<ul class="space-y-1">
 			{#each headlines as headline}
