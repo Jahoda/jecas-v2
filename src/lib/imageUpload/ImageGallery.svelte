@@ -24,7 +24,7 @@
 	}
 
 	function copyImagePath(path: string) {
-		navigator.clipboard.writeText(`<img src="${path}" class="border" alt="" />`);
+		navigator.clipboard.writeText(`<p><img src="${path}" class="border" alt="" /></p>`);
 	}
 
 	onMount(() => {
