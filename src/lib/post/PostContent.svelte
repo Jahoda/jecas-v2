@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { mount } from 'svelte';
+	import { mount, onMount } from 'svelte';
 	import { toggle, toggleClass, zkopirovat } from '$lib/post/utils';
 	import LiveDemo from '$lib/liveDemo/LiveDemo.svelte';
 	import { afterNavigate } from '$app/navigation';
@@ -14,7 +14,7 @@
 
 	function attachLiveCode() {
 		if (postContent) {
-			const liveElements = postContent.querySelectorAll('.live');
+			const liveElements = postContent.querySelectorAll<HTMLDivElement>('.live');
 
 			liveElements.forEach((element) => {
 				const content = element.innerHTML;
@@ -22,6 +22,7 @@
 				mount(LiveDemo, {
 					target: element,
 					props: {
+						liveContainer: element,
 						content: content
 					}
 				});
@@ -29,11 +30,13 @@
 		}
 	}
 
-	afterNavigate(() => {
+	onMount(() => {
 		window.toggleClass = toggleClass;
 		window.toggle = toggle;
 		window.zkopirovat = zkopirovat;
+	});
 
+	afterNavigate(() => {
 		attachLiveCode();
 	});
 </script>
