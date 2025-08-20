@@ -23,18 +23,6 @@ const funkce = async () => {
   // nějaký kód, co se spustí po 5000 ms
 }</code></pre>
 
-<h2 id="pouziti-v-async-await">Použití v async/await</h2>
-
-<pre><code>const main = async () => {
-  console.log('Začátek')
-  await sleep(2000)
-  console.log('Po 2 sekundách')
-  await sleep(1000)
-  console.log('Po další 1 sekundě')
-}
-
-main()</code></pre>
-
 <h2 id="alternativni-implementace">Alternativní implementace</h2>
 
 <h3 id="sleep-s-reject-moznosti">Sleep s reject možností</h3>
@@ -49,6 +37,30 @@ main()</code></pre>
       }
     }, ms)
   })
+}</code></pre>
+
+<p>Užitečné pro simulaci chybových stavů nebo testování error handlingu:</p>
+
+<pre><code>const testErrorHandling = async () => {
+  try {
+    await sleep(2000, true) // simuluje chybu po 2 sekundách
+    console.log('Toto se nevypíše')
+  } catch (error) {
+    console.log('Zachycena chyba:', error.message)
+  }
+}
+
+// Použití pro testování timeoutů
+const simulateTimeout = async () => {
+  const timeoutPromise = sleep(5000, true)
+  const dataPromise = fetch('/api/data')
+  
+  try {
+    const result = await Promise.race([dataPromise, timeoutPromise])
+    return result
+  } catch (error) {
+    console.log('Timeout nebo chyba:', error.message)
+  }
 }</code></pre>
 
 <h3 id="sleep-s-moznosti-zruseni">Sleep s možností zrušení</h3>
@@ -79,16 +91,6 @@ setTimeout(() => sleepPromise.abort(), 2000) // zruší sleep po 2s</code></pre>
   return { success: true, data }
 }</code></pre>
 
-<h3 id="animace-s-delay">Animace s delay</h3>
-
-<pre><code>const animateElement = async (element) => {
-  element.style.opacity = '0'
-  await sleep(500)
-  element.style.opacity = '1'
-  element.style.transform = 'scale(1.1)'
-  await sleep(200)
-  element.style.transform = 'scale(1)'
-}</code></pre>
 
 <h3 id="sekvencni-zpracovani">Sekvenční zpracování</h3>
 
@@ -100,6 +102,139 @@ setTimeout(() => sleepPromise.abort(), 2000) // zruší sleep po 2s</code></pre>
 }</code></pre>
 
 <p>Často se hodí v případě opakovaného volání cizích API, aby nedošlo k zahlcení a chybě <i>429 Too Many Requests</i>.</p>
+
+
+
+<div class="interactive-demo">
+      <button id="rate-limit-demo" class="demo-btn">Spustit simulaci</button>
+      <div id="rate-limit-output" class="output"></div>
+
+
+<style>
+  .interactive-demo {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  
+  .output {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 15px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    height: 150px;
+    overflow-y: auto;
+    margin-top: 15px;
+    white-space: pre-wrap;
+    line-height: 1.4;
+  }
+</style>
+
+<script>
+  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+  
+  function logToOutput(outputId, message) {
+    const output = document.getElementById(outputId);
+    if (output) {
+      const time = new Date().toLocaleTimeString();
+      output.textContent += `[${time}] ${message}\n`;
+      output.scrollTop = output.scrollHeight;
+    }
+  }
+  
+  function clearOutput(outputId) {
+    const output = document.getElementById(outputId);
+    if (output) {
+      output.textContent = '';
+    }
+  }
+  
+  // Inicializace při načtení stránky
+  document.addEventListener('DOMContentLoaded', () => {
+    const rateLimitBtn = document.getElementById('rate-limit-demo');
+    
+    if (rateLimitBtn) {
+      rateLimitBtn.addEventListener('click', async () => {
+        clearOutput('rate-limit-output');
+        
+        const simulateApiCall = async (endpoint) => {
+          logToOutput('rate-limit-output', `🌐 Volám ${endpoint}...`);
+          await sleep(500 + Math.random() * 1000);
+          logToOutput('rate-limit-output', `✅ ${endpoint} dokončeno`);
+        };
+        
+        logToOutput('rate-limit-output', '🚀 Spouštím simulaci API volání s rate limiting...');
+        
+        await simulateApiCall('/api/users');
+        logToOutput('rate-limit-output', '⏳ Čekám 1s před dalším voláním (rate limiting)...');
+        await sleep(1000);
+        
+        await simulateApiCall('/api/posts');
+        logToOutput('rate-limit-output', '⏳ Čekám 1s před dalším voláním (rate limiting)...');
+        await sleep(1000);
+        
+        await simulateApiCall('/api/comments');
+        logToOutput('rate-limit-output', '🎉 Všechna API volání dokončena!');
+        logToOutput('rate-limit-output', '💡 Rate limiting pomohl vyhnout se chybě 429 Too Many Requests');
+      });
+    }
+  });
+</script>
+</div>
+
+<p>Při lokalizaci jedné aplikace po jednotlivých částech přes OpenAI API používám sleep pro přidávání prodlevy mezi requesty, když dojde k chybě 429. Tím se vyhnu zahlcení API a zajistím plynulé zpracování celé aplikace.</p>
+
+<h3 id="dynamicky-sleep">Dynamický sleep</h3>
+
+<p>S hodnotou prodlevy si jde pohrát tak, aby se dynamicky měnila podle odpovědi ze serveru, tj. se prodlužovala při neúspěchu.</p>
+
+<pre><code>const translateWithDynamicRetry = async (text, targetLanguage) => {
+  let retryCount = 0
+  let baseDelay = 1000
+  
+  while (retryCount < 5) {
+    try {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: [{
+            role: 'user',
+            content: `Přelož tento text do ${targetLanguage}: ${text}`
+          }]
+        })
+      })
+      
+      if (response.status === 429) {
+        const delay = baseDelay * Math.pow(2, retryCount)
+        
+        console.log(`Rate limit dosažen, čekám ${delay}ms (pokus ${retryCount + 1})`)
+        await sleep(delay)
+        retryCount++
+        continue
+      }
+      
+      return await response.json()
+    } catch (error) {
+      console.error('Chyba při překladu:', error)
+      retryCount++
+      await sleep(baseDelay * Math.pow(2, retryCount))
+    }
+  }
+  
+  throw new Error('Překročen maximální počet pokusů')
+}</code></pre>
+
+<p>Některé API vrací <code>Retry-After</code> hlavičku s doporučeným časem čekání. Pokud je k disposici, může se použít.</p>
+
 
 <h2 id="pozor-na-blokovani">Pozor na blokování</h2>
 
@@ -149,4 +284,4 @@ Konec (po 3 sekundách)</code></pre>
   <li>Debugging a testování</li>
 </ul>
 
-<p>Doporučuji používat <code>async</code>/<code>await</code> zápis pro čitelnější kód a lepší zpracovávání chyb.</p>
+<p>Doporučuji používat <code>async</code>/<code>await</code> zápis pro čitelnější kód a lepší zpracování chyb.</p>
