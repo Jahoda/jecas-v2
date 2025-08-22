@@ -3,7 +3,7 @@
 
 	const bubble = createBubbler();
 	interface Props {
-		value?: string | null;
+		value?: string | null | number;
 		name: string;
 		label: string;
 		showLabel?: boolean;
@@ -25,6 +25,8 @@
 			| 'month'
 			| 'week';
 		icon?: import('svelte').Snippet;
+		min?: number;
+		max?: number;
 	}
 
 	let {
@@ -37,7 +39,9 @@
 		required = false,
 		full = false,
 		type = 'text',
-		icon
+		icon,
+		min,
+		max
 	}: Props = $props();
 </script>
 
@@ -69,6 +73,8 @@
             {icon ? 'pl-10' : ''}"
 			{required}
 			oninput={bubble('input')}
+			{min}
+			{max}
 		/>
 	</div>
 </div>

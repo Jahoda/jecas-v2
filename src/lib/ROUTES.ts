@@ -18,6 +18,7 @@ const PAGES = {
   },
   "/archiv": `/archiv`,
   "/nastroje/preklady-prevod-textu": `/nastroje/preklady-prevod-textu`,
+  "/nastroje/prevod-svg": `/nastroje/prevod-svg`,
   "/nastroje/vypocet-procent-sloupcu": `/nastroje/vypocet-procent-sloupcu`
 }
 
@@ -155,7 +156,7 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/admin': never, '/admin/login': never, '/admin/logout': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/vypocet-procent-sloupcu': never }
+  PAGES: { '/': never, '/admin': never, '/admin/login': never, '/admin/logout': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/prevod-svg': never, '/nastroje/vypocet-procent-sloupcu': never }
   SERVERS: { 'GET /algolia': never, 'GET /api/images/[slug]': 'slug', 'GET /api/og': never, 'POST /api/upload': never, 'GET /rss': never, 'GET /sitemap.xml': never }
   ACTIONS: { 'default /admin/login': never, 'default /admin/logout': never }
   LINKS: Record<string, never>

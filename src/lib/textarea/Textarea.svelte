@@ -5,6 +5,7 @@
 		label: string;
 		required?: boolean;
 		class?: string;
+		placeholder?: string;
 	}
 
 	let {
@@ -12,7 +13,8 @@
 		name,
 		label,
 		required = false,
-		class: className = ''
+		class: className = '',
+		placeholder = ''
 	}: Props = $props();
 </script>
 
@@ -27,6 +29,7 @@
 		id={name}
 		class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600 {className}"
 		{required}
+		{placeholder}
 	></textarea>
 </div>
 

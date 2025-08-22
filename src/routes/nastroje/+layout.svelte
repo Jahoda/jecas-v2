@@ -8,7 +8,7 @@
 </script>
 
 <Container verticalSpace>
-	<div class="grid grid-cols-1 gap-9">
+	<div class="mx-auto grid max-w-7xl grid-cols-1 gap-9">
 		{@render children?.()}
 	</div>
 </Container>
