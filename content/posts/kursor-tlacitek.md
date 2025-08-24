@@ -9,7 +9,9 @@ tags: ["css", "odkazy", "ux"]
 format: "html"
 ---
 
-<p>Otázka, která rozděluje webové vývojáře na dva tábory. Jedni tvrdí, že tlačítka by měla mít <code>cursor: pointer</code>, druzí že je to zbytečné. Kde je pravda?</p>
+<p>Existuje názor, že tlačítka by měla mít <code>cursor: pointer</code>. Stejně tak existuje pohled, že je to zbytečné.</p>
+
+<p>Kde je pravda?</p>
 
 <h2 id="standardni-chovani-prohlizecu">Standardní chování prohlížečů</h2>
 
