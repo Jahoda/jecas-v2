@@ -4,7 +4,7 @@ headline: "Shadow DOM"
 description: "Shadow DOM je technologie, která umožňuje vytvářet zapouzdřené komponenty s izolovaným CSS a JavaScriptem. Podíváme se na to, jak funguje a jak ji využít."
 date: "2018-10-29"
 last_modification: "2018-10-29"
-status: 1
+status: 0
 tags: ["shadow-dom", "web-components", "css", "javascript", "html"]
 format: "markdown"
 ---
