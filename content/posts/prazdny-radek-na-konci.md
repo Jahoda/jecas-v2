@@ -11,19 +11,19 @@ format: "html"
 
 <p>Je zažitá představa, že by textové soubory měly končit prázdným řádkem.</p>
 
-<p>Asi každý programátor se setkal s tím, že to někomu psal při <i>code review</i>. Nebo naopak to někdo psal jemu.</p>
+<p>Asi každý programátor se setkal s tím, že to někomu psal při <i>code review</i>. Nebo to naopak někdo psal jemu.</p>
 
 <p>Má to ale opodstatnění?</p>
 
 <h2 id="unix-standard">Unix standard</h2>
-<p>Podle <a href="https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap03.html#tag_03_387">POSIX standardu</a> by každý textový soubor měl končit znakem nového řádku. Tento standard definuje, že textový soubor je posloupnost řádků, kde každý řádek končí znakem nového řádku.</p>
+<p>Podle <a href="https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap03.html#tag_03_387">POSIX standardu</a> by každý textový soubor měl končit znakem nového řádku. Přesněji řečeno standard definuje, že textový soubor je posloupnost řádků, kde každý řádek končí znakem nového řádku.</p>
 
 <h2 id="praxe">Chování v praxi</h2>
 <p>Situace, kdy by absence prázdného řádku na konci souboru způsobovala reálné problémy, je spíše raritní.</p>
 
 <h3 id="spojeni">Spojování souborů</h3>
 
-<p>Problém může být v tom, že nějaké nástroje mohou počítat s chováním dle standardu a tak spoléhat na to, že na konci souboru bude prázdný řádek.</p>
+<p>Problém může být v tom, že nějaké nástroje mohou počítat s chováním dle standardu, a tak spoléhat na to, že na konci souboru bude prázdný řádek.</p>
 
 <p>Třeba při spojování souborů při nedodržení standardu se může stát, že se řádky slijí dohromady:</p>
 
@@ -43,7 +43,7 @@ format: "html"
 
 <p>Podobně může vyjít špatný počet řádků, pokud se budou počítat podle konce řádků, který ale na konci souboru nebude.</p>
 
-<h3 id="git">Git a verzování</h3>
+<h3 id="git">Git a versování</h3>
 <p>Git sám o sobě automaticky nepřidává prázdný řádek na konec souborů, ale zobrazuje varování, když soubor nekončí novým řádkem:</p>
 
 <pre><code class="language-bash">\ No newline at end of file</code></pre>
