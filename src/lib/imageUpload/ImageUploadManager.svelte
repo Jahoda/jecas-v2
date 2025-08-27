@@ -15,6 +15,7 @@
 	}>();
 
 	let uploadStatus = $state('');
+	let isExpanded = $state(false);
 
 	async function handleUpload(
 		event: CustomEvent<{ file: File; type: 'preview' | 'content'; filename: string }>
@@ -89,57 +90,77 @@
 	}
 </script>
 
-<div class="mb-8 rounded-lg border border-yellow-200 bg-yellow-50 p-6">
-	<h3 class="mb-4 text-lg font-semibold text-yellow-800">Nahrávání obrázků (Dev režim)</h3>
-
-	<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-		<div>
-			<h4 class="mb-2 font-medium text-yellow-700">Náhledový obrázek</h4>
-			<p class="mb-3 text-sm text-yellow-600">
-				Bude uložen jako <code class="rounded bg-yellow-100 px-1"
-					>static/files/article/{slug}.png</code
-				>
-			</p>
-			<ImageUpload {slug} type="preview" on:upload={handleUpload} />
-		</div>
-
-		<div>
-			<h4 class="mb-2 font-medium text-yellow-700">Obrázek ke článku</h4>
-			<p class="mb-3 text-sm text-yellow-600">
-				Bude uložen jako <code class="rounded bg-yellow-100 px-1"
-					>static/files/{slug}/[timestamp]-[nazev].png</code
-				>
-			</p>
-			<ImageUpload
-				{slug}
-				type="content"
-				on:upload={handleUpload}
-				on:insertImage={handleInsertImage}
-			/>
-		</div>
-	</div>
-
-	{#if uploadStatus}
-		<div
-			class="mt-4 rounded-md p-3 {uploadStatus.startsWith('✅')
-				? 'bg-green-100 text-green-800'
-				: uploadStatus.startsWith('❌')
-					? 'bg-red-100 text-red-800'
-					: 'bg-blue-100 text-blue-800'}"
+{#if dev}
+	<div class="mb-4 rounded-md border border-gray-200 bg-gray-50">
+		<button
+			onclick={() => (isExpanded = !isExpanded)}
+			class="flex w-full items-center justify-between p-3 text-left text-sm font-medium text-gray-700 hover:bg-gray-100"
 		>
-			{uploadStatus}
-		</div>
-	{/if}
+			<span>📷 Nahrávání obrázků</span>
+			<svg
+				class="h-4 w-4 transition-transform {isExpanded ? 'rotate-180' : ''}"
+				fill="none"
+				stroke="currentColor"
+				viewBox="0 0 24 24"
+			>
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+			</svg>
+		</button>
 
-	<div class="mt-4 text-xs text-yellow-600">
-		<p>
-			<strong>Tip:</strong> Pro vložení obrázku do článku použijte Ctrl+V nebo přetáhněte soubor do zóny
-			výše.
-		</p>
-		<p>
-			Markdown kód bude automaticky vložen do aktivního textového pole nebo zkopírován do schránky.
-		</p>
+		{#if isExpanded}
+			<div class="border-t border-gray-200 p-4">
+				<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+					<div>
+						<h4 class="mb-2 text-sm font-medium text-gray-700">Náhledový obrázek</h4>
+						<p class="mb-2 text-xs text-gray-600">
+							Uloží se jako <code class="rounded bg-gray-100 px-1"
+								>static/files/article/{slug}.png</code
+							>
+						</p>
+						<ImageUpload {slug} type="preview" on:upload={handleUpload} />
+					</div>
+
+					<div>
+						<h4 class="mb-2 text-sm font-medium text-gray-700">Obrázek ke článku</h4>
+						<p class="mb-2 text-xs text-gray-600">
+							Uloží se jako <code class="rounded bg-gray-100 px-1"
+								>static/files/{slug}/[timestamp]-[nazev].png</code
+							>
+						</p>
+						<ImageUpload
+							{slug}
+							type="content"
+							on:upload={handleUpload}
+							on:insertImage={handleInsertImage}
+						/>
+					</div>
+				</div>
+
+				{#if uploadStatus}
+					<div
+						class="mt-3 rounded-md p-2 text-sm {uploadStatus.startsWith('✅')
+							? 'bg-green-100 text-green-800'
+							: uploadStatus.startsWith('❌')
+								? 'bg-red-100 text-red-800'
+								: 'bg-blue-100 text-blue-800'}"
+					>
+						{uploadStatus}
+					</div>
+				{/if}
+
+				<div class="mt-3 text-xs text-gray-600">
+					<p>
+						<strong>Tip:</strong> Pro vložení obrázku použijte Ctrl+V nebo přetáhněte soubor do zóny
+						výše.
+					</p>
+					<p>
+						Markdown kód bude automaticky vložen do aktivního textového pole nebo zkopírován do
+						schránky.
+					</p>
+				</div>
+			</div>
+		{/if}
 	</div>
-</div>
 
-<ImageGallery {slug} />
+	<ImageGallery {slug} />
+{/if}

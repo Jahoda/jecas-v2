@@ -112,8 +112,8 @@
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		bind:this={dropZone}
-		class="relative rounded-lg border-2 border-dashed border-gray-300 p-8 text-center transition-colors {isDragOver
-			? 'border-blue-500 bg-blue-50'
+		class="relative rounded-md border-2 border-dashed border-gray-300 p-4 text-center transition-colors {isDragOver
+			? 'border-blue-400 bg-blue-50'
 			: 'border-gray-300 hover:border-gray-400'}"
 		ondragover={handleDragOver}
 		ondragleave={handleDragLeave}
@@ -121,14 +121,14 @@
 	>
 		{#if isUploading}
 			<div class="flex items-center justify-center">
-				<div class="h-8 w-8 animate-spin rounded-full border-b-2 border-blue-500"></div>
-				<span class="ml-2 text-gray-600">Nahrávám...</span>
+				<div class="h-6 w-6 animate-spin rounded-full border-b-2 border-blue-500"></div>
+				<span class="ml-2 text-sm text-gray-600">Nahrávám...</span>
 			</div>
 		{:else}
-			<div class="space-y-4">
-				<div class="text-gray-600">
+			<div class="space-y-2">
+				<div class="text-gray-500">
 					<svg
-						class="mx-auto h-12 w-12 text-gray-400"
+						class="mx-auto h-8 w-8 text-gray-400"
 						stroke="currentColor"
 						fill="none"
 						viewBox="0 0 48 48"
@@ -142,18 +142,18 @@
 					</svg>
 				</div>
 				<div>
-					<p class="text-lg font-medium text-gray-900">
+					<p class="text-sm font-medium text-gray-700">
 						{type === 'preview' ? 'Náhledový obrázek' : 'Obrázek ke článku'}
 					</p>
-					<p class="text-sm text-gray-500">Přetáhněte obrázek sem nebo klikněte pro výběr</p>
-					<p class="mt-2 text-xs text-gray-400">
-						Podporováno: PNG, JPG, GIF, WebP | Paste ze schránky: Ctrl+V
+					<p class="text-xs text-gray-500">Přetáhněte obrázek sem nebo klikněte pro výběr</p>
+					<p class="mt-1 text-xs text-gray-400">
+						PNG, JPG, GIF, WebP | Ctrl+V pro vložení ze schránky
 					</p>
 				</div>
 				<div>
 					<label
 						for="file-upload-{type}"
-						class="cursor-pointer rounded-md bg-blue-500 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-600"
+						class="cursor-pointer rounded bg-blue-500 px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-blue-600"
 					>
 						Vybrat soubor
 					</label>
