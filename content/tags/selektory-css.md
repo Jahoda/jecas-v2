@@ -1,7 +1,7 @@
 ---
 title: "CSS selektory"
 headline: null
-background: "null"
+background: "#0271BB"
 color: "null"
 status: 0
 ---
