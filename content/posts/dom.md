@@ -28,10 +28,11 @@ format: "html"
 
 <div class="live">
   <div>
-    <script>document.write("<p>Odstavec vypsaný skriptem</p>");</script>
-    <p>Odstavec v HTML
+  <div>
+    <p>Odstavec v HTML</p>
   </div>  
   <button onclick="alert(this.parentNode.getElementsByTagName('div')[0].innerHTML)">Výsledný zdrojový kód</button>
+  </div> 
 </div>
 
 
