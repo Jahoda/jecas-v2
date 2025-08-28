@@ -9,6 +9,7 @@
 	import type { PageData } from './$types';
 	import HeroPost from '$lib/mainPost/HeroPost.svelte';
 	import ImageUploadManager from '$lib/imageUpload/ImageUploadManager.svelte';
+	import { sanizite } from '$lib/xml/xml';
 
 	interface Props {
 		data: PageData;
@@ -21,11 +22,11 @@
 
 <svelte:head>
 	<title>{post && 'title' in post ? post.title : post?.name}</title>
-	<meta name="description" content={post && 'description' in post ? post.description : ''} />
+	<meta name="description" content={post && 'description' in post ? sanizite(post.description) : ''} />
 	{#if data.page}
 		<meta property="og:url" content={`https://jecas.cz/${data.page.url_slug}`} />
 		<meta property="og:title" content={data.page.title} />
-		<meta property="og:description" content={data.page.description} />
+		<meta property="og:description" content={sanizite(data.page.description)} />
 		<meta
 			property="og:image"
 			content={`https://jecas.cz/files/article/${data.page.url_slug}.png`}
