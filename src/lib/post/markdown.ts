@@ -99,6 +99,24 @@ export async function getAllDrafts(limit: number | null = null): Promise<Markdow
 	return getAllPosts(limit, 0);
 }
 
+export async function getFuturePosts(limit: number | null = null): Promise<MarkdownPost[]> {
+	const postFiles = getPostFiles();
+
+	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
+
+	const now = new Date();
+	const futurePosts = posts
+		.filter((post) => {
+			return post.status === 1 && getEffectiveModificationDate(post) > now;
+		})
+		.sort(
+			(a, b) =>
+				getEffectiveModificationDate(a).getTime() - getEffectiveModificationDate(b).getTime()
+		);
+
+	return limit ? futurePosts.slice(0, limit) : futurePosts;
+}
+
 export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
 	const posts: MarkdownPost[] = [];
 	const now = new Date();

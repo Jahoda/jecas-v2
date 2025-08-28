@@ -47,7 +47,7 @@
 
 	<div class="mt-8"></div>
 
-	<div class="grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-3">
+	<div class="grid grid-cols-1 gap-8 lg:grid-cols-4">
 		<div>
 			<AdminPostList title="Koncepty" posts={data.drafts} />
 		</div>
@@ -56,6 +56,13 @@
 				<SkeletonLoader />
 			{:then posts}
 				<AdminPostList title="Poslední články" {posts} />
+			{/await}
+		</div>
+		<div>
+			{#await data.optional.futurePosts}
+				<SkeletonLoader />
+			{:then futurePosts}
+				<AdminPostList title="Budoucí články" posts={futurePosts} />
 			{/await}
 		</div>
 		<div>

@@ -56,6 +56,11 @@ export async function getAllDrafts(limit: number | null = null): Promise<Post[]>
 	return await getMarkdownDrafts(limit);
 }
 
+export async function getFuturePosts(limit: number | null = null): Promise<Post[]> {
+	const { getFuturePosts: getMarkdownFuturePosts } = await import('./markdown');
+	return await getMarkdownFuturePosts(limit);
+}
+
 export async function getPostsBySlug(slugs: string[]): Promise<Post[]> {
 	return await getMarkdownPostsBySlug(slugs);
 }
