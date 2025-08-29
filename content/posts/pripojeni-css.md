@@ -34,7 +34,7 @@ header("Link: &lt;styl.css>; rel=stylesheet");
   <li><strong>Nefunguje v Internet Exploreru</strong> – žádná verze IE nepodporuje <code>Link</code> hlavičku pro CSS</li>
   <li><strong>Vyžaduje server-side kód</strong> – nelze použít na statických stránkách</li>
   <li><strong>Omezené možnosti</strong> – nelze použít <a href="/media">media queries</a> nebo podmíněné načítání</li>
-  <li><strong>Cache problémy</strong> – obtížnější správa cache oproti <code>&lt;link&gt;</code> elementu</li>
+  <li><strong>Cache management na straně serveru</strong> – cache musí být řízena na serveru, což může být méně praktické než u <code>&lt;link&gt;</code> elementu</li>
 </ul>
 
 <h2 id="externi-soubor">Externí soubor</h2>
