@@ -3,9 +3,9 @@ title: "SvelteKit API dostupné z cizí domény"
 headline: "SvelteKit API dostupné z cizí domény"
 description: "Jak povolit přístup na API vytvořené ve SvelteKitu z jiné domény."
 date: "2023-02-16"
-last_modification: "2023-02-16"
-status: 0
-tags: []
+last_modification: "2025-08-30"
+status: 1
+tags: ["js"]
 format: "html"
 ---
 
