@@ -22,7 +22,10 @@
 
 <svelte:head>
 	<title>{post && 'title' in post ? post.title : post?.name}</title>
-	<meta name="description" content={post && 'description' in post ? sanizite(post.description) : ''} />
+	<meta
+		name="description"
+		content={post && 'description' in post ? sanizite(post.description) : ''}
+	/>
 	{#if data.page}
 		<meta property="og:url" content={`https://jecas.cz/${data.page.url_slug}`} />
 		<meta property="og:title" content={data.page.title} />
