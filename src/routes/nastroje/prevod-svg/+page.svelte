@@ -416,15 +416,14 @@
 			<h3 class="text-lg font-semibold">Jak používat</h3>
 			<div class="grid grid-cols-1 gap-3 text-sm text-gray-700">
 				<p>
-					1. <strong>Nahrajte SVG soubor</strong> - klikněte na tlačítko pro výběr souboru a vyberte
+					1. <strong>Nahrajte SVG soubor</strong> – klikněte na tlačítko pro výběr souboru a vyberte
 					.svg soubor
 				</p>
 				<p>
-					2. <strong>Nebo vložte SVG text</strong> - zkopírujte SVG kód a vložte ho do textového pole
+					2. <strong>Nebo vložte SVG text</strong> – zkopírujte SVG kód a vložte ho do textového pole
 				</p>
-				<p>3. <strong>Nastavte parametry</strong> - zvolte šířku, výšku a barvu pozadí</p>
-				<p>4. <strong>Převeďte</strong> - klikněte na tlačítko "Převést do PNG"</p>
-				<p>5. <strong>Stáhněte</strong> - po převodu můžete obrázek stáhnout</p>
+				<p>3. <strong>Nastavte parametry</strong> – zvolte šířku, výšku a barvu pozadí</p>
+				<p>4. <strong>Stáhněte</strong> – po převodu můžete obrázek stáhnout</p>
 			</div>
 		</div>
 	</Box>
