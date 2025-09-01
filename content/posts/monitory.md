@@ -5,7 +5,7 @@ description: "Jakou konfiguraci monitorů zvolit pro co nejefektivnější vývo
 date: "2020-05-20"
 last_modification: "2025-09-01"
 status: 1
-tags: []
+tags: ["produktivita"]
 format: "html"
 ---
 
