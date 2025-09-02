@@ -1,0 +1,117 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="leftGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:0.2" />
+    </linearGradient>
+    
+    <linearGradient id="rightGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="1" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  
+  <!-- Title -->
+  <text x="600" y="80" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="48" font-weight="bold">SPA vs. Klasický web</text>
+  <text x="600" y="120" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="24">Dynamické načítání obsahu</text>
+  
+  <!-- Left side - Traditional Web -->
+  <rect x="100" y="180" width="400" height="300" rx="20" fill="url(#leftGradient)" stroke="#dc2626" stroke-width="3"/>
+  <text x="300" y="220" text-anchor="middle" fill="#dc2626" font-family="Arial, sans-serif" font-size="28" font-weight="bold">Klasický web (SSR)</text>
+  
+  <!-- Traditional web structure -->
+  <rect x="130" y="250" width="340" height="60" rx="8" fill="#dc2626" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
+  <text x="300" y="270" text-anchor="middle" fill="#dc2626" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Header + Navigation</text>
+  
+  <rect x="130" y="320" width="340" height="120" rx="8" fill="#dc2626" opacity="0.8" stroke="#dc2626" stroke-width="2"/>
+  <text x="300" y="340" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Hlavní obsah</text>
+  <text x="300" y="360" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14">Stránka 1 → Stránka 2 → Stránka 3</text>
+  <text x="300" y="380" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14">Každá navigace = kompletní reload</text>
+  
+  <rect x="130" y="450" width="340" height="60" rx="8" fill="#dc2626" opacity="0.3" stroke="#dc2626" stroke-width="2"/>
+  <text x="300" y="470" text-anchor="middle" fill="#dc2626" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Footer</text>
+  
+  <!-- Refresh arrows showing complete reload -->
+  <path d="M 300 520 L 300 530 L 310 530 L 300 540 L 290 530 L 300 530" fill="#dc2626" stroke="#dc2626" stroke-width="3"/>
+  <text x="300" y="560" text-anchor="middle" fill="#dc2626" font-family="Arial, sans-serif" font-size="16" font-weight="bold">🔄 Kompletní obnovení</text>
+  
+  <!-- Right side - SPA -->
+  <rect x="700" y="180" width="400" height="300" rx="20" fill="url(#rightGradient)" stroke="#3b82f6" stroke-width="3"/>
+  <text x="900" y="220" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="28" font-weight="bold">SPA (Single Page App)</text>
+  
+  <!-- SPA structure - layout stays the same -->
+  <rect x="730" y="250" width="340" height="60" rx="8" fill="#3b82f6" opacity="0.3" stroke="#3b82f6" stroke-width="2"/>
+  <text x="900" y="270" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Header + Navigation (statické)</text>
+  
+  <!-- Content area with changing content -->
+  <rect x="730" y="320" width="340" height="120" rx="8" fill="#3b82f6" opacity="0.8" stroke="#3b82f6" stroke-width="2"/>
+  <text x="900" y="340" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Hlavní obsah (dynamický)</text>
+  
+  <!-- Content switching animation -->
+  <rect x="750" y="360" width="80" height="30" rx="4" fill="white" opacity="0.9">
+    <animate attributeName="opacity" values="0.9;0.3;0.9" dur="2s" repeatCount="indefinite"/>
+  </rect>
+  <text x="790" y="380" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Stránka 1</text>
+  
+  <rect x="850" y="360" width="80" height="30" rx="4" fill="white" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite" begin="0.7s"/>
+  </rect>
+  <text x="890" y="380" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Stránka 2</text>
+  
+  <rect x="950" y="360" width="80" height="30" rx="4" fill="white" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite" begin="1.4s"/>
+  </rect>
+  <text x="990" y="380" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Stránka 3</text>
+  
+  <text x="900" y="400" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14">Layout zůstává, mění se jen obsah</text>
+  
+  <rect x="730" y="450" width="340" height="60" rx="8" fill="#3b82f6" opacity="0.3" stroke="#3b82f6" stroke-width="2"/>
+  <text x="900" y="470" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Footer (statický)</text>
+  
+  <!-- Smooth transition arrow -->
+  <path d="M 900 520 Q 900 530 900 530" fill="none" stroke="#3b82f6" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="900" y="560" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="16" font-weight="bold">⚡ Částečné načítání</text>
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3b82f6"/>
+    </marker>
+  </defs>
+  
+  <!-- Center divider -->
+  <line x1="600" y1="180" x2="600" y2="480" stroke="#475569" stroke-width="4" stroke-dasharray="10,5"/>
+  <text x="600" y="520" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="36" font-weight="bold">VS</text>
+  
+  <!-- JavaScript logo -->
+  <circle cx="600" cy="150" r="25" fill="#f7df1e"/>
+  <text x="600" y="160" text-anchor="middle" fill="black" font-family="Arial, sans-serif" font-size="20" font-weight="bold">JS</text>
+  
+  <!-- Bottom comparison -->
+  <text x="300" y="590" text-anchor="middle" fill="#dc2626" font-family="Arial, sans-serif" font-size="16">• Načítá se celá stránka</text>
+  <text x="900" y="590" text-anchor="middle" fill="#3b82f6" font-family="Arial, sans-serif" font-size="16">• Načítá se jen obsah</text>
+  
+  <!-- Tech icons -->
+  <rect x="50" y="50" width="40" height="40" rx="8" fill="#dc2626" opacity="0.8"/>
+  <text x="70" y="75" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">🔄</text>
+  
+  <rect x="1110" y="50" width="40" height="40" rx="8" fill="#10b981" opacity="0.8"/>
+  <text x="1130" y="75" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">⚡</text>
+</svg>
