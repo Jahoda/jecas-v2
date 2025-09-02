@@ -18,3 +18,14 @@ export function sanizite(str: string) {
 		return '';
 	}
 }
+
+export function htmlToPlainText(html: string): string {
+	if (!html) return '';
+
+	return stripTags(html)
+		.replace(/&lt;/g, '<')
+		.replace(/&gt;/g, '>')
+		.replace(/&amp;/g, '&')
+		.replace(/&quot;/g, '"')
+		.replace(/&#039;/g, "'");
+}
