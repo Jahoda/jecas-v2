@@ -5,7 +5,7 @@ description: "Jak vytvořit obsahový web s dynamickým načítání obsahu bez 
 date: "2025-09-03"
 last_modification: "2025-09-03"
 status: 1
-tags: []
+tags: ["js", "napady"]
 format: "html"
 ---
 
