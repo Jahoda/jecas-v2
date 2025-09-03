@@ -64,4 +64,4 @@ export const handle = (async ({ event, resolve }) => {
 }) satisfies Handle;
 </code></pre>
 
-
+<p>Pro otestování se hodí nástroj <a href="https://cors-test.codehappy.dev">CORS Tester</a>.</p>
