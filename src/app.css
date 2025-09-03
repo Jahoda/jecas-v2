@@ -99,6 +99,27 @@
 	padding-left: 24px;
 }
 
+.note {
+	@apply relative overflow-hidden py-px rounded-xl border border-lochmara-200 bg-gradient-to-br from-lochmara-50 to-lochmara-100 p-6 dark:border-lochmara-700 dark:from-lochmara-900/50 dark:to-lochmara-800/50;
+}
+
+.note::before {
+	@apply absolute -left-2 -top-2 pl-1 pt-1 h-8 w-8 rounded-full bg-gradient-to-br from-lochmara-400 to-lochmara-600 text-white shadow-md;
+	content: "💡";
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+}
+
+.note p {
+	@apply text-lochmara-900 dark:text-lochmara-100;
+}
+
+.note strong {
+	@apply text-lochmara-800 dark:text-lochmara-50;
+}
+
 .prose a[href^='https://kod.djpw.cz']:not(.button)
 {
 	background: url('/external-favicons/kod.djpw.cz.ico') no-repeat left 2px center;
