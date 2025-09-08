@@ -15,7 +15,10 @@
 	let backgroundColor = $state('#ffffff');
 	let showCheckerboard = $state(true);
 	let exportTransparent = $state(true);
+	let outputFormat = $state<'png' | 'jpeg' | 'webp'>('png');
+	let imageQuality = $state(0.92);
 	let outputImage = $state<string | null>(null);
+	let estimatedBytes = $state<number | null>(null);
 	let isConverting = $state(false);
 	let error = $state('');
 	let sanitizationNotes = $state<string[]>([]);
@@ -56,6 +59,12 @@
 	}
 
 	function handleDimensionChange() {
+		if (svgText.trim() || svgFile) {
+			convertSvgToPng();
+		}
+	}
+
+	function handleOutputOptionsChange() {
 		if (svgText.trim() || svgFile) {
 			convertSvgToPng();
 		}
@@ -168,6 +177,28 @@
 		}
 	}
 
+	function getOutputSpec() {
+		if (outputFormat === 'jpeg') {
+			return { mime: 'image/jpeg', ext: 'jpg', qualitySupported: true, alphaSupported: false } as const;
+		}
+		if (outputFormat === 'webp') {
+			return { mime: 'image/webp', ext: 'webp', qualitySupported: true, alphaSupported: true } as const;
+		}
+		return { mime: 'image/png', ext: 'png', qualitySupported: false, alphaSupported: true } as const;
+	}
+
+	function formatBytes(bytes: number) {
+		const units = ['B', 'KB', 'MB', 'GB'];
+		let size = bytes;
+		let idx = 0;
+		while (size >= 1024 && idx < units.length - 1) {
+			size = size / 1024;
+			idx++;
+		}
+		const digits = size >= 100 ? 0 : size >= 10 ? 1 : 2;
+		return `${size.toFixed(digits)} ${units[idx]}`;
+	}
+
 	async function convertSvgToPng() {
 		if (isConverting) return;
 
@@ -215,7 +246,15 @@
 
 			img.onload = () => {
 				ctx.drawImage(img, 0, 0, width, height);
-				outputImage = canvas.toDataURL('image/png');
+				const spec = getOutputSpec();
+				const q = spec.qualitySupported ? imageQuality : undefined;
+				outputImage = canvas.toDataURL(spec.mime, q as number | undefined);
+				try {
+					const bin = atob(outputImage.split(',')[1] || '');
+					estimatedBytes = bin.length;
+				} catch (_) {
+					estimatedBytes = null;
+				}
 				URL.revokeObjectURL(url);
 				isConverting = false;
 			};
@@ -288,10 +327,12 @@
 
 			img.onload = () => {
 				ctx.drawImage(img, 0, 0, width, height);
-				const downloadDataUrl = canvas.toDataURL('image/png');
+				const spec = getOutputSpec();
+				const q = spec.qualitySupported ? imageQuality : undefined;
+				const downloadDataUrl = canvas.toDataURL(spec.mime, q as number | undefined);
 
 				const link = document.createElement('a');
-				link.download = 'converted-image.png';
+				link.download = `converted-image.${getOutputSpec().ext}`;
 				link.href = downloadDataUrl;
 				link.click();
 
@@ -390,8 +431,47 @@
 				</div>
 			</div>
 
+
+
 			<div class="text-xs text-gray-600">
 				<p>💡 Rozměry se automaticky detekují z SVG obsahu</p>
+			</div>
+
+			<div class="grid grid-cols-2 gap-4">
+				<div>
+					<label for="format" class="mb-2 block text-sm font-medium">Formát</label>
+					<select
+						id="format"
+						bind:value={outputFormat}
+						onchange={handleOutputOptionsChange}
+						class="w-full rounded-md border border-slate-300 px-3 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
+					>
+						<option value="png">PNG</option>
+						<option value="jpeg">JPEG</option>
+						<option value="webp">WebP</option>
+					</select>
+				</div>
+				<div>
+					<label for="quality" class="mb-2 block text-sm font-medium">Kvalita (JPEG/WebP)</label>
+					<input
+						id="quality"
+						type="range"
+						min="0.1"
+						max="1"
+						step="0.01"
+						bind:value={imageQuality}
+						oninput={handleOutputOptionsChange}
+						class="w-full"
+						disabled={getOutputSpec().qualitySupported === false}
+					/>
+					<p class="text-xs text-gray-600">
+						{#if getOutputSpec().qualitySupported}
+							{Math.round(imageQuality * 100)}%
+						{:else}
+							Nedostupné pro vybraný formát
+						{/if}
+					</p>
+				</div>
 			</div>
 
 			<div>
@@ -479,11 +559,17 @@
 						{#snippet icon()}
 							<IconDownload />
 						{/snippet}
-						Stáhnout PNG
+						{#if outputFormat === 'jpeg'}
+							Stáhnout JPEG
+						{:else if outputFormat === 'webp'}
+							Stáhnout WebP
+						{:else}
+							Stáhnout PNG
+						{/if}
 					</Button>
 
 					<div class="text-sm text-gray-600">
-						<p>Rozměry: {width} × {height} px</p>
+						<p>Rozměry: {width} × {height} px{#if estimatedBytes}&nbsp;•&nbsp;Odhad: {formatBytes(estimatedBytes)}{/if}</p>
 					</div>
 				</div>
 			</div>
