@@ -17,6 +17,7 @@
 	let outputImage = $state<string | null>(null);
 	let isConverting = $state(false);
 	let error = $state('');
+	let sanitizationNotes = $state<string[]>([]);
 
 	let conversionTimeout: ReturnType<typeof setTimeout>;
 
@@ -103,6 +104,52 @@
 		}
 	}
 
+	function sanitizeSvgContent(svgContent: string) {
+		const notes: string[] = [];
+		let content = svgContent.replace(/^\uFEFF/, '').trim();
+		const parser = new DOMParser();
+		let doc = parser.parseFromString(content, 'image/svg+xml');
+		if (doc.querySelector('parsererror')) {
+			const blocks = content.match(/<svg[\s\S]*?<\/svg>/gi);
+			if (blocks && blocks.length) {
+				blocks.sort((a, b) => b.length - a.length);
+				content = blocks[0];
+				notes.push('Zrecyklováno více kořenových <svg> na jeden');
+			} else {
+				content = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">${content}</svg>`;
+				notes.push('Obalen nevalidní obsah do <svg>');
+			}
+			doc = parser.parseFromString(content, 'image/svg+xml');
+		}
+		const root = doc.querySelector('svg');
+		if (!root) return { svg: content, notes };
+		if (!root.getAttribute('xmlns')) {
+			root.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+			notes.push('Doplněn xmlns atribut');
+		}
+		const wAttr = root.getAttribute('width');
+		const hAttr = root.getAttribute('height');
+		const vb = root.getAttribute('viewBox');
+		if ((!wAttr || !hAttr) && vb) {
+			const p = vb.split(/\s+/);
+			if (p.length === 4) {
+				root.setAttribute('width', p[2]);
+				root.setAttribute('height', p[3]);
+				notes.push('Doplněny rozměry z viewBoxu');
+			}
+		}
+		if (!root.getAttribute('width') || !root.getAttribute('height')) {
+			root.setAttribute('width', String(width));
+			root.setAttribute('height', String(height));
+			if (!root.getAttribute('viewBox')) {
+				root.setAttribute('viewBox', `0 0 ${width} ${height}`);
+			}
+			notes.push('Doplněny chybějící rozměry');
+		}
+		const serialized = new XMLSerializer().serializeToString(doc);
+		return { svg: serialized, notes };
+	}
+
 	function drawCheckerboard(ctx: CanvasRenderingContext2D, width: number, height: number) {
 		const tileSize = 20;
 		const lightColor = '#ffffff';
@@ -143,6 +190,10 @@
 				throw new Error('Neplatný SVG obsah');
 			}
 
+			const sanitized = sanitizeSvgContent(svgContent);
+			sanitizationNotes = sanitized.notes;
+			const finalSvg = sanitized.svg;
+
 			const canvas = document.createElement('canvas');
 			const ctx = canvas.getContext('2d');
 			if (!ctx) throw new Error('Nelze vytvořit canvas kontext');
@@ -158,7 +209,7 @@
 			}
 
 			const img = new Image();
-			const svgBlob = new Blob([svgContent], { type: 'image/svg+xml' });
+			const svgBlob = new Blob([finalSvg], { type: 'image/svg+xml' });
 			const url = URL.createObjectURL(svgBlob);
 
 			img.onload = () => {
@@ -215,6 +266,8 @@
 			if (!svgContent.includes('<svg')) {
 				return;
 			}
+			const sanitized = sanitizeSvgContent(svgContent);
+			const finalSvg = sanitized.svg;
 
 			const canvas = document.createElement('canvas');
 			const ctx = canvas.getContext('2d');
@@ -227,7 +280,7 @@
 			ctx.fillRect(0, 0, width, height);
 
 			const img = new Image();
-			const svgBlob = new Blob([svgContent], { type: 'image/svg+xml' });
+			const svgBlob = new Blob([finalSvg], { type: 'image/svg+xml' });
 			const url = URL.createObjectURL(svgBlob);
 
 			img.onload = () => {
@@ -393,6 +446,16 @@
 							class="mx-auto max-h-96 max-w-full rounded"
 						/>
 					</div>
+
+					{#if sanitizationNotes.length}
+						<div class="rounded-lg bg-amber-50 p-3 text-amber-800">
+							<ul class="list-disc pl-5 text-sm">
+								{#each sanitizationNotes as note}
+									<li>{note}</li>
+								{/each}
+							</ul>
+						</div>
+					{/if}
 
 					<Button onclick={downloadImage}>
 						{#snippet icon()}
