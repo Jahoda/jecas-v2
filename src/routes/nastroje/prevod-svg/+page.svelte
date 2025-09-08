@@ -14,6 +14,7 @@
 	let height = $state(600);
 	let backgroundColor = $state('#ffffff');
 	let showCheckerboard = $state(true);
+	let exportTransparent = $state(true);
 	let outputImage = $state<string | null>(null);
 	let isConverting = $state(false);
 	let error = $state('');
@@ -203,7 +204,7 @@
 
 			if (showCheckerboard) {
 				drawCheckerboard(ctx, width, height);
-			} else {
+			} else if (!exportTransparent) {
 				ctx.fillStyle = backgroundColor;
 				ctx.fillRect(0, 0, width, height);
 			}
@@ -276,8 +277,10 @@
 			canvas.width = width;
 			canvas.height = height;
 
-			ctx.fillStyle = backgroundColor;
-			ctx.fillRect(0, 0, width, height);
+			if (!exportTransparent) {
+				ctx.fillStyle = backgroundColor;
+				ctx.fillRect(0, 0, width, height);
+			}
 
 			const img = new Image();
 			const svgBlob = new Blob([finalSvg], { type: 'image/svg+xml' });
@@ -405,6 +408,17 @@
 						<label for="checkerboard" class="text-sm">Šachovnicové pozadí (pouze náhled)</label>
 					</div>
 
+					<div class="flex items-center gap-3">
+						<input
+							type="checkbox"
+							bind:checked={exportTransparent}
+							onchange={handleBackgroundChange}
+							id="transparent-export"
+							class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+						/>
+						<label for="transparent-export" class="text-sm">Exportovat průhledné PNG</label>
+					</div>
+
 					{#if !showCheckerboard}
 						<div class="flex items-center gap-3">
 							<input
@@ -446,6 +460,10 @@
 							class="mx-auto max-h-96 max-w-full rounded"
 						/>
 					</div>
+
+					{#if exportTransparent}
+						<p class="text-xs text-gray-600">Export: průhledné PNG (pozadí se nevyplňuje)</p>
+					{/if}
 
 					{#if sanitizationNotes.length}
 						<div class="rounded-lg bg-amber-50 p-3 text-amber-800">
