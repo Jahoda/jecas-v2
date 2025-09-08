@@ -2,9 +2,9 @@
 title: "Možnosti stylování <iframe>"
 headline: "Možnosti stylování <code>&lt;iframe></code>"
 description: "Co lze a nelze u <code>&lt;iframe></code> ovlivnit pomocí CSS a jak na změnu textu nebo barev."
-date: "2025-09-05"
-last_modification: "2025-09-05"
-status: 0
+date: "2025-09-08"
+last_modification: "2025-09-08"
+status: 1
 tags: ["html", "css", "stylovani", "responsive"]
 format: "html"
 ---
@@ -178,7 +178,7 @@ format: "html"
 
 <h2 id="zoom">Zvětšení/zmenšení obsahu</h2>
 
-<p>Obsah rámu jde vizuálně škálovat pomocí <code>transform: scale</code>. V praxi je vhodné použít obal kvůli ořezu.</p>
+<p>Obsah rámu jde visuálně škálovat pomocí <code>transform: scale</code>. V praxi je vhodné použít obal kvůli ořezu.</p>
 
 <pre><code>.scaled {
   --scale: .9;
@@ -304,6 +304,8 @@ format: "html"
             '  --crop-left: ' + l + 'px;\n' +
             '  position: relative;\n' +
             '  overflow: hidden;\n' +
+            '  width: 100%;\n' +
+            '  aspect-ratio: 16 / 9;\n' +
             '}\n' +
             '.iframe-wrapper iframe {\n' +
             '  position: absolute;\n' +
@@ -344,18 +346,18 @@ format: "html"
 <p>Pro plnou kontrolu vzhledu lze stránku načítat přes vlastní proxy na stejné doméně, vložit do ní vlastní styly a do rámu pak načíst už upravenou verzi.</p>
 
   <ul>
-    <li>výhody: stejné origin, vlastní CSS/skripty, možnost úprav <a href="/dom">DOMu</a></li>
+    <li>výhody: stejný origin, vlastní CSS/skripty, možnost úprav <a href="/dom">DOMu</a></li>
     <li>nevýhody: výkon, údržba, právní/licenční aspekty, CSP, přihlášení</li>
   </ul>
 
 <p>Proxy nemusí fungovat pro weby s přísnou CSP (Content Security Policy) nebo vyžadující přihlášení. Vhodné je mít souhlas.</p>
 
-<p>Proxy je potom jediné řešení pro weby, které blokují načtení do rámu.</p>
+<p>Proxy je i jediné řešení pro weby, které blokují načtení do rámu.</p>
 
 
-<h2 id="shruti">Shrnutí</h2>
+<h2 id="zaver">Závěr</h2>
 
-<p>Stylování <code>&lt;iframe></code> se zaměřuje na prvek samotný – velikost, poměr stran, ořez a vizuální efekty. Do vnitřního obsahu bez sdílené domény zasahovat nelze.</p>
+<p>Stylování <code>&lt;iframe></code> se zaměřuje na prvek samotný – velikost, poměr stran, ořez a visuální efekty. Do vnitřního obsahu cizí stránky zasahovat nelze.</p>
 
 <p>Docílit alespoň nějak jde změny barev přes filtry, zmenšení/zvětšení přes <code>scale</code> a případně oříznout okraje.</p>
 
