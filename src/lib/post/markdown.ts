@@ -25,6 +25,11 @@ export interface PostFrontmatter {
 	tags?: string[];
 }
 
+let postsByFileCache: Map<string, MarkdownPost> | null = null;
+let postsArrayCache: MarkdownPost[] | null = null;
+let postsCacheLastBuilt = 0;
+const POSTS_CACHE_DURATION = 5 * 60 * 1000;
+
 const postModules = import.meta.glob('/content/posts/*.md', {
 	query: '?raw',
 	import: 'default',
@@ -40,6 +45,11 @@ function getEffectiveModificationDate(post: MarkdownPost): Date {
 }
 
 async function parseMarkdownFile(fileName: string): Promise<MarkdownPost> {
+	const now = Date.now();
+	if (postsByFileCache && now - postsCacheLastBuilt < POSTS_CACHE_DURATION) {
+		const cached = postsByFileCache.get(fileName);
+		if (cached) return cached;
+	}
 	const fullPath = `/content/posts/${fileName}`;
 	const fileContent = postModules[fullPath];
 
@@ -72,13 +82,29 @@ async function parseMarkdownFile(fileName: string): Promise<MarkdownPost> {
 	};
 }
 
+async function rebuildAllPosts(): Promise<MarkdownPost[]> {
+	postsByFileCache = new Map();
+	const postFiles = getPostFiles();
+	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
+	posts.forEach((p) => postsByFileCache!.set(`${p.url_slug}.md`, p));
+	postsArrayCache = posts;
+	postsCacheLastBuilt = Date.now();
+	return posts;
+}
+
+async function getAllCachedPosts(): Promise<MarkdownPost[]> {
+	const now = Date.now();
+	if (postsArrayCache && now - postsCacheLastBuilt < POSTS_CACHE_DURATION) {
+		return postsArrayCache;
+	}
+	return await rebuildAllPosts();
+}
+
 export async function getAllPosts(
 	limit: number | null = null,
 	status = 1
 ): Promise<MarkdownPost[]> {
-	const postFiles = getPostFiles();
-
-	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
+	const posts = await getAllCachedPosts();
 
 	const now = new Date();
 	const filteredPosts = posts
@@ -100,9 +126,7 @@ export async function getAllDrafts(limit: number | null = null): Promise<Markdow
 }
 
 export async function getFuturePosts(limit: number | null = null): Promise<MarkdownPost[]> {
-	const postFiles = getPostFiles();
-
-	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
+	const posts = await getAllCachedPosts();
 
 	const now = new Date();
 	const futurePosts = posts
@@ -123,10 +147,8 @@ export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
 
 	for (const slug of slugs) {
 		const fileName = `${slug}.md`;
-		const fullPath = `/content/posts/${fileName}`;
-
-		if (postModules[fullPath]) {
-			const post = await parseMarkdownFile(fileName);
+		if (postModules[`/content/posts/${fileName}`]) {
+			const post = postsByFileCache?.get(fileName) || (await parseMarkdownFile(fileName));
 			// Only include published posts in lists that are not in the future
 			if (post.status === 1 && getEffectiveModificationDate(post) <= now) {
 				posts.push(post);
@@ -139,22 +161,20 @@ export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
 
 export async function getSinglePostBySlug(slug: string): Promise<MarkdownPost | undefined> {
 	const fileName = `${slug}.md`;
-	const fullPath = `/content/posts/${fileName}`;
-
-	if (!postModules[fullPath]) {
+	if (!postModules[`/content/posts/${fileName}`]) {
 		return undefined;
 	}
-
-	return await parseMarkdownFile(fileName);
+	return postsByFileCache?.get(fileName) || (await parseMarkdownFile(fileName));
 }
 
 export async function getPostsCount(): Promise<number> {
-	const posts = await getAllPosts();
-	return posts.length;
+	const posts = await getAllCachedPosts();
+	const now = new Date();
+	return posts.filter((p) => p.status === 1 && getEffectiveModificationDate(p) <= now).length;
 }
 
 export async function getPostsByTag(tagName: string): Promise<MarkdownPost[]> {
-	const allPosts = await getAllPosts();
+	const allPosts = await getAllCachedPosts();
 	return allPosts.filter((post) => post.tags && post.tags.includes(tagName));
 }
 
@@ -204,17 +224,13 @@ export async function getPrevNextPosts(currentSlug: string): Promise<{
 }
 
 export async function getAllUsedTags(): Promise<string[]> {
-	const postFiles = getPostFiles();
+	const posts = await getAllCachedPosts();
 	const allTags = new Set<string>();
 	const now = new Date();
-
-	for (const fileName of postFiles) {
-		const post = await parseMarkdownFile(fileName);
-		// Only include tags from published posts that are not in the future
+	for (const post of posts) {
 		if (post.status === 1 && getEffectiveModificationDate(post) <= now && post.tags) {
 			post.tags.forEach((tag) => allTags.add(tag));
 		}
 	}
-
 	return Array.from(allTags).sort();
 }
