@@ -236,6 +236,8 @@ $slug = strtolower(trim(preg_replace('/[^a-z0-9]+/i', '-', $ascii), '-'));</code
 
 <p>V <b>Cursoru</b> platí stejné příkazy jako ve VS Code.</p>
 
+<p><img src="/files/prevod-velikosti-pismen/konvertovani-velikosti-cursor.png" class="border" alt="" /></p>
+
 
 <h2 id="intellij">Převod velikosti v JetBrains (WebStorm, PhpStorm…)</h2>
 
