@@ -14,7 +14,7 @@
 
 	function attachLiveCode() {
 		if (postContent) {
-			const liveElements = postContent.querySelectorAll<HTMLDivElement>('.live');
+			const liveElements = postContent.querySelectorAll<HTMLDivElement>('.live:not(.no-live)');
 
 			liveElements.forEach((element) => {
 				const content = element.innerHTML;
