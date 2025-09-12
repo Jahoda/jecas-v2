@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <style>
+      .card{fill:#f9fafb;stroke:#e5e7eb}
+      .muted{fill:#6b7280}
+      .title{fill:#111827;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:14px;font-weight:700}
+      .label{fill:#374151;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:10px}
+      .chip{fill:#eef2ff;stroke:#c7d2fe}
+      .chip-text{fill:#3730a3;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:8px}
+      .ok{fill:#10b981}
+      .input{fill:#ffffff;stroke:#d1d5db}
+      .placeholder{fill:#6b7280;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:10px}
+    </style>
+  </defs>
+  <rect x="0" y="0" width="200" height="200" fill="#ffffff"/>
+  <rect x="10" y="12" width="180" height="176" rx="12" class="card"/>
+  <text x="20" y="32" class="title">Lepší formuláře</text>
+  <text x="20" y="45" class="muted" style="font-size:9px">inputmode · autocomplete · enterkeyhint</text>
+
+  <text x="20" y="65" class="label">Email</text>
+  <rect x="20" y="70" width="160" height="26" rx="6" class="input"/>
+  <text x="28" y="87" class="placeholder">email@example.com</text>
+  <circle cx="172" cy="83" r="7" class="ok"/>
+  <path d="M168 83 l3 3 6 -6" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="20" y="108" class="label">Telefon</text>
+  <rect x="20" y="113" width="160" height="26" rx="6" class="input"/>
+  <text x="28" y="130" class="placeholder">+420 123 456 789</text>
+  <circle cx="172" cy="126" r="7" class="ok"/>
+  <path d="M168 126 l3 3 6 -6" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="20" y="151" class="label">Kód</text>
+  <rect x="20" y="156" width="160" height="26" rx="6" class="input"/>
+  <text x="28" y="173" class="placeholder">123 456</text>
+  <circle cx="172" cy="169" r="7" class="ok"/>
+  <path d="M168 169 l3 3 6 -6" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="120" y="52" width="60" height="16" rx="8" class="chip"/>
+  <text x="125" y="64" class="chip-text">type=email</text>
+</svg>

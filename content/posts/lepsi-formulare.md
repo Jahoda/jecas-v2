@@ -3,7 +3,7 @@ title: "Jak na lepší formuláře"
 headline: "Jak na lepší formuláře"
 description: "Jak vytvořit lepší formulář, který se bude návštěvníkům dobře vyplňovat."
 date: "2014-12-01"
-last_modification: "2014-12-01"
+last_modification: "2025-09-12"
 status: 0
 tags: []
 format: "html"
@@ -22,6 +22,8 @@ format: "html"
 
 <p>Tento článek se věnuje zlepšování uživatelského zážitku:</p>
 
+<p><img src="/files/lepsi-formulare/ux-form-200.svg" alt="Ilustrační obrázek: formulář s moderními atributy" class="border" width="200" height="200" /></p>
+
 
 
 <h2 id="typy">Speciální typy políček</h2>
@@ -30,10 +32,14 @@ format: "html"
 
 <p>Například u políčka <code>type="email"</code> zobrazit na klávesnici zavináč, při <code>type="number"</code> zobrazit numerickou klávesnici a podobně.</p>
 
+<p>Pro přesnější ovlivnění klávesnice a chování použijte i atributy <code>inputmode</code> (např. <code>numeric</code>, <code>decimal</code>, <code>tel</code>) a <code>enterkeyhint</code> (např. <code>send</code>, <code>search</code>). Pro lepší autofill nastavte správně <code>autocomplete</code> (např. <code>name</code>, <code>email</code>, <code>street-address</code>, <code>one-time-code</code>).</p>
+
 <div class="external-content">
   <ul>
-    <li><a href="http://inputtypes.com/">INPUT TYPE SANDBOX</a> – nástroj pro snadné vyzkoušení si různých typů</li>
-    <li><a href="http://baymard.com/blog/mobile-touch-keyboards">'Touch Keyboard' Implementations Have Improved Just 9% Since 2013 (60% Still Get it Wrong)</a> – tipy na lepší nastavení klávesnice u dotykových zařízení</li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types">MDN: Typy vstupů</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode">MDN: inputmode</a></li>
+    <li><a href="https://web.dev/learn/forms/">web.dev: Learn Forms</a></li>
+    <li><a href="https://baymard.com/blog/mobile-touch-keyboards">Baymard: Touch keyboards on mobile</a></li>
   </ul>
 </div>
 
@@ -143,10 +149,26 @@ format: "html"
 
 <p>Jistě by bylo zajímavé o uživateli vědět úplně všechno.</p>
 
+<p>Myslete na <b>minimalizaci údajů</b> – sbírejte jen to, co je nezbytné pro daný účel. Z hlediska GDPR je to nejen ohleduplné, ale i povinnost.</p>
+
 
 <h2 id="autocomplete">Automatické vyplňování</h2>
 
 <p>Při použití rozšířených názvů políček dokáže řada prohlížečů automaticky napovídat tyto zapamatované hodnoty.</p>
+
+<p>Správně vyplněný atribut <code>autocomplete</code> výrazně zrychluje vyplňování a snižuje chybovost. Používejte konkrétní tokeny jako <code>name</code>, <code>given-name</code>, <code>family-name</code>, <code>email</code>, <code>tel</code>, <code>street-address</code>, <code>postal-code</code>, <code>country</code>, <code>cc-number</code>, <code>new-password</code>, <code>current-password</code>, <code>one-time-code</code>.</p>
+
+<pre><code>&lt;input type="text" name="name" autocomplete="name">
+&lt;input type="email" name="email" autocomplete="email" inputmode="email">
+&lt;input type="text" name="otp" autocomplete="one-time-code" inputmode="numeric" enterkeyhint="done">
+</code></pre>
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete">MDN: autocomplete</a></li>
+    <li><a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill">WHATWG: Autofill detail</a></li>
+  </ul>
+</div>
 
 
 
@@ -154,7 +176,7 @@ format: "html"
 
 <p>Maskování hesla pomocí hvězdiček vytváří ilusi bezpečnosti a komplikuje zadávání hesla.</p>
 
-<p>Je proto dobré, když jde heslo přepnout do viditelné podoby. Většina prohlížečů to zatím řešit neumí, takže je jim nutné pomoci JavaScriptem.</p>
+<p>Je proto dobré umožnit přepnutí do viditelné podoby. Moderní prohlížeče a správci hesel toto běžně podporují; pokud přidáváte vlastní přepínač, dbejte na přístupnost a nezakazujte vkládání ze schránky. Použijte správné <code>autocomplete</code> tokeny <code>new-password</code> a <code>current-password</code>.</p>
 
 <p>Více o maskování hesel v samostatném článku:</p>
 
@@ -249,37 +271,194 @@ mailcheck.js</a></li>
 <ul>
   <li>seznam.cz</li>
   <li>gmail.com</li>
-  <li>centrum.cz</li>
   <li>email.cz</li>
+  <li>centrum.cz</li>
+  <li>outlook.com</li>
+  <li>icloud.com</li>
+  <li>post.cz</li>
   <li>volny.cz</li>
   <li>azet.sk</li>
   <li>centrum.sk</li>
-  <li>atlas.cz</li>
-  <li>tiscali.cz</li>
-  <li>post.cz</li>
 </ul>
 
 <h2 id="popisky">Popisky formulářových polí</h2>
 
 <div class="external-content">
   <ul>
-    <li><a href="http://codepen.io/chriscoyier/pen/CiflJ">Odjetí popisku mimo</a></li>
+    <li><a href="https://codepen.io/chriscoyier/pen/CiflJ">Odjetí popisku mimo</a></li>
     
-    <li><a href="http://codepen.io/oknoblich/pen/wFGIH">Jiné řešení</a></li>
+    <li><a href="https://codepen.io/oknoblich/pen/wFGIH">Jiné řešení</a></li>
   </ul>
 </div>
+
+<p>Nepoužívejte <b>placeholder</b> jako náhradu za <b>label</b>. Kvůli přístupnosti by měl mít každý prvek formuláře viditelný popisek propojený přes <code>&lt;label for></code>.</p>
+
+
+<h2 id="validace-a-chyby">Validace a chyby</h2>
+
+<ul>
+  <li>Provádějte inline validaci s rozumem. Chyby zobrazujte po opuštění pole nebo při odeslání.</li>
+  <li>Vytvořte přehled chyb nahoře na stránce s odkazy na konkrétní pole.</li>
+  <li>Propojíte pole s chybou pomocí <code>aria-describedby</code> a oznamte změnu přes <code>aria-live</code>.</li>
+</ul>
+
+<div class="live no-source">
+  <form id="demo-form" novalidate>
+    <div role="alert" aria-live="polite" id="error-summary"></div>
+    <p><label for="email-demo">E‑mail</label><br>
+    <input id="email-demo" name="email" type="email" required aria-describedby="email-demo-error" autocomplete="email" inputmode="email"></p>
+    <p id="email-demo-error" class="error" role="alert"></p>
+    <p><button type="submit">Odeslat</button></p>
+  </form>
+</div>
+
+
+<h2 id="pristupnost">Přístupnost</h2>
+
+<ul>
+  <li>Vždy viditelné <code>&lt;label></code>, ne <code>placeholder</code> místo popisku.</li>
+  <li>Skupiny polí obalte do <code>&lt;fieldset></code> s <code>&lt;legend></code>.</li>
+  <li>Zřetelné <code>:focus-visible</code> styly a dostatečný kontrast.</li>
+  <li>Na mobilu cíl nejméně 44×44 px, logické pořadí Tab.</li>
+</ul>
+
+<h3 id="pristupnost-styly">Ukázka stylů focus a chyb</h3>
+<pre><code>input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+.error {
+  color: #dc2626;
+}
+</code></pre>
+
+
+<h2 id="klavesnice-flow">Klávesnice a tok</h2>
+
+<ul>
+  <li>Smysluplné <code>enterkeyhint</code> podle kontextu.</li>
+  <li>Po odeslání zamezit vícenásobnému kliknutí a zobrazit stav odesílání.</li>
+  <li>Po chybě přesunout fokus na první chybné pole.</li>
+</ul>
+
+<pre><code>&lt;input type="search" name="q" enterkeyhint="search" autocomplete="off">
+&lt;input type="email" name="email" autocomplete="email" inputmode="email" enterkeyhint="next">
+</code></pre>
+
+
+<h2 id="i18n-formaty">i18n a formáty</h2>
+
+<ul>
+  <li>Buďte tolerantní k formátům telefonu a PSČ (mezery, pomlčky).</li>
+  <li>Jména a adresy nemají univerzální strukturu. Volte minimum povinných polí.</li>
+  <li>U čísel a dat zvažte lokální formát a jasné příklady hodnot.</li>
+</ul>
+
+
+<h2 id="bezpecnost-prihlaseni">Bezpečnost a přihlášení</h2>
+
+<ul>
+  <li>Podporujte správce hesel a neblokujte vložení ze schránky.</li>
+  <li>U OTP použijte <code>autocomplete="one-time-code"</code> a <code>inputmode="numeric"</code>.</li>
+  <li>Uveďte jasné požadavky na heslo a průběžný indikátor síly.</li>
+</ul>
+
+<pre><code>&lt;input name="otp" autocomplete="one-time-code" inputmode="numeric" enterkeyhint="done" maxlength="6">
+</code></pre>
+
+
+<h2 id="vykon-pe">Výkon a progressive enhancement</h2>
+
+<ul>
+  <li>Preferujte vestavěné HTML validace a Constraint Validation API.</li>
+  <li>Debouncujte náročné asynchronní kontroly (např. dostupnost uživatelského jména).</li>
+  <li>Chyby zobrazujte bez poskakování layoutu.</li>
+</ul>
+
+
+<h2 id="nahravani-souboru">Nahrávání souborů</h2>
+
+<ul>
+  <li>Nastavte <code>accept</code> a limit velikosti, zobrazte náhledy.</li>
+  <li>Podpořte drag&drop a vložení ze schránky.</li>
+  <li>Na mobilu zvažte <code>capture</code> pro fotoaparát/mikrofon.</li>
+</ul>
+
+<pre><code>&lt;input type="file" accept="image/*" multiple capture="environment">
+</code></pre>
+
+
+<h2 id="antispam">Antispam</h2>
+
+<ul>
+  <li>Honeypot a minimální doba vyplnění.</li>
+  <li>Lehké heuristiky místo těžkých CAPTCHA.</li>
+  <li>Serverová validace vždy rozhoduje.</li>
+</ul>
+
+<h3 id="honeypot">Honeypot</h3>
+<div class="live no-source">
+  <form autocomplete="off">
+    <div class="hp">
+      <label for="company">Firma</label>
+      <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+    </div>
+    <p><label for="email-hp">E‑mail</label><br>
+    <input id="email-hp" name="email" type="email" autocomplete="email"></p>
+    <p><button type="submit">Odeslat</button></p>
+  </form>
+</div>
+
+<pre><code>.hp {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+</code></pre>
+
+
+<h2 id="mikrocopy-duvera">Mikrocopy a důvěra</h2>
+
+<ul>
+  <li>Vysvětlete, proč pole potřebujete a jak bude údaj použit.</li>
+  <li>Uveďte příklady hodnot, šetřete povinnými poli.</li>
+  <li>Jasné odkazy na zásady zpracování údajů a souhlasy.</li>
+</ul>
+
+
+<h2 id="mereni">Měření</h2>
+
+<ul>
+  <li>Sledujte opuštění klíčových polí a kroků, optimalizujte na základě dat.</li>
+  <li>Preferujte self‑hosted analytics a agregovaná data.</li>
+  <li>Testujte A/B pořadí polí a nápovědy.</li>
+</ul>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>
 
 <ul>
-  <li><a href="https://www.youtube.com/watch?v=nmKMz3Fg76M">Luke Wroblewski Part 2 - Conversions@Google 2014</a></li>
+  <li><a href="https://web.dev/learn/forms/">web.dev: Learn Forms</a></li>
   
-  <li><a href="http://speckyboy.com/2015/03/30/10-methods-for-optimizing-your-forms-for-mobile-devices/">10 Methods for Optimizing Your Forms for Mobile Devices</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms">MDN: Učení – Formuláře</a></li>
   
-  <li><a href="http://www.slideshare.net/AaronGustafson/falling-in-love-with-forms-microsoft-edge-web-summit-2015">Falling in Love with Forms [Microsoft Edge Web Summit 2015]</a> – presentace obsahující tipy, jak zlepšit formuláře</li>
+  <li><a href="https://design-system.service.gov.uk/patterns/forms/">GOV.UK Design System: Forms</a></li>
   
-  <li>Sitepoint.com: <a href="http://www.sitepoint.com/ux-design-passwords-registration-forms/">UX Design for Passwords and Registration Forms</a></li>
+  <li><a href="https://www.w3.org/WAI/tutorials/forms/">WAI: Témata přístupných formulářů</a></li>
 </ul>
 
 
@@ -294,14 +473,11 @@ mailcheck.js</a></li>
 
 <script>
   function vypsat(el) {
-    var rozdelit = el.value.trim().split(" ");
-    var jmeno = rozdelit[0];
-    rozdelit.splice(0, 1);
-    var prijmeni = rozdelit.join(" ");
-    if (prijmeni.length == 0) {
-      prijmeni = jmeno;
-      jmeno = "";
-    }
-    jmenoPrijmeni.innerHTML = "<li>Jméno: " + jmeno + "<li>Příjmení: " + prijmeni;
+    const casti = el.value.trim().split(/\s+/);
+    const jmeno = casti.shift() || "";
+    const prijmeniSurove = casti.join(" ");
+    const prijmeni = prijmeniSurove.length ? prijmeniSurove : jmeno;
+    const jmenoVysledek = prijmeniSurove.length ? jmeno : "";
+    document.getElementById("jmenoPrijmeni").innerHTML = "<li>Jméno: " + jmenoVysledek + "<li>Příjmení: " + prijmeni;
   }
 </script>

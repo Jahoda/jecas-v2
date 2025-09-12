@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
+  <defs>
+    <style>
+      .card{fill:#f9fafb;stroke:#e5e7eb}
+      .muted{fill:#6b7280}
+      .text{fill:#111827;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:20px}
+      .title{fill:#111827;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:28px;font-weight:700}
+      .label{fill:#374151;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:16px}
+      .chip{fill:#eef2ff;stroke:#c7d2fe}
+      .chip-text{fill:#3730a3;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:14px}
+      .ok{fill:#10b981}
+      .input{fill:#ffffff;stroke:#d1d5db}
+      .placeholder{fill:#6b7280;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:18px}
+    </style>
+  </defs>
+  <rect x="0" y="0" width="960" height="540" fill="#ffffff"/>
+  <rect x="80" y="60" width="800" height="420" rx="20" class="card"/>
+  <text x="110" y="100" class="title">Lepší formuláře</text>
+  <text x="110" y="130" class="text muted">Správné typy, inputmode, autocomplete a jasná akce</text>
+
+  <text x="110" y="180" class="label">Email</text>
+  <rect x="110" y="195" width="680" height="56" rx="10" class="input"/>
+  <text x="130" y="230" class="placeholder">email@example.com</text>
+  <circle cx="820" cy="223" r="14" class="ok"/>
+  <path d="M813 223 l6 6 12 -12" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="700" y="168" width="140" height="26" rx="13" class="chip"/>
+  <text x="710" y="186" class="chip-text">type=email</text>
+
+  <text x="110" y="280" class="label">Telefon</text>
+  <rect x="110" y="295" width="680" height="56" rx="10" class="input"/>
+  <text x="130" y="330" class="placeholder">+420 123 456 789</text>
+  <circle cx="820" cy="323" r="14" class="ok"/>
+  <path d="M813 323 l6 6 12 -12" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="560" y="268" width="150" height="26" rx="13" class="chip"/>
+  <text x="570" y="286" class="chip-text">inputmode=tel</text>
+  <rect x="720" y="268" width="170" height="26" rx="13" class="chip"/>
+  <text x="730" y="286" class="chip-text">autocomplete=tel</text>
+
+  <text x="110" y="380" class="label">Jednorázový kód</text>
+  <rect x="110" y="395" width="680" height="56" rx="10" class="input"/>
+  <text x="130" y="430" class="placeholder">123 456</text>
+  <circle cx="820" cy="423" r="14" class="ok"/>
+  <path d="M813 423 l6 6 12 -12" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="458" y="368" width="220" height="26" rx="13" class="chip"/>
+  <text x="468" y="386" class="chip-text">autocomplete=one-time-code</text>
+  <rect x="690" y="368" width="170" height="26" rx="13" class="chip"/>
+  <text x="700" y="386" class="chip-text">enterkeyhint=done</text>
+</svg>
