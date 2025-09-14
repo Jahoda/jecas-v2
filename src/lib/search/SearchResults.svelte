@@ -37,7 +37,7 @@
 	});
 </script>
 
-{#each hits as hit, index (hit.url_slug)}
+{#each hits as hit, index (hit.id)}
 	<div class="pt-4 first:pt-0" animate:flip={{ duration: 200 }}>
 		<div id="searchResult-{index}" tabindex="-1" class="outline-none">
 			<SearchHit {hit} selected={index === currentIndex} />
