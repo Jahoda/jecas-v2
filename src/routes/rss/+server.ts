@@ -6,9 +6,10 @@ export async function GET() {
 
 	const baseUrl = 'https://jecas.cz';
 
-	const latestDate = (posts
-		.map((post) => new Date(post.last_modification ?? post.date))
-		.sort((a, b) => b.getTime() - a.getTime())[0]) || new Date();
+	const latestDate =
+		posts
+			.map((post) => new Date(post.last_modification ?? post.date))
+			.sort((a, b) => b.getTime() - a.getTime())[0] || new Date();
 
 	return new Response(
 		`

@@ -179,12 +179,27 @@
 
 	function getOutputSpec() {
 		if (outputFormat === 'jpeg') {
-			return { mime: 'image/jpeg', ext: 'jpg', qualitySupported: true, alphaSupported: false } as const;
+			return {
+				mime: 'image/jpeg',
+				ext: 'jpg',
+				qualitySupported: true,
+				alphaSupported: false
+			} as const;
 		}
 		if (outputFormat === 'webp') {
-			return { mime: 'image/webp', ext: 'webp', qualitySupported: true, alphaSupported: true } as const;
+			return {
+				mime: 'image/webp',
+				ext: 'webp',
+				qualitySupported: true,
+				alphaSupported: true
+			} as const;
 		}
-		return { mime: 'image/png', ext: 'png', qualitySupported: false, alphaSupported: true } as const;
+		return {
+			mime: 'image/png',
+			ext: 'png',
+			qualitySupported: false,
+			alphaSupported: true
+		} as const;
 	}
 
 	function formatBytes(bytes: number) {
@@ -431,8 +446,6 @@
 				</div>
 			</div>
 
-
-
 			<div class="text-xs text-gray-600">
 				<p>💡 Rozměry se automaticky detekují z SVG obsahu</p>
 			</div>
@@ -569,7 +582,11 @@
 					</Button>
 
 					<div class="text-sm text-gray-600">
-						<p>Rozměry: {width} × {height} px{#if estimatedBytes}&nbsp;•&nbsp;Odhad: {formatBytes(estimatedBytes)}{/if}</p>
+						<p>
+							Rozměry: {width} × {height} px{#if estimatedBytes}&nbsp;•&nbsp;Odhad: {formatBytes(
+									estimatedBytes
+								)}{/if}
+						</p>
 					</div>
 				</div>
 			</div>

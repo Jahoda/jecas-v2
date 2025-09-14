@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { createBubbler } from 'svelte/legacy';
+	import { onMount } from 'svelte';
 
 	const bubble = createBubbler();
 	import Kbd from '$lib/kbd/Kbd.svelte';
@@ -33,6 +34,12 @@
 	function handleEscClick() {
 		dispatch('close');
 	}
+
+	let inputElement: HTMLInputElement;
+
+	onMount(() => {
+		inputElement?.focus();
+	});
 </script>
 
 <div class="flex items-center gap-2">
@@ -48,6 +55,7 @@
 		spellcheck="false"
 		bind:value={query}
 		autofocus
+		bind:this={inputElement}
 		type="search"
 		id="search"
 		name="search"
