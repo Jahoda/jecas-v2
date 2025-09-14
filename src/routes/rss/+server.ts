@@ -6,6 +6,10 @@ export async function GET() {
 
 	const baseUrl = 'https://jecas.cz';
 
+	const latestDate = (posts
+		.map((post) => new Date(post.last_modification ?? post.date))
+		.sort((a, b) => b.getTime() - a.getTime())[0]) || new Date();
+
 	return new Response(
 		`
 		<rss version="2.0"
@@ -16,6 +20,7 @@ export async function GET() {
 				<atom:link href="${baseUrl}/rss" rel="self" type="application/rss+xml" />
 				<description>Poznámky k webdesignu.</description>
 				<language>cs</language>
+				<lastBuildDate>${latestDate.toUTCString()}</lastBuildDate>
 		${posts
 			.map(
 				(post) => `
@@ -24,6 +29,7 @@ export async function GET() {
 					<link>https://jecas.cz/${post.url_slug}</link>
 					<guid>https://jecas.cz/${post.url_slug}</guid>
 					<description>${sanizite(post.description)}</description>
+					<pubDate>${new Date(post.last_modification ?? post.date).toUTCString()}</pubDate>
 				</item>
 		`
 			)
