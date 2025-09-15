@@ -22,7 +22,7 @@ format: "html"
 
 
 
-
+<p>V roce <b>2025</b> web prošel restartem, redesignem a zase pravidelně vychází nový obsah.</p>
 
 
 
