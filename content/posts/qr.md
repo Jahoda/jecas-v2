@@ -3,7 +3,7 @@ title: "QR code generátor"
 headline: "Generování QR kódu"
 description: "Co je to QR kód a jak ho okamžitě vytvořit pomocí jednoduchého online generátoru."
 date: "2015-02-19"
-last_modification: "2015-05-18"
+last_modification: "2025-09-16"
 status: 1
 tags: ["hotova-reseni", "produktivita"]
 format: "html"
@@ -13,415 +13,29 @@ format: "html"
 
 <p>Hlavní výhoda QR kódu je <b>pohodlné a rychlé získání</b> textových dat. Místo pomalého opisování textu na klávesnici dokáže v jednotkách sekund obsah získat a rozluštit software.</p>
 
-<div class="live no-js" id="qr-generator"></div>
-
-
-
-
-<h2 id="podoba">Podoba kódu</h2>
-
-<p><img src="/files/qr/qrcode.png" alt="Příklad QR kódu" class="border"></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<p>Na příkladu jednoduchého QR kódu stojí za povšimnutí velké čtverce ve třech rozích, které slouží jako <b>orientační body</b> pro snímací aplikaci. Zbytek jsou už potom <b>data</b>. Díky třem „kontrolním“ čtvercům v rozích jde určit orientaci kódu, takže není problém kód fotit klidně vzhůru nohama.</p>
-
-<p>QR kód je také i tolerantní k chybám, může být v různých barvách nebo barevně <b>invertován</b>. I část výsledného obrázku může fungovat, což přináší možnost do obrázku například umístit <b>logo</b> nebo <b>lidsky čitelný text</b>.</p>
-
-<figure>
-  <img src="/files/qr/qr-logo.png" alt="QR kód s logem">
-  <figcaption>
-    <p>Příklad invertovaného QR kódu s umístěním loga, který je stále funkční</p>
-  </figcaption>
-</figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="external-content">
-  <ul>
-    <li>Wikipedie: <a href="http://cs.wikipedia.org/wiki/QR_kód">QR kód</a> – obsahuje i detailní popis, jakým způsobem jsou data v obrázku uložena</li>
-  </ul>
-</div>
-
-
-<h2 id="pocet-znaku">Počet znaků</h2>
-
-<p>Pokud se do obrázku zakóduje víc dat (delší text), bude jeho struktura <b>hustší</b>, což ztíží i převod obrázku na data.</p>
-
-<p>Některé starší čtečky mohou mít s delšími kódy (například nad <b>300 znaků</b>) problémy. Většinou není nutné do kódu zapsat celé romány, ale používají se spíš odkazy na <b>webovou stránku</b>, kde je potom více obsahu.</p>
-
-<h3 id="max">Maximální počet znaků</h3>
-
-<table class="wikitable">
-  <tbody>
-    <tr>
-      <th>Typ obsahu</th>
-      <th>Znaků</th>
-    </tr>
-    <tr>
-      <td>číslice</td>
-      <td>7 089</td>
-    </tr>
-    <tr>
-      <td>písmena a číslice</td>
-      <td>4 296</td>
-    </tr>
-    <tr>
-      <td>8bitová data</td>
-      <td>2 953</td>
-    </tr>
-    <tr>
-      <td>kandži</td>
-      <td>1 817</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Jiný QR kód s delším textem (cca 120 znaků).</p>
-
-<p><img src="/files/qr/qrcode-dlouhy.png" alt="Příklad QR kódu" class="border"></p>
-
-
-
-
-
-
-<h2 id="funkce">Funkce</h2>
-
-<p>Kromě textu nebo URL (adresy webové stránky) se dají do kódu zakódovat další funkce. Aplikace pro luštění QR kódu bývají chytré, takže se snaží automaticky zjistit typ dat.</p>
-
-<ul>
-  <li>Číslo <code>123456789</code> se bude nejspíš brát jako telefonní číslo.</li>
-  
-  <li>Text <code>www.jecas.cz</code> bude potom pochopen jako odkaz na webovou stránku.</li>
-  
-  <li>Text <code>neco@example.com</code> půjde pochopit jako e-mail.</li>
-</ul>
-
-<p>Kromě automatického určování obsahu existuje způsob pro označení jiných funkcí.</p>
-
-
-
-<h3 id="text">Text</h3>
-
-<p>Obyčejný text:</p>
-
-<pre><code>Text</code></pre>
-
-
-
-
-
-<h3 id="url">URL</h3>
-
-<p>Adresa nepotřebuje zvláštní zacházení. Automaticky ji rozpozná aplikace.</p>
-
-<pre><code>http://example.com</code></pre>
-
-
-
-<h3 id="e-mail">E-mail</h3>
-
-<p>Samotný e-mail je také možné rozpoznat automaticky.</p>
-
-<p>Pro vytvoření obrázku, který připraví e-mailovou zprávu včetně předmětu nebo textu zprávy se používá:</p>
-
-<pre><code>MATMSG:TO:mail@example.com;SUB:Předmět;BODY:Text;;</code></pre>
-
-
-
-
-<h3 id="telefon">Telefon</h3>
-
-<p>Předvyplní číslo pro pohodlné zavolání. Stačí na začátek uvést <code>tel</code>. Aplikace pro snímání QR kódu mohou jako telefon pochopit i prosté uvedení čísla bez „<code>tel:</code>“ na začátku.</p>
-
-<pre><code>tel:420123456789</code></pre>
-
-
-
-<h3 id="sms">SMS</h3>
-
-<p>Pro připravení SMS zprávy se používá <code>SMSTO</code> na začátku obsahu. Za dvojtečku po telefonním čísle je možné uvést text zprávy.</p>
-
-<pre><code>SMSTO:420123456789:Text</code></pre>
-
-
-
-
-<h3 id="udalost">Událost</h3>
-
-<p>Připraví událost.</p>
-
-<pre><code>BEGIN:VEVENT
-SUMMARY:Název události
-DTSTART:20180801T160000Z
-DTEND:20180801T170000Z
-END:VEVENT</code></pre>
-
-
-
-
-
-
-
-<h3 id="geo">Geolokace</h3>
-
-<p>Místo na mapě. Uvádí se v pořadí zeměpisná šířka, zeměpisná délka a nadmořská výška.</p>
-
-<pre><code>geo:50.0892069,14.4032178,400</code></pre>
-
-<p>Získat GPS určitého místa jde například pomocí stránky <a href="http://mapy.cz">Mapy.cz</a>:</p>
-
-
-<ol>
-  <li>
-    <p>Stačí kliknout pravým tlačítkem na místo a vybrat <i>Co je zde</i>:</p>
-    
-    <p><img src="/files/qr/mapy.png" alt="Co je zde?" class="border"></p>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  </li>
-  
-  
-  <li>
-    <p>V pravém panelu dole si zkopírovat GPS souřadnice:</p>
-    
-    <p><img src="/files/qr/mapy-gps.png" alt="Co je zde?" class="border"></p>
-  </li>
-</ol>
-
-
-
-
-
-
-
-
-
-<h3 id="wifi">Připojení k Wi-Fi</h3>
-
-<p>Do QR kódu jde zachytit i přihlášení k Wi-Fi.</p>
-
-<pre><code>WIFI:T:WPA;S:Nazev;P:heslo;;</code></pre>
-
-
-
-
-<h3 id="vcard">Kontakt vCard</h3>
-
-<p>Docela užitečná je možnost vytvořit <b>celý kontakt</b>. Dá se zadat jméno, příjmení, telefonní čísla, e-mail, adresa nebo webová stránka.</p>
-
-<p>Může se hodit takový kód vytisknout na visitku, čímž si půjde pohodlně uložit kompletní kontakt. Jelikož visitky nebývají velké, je kvůli dobré čitelnosti lepší uvést jen nejnutnější údaje (např. jen jeden telefon nebo e-mail a podobně).</p>
-
-<p>Používá se běžný formát <b>vCard</b>:</p>
-
-<pre><code>BEGIN:VCARD
-VERSION:2.1
-FN:Jméno Příjmení
-N:Příjmení;Jméno
-TITLE:Funkce
-TEL;CELL:222222222
-TEL;WORK;VOICE:333333333
-TEL;HOME;VOICE:111111111
-EMAIL;HOME;INTERNET:osobni@example.com
-EMAIL;WORK;INTERNET:pracovni@example.com
-URL:http://example.com
-ADR:;;Ulice;Město;;11100;Země
-ORG:Organisace
-END:VCARD</code></pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="external-content">
-  <ul>
-    <li><a href="http://en.wikipedia.org/wiki/VCard">vCard</a> – popis formátu na anglické Wikipedii</li>
-  </ul>
-</div>
-
-
-<h3 id="qr-platba">QR platba</h3>
-
-<p>Pro elegantní placení prostřednictvím <b>mobilní bankovní aplikace</b> je užitečné generovat QR platební kód. Člověk tak nemusí z papírové faktury opisovat číslo účtu, banky, sumu a podobně. Nebo tyto údaje kopírovat z e-mailu nebo webové stránky.</p>
-
-<p>Kód pro platby může vypadat následovně:</p>
-
-<pre><code>SPD*1.0*ACC:CZ5608000000000002171532*AM:999*CC:CZK*DT:20150518*MSG:Zpráva*X-KS:1414*X-SS:1313*X-VS:1212</code></pre>
-
-
-<ul>
-  <li><code>ACC</code> – číslo účtu v <a href="http://cs.wikipedia.org/wiki/International_Bank_Account_Number">IBAN</a> formátu (pokud ho neznáte, jde <a href="https://www.cnb.cz/cs/platebni_styk/iban/iban.html">spočítat</a>)</li>
-  <li><code>AM</code> – částka k platbě</li>
-  <li><code>CC</code> – měna</li>
-  <li><code>DT</code> – datum splatnosti</li>
-  <li><code>MSG</code> – zpráva pro příjemce</li>
-  <li><code>X-KS</code> – konstantní, <code>X-SS</code> – specifický a <code>X-VS</code> – variabilní symbol</li>
-</ul>
-
-
-
-<div class="external-content"><ul>
-  <li><a href="http://qr-platba.cz/">QR platba</a> – více informací o placení pomocí QR kódu</li>
-</ul></div>
-
-
-<h3 id="bitcoin">Bitcoin adresa</h3>
-
-<p>Pro zjednodušení platby v Bitcoinech se používají zpravidla dvě možnosti:</p>
-
-<ul>
-  <li>Prosté uvedení BTC adresy.</li>
-  
-  <li>Řetězec <code>bitcoin:</code> před samotnou adresou.</li>
-</ul>
-
-<p>Za bitcoinovou adresu jde i uvést částku za „<code>amount=</code>“ a zprávu/popis za „<code>label=</code>“:</p>
-
-<pre><code>bitcoin:{adresa}?amount={částka}&amp;label={zpráva}</code></pre>
-
-<p>Nutná je pochopitelně mobilní bitcoinová peněženka, která může platbu na adresu zpracovat.</p>
-
-
-
-
-<h2 id="aplikace">Aplikace</h2>
-
-<p>Pro čtení QR kódu je nutná nějaká aplikace, co z obrázku vydoluje text.</p>
-
-<p>Pro luštění kódu na počítači bez používání webkamery je ideální nástroj:</p>
-
-<div class="external-content">
-  <ul>
-    <li><a href="http://zxing.org/w/decode.jspx">ZXing Decoder</a> – dekódování QR kódu z URL nebo nahraného obrázku v prohlížeči</li>
-  </ul>
-</div>
-
-
-<h3 id="mobilni">Mobilní aplikace</h3>
-
-<p>Pro čtení kódu na mobilních telefonech s fotoaparátem si většinou stačí v obchodu vyhledat něco jako „QR code“.</p>
-
-<p>Osobně mi vyhovuje aplikace od Seznamu QR čtečka, je k disposici pro tři nejrozšířenější platformy.</p>
-
-<div class="external-content">
-<ul>
-  <li><a href="https://play.google.com/store/apps/details?id=com.threegvision.products.seznam.Android">Android (Google Play)</a></li>
-  <li><a href="https://itunes.apple.com/cz/app/seznam.cz-qr-ctecka/id389526252?ls=1&amp;mt=8">iOS (App Store)</a></li>
-  <li><a href="http://www.windowsphone.com/cs-cz/store/app/qr-%C4%8Dte%C4%8Dka/178d002b-2e35-4527-bc3d-47c0fc3886e2">Windows Phone Store</a></li>
-</ul>  
-</div>
-
-
-<h2 id="generovani">PHP, JS, API generátory</h2>
-
-<p>Pro automatické generování QR kódu existuje spousta hotových řešení.</p>
-
-
-<h3 id="google">Google Charts</h3>
-
-<p>Velice snadný způsob je použít <a href="https://developers.google.com/chart/infographics/docs/qr_codes">Google Charts</a>. Není potřeba se s ničím programovat, jen se na stránku vloží obrázek s URL, kam se zadá text, co má být v QR kódu.</p>
-
-<div class="external-content">
-<ul>
-  <li><a href="https://kod.djpw.cz/lzkb">Generování QR kódu přes Google Charts</a></li>
-</ul>  
-</div>
-
-<h3 id="js">Generování QR v JavaScriptu</h3>
-
-<p>Generovat QR code JavaScriptem je výhodné tím, že se nemusí <b>čekat na odezvu</b> ze strany serveru. Navíc se data pro vytvoření kódu nepřenášejí žádné třetí straně.</p>
-
-<p>Výsledný QR kód je možné nakreslit do plátna <a href="/canvas"><code>&lt;canvas></code></a> nebo sestavit pomocí obyčejné HTML tabulky.</p>
-
-<div class="external-content">
-  <ul>
-    <li><a href="https://github.com/educastellano/qr-code">qr-code</a> – Nástroj pro generování QR kódu v JavaScriptu, <a href="https://kod.djpw.cz/qzkb">ukázka</a></li>
-  </ul>
-</div>
-
-<p>Existuje řada dalších hotových skriptů, bohužel si ale <b>neporadí s diakritikou</b>:</p>
-
-<div class="external-content">
-  <ul>
-    <li><a href="http://davidshimjs.github.io/qrcodejs/">qrcode.js</a> – <a href="https://kod.djpw.cz/pzkb">ukázka qrcode.js</a></li>
-    <li><a href="http://neocotic.com/qr.js/">neocotic.com/qr.js</a> – <a href="https://kod.djpw.cz/nzkb">ukázka qr.js</a></li>
-  </ul>
-</div>
-
-
-<h3 id="php">PHP generátor QR kódu</h3>
-
-<p>Pro PHP je dobře použitelná knihovna PHP QR Code, která bezpečně zvládá znaky s českou diakritikou.</p>
-
-<div class="external-content">
-  <ul>
-    <li><a href="http://phpqrcode.sourceforge.net/">PHP QR Code</a> – open-source nástroj pro generování QR kódu v PHP</li>
-  </ul>
-</div>
-
-<p><b>Poznámka</b>: po stažení archivu a spuštění na <a href="/localhost">localhostu</a> nemusí u dema čestina správně fungovat kvůli absenci HTML <code>&lt;meta></code> značky:</p>
-
-<pre><code>&lt;meta charset="utf-8"></code></pre>
-
-
-<h3 id="online">Online generátor</h3>
-
-<p>Nakonec je možnost si QR kód jednorázově vygenerovat pomocí nějaké online služby.</p>
-
-<div class="external-content">
-  <ul>
-    <li><a href="http://goqr.me">QR Code Generator</a> – pokročilý online generátor QR kódu</li>
-  </ul>
-</div>
-
-
-<form onsubmit="return false" id="qr-form" class="qr-generator" name="generator" oninput="createQr(event, this)">
+<p>Dnes většina chytrých telefonů umí QR kódy číst přímo ve vestavěné aplikaci Fotoaparát (iOS i Android), bez nutnosti instalovat speciální čtečku.</p>
+
+
+<div class="live">
+
+<!-- QR generátor CSS -->
+<style>
+.qr-generator .items > div[data-type] { display: none; }
+.qr-generator .items > div.active[data-type] { display: block; }
+#qr-code table { 
+    margin: 0 auto; border-collapse: collapse; border: none;
+    background: white; padding: 10px;
+}
+#qr-code td { 
+    padding: 0; margin: 0; line-height: 0; border: none;
+    width: 4px; height: 4px;
+}
+#qr-code img {
+    max-width: 300px; height: auto; border: none;
+    image-rendering: pixelated; image-rendering: -moz-crisp-edges;
+}
+</style>
+<form onsubmit="return false" id="qr-form" class="qr-generator" name="generator">
 
 <h2 id="vytvor">Vytvoření QR code</h2>
   
@@ -429,7 +43,7 @@ END:VCARD</code></pre>
 
 <p><b>Typ kódu</b>:</p>
   
-	<div class="controls">
+	<div class="flex flex-wrap gap-2 controls">
 	    <button data-type="text" class="active">Text</button>
 	    <button data-type="url">Odkaz</button>
 	    <button data-type="tel">Telefon</button>    
@@ -447,7 +61,7 @@ END:VCARD</code></pre>
 	            <tr>
 	                <th><label for="text">Text</label></th>
 	                <td>
-	                    <textarea oninput="createQrText(this)" name="text" id="text" cols="30" rows="10"></textarea>
+	                    <textarea name="text" id="text" cols="30" rows="10"></textarea>
 	                </td>
 	            </tr>
 	        </table>
@@ -458,7 +72,7 @@ END:VCARD</code></pre>
 	            <tr>
 	                <th><label for="url">URL</label></th>
 	                <td>
-	                    <input oninput="createQrText(this)" name="url" type="url" placeholder="example.com">
+	                    <input name="url" type="url" placeholder="example.com">
 	                </td>
 	            </tr>
 	        </table>
@@ -604,18 +218,548 @@ END:VCARD</code></pre>
       <h3>QR kód</h3>
 
 	    <div id="qr-code"></div>
+	    <div style="text-align: center; margin: 10px 0;">
+	        <button id="download-qr" style="background: #0066cc; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 14px;">Stáhnout QR kód</button>
+	    </div>
 
       <h3>Textová data</h3>
 	    <pre><code id="raw"></code></pre>
 	</div>    
 	</form>	
 
-<!-- Generátor -->
-<script>
-  var g = document.getElementById("qr-generator");
-  var f = document.getElementById("qr-form");
-  g.appendChild(f);
-</script>
 <script src="/files/qr/qr-code.js"></script>
-<script src="/files/qr/qr-generator.js"></script>
-<link rel="stylesheet" href="/files/qr/qr-generator.css">
+<script>
+(function() {
+    var form = document.getElementById('qr-form');
+    var qrContainer = document.getElementById('qr-code');
+    var rawDataContainer = document.getElementById('raw');
+    
+    if (!form || !qrContainer || !rawDataContainer) return;
+
+    var qrTypes = {
+        text: function(form) { return form.text.value || 'Zkušební text'; },
+        url: function(form) {
+            var url = form.url.value || 'example.com';
+            return url.match(/^https?:\/\//) ? url : 'https://' + url;
+        },
+        tel: function(form) { return 'tel:' + (form.tel.value || '+420123456789'); },
+        sms: function(form) {
+            var tel = form['sms-tel'].value || '+420123456789';
+            var text = form.sms.value || 'Zpráva';
+            return 'sms:' + tel + '?body=' + encodeURIComponent(text);
+        },
+        email: function(form) {
+            var email = form.email.value || 'email@example.com';
+            var params = [];
+            if (form['email-subject'].value) params.push('subject=' + encodeURIComponent(form['email-subject'].value));
+            if (form['email-text'].value) params.push('body=' + encodeURIComponent(form['email-text'].value));
+            return 'mailto:' + email + (params.length > 0 ? '?' + params.join('&') : '');
+        },
+        event: function(form) {
+            var name = form['event-name'].value || 'Událost';
+            var start = form['event-start'].value || '2025-12-01T12:00';
+            var end = form['event-end'].value || '2025-12-01T13:00';
+            return 'BEGIN:VEVENT\nSUMMARY:' + name + '\nDTSTART:' + start.replace(/[-:]/g, '') + 'Z\nDTEND:' + end.replace(/[-:]/g, '') + 'Z\nEND:VEVENT';
+        },
+        vcard: function(form) {
+            var name = form['vcard-name'].value || 'Jan Novák';
+            var parts = name.split(' ');
+            var firstName = parts[0] || '';
+            var lastName = parts.slice(1).join(' ') || '';
+            return 'BEGIN:VCARD\nVERSION:3.0\nFN:' + name + 
+                   '\nN:' + lastName + ';' + firstName + ';;;\n' +
+                   'TEL;TYPE=CELL:' + (form['vcard-tel'].value || '+420123456789') + '\n' +
+                   'EMAIL;TYPE=INTERNET:' + (form['vcard-email'].value || 'jan@example.com') + '\n' +
+                   'URL:' + (form['vcard-url'].value ? (form['vcard-url'].value.match(/^https?:\/\//) ? form['vcard-url'].value : 'https://' + form['vcard-url'].value) : 'https://example.com') + '\n' +
+                   'END:VCARD';
+        },
+        wifi: function(form) {
+            var encrypt = 'WPA';
+            var radios = form['wifi-encrypt'];
+            if (radios) {
+                for (var i = 0; i < radios.length; i++) {
+                    if (radios[i].checked) { encrypt = radios[i].value; break; }
+                }
+            }
+            return 'WIFI:T:' + encrypt + ';S:' + (form['wifi-name'].value || 'MojeSit') + ';P:' + (form['wifi-password'].value || 'heslo123') + ';H:false;;';
+        },
+        geo: function(form) { return 'geo:' + (form['geo-cords'].value || '50.0755,14.4378'); },
+        btc: function(form) {
+            var address = form.btc.value || '1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2';
+            var amount = form['btc-ammount'].value || '0.001';
+            return 'bitcoin:' + address + '?amount=' + amount;
+        }
+    };
+
+    var currentType = 'text';
+    var currentQRData = '';
+
+    function generateQR() {
+        var text = qrTypes[currentType](form);
+        currentQRData = text;
+        rawDataContainer.textContent = text;
+        try {
+            // Zkusit PNG generování
+            var img = document.createElement('img');
+            img.src = QRCode.generatePNG(text, {modulesize: 4, margin: 2});
+            img.style.maxWidth = '300px';
+            img.style.height = 'auto';
+            qrContainer.innerHTML = '';
+            qrContainer.appendChild(img);
+        } catch (e) {
+            try {
+                // Fallback na HTML
+                var qrElement = QRCode.generateHTML(text, {modulesize: 3, margin: 2});
+                qrContainer.innerHTML = '';
+                qrContainer.appendChild(qrElement);
+            } catch (e2) {
+                qrContainer.innerHTML = '<p>Chyba při generování QR kódu</p>';
+            }
+        }
+    }
+
+    function downloadQR() {
+        if (!currentQRData) return;
+        
+        try {
+            // Vygenerovat PNG pro stažení
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d');
+            var matrix = QRCode.generate(currentQRData);
+            var size = matrix.length;
+            var scale = 8; // Velikost pixelu
+            var margin = 4 * scale; // Okraj
+            
+            canvas.width = canvas.height = (size + 8) * scale;
+            
+            // Bílé pozadí
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Černé moduly
+            ctx.fillStyle = '#000000';
+            for (var i = 0; i < size; i++) {
+                for (var j = 0; j < size; j++) {
+                    if (matrix[i][j]) {
+                        ctx.fillRect((j + 4) * scale, (i + 4) * scale, scale, scale);
+                    }
+                }
+            }
+            
+            // Stáhnout
+            var link = document.createElement('a');
+            link.download = 'qr-kod-' + currentType + '.png';
+            link.href = canvas.toDataURL();
+            link.click();
+            
+        } catch (e) {
+            alert('Chyba při stahování QR kódu. Zkuste uložit obrázek ručně.');
+        }
+    }
+
+    // Stahování QR kódu
+    document.addEventListener('click', function(e) {
+        if (e.target.id === 'download-qr') {
+            e.preventDefault();
+            downloadQR();
+            return;
+        }
+    });
+
+    // Přepínání typů
+    document.addEventListener('click', function(e) {
+        if (e.target.matches('.qr-generator .controls button')) {
+            e.preventDefault();
+            document.querySelectorAll('.qr-generator .controls button').forEach(function(btn) { btn.classList.remove('active'); });
+            document.querySelectorAll('.qr-generator .items > div').forEach(function(panel) { panel.classList.remove('active'); });
+            
+            currentType = e.target.getAttribute('data-type');
+            e.target.classList.add('active');
+            
+            var activePanel = document.querySelector('.qr-generator .items > div[data-type="' + currentType + '"]');
+            if (activePanel) activePanel.classList.add('active');
+            
+            generateQR();
+        }
+    });
+
+    // Aktualizace při změně
+    document.addEventListener('input', function(e) {
+        if (e.target.closest('.qr-generator')) generateQR();
+    });
+    document.addEventListener('change', function(e) {
+        if (e.target.closest('.qr-generator')) generateQR();
+    });
+
+    // Inicializace
+    setTimeout(function() {
+        var firstButton = document.querySelector('.qr-generator .controls button');
+        if (firstButton) firstButton.classList.add('active');
+        var firstPanel = document.querySelector('.qr-generator .items > div');
+        if (firstPanel) firstPanel.classList.add('active');
+        var textArea = form.querySelector('textarea[name="text"]');
+        if (textArea && !textArea.value) textArea.value = 'Zkušební text pro QR kód';
+        generateQR();
+    }, 100);
+})();
+</script>
+</div>
+
+
+
+<h2 id="podoba">Podoba kódu</h2>
+
+<p><img src="/files/qr/qrcode.png" alt="Příklad QR kódu" class="border"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Na příkladu jednoduchého QR kódu stojí za povšimnutí velké čtverce ve třech rozích, které slouží jako <b>orientační body</b> pro snímací aplikaci. Zbytek jsou už potom <b>data</b>. Díky třem „kontrolním“ čtvercům v rozích jde určit orientaci kódu, takže není problém kód fotit klidně vzhůru nohama.</p>
+
+<p>QR kód je také i tolerantní k chybám, může být v různých barvách nebo barevně <b>invertován</b>. I část výsledného obrázku může fungovat, což přináší možnost do obrázku například umístit <b>logo</b> nebo <b>lidsky čitelný text</b>.</p>
+
+<figure>
+  <img src="/files/qr/qr-logo.png" alt="QR kód s logem">
+  <figcaption>
+    <p>Příklad invertovaného QR kódu s umístěním loga, který je stále funkční</p>
+  </figcaption>
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="external-content">
+  <ul>
+    <li>Wikipedie: <a href="http://cs.wikipedia.org/wiki/QR_kód">QR kód</a> – obsahuje i detailní popis, jakým způsobem jsou data v obrázku uložena</li>
+  </ul>
+</div>
+
+
+<h2 id="pocet-znaku">Počet znaků</h2>
+
+<p>Pokud se do obrázku zakóduje víc dat (delší text), bude jeho struktura <b>hustší</b>, což ztíží i převod obrázku na data.</p>
+
+<p>Některé starší čtečky mohou mít s delšími kódy (například nad <b>300 znaků</b>) problémy. Většinou není nutné do kódu zapsat celé romány, ale používají se spíš odkazy na <b>webovou stránku</b>, kde je potom více obsahu.</p>
+
+<h3 id="max">Maximální počet znaků</h3>
+
+<table class="wikitable">
+  <tbody>
+    <tr>
+      <th>Typ obsahu</th>
+      <th>Znaků</th>
+    </tr>
+    <tr>
+      <td>číslice</td>
+      <td>7 089</td>
+    </tr>
+    <tr>
+      <td>písmena a číslice</td>
+      <td>4 296</td>
+    </tr>
+    <tr>
+      <td>8bitová data</td>
+      <td>2 953</td>
+    </tr>
+    <tr>
+      <td>kandži</td>
+      <td>1 817</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Jiný QR kód s delším textem (cca 120 znaků).</p>
+
+<p><img src="/files/qr/qrcode-dlouhy.png" alt="Příklad QR kódu" class="border"></p>
+
+
+
+
+
+
+<h2 id="funkce">Funkce</h2>
+
+<p>Kromě textu nebo URL (adresy webové stránky) se dají do kódu zakódovat další funkce. Aplikace pro luštění QR kódu bývají chytré, takže se snaží automaticky zjistit typ dat.</p>
+
+<ul>
+  <li>Číslo <code>123456789</code> se bude nejspíš brát jako telefonní číslo.</li>
+  
+  <li>Text <code>www.jecas.cz</code> bude potom pochopen jako odkaz na webovou stránku.</li>
+  
+  <li>Text <code>neco@example.com</code> půjde pochopit jako e-mail.</li>
+</ul>
+
+<p>Kromě automatického určování obsahu existuje způsob pro označení jiných funkcí.</p>
+
+
+
+<h3 id="text">Text</h3>
+
+<p>Obyčejný text:</p>
+
+<pre><code>Text</code></pre>
+
+
+
+
+
+<h3 id="url">URL</h3>
+
+<p>Adresa nepotřebuje zvláštní zacházení. Automaticky ji rozpozná aplikace. Preferujte <code>https</code>.</p>
+
+<pre><code>https://example.com</code></pre>
+
+
+
+<h3 id="e-mail">E-mail</h3>
+
+<p>Samotný e‑mail je možné rozpoznat automaticky.</p>
+
+<p>Pro vytvoření zprávy v e‑mailovém klientu použijte <code>mailto:</code> s parametry:</p>
+
+<pre><code>mailto:mail@example.com?subject=P%C5%99edm%C4%9Bt&amp;body=Text</code></pre>
+
+
+
+
+<h3 id="telefon">Telefon</h3>
+
+<p>Předvyplní číslo pro pohodlné zavolání. Stačí na začátek uvést <code>tel:</code>. Používejte mezinárodní formát.</p>
+
+<pre><code>tel:+420123456789</code></pre>
+
+
+
+<h3 id="sms">SMS</h3>
+
+<p>Pro připravení SMS zprávy je nejrozšířenější tvar <code>SMSTO:</code> nebo schéma <code>sms:</code> s parametry. Doporučení: používejte <code>sms:</code>.</p>
+
+<pre><code>sms:+420123456789?body=Text</code></pre>
+
+
+
+
+<h3 id="udalost">Událost</h3>
+
+<p>Připraví událost ve formátu iCalendar (UTC čas, bez diakritiky pro maximální kompatibilitu):</p>
+
+<pre><code>BEGIN:VEVENT
+SUMMARY:Nazev udalosti
+DTSTART:20251001T160000Z
+DTEND:20251001T170000Z
+END:VEVENT</code></pre>
+
+
+
+
+
+
+
+<h3 id="geo">Geolokace</h3>
+
+<p>Místo na mapě. Uvádí se v pořadí zeměpisná šířka, zeměpisná délka a volitelně nadmořská výška.</p>
+
+<pre><code>geo:50.0892069,14.4032178,400</code></pre>
+
+<p>Získat GPS určitého místa jde například pomocí stránky <a href="https://mapy.cz">Mapy.cz</a>:</p>
+
+
+<ol>
+  <li>
+    <p>Stačí kliknout pravým tlačítkem na místo a vybrat <i>Co je zde</i>:</p>
+    
+    <p><img src="/files/qr/mapy.png" alt="Co je zde?" class="border"></p>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </li>
+  
+  
+  <li>
+    <p>V pravém panelu dole si zkopírovat GPS souřadnice:</p>
+    
+    <p><img src="/files/qr/mapy-gps.png" alt="Co je zde?" class="border"></p>
+  </li>
+</ol>
+
+
+
+
+
+
+
+
+
+<h3 id="wifi">Připojení k Wi-Fi</h3>
+
+<p>Do QR kódu jde zachytit i přihlášení k Wi-Fi.</p>
+
+<pre><code>WIFI:T:WPA;S:Nazev;P:heslo;H:false;;</code></pre>
+
+
+
+
+<h3 id="vcard">Kontakt vCard</h3>
+
+<p>Docela užitečná je možnost vytvořit <b>celý kontakt</b>. Dá se zadat jméno, příjmení, telefonní čísla, e-mail, adresa nebo webová stránka.</p>
+
+<p>Může se hodit takový kód vytisknout na visitku, čímž si půjde pohodlně uložit kompletní kontakt. Jelikož visitky nebývají velké, je kvůli dobré čitelnosti lepší uvést jen nejnutnější údaje (např. jen jeden telefon nebo e-mail a podobně).</p>
+
+<p>Používá se běžný formát <b>vCard</b> (doporučeno <code>VERSION:3.0</code> nebo <code>4.0</code>):</p>
+
+<pre><code>BEGIN:VCARD
+VERSION:3.0
+FN:Jmeno Prijmeni
+N:Prijmeni;Jmeno;;;
+TITLE:Funkce
+TEL;TYPE=CELL:+420222222222
+EMAIL;TYPE=INTERNET:osobni@example.com
+URL:https://example.com
+ADR:;;Ulice;Mesto;;11100;Zeme
+ORG:Organisace
+END:VCARD</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://en.wikipedia.org/wiki/VCard">vCard</a> – popis formátu na anglické Wikipedii</li>
+  </ul>
+</div>
+
+
+<h3 id="qr-platba">QR platba</h3>
+
+<p>Pro elegantní placení prostřednictvím <b>mobilní bankovní aplikace</b> je užitečné generovat QR platební kód. Člověk tak nemusí z papírové faktury opisovat číslo účtu, banky, sumu a podobně. Nebo tyto údaje kopírovat z e-mailu nebo webové stránky.</p>
+
+<p>Kód pro platby může vypadat následovně:</p>
+
+<pre><code>SPD*1.0*ACC:CZ5608000000000002171532*AM:999*CC:CZK*DT:20150518*MSG:Zpráva*X-KS:1414*X-SS:1313*X-VS:1212</code></pre>
+
+
+<ul>
+  <li><code>ACC</code> – číslo účtu v <a href="http://cs.wikipedia.org/wiki/International_Bank_Account_Number">IBAN</a> formátu (pokud ho neznáte, jde spočítat)</li>
+  <li><code>AM</code> – částka k platbě</li>
+  <li><code>CC</code> – měna</li>
+  <li><code>DT</code> – datum splatnosti</li>
+  <li><code>MSG</code> – zpráva pro příjemce</li>
+  <li><code>X-KS</code> – konstantní, <code>X-SS</code> – specifický a <code>X-VS</code> – variabilní symbol</li>
+</ul>
+
+
+
+<div class="external-content"><ul>
+  <li><a href="https://qr-platba.cz/">QR platba</a> – více informací o placení pomocí QR kódu</li>
+</ul></div>
+
+
+<h3 id="bitcoin">Bitcoin adresa</h3>
+
+<p>Pro zjednodušení platby v Bitcoinech používejte URI schéma <code>bitcoin:</code> s parametry:</p>
+
+<pre><code>bitcoin:{adresa}?amount={castka}&amp;label={zprava}</code></pre>
+
+<p>Nutná je pochopitelně mobilní bitcoinová peněženka, která může platbu na adresu zpracovat.</p>
+
+
+
+
+<h2 id="aplikace">Aplikace</h2>
+
+<p>Pro čtení QR kódu je nutná nějaká aplikace, co z obrázku vydoluje text.</p>
+
+<p>Pro luštění kódu na počítači bez používání webkamery je ideální nástroj:</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://zxing.org/w/decode.jspx">ZXing Decoder</a> – dekódování QR kódu z URL nebo nahraného obrázku v prohlížeči</li>
+  </ul>
+</div>
+
+
+<h3 id="mobilni">Mobilní aplikace</h3>
+
+<p>Na mobilních telefonech dnes QR kód zpravidla naskenujete přímo vestavěnou aplikací Fotoaparát (iOS i Android). Pro pokročilejší funkce je k disposici také Google Lens nebo řada QR čteček v obchodech s aplikacemi.</p>
+
+
+<h2 id="generovani">PHP, JS, API generátory</h2>
+
+<p>Pro automatické generování QR kódu existuje spousta hotových řešení.</p>
+
+
+
+<h3 id="js">Generování QR v JavaScriptu</h3>
+
+<p>Generovat QR kód v JavaScriptu je výhodné – není nutné čekat na odpověď serveru a data se neposílají třetí straně. Výsledek lze vykreslit do <a href="/canvas"><code>&lt;canvas></code></a> nebo jako SVG.</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://github.com/soldair/node-qrcode">qrcode</a> – spolehlivá JS/TS knihovna (Node i prohlížeč), podporuje UTF‑8</li>
+    <li><a href="https://github.com/kozakdenys/qr-code-styling">qr-code-styling</a> – generování stylovaných QR kódů s logem</li>
+  </ul>
+</div>
+
+
+<h3 id="php">PHP generátor QR kódu</h3>
+
+<p>Pro PHP je dnes nejpoužívanější a aktivně udržovaná knihovna <a href="https://github.com/endroid/qr-code">endroid/qr-code</a> (composer balíček <code>endroid/qr-code</code>). Alternativou je <a href="https://github.com/chillerlan/php-qrcode">chillerlan/php-qrcode</a>.</p>
+
+<p><b>Poznámka</b>: po stažení archivu a spuštění na <a href="/localhost">localhostu</a> nemusí u dema čestina správně fungovat kvůli absenci HTML <code>&lt;meta></code> značky:</p>
+
+<pre><code>&lt;meta charset="utf-8"></code></pre>
+
+
+<h3 id="online">Online generátor</h3>
+
+<p>Nakonec je možnost si QR kód jednorázově vygenerovat pomocí nějaké online služby.</p>
+
+<div class="external-content">
+  <ul>
+    <li><a href="https://goqr.me">QR Code Generator</a> – pokročilý online generátor QR kódu</li>
+  </ul>
+</div>
+
