@@ -10,6 +10,7 @@
 	import HeroPost from '$lib/mainPost/HeroPost.svelte';
 	import ImageUploadManager from '$lib/imageUpload/ImageUploadManager.svelte';
 	import { htmlToPlainText } from '$lib/xml/xml';
+	import { schemaScript } from '$lib/schemaScript/schemaScript';
 
 	interface Props {
 		data: PageData;
@@ -18,6 +19,54 @@
 	let { data }: Props = $props();
 
 	let post = $derived(data.page || data.tag);
+
+	const baseUrl = 'https://jecas.cz';
+	const pageUrl = $derived(data.page ? `${baseUrl}/${data.page.url_slug}` : baseUrl);
+	const imageUrl = $derived(
+		data.page
+			? `${baseUrl}/files/article/${data.page.url_slug}.png`
+			: `${baseUrl}/favicon-196x196.png`
+	);
+	const descriptionText = $derived(data.page ? htmlToPlainText(data.page.description) : '');
+	const datePublished = $derived(data.page ? new Date((data.page as any).date).toISOString() : '');
+	const dateModified = $derived(
+		data.page
+			? new Date((data.page as any).last_modification ?? (data.page as any).date).toISOString()
+			: ''
+	);
+	const tagNames = $derived(data.tags?.map((t) => t.name) ?? []);
+	const articleLd = $derived(
+		data.page
+			? {
+					'@context': 'https://schema.org',
+					'@type': 'Article',
+					headline: data.page.headline || data.page.title,
+					datePublished,
+					dateModified,
+					author: { '@type': 'Person', name: 'Bohumil Jahoda' },
+					mainEntityOfPage: pageUrl,
+					image: [imageUrl],
+					publisher: {
+						'@type': 'Organization',
+						name: 'Je čas.cz',
+						logo: { '@type': 'ImageObject', url: `${baseUrl}/favicon-196x196.png` }
+					},
+					keywords: tagNames
+				}
+			: null
+	);
+	const breadcrumbsLd = $derived(
+		data.page
+			? {
+					'@context': 'https://schema.org',
+					'@type': 'BreadcrumbList',
+					itemListElement: [
+						{ '@type': 'ListItem', position: 1, name: 'Je čas.cz', item: baseUrl },
+						{ '@type': 'ListItem', position: 2, name: data.page.title, item: pageUrl }
+					]
+				}
+			: null
+	);
 </script>
 
 <svelte:head>
@@ -27,14 +76,18 @@
 		content={post && 'description' in post ? htmlToPlainText(post.description) : ''}
 	/>
 	{#if data.page}
-		<meta property="og:url" content={`https://jecas.cz/${data.page.url_slug}`} />
+		<link rel="canonical" href={pageUrl} />
+		<meta property="og:url" content={pageUrl} />
 		<meta property="og:title" content={data.page.title} />
-		<meta property="og:description" content={htmlToPlainText(data.page.description)} />
-		<meta
-			property="og:image"
-			content={`https://jecas.cz/files/article/${data.page.url_slug}.png`}
-		/>
+		<meta property="og:description" content={descriptionText} />
+		<meta property="og:image" content={imageUrl} />
 		<meta property="og:type" content="article" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={data.page.title} />
+		<meta name="twitter:description" content={descriptionText} />
+		<meta name="twitter:image" content={imageUrl} />
+		{@html schemaScript(articleLd)}
+		{@html schemaScript(breadcrumbsLd)}
 	{/if}
 </svelte:head>
 
