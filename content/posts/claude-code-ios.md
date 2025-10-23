@@ -77,6 +77,46 @@ format: "html"
 </ol>
 
 
+<h2 id="jak-to-funguje">Jak to funguje v praxi</h2>
+
+<p>Představme si konkrétní scénář použití Claude Code na iPhone:</p>
+
+<ol>
+<li>
+  <p><b>Otevřete Claude aplikaci</b> a vytvořte nový chat s režimem "Code"</p>
+</li>
+<li>
+  <p><b>Popište, co potřebujete</b>: „Vytvoř React komponentu pro formulář registrace s validací emailu a hesla"</p>
+</li>
+<li>
+  <p><b>Claude analyzuje požadavek</b> a navrhne strukturu – ukáže vám, jaké soubory vytvoří</p>
+</li>
+<li>
+  <p><b>Schválíte akci</b> nebo upřesníte detaily</p>
+</li>
+<li>
+  <p><b>Claude vytvoří soubory</b>, nainstaluje potřebné závislosti, napíše testy</p>
+</li>
+<li>
+  <p><b>Zkontrolujete kód</b> přímo v aplikaci, můžete požádat o úpravy</p>
+</li>
+<li>
+  <p><b>Claude commitne změny</b> do Gitu s popisnou commit zprávou</p>
+</li>
+<li>
+  <p><b>Vytvoří pull request</b> – pokud máte projekt na GitHubu</p>
+</li>
+<li>
+  <p><b>Vercel automaticky deployuje</b> preview verzi (pokud máte integraci)</p>
+</li>
+<li>
+  <p><b>Otevřete preview URL</b> přímo na iPhone a vidíte výsledek</p>
+</li>
+</ol>
+
+<p>Celý proces od nápadu po funkční preview trvá typicky <b>pár minut</b> – a to vše z mobilu, bez doteku ke klávesnici.</p>
+
+
 <h2 id="co-umoznuje">Co Claude Code na iOS umožňuje</h2>
 
 <p>Mobilní verze je optimalizovaná pro použití na cestách. Nejde o plnohodnotnou náhradu desktopového vývojového prostředí, ale spíš o <b>doplňkový nástroj</b> pro rychlé úkoly.</p>
