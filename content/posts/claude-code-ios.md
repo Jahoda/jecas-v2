@@ -9,13 +9,13 @@ tags: ["ai", "produktivita", "nastroje", "programovani"]
 format: "html"
 ---
 
-<p>V říjnu 2025 přinesl Anthropic významnou novinku – Claude Code, pokročilý AI nástroj pro programování, je nově dostupný i na iOS zařízeních a ve webovém prohlížeči. Co to znamená pro vývojáře?</p>
+<p>V říjnu 2025 přinesl <a href="https://www.anthropic.com">Anthropic</a> významnou novinku – Claude Code, pokročilý AI nástroj pro programování, je nově dostupný i na iOS zařízeních a ve webovém prohlížeči. Co to znamená pro vývojáře?</p>
 
 <p><img src="/files/claude-code-ios/claude-code-ios-hero.svg" alt="Claude Code na iOS - programování s AI na iPhone" class="border"></p>
 
 <h2 id="co-je-claude-code">Co je Claude Code</h2>
 
-<p>Claude Code je AI asistent pro programování od společnosti Anthropic. Na rozdíl od jednoduchých chatbotů dokáže:</p>
+<p>Claude Code je AI asistent pro programování od společnosti <a href="https://www.anthropic.com">Anthropic</a>. Na rozdíl od jednoduchých chatbotů dokáže:</p>
 
 <ul>
 <li>
@@ -250,7 +250,7 @@ format: "html"
 
 <h3 id="vercel-deployment">Okamžitá kontrola s Vercelem</h3>
 
-<p>Zajímavé je používat Claude Code s propojeným <b>Vercelem</b>, kde se založený pull request rovnou deployuje na testovací URL.</p>
+<p>Zajímavé je používat Claude Code s propojeným <b><a href="https://vercel.com">Vercelem</a></b>, kde se založený pull request rovnou deployuje na testovací URL.</p>
 
 <p>Workflow vypadá takto:</p>
 
@@ -259,7 +259,7 @@ format: "html"
   <p>Claude Code vytvoří změny a založí pull request</p>
 </li>
 <li>
-  <p>Vercel automaticky nasadí preview verzi na unikátní URL</p>
+  <p><a href="https://vercel.com">Vercel</a> automaticky nasadí preview verzi na unikátní URL</p>
 </li>
 <li>
   <p>Zkontrolujete výsledek přímo v mobilu na testovací URL</p>
@@ -341,19 +341,19 @@ format: "html"
 
 <h3 id="ai-editory">AI editory a doplňky</h3>
 
-<p><b>GitHub Copilot</b> – Průkopník AI programování. Funguje jako inteligentní autocomplete přímo v editoru (VS Code, JetBrains, atd.). Navrhuje kód během psaní, ale nemá autonomii – pouze reaguje na váš kód a komentáře. Bez mobilní verze.</p>
+<p><b><a href="https://github.com/features/copilot">GitHub Copilot</a></b> – Průkopník AI programování. Funguje jako inteligentní autocomplete přímo v editoru (VS Code, JetBrains, atd.). Navrhuje kód během psaní, ale nemá autonomii – pouze reaguje na váš kód a komentáře. Bez mobilní verze.</p>
 
-<p><b>Cursor</b> – Moderní editor postavený na VS Code s hlubokou AI integrací. Dokáže editovat více souborů najednou, má chat interface a rozumí kontextu celého projektu. Zatím pouze desktop, mobilní verze chybí.</p>
+<p><b><a href="https://cursor.sh">Cursor</a></b> – Moderní editor postavený na VS Code s hlubokou AI integrací. Dokáže editovat více souborů najednou, má chat interface a rozumí kontextu celého projektu. Zatím pouze desktop, mobilní verze chybí.</p>
 
 <h3 id="ai-web-buildery">AI web buildery</h3>
 
-<p><b>Bolt.new</b> od StackBlitz – Revoluční nástroj pro vytváření webových aplikací přímo v prohlížeči. Napíšete v přirozeném jazyce, co chcete vytvořit, a Bolt vygeneruje a rovnou spustí celou aplikaci. Běží v izolovaném prostředí WebContainers, takže vidíte výsledek okamžitě bez nutnosti lokálního setupu. Za 4 týdny od spuštění dosáhl 4 miliony dolarů v ročních příjmech. Funguje ve webovém prohlížeči, takže přístupný i z mobilů, ale UI není optimalizované pro dotykové ovládání.</p>
+<p><b><a href="https://bolt.new">Bolt.new</a></b> od <a href="https://stackblitz.com">StackBlitz</a> – Revoluční nástroj pro vytváření webových aplikací přímo v prohlížeči. Napíšete v přirozeném jazyce, co chcete vytvořit, a Bolt vygeneruje a rovnou spustí celou aplikaci. Běží v izolovaném prostředí WebContainers, takže vidíte výsledek okamžitě bez nutnosti lokálního setupu. Za 4 týdny od spuštění dosáhl 4 miliony dolarů v ročních příjmech. Funguje ve webovém prohlížeči, takže přístupný i z mobilů, ale UI není optimalizované pro dotykové ovládání.</p>
 
-<p><b>Lovable</b> (dříve GPT Engineer) – Specializuje se na tvorbu full-stack aplikací z textového popisu. Silná stránka je automatická integrace s backendem (Supabase), GitHub, autentizace a deployment. Nabízí vizuální editaci pomocí přirozeného jazyka. Má přes 500 tisíc uživatelů a je ideální pro rychlé prototypy a MVP. Také dostupný přes web, včetně mobilních prohlížečů.</p>
+<p><b><a href="https://lovable.dev">Lovable</a></b> (dříve GPT Engineer) – Specializuje se na tvorbu full-stack aplikací z textového popisu. Silná stránka je automatická integrace s backendem (<a href="https://supabase.com">Supabase</a>), GitHub, autentizace a deployment. Nabízí vizuální editaci pomocí přirozeného jazyka. Má přes 500 tisíc uživatelů a je ideální pro rychlé prototypy a MVP. Také dostupný přes web, včetně mobilních prohlížečů.</p>
 
 <h3 id="univerzalni-chatboty">Univerzální chatboty</h3>
 
-<p><b>ChatGPT</b> – Univerzální AI asistent, který umí i programování. Dokáže psát kód, vysvětlovat jej, generovat testy. Nemá ale přímý přístup k souborovému systému ani terminálu, takže se musíte starat o kopírování kódu ručně. Má mobilní aplikaci, ale bez speciálních funkcí pro programování.</p>
+<p><b><a href="https://chat.openai.com">ChatGPT</a></b> – Univerzální AI asistent, který umí i programování. Dokáže psát kód, vysvětlovat jej, generovat testy. Nemá ale přímý přístup k souborovému systému ani terminálu, takže se musíte starat o kopírování kódu ručně. Má mobilní aplikaci, ale bez speciálních funkcí pro programování.</p>
 
 <h3 id="claude-code-pozice">Pozice Claude Code</h3>
 
