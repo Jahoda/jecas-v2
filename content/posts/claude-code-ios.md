@@ -11,6 +11,8 @@ format: "html"
 
 <p>V říjnu 2025 přinesl Anthropic významnou novinku – Claude Code, pokročilý AI nástroj pro programování, je nově dostupný i na iOS zařízeních a ve webovém prohlížeči. Co to znamená pro vývojáře?</p>
 
+<p><img src="/files/claude-code-ios/claude-code-ios-hero.svg" alt="Claude Code na iOS - programování s AI na iPhone" class="border"></p>
+
 <h2 id="co-je-claude-code">Co je Claude Code</h2>
 
 <p>Claude Code je AI asistent pro programování od společnosti Anthropic. Na rozdíl od jednoduchých chatbotů dokáže:</p>
@@ -97,8 +99,6 @@ format: "html"
   <p>Napsat review komentáře</p>
 </li>
 </ul>
-
-<p><img src="/files/claude-code-ios/code-review.png" alt="Revize kódu na iPhone" class="border"></p>
 
 
 <h3 id="rychle-ukoly">Rychlé úkoly</h3>
