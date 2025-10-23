@@ -297,21 +297,46 @@ format: "html"
 
 <h2 id="srovnani">Srovnání s alternativami</h2>
 
-<p>Na trhu existují i jiné AI nástroje pro programování:</p>
+<p>Na trhu existuje celá řada AI nástrojů pro programování. Každý má svůj přístup a zaměření.</p>
+
+<h3 id="ai-editory">AI editory a doplňky</h3>
+
+<p><b>GitHub Copilot</b> – Průkopník AI programování. Funguje jako inteligentní autocomplete přímo v editoru (VS Code, JetBrains, atd.). Navrhuje kód během psaní, ale nemá autonomii – pouze reaguje na váš kód a komentáře. Bez mobilní verze.</p>
+
+<p><b>Cursor</b> – Moderní editor postavený na VS Code s hlubokou AI integrací. Dokáže editovat více souborů najednou, má chat interface a rozumí kontextu celého projektu. Zatím pouze desktop, mobilní verze chybí.</p>
+
+<h3 id="ai-web-buildery">AI web buildery</h3>
+
+<p><b>Bolt.new</b> od StackBlitz – Revoluční nástroj pro vytváření webových aplikací přímo v prohlížeči. Napíšete v přirozeném jazyce, co chcete vytvořit, a Bolt vygeneruje a rovnou spustí celou aplikaci. Běží v izolovaném prostředí WebContainers, takže vidíte výsledek okamžitě bez nutnosti lokálního setupu. Za 4 týdny od spuštění dosáhl 4 miliony dolarů v ročních příjmech. Funguje ve webovém prohlížeči, takže přístupný i z mobilů, ale UI není optimalizované pro dotykové ovládání.</p>
+
+<p><b>Lovable</b> (dříve GPT Engineer) – Specializuje se na tvorbu full-stack aplikací z textového popisu. Silná stránka je automatická integrace s backendem (Supabase), GitHub, autentizace a deployment. Nabízí vizuální editaci pomocí přirozeného jazyka. Má přes 500 tisíc uživatelů a je ideální pro rychlé prototypy a MVP. Také dostupný přes web, včetně mobilních prohlížečů.</p>
+
+<h3 id="univerzalni-chatboty">Univerzální chatboty</h3>
+
+<p><b>ChatGPT</b> – Univerzální AI asistent, který umí i programování. Dokáže psát kód, vysvětlovat jej, generovat testy. Nemá ale přímý přístup k souborovému systému ani terminálu, takže se musíte starat o kopírování kódu ručně. Má mobilní aplikaci, ale bez speciálních funkcí pro programování.</p>
+
+<h3 id="claude-code-pozice">Pozice Claude Code</h3>
+
+<p>Claude Code se nachází někde mezi těmito kategoriemi:</p>
 
 <ul>
 <li>
-  <p><b>GitHub Copilot</b> – Funguje jako autocomplete přímo v editoru, ale nemá takovou autonomii jako Claude Code</p>
+  <p><b>Autonomie jako Bolt/Lovable</b> – Dokáže sám vytvářet a editovat soubory, spouštět příkazy, commitovat do gitu</p>
 </li>
 <li>
-  <p><b>ChatGPT</b> – Univerzální chatbot, ale nemá přímý přístup k souborovému systému a terminálu</p>
+  <p><b>Práce s existujícími projekty jako Cursor</b> – Není jen pro nové projekty, umí pracovat s vaší stávající codebase</p>
 </li>
 <li>
-  <p><b>Cursor</b> – Editor s integrovanou AI, ale zatím bez mobilní verze</p>
+  <p><b>Multi-platforma</b> – CLI pro desktop, web interface a nově iOS aplikace s optimalizovaným UI</p>
+</li>
+<li>
+  <p><b>Paralelní zpracování</b> – Může řešit více úkolů současně a spravovat složitější workflow</p>
 </li>
 </ul>
 
-<p>Claude Code se vyznačuje především schopností <b>autonomně pracovat s celým projektem</b> a nově i možností používání napříč různými platformami včetně mobilu.</p>
+<p>Hlavní rozdíl oproti Bolt/Lovable: Claude Code pracuje s vaším lokálním projektem a vývojářskými nástroji, zatímco Bolt/Lovable vytvářejí aplikace ve vlastním izolovaném prostředí.</p>
+
+<p>Hlavní výhoda oproti Cursor: Dostupnost na iOS s plnohodnotnou mobilní aplikací, ne jen přes webový prohlížeč.</p>
 
 
 <h2 id="zaver">Závěr</h2>
