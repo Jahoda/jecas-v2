@@ -208,6 +208,33 @@ format: "html"
 </ul>
 
 
+<h3 id="vercel-deployment">Okamžitá kontrola s Vercelem</h3>
+
+<p>Zajímavé je používat Claude Code s propojeným <b>Vercelem</b>, kde se založený pull request rovnou deployuje na testovací URL.</p>
+
+<p>Workflow vypadá takto:</p>
+
+<ol>
+<li>
+  <p>Claude Code vytvoří změny a založí pull request</p>
+</li>
+<li>
+  <p>Vercel automaticky nasadí preview verzi na unikátní URL</p>
+</li>
+<li>
+  <p>Zkontrolujete výsledek přímo v mobilu na testovací URL</p>
+</li>
+<li>
+  <p>V případě problémů můžete ihned požádat Claude o úpravy</p>
+</li>
+<li>
+  <p>Po každém commitu se preview automaticky aktualizuje</p>
+</li>
+</ol>
+
+<p>Díky tomu můžete z iPhone nejen naprogramovat změny, ale i <b>okamžitě vizuálně ověřit</b>, jak fungují v prohlížeči. Ideální pro frontend úpravy, kdy potřebujete vidět výsledek vlastníma očima.</p>
+
+
 <h2 id="omezeni">Omezení a tipy</h2>
 
 <h3 id="co-ocekavat">Co očekávat</h3>
