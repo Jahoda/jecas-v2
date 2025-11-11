@@ -11,6 +11,8 @@ format: "html"
 
 <p>Některé HTML značky <b>nelze do sebe zanořovat</b>. Typickým příkladem jsou odstavce <code>&lt;p></code> nebo tlačítka <code>&lt;button></code>. HTML parser takové pokusy automaticky opraví. Ale co se stane, když stejnou strukturu vytvoříme pomocí <b>DOM metod</b> v JavaScriptu?</p>
 
+<p><img src="/files/html-zanorovani/html-vs-dom.svg" alt="Porovnání HTML parseru a DOM metod při zanořování nezanořitelných značek" class="border"></p>
+
 <h2 id="problem">Problém s vnořováním</h2>
 
 <p>Zkusme napsat následující HTML kód, kde jeden odstavec zanořujeme do druhého:</p>
@@ -161,6 +163,125 @@ p1.appendChild(p2);</code></pre>
   <li>Budoucí verze prohlížečů mohou takové struktury <b>opravovat</b></li>
 </ul>
 
+<h2 id="stylovani">Stylování vnořených nezanořitelných elementů</h2>
+
+<p>Pokud se vám přes DOM metody podaří vytvořit <b>vnořené nezanořitelné elementy</b>, může se jejich stylování chovat <b>neočekávaně</b>.</p>
+
+<h3 id="css-dedicnost">CSS dědičnost a specifičnost</h3>
+
+<p>CSS pravidla se aplikují normálně, protože prohlížeč vidí validní DOM strukturu (i když je nevalidní podle HTML specifikace):</p>
+
+<pre><code>p {
+  margin: 20px;
+  color: blue;
+}
+
+/* Vnitřní odstavec zdědí vlastnosti a přidá své */</code></pre>
+
+<p>Problém nastává, když vnořený odstavec zdědí vlastnosti od vnějšího odstavce. Například <code>margin</code> se může <b>aplikovat dvakrát</b>, což vede k většímu rozestupu, než byste čekali.</p>
+
+<div class="live">
+  <style>
+    .demo-nested p { margin: 20px; background: #f0f0f0; padding: 10px; }
+  </style>
+  <div class="demo-nested" id="demo-nested"></div>
+  <script>
+    var container = document.getElementById('demo-nested');
+    var outer = document.createElement('p');
+    var inner = document.createElement('p');
+    outer.textContent = 'Vnější odstavec ';
+    inner.textContent = 'Vnitřní odstavec (má dvojitý margin!)';
+    outer.appendChild(inner);
+    container.appendChild(outer);
+  </script>
+</div>
+
+<h3 id="display-vlastnost">Vlastnost display</h3>
+
+<p>Zajímavé je chování vlastnosti <code>display</code>. Odstavce jsou standardně <code>display: block</code>, což znamená, že zabírají celou šířku. Vnořený blokový element uvnitř jiného blokového elementu se bude chovat stejně:</p>
+
+<pre><code>&lt;style>
+  p { display: block; }
+&lt;/style>
+
+&lt;!-- Vytvořeno přes DOM --&gt;
+&lt;p>Vnější (block)
+  &lt;p>Vnitřní (block v blocku)&lt;/p>
+&lt;/p></code></pre>
+
+<p>Pokud změníte <code>display</code> vlastnost vnějšího nebo vnitřního elementu (např. na <code>inline</code> nebo <code>flex</code>), může se layout chovat <b>nepředvídatelně</b>.</p>
+
+<h3 id="button-stylovani">Stylování vnořených tlačítek</h3>
+
+<p>U tlačítek je situace ještě komplikovanější. Tlačítko má speciální <b>výchozí styly</b> a chování (kurzor, hover stavy, focus). Vnořené tlačítko zdědí některé vlastnosti, ale může mít problémy s:</p>
+
+<ul>
+  <li><b>Kliknutím</b> – které tlačítko se má aktivovat?</li>
+  <li><b>Focus stavem</b> – může dojít k neočekávanému vizuálnímu zvýraznění</li>
+  <li><b>Z-indexem</b> – vnořené tlačítko může překrývat vnější</li>
+</ul>
+
+<pre><code>var outer = document.createElement('button');
+var inner = document.createElement('button');
+outer.textContent = 'Vnější ';
+inner.textContent = 'Vnitřní';
+outer.appendChild(inner);
+
+// Kliknutí na vnitřní tlačítko vyvolá události obou tlačítek!</code></pre>
+
+<h2 id="xhtml">Co XHTML?</h2>
+
+<p><b>XHTML</b> (Extensible HyperText Markup Language) je varianta HTML, která dodržuje přísnější pravidla <b>XML</b>. V XHTML platí stejná omezení na zanořování jako v HTML – <code>&lt;p></code> nemůže obsahovat další <code>&lt;p></code>, <code>&lt;button></code> nemůže obsahovat další <code>&lt;button></code>, atd.</p>
+
+<h3 id="xhtml-parsing">XHTML parsing</h3>
+
+<p>Hlavní rozdíl XHTML oproti HTML je v <b>chování parseru</b>:</p>
+
+<ul>
+  <li><b>HTML parser</b> je <i>benevolentní</i> (forgiving) – automaticky opravuje chyby a snaží se zobrazit stránku, i když má nevalidní strukturu</li>
+  <li><b>XML/XHTML parser</b> je <i>striktní</i> – při jakékoliv chybě zobrazí chybovou hlášku a <b>odmítne stránku zobrazit</b></li>
+</ul>
+
+<p>Pokud byste v XHTML napsali vnořené odstavce:</p>
+
+<pre><code>&lt;?xml version="1.0"?>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+&lt;html xmlns="http://www.w3.org/1999/xhtml">
+&lt;body>
+  &lt;p>Vnější
+    &lt;p>Vnitřní&lt;/p>
+  &lt;/p>
+&lt;/body>
+&lt;/html></code></pre>
+
+<p>Prohlížeč by zobrazil <b>chybovou hlášku</b> místo stránky:</p>
+
+<pre><code>XML Parsing Error: mismatched tag
+Location: file:///path/to/file.xhtml
+Line Number 6, Column 7:</code></pre>
+
+<h3 id="xhtml-dom">XHTML a DOM metody</h3>
+
+<p>Pokud byste v XHTML dokumentu použili <b>DOM metody</b> k vytvoření vnořených nezanořitelných elementů, situace by byla stejná jako v HTML:</p>
+
+<pre><code>// V XHTML dokumentu
+var outer = document.createElement('p');
+var inner = document.createElement('p');
+outer.appendChild(inner); // Funguje!</code></pre>
+
+<p>DOM metody <b>neověřují validitu</b> podle XHTML pravidel, takže lze vytvořit nevalidní strukturu. Rozdíl je ale v tom, že při jakémkoliv pokusu o <b>serializaci</b> (např. výpis <code>innerHTML</code> nebo uložení DOM zpět do souboru) může dojít k chybě nebo neočekávanému chování.</p>
+
+<h3 id="xhtml-dnes">XHTML dnes</h3>
+
+<p>XHTML se dnes <b>prakticky nepoužívá</b>. HTML5 přinesl mnohem flexibilnější přístup a většina webů používá běžné HTML s <i>forgiving</i> parserem. XHTML má smysl pouze v specifických případech, jako je:</p>
+
+<ul>
+  <li>Zpracování dokumentů v <b>XML nástrojích</b></li>
+  <li>Integrace HTML s <b>XML daty</b></li>
+  <li>Situace, kde je nutná <b>striktní validace</b></li>
+</ul>
+
 <h2 id="reseni">Správné řešení</h2>
 
 <p>Namísto vnořování nezanořitelných značek použijte jiné elementy:</p>
@@ -183,15 +304,35 @@ p1.appendChild(p2);</code></pre>
   &lt;span class="inner-button-style">Pseudo tlačítko uvnitř&lt;/span>
 &lt;/button></code></pre>
 
+<p>Pro komplexnější <b>stylování tlačítek</b> můžete použít různé techniky:</p>
+
+<pre><code>&lt;!-- Tlačítko s ikonou --&gt;
+&lt;button class="btn-with-icon">
+  &lt;svg class="icon">...&lt;/svg>
+  &lt;span class="label">Klikni&lt;/span>
+&lt;/button>
+
+&lt;!-- Tlačítko s pseudo-elementy v CSS --&gt;
+&lt;style>
+  .fancy-button::before {
+    content: "→ ";
+    font-weight: bold;
+  }
+&lt;/style>
+&lt;button class="fancy-button">Odeslat&lt;/button></code></pre>
+
 <h2 id="zaver">Závěr</h2>
 
 <p>HTML parser a DOM metody se chovají <b>odlišně</b> při práci s nezanořitelnými značkami:</p>
 
 <ul>
-  <li><b>HTML parser</b> (včetně <code>innerHTML</code>) automaticky opraví nevalidní struktury</li>
-  <li><b>DOM metody</b> (<code>createElement</code>, <code>appendChild</code>) umožňují vytvořit i nevalidní struktury</li>
-  <li>Tento rozdíl může způsobit <b>problémy</b> při různých způsobech renderování</li>
+  <li><b>HTML parser</b> (včetně <code>innerHTML</code>) automaticky opraví nevalidní struktury podle HTML specifikace</li>
+  <li><b>DOM metody</b> (<code>createElement</code>, <code>appendChild</code>) umožňují vytvořit i nevalidní struktury, protože neprochází parserem</li>
+  <li><b>XHTML parser</b> je striktní a odmítne zobrazit dokument s chybami, ale DOM metody fungují stejně jako v HTML</li>
+  <li><b>Stylování</b> vnořených nezanořitelných elementů může vést k neočekávanému chování (dvojité marginy, problémy s eventy)</li>
+  <li>Tento rozdíl může způsobit <b>problémy</b> při různých způsobech renderování (CSR vs SSR)</li>
   <li>Nejlepší je <b>dodržovat</b> HTML specifikaci a nevytvářet nevalidní struktury záměrně</li>
+  <li>Pro stylování používejte <code>&lt;span></code>, <code>&lt;div></code> nebo CSS pseudo-elementy místo vnořování nezanořitelných značek</li>
 </ul>
 
 <h2 id="odkazy">Odkazy jinam</h2>

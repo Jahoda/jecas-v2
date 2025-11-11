@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #333; }
+      .code { font-family: 'Courier New', monospace; font-size: 13px; fill: #333; }
+      .code-keyword { fill: #d73a49; }
+      .code-string { fill: #032f62; }
+      .code-tag { fill: #22863a; }
+      .box { fill: #f6f8fa; stroke: #d1d5da; stroke-width: 2; }
+      .result-box { fill: #fff; stroke: #0366d6; stroke-width: 2; }
+      .arrow { fill: none; stroke: #666; stroke-width: 2; marker-end: url(#arrowhead); }
+      .label { font-family: Arial, sans-serif; font-size: 12px; fill: #666; }
+      .highlight-ok { fill: #d4edda; stroke: #28a745; }
+      .highlight-error { fill: #f8d7da; stroke: #dc3545; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#666" />
+    </marker>
+  </defs>
+
+  <!-- Left side: HTML Parser -->
+  <text x="150" y="30" class="title" text-anchor="middle">HTML Parser</text>
+
+  <!-- HTML code box -->
+  <rect x="30" y="50" width="240" height="100" class="box" rx="5"/>
+  <text x="40" y="75" class="code">
+    <tspan class="code-tag">&lt;p&gt;</tspan>Vnější
+  </text>
+  <text x="50" y="95" class="code">
+    <tspan class="code-tag">&lt;p&gt;</tspan>Vnitřní<tspan class="code-tag">&lt;/p&gt;</tspan>
+  </text>
+  <text x="40" y="115" class="code">
+    <tspan class="code-tag">&lt;/p&gt;</tspan>
+  </text>
+  <text x="40" y="135" class="label">innerHTML / HTML kód</text>
+
+  <!-- Arrow down -->
+  <path d="M 150 160 L 150 200" class="arrow"/>
+  <text x="170" y="185" class="label">parser opraví</text>
+
+  <!-- Result: Corrected DOM -->
+  <rect x="30" y="210" width="240" height="100" class="result-box" rx="5"/>
+  <text x="40" y="235" class="code">
+    <tspan class="code-tag">&lt;p&gt;</tspan>Vnější<tspan class="code-tag">&lt;/p&gt;</tspan>
+  </text>
+  <text x="40" y="255" class="code">
+    <tspan class="code-tag">&lt;p&gt;</tspan>Vnitřní<tspan class="code-tag">&lt;/p&gt;</tspan>
+  </text>
+  <text x="40" y="285" class="label" font-weight="bold">✓ Dva odstavce vedle sebe</text>
+
+  <!-- Right side: DOM Methods -->
+  <text x="600" y="30" class="title" text-anchor="middle">DOM metody</text>
+
+  <!-- JavaScript code box -->
+  <rect x="480" y="50" width="240" height="120" class="box" rx="5"/>
+  <text x="490" y="75" class="code">
+    <tspan class="code-keyword">var</tspan> p1 = createElement(
+  </text>
+  <text x="500" y="95" class="code">
+    <tspan class="code-string">"p"</tspan>);
+  </text>
+  <text x="490" y="115" class="code">
+    <tspan class="code-keyword">var</tspan> p2 = createElement(
+  </text>
+  <text x="500" y="135" class="code">
+    <tspan class="code-string">"p"</tspan>);
+  </text>
+  <text x="490" y="155" class="code">
+    p1.<tspan class="code-keyword">appendChild</tspan>(p2);
+  </text>
+
+  <!-- Arrow down -->
+  <path d="M 600 180 L 600 200" class="arrow"/>
+  <text x="610" y="195" class="label">bez opravy</text>
+
+  <!-- Result: Nested DOM -->
+  <rect x="480" y="210" width="240" height="100" class="result-box" rx="5"/>
+  <text x="490" y="235" class="code">
+    <tspan class="code-tag">&lt;p&gt;</tspan>Vnější
+  </text>
+  <text x="500" y="255" class="code">
+    <tspan class="code-tag">&lt;p&gt;</tspan>Vnitřní<tspan class="code-tag">&lt;/p&gt;</tspan>
+  </text>
+  <text x="490" y="275" class="code">
+    <tspan class="code-tag">&lt;/p&gt;</tspan>
+  </text>
+  <text x="490" y="295" class="label" font-weight="bold">⚠ Vnořené odstavce!</text>
+
+  <!-- Bottom comparison boxes -->
+  <rect x="30" y="340" width="240" height="80" class="highlight-ok" rx="5"/>
+  <text x="150" y="365" class="code" text-anchor="middle" font-weight="bold">Validní HTML</text>
+  <text x="150" y="385" class="label" text-anchor="middle">Parser zajistí správnou</text>
+  <text x="150" y="405" class="label" text-anchor="middle">strukturu podle specifikace</text>
+
+  <rect x="480" y="340" width="240" height="80" class="highlight-error" rx="5"/>
+  <text x="600" y="365" class="code" text-anchor="middle" font-weight="bold">Nevalidní, ale funkční</text>
+  <text x="600" y="385" class="label" text-anchor="middle">DOM umožní vytvořit</text>
+  <text x="600" y="405" class="label" text-anchor="middle">i nevalidní struktury</text>
+</svg>
