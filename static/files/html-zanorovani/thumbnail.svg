@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <style>
+      .bg { fill: #f0f7ff; }
+      .code-box { fill: #fff; stroke: #0366d6; stroke-width: 2; }
+      .code-tag { font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold; fill: #22863a; }
+      .arrow { fill: none; stroke: #dc3545; stroke-width: 3; }
+      .check { fill: #28a745; stroke: #28a745; stroke-width: 2; }
+      .cross { fill: none; stroke: #dc3545; stroke-width: 3; stroke-linecap: round; }
+      .divider { fill: none; stroke: #d1d5da; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="200" height="200" class="bg"/>
+
+  <!-- Vertical divider -->
+  <line x1="100" y1="20" x2="100" y2="180" class="divider"/>
+
+  <!-- Left side: HTML Parser (corrected) -->
+  <!-- Top P tag -->
+  <rect x="20" y="40" width="60" height="30" class="code-box" rx="3"/>
+  <text x="50" y="61" class="code-tag" text-anchor="middle">&lt;p&gt;</text>
+
+  <!-- Bottom P tag (separated) -->
+  <rect x="20" y="90" width="60" height="30" class="code-box" rx="3"/>
+  <text x="50" y="111" class="code-tag" text-anchor="middle">&lt;p&gt;</text>
+
+  <!-- Check mark -->
+  <circle cx="50" cy="145" r="15" class="check" opacity="0.2"/>
+  <path d="M 43 145 L 48 150 L 57 140" class="check" fill="none"/>
+
+  <!-- Right side: DOM Methods (nested) -->
+  <!-- Outer P tag -->
+  <rect x="110" y="40" width="70" height="80" class="code-box" rx="3"/>
+  <text x="145" y="58" class="code-tag" text-anchor="middle">&lt;p&gt;</text>
+
+  <!-- Inner P tag (nested inside) -->
+  <rect x="120" y="70" width="50" height="35" class="code-box" rx="3" stroke="#dc3545"/>
+  <text x="145" y="92" class="code-tag" text-anchor="middle" fill="#dc3545">&lt;p&gt;</text>
+
+  <!-- Warning cross -->
+  <circle cx="145" cy="145" r="15" fill="#dc3545" opacity="0.2"/>
+  <line x1="138" y1="138" x2="152" y2="152" class="cross"/>
+  <line x1="152" y1="138" x2="138" y2="152" class="cross"/>
+
+  <!-- Labels -->
+  <text x="50" y="175" style="font-family: Arial, sans-serif; font-size: 11px; fill: #333; text-anchor: middle;">HTML</text>
+  <text x="50" y="188" style="font-family: Arial, sans-serif; font-size: 11px; fill: #333; text-anchor: middle;">Parser</text>
+
+  <text x="145" y="175" style="font-family: Arial, sans-serif; font-size: 11px; fill: #333; text-anchor: middle;">DOM</text>
+  <text x="145" y="188" style="font-family: Arial, sans-serif; font-size: 11px; fill: #333; text-anchor: middle;">Metody</text>
+</svg>
