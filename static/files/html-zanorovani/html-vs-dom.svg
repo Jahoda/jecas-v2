@@ -12,11 +12,14 @@
       .label { font-family: Arial, sans-serif; font-size: 12px; fill: #666; }
       .highlight-ok { fill: #d4edda; stroke: #28a745; }
       .highlight-error { fill: #f8d7da; stroke: #dc3545; }
+      .background { fill: #ffffff; }
     </style>
     <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
       <polygon points="0 0, 10 3, 0 6" fill="#666" />
     </marker>
   </defs>
+
+  <rect width="800" height="450" class="background" rx="8"/>
 
   <!-- Left side: HTML Parser -->
   <text x="150" y="30" class="title" text-anchor="middle">HTML Parser</text>
