@@ -47,9 +47,9 @@
 		"pnpm": ">=8.0.0"
 	},
 	"dependencies": {
-		"@ethercorps/sveltekit-og": "3.0.0",
 		"@sveltejs/vite-plugin-svelte": "6.1.0",
 		"@tailwindcss/postcss": "4.1.11",
+		"@vercel/og": "^0.8.5",
 		"@vercel/speed-insights": "^1.2.0",
 		"gray-matter": "^4.0.3",
 		"marked": "^16.1.2",
