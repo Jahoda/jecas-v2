@@ -18,7 +18,7 @@ export const GET: RequestHandler = async ({ url }) => {
 
 	try {
 		const { ImageResponse } = await import('@ethercorps/sveltekit-og');
-		return new ImageResponse(
+		return await new ImageResponse(
 			OgPreview as any,
 			{
 				width: 1200,
