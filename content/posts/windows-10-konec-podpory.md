@@ -186,6 +186,8 @@ format: "html"
 
 <p>Rozhodovací strom pro výběr nejlepšího řešení:</p>
 
+<p><img src="/files/windows-10-konec-podpory/rozhodovaci-strom.svg" alt="Rozhodovací strom pro výběr řešení po konci podpory Windows 10" style="max-width: 100%; height: auto;"></p>
+
 <ol>
   <li><b>Splňuje počítač požadavky Windows 11?</b>
     <ul>
