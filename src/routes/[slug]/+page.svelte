@@ -24,7 +24,7 @@
 	const pageUrl = $derived(data.page ? `${baseUrl}/${data.page.url_slug}` : baseUrl);
 	const imageUrl = $derived(
 		data.page
-			? `${baseUrl}/files/article/${data.page.url_slug}.png`
+			? `${baseUrl}/api/og?slug=${data.page.url_slug}`
 			: `${baseUrl}/favicon-196x196.png`
 	);
 	const descriptionText = $derived(data.page ? htmlToPlainText(data.page.description) : '');
