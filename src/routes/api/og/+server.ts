@@ -18,9 +18,16 @@ export const GET: RequestHandler = async ({ url }) => {
 
 	try {
 		const { ImageResponse } = await import('@ethercorps/sveltekit-og');
-		// @ts-ignore
-		return await ImageResponse(OgPreview, { post, tags });
+		return new ImageResponse(
+			OgPreview as any,
+			{
+				width: 1200,
+				height: 630
+			},
+			{ post, tags }
+		);
 	} catch (error) {
-		return new Response('Failed to generate image', { status: 500 });
+		console.error('OG image generation error:', error);
+		return new Response(`Failed to generate image: ${error instanceof Error ? error.message : String(error)}`, { status: 500 });
 	}
 };
