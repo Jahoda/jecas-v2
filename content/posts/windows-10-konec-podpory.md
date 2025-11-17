@@ -13,6 +13,8 @@ format: "html"
   <p>Microsoft 14. října 2025 ukončil podporu Windows 10. Co to znamená pro vaš počítač a jaké máte možnosti?</p>
 </div>
 
+<p><img src="/files/windows-10-konec-podpory/hero.svg" alt="Windows 10 - Konec podpory 14. října 2025" style="max-width: 100%; height: auto; border-radius: 8px;"></p>
+
 <h2 id="co-to-znamena">Co znamená konec podpory</h2>
 
 <p>Konec podpory znamená, že Microsoft <b>pravidelně</b> přestal vydávat:</p>
@@ -28,6 +30,83 @@ format: "html"
 <div class="soft">
   <p><b>Historická poznámka:</b> Microsoft má historii vydávání záplat i po konci podpory pro <b>skutečně kritické</b> zranitelnosti. Například Windows XP dostal záplatu pro WannaCry ransomware v roce 2017 (3 roky po konci podpory). V případě masivně zneužívané zranitelnosti je pravděpodobné, že patch vyjde i pro Windows 10.</p>
 </div>
+
+<h2 id="porovnani-s-konkurenci">Porovnání s konkurencí</h2>
+
+<p>Jak si Microsoft stojí v politice podpory oproti konkurenci? Možná vás překvapí, že Windows 10 měl <b>jednu z nejdelších podpor</b> mezi běžnými operačními systémy.</p>
+
+<h3 id="delka-podpory">Délka podpory operačních systémů</h3>
+
+<table class="border">
+  <thead>
+    <tr>
+      <th>Operační systém</th>
+      <th>Délka podpory</th>
+      <th>Poznámka</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Windows 10</b></td>
+      <td><b>10 let</b></td>
+      <td>2015–2025, standardní Microsoft politika pro enterprise OS</td>
+    </tr>
+    <tr>
+      <td><b>macOS</b> (Apple)</td>
+      <td><b>~3 roky</b></td>
+      <td>Bezpečnostní aktualizace obvykle pro 3 poslední verze, nová verze každý rok</td>
+    </tr>
+    <tr>
+      <td><b>ChromeOS</b> (Google)</td>
+      <td><b>8 let</b></td>
+      <td>Od data vydání zařízení (ne od nákupu!)</td>
+    </tr>
+    <tr>
+      <td><b>Ubuntu LTS</b> (Linux)</td>
+      <td><b>5–15 let</b></td>
+      <td>5 let základní, 10 let s Ubuntu Pro (zdarma), nově až 15 let</td>
+    </tr>
+    <tr>
+      <td><b>Android</b></td>
+      <td><b>2–7 let</b></td>
+      <td>Závisí na výrobci; Google Pixel 8+: 7 let, jiné často jen 2-3 roky</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="microsoft-vs-apple">Microsoft vs Apple</h3>
+
+<p>Největší kontrast je mezi Microsoftem a Apple:</p>
+
+<ul>
+  <li><b>Windows 10: 10 let podpory</b> (2015–2025)</li>
+  <li><b>macOS: ~3 roky podpory</b> pro každou verzi</li>
+</ul>
+
+<p>Apple vydává novou verzi macOS <b>každý rok</b> a podporuje obvykle jen 3 poslední verze. Pokud máte Mac z roku 2015 (stejný rok jako Windows 10), váš macOS přestal dostávat aktualizace už <b>dávno</b> – pravděpodobně kolem roku 2020-2021.</p>
+
+<p><b>Příklad:</b> MacBook z roku 2015 může maximálně běžet na macOS Monterey (2021), který už nedostává bezpečnostní aktualizace. Počítač s Windows 10 z roku 2015 dostával aktualizace až do října 2025 – o <b>4 roky déle</b>.</p>
+
+<h3 id="google-chromeos">Google a ChromeOS</h3>
+
+<p>ChromeOS má <b>8 let podpory</b> od data vydání zařízení. To je lepší než macOS, ale kratší než Windows 10. Důležité je, že se počítá od <b>data vydání modelu</b>, ne od vašeho nákupu:</p>
+
+<ul>
+  <li>Chromebook vydaný v roce 2020 má podporu do roku 2028</li>
+  <li>Pokud stejný model koupíte v roce 2024, podpora končí stále v roce 2028 (jen 4 roky pro vás)</li>
+</ul>
+
+<h3 id="co-to-znamena">Co to znamená pro běžné uživatele?</h3>
+
+<p>Windows 10 dostal <b>výjimečně dlouhou podporu</b> – 10 let je v odvětví spotřební elektroniky neobvyklé. Pro srovnání:</p>
+
+<ul>
+  <li><b>iPhone</b> dostává aktualizace obvykle 5-6 let</li>
+  <li><b>Android telefony</b> (mimo Google Pixel) často jen 2-3 roky</li>
+  <li><b>MacBook</b> efektivně ~5-7 let (pokud nejnovější macOS podporuje váš hardware)</li>
+</ul>
+
+<p>Takže pokud vám připadá, že Microsoft "ukončil podporu příliš brzy", ve skutečnosti poskytl <b>jednu z nejdelších podpor v celém odvětví</b>. Problém spíše je, že Windows 11 má přísnější hardwarové požadavky, což brání některým funkčním počítačům v upgradu.</p>
 
 <h2 id="moznosti">Vaše možnosti</h2>
 
