@@ -15,15 +15,19 @@ format: "html"
 
 <h2 id="co-to-znamena">Co znamená konec podpory</h2>
 
-<p>Konec podpory znamená, že Microsoft přestal vydávat:</p>
+<p>Konec podpory znamená, že Microsoft <b>pravidelně</b> přestal vydávat:</p>
 
 <ul>
-  <li><b>Bezpečnostní aktualizace</b> – nové zranitelnosti zůstanou neopravené</li>
+  <li><b>Bezpečnostní aktualizace</b> – běžné zranitelnosti nebudou opraveny</li>
   <li><b>Opravy chyb</b> – problémy s fungováním systému nebudou řešeny</li>
-  <li><b>Technickou podporu</b> – Microsoft nepomůže s problémy</li>
+  <li><b>Technickou podporu</b> – Microsoft oficiálně nepomůže s problémy</li>
 </ul>
 
-<p>Počítač bude <b>stále fungovat</b>, ale postupně se stane <b>méně bezpečným</b> a některé nové aplikace jej nemusí podporovat.</p>
+<p>Počítač bude <b>stále fungovat</b> normálně. Bezpečnostní riziko <b>roste postupně</b>, ne okamžitě.</p>
+
+<div class="soft">
+  <p><b>Historická poznámka:</b> Microsoft má historii vydávání záplat i po konci podpory pro <b>skutečně kritické</b> zranitelnosti. Například Windows XP dostal záplatu pro WannaCry ransomware v roce 2017 (3 roky po konci podpory). V případě masivně zneužívané zranitelnosti je pravděpodobné, že patch vyjde i pro Windows 10.</p>
+</div>
 
 <h2 id="moznosti">Vaše možnosti</h2>
 
@@ -61,38 +65,43 @@ format: "html"
   <p><b>Nevýhody:</b> Vyžaduje kompatibilní hardware, nové rozhraní může vyžadovat přivyknutí.</p>
 </div>
 
-<h3 id="pokracovat">2. Pokračovat s Windows 10 (nedoporučeno)</h3>
+<h3 id="pokracovat">2. Pokračovat s Windows 10</h3>
 
-<p>Můžete pokračovat v používání Windows 10, ale <b>na vlastní riziko</b>:</p>
+<p>Pokračování s Windows 10 je <b>zcela legitimní volba</b>, zejména v prvních letech po skončení podpory. Miliony uživatelů budou Windows 10 používat ještě roky.</p>
 
-<ul>
-  <li><b>Bezpečnostní riziko</b> – nové zranitelnosti nebudou opraveny</li>
-  <li><b>Kompatibilita</b> – nové programy postupně přestanou podporovat Windows 10</li>
-  <li><b>Stabilita</b> – chyby nebudou opravovány</li>
-</ul>
-
-<p><b>Kdy je to přijatelné:</b></p>
+<p><b>Realita bezpečnostních rizik:</b></p>
 
 <ul>
-  <li>Počítač nepoužíváte pro citlivé úkoly (bankovnictví, práce)</li>
-  <li>Máte dobrou antivirovou ochranu</li>
-  <li>Připojujete se jen k důvěryhodným sítím</li>
-  <li>Nepracujete s důvěrnými daty</li>
+  <li><b>Webové aplikace</b> (bankovnictví, email) mají <b>vlastní zabezpečení</b> (HTTPS, šifrování, 2FA)</li>
+  <li><b>Moderní prohlížeče</b> budou podporovat Windows 10 ještě několik let</li>
+  <li><b>Antivirus</b> nadále funguje a chrání před známými hrozbami</li>
+  <li>Kritické zranitelnosti <b>mohou</b> dostat záplatu i po konci podpory (viz WannaCry pro XP)</li>
+  <li>Riziko <b>roste postupně</b> – první rok je relativně bezpečný, po 3+ letech už méně</li>
 </ul>
 
-<p><b>Jak minimalizovat rizika:</b></p>
+<p><b>Kdy je to rozumná volba:</b></p>
+
+<ul>
+  <li>Počítač nesplňuje požadavky Windows 11</li>
+  <li>Nemáte prostředky na nový počítač</li>
+  <li>Potřebujete čas na přípravu migrace</li>
+  <li>Používáte specifické programy, které na Linuxu neběží</li>
+</ul>
+
+<p><b>Jak zůstat v bezpečí:</b></p>
 
 <ol>
-  <li>Používejte <b>kvalitní antivirus</b></li>
-  <li>Aktualizujte <b>všechny aplikace</b> (prohlížeče, Office, PDF čtečky)</li>
-  <li>Neotevírejte <b>podezřelé soubory a odkazy</b></li>
-  <li>Pravidelně <b>zálohujte data</b></li>
-  <li>Používejte <b>firewall</b></li>
+  <li><b>Aktualizujte všechny aplikace</b> – zejména prohlížeč, PDF čtečku, Office</li>
+  <li><b>Používejte moderní prohlížeč</b> – Chrome, Firefox, Edge (ty mají vlastní bezpečnostní vrstvy)</li>
+  <li><b>Kvalitní antivirus</b> – Windows Defender je dostačující</li>
+  <li><b>Pravidelné zálohy</b> – nejdůležitější pojistka proti problémům</li>
+  <li><b>Základní opatrnost</b> – neotevírejte podezřelé přílohy a odkazy</li>
+  <li><b>Firewall zapnutý</b> – Windows Firewall nechte aktivní</li>
 </ol>
 
 <div class="soft">
-  <p><b>Výhody:</b> Není potřeba nic měnit, zachováte známé prostředí.</p>
-  <p><b>Nevýhody:</b> Významné bezpečnostní riziko, postupná ztráta kompatibility.</p>
+  <p><b>Výhody:</b> Žádné náklady, zachováte známé prostředí, všechny programy fungují.</p>
+  <p><b>Nevýhody:</b> Postupně rostoucí bezpečnostní riziko (zejména po 2-3 letech), kompatibilita s novým softwarem se bude snižovat.</p>
 </div>
 
 <h3 id="linux">3. Přechod na Linux</h3>
@@ -188,6 +197,8 @@ format: "html"
 
 <p><img src="/files/windows-10-konec-podpory/rozhodovaci-strom.svg" alt="Rozhodovací strom pro výběr řešení po konci podpory Windows 10" style="max-width: 100%; height: auto;"></p>
 
+<p><b>Stručné shrnutí rozhodování:</b></p>
+
 <ol>
   <li><b>Splňuje počítač požadavky Windows 11?</b>
     <ul>
@@ -195,7 +206,7 @@ format: "html"
       <li><b>NE</b> → Pokračujte bodem 2</li>
     </ul>
   </li>
-  <li><b>Je počítač starší než 7 let?</b>
+  <li><b>Je počítač starší než 7 let nebo výrazně pomalý?</b>
     <ul>
       <li><b>ANO</b> → Zvažte nákup nového počítače</li>
       <li><b>NE</b> → Pokračujte bodem 3</li>
@@ -203,8 +214,8 @@ format: "html"
   </li>
   <li><b>Používáte specifické Windows programy, bez kterých se neobejdete?</b>
     <ul>
-      <li><b>ANO</b> → Kupte nový počítač nebo riskujte použití Windows 10</li>
-      <li><b>NE</b> → Vyzkoušejte Linux (zdarma, bezpečné)</li>
+      <li><b>ANO</b> → Kupte nový počítač nebo ponechte Windows 10</li>
+      <li><b>NE</b> → Vyzkoušejte Linux nebo ponechte Windows 10</li>
     </ul>
   </li>
 </ol>
@@ -228,16 +239,16 @@ format: "html"
 
 <h2 id="zaver">Závěr</h2>
 
-<p>Nejlepší možnosti řazené podle doporučení:</p>
+<p>Nejlepší možnosti podle vaší situace:</p>
 
 <ol>
-  <li><b>Upgrade na Windows 11</b> – pokud je váš počítač kompatibilní (nejbezpečnější a zdarma)</li>
-  <li><b>Nákup nového počítače</b> – pokud je počítač starý a potřebujete Windows</li>
-  <li><b>Přechod na Linux</b> – moderní, bezpečné a zdarma řešení pro každodenní použití</li>
-  <li><b>Pokračování s Windows 10</b> – pouze jako dočasné řešení s minimalizací rizik</li>
+  <li><b>Upgrade na Windows 11</b> – pokud váš počítač splňuje požadavky (zdarma, nejjednodušší)</li>
+  <li><b>Pokračování s Windows 10</b> – zcela přijatelné, zejména krátkodobě (minimálně 1-2 roky)</li>
+  <li><b>Přechod na Linux</b> – dobrá volba pro starší hardware bez Windows závislostí</li>
+  <li><b>Nákup nového počítače</b> – když je počítač starý a pomalý</li>
 </ol>
 
-<p><b>Neodkládejte rozhodnutí!</b> Čím déle čekáte, tím větší je bezpečnostní riziko. Vyberte si řešení, které nejlépe vyhovuje vašim potřebám a finančním možnostem.</p>
+<p><b>Není důvod k panice.</b> Windows 10 bude ještě dlouho funkční a relativně bezpečný systém. Upgrade je vhodný, ale ne nutně urgentní. Vyberte si řešení podle vašich skutečných potřeb a finančních možností.</p>
 
 <div class="external-content">
   <h3>Další zdroje</h3>

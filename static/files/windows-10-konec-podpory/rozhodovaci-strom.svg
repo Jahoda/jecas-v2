@@ -85,9 +85,9 @@
   <text x="560" y="610" text-anchor="middle" style="fill: #64748b; font-size: 14px;">nebo</text>
 
   <g>
-    <rect x="470" y="620" width="180" height="60" rx="8" class="action-box-orange"/>
-    <text x="560" y="645" text-anchor="middle" class="text-white">⚠ Windows 10</text>
-    <text x="560" y="665" text-anchor="middle" class="text-white">(bezpečnostní riziko)</text>
+    <rect x="470" y="620" width="180" height="60" rx="8" class="action-box-blue"/>
+    <text x="560" y="645" text-anchor="middle" class="text-white">Ponechat</text>
+    <text x="560" y="665" text-anchor="middle" class="text-white">Windows 10</text>
   </g>
 
   <!-- No branch - Linux -->
@@ -103,16 +103,13 @@
     <text x="0" y="0" style="fill: #1e293b; font-size: 16px; font-weight: 600;">Legenda:</text>
 
     <circle cx="10" cy="25" r="6" fill="#10b981"/>
-    <text x="25" y="30" style="fill: #1e293b; font-size: 14px;">Doporučené řešení</text>
+    <text x="25" y="30" style="fill: #1e293b; font-size: 14px;">Optimální řešení</text>
 
     <circle cx="10" cy="50" r="6" fill="#06b6d4"/>
     <text x="25" y="55" style="fill: #1e293b; font-size: 14px;">Alternativní řešení</text>
 
-    <circle cx="10" cy="75" r="6" fill="#f59e0b"/>
-    <text x="25" y="80" style="fill: #1e293b; font-size: 14px;">Rizikové řešení</text>
-
-    <circle cx="10" cy="100" r="6" fill="#3b82f6"/>
-    <text x="25" y="105" style="fill: #1e293b; font-size: 14px;">Rozhodovací bod</text>
+    <circle cx="10" cy="75" r="6" fill="#3b82f6"/>
+    <text x="25" y="80" style="fill: #1e293b; font-size: 14px;">Rozhodovací bod</text>
   </g>
 
   <!-- Footer -->
