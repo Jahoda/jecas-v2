@@ -2,14 +2,14 @@
 title: "Co dělat s počítačem, kterému skončila podpora Windows 10"
 headline: "Windows 10 bez podpory: Jaké máte možnosti"
 description: "Podpora Windows 10 skončila 14. října 2025. Zjistěte, jaké možnosti máte."
-date: "2025-11-12"
-last_modification: "2025-11-12"
+date: "2025-11-18"
+last_modification: "2025-11-18"
 status: 1
 tags: ["windows", "zabezpeceni", "produktivita"]
 format: "html"
 ---
 
-<p>Microsoft 14. října 2025 ukončil podporu Windows 10. Co to znamená pro vaš počítač a jaké máte možnosti?</p>
+<p>Microsoft 14. října 2025 ukončil podporu Windows 10. Co to znamená pro vaš počítač?</p>
 
 <p><img src="/files/windows-10-konec-podpory/hero.svg" alt="Windows 10 - Konec podpory 14. října 2025" style="max-width: 100%; height: auto; border-radius: 8px;"></p>
 
@@ -20,7 +20,7 @@ format: "html"
 <p>Konec podpory znamená, že Microsoft <b>pravidelně</b> přestal vydávat:</p>
 
 <ul>
-  <li><b>Bezpečnostní aktualizace</b> – běžné zranitelnosti nebudou opraveny</li>
+  <li><b>Bezpečnostní aktualisace</b> – běžné zranitelnosti nebudou opraveny</li>
   <li><b>Opravy chyb</b> – problémy s fungováním systému nebudou řešeny</li>
   <li><b>Technickou podporu</b> – Microsoft oficiálně nepomůže s problémy</li>
 </ul>
@@ -31,7 +31,7 @@ format: "html"
 
 <p>Ne.</p>
 
-<p>Počítač bude <b>stále fungovat</b> normálně. Bezpečnostní riziko <b>roste postupně</b>, ne okamžitě.</p>
+<p>Počítač bude <b>stále fungovat</b> normálně. Bezpečnostní risiko <b>roste postupně</b>, ne okamžitě.</p>
 
   <p><b>Historická poznámka:</b> Microsoft má historii vydávání záplat i po konci podpory pro <b>skutečně kritické</b> zranitelnosti. Například Windows XP dostal záplatu pro <a href="https://cs.wikipedia.org/wiki/WannaCry">WannaCry</a> ransomware v roce 2017 (3 roky po konci podpory). V případě masivně zneužívané zranitelnosti je pravděpodobné, že patch vyjde i pro Windows 10.</p>
 
@@ -58,7 +58,7 @@ format: "html"
     <tr>
       <td><b>macOS</b> (Apple)</td>
       <td><b>~3 roky</b></td>
-      <td>Bezpečnostní aktualizace obvykle pro 3 poslední verze, nová verze každý rok</td>
+      <td>Bezpečnostní aktualisace obvykle pro 3 poslední verse, nová verse každý rok</td>
     </tr>
     <tr>
       <td><b>ChromeOS</b> (Google)</td>
@@ -84,12 +84,10 @@ format: "html"
 
 <ul>
   <li><b>Windows 10: 10 let podpory</b> (2015–2025)</li>
-  <li><b>macOS: ~3 roky podpory</b> pro každou verzi</li>
+  <li><b>macOS: ~3 roky podpory</b> pro každou versi</li>
 </ul>
 
-<p>Apple vydává novou verzi macOS <b>každý rok</b> a podporuje obvykle jen 3 poslední. Pokud máte Mac z roku 2015 (stejný rok jako Windows 10), váš macOS přestal dostávat aktualizace už <b>dávno</b> – pravděpodobně kolem roku 2020-2021.</p>
-
-<p><b>Příklad:</b> MacBook z roku 2015 může maximálně běžet na macOS Monterey (2021), který už nedostává bezpečnostní aktualizace. Počítač s Windows 10 z roku 2015 dostával aktualizace až do října 2025 – o <b>4 roky déle</b>.</p>
+<p>Apple vydává novou versi macOS <b>každý rok</b> a podporuje obvykle jen 3 poslední. Pokud máte Mac z roku 2015 (stejný rok jako Windows 10), váš macOS přestal dostávat aktualisace už <b>dávno</b> – pravděpodobně kolem roku 2020-2021.</p>
 
 <h3 id="google-chromeos">Google a ChromeOS</h3>
 
@@ -105,7 +103,7 @@ format: "html"
 <p>Windows 10 dostal <b>výjimečně dlouhou podporu</b> – 10 let je v odvětví spotřební elektroniky neobvyklé. Pro srovnání:</p>
 
 <ul>
-  <li><b>iPhone</b> dostává aktualizace obvykle 5-6 let</li>
+  <li><b>iPhone</b> dostává aktualisace obvykle 5-6 let</li>
   <li><b>Android telefony</b> (mimo Google Pixel) často jen 2-3 roky</li>
   <li><b>MacBook</b> efektivně ~5-7 let (pokud nejnovější macOS podporuje váš hardware)</li>
 </ul>
@@ -155,20 +153,20 @@ format: "html"
 
 <p>Pokračování s Windows 10 je <b>zcela legitimní volba</b>, zejména v prvních letech po skončení podpory. Miliony uživatelů budou Windows 10 používat ještě roky.</p>
 
-<p><b>Realita bezpečnostních rizik:</b></p>
+<p><b>Realita bezpečnostních risik:</b></p>
 
 <ul>
   <li><b>Webové aplikace</b> (bankovnictví, email) mají <b>vlastní zabezpečení</b> (HTTPS, šifrování, 2FA)</li>
   <li><b>Moderní prohlížeče</b> budou pravděpodobně podporovat Windows 10 ještě několik let</li>
   <li>Kritické zranitelnosti <b>mohou</b> dostat záplatu i po konci podpory (viz WannaCry pro XP)</li>
-  <li>Riziko <b>roste postupně</b> – první rok je relativně bezpečný, po 3+ letech už méně</li>
+  <li>Risiko <b>roste postupně</b> – první rok je relativně bezpečný, po 3+ letech už méně</li>
 </ul>
 
 <p><b>Kdy je to rozumná volba:</b></p>
 
 <ul>
   <li>Počítač nesplňuje požadavky Windows 11</li>
-  <li>Nemáte prostředky na nový počítač nebo se vám nechce kupovat</li>
+  <li>Nemáte prostředky na nový počítač nebo se vám nechce kupovat a vyhazovat něco, co funguje</li>
   <li>Potřebujete čas na přípravu migrace</li>
   <li>Používáte specifické programy, které na Linuxu neběží</li>
 </ul>
@@ -176,14 +174,14 @@ format: "html"
 <p><b>Jak zůstat v bezpečí:</b></p>
 
 <ol>
-  <li><b>Aktualizujte všechny aplikace</b> – zejména prohlížeč, PDF čtečku, Office</li>
+  <li><b>Aktualisujte všechny aplikace</b> – zejména prohlížeč</li>
   <li><b>Používejte moderní prohlížeč</b> – Chrome, Firefox, Edge (ty mají vlastní bezpečnostní vrstvy)</li>
   <li><b>Pravidelné zálohy</b> – nejdůležitější pojistka proti problémům</li>
   <li><b>Základní opatrnost</b> – neotevírejte podezřelé přílohy a odkazy</li>
 </ol>
 
   <p><b>Výhody:</b> Žádné náklady, zachováte známé prostředí, všechny programy fungují.</p>
-  <p><b>Nevýhody:</b> Postupně rostoucí bezpečnostní riziko (zejména po 2-3 letech), kompatibilita s novým softwarem se bude snižovat.</p>
+  <p><b>Nevýhody:</b> Postupně rostoucí bezpečnostní risiko (zejména po 2-3 letech), kompatibilita s novým softwarem se bude snižovat.</p>
 
 <h3 id="linux">3. Přechod na Linux</h3>
 
@@ -200,18 +198,39 @@ format: "html"
 
 <p>Pokud se vaše práce na počítači odehrává primárně v prohlížeči, nemusí být s přechodem na Linux takový problém.</p>
 
-<div class="soft">
-  <p><b>Výhody:</b> Zdarma, bezpečné, běží i na starších počítačích, pravidelné aktualizace.</p>
+  <p><b>Výhody:</b> Zdarma, bezpečné, běží i na starších počítačích, pravidelné aktualisace.</p>
   <p><b>Nevýhody:</b> Vyžaduje přivyknutí, některé programy nejsou dostupné, menší podpora her.</p>
-</div>
 
-<h3 id="rozsirena-podpora">4. Rozšířená bezpečnostní podpora (placená)</h3>
+<h3 id="macos">4. Přechod na macOS</h3>
+
+<p>Pokud si chcete užít <b>pořádnou změnu</b>, můžete místo Windows zvolit macOS. Znamená to ale nejen jiný systém, ale i <b>nákup nového počítače</b> od Apple (MacBook, iMac, Mac mini).</p>
+
+<p><b>Co je jinak:</b></p>
+
+<ul>
+  <li>Ovládání systému je v mnoha detailech jiné – klávesové zkratky, gesta, rozložení oken, nabídky.</li>
+  <li>Běžné úkony (správa souborů, instalace programů, nastavení systému) fungují jinak než ve Windows.</li>
+  <li>Je potřeba si <b>předělat „svalovou paměť“</b> – prvních pár týdnů může být práce pomalejší.</li>
+</ul>
+
+<p><b>Software a kompatibilita:</b></p>
+
+<ul>
+  <li>Řadu věcí vyřešíte v prohlížeči stejně jako na Windows.</li>
+  <li>Mnoho populárních programů existuje i pro macOS (prohlížeče, kancelářské balíky, nástroje pro komunikaci).</li>
+  <li>U specializovaných Windows programů je často nutné hledat <b>alternativy</b>, případně používat vzdálenou plochu nebo virtualisaci.</li>
+</ul>
+
+  <p><b>Výhody:</b> Moderní stabilní systém, dobrá integrace s iPhonem a dalšími zařízeními Apple.</p>
+  <p><b>Nevýhody:</b> Vyšší pořizovací cena, nutnost koupit nový počítač, výrazné rozdíly v ovládání a nutnost hledat nové programy.</p>
+
+<h3 id="rozsirena-podpora">5. Rozšířená bezpečnostní podpora (placená)</h3>
 
 <p>Microsoft nabízí <b>Extended Security Updates (ESU)</b> program pro organizace a firmy:</p>
 
 <ul>
-  <li>Poskytuje bezpečnostní aktualizace po skončení podpory</li>
-  <li>Určeno především pro <b>firmy a organizace</b></li>
+  <li>Poskytuje bezpečnostní aktualisace po skončení podpory</li>
+  <li>Určeno především pro <b>firmy a organisace</b></li>
   <li>Pro domácí uživatele <b>není dostupné</b> přímo</li>
   <li>Cena se každým rokem zvyšuje</li>
 </ul>
@@ -220,7 +239,7 @@ format: "html"
 
 <h3 id="novy-pocitac">5. Nákup nového počítače</h3>
 
-<p>Pokud je váš počítač <b>starší než 6-8 let</b>, může být nejvýhodnější koupit nový:</p>
+<p>Pokud je váš počítač <b>starší než cca 7 let</b>, může být nejvýhodnější koupit nový:</p>
 
 <p><b>Výhody nového počítače:</b></p>
 
@@ -238,7 +257,7 @@ format: "html"
   <p><b>Nevýhody:</b> Náklady, nutnost přenosu dat a nastavení nového systému.</p>
 
 
-<h2 id="proc-porad-aktualizace">Proč mi pořád někdo chce něco aktualizovat</h2>
+<h2 id="proc-porad-aktualisace">Proč mi pořád někdo chce něco aktualisovat</h2>
 
 <p>Pocit „všechno funguje, proč do toho někdo zase sahá“ má skoro každý. Počítač je ale součástí většího ekosystému – internetu, bankovnictví, úřadů, firemních systémů, aplikací – a ten se neustále mění.</p>
 
@@ -246,13 +265,13 @@ format: "html"
 
 <p>Druhý důvod je <b>kompatibilita</b>. Webové stránky, aplikace, online bankovnictví nebo třeba elektronický podpis využívají nové standardy. Vývojáři nemohou donekonečna testovat a podporovat všechny kombinace starých systémů a prohlížečů. Proto se nastavují životní cykly: určitou dobu je systém aktivně podporovaný, pak přichází novější generace.</p>
 
-<p><b>Může systém vydržet „navždy“?</b> V izolaci ano – například počítač, který není připojený k internetu a běží jen jeden starý program, může fungovat roky. Jakmile ale chcete používat moderní web, online služby nebo připojovat nový hardware, potřebujete systém, který se vyvíjí a dostává aktualizace.</p>
+<p><b>Může systém vydržet „navždy“?</b> V isolaci ano – například počítač, který není připojený k internetu a běží jen jeden starý program, může fungovat roky. Jakmile ale chcete používat moderní web, online služby nebo připojovat nový hardware, potřebujete systém, který se vyvíjí a dostává aktualisace.</p>
 
 <h2 id="jak-se-rozhodnout">Jak se rozhodnout</h2>
 
 <p>Rozhodovací strom pro výběr nejlepšího řešení:</p>
 
-<p><img src="/files/windows-10-konec-podpory/rozhodovaci-strom.svg" alt="Rozhodovací strom pro výběr řešení po konci podpory Windows 10" style="max-width: 100%; height: auto;"></p>
+<p><img src="/files/windows-10-konec-podpory/rozhodovaci-strom.svg" alt="Rozhodovací strom pro výběr řešení po konci podpory Windows 10" ></p>
 
 <p><b>Stručné shrnutí rozhodování:</b></p>
 
@@ -300,8 +319,9 @@ format: "html"
 
 <ol>
   <li><b>Upgrade na Windows 11</b> – pokud váš počítač splňuje požadavky (zdarma, nejjednodušší)</li>
-  <li><b>Pokračování s Windows 10</b> – zcela přijatelné, zejména krátkodobě (minimálně 1-2 roky)</li>
+  <li><b>Pokračování s Windows 10</b> – zcela přijatelné, zejména krátkodobě (minimálně 1-2 roky), hlídal bych si hlavně, jestli je aktuální prohlížeč</li>
   <li><b>Přechod na Linux</b> – dobrá volba pro starší hardware bez Windows závislostí</li>
+  <li><b>Přechod na macOS</b> – pro ty, kteří chtějí výraznou změnu a jsou ochotni si zvykat na nové prostředí i programy</li>
   <li><b>Nákup nového počítače</b> – když je počítač starý a pomalý</li>
 </ol>
 
