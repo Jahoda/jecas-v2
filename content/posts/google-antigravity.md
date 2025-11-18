@@ -1,163 +1,245 @@
 ---
-title: "Google Antigravity: Skrytá velikonoční vajíčka Googlu"
-headline: "Google Antigravity: Skrytá velikonoční vajíčka Googlu"
-description: "Znáte skryté hříčky, které Google schoval do svého vyhledávače? Podívejte se na Google Gravity a další velikonoční vajíčka."
+title: "Google Antigravity: Nová AI vývojářská platforma"
+headline: "Google Antigravity: Nová AI vývojářská platforma"
+description: "Google představil Antigravity - vývojářskou platformu s AI agenty poháněnou modely Gemini 3, Claude Sonnet a GPT-OSS."
 date: "2025-11-18"
 last_modification: "2025-11-18"
 status: 1
-tags: ["zajimavosti", "javascript"]
+tags: ["ai", "google", "produktivita"]
 format: "html"
 ---
 
-<p>Google je známý tím, že do svých služeb občas přidá vtipné <i lang="en">easter eggs</i> (česky: velikonoční vajíčka), tedy skryté funkce nebo hříčky pro pobavení uživatelů.</p>
+<p>Google dnes 18. listopadu 2025 představil <b>Google Antigravity</b> – zcela novou vývojářskou platformu, která přináší agentní přístup k programování.</p>
 
-<p>Jednou z nejznámějších je <b>Google Gravity</b> neboli <b>Google Antigravity</b>.</p>
+<p>Antigravity je součástí oznámení nového AI modelu <b>Gemini 3</b> a je dostupná zdarma na <a href="https://antigravity.google">antigravity.google</a>.</p>
 
-<h2 id="co-je-google-gravity">Co je Google Gravity?</h2>
+<h2 id="co-je-antigravity">Co je Google Antigravity?</h2>
 
-<p>Google Gravity je interaktivní experiment vytvořený vývojářem <a href="https://mrdoob.com">Mr.doob</a> (Ricardo Cabello), který simuluje gravitaci na stránce Google.</p>
+<p>Google Antigravity je <b>experimentální vývojářská platforma</b> s architekturou postavenou na AI agentech (<i lang="en">agent-first architecture</i>).</p>
 
-<p>Když navštívíte tuto stránku, všechny prvky Google vyhledávače – logo, tlačítka, vyhledávací pole – začnou padat dolů, jako by na ně působila gravitace. Můžete s nimi pohazovat myší a oni se budou chovat jako fyzikální objekty.</p>
+<p>Na rozdíl od tradičních AI asistentů v kódu, kde AI pouze doplňuje nebo generuje kód, Antigravity přináší koncept autonomních agentů, kteří pracují na úkolech samostatně napříč celým vývojářským prostředím.</p>
 
-<h3 id="jak-vyzkouset">Jak vyzkoušet Google Gravity?</h3>
+<h3 id="kdo-to-vyvinul">Kdo to vyvinul?</h3>
 
-<p>Existuje několik způsobů, jak se dostat k Google Gravity:</p>
+<p>Antigravity vyvinul Google a je postaven na několika předních AI modelech:</p>
 
-<ol>
+<ul>
 <li>
-  <p>Navštivte stránku <a href="https://mrdoob.com/projects/chromeexperiments/google-gravity/">mrdoob.com/projects/chromeexperiments/google-gravity/</a></p>
+  <p><b>Gemini 3</b> – nejnovější model od Googlu</p>
 </li>
 
 <li>
-  <p>Nebo vyhledejte "google gravity" a klikněte na tlačítko "Zkusím štěstí" (<i lang="en">I'm Feeling Lucky</i>)</p>
+  <p><b>Claude Sonnet 4.5</b> – model od Anthropic</p>
 </li>
 
 <li>
-  <p>Případně použijte Google Mirror - <a href="https://elgoog.im/gravity/">elgoog.im/gravity/</a></p>
+  <p><b>GPT-OSS</b> – open-weight model od OpenAI</p>
 </li>
-</ol>
+</ul>
 
 <h2 id="jak-to-funguje">Jak to funguje?</h2>
 
-<p>Google Gravity používá <b>JavaScript</b> a často i knihovnu pro fyzikální simulace.</p>
+<p>Antigravity mění tradiční přístup k vývoji softwaru. Vývojář vystupuje jako <b>architekt</b>, který zadává úkoly a spolupracuje s inteligentními agenty.</p>
 
-<p>Základní princip fungování:</p>
+<h3 id="agent-first-architektura">Agent-first architektura</h3>
+
+<p>Klíčové principy fungování:</p>
 
 <ul>
 <li>
-  <p>JavaScript zachytí všechny DOM elementy na stránce</p>
+  <p><b>Autonomní agenti</b> – pracují samostatně v editoru, terminálu i prohlížeči</p>
 </li>
 
 <li>
-  <p>Prvky se převedou na objekty s fyzikálními vlastnostmi (hmotnost, rychlost, pozice)</p>
+  <p><b>Plánování a exekuce</b> – agenti si sami naplánují kroky a provedou komplexní softwarové úkoly</p>
 </li>
 
 <li>
-  <p>Aplikuje se simulace gravitace a kolizí</p>
+  <p><b>Workspace management</b> – vývojář řídí agenty napříč různými pracovními prostory</p>
 </li>
 
 <li>
-  <p>Animační smyčka průběžně aktualizuje pozice prvků</p>
-</li>
-
-<li>
-  <p>Myš funguje jako interaktivní prvek, který může s objekty manipulovat</p>
+  <p><b>Asynchronní workflow</b> – můžete zadávat úkoly a agenti na nich pracují na pozadí</p>
 </li>
 </ul>
 
-<p>Podobný efekt lze vytvořit pomocí knihoven jako <a href="https://brm.io/matter-js/">Matter.js</a> nebo <a href="https://box2d.org">Box2D</a>.</p>
+<h3 id="artifacts">Systém artifacts</h3>
 
-<h2 id="dalsi-varianty">Další varianty Google experimentů</h2>
+<p>Místo surových logů a tool calls používá Antigravity koncept <b>artifacts</b> (artefaktů).</p>
 
-<p>Kromě Google Gravity existuje několik dalších variant:</p>
-
-<h3 id="google-underwater">Google Underwater</h3>
-
-<p>Prvky Googlu se vznášejí jako pod vodou a reagují na pohyb myši. Můžete navštívit na <a href="https://elgoog.im/underwater/">elgoog.im/underwater/</a></p>
-
-<h3 id="google-sphere">Google Sphere</h3>
-
-<p>Všechny výsledky vyhledávání se točí v kruhu kolem středu obrazovky. Dostupné na <a href="https://elgoog.im/sphere/">elgoog.im/sphere/</a></p>
-
-<h3 id="google-mirror">Google Mirror</h3>
-
-<p>Celý Google je zrcadlově převrácený - text je napsaný pozpátku. Zkuste <a href="https://elgoog.im/">elgoog.im</a></p>
-
-<h3 id="google-guitar">Google Guitar</h3>
-
-<p>Google logo se změní na interaktivní kytaru, na kterou můžete hrát.</p>
-
-<h3 id="google-pacman">Google Pac-Man</h3>
-
-<p>Google v roce 2010 vydal plně funkční hru Pac-Man přímo ve vyhledávači k 30. výročí hry. Doodle je stále dostupný na <a href="https://www.google.com/doodles/30th-anniversary-of-pac-man">google.com/doodles/30th-anniversary-of-pac-man</a></p>
-
-<h2 id="oficialni-easter-eggs">Oficiální Google Easter Eggs</h2>
-
-<p>Google sám do svého vyhledávače přidává různá velikonoční vajíčka:</p>
+<p>Artefakty jsou výstupy v přehledných formátech, které je snadné validovat:</p>
 
 <ul>
 <li>
-  <p><b>do a barrel roll</b> - stránka se otočí o 360°</p>
+  <p>Todo seznamy úkolů</p>
 </li>
 
 <li>
-  <p><b>askew</b> nebo <b>tilt</b> - stránka se nakloní</p>
+  <p>Implementační plány</p>
 </li>
 
 <li>
-  <p><b>google in 1998</b> - zobrazí Google, jak vypadal v roce 1998</p>
+  <p>Screenshoty</p>
 </li>
 
 <li>
-  <p><b>thanos</b> - při kliknutí na rukavici zmizí polovina výsledků (po vzoru filmu Avengers)</p>
+  <p>Nahrávky z prohlížeče</p>
 </li>
 
 <li>
-  <p><b>play snake</b> - můžete hrát hru Snake přímo ve vyhledávači</p>
-</li>
-
-<li>
-  <p><b>tic tac toe</b> - hra piškvorky</p>
-</li>
-
-<li>
-  <p><b>solitaire</b> - klasický pasiáns</p>
-</li>
-
-<li>
-  <p><b>zerg rush</b> - malá písmena O začnou požírat výsledky vyhledávání</p>
-</li>
-
-<li>
-  <p><b>flip a coin</b> - hodí mincí</p>
-</li>
-
-<li>
-  <p><b>roll a dice</b> - hodí kostkou</p>
+  <p>Strukturované reporty</p>
 </li>
 </ul>
 
-<h2 id="inspirace-pro-programatory">Inspirace pro programátory</h2>
+<p>Díky tomu vývojář rychleji pochopí, co agent udělal, a může výsledky snadno zkontrolovat.</p>
 
-<p>Tyto experimenty jsou skvělou inspirací pro webové vývojáře. Ukazují, jak lze pomocí JavaScriptu a kreativního myšlení vytvořit zábavné interaktivní prvky.</p>
+<h2 id="gemini-3">Gemini 3</h2>
 
-<p>Pokud se chcete naučit vytvářet podobné efekty, doporučuji se podívat na:</p>
+<p>Antigravity je postaven na novém modelu <b>Gemini 3</b>, který Google oznámil ve stejný den.</p>
+
+<p>Gemini 3 přináší několik klíčových vylepšení:</p>
 
 <ul>
 <li>
-  <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">Canvas API</a> pro kreslení a animace</p>
+  <p><b>Vylepšené reasoning</b> (odvozování) – lepší logické myšlení a řešení problémů</p>
 </li>
 
 <li>
-  <p><a href="/requestanimationframe">requestAnimationFrame</a> pro plynulé animace</p>
+  <p><b>Rekordní benchmark skóre</b> – nejlepší výsledky v testech programování</p>
 </li>
 
 <li>
-  <p>Fyzikální enginy jako <a href="https://brm.io/matter-js/">Matter.js</a></p>
+  <p><b>Generativní UI</b> – schopnost generovat uživatelská rozhraní</p>
 </li>
 
 <li>
-  <p><a href="/drag-and-drop">Drag and Drop API</a> pro interaktivní manipulaci s prvky</p>
+  <p><b>Agentní schopnosti</b> – navrženo pro práci s autonomními agenty</p>
+</li>
+</ul>
+
+<h2 id="dostupnost">Dostupnost</h2>
+
+<p>Google Antigravity je k dispozici jako <b>public preview zdarma</b>.</p>
+
+<p>Podporované platformy:</p>
+
+<ul>
+<li>
+  <p><b>macOS</b></p>
+</li>
+
+<li>
+  <p><b>Windows</b></p>
+</li>
+
+<li>
+  <p><b>Linux</b></p>
+</li>
+</ul>
+
+<p>Stáhnout můžete na oficiální stránce: <a href="https://antigravity.google">antigravity.google</a></p>
+
+<p><img src="/files/google-antigravity/problem-prihlaseni.png" class="border" alt="" /></p>
+
+<p>Dost uživatelů hlásí problémy s přihlášením. Pokud se vám nedaří přihlásit, zkuste nepoužívat workspace Google účet.</p>
+
+<h2 id="porovnani">Porovnání s konkurencí</h2>
+
+<p>Antigravity vstupuje na trh, kde už existují podobné nástroje:</p>
+
+<h3 id="github-copilot">GitHub Copilot</h3>
+
+<p>Copilot funguje jako inteligentní autocomplete přímo v editoru. Antigravity jde dál – nabízí celé autonomní agenty, kteří řeší komplexní úkoly.</p>
+
+<h3 id="cursor">Cursor</h3>
+
+<p>Cursor je AI-powered editor s chytrou asistencí. Stejně jako Cursor, i editor Antigravity je postaven na VSCode. Antigravity se však více zaměřuje na task-oriented přístup s více paralelními agenty.</p>
+
+<h3 id="claude-code">Claude Code</h3>
+
+<p>Anthropic také nabízí vývojářské nástroje. Zajímavé je, že Antigravity přímo integruje Claude Sonnet 4.5 jako jeden z modelů.</p>
+
+<h2 id="vyuziti">Využití v praxi</h2>
+
+<p>Antigravity se hodí pro různé scénáře:</p>
+
+<ul>
+<li>
+  <p><b>Komplexní refaktoring</b> – agent projde celou kódovou základnu a provede změny</p>
+</li>
+
+<li>
+  <p><b>Debugging napříč více soubory</b> – autonomní hledání a oprava chyb</p>
+</li>
+
+<li>
+  <p><b>Implementace nových features</b> – od návrhu po testování</p>
+</li>
+
+<li>
+  <p><b>Code review</b> – automatická analýza pull requestů</p>
+</li>
+
+<li>
+  <p><b>Dokumentace</b> – generování dokumentace z kódu</p>
+</li>
+
+<li>
+  <p><b>Testing</b> – psaní a spouštění testů</p>
+</li>
+
+<li>
+  <p><b>Migration</b> – převody mezi frameworky nebo jazyky</p>
+</li>
+</ul>
+
+<h2 id="budoucnost-programovani">Budoucnost programování?</h2>
+
+<p>Antigravity reprezentuje posun v tom, jak přemýšlíme o programování s pomocí AI.</p>
+
+<p>Místo toho, aby AI jen pomáhala psát kód řádek po řádku, se stává <b>spolupracovníkem</b>, který dokáže převzít celé úkoly a pracovat na nich autonomně.</p>
+
+<p>Vývojář se tak může soustředit na:</p>
+
+<ul>
+<li>
+  <p>Architekturu a design</p>
+</li>
+
+<li>
+  <p>Produktová a strategická rozhodnutí</p>
+</li>
+
+<li>
+  <p>Validaci a code review</p>
+</li>
+</ul>
+
+<p>Rutinní úkoly, debugging a implementaci detailů mohou převzít AI agenti.</p>
+
+<h2 id="rizika-a-vyzvy">Rizika a výzvy</h2>
+
+<p>I když Antigravity vypadá slibně, přináší také otázky:</p>
+
+<ul>
+<li>
+  <p><b>Důvěra v AI</b> – jak moc můžeme věřit autonomním agentům s komplexními úkoly?</p>
+</li>
+
+<li>
+  <p><b>Debugging AI chyb</b> – když agent udělá chybu, může být těžší ji najít</p>
+</li>
+
+<li>
+  <p><b>Bezpečnost</b> – autonomní agenti s přístupem k terminálu a souborům vyžadují dobré bezpečnostní mechanismy</p>
+</li>
+
+<li>
+  <p><b>Vendor lock-in</b> – závislost na cloudových AI modelech</p>
+</li>
+
+<li>
+  <p><b>Náklady</b> – i když preview je zdarma, dlouhodobě mohou být náklady na API volání významné</p>
 </li>
 </ul>
 
@@ -165,24 +247,28 @@ format: "html"
 
 <ul>
 <li>
-  <p>Google Gravity je vtipný experiment, který ukazuje možnosti webových technologií</p>
+  <p>Google Antigravity je nová vývojářská platforma s agentní architekturou</p>
 </li>
 
 <li>
-  <p>Vytvořil ho Mr.doob a využívá JavaScript a fyzikální simulace</p>
+  <p>Využívá Gemini 3, Claude Sonnet 4.5 a GPT-OSS pro autonomní práci</p>
 </li>
 
 <li>
-  <p>Existuje mnoho variant jako Google Underwater, Sphere, Mirror a další</p>
+  <p>Přináší systém artifacts pro lepší validaci výstupů</p>
 </li>
 
 <li>
-  <p>Google sám přidává do svého vyhledávače různá velikonoční vajíčka pro pobavení uživatelů</p>
+  <p>Je zdarma dostupná pro macOS, Windows a Linux</p>
 </li>
 
 <li>
-  <p>Tyto experimenty jsou skvělou inspirací pro webové vývojáře, kteří se chtějí naučit vytvářet interaktivní prvky</p>
+  <p>Představuje posun od AI asistentů k AI spolupracovníkům</p>
+</li>
+
+<li>
+  <p>Stále je v experimentální fázi a přináší nové výzvy i příležitosti</p>
 </li>
 </ul>
 
-<p>Zkuste si některé z těchto experimentů a užijte si trochu zábavy s webovými technologiemi!</p>
+<p>Pokud vás zajímá moderní vývoj s AI, určitě stojí za to Antigravity vyzkoušet na <a href="https://antigravity.google">antigravity.google</a>.</p>
