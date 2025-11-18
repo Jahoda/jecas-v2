@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 1200 630" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00bcf2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="timelineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="80%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ef4444;stop-opacity:1" />
+    </linearGradient>
+    <style>
+      .title { fill: white; font-size: 56px; font-weight: 700; }
+      .subtitle { fill: white; font-size: 28px; font-weight: 400; opacity: 0.95; }
+      .year-text { fill: white; font-size: 20px; font-weight: 600; }
+      .label-text { fill: white; font-size: 16px; font-weight: 500; }
+      .timeline-bar { fill: url(#timelineGradient); }
+      .marker { fill: white; }
+      .icon-bg { fill: rgba(255,255,255,0.15); }
+      .icon-text { fill: white; font-size: 48px; }
+    </style>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  <circle cx="100" cy="100" r="150" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="1100" cy="530" r="200" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="900" cy="150" r="80" fill="rgba(255,255,255,0.08)"/>
+  <text x="600" y="100" text-anchor="middle" class="title">Windows 10</text>
+  <text x="600" y="150" text-anchor="middle" class="subtitle">Konec podpory 14. října 2025</text>
+  <g transform="translate(150, 250)">
+    <rect x="0" y="0" width="900" height="40" rx="20" class="timeline-bar"/>
+    <g transform="translate(0, 20)">
+      <circle cx="0" cy="0" r="20" class="marker"/>
+      <text x="0" y="-40" text-anchor="middle" class="year-text">2015</text>
+      <text x="0" y="50" text-anchor="middle" class="label-text">Vydání</text>
+    </g>
+    <g transform="translate(900, 20)">
+      <circle cx="0" cy="0" r="20" class="marker"/>
+      <text x="0" y="-40" text-anchor="middle" class="year-text">2025</text>
+      <text x="0" y="50" text-anchor="middle" class="label-text">Konec podpory</text>
+    </g>
+    <text x="450" y="-15" text-anchor="middle" class="year-text" style="font-size: 24px;">10 let podpory</text>
+  </g>
+  <g transform="translate(100, 420)">
+    <g>
+      <rect x="0" y="0" width="80" height="80" rx="12" class="icon-bg"/>
+      <text x="40" y="58" text-anchor="middle" class="icon-text">⬆️</text>
+      <text x="40" y="110" text-anchor="middle" class="label-text">Upgrade</text>
+    </g>
+    <g transform="translate(250, 0)">
+      <rect x="0" y="0" width="80" height="80" rx="12" class="icon-bg"/>
+      <text x="40" y="58" text-anchor="middle" class="icon-text">💻</text>
+      <text x="40" y="110" text-anchor="middle" class="label-text">Ponechat Win 10</text>
+    </g>
+    <g transform="translate(500, 0)">
+      <rect x="0" y="0" width="80" height="80" rx="12" class="icon-bg"/>
+      <text x="40" y="58" text-anchor="middle" class="icon-text">🐧</text>
+      <text x="40" y="110" text-anchor="middle" class="label-text">Linux</text>
+    </g>
+    <g transform="translate(750, 0)">
+      <rect x="0" y="0" width="80" height="80" rx="12" class="icon-bg"/>
+      <text x="40" y="58" text-anchor="middle" class="icon-text">🖥️</text>
+      <text x="40" y="110" text-anchor="middle" class="label-text">Nový počítač</text>
+    </g>
+  </g>
+  <g transform="translate(1050, 80)">
+    <rect x="0" y="0" width="45" height="45" fill="rgba(255,255,255,0.3)"/>
+    <rect x="50" y="0" width="45" height="45" fill="rgba(255,255,255,0.3)"/>
+    <rect x="0" y="50" width="45" height="45" fill="rgba(255,255,255,0.3)"/>
+    <rect x="50" y="50" width="45" height="45" fill="rgba(255,255,255,0.3)"/>
+  </g>
+</svg>
+
