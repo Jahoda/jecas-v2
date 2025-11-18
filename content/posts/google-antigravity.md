@@ -37,6 +37,8 @@ format: "html"
 </li>
 </ul>
 
+<p><img src="/files/google-antigravity/vyber-modelu.png" class="border" alt="Výběr modelů" /></p>
+
 <h2 id="jak-to-funguje">Jak to funguje?</h2>
 
 <p>Antigravity mění tradiční přístup k vývoji softwaru. Vývojář vystupuje jako <b>architekt</b>, který zadává úkoly a spolupracuje s inteligentními agenty.</p>
@@ -142,6 +144,8 @@ format: "html"
 <p><img src="/files/google-antigravity/problem-prihlaseni.png" class="border" alt="" /></p>
 
 <p>Dost uživatelů hlásí problémy s přihlášením. Pokud se vám nedaří přihlásit, zkuste nepoužívat workspace Google účet.</p>
+
+<p>Případěn na zaseklé obrazovce vyvolat refresh (<kbd>cmd</kbd>+<kbd>R</kbd>).</p>
 
 <h2 id="porovnani">Porovnání s konkurencí</h2>
 
