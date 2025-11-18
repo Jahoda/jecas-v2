@@ -91,8 +91,8 @@
   </g>
 
   <!-- No branch - Linux -->
-  <path d="M 200 400 L 120 400 L 120 570 L 190 570" class="arrow-no"/>
-  <text x="85" y="397" class="label-no">NE</text>
+  <path d="M 200 400 L 140 400 L 140 570 L 190 570" class="arrow-no"/>
+  <text x="155" y="397" class="label-no">NE</text>
 
   <rect x="190" y="540" width="180" height="60" rx="8" class="action-box-green"/>
   <text x="280" y="565" text-anchor="middle" class="text-white">✓ Vyzkoušejte</text>

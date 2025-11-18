@@ -1,7 +1,7 @@
 ---
 title: "Co dělat s počítačem, kterému skončila podpora Windows 10"
 headline: "Windows 10 bez podpory: Jaké máte možnosti"
-description: "Podpora Windows 10 skončila 14. října 2025. Zjistěte, jaké možnosti máte a jak se rozhodnout mezi upgradem na Windows 11, přechodem na Linux nebo koupi nového počítače."
+description: "Podpora Windows 10 skončila 14. října 2025. Zjistěte, jaké možnosti máte."
 date: "2025-11-12"
 last_modification: "2025-11-12"
 status: 1
@@ -9,13 +9,13 @@ tags: ["windows", "zabezpeceni", "produktivita"]
 format: "html"
 ---
 
-<div class="soft">
-  <p>Microsoft 14. října 2025 ukončil podporu Windows 10. Co to znamená pro vaš počítač a jaké máte možnosti?</p>
-</div>
+<p>Microsoft 14. října 2025 ukončil podporu Windows 10. Co to znamená pro vaš počítač a jaké máte možnosti?</p>
 
 <p><img src="/files/windows-10-konec-podpory/hero.svg" alt="Windows 10 - Konec podpory 14. října 2025" style="max-width: 100%; height: auto; border-radius: 8px;"></p>
 
 <h2 id="co-to-znamena">Co znamená konec podpory</h2>
+
+<p><img src="/files/windows-10-konec-podpory/konec-podpory.png" class="border" alt="Konec podpory" /></p>
 
 <p>Konec podpory znamená, že Microsoft <b>pravidelně</b> přestal vydávat:</p>
 
@@ -25,11 +25,15 @@ format: "html"
   <li><b>Technickou podporu</b> – Microsoft oficiálně nepomůže s problémy</li>
 </ul>
 
+<p>Výsledkem je <b>potenciální bezpečnostní risiko</b>.</p>
+
+<p>Znamená to, že musím ihned upgradovat na Windows 11? Případně starý počítač s Windows 10 vyhodit a koupit nový?</p>
+
+<p>Ne.</p>
+
 <p>Počítač bude <b>stále fungovat</b> normálně. Bezpečnostní riziko <b>roste postupně</b>, ne okamžitě.</p>
 
-<div class="soft">
-  <p><b>Historická poznámka:</b> Microsoft má historii vydávání záplat i po konci podpory pro <b>skutečně kritické</b> zranitelnosti. Například Windows XP dostal záplatu pro WannaCry ransomware v roce 2017 (3 roky po konci podpory). V případě masivně zneužívané zranitelnosti je pravděpodobné, že patch vyjde i pro Windows 10.</p>
-</div>
+  <p><b>Historická poznámka:</b> Microsoft má historii vydávání záplat i po konci podpory pro <b>skutečně kritické</b> zranitelnosti. Například Windows XP dostal záplatu pro <a href="https://cs.wikipedia.org/wiki/WannaCry">WannaCry</a> ransomware v roce 2017 (3 roky po konci podpory). V případě masivně zneužívané zranitelnosti je pravděpodobné, že patch vyjde i pro Windows 10.</p>
 
 <h2 id="porovnani-s-konkurenci">Porovnání s konkurencí</h2>
 
@@ -37,7 +41,7 @@ format: "html"
 
 <h3 id="delka-podpory">Délka podpory operačních systémů</h3>
 
-<table class="border">
+<table>
   <thead>
     <tr>
       <th>Operační systém</th>
@@ -74,7 +78,7 @@ format: "html"
   </tbody>
 </table>
 
-<h3 id="microsoft-vs-apple">Microsoft vs Apple</h3>
+<h3 id="microsoft-vs-apple">Microsoft vs. Apple</h3>
 
 <p>Největší kontrast je mezi Microsoftem a Apple:</p>
 
@@ -83,7 +87,7 @@ format: "html"
   <li><b>macOS: ~3 roky podpory</b> pro každou verzi</li>
 </ul>
 
-<p>Apple vydává novou verzi macOS <b>každý rok</b> a podporuje obvykle jen 3 poslední verze. Pokud máte Mac z roku 2015 (stejný rok jako Windows 10), váš macOS přestal dostávat aktualizace už <b>dávno</b> – pravděpodobně kolem roku 2020-2021.</p>
+<p>Apple vydává novou verzi macOS <b>každý rok</b> a podporuje obvykle jen 3 poslední. Pokud máte Mac z roku 2015 (stejný rok jako Windows 10), váš macOS přestal dostávat aktualizace už <b>dávno</b> – pravděpodobně kolem roku 2020-2021.</p>
 
 <p><b>Příklad:</b> MacBook z roku 2015 může maximálně běžet na macOS Monterey (2021), který už nedostává bezpečnostní aktualizace. Počítač s Windows 10 z roku 2015 dostával aktualizace až do října 2025 – o <b>4 roky déle</b>.</p>
 
@@ -106,7 +110,7 @@ format: "html"
   <li><b>MacBook</b> efektivně ~5-7 let (pokud nejnovější macOS podporuje váš hardware)</li>
 </ul>
 
-<p>Takže pokud vám připadá, že Microsoft "ukončil podporu příliš brzy", ve skutečnosti poskytl <b>jednu z nejdelších podpor v celém odvětví</b>. Problém spíše je, že Windows 11 má přísnější hardwarové požadavky, což brání některým funkčním počítačům v upgradu.</p>
+<p>Takže pokud vám připadá, že Microsoft „ukončil podporu příliš brzy“, ve skutečnosti poskytl <b>jednu z nejdelších podpor v celém odvětví</b>. Problém spíše je, že Windows 11 má přísnější hardwarové požadavky, což brání některým funkčním počítačům v upgradu.</p>
 
 <h2 id="moznosti">Vaše možnosti</h2>
 
@@ -118,8 +122,8 @@ format: "html"
   <li>Procesor: 1 GHz, 2 jádra, 64-bit</li>
   <li>RAM: minimálně 4 GB</li>
   <li>Úložiště: 64 GB</li>
-  <li><b>TPM 2.0</b> (bezpečnostní čip)</li>
-  <li><b>UEFI</b> firmware</li>
+  <li><b>TPM 2.0</b> – bezpečnostní čip v základní desce, který chrání šifrovací klíče a umožňuje funkce jako BitLocker a bezpečné přihlašování</li>
+  <li><b>UEFI</b> firmware – novější typ firmwaru, který nahradil starý BIOS a umožňuje bezpečné startování systému (Secure Boot) a lepší práci s moderními disky</li>
 </ul>
 
 <p><b>Jak zjistit kompatibilitu:</b></p>
@@ -136,7 +140,6 @@ format: "html"
   <li>Otevřete <b>Nastavení</b> → <b>Windows Update</b></li>
   <li>Klikněte na <b>Vyhledat aktualizace</b></li>
   <li>Pokud je upgrade dostupný, objeví se nabídka upgradu na Windows 11</li>
-  <li>Postupujte podle pokynů na obrazovce</li>
 </ol>
 
 <div class="soft">
@@ -146,14 +149,17 @@ format: "html"
 
 <h3 id="pokracovat">2. Pokračovat s Windows 10</h3>
 
+<p>Je možné, že váš počítač nesplňuje požadavky Windows 11:</p>
+
+<p><img src="/files/windows-10-konec-podpory/nesplnuje-pozadavky.png" class="border" alt="" /></p>
+
 <p>Pokračování s Windows 10 je <b>zcela legitimní volba</b>, zejména v prvních letech po skončení podpory. Miliony uživatelů budou Windows 10 používat ještě roky.</p>
 
 <p><b>Realita bezpečnostních rizik:</b></p>
 
 <ul>
   <li><b>Webové aplikace</b> (bankovnictví, email) mají <b>vlastní zabezpečení</b> (HTTPS, šifrování, 2FA)</li>
-  <li><b>Moderní prohlížeče</b> budou podporovat Windows 10 ještě několik let</li>
-  <li><b>Antivirus</b> nadále funguje a chrání před známými hrozbami</li>
+  <li><b>Moderní prohlížeče</b> budou pravděpodobně podporovat Windows 10 ještě několik let</li>
   <li>Kritické zranitelnosti <b>mohou</b> dostat záplatu i po konci podpory (viz WannaCry pro XP)</li>
   <li>Riziko <b>roste postupně</b> – první rok je relativně bezpečný, po 3+ letech už méně</li>
 </ul>
@@ -162,7 +168,7 @@ format: "html"
 
 <ul>
   <li>Počítač nesplňuje požadavky Windows 11</li>
-  <li>Nemáte prostředky na nový počítač</li>
+  <li>Nemáte prostředky na nový počítač nebo se vám nechce kupovat</li>
   <li>Potřebujete čas na přípravu migrace</li>
   <li>Používáte specifické programy, které na Linuxu neběží</li>
 </ul>
@@ -172,16 +178,12 @@ format: "html"
 <ol>
   <li><b>Aktualizujte všechny aplikace</b> – zejména prohlížeč, PDF čtečku, Office</li>
   <li><b>Používejte moderní prohlížeč</b> – Chrome, Firefox, Edge (ty mají vlastní bezpečnostní vrstvy)</li>
-  <li><b>Kvalitní antivirus</b> – Windows Defender je dostačující</li>
   <li><b>Pravidelné zálohy</b> – nejdůležitější pojistka proti problémům</li>
   <li><b>Základní opatrnost</b> – neotevírejte podezřelé přílohy a odkazy</li>
-  <li><b>Firewall zapnutý</b> – Windows Firewall nechte aktivní</li>
 </ol>
 
-<div class="soft">
   <p><b>Výhody:</b> Žádné náklady, zachováte známé prostředí, všechny programy fungují.</p>
   <p><b>Nevýhody:</b> Postupně rostoucí bezpečnostní riziko (zejména po 2-3 letech), kompatibilita s novým softwarem se bude snižovat.</p>
-</div>
 
 <h3 id="linux">3. Přechod na Linux</h3>
 
@@ -196,34 +198,7 @@ format: "html"
   <li><a href="https://elementary.io/">elementary OS</a> – elegantní, podobné macOS</li>
 </ul>
 
-<p><b>Co budete moci dělat:</b></p>
-
-<ul>
-  <li>Prohlížení webu (Chrome, Firefox)</li>
-  <li>E-maily (Thunderbird, webové klienty)</li>
-  <li>Kancelářské aplikace (LibreOffice – kompatibilní s MS Office)</li>
-  <li>Sledování videa a poslech hudby</li>
-  <li>Úprava fotek (GIMP)</li>
-</ul>
-
-<p><b>Co nebude fungovat:</b></p>
-
-<ul>
-  <li>Microsoft Office (funguje LibreOffice nebo Office online)</li>
-  <li>Adobe Photoshop (funguje GIMP nebo Photoshop online)</li>
-  <li>Většina her (kromě her na Steamu s podporou Linuxu)</li>
-  <li>Specializované programy pro Windows</li>
-</ul>
-
-<p><b>Jak začít:</b></p>
-
-<ol>
-  <li>Vyberte distribuci (doporučuji <b>Linux Mint</b>)</li>
-  <li>Stáhněte si ISO soubor</li>
-  <li>Vytvořte bootovací USB disk pomocí <a href="https://rufus.ie/">Rufus</a></li>
-  <li>Nejprve vyzkoušejte <b>Live verzi</b> (bez instalace)</li>
-  <li>Pokud se vám líbí, nainstalujte (lze i jako <b>dual boot</b> s Windows)</li>
-</ol>
+<p>Pokud se vaše práce na počítači odehrává primárně v prohlížeči, nemusí být s přechodem na Linux takový problém.</p>
 
 <div class="soft">
   <p><b>Výhody:</b> Zdarma, bezpečné, běží i na starších počítačích, pravidelné aktualizace.</p>
@@ -250,25 +225,28 @@ format: "html"
 <p><b>Výhody nového počítače:</b></p>
 
 <ul>
-  <li><b>Windows 11</b> předinstalovaný</li>
   <li>Výrazně <b>vyšší výkon</b></li>
   <li>Lepší <b>výdrž baterie</b> (u notebooků)</li>
   <li>Modernější <b>porty a konektory</b></li>
   <li>Lepší <b>zabezpečení</b></li>
 </ul>
 
-<p><b>Cenové kategorie:</b></p>
+<p>Pokud současný počítač nesplňuje HW požadavky na Windows 11, dost pravděpodobně bude adekvátní nový počítači <b>v cenové relaci 10 000 – 15 000 Kč</b>.</p>
 
-<ul>
-  <li><b>Basic</b> (10 000 – 15 000 Kč): prohlížení webu, e-maily, kancelářské práce</li>
-  <li><b>Standard</b> (15 000 – 25 000 Kč): multitasking, lehká úprava fotek a videí</li>
-  <li><b>Premium</b> (25 000+ Kč): náročné aplikace, hry, profesionální práce</li>
-</ul>
 
-<div class="soft">
   <p><b>Výhody:</b> Nový výkonný hardware, žádné starosti s kompatibilitou, záruka.</p>
   <p><b>Nevýhody:</b> Náklady, nutnost přenosu dat a nastavení nového systému.</p>
-</div>
+
+
+<h2 id="proc-porad-aktualizace">Proč mi pořád někdo chce něco aktualizovat</h2>
+
+<p>Pocit „všechno funguje, proč do toho někdo zase sahá“ má skoro každý. Počítač je ale součástí většího ekosystému – internetu, bankovnictví, úřadů, firemních systémů, aplikací – a ten se neustále mění.</p>
+
+<p><b>Bezpečnost</b> je hlavní důvod, proč systémy nemůžou zůstat stejné navždy. Útočníci neustále hledají nové slabiny, objevují se nové typy útoků a šifrování, staré algoritmy se stávají prolomitelnými. To, co bylo „dost bezpečné“ v roce 2015, může být v roce 2025 považováno za slabé.</p>
+
+<p>Druhý důvod je <b>kompatibilita</b>. Webové stránky, aplikace, online bankovnictví nebo třeba elektronický podpis využívají nové standardy. Vývojáři nemohou donekonečna testovat a podporovat všechny kombinace starých systémů a prohlížečů. Proto se nastavují životní cykly: určitou dobu je systém aktivně podporovaný, pak přichází novější generace.</p>
+
+<p><b>Může systém vydržet „navždy“?</b> V izolaci ano – například počítač, který není připojený k internetu a běží jen jeden starý program, může fungovat roky. Jakmile ale chcete používat moderní web, online služby nebo připojovat nový hardware, potřebujete systém, který se vyvíjí a dostává aktualizace.</p>
 
 <h2 id="jak-se-rozhodnout">Jak se rozhodnout</h2>
 
@@ -328,12 +306,3 @@ format: "html"
 </ol>
 
 <p><b>Není důvod k panice.</b> Windows 10 bude ještě dlouho funkční a relativně bezpečný systém. Upgrade je vhodný, ale ne nutně urgentní. Vyberte si řešení podle vašich skutečných potřeb a finančních možností.</p>
-
-<div class="external-content">
-  <h3>Další zdroje</h3>
-  <ul>
-    <li><a href="https://www.microsoft.com/cs-cz/windows/windows-11">Microsoft Windows 11</a> – oficiální stránka pro upgrade</li>
-    <li><a href="https://ubuntu.com/">Ubuntu</a> – populární Linux distribuce</li>
-    <li><a href="https://linuxmint.com/">Linux Mint</a> – Linux přátelský k začátečníkům</li>
-  </ul>
-</div>
