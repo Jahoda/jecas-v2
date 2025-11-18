@@ -9,9 +9,9 @@ tags: ["windows", "zabezpeceni", "produktivita"]
 format: "html"
 ---
 
-<p>Microsoft 14. října 2025 ukončil podporu Windows 10. Co to znamená pro vaš počítač?</p>
+<p>Microsoft 14. října 2025 ukončil podporu <a href="/windows-10">Windows 10</a>. Co to znamená pro vaš počítač?</p>
 
-<p><img src="/files/windows-10-konec-podpory/hero.svg" alt="Windows 10 - Konec podpory 14. října 2025" style="max-width: 100%; height: auto; border-radius: 8px;"></p>
+<p><img src="/files/windows-10-konec-podpory/hero.svg" alt="Windows 10 - Konec podpory 14. října 2025" /></p>
 
 <h2 id="co-to-znamena">Co znamená konec podpory</h2>
 
@@ -161,6 +161,10 @@ format: "html"
   <li>Kritické zranitelnosti <b>mohou</b> dostat záplatu i po konci podpory (viz WannaCry pro XP)</li>
   <li>Risiko <b>roste postupně</b> – první rok je relativně bezpečný, po 3+ letech už méně</li>
 </ul>
+
+<p>Typicky mají uživatelé větší bezpečnostní problémy než to, že používají starší Windows 10 – často mají slabá a neunikátní hesla, používají zastaralý prohlížeč, nemají zapnuté vícefaktorové ověřování, nešifrují data, chovají se risikově a nezodpovědně a vůbec nezálohují svá data.</p>
+
+<p>Je také dobré si uvědomit, k čemu počítač používáte a jaké dopady může mít jeho napadení – ztráta nebo únik fotek a dokumentů, přístup útočníka do emailu, do účtů na sociálních sítích nebo do internetového bankovnictví.</p>
 
 <p><b>Kdy je to rozumná volba:</b></p>
 
