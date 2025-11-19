@@ -5,7 +5,7 @@ description: "AI dokáže výrazně zvýšit efektivitu programátora. Nevezme m
 date: "2023-03-08"
 last_modification: "2023-03-08"
 status: 1
-tags: ["napady", "produktivita"]
+tags: ["napady", "produktivita", "ai"]
 format: "html"
 ---
 
