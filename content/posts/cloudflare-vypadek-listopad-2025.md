@@ -1,11 +1,11 @@
 ---
 title: "Výpadek Cloudflare v listopadu 2025: Co se stalo"
-headline: "Výpadek Cloudflare: Databázová chyba vyřadila tisíce webů"
-description: "18. listopadu 2025 postihla Cloudflare čtyřhodinová porucha způsobená změnou oprávnění v databázi. Jednoduchý přehled, co se stalo a proč."
+headline: "Výpadek Cloudflare: Databasová chyba vyřadila tisíce webů"
+description: "18. listopadu 2025 postihla Cloudflare čtyřhodinová porucha způsobená změnou oprávnění v databasi. Jednoduchý přehled, co se stalo a proč."
 date: "2025-11-19"
 last_modification: "2025-11-19"
 status: 1
-tags: ["cloudflare", "vypadek", "zabezpeceni"]
+tags: ["zabezpeceni"]
 format: "html"
 ---
 
@@ -40,19 +40,21 @@ format: "html"
 
 <p>Uživatelé po celém světě najednou nemohli přistupovat ke svým oblíbeným službám. Na sociálních sítích se okamžitě začalo mluvit o rozsáhlém výpadku internetu.</p>
 
+<p><img src="/files/cloudflare-vypadek-listopad-2025/image-3-.png" class="border" alt="Internet postavený na Cloudflare" /></p>
+
 <h2 id="pricina">Co způsobilo výpadek</h2>
 
 <p>Cloudflare vydal <a href="https://blog.cloudflare.com/18-november-2025-outage/">oficiální vysvětlení</a> příčiny výpadku. Šlo o <b>technickou chybu</b>, ne o kybernetický útok.</p>
 
 <h3 id="technicke-detaily">Technický průběh</h3>
 
-<p><b>V 11:05 UTC</b> inženýři Cloudflare provedli změnu oprávnění v databázovém systému <b>ClickHouse</b>. Cílem bylo vylepšit způsob, jakým fungují distribuované dotazy v databázi.</p>
+<p><b>V 11:05 UTC</b> inženýři Cloudflare provedli změnu oprávnění v databasovém systému <b>ClickHouse</b>. Cílem bylo vylepšit způsob, jakým fungují distribuované dotazy v databasi.</p>
 
 <p>Tato změna však měla nečekaný vedlejší efekt:</p>
 
 <ol>
-  <li>Databázový dotaz začal vracet <b>duplicitní řádky</b></li>
-  <li>Tyto duplicitní data se dostaly do souboru nazývaného <b>"feature file"</b>, který používá systém Bot Management</li>
+  <li>Databasový dotaz začal vracet <b>duplicitní řádky</b></li>
+  <li>Tyto duplicitní data se dostaly do souboru nazývaného <b>„feature file“</b>, který používá systém Bot Management</li>
   <li>Soubor se <b>zdvojnásobil na velikost</b></li>
   <li>Překročil <b>hardcodovaný limit 200 features</b></li>
   <li>To způsobilo <b>Rust panic</b> (pád programu) v systému, který distribuuje provoz po síti</li>
@@ -65,14 +67,14 @@ format: "html"
 <p>Představte si to jako domino efekt:</p>
 
 <ul>
-  <li>Změna v nastavení databáze → duplicitní data</li>
+  <li>Změna v nastavení database → duplicitní data</li>
   <li>Duplicitní data → příliš velký konfigurační soubor</li>
   <li>Příliš velký soubor → překročení limitu</li>
   <li>Překročení limitu → pád klíčového systému</li>
   <li>Pád systému → nedostupnost služeb</li>
 </ul>
 
-<p>Problém byl v tom, že tento soubor se propagoval na <b>všechny servery</b> v síti Cloudflare. Protože jejich hlavní proxy systém (nazývaný "Frontline") zpracovává téměř každý požadavek, selhání se okamžitě projevilo globálně.</p>
+<p>Problém byl v tom, že tento soubor se propagoval na <b>všechny servery</b> v síti Cloudflare. Protože jejich hlavní proxy systém (nazývaný „Frontline“) zpracovává téměř každý požadavek, selhání se okamžitě projevilo globálně.</p>
 
 <h2 id="co-to-nebylo">Co to nebylo</h2>
 
@@ -80,8 +82,8 @@ format: "html"
 
 <ul>
   <li><b>Nebyl to kybernetický útok</b> – Cloudflare potvrdil, že nešlo o útok hackerů</li>
-  <li><b>Nebyl to DDoS útok</b> – i když se zpočátku spekulovalo o "nárůstu provozu"</li>
-  <li><b>Nebyl to BGP problém</b> – předchozí větší výpadky Cloudflare byly způsobeny chybou v BGP routingu, tentokrát šlo o jinou příčinu</li>
+  <li><b>Nebyl to DDoS útok</b> – i když se zpočátku spekulovalo o „nárůstu provozu“</li>
+  <li><b>Nebyl to BGP problém</b> – předchozí větší výpadky Cloudflare byly způsobeny chybou v BGP routingu, tentokrát šlo o jinou příčinu („Border Gateway Protocol“ je směrovací protokol, kterým si jednotlivé sítě na internetu oznamují, kudy se má provoz směrovat)</li>
 </ul>
 
 <h2 id="jak-to-vyresili">Jak to vyřešili</h2>
@@ -89,7 +91,7 @@ format: "html"
 <p>Cloudflare identifikoval problém a:</p>
 
 <ol>
-  <li>Vrátil změnu v databázových oprávněních</li>
+  <li>Vrátil změnu v databasových oprávněních</li>
   <li>Zastavil generování chybných konfiguračních souborů</li>
   <li>Distribuoval správnou versi souboru na všechny servery</li>
   <li>Postupně obnovoval služby</li>
@@ -103,7 +105,7 @@ format: "html"
 
 <p>Výpadek ukázal, jak <b>křehký může být internet</b>, když velká část infrastruktury závisí na jedné společnosti.</p>
 
-<p>Cloudflare je obrovská služba, ale když vypadne, ovlivní to tisíce dalších služeb najednou. Je to tzv. <b>"single point of failure"</b> (jediný bod selhání).</p>
+<p>Cloudflare je obrovská služba, ale když vypadne, ovlivní to tisíce dalších služeb najednou. Je to tzv. <b>„single point of failure“</b> (jediný bod selhání).</p>
 
 <h3 id="hardcodovane-limity">Hardcodované limity</h3>
 
@@ -120,7 +122,7 @@ format: "html"
 
 <h3 id="testovani-zmen">Testování změn</h3>
 
-<p>Změna v databázových oprávněních vypadala jako rutinní úprava, ale měla nečekané důsledky. To ukazuje důležitost:</p>
+<p>Změna v databasových oprávněních vypadala jako rutinní úprava, ale měla nečekané důsledky. To ukazuje důležitost:</p>
 
 <ul>
   <li><b>Postupného nasazování</b> (rolling deployment) – změny nejdřív na části systému</li>
@@ -136,7 +138,7 @@ format: "html"
 <p>Cloudflare přislíbil:</p>
 
 <ul>
-  <li>Lepší testování změn v databázových systémech</li>
+  <li>Lepší testování změn v databasových systémech</li>
   <li>Zlepšení mechanismů pro detekci a prevenci podobných problémů</li>
   <li>Revisi hardcodovaných limitů v kritických systémech</li>
   <li>Lepší postupy pro rollout změn</li>
@@ -157,3 +159,5 @@ format: "html"
 </ul>
 
 <p>Pro běžné uživatele to znamená: i ty nejspolehlivější služby mohou občas vypadnout. Proto je dobré mít <b>zálohy</b> a <b>alternativní řešení</b> pro kritické úkoly.</p>
+
+<p>Pro vývojáře, co na Cloudflare spoléhají a provozují tam svoje weby a aplikace, je to relativně příjemné. Nemusí a často ani nemohou nic řešit, když stejně nefunguje půlka internetu.</p>
