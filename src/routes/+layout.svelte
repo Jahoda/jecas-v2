@@ -14,8 +14,28 @@
 
 	let { children }: Props = $props();
 
+	let isSwipeNavigation = false;
+
+	// Detect swipe gestures on Safari to avoid double animations
+	if (typeof window !== 'undefined') {
+		// Track touch events to detect swipe navigation
+		window.addEventListener('popstate', () => {
+			isSwipeNavigation = true;
+			setTimeout(() => {
+				isSwipeNavigation = false;
+			}, 100);
+		});
+	}
+
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
+
+		// Skip view transition for swipe-based navigation on Safari
+		// to prevent double animation (native swipe + custom transition)
+		if (isSwipeNavigation) {
+			isSwipeNavigation = false;
+			return;
+		}
 
 		return new Promise((resolve) => {
 			document.startViewTransition(async () => {
