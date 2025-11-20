@@ -17,6 +17,12 @@
 	onNavigate((navigation) => {
 		if (!document.startViewTransition) return;
 
+		// Skip view transition for popstate navigation (browser back/forward, including swipe gestures)
+		// to prevent double animation with Safari's native swipe animation
+		if (navigation.type === 'popstate') {
+			return;
+		}
+
 		return new Promise((resolve) => {
 			document.startViewTransition(async () => {
 				resolve();
