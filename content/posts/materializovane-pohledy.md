@@ -220,6 +220,11 @@ WHERE order_date >= DATE_TRUNC('year', CURRENT_DATE);</code></pre>
 
 <p>Hlavní rozdíly oproti běžné databázi:</p>
 
+<ul>
+  <li><b>OLTP</b> = <i lang="en">Online Transaction Processing</i> (online zpracování transakcí) - běžné databáze pro aplikace</li>
+  <li><b>OLAP</b> = <i lang="en">Online Analytical Processing</i> (online analytické zpracování) - databáze pro analýzu a reporty</li>
+</ul>
+
 <table>
   <thead>
     <tr>
@@ -256,6 +261,15 @@ WHERE order_date >= DATE_TRUNC('year', CURRENT_DATE);</code></pre>
     </tr>
   </tbody>
 </table>
+
+<h4>Praktické příklady:</h4>
+
+<ul>
+  <li><b>OLTP příklad:</b> E-shop databáze - vkládání objednávek, aktualizace skladu, registrace uživatelů</li>
+  <li><b>OLAP příklad:</b> Analýza prodejů za poslední 3 roky, segmentace zákazníků, predikce trendů</li>
+</ul>
+
+<p><b>Materializované pohledy jsou most mezi OLTP a OLAP</b> - berou transakční data (OLTP) a připravují je pro analytické dotazy (OLAP).</p>
 
 <h4>Co je ETL?</h4>
 
