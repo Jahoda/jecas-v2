@@ -35,6 +35,12 @@ format: "html"
   <li>Na základě výsledku rozhodne, zda e-mail <b>přijmout, odmítnout nebo označit jako podezřelý</b></li>
 </ol>
 
+<h3 id="envelope-from">Co SPF skutečně ověřuje</h3>
+
+<p>Důležité upozornění: SPF ověřuje <b>„envelope from"</b> (technicky MAIL FROM nebo Return-Path), nikoli hlavičku <code>From:</code>, kterou vidí uživatel v e-mailovém klientovi.</p>
+
+<p>To znamená, že útočník může stále podvrhnout <b>viditelnou adresu odesílatele</b>, i když SPF kontrola projde. Proto je SPF <b>nutné kombinovat s DKIM a DMARC</b>, které zajišťují kompletnější ochranu včetně ověření hlavičky <code>From:</code>.</p>
+
 <h2 id="vytvoreni">Vytvoření SPF záznamu</h2>
 
 <p>SPF záznam se přidává jako <b>TXT záznam v DNS</b> vaší domény. Základní formát vypadá takto:</p>
@@ -144,13 +150,33 @@ format: "html"
 
 <h3>Příliš mnoho DNS dotazů</h3>
 
-<p>SPF má limit <b>10 DNS dotazů</b>. Každý <code>include:</code>, <code>a</code>, <code>mx</code> nebo <code>redirect=</code> počítá jako dotaz. Při překročení limitu se SPF považuje za <b>neplatný</b>.</p>
+<p>SPF má limit <b>maximálně 10 mechanismů vyžadujících DNS lookup</b> během vyhodnocování jediného SPF záznamu. Tento limit zahrnuje:</p>
 
-<p><b>Řešení:</b> Používejte raději <code>ip4:</code> a <code>ip6:</code> místo <code>include:</code>, kde je to možné.</p>
+<ul>
+  <li><code>include:</code> – započítává se včetně všech vnořených dotazů v odkazovaném SPF záznamu</li>
+  <li><code>a</code> – dotaz na A/AAAA záznamy</li>
+  <li><code>mx</code> – dotaz na MX záznamy (každý MX může vyžadovat další A dotaz)</li>
+  <li><code>redirect=</code> – přesměrování na jiný SPF záznam</li>
+  <li><code>exists:</code> – kontrola existence domény</li>
+  <li><code>ptr:</code> – reverzní DNS lookup (nedoporučuje se)</li>
+</ul>
+
+<p><b>Důležité:</b> Mechanismy <code>ip4:</code>, <code>ip6:</code> a <code>all</code> <b>nevyžadují DNS dotazy</b>, takže se do limitu nepočítají.</p>
+
+<p>Při překročení limitu 10 dotazů se celé SPF vyhodnocení <b>okamžitě ukončí</b> s výsledkem <code>PermError</code> a záznam se považuje za <b>neplatný</b>. To může vést k odmítnutí legitimních e-mailů.</p>
+
+<p><b>Řešení:</b></p>
+<ul>
+  <li>Používejte raději <code>ip4:</code> a <code>ip6:</code> místo <code>include:</code>, kde je to možné</li>
+  <li>Před nasazením otestujte SPF záznam pomocí online nástrojů, které počítají DNS dotazy</li>
+  <li>Sledujte, kolik DNS dotazů vyžadují vaše <code>include:</code> – např. <code>include:_spf.google.com</code> může sám obsahovat další vnořené include</li>
+</ul>
 
 <h3>Více SPF záznamů</h3>
 
-<p>Doména může mít <b>pouze jeden SPF záznam</b>. Pokud má více TXT záznamů začínajících <code>v=spf1</code>, SPF selže.</p>
+<p>Doména by měla mít <b>pouze jeden TXT záznam s SPF</b> začínající <code>v=spf1</code>. Pokud má více takových záznamů, <b>standardní SPF validátory to považují za chybu</b> a SPF kontrola selže.</p>
+
+<p>Technicky DNS umožňuje mít více TXT záznamů, ale je to <b>správná praxe a doporučení standardu SPF</b>, aby byl pouze jeden explicitní <code>v=spf1</code> záznam pro každou doménu.</p>
 
 <p><b>Řešení:</b> Spojte všechny mechanismy do jednoho záznamu.</p>
 
@@ -161,6 +187,25 @@ format: "html"
 <h3>Použití +all</h3>
 
 <p>Nikdy nepoužívejte <code>+all</code> – tím SPF <b>zcela deaktivujete</b> a povolíte komukoliv odesílat jménem vaší domény.</p>
+
+<h3>Problémy s přeposíláním e-mailů (forwarding)</h3>
+
+<p>SPF může způsobit problémy při <b>automatickém přeposílání e-mailů</b> (email forwarding). Pokud uživatel nastaví přeposílání z <code>uzivatel@domena-a.cz</code> na <code>uzivatel@domena-b.cz</code>, nastane následující situace:</p>
+
+<ol>
+  <li>Původní odesílatel pošle e-mail z <code>odesilatel@puvodni.cz</code></li>
+  <li>E-mail dorazí na <code>domena-a.cz</code> a SPF kontrola projde</li>
+  <li><code>domena-a.cz</code> e-mail přepošle na <code>domena-b.cz</code></li>
+  <li><code>domena-b.cz</code> provede SPF kontrolu a <b>zjistí, že e-mail přišel z IP adresy domena-a.cz</b>, nikoli z původní <code>puvodni.cz</code></li>
+  <li>SPF kontrola <b>selže</b>, protože IP adresa <code>domena-a.cz</code> není v SPF záznamu domény <code>puvodni.cz</code></li>
+</ol>
+
+<p><b>Řešení:</b></p>
+<ul>
+  <li>Přeposílací server může použít <b>SRS</b> (<i lang="en">Sender Rewriting Scheme</i>), který přepíše envelope from na vlastní doménu</li>
+  <li>Použít <code>~all</code> (soft fail) místo <code>-all</code> (hard fail), aby byly přeposílané e-maily pouze označeny, ne odmítnuty</li>
+  <li>Moderní řešení: správně nakonfigurovaný <b>DMARC</b>, který toto zohledňuje</li>
+</ul>
 
 <h2 id="dmarc-dkim">SPF, DKIM a DMARC</h2>
 
