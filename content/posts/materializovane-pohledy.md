@@ -1,37 +1,37 @@
 ---
-title: "Co jsou materializované pohledy (Materialized Views)"
-headline: "Co jsou materializované pohledy a jak zvýší výkon databáze"
-description: "Materializované pohledy jsou mocný nástroj pro optimalizaci databázových dotazů. Zjistěte, jak fungují a kdy je použít."
+title: "Co jsou materializované pohledy (materialized views)"
+headline: "Co jsou materializované pohledy a jak zvýší výkon database"
+description: "Materializované pohledy jsou mocný nástroj pro optimalisaci databasových dotazů."
 date: "2025-11-21"
 last_modification: "2025-11-21"
 status: 1
-tags: ["sql", "databaze", "zrychleni", "optimalizace"]
+tags: ["sql"]
 format: "html"
 ---
 
-<p>Materializované pohledy (<i lang="en">Materialized Views</i>) jsou jedním z nejefektivnějších nástrojů pro optimalizaci výkonu databázových dotazů. Zatímco běžné pohledy (views) jsou pouze uložené dotazy, materializované pohledy fyzicky ukládají výsledky do databáze.</p>
+<p>Materializované pohledy (<i lang="en">materialized views</i>) jsou jedním z nejefektivnějších nástrojů pro optimalisaci výkonu databasových dotazů. Zatímco běžné pohledy (views) jsou pouze uložené dotazy, materializované pohledy fysicky ukládají výsledky do database.</p>
 
 <h2 id="co-je-to">Co je to materializovaný pohled?</h2>
 
-<p>Materializovaný pohled je databázový objekt, který obsahuje <b>fyzicky uložené výsledky dotazu</b>. Na rozdíl od běžného pohledu, který se pokaždé znovu vyhodnocuje při každém přístupu, materializovaný pohled ukládá data na disk.</p>
+<p>Materializovaný pohled je databasový objekt, který obsahuje <b>fysicky uložené výsledky dotazu</b>. Na rozdíl od běžného pohledu, který se pokaždé znovu vyhodnocuje při každém přístupu, materializovaný pohled ukládá data na disk.</p>
 
-<p>Představte si to jako <b>cache pro databázové dotazy</b>.</p>
+<p>Představte si to jako <b>cache pro databasové dotazy</b>.</p>
 
-<h3 id="rozdil-views">Rozdíl mezi View a Materialized View</h3>
+<h3 id="rozdil-views">Rozdíl mezi view a materialized view</h3>
 
 <table>
   <thead>
     <tr>
       <th>Vlastnost</th>
       <th>View (Pohled)</th>
-      <th>Materialized View</th>
+      <th>Materialized view</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>Ukládání dat</td>
       <td>Neukládá, jen definice dotazu</td>
-      <td>Fyzicky ukládá výsledky</td>
+      <td>Fysicky ukládá výsledky</td>
     </tr>
     <tr>
       <td>Výkon čtení</td>
@@ -58,12 +58,12 @@ format: "html"
 <ol>
   <li><b>Vytvoření:</b> Při vytvoření se spustí definovaný dotaz a výsledky se uloží</li>
   <li><b>Čtení:</b> Dotazy na materializovaný pohled čtou přímo uložená data (velmi rychle)</li>
-  <li><b>Refresh:</b> Data je potřeba pravidelně aktualizovat, aby odpovídala zdrojovým tabulkám</li>
+  <li><b>Refresh:</b> Data je potřeba pravidelně aktualisovat, aby odpovídala zdrojovým tabulkám</li>
 </ol>
 
 <h2 id="vytvoreni">Vytvoření materializovaného pohledu</h2>
 
-<p>Syntaxe se liší podle databázového systému. Zde jsou příklady pro nejpoužívanější databáze:</p>
+<p>Syntaxe se liší podle databasového systému. Zde jsou příklady pro nejpoužívanější database:</p>
 
 <h3 id="postgresql">PostgreSQL</h3>
 
@@ -94,7 +94,7 @@ SELECT
 FROM orders
 GROUP BY customer_id;
 
--- Pravidelná aktualizace pomocí EVENT
+-- Pravidelná aktualisace pomocí EVENT
 CREATE EVENT refresh_orders_summary
 ON SCHEDULE EVERY 1 HOUR
 DO
@@ -107,11 +107,11 @@ DO
   FROM orders
   GROUP BY customer_id;</code></pre>
 
-<h2 id="refresh">Aktualizace dat (Refresh)</h2>
+<h2 id="refresh">Aktualisace dat (Refresh)</h2>
 
-<p>Klíčovou otázkou u materializovaných pohledů je, <b>kdy a jak aktualizovat data</b>.</p>
+<p>Klíčovou otázkou u materializovaných pohledů je, <b>kdy a jak aktualisovat data</b>.</p>
 
-<h3 id="strategie-refresh">Strategie aktualizace</h3>
+<h3 id="strategie-refresh">Strategie aktualisace</h3>
 
 <h4>1. Manuální refresh</h4>
 
@@ -130,7 +130,7 @@ SELECT cron.schedule('refresh-orders-summary', '0 2 * * *',
 # crontab -e
 0 2 * * * psql -d mydb -c "REFRESH MATERIALIZED VIEW orders_summary;"</code></pre>
 
-<p><b>MySQL:</b> Použijte EVENT scheduler (ukázka výše v sekci MySQL).</p>
+<p><b>MySQL:</b> Použijte EVENT scheduler (viz výše).</p>
 
 <h2 id="kdy-pouzit">Kdy použít materializované pohledy?</h2>
 
@@ -152,12 +152,12 @@ SELECT
 FROM orders
 JOIN products ON orders.product_id = products.id
 JOIN customers ON orders.customer_id = customers.id
-WHERE order_date >= DATE_TRUNC('year', CURRENT_DATE - INTERVAL '2 years')
+WHERE order_date >= DATE_TRUNC('year', CURRENT_DATE – INTERVAL '2 years')
 GROUP BY DATE_TRUNC('month', order_date), product_category, region;</code></pre>
 
-<h3 id="joiny">2. Časté joiny přes více tabulek</h3>
+<h3 id="joiny">2. Časté <code>JOIN</code>y přes více tabulek</h3>
 
-<p>Pokud máte dotaz, který joinuje 5+ tabulek a spouští se často:</p>
+<p>Pokud máte dotaz, který <code>JOIN</code>uje 5+ tabulek a spouští se často:</p>
 
 <pre><code>CREATE MATERIALIZED VIEW customer_360_view AS
 SELECT
@@ -212,245 +212,48 @@ WHERE order_date >= DATE_TRUNC('year', CURRENT_DATE);</code></pre>
 
 <h3 id="data-warehouse">4. Data Warehouse a ETL procesy</h3>
 
-<p>Materializované pohledy jsou jedním ze základních stavebních kamenů datových skladů (Data Warehouse).</p>
+<p>Materializované pohledy jsou jedním ze základních stavebních kamenů datových skladů.</p>
 
-<h4>Co je Data Warehouse?</h4>
+<p><b>Data Warehouse</b> (datový sklad) je centrální úložiště dat z různých zdrojů, optimalisované pro analytické dotazy a reportování.</p>
 
-<p><b>Data Warehouse</b> (datový sklad) je centrální úložiště dat z různých zdrojů, optimalizované pro analytické dotazy a reportování.</p>
-
-<p>Hlavní rozdíly oproti běžné databázi:</p>
-
-<ul>
-  <li><b>OLTP</b> = <i lang="en">Online Transaction Processing</i> (online zpracování transakcí) - běžné databáze pro aplikace</li>
-  <li><b>OLAP</b> = <i lang="en">Online Analytical Processing</i> (online analytické zpracování) - databáze pro analýzu a reporty</li>
-</ul>
-
-<table>
-  <thead>
-    <tr>
-      <th>Vlastnost</th>
-      <th>Běžná databáze (OLTP)</th>
-      <th>Data Warehouse (OLAP)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Účel</td>
-      <td>Transakce (vkládání, updaty)</td>
-      <td>Analýza (agregace, reporty)</td>
-    </tr>
-    <tr>
-      <td>Optimalizace</td>
-      <td>Rychlé zápisy</td>
-      <td>Rychlé čtení</td>
-    </tr>
-    <tr>
-      <td>Struktura</td>
-      <td>Normalizovaná (3NF)</td>
-      <td>Denormalizovaná (star schema)</td>
-    </tr>
-    <tr>
-      <td>Data</td>
-      <td>Aktuální</td>
-      <td>Historická + aktuální</td>
-    </tr>
-    <tr>
-      <td>Velikost dotazů</td>
-      <td>Malé (jednotlivé záznamy)</td>
-      <td>Velké (miliony řádků)</td>
-    </tr>
-  </tbody>
-</table>
-
-<h4>Praktické příklady:</h4>
-
-<ul>
-  <li><b>OLTP příklad:</b> E-shop databáze - vkládání objednávek, aktualizace skladu, registrace uživatelů</li>
-  <li><b>OLAP příklad:</b> Analýza prodejů za poslední 3 roky, segmentace zákazníků, predikce trendů</li>
-</ul>
-
-<p><b>Materializované pohledy jsou most mezi OLTP a OLAP</b> - berou transakční data (OLTP) a připravují je pro analytické dotazy (OLAP).</p>
-
-<h4>Co je ETL?</h4>
 
 <p><b>ETL</b> je proces, kterým se data dostávají do Data Warehouse. Zkratka znamená:</p>
 
 <ul>
-  <li><b>Extract</b> (Extrakce) - získání dat ze zdrojů</li>
-  <li><b>Transform</b> (Transformace) - čištění a úprava dat</li>
-  <li><b>Load</b> (Načtení) - uložení do datového skladu</li>
+  <li><b>Extract</b> (Extrakce) – získání dat ze zdrojů</li>
+  <li><b>Transform</b> (Transformace) – čištění a úprava dat</li>
+  <li><b>Load</b> (Načtení) – uložení do datového skladu</li>
 </ul>
 
-<h4>Jak materializované pohledy zapadají do ETL?</h4>
 
 <p>Materializované pohledy se používají ve fázi <b>Transform</b> a jako výstup <b>Load</b> fáze:</p>
 
-<pre><code>-- EXTRACT: Data z různých zdrojů jsou v surových tabulkách
--- orders (z e-shopu)
--- crm_contacts (z CRM systému)
--- support_tickets (z help desk systému)
-
--- TRANSFORM & LOAD: Vytvoření materializovaného pohledu
--- který spojuje data ze všech zdrojů
-CREATE MATERIALIZED VIEW customer_analytics AS
-SELECT
-    -- Zákaznická data
-    c.customer_id,
-    c.email,
-    c.registration_date,
-
-    -- Data z objednávek
-    COUNT(DISTINCT o.order_id) as total_orders,
-    SUM(o.total_amount) as lifetime_value,
-    MAX(o.order_date) as last_order_date,
-
-    -- Data z CRM
-    crm.segment,
-    crm.lead_source,
-
-    -- Data z supportu
-    COUNT(DISTINCT t.ticket_id) as support_tickets,
-    AVG(t.satisfaction_score) as avg_satisfaction,
-
-    -- Vypočítané metriky
-    CASE
-        WHEN MAX(o.order_date) > CURRENT_DATE - INTERVAL '30 days' THEN 'Active'
-        WHEN MAX(o.order_date) > CURRENT_DATE - INTERVAL '90 days' THEN 'At Risk'
-        ELSE 'Churned'
-    END as customer_status
-FROM customers c
-LEFT JOIN orders o ON c.customer_id = o.customer_id
-LEFT JOIN crm_contacts crm ON c.email = crm.email
-LEFT JOIN support_tickets t ON c.customer_id = t.customer_id
-GROUP BY c.customer_id, c.email, c.registration_date,
-         crm.segment, crm.lead_source;
-
--- Indexy pro rychlé dotazy
-CREATE INDEX idx_customer_analytics_status
-ON customer_analytics(customer_status);
-CREATE INDEX idx_customer_analytics_segment
-ON customer_analytics(segment, customer_status);</code></pre>
-
-<h4>Typická architektura Data Warehouse s materializovanými pohledy</h4>
-
-<pre><code>┌─────────────────────────────────────────────────────────────┐
-│                      ZDROJOVÉ SYSTÉMY                       │
-├─────────────────────────────────────────────────────────────┤
-│   E-shop    │   CRM    │  Marketing  │  Support  │  Účetní │
-└──────┬──────┴────┬─────┴──────┬──────┴─────┬─────┴────┬────┘
-       │           │            │            │          │
-       ▼           ▼            ▼            ▼          ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    ETL PROCES (nočně)                       │
-│              Extract → Transform → Load                     │
-└──────────────────────┬──────────────────────────────────────┘
-                       ▼
-┌─────────────────────────────────────────────────────────────┐
-│              STAGING AREA (dočasné tabulky)                 │
-│           raw_orders, raw_customers, raw_crm...             │
-└──────────────────────┬──────────────────────────────────────┘
-                       ▼
-┌─────────────────────────────────────────────────────────────┐
-│           DATA WAREHOUSE (fact & dimension tabulky)         │
-│     fact_sales, dim_customers, dim_products, dim_time...    │
-└──────────────────────┬──────────────────────────────────────┘
-                       ▼
-┌─────────────────────────────────────────────────────────────┐
-│        MATERIALIZOVANÉ POHLEDY (předpočítané metriky)       │
-│  ✓ sales_by_month_mv     ✓ customer_segments_mv            │
-│  ✓ product_performance_mv ✓ regional_metrics_mv            │
-└──────────────────────┬──────────────────────────────────────┘
-                       ▼
-┌─────────────────────────────────────────────────────────────┐
-│              BI NÁSTROJE & DASHBOARDY                       │
-│         Tableau, PowerBI, Metabase, Grafana...              │
-└─────────────────────────────────────────────────────────────┘</code></pre>
-
-<h4>Příklad ETL procesu s refresh materializovaných pohledů</h4>
-
-<pre><code>-- 1. EXTRACT: Načtení nových dat ze zdrojů (např. každou noc ve 2:00)
-INSERT INTO staging.raw_orders
-SELECT * FROM production.orders
-WHERE order_date >= CURRENT_DATE - INTERVAL '1 day';
-
--- 2. TRANSFORM: Očištění a validace dat
-DELETE FROM staging.raw_orders
-WHERE total_amount < 0 OR customer_id IS NULL;
-
--- 3. LOAD: Načtení do fact tabulky
-INSERT INTO warehouse.fact_sales
-SELECT
-    order_id,
-    customer_id,
-    product_id,
-    order_date,
-    total_amount
-FROM staging.raw_orders;
-
--- 4. REFRESH materializovaných pohledů
-REFRESH MATERIALIZED VIEW CONCURRENTLY warehouse.sales_summary;
-REFRESH MATERIALIZED VIEW CONCURRENTLY warehouse.customer_metrics;
-REFRESH MATERIALIZED VIEW CONCURRENTLY warehouse.product_analytics;
-
--- 5. Cleanup
-TRUNCATE staging.raw_orders;</code></pre>
-
-<h4>Výhody materializovaných pohledů v Data Warehouse</h4>
-
-<ul>
-  <li><b>Rychlé dashboardy:</b> BI nástroje čtou předpočítaná data místo join přes celý warehouse</li>
-  <li><b>Konzistentní metriky:</b> Všichni vidí stejná čísla, vypočítaná stejným způsobem</li>
-  <li><b>Oddělení zátěže:</b> Těžké výpočty běží v noci, během dne jen rychlé čtení</li>
-  <li><b>Historická data:</b> Můžete materializovat i historické snapshoty</li>
-</ul>
-
-<h4>Příklad: Materializace denních snapshotů</h4>
-
-<pre><code>-- Denní snapshot zákaznických metrik
-CREATE MATERIALIZED VIEW customer_metrics_2024_01_15 AS
-SELECT
-    CURRENT_DATE as snapshot_date,
-    customer_id,
-    total_orders,
-    lifetime_value,
-    customer_status
-FROM customer_analytics;
-
--- Každý den se vytvoří nový snapshot
--- Později můžete porovnávat vývoj v čase:
-SELECT
-    a.customer_id,
-    a.lifetime_value as value_jan,
-    b.lifetime_value as value_feb,
-    b.lifetime_value - a.lifetime_value as growth
-FROM customer_metrics_2024_01_15 a
-JOIN customer_metrics_2024_02_15 b USING (customer_id);</code></pre>
 
 <h2 id="vyhody-nevyhody">Výhody a nevýhody</h2>
 
 <h3 id="vyhody">Výhody</h3>
 
 <ul>
-  <li><b>Dramatické zrychlení dotazů</b> - i 100× a více pro složité agregace</li>
-  <li><b>Snížení zátěže databáze</b> - méně výpočtů při každém dotazu</li>
-  <li><b>Možnost indexování</b> - na materializovaný pohled lze vytvořit indexy</li>
-  <li><b>Prediktabilní výkon</b> - dotazy mají konzistentní rychlost</li>
+  <li><b>Dramatické zrychlení dotazů</b> – i 100× a více pro složité agregace</li>
+  <li><b>Snížení zátěže database</b> – méně výpočtů při každém dotazu</li>
+  <li><b>Možnost indexování</b> – na materializovaný pohled lze vytvořit indexy</li>
+  <li><b>Prediktabilní výkon</b> – dotazy mají konzistentní rychlost</li>
 </ul>
 
 <h3 id="nevyhody">Nevýhody</h3>
 
 <ul>
-  <li><b>Zastaralá data</b> - data nemusí být aktuální</li>
-  <li><b>Diskový prostor</b> - zabírají místo na disku</li>
-  <li><b>Režie při aktualizaci</b> - refresh může být náročný</li>
-  <li><b>Komplexita údržby</b> - je třeba řídit aktualizaci</li>
+  <li><b>Zastaralá data</b> – data nemusí být aktuální</li>
+  <li><b>Diskový prostor</b> – zabírají místo na disku</li>
+  <li><b>Režie při aktualisaci</b> – refresh může být náročný</li>
+  <li><b>Komplexita údržby</b> – je třeba řídit aktualisaci</li>
 </ul>
 
 <h2 id="best-practices">Best Practices</h2>
 
 <h3 id="indexy">1. Vytvářejte indexy</h3>
 
-<p>Materializované pohledy jsou fyzicky uložené tabulky, takže můžete na ně vytvořit indexy pro ještě rychlejší dotazy.</p>
+<p>Materializované pohledy jsou fysicky uložené tabulky, takže můžete na ně vytvořit indexy pro ještě rychlejší dotazy.</p>
 
 <h4>Proč přidávat indexy?</h4>
 
@@ -512,9 +315,9 @@ WHERE order_count > 0;</code></pre>
 <h4>Kdy NEVYTVÁŘET indexy?</h4>
 
 <ul>
-  <li>Pokud je materializovaný pohled malý (< 1000 řádků) - full scan je rychlejší</li>
-  <li>Pokud nikdy nefiltrujete data - čtete vždy všechno</li>
-  <li>Index zabírá místo a zpomaluje refresh - nepřehánějte to</li>
+  <li>Pokud je materializovaný pohled malý (< 1000 řádků) – full scan je rychlejší</li>
+  <li>Pokud nikdy nefiltrujete data – čtete vždy všechno</li>
+  <li>Index zabírá místo a zpomaluje refresh – nepřehánějte to</li>
 </ul>
 
 <h3 id="monitoring">2. Monitorujte velikost a výkon</h3>
@@ -530,7 +333,7 @@ ORDER BY pg_total_relation_size(schemaname||'.'||matviewname) DESC;</code></pre>
 <h3 id="refresh-strategie">3. Volte správnou refresh strategii</h3>
 
 <ul>
-  <li><b>Real-time data:</b> Materializované pohledy nejsou vhodné - použijte běžné views nebo cache</li>
+  <li><b>Real-time data:</b> Materializované pohledy nejsou vhodné – použijte běžné views nebo cache</li>
   <li><b>Near real-time:</b> Refresh každých 5-15 minut</li>
   <li><b>Reporty:</b> Refresh jednou denně (v noci)</li>
   <li><b>Historická data:</b> Refresh týdně nebo měsíčně</li>
@@ -542,7 +345,7 @@ ORDER BY pg_total_relation_size(schemaname||'.'||matviewname) DESC;</code></pre>
 
 <pre><code>REFRESH MATERIALIZED VIEW CONCURRENTLY orders_summary;</code></pre>
 
-<p><b>⚠️ DŮLEŽITÉ podmínky pro CONCURRENTLY:</b></p>
+<p><b>Podmínky pro <code>CONCURRENTLY</code>:</b></p>
 
 <ul>
   <li>Vyžaduje <b>unique index</b> na materializovaném pohledu</li>
@@ -557,7 +360,7 @@ ON orders_summary(customer_id);
 -- TEĎ můžete použít CONCURRENTLY
 REFRESH MATERIALIZED VIEW CONCURRENTLY orders_summary;</code></pre>
 
-<p><b>Kompromis:</b> CONCURRENTLY refresh je pomalejší než běžný refresh, ale pohled zůstává dostupný během aktualizace.</p>
+<p><b>Kompromis:</b> CONCURRENTLY refresh je pomalejší než běžný refresh, ale pohled zůstává dostupný během aktualisace.</p>
 
 <h3 id="partial">5. Zvažte částečné materializované pohledy</h3>
 
@@ -570,14 +373,14 @@ SELECT
     COUNT(*) as order_count,
     SUM(total_amount) as total_spent
 FROM orders
-WHERE order_date >= CURRENT_DATE - INTERVAL '1 year'
+WHERE order_date >= CURRENT_DATE – INTERVAL '1 year'
 GROUP BY customer_id;</code></pre>
 
 <h2 id="ukazka">Praktická ukázka: Zrychlení reportu</h2>
 
 <p>Představme si e-shop s reportem zobrazujícím top produkty za poslední měsíc.</p>
 
-<h3 id="pred">Před - běžný pohled</h3>
+<h3 id="pred">Před – běžný pohled</h3>
 
 <pre><code>CREATE VIEW top_products AS
 SELECT
@@ -589,14 +392,14 @@ SELECT
 FROM products p
 JOIN order_items oi ON p.product_id = oi.product_id
 JOIN orders o ON oi.order_id = o.order_id
-WHERE o.order_date >= CURRENT_DATE - INTERVAL '30 days'
+WHERE o.order_date >= CURRENT_DATE – INTERVAL '30 days'
 GROUP BY p.product_id, p.product_name, p.category
 ORDER BY total_revenue DESC
 LIMIT 100;
 
 -- Dotaz trvá: 2.3 sekundy</code></pre>
 
-<h3 id="po">Po - materializovaný pohled</h3>
+<h3 id="po">Po – materializovaný pohled</h3>
 
 <pre><code>CREATE MATERIALIZED VIEW top_products AS
 SELECT
@@ -608,7 +411,7 @@ SELECT
 FROM products p
 JOIN order_items oi ON p.product_id = oi.product_id
 JOIN orders o ON oi.order_id = o.order_id
-WHERE o.order_date >= CURRENT_DATE - INTERVAL '30 days'
+WHERE o.order_date >= CURRENT_DATE – INTERVAL '30 days'
 GROUP BY p.product_id, p.product_name, p.category
 ORDER BY total_revenue DESC
 LIMIT 100;
@@ -616,11 +419,11 @@ LIMIT 100;
 CREATE INDEX idx_top_products_revenue ON top_products(total_revenue DESC);
 
 -- Refresh každou hodinu
--- (konfigurace závisí na databázi)
+-- (konfigurace závisí na databasi)
 
 -- Dotaz trvá: 0.02 sekundy (100× rychleji!)</code></pre>
 
-<p><b>⚠️ Upozornění:</b> Toto je ideální scénář. Ve skutečnosti:</p>
+<p><b>Upozornění:</b> Toto je ideální scénář. Ve skutečnosti:</p>
 
 <ul>
   <li>Zrychlení závisí na velikosti dat, složitosti dotazu a hardwaru</li>
@@ -629,35 +432,35 @@ CREATE INDEX idx_top_products_revenue ON top_products(total_revenue DESC);
   <li>Musíte řešit zastaralá data mezi refresh cykly</li>
 </ul>
 
-<h2 id="moderni-alternativy">Moderní databázové alternativy</h2>
+<h2 id="moderni-alternativy">Moderní databasové alternativy</h2>
 
-<p>Kromě PostgreSQL a MySQL existují moderní databáze s pokročilou podporou pro materializované pohledy:</p>
+<p>Kromě PostgreSQL a MySQL existují moderní database s pokročilou podporou pro materializované pohledy:</p>
 
 <h3 id="alloydb">AlloyDB (Google Cloud)</h3>
 
-<p><b>AlloyDB</b> je plně spravovaná PostgreSQL-kompatibilní databáze od Google. Oproti standardnímu PostgreSQL nabízí:</p>
+<p><b>AlloyDB</b> je plně spravovaná PostgreSQL-kompatibilní database od Google. Oproti standardnímu PostgreSQL nabízí:</p>
 
 <ul>
   <li><b>Až 4× rychlejší transakce</b> oproti standardnímu PostgreSQL</li>
   <li><b>Až 100× rychlejší analytické dotazy</b> díky column-store enginu</li>
   <li><b>Nativní integrace</b> s Google Cloud ekosystémem</li>
   <li><b>Automatické škálování</b> a vysoká dostupnost</li>
-  <li><b>Kompatibilita</b> s PostgreSQL - včetně materializovaných pohledů</li>
+  <li><b>Kompatibilita</b> s PostgreSQL – včetně materializovaných pohledů</li>
 </ul>
 
-<p>Materializované pohledy v AlloyDB fungují stejně jako v PostgreSQL, ale s lepším výkonem díky optimalizovanému storage.</p>
+<p>Materializované pohledy v AlloyDB fungují stejně jako v PostgreSQL, ale s lepším výkonem díky optimalisovanému storage.</p>
 
 <h3 id="clickhouse">ClickHouse</h3>
 
-<p><b>ClickHouse</b> je open-source column-oriented databáze optimalizovaná pro analytické dotazy (OLAP).</p>
+<p><b>ClickHouse</b> je open-source column-oriented database optimalisovaná pro analytické dotazy (OLAP – <i lang="en">Online Analytical Processing</i>).</p>
 
 <ul>
-  <li><b>Incremental materialized views</b> - automatická aktualizace při vložení dat</li>
-  <li><b>Extrémně rychlé</b> - zpracování miliard řádků za sekundy</li>
-  <li><b>Agregující enginy</b> - vestavěná podpora pro agregace</li>
+  <li><b>Incremental materialized views</b> – automatická aktualisace při vložení dat</li>
+  <li><b>Extrémně rychlé</b> – zpracování miliard řádků za sekundy</li>
+  <li><b>Agregující enginy</b> – vestavěná podpora pro agregace</li>
 </ul>
 
-<pre><code>-- ClickHouse: Materialized view s automatickou aktualizací
+<pre><code>-- ClickHouse: Materialized view s automatickou aktualisací
 CREATE MATERIALIZED VIEW orders_summary_mv
 ENGINE = SummingMergeTree()
 ORDER BY customer_id
@@ -669,18 +472,18 @@ AS SELECT
 FROM orders
 GROUP BY customer_id;
 
--- Data se aktualizují AUTOMATICKY při INSERT do orders!</code></pre>
+-- Data se aktualisují AUTOMATICKY při INSERT do orders!</code></pre>
 
-<p><b>Výhoda:</b> Nepotřebujete refresh - view se aktualizuje inkrementálně při vkládání dat.</p>
+<p><b>Výhoda:</b> Nepotřebujete refresh – view se aktualisuje inkrementálně při vkládání dat.</p>
 
 <h3 id="timescaledb">TimescaleDB</h3>
 
 <p><b>TimescaleDB</b> je rozšíření PostgreSQL pro time-series data (časové řady).</p>
 
 <ul>
-  <li><b>Continuous Aggregates</b> - chytřejší materializované pohledy</li>
-  <li><b>Automatická aktualizace</b> na pozadí</li>
-  <li><b>Refresh policy</b> - nastavitelná strategie aktualizace</li>
+  <li><b>Continuous Aggregates</b> – chytřejší materializované pohledy</li>
+  <li><b>Automatická aktualisace</b> na pozadí</li>
+  <li><b>Refresh policy</b> – nastavitelná strategie aktualisace</li>
 </ul>
 
 <pre><code>-- TimescaleDB: Continuous aggregate
@@ -700,24 +503,24 @@ SELECT add_continuous_aggregate_policy('orders_daily',
     end_offset => INTERVAL '1 hour',
     schedule_interval => INTERVAL '1 hour');</code></pre>
 
-<p><b>Výhoda:</b> Optimalizováno pro časové řady, automatické inkrementální aktualizace.</p>
+<p><b>Výhoda:</b> Optimalisováno pro časové řady, automatické inkrementální aktualisace.</p>
 
 <h3 id="cockroachdb">CockroachDB</h3>
 
-<p><b>CockroachDB</b> je distribuovaná SQL databáze kompatibilní s PostgreSQL.</p>
+<p><b>CockroachDB</b> je distribuovaná SQL database kompatibilní s PostgreSQL.</p>
 
 <ul>
-  <li><b>Podpora materializovaných pohledů</b> (od verze 23.1)</li>
-  <li><b>Distribuované zpracování</b> - view může být rozložen přes více nodů</li>
-  <li><b>Vysoká dostupnost</b> - automatické replikace</li>
+  <li><b>Podpora materializovaných pohledů</b> (od verse 23.1)</li>
+  <li><b>Distribuované zpracování</b> – view může být rozložen přes více nodů</li>
+  <li><b>Vysoká dostupnost</b> – automatické replikace</li>
 </ul>
 
-<h3 id="srovnani-databazi">Srovnání databází</h3>
+<h3 id="srovnani-databazi">Srovnání databasí</h3>
 
 <table>
   <thead>
     <tr>
-      <th>Databáze</th>
+      <th>Database</th>
       <th>Typ</th>
       <th>Refresh</th>
       <th>Výhoda</th>
@@ -752,7 +555,7 @@ SELECT add_continuous_aggregate_policy('orders_daily',
       <td>TimescaleDB</td>
       <td>Time-series</td>
       <td>Automatický</td>
-      <td>Optimalizace pro čas</td>
+      <td>Optimalisace pro čas</td>
     </tr>
     <tr>
       <td>CockroachDB</td>
@@ -762,6 +565,8 @@ SELECT add_continuous_aggregate_policy('orders_daily',
     </tr>
   </tbody>
 </table>
+
+<p><b>OLTP</b> = <i lang="en">Online Transaction Processing</i> (online zpracování transakcí) – běžné database pro aplikace.</p>
 
 <h3 id="kdy-pouzit-moderni">Kdy použít moderní alternativy?</h3>
 
@@ -774,16 +579,16 @@ SELECT add_continuous_aggregate_policy('orders_daily',
 
 <h2 id="uskali">Úskalí a časté problémy</h2>
 
-<p>Materializované pohledy nejsou stříbrná kulka. Zde jsou reálné problémy, se kterými se můžete setkat:</p>
+<p>Materializované pohledy nejsou všespásné řešení. Zde jsou reálné problémy, se kterými se můžete setkat:</p>
 
 <h3 id="vykonne-naroky">1. Výkonové nároky nejsou vždy tak velké</h3>
 
-<p>Články často uvádějí "100× rychlejší dotazy". Realita je složitější:</p>
+<p>Články často uvádějí „100× rychlejší dotazy“. Realita je složitější:</p>
 
 <ul>
-  <li><b>10-50× zrychlení</b> je realistické pro složité agregace přes miliony řádků</li>
-  <li><b>2-5× zrychlení</b> u dotazů se správnými indexy</li>
-  <li><b>Žádné zrychlení</b> pokud databáze má dobrý query planner a správné indexy na zdrojových tabulkách</li>
+  <li><b>10–50× zrychlení</b> je realistické pro složité agregace přes miliony řádků</li>
+  <li><b>2–5× zrychlení</b> u dotazů se správnými indexy</li>
+  <li><b>Žádné zrychlení</b> pokud database má dobrý query planner a správné indexy na zdrojových tabulkách</li>
   <li><b>Zpomalení</b> pokud refresh trvá příliš dlouho a blokuje jiné operace</li>
 </ul>
 
@@ -794,25 +599,20 @@ SELECT add_continuous_aggregate_policy('orders_daily',
 <p>Refresh není zadarmo:</p>
 
 <pre><code>-- Refresh velkého materializovaného pohledu může trvat hodiny
-REFRESH MATERIALIZED VIEW huge_analytics; -- Trvá: 4 hodiny!
-
--- Během refreshe:
--- - Spotřebovává CPU a I/O
--- - Může zpomalit celou databázi
--- - Vytváří "dead tuples" v PostgreSQL</code></pre>
+REFRESH MATERIALIZED VIEW huge_analytics; -- Trvá: 4 hodiny!</code></pre>
 
 <p><b>Problémy v praxi:</b></p>
 
 <ul>
-  <li><b>Dead tuples:</b> PostgreSQL vytváří při refresh mrtvé řádky, které zabírají místo dokud neproběhne VACUUM</li>
+  <li><b>Dead tuples:</b> PostgreSQL vytváří při obnovování (refresh) mrtvé řádky, které zabírají místo dokud neproběhne VACUUM</li>
   <li><b>Blokování:</b> Běžný refresh zamkne view pro čtení (použijte CONCURRENTLY, ale je pomalejší)</li>
   <li><b>Kaskádové refreshe:</b> Pokud máte materializovaný pohled z materializovaného pohledu, musíte refreshovat oba</li>
-  <li><b>Časové okno:</b> Refresh musí doběhnout před dalším použitím - co když trvá déle než plánovaný interval?</li>
+  <li><b>Časové okno:</b> Refresh musí doběhnout před dalším použitím – co když trvá déle než plánovaný interval?</li>
 </ul>
 
 <h3 id="zastarala-data">3. Zastaralá data mohou způsobit problémy</h3>
 
-<p>Materializovaný pohled ukazuje data z času posledního refresh:</p>
+<p>Materializovaný pohled ukazuje data z času posledního refreshe:</p>
 
 <pre><code>-- Refresh v 2:00 ráno
 REFRESH MATERIALIZED VIEW daily_sales;
@@ -825,48 +625,22 @@ SELECT * FROM daily_sales WHERE date = CURRENT_DATE;
 <p><b>Reálné příklady problémů:</b></p>
 
 <ul>
-  <li>Dashboard ukazuje nižší prodeje, než je realita (obchodníci panikáří)</li>
-  <li>Zákazník je označen jako "neaktivní", i když právě nakoupil</li>
+  <li>Dashboard ukazuje nižší prodeje, než je realita</li>
+  <li>Zákazník je označen jako „neaktivní“, i když právě nakoupil</li>
   <li>Reporty pro management obsahují zastaralá čísla</li>
 </ul>
 
-<h3 id="spravna-strategie">4. Refresh strategie nejsou univerzální</h3>
-
-<p>Článek uvádí doporučení typu "reporty: refresh jednou denně". To jsou pouze <b>obecné směrnice</b>, ne pravidla:</p>
+<h3 id="spravna-strategie">4. Refresh strategie nejsou universální</h3>
 
 <ul>
-  <li><b>Závisí na objemu změn:</b> 1000 změn/den vs 1 milion změn/den je obrovský rozdíl</li>
+  <li><b>Závisí na objemu změn:</b> 1000 změn/den vs. 1 milion změn/den je obrovský rozdíl</li>
   <li><b>Závisí na velikosti view:</b> Malý view můžete refreshovat každou minutu, obří view jednou týdně</li>
   <li><b>Závisí na SLA:</b> Kolik minut zastaralých dat je přijatelných?</li>
-  <li><b>Závisí na databázovém systému:</b> PostgreSQL, MySQL a ClickHouse se chovají zcela jinak</li>
+  <li><b>Závisí na databasovém systému:</b> PostgreSQL, MySQL a ClickHouse se chovají zcela jinak</li>
 </ul>
 
-<h3 id="mysql-omezeni">5. MySQL workaround není úplně totéž</h3>
 
-<p>Článek ukazuje simulaci materializovaných pohledů v MySQL pomocí tabulek a EVENT scheduler. <b>To není ekvivalentní</b> nativním materializovaným pohledům:</p>
-
-<ul>
-  <li>Musíte ručně spravovat tabulku (CREATE TABLE AS SELECT...)</li>
-  <li>Musíte ručně implementovat refresh logiku</li>
-  <li>EVENT scheduler může selhat bez varování</li>
-  <li>Není podpora pro inkrementální refresh</li>
-  <li>Spravované MySQL služby (AWS RDS) mohou mít EVENT scheduler omezený</li>
-</ul>
-
-<p><b>Alternativy pro MySQL:</b> Zvažte použití PostgreSQL, nebo moderní databáze s lepší podporou (AlloyDB, ClickHouse).</p>
-
-<h3 id="clickhouse-rozdily">6. ClickHouse materialized views jsou jiné</h3>
-
-<p>Článek zmiňuje, že v ClickHouse se materialized views "aktualizují automaticky při INSERT". To je pravda, ale:</p>
-
-<ul>
-  <li><b>ClickHouse MV jsou spíše triggery</b> - data se transformují při vložení, ne při čtení</li>
-  <li><b>Není to standard SQL</b> - syntaxe a chování je specifické pro ClickHouse</li>
-  <li><b>UPDATE a DELETE nefungují</b> - ClickHouse je optimalizován pro append-only data</li>
-  <li><b>Není zpětná kompatibilita</b> - nemůžete jen tak migrovat z PostgreSQL</li>
-</ul>
-
-<h3 id="diskovy-prostor">7. Diskový prostor může být problém</h3>
+<h3 id="diskovy-prostor">5. Diskový prostor může být problém</h3>
 
 <pre><code>-- Zdrojová tabulka: 500 GB
 SELECT pg_size_pretty(pg_total_relation_size('orders'));
@@ -887,7 +661,7 @@ SELECT pg_size_pretty(pg_total_relation_size('orders_analytics_mv'));
   <li><b>Delší časy pro restore</b></li>
 </ul>
 
-<h3 id="udrzba-komplexita">8. Údržba může být složitá</h3>
+<h3 id="udrzba-komplexita">6. Údržba může být složitá</h3>
 
 <p>Čím více materializovaných pohledů máte, tím složitější je údržba:</p>
 
@@ -899,13 +673,13 @@ SELECT pg_size_pretty(pg_total_relation_size('orders_analytics_mv'));
   <li>Musíte dokumentovat, které metriky jsou v jakém MV</li>
 </ul>
 
-<h3 id="kdy-nepouzit">Kdy materializované pohledy NEPOUŽÍVAT</h3>
+<h2 id="kdy-nepouzit">Kdy materializované pohledy NEPOUŽÍVAT</h2>
 
 <ul>
   <li><b>Real-time data:</b> Pokud potřebujete aktuální data (trading, monitoring, alerting)</li>
   <li><b>Málo používané dotazy:</b> Pokud dotaz spouštíte jednou měsíčně, refresh každý den je zbytečný</li>
   <li><b>Rychle se měnící data:</b> Pokud se data mění každou vteřinu, refresh nestíháte</li>
-  <li><b>Malé tabulky:</b> Pro tisíce řádků je MV overhead, ne optimalizace</li>
+  <li><b>Malé tabulky:</b> Pro tisíce řádků je MV overhead, ne optimalisace</li>
   <li><b>Jednoduché dotazy:</b> Pokud stačí správný index, je to lepší řešení</li>
 </ul>
 
@@ -918,19 +692,19 @@ SELECT pg_size_pretty(pg_total_relation_size('orders_analytics_mv'));
   <li><b>Partitioning:</b> Rozdělení velkých tabulek na menší části</li>
   <li><b>Query cache:</b> Aplikační cache (Redis, Memcached)</li>
   <li><b>Denormalizace:</b> Přidání redundantních sloupců do tabulek</li>
-  <li><b>Incremental views:</b> Některé databáze podporují inkrementální aktualizaci</li>
+  <li><b>Incremental views:</b> Některé database podporují inkrementální aktualisaci</li>
 </ul>
 
 <h2 id="zaver">Závěr</h2>
 
-<p>Materializované pohledy jsou mocný nástroj pro optimalizaci výkonu databáze:</p>
+<p>Materializované pohledy jsou mocný nástroj pro optimalisaci výkonu database:</p>
 
 <ul>
   <li>Výrazně zrychlují složité a opakující se dotazy</li>
-  <li>Snižují zátěž databázového serveru</li>
+  <li>Snižují zátěž databasového serveru</li>
   <li>Ideální pro analytické dotazy, reporty a dashboardy</li>
   <li>Je třeba vyvážit rychlost čtení vs. aktuálnost dat</li>
-  <li>Vyžadují správnou strategii aktualizace a údržby</li>
+  <li>Vyžadují správnou strategii aktualisace a údržby</li>
 </ul>
 
 <p>Pokud máte v aplikaci pomalé dotazy, které se často opakují, ale data se mění pomaleji, materializované pohledy mohou být přesně to, co hledáte.</p>
