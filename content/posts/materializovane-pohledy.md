@@ -212,7 +212,205 @@ WHERE order_date >= DATE_TRUNC('year', CURRENT_DATE);</code></pre>
 
 <h3 id="data-warehouse">4. Data Warehouse a ETL procesy</h3>
 
-<p>Pro předpočítané agregace v datových skladech.</p>
+<p>Materializované pohledy jsou jedním ze základních stavebních kamenů datových skladů (Data Warehouse).</p>
+
+<h4>Co je Data Warehouse?</h4>
+
+<p><b>Data Warehouse</b> (datový sklad) je centrální úložiště dat z různých zdrojů, optimalizované pro analytické dotazy a reportování.</p>
+
+<p>Hlavní rozdíly oproti běžné databázi:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vlastnost</th>
+      <th>Běžná databáze (OLTP)</th>
+      <th>Data Warehouse (OLAP)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Účel</td>
+      <td>Transakce (vkládání, updaty)</td>
+      <td>Analýza (agregace, reporty)</td>
+    </tr>
+    <tr>
+      <td>Optimalizace</td>
+      <td>Rychlé zápisy</td>
+      <td>Rychlé čtení</td>
+    </tr>
+    <tr>
+      <td>Struktura</td>
+      <td>Normalizovaná (3NF)</td>
+      <td>Denormalizovaná (star schema)</td>
+    </tr>
+    <tr>
+      <td>Data</td>
+      <td>Aktuální</td>
+      <td>Historická + aktuální</td>
+    </tr>
+    <tr>
+      <td>Velikost dotazů</td>
+      <td>Malé (jednotlivé záznamy)</td>
+      <td>Velké (miliony řádků)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4>Co je ETL?</h4>
+
+<p><b>ETL</b> je proces, kterým se data dostávají do Data Warehouse. Zkratka znamená:</p>
+
+<ul>
+  <li><b>Extract</b> (Extrakce) - získání dat ze zdrojů</li>
+  <li><b>Transform</b> (Transformace) - čištění a úprava dat</li>
+  <li><b>Load</b> (Načtení) - uložení do datového skladu</li>
+</ul>
+
+<h4>Jak materializované pohledy zapadají do ETL?</h4>
+
+<p>Materializované pohledy se používají ve fázi <b>Transform</b> a jako výstup <b>Load</b> fáze:</p>
+
+<pre><code>-- EXTRACT: Data z různých zdrojů jsou v surových tabulkách
+-- orders (z e-shopu)
+-- crm_contacts (z CRM systému)
+-- support_tickets (z help desk systému)
+
+-- TRANSFORM & LOAD: Vytvoření materializovaného pohledu
+-- který spojuje data ze všech zdrojů
+CREATE MATERIALIZED VIEW customer_analytics AS
+SELECT
+    -- Zákaznická data
+    c.customer_id,
+    c.email,
+    c.registration_date,
+
+    -- Data z objednávek
+    COUNT(DISTINCT o.order_id) as total_orders,
+    SUM(o.total_amount) as lifetime_value,
+    MAX(o.order_date) as last_order_date,
+
+    -- Data z CRM
+    crm.segment,
+    crm.lead_source,
+
+    -- Data z supportu
+    COUNT(DISTINCT t.ticket_id) as support_tickets,
+    AVG(t.satisfaction_score) as avg_satisfaction,
+
+    -- Vypočítané metriky
+    CASE
+        WHEN MAX(o.order_date) > CURRENT_DATE - INTERVAL '30 days' THEN 'Active'
+        WHEN MAX(o.order_date) > CURRENT_DATE - INTERVAL '90 days' THEN 'At Risk'
+        ELSE 'Churned'
+    END as customer_status
+FROM customers c
+LEFT JOIN orders o ON c.customer_id = o.customer_id
+LEFT JOIN crm_contacts crm ON c.email = crm.email
+LEFT JOIN support_tickets t ON c.customer_id = t.customer_id
+GROUP BY c.customer_id, c.email, c.registration_date,
+         crm.segment, crm.lead_source;
+
+-- Indexy pro rychlé dotazy
+CREATE INDEX idx_customer_analytics_status
+ON customer_analytics(customer_status);
+CREATE INDEX idx_customer_analytics_segment
+ON customer_analytics(segment, customer_status);</code></pre>
+
+<h4>Typická architektura Data Warehouse s materializovanými pohledy</h4>
+
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                      ZDROJOVÉ SYSTÉMY                       │
+├─────────────────────────────────────────────────────────────┤
+│   E-shop    │   CRM    │  Marketing  │  Support  │  Účetní │
+└──────┬──────┴────┬─────┴──────┬──────┴─────┬─────┴────┬────┘
+       │           │            │            │          │
+       ▼           ▼            ▼            ▼          ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    ETL PROCES (nočně)                       │
+│              Extract → Transform → Load                     │
+└──────────────────────┬──────────────────────────────────────┘
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│              STAGING AREA (dočasné tabulky)                 │
+│           raw_orders, raw_customers, raw_crm...             │
+└──────────────────────┬──────────────────────────────────────┘
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│           DATA WAREHOUSE (fact & dimension tabulky)         │
+│     fact_sales, dim_customers, dim_products, dim_time...    │
+└──────────────────────┬──────────────────────────────────────┘
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│        MATERIALIZOVANÉ POHLEDY (předpočítané metriky)       │
+│  ✓ sales_by_month_mv     ✓ customer_segments_mv            │
+│  ✓ product_performance_mv ✓ regional_metrics_mv            │
+└──────────────────────┬──────────────────────────────────────┘
+                       ▼
+┌─────────────────────────────────────────────────────────────┐
+│              BI NÁSTROJE & DASHBOARDY                       │
+│         Tableau, PowerBI, Metabase, Grafana...              │
+└─────────────────────────────────────────────────────────────┘</code></pre>
+
+<h4>Příklad ETL procesu s refresh materializovaných pohledů</h4>
+
+<pre><code>-- 1. EXTRACT: Načtení nových dat ze zdrojů (např. každou noc ve 2:00)
+INSERT INTO staging.raw_orders
+SELECT * FROM production.orders
+WHERE order_date >= CURRENT_DATE - INTERVAL '1 day';
+
+-- 2. TRANSFORM: Očištění a validace dat
+DELETE FROM staging.raw_orders
+WHERE total_amount < 0 OR customer_id IS NULL;
+
+-- 3. LOAD: Načtení do fact tabulky
+INSERT INTO warehouse.fact_sales
+SELECT
+    order_id,
+    customer_id,
+    product_id,
+    order_date,
+    total_amount
+FROM staging.raw_orders;
+
+-- 4. REFRESH materializovaných pohledů
+REFRESH MATERIALIZED VIEW CONCURRENTLY warehouse.sales_summary;
+REFRESH MATERIALIZED VIEW CONCURRENTLY warehouse.customer_metrics;
+REFRESH MATERIALIZED VIEW CONCURRENTLY warehouse.product_analytics;
+
+-- 5. Cleanup
+TRUNCATE staging.raw_orders;</code></pre>
+
+<h4>Výhody materializovaných pohledů v Data Warehouse</h4>
+
+<ul>
+  <li><b>Rychlé dashboardy:</b> BI nástroje čtou předpočítaná data místo join přes celý warehouse</li>
+  <li><b>Konzistentní metriky:</b> Všichni vidí stejná čísla, vypočítaná stejným způsobem</li>
+  <li><b>Oddělení zátěže:</b> Těžké výpočty běží v noci, během dne jen rychlé čtení</li>
+  <li><b>Historická data:</b> Můžete materializovat i historické snapshoty</li>
+</ul>
+
+<h4>Příklad: Materializace denních snapshotů</h4>
+
+<pre><code>-- Denní snapshot zákaznických metrik
+CREATE MATERIALIZED VIEW customer_metrics_2024_01_15 AS
+SELECT
+    CURRENT_DATE as snapshot_date,
+    customer_id,
+    total_orders,
+    lifetime_value,
+    customer_status
+FROM customer_analytics;
+
+-- Každý den se vytvoří nový snapshot
+-- Později můžete porovnávat vývoj v čase:
+SELECT
+    a.customer_id,
+    a.lifetime_value as value_jan,
+    b.lifetime_value as value_feb,
+    b.lifetime_value - a.lifetime_value as growth
+FROM customer_metrics_2024_01_15 a
+JOIN customer_metrics_2024_02_15 b USING (customer_id);</code></pre>
 
 <h2 id="vyhody-nevyhody">Výhody a nevýhody</h2>
 
@@ -238,10 +436,72 @@ WHERE order_date >= DATE_TRUNC('year', CURRENT_DATE);</code></pre>
 
 <h3 id="indexy">1. Vytvářejte indexy</h3>
 
-<p>Materializované pohledy podporují indexy stejně jako běžné tabulky:</p>
+<p>Materializované pohledy jsou fyzicky uložené tabulky, takže můžete na ně vytvořit indexy pro ještě rychlejší dotazy.</p>
 
-<pre><code>CREATE INDEX idx_mv_customer ON orders_summary(customer_id);
-CREATE INDEX idx_mv_date ON sales_analytics(month, region);</code></pre>
+<h4>Proč přidávat indexy?</h4>
+
+<p><b>Materializovaný pohled už data předpočítal, ale stále je potřeba je vyhledat!</b></p>
+
+<p>Představte si tento scénář:</p>
+
+<pre><code>-- Materializovaný pohled s milionem zákazníků
+CREATE MATERIALIZED VIEW orders_summary AS
+SELECT
+    customer_id,
+    COUNT(*) as order_count,
+    SUM(total_amount) as total_spent
+FROM orders
+GROUP BY customer_id;</code></pre>
+
+<p>Když teď chcete najít konkrétního zákazníka:</p>
+
+<pre><code>-- BEZ indexu: musí projít všech milion řádků!
+SELECT * FROM orders_summary WHERE customer_id = 12345;
+-- Trvá: 500ms (full table scan)</code></pre>
+
+<p>S indexem je to okamžité:</p>
+
+<pre><code>-- Vytvoříme index
+CREATE INDEX idx_mv_customer ON orders_summary(customer_id);
+
+-- S indexem: najde řádek přímo
+SELECT * FROM orders_summary WHERE customer_id = 12345;
+-- Trvá: 2ms (index seek)</code></pre>
+
+<h4>Kdy vytvořit indexy?</h4>
+
+<ul>
+  <li><b>WHERE podmínky:</b> Indexujte sloupce, které používáte ve WHERE</li>
+  <li><b>JOIN operace:</b> Indexujte sloupce pro joinování</li>
+  <li><b>ORDER BY:</b> Index může urychlit řazení</li>
+  <li><b>GROUP BY:</b> V některých případech pomůže i s grupováním</li>
+</ul>
+
+<h4>Příklady užitečných indexů:</h4>
+
+<pre><code>-- 1. Index pro vyhledávání podle zákazníka
+CREATE INDEX idx_mv_customer ON orders_summary(customer_id);
+
+-- 2. Index pro časové dotazy
+CREATE INDEX idx_mv_date ON sales_analytics(month);
+
+-- 3. Kompozitní index pro složitější dotazy
+CREATE INDEX idx_mv_date_region ON sales_analytics(month, region);
+
+-- 4. Index pro řazení (DESC = sestupně)
+CREATE INDEX idx_mv_revenue ON top_products(total_revenue DESC);
+
+-- 5. Částečný index (jen aktivní zákazníci)
+CREATE INDEX idx_mv_active ON orders_summary(customer_id)
+WHERE order_count > 0;</code></pre>
+
+<h4>Kdy NEVYTVÁŘET indexy?</h4>
+
+<ul>
+  <li>Pokud je materializovaný pohled malý (< 1000 řádků) - full scan je rychlejší</li>
+  <li>Pokud nikdy nefiltrujete data - čtete vždy všechno</li>
+  <li>Index zabírá místo a zpomaluje refresh - nepřehánějte to</li>
+</ul>
 
 <h3 id="monitoring">2. Monitorujte velikost a výkon</h3>
 
