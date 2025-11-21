@@ -1,0 +1,137 @@
+TEXTY PRO SDÍLENÍ ČLÁNKU O SPF
+================================
+
+Datum vydání: 24. 11. 2025
+
+---
+
+X (TWITTER) - Varianta 1 (krátká, technická)
+--------------------------------------------
+🔒 SPF (Sender Policy Framework) chrání vaši doménu před spoofingem e-mailů
+
+✅ Nastavení: jeden TXT záznam v DNS
+⚠️ Pozor: limit 10 DNS dotazů
+🛡️ Kombinujte s DKIM a DMARC
+
+Kompletní průvodce včetně příkladů a častých chyb:
+[URL článku]
+
+#bezpečnost #email #SPF #DNS
+
+
+X (TWITTER) - Varianta 2 (praktická)
+------------------------------------
+Posíláte e-maily z vaší domény? Bez SPF vám kdokoliv může podvrhnout odesílatele! 😱
+
+SPF řeší:
+• Phishing útoky
+• Spam z vaší domény
+• Doručitelnost e-mailů
+
+Jak nastavit SPF správně? 👇
+[URL článku]
+
+#webdev #security
+
+
+X (TWITTER) - Varianta 3 (problémová)
+-------------------------------------
+Víte, že SPF ověřuje "envelope from", ne viditelnou hlavičku From:? 🤔
+
+To je jen jeden z důvodů, proč potřebujete také DKIM a DMARC.
+
+Nový článek: Všechno o SPF včetně problémů s email forwardingem a limitu DNS dotazů 👇
+[URL článku]
+
+
+---
+
+FACEBOOK - Varianta 1 (komplexní)
+---------------------------------
+🔒 Co je SPF a proč ho potřebuje každá doména?
+
+SPF (Sender Policy Framework) je DNS záznam, který chrání vaši e-mailovou doménu před podvrhováním odesílatele.
+
+Bez SPF může kdokoliv odeslat e-mail, který vypadá, že pochází z vaší domény - a to může vážně poškodit vaši reputaci i doručitelnost legitimních e-mailů.
+
+📌 V novém článku se dozvíte:
+✅ Jak SPF funguje a co skutečně ověřuje
+✅ Jak vytvořit SPF záznam krok za krokem
+✅ Praktické příklady pro Google Workspace, Microsoft 365, Mailchimp
+✅ Časté chyby (limit 10 DNS dotazů, problémy s forwardingem)
+✅ Proč kombinovat SPF s DKIM a DMARC
+
+Článek obsahuje konkrétní příklady, testovací nástroje a řešení běžných problémů.
+
+👉 Přečíst článek: [URL článku]
+
+#bezpečnost #email #webdev #SPF #DKIM #DMARC
+
+
+FACEBOOK - Varianta 2 (praktická)
+---------------------------------
+Posíláte e-maily z vaší firmy nebo blogu? Pak byste měli vědět o SPF! 📧
+
+SPF je bezpečnostní mechanismus, který:
+🛡️ Chrání před phishingovými útoky používajícími vaši doménu
+📬 Zlepšuje doručitelnost vašich e-mailů
+✅ Zvyšuje důvěryhodnost vaší domény
+
+Nastavení je překvapivě jednoduché - stačí přidat jeden TXT záznam do DNS. Ale pozor na časté chyby!
+
+V článku najdete:
+→ Podrobný návod krok za krokem
+→ Reálné příklady SPF záznamů
+→ Jak testovat správnost nastavení
+→ Co dělat s email forwardingem
+→ Proč nestačí jen SPF
+
+Správně nastavený SPF je dnes standard pro každou seriózní doménu. Článek vám ukáže, jak na to.
+
+Kompletní průvodce: [URL článku]
+
+
+FACEBOOK - Varianta 3 (edukační)
+--------------------------------
+💡 Technický tip pro správce domén a vývojáře
+
+Víte, že SPF ověřuje "envelope from" (MAIL FROM), ne hlavičku From:, kterou vidí uživatel?
+
+To znamená, že útočník může stále podvrhnout viditelnou adresu odesílatele, i když SPF kontrola projde!
+
+Proto je nutné kombinovat SPF s:
+• DKIM (digitální podpis e-mailů)
+• DMARC (politika pro neověřené e-maily)
+
+Další zajímavosti z nového článku o SPF:
+📍 Limit 10 DNS dotazů - co se do něj počítá a co ne
+📍 Problémy s email forwardingem a jak je řešit (SRS)
+📍 Proč mít pouze jeden SPF záznam
+📍 Jak správně testovat SPF po nastavení
+
+Detailní technický článek s praktickými příklady: [URL článku]
+
+#DNS #emailsecurity #技术 #webdevelopment
+
+
+---
+
+LINKEDIN (bonus)
+----------------
+SPF (Sender Policy Framework): Základní kámen e-mailové bezpečnosti 🔐
+
+V dnešní době, kdy phishing útoky rostou exponenciálně, je správná konfigurace SPF záznamu nezbytností pro každou firmu.
+
+SPF chrání vaši doménu tím, že definuje, které servery jsou oprávněny odesílat e-maily vaším jménem. Bez něj může kdokoliv zneužít vaši doménu pro phishing nebo spam.
+
+Klíčové poznatky:
+• SPF ověřuje "envelope from", ne viditelnou hlavičku
+• Limit 10 DNS lookup během vyhodnocování
+• Problémy s email forwardingem vyžadují SRS
+• Nutná kombinace s DKIM a DMARC
+
+Nový technický článek s praktickými příklady, častými chybami a jejich řešením.
+
+[URL článku]
+
+#cybersecurity #emailsecurity #IT #SPF #technology
