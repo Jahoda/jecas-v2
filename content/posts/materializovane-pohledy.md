@@ -542,7 +542,22 @@ ORDER BY pg_total_relation_size(schemaname||'.'||matviewname) DESC;</code></pre>
 
 <pre><code>REFRESH MATERIALIZED VIEW CONCURRENTLY orders_summary;</code></pre>
 
-<p><b>Poznámka:</b> Vyžaduje unique index na pohledu.</p>
+<p><b>⚠️ DŮLEŽITÉ podmínky pro CONCURRENTLY:</b></p>
+
+<ul>
+  <li>Vyžaduje <b>unique index</b> na materializovaném pohledu</li>
+  <li>Index musí pokrývat všechny řádky (nesmí být partial)</li>
+  <li>Bez unique indexu refresh selže s chybou</li>
+</ul>
+
+<pre><code>-- NEJPRVE vytvořte unique index
+CREATE UNIQUE INDEX idx_orders_summary_customer_unique
+ON orders_summary(customer_id);
+
+-- TEĎ můžete použít CONCURRENTLY
+REFRESH MATERIALIZED VIEW CONCURRENTLY orders_summary;</code></pre>
+
+<p><b>Kompromis:</b> CONCURRENTLY refresh je pomalejší než běžný refresh, ale pohled zůstává dostupný během aktualizace.</p>
 
 <h3 id="partial">5. Zvažte částečné materializované pohledy</h3>
 
@@ -604,6 +619,15 @@ CREATE INDEX idx_top_products_revenue ON top_products(total_revenue DESC);
 -- (konfigurace závisí na databázi)
 
 -- Dotaz trvá: 0.02 sekundy (100× rychleji!)</code></pre>
+
+<p><b>⚠️ Upozornění:</b> Toto je ideální scénář. Ve skutečnosti:</p>
+
+<ul>
+  <li>Zrychlení závisí na velikosti dat, složitosti dotazu a hardwaru</li>
+  <li>Realističtější je očekávat 10-50× zrychlení</li>
+  <li>Musíte počítat s náklady na refresh (může trvat minuty až hodiny)</li>
+  <li>Musíte řešit zastaralá data mezi refresh cykly</li>
+</ul>
 
 <h2 id="moderni-alternativy">Moderní databázové alternativy</h2>
 
@@ -746,6 +770,143 @@ SELECT add_continuous_aggregate_policy('orders_daily',
   <li><b>ClickHouse:</b> Pro analytické aplikace s obrovskými objemy dat (miliardy řádků)</li>
   <li><b>TimescaleDB:</b> Pro IoT, monitoring, metriky a jiná time-series data</li>
   <li><b>CockroachDB:</b> Když potřebujete globální distribuci a vysokou dostupnost</li>
+</ul>
+
+<h2 id="uskali">Úskalí a časté problémy</h2>
+
+<p>Materializované pohledy nejsou stříbrná kulka. Zde jsou reálné problémy, se kterými se můžete setkat:</p>
+
+<h3 id="vykonne-naroky">1. Výkonové nároky nejsou vždy tak velké</h3>
+
+<p>Články často uvádějí "100× rychlejší dotazy". Realita je složitější:</p>
+
+<ul>
+  <li><b>10-50× zrychlení</b> je realistické pro složité agregace přes miliony řádků</li>
+  <li><b>2-5× zrychlení</b> u dotazů se správnými indexy</li>
+  <li><b>Žádné zrychlení</b> pokud databáze má dobrý query planner a správné indexy na zdrojových tabulkách</li>
+  <li><b>Zpomalení</b> pokud refresh trvá příliš dlouho a blokuje jiné operace</li>
+</ul>
+
+<p><b>Zlaté pravidlo:</b> Měřte a testujte na reálných datech. Co funguje na 1000 řádcích, nemusí fungovat na 100 milionech.</p>
+
+<h3 id="refresh-overhead">2. Refresh může být velmi náročný</h3>
+
+<p>Refresh není zadarmo:</p>
+
+<pre><code>-- Refresh velkého materializovaného pohledu může trvat hodiny
+REFRESH MATERIALIZED VIEW huge_analytics; -- Trvá: 4 hodiny!
+
+-- Během refreshe:
+-- - Spotřebovává CPU a I/O
+-- - Může zpomalit celou databázi
+-- - Vytváří "dead tuples" v PostgreSQL</code></pre>
+
+<p><b>Problémy v praxi:</b></p>
+
+<ul>
+  <li><b>Dead tuples:</b> PostgreSQL vytváří při refresh mrtvé řádky, které zabírají místo dokud neproběhne VACUUM</li>
+  <li><b>Blokování:</b> Běžný refresh zamkne view pro čtení (použijte CONCURRENTLY, ale je pomalejší)</li>
+  <li><b>Kaskádové refreshe:</b> Pokud máte materializovaný pohled z materializovaného pohledu, musíte refreshovat oba</li>
+  <li><b>Časové okno:</b> Refresh musí doběhnout před dalším použitím - co když trvá déle než plánovaný interval?</li>
+</ul>
+
+<h3 id="zastarala-data">3. Zastaralá data mohou způsobit problémy</h3>
+
+<p>Materializovaný pohled ukazuje data z času posledního refresh:</p>
+
+<pre><code>-- Refresh v 2:00 ráno
+REFRESH MATERIALIZED VIEW daily_sales;
+
+-- Uživatel v 15:00 vidí data ze 2:00
+-- Všechny objednávky od 2:00 do 15:00 CHYBÍ!
+SELECT * FROM daily_sales WHERE date = CURRENT_DATE;
+-- Výsledek je neúplný a může vést k špatným rozhodnutím</code></pre>
+
+<p><b>Reálné příklady problémů:</b></p>
+
+<ul>
+  <li>Dashboard ukazuje nižší prodeje, než je realita (obchodníci panikáří)</li>
+  <li>Zákazník je označen jako "neaktivní", i když právě nakoupil</li>
+  <li>Reporty pro management obsahují zastaralá čísla</li>
+</ul>
+
+<h3 id="spravna-strategie">4. Refresh strategie nejsou univerzální</h3>
+
+<p>Článek uvádí doporučení typu "reporty: refresh jednou denně". To jsou pouze <b>obecné směrnice</b>, ne pravidla:</p>
+
+<ul>
+  <li><b>Závisí na objemu změn:</b> 1000 změn/den vs 1 milion změn/den je obrovský rozdíl</li>
+  <li><b>Závisí na velikosti view:</b> Malý view můžete refreshovat každou minutu, obří view jednou týdně</li>
+  <li><b>Závisí na SLA:</b> Kolik minut zastaralých dat je přijatelných?</li>
+  <li><b>Závisí na databázovém systému:</b> PostgreSQL, MySQL a ClickHouse se chovají zcela jinak</li>
+</ul>
+
+<h3 id="mysql-omezeni">5. MySQL workaround není úplně totéž</h3>
+
+<p>Článek ukazuje simulaci materializovaných pohledů v MySQL pomocí tabulek a EVENT scheduler. <b>To není ekvivalentní</b> nativním materializovaným pohledům:</p>
+
+<ul>
+  <li>Musíte ručně spravovat tabulku (CREATE TABLE AS SELECT...)</li>
+  <li>Musíte ručně implementovat refresh logiku</li>
+  <li>EVENT scheduler může selhat bez varování</li>
+  <li>Není podpora pro inkrementální refresh</li>
+  <li>Spravované MySQL služby (AWS RDS) mohou mít EVENT scheduler omezený</li>
+</ul>
+
+<p><b>Alternativy pro MySQL:</b> Zvažte použití PostgreSQL, nebo moderní databáze s lepší podporou (AlloyDB, ClickHouse).</p>
+
+<h3 id="clickhouse-rozdily">6. ClickHouse materialized views jsou jiné</h3>
+
+<p>Článek zmiňuje, že v ClickHouse se materialized views "aktualizují automaticky při INSERT". To je pravda, ale:</p>
+
+<ul>
+  <li><b>ClickHouse MV jsou spíše triggery</b> - data se transformují při vložení, ne při čtení</li>
+  <li><b>Není to standard SQL</b> - syntaxe a chování je specifické pro ClickHouse</li>
+  <li><b>UPDATE a DELETE nefungují</b> - ClickHouse je optimalizován pro append-only data</li>
+  <li><b>Není zpětná kompatibilita</b> - nemůžete jen tak migrovat z PostgreSQL</li>
+</ul>
+
+<h3 id="diskovy-prostor">7. Diskový prostor může být problém</h3>
+
+<pre><code>-- Zdrojová tabulka: 500 GB
+SELECT pg_size_pretty(pg_total_relation_size('orders'));
+-- 500 GB
+
+-- Materializovaný pohled: dalších 200 GB!
+SELECT pg_size_pretty(pg_total_relation_size('orders_analytics_mv'));
+-- 200 GB
+
+-- Indexy na MV: dalších 50 GB
+-- Celkem: 750 GB místo původních 500 GB</code></pre>
+
+<p>Materializované pohledy duplikují data. To znamená:</p>
+
+<ul>
+  <li><b>Vyšší náklady na storage</b> (zejména v cloudu)</li>
+  <li><b>Pomalejší backupy</b> (je třeba zálohovat i MV)</li>
+  <li><b>Delší časy pro restore</b></li>
+</ul>
+
+<h3 id="udrzba-komplexita">8. Údržba může být složitá</h3>
+
+<p>Čím více materializovaných pohledů máte, tím složitější je údržba:</p>
+
+<ul>
+  <li>Musíte monitorovat časy refresh (co když začnou trvat déle?)</li>
+  <li>Musíte řešit selhání refresh (co když refresh selže v noci?)</li>
+  <li>Musíte koordinovat refresh více pohledů (v jakém pořadí?)</li>
+  <li>Změna schématu zdrojové tabulky vyžaduje změnu MV</li>
+  <li>Musíte dokumentovat, které metriky jsou v jakém MV</li>
+</ul>
+
+<h3 id="kdy-nepouzit">Kdy materializované pohledy NEPOUŽÍVAT</h3>
+
+<ul>
+  <li><b>Real-time data:</b> Pokud potřebujete aktuální data (trading, monitoring, alerting)</li>
+  <li><b>Málo používané dotazy:</b> Pokud dotaz spouštíte jednou měsíčně, refresh každý den je zbytečný</li>
+  <li><b>Rychle se měnící data:</b> Pokud se data mění každou vteřinu, refresh nestíháte</li>
+  <li><b>Malé tabulky:</b> Pro tisíce řádků je MV overhead, ne optimalizace</li>
+  <li><b>Jednoduché dotazy:</b> Pokud stačí správný index, je to lepší řešení</li>
 </ul>
 
 <h2 id="alternativy">Alternativy k materializovaným pohledům</h2>
