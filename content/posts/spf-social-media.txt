@@ -1,137 +1,203 @@
-TEXTY PRO SDÍLENÍ ČLÁNKU O SPF
-================================
+TEXTY PRO SDÍLENÍ ČLÁNKU O E-MAILOVÉ AUTENTIZACI (SPF, DKIM, DMARC, BIMI)
+===========================================================================
 
 Datum vydání: 24. 11. 2025
 
 ---
 
-X (TWITTER) - Varianta 1 (krátká, technická)
---------------------------------------------
-🔒 SPF (Sender Policy Framework) chrání vaši doménu před spoofingem e-mailů
+X (TWITTER) - Varianta 1 (komplexní autentizace)
+-------------------------------------------------
+🔒 E-mailová autentizace v roce 2025: SPF + DKIM + DMARC + BIMI
 
-✅ Nastavení: jeden TXT záznam v DNS
-⚠️ Pozor: limit 10 DNS dotazů
-🛡️ Kombinujte s DKIM a DMARC
+📊 347 miliard e-mailů denně
+✅ SPF: první triage
+🔐 DKIM: digitální podpis
+📋 DMARC: politika & reporting
+🎨 BIMI: vaše logo v inboxu
 
-Kompletní průvodce včetně příkladů a častých chyb:
+Kompletní průvodce:
 [URL článku]
 
-#bezpečnost #email #SPF #DNS
+#bezpečnost #email #SPF #DMARC
 
 
 X (TWITTER) - Varianta 2 (praktická)
 ------------------------------------
-Posíláte e-maily z vaší domény? Bez SPF vám kdokoliv může podvrhnout odesílatele! 😱
+Posíláte e-maily z vaší domény?
 
-SPF řeší:
-• Phishing útoky
-• Spam z vaší domény
-• Doručitelnost e-mailů
+SPF samo o sobě nestačí! ⚠️
 
-Jak nastavit SPF správně? 👇
+Potřebujete:
+✅ SPF – kontrola IP adresy
+✅ DKIM – kryptografický podpis
+✅ DMARC – politika quarantine/reject
+🎁 BIMI – logo v Gmailu
+
+Praktický návod včetně příkladů:
 [URL článku]
 
-#webdev #security
+#webdev #emailsecurity
 
 
-X (TWITTER) - Varianta 3 (problémová)
+X (TWITTER) - Varianta 3 (pokročilá)
 -------------------------------------
-Víte, že SPF ověřuje "envelope from", ne viditelnou hlavičku From:? 🤔
+DMARC s politikou "quarantine" výrazně zlepšuje reputaci domény! 📈
 
-To je jen jeden z důvodů, proč potřebujete také DKIM a DMARC.
+Nový článek:
+• Praktické příklady DMARC záznamů
+• Proč SPF ověřuje envelope from, ne From:
+• Jak funguje BIMI a VMC certifikát
+• Limit 10 DNS lookup u SPF
 
-Nový článek: Všechno o SPF včetně problémů s email forwardingem a limitu DNS dotazů 👇
 [URL článku]
+
+#DNS #emailauth
 
 
 ---
 
 FACEBOOK - Varianta 1 (komplexní)
 ---------------------------------
-🔒 Co je SPF a proč ho potřebuje každá doména?
+🔒 Kompletní průvodce e-mailovou autentizací: SPF, DKIM, DMARC a BIMI
 
-SPF (Sender Policy Framework) je DNS záznam, který chrání vaši e-mailovou doménu před podvrhováním odesílatele.
+Každý den se po světě odešle přes 347 miliard e-mailů. Jak v tomto množství zajistit, že vaše zprávy dorazí do inboxu, a ne do spamu?
 
-Bez SPF může kdokoliv odeslat e-mail, který vypadá, že pochází z vaší domény - a to může vážně poškodit vaši reputaci i doručitelnost legitimních e-mailů.
+Nový článek pokrývá všechny klíčové mechanismy e-mailové bezpečnosti:
 
-📌 V novém článku se dozvíte:
-✅ Jak SPF funguje a co skutečně ověřuje
-✅ Jak vytvořit SPF záznam krok za krokem
+📌 **SPF** – První triage příchozích e-mailů
+✅ Co je SPF a jak funguje
 ✅ Praktické příklady pro Google Workspace, Microsoft 365, Mailchimp
-✅ Časté chyby (limit 10 DNS dotazů, problémy s forwardingem)
-✅ Proč kombinovat SPF s DKIM a DMARC
+✅ Časté chyby: limit 10 DNS dotazů, problémy s forwardingem
+✅ Proč SPF ověřuje envelope from, ne viditelnou hlavičku From:
 
-Článek obsahuje konkrétní příklady, testovací nástroje a řešení běžných problémů.
+📌 **DKIM** – Digitální podpis e-mailů
+✅ Jak funguje public/private key pár
+✅ Ochrana proti změnám obsahu po cestě
+✅ Podpora více DKIM záznamů
 
-👉 Přečíst článek: [URL článku]
+📌 **DMARC** – Politika a reporting
+✅ Praktické příklady DMARC záznamů
+✅ Rozdíl mezi none, quarantine a reject
+✅ Jak DMARC zlepšuje reputaci domény
+✅ Doporučený postup implementace
 
-#bezpečnost #email #webdev #SPF #DKIM #DMARC
+📌 **BIMI** – Logo v inboxu
+✅ Jak získat ověřené logo v Gmailu a Yahoo
+✅ Požadavky: DMARC + trademark + VMC certifikát
+✅ Vizuální odlišení od konkurence
+
+Článek obsahuje konkrétní příklady, struktury DNS záznamů, testovací nástroje a řešení běžných problémů.
+
+👉 Přečíst celý průvodce: [URL článku]
+
+#bezpečnost #email #webdevelopment #SPF #DKIM #DMARC #BIMI
 
 
-FACEBOOK - Varianta 2 (praktická)
----------------------------------
-Posíláte e-maily z vaší firmy nebo blogu? Pak byste měli vědět o SPF! 📧
+FACEBOOK - Varianta 2 (praktická s BIMI)
+-----------------------------------------
+Chcete, aby se vaše logo zobrazovalo u e-mailů v Gmailu? 🎨
 
-SPF je bezpečnostní mechanismus, který:
-🛡️ Chrání před phishingovými útoky používajícími vaši doménu
-📬 Zlepšuje doručitelnost vašich e-mailů
-✅ Zvyšuje důvěryhodnost vaší domény
+Představujeme vám BIMI (Brand Indicators for Message Identification) – mechanismus, který umožňuje zobrazit logo vaší značky přímo v inboxu příjemce.
 
-Nastavení je překvapivě jednoduché - stačí přidat jeden TXT záznam do DNS. Ale pozor na časté chyby!
+Ale pozor! BIMI vyžaduje splnění přísných podmínek:
+✅ Funkční DMARC s politikou quarantine nebo reject
+✅ Registrovanou ochrannou známku
+✅ VMC certifikát (Verified Mark Certificate)
+✅ Logo ve formátu Tiny SVG
 
-V článku najdete:
-→ Podrobný návod krok za krokem
-→ Reálné příklady SPF záznamů
-→ Jak testovat správnost nastavení
-→ Co dělat s email forwardingem
-→ Proč nestačí jen SPF
+Proč je to důležité?
+→ V prostředí 347 miliard e-mailů denně vynikete
+→ Zvýšíte důvěru příjemců
+→ Ochráníte značku před phishingem
+→ Zlepšíte open rate e-mailů
 
-Správně nastavený SPF je dnes standard pro každou seriózní doménu. Článek vám ukáže, jak na to.
+Ale nejprve musíte mít správně nastavenou celou trojici: SPF + DKIM + DMARC!
+
+V novém článku najdete:
+📋 Kompletní průvodce nastavením SPF, DKIM a DMARC
+📋 Praktické příklady DNS záznamů
+📋 Doporučený postup implementace
+📋 Detailní informace o BIMI a jak ho získat
+📋 Časté chyby a jejich řešení
+
+Kompletní průvodce e-mailovou autentizací: [URL článku]
+
+#emailmarketing #BIMI #brandprotection
+
+
+FACEBOOK - Varianta 3 (DMARC fokus)
+-----------------------------------
+💡 Technický tip: Jak postupně zavést DMARC bez rizika
+
+DMARC je klíčový mechanismus e-mailové bezpečnosti, ale mnoho firem se bojí ho zavést kvůli obavám z blokování legitimních e-mailů.
+
+Řešení? Postupná implementace! 📊
+
+**Krok 1:** DMARC s p=none (pouze monitoring)
+→ Sbíráte reporty, nic se neděje s e-maily
+→ Zjistíte, kdo vaším jménem posílá e-maily
+
+**Krok 2:** Analýza reportů
+→ Identifikujete všechny legitimní zdroje
+→ Nastavíte správně SPF a DKIM
+
+**Krok 3:** DMARC s p=quarantine
+→ Podezřelé e-maily jdou do spamu
+→ Výrazné zlepšení reputace domény
+
+**Krok 4:** DMARC s p=reject
+→ Maximální ochrana
+→ Nelegitimní e-maily vůbec nedorazí
+
+Bonus: Po dosažení DMARC quarantine/reject můžete žádat o BIMI - vaše logo se bude zobrazovat v Gmailu! 🎨
+
+Nový článek obsahuje:
+✅ Praktické příklady všech DMARC politik
+✅ Strukturu DMARC záznamů s vysvětlením parametrů
+✅ Jak DMARC zlepšuje doručitelnost
+✅ Kompletní průvodce SPF a DKIM
+✅ Informace o BIMI certifikaci
 
 Kompletní průvodce: [URL článku]
 
-
-FACEBOOK - Varianta 3 (edukační)
---------------------------------
-💡 Technický tip pro správce domén a vývojáře
-
-Víte, že SPF ověřuje "envelope from" (MAIL FROM), ne hlavičku From:, kterou vidí uživatel?
-
-To znamená, že útočník může stále podvrhnout viditelnou adresu odesílatele, i když SPF kontrola projde!
-
-Proto je nutné kombinovat SPF s:
-• DKIM (digitální podpis e-mailů)
-• DMARC (politika pro neověřené e-maily)
-
-Další zajímavosti z nového článku o SPF:
-📍 Limit 10 DNS dotazů - co se do něj počítá a co ne
-📍 Problémy s email forwardingem a jak je řešit (SRS)
-📍 Proč mít pouze jeden SPF záznam
-📍 Jak správně testovat SPF po nastavení
-
-Detailní technický článek s praktickými příklady: [URL článku]
-
-#DNS #emailsecurity #技术 #webdevelopment
+#DMARC #emailsecurity #cybersecurity
 
 
 ---
 
 LINKEDIN (bonus)
 ----------------
-SPF (Sender Policy Framework): Základní kámen e-mailové bezpečnosti 🔐
+📧 E-mailová autentizace v roce 2025: Průvodce pro IT profesionály
 
-V dnešní době, kdy phishing útoky rostou exponenciálně, je správná konfigurace SPF záznamu nezbytností pro každou firmu.
+V prostředí 347 miliard e-mailů denně je správná konfigurace e-mailové autentizace kritická pro každou organizaci.
 
-SPF chrání vaši doménu tím, že definuje, které servery jsou oprávněny odesílat e-maily vaším jménem. Bez něj může kdokoliv zneužít vaši doménu pro phishing nebo spam.
+**Klíčové mechanismy:**
 
-Klíčové poznatky:
-• SPF ověřuje "envelope from", ne viditelnou hlavičku
-• Limit 10 DNS lookup během vyhodnocování
-• Problémy s email forwardingem vyžadují SRS
-• Nutná kombinace s DKIM a DMARC
+🔹 **SPF** – První triage: ověřuje IP adresu odesílacího serveru
+→ Pozor na limit 10 DNS lookup
+→ Ověřuje envelope from, ne From: hlavičku
 
-Nový technický článek s praktickými příklady, častými chybami a jejich řešením.
+🔹 **DKIM** – Kryptografický podpis pomocí public/private key páru
+→ Ochrana proti změnám obsahu
+→ Podpora více poskytovatelů
 
-[URL článku]
+🔹 **DMARC** – Definuje politiku pro selhání SPF/DKIM
+→ p=none (monitoring) → p=quarantine → p=reject
+→ Výrazné zlepšení reputace domény
+→ Agregované reporty pro analýzu
 
-#cybersecurity #emailsecurity #IT #SPF #technology
+🔹 **BIMI** – Zobrazení loga v inboxu (Gmail, Yahoo, Apple Mail)
+→ Vyžaduje: DMARC quarantine/reject, trademark, VMC
+→ Vizuální odlišení a vyšší důvěra
+
+**Dopad na business:**
+• Lepší doručitelnost marketingových e-mailů
+• Ochrana před phishingem a brand abuse
+• Vyšší open rate díky důvěryhodnosti
+• Compliance s moderními bezpečnostními standardy
+
+Nový kompletní technický článek s praktickými příklady, strukturami DNS záznamů a doporučenými postupy implementace.
+
+👉 [URL článku]
+
+#cybersecurity #emailauthentication #IT #DMARC #SPF #DKIM #infosec
