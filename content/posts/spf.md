@@ -1,9 +1,9 @@
 ---
 title: "SPF (Sender Policy Framework) – ochrana e-mailů před spoofingem"
 headline: "Co je SPF a jak chrání e-maily"
-description: "SPF je mechanismus, který pomáhá zabránit podvrhování odesílatele e-mailů a zvyšuje důvěryhodnost vaší domény."
-date: "2025-11-21"
-last_modification: "2025-11-21"
+description: "Kompletní průvodce e-mailovou autentizací: SPF, DKIM, DMARC a BIMI. Naučte se chránit svou doménu před spoofingem a zlepšit doručitelnost e-mailů."
+date: "2025-11-24"
+last_modification: "2025-11-24"
 status: 1
 tags: ["zabezpeceni", "napady"]
 format: "html"
@@ -15,6 +15,8 @@ format: "html"
 
 <h2 id="problem">Problém podvrhování e-mailů</h2>
 
+<p>Každý den se po celém světě odešle přes <b>347 miliard e-mailů</b>. V tomto obrovském množství zpráv je pro e-mailové servery kriticky důležité rozlišit legitimní e-maily od spamu a phishingových útoků.</p>
+
 <p>Bez SPF může kdokoliv odeslat e-mail, který vypadá, že pochází z vaší domény. Útočník může například odeslat phishingový e-mail s adresou odesílatele <code>admin@vase-domena.cz</code>, i když s vaší doménou nemá nic společného.</p>
 
 <p>To může poškodit:</p>
@@ -25,6 +27,8 @@ format: "html"
 </ul>
 
 <h2 id="jak-funguje">Jak SPF funguje</h2>
+
+<p>SPF slouží jako <b>první triage příchozích e-mailů</b> – rychlá kontrola, zda vůbec stojí za to e-mail dále zpracovávat. Podobně jako bezpečnostní kontrola na letišti nejprve odfiltruje zjevně neoprávněné osoby, SPF odfiltruje e-maily ze serverů, které nemají povolení odesílat jménem dané domény.</p>
 
 <p>Když e-mailový server přijme zprávu, provede následující kontrolu:</p>
 
@@ -211,32 +215,171 @@ format: "html"
 
 <p>SPF je pouze <b>část komplexní e-mailové bezpečnosti</b>. Pro maximální ochranu byste měli používat všechny tři mechanismy:</p>
 
+<h3 id="spf-role">SPF – První kontrola</h3>
+
+<p><b>SPF</b> ověřuje, že e-mail pochází z povoleného serveru. Je to <b>první triage</b>, která rychle odfiltruje neoprávněné odesílatele.</p>
+
+<h3 id="dkim-role">DKIM – Digitální podpis</h3>
+
+<p><b>DKIM</b> (<i lang="en">DomainKeys Identified Mail</i>) zajišťuje <b>kryptografické ověření legitimity</b> e-mailu pomocí digitálního podpisu.</p>
+
+<p>DKIM funguje na principu <b>páru veřejného a soukromého klíče</b>:</p>
+
+<ol>
+  <li><b>Veřejný klíč</b> uložíte do DNS jako TXT nebo CNAME záznam</li>
+  <li><b>Soukromý klíč</b> je uložen na vašem e-mailovém serveru</li>
+  <li>Každý odeslaný e-mail je podepsán soukromým klíčem – vytvoří se <b>DKIM podpis</b> v hlavičce e-mailu</li>
+  <li>Příjemce porovná podpis s veřejným klíčem z DNS a ověří, že e-mail skutečně pochází od vás</li>
+</ol>
+
+<p>DKIM poskytuje ochranu, kterou SPF nemůže – ověřuje, že <b>obsah e-mailu nebyl po cestě změněn</b> a potvrzuje identitu skutečného odesílatele.</p>
+
+<p>Je běžné mít <b>více DKIM záznamů</b>, typicky jeden pro každého poskytovatele e-mailových služeb, kterého používáte (Google Workspace, SendGrid, Mailchimp apod.).</p>
+
+<h3 id="dmarc-role">DMARC – Politika a reporting</h3>
+
+<p><b>DMARC</b> (<i lang="en">Domain-based Message Authentication, Reporting &amp; Conformance</i>) definuje, <b>co se má stát s e-maily, které neprošly SPF nebo DKIM kontrolou</b>.</p>
+
+<p>DMARC záznam je TXT záznam s následující strukturou:</p>
+
+<pre><code>v=DMARC1; p=quarantine; pct=100; rua=mailto:dmarc@vase-domena.cz</code></pre>
+
+<p>Vysvětlení parametrů:</p>
+
 <ul>
-  <li><b>SPF</b> – ověřuje, že e-mail pochází z povoleného serveru</li>
-  <li><b>DKIM</b> (<i lang="en">DomainKeys Identified Mail</i>) – digitálně podepisuje e-maily kryptografickým klíčem</li>
-  <li><b>DMARC</b> (<i lang="en">Domain-based Message Authentication, Reporting &amp; Conformance</i>) – definuje politiku pro e-maily, které neprojdou SPF nebo DKIM kontrolou</li>
+  <li><code>v=DMARC1</code> – verze DMARC protokolu</li>
+  <li><code>p=</code> – <b>politika</b>, co dělat s e-maily, které selžou:
+    <ul>
+      <li><code>none</code> – <b>pouze sledovat</b>, ale nedělat nic (vhodné pro testování)</li>
+      <li><code>quarantine</code> – <b>přesunout do spamu/karantény</b> (doporučeno)</li>
+      <li><code>reject</code> – <b>odmítnout doručení</b> (nejpřísnější)</li>
+    </ul>
+  </li>
+  <li><code>pct=100</code> – procento e-mailů, na které se má politika vztahovat (100 = všechny)</li>
+  <li><code>rua=mailto:...</code> – e-mailová adresa pro <b>agregované reporty</b> o DMARC kontrolách</li>
 </ul>
 
-<p>Kombinace těchto tří mechanismů poskytuje <b>nejlepší ochranu</b> proti podvrhování e-mailů.</p>
+<h4>Příklady DMARC záznamů</h4>
+
+<p><b>Pro testování</b> (pouze monitoring bez dopadu):</p>
+<pre><code>v=DMARC1; p=none; rua=mailto:dmarc-reports@vase-domena.cz</code></pre>
+
+<p><b>Produkční nastavení</b> (karanténa podezřelých):</p>
+<pre><code>v=DMARC1; p=quarantine; pct=100; rua=mailto:dmarc-reports@vase-domena.cz</code></pre>
+
+<p><b>Maximální ochrana</b> (odmítnutí nelegitimních e-mailů):</p>
+<pre><code>v=DMARC1; p=reject; pct=100; rua=mailto:dmarc-reports@vase-domena.cz; ruf=mailto:dmarc-forensic@vase-domena.cz</code></pre>
+
+<h3 id="reputace-domeny">Vliv na reputaci domény</h3>
+
+<p>Správná implementace DMARC s politikou <code>quarantine</code> nebo <code>reject</code> <b>výrazně zlepšuje reputaci vaší domény</b> u poskytovatelů e-mailových služeb (Gmail, Outlook, atd.).</p>
+
+<p>Poskytovatelé vidí, že:</p>
+<ul>
+  <li>Aktivně bojujete proti zneužití vaší domény</li>
+  <li>Máte kontrolu nad tím, kdo vaším jménem posílá e-maily</li>
+  <li>Zaručujete, že podezřelé zprávy nebudou doručeny vašim jménem</li>
+</ul>
+
+<p>To vede k <b>lepší doručitelnosti legitimních e-mailů</b> do hlavní složky příjemců.</p>
+
+<h3 id="doporuceny-postup">Doporučený postup implementace</h3>
+
+<ol>
+  <li><b>Začněte s SPF</b> – nastavte základní SPF záznam</li>
+  <li><b>Přidejte DKIM</b> – implementujte digitální podpisy</li>
+  <li><b>DMARC v režimu monitoringu</b> – nastavte <code>p=none</code> a sledujte reporty</li>
+  <li><b>Analyzujte reporty</b> – zjistěte, které servery odesílají vaším jménem</li>
+  <li><b>Zvyšte úroveň ochrany</b> – postupně přejděte na <code>p=quarantine</code> a nakonec <code>p=reject</code></li>
+</ol>
+
+<p>Kombinace SPF + DKIM + DMARC poskytuje <b>nejlepší dostupnou ochranu</b> proti podvrhování e-mailů.</p>
+
+<h2 id="bimi">BIMI – Vizuální identita v inboxu</h2>
+
+<p><b>BIMI</b> (<i lang="en">Brand Indicators for Message Identification</i>) je nadstavba nad SPF, DKIM a DMARC, která umožňuje <b>zobrazit logo vaší značky přímo v inboxu</b> příjemce.</p>
+
+<p>V prostředí 347 miliard e-mailů denně je BIMI výjimečný způsob, jak <b>vyniknout a zvýšit důvěryhodnost</b> vašich zpráv. Některé e-mailové klienty dokonce zobrazují u BIMI ověřených odesílatelů <b>zaškrtnutí</b>, podobně jako u sociálních sítí.</p>
+
+<h3 id="bimi-pozadavky">Požadavky pro BIMI</h3>
+
+<p>Získání BIMI je náročný proces, který zajišťuje, že ho získají pouze skutečně legitimní značky:</p>
+
+<ol>
+  <li><b>Funkční DMARC na úrovni quarantine nebo reject</b> – politika musí být nastavena na 100% e-mailů (<code>pct=100</code>)</li>
+  <li><b>Registrovaná ochranná známka (trademark)</b> – logo musí být oficiálně chráněno</li>
+  <li><b>VMC certifikát</b> (<i lang="en">Verified Mark Certificate</i>) – ověřuje vaši identitu, vlastnictví domény a ochranné známky</li>
+  <li><b>Logo ve formátu SVG</b> – s přísnými požadavky na formát (Tiny SVG)</li>
+</ol>
+
+<h3 id="bimi-struktura">Struktura BIMI záznamu</h3>
+
+<p>BIMI se nastavuje jako TXT záznam v DNS:</p>
+
+<pre><code>v=BIMI1; l=https://vase-domena.cz/logo.svg; a=https://vmc.digicert.com/vase-certifikat.pem;</code></pre>
+
+<p>Parametry:</p>
+
+<ul>
+  <li><code>v=BIMI1</code> – verze BIMI protokolu</li>
+  <li><code>l=</code> – URL adresa SVG loga (musí být veřejně dostupné přes HTTPS)</li>
+  <li><code>a=</code> – URL adresa VMC certifikátu (musí být veřejně dostupné přes HTTPS)</li>
+</ul>
+
+<h3 id="bimi-vyhody">Výhody BIMI</h3>
+
+<ul>
+  <li><b>Vizuální rozpoznatelnost</b> – vaše logo se zobrazí u každého e-mailu v inboxu</li>
+  <li><b>Zvýšená důvěra</b> – příjemci okamžitě poznají, že e-mail je legitimní</li>
+  <li><b>Ochrana značky</b> – ztěžuje útočníkům vydávání se za vaši firmu</li>
+  <li><b>Lepší open rate</b> – uživatelé častěji otevírají e-maily s poznanou značkou</li>
+  <li><b>Profesionální image</b> – signalizuje, že berete bezpečnost vážně</li>
+</ul>
+
+<h3 id="bimi-podpora">Podpora e-mailových klientů</h3>
+
+<p>BIMI podporují zejména:</p>
+<ul>
+  <li><b>Gmail</b> (webová verze i mobilní aplikace)</li>
+  <li><b>Yahoo Mail</b></li>
+  <li><b>Apple Mail</b> (od iOS 16)</li>
+  <li>Další poskytovatelé postupně přidávají podporu</li>
+</ul>
+
+<p><b>Poznámka:</b> Implementace BIMI není nutná pro základní e-mailovou bezpečnost, ale je to výborný způsob, jak pozvednout důvěryhodnost vaší značky u příjemců.</p>
 
 <h2 id="zaver">Závěr</h2>
 
 <ul>
   <li>
-    <p><b>SPF je DNS záznam</b>, který definuje, které servery můžou odesílat e-maily jménem vaší domény.</p>
+    <p><b>SPF je DNS záznam</b>, který definuje, které servery můžou odesílat e-maily jménem vaší domény. Slouží jako <b>první triage</b> příchozích zpráv.</p>
   </li>
   <li>
-    <p>Chrání před <b>podvrhováním odesílatele</b> (e-mail spoofingem) a zvyšuje doručitelnost vašich e-mailů.</p>
+    <p>SPF ověřuje <b>envelope from</b> (Return-Path), ne viditelnou hlavičku From:, což je důvod pro kombinaci s dalšími mechanismy.</p>
   </li>
   <li>
-    <p>Nastavení SPF je <b>poměrně jednoduché</b> – přidá se jako TXT záznam do DNS.</p>
+    <p>Pro skutečnou ochranu je <b>nezbytná trojice SPF + DKIM + DMARC</b>:
+      <ul>
+        <li><b>SPF</b> – kontroluje IP adresu odesílacího serveru</li>
+        <li><b>DKIM</b> – kryptograficky podepisuje e-maily</li>
+        <li><b>DMARC</b> – definuje politiku pro neověřené zprávy a poskytuje reporting</li>
+      </ul>
+    </p>
   </li>
   <li>
-    <p>Pro maximální bezpečnost používejte SPF <b>společně s DKIM a DMARC</b>.</p>
+    <p>Správně implementovaný DMARC s politikou <code>quarantine</code> nebo <code>reject</code> <b>výrazně zlepšuje reputaci domény</b> a doručitelnost e-mailů.</p>
+  </li>
+  <li>
+    <p><b>BIMI</b> je bonusová úroveň, která zobrazuje vaše logo v inboxu, ale vyžaduje splnění přísných podmínek včetně ochranné známky.</p>
   </li>
   <li>
     <p>Vždy <b>testujte SPF záznam</b> po nastavení a ujistěte se, že nepřekračujete limit 10 DNS dotazů.</p>
   </li>
+  <li>
+    <p>Doporučený postup: začněte SPF, přidejte DKIM, implementujte DMARC v režimu monitoringu (<code>p=none</code>) a postupně zvyšujte úroveň ochrany.</p>
+  </li>
 </ul>
 
-<p>Správně nastavený SPF záznam je dnes <b>standard</b> pro každou seriózní doménu odesílající e-maily a významně přispívá k bezpečnosti a důvěryhodnosti vaší e-mailové komunikace.</p>
+<p>V prostředí <b>347 miliard e-mailů denně</b> je správně nastavená e-mailová autentizace klíčová pro to, aby vaše zprávy dosáhly příjemců a neztratily se ve spamu. Bez těchto protokolů e-mailoví poskytovatelé nemohou odlišit vaše legitimní zprávy od spammerů.</p>
+
+<p>Správně nastavená kombinace SPF, DKIM a DMARC je dnes <b>standard</b> pro každou seriózní doménu a významně přispívá k bezpečnosti a důvěryhodnosti vaší e-mailové komunikace.</p>
