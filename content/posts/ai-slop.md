@@ -9,15 +9,15 @@ tags: ["ai", "web"]
 format: "html"
 ---
 
-<p>S rozmachem velkých jazykových modelů jako ChatGPT, Claude nebo Gemini se na internetu začal masově objevovat nový fenomén: <b>AI slop</b>.</p>
+<p>S rozmachem velkých jazykových modelů jako <a href="https://openai.com/chatgpt">ChatGPT</a>, <a href="https://claude.ai/">Claude</a> nebo <a href="https://gemini.google.com/">Gemini</a> se na internetu začal masově objevovat nový fenomén: <b>AI slop</b>.</p>
 
 <p>Jde o <b>nekvalitní obsah</b> hromadně generovaný pomocí AI, který zaplavuje weby, sociální sítě, e-shopy i diskusní fóra.</p>
 
 <h2 id="co-je-ai-slop">Co je AI slop</h2>
 
-<p>Termín <b>„slop"</b> (česky „breja", „šlichta" nebo „krmivo pro prasata") označuje nekvalitní, často zavádějící obsah vytvořený umělou inteligencí.</p>
+<p>Termín <b>„slop"</b> (česky asi něco jako „břečka", „šlichta" nebo „krmivo pro prasata") označuje nekvalitní, často zavádějící obsah vytvořený umělou inteligencí.</p>
 
-<p>Charakteristické rysy AI slop:</p>
+<p>Charakteristické rysy AI slopu:</p>
 
 <ul>
 <li>
@@ -41,6 +41,13 @@ format: "html"
 </li>
 </ul>
 
+
+<p>Důležité je, že <b>ne každý AI generovaný obsah je automaticky slop</b>. AI může být užitečný nástroj, pokud jej autor používá vědomě, výstupy kontroluje a doplňuje o vlastní zkušenosti a pohled.</p>
+
+<p>Stejně tak je možné nekvalitní obsah vytvářet i bez AI a celou dobu před AI to bohužel byla běžná praxe. AI to ale výrazně zjednodušilo.</p>
+
+<p>Bylo docela úsměvné sledovat „staré SEO optimalisátory“, jak si stěžovali na AI generovaný obsah, když začali lidé tvořit podobný obsah se spornou hodnotou jako oni se zlomkem úsilí pomocí AI.</p>
+
 <h2 id="kde-se-ai-slop-vyskytuje">Kde se AI slop vyskytuje</h2>
 
 <h3 id="obsahove-weby">Obsahové weby a blogy</h3>
@@ -63,19 +70,21 @@ format: "html"
 
 <h3 id="socialni-site">Sociální sítě</h3>
 
-<p>Na platformách jako X (Twitter), LinkedIn nebo Facebook se objevují AI generované příspěvky a komentáře.</p>
+<p>Na platformách jako <a href="/twitter">X (Twitter)</a>, <a href="https://www.linkedin.com/">LinkedIn</a> nebo <a href="/facebook">Facebook</a> se objevují AI generované příspěvky a komentáře.</p>
 
-<p>Často jde o <b>engagement farming</b> – příspěvky s generickými motivačními citáty nebo všeobecnými pravdami, které mají maximalizovat interakce.</p>
+<p>Často jde o <b>engagement farming</b> – příspěvky s generickými motivačními citáty nebo všeobecnými pravdami, které mají maximalisovat interakce.</p>
+
+<p>Zvlášť pro lidi v chudších částech světa může být finančně zajímavé budovat díky AI falešný obsah na sociálních sítích.</p>
 
 <h3 id="recense-a-hodnoceni">Recense a hodnocení</h3>
 
-<p>AI generované recense na e-shopech, Google Maps nebo recenzních portálech jsou stále větším problémem.</p>
+<p>AI generované recense na e-shopech, <b>Google Maps</b> apod. jsou stále větším problémem.</p>
 
 <p>Tyto falešné recense jsou často obtížně rozpoznatelné a <b>podvádějí zákazníky</b>.</p>
 
-<h3 id="diskusni-fora">Diskusní fóra a Q&A stránky</h3>
+<h3 id="diskusni-fora">Diskusní fóra a Q&amp;A stránky</h3>
 
-<p>Na platformách jako Reddit, Stack Overflow nebo Quora se objevují AI generované odpovědi.</p>
+<p>Na platformách jako <a href="https://www.reddit.com/">Reddit</a>, <a href="https://stackoverflow.com/">Stack Overflow</a> nebo <a href="https://www.quora.com/">Quora</a> se objevují AI generované odpovědi.</p>
 
 <p>Tyto odpovědi vypadají na první pohled užitečně, ale často:</p>
 
@@ -89,13 +98,35 @@ format: "html"
 </li>
 
 <li>
-  <p>Jsou fakticky nesprávné</p>
+  <p>Jsou fakticky nesprávné (vymýšlejí si neexistující věci)</p>
 </li>
 </ul>
 
+<h3 id="programovani-a-vyvoj-softwaru">Programování a vývoj softwaru</h3>
+
+<p>AI se masivně používá i při psaní kódu, dokumentace a testů. „AI slop" se tu projevuje jinak než u běžných textů:</p>
+
+<ul>
+<li>
+  <p><b>Bezhlavé přejímání kódu</b> – vývojář přebírá výstup AI téměř beze změn a nerozumí tomu, co přesně kód dělá</p>
+</li>
+
+<li>
+  <p><b>Překomplikovaná a nekonsistentní řešení</b> – směs stylů, knihoven a přístupů bez jednotné architektury, protože části kódu vznikly z různých promptů a modelů</p>
+</li>
+
+<li>
+  <p><b>Skrytý technický dluh</b> – chybějící ošetření okrajových případů, bezpečnostní chyby nebo problémy s výkonem, které nejsou na první pohled vidět</p>
+</li>
+</ul>
+
+<p>Na začátku může projekt díky AI růst velmi rychle, ale dlouhodobě se údržba takového kódu dramaticky prodraží. Problémem není samotná AI, ale přístup „kopíruj a vkládej" bez pochopení a odpovědného review.</p>
+
+<p>I jako zde je AI jen nástroj, takže ekvivalent AI slopu je možné vytvořit i ručně. A v týmu složeném ze začátečníku by bez AI dost pravděpodobně vzniklo ještě něco horšího.</p>
+
 <h3 id="obrazky-a-videa">Obrázky a videa</h3>
 
-<p>AI slop se netýká jen textu. S nástroji jako Midjourney, DALL-E nebo Stable Diffusion se objevují i:</p>
+<p>AI slop se netýká jen textu. S nástroji jako <a href="https://www.midjourney.com/">Midjourney</a>, <a href="https://openai.com/dall-e">DALL-E</a> nebo <a href="https://stability.ai/stable-diffusion">Stable Diffusion</a> se objevují:</p>
 
 <ul>
 <li>
@@ -103,7 +134,7 @@ format: "html"
 </li>
 
 <li>
-  <p><b>AI generovaná videa</b> – syntetické osobnosti, falešné zprávy</p>
+  <p><b>AI generovaná videa</b></p>
 </li>
 
 <li>
@@ -111,7 +142,7 @@ format: "html"
 </li>
 </ul>
 
-<h2 id="proc-je-ai-slop-problem">Proč je AI slop problém</h2>
+<h2 id="proc-je-ai-slop-problem">Proč může být AI slop problém</h2>
 
 <h3 id="znecistuje-internet">Znečišťuje internet</h3>
 
@@ -125,11 +156,11 @@ format: "html"
 
 <p>Kvalitní weby, které investují čas do tvorby originálního obsahu, jsou <b>zatlačovány</b> farmami s hromadně generovanými články.</p>
 
-<h3 id="sireni-dezinformaci">Šíření dezinformací</h3>
+<h3 id="sireni-desinformaci">Šíření desinformací</h3>
 
 <p>AI modely mohou generovat fakticky nesprávné informace s naprostou sebedůvěrou.</p>
 
-<p>Když jsou tyto informace publikovány bez kontroly, vznikají <b>dezinformace</b>, které se šíří dál.</p>
+<p>Když jsou tyto informace publikovány bez kontroly, vznikají <b>desinformace</b>, které se šíří dál.</p>
 
 <h3 id="klama-uzivatele">Klamání uživatelů</h3>
 
@@ -139,7 +170,7 @@ format: "html"
 
 <ul>
 <li>
-  <p><b>Recenzí produktů</b> – falešné hodnocení může ovlivnit nákupní rozhodnutí</p>
+  <p><b>Recensí produktů</b> – falešné hodnocení může ovlivnit nákupní rozhodnutí</p>
 </li>
 
 <li>
@@ -151,11 +182,7 @@ format: "html"
 </li>
 </ul>
 
-<h3 id="devalvuje-lidskou-praci">Devalvuje lidskou práci</h3>
-
-<p>Kvalitní obsah vyžaduje <b>čas, zkušenosti a expertízu</b>.</p>
-
-<p>Když je trh zahlcený levným AI obsahem, je těžší pro lidi <b>zpeněžit svou odbornost</b> a investovaný čas.</p>
+<p>Podle mého názoru jde ale spíš o přechodný stav, protože lidé se tomu dřív nebo později přizpůsobí. Naopak to potom bude positivní, že si budou více ověřovat informace a méně důvěřovat tomu, co uvidí na internetu.</p>
 
 <h2 id="jak-poznat-ai-slop">Jak poznat AI slop</h2>
 
@@ -165,7 +192,7 @@ format: "html"
 
 <ul>
 <li>
-  <p><b>Příliš hladký text</b> – žádné stylistické nedokonalosti, osobní tón</p>
+  <p><b>Příliš hladký text</b> – minimum stylistických nedokonalostí a téměř žádný osobní tón</p>
 </li>
 
 <li>
@@ -217,6 +244,10 @@ format: "html"
 </li>
 </ul>
 
+<p>Je důležité poznamenat, že takto jde poznat AI generovaný obsah, se kterým si tvůrce <b>nedal moc práce</b>.</p>
+
+<p>Úpravou promptu jde tyto typické symptomy eliminovat, takže reálně rozpoznat AI generovaný obsah není možné.</p>
+
 <h2 id="dulezite-rozliseni">Důležité rozlišení</h2>
 
 <p>Ne každý AI generovaný obsah je automaticky „slop".</p>
@@ -235,15 +266,33 @@ format: "html"
 <li>
   <p><b>Brainstorming</b> – generování nápadů, které člověk dále rozvíjí</p>
 </li>
+</ul>
+
+<h3 id="vyhody-generovaneho-obsahu">Výhody generovaného obsahu, když není slop</h3>
+
+<p>Generovaný obsah může mít řadu výhod, pokud ho člověk používá jako nástroj a zůstává editorem:</p>
+
+<ul>
+<li>
+  <p><b>Rychlost a produktivita</b> – urychlení rešerší, prvních návrhů textů nebo shrnutí dlouhých materiálů</p>
+</li>
 
 <li>
-  <p><b>Technická dokumentace</b> – generování základní struktury, kterou expert doplní</p>
+  <p><b>Lepší struktura a formulace</b> – návrhy nadpisů, členění textu a alternativních formulací, které jsou čtivější</p>
+</li>
+
+<li>
+  <p><b>Více úhlů pohledu</b> – návrhy otázek, souvislostí a protiargumentů, které by autora samotného nenapadly</p>
+</li>
+
+<li>
+  <p><b>Pomoc v programování</b> – generování boilerplate kódu, testů nebo ukázkových řešení v technologiích, které vývojář tolik nezná</p>
 </li>
 </ul>
 
-<p>Klíčový rozdíl: <b>lidský dohled a přidaná hodnota</b>.</p>
+<p>Klíčový rozdíl je v <b>lidském dohledu a přidané hodnotě</b>.</p>
 
-<p>Když autor použije AI jako nástroj, ale přidává vlastní zkušenosti, faktickou kontrolu a originalní myšlenky, není to slop.</p>
+<p>Když autor použije AI jako nástroj, ale přidává vlastní zkušenosti, faktickou kontrolu a originální myšlenky, nemusí být výstupem AI slop, ale efektivněji vytvořený obsah.</p>
 
 <h2 id="co-s-tim">Co s tím</h2>
 
@@ -270,9 +319,6 @@ format: "html"
 <h3 id="pro-tvorce-obsahu">Pro tvůrce obsahu</h3>
 
 <ul>
-<li>
-  <p><b>Transparentnost</b> – označte, pokud používáte AI jako nástroj</p>
-</li>
 
 <li>
   <p><b>Přidávejte hodnotu</b> – vlastní zkušenosti, originální výzkum, expertní názory</p>
@@ -297,35 +343,15 @@ format: "html"
 <li>
   <p><b>Kvalitní signály</b> – upřednostňování obsahu s důvěryhodnými autory</p>
 </li>
-
-<li>
-  <p><b>Označování</b> – povinné značení AI generovaného obsahu</p>
-</li>
 </ul>
 
-<h2 id="budoucnost">Budoucnost internetu s AI slop</h2>
+<h2 id="budoucnost">Budoucnost internetu s AI</h2>
 
-<p>AI slop je tady s námi a nejspíš niková nezmizí. Jak se AI modely zlepšují, bude těžší a těžší rozpoznat AI obsah od lidského.</p>
+<p>AI slop je tady s námi a nejspíš jen tak nezmizí. Jak se AI modely zlepšují, bude těžší a těžší rozpoznat AI obsah od lidského.</p>
 
-<p>Možné scénáře:</p>
+<p>Zároveň se mění to, jak lidé posuzují důvěryhodnost. Velké množství obsahu už samo o sobě není známkou kvality, protože obsahově bohatý web nebo i složitou aplikaci lze dnes vygenerovat během pár minut lidské práce.</p>
 
-<ul>
-<li>
-  <p><b>Záplava obsahu</b> – internet se stane ještě víc zahlceným generickým obsahem</p>
-</li>
-
-<li>
-  <p><b>Premium lidský obsah</b> – kvalitní obsah od skutečných expertů získá na hodnotě</p>
-</li>
-
-<li>
-  <p><b>Uzavřené komunity</b> – lidé se přesunou do kurátorovaných prostor bez AI slopu</p>
-</li>
-
-<li>
-  <p><b>Technologické řešení</b> – lepší nástroje pro detekci a filtrování</p>
-</li>
-</ul>
+<p>Uživatelé se proto budou muset víc učit kriticky přemýšlet nad tím, co čtou, a dávat větší váhu <b>autoritě autora nebo značky</b> – jejich historii, konsistenci a ochotě nést za obsah odpovědnost.</p>
 
 <h2 id="zaver">Závěr</h2>
 
@@ -343,7 +369,7 @@ format: "html"
 </li>
 
 <li>
-  <p>Ne každý AI obsah je slop – záleží na lidském dohledu a přidané hodnotě</p>
+  <p>Ne každý AI obsah je automaticky odpad</p>
 </li>
 
 <li>
@@ -354,5 +380,3 @@ format: "html"
   <p>Jako tvůrci bychom měli AI používat <b>odpovědně</b> a přidávat vlastní hodnotu</p>
 </li>
 </ul>
-
-<p>Internet se mění. V éře AI je <b>kvalitní, originální obsah</b> od skutečných lidí cennější než kdy dřív.</p>
