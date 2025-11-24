@@ -5,7 +5,7 @@ description: "AI slop je nekvalitní, hromadně generovaný obsah vytvářený u
 date: "2025-11-24"
 last_modification: "2025-11-24"
 status: 1
-tags: ["ai", "web"]
+tags: ["ai", "seo"]
 format: "html"
 ---
 
