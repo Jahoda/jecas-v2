@@ -1,9 +1,9 @@
 ---
 title: "SPF (Sender Policy Framework) – ochrana e-mailů před spoofingem"
 headline: "Co je SPF a jak chrání e-maily"
-description: "Kompletní průvodce e-mailovou autentizací: SPF, DKIM, DMARC a BIMI. Naučte se chránit svou doménu před spoofingem a zlepšit doručitelnost e-mailů."
-date: "2025-11-24"
-last_modification: "2025-11-24"
+description: "Kompletní průvodce e-mailovou autentisací: SPF, DKIM, DMARC a BIMI. Naučte se chránit svou doménu před spoofingem a zlepšit doručitelnost e-mailů."
+date: "2025-11-25"
+last_modification: "2025-11-25"
 status: 1
 tags: ["zabezpeceni", "napady"]
 format: "html"
@@ -15,7 +15,7 @@ format: "html"
 
 <h2 id="problem">Problém podvrhování e-mailů</h2>
 
-<p>Každý den se po celém světě odešle přes <b>347 miliard e-mailů</b>. V tomto obrovském množství zpráv je pro e-mailové servery kriticky důležité rozlišit legitimní e-maily od spamu a phishingových útoků.</p>
+<p>Každý den se po celém světě odešlou <b>stovky miliard e-mailů</b>. V tomto obrovském množství zpráv je pro e-mailové servery kriticky důležité rozlišit legitimní e-maily od spamu a phishingových útoků.</p>
 
 <p>Bez SPF může kdokoliv odeslat e-mail, který vypadá, že pochází z vaší domény. Útočník může například odeslat phishingový e-mail s adresou odesílatele <code>admin@vase-domena.cz</code>, i když s vaší doménou nemá nic společného.</p>
 
@@ -28,7 +28,7 @@ format: "html"
 
 <h2 id="jak-funguje">Jak SPF funguje</h2>
 
-<p>SPF slouží jako <b>první triage příchozích e-mailů</b> – rychlá kontrola, zda vůbec stojí za to e-mail dále zpracovávat. Podobně jako bezpečnostní kontrola na letišti nejprve odfiltruje zjevně neoprávněné osoby, SPF odfiltruje e-maily ze serverů, které nemají povolení odesílat jménem dané domény.</p>
+<p>SPF slouží jako <b>první rychlá kontrola příchozích e-mailů</b>, zda vůbec stojí za to e-mail dále zpracovávat. SPF odfiltruje e-maily ze serverů, které nemají povolení odesílat jménem dané domény.</p>
 
 <p>Když e-mailový server přijme zprávu, provede následující kontrolu:</p>
 
@@ -59,7 +59,7 @@ format: "html"
 
 <p>Tento záznam říká:</p>
 <ul>
-  <li><code>v=spf1</code> – používáme SPF verze 1</li>
+  <li><code>v=spf1</code> – používáme SPF verse 1</li>
   <li><code>ip4:192.0.2.1</code> – povolit odesílání z IPv4 adresy 192.0.2.1</li>
   <li><code>-all</code> – <b>odmítnout</b> všechny ostatní odesílatele</li>
 </ul>
@@ -89,7 +89,7 @@ format: "html"
   <li><code>-all</code> – <b>hard fail</b> – odmítnout (doporučeno)</li>
   <li><code>~all</code> – <b>soft fail</b> – označit jako podezřelé, ale doručit</li>
   <li><code>?all</code> – <b>neutral</b> – žádné tvrzení (používá se zřídka)</li>
-  <li><code>+all</code> – <b>pass</b> – povolit vše (NIKDY nepoužívat! Zruší veškerou ochranu)</li>
+  <li><code>+all</code> – <b>pass</b> – povolit vše (zruší veškerou ochranu)</li>
 </ul>
 
 <h2 id="priklady">Příklady reálných SPF záznamů</h2>
@@ -162,7 +162,7 @@ format: "html"
   <li><code>mx</code> – dotaz na MX záznamy (každý MX může vyžadovat další A dotaz)</li>
   <li><code>redirect=</code> – přesměrování na jiný SPF záznam</li>
   <li><code>exists:</code> – kontrola existence domény</li>
-  <li><code>ptr:</code> – reverzní DNS lookup (nedoporučuje se)</li>
+  <li><code>ptr:</code> – reverzní DNS lookup</li>
 </ul>
 
 <p><b>Důležité:</b> Mechanismy <code>ip4:</code>, <code>ip6:</code> a <code>all</code> <b>nevyžadují DNS dotazy</b>, takže se do limitu nepočítají.</p>
@@ -217,11 +217,11 @@ format: "html"
 
 <h3 id="spf-role">SPF – První kontrola</h3>
 
-<p><b>SPF</b> ověřuje, že e-mail pochází z povoleného serveru. Je to <b>první triage</b>, která rychle odfiltruje neoprávněné odesílatele.</p>
+<p><b>SPF</b> ověřuje, že e-mail pochází z povoleného serveru. Je to <b>první kontrola</b>, která rychle odfiltruje neoprávněné odesílatele.</p>
 
 <h3 id="dkim-role">DKIM – Digitální podpis</h3>
 
-<p><b>DKIM</b> (<i lang="en">DomainKeys Identified Mail</i>) zajišťuje <b>kryptografické ověření legitimity</b> e-mailu pomocí digitálního podpisu.</p>
+<p><a href="https://dkim.org"><b>DKIM</b></a> (<i lang="en">DomainKeys Identified Mail</i>) zajišťuje <b>kryptografické ověření legitimity</b> e-mailu pomocí digitálního podpisu.</p>
 
 <p>DKIM funguje na principu <b>páru veřejného a soukromého klíče</b>:</p>
 
@@ -238,7 +238,7 @@ format: "html"
 
 <h3 id="dmarc-role">DMARC – Politika a reporting</h3>
 
-<p><b>DMARC</b> (<i lang="en">Domain-based Message Authentication, Reporting &amp; Conformance</i>) definuje, <b>co se má stát s e-maily, které neprošly SPF nebo DKIM kontrolou</b>.</p>
+<p><a href="https://dmarc.org"><b>DMARC</b></a> (<i lang="en">Domain-based Message Authentication, Reporting &amp; Conformance</i>) definuje, <b>co se má stát s e-maily, které neprošly SPF nebo DKIM kontrolou</b>.</p>
 
 <p>DMARC záznam je TXT záznam s následující strukturou:</p>
 
@@ -247,7 +247,7 @@ format: "html"
 <p>Vysvětlení parametrů:</p>
 
 <ul>
-  <li><code>v=DMARC1</code> – verze DMARC protokolu</li>
+  <li><code>v=DMARC1</code> – verse DMARC protokolu</li>
   <li><code>p=</code> – <b>politika</b>, co dělat s e-maily, které selžou:
     <ul>
       <li><code>none</code> – <b>pouze sledovat</b>, ale nedělat nic (vhodné pro testování)</li>
@@ -295,11 +295,11 @@ format: "html"
 
 <p>Kombinace SPF + DKIM + DMARC poskytuje <b>nejlepší dostupnou ochranu</b> proti podvrhování e-mailů.</p>
 
-<h2 id="bimi">BIMI – Vizuální identita v inboxu</h2>
+<h2 id="bimi">BIMI – Visuální identita v inboxu</h2>
 
-<p><b>BIMI</b> (<i lang="en">Brand Indicators for Message Identification</i>) je nadstavba nad SPF, DKIM a DMARC, která umožňuje <b>zobrazit logo vaší značky přímo v inboxu</b> příjemce.</p>
+<p><a href="https://bimigroup.org"><b>BIMI</b></a> (<i lang="en">Brand Indicators for Message Identification</i>) je nadstavba nad SPF, DKIM a DMARC, která umožňuje <b>zobrazit logo vaší značky přímo v inboxu</b> příjemce.</p>
 
-<p>V prostředí 347 miliard e-mailů denně je BIMI výjimečný způsob, jak <b>vyniknout a zvýšit důvěryhodnost</b> vašich zpráv. Některé e-mailové klienty dokonce zobrazují u BIMI ověřených odesílatelů <b>zaškrtnutí</b>, podobně jako u sociálních sítí.</p>
+<p>BIMI výjimečný způsob, jak <b>vyniknout a zvýšit důvěryhodnost</b> vašich zpráv. Některé e-mailové klienty dokonce zobrazují u BIMI ověřených odesílatelů <b>zaškrtnutí</b>, podobně jako u sociálních sítí (třeba Gmail).</p>
 
 <h3 id="bimi-pozadavky">Požadavky pro BIMI</h3>
 
@@ -321,7 +321,7 @@ format: "html"
 <p>Parametry:</p>
 
 <ul>
-  <li><code>v=BIMI1</code> – verze BIMI protokolu</li>
+  <li><code>v=BIMI1</code> – verse BIMI protokolu</li>
   <li><code>l=</code> – URL adresa SVG loga (musí být veřejně dostupné přes HTTPS)</li>
   <li><code>a=</code> – URL adresa VMC certifikátu (musí být veřejně dostupné přes HTTPS)</li>
 </ul>
@@ -329,18 +329,18 @@ format: "html"
 <h3 id="bimi-vyhody">Výhody BIMI</h3>
 
 <ul>
-  <li><b>Vizuální rozpoznatelnost</b> – vaše logo se zobrazí u každého e-mailu v inboxu</li>
+  <li><b>Visuální rozpoznatelnost</b> – vaše logo se zobrazí u každého e-mailu v inboxu</li>
   <li><b>Zvýšená důvěra</b> – příjemci okamžitě poznají, že e-mail je legitimní</li>
   <li><b>Ochrana značky</b> – ztěžuje útočníkům vydávání se za vaši firmu</li>
   <li><b>Lepší open rate</b> – uživatelé častěji otevírají e-maily s poznanou značkou</li>
-  <li><b>Profesionální image</b> – signalizuje, že berete bezpečnost vážně</li>
+  <li><b>Profesionální image</b> – signalisuje, že berete bezpečnost vážně</li>
 </ul>
 
 <h3 id="bimi-podpora">Podpora e-mailových klientů</h3>
 
 <p>BIMI podporují zejména:</p>
 <ul>
-  <li><b>Gmail</b> (webová verze i mobilní aplikace)</li>
+  <li><b>Gmail</b> (webová verse i mobilní aplikace)</li>
   <li><b>Yahoo Mail</b></li>
   <li><b>Apple Mail</b> (od iOS 16)</li>
   <li>Další poskytovatelé postupně přidávají podporu</li>
@@ -352,7 +352,7 @@ format: "html"
 
 <ul>
   <li>
-    <p><b>SPF je DNS záznam</b>, který definuje, které servery můžou odesílat e-maily jménem vaší domény. Slouží jako <b>první triage</b> příchozích zpráv.</p>
+    <p><b>SPF je DNS záznam</b>, který definuje, které servery můžou odesílat e-maily jménem vaší domény. Slouží jako  první kontrola příchozích zpráv.</p>
   </li>
   <li>
     <p>SPF ověřuje <b>envelope from</b> (Return-Path), ne viditelnou hlavičku From:, což je důvod pro kombinaci s dalšími mechanismy.</p>
@@ -380,6 +380,14 @@ format: "html"
   </li>
 </ul>
 
-<p>V prostředí <b>347 miliard e-mailů denně</b> je správně nastavená e-mailová autentizace klíčová pro to, aby vaše zprávy dosáhly příjemců a neztratily se ve spamu. Bez těchto protokolů e-mailoví poskytovatelé nemohou odlišit vaše legitimní zprávy od spammerů.</p>
+<p>V prostředí <b>stovek miliard e-mailů denně</b> (<a href="https://www.statista.com/statistics/456500/daily-number-of-e-mails-worldwide/">Statista: Number of sent and received e-mails per day worldwide</a>) je správně nastavená e-mailová autentisace klíčová pro to, aby vaše zprávy byly doručeny příjemcům a neztratily se ve spamu. Bez těchto protokolů e-mailoví poskytovatelé nemohou odlišit vaše legitimní zprávy od spammerů.</p>
 
-<p>Správně nastavená kombinace SPF, DKIM a DMARC je dnes <b>standard</b> pro každou seriózní doménu a významně přispívá k bezpečnosti a důvěryhodnosti vaší e-mailové komunikace.</p>
+<p>Správně nastavená kombinace SPF, DKIM a DMARC je dnes <b>standard</b> pro každou seriosní doménu a významně přispívá k bezpečnosti a důvěryhodnosti vaší e-mailové komunikace.</p>
+
+<h2 id="odkazy-jinam">Odkazy jinam</h2>
+
+<ul>
+  <li><a href="https://gmail.com/postmaster/">Gmail Postmaster Tools</a> – oficiální nástroje od Googlu pro analýzu doručitelnosti a reputace u Gmailu.</li>
+  <li><a href="https://resend.com/blog/email-authentication-a-developers-guide">Email Authentication: A Developer's Guide</a> – přehledný vývojářský průvodce SPF, DKIM, DMARC a BIMI od Resend.</li>
+</ul>
+
