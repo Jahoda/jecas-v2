@@ -1,0 +1,203 @@
+TEXTY PRO SDÍLENÍ ČLÁNKU O E-MAILOVÉ AUTENTIZACI (SPF, DKIM, DMARC, BIMI)
+===========================================================================
+
+Datum vydání: 24. 11. 2025
+
+---
+
+X (TWITTER) - Varianta 1 (komplexní autentizace)
+-------------------------------------------------
+🔒 E-mailová autentizace v roce 2025: SPF + DKIM + DMARC + BIMI
+
+📊 347 miliard e-mailů denně
+✅ SPF: první triage
+🔐 DKIM: digitální podpis
+📋 DMARC: politika & reporting
+🎨 BIMI: vaše logo v inboxu
+
+Kompletní průvodce:
+[URL článku]
+
+#bezpečnost #email #SPF #DMARC
+
+
+X (TWITTER) - Varianta 2 (praktická)
+------------------------------------
+Posíláte e-maily z vaší domény?
+
+SPF samo o sobě nestačí! ⚠️
+
+Potřebujete:
+✅ SPF – kontrola IP adresy
+✅ DKIM – kryptografický podpis
+✅ DMARC – politika quarantine/reject
+🎁 BIMI – logo v Gmailu
+
+Praktický návod včetně příkladů:
+[URL článku]
+
+#webdev #emailsecurity
+
+
+X (TWITTER) - Varianta 3 (pokročilá)
+-------------------------------------
+DMARC s politikou "quarantine" výrazně zlepšuje reputaci domény! 📈
+
+Nový článek:
+• Praktické příklady DMARC záznamů
+• Proč SPF ověřuje envelope from, ne From:
+• Jak funguje BIMI a VMC certifikát
+• Limit 10 DNS lookup u SPF
+
+[URL článku]
+
+#DNS #emailauth
+
+
+---
+
+FACEBOOK - Varianta 1 (komplexní)
+---------------------------------
+🔒 Kompletní průvodce e-mailovou autentizací: SPF, DKIM, DMARC a BIMI
+
+Každý den se po světě odešle přes 347 miliard e-mailů. Jak v tomto množství zajistit, že vaše zprávy dorazí do inboxu, a ne do spamu?
+
+Nový článek pokrývá všechny klíčové mechanismy e-mailové bezpečnosti:
+
+📌 **SPF** – První triage příchozích e-mailů
+✅ Co je SPF a jak funguje
+✅ Praktické příklady pro Google Workspace, Microsoft 365, Mailchimp
+✅ Časté chyby: limit 10 DNS dotazů, problémy s forwardingem
+✅ Proč SPF ověřuje envelope from, ne viditelnou hlavičku From:
+
+📌 **DKIM** – Digitální podpis e-mailů
+✅ Jak funguje public/private key pár
+✅ Ochrana proti změnám obsahu po cestě
+✅ Podpora více DKIM záznamů
+
+📌 **DMARC** – Politika a reporting
+✅ Praktické příklady DMARC záznamů
+✅ Rozdíl mezi none, quarantine a reject
+✅ Jak DMARC zlepšuje reputaci domény
+✅ Doporučený postup implementace
+
+📌 **BIMI** – Logo v inboxu
+✅ Jak získat ověřené logo v Gmailu a Yahoo
+✅ Požadavky: DMARC + trademark + VMC certifikát
+✅ Vizuální odlišení od konkurence
+
+Článek obsahuje konkrétní příklady, struktury DNS záznamů, testovací nástroje a řešení běžných problémů.
+
+👉 Přečíst celý průvodce: [URL článku]
+
+#bezpečnost #email #webdevelopment #SPF #DKIM #DMARC #BIMI
+
+
+FACEBOOK - Varianta 2 (praktická s BIMI)
+-----------------------------------------
+Chcete, aby se vaše logo zobrazovalo u e-mailů v Gmailu? 🎨
+
+Představujeme vám BIMI (Brand Indicators for Message Identification) – mechanismus, který umožňuje zobrazit logo vaší značky přímo v inboxu příjemce.
+
+Ale pozor! BIMI vyžaduje splnění přísných podmínek:
+✅ Funkční DMARC s politikou quarantine nebo reject
+✅ Registrovanou ochrannou známku
+✅ VMC certifikát (Verified Mark Certificate)
+✅ Logo ve formátu Tiny SVG
+
+Proč je to důležité?
+→ V prostředí 347 miliard e-mailů denně vynikete
+→ Zvýšíte důvěru příjemců
+→ Ochráníte značku před phishingem
+→ Zlepšíte open rate e-mailů
+
+Ale nejprve musíte mít správně nastavenou celou trojici: SPF + DKIM + DMARC!
+
+V novém článku najdete:
+📋 Kompletní průvodce nastavením SPF, DKIM a DMARC
+📋 Praktické příklady DNS záznamů
+📋 Doporučený postup implementace
+📋 Detailní informace o BIMI a jak ho získat
+📋 Časté chyby a jejich řešení
+
+Kompletní průvodce e-mailovou autentizací: [URL článku]
+
+#emailmarketing #BIMI #brandprotection
+
+
+FACEBOOK - Varianta 3 (DMARC fokus)
+-----------------------------------
+💡 Technický tip: Jak postupně zavést DMARC bez rizika
+
+DMARC je klíčový mechanismus e-mailové bezpečnosti, ale mnoho firem se bojí ho zavést kvůli obavám z blokování legitimních e-mailů.
+
+Řešení? Postupná implementace! 📊
+
+**Krok 1:** DMARC s p=none (pouze monitoring)
+→ Sbíráte reporty, nic se neděje s e-maily
+→ Zjistíte, kdo vaším jménem posílá e-maily
+
+**Krok 2:** Analýza reportů
+→ Identifikujete všechny legitimní zdroje
+→ Nastavíte správně SPF a DKIM
+
+**Krok 3:** DMARC s p=quarantine
+→ Podezřelé e-maily jdou do spamu
+→ Výrazné zlepšení reputace domény
+
+**Krok 4:** DMARC s p=reject
+→ Maximální ochrana
+→ Nelegitimní e-maily vůbec nedorazí
+
+Bonus: Po dosažení DMARC quarantine/reject můžete žádat o BIMI - vaše logo se bude zobrazovat v Gmailu! 🎨
+
+Nový článek obsahuje:
+✅ Praktické příklady všech DMARC politik
+✅ Strukturu DMARC záznamů s vysvětlením parametrů
+✅ Jak DMARC zlepšuje doručitelnost
+✅ Kompletní průvodce SPF a DKIM
+✅ Informace o BIMI certifikaci
+
+Kompletní průvodce: [URL článku]
+
+#DMARC #emailsecurity #cybersecurity
+
+
+---
+
+LINKEDIN (bonus)
+----------------
+📧 E-mailová autentizace v roce 2025: Průvodce pro IT profesionály
+
+V prostředí 347 miliard e-mailů denně je správná konfigurace e-mailové autentizace kritická pro každou organizaci.
+
+**Klíčové mechanismy:**
+
+🔹 **SPF** – První triage: ověřuje IP adresu odesílacího serveru
+→ Pozor na limit 10 DNS lookup
+→ Ověřuje envelope from, ne From: hlavičku
+
+🔹 **DKIM** – Kryptografický podpis pomocí public/private key páru
+→ Ochrana proti změnám obsahu
+→ Podpora více poskytovatelů
+
+🔹 **DMARC** – Definuje politiku pro selhání SPF/DKIM
+→ p=none (monitoring) → p=quarantine → p=reject
+→ Výrazné zlepšení reputace domény
+→ Agregované reporty pro analýzu
+
+🔹 **BIMI** – Zobrazení loga v inboxu (Gmail, Yahoo, Apple Mail)
+→ Vyžaduje: DMARC quarantine/reject, trademark, VMC
+→ Vizuální odlišení a vyšší důvěra
+
+**Dopad na business:**
+• Lepší doručitelnost marketingových e-mailů
+• Ochrana před phishingem a brand abuse
+• Vyšší open rate díky důvěryhodnosti
+• Compliance s moderními bezpečnostními standardy
+
+Nový kompletní technický článek s praktickými příklady, strukturami DNS záznamů a doporučenými postupy implementace.
+
+👉 [URL článku]
+
+#cybersecurity #emailauthentication #IT #DMARC #SPF #DKIM #infosec
