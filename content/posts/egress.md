@@ -157,7 +157,7 @@ format: "html"
 <p>Populární CDN:</p>
 
 <ul>
-<li><a href="https://www.cloudflare.com/">Cloudflare</a> – často zdarma až neomezeně pro základní použití</li>
+<li><a href="https://www.cloudflare.com/">Cloudflare</a> – neomezený bandwidth zdarma (data musí být uložená jinde na origin serveru)</li>
 <li><a href="https://www.fastly.com/">Fastly</a></li>
 <li><a href="https://aws.amazon.com/cloudfront/">AWS CloudFront</a></li>
 <li><a href="https://bunny.net/">Bunny.net</a> – cenově výhodná alternativa</li>
@@ -214,7 +214,7 @@ format: "html"
 <p>Někteří poskytovatelé nabízejí <b>nulové nebo velmi nízké</b> egress poplatky:</p>
 
 <ul>
-<li><b>Cloudflare R2</b> – object storage bez egress poplatků</li>
+<li><b>Cloudflare R2</b> – object storage bez egress poplatků (platíte jen ~$0.015/GB/měsíc za storage a operace)</li>
 <li><b>Backblaze B2</b> – první 3x uložených dat zdarma egress měsíčně</li>
 <li><b>Hetzner</b> – velkorysé egress limity zahrnuté v ceně</li>
 </ul>
