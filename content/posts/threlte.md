@@ -11,9 +11,12 @@ format: "html"
 
 <p>Vytváření 3D aplikací na webu bylo vždy výzvou. Knihovna <b>Three.js</b> sice nabízí výkonné nástroje, ale její imperativní přístup může být složitý. <b>Threlte</b> tuto výzvu řeší elegantním způsobem.</p>
 
-<div style="text-align: center; margin: 2rem 0;">
+<div style="text-align: center; margin: 2rem 0; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
   <a href="/nastroje/threlte-demo" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: bold; font-size: 1.2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    🎮 Zobrazit živou Threlte demo →
+    🎮 3D Demo
+  </a>
+  <a href="/nastroje/threlte-stack-game" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: bold; font-size: 1.2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    🎯 Stack Game
   </a>
 </div>
 
@@ -198,6 +201,28 @@ window.addEventListener('resize', () => {
 <li>Portfolio a kreativní weby</li>
 </ul>
 
+<h2 id="prakticky-priklad">Praktický příklad - 3D Stack Game</h2>
+
+<p>Abyste viděli Threlte v akci, vytvořili jsme jednoduchou 3D hru. <b>Stack Game</b> je arkádová hra, kde stavíte věž z pohybujících se bloků.</p>
+
+<div style="text-align: center; margin: 2rem 0;">
+  <a href="/nastroje/threlte-stack-game" style="display: inline-block; padding: 1.5rem 3rem; background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: bold; font-size: 1.3rem; box-shadow: 0 6px 12px rgba(0,0,0,0.2);">
+    🎯 Hrát 3D Stack Game →
+  </a>
+</div>
+
+<p>Hra demonstruje:</p>
+
+<ul>
+<li><b>Reaktivní state management</b> – Celý herní stav (skóre, bloky, pozice) je reaktivní</li>
+<li><b>Animace s useTask</b> – Plynulý pohyb bloků pomocí Threlte hooků</li>
+<li><b>3D fyzika a kolize</b> – Výpočet překryvu bloků a detekce game over</li>
+<li><b>Interaktivita</b> – Ovládání myší i klávesnicí</li>
+<li><b>HTML overlay</b> – Kombinace 3D scény s HTML UI pomocí @threlte/extras</li>
+</ul>
+
+<p>Celá hra má méně než 200 řádků kódu díky deklarativnímu přístupu Threlte!</p>
+
 <h2 id="zaver">Závěr</h2>
 
 <p>Threlte přináší deklarativní a reaktivní přístup k 3D grafice na webu. Pokud již používáte Svelte a chcete přidat 3D obsah do své aplikace, je Threlte skvělá volba.</p>
@@ -206,12 +231,17 @@ window.addEventListener('resize', () => {
 
 <div style="text-align: center; margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); border-radius: 1rem; border: 2px solid rgba(102, 126, 234, 0.3);">
   <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Vyzkoušejte si Threlte naživo!</h3>
-  <a href="/nastroje/threlte-demo" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 0.5rem;">
-    🎮 Interaktivní demo
-  </a>
-  <a href="https://threlte.xyz/" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 1rem 2rem; background: #1e293b; color: white; text-decoration: none; border-radius: 0.5rem; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 0.5rem;">
-    📚 Oficiální dokumentace
-  </a>
+  <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+    <a href="/nastroje/threlte-demo" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      🎮 Interaktivní demo
+    </a>
+    <a href="/nastroje/threlte-stack-game" style="display: inline-block; padding: 1rem 2rem; background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); color: white; text-decoration: none; border-radius: 0.5rem; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      🎯 Stack Game
+    </a>
+    <a href="https://threlte.xyz/" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 1rem 2rem; background: #1e293b; color: white; text-decoration: none; border-radius: 0.5rem; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      📚 Oficiální dokumentace
+    </a>
+  </div>
 </div>
 
 <h2 id="zdroje">Zdroje</h2>
