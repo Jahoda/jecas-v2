@@ -2747,4 +2747,5 @@ container.addEventListener('mousemove', (e) => {
 <li><a href="http://davidwalsh.name/3d-transforms">David Walsh – 3D Transforms</a></li>
 <li><a href="http://aerotwist.com/tutorials/protip-nobody-expects-3d/">Aerotwist – Nobody expects 3D</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transforms/Using_CSS_transforms">MDN – CSS 3D Transforms</a></li>
+<li><a href="https://threlte.xyz">Threlte</a> – Svelte nadstavba nad Three.js</li>
 </ul>
