@@ -142,48 +142,6 @@ format: "html"
 <li><b>Segmentace sítě</b> – různé úrovně přístupu pro různé části infrastruktury</li>
 </ul>
 
-<h2 id="egress-kubernetes">Egress v Kubernetes</h2>
-
-<p>V ekosystému Kubernetes má egress specifický význam:</p>
-
-<h3 id="egress-gateway">Egress Gateway</h3>
-
-<p><b>Egress Gateway</b> je komponenta, která centralizuje veškerý odchozí provoz z clusteru. Místo toho, aby každý pod komunikoval přímo s externími službami, provoz prochází přes gateway.</p>
-
-<p>Výhody:</p>
-
-<ul>
-<li><b>Centralizovaná kontrola</b> – všechen egress provoz na jednom místě</li>
-<li><b>Konzistentní IP adresa</b> – externí služby vidí vždy stejnou source IP</li>
-<li><b>Jednodušší firewall pravidla</b> – whitelisting jedné IP místo stovek podů</li>
-<li><b>Monitoring a logging</b> – sledování veškerého odchozího provozu</li>
-</ul>
-
-<h3 id="network-policies">Network Policies</h3>
-
-<p>Kubernetes <b>Network Policies</b> umožňují definovat egress pravidla na úrovni podů:</p>
-
-<pre><code>apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: allow-egress-to-api
-spec:
-  podSelector:
-    matchLabels:
-      app: backend
-  policyTypes:
-  - Egress
-  egress:
-  - to:
-    - podSelector:
-        matchLabels:
-          app: database
-    ports:
-    - protocol: TCP
-      port: 5432</code></pre>
-
-<p>Tato policy povoluje podům s labelem <code>app: backend</code> komunikovat pouze s databází na portu 5432.</p>
-
 <h2 id="optimalizace">Jak snížit náklady na egress</h2>
 
 <h3 id="cdn">Použití CDN</h3>
@@ -343,10 +301,6 @@ spec:
 
 <li>
   <p>V bezpečnosti je egress monitoring klíčový pro <b>prevenci úniků dat</b> a detekci malwaru komunikujícího s externími servery</p>
-</li>
-
-<li>
-  <p><b>Egress Gateway</b> v Kubernetes centralizuje odchozí provoz a usnadňuje monitoring a kontrolu</p>
 </li>
 
 <li>
