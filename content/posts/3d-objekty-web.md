@@ -19,7 +19,7 @@ format: "html"
 
 <ul>
 <li>
-  <p><b>Interaktivitu</b> – uživatel může model otáčet a prohlížet ze všech stran (produkty v e-shopu, technické vizualisace)</p>
+  <p><b>Interaktivitu</b> – uživatel může model otáčet a prohlížet ze všech stran (produkty v e-shopu, technické vizualizace)</p>
 </li>
 
 <li>
@@ -55,7 +55,7 @@ format: "html"
 
 <h2 id="threejs">Three.js – základ pro 3D na webu</h2>
 
-<p><a href="https://threejs.org/">Three.js</a> je nejpopulárnější JavaScriptová knihovna pro práci s 3D grafikou na webu. Zjednodušuje práci s WebGL a nabízí jednoduchá API.</p>
+<p><a href="https://threejs.org/">Three.js</a> je jedna z nejpopulárnějších JavaScriptových knihoven pro práci s 3D grafikou na webu. Zjednodušuje práci s WebGL a nabízí jednoduchá API.</p>
 
 <h3 id="zakladni-priklad">Základní příklad</h3>
 
@@ -120,7 +120,7 @@ animate();</code></pre>
 
 <p><b>Výhody:</b></p>
 <ul>
-<li><p>Optimalisováno pro web</p></li>
+<li><p>Optimalizováno pro web</p></li>
 <li><p>Malá velikost souborů</p></li>
 <li><p>Podpora animací, materiálů a textur</p></li>
 <li><p>Nativní podpora v Three.js</p></li>
@@ -132,7 +132,7 @@ animate();</code></pre>
 <li><p><b>GLTF</b> – textový formát (JSON), textury jako separátní soubory</p></li>
 </ul>
 
-<p><b>Doporučení:</b> Použijte <b>GLB</b> pro co nejjednodušší použití. Pokud máte 3D model v jiném formátu, tak lze převést nějakým programem nebo nástrojem.</p>
+<p><b>Doporučení:</b> Použijte <b>GLB</b> pro co nejjednodušší použití. Pokud máte 3D model v jiném formátu, lze ho převést některým z dostupných nástrojů.</p>
 
 <div class="external-content">
 <ul>
@@ -229,7 +229,7 @@ animate();</code></pre>
 </tr>
 <tr>
   <td>Video (MP4, 5s smyčka)</td>
-  <td>~200 KB</td>
+  <td>~0,5–2 MB</td>
   <td>Ne</td>
 </tr>
 <tr>
@@ -245,9 +245,11 @@ animate();</code></pre>
 </tbody>
 </table>
 
-<h3 id="optimalisace">Optimalisace 3D modelů</h3>
+<p>V praxi to znamená, že <b>jeden interaktivní 3D prvek</b> na stránce může přenášet přibližně <b>3–11 MB dat</b> (optimalizovaný model 2–10 MB + Three.js ~600 KB). Při více modelech nebo větších texturních mapách se tato hodnota rychle násobí, což může být problém hlavně na mobilním připojení.</p>
 
-<p>Pokud už musíte použít 3D model, optimalisujte ho:</p>
+<h3 id="optimalisace">Optimalizace 3D modelů</h3>
+
+<p>Pokud už musíte použít 3D model, optimalizujte ho:</p>
 
 <ul>
 <li>
@@ -327,11 +329,11 @@ if (!isWebGLAvailable()) {
 
 <ul>
 <li>
-  <p><b>Three.js</b> je asi nejpopulárnější knihovna pro práci s 3D na webu</p>
+  <p><b>Three.js</b> je jedna z nejpopulárnějších knihoven pro práci s 3D na webu</p>
 </li>
 
 <li>
-  <p>Používejte <b>GLB/GLTF</b> formát – optimalisovaný pro web</p>
+  <p>Používejte <b>GLB/GLTF</b> formát – optimalizovaný pro web</p>
 </li>
 
 <li>
