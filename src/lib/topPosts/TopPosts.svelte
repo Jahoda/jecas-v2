@@ -12,7 +12,7 @@
 	let { posts, tags, pagesTags }: Props = $props();
 </script>
 
-<div class="grid gap-4">
+<div class="grid gap-6 md:gap-8">
 	{#each posts as post}
 		<MainPost
 			small

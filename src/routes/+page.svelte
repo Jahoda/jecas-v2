@@ -37,13 +37,13 @@
 </svelte:head>
 
 <section>
-	<div class="mt-4 md:mt-8"></div>
+	<div class="mt-8 md:mt-12"></div>
 
 	<Container>
-		<div class="lg:grid-cols-homepage-2 xl:grid-cols-homepage-3 grid grid-cols-1 gap-8">
+		<div class="lg:grid-cols-homepage-2 xl:grid-cols-homepage-3 grid grid-cols-1 gap-10 md:gap-12">
 			<div class="xlx:col-span-6">
-				<div class="grid grid-cols-1 gap-8">
-					<div class="grid grid-cols-1 gap-4 md:gap-8">
+				<div class="grid grid-cols-1 gap-10 md:gap-12">
+					<div class="grid grid-cols-1 gap-6 md:gap-10">
 						{#each data.posts.slice(0, 3) as post, index (post.url_slug)}
 							<div class="grid">
 								<MainPost
@@ -63,7 +63,7 @@
 
 					<PostList posts={data.posts.slice(3)} tags={data.tags} {pagesTags} />
 
-					<div class="flex justify-center">
+					<div class="flex justify-center pt-4">
 						<Button large href="/archiv" arrow
 							>Dalších cca {data.postCount} článků je v archivu</Button
 						>
@@ -72,7 +72,7 @@
 			</div>
 
 			<div class="xlx:col-span-2">
-				<div class="grid grid-cols-1 gap-8">
+				<div class="grid grid-cols-1 gap-10 md:gap-12">
 					<TagCloud tags={data.tags} />
 					{#await data.comments then comments}
 						<LatestComments {comments} />
@@ -81,12 +81,12 @@
 			</div>
 
 			<div class="xlx:col-span-3">
-				<div class="grid grid-cols-1 gap-8">
+				<div class="grid grid-cols-1 gap-10 md:gap-12">
 					<TopPosts tags={data.tags} posts={data.favorite} {pagesTags} />
 				</div>
 			</div>
 		</div>
 	</Container>
 
-	<div class="mt-4 md:mt-8"></div>
+	<div class="mt-8 md:mt-12"></div>
 </section>

@@ -43,10 +43,10 @@
 </script>
 
 <div
-	class="relative rounded-2xl {selected
-		? 'shadow-2xl shadow-blue-500/30'
-		: ''} @container p-2 shadow {small ? '' : ''} {neutral
-		? 'bg-gray-50 dark:bg-slate-700 dark:text-white'
+	class="group relative rounded-3xl {selected
+		? 'shadow-2xl shadow-blue-500/40 ring-2 ring-blue-400/50'
+		: 'shadow-lg hover:shadow-2xl'} @container p-2 transition-all duration-500 hover:-translate-y-1 {small ? '' : ''} {neutral
+		? 'bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-800 dark:to-slate-700 dark:text-white hover:from-gray-100 hover:to-gray-50 dark:hover:from-slate-700 dark:hover:to-slate-800'
 		: 'text-white dark:text-white'}"
 	style="--image: url({`/files/article/${href}.png`});{neutral
 		? ''
@@ -56,10 +56,10 @@
 >
 	<div
 		class="{selected
-			? 'bg-blue-light/30'
+			? 'bg-gradient-to-br from-blue-500/40 to-purple-500/40 backdrop-blur-sm'
 			: neutral
-				? 'bg-slate-500/10 dark:bg-slate-900/50'
-				: 'bg-slate-900/50'} rounded-xl {small ? 'p-3' : 'p-6'} h-full"
+				? 'bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm'
+				: 'bg-gradient-to-br from-slate-900/60 to-slate-800/60 backdrop-blur-md'} rounded-2xl {small ? 'p-4' : 'p-8'} h-full transition-all duration-500 group-hover:backdrop-blur-lg"
 	>
 		<div
 			class="bg-blur pointer-events-none absolute top-0 left-0 -z-10 hidden h-full w-full opacity-50 transition-all"
@@ -72,9 +72,9 @@
 			{#if !noImage}
 				<a
 					href={href ? `/${href}` : null}
-					class="flex flex-shrink-0 overflow-hidden rounded-lg shadow {small
-						? 'h-[100px] w-[100px]'
-						: 'h-[200px] w-[200px]'}"
+					class="flex flex-shrink-0 overflow-hidden rounded-2xl shadow-xl transition-all duration-500 group-hover:shadow-2xl group-hover:scale-105 group-hover:rotate-2 ring-2 ring-white/20 {small
+						? 'h-[120px] w-[120px]'
+						: 'h-[220px] w-[220px]'}"
 				>
 					{#if href}
 						<PostImage slug={href} {lazy} />
@@ -90,14 +90,14 @@
 				<svelte:element
 					this={href ? 'a' : 'div'}
 					href={href ? `/${href}` : null}
-					class={href ? 'hover:underline' : ''}
+					class={href ? 'transition-all duration-300 hover:scale-105' : ''}
 				>
-					<h1 class="{small ? 'text-2xl' : 'text-3xl md:text-5xl'} font-bold">
+					<h1 class="{small ? 'text-2xl md:text-3xl' : 'text-4xl md:text-6xl'} font-extrabold tracking-tight leading-tight bg-gradient-to-r from-white to-blue-100 dark:from-white dark:to-purple-100 bg-clip-text text-transparent group-hover:from-blue-100 group-hover:to-purple-100 transition-all duration-500">
 						{@html title}
 					</h1>
 				</svelte:element>
 				{#if description}
-					<p class={small ? 'text-sm' : 'text-xl md:text-2xl'}>
+					<p class="{small ? 'text-base md:text-lg' : 'text-xl md:text-2xl'} leading-relaxed opacity-95 group-hover:opacity-100 transition-opacity duration-300">
 						{@html description}
 					</p>
 				{/if}

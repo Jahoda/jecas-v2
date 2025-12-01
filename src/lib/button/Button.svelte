@@ -35,15 +35,15 @@
 	tabindex="0"
 	disabled={href ? null : disabled}
 	{href}
-	class="custom-button bg-blue-light truncate transition-all {xSmall
-		? 'rounded'
-		: 'rounded-lg'} group hover:bg-blue-dark inline-flex items-center gap-2 active:translate-y-0.5 {small
-		? 'px-2 py-1'
+	class="custom-button bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 truncate transition-all duration-300 {xSmall
+		? 'rounded-md'
+		: 'rounded-xl'} group shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 inline-flex items-center justify-center gap-2 active:translate-y-0.5 hover:-translate-y-0.5 hover:scale-105 {small
+		? 'px-3 py-2'
 		: xSmall
-			? 'px-2 py-0.5'
+			? 'px-2 py-1'
 			: large
-				? 'px-5 py-4'
-				: 'px-4 py-2'} leading-5 {xSmall ? 'text-sm font-normal' : 'font-semibold'} text-white"
+				? 'px-8 py-5 text-lg'
+				: 'px-6 py-3'} leading-5 {xSmall ? 'text-sm font-medium' : 'font-bold'} text-white"
 	{type}
 	{onclick}
 	onkeypress={bubble('keypress')}
@@ -57,9 +57,9 @@
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
 			viewBox="0 0 24 24"
-			stroke-width="1.5"
+			stroke-width="2"
 			stroke="currentColor"
-			class="h-6 w-6 transition-transform group-hover:translate-x-1"
+			class="h-6 w-6 transition-transform duration-300 group-hover:translate-x-2"
 		>
 			<path
 				stroke-linecap="round"

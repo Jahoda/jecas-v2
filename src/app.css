@@ -2,6 +2,28 @@
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";
 
+/* Smooth scroll behavior */
+html {
+	scroll-behavior: smooth;
+}
+
+/* Modern page transitions */
+@view-transition {
+	navigation: auto;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
 @theme {
 	/* Custom Colors - Lochmara */
 	--color-lochmara-50: #f0f7ff;

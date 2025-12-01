@@ -2,19 +2,20 @@
 	import Container from '$lib/container/Container.svelte';
 </script>
 
-<div class="bg-blue-light dark:bg-blue-light/30 relative py-8 text-white xl:py-16">
+<div class="relative bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 dark:from-blue-800 dark:via-blue-700 dark:to-purple-800 py-16 text-white xl:py-24">
+	<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 	<Container>
-		<div class="flex flex-col items-center gap-16 md:flex-row">
-			<a aria-label="Je čas" href="/" class="flex">
+		<div class="relative z-10 flex flex-col items-center gap-12 md:flex-row md:items-start md:gap-16">
+			<a aria-label="Je čas" href="/" class="group flex transition-transform duration-300 hover:scale-110">
 				<span
-					class="max-w-xs"
+					class="max-w-xs opacity-90 transition-opacity duration-300 group-hover:opacity-100"
 					title="Logo má samoúčelný přebarvovací efekt. Šel snadno vytvořit díky tomu, že se jedná o SVG."
 				>
 					<svg
 						viewBox="0 0 500 95"
 						style="background-color:#ffffff00"
 						xmlns="http://www.w3.org/2000/svg"
-						class="w-full"
+						class="w-full drop-shadow-2xl"
 						width="500"
 						height="95"
 						><path
@@ -24,16 +25,24 @@
 					>
 				</span>
 			</a>
-			<p class="mb-0">
-				Web
-				<a href="/" class="underline hover:no-underline">jecas.cz</a>
-				píše <b>Bohumil Jahoda</b>,
-				<a rel="nofollow" href="/kontakt" class="underline hover:no-underline">kontakt</a>
-				<br />
-				<a href="/archiv" class="underline hover:no-underline">Seznam všech článků</a>
-				<br />
-				2013–{new Date().getFullYear()}
-			</p>
+			<div class="flex flex-col gap-6 text-center md:text-left">
+				<p class="mb-0 text-lg leading-relaxed text-white/95">
+					Web
+					<a href="/" class="font-semibold underline decoration-2 underline-offset-4 transition-all duration-300 hover:text-white hover:decoration-white/50">jecas.cz</a>
+					píše <b class="font-bold">Bohumil Jahoda</b>
+				</p>
+				<div class="flex flex-col gap-3 text-base text-white/90">
+					<a rel="nofollow" href="/kontakt" class="inline-flex items-center gap-2 underline decoration-2 underline-offset-4 transition-all duration-300 hover:text-white hover:decoration-white/50">
+						📧 Kontakt
+					</a>
+					<a href="/archiv" class="inline-flex items-center gap-2 underline decoration-2 underline-offset-4 transition-all duration-300 hover:text-white hover:decoration-white/50">
+						📚 Seznam všech článků
+					</a>
+				</div>
+				<p class="text-sm text-white/70">
+					2013–{new Date().getFullYear()}
+				</p>
+			</div>
 		</div>
 	</Container>
 </div>

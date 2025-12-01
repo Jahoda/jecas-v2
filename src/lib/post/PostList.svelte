@@ -12,7 +12,7 @@
 	let { posts, tags = [], pagesTags = {} }: Props = $props();
 </script>
 
-<div class="grid-cols-repeat-48 grid gap-4 md:gap-8">
+<div class="grid-cols-repeat-48 grid gap-6 md:gap-10">
 	{#each posts as post (post.url_slug)}
 		<div class="grid grid-cols-1">
 			<MainPost
