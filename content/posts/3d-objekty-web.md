@@ -9,7 +9,7 @@ tags: ["javascript", "3d", "ai"]
 format: "html"
 ---
 
-<p>3D objekty na webu už dávno nejsou vědecká fantastika. Díky moderním technologiím jako <a href="https://threejs.org/">Three.js</a> a WebGL můžete na své stránky přidat interaktivní 3D modely, které uživatelé můžou otáčet, přibližovat a prozkoumávat.</p>
+<p>3D objekty na webu už dávno nejsou jen technologické demo. Díky moderním technologiím jako <a href="https://threejs.org/">Three.js</a> a WebGL můžete na své stránky přidat interaktivní 3D modely, které uživatelé můžou otáčet, přibližovat a prozkoumávat.</p>
 
 <p>Ale pozor – ne vždy je 3D model tou správnou volbou. Často je lepší použít <b>klasický obrázek nebo video</b> kvůli datové velikosti a výkonu.</p>
 
@@ -34,6 +34,8 @@ format: "html"
   <p><b>Hry a aplikace</b> – interaktivní zážitky</p>
 </li>
 </ul>
+
+<p>Další věc je, že je potřeba ten 3D model vytvořit.</p>
 
 <p>Pro <b>jednoduché zobrazení</b> produktu nebo objektu často stačí:</p>
 
@@ -130,107 +132,23 @@ animate();</code></pre>
 <li><p><b>GLTF</b> – textový formát (JSON), textury jako separátní soubory</p></li>
 </ul>
 
-<p><b>Doporučení:</b> Použijte <b>GLB</b> pro jednodušší distribuci.</p>
+<p><b>Doporučení:</b> Použijte <b>GLB</b> pro co nejjednodušší použití. Pokud máte 3D model v jiném formátu, tak lze převést nějakým programem nebo nástrojem.</p>
 
-<h3 id="obj">OBJ</h3>
-
-<p>Starší, jednoduchý formát, který podporuje většina 3D editorů.</p>
-
-<p><b>Výhody:</b></p>
-<ul>
-<li><p>Jednoduchý a čitelný</p></li>
-<li><p>Široká podpora</p></li>
-</ul>
-
-<p><b>Nevýhody:</b></p>
-<ul>
-<li><p>Nepodporuje animace</p></li>
-<li><p>Větší velikost než GLTF</p></li>
-<li><p>Materiály v separátním .mtl souboru</p></li>
-</ul>
-
-<h3 id="fbx">FBX</h3>
-
-<p>Proprietární formát od Autodesk, používá se hlavně v herním vývoji.</p>
-
-<p><b>Výhody:</b></p>
-<ul>
-<li><p>Podpora animací a komplexních scén</p></li>
-<li><p>Používá se v profesionálních nástrojích (Maya, 3ds Max)</p></li>
-</ul>
-
-<p><b>Nevýhody:</b></p>
-<ul>
-<li><p>Větší velikost souborů</p></li>
-<li><p>Méně optimální pro web</p></li>
-</ul>
-
-<h3 id="stl">STL</h3>
-
-<p>Formát pro 3D tisk, obsahuje pouze geometrii (bez barev či textur).</p>
-
-<p><b>Použití:</b> Vizualisace modelů pro 3D tisk</p>
-
-<h3 id="doporuceni-formatu">Doporučení</h3>
-
-<p>Pro web <b>vždy preferujte GLB/GLTF</b>. Pokud máte model v jiném formátu, převeďte ho pomocí nástrojů jako:</p>
-
+<div class="external-content">
 <ul>
 <li><p><a href="https://www.blender.org/">Blender</a> – zdarma, otevřený 3D editor</p></li>
 <li><p><a href="https://github.com/CesiumGS/obj2gltf">obj2gltf</a> – konverze OBJ → GLTF</p></li>
 <li><p><a href="https://products.aspose.app/3d/conversion">Online konvertory</a></p></li>
 </ul>
+</div>
 
 <h2 id="ai-modely">Vytváření 3D modelů pomocí AI</h2>
 
-<p>Díky moderním AI nástrojům můžete vytvářet 3D modely <b>z textu nebo obrázků</b> během několika minut.</p>
-
-<h3 id="meshy-ai">Meshy.ai</h3>
+<p>Díky moderním AI nástrojům můžete vytvářet 3D modely <b>z textu nebo obrázků</b> během několika minut bez znalostí 3D grafiky:</p>
 
 <p><a href="https://www.meshy.ai/">Meshy.ai</a> – generování 3D modelů z textu nebo obrázků.</p>
-
-<p><b>Výhody:</b></p>
-<ul>
-<li><p>Jednoduché použití</p></li>
-<li><p>Text-to-3D i Image-to-3D</p></li>
-<li><p>Export do různých formátů včetně GLB</p></li>
-</ul>
-
-<h3 id="luma-labs">Luma Labs</h3>
-
-<p><a href="https://lumalabs.ai/">Luma Labs</a> – vytváření 3D modelů pomocí AI z videa nebo fotek.</p>
-
-<p><b>Výhody:</b></p>
-<ul>
-<li><p>Fotogrammetrie – model z reálných objektů</p></li>
-<li><p>Vysoká kvalita výsledků</p></li>
-</ul>
-
-<h3 id="tripo3d">Tripo3D</h3>
-
+<p><a href="https://lumalabs.ai/genie">Luma Labs</a> – vytváření 3D modelů pomocí AI z videa nebo fotek.</p>
 <p><a href="https://studio.tripo3d.ai/">Tripo3D</a> – AI generování 3D modelů s podporou riggingu (kostra pro animace).</p>
-
-<p><b>Výhody:</b></p>
-<ul>
-<li><p>Rigging pro animace postav</p></li>
-<li><p>Rychlé generování</p></li>
-</ul>
-
-<h3 id="ai-tipy">Tipy pro práci s AI modely</h3>
-
-<ul>
-<li>
-  <p><b>Zkontrolujte topologii</b> – AI modely často obsahují nepotřebné polygony</p>
-</li>
-
-<li>
-  <p><b>Optimalisujte textury</b> – zmenšete rozlišení textur pro web</p>
-</li>
-
-<li>
-  <p><b>Použijte decimaci</b> – snižte počet polygonů v Blenderu</p>
-</li>
-</ul>
 
 <h2 id="css-3d">CSS 3D transformace – alternativa pro jednoduché efekty</h2>
 
@@ -409,7 +327,7 @@ if (!isWebGLAvailable()) {
 
 <ul>
 <li>
-  <p><b>Three.js</b> je nejlepší knihovna pro práci s 3D na webu</p>
+  <p><b>Three.js</b> je asi nejpopulárnější knihovna pro práci s 3D na webu</p>
 </li>
 
 <li>
@@ -417,7 +335,7 @@ if (!isWebGLAvailable()) {
 </li>
 
 <li>
-  <p>AI nástroje (<b>Meshy.ai</b>, <b>Luma Labs</b>, <b>Tripo3D</b>) umožňují rychle vytvářet 3D modely</p>
+  <p>AI nástroje umožňují rychle vytvářet 3D modely, pokud to sami neumíte</p>
 </li>
 
 <li>
@@ -426,14 +344,6 @@ if (!isWebGLAvailable()) {
 
 <li>
   <p>Často je lepší použít <b>obrázek nebo video</b> kvůli datové velikosti</p>
-</li>
-
-<li>
-  <p><b>Optimalisujte</b> – decimace, komprese textur, Draco komprese, lazy loading</p>
-</li>
-
-<li>
-  <p>Vždy poskytněte <b>fallback</b> pro zařízení bez WebGL podpory</p>
 </li>
 </ul>
 
