@@ -120,6 +120,9 @@ animate();</code></pre>
   position: relative;
   width: 100%;
   height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
 }
 
 .threejs-demo-container canvas {
@@ -149,15 +152,31 @@ animate();</code></pre>
 
 <script>
 (function() {
-  function loadScript(src) {
-    return new Promise(function(resolve, reject) {
-      var script = document.createElement('script');
-      script.src = src;
-      script.onload = resolve;
-      script.onerror = reject;
-      document.head.appendChild(script);
-    });
-  }
+  window.threeJSLoaded = window.threeJSLoaded || new Promise(function(resolve) {
+    function loadScript(src) {
+      return new Promise(function(res, rej) {
+        if (document.querySelector('script[src="' + src + '"]')) {
+          res();
+          return;
+        }
+        var script = document.createElement('script');
+        script.src = src;
+        script.onload = res;
+        script.onerror = rej;
+        document.head.appendChild(script);
+      });
+    }
+    
+    if (window.THREE && window.THREE.OrbitControls) {
+      resolve();
+    } else {
+      loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js')
+        .then(function() {
+          return loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js');
+        })
+        .then(resolve);
+    }
+  });
 
   function initThreeJS() {
     var container = document.getElementById('threejs-demo');
@@ -227,15 +246,7 @@ animate();</code></pre>
     };
   }
 
-  if (window.THREE && window.THREE.OrbitControls) {
-    initThreeJS();
-  } else {
-    loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js')
-      .then(function() {
-        return loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js');
-      })
-      .then(initThreeJS);
-  }
+  window.threeJSLoaded.then(initThreeJS);
 })();
 </script>
 
@@ -277,6 +288,188 @@ if (window.threejsDemoCleanup) {
 <li><p><a href="https://products.aspose.app/3d/conversion">Online konvertory</a></p></li>
 </ul>
 </div>
+
+<h3 id="ukazka-glb">Ukázka načtení GLB modelu</h3>
+
+<p>Ukázka načtení 3D modelu ve formátu GLB pomocí GLTFLoader:</p>
+
+<div class="live">
+<style>
+.gltf-demo-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, #2d3436 0%, #1a1a2e 100%);
+}
+
+.gltf-demo-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.gltf-demo-info {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+  color: #e0e0e0;
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  pointer-events: none;
+}
+
+.gltf-demo-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+</style>
+
+<div class="gltf-demo-container" id="gltf-demo">
+  <div class="gltf-demo-loading" id="gltf-loading">Načítání modelu...</div>
+  <div class="gltf-demo-info">🖱️ Táhněte pro rotaci • Kolečko pro zoom</div>
+</div>
+
+<script>
+(function() {
+  window.threeJSWithGLTFLoaded = window.threeJSWithGLTFLoaded || new Promise(function(resolve) {
+    function loadScript(src) {
+      return new Promise(function(res, rej) {
+        if (document.querySelector('script[src="' + src + '"]')) {
+          res();
+          return;
+        }
+        var script = document.createElement('script');
+        script.src = src;
+        script.onload = res;
+        script.onerror = rej;
+        document.head.appendChild(script);
+      });
+    }
+    
+    var basePromise = window.threeJSLoaded || Promise.resolve();
+    basePromise.then(function() {
+      if (window.THREE && window.THREE.GLTFLoader) {
+        resolve();
+      } else {
+        var scripts = [];
+        if (!window.THREE) scripts.push('https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js');
+        if (!window.THREE || !window.THREE.OrbitControls) scripts.push('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js');
+        scripts.push('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js');
+        
+        scripts.reduce(function(p, src) {
+          return p.then(function() { return loadScript(src); });
+        }, Promise.resolve()).then(resolve);
+      }
+    });
+  });
+
+  function initGLTFDemo() {
+    var container = document.getElementById('gltf-demo');
+    var loadingEl = document.getElementById('gltf-loading');
+    var width = container.clientWidth;
+    var height = container.clientHeight;
+
+    var scene = new THREE.Scene();
+
+    var camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+    camera.position.set(0, 2, 5);
+
+    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1;
+    container.insertBefore(renderer.domElement, container.firstChild);
+
+    var ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(5, 10, 7);
+    scene.add(directionalLight);
+
+    var directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight2.position.set(-5, 5, -5);
+    scene.add(directionalLight2);
+
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.minDistance = 2;
+    controls.maxDistance = 15;
+    controls.target.set(0, 1, 0);
+
+    var loader = new THREE.GLTFLoader();
+    var model = null;
+    
+    loader.load(
+      'https://threejs.org/examples/models/gltf/DamagedHelmet/glTF/DamagedHelmet.gltf',
+      function(gltf) {
+        model = gltf.scene;
+        model.scale.set(1.5, 1.5, 1.5);
+        model.position.set(0, 1, 0);
+        scene.add(model);
+        if (loadingEl) loadingEl.style.display = 'none';
+      },
+      function(xhr) {
+        var percent = Math.round((xhr.loaded / xhr.total) * 100);
+        if (loadingEl) loadingEl.textContent = 'Načítání: ' + percent + '%';
+      },
+      function(error) {
+        if (loadingEl) loadingEl.textContent = 'Chyba při načítání modelu';
+      }
+    );
+
+    function animate() {
+      window.gltfDemoAnimationId = requestAnimationFrame(animate);
+      if (model) {
+        model.rotation.y += 0.005;
+      }
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    function handleResize() {
+      var newWidth = container.clientWidth;
+      var newHeight = container.clientHeight;
+      camera.aspect = newWidth / newHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(newWidth, newHeight);
+    }
+    window.addEventListener('resize', handleResize);
+
+    window.gltfDemoCleanup = function() {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(window.gltfDemoAnimationId);
+      renderer.dispose();
+    };
+  }
+
+  window.threeJSWithGLTFLoaded.then(initGLTFDemo);
+})();
+</script>
+
+<script data-cleanup>
+if (window.gltfDemoCleanup) {
+  window.gltfDemoCleanup();
+}
+</script>
+</div>
+
+<p>Model <i>Damaged Helmet</i> je standardní testovací model pro PBR (physically-based rendering) materiály.</p>
 
 <h2 id="ai-modely">Vytváření 3D modelů pomocí AI</h2>
 
