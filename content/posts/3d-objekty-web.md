@@ -110,6 +110,142 @@ function animate() {
 }
 animate();</code></pre>
 
+<h3 id="ziva-ukazka">Živá ukázka</h3>
+
+<p>Tady je interaktivní ukázka Three.js scény. Pomocí myši můžete scénou otáčet, přibližovat a posouvat.</p>
+
+<div class="live">
+<style>
+.threejs-demo-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.threejs-demo-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.threejs-demo-info {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 8px;
+  color: #e0e0e0;
+  font-size: 0.85rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  pointer-events: none;
+}
+</style>
+
+<div class="threejs-demo-container" id="threejs-demo">
+  <div class="threejs-demo-info">🖱️ Táhněte pro rotaci • Kolečko pro zoom</div>
+</div>
+
+<script>
+(function() {
+  function loadScript(src) {
+    return new Promise(function(resolve, reject) {
+      var script = document.createElement('script');
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+  }
+
+  function initThreeJS() {
+    var container = document.getElementById('threejs-demo');
+    var width = container.clientWidth;
+    var height = container.clientHeight;
+
+    var scene = new THREE.Scene();
+
+    var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
+    camera.position.set(3, 2, 4);
+
+    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.insertBefore(renderer.domElement, container.firstChild);
+
+    var ambientLight = new THREE.AmbientLight(0x404040, 1.5);
+    scene.add(ambientLight);
+
+    var directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+    directionalLight.position.set(5, 10, 7);
+    scene.add(directionalLight);
+
+    var pointLight = new THREE.PointLight(0x4fc3f7, 1, 100);
+    pointLight.position.set(-5, 3, -5);
+    scene.add(pointLight);
+
+    var torusKnotGeometry = new THREE.TorusKnotGeometry(1, 0.35, 100, 16);
+    var torusKnotMaterial = new THREE.MeshStandardMaterial({
+      color: 0x6366f1,
+      metalness: 0.3,
+      roughness: 0.4,
+    });
+    var torusKnot = new THREE.Mesh(torusKnotGeometry, torusKnotMaterial);
+    scene.add(torusKnot);
+
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.minDistance = 2;
+    controls.maxDistance = 10;
+
+    function animate() {
+      window.threejsDemoAnimationId = requestAnimationFrame(animate);
+      torusKnot.rotation.x += 0.005;
+      torusKnot.rotation.y += 0.008;
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    function handleResize() {
+      var newWidth = container.clientWidth;
+      var newHeight = container.clientHeight;
+      camera.aspect = newWidth / newHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(newWidth, newHeight);
+    }
+    window.addEventListener('resize', handleResize);
+
+    window.threejsDemoCleanup = function() {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(window.threejsDemoAnimationId);
+      renderer.dispose();
+      torusKnotGeometry.dispose();
+      torusKnotMaterial.dispose();
+    };
+  }
+
+  if (window.THREE && window.THREE.OrbitControls) {
+    initThreeJS();
+  } else {
+    loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js')
+      .then(function() {
+        return loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js');
+      })
+      .then(initThreeJS);
+  }
+})();
+</script>
+
+<script data-cleanup>
+if (window.threejsDemoCleanup) {
+  window.threejsDemoCleanup();
+}
+</script>
+</div>
+
 <h2 id="formaty">Formáty 3D souborů</h2>
 
 <p>Pro web se používá několik formátů 3D modelů. Každý má své výhody a nevýhody.</p>
