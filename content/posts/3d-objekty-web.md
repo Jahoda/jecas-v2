@@ -156,47 +156,86 @@ animate();</code></pre>
 
 <h3 id="priklad-css">Příklad – otáčející se karta</h3>
 
-<pre><code class="language-html">&lt;div class="card"&gt;
-  &lt;div class="card-inner"&gt;
-    &lt;div class="card-front"&gt;Přední strana&lt;/div&gt;
-    &lt;div class="card-back"&gt;Zadní strana&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-
-<pre><code class="language-css">.card {
+<div class="live">
+<style>
+.css3d-card {
   width: 200px;
-  height: 300px;
+  height: 280px;
   perspective: 1000px;
+  cursor: pointer;
 }
 
-.card-inner {
+.css3d-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.6s;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
 }
 
-.card:hover .card-inner {
+.css3d-card:hover .css3d-card-inner {
   transform: rotateY(180deg);
 }
 
-.card-front,
-.card-back {
+.css3d-card-front,
+.css3d-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  background: #fff;
-  border: 1px solid #ddd;
+  border-radius: 12px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.card-back {
+.css3d-card-front {
+  background: linear-gradient(145deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.css3d-card-front::before {
+  content: "🎴";
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.css3d-card-back {
+  background: linear-gradient(145deg, #f093fb 0%, #f5576c 100%);
+  color: white;
   transform: rotateY(180deg);
-}</code></pre>
+}
+
+.css3d-card-back::before {
+  content: "✨";
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.css3d-hint {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+</style>
+
+  <div class="css3d-card">
+    <div class="css3d-card-inner">
+      <div class="css3d-card-front">
+        Přední strana
+        <span class="css3d-hint">Najeďte myší</span>
+      </div>
+      <div class="css3d-card-back">
+        Zadní strana
+        <span class="css3d-hint">Úspěch!</span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <p><b>Použití:</b></p>
 <ul>
@@ -205,7 +244,7 @@ animate();</code></pre>
 <li><p>Jednoduché animace</p></li>
 </ul>
 
-<p>Více o CSS 3D transformacích najdete v článku <a href="/3d-transformace">3D transformace v CSS</a>.</p>
+<!--<p>Více o CSS 3D transformacích najdete v článku <a href="/3d-transformace">3D transformace v CSS</a>.</p>-->
 
 <h2 id="velikost">Datová velikost – kdy raději použít obrázek nebo video</h2>
 
@@ -235,6 +274,11 @@ animate();</code></pre>
 <tr>
   <td>3D model (GLB + textury)</td>
   <td>~2-10 MB</td>
+  <td>Ano</td>
+</tr>
+<tr>
+  <td>3D model s Draco kompresí</td>
+  <td>~0,5-2 MB</td>
   <td>Ano</td>
 </tr>
 <tr>
