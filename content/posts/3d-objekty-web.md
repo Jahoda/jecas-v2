@@ -1,9 +1,9 @@
 ---
 title: "Jak vkládat 3D objekty na web"
 headline: "Jak vkládat 3D objekty na web pomocí Three.js"
-description: "Průvodce vkládáním 3D modelů na web pomocí Three.js. Které formáty použít, jak vytvářet modely pomocí AI a kdy raději použít obrázek nebo video."
-date: "2025-12-01"
-last_modification: "2025-12-01"
+description: "Které formáty použít, jak vytvářet modely pomocí AI a kdy raději použít obrázek nebo video."
+date: "2025-12-02"
+last_modification: "2025-12-02"
 status: 1
 tags: ["javascript", "ai"]
 format: "html"
@@ -19,7 +19,7 @@ format: "html"
 
 <ul>
 <li>
-  <p><b>Interaktivitu</b> – uživatel může model otáčet a prohlížet ze všech stran (produkty v e-shopu, technické vizualizace)</p>
+  <p><b>Interaktivitu</b> – uživatel může model otáčet a prohlížet ze všech stran</p>
 </li>
 
 <li>
@@ -27,11 +27,11 @@ format: "html"
 </li>
 
 <li>
-  <p><b>Vizualisace dat</b> – 3D grafy, mapy, architektury</p>
+  <p><b>Visualisace dat</b> – 3D grafy, mapy, architektury</p>
 </li>
 
 <li>
-  <p><b>Hry a aplikace</b> – interaktivní zážitky</p>
+  <p><b>Hry a aplikace</b></p>
 </li>
 </ul>
 
@@ -45,7 +45,7 @@ format: "html"
 </li>
 
 <li>
-  <p><b>Video se smyčkou</b> – rotující produkt, přijatelná velikost, bez interaktivity</p>
+  <p><b><a href="/video">Video</a> se smyčkou</b> – rotující produkt, přijatelná velikost, bez interaktivity</p>
 </li>
 
 <li>
@@ -120,9 +120,6 @@ animate();</code></pre>
   position: relative;
   width: 100%;
   height: 400px;
-  border-radius: 12px;
-  overflow: hidden;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
 }
 
 .threejs-demo-container canvas {
@@ -267,7 +264,7 @@ if (window.threejsDemoCleanup) {
 
 <p><b>Výhody:</b></p>
 <ul>
-<li><p>Optimalizováno pro web</p></li>
+<li><p>Optimalisováno pro web</p></li>
 <li><p>Malá velikost souborů</p></li>
 <li><p>Podpora animací, materiálů a textur</p></li>
 <li><p>Nativní podpora v Three.js</p></li>
@@ -285,7 +282,7 @@ if (window.threejsDemoCleanup) {
 <ul>
 <li><p><a href="https://www.blender.org/">Blender</a> – zdarma, otevřený 3D editor</p></li>
 <li><p><a href="https://github.com/CesiumGS/obj2gltf">obj2gltf</a> – konverze OBJ → GLTF</p></li>
-<li><p><a href="https://products.aspose.app/3d/conversion">Online konvertory</a></p></li>
+<li><p><a href="https://products.aspose.app/3d/conversion">Online konvertor</a></p></li>
 </ul>
 </div>
 
@@ -299,9 +296,6 @@ if (window.threejsDemoCleanup) {
   position: relative;
   width: 100%;
   height: 400px;
-  border-radius: 12px;
-  overflow: hidden;
-  background: radial-gradient(ellipse at center, #2d3436 0%, #1a1a2e 100%);
 }
 
 .gltf-demo-container canvas {
@@ -424,8 +418,7 @@ if (window.threejsDemoCleanup) {
         if (loadingEl) loadingEl.style.display = 'none';
       },
       function(xhr) {
-        var percent = Math.round((xhr.loaded / xhr.total) * 100);
-        if (loadingEl) loadingEl.textContent = 'Načítání: ' + percent + '%';
+        if (loadingEl) loadingEl.textContent = 'Načítání...';
       },
       function(error) {
         if (loadingEl) loadingEl.textContent = 'Chyba při načítání modelu';
@@ -469,7 +462,6 @@ if (window.gltfDemoCleanup) {
 </script>
 </div>
 
-<p>Model <i>Damaged Helmet</i> je standardní testovací model pro PBR (physically-based rendering) materiály.</p>
 
 <h2 id="ai-modely">Vytváření 3D modelů pomocí AI</h2>
 
@@ -481,7 +473,7 @@ if (window.gltfDemoCleanup) {
 
 <h2 id="css-3d">CSS 3D transformace – alternativa pro jednoduché efekty</h2>
 
-<p>Pro jednoduché 3D efekty <b>nepotřebujete Three.js</b>. Použijte CSS 3D transformace.</p>
+<p>Pro jednoduché 3D efekty <b>nepotřebujete Three.js</b>. Jde využít CSS 3D transformace.</p>
 
 <h3 id="priklad-css">Příklad – otáčející se karta</h3>
 
@@ -618,11 +610,11 @@ if (window.gltfDemoCleanup) {
 </tbody>
 </table>
 
-<p>V praxi to znamená, že <b>jeden interaktivní 3D prvek</b> na stránce může přenášet přibližně <b>3–11 MB dat</b> (optimalizovaný model 2–10 MB + Three.js ~600 KB). Při více modelech nebo větších texturních mapách se tato hodnota rychle násobí, což může být problém hlavně na mobilním připojení.</p>
+<p>V praxi to znamená, že <b>jeden interaktivní 3D prvek</b> na stránce může znamenat <b>jednotky až desítky MB</b>. Při více modelech nebo větších texturních mapách se tato hodnota rychle násobí, což může být problém hlavně na mobilním připojení.</p>
 
-<h3 id="optimalisace">Optimalizace 3D modelů</h3>
+<h3 id="optimalisace">Optimalisace 3D modelů</h3>
 
-<p>Pokud už musíte použít 3D model, optimalizujte ho:</p>
+<p>Pokud už musíte použít 3D model, optimalisujte ho:</p>
 
 <ul>
 <li>
@@ -638,7 +630,7 @@ if (window.gltfDemoCleanup) {
 </li>
 
 <li>
-  <p><b>Lazy loading</b> – načítejte model až když je potřeba (při scrollu nebo po kliknutí)</p>
+  <p><a href="/lazy-loading"><b>Lazy loading</b></a> – načítejte model až když je potřeba (při scrollu nebo po kliknutí)</p>
 </li>
 </ul>
 
@@ -683,7 +675,7 @@ if (!isWebGLAvailable()) {
 
 <h3 id="progressive-enhancement">Progressive enhancement</h3>
 
-<p>Vždy poskytněte <b>fallback</b> pro zařízení bez WebGL podpory:</p>
+<p>Podle situace se hodí použít <b>fallback</b> pro zařízení bez WebGL podpory:</p>
 
 <pre><code class="language-html">&lt;div id="model-container"&gt;
   &lt;!-- Fallback obrázek --&gt;
@@ -706,7 +698,7 @@ if (!isWebGLAvailable()) {
 </li>
 
 <li>
-  <p>Používejte <b>GLB/GLTF</b> formát – optimalizovaný pro web</p>
+  <p>Používejte <b>GLB/GLTF</b> formát – optimalisovaný pro web</p>
 </li>
 
 <li>
@@ -722,4 +714,4 @@ if (!isWebGLAvailable()) {
 </li>
 </ul>
 
-<p>3D objekty mohou výrazně oživit váš web, ale používejte je s rozvahou. Ne vždy je složitost ospravedlnitelná.</p>
+<p>3D objekty mohou výrazně oživit váš web, ale používejte je s rozvahou. Ne vždy je složitost a datová velikost ospravedlnitelná.</p>
