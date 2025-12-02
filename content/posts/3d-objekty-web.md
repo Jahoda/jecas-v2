@@ -261,7 +261,7 @@ if (window.threejsDemoCleanup) {
 
 <h3 id="gltf-glb">GLTF / GLB (doporučeno)</h3>
 
-<p><b>GLTF</b> (<i>GL Transmission Format</i>) a jeho binární varianta <b>GLB</b> jsou <b>standardem</b> pro 3D na webu.</p>
+<p><b>GLTF</b> (<i>Graphics Library Transmission Format</i>) a jeho binární varianta <b>GLB</b> jsou <b>standardem</b> pro 3D na webu.</p>
 
 <p><b>Výhody:</b></p>
 <ul>
