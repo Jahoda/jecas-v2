@@ -5,7 +5,7 @@ description: "Průvodce vkládáním 3D modelů na web pomocí Three.js. Které 
 date: "2025-12-01"
 last_modification: "2025-12-01"
 status: 1
-tags: ["javascript", "3d", "ai"]
+tags: ["javascript", "ai"]
 format: "html"
 ---
 
