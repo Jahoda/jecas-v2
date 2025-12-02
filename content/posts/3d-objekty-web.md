@@ -120,6 +120,7 @@ animate();</code></pre>
   position: relative;
   width: 100%;
   height: 400px;
+  overflow: hidden;
 }
 
 .threejs-demo-container canvas {
@@ -296,6 +297,7 @@ if (window.threejsDemoCleanup) {
   position: relative;
   width: 100%;
   height: 400px;
+  overflow: hidden;
 }
 
 .gltf-demo-container canvas {
