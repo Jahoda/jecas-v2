@@ -1,9 +1,14 @@
 <script lang="ts">
 	import Container from '$lib/container/Container.svelte';
+	import Newsletter from '$lib/newsletter/Newsletter.svelte';
 </script>
 
 <div class="bg-blue-light dark:bg-blue-light/30 relative py-8 text-white xl:py-16">
 	<Container>
+		<div class="mb-8">
+			<Newsletter />
+		</div>
+
 		<div class="flex flex-col items-center gap-16 md:flex-row">
 			<a aria-label="Je čas" href="/" class="flex">
 				<span
