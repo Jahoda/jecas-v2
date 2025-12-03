@@ -63,7 +63,7 @@
 
 	{#if message}
 		<div
-			class="mt-3 rounded-md p-3 text-sm {message.type === 'success'
+			class="mt-3 max-w-xl rounded-md p-3 text-sm {message.type === 'success'
 				? 'bg-green-500/20 text-green-100'
 				: 'bg-red-500/20 text-red-100'}"
 		>
