@@ -149,6 +149,33 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 .checklist li strong {
   transition: all 0.2s;
 }
+
+@media (prefers-color-scheme: dark) {
+  .checklist-progress {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  .checklist-group h3 {
+    color: #f3f4f6;
+    border-bottom-color: #374151;
+  }
+  .checklist li {
+    border-bottom-color: #374151;
+  }
+  .checklist li:hover {
+    background-color: #374151;
+  }
+  .checklist li:before {
+    border-color: #6b7280;
+    background: #1f2937;
+  }
+  .progress-bar {
+    background: #374151;
+  }
+  .progress-info {
+    color: #9ca3af;
+  }
+}
 </style>
 
 <h2 id="checklist-pred-smazanim-stareho-telefonu">Checklist – co udělat před smazáním starého telefonu</h2>
