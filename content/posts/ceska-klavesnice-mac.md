@@ -5,7 +5,7 @@ description: "Jak v macOS na běžné české klávesnici pohodlně programovat 
 date: "2023-04-11"
 last_modification: "2025-01-29"
 status: 1
-tags: ["napady", "produktivita"]
+tags: ["napady", "produktivita", "apple"]
 format: "html"
 ---
 

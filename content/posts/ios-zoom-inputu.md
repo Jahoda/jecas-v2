@@ -5,7 +5,7 @@ description: "Jak se vypořádat s automatickým přibližováním stránky u fo
 date: "2016-04-19"
 last_modification: "2016-05-30"
 status: 1
-tags: ["css", "responsive", "webove-prohlizece"]
+tags: ["css", "responsive", "webove-prohlizece", "apple"]
 format: "html"
 ---
 

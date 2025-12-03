@@ -5,7 +5,7 @@ description: "Shrnutí historie, rozdílů a testování Safari v praxi."
 date: "2025-09-11"
 last_modification: "2025-09-11"
 status: 1
-tags: ["webove-prohlizece", "testovani"]
+tags: ["webove-prohlizece", "testovani", "apple"]
 format: "html"
 ---
 
