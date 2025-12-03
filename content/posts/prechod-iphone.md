@@ -102,33 +102,39 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   cursor: pointer;
   transition: background-color 0.2s;
   user-select: none;
-  display: flex;
-  align-items: center;
   min-height: 44px;
+  line-height: 1.5;
 }
 .checklist li:hover {
   background-color: #f9fafb;
 }
 .checklist li:before {
-  content: "☐";
+  content: "";
   position: absolute;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 22px;
-  color: #6b7280;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  background: #fff;
   transition: all 0.2s;
-  line-height: 1;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .checklist li.checked:before {
-  content: "☑";
-  color: #34c759;
-  font-size: 22px;
+  background: #34c759;
+  border-color: #34c759;
+}
+.checklist li.checked:after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-60%) rotate(45deg);
+  width: 6px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
 }
 .checklist li.checked {
   opacity: 0.6;
@@ -170,7 +176,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 <div class="checklist-group">
   <h3>Banky a platby</h3>
   <ul class="checklist" data-group="banks">
-    <li><strong>Aktivovat všechny platební karty</strong> – Apple Pay karty znovu přidat v Wallet a otestovat platbu ještě doma</li>
+    <li><strong>Aktivovat všechny platební karty</strong> – Apple Pay karty znovu přidat v Wallet (ideálně otestovat platbu ještě doma)</li>
     <li><strong>Revolut</strong> – Nové přihlášení včetně selfie verifikace</li>
     <li><strong>Airbank</strong> – Nové přihlášení včetně selfie verifikace</li>
     <li><strong>Moneta</strong> – Propojení nového zařízení přes QR kód ze starého telefonu</li>
