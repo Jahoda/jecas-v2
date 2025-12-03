@@ -44,7 +44,7 @@
 <div class="rounded-lg bg-white/10 p-6 backdrop-blur-sm dark:bg-slate-800/30">
 	<h3 class="mb-2 text-xl font-semibold text-white">Novinky e-mailem</h3>
 	<p class="mb-4 text-sm text-white/80">
-		Nechte si zasílat novinky o moderním webdesignu přímo do e-mailu.
+		Když budu mít něco opravdu zajímavého, můžu vám to poslat e-mailem
 	</p>
 
 	<form onsubmit={handleSubmit} class="flex flex-col gap-3 sm:flex-row sm:max-w-xl">
