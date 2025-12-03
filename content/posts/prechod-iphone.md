@@ -23,17 +23,22 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 
 <style>
 .checklist-progress {
-  background: #f3f4f6;
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 16px;
+  padding: 12px 16px;
   margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 100;
 }
 .progress-bar {
   background: #e5e7eb;
-  height: 24px;
-  border-radius: 12px;
+  height: 20px;
+  border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .progress-fill {
   background: linear-gradient(90deg, #34c759, #30d158);
@@ -44,12 +49,27 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   justify-content: center;
   color: white;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 11px;
 }
 .progress-text {
   text-align: center;
   color: #6b7280;
-  font-size: 14px;
+  font-size: 13px;
+}
+.reset-button {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 4px 12px;
+  background: #ef4444;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  border: none;
+  transition: background 0.2s;
+}
+.reset-button:hover {
+  background: #dc2626;
 }
 .checklist {
   list-style: none;
@@ -63,6 +83,9 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   cursor: pointer;
   transition: background-color 0.2s;
   user-select: none;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
 }
 .checklist li:hover {
   background-color: #f9fafb;
@@ -71,9 +94,12 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   content: "☐";
   position: absolute;
   left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 24px;
   color: #6b7280;
   transition: all 0.2s;
+  line-height: 1;
 }
 .checklist li.checked:before {
   content: "☑";
@@ -90,88 +116,51 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   color: #1d4ed8;
   transition: all 0.2s;
 }
-.reset-button {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 16px;
-  background: #ef4444;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  border: none;
-  transition: background 0.2s;
-}
-.reset-button:hover {
-  background: #dc2626;
-}
 </style>
 
-<h2>Checklist – věci na které se zapomíná</h2>
+<h2>Checklist – co udělat před smazáním starého telefonu</h2>
 
-<p><em>Základní kroky jako převod dat a aktualizace systému vás iOS provede automaticky. Toto jsou věci, které <strong>musíte udělat ručně</strong> a na které se typicky zapomíná:</em></p>
+<p><em>Tyto věci <strong>vyžadují starý telefon</strong> nebo jsou kritické pro okamžité fungování. Udělejte je, než smažete starý iPhone:</em></p>
 
 <div class="checklist-progress">
   <div class="progress-bar">
     <div class="progress-fill" id="progressFill" style="width: 0%">0%</div>
   </div>
   <div class="progress-text">
-    <strong id="progressText">0 z 25</strong> splněno
-    <span id="completeMessage" style="display: none; color: #34c759; font-weight: bold;"> – Skvělá práce! 🎉</span>
+    <strong id="progressText">0 z 14</strong> splněno
+    <span id="completeMessage" style="display: none; color: #34c759; font-weight: bold;"> 🎉</span>
+    <button class="reset-button" onclick="resetChecklist()">Reset</button>
   </div>
-  <button class="reset-button" onclick="resetChecklist()">Resetovat checklist</button>
 </div>
 
 <ul class="checklist" id="iPhoneChecklist">
-<li><strong>Převést eSIM</strong> – Náročnost závisí na operátorovi (někdy stačí pár kliknutí v Nastavení → Mobilní síť, jindy kontakt s podporou)</li>
+<li><strong>Převést eSIM</strong> – U některých operátorů potřebujete starý telefon pro převod</li>
 
-<li><strong>Aktivovat všechny platební karty</strong> – Apple Pay karty je nutné znovu přidat a aktivovat v Wallet. Otestujte platbu ještě doma!</li>
+<li><strong>Aktivovat všechny platební karty</strong> – Apple Pay karty je nutné znovu přidat. Otestujte platbu ještě doma!</li>
 
-<li><strong>Nastavit akční tlačítko</strong> – Na iPhone 15 Pro a novějších nastavte funkci Action Button</li>
+<li><strong>Převést zprávy v Signálu</strong> – <em>Vyžaduje obě zařízení zapnutá!</em> Proces běží desítky minut</li>
 
-<li><strong>Nastavit tlačítko fotoaparátu</strong> – Na iPhone 16 a novějších nastavte Camera Control a jeho gesta</li>
+<li><strong>Převést zprávy ve WhatsApp</strong> – Šifrovací klíč a jméno profilu, nutné obě zařízení</li>
 
-<li><strong>Nastavit styl fotoaparátu</strong> – Vyberte si preferovaný fotografický styl pro zpracování fotek</li>
-
-<li><strong>Odstranit nežádoucí aplikace</strong> – Apple automaticky přidá na plochu Keynote, iMovie, Apple Store, Pages</li>
-
-<li><strong>Přihlásit se znovu do Outlook</strong> – Pracovní email se nepřevede automaticky</li>
-
-<li><strong>Přihlásit se do v0</strong> (pokud používáte) – Vývojářské nástroje vyžadují nové přihlášení</li>
-
-<li><strong>Převést zprávy v Signálu</strong> – Proces běží desítky minut, nutné mít obě zařízení zapnutá a připojená</li>
-
-<li><strong>Převést zprávy ve WhatsApp</strong> – Najít šifrovací klíč a vyplnit znovu jméno profilu</li>
-
-<li><strong>Přihlásit do Slacku</strong> – Nové přihlášení do všech workspaces</li>
-
-<li><strong>Přihlásit se do všech Google účtů</strong> – Gmail, Drive, Photos vyžadují nové přihlášení</li>
-
-<li><strong>Odklikat hlášky na ostatních zařízeních</strong> – Na počítači, tabletu atd. se objeví „K vašemu účtu bylo přidáno zařízení"</li>
-
-<li><strong>Obnovit Telegram</strong> – Přes aplikaci v původním zařízení</li>
+<li><strong>Obnovit Telegram</strong> – Převod přes aplikaci v původním zařízení</li>
 
 <li><strong>Revolut</strong> – Nové přihlášení <em>včetně selfie verifikace</em></li>
 
 <li><strong>Airbank</strong> – Nové přihlášení <em>včetně selfie verifikace</em></li>
 
-<li><strong>Moneta</strong> – Propojení nového zařízení přes staré pomocí QR kódu</li>
+<li><strong>Moneta</strong> – <em>QR kód ze starého telefonu!</em> Propojení přes staré zařízení</li>
 
-<li><strong>Komerční banka</strong> – Připojení nového zařízení přes staré, vytvoření QR kódu, přepis kódu a potvrzení přes SMS</li>
+<li><strong>Komerční banka</strong> – <em>QR kód ze starého telefonu,</em> přepis kódu a SMS</li>
 
-<li><strong>Raiffeisenbank</strong> – Připojení nového zařízení přes staré, vytvoření QR kódu, zadání PINu, nutno zapnout pro ověřování plateb</li>
+<li><strong>Raiffeisenbank</strong> – <em>QR kód ze starého telefonu,</em> PIN, zapnout ověřování</li>
 
-<li><strong>SkipPay</strong> – Přihlášení přes email a heslo, automaticky přepíše zařízení pro potvrzování plateb</li>
-
-<li><strong>Oura Ring</strong> – Nové připojení prstenu, nutno vypnout Bluetooth na starém telefonu, aby šel prsten spárovat</li>
+<li><strong>Oura Ring</strong> – <em>Vypnout Bluetooth na starém!</em> Teprve pak spárovat s novým</li>
 
 <li><strong>eDoklady</strong> – Nové přihlášení a zadání PINu pro občanský průkaz</li>
 
-<li><strong>Mobilní klíč eGovernmentu</strong> – Nutné nainstalovat a aktivovat znovu</li>
+<li><strong>Mobilní klíč eGovernmentu</strong> – Nainstalovat a aktivovat znovu</li>
 
-<li><strong>Muun</strong> (pokud používáte Bitcoin) – Peněženka vyžaduje nové přihlášení přes email</li>
-
-<li><strong>MojeID</strong> – <em>Nejsložitější!</em> Nutno se přihlásit na web, odebrat stávající klíč a přidat nový, plus se ověřit přes datovou schránku</li>
+<li><strong>MojeID</strong> – <em>Nejsložitější!</em> Web, odebrat klíč, přidat nový, ověřit přes datovou schránku</li>
 </ul>
 
 <script>
@@ -264,27 +253,27 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 <h2>💡 Důležité tipy</h2>
 
 <p>
-<strong>Nespěchejte s vymazáním starého telefonu</strong> – Ponechte si starý iPhone funkční ještě několik dní. Budete ho potřebovat pro převod messengerů, spárování bank a určitě si vzpomenete na další aplikaci.
+<strong>Nespěchejte s vymazáním starého telefonu</strong> – <em>Minimálně týden ponechte starý iPhone funkční.</em> Budete ho potřebovat pro QR kódy z bank, převod messengerů a určitě si vzpomenete na další aplikaci.
 </p>
 
 <p>
-<strong>Vyhraďte si čas</strong> – Počítejte s tím, že celý proces zabere 2-4 hodiny čistého času, během kterých budete potřebovat obě zařízení funkční a nabitá.
+<strong>Vyhraďte si klidné odpoledne</strong> – Celý proces zabere 2-4 hodiny čistého času. Budete potřebovat obě zařízení nabitá, funkční Wi-Fi a často i počítač pro některé webové služby.
 </p>
 
 <p>
-<strong>Připravte si hesla</strong> – Pro některé služby budete potřebovat znovu zadat přihlašovací údaje. Ujistěte se, že máte k heslům přístup (password manager nebo poznámky).
+<strong>Progress si ukládáme automaticky</strong> – Checklist si pamatuje, co už máte hotové. Můžete článek kdykoliv zavřít a vrátit se k němu později.
 </p>
 
 <h2>Závěr</h2>
 
 <p>
-Migrace na nový iPhone <strong>není tak bezproblémová, jak by se mohlo zdát</strong>. Apple sice odvádí skvělou práci s automatickým přenosem dat, ale bezpečnostní prvky a autentizační mechanismy vyžadují ruční zásah prakticky u každé důležité aplikace.
+Většinu věcí Apple převede automaticky, ale <strong>tyto kritické kroky vyžadují starý telefon</strong> – hlavně bankovní aplikace s QR kódy a messengery s end-to-end šifrováním.
 </p>
 
 <p>
-Tento checklist vznikl na základě reálné zkušenosti s přechodem mezi iPhony a obsahuje všechny neočekávané kroky, na které je potřeba myslet. <strong>Vytiskněte si ho nebo si ho uložte do záložek</strong> – při dalším upgradu za pár let si většinu těchto věcí nebudete pamatovat.
+<strong>Klíčové je nepospíchat se smazáním starého iPhonu.</strong> Týden ho nechte zapnutý a nabitý. Uvidíte, že si na další aplikaci, kterou je potřeba nastavit, vzpomenete vždycky až když ji potřebujete použít.
 </p>
 
 <p>
-Samotné obtíže s migrací je dobré zohlednit i při zvažování upgradu – počítejte s tím, že kromě ceny telefonu <strong>investujete i několik hodin práce</strong> s nastavováním všech aplikací a služeb.
+Tento checklist si <strong>uložte do záložek</strong> – při dalším upgradu za pár let budete rádi, že ho máte. Progress se ukládá automaticky, takže se k němu můžete kdykoliv vrátit.
 </p>
