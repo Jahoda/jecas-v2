@@ -149,7 +149,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 }
 </style>
 
-<h2>Checklist – co udělat před smazáním starého telefonu</h2>
+<h2 id="checklist-pred-smazanim-stareho-telefonu">Checklist – co udělat před smazáním starého telefonu</h2>
 
 <p>Tyto věci <strong>vyžadují starý telefon</strong> nebo jsou kritické pro okamžité fungování. Udělejte je, než smažete starý iPhone:</p>
 
@@ -165,7 +165,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 </div>
 
 <div class="checklist-group">
-  <h3>Messengery</h3>
+  <h3 id="messengery">Messengery</h3>
   <ul class="checklist" data-group="messengers">
     <li><strong>Převést zprávy v Signálu</strong> – Vyžaduje obě zařízení zapnutá, proces běží desítky minut</li>
     <li><strong>Převést zprávy ve WhatsApp</strong> – Najít šifrovací klíč a vyplnit znovu jméno profilu, nutné obě zařízení</li>
@@ -174,7 +174,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 </div>
 
 <div class="checklist-group">
-  <h3>Banky a platby</h3>
+  <h3 id="banky-a-platby">Banky a platby</h3>
   <ul class="checklist" data-group="banks">
     <li><strong>Aktivovat všechny platební karty</strong> – Apple Pay karty znovu přidat v Wallet (ideálně otestovat platbu ještě doma)</li>
     <li><strong>Revolut</strong> – Nové přihlášení včetně selfie verifikace</li>
@@ -186,7 +186,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 </div>
 
 <div class="checklist-group">
-  <h3>eGovernment</h3>
+  <h3 id="egovernment">eGovernment</h3>
   <ul class="checklist" data-group="egov">
     <li><strong>eDoklady</strong> – Nové přihlášení a zadání PINu pro občanský průkaz</li>
     <li><strong>Mobilní klíč eGovernmentu</strong> – Nainstalovat a aktivovat znovu</li>
@@ -195,7 +195,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 </div>
 
 <div class="checklist-group">
-  <h3>Ostatní</h3>
+  <h3 id="ostatni">Ostatní</h3>
   <ul class="checklist" data-group="other">
     <li><strong>Převést eSIM</strong> – U některých operátorů potřebujete starý telefon pro převod</li>
     <li><strong>Oura Ring</strong> – Vypnout Bluetooth na starém telefonu, teprve pak spárovat s novým</li>
@@ -292,7 +292,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 })();
 </script>
 
-<h2>Co je ještě potřeba udělat</h2>
+<h2 id="co-je-jeste-potreba-udelat">Co je ještě potřeba udělat</h2>
 
 <p>Tyto věci <strong>nevyžadují starý telefon</strong> a můžete je udělat kdykoliv po migraci. Jen je potřeba počítat s tím, že přechod na nový iPhone bude znamenat ještě další úkony:</p>
 
@@ -312,7 +312,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 
 <p>Pokud nepoužíváte správce hesel, pravděpodobně nějaký čas zabere resetování zapomenutých hesel.</p>
 
-<h2>Závěr</h2>
+<h2 id="zaver">Závěr</h2>
 
 <p>
 <strong>Nespěchejte s vymazáním starého telefonu</strong> – Minimálně týden ponechte starý iPhone funkční. Možná ho budete potřebovat pro QR kódy z bank, převod messengerů a dalších aplikací, pokud na něco zapomenete.
