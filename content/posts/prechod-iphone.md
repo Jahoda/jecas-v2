@@ -147,7 +147,6 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   color: #6b7280;
 }
 .checklist li strong {
-  color: #1d4ed8;
   transition: all 0.2s;
 }
 </style>
