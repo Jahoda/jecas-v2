@@ -292,52 +292,35 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 })();
 </script>
 
-<h2>Další věci, které je dobré udělat</h2>
+<h2>Co je ještě potřeba udělat</h2>
 
-<p>Tyto věci <strong>nevyžadují starý telefon</strong> a můžete je udělat kdykoliv po migraci. Není to tak kritické, ale vyplatí se to zařídit v prvních dnech:</p>
+<p>Tyto věci <strong>nevyžadují starý telefon</strong> a můžete je udělat kdykoliv po migraci. Jen je potřeba počítat s tím, že přechod na nový iPhone bude znamenat ještě další úkony:</p>
 
-<h3>Nastavení nového iPhonu</h3>
-<ul>
+<ol>
 <li><strong>Nastavit akční tlačítko</strong> (iPhone 15 Pro a novější) – Vyberte si funkci pro Action Button podle vašich preferencí</li>
 <li><strong>Nastavit Camera Control</strong> (iPhone 16 a novější) – Nakonfigurujte tlačítko fotoaparátu a jeho gesta</li>
 <li><strong>Nastavit fotografické styly</strong> – Vyberte si preferovaný styl zpracování fotek</li>
 <li><strong>Odstranit nežádoucí aplikace</strong> – Apple automaticky přidá na plochu Keynote, iMovie, Apple Store, Pages</li>
-</ul>
-
-<h3>Pracovní účty a aplikace</h3>
-<ul>
 <li><strong>Přihlásit se do Outlook</strong> – Pracovní email se nepřevede automaticky</li>
 <li><strong>Přihlásit se do Slacku</strong> – Nové přihlášení do všech workspaces</li>
 <li><strong>Přihlásit se do Google účtů</strong> – Gmail, Drive, Photos vyžadují nové přihlášení</li>
 <li><strong>Vývojářské nástroje</strong> (v0, GitHub apod.) – Většina vyžaduje nové přihlášení</li>
-</ul>
-
-<h3>Další finanční služby</h3>
-<ul>
 <li><strong>SkipPay</strong> – Přihlášení přes email a heslo, automaticky přepíše zařízení pro potvrzování plateb</li>
 <li><strong>Krypto peněženky</strong> (např. Muun) – Nové přihlášení, seed fráze, verifikace</li>
-</ul>
-
-<h3>Oznámení na dalších zařízeních</h3>
-<ul>
 <li><strong>Odklikat bezpečnostní hlášky</strong> – Na počítači, tabletu atd. se objeví notifikace "K vašemu účtu bylo přidáno zařízení"</li>
-</ul>
+</ol>
 
-<h2>Důležité tipy</h2>
+<p>Pokud nepoužíváte správce hesel, pravděpodobně nějaký čas zabere resetování zapomenutých hesel.</p>
+
+<h2>Závěr</h2>
 
 <p>
-<strong>Nespěchejte s vymazáním starého telefonu</strong> – Minimálně týden ponechte starý iPhone funkční. Budete ho potřebovat pro QR kódy z bank, převod messengerů a určitě si vzpomenete na další aplikaci.
+<strong>Nespěchejte s vymazáním starého telefonu</strong> – Minimálně týden ponechte starý iPhone funkční. Možná ho budete potřebovat pro QR kódy z bank, převod messengerů a dalších aplikací, pokud na něco zapomenete.
 </p>
 
 <p>
 <strong>Vyhraďte si klidné odpoledne</strong> – Celý proces zabere 2-4 hodiny čistého času. Budete potřebovat obě zařízení nabitá, funkční Wi-Fi a často i počítač pro některé webové služby.
 </p>
-
-<p>
-<strong>Progress si ukládáme automaticky</strong> – Checklist si pamatuje, co už máte hotové. Můžete článek kdykoliv zavřít a vrátit se k němu později.
-</p>
-
-<h2>Závěr</h2>
 
 <p>
 Většinu věcí Apple převede automaticky, ale <strong>tyto kritické kroky vyžadují starý telefon</strong> – hlavně bankovní aplikace s QR kódy a messengery s end-to-end šifrováním.
@@ -348,5 +331,5 @@ Většinu věcí Apple převede automaticky, ale <strong>tyto kritické kroky vy
 </p>
 
 <p>
-Tento checklist si <strong>uložte do záložek</strong> – při dalším upgradu za pár let budete rádi, že ho máte. Progress se ukládá automaticky, takže se k němu můžete kdykoliv vrátit.
+Chybí vám něco v checklistu? Napište mi prosím do komentářů a doplním to tam.
 </p>
