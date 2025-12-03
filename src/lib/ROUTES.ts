@@ -13,6 +13,7 @@ const PAGES = {
   "/admin": `/admin`,
   "/admin/login": `/admin/login`,
   "/admin/logout": `/admin/logout`,
+  "/admin/newsletter": `/admin/newsletter`,
   "/[slug]": (params: { slug: (string | number) }) => {
     return `/${params['slug']}`
   },
@@ -30,6 +31,7 @@ const SERVERS = {
   "GET /api/images/[slug]": (params: { slug: (string | number) }) => {
     return `/api/images/${params['slug']}`
   },
+  "POST /api/newsletter/subscribe": `/api/newsletter/subscribe`,
   "GET /api/og": `/api/og`,
   "POST /api/upload": `/api/upload`,
   "GET /rss": `/rss`,
@@ -156,8 +158,8 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/admin': never, '/admin/login': never, '/admin/logout': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/prevod-svg': never, '/nastroje/vypocet-procent-sloupcu': never }
-  SERVERS: { 'GET /algolia': never, 'GET /api/images/[slug]': 'slug', 'GET /api/og': never, 'POST /api/upload': never, 'GET /rss': never, 'GET /sitemap.xml': never }
+  PAGES: { '/': never, '/admin': never, '/admin/login': never, '/admin/logout': never, '/admin/newsletter': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/prevod-svg': never, '/nastroje/vypocet-procent-sloupcu': never }
+  SERVERS: { 'GET /algolia': never, 'GET /api/images/[slug]': 'slug', 'POST /api/newsletter/subscribe': never, 'GET /api/og': never, 'POST /api/upload': never, 'GET /rss': never, 'GET /sitemap.xml': never }
   ACTIONS: { 'default /admin/login': never, 'default /admin/logout': never }
   LINKS: Record<string, never>
   Params: { 'slug': never }
