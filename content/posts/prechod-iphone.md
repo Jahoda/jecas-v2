@@ -206,6 +206,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   </div>
 </div>
 
+<div class="live hidden">
 <script>
 (function() {
   const STORAGE_KEY = 'iphone-migration-checklist';
@@ -309,12 +310,17 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   updateProgress();
 })();
 </script>
+</div>
 
 <h2 id="co-je-jeste-potreba-udelat">Co je ještě potřeba udělat</h2>
 
 <p>Tyto věci <strong>nevyžadují starý telefon</strong> a můžete je udělat kdykoliv po migraci. Jen je potřeba počítat s tím, že přechod na nový iPhone bude znamenat ještě další úkony:</p>
 
 <ol>
+<li>Naskenovat kód a spustit převod</li>
+<li>Aktualisovat nový telefon (+ restart)</li>
+<li>Počkat cca hodinu na přenost dat</li>
+<li>Projít intro nového systému</li>
 <li><strong>Nastavit akční tlačítko</strong> (iPhone 15 Pro a novější) – Vyberte si funkci pro Action Button podle vašich preferencí</li>
 <li><strong>Nastavit Camera Control</strong> (iPhone 16 a novější) – Nakonfigurujte tlačítko fotoaparátu a jeho gesta</li>
 <li><strong>Nastavit fotografické styly</strong> – Vyberte si preferovaný styl zpracování fotek</li>
@@ -325,7 +331,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 <li><strong>Vývojářské nástroje</strong> (v0, GitHub apod.) – Většina vyžaduje nové přihlášení</li>
 <li><strong>SkipPay</strong> – Přihlášení přes email a heslo, automaticky přepíše zařízení pro potvrzování plateb</li>
 <li><strong>Krypto peněženky</strong> (např. Muun) – Nové přihlášení, seed fráze, verifikace</li>
-<li><strong>Odklikat bezpečnostní hlášky</strong> – Na počítači, tabletu atd. se objeví notifikace "K vašemu účtu bylo přidáno zařízení"</li>
+<li><strong>Odklikat bezpečnostní hlášky</strong> – Na počítači, tabletu atd. se objeví notifikace „K vašemu účtu bylo přidáno zařízení“</li>
 </ol>
 
 <p>Pokud nepoužíváte správce hesel, pravděpodobně nějaký čas zabere resetování zapomenutých hesel.</p>
@@ -337,15 +343,13 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 </p>
 
 <p>
-<strong>Vyhraďte si klidné odpoledne</strong> – Celý proces zabere 2-4 hodiny čistého času. Budete potřebovat obě zařízení nabitá, funkční Wi-Fi a často i počítač pro některé webové služby.
+<strong>Vyhraďte si klidné odpoledne</strong> – Celý proces zabere 2–4 hodiny čistého času. Budete potřebovat obě zařízení nabitá, funkční Wi-Fi a často i počítač pro některé webové služby.
 </p>
+
+<p>Je dost možné, že vás proces převodu bude otravovat a rozčilovat.</p>
 
 <p>
 Většinu věcí Apple převede automaticky, ale <strong>tyto kritické kroky vyžadují starý telefon</strong> – hlavně bankovní aplikace s QR kódy a messengery s end-to-end šifrováním.
-</p>
-
-<p>
-<strong>Klíčové je nepospíchat se smazáním starého iPhonu.</strong> Týden ho nechte zapnutý a nabitý. Uvidíte, že si na další aplikaci, kterou je potřeba nastavit, vzpomenete vždycky až když ji potřebujete použít.
 </p>
 
 <p>
