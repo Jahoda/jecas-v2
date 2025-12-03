@@ -22,6 +22,9 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 </p>
 
 <style>
+.checklist-container {
+  position: relative;
+}
 .checklist-progress {
   position: sticky;
   top: 0;
@@ -153,53 +156,55 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 
 <p>Tyto věci <strong>vyžadují starý telefon</strong> nebo jsou kritické pro okamžité fungování. Udělejte je, než smažete starý iPhone:</p>
 
-<div class="checklist-progress">
-  <div class="progress-bar">
-    <div class="progress-fill" id="progressFill" style="width: 0%">0%</div>
+<div class="checklist-container">
+  <div class="checklist-progress">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width: 0%">0%</div>
+    </div>
+    <div class="progress-info">
+      <strong id="progressText">0/14</strong>
+      <span id="completeMessage" style="display: none; color: #34c759; font-weight: bold;">✓ Hotovo</span>
+    </div>
+    <button class="reset-button" onclick="resetChecklist()">Reset</button>
   </div>
-  <div class="progress-info">
-    <strong id="progressText">0/14</strong>
-    <span id="completeMessage" style="display: none; color: #34c759; font-weight: bold;">✓ Hotovo</span>
+
+  <div class="checklist-group">
+    <h3 id="messengery">Messengery</h3>
+    <ul class="checklist" data-group="messengers">
+      <li><strong>Převést zprávy v Signálu</strong> – Vyžaduje obě zařízení zapnutá, proces běží desítky minut</li>
+      <li><strong>Převést zprávy ve WhatsApp</strong> – Najít šifrovací klíč a vyplnit znovu jméno profilu, nutné obě zařízení</li>
+      <li><strong>Obnovit Telegram</strong> – Převod přes aplikaci v původním zařízení</li>
+    </ul>
   </div>
-  <button class="reset-button" onclick="resetChecklist()">Reset</button>
-</div>
 
-<div class="checklist-group">
-  <h3 id="messengery">Messengery</h3>
-  <ul class="checklist" data-group="messengers">
-    <li><strong>Převést zprávy v Signálu</strong> – Vyžaduje obě zařízení zapnutá, proces běží desítky minut</li>
-    <li><strong>Převést zprávy ve WhatsApp</strong> – Najít šifrovací klíč a vyplnit znovu jméno profilu, nutné obě zařízení</li>
-    <li><strong>Obnovit Telegram</strong> – Převod přes aplikaci v původním zařízení</li>
-  </ul>
-</div>
+  <div class="checklist-group">
+    <h3 id="banky-a-platby">Banky a platby</h3>
+    <ul class="checklist" data-group="banks">
+      <li><strong>Aktivovat všechny platební karty</strong> – Apple Pay karty znovu přidat v Wallet (ideálně otestovat platbu ještě doma)</li>
+      <li><strong>Revolut</strong> – Nové přihlášení včetně selfie verifikace</li>
+      <li><strong>Airbank</strong> – Nové přihlášení včetně selfie verifikace</li>
+      <li><strong>Moneta</strong> – Propojení nového zařízení přes QR kód ze starého telefonu</li>
+      <li><strong>Komerční banka</strong> – Připojení přes QR kód ze starého, přepis kódu a potvrzení přes SMS</li>
+      <li><strong>Raiffeisenbank</strong> – Připojení přes QR kód ze starého, zadání PINu, zapnout ověřování plateb</li>
+    </ul>
+  </div>
 
-<div class="checklist-group">
-  <h3 id="banky-a-platby">Banky a platby</h3>
-  <ul class="checklist" data-group="banks">
-    <li><strong>Aktivovat všechny platební karty</strong> – Apple Pay karty znovu přidat v Wallet (ideálně otestovat platbu ještě doma)</li>
-    <li><strong>Revolut</strong> – Nové přihlášení včetně selfie verifikace</li>
-    <li><strong>Airbank</strong> – Nové přihlášení včetně selfie verifikace</li>
-    <li><strong>Moneta</strong> – Propojení nového zařízení přes QR kód ze starého telefonu</li>
-    <li><strong>Komerční banka</strong> – Připojení přes QR kód ze starého, přepis kódu a potvrzení přes SMS</li>
-    <li><strong>Raiffeisenbank</strong> – Připojení přes QR kód ze starého, zadání PINu, zapnout ověřování plateb</li>
-  </ul>
-</div>
+  <div class="checklist-group">
+    <h3 id="egovernment">eGovernment</h3>
+    <ul class="checklist" data-group="egov">
+      <li><strong>eDoklady</strong> – Nové přihlášení a zadání PINu pro občanský průkaz</li>
+      <li><strong>Mobilní klíč eGovernmentu</strong> – Nainstalovat a aktivovat znovu</li>
+      <li><strong>MojeID</strong> – Nejsložitější: přihlásit na web, odebrat stávající klíč, přidat nový a ověřit přes datovou schránku</li>
+    </ul>
+  </div>
 
-<div class="checklist-group">
-  <h3 id="egovernment">eGovernment</h3>
-  <ul class="checklist" data-group="egov">
-    <li><strong>eDoklady</strong> – Nové přihlášení a zadání PINu pro občanský průkaz</li>
-    <li><strong>Mobilní klíč eGovernmentu</strong> – Nainstalovat a aktivovat znovu</li>
-    <li><strong>MojeID</strong> – Nejsložitější: přihlásit na web, odebrat stávající klíč, přidat nový a ověřit přes datovou schránku</li>
-  </ul>
-</div>
-
-<div class="checklist-group">
-  <h3 id="ostatni">Ostatní</h3>
-  <ul class="checklist" data-group="other">
-    <li><strong>Převést eSIM</strong> – U některých operátorů potřebujete starý telefon pro převod</li>
-    <li><strong>Oura Ring</strong> – Vypnout Bluetooth na starém telefonu, teprve pak spárovat s novým</li>
-  </ul>
+  <div class="checklist-group">
+    <h3 id="ostatni">Ostatní</h3>
+    <ul class="checklist" data-group="other">
+      <li><strong>Převést eSIM</strong> – U některých operátorů potřebujete starý telefon pro převod</li>
+      <li><strong>Oura Ring</strong> – Vypnout Bluetooth na starém telefonu, teprve pak spárovat s novým</li>
+    </ul>
+  </div>
 </div>
 
 <script>
@@ -208,6 +213,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   const progressFill = document.getElementById('progressFill');
   const progressText = document.getElementById('progressText');
   const completeMessage = document.getElementById('completeMessage');
+  const resetButton = document.querySelector('.reset-button');
 
   // Get all checklist items from all groups
   const allChecklists = document.querySelectorAll('.checklist');
@@ -243,8 +249,21 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
     const percentage = Math.round((checkedCount / totalItems) * 100);
 
     progressFill.style.width = percentage + '%';
-    progressFill.textContent = percentage + '%';
+    
+    if (checkedCount === 0) {
+      progressFill.textContent = '';
+    } else {
+      progressFill.textContent = percentage + '%';
+    }
+    
     progressText.innerHTML = `<strong>${checkedCount}/${totalItems}</strong>`;
+
+    // Show/hide reset button
+    if (checkedCount === 0) {
+      resetButton.style.visibility = 'hidden';
+    } else {
+      resetButton.style.visibility = '';
+    }
 
     // Show completion message
     if (checkedCount === totalItems && totalItems > 0) {
