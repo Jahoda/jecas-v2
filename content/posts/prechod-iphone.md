@@ -286,6 +286,37 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 })();
 </script>
 
+<h2>Další věci, které je dobré udělat</h2>
+
+<p>Tyto věci <strong>nevyžadují starý telefon</strong> a můžete je udělat kdykoliv po migraci. Není to tak kritické, ale vyplatí se to zařídit v prvních dnech:</p>
+
+<h3>Nastavení nového iPhonu</h3>
+<ul>
+<li><strong>Nastavit akční tlačítko</strong> (iPhone 15 Pro a novější) – Vyberte si funkci pro Action Button podle vašich preferencí</li>
+<li><strong>Nastavit Camera Control</strong> (iPhone 16 a novější) – Nakonfigurujte tlačítko fotoaparátu a jeho gesta</li>
+<li><strong>Nastavit fotografické styly</strong> – Vyberte si preferovaný styl zpracování fotek</li>
+<li><strong>Odstranit nežádoucí aplikace</strong> – Apple automaticky přidá na plochu Keynote, iMovie, Apple Store, Pages</li>
+</ul>
+
+<h3>Pracovní účty a aplikace</h3>
+<ul>
+<li><strong>Přihlásit se do Outlook</strong> – Pracovní email se nepřevede automaticky</li>
+<li><strong>Přihlásit se do Slacku</strong> – Nové přihlášení do všech workspaces</li>
+<li><strong>Přihlásit se do Google účtů</strong> – Gmail, Drive, Photos vyžadují nové přihlášení</li>
+<li><strong>Vývojářské nástroje</strong> (v0, GitHub apod.) – Většina vyžaduje nové přihlášení</li>
+</ul>
+
+<h3>Další finanční služby</h3>
+<ul>
+<li><strong>SkipPay</strong> – Přihlášení přes email a heslo, automaticky přepíše zařízení pro potvrzování plateb</li>
+<li><strong>Krypto peněženky</strong> (např. Muun) – Nové přihlášení, seed fráze, verifikace</li>
+</ul>
+
+<h3>Oznámení na dalších zařízeních</h3>
+<ul>
+<li><strong>Odklikat bezpečnostní hlášky</strong> – Na počítači, tabletu atd. se objeví notifikace "K vašemu účtu bylo přidáno zařízení"</li>
+</ul>
+
 <h2>Důležité tipy</h2>
 
 <p>
