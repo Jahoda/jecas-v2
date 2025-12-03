@@ -1,21 +1,21 @@
-import { getConnection } from '$lib/server/db';
+import { supabase } from '$lib/server/supabase';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
-	const connection = await getConnection();
+	const { data: subscribers, error } = await supabase
+		.from('newsletter_subscribers')
+		.select('email, subscribed_at, status')
+		.eq('status', 'active')
+		.order('subscribed_at', { ascending: false });
 
-	const [subscribers] = await connection.execute(`
-		SELECT email, subscribed_at, status
-		FROM newsletter_subscribers
-		WHERE status = 'active'
-		ORDER BY subscribed_at DESC
-	`);
+	if (error) {
+		console.error('Failed to load subscribers:', error);
+		return {
+			subscribers: []
+		};
+	}
 
 	return {
-		subscribers: subscribers as Array<{
-			email: string;
-			subscribed_at: string;
-			status: string;
-		}>
+		subscribers: subscribers || []
 	};
 };

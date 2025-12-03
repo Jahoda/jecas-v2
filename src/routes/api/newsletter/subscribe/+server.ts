@@ -1,6 +1,6 @@
 import { json, error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { getConnection } from '$lib/server/db';
+import { supabase } from '$lib/server/supabase';
 
 export const POST: RequestHandler = async ({ request }) => {
 	try {
@@ -16,23 +16,34 @@ export const POST: RequestHandler = async ({ request }) => {
 			throw error(400, 'Neplatný formát e-mailu');
 		}
 
-		const connection = await getConnection();
-
 		// Check if email already exists
-		const [existing] = await connection.execute(
-			'SELECT id FROM newsletter_subscribers WHERE email = ?',
-			[email]
-		);
+		const { data: existing, error: checkError } = await supabase
+			.from('newsletter_subscribers')
+			.select('id')
+			.eq('email', email)
+			.maybeSingle();
 
-		if (Array.isArray(existing) && existing.length > 0) {
+		if (checkError) {
+			console.error('Database check error:', checkError);
+			throw error(500, 'Nepodařilo se ověřit e-mail v databázi');
+		}
+
+		if (existing) {
 			throw error(409, 'Tento e-mail je již přihlášen k odběru novinek');
 		}
 
 		// Insert new subscriber
-		await connection.execute(
-			'INSERT INTO newsletter_subscribers (email, subscribed_at, status) VALUES (?, NOW(), ?)',
-			[email, 'active']
-		);
+		const { error: insertError } = await supabase
+			.from('newsletter_subscribers')
+			.insert({
+				email,
+				status: 'active'
+			});
+
+		if (insertError) {
+			console.error('Database insert error:', insertError);
+			throw error(500, 'Nepodařilo se přihlásit k odběru novinek');
+		}
 
 		return json({
 			success: true,
