@@ -47,7 +47,7 @@
 		Nechte si zasílat novinky o moderním webdesignu přímo do e-mailu.
 	</p>
 
-	<form onsubmit={handleSubmit} class="flex flex-col gap-3 sm:flex-row">
+	<form onsubmit={handleSubmit} class="flex flex-col gap-3 sm:flex-row sm:max-w-xl">
 		<input
 			type="email"
 			bind:value={email}
