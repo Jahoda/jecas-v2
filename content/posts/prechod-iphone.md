@@ -115,14 +115,20 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 24px;
+  font-size: 22px;
   color: #6b7280;
   transition: all 0.2s;
   line-height: 1;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .checklist li.checked:before {
   content: "☑";
   color: #34c759;
+  font-size: 22px;
 }
 .checklist li.checked {
   opacity: 0.6;
@@ -147,46 +153,46 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   </div>
   <div class="progress-info">
     <strong id="progressText">0/14</strong>
-    <span id="completeMessage" style="display: none; color: #34c759; font-weight: bold;">🎉</span>
+    <span id="completeMessage" style="display: none; color: #34c759; font-weight: bold;">✓ Hotovo</span>
   </div>
   <button class="reset-button" onclick="resetChecklist()">Reset</button>
 </div>
 
 <div class="checklist-group">
-  <h3>📱 Messengery</h3>
+  <h3>Messengery</h3>
   <ul class="checklist" data-group="messengers">
-    <li><strong>Převést zprávy v Signálu</strong> – <em>Vyžaduje obě zařízení zapnutá!</em> Proces běží desítky minut</li>
-    <li><strong>Převést zprávy ve WhatsApp</strong> – Šifrovací klíč a jméno profilu, nutné obě zařízení</li>
+    <li><strong>Převést zprávy v Signálu</strong> – Vyžaduje obě zařízení zapnutá, proces běží desítky minut</li>
+    <li><strong>Převést zprávy ve WhatsApp</strong> – Najít šifrovací klíč a vyplnit znovu jméno profilu, nutné obě zařízení</li>
     <li><strong>Obnovit Telegram</strong> – Převod přes aplikaci v původním zařízení</li>
   </ul>
 </div>
 
 <div class="checklist-group">
-  <h3>🏦 Banky a platby</h3>
+  <h3>Banky a platby</h3>
   <ul class="checklist" data-group="banks">
-    <li><strong>Aktivovat všechny platební karty</strong> – Apple Pay karty je nutné znovu přidat. Otestujte platbu ještě doma!</li>
-    <li><strong>Revolut</strong> – Nové přihlášení <em>včetně selfie verifikace</em></li>
-    <li><strong>Airbank</strong> – Nové přihlášení <em>včetně selfie verifikace</em></li>
-    <li><strong>Moneta</strong> – <em>QR kód ze starého telefonu!</em> Propojení přes staré zařízení</li>
-    <li><strong>Komerční banka</strong> – <em>QR kód ze starého telefonu,</em> přepis kódu a SMS</li>
-    <li><strong>Raiffeisenbank</strong> – <em>QR kód ze starého telefonu,</em> PIN, zapnout ověřování</li>
+    <li><strong>Aktivovat všechny platební karty</strong> – Apple Pay karty znovu přidat v Wallet a otestovat platbu ještě doma</li>
+    <li><strong>Revolut</strong> – Nové přihlášení včetně selfie verifikace</li>
+    <li><strong>Airbank</strong> – Nové přihlášení včetně selfie verifikace</li>
+    <li><strong>Moneta</strong> – Propojení nového zařízení přes QR kód ze starého telefonu</li>
+    <li><strong>Komerční banka</strong> – Připojení přes QR kód ze starého, přepis kódu a potvrzení přes SMS</li>
+    <li><strong>Raiffeisenbank</strong> – Připojení přes QR kód ze starého, zadání PINu, zapnout ověřování plateb</li>
   </ul>
 </div>
 
 <div class="checklist-group">
-  <h3>🆔 eGovernment</h3>
+  <h3>eGovernment</h3>
   <ul class="checklist" data-group="egov">
     <li><strong>eDoklady</strong> – Nové přihlášení a zadání PINu pro občanský průkaz</li>
     <li><strong>Mobilní klíč eGovernmentu</strong> – Nainstalovat a aktivovat znovu</li>
-    <li><strong>MojeID</strong> – <em>Nejsložitější!</em> Web, odebrat klíč, přidat nový, ověřit přes datovou schránku</li>
+    <li><strong>MojeID</strong> – Nejsložitější: přihlásit na web, odebrat stávající klíč, přidat nový a ověřit přes datovou schránku</li>
   </ul>
 </div>
 
 <div class="checklist-group">
-  <h3>⚙️ Ostatní</h3>
+  <h3>Ostatní</h3>
   <ul class="checklist" data-group="other">
     <li><strong>Převést eSIM</strong> – U některých operátorů potřebujete starý telefon pro převod</li>
-    <li><strong>Oura Ring</strong> – <em>Vypnout Bluetooth na starém!</em> Teprve pak spárovat s novým</li>
+    <li><strong>Oura Ring</strong> – Vypnout Bluetooth na starém telefonu, teprve pak spárovat s novým</li>
   </ul>
 </div>
 
@@ -280,10 +286,10 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 })();
 </script>
 
-<h2>💡 Důležité tipy</h2>
+<h2>Důležité tipy</h2>
 
 <p>
-<strong>Nespěchejte s vymazáním starého telefonu</strong> – <em>Minimálně týden ponechte starý iPhone funkční.</em> Budete ho potřebovat pro QR kódy z bank, převod messengerů a určitě si vzpomenete na další aplikaci.
+<strong>Nespěchejte s vymazáním starého telefonu</strong> – Minimálně týden ponechte starý iPhone funkční. Budete ho potřebovat pro QR kódy z bank, převod messengerů a určitě si vzpomenete na další aplikaci.
 </p>
 
 <p>
