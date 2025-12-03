@@ -353,5 +353,9 @@ Většinu věcí Apple převede automaticky, ale <strong>tyto kritické kroky vy
 </p>
 
 <p>
+Pokud ještě nevlastníte nový iPhone a teprve jej zvažujete, podívejte se na <a href="https://iphone.rovnou.cz/novy-iphone.html">průvodce nákupem nového iPhone</a>.
+</p>
+
+<p>
 Chybí vám něco v checklistu? Napište mi prosím do komentářů a doplním to tam.
 </p>
