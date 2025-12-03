@@ -1,4 +1,4 @@
-import { json, error } from '@sveltejs/kit';
+import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { supabase } from '$lib/server/supabase';
 
@@ -8,12 +8,18 @@ export const POST: RequestHandler = async ({ request }) => {
 
 		// Validate email
 		if (!email || typeof email !== 'string') {
-			throw error(400, 'E-mail je povinný');
+			return json(
+				{ success: false, message: 'E-mail je povinný' },
+				{ status: 400 }
+			);
 		}
 
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(email)) {
-			throw error(400, 'Neplatný formát e-mailu');
+			return json(
+				{ success: false, message: 'Neplatný formát e-mailu' },
+				{ status: 400 }
+			);
 		}
 
 		// Check if email already exists
@@ -25,11 +31,17 @@ export const POST: RequestHandler = async ({ request }) => {
 
 		if (checkError) {
 			console.error('Database check error:', checkError);
-			throw error(500, 'Nepodařilo se ověřit e-mail v databázi');
+			return json(
+				{ success: false, message: 'Nepodařilo se ověřit e-mail v databázi' },
+				{ status: 500 }
+			);
 		}
 
 		if (existing) {
-			throw error(409, 'Tento e-mail je již přihlášen k odběru novinek');
+			return json(
+				{ success: false, message: 'Tento e-mail je již přihlášen k odběru novinek' },
+				{ status: 409 }
+			);
 		}
 
 		// Insert new subscriber
@@ -42,7 +54,10 @@ export const POST: RequestHandler = async ({ request }) => {
 
 		if (insertError) {
 			console.error('Database insert error:', insertError);
-			throw error(500, 'Nepodařilo se přihlásit k odběru novinek');
+			return json(
+				{ success: false, message: 'Nepodařilo se přihlásit k odběru novinek' },
+				{ status: 500 }
+			);
 		}
 
 		return json({
@@ -50,11 +65,10 @@ export const POST: RequestHandler = async ({ request }) => {
 			message: 'Úspěšně jste se přihlásili k odběru novinek!'
 		});
 	} catch (err) {
-		if (err && typeof err === 'object' && 'status' in err) {
-			throw err;
-		}
-
 		console.error('Newsletter subscription error:', err);
-		throw error(500, 'Nepodařilo se přihlásit k odběru novinek. Zkuste to prosím později.');
+		return json(
+			{ success: false, message: 'Nepodařilo se přihlásit k odběru novinek. Zkuste to prosím později.' },
+			{ status: 500 }
+		);
 	}
 };
