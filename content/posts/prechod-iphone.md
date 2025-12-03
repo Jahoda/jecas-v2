@@ -1,7 +1,7 @@
 ---
-title: "Co obnáší přechod na novější iPhone"
-headline: "Co vše musíte udělat při přechodu na novější iPhone"
-description: "Kompletní checklist 28 kroků, které je potřeba udělat při migraci ze starého iPhone na nový. Od přenosu dat přes eSIM až po nastavení bankovních aplikací a ověřovacích klíčů."
+title: "Na co nezapomenout při přechodu na novější iPhone"
+headline: "Checklist věcí, na které se při přechodu na nový iPhone zapomíná"
+description: "Na co se nejčastěji zapomíná při migraci na nový iPhone? Bankovní aplikace, messengery, eGovernment služby a další aplikace, které nepřenesl automatický převod dat."
 date: "2025-12-03"
 last_modification: "2025-12-03"
 status: 1
@@ -10,115 +10,118 @@ format: "html"
 ---
 
 <p>
-Přestože se Apple snaží přechod ze staršího iPhone na novější maximálně usnadnit, není přechod úplně bezstarostný.
+Převedli jste si data na nový iPhone, všechno vypadá v pořádku, a pak si za dva dny u pokladny uvědomíte, že <strong>vám nefunguje Apple Pay</strong>. Nebo se pokusíte zaplatit online a zjistíte, že <strong>bankovní aplikace vyžaduje nové přihlášení a selfie verifikaci</strong>.
 </p>
 
 <p>
-Největší problém je s <strong>platebními kartami, bankovními aplikacemi a různými klíči pro ověřování</strong>. Zatímco kontakty, fotky a aplikace se přenesou automaticky, autentizační údaje a bezpečnostní prvky vyžadují ruční zásah na každém novém zařízení.
+Právě na tyto věci se při migraci <strong>nejčastěji zapomíná</strong>. Základní přenos dat zvládne iOS skvěle – kontakty, fotky, aplikace, hesla k webům. Problém je s <strong>bezpečnostními prvky, které vyžadují ruční aktivaci</strong> na novém zařízení.
 </p>
 
 <p>
-Samotné obtíže s migrací je tak potřeba <strong>zohlednit při zvažování upgradu</strong>. Celý proces zabere minimálně několik hodin čistého času, během kterých budete muset mít po ruce obě zařízení a často i počítač pro některé webové služby.
+Tento checklist obsahuje <strong>pouze věci, které iOS automaticky nepřevede</strong> a na které je potřeba myslet extra. Jsou seřazené podle toho, jak moc vás jejich absence může potrápit.
 </p>
 
-<p>
-Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-Fi sítím se přenesou automaticky. Problém zůstává s aplikacemi, které používají vlastní bezpečnostní mechanismy mimo ekosystém Apple.
-</p>
+<h2>🚨 Kritické – otestujte hned první den</h2>
 
-<p>
-<strong>Zákon schválnosti zajistí, že určitě na něco zapomenete.</strong> Proto si tento checklist vytiskněte nebo si ho otevřete na počítači, abyste během migrace mohli postupně odškrtávat jednotlivé kroky.
-</p>
-
-<h2>Kompletní checklist migrace na nový iPhone</h2>
-
-<ol>
-<li><strong>Naskenovat kód a spustit převod</strong> – Přiložte telefony k sobě a postupujte podle průvodce iOS</li>
-
-<li><strong>Aktualizovat nový telefon</strong> – Nainstalujte nejnovější verzi iOS a restartujte zařízení</li>
-
-<li><strong>Počkat cca hodinu na přenos dat</strong> – Podle množství dat může trvat i déle, telefony musí zůstat v blízkosti</li>
-
-<li><strong>Převést eSIM</strong> – Náročnost závisí na operátorovi, někdy stačí pár kliknutí, jindy je nutný kontakt s podporou</li>
-
-<li><strong>Aktivovat všechny platební karty</strong> – Apple Pay karty je nutné znovu přidat a aktivovat</li>
-
-<li><strong>Projít intro nového systému</strong> – Průvodce novými funkcemi iOS</li>
-
-<li><strong>Nastavit akční tlačítko</strong> – Na iPhone 15 Pro a novějších nastavte funkci akčního tlačítka</li>
-
-<li><strong>Nastavit tlačítko fotoaparátu</strong> – Na iPhone 16 a novějších nastavte tlačítko Camera Control</li>
-
-<li><strong>Nastavit styl fotoaparátu</strong> – Vyberte si preferovaný fotografický styl</li>
-
-<li><strong>Odstranit nežádoucí aplikace</strong> – Apple automaticky přidá na plochu aplikace jako Keynote, iMovie, Apple Store, Pages</li>
-
-<li><strong>Přihlásit se znovu do Outlook emailu</strong> – Přihlašovací údaje se nepřenášejí</li>
-
-<li><strong>Přihlásit se znovu do v0 aplikace</strong> – Vyžaduje nové přihlášení</li>
-
-<li><strong>Převést zprávy v Signálu</strong> – Proces běží desítky minut, nutné mít obě zařízení zapnutá</li>
-
-<li><strong>Převést zprávy ve WhatsApp</strong> – Najít šifrovací klíč a vyplnit znovu jméno profilu</li>
-
-<li><strong>Přihlásit do Slacku</strong> – Nové přihlášení na novém zařízení</li>
-
-<li><strong>Přihlásit se do všech Google účtů</strong> – Gmail, Drive, Photos atd.</li>
-
-<li><strong>Odklikat hlášky na ostatních zařízeních</strong> – Na všech zařízeních se objeví notifikace „K vašemu účtu bylo přidáno zařízení"</li>
-
-<li><strong>Obnovit Telegram</strong> – Přes aplikaci v původním zařízení</li>
-
-<li><strong>Revolut</strong> – Nové přihlášení včetně selfie verifikace</li>
-
-<li><strong>Airbank</strong> – Nové přihlášení včetně selfie verifikace</li>
-
+<h3>Platby a finance</h3>
+<ul>
+<li><strong>Apple Pay karty</strong> – Karty je nutné znovu přidat a aktivovat v Apple Wallet. Otestujte platbu ještě doma!</li>
+<li><strong>Revolut</strong> – Nové přihlášení včetně <em>selfie verifikace</em></li>
+<li><strong>Airbank</strong> – Nové přihlášení včetně <em>selfie verifikace</em></li>
 <li><strong>Moneta</strong> – Propojení nového zařízení přes staré pomocí QR kódu</li>
+<li><strong>Komerční banka</strong> – Připojení přes staré zařízení, QR kód, přepis kódu a potvrzení přes SMS</li>
+<li><strong>Raiffeisenbank</strong> – Připojení přes staré zařízení, QR kód, PIN, nutno zapnout pro ověřování plateb</li>
+<li><strong>SkipPay</strong> – Přihlášení přes email/heslo, přepíše zařízení pro potvrzování plateb</li>
+</ul>
 
-<li><strong>Komerční banka</strong> – Připojení nového zařízení přes staré, vytvoření QR kódu, přepis kódu a potvrzení přes SMS</li>
-
-<li><strong>Raiffeisenbank</strong> – Připojení nového zařízení přes staré, vytvoření QR kódu, zadání PINu, nutno zapnout pro ověřování plateb</li>
-
-<li><strong>SkipPay</strong> – Přihlášení přes email a heslo, automaticky přepíše zařízení pro potvrzování plateb</li>
-
-<li><strong>Oura Ring</strong> – Nové připojení prstenu, nutno vypnout Bluetooth na starém telefonu, aby šel prsten spárovat</li>
-
+<h3>eGovernment (bez toho neplatíte, neprokazujete se)</h3>
+<ul>
 <li><strong>eDoklady</strong> – Nové přihlášení a zadání PINu pro občanský průkaz</li>
-
 <li><strong>Mobilní klíč eGovernmentu</strong> – Nutné nainstalovat a aktivovat znovu</li>
+<li><strong>MojeID</strong> – <em>Nejsložitější!</em> Přihlásit na web, odebrat stávající klíč, přidat nový a ověřit přes datovou schránku</li>
+</ul>
 
-<li><strong>Muun</strong> – Bitcoin peněženka vyžaduje nové přihlášení přes email</li>
+<h3>eSIM (bez signálu jste ztraceni)</h3>
+<ul>
+<li><strong>Převod eSIM</strong> – Náročnost závisí na operátorovi. U některých stačí pár kliknutí v Nastavení → Mobilní síť, u jiných je nutný kontakt se zákaznickou podporou</li>
+</ul>
 
-<li><strong>MojeID</strong> – Nutno se přihlásit na web, odebrat stávající klíč a přidat nový, plus se ověřit přes datovou schránku</li>
-</ol>
+<h2>📱 Messengery – přenos není automatický</h2>
 
-<h2>Tipy pro hladší migraci</h2>
+<ul>
+<li><strong>Signal</strong> – Převod zpráv běží <em>desítky minut</em>, nutné mít obě zařízení zapnutá a připojená</li>
+<li><strong>WhatsApp</strong> – Najít šifrovací klíč a vyplnit znovu jméno profilu</li>
+<li><strong>Telegram</strong> – Obnovit přes aplikaci v původním zařízení</li>
+</ul>
+
+<p><strong>Proč to není automatické?</strong> Messengery používají end-to-end šifrování, takže zprávy nejsou v iCloud zálohách a musí se převádět přímo mezi zařízeními.</p>
+
+<h2>💼 Pracovní nástroje</h2>
+
+<ul>
+<li><strong>Slack</strong> – Nové přihlášení do všech workspaces</li>
+<li><strong>Google účty</strong> – Gmail, Drive, Photos – všechny vyžadují nové přihlášení</li>
+<li><strong>Outlook</strong> – Pracovní email se nepřevede, nutné přihlásit znovu</li>
+<li><strong>Ostatní zařízení</strong> – Odklikat notifikace „K vašemu účtu bylo přidáno zařízení" na počítači, tabletu atd.</li>
+</ul>
+
+<h2>🔧 Hardware a speciální zařízení</h2>
+
+<ul>
+<li><strong>Oura Ring</strong> – Nutno vypnout Bluetooth na starém telefonu, teprve pak půjde prsten spárovat s novým</li>
+<li><strong>Další Bluetooth zařízení</strong> – Sluchátka, hodinkové ciferníky s companion aplikacemi apod. mohou vyžadovat nové spárování</li>
+</ul>
+
+<h2>🎨 Nové iPhone funkce (15 Pro a novější)</h2>
+
+<ul>
+<li><strong>Akční tlačítko</strong> (iPhone 15 Pro+) – Nastavit si vlastní funkci pro Action Button</li>
+<li><strong>Camera Control</strong> (iPhone 16+) – Nastavit tlačítko fotoaparátu a jeho gesta</li>
+<li><strong>Fotografické styly</strong> – Vybrat si preferovaný styl zpracování fotek</li>
+<li><strong>Odstranit Apple bloatware</strong> – Keynote, iMovie, Apple Store, Pages se automaticky přidají na plochu</li>
+</ul>
+
+<h2>🔐 Ostatní specializované aplikace</h2>
+
+<ul>
+<li><strong>Krypto peněženky</strong> (např. Muun) – Nové přihlášení, seed fráze, verifikace</li>
+<li><strong>Vývojářské nástroje</strong> (např. v0) – Nové přihlášení</li>
+<li><strong>VPN služby</strong> – Mohou vyžadovat nové přihlášení a aktivaci</li>
+<li><strong>2FA aplikace</strong> – Google Authenticator, Authy atd. se obvykle převedou, ale ověřte to!</li>
+</ul>
+
+<h2>💡 Tipy, které vás zachrání</h2>
 
 <p>
-<strong>Vyhraďte si čas</strong> – Počítejte s tím, že celý proces zabere <strong>3-5 hodin</strong>, během kterých budete potřebovat obě zařízení funkční a nabitá.
+<strong>Nejdřív platby!</strong> – První věc, kterou udělejte po převodu dat: nastavte Apple Pay a bankovní aplikace. Zjistit u pokladny, že nemůžete zaplatit, je nepříjemné.
 </p>
 
 <p>
-<strong>Připravte si přístupová hesla</strong> – Pro některé služby budete potřebovat znovu zadat přihlašovací údaje. Ujistěte se, že máte k heslům přístup (buď v hlavě, nebo v password manageru).
+<strong>Ponechte starý telefon živý</strong> – <em>Minimálně týden nevypínejte a nevymažte starý iPhone.</em> Budete ho potřebovat pro převod messengerů, spárování bankovních aplikací a určitě si vzpomenete na další věci.
 </p>
 
 <p>
-<strong>Nespěchejte s vymazáním starého telefonu</strong> – Ponechte si starý iPhone funkční ještě několik dní. Nejspíš si vzpomenete na další aplikaci, kterou je potřeba nastavit.
+<strong>Vytiskněte si checklist</strong> – Během migrace budete mít ruce plné obou telefonů. Checklist na papíře nebo na počítači se vám bude hodit.
 </p>
 
 <p>
-<strong>Kontrolujte si notifikace</strong> – V prvních dnech po migraci kontrolujte, jestli vám chodí všechny notifikace. Některé aplikace vyžadují znovu povolit oprávnění.
+<strong>Password manager je váš kamarád</strong> – Pokud ještě nepoužíváte správce hesel (1Password, Bitwarden, atd.), teď je ten správný čas začít. Při další migraci vám to ušetří hodiny práce.
 </p>
 
 <p>
-<strong>Otestujte platby</strong> – Před tím, než se dostanete k pokladně, si ověřte, že vám funguje Apple Pay a všechny platební karty jsou správně aktivované.
+<strong>První týden kontrolujte notifikace</strong> – Některé aplikace vyžadují znovu povolit oprávnění. Všimněte si, jestli vám chodí všechny notifikace jako předtím.
 </p>
 
 <h2>Závěr</h2>
 
 <p>
-Migrace na nový iPhone není tak bezproblémová, jak by se mohlo na první pohled zdát. Apple sice odvádí skvělou práci s automatickým přenosem dat, ale <strong>bezpečnostní prvky a autentizační mechanismy</strong> vyžadují ruční zásah prakticky u každé důležité aplikace.
+Přechod na nový iPhone je <strong>90% bezproblémový</strong> díky skvělé práci Apple. Ale těch zbývajících <strong>10% vás může pěkně potrápit</strong>, pokud na ně zapomenete.
 </p>
 
 <p>
-Tento checklist vznikl na základě reálné zkušenosti s přechodem mezi iPhony a obsahuje všechny neočekávané kroky, které bylo potřeba udělat. Doufáme, že vám ušetří čas a nervy při vašem dalším upgradu.
+Tento checklist vznikl z reálné zkušenosti při migraci a obsahuje <em>pouze ty věci, na které se zapomíná</em>. Základní kroky typu převodu fotek, kontaktů a aplikací iOS zvládne samo.
+</p>
+
+<p>
+<strong>Tip na závěr:</strong> Uložte si tento článek do záložek. Bude se vám hodit při každém dalším upgradu – a věřte, že většinu těchto věcí si za dva roky nebudete pamatovat.
 </p>
