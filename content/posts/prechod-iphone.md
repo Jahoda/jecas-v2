@@ -1,11 +1,11 @@
 ---
 title: "Na co nezapomenout při přechodu na novější iPhone"
 headline: "Checklist věcí, na které se při přechodu na nový iPhone zapomíná"
-description: "Na co se nejčastěji zapomíná při migraci na nový iPhone? Bankovní aplikace, messengery, eGovernment služby a další aplikace, které nepřenesl automatický převod dat."
+description: "Na co se nejčastěji zapomíná při migraci na nový iPhone? Bankovní aplikace, messengery, eGovernment služby a další aplikace."
 date: "2025-12-03"
 last_modification: "2025-12-03"
 status: 1
-tags: ["apple", "ios", "navody"]
+tags: ["apple", "produktivita"]
 format: "html"
 ---
 
@@ -145,7 +145,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 
 <h2>Checklist – co udělat před smazáním starého telefonu</h2>
 
-<p><em>Tyto věci <strong>vyžadují starý telefon</strong> nebo jsou kritické pro okamžité fungování. Udělejte je, než smažete starý iPhone:</em></p>
+<p>Tyto věci <strong>vyžadují starý telefon</strong> nebo jsou kritické pro okamžité fungování. Udělejte je, než smažete starý iPhone:</p>
 
 <div class="checklist-progress">
   <div class="progress-bar">
