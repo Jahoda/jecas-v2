@@ -32,6 +32,17 @@
 <div class="mx-auto max-w-4xl p-8">
 	<h1 class="mb-8 text-3xl font-bold">Newsletter odběratelé</h1>
 
+	{#if data.error}
+		<div class="mb-6 rounded-lg bg-red-100 p-4 text-red-800 dark:bg-red-900 dark:text-red-200">
+			<p class="font-semibold">Chyba při načítání odběratelů:</p>
+			<p class="mt-2">{data.error}</p>
+			<p class="mt-2 text-sm">
+				Zkontrolujte, že máte v .env nastavené SUPABASE_URL a SUPABASE_SERVICE_KEY a restartujte
+				dev server.
+			</p>
+		</div>
+	{/if}
+
 	<div class="mb-6 flex gap-4">
 		<Button onclick={copyEmails}>Kopírovat e-maily</Button>
 		<Button onclick={downloadCSV}>Stáhnout CSV</Button>
