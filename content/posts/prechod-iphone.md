@@ -28,17 +28,20 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 12px 16px;
+  padding: 10px 16px;
   margin: 20px 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 .progress-bar {
   background: #e5e7eb;
   height: 20px;
   border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 6px;
+  flex: 1;
 }
 .progress-fill {
   background: linear-gradient(90deg, #34c759, #30d158);
@@ -51,14 +54,15 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   font-weight: bold;
   font-size: 11px;
 }
-.progress-text {
-  text-align: center;
+.progress-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
   color: #6b7280;
   font-size: 13px;
 }
 .reset-button {
-  display: inline-block;
-  margin-left: 10px;
   padding: 4px 12px;
   background: #ef4444;
   color: white;
@@ -67,6 +71,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   font-size: 12px;
   border: none;
   transition: background 0.2s;
+  white-space: nowrap;
 }
 .reset-button:hover {
   background: #dc2626;
@@ -75,11 +80,25 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   list-style: none;
   padding-left: 0;
 }
+.checklist-group {
+  margin-top: 24px;
+}
+.checklist-group:first-child {
+  margin-top: 0;
+}
+.checklist-group h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #e5e7eb;
+}
 .checklist li {
   padding: 12px 0;
   padding-left: 40px;
   position: relative;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #f3f4f6;
   cursor: pointer;
   transition: background-color 0.2s;
   user-select: none;
@@ -126,54 +145,65 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
   <div class="progress-bar">
     <div class="progress-fill" id="progressFill" style="width: 0%">0%</div>
   </div>
-  <div class="progress-text">
-    <strong id="progressText">0 z 14</strong> splněno
-    <span id="completeMessage" style="display: none; color: #34c759; font-weight: bold;"> 🎉</span>
-    <button class="reset-button" onclick="resetChecklist()">Reset</button>
+  <div class="progress-info">
+    <strong id="progressText">0/14</strong>
+    <span id="completeMessage" style="display: none; color: #34c759; font-weight: bold;">🎉</span>
   </div>
+  <button class="reset-button" onclick="resetChecklist()">Reset</button>
 </div>
 
-<ul class="checklist" id="iPhoneChecklist">
-<li><strong>Převést eSIM</strong> – U některých operátorů potřebujete starý telefon pro převod</li>
+<div class="checklist-group">
+  <h3>📱 Messengery</h3>
+  <ul class="checklist" data-group="messengers">
+    <li><strong>Převést zprávy v Signálu</strong> – <em>Vyžaduje obě zařízení zapnutá!</em> Proces běží desítky minut</li>
+    <li><strong>Převést zprávy ve WhatsApp</strong> – Šifrovací klíč a jméno profilu, nutné obě zařízení</li>
+    <li><strong>Obnovit Telegram</strong> – Převod přes aplikaci v původním zařízení</li>
+  </ul>
+</div>
 
-<li><strong>Aktivovat všechny platební karty</strong> – Apple Pay karty je nutné znovu přidat. Otestujte platbu ještě doma!</li>
+<div class="checklist-group">
+  <h3>🏦 Banky a platby</h3>
+  <ul class="checklist" data-group="banks">
+    <li><strong>Aktivovat všechny platební karty</strong> – Apple Pay karty je nutné znovu přidat. Otestujte platbu ještě doma!</li>
+    <li><strong>Revolut</strong> – Nové přihlášení <em>včetně selfie verifikace</em></li>
+    <li><strong>Airbank</strong> – Nové přihlášení <em>včetně selfie verifikace</em></li>
+    <li><strong>Moneta</strong> – <em>QR kód ze starého telefonu!</em> Propojení přes staré zařízení</li>
+    <li><strong>Komerční banka</strong> – <em>QR kód ze starého telefonu,</em> přepis kódu a SMS</li>
+    <li><strong>Raiffeisenbank</strong> – <em>QR kód ze starého telefonu,</em> PIN, zapnout ověřování</li>
+  </ul>
+</div>
 
-<li><strong>Převést zprávy v Signálu</strong> – <em>Vyžaduje obě zařízení zapnutá!</em> Proces běží desítky minut</li>
+<div class="checklist-group">
+  <h3>🆔 eGovernment</h3>
+  <ul class="checklist" data-group="egov">
+    <li><strong>eDoklady</strong> – Nové přihlášení a zadání PINu pro občanský průkaz</li>
+    <li><strong>Mobilní klíč eGovernmentu</strong> – Nainstalovat a aktivovat znovu</li>
+    <li><strong>MojeID</strong> – <em>Nejsložitější!</em> Web, odebrat klíč, přidat nový, ověřit přes datovou schránku</li>
+  </ul>
+</div>
 
-<li><strong>Převést zprávy ve WhatsApp</strong> – Šifrovací klíč a jméno profilu, nutné obě zařízení</li>
-
-<li><strong>Obnovit Telegram</strong> – Převod přes aplikaci v původním zařízení</li>
-
-<li><strong>Revolut</strong> – Nové přihlášení <em>včetně selfie verifikace</em></li>
-
-<li><strong>Airbank</strong> – Nové přihlášení <em>včetně selfie verifikace</em></li>
-
-<li><strong>Moneta</strong> – <em>QR kód ze starého telefonu!</em> Propojení přes staré zařízení</li>
-
-<li><strong>Komerční banka</strong> – <em>QR kód ze starého telefonu,</em> přepis kódu a SMS</li>
-
-<li><strong>Raiffeisenbank</strong> – <em>QR kód ze starého telefonu,</em> PIN, zapnout ověřování</li>
-
-<li><strong>Oura Ring</strong> – <em>Vypnout Bluetooth na starém!</em> Teprve pak spárovat s novým</li>
-
-<li><strong>eDoklady</strong> – Nové přihlášení a zadání PINu pro občanský průkaz</li>
-
-<li><strong>Mobilní klíč eGovernmentu</strong> – Nainstalovat a aktivovat znovu</li>
-
-<li><strong>MojeID</strong> – <em>Nejsložitější!</em> Web, odebrat klíč, přidat nový, ověřit přes datovou schránku</li>
-</ul>
+<div class="checklist-group">
+  <h3>⚙️ Ostatní</h3>
+  <ul class="checklist" data-group="other">
+    <li><strong>Převést eSIM</strong> – U některých operátorů potřebujete starý telefon pro převod</li>
+    <li><strong>Oura Ring</strong> – <em>Vypnout Bluetooth na starém!</em> Teprve pak spárovat s novým</li>
+  </ul>
+</div>
 
 <script>
 (function() {
   const STORAGE_KEY = 'iphone-migration-checklist';
-  const checklist = document.getElementById('iPhoneChecklist');
   const progressFill = document.getElementById('progressFill');
   const progressText = document.getElementById('progressText');
   const completeMessage = document.getElementById('completeMessage');
 
-  if (!checklist) return;
+  // Get all checklist items from all groups
+  const allChecklists = document.querySelectorAll('.checklist');
+  const items = [];
+  allChecklists.forEach(list => {
+    items.push(...Array.from(list.getElementsByTagName('li')));
+  });
 
-  const items = Array.from(checklist.getElementsByTagName('li'));
   const totalItems = items.length;
 
   // Load saved state from localStorage
@@ -202,7 +232,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 
     progressFill.style.width = percentage + '%';
     progressFill.textContent = percentage + '%';
-    progressText.innerHTML = `<strong>${checkedCount} z ${totalItems}</strong> splněno`;
+    progressText.innerHTML = `<strong>${checkedCount}/${totalItems}</strong>`;
 
     // Show completion message
     if (checkedCount === totalItems && totalItems > 0) {
