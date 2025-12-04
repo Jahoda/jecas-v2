@@ -17,7 +17,7 @@ format: "html"
 
 <p>Termín <i>umělá inteligence</i> je mnoho desítek let starý.</p>
 
-<p>Od té doby prošla AI několika vlnami velkého očekávání a následného zklamání (tzv. <i lang="en">AI winters</i>). Současný boom začal kolem roku 2012, kdy hluboké neuronové sítě začaly dosahovat průlomových výsledků. Dalším milníkem byl vznik ChatGPT v roce 2022.</p>
+<p>Od té doby prošla AI několika vlnami velkého očekávání a následného zklamání (tzv. <i lang="en">AI winters</i>). Současný boom mezi běžnými lidmi začal v roce 2022, kdy byl spuštěn ChatGPT.</p>
 
 <h2 id="proc-ted">Proč se AI tak rozmohla až v posledních letech?</h2>
 
