@@ -17,7 +17,7 @@ format: "html"
 
 <p>Termín <i>umělá inteligence</i> je mnoho desítek let starý.</p>
 
-<p>Od té doby prošla AI několika vlnami velkého očekávání a následného zklamání (tzv. <i lang="en">AI winters</i>). Současný boom začal kolem roku 2012, kdy hluboké neuronové sítě začaly dosahovat průlomových výsledků. Další milník je potom vznik ChatGPT v roce 2022.</p>
+<p>Od té doby prošla AI několika vlnami velkého očekávání a následného zklamání (tzv. <i lang="en">AI winters</i>). Současný boom začal kolem roku 2012, kdy hluboké neuronové sítě začaly dosahovat průlomových výsledků. Dalším milníkem byl vznik ChatGPT v roce 2022.</p>
 
 <h2 id="proc-ted">Proč se AI tak rozmohla až v posledních letech?</h2>
 
@@ -134,7 +134,7 @@ format: "html"
 
 <h3 id="halucinace">Halucinace</h3>
 
-<p><b>Halucinace</b> (<i lang="en">hallucinations</i>) je označení pro situace, kdy AI generuje informace, které znějí věrohodně, ale jsou <b>nepravdivé nebo zcela vymyšlené</b>.</p>
+<p><b>Halucinace</b> (<i lang="en">hallucinations</i>) jsou označení pro situace, kdy AI generuje informace, které znějí věrohodně, ale jsou <b>nepravdivé nebo zcela vymyšlené</b>.</p>
 
 <p>Příklady halucinací:</p>
 <ul>
@@ -209,7 +209,7 @@ format: "html"
 
 <ul>
     <li><b>Ztráta pracovních míst</b> – automatizace může nahradit některé profese</li>
-    <li><b>Dezinformace</b> – generování falešných zpráv a deepfakes (podle mě spíš positivní, protože se tím lidé učí věci ověřovat)</li>
+    <li><b>Dezinformace</b> – generování falešných zpráv a deepfakes (podle mě spíš pozitivní, protože se tím lidé učí věci ověřovat)</li>
     <li><b>Předpojatost</b> – AI může přebírat předsudky z trénovacích dat</li>
     <li><b>Soukromí</b> – sběr a analýza osobních dat</li>
     <li><b>Bezpečnost</b> – zneužití AI pro kybernetické útoky</li>
@@ -220,7 +220,7 @@ format: "html"
 
 <p>Častou obavou je, že AI „vezme lidem práci“. V praxi ale většinou dochází spíš k <b>proměně</b> práce.</p>
 
-<p>Historicky už bylo spoustu průlomových vynálezů, které lidem brali práci. Nakonec to znamenalo změnu profesí a vyšší životní úroveň, tak je otázka, proč by to s dnešní AI mělo být jinak.</p>
+<p>Historicky už bylo spoustu průlomových vynálezů, které lidem braly práci. Nakonec to znamenalo změnu profesí a vyšší životní úroveň, tak je otázka, proč by to s dnešní AI mělo být jinak.</p>
 
 <h3 id="jak-automatizace-meni-praci">Jak automatizace mění trh práce</h3>
 
