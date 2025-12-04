@@ -68,6 +68,26 @@ format: "html"
 
 <p><b>Hluboké učení</b> (<i lang="en">Deep Learning</i>) využívá neuronové sítě s mnoha vrstvami a je základem většiny současných AI průlomů.</p>
 
+<h3 id="cerna-skrinka">Problém černé skříňky</h3>
+
+<p>Zajímavým paradoxem moderní AI je, že ani její tvůrci plně nerozumí tomu, <b>proč</b> konkrétní model dává konkrétní odpovědi. Tomuto jevu se říká <b>problém černé skříňky</b> (<i lang="en">black box problem</i>).</p>
+
+<p>Výzkumníci chápou:</p>
+<ul>
+    <li>Matematické principy (lineární algebra, statistika, optimalizace)</li>
+    <li>Architekturu sítí (jak jsou vrstvy propojeny)</li>
+    <li>Trénovací proces (jak se síť učí z dat)</li>
+</ul>
+
+<p>Co zůstává záhadou:</p>
+<ul>
+    <li>Proč konkrétní kombinace miliard vah vede k danému výsledku</li>
+    <li>Jaké interní "koncepty" si síť vytvořila</li>
+    <li>Proč model někdy selhává nepředvídatelným způsobem</li>
+</ul>
+
+<p>Je to podobné jako s lidským mozkem - rozumíme neuronům a synapsím, ale přesně nevíme, jak vzniká vědomí. Proto se rozvíjí obor <b>interpretabilita AI</b> (<i lang="en">AI interpretability</i>), který se snaží nahlédnout dovnitř těchto "černých skříněk".</p>
+
 <h3 id="llm">Velké jazykové modely (LLM)</h3>
 
 <p><b>LLM</b> (<i lang="en">Large Language Models</i>) jsou neuronové sítě trénované na obrovském množství textu. Dokáží generovat text, odpovídat na otázky, překládat a mnoho dalšího.</p>
@@ -79,6 +99,50 @@ format: "html"
     <li><b>Gemini</b> od Google</li>
     <li><b>LLaMA</b> od Meta</li>
 </ul>
+
+<h3 id="halucinace">Halucinace</h3>
+
+<p><b>Halucinace</b> (<i lang="en">hallucinations</i>) je termín pro situace, kdy AI generuje informace, které znějí věrohodně, ale jsou <b>nepravdivé nebo zcela vymyšlené</b>.</p>
+
+<p>Příklady halucinací:</p>
+<ul>
+    <li>Citování neexistujících knih nebo studií</li>
+    <li>Vymýšlení biografických údajů o reálných lidech</li>
+    <li>Generování falešných statistik s konkrétními čísly</li>
+    <li>Uvádění neexistujících funkcí v programovacích jazycích</li>
+</ul>
+
+<p>K halucinacím dochází, protože LLM jsou trénovány na <b>predikci pravděpodobného textu</b>, nikoli na ověřování faktů. Model "neví", co je pravda - pouze generuje text, který statisticky dává smysl.</p>
+
+<p>Jak se proti halucinacím bránit:</p>
+<ul>
+    <li>Ověřovat důležité informace z jiných zdrojů</li>
+    <li>Být obzvláště opatrný u specifických faktů (data, čísla, jména)</li>
+    <li>Používat AI s přístupem k internetu pro aktuální data</li>
+</ul>
+
+<h2 id="je-to-inteligence">Je to skutečně inteligence?</h2>
+
+<p>Označení "inteligence" je předmětem debat. Záleží na definici.</p>
+
+<h3 id="argumenty-proti">Argumenty proti</h3>
+
+<ul>
+    <li><b>Chybí porozumění</b> - AI zpracovává vzory, ale "nechápe" význam ve smyslu lidského chápání</li>
+    <li><b>Žádné vědomí</b> - AI nemá subjektivní prožívání, emoce ani sebeuvědomění</li>
+    <li><b>Čínský pokoj</b> - myšlenkový experiment filozofa Johna Searla: člověk v místnosti následuje pravidla pro odpovídání v čínštině, aniž by čínsky rozuměl. Je AI něco jiného?</li>
+    <li><b>Statistická predikce</b> - LLM predikuje "co by pravděpodobně následovalo", nerozmýšlí</li>
+</ul>
+
+<h3 id="argumenty-pro">Argumenty pro</h3>
+
+<ul>
+    <li><b>Funkční definice</b> - pokud to řeší úkoly vyžadující inteligenci, proč to nenazývat inteligencí?</li>
+    <li><b>Emergence</b> - z jednoduchých pravidel vzniká komplexní chování, podobně jako u biologického mozku</li>
+    <li><b>Turingův test</b> - pokud nepoznáte rozdíl od člověka, je rozdíl vůbec relevantní?</li>
+</ul>
+
+<p>Většina odborníků se shoduje, že současná AI je spíše <b>sofistikovaný nástroj pro zpracování vzorů</b> než inteligence v lidském smyslu. Termín "umělá inteligence" je částečně marketingový a částečně historický - vznikl v době, kdy byly ambice jiné než dnešní realita.</p>
 
 <h2 id="kde-se-setkame">Kde se s AI setkáváme?</h2>
 
