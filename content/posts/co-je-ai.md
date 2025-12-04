@@ -81,6 +81,18 @@ format: "html"
 
 <p><b>Hluboké učení</b> (<i lang="en">Deep Learning</i>) využívá neuronové sítě s mnoha vrstvami a stojí za většinou současných průlomů v AI.</p>
 
+<h3 id="mimo-strojove-uceni">AI mimo strojové učení</h3>
+
+<p>Umělá inteligence nemusí být jen o strojovém učení. Existují i další přístupy, například:</p>
+
+<ul>
+    <li><b>Symbolická (pravidlová) AI</b> - systémy založené na ručně psaných pravidlech typu „když nastane X, udělej Y“.</li>
+    <li><b>Hledání a plánování</b> - algoritmy, které procházejí možnosti a hledají nejlepší tah nebo plán (např. šachové programy).</li>
+    <li><b>Evoluční algoritmy</b> - „evoluce v počítači“, kdy se kandidátní řešení postupně zlepšují.</li>
+</ul>
+
+<p>V praxi se často používají <b>hybridní systémy</b>, které kombinují strojové učení s pravidly nebo plánováním.</p>
+
 <h3 id="cerna-skrinka">Problém černé skříňky</h3>
 
 <p>Paradoxem moderní AI je, že ani její tvůrci často přesně nevědí, <b>proč</b> konkrétní model dává konkrétní odpovědi. Tomuto jevu se říká <b>problém černé skříňky</b> (<i lang="en">black box problem</i>).</p>
@@ -111,6 +123,16 @@ format: "html"
     <li><b>Claude</b> od Anthropic</li>
     <li><b>Gemini</b> od Google</li>
     <li><b>LLaMA</b> od Meta</li>
+</ul>
+
+<h4 id="jak-funguje-chatgpt">Jak funguje ChatGPT?</h4>
+
+<p>ChatGPT je konkrétní velký jazykový model (např. GPT-4) zabalený do chatovacího rozhraní. Funguje velmi zjednodušeně takto:</p>
+
+<ul>
+    <li>Model byl natrénovaný na velkém množství textů, aby se naučil, jak lidé píšou a jak vypadají smysluplné odpovědi.</li>
+    <li>Při psaní odpovědi dostane jako vstup celou historii konverzace a po jednom „hádá“, které slovo (nebo token) má přijít jako další.</li>
+    <li>Některé verze jsou navíc doladěné pomocí zpětné vazby od lidí, aby odpovědi byly užitečnější a bezpečnější.</li>
 </ul>
 
 <h3 id="halucinace">Halucinace</h3>
