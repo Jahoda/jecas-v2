@@ -203,7 +203,7 @@ format: "html"
     <li><b>Cursor</b> - editor s integrovanou AI</li>
 </ul>
 
-<p>Více o využití AI při programování najdete v článku <a href="/ai-programovani">10+ věcí, jak AI pomáhá při programování</a>.</p>
+<p>Více o využití AI při programování najdete v článku <a href="/ai-programovani">10+ způsobů, jak AI pomáhá při programování</a>.</p>
 
 <h2 id="rizika">Rizika a etika</h2>
 
@@ -218,6 +218,54 @@ format: "html"
 </ul>
 
 <p>Proto je důležité vyvíjet a nasazovat AI odpovědně a s ohledem na etické principy.</p>
+
+<h2 id="ztrata-prace">Ztráta pracovních míst a nové profese</h2>
+
+<p>Častou obavou je, že AI „vezme lidem práci“. V praxi ale většinou dochází spíš k <b>proměně</b> práce a vzniku nových rolí než k úplnému zániku všech pozic.</p>
+
+<h3 id="jak-automatizace-meni-praci">Jak automatizace mění trh práce</h3>
+
+<p>Nové technologie obvykle:</p>
+<ul>
+    <li>automatizují především <b>rutinní a opakující se úkoly</b>,</li>
+    <li>zvyšují <b>produktivitu</b> lidí, kteří technologii umí využít,</li>
+    <li>vytvářejí <b>nové typy práce</b>, které dříve neexistovaly.</li>
+</ul>
+
+<p>Pro jednotlivce je problém v tom, že nová pracovní místa často:</p>
+<ul>
+    <li>nevznikají ve stejný okamžik, kdy ta stará zanikají,</li>
+    <li>nejsou ve stejném regionu nebo firmě,</li>
+    <li>často vyžadují jiné dovednosti než ta původní.</li>
+</ul>
+
+<h3 id="kdo-je-nejvice-ohrozen">Kdo je nejvíce ohrožen?</h3>
+
+<p>Nejvíce jsou ohrožené profese, kde je práce hlavně:</p>
+<ul>
+    <li>silně <b>rutinní</b> a standardizovaná,</li>
+    <li>snadno <b>popsatelná v datech nebo pravidlech</b>,</li>
+    <li>bez výrazného podílu lidského kontaktu, kreativity nebo komplexního rozhodování.</li>
+</ul>
+
+<p>Naopak roste význam rolí, kde je potřeba:</p>
+<ul>
+    <li><b>kreativita</b> a originální nápady,</li>
+    <li><b>práce s lidmi</b> (empatie, komunikace, vyjednávání),</li>
+    <li><b>byznysové a systémové myšlení</b> – jak technologie zapadá do většího celku,</li>
+    <li><b>schopnost nástroje AI efektivně využívat</b> (AI jako asistent, ne konkurent).</li>
+</ul>
+
+<h3 id="rekvalifikace-a-vzdelavani">Rekvalifikace a celoživotní učení</h3>
+
+<p>Klíčová je <b>rekvalifikace</b> a <b>celoživotní vzdělávání</b> – čím rychleji se lidé naučí nové dovednosti a práci s AI, tím menší dopad má automatizace na jejich uplatnění.</p>
+
+<p>Co pomáhá:</p>
+<ul>
+    <li>sledovat, které části vlastní práce jsou nejvíce automatizovatelné,</li>
+    <li>rozvíjet dovednosti, které se těžko nahrazují (kreativita, komunikace, systémové myšlení),</li>
+    <li>učit se AI <b>aktivně používat</b>, aby zvyšovala produktivitu a neohrožovala pracovní místo.</li>
+</ul>
 
 <h2 id="budoucnost">Budoucnost AI</h2>
 
