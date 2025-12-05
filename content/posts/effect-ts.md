@@ -47,14 +47,15 @@ const newUsers = [...users, { name: "Bob" }]</code></pre>
 
 <h3 id="kompozice">Kompozice funkcí</h3>
 
-<p>Malé funkce se skládají do větších celků pomocí <code>pipe</code>. Data „protékají" zleva doprava:</p>
+<p>Malé funkce se skládají do větších celků. Můžete použít vnořené volání nebo pomocnou funkci <code>pipe</code>:</p>
 
-<pre><code>const result = pipe(
-    input,
-    validate,
-    transform,
-    save
-)</code></pre>
+<pre><code>// Vnořené volání – čte se zevnitř ven
+const result = save(transform(validate(input)))
+
+// Pomocí pipe – čte se zleva doprava (přirozenější)
+const result = pipe(input, validate, transform, save)</code></pre>
+
+<p><code>pipe</code> není nutná součást FP – je to jen syntaktický nástroj pro lepší čitelnost. Effect i další knihovny ho nabízejí, protože čtení „data protékají funkcemi" je intuitivnější než vnořené závorky.</p>
 
 <h3 id="algebraicke-typy">Algebraické datové typy</h3>
 
