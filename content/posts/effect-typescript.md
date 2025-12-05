@@ -168,14 +168,117 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
     <li><b>@effect/rpc</b> – typově bezpečné RPC volání</li>
 </ul>
 
+<h2 id="alternativy">Alternativy k Effect</h2>
+
+<p>Effect není jediná knihovna, která řeší typově bezpečné zpracování chyb v TypeScriptu. Existuje několik alternativ s různou mírou komplexity:</p>
+
+<h3 id="neverthrow">neverthrow</h3>
+
+<p><a href="https://github.com/supermacro/neverthrow" target="_blank">neverthrow</a> je jednodušší knihovna zaměřená primárně na typově bezpečné chyby pomocí typu <code>Result</code>. Je ideální jako vstupní bod do světa funkcionálního error handlingu.</p>
+
+<ul>
+    <li><b>Výhody</b> – jednoduchá, malá, snadno se integruje do existujícího kódu</li>
+    <li><b>Nevýhody</b> – pouze error handling, žádná správa zdrojů ani konkurence</li>
+    <li><b>Použití</b> – když chcete typově bezpečné chyby bez velkých změn v projektu</li>
+</ul>
+
+<h3 id="fp-ts">fp-ts</h3>
+
+<p><a href="https://gcanti.github.io/fp-ts/" target="_blank">fp-ts</a> je komplexní knihovna pro funkcionální programování v TypeScriptu. Nabízí typy jako <code>Either</code>, <code>Option</code>, <code>Task</code> a další.</p>
+
+<ul>
+    <li><b>Výhody</b> – rozsáhlá funkcionalita, velká komunita, dobře zdokumentovaná</li>
+    <li><b>Nevýhody</b> – strmá křivka učení, méně intuitivní API než Effect</li>
+    <li><b>Použití</b> – když chcete plnohodnotné FP a nevadí vám složitější syntax</li>
+</ul>
+
+<p>Effect vznikl jako „duchovní nástupce" fp-ts s modernějším a přístupnějším API.</p>
+
+<h3 id="ts-results">ts-results</h3>
+
+<p><a href="https://github.com/vultix/ts-results" target="_blank">ts-results</a> je minimalistická knihovna inspirovaná Rustem, která přináší typy <code>Result</code> a <code>Option</code>.</p>
+
+<ul>
+    <li><b>Výhody</b> – velmi jednoduchá, blízká Rust syntaxi</li>
+    <li><b>Nevýhody</b> – omezená funkcionalita</li>
+    <li><b>Použití</b> – pro vývojáře zvyklé na Rust</li>
+</ul>
+
+<h3 id="srovnani">Jak vybrat?</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Knihovna</th>
+            <th>Komplexita</th>
+            <th>Zaměření</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>neverthrow</td>
+            <td>Nízká</td>
+            <td>Pouze error handling</td>
+        </tr>
+        <tr>
+            <td>ts-results</td>
+            <td>Nízká</td>
+            <td>Result + Option (Rust styl)</td>
+        </tr>
+        <tr>
+            <td>fp-ts</td>
+            <td>Vysoká</td>
+            <td>Kompletní FP toolkit</td>
+        </tr>
+        <tr>
+            <td>Effect</td>
+            <td>Vysoká</td>
+            <td>Kompletní platforma (FP + runtime)</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Pro jednoduché projekty stačí <b>neverthrow</b>. Pro komplexní aplikace, kde potřebujete i správu zdrojů a konkurenci, je <b>Effect</b> lepší volba.</p>
+
+<h2 id="svelte">Effect a Svelte/SvelteKit</h2>
+
+<p>Effect lze používat se <a href="https://svelte.dev/" target="_blank">Svelte</a> a <a href="https://kit.svelte.dev/" target="_blank">SvelteKit</a>. Protože Effect je čistě TypeScript knihovna, funguje všude tam, kde běží TypeScript.</p>
+
+<h3 id="sveltekit-integrace">Integrace se SvelteKit</h3>
+
+<p>Pro SvelteKit existuje komunitní template <a href="https://github.com/mateoroldos/sveltekit-effect-template" target="_blank">sveltekit-effect-template</a>, který ukazuje, jak Effect integrovat:</p>
+
+<ul>
+    <li><b>Server-side</b> – Effect můžete používat v <code>+page.server.ts</code> a <code>+server.ts</code> souborech</li>
+    <li><b>Load funkce</b> – pomocné funkce jako <code>runLoader</code> spouští Effect a mapují výsledky na SvelteKit odpovědi</li>
+    <li><b>API routes</b> – Effect je ideální pro komplexní backend logiku</li>
+</ul>
+
+<pre><code>// +page.server.ts
+import { Effect } from "effect"
+
+export const load = async () => {
+    const program = pipe(
+        fetchUserData(),
+        Effect.map(data => ({ user: data }))
+    )
+
+    return Effect.runPromise(program)
+}</code></pre>
+
+<h3 id="svelte-klient">Na klientu</h3>
+
+<p>Na klientské straně Effect funguje také, ale většina jeho výhod (správa zdrojů, strukturovaná konkurence) se projeví spíš na serveru. Pro reaktivitu v UI je lepší používat Svelte stores a runes.</p>
+
 <h2 id="zaver">Závěr</h2>
 
 <ul>
     <li><p><b>Effect</b> je knihovna, která přináší funkcionální programování do TypeScriptu.</p></li>
     <li><p>Řeší problémy, které TypeScript sám neřeší – <b>typově bezpečné chyby</b>, <b>správu zdrojů</b> a <b>strukturovanou konkurenci</b>.</p></li>
     <li><p>Může nahradit několik knihoven najednou (Zod, Lodash, RxJS).</p></li>
+    <li><p>Existují jednodušší alternativy (<b>neverthrow</b>, <b>ts-results</b>) pro základní error handling.</p></li>
+    <li><p>Funguje se <b>Svelte/SvelteKit</b> – zejména na serverové straně.</p></li>
     <li><p>Má strmou křivku učení, ale pro komplexní aplikace se vyplatí.</p></li>
-    <li><p>Lze zavádět postupně – nemusíte přepisovat celou aplikaci najednou.</p></li>
 </ul>
 
 <p>Více informací najdete na <a href="https://effect.website/" target="_blank">effect.website</a> a v <a href="https://effect.website/docs" target="_blank">dokumentaci</a>.</p>
