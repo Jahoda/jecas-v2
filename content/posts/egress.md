@@ -40,6 +40,8 @@ format: "html"
 
 <p>U <i>klasických</i> hostingů tomu většinou bývá jinak a platí se za dostupný prostor na disku. Postupem času se ale disky tak zlevnily, že nějaké běžné objemy dat nestojí prakticky nic, tak se to účtuje jinak.</p>
 
+<p>Existují i úložiště, kde je možné mít data skoro zadarmo, ale platí se právě za jejich stažení/upload.</p>
+
 <h3 id="proc-poplatky">Proč platíte za egress</h3>
 
 <p>Cloudoví poskytovatelé mají následující nákladovou strukturu:</p>
@@ -60,7 +62,7 @@ format: "html"
 
 <h3 id="cenik-egress">Příklady cen egress</h3>
 
-<p>Ceny se pohybují kolem <b>$0.1</b> za GB dat. Často je třeba prvních 100 GB / 1 TB úplně zdarma.</p>
+<p>Ceny se pohybují kolem <b>0,1 $</b> za GB dat. Často je třeba prvních 100 GB / 1 TB úplně zdarma.</p>
 
 <p>S vyššími objemy se ceny snižují.</p>
 
@@ -71,10 +73,10 @@ format: "html"
 <p>U běžných webů to není problém, ale v určitých případech se egress poplatky můžou rychle vymknout kontrole:</p>
 
 <ul>
-<li><b>Streamování videa</b> – 1 hodina 1080p videa může mít 3-7 GB, což při tisících uživatelů znamená značné náklady</li>
+<li><b>Streamování videa</b> – 1 hodina 1080p videa může mít 3–7 GB, což při tisících uživatelů znamená značné náklady</li>
 <li><b>Velké soubory na stažení</b> – distribuce software, backupy</li>
 <li><b>API s velkými odpověďmi</b> – vracení velkých <a href="/json">JSON</a> payloadů</li>
-<li><b>Replikace dat mezi regiony</b> – synchronizace mezi datacentery</li>
+<li><b>Replikace dat mezi regiony</b> – synchronisace mezi datacentery</li>
 </ul>
 
 
@@ -86,7 +88,7 @@ format: "html"
 <p><b>CDN</b> (<i lang="en">Content Delivery Network</i>) může výrazně snížit egress náklady:</p>
 
 <ul>
-<li><b>Cachování statického obsahu</b> – obrázky, CSS, JavaScript se doručují z edge serverů</li>
+<li><b>Cachování statického obsahu</b> – obrázky, CSS, JavaScript se doručují z edge serverů (TODO: vysvětli)</li>
 <li><b>Geografická blízkost</b> – uživatelé dostávají data z nejbližšího serveru</li>
 <li><b>Levnější egress</b> – CDN často nabízejí nižší ceny než běžný cloud egress</li>
 </ul>
@@ -97,7 +99,7 @@ format: "html"
 <li><a href="https://www.cloudflare.com/">Cloudflare</a> – neomezený bandwidth zdarma (data musí být uložená jinde na origin serveru)</li>
 <li><a href="https://www.fastly.com/">Fastly</a></li>
 <li><a href="https://aws.amazon.com/cloudfront/">AWS CloudFront</a></li>
-<li><a href="https://bunny.net/">Bunny.net</a> – cenově výhodná alternativa</li>
+<li><a href="https://bunny.net/">Bunny.net</a></li>
 </ul>
 
 <h3 id="komprese">Komprese dat</h3>
@@ -107,8 +109,8 @@ format: "html"
 <ul>
 <li><b>Gzip/Brotli</b> – komprese textových souborů (HTML, CSS, JS)</li>
 <li><b>WebP/AVIF</b> – moderní formáty obrázků s lepší kompresí než JPEG</li>
-<li><b>Video optimalizace</b> – použití efektivních kodeků (H.265, AV1)</li>
-<li><b>API response compression</b> – komprimování JSON/XML odpovědí</li>
+<li><b>Video optimalisace</b> – použití efektivních kodeků (H.265, AV1)</li>
+<li><b>Komprese API odpovědí</b> – komprimování JSON/XML odpovědí</li>
 </ul>
 
 <h3 id="caching">Efektivní caching</h3>
@@ -121,18 +123,18 @@ format: "html"
 <li><b>API caching</b> – cachování častých dotazů</li>
 </ul>
 
-<h3 id="architecture">Architektonická rozhodnutí</h3>
+<h3 id="architektura">Architektonická rozhodnutí</h3>
 
 <ul>
 <li><b>Regionální umístění</b> – hostujte data blízko uživatelů</li>
-<li><b>Multi-cloud strategie</b> – využití více providerů pro redundanci a optimalizaci cen</li>
+<li><b>Multi-cloud strategie</b> – využití více providerů pro redundanci a optimalisaci cen</li>
 <li><b>Egress-free alternativy</b> – některé providery nabízejí služby bez egress poplatků (např. <a href="https://www.cloudflare.com/products/r2/">Cloudflare R2</a>)</li>
 <li><b>Lazy loading</b> – načítání dat až když jsou skutečně potřeba</li>
 </ul>
 
-<h2 id="egress-pricing-models">Různé modely účtování egress</h2>
+<h2 id="egress-pricing-modely">Různé modely účtování egress</h2>
 
-<h3 id="traditional">Tradiční cloud (AWS, Azure, GCP)</h3>
+<h3 id="tradicni">Tradiční cloud (AWS, Azure, GCP)</h3>
 
 <p>Platíte za <b>každé GB</b> odchozích dat s degresivní sazbou (čím více využíváte, tím nižší cena za GB).</p>
 
@@ -141,7 +143,7 @@ format: "html"
 <p>Někteří poskytovatelé nabízejí <b>nulové nebo velmi nízké</b> egress poplatky:</p>
 
 <ul>
-<li><b>Cloudflare R2</b> – object storage bez egress poplatků (platíte jen ~$0.015/GB/měsíc za storage a operace)</li>
+<li><b>Cloudflare R2</b> – object storage bez egress poplatků (platíte jen ~0,015 $/GB/měsíc za storage a operace)</li>
 <li><b>Backblaze B2</b> – měsíční egress zdarma až do výše trojnásobku uložených dat</li>
 <li><b>Hetzner</b> – velkorysé egress limity zahrnuté v ceně</li>
 </ul>
@@ -155,32 +157,28 @@ format: "html"
     <tr>
       <th>Scénář</th>
       <th>Objem dat</th>
-      <th>Egress / měsíc</th>
-      <th>Náklady (AWS)</th>
-      <th>Řešení</th>
+      <th class="text-right">Egress / měsíc</th>
+      <th class="text-right">Náklady (AWS)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><b>Streamování videa</b></td>
       <td>1 hodina 1080p videa = 5 GB<br>10 000 zhlédnutí</td>
-      <td>50 TB</td>
-      <td>$4 250</td>
-      <td>CDN, adaptivní streaming, video komprese</td>
+      <td class="text-right">50 TB</td>
+      <td class="text-right">4 250 $</td>
     </tr>
     <tr>
       <td><b>API s velkými daty</b></td>
       <td>Průměrná odpověď: 500 KB<br>10 mil. požadavků</td>
-      <td>5 TB</td>
-      <td>$450</td>
-      <td>GraphQL, stránkování, Gzip komprese, cache</td>
+      <td class="text-right">5 TB</td>
+      <td class="text-right">450 $</td>
     </tr>
     <tr>
       <td><b>Zálohy a obnova</b></td>
       <td>Denní záloha: 100 GB<br>30 dní</td>
-      <td>3 TB</td>
-      <td>$270</td>
-      <td>Inkrementální zálohy, replikace mezi regiony, hybrid cloud</td>
+      <td class="text-right">3 TB</td>
+      <td class="text-right">270 $</td>
     </tr>
   </tbody>
 </table>
@@ -194,31 +192,21 @@ format: "html"
 </li>
 
 <li>
-  <p>V cloud computingu je egress <b>zpoplatněn</b> a může tvořit značnou část nákladů, zejména u služeb s vysokým objemem dat (video, velké soubory, API)</p>
+  <p>V cloud computingu je egress <b>zpoplatněn</b> a může tvořit značnou část nákladů, zejména u služeb s vysokým objemem dat (video, velké soubory)</p>
 </li>
 
 <li>
-  <p>Ceny se pohybují od <b>$0.05 do $0.12 za GB</b> podle providera a objemu, přičemž některé služby nabízejí prvních 100 GB až 1 TB zdarma</p>
+  <p>Ceny se pohybují od <b>0,05 do 0,12 $ za GB</b> podle providera a objemu, přičemž některé služby nabízejí prvních 100 GB až 1 TB zdarma</p>
 </li>
 
 <li>
-  <p>V bezpečnosti je egress monitoring klíčový pro <b>prevenci úniků dat</b> a detekci malwaru komunikujícího s externími servery</p>
+  <p>Náklady na egress lze snížit použitím <b>CDN</b>, <b>kompresí dat</b>, <b>efektivním kešováním</b> a volbou poskytovatelů s levnějším nebo nulovým egressem (Cloudflare R2)</p>
 </li>
 
 <li>
-  <p>Náklady na egress lze snížit použitím <b>CDN</b>, <b>kompresí dat</b>, <b>efektivním cachingem</b> a volbou providerů s levnějším nebo nulovým egress</p>
-</li>
-
-<li>
-  <p>Některé moderní služby jako <b>Cloudflare R2</b> nebo <b>Backblaze B2</b> nabízejí nulové nebo výrazně nižší egress poplatky</p>
-</li>
-
-<li>
-  <p>Vždy <b>monitorujte egress traffic</b> – neočekávaný nárůst může signalizovat bezpečnostní incident nebo neefektivní implementaci</p>
+  <p>Vždy <b>monitorujte egress traffic</b> – neočekávaný nárůst může signalisovat bezpečnostní incident nebo neefektivní implementaci</p>
 </li>
 </ul>
-
-<p>Pochopení egress a jeho dopadu na náklady i bezpečnost je <b>zásadní pro každého, kdo provozuje služby v cloudu</b>. S rostoucím objemem dat a stále přísnějšími bezpečnostními požadavky se správa egress stává stále důležitější součástí infrastruktury.</p>
 
 <h2 id="odkazy-jinam">Odkazy jinam</h2>
 
