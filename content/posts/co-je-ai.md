@@ -11,7 +11,7 @@ format: "html"
 
 <p><b>AI</b> (<i lang="en">Artificial Intelligence</i>, česky <b>umělá inteligence</b>) se zabývá vytvářením programů a strojů schopných provádět úkoly, které běžně vyžadují lidskou inteligenci.</p>
 
-<p>Patří sem například rozpoznávání řeči, porozumění přirozenému jazyku, učení se z dat, visuální vnímání nebo na druhou stranu produkce těchto věcí.</p>
+<p>Patří sem například rozpoznávání řeči, porozumění přirozenému jazyku, učení se z dat, vizuální vnímání nebo na druhou stranu produkce těchto věcí.</p>
 
 <h2 id="historie">Stručná historie</h2>
 
@@ -28,7 +28,7 @@ format: "html"
     <li><b>Obrovské množství dat</b> – internet, sociální sítě, e-shopy a chytrá zařízení generují data, na kterých se modely mohou učit.</li>
     <li><b>Lepší algoritmy</b> – hluboké učení a zejména architektura transformerů škálují s daty a výkonem, takže „víc dat + víc výpočtů“ reálně znamená lepší výsledky.</li>
     <li><b>Dostupné nástroje</b> – knihovny jako <a href="https://www.tensorflow.org/" target="_blank">TensorFlow</a>, <a href="https://pytorch.org/" target="_blank">PyTorch</a> nebo hotová API zpřístupnily AI běžným vývojářům, nejen výzkumníkům.</li>
-    <li><b>Ekonomická motivace</b> – vyhledávání, reklama, doporučování obsahu, automatisace a produktivita přinášejí firmám přímé peníze, takže do AI proudí obří investice.</li>
+    <li><b>Ekonomická motivace</b> – vyhledávání, reklama, doporučování obsahu, automatizace a produktivita přinášejí firmám přímé peníze, takže do AI proudí obří investice.</li>
     <li><b>Snadné použití pro běžné uživatele</b> – nástroje jako ChatGPT, Claude nebo Gemini ukázaly AI v podobě jednoduchého chatu, což dramaticky zvýšilo zájem veřejnosti i médií.</li>
 </ul>
 
@@ -52,7 +52,7 @@ format: "html"
 
 <p><b>Silná AI</b> (<i lang="en">Artificial General Intelligence</i>, AGI) by měla být schopna provádět jakýkoli intelektuální úkol, který zvládne člověk.</p>
 
-<p>Tento typ AI zatím neexistuje a je předmětem intensivního výzkumu a debat.</p>
+<p>Tento typ AI zatím neexistuje a je předmětem intenzivního výzkumu a debat.</p>
 
 <h3 id="superinteligence">Superinteligence</h3>
 
@@ -97,7 +97,7 @@ format: "html"
 
 <p>Výzkumníci chápou:</p>
 <ul>
-    <li>Matematické principy (lineární algebra, statistika, optimalisace)</li>
+    <li>Matematické principy (lineární algebra, statistika, optimalizace)</li>
     <li>Architekturu sítí (jak jsou vrstvy propojeny)</li>
     <li>Trénovací proces (jak se síť učí z dat)</li>
 </ul>
@@ -186,7 +186,7 @@ format: "html"
     <li><b>Vyhledávače</b> – Google používá AI pro lepší výsledky vyhledávání</li>
     <li><b>Sociální sítě</b> – algoritmy určují, co vidíme ve feedu</li>
     <li><b>E-maily</b> – filtrování spamu, chytré odpovědi</li>
-    <li><b>Navigace</b> – optimalisace tras v reálném čase</li>
+    <li><b>Navigace</b> – optimalizace tras v reálném čase</li>
     <li><b>Finance</b> – detekce podvodů, algoritmické obchodování</li>
     <li><b>Zákaznická podpora</b> – chatboti a virtuální asistenti</li>
 </ul>
@@ -208,8 +208,8 @@ format: "html"
 <p>S rozvojem AI přichází i řada obav:</p>
 
 <ul>
-    <li><b>Ztráta pracovních míst</b> – automatisace může nahradit některé profese</li>
-    <li><b>Desinformace</b> – generování falešných zpráv a deepfakes (podle mě spíš positivní, protože se tím lidé učí věci ověřovat)</li>
+    <li><b>Ztráta pracovních míst</b> – automatizace může nahradit některé profese</li>
+    <li><b>Dezinformace</b> – generování falešných zpráv a deepfakes (podle mě spíš pozitivní, protože se tím lidé učí věci ověřovat)</li>
     <li><b>Předpojatost</b> – AI může přebírat předsudky z trénovacích dat</li>
     <li><b>Soukromí</b> – sběr a analýza osobních dat</li>
     <li><b>Bezpečnost</b> – zneužití AI pro kybernetické útoky</li>
@@ -220,13 +220,13 @@ format: "html"
 
 <p>Častou obavou je, že AI „vezme lidem práci“. V praxi ale většinou dochází spíš k <b>proměně</b> práce.</p>
 
-<p>Historicky už bylo spoustu průlomových vynálezů, které lidem braly práci. Nakonec to znamenalo změnu profesí a vyšší životní úroveň, tak je otázka, proč by to s dnešní AI mělo být jinak.</p>
+<p>Historicky už byla spousta průlomových vynálezů, které lidem braly práci. Nakonec to znamenalo změnu profesí a vyšší životní úroveň, tak je otázka, proč by to s dnešní AI mělo být jinak.</p>
 
-<h3 id="jak-automatisace-meni-praci">Jak automatisace mění trh práce</h3>
+<h3 id="jak-automatizace-meni-praci">Jak automatizace mění trh práce</h3>
 
 <p>Nové technologie obvykle:</p>
 <ul>
-    <li>automatisují především <b>rutinní a opakující se úkoly</b>,</li>
+    <li>automatizují především <b>rutinní a opakující se úkoly</b>,</li>
     <li>zvyšují <b>produktivitu</b> lidí, kteří technologii umí využít,</li>
     <li>vytvářejí <b>nové typy práce</b>, které dříve neexistovaly.</li>
 </ul>
@@ -241,11 +241,11 @@ format: "html"
 
 <h3 id="rekvalifikace-a-vzdelavani">Rekvalifikace a celoživotní učení</h3>
 
-<p>Klíčová je <b>rekvalifikace</b> a <b>celoživotní vzdělávání</b> – čím rychleji se lidé naučí nové dovednosti a práci s AI, tím menší dopad má automatisace na jejich uplatnění.</p>
+<p>Klíčová je <b>rekvalifikace</b> a <b>celoživotní vzdělávání</b> – čím rychleji se lidé naučí nové dovednosti a práci s AI, tím menší dopad má automatizace na jejich uplatnění.</p>
 
 <p>Co pomáhá:</p>
 <ul>
-    <li>sledovat, které části vlastní práce jsou nejvíce automatisovatelné,</li>
+    <li>sledovat, které části vlastní práce jsou nejvíce automatizovatelné,</li>
     <li>rozvíjet dovednosti, které se těžko nahrazují (kreativita, komunikace, systémové myšlení),</li>
     <li>učit se AI <b>aktivně používat</b>, aby zvyšovala produktivitu a neohrožovala pracovní místo.</li>
 </ul>

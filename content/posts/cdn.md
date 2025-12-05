@@ -5,7 +5,7 @@ description: "Má smysl používat pro připojení CSS a JS souborů CDN?"
 date: "2016-01-23"
 last_modification: "2016-02-08"
 status: 1
-tags: ["hosting", "zrychlovani"]
+tags: ["hosting", "zrychlovani", "cloud"]
 format: "html"
 ---
 

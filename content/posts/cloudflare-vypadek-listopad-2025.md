@@ -5,7 +5,7 @@ description: "18. listopadu 2025 postihla Cloudflare čtyřhodinová porucha zp�
 date: "2025-11-19"
 last_modification: "2025-11-19"
 status: 1
-tags: ["zabezpeceni"]
+tags: ["zabezpeceni", "cloud"]
 format: "html"
 ---
 
