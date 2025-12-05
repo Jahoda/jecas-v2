@@ -5,7 +5,7 @@ description: "Jak zdarma hostovat v cloudu MySQL."
 date: "2023-02-13"
 last_modification: "2023-02-13"
 status: 0
-tags: []
+tags: ["cloud"]
 format: "html"
 ---
 

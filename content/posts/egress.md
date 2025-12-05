@@ -1,11 +1,11 @@
 ---
 title: "Co je egress a proč za něj platíte"
 headline: "Egress: Odchozí datový provoz a jeho náklady"
-description: "Co je to egress traffic, jak funguje v cloudu, proč za něj (ne)platíte a jak optimalizovat náklady."
+description: "Co je to egress traffic, jak funguje v cloudu, proč za něj (ne)platíte a jak optimalisovat náklady."
 date: "2025-12-05"
 last_modification: "2025-12-05"
 status: 1
-tags: ["zabezpeceni", "napady", "rychlost"]
+tags: ["napady", "zrychlovani", "cloud"]
 format: "html"
 ---
 
