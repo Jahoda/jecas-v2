@@ -13,7 +13,7 @@ format: "html"
 
 <p>Vznikla jako odpověď na problémy, které TypeScript sám o sobě neřeší – zejména zpracování chyb, správu zdrojů a práci s asynchronním kódem.</p>
 
-<p>Jinak řečeno se Effect snaží řešit věci, které typicky vadí na JavaScriptu programátorům preferující jiné jazyky.</p>
+<p>Jinak řečeno se Effect snaží řešit věci, které typicky vadí na JavaScriptu programátorům preferujícím jiné jazyky.</p>
 
 <h2 id="proc-effect">Proč Effect vznikl?</h2>
 
@@ -125,7 +125,7 @@ const getUser = (id: string): Effect&lt;User, UserNotFoundError&gt;</code></pre>
 
 <p>Nemusíte myslet na <code>finally</code> bloky a nemůžete zapomenout zavřít spojení.</p>
 
-<h3 id="kompozice">Snadná kompozice</h3>
+<h3 id="snadna-kompozice">Snadná kompozice</h3>
 
 <p>Effect je navržen tak, aby se jednotlivé části daly snadno skládat dohromady:</p>
 
@@ -316,14 +316,14 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
     <li><b>Kdy ano</b> – komplexní business logika na klientu, offline-first aplikace, sdílený kód mezi FE a BE</li>
 </ul>
 
-<p>Nejčastější vzor je používat Effect na backendu a na frontendu jen pro sdílenou business logiku nebo validace pomocí <code>@effect/schema</code>.</p>
+<p>Nejčastější vzor je používat Effect na backendu a na frontendu jen pro sdílenou business logiku nebo validace pomocí modulu <code>Schema</code>.</p>
 
 <h2 id="ekosystem">Ekosystém</h2>
 
 <p>Kolem Effect vzniká ekosystém dalších nástrojů:</p>
 
 <ul>
-    <li><b>@effect/schema</b> – validace a transformace dat</li>
+    <li><b>Schema</b> – validace a transformace dat (součást hlavního balíčku <code>effect</code>)</li>
     <li><b>@effect/platform</b> – abstrakce nad platformou (Node.js, Bun, prohlížeč)</li>
     <li><b>@effect/sql</b> – typově bezpečná práce s SQL databázemi</li>
     <li><b>@effect/rpc</b> – typově bezpečné RPC volání</li>
