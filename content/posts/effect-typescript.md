@@ -192,7 +192,7 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
     <li><b>Použití</b> – když chcete plnohodnotné FP a nevadí vám složitější syntax</li>
 </ul>
 
-<p>Effect vznikl jako „duchovní nástupce" fp-ts s modernějším a přístupnějším API.</p>
+<p>Effect je oficiální nástupce fp-ts. V roce 2023 se fp-ts projekt oficiálně sloučil s Effect-TS ekosystémem a tvůrce fp-ts, Giulio Canti, se připojil k Effect organizaci. Effect přináší modernější a přístupnější API, které řeší některé limity fp-ts a nabízí jednotný typ <code>Effect</code> místo více různých efektových typů.</p>
 
 <h3 id="ts-results">ts-results</h3>
 
@@ -239,6 +239,10 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
 </table>
 
 <p>Pro jednoduché projekty stačí <b>neverthrow</b>. Pro komplexní aplikace, kde potřebujete i správu zdrojů a konkurenci, je <b>Effect</b> lepší volba.</p>
+
+<h3 id="tanstack-query">TanStack Query</h3>
+
+<p><a href="https://tanstack.com/query" target="_blank">TanStack Query</a> (dříve React Query) nepoužívá Effect ani fp-ts interně – má minimální závislosti a je navržen jako lightweight knihovna. Lze je však kombinovat: Effect můžete použít v <code>queryFn</code> pro typově bezpečné zpracování chyb a business logiku, zatímco TanStack Query řeší cache a synchronizaci server state.</p>
 
 <h2 id="svelte">Effect a Svelte/SvelteKit</h2>
 
