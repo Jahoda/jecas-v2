@@ -1,7 +1,7 @@
 ---
 title: "Co je AI (umělá inteligence)?"
 headline: "Co je AI (umělá inteligence)?"
-description: "Stručný úvod do fungování AI, jak funguje a kde všude se s ní dnes setkáme."
+description: "Stručný úvod do AI, jak funguje a kde všude se s ní dnes setkáme."
 date: "2025-12-04"
 last_modification: "2025-12-04"
 status: 1
