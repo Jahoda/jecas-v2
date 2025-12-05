@@ -20,11 +20,11 @@ format: "html"
 <p>TypeScript má skvělý typový systém, ale některé věci v něm zůstávají problematické:</p>
 
 <ul>
-    <li><b>Zpracování chyb</b> – <code>try/catch</code> nezachycuje typy výjimek, takže nevíte, co vám může vyletět.</li>
-    <li><b><a href="/js-null-undefined">Null/undefined</a></b> – i s <code>strictNullChecks</code> je práce s nullable hodnotami nepohodlná.</li>
-    <li><b>Asynchronní kód</b> – Promise jsou lepší než callbacky, ale stále mají svoje limity.</li>
-    <li><b>Správa zdrojů</b> – otevřít soubor, připojit se k databázi a správně to zavřít je překvapivě těžké.</li>
-    <li><b>Závislosti</b> – předávání závislostí (dependency injection) v TypeScriptu není standardizované.</li>
+    <li><b>Zpracování chyb</b> – <code>try/catch</code> nezachycuje typy výjimek, takže nevíte, co vám může vyletět</li>
+    <li><b><a href="/js-null-undefined">Null/undefined</a></b> – i s <code>strictNullChecks</code> je práce s nullable hodnotami nepohodlná</li>
+    <li><b>Asynchronní kód</b> – Promise jsou lepší než callbacky, ale stále mají svoje limity</li>
+    <li><b>Správa zdrojů</b> – otevřít soubor, připojit se k databázi a správně to zavřít je překvapivě těžké</li>
+    <li><b>Závislosti</b> – předávání závislostí (dependency injection) v TypeScriptu není standardizované</li>
 </ul>
 
 <p>Effect na všechny tyto problémy nabízí elegantní řešení.</p>
@@ -42,7 +42,7 @@ add(2, 3) // vždy 5</code></pre>
 
 <h3 id="imutabilita">Imutabilita</h3>
 
-<p>Data se nemění – místo modifikace vytváříte nové kopie. To eliminuje celou kategorii bugů způsobených neočekávanou mutací.</p>
+<p>Data se nemění – místo modifikace vytváříte nové kopie. To eliminuje celou kategorii chyb způsobených neočekávanou mutací.</p>
 
 <pre><code>const users = [{ name: "Alice" }]
 const newUsers = [...users, { name: "Bob" }]</code></pre>
@@ -74,7 +74,7 @@ type Result&lt;E, A&gt; = Ok&lt;A&gt; | Err&lt;E&gt;</code></pre>
 
 <p>V běžném TypeScriptu nevíte, jaké chyby funkce může vyhodit:</p>
 
-<pre><code>// Co může vyhodit? Nevím, podívám se do dokumentace... možná.
+<pre><code>// Co může vyhodit? Nevím, podívám se do dokumentace… možná.
 function parseJSON(text: string): unknown {
     return JSON.parse(text);
 }</code></pre>
@@ -230,7 +230,7 @@ type GetUser = Effect&lt;User, DatabaseError, DatabaseService&gt;</code></pre>
 Effect.runPromise(parse)
 // Teprve teď se JSON.parse skutečně zavolá</code></pre>
 
-<p>To umožňuje efekt znovupoužít, opakovat při selhání (retry), nebo testovat bez skutečného spuštění.</p>
+<p>To umožňuje efekt znovupoužít, opakovat při selhání (retry) nebo testovat bez skutečného spuštění.</p>
 
 <h3 id="flat-error-handling">Plochá struktura místo vnořování</h3>
 
