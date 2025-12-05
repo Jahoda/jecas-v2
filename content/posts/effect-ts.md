@@ -64,7 +64,7 @@ const result = pipe(input, validate, transform, save)</code></pre>
 <pre><code>type Option&lt;A&gt; = Some&lt;A&gt; | None
 type Result&lt;E, A&gt; = Ok&lt;A&gt; | Err&lt;E&gt;</code></pre>
 
-<p>Effect tyto koncepty integruje do jednotného typu <code>Effect&lt;A, E, R&gt;</code>, který kombinuje výsledek, chybu i závislosti.</p>
+<p>Effect tyto koncepty integruje do jednotného typu <code>Effect&lt;Success, Error, Requirements&gt;</code>, který kombinuje výsledek, chybu i závislosti.</p>
 
 <h2 id="hlavni-vlastnosti">Hlavní vlastnosti</h2>
 
@@ -135,12 +135,12 @@ const results = Effect.all([
 
 <h2 id="zakladni-koncept">Základní koncept: Effect jako popis výpočtu</h2>
 
-<p>Klíčem k pochopení Effect je uvědomit si, že <code>Effect&lt;A, E, R&gt;</code> je <b>popis</b> výpočtu, ne samotný výpočet:</p>
+<p>Klíčem k pochopení Effect je uvědomit si, že <code>Effect&lt;Success, Error, Requirements&gt;</code> je <b>popis</b> výpočtu, ne samotný výpočet:</p>
 
 <ul>
-    <li><b>A</b> – typ úspěšného výsledku</li>
-    <li><b>E</b> – typ možné chyby</li>
-    <li><b>R</b> – požadované závislosti (requirements)</li>
+    <li><b>Success</b> – typ úspěšného výsledku</li>
+    <li><b>Error</b> – typ možné chyby</li>
+    <li><b>Requirements</b> – požadované závislosti (služby, které efekt potřebuje)</li>
 </ul>
 
 <pre><code>// Popis: "Něco, co vrátí User, může selhat s DatabaseError
@@ -273,6 +273,20 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
     <li>Týmy bez zkušeností s funkcionálním programováním (alespoň zpočátku)</li>
     <li>Projekty, kde je prioritou rychlost vývoje nad robustností</li>
 </ul>
+
+<h3 id="frontend-backend">Frontend vs Backend</h3>
+
+<p><b>Backend</b> – Effect zde září nejvíc. Správa zdrojů (databáze, soubory), strukturovaná konkurence, retry logika a dependency injection jsou přesně to, co backendové aplikace potřebují.</p>
+
+<p><b>Frontend</b> – Effect lze použít, ale s rozmyslem:</p>
+
+<ul>
+    <li><b>Bundle size</b> – Effect není malá knihovna (~50 kB gzip), což může být problém pro performance-kritické weby</li>
+    <li><b>UI reaktivita</b> – pro state management jsou lepší framework-specific nástroje (React Query, Svelte stores, Vue composables)</li>
+    <li><b>Kdy ano</b> – komplexní business logika na klientu, offline-first aplikace, sdílený kód mezi FE a BE</li>
+</ul>
+
+<p>Nejčastější vzor je používat Effect na backendu a na frontendu jen pro sdílenou business logiku nebo validace pomocí <code>@effect/schema</code>.</p>
 
 <h2 id="ekosystem">Ekosystém</h2>
 
