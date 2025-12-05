@@ -84,6 +84,34 @@ const parseUser: Effect&lt;User, ParseError&gt;</code></pre>
 
 <p>Chyby se stávají hodnotami, které můžete předávat, transformovat a zpracovávat stejně jako normální data. Žádné překvapivé výjimky, které vybuchnou za běhu.</p>
 
+<h3 id="option">Práce s null/undefined</h3>
+
+<p>Effect nabízí typ <code>Option</code> jako náhradu za <code>null</code>/<code>undefined</code>. Upřímně – pro většinu případů v TypeScriptu stačí <code>?.</code> a <code>??</code>:</p>
+
+<pre><code>const email = user?.profile?.email ?? "default@example.com"</code></pre>
+
+<p><code>Option</code> se vyplatí hlavně ve dvou situacích:</p>
+
+<p><b>1. Když používáte Effect</b> – <code>Option</code> se přirozeně integruje s ostatními Effect typy. Můžete ho převést na <code>Effect</code> a naopak:</p>
+
+<pre><code>const program = pipe(
+    Option.fromNullable(config.apiKey),
+    Option.match({
+        onNone: () => Effect.fail(new ConfigError("API key missing")),
+        onSome: (key) => fetchData(key)
+    })
+)</code></pre>
+
+<p><b>2. Když potřebujete rozlišit „nenalezeno" od „chyba"</b> – funkce vracející <code>Option</code> říká „hodnota nemusí existovat a to je OK". Funkce vracející <code>Effect</code> s chybou říká „něco se pokazilo":</p>
+
+<pre><code>// Option: "uživatel nemusí existovat, to je normální"
+const findUser = (id: string): Option&lt;User&gt;
+
+// Effect: "pokud uživatel neexistuje, je to chyba"
+const getUser = (id: string): Effect&lt;User, UserNotFoundError&gt;</code></pre>
+
+<p>Pokud nepoužíváte Effect ekosystém, <code>Option</code> pravděpodobně nepotřebujete.</p>
+
 <h3 id="sprava-zdroju">Bezpečná správa zdrojů</h3>
 
 <p>Effect zajišťuje, že zdroje (soubory, připojení k databázi, síťová spojení) jsou vždy správně uvolněny, i když dojde k chybě:</p>
