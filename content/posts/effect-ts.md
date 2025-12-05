@@ -1,7 +1,7 @@
 ---
 title: "Effect: Chybějící standardní knihovna pro TypeScript"
 headline: "Effect: Chybějící standardní knihovna pro TypeScript"
-description: "Co je Effect, proč vznikl a jak může zlepšit váš TypeScript kód. Typově bezpečné zpracování chyb, správa zdrojů a strukturovaná konkurence."
+description: "Effect nabízí typově bezpečné zpracování chyb a čitelnější práci s asynchronním kódem."
 date: "2025-12-05"
 last_modification: "2025-12-05"
 status: 1
@@ -9,7 +9,7 @@ tags: ["typescript", "napady", "programovani"]
 format: "html"
 ---
 
-<p><b>Effect</b> je TypeScript knihovna, která si klade za cíl být „chybějící standardní knihovnou" pro TypeScript. Přináší funkcionální programování do světa TypeScriptu a pomáhá psát robustnější, bezpečnější a lépe udržovatelný kód.</p>
+<p><a href="https://effect.website/"><b>Effect</b></a> je TypeScript knihovna, která si klade za cíl být „chybějící standardní knihovnou" pro TypeScript. Přináší funkcionální programování do světa TypeScriptu a pomáhá psát robustnější, bezpečnější a lépe udržovatelný kód.</p>
 
 <p>Vznikla jako odpověď na problémy, které TypeScript sám o sobě neřeší – zejména zpracování chyb, správu zdrojů a práci s asynchronním kódem.</p>
 
@@ -87,9 +87,9 @@ const results = Effect.all([
 <p>Effect v sobě obsahuje funkce, které byste jinak řešili pomocí několika různých knihoven:</p>
 
 <ul>
-    <li><b>Validace a schémata</b> – modul <code>Schema</code> nahrazuje <a href="https://zod.dev/" target="_blank">Zod</a></li>
-    <li><b>Utility funkce</b> – moduly jako <code>Array</code>, <code>Option</code>, <code>Stream</code> nahrazují <a href="https://lodash.com/" target="_blank">Lodash</a></li>
-    <li><b>Reaktivní streamy</b> – modul <code>Stream</code> nabízí podobné možnosti jako <a href="https://rxjs.dev/" target="_blank">RxJS</a></li>
+    <li><b>Validace a schémata</b> – modul <code>Schema</code> nahrazuje <a href="https://zod.dev/">Zod</a></li>
+    <li><b>Utility funkce</b> – moduly jako <code>Array</code>, <code>Option</code>, <code>Stream</code> nahrazují <a href="https://lodash.com/">Lodash</a></li>
+    <li><b>Reaktivní streamy</b> – modul <code>Stream</code> nabízí podobné možnosti jako <a href="https://rxjs.dev/">RxJS</a></li>
 </ul>
 
 <p>Místo kombinování různých knihoven s různými API máte jeden konzistentní nástroj.</p>
@@ -174,7 +174,7 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
 
 <h3 id="neverthrow">neverthrow</h3>
 
-<p><a href="https://github.com/supermacro/neverthrow" target="_blank">neverthrow</a> je jednodušší knihovna zaměřená primárně na typově bezpečné chyby pomocí typu <code>Result</code>. Je ideální jako vstupní bod do světa funkcionálního error handlingu.</p>
+<p><a href="https://github.com/supermacro/neverthrow">neverthrow</a> je jednodušší knihovna zaměřená primárně na typově bezpečné chyby pomocí typu <code>Result</code>. Je ideální jako vstupní bod do světa funkcionálního error handlingu.</p>
 
 <ul>
     <li><b>Výhody</b> – jednoduchá, malá, snadno se integruje do existujícího kódu</li>
@@ -184,7 +184,7 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
 
 <h3 id="fp-ts">fp-ts</h3>
 
-<p><a href="https://gcanti.github.io/fp-ts/" target="_blank">fp-ts</a> je komplexní knihovna pro funkcionální programování v TypeScriptu. Nabízí typy jako <code>Either</code>, <code>Option</code>, <code>Task</code> a další.</p>
+<p><a href="https://gcanti.github.io/fp-ts/">fp-ts</a> je komplexní knihovna pro funkcionální programování v TypeScriptu. Nabízí typy jako <code>Either</code>, <code>Option</code>, <code>Task</code> a další.</p>
 
 <ul>
     <li><b>Výhody</b> – rozsáhlá funkcionalita, velká komunita, dobře zdokumentovaná</li>
@@ -196,7 +196,7 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
 
 <h3 id="ts-results">ts-results</h3>
 
-<p><a href="https://github.com/vultix/ts-results" target="_blank">ts-results</a> je minimalistická knihovna inspirovaná Rustem, která přináší typy <code>Result</code> a <code>Option</code>.</p>
+<p><a href="https://github.com/vultix/ts-results">ts-results</a> je minimalistická knihovna inspirovaná Rustem, která přináší typy <code>Result</code> a <code>Option</code>.</p>
 
 <ul>
     <li><b>Výhody</b> – velmi jednoduchá, blízká Rust syntaxi</li>
@@ -242,15 +242,15 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
 
 <h3 id="tanstack-query">TanStack Query</h3>
 
-<p><a href="https://tanstack.com/query" target="_blank">TanStack Query</a> (dříve React Query) nepoužívá Effect ani fp-ts interně – má minimální závislosti a je navržen jako lightweight knihovna. Lze je však kombinovat: Effect můžete použít v <code>queryFn</code> pro typově bezpečné zpracování chyb a business logiku, zatímco TanStack Query řeší cache a synchronizaci server state.</p>
+<p><a href="https://tanstack.com/query">TanStack Query</a> (dříve React Query) nepoužívá Effect ani fp-ts interně – má minimální závislosti a je navržen jako lightweight knihovna. Lze je však kombinovat: Effect můžete použít v <code>queryFn</code> pro typově bezpečné zpracování chyb a business logiku, zatímco TanStack Query řeší cache a synchronizaci server state.</p>
 
 <h2 id="svelte">Effect a Svelte/SvelteKit</h2>
 
-<p>Effect lze používat se <a href="https://svelte.dev/" target="_blank">Svelte</a> a <a href="https://kit.svelte.dev/" target="_blank">SvelteKit</a>. Protože Effect je čistě TypeScript knihovna, funguje všude tam, kde běží TypeScript.</p>
+<p>Effect lze používat se <a href="https://svelte.dev/">Svelte</a> a <a href="https://kit.svelte.dev/">SvelteKit</a>. Protože Effect je čistě TypeScript knihovna, funguje všude tam, kde běží TypeScript.</p>
 
 <h3 id="sveltekit-integrace">Integrace se SvelteKit</h3>
 
-<p>Pro SvelteKit existuje komunitní template <a href="https://github.com/mateoroldos/sveltekit-effect-template" target="_blank">sveltekit-effect-template</a>, který ukazuje, jak Effect integrovat:</p>
+<p>Pro SvelteKit existuje komunitní template <a href="https://github.com/mateoroldos/sveltekit-effect-template">sveltekit-effect-template</a>, který ukazuje, jak Effect integrovat:</p>
 
 <ul>
     <li><b>Server-side</b> – Effect můžete používat v <code>+page.server.ts</code> a <code>+server.ts</code> souborech</li>
@@ -285,4 +285,4 @@ export const load = async () => {
     <li><p>Má strmou křivku učení, ale pro komplexní aplikace se vyplatí.</p></li>
 </ul>
 
-<p>Více informací najdete na <a href="https://effect.website/" target="_blank">effect.website</a> a v <a href="https://effect.website/docs" target="_blank">dokumentaci</a>.</p>
+<p>Více informací najdete v <a href="https://effect.website/docs">dokumentaci</a>.</p>
