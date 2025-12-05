@@ -13,6 +13,8 @@ format: "html"
 
 <p>Vznikla jako odpověď na problémy, které TypeScript sám o sobě neřeší – zejména zpracování chyb, správu zdrojů a práci s asynchronním kódem.</p>
 
+<p>Jinak řečeno se Effect snaží řešit věci, které typicky vadí na JavaScriptu programátorům preferující jiné jazyky.</p>
+
 <h2 id="proc-effect">Proč Effect vznikl?</h2>
 
 <p>TypeScript má skvělý typový systém, ale některé věci v něm zůstávají problematické:</p>
