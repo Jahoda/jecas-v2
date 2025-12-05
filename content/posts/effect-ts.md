@@ -21,7 +21,7 @@ format: "html"
 
 <ul>
     <li><b>Zpracování chyb</b> – <code>try/catch</code> nezachycuje typy výjimek, takže nevíte, co vám může vyletět.</li>
-    <li><b>Null/undefined</b> – i s <code>strictNullChecks</code> je práce s nullable hodnotami nepohodlná.</li>
+    <li><b><a href="/js-null-undefined">Null/undefined</a></b> – i s <code>strictNullChecks</code> je práce s nullable hodnotami nepohodlná.</li>
     <li><b>Asynchronní kód</b> – Promise jsou lepší než callbacky, ale stále mají svoje limity.</li>
     <li><b>Správa zdrojů</b> – otevřít soubor, připojit se k databázi a správně to zavřít je překvapivě těžké.</li>
     <li><b>Závislosti</b> – předávání závislostí (dependency injection) v TypeScriptu není standardizované.</li>
@@ -311,7 +311,7 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
 <p><b>Frontend</b> – Effect lze použít, ale s rozmyslem:</p>
 
 <ul>
-    <li><b>Bundle size</b> – Effect není malá knihovna (~50 kB gzip), což může být problém pro performance-kritické weby</li>
+    <li><b>Bundle size</b> – Effect není malá knihovna (~50 kB gzip), což může být problém pro performance-kritické weby. Pro optimalizaci <a href="/build-chunk">rozdělte build do chunků</a>.</li>
     <li><b>UI reaktivita</b> – pro state management jsou lepší framework-specific nástroje (React Query, Svelte stores, Vue composables)</li>
     <li><b>Kdy ano</b> – komplexní business logika na klientu, offline-first aplikace, sdílený kód mezi FE a BE</li>
 </ul>
