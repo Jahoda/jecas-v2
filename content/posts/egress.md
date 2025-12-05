@@ -38,11 +38,11 @@ format: "html"
 
 <p>V cloud computingu je egress jedním z <b>nejvýznamnějších nákladových faktorů</b>. Většina cloud poskytovatelů účtuje poplatky za odchozí data z jejich infrastruktury.</p>
 
-<p>U <i>klasických</i> hostingů tomu většinou bývá jinak a platí se za dostupný prostor na disku. Posupem času se ale disky tak zlevnily, že nějaké běžné objemy dat nestojí prakticky nic, tak se to účtuje jinak.</p>
+<p>U <i>klasických</i> hostingů tomu většinou bývá jinak a platí se za dostupný prostor na disku. Postupem času se ale disky tak zlevnily, že nějaké běžné objemy dat nestojí prakticky nic, tak se to účtuje jinak.</p>
 
 <h3 id="proc-poplatky">Proč platíte za egress</h3>
 
-<p>Cloud provideři mají následující nákladovou strukturu:</p>
+<p>Cloudoví poskytovatelé mají následující nákladovou strukturu:</p>
 
 <ul>
 <li><b>Ingress je obvykle zdarma</b> – chtějí, abyste do cloudu nahrávali data</li>
@@ -53,14 +53,14 @@ format: "html"
 <p>Důvodem jsou především:</p>
 
 <ul>
-<li><b>Náklady na šířku pásma</b> – provideři platí ISP (Internet Service Provider) za připojení k internetu</li>
+<li><b>Náklady na šířku pásma</b> – poskytovatelé platí ISP (Internet Service Provider) za připojení k internetu</li>
 <li><b>Infrastruktura CDN</b> – distribuce obsahu do různých regionů</li>
-<li><b>Obchodní strategie</b> – „vendor lock-in", aby bylo obtížnější přesunout data jinam</li>
+<li><b>Obchodní strategie</b> – „vendor lock-in“, aby bylo obtížnější přesunout data jinam</li>
 </ul>
 
 <h3 id="cenik-egress">Příklady cen egress</h3>
 
-<p>Ceny se pohybují kolem <b>0,1 $</b> za GB dat. Často je třeba prvních 100 GB / 1 TB úplně zdarma.</p>
+<p>Ceny se pohybují kolem <b>$0.1</b> za GB dat. Často je třeba prvních 100 GB / 1 TB úplně zdarma.</p>
 
 <p>S vyššími objemy se ceny snižují.</p>
 
@@ -68,7 +68,7 @@ format: "html"
 
 <h3 id="skryte-naklady">Skryté náklady egress</h3>
 
-<p>U běžných webů to neí problém, ale v určitých případech se egress poplatky můžou rychle vymknout kontrole:</p>
+<p>U běžných webů to není problém, ale v určitých případech se egress poplatky můžou rychle vymknout kontrole:</p>
 
 <ul>
 <li><b>Streamování videa</b> – 1 hodina 1080p videa může mít 3-7 GB, což při tisících uživatelů znamená značné náklady</li>
@@ -136,13 +136,13 @@ format: "html"
 
 <p>Platíte za <b>každé GB</b> odchozích dat s degresivní sazbou (čím více využíváte, tím nižší cena za GB).</p>
 
-<h3 id="egress-free">Egress-free providery</h3>
+<h3 id="egress-free">Poskytovatelé bez egress poplatků</h3>
 
 <p>Někteří poskytovatelé nabízejí <b>nulové nebo velmi nízké</b> egress poplatky:</p>
 
 <ul>
 <li><b>Cloudflare R2</b> – object storage bez egress poplatků (platíte jen ~$0.015/GB/měsíc za storage a operace)</li>
-<li><b>Backblaze B2</b> – první 3x uložených dat zdarma egress měsíčně</li>
+<li><b>Backblaze B2</b> – měsíční egress zdarma až do výše trojnásobku uložených dat</li>
 <li><b>Hetzner</b> – velkorysé egress limity zahrnuté v ceně</li>
 </ul>
 
@@ -170,14 +170,14 @@ format: "html"
     </tr>
     <tr>
       <td><b>API s velkými daty</b></td>
-      <td>Průměrná response: 500 KB<br>10 mil. requestů</td>
+      <td>Průměrná odpověď: 500 KB<br>10 mil. požadavků</td>
       <td>5 TB</td>
       <td>$450</td>
-      <td>GraphQL, paginace, Gzip komprese, caching</td>
+      <td>GraphQL, stránkování, Gzip komprese, cache</td>
     </tr>
     <tr>
-      <td><b>Zálohy a recovery</b></td>
-      <td>Denní backup: 100 GB<br>30 dní</td>
+      <td><b>Zálohy a obnova</b></td>
+      <td>Denní záloha: 100 GB<br>30 dní</td>
       <td>3 TB</td>
       <td>$270</td>
       <td>Inkrementální zálohy, replikace mezi regiony, hybrid cloud</td>
