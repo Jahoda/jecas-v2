@@ -140,7 +140,7 @@ const getUser = (id: string): Effect&lt;User, UserNotFoundError&gt;</code></pre>
 
 <h3 id="strukturovana-konkurence">Strukturovaná konkurence</h3>
 
-<p>Effect má vestavěnou podporu pro paralelní a konkurentní operace s automatickým zrušením:</p>
+<p>Effect má vestavěnou podporu pro paralelní a konkurentní operace (běh více úloh střídavě) s automatickým zrušením:</p>
 
 <pre><code>// Spustí tři požadavky paralelně a vrátí všechny výsledky
 const results = Effect.all([
