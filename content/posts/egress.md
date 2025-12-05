@@ -149,60 +149,42 @@ format: "html"
 
 <h2 id="priklady">Praktické příklady</h2>
 
-<h3 id="priklad-video">Streamování videa</h3>
-
-<p>Představte si, že provozujete platformu s video obsahem:</p>
-
-<ul>
-<li><b>1 hodina 1080p videa</b> = přibližně <b>5 GB</b></li>
-<li><b>10,000 zhlédnutí měsíčně</b> = <b>50 TB egress</b></li>
-<li>Náklady na AWS: <b>50 TB × $0.085</b> = <b>$4,250/měsíc</b></li>
-</ul>
-
-<p>Řešení:</p>
-
-<ul>
-<li>Použít <b>CDN</b> s lepšími cenami</li>
-<li><b>Adaptivní streaming</b> – doručovat nižší kvalitu na pomalém připojení</li>
-<li><b>Video komprese</b> – efektivnější kodeky</li>
-</ul>
-
-<h3 id="priklad-api">API s velkými daty</h3>
-
-<p>REST API vracející velké JSON odpovědi:</p>
-
-<ul>
-<li><b>Průměrná response</b>: 500 KB</li>
-<li><b>10 milionů requestů/měsíc</b> = <b>5 TB egress</b></li>
-<li>Náklady: <b>$450/měsíc</b> (AWS)</li>
-</ul>
-
-<p>Optimalizace:</p>
-
-<ul>
-<li><b>GraphQL</b> – klienti dostanou pouze požadovaná pole</li>
-<li><b>Pagination</b> – menší odpovědi, více requestů (ingress je zdarma)</li>
-<li><b>Gzip compression</b> – může snížit velikost o 70-80%</li>
-<li><b>Response caching</b> – méně požadavků na server</li>
-</ul>
-
-<h3 id="priklad-backup">Zálohy a disaster recovery</h3>
-
-<p>Každodenní stahování záloh z cloudu:</p>
-
-<ul>
-<li><b>Denní backup</b>: 100 GB</li>
-<li><b>30 dní</b> = <b>3 TB egress</b></li>
-<li>Náklady: <b>$270/měsíc</b></li>
-</ul>
-
-<p>Řešení:</p>
-
-<ul>
-<li><b>Incremental backups</b> – stahovat pouze změny</li>
-<li><b>Cross-region replication</b> v rámci cloudu (levnější než egress)</li>
-<li><b>Hybrid cloud</b> – kombinace on-premise a cloud storage</li>
-</ul>
+<div class="overflow-x-auto">
+<table>
+  <thead>
+    <tr>
+      <th>Scénář</th>
+      <th>Objem dat</th>
+      <th>Egress / měsíc</th>
+      <th>Náklady (AWS)</th>
+      <th>Řešení</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Streamování videa</b></td>
+      <td>1 hodina 1080p videa = 5 GB<br>10 000 zhlédnutí</td>
+      <td>50 TB</td>
+      <td>$4 250</td>
+      <td>CDN, adaptivní streaming, video komprese</td>
+    </tr>
+    <tr>
+      <td><b>API s velkými daty</b></td>
+      <td>Průměrná response: 500 KB<br>10 mil. requestů</td>
+      <td>5 TB</td>
+      <td>$450</td>
+      <td>GraphQL, paginace, Gzip komprese, caching</td>
+    </tr>
+    <tr>
+      <td><b>Zálohy a recovery</b></td>
+      <td>Denní backup: 100 GB<br>30 dní</td>
+      <td>3 TB</td>
+      <td>$270</td>
+      <td>Inkrementální zálohy, replikace mezi regiony, hybrid cloud</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 <h2 id="zaver">Závěr</h2>
 
