@@ -1,15 +1,15 @@
 ---
 title: "Co je egress a proč za něj platíte"
 headline: "Egress: Odchozí datový provoz a jeho náklady"
-description: "Kompletní průvodce pojmem egress. Zjistěte, co je egress traffic, jak funguje v cloudu, proč za něj platíte a jak optimalizovat náklady."
-date: "2025-11-26"
-last_modification: "2025-11-26"
+description: "Co je to egress traffic, jak funguje v cloudu, proč za něj (ne)platíte a jak optimalizovat náklady."
+date: "2025-12-05"
+last_modification: "2025-12-05"
 status: 1
 tags: ["zabezpeceni", "napady", "rychlost"]
 format: "html"
 ---
 
-<p><b>Egress</b> označuje <b>odchozí datový provoz</b> z nějaké sítě, systému nebo služby. Tento pojem se nejčastěji používá v kontextu cloud computingu, datacenter a síťové bezpečnosti.</p>
+<p><b>Egress</b> označuje <b>odchozí datový provoz</b> z nějaké sítě, systému nebo služby. Tento pojem se nejčastěji používá v kontextu cloudů a datacenter. Do češtiny by se dalo přeložit asi jako <i>odtok</i>.</p>
 
 <p>V praxi to znamená <b>data, která opouštějí vaši infrastrukturu</b> – například když uživatelé stahují soubory z vašeho serveru, přistupují k API nebo prohlížejí obrázky na vašem webu.</p>
 
@@ -38,6 +38,8 @@ format: "html"
 
 <p>V cloud computingu je egress jedním z <b>nejvýznamnějších nákladových faktorů</b>. Většina cloud poskytovatelů účtuje poplatky za odchozí data z jejich infrastruktury.</p>
 
+<p>U <i>klasických</i> hostingů tomu většinou bývá jinak a platí se za dostupný prostor na disku. Posupem času se ale disky tak zlevnily, že nějaké běžné objemy dat nestojí prakticky nic, tak se to účtuje jinak.</p>
+
 <h3 id="proc-poplatky">Proč platíte za egress</h3>
 
 <p>Cloud provideři mají následující nákladovou strukturu:</p>
@@ -58,89 +60,24 @@ format: "html"
 
 <h3 id="cenik-egress">Příklady cen egress</h3>
 
-<p><b>AWS (Amazon Web Services):</b></p>
+<p>Ceny se pohybují kolem <b>0,1 $</b> za GB dat. Často je třeba prvních 100 GB / 1 TB úplně zdarma.</p>
 
-<ul>
-<li>První 10 TB/měsíc: <b>$0.09 za GB</b> (region US/EU)</li>
-<li>Další 40 TB/měsíc: <b>$0.085 za GB</b></li>
-<li>Další 100 TB/měsíc: <b>$0.07 za GB</b></li>
-<li>Nad 150 TB/měsíc: <b>$0.05 za GB</b></li>
-</ul>
+<p>S vyššími objemy se ceny snižují.</p>
 
-<p><b>Google Cloud:</b></p>
-
-<ul>
-<li>První 1 TB/měsíc: <b>zdarma</b> (Premium tier)</li>
-<li>1-10 TB: <b>$0.12 za GB</b></li>
-<li>10+ TB: klesající cena až na <b>$0.08 za GB</b></li>
-</ul>
-
-<p><b>Microsoft Azure:</b></p>
-
-<ul>
-<li>První 100 GB/měsíc: <b>zdarma</b></li>
-<li>100 GB – 10 TB: <b>$0.087 za GB</b></li>
-<li>10-50 TB: <b>$0.083 za GB</b></li>
-</ul>
-
-<p>Ceny se liší podle regionu a konkrétní služby. Uvedené ceny jsou orientační pro EU/US regiony.</p>
+<p>Ceny se liší podle regionu a konkrétní služby.</p>
 
 <h3 id="skryte-naklady">Skryté náklady egress</h3>
 
-<p>Egress poplatky se můžou rychle vymknout kontrole:</p>
+<p>U běžných webů to neí problém, ale v určitých případech se egress poplatky můžou rychle vymknout kontrole:</p>
 
 <ul>
-<li><b>Streamování videa</b> – 1 hodina 1080p videa může mít 3-7 GB, což při tisících uživatelů znamená obrovské náklady</li>
+<li><b>Streamování videa</b> – 1 hodina 1080p videa může mít 3-7 GB, což při tisících uživatelů znamená značné náklady</li>
 <li><b>Velké soubory na stažení</b> – distribuce software, backupy</li>
-<li><b>API s velkými odpověďmi</b> – vracení velkých JSON payloadů</li>
+<li><b>API s velkými odpověďmi</b> – vracení velkých <a href="/json">JSON</a> payloadů</li>
 <li><b>Replikace dat mezi regiony</b> – synchronizace mezi datacentery</li>
 </ul>
 
-<p>Příklad:</p>
 
-<blockquote>
-<p>Pokud provozujete web, který <b>generuje 10 TB egress měsíčně</b> na AWS, zaplatíte přibližně <b>$900/měsíc</b> jen za přenos dat. To je <b>$10,800 ročně</b>.</p>
-</blockquote>
-
-<h2 id="egress-bezpecnost">Egress v bezpečnosti</h2>
-
-<p>V kontextu bezpečnosti znamená egress <b>monitoring odchozího provozu</b> – klíčovou součást ochrany proti úniku dat a kybernetickým útokům.</p>
-
-<h3 id="egress-firewall">Egress firewall</h3>
-
-<p><b>Egress firewall</b> kontroluje a filtruje <b>odchozí síťový provoz</b>. Na rozdíl od klasických firewallů, které se zaměřují především na příchozí spojení, egress firewall monitoruje, kam a jaká data opouštějí vaši síť.</p>
-
-<p>Použití:</p>
-
-<ul>
-<li><b>Prevence úniku dat</b> – blokování odchozích spojení na neautorizované servery</li>
-<li><b>Ochrana před malwarem</b> – zabránění komunikaci s C&amp;C (command and control) servery</li>
-<li><b>Compliance</b> – zajištění, že citlivá data neopouštějí síť bez autorizace</li>
-</ul>
-
-<h3 id="data-exfiltration">Data exfiltration</h3>
-
-<p><b>Data exfiltration</b> je neoprávněný přenos dat z organizace ven. Útočníci používají různé techniky:</p>
-
-<ul>
-<li><b>DNS tunneling</b> – skrytí dat v DNS dotazech</li>
-<li><b>HTTPS tunely</b> – šifrovaný přenos vypadá jako legitimní provoz</li>
-<li><b>Cloudové služby</b> – upload na Dropbox, Google Drive apod.</li>
-<li><b>E-mailové přílohy</b> – odesílání citlivých dat emailem</li>
-</ul>
-
-<p>Monitoring egress provozu pomáhá detekovat tyto útoky včas.</p>
-
-<h3 id="zero-trust">Zero Trust a egress</h3>
-
-<p>V <b>Zero Trust</b> architektuře se egress traffic striktně kontroluje:</p>
-
-<ul>
-<li>Každé odchozí spojení musí být <b>explicitně povoleno</b></li>
-<li><b>Whitelist přístup</b> – pouze známé a důvěryhodné destinace</li>
-<li><b>Průběžný monitoring</b> – analýza anomálií v odchozím provozu</li>
-<li><b>Segmentace sítě</b> – různé úrovně přístupu pro různé části infrastruktury</li>
-</ul>
 
 <h2 id="optimalizace">Jak snížit náklady na egress</h2>
 
@@ -193,16 +130,6 @@ format: "html"
 <li><b>Lazy loading</b> – načítání dat až když jsou skutečně potřeba</li>
 </ul>
 
-<h3 id="monitoring">Monitoring a alerting</h3>
-
-<p>Sledujte egress traffic, abyste odhalili anomálie:</p>
-
-<ul>
-<li><b>Nastavte alerty</b> – upozornění při neočekávaném nárůstu</li>
-<li><b>Analyzujte trendy</b> – identifikujte největší spotřebitele egress</li>
-<li><b>Cost allocation tags</b> – přiřaďte náklady konkrétním projektům/týmům</li>
-</ul>
-
 <h2 id="egress-pricing-models">Různé modely účtování egress</h2>
 
 <h3 id="traditional">Tradiční cloud (AWS, Azure, GCP)</h3>
@@ -219,13 +146,6 @@ format: "html"
 <li><b>Hetzner</b> – velkorysé egress limity zahrnuté v ceně</li>
 </ul>
 
-<h3 id="bandwidth-pools">Bandwidth Pools</h3>
-
-<p>Některé služby nabízejí <b>pooled bandwidth</b> – sdílený limit pro všechny vaše resources:</p>
-
-<ul>
-<li>Například <b>DigitalOcean</b> – každý droplet má zahrnuté egress, které se sdílí mezi všemi droplets</li>
-</ul>
 
 <h2 id="priklady">Praktické příklady</h2>
 
