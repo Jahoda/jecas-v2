@@ -353,7 +353,7 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
     <li><b>Použití</b> – když chcete plnohodnotné FP a nevadí vám složitější syntax</li>
 </ul>
 
-<p>Effect je oficiální nástupce fp-ts. V roce 2023 se fp-ts projekt oficiálně sloučil s Effect-TS ekosystémem a tvůrce fp-ts, Giulio Canti, se připojil k Effect organizaci. Effect přináší modernější a přístupnější API, které řeší některé limity fp-ts a nabízí jednotný typ <code>Effect</code> místo více různých efektových typů.</p>
+<p>Effect je duchovní nástupce fp-ts. Tvůrce fp-ts, Giulio Canti, se v roce 2023 připojil k Effect týmu. fp-ts zůstává samostatný projekt, ale aktivní vývoj se přesunul na Effect. Effect přináší modernější a přístupnější API, které řeší některé limity fp-ts a nabízí jednotný typ <code>Effect</code> místo více různých efektových typů.</p>
 
 <h3 id="ts-results">ts-results</h3>
 
@@ -435,7 +435,7 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
 </ul>
 
 <pre><code>// +page.server.ts
-import { Effect } from "effect"
+import { Effect, pipe } from "effect"
 
 export const load = async () => {
     const program = pipe(
