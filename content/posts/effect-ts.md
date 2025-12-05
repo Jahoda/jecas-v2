@@ -27,6 +27,44 @@ format: "html"
 
 <p>Effect na všechny tyto problémy nabízí elegantní řešení.</p>
 
+<h2 id="funkcionalni-programovani">Funkcionální programování ve zkratce</h2>
+
+<p>Effect vychází z funkcionálního programování (FP). Pokud s FP nemáte zkušenosti, zde jsou klíčové koncepty:</p>
+
+<h3 id="ciste-funkce">Čisté funkce</h3>
+
+<p>Funkce, která pro stejný vstup vždy vrátí stejný výstup a nemá vedlejší efekty (nemění globální stav, nepíše do databáze, nevolá API). Čisté funkce jsou snadno testovatelné a předvídatelné.</p>
+
+<pre><code>const add = (a: number, b: number) => a + b
+add(2, 3) // vždy 5</code></pre>
+
+<h3 id="imutabilita">Imutabilita</h3>
+
+<p>Data se nemění – místo modifikace vytváříte nové kopie. To eliminuje celou kategorii bugů způsobených neočekávanou mutací.</p>
+
+<pre><code>const users = [{ name: "Alice" }]
+const newUsers = [...users, { name: "Bob" }]</code></pre>
+
+<h3 id="kompozice">Kompozice funkcí</h3>
+
+<p>Malé funkce se skládají do větších celků pomocí <code>pipe</code>. Data „protékají" zleva doprava:</p>
+
+<pre><code>const result = pipe(
+    input,
+    validate,
+    transform,
+    save
+)</code></pre>
+
+<h3 id="algebraicke-typy">Algebraické datové typy</h3>
+
+<p><code>Option</code> reprezentuje hodnotu, která může chybět (náhrada za <code>null</code>). <code>Either</code>/<code>Result</code> reprezentuje výpočet, který může selhat. Tyto typy vynucují explicitní ošetření všech případů.</p>
+
+<pre><code>type Option&lt;A&gt; = Some&lt;A&gt; | None
+type Result&lt;E, A&gt; = Ok&lt;A&gt; | Err&lt;E&gt;</code></pre>
+
+<p>Effect tyto koncepty integruje do jednotného typu <code>Effect&lt;A, E, R&gt;</code>, který kombinuje výsledek, chybu i závislosti.</p>
+
 <h2 id="hlavni-vlastnosti">Hlavní vlastnosti</h2>
 
 <h3 id="typove-bezpecne-chyby">Typově bezpečné zpracování chyb</h3>
@@ -109,6 +147,84 @@ const results = Effect.all([
 type GetUser = Effect&lt;User, DatabaseError, DatabaseService&gt;</code></pre>
 
 <p>Teprve když Effect „spustíte", začne se skutečně vykonávat. Toto oddělení popisu od provedení přináší řadu výhod – můžete efekty skládat, transformovat a testovat, aniž byste cokoli skutečně spouštěli.</p>
+
+<h2 id="effect-try-vs-try-catch">Effect.try vs klasický try-catch</h2>
+
+<p>Na první pohled může <code>Effect.try</code> vypadat jako zbytečná obálka kolem běžného <code>try-catch</code>. Ve skutečnosti přináší několik zásadních výhod.</p>
+
+<h3 id="type-safety">Chyba je součástí typu</h3>
+
+<p>V klasickém TypeScriptu funkce s <code>try-catch</code> neodhalí, že může selhat:</p>
+
+<pre><code>function parseJSON(input: string): unknown {
+    try {
+        return JSON.parse(input)
+    } catch (e) {
+        throw new Error(`Parse failed: ${e}`)
+    }
+}
+// Typ: (input: string) => unknown
+// TypeScript NEVÍ, že funkce může vyhodit Error</code></pre>
+
+<p>V Effect je chyba explicitně součástí typu:</p>
+
+<pre><code>const parseJSON = (input: string) =>
+    Effect.try({
+        try: () => JSON.parse(input),
+        catch: (e) => new Error(`Parse failed: ${e}`)
+    })
+// Typ: (input: string) => Effect&lt;unknown, Error, never&gt;
+// Chyba Error je VIDITELNÁ v typu</code></pre>
+
+<p>Kompilátor vás donutí chybu ošetřit – nemůžete ji ignorovat.</p>
+
+<h3 id="expression-vs-statement">Hodnota místo příkazu</h3>
+
+<p><code>try-catch</code> je příkaz (statement), který nemůžete přímo přiřadit nebo skládat. <code>Effect.try</code> vrací hodnotu, kterou můžete rovnou použít v pipeline:</p>
+
+<pre><code>const program = pipe(
+    parseJSON(input),
+    Effect.flatMap(validate),
+    Effect.flatMap(save),
+    Effect.catchAll(logAndRecover)
+)</code></pre>
+
+<h3 id="lazy-evaluation">Odložené vykonání</h3>
+
+<p><code>Effect.try</code> nic nespouští – vytváří pouze popis operace. Skutečné provedení nastane až při zavolání <code>Effect.runPromise</code>:</p>
+
+<pre><code>const parse = Effect.try({ try: () => JSON.parse(input), catch: toError })
+// Zatím se nic nestalo
+
+Effect.runPromise(parse)
+// Teprve teď se JSON.parse skutečně zavolá</code></pre>
+
+<p>To umožňuje efekt znovupoužít, opakovat při selhání (retry), nebo testovat bez skutečného spuštění.</p>
+
+<h3 id="flat-error-handling">Plochá struktura místo vnořování</h3>
+
+<p>Klasický try-catch vede k vnořování:</p>
+
+<pre><code>try {
+    const data = JSON.parse(input)
+    try {
+        const validated = validate(data)
+        try {
+            await save(validated)
+        } catch { /* handle save error */ }
+    } catch { /* handle validation error */ }
+} catch { /* handle parse error */ }</code></pre>
+
+<p>Effect umožňuje plochou pipeline s ošetřením chyb kdekoli:</p>
+
+<pre><code>const program = pipe(
+    parseJSON(input),
+    Effect.flatMap(validate),
+    Effect.flatMap(save),
+    Effect.catchTag("ParseError", handleParseError),
+    Effect.catchTag("ValidationError", handleValidationError),
+    Effect.catchTag("SaveError", handleSaveError)
+)</code></pre>
 
 <h2 id="jak-zacit">Jak začít s Effect</h2>
 
@@ -204,6 +320,16 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
     <li><b>Použití</b> – pro vývojáře zvyklé na Rust</li>
 </ul>
 
+<h3 id="evolu">Evolu</h3>
+
+<p><a href="https://www.evolu.dev/">Evolu</a> je TypeScript knihovna a local-first platforma. Její „Library" část nabízí podobné FP koncepty jako Effect – <code>Result</code>, <code>Task</code>, runtime validaci typů a dependency injection – ale v jednodušší formě.</p>
+
+<ul>
+    <li><b>Výhody</b> – jednodušší než Effect, obsahuje i local-first platformu pro offline aplikace s end-to-end šifrováním</li>
+    <li><b>Nevýhody</b> – menší komunita, méně funkcí než plný Effect</li>
+    <li><b>Použití</b> – když chcete FP patterny bez komplexity Effect, nebo budujete local-first aplikaci</li>
+</ul>
+
 <h3 id="srovnani">Jak vybrat?</h3>
 
 <table>
@@ -235,10 +361,15 @@ Effect.runPromise(program).then(console.log) // 42</code></pre>
             <td>Vysoká</td>
             <td>Kompletní platforma (FP + runtime)</td>
         </tr>
+        <tr>
+            <td>Evolu</td>
+            <td>Střední</td>
+            <td>FP základy + local-first platforma</td>
+        </tr>
     </tbody>
 </table>
 
-<p>Pro jednoduché projekty stačí <b>neverthrow</b>. Pro komplexní aplikace, kde potřebujete i správu zdrojů a konkurenci, je <b>Effect</b> lepší volba.</p>
+<p>Pro jednoduché projekty stačí <b>neverthrow</b>. Pro local-first aplikace je zajímavá <b>Evolu</b>. Pro komplexní aplikace, kde potřebujete i správu zdrojů a konkurenci, je <b>Effect</b> lepší volba.</p>
 
 <h3 id="tanstack-query">TanStack Query</h3>
 
@@ -281,8 +412,6 @@ export const load = async () => {
     <li><p>Řeší problémy, které TypeScript sám neřeší – <b>typově bezpečné chyby</b>, <b>správu zdrojů</b> a <b>strukturovanou konkurenci</b>.</p></li>
     <li><p>Může nahradit několik knihoven najednou (Zod, Lodash, RxJS).</p></li>
     <li><p>Existují jednodušší alternativy (<b>neverthrow</b>, <b>ts-results</b>) pro základní error handling.</p></li>
-    <li><p>Funguje se <b>Svelte/SvelteKit</b> – zejména na serverové straně.</p></li>
-    <li><p>Má strmou křivku učení, ale pro komplexní aplikace se vyplatí.</p></li>
+    <li><p>Pro komplexní aplikace to může být dobrá volba.</p></li>
 </ul>
 
-<p>Více informací najdete v <a href="https://effect.website/docs">dokumentaci</a>.</p>
