@@ -5,7 +5,7 @@ description: "Effect nabízí typově bezpečné zpracování chyb a čitelněj�
 date: "2025-12-05"
 last_modification: "2025-12-05"
 status: 1
-tags: ["typescript", "napady", "programovani"]
+tags: ["ts", "js", "napady"]
 format: "html"
 ---
 
