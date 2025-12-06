@@ -32,6 +32,7 @@
 	/* Custom Blue Colors */
 	--color-blue-dark: #0d6ab7;
 	--color-blue-light: #1081dd;
+	--color-blue-light-contrast: #5eb3f7;
 
 	/* Grid Template Columns */
 	--grid-template-columns-homepage-3: 6fr minmax(280px, 2fr) minmax(340px, 3fr);
@@ -63,11 +64,11 @@
 	}
 
 	.prose-invert a {
-		color: var(--color-blue-dark);
+		color: var(--color-blue-light-contrast);
 	}
 
 	.prose-invert a:hover {
-		color: var(--color-blue-light);
+		color: var(--color-lochmara-300);
 	}
 }
 
