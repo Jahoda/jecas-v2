@@ -34,6 +34,10 @@
 	--color-blue-light: #1081dd;
 	--color-blue-light-contrast: #5eb3f7;
 
+	/* Dark mode link color - cyan/teal works better with Night Shift */
+	--color-link-dark-mode: #5eead4;
+	--color-link-dark-mode-hover: #99f6e4;
+
 	/* Grid Template Columns */
 	--grid-template-columns-homepage-3: 6fr minmax(280px, 2fr) minmax(340px, 3fr);
 	--grid-template-columns-homepage-2: 1fr 300px;
@@ -64,11 +68,11 @@
 	}
 
 	.prose-invert a {
-		color: var(--color-blue-light-contrast);
+		color: var(--color-link-dark-mode);
 	}
 
 	.prose-invert a:hover {
-		color: var(--color-lochmara-300);
+		color: var(--color-link-dark-mode-hover);
 	}
 }
 
