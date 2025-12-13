@@ -94,8 +94,7 @@
 	border-bottom-style: dotted;
 }
 
-.prose a[href^='https://kod.djpw.cz']:not(.button)
-{
+.prose a[href^='https://kod.djpw.cz']:not(.button) {
 	padding-left: 24px;
 }
 
@@ -120,8 +119,7 @@
 	@apply text-lochmara-800 dark:text-lochmara-50;
 }
 
-.prose a[href^='https://kod.djpw.cz']:not(.button)
-{
+.prose a[href^='https://kod.djpw.cz']:not(.button) {
 	background: url('/external-favicons/kod.djpw.cz.ico') no-repeat left 2px center;
 	background-size: 1em 1em;
 
@@ -129,67 +127,58 @@
 }
 
 .prose a[href^='http://diskuse.jakpsatweb.cz'],
-.prose a[href^='http://djpw.cz']
-{
+.prose a[href^='http://djpw.cz'] {
 	padding-left: 20px;
 	background: #d3fcab url('https://diskuse.jakpsatweb.cz/favicon.ico') no-repeat;
 	background-size: 1em 100%;
 }
 
 .prose a[href^='https://github.com'],
-.prose a[href^='https://gist.github.com']
-{
+.prose a[href^='https://gist.github.com'] {
 	padding-left: 22px;
 	background: #e4e4f1 url('https://github.com/favicon.ico') 2px no-repeat;
 	background-size: 1em 100%;
 	border-radius: 2px;
 }
 
-.prose a[href^='http://php.net']
-{
+.prose a[href^='http://php.net'] {
 	padding-left: 20px;
 	background: #e4e4f1 url('https://php.net/favicon.ico') no-repeat;
 	background-size: 1em 100%;
 }
 
-.prose a[href^='http://devdocs.io/']
-{
+.prose a[href^='http://devdocs.io/'] {
 	padding-left: 20px;
 	background: #e4e4f1 url('https://devdocs.io/favicon.ico') no-repeat;
 	background-size: 1em 100%;
 }
 
 .prose a[href^='http://cs.wikipedia.org/'],
-.prose a[href^='http://en.wikipedia.org/']
-{
+.prose a[href^='http://en.wikipedia.org/'] {
 	padding-left: 20px;
 	background: #e4e4f1 url('https://cs.wikipedia.org/favicon.ico') no-repeat;
 	background-size: 1em 100%;
 }
 
-.prose a[href^='https://www.vzhurudolu.cz']
-{
+.prose a[href^='https://www.vzhurudolu.cz'] {
 	padding-left: 1.25rem;
 	background: url('https://www.vzhurudolu.cz/favicon.ico') center left no-repeat;
 	background-size: 1rem 1rem;
 }
 
-.prose a[href^='https://developer.mozilla.org']
-{
+.prose a[href^='https://developer.mozilla.org'] {
 	padding-left: 1.25rem;
 	background: url('https://developer.mozilla.org/favicon.ico') center left no-repeat;
 	background-size: 1rem 1rem;
 }
 
-.prose a[href^='https://caniuse.com']
-{
+.prose a[href^='https://caniuse.com'] {
 	padding-left: 1.25rem;
 	background: url('https://caniuse.com/img/favicon-128.png') center left no-repeat;
 	background-size: 1rem 1rem;
 }
 
-.prose a[href^='https://www.npmjs.com']
-{
+.prose a[href^='https://www.npmjs.com'] {
 	padding-left: 1.25rem;
 	background: url('https://static.npmjs.com/b0f1a8318363185cc2ea6a40ac23eeb2.png') center left
 		no-repeat;
