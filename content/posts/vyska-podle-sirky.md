@@ -62,7 +62,7 @@ format: "html"
 
 <p><b>Natáhnout výšku</b> je možné i horním <code>padding</code>em nebo kombinací (<code>padding-top</code> + <code>padding-bottom</code>). V případě samostatného <code>padding-top</code> to však má nevýhodu, že do elementu nepůjde rozumně <b>vkládat obsah</b>, protože celý začátek obsahu zabere právě <code>padding</code>.</p>
 
-<p>Teoreticky to jde řešit odečtením <a href="/margin"><code>margin</code>u</a> (<a href="https://kod.djpw.cz/cofb">ukázka</a>) nebo <a href="/position: absolute">absolutně posicovaným</a> dalším elementem uvnitř (<a href="https://kod.djpw.cz/dofb">ukázka</a>).</p>
+<p>Teoreticky to jde řešit odečtením <a href="/margin"><code>margin</code>u</a> (<a href="https://kod.djpw.cz/cofb">ukázka</a>) nebo <a href="/position#absolute">absolutně posicovaným</a> dalším elementem uvnitř (<a href="https://kod.djpw.cz/dofb">ukázka</a>).</p>
 
 <p>Použít kombinaci může mít smysl právě pro <b>cílené odsazení</b> obsahu shora bez dalšího vnořeného <code>&lt;div></code>u (<a href="https://kod.djpw.cz/bofb">ukázka</a>).</p>
 

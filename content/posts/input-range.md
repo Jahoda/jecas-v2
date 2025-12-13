@@ -216,7 +216,7 @@ input[type=range]::-ms-thumb {}</code></pre>
 
 <h2 id="shadow-dom">Shadow DOM</h2>
 
-<p>Pro stylování range (a i obecně) si doporučuji zapnout ve <a href="/vyvojarske-nastoje">vývojářských nástrojích</a> <b>Shadow DOM</b>.</p>
+<p>Pro stylování range (a i obecně) si doporučuji zapnout ve <a href="/vyvojarske-nastroje">vývojářských nástrojích</a> <b>Shadow DOM</b>.</p>
 
 <p>Do nastavení se jde dostat klávesou <kbd>F1</kbd> při otevřených DevTools.</p>
 

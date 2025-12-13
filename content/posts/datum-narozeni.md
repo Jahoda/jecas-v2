@@ -102,7 +102,7 @@ format: "html"
 
 <h2 id="date">Systémový datepicker</h2>
 
-<p>Většinou se pro datum dobře hodí tzv. <a href="/datepicke">datepicker</a>. Typicky se jedná o políčko, které po kliknutí zobrazí kalendář.</p>
+<p>Většinou se pro datum dobře hodí tzv. <a href="/datepicker">datepicker</a>. Typicky se jedná o políčko, které po kliknutí zobrazí kalendář.</p>
 
 <p>Dosáhnout toho jde snadno přes <code>&lt;input type="date"></code>:</p>
 
