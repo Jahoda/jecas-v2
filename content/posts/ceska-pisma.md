@@ -35,25 +35,38 @@ format: "html"
 <link href='//fonts.googleapis.com/css?family=Londrina+Solid|Lora|Love+Ya+Like+A+Sister|Loved+by+the+King|Luckiest+Guy|Magra|Maiden+Orange|Marcellus|Marcellus+SC|Margarine|McLaren|Meddon|MedievalSharp|Megrim|Merriweather+Sans|Metamorphous|Milonga|Modern+Antiqua|Monda|Monofett|Monoton|Montez|Mouse+Memoirs|Neuton|New+Rocker|News+Cycle|Nosifer|Nothing+You+Could+Do|Noticia+Text|Noto+Sans|Noto+Serif|Oldenburg|Open+Sans|Oranienbaum|Oregano|Oswald|Over+the+Rainbow|Oxygen|Oxygen+Mono|PT+Mono|PT+Sans|PT+Sans+Narrow|PT+Serif|PT+Serif+Caption|Parisienne|Patrick+Hand|Patrick+Hand+SC|Paytone+One|Peralta|Petit+Formal+Script|Plaster|Play|Playfair+Display|Playfair+Display+SC|Pontano+Sans|Prociono|Prosto+One|Purple+Purse|Quando|Quintessential|Racing+Sans+One|Radley|Rammetto+One|Ranchers|Redressed|Reenie+Beanie|Ribeye|Ribeye+Marrow|Righteous|Risque|Roboto|Roboto+Condensed|Roboto+Slab|Romanesco|Rum+Raisin|Russo+One|Sacramento|Sancreek|Sarina|Seymour+One|Shadows+Into+Light|Share+Tech|Shojumaru|Signika+Negative|Six+Caps|Smokum|Sonsie+One|Sorts+Mill+Goudy|Source+Code+Pro|Source+Sans+Pro|Special+Elite|Stalemate|Stint+Ultra+Condensed|Stint+Ultra+Expanded|Stoke|Swanky+and+Moo+Moo|Syncopate|Tenor+Sans|The+Girl+Next+Door|Tienne|Tinos|Titillium+Web|Trocchi|Trykker|Ubuntu|Ubuntu+Condensed|Ubuntu+Mono|Ultra|Uncial+Antiqua|Underdog|Unica+One|Varela|Waiting+for+the+Sunrise|Wellfleet|Yellowtail|Yeseva+One|Zeyada|&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
 <style>
-  .pismo {float: left; height: 8em; width: 25%; width: -webkit-calc(100% / 4); width: calc(100% / 4); background: #efefef; box-sizing: border-box; -moz-box-sizing: border-box; border: 2px solid #fff; padding: 0 1em;}
+  .pisma-search {display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;}
+  .pisma-search input {flex: 1; min-width: 200px; padding: 0.75rem 1rem; font-size: 1rem; border: 2px solid #e5e7eb; border-radius: 0.5rem; outline: none; transition: border-color 0.2s;}
+  .pisma-search input:focus {border-color: #3b82f6;}
+  .pisma-search .pocet {color: #6b7280; font-size: 0.9rem; width: 5rem;}
+  .pisma-grid {display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;}
+  .pismo {min-height: 8em; background: #efefef; box-sizing: border-box; padding: 0.5em 1em; display: flex; flex-direction: column; justify-content: center;}
+  .pismo.skryto {display: none;}
   .pismo span {padding: .2em}
-  .pismo {width: 33.3333333%; width: -webkit-calc(100% / 3); width: calc(100% / 3)}
-  
-  @media screen and (max-width: 960px) {
-      
-  }
-  
+
   @media screen and (max-width: 760px) {
-      .pismo {width: 50%; width: -webkit-calc(100% / 2); width: calc(100% / 2)}
+      .pisma-grid {grid-template-columns: repeat(2, 1fr);}
   }
-  
+
   @media screen and (max-width: 540px) {
-      .pismo {width: 100%; }
+      .pisma-grid {grid-template-columns: 1fr;}
   }
-  .pismo h2 {font-size: 100%}
-  .ukazka {display: inline; font-size: 20px; background: #8ECCF0; white-space: nowrap}
+  .pismo h2 {font-size: 0.9rem; margin: 0 0 0.5em 0; line-height: 1.2;}
+  .ukazka {display: block; font-size: clamp(14px, 4vw, 18px); line-height: 1.4; margin: 0; overflow-wrap: break-word; word-break: break-word;}
+
+  @media (prefers-color-scheme: dark) {
+      .pismo {background: #374151;}
+      .pisma-search input {background: #1f2937; border-color: #374151; color: #fff;}
+      .pisma-search input:focus {border-color: #3b82f6;}
+  }
 </style>
 
+<div class="pisma-search">
+  <input type="text" id="pisma-filtr" placeholder="Hledat písmo...">
+  <span class="pocet" id="pisma-pocet"></span>
+</div>
+
+<div class="pisma-grid" id="pisma-grid">
 <div class="pismo" id="abril-fatface">
 	<h2>Abril Fatface</h2>
 	<p class="ukazka" style="font-family: 'Abril Fatface';"><span>ěščřžýáéňóůúďť</span><br><span>escrzyaenouudt</span></p>
@@ -1250,8 +1263,49 @@ format: "html"
 	<h2>Yeseva One</h2>
 	<p class="ukazka" style="font-family: 'Yeseva One';"><span>ěščřžýáéňóůúďť</span><br><span>escrzyaenouudt</span></p>
 </div>
+</div>
 
-
-
-
-<br clear="all">
+<div class="live hidden">
+<script>
+(function() {
+  var filtr = document.getElementById('pisma-filtr');
+  var pocet = document.getElementById('pisma-pocet');
+  var grid = document.getElementById('pisma-grid');
+  if (!filtr || !grid) return;
+  
+  var pisma = grid.querySelectorAll('.pismo');
+  var celkem = pisma.length;
+  
+  function aktualizujPocet(viditelnych) {
+    pocet.textContent = viditelnych + ' / ' + celkem;
+  }
+  
+  function normalizuj(text) {
+    return text.toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, ' ').trim();
+  }
+  
+  function filtruj() {
+    var hledany = normalizuj(filtr.value);
+    var viditelnych = 0;
+    
+    pisma.forEach(function(pismo) {
+      var nazev = pismo.querySelector('h2');
+      if (!nazev) return;
+      
+      var normNazev = normalizuj(nazev.textContent);
+      var zobrazit = !hledany || normNazev.indexOf(hledany) !== -1;
+      
+      pismo.classList.toggle('skryto', !zobrazit);
+      if (zobrazit) viditelnych++;
+    });
+    
+    aktualizujPocet(viditelnych);
+  }
+  
+  filtr.addEventListener('input', filtruj);
+  aktualizujPocet(celkem);
+})();
+</script>
+</div>
