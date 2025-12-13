@@ -1,6 +1,9 @@
 import { getAllPosts } from '$lib/post/post';
 import { sanizite } from '$lib/xml/xml';
 
+// Enable static pre-rendering for RSS feed
+export const prerender = true;
+
 export async function GET() {
 	const posts = await getAllPosts();
 

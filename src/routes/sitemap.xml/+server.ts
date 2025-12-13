@@ -1,6 +1,9 @@
 import { getAllPosts } from '$lib/post/post';
 import { sanizite } from '$lib/xml/xml';
 
+// Enable static pre-rendering for sitemap
+export const prerender = true;
+
 function getEffectiveModificationDate(post: any): Date {
 	return post.last_modification || post.date;
 }
