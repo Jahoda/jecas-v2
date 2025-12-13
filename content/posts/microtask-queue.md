@@ -73,6 +73,442 @@ format: "html"
 <p>Klíčové je, že <b>microtasky mají prioritu</b>. Pokud se během zpracování microtasku přidá další microtask, zpracuje se ještě před tím, než se prohlížeč dostane k dalšímu tasku.</p>
 
 
+<h2 id="interaktivni-demo">Interaktivní vizualizace</h2>
+
+<p>Následující demo ukazuje, jak event loop zpracovává synchronní kód, microtasky a tasky krok za krokem:</p>
+
+<style>
+  .event-loop-demo {
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .event-loop-demo {
+      background: linear-gradient(135deg, #2d3436 0%, #1e272e 100%);
+      border-color: #444;
+    }
+    .event-loop-demo .queue-box {
+      background: #34495e !important;
+      border-color: #555 !important;
+      color: #ecf0f1 !important;
+    }
+    .event-loop-demo .task-item {
+      background: #2c3e50 !important;
+      color: #ecf0f1 !important;
+    }
+    .event-loop-demo .controls button {
+      background: #3498db !important;
+      color: white !important;
+    }
+    .event-loop-demo .controls button:hover {
+      background: #2980b9 !important;
+    }
+    .event-loop-demo .log-output {
+      background: #1e272e !important;
+      border-color: #444 !important;
+      color: #ecf0f1 !important;
+    }
+  }
+
+  .event-loop-demo .controls {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .event-loop-demo .controls button {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .event-loop-demo .controls button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .event-loop-demo .controls button:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .event-loop-demo .queues {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .event-loop-demo .queue-box {
+    background: white;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    padding: 15px;
+    min-height: 150px;
+  }
+
+  .event-loop-demo .queue-box.callstack {
+    border-color: #27ae60;
+  }
+
+  .event-loop-demo .queue-box.microtask {
+    border-color: #3498db;
+  }
+
+  .event-loop-demo .queue-box.task {
+    border-color: #e74c3c;
+  }
+
+  .event-loop-demo .queue-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .event-loop-demo .callstack .queue-title { color: #27ae60; }
+  .event-loop-demo .microtask .queue-title { color: #3498db; }
+  .event-loop-demo .task .queue-title { color: #e74c3c; }
+
+  .event-loop-demo .task-item {
+    background: #ecf0f1;
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 4px;
+    font-size: 13px;
+    animation: slideIn 0.3s ease-out;
+    border-left: 3px solid;
+  }
+
+  .event-loop-demo .callstack .task-item {
+    border-left-color: #27ae60;
+    background: #d5f4e6;
+  }
+  .event-loop-demo .microtask .task-item {
+    border-left-color: #3498db;
+    background: #d6eaf8;
+  }
+  .event-loop-demo .task .task-item {
+    border-left-color: #e74c3c;
+    background: #fadbd8;
+  }
+
+  .event-loop-demo .task-item.executing {
+    animation: pulse 0.6s ease-in-out;
+    font-weight: bold;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(52, 152, 219, 0.5); }
+  }
+
+  .event-loop-demo .log-output {
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 15px;
+    border: 2px solid #34495e;
+  }
+
+  .event-loop-demo .log-line {
+    margin: 3px 0;
+    padding: 2px 0;
+  }
+
+  .event-loop-demo .status {
+    text-align: center;
+    font-weight: bold;
+    margin: 15px 0;
+    padding: 10px;
+    background: rgba(52, 152, 219, 0.1);
+    border-radius: 6px;
+    font-size: 14px;
+  }
+</style>
+
+<div class="event-loop-demo" id="eventLoopDemo">
+  <div class="controls">
+    <button onclick="startDemo()">▶ Spustit</button>
+    <button onclick="stepDemo()">→ Krok</button>
+    <button onclick="resetDemo()">↻ Reset</button>
+  </div>
+
+  <div class="status" id="status">Připraveno - klikněte na "Spustit" nebo "Krok"</div>
+
+  <div class="queues">
+    <div class="queue-box callstack">
+      <div class="queue-title">Call Stack</div>
+      <div id="callstack"></div>
+    </div>
+
+    <div class="queue-box microtask">
+      <div class="queue-title">Microtask Queue</div>
+      <div id="microtask"></div>
+    </div>
+
+    <div class="queue-box task">
+      <div class="queue-title">Task Queue</div>
+      <div id="taskqueue"></div>
+    </div>
+  </div>
+
+  <div class="log-output" id="log"></div>
+</div>
+
+<script>
+let demoState = {
+  callStack: [],
+  microtaskQueue: [],
+  taskQueue: [],
+  log: [],
+  step: 0,
+  isRunning: false,
+  steps: []
+};
+
+function initDemo() {
+  demoState.steps = [
+    {
+      action: 'push-stack',
+      item: 'main()',
+      message: '1. Spuštění main() - synchronní kód',
+      queue: 'callStack'
+    },
+    {
+      action: 'log',
+      message: 'console.log("start")'
+    },
+    {
+      action: 'push-task',
+      item: 'setTimeout()',
+      message: '2. setTimeout() přidán do Task Queue',
+      queue: 'taskQueue'
+    },
+    {
+      action: 'push-microtask',
+      item: 'Promise.then()',
+      message: '3. Promise.then() přidán do Microtask Queue',
+      queue: 'microtaskQueue'
+    },
+    {
+      action: 'push-microtask',
+      item: 'queueMicrotask()',
+      message: '4. queueMicrotask() přidán do Microtask Queue',
+      queue: 'microtaskQueue'
+    },
+    {
+      action: 'log',
+      message: 'console.log("end")'
+    },
+    {
+      action: 'pop-stack',
+      message: '5. main() dokončen - Call Stack prázdný',
+      queue: 'callStack'
+    },
+    {
+      action: 'status',
+      message: '📋 Event loop kontroluje fronty...'
+    },
+    {
+      action: 'execute-microtask',
+      message: '6. Zpracování microtasků (PRIORITA!)',
+      item: 'Promise.then()'
+    },
+    {
+      action: 'execute-microtask',
+      message: '7. Zpracování dalšího microtasku',
+      item: 'queueMicrotask()'
+    },
+    {
+      action: 'status',
+      message: '✅ Všechny microtasky zpracovány'
+    },
+    {
+      action: 'status',
+      message: '🎨 Prohlížeč může provést rendering...'
+    },
+    {
+      action: 'execute-task',
+      message: '8. Zpracování tasku z Task Queue',
+      item: 'setTimeout()'
+    },
+    {
+      action: 'status',
+      message: '✨ Event loop dokončen! Celý cyklus se opakuje.'
+    }
+  ];
+}
+
+function renderQueues() {
+  const callStackEl = document.getElementById('callstack');
+  const microtaskEl = document.getElementById('microtask');
+  const taskQueueEl = document.getElementById('taskqueue');
+
+  callStackEl.innerHTML = demoState.callStack.length
+    ? demoState.callStack.map(item => `<div class="task-item">${item}</div>`).join('')
+    : '<div style="text-align: center; opacity: 0.5; padding: 20px;">prázdný</div>';
+
+  microtaskEl.innerHTML = demoState.microtaskQueue.length
+    ? demoState.microtaskQueue.map(item => `<div class="task-item">${item}</div>`).join('')
+    : '<div style="text-align: center; opacity: 0.5; padding: 20px;">prázdná</div>';
+
+  taskQueueEl.innerHTML = demoState.taskQueue.length
+    ? demoState.taskQueue.map(item => `<div class="task-item">${item}</div>`).join('')
+    : '<div style="text-align: center; opacity: 0.5; padding: 20px;">prázdná</div>';
+}
+
+function addLog(message) {
+  demoState.log.push(message);
+  const logEl = document.getElementById('log');
+  logEl.innerHTML = demoState.log.map(msg =>
+    `<div class="log-line">> ${msg}</div>`
+  ).join('');
+  logEl.scrollTop = logEl.scrollHeight;
+}
+
+function updateStatus(message) {
+  document.getElementById('status').textContent = message;
+}
+
+function executeStep() {
+  if (demoState.step >= demoState.steps.length) {
+    updateStatus('✅ Demo dokončeno!');
+    demoState.isRunning = false;
+    return false;
+  }
+
+  const step = demoState.steps[demoState.step];
+
+  switch(step.action) {
+    case 'push-stack':
+      demoState.callStack.push(step.item);
+      break;
+    case 'pop-stack':
+      demoState.callStack.pop();
+      break;
+    case 'push-microtask':
+      demoState.microtaskQueue.push(step.item);
+      break;
+    case 'push-task':
+      demoState.taskQueue.push(step.item);
+      break;
+    case 'execute-microtask':
+      if (demoState.microtaskQueue.length > 0) {
+        demoState.microtaskQueue.shift();
+        addLog(`Proveden: ${step.item}`);
+      }
+      break;
+    case 'execute-task':
+      if (demoState.taskQueue.length > 0) {
+        demoState.taskQueue.shift();
+        addLog(`Proveden: ${step.item}`);
+      }
+      break;
+    case 'log':
+      addLog(step.message);
+      break;
+    case 'status':
+      // Pouze status update
+      break;
+  }
+
+  if (step.message) {
+    updateStatus(step.message);
+  }
+
+  renderQueues();
+  demoState.step++;
+
+  return true;
+}
+
+function stepDemo() {
+  if (demoState.step === 0 || demoState.step >= demoState.steps.length) {
+    initDemo();
+    if (demoState.step >= demoState.steps.length) {
+      resetDemo();
+    }
+  }
+  executeStep();
+}
+
+function startDemo() {
+  if (demoState.isRunning) return;
+
+  if (demoState.step === 0 || demoState.step >= demoState.steps.length) {
+    resetDemo();
+  }
+
+  demoState.isRunning = true;
+
+  const interval = setInterval(() => {
+    const shouldContinue = executeStep();
+    if (!shouldContinue || !demoState.isRunning) {
+      clearInterval(interval);
+      demoState.isRunning = false;
+    }
+  }, 1200);
+}
+
+function resetDemo() {
+  demoState = {
+    callStack: [],
+    microtaskQueue: [],
+    taskQueue: [],
+    log: [],
+    step: 0,
+    isRunning: false,
+    steps: []
+  };
+  initDemo();
+  renderQueues();
+  document.getElementById('log').innerHTML = '';
+  updateStatus('Připraveno - klikněte na "Spustit" nebo "Krok"');
+}
+
+// Initialize on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initDemo);
+} else {
+  initDemo();
+}
+</script>
+
+<p>Demo ukazuje typický průběh zpracování kódu s <code>setTimeout</code>, <code>Promise</code> a <code>queueMicrotask</code>. Všimněte si, že microtasky se vždy zpracují před tasky!</p>
+
+
 <h2 id="priklad">Praktický příklad</h2>
 
 <p>Následující kód ilustruje pořadí vykonávání:</p>
