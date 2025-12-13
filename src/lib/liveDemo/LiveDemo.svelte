@@ -6,9 +6,6 @@
 	import IconCheckCircle from '$lib/icon/IconCheckCircle.svelte';
 	import { onMount } from 'svelte';
 	import { beforeNavigate } from '$app/navigation';
-	import { codeToHtml } from 'shiki';
-	import prettier from 'prettier/standalone';
-	import parserHtml from 'prettier/plugins/html';
 
 	interface Props {
 		content: string;
@@ -43,10 +40,6 @@
 	}
 
 	const sourceCode = $derived(getSourceCodeWithoutCleanUp(content));
-
-	const prettierSourceCode = $derived(
-		prettier.format(getSourceCodeWithoutCleanUp(content), { parser: 'html', plugins: [parserHtml] })
-	);
 
 	function handleCopyToClipboard() {
 		navigator.clipboard.writeText(sourceCode);
@@ -98,6 +91,14 @@
 	const contentWithoutScripts = $derived(getContentWithoutScripts(content));
 
 	async function getFormatedSourceCode(content: string) {
+		// Lazy load Prettier and Shiki only when user clicks "Show source"
+		// This reduces the initial bundle size significantly
+		const [{ default: prettier }, { default: parserHtml }, { codeToHtml }] = await Promise.all([
+			import('prettier/standalone'),
+			import('prettier/plugins/html'),
+			import('shiki')
+		]);
+
 		const formatedCode = await prettier.format(getSourceCodeWithoutCleanUp(content), {
 			parser: 'html',
 			plugins: [parserHtml]

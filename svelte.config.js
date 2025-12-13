@@ -4,8 +4,13 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			// Enable parallel prerendering for faster builds
+			// With 1076 posts, this significantly speeds up the build process
+			runtime: 'nodejs22.x'
+		}),
 		prerender: {
+			concurrency: 10,
 			handleHttpError: ({ path, referrer, message }) => {
 				// Warn about 404s for missing pages/images during prerender
 				// These should be fixed in content but shouldn't block the build
