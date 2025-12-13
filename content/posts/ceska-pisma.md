@@ -38,20 +38,25 @@ format: "html"
   .pismo {float: left; height: 8em; width: 25%; width: -webkit-calc(100% / 4); width: calc(100% / 4); background: #efefef; box-sizing: border-box; -moz-box-sizing: border-box; border: 2px solid #fff; padding: 0 1em;}
   .pismo span {padding: .2em}
   .pismo {width: 33.3333333%; width: -webkit-calc(100% / 3); width: calc(100% / 3)}
-  
+
   @media screen and (max-width: 960px) {
-      
+
   }
-  
+
   @media screen and (max-width: 760px) {
       .pismo {width: 50%; width: -webkit-calc(100% / 2); width: calc(100% / 2)}
   }
-  
+
   @media screen and (max-width: 540px) {
       .pismo {width: 100%; }
   }
   .pismo h2 {font-size: 100%}
   .ukazka {display: inline; font-size: 20px; background: #8ECCF0; white-space: nowrap}
+
+  @media (prefers-color-scheme: dark) {
+      .pismo {background: #374151; border-color: #1f2937;}
+      .ukazka {background: #1e3a5f;}
+  }
 </style>
 
 <div class="pismo" id="abril-fatface">
