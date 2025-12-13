@@ -47,14 +47,14 @@
 		Když budu mít něco opravdu zajímavého, můžu vám to poslat e-mailem
 	</p>
 
-	<form onsubmit={handleSubmit} class="flex flex-col gap-3 sm:flex-row sm:max-w-xl">
+	<form onsubmit={handleSubmit} class="flex flex-col gap-3 sm:max-w-xl sm:flex-row">
 		<input
 			type="email"
 			bind:value={email}
 			placeholder="vas@email.cz"
 			required
 			disabled={loading}
-			class="flex-1 rounded-md border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 shadow backdrop-blur-sm transition focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 disabled:opacity-50"
+			class="flex-1 rounded-md border border-white/20 bg-white/10 px-4 py-2 text-white placeholder-white/50 shadow backdrop-blur-sm transition focus:border-white/40 focus:ring-2 focus:ring-white/20 focus:outline-none disabled:opacity-50"
 		/>
 		<Button type="submit" disabled={loading}>
 			{loading ? 'Odesílání...' : 'Přihlásit se'}

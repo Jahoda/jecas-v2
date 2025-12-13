@@ -8,18 +8,12 @@ export const POST: RequestHandler = async ({ request }) => {
 
 		// Validate email
 		if (!email || typeof email !== 'string') {
-			return json(
-				{ success: false, message: 'E-mail je povinný' },
-				{ status: 400 }
-			);
+			return json({ success: false, message: 'E-mail je povinný' }, { status: 400 });
 		}
 
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 		if (!emailRegex.test(email)) {
-			return json(
-				{ success: false, message: 'Neplatný formát e-mailu' },
-				{ status: 400 }
-			);
+			return json({ success: false, message: 'Neplatný formát e-mailu' }, { status: 400 });
 		}
 
 		// Check if email already exists
@@ -45,12 +39,10 @@ export const POST: RequestHandler = async ({ request }) => {
 		}
 
 		// Insert new subscriber
-		const { error: insertError } = await supabase
-			.from('newsletter_subscribers')
-			.insert({
-				email,
-				status: 'active'
-			});
+		const { error: insertError } = await supabase.from('newsletter_subscribers').insert({
+			email,
+			status: 'active'
+		});
 
 		if (insertError) {
 			console.error('Database insert error:', insertError);
@@ -67,7 +59,10 @@ export const POST: RequestHandler = async ({ request }) => {
 	} catch (err) {
 		console.error('Newsletter subscription error:', err);
 		return json(
-			{ success: false, message: 'Nepodařilo se přihlásit k odběru novinek. Zkuste to prosím později.' },
+			{
+				success: false,
+				message: 'Nepodařilo se přihlásit k odběru novinek. Zkuste to prosím později.'
+			},
 			{ status: 500 }
 		);
 	}

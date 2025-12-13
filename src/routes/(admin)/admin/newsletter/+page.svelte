@@ -37,8 +37,8 @@
 			<p class="font-semibold">Chyba při načítání odběratelů:</p>
 			<p class="mt-2">{data.error}</p>
 			<p class="mt-2 text-sm">
-				Zkontrolujte, že máte v .env nastavené SUPABASE_URL a SUPABASE_SERVICE_KEY a restartujte
-				dev server.
+				Zkontrolujte, že máte v .env nastavené SUPABASE_URL a SUPABASE_SERVICE_KEY a restartujte dev
+				server.
 			</p>
 		</div>
 	{/if}
@@ -56,24 +56,22 @@
 		<table class="w-full">
 			<thead class="bg-gray-50 dark:bg-gray-800">
 				<tr>
-					<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">E-mail</th>
-					<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
-						>Přihlášen</th
+					<th class="px-6 py-3 text-left text-xs font-medium tracking-wider uppercase">E-mail</th>
+					<th class="px-6 py-3 text-left text-xs font-medium tracking-wider uppercase">Přihlášen</th
 					>
-					<th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Status</th>
+					<th class="px-6 py-3 text-left text-xs font-medium tracking-wider uppercase">Status</th>
 				</tr>
 			</thead>
 			<tbody class="divide-y divide-gray-200 dark:divide-gray-700">
 				{#each data.subscribers as subscriber}
 					<tr class="hover:bg-gray-50 dark:hover:bg-gray-800">
-						<td class="whitespace-nowrap px-6 py-4">{subscriber.email}</td>
-						<td class="whitespace-nowrap px-6 py-4"
+						<td class="px-6 py-4 whitespace-nowrap">{subscriber.email}</td>
+						<td class="px-6 py-4 whitespace-nowrap"
 							>{new Date(subscriber.subscribed_at).toLocaleDateString('cs-CZ')}</td
 						>
-						<td class="whitespace-nowrap px-6 py-4">
+						<td class="px-6 py-4 whitespace-nowrap">
 							<span
-								class="rounded-full px-2 py-1 text-xs font-semibold {subscriber.status ===
-								'active'
+								class="rounded-full px-2 py-1 text-xs font-semibold {subscriber.status === 'active'
 									? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
 									: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'}"
 							>

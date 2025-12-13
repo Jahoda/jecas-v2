@@ -2,9 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 import { SUPABASE_URL, SUPABASE_SERVICE_KEY } from '$env/static/private';
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
-	throw new Error(
-		'SUPABASE_URL and SUPABASE_SERVICE_KEY must be set in environment variables'
-	);
+	throw new Error('SUPABASE_URL and SUPABASE_SERVICE_KEY must be set in environment variables');
 }
 
 // Server-side Supabase client s plnými oprávněními (service role)

@@ -62,6 +62,7 @@ ADMIN_PASSWORD=vase-silne-heslo
 ### 5. Testování
 
 1. Spusťte dev server:
+
 ```bash
 pnpm dev
 ```
@@ -98,16 +99,19 @@ V Supabase dashboardu máte přístup k:
 ## 💾 Export dat
 
 ### V Supabase dashboardu:
+
 1. Jděte na **Table Editor**
 2. Vyberte tabulku `newsletter_subscribers`
 3. Klikněte na tlačítko export (ikona stažení)
 4. Stáhněte jako CSV
 
 ### Přes admin rozhraní:
+
 1. Jděte na `/admin/newsletter`
 2. Klikněte "Stáhnout CSV"
 
 ### Přes SQL:
+
 ```sql
 -- Získat všechny aktivní odběratele
 SELECT email, subscribed_at
@@ -167,16 +171,20 @@ S Supabase můžete snadno přidat:
 ## 🆘 Troubleshooting
 
 ### Chyba: "SUPABASE_URL is not defined"
+
 ➡️ Zkontrolujte, že máte `.env` soubor s správnými hodnotami
 
 ### Chyba: "Row Level Security policy violation"
+
 ➡️ Zkontrolujte, že jste spustili celý SQL skript (včetně RLS policies)
 
 ### Nefunguje přihlašování
+
 ➡️ Otevřete konzoli prohlížeče (F12) a zkontrolujte chyby
 ➡️ V Supabase dashboardu zkontrolujte Logs
 
 ### Nevidím data v admin rozhraní
+
 ➡️ Zkontrolujte, že používáte `service_role` key (ne `anon` key)
 ➡️ Restartujte dev server po změně `.env`
 

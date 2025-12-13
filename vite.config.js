@@ -26,10 +26,16 @@ const config = {
 	build: {
 		rollupOptions: {
 			external: (id) => {
-				return id.includes('.node') || id.includes('@resvg/resvg-js') || id.includes('resvgjs.');
+				return (
+					id.includes('.node') ||
+					id.includes('@resvg/resvg-js') ||
+					id.includes('resvgjs.') ||
+					id.includes('.wasm')
+				);
 			}
 		}
-	}
+	},
+	assetsInclude: ['**/*.wasm']
 };
 
 export default config;
