@@ -5,6 +5,9 @@ import { json } from '@sveltejs/kit';
 
 import { algoliasearch } from 'algoliasearch';
 
+// Algolia indexing must be server-rendered (not prerendered)
+export const prerender = false;
+
 export async function GET() {
 	const pages = await getAllPosts();
 

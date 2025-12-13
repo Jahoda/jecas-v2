@@ -3,6 +3,9 @@ import { getSinglePostBySlug } from '$lib/post/post';
 import { getAllTagsByPageId, type Tag } from '$lib/tag/tags';
 import type { RequestHandler } from './$types';
 
+// OG images are generated on-demand, not prerendered
+export const prerender = false;
+
 export const GET: RequestHandler = async ({ url }) => {
 	const slug = url.searchParams.get('slug');
 

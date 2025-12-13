@@ -401,6 +401,6 @@ module.exports = {
 
 <ul>
   <li>
-    Vzhůru dolů: <a href="www.vzhurudolu.cz/prirucka/tailwind-css">Tailwind CSS: další evoluční krok pro CSS frameworky</a>
+    Vzhůru dolů: <a href="https://www.vzhurudolu.cz/prirucka/tailwind-css">Tailwind CSS: další evoluční krok pro CSS frameworky</a>
   </li>
 </ul>

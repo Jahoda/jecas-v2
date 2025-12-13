@@ -27,14 +27,18 @@ const PAGES = {
  * SERVERS
  */
 const SERVERS = {
+  "prerender /algolia": `/algolia`,
   "GET /algolia": `/algolia`,
   "GET /api/images/[slug]": (params: { slug: (string | number) }) => {
     return `/api/images/${params['slug']}`
   },
   "POST /api/newsletter/subscribe": `/api/newsletter/subscribe`,
+  "prerender /api/og": `/api/og`,
   "GET /api/og": `/api/og`,
   "POST /api/upload": `/api/upload`,
+  "prerender /rss": `/rss`,
   "GET /rss": `/rss`,
+  "prerender /sitemap.xml": `/sitemap.xml`,
   "GET /sitemap.xml": `/sitemap.xml`
 }
 
@@ -159,7 +163,7 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 */
 export type KIT_ROUTES = {
   PAGES: { '/': never, '/admin': never, '/admin/login': never, '/admin/logout': never, '/admin/newsletter': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/prevod-svg': never, '/nastroje/vypocet-procent-sloupcu': never }
-  SERVERS: { 'GET /algolia': never, 'GET /api/images/[slug]': 'slug', 'POST /api/newsletter/subscribe': never, 'GET /api/og': never, 'POST /api/upload': never, 'GET /rss': never, 'GET /sitemap.xml': never }
+  SERVERS: { 'prerender /algolia': never, 'GET /algolia': never, 'GET /api/images/[slug]': 'slug', 'POST /api/newsletter/subscribe': never, 'prerender /api/og': never, 'GET /api/og': never, 'POST /api/upload': never, 'prerender /rss': never, 'GET /rss': never, 'prerender /sitemap.xml': never, 'GET /sitemap.xml': never }
   ACTIONS: { 'default /admin/login': never, 'default /admin/logout': never }
   LINKS: Record<string, never>
   Params: { 'slug': never }

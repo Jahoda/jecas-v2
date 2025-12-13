@@ -125,7 +125,7 @@ format: "html"
   </ul>
 </div>
 
-<p>Podobný přehled je i ve <a href="/vyvojarske-nastoje">vývojářských nástrojích</a> v záložce <i>Síť</i>.</p>
+<p>Podobný přehled je i ve <a href="/vyvojarske-nastroje">vývojářských nástrojích</a> v záložce <i>Síť</i>.</p>
 
 
 
