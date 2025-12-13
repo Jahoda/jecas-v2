@@ -600,8 +600,8 @@
 			<h3 class="text-lg font-semibold">Jak používat</h3>
 			<div class="grid grid-cols-1 gap-3 text-sm text-gray-700">
 				<p>
-					1. <strong>Nahrajte SVG soubor</strong> – klikněte na tlačítko pro výběr souboru a vyberte
-					.svg soubor
+					1. <strong>Nahrajte SVG soubor</strong> – klikněte na tlačítko pro výběr souboru a vyberte .svg
+					soubor
 				</p>
 				<p>
 					2. <strong>Nebo vložte SVG text</strong> – zkopírujte SVG kód a vložte ho do textového pole

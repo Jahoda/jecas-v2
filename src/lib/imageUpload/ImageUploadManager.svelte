@@ -150,8 +150,7 @@
 
 				<div class="mt-3 text-xs text-gray-600">
 					<p>
-						<strong>Tip:</strong> Pro vložení obrázku použijte Ctrl+V nebo přetáhněte soubor do zóny
-						výše.
+						<strong>Tip:</strong> Pro vložení obrázku použijte Ctrl+V nebo přetáhněte soubor do zóny výše.
 					</p>
 					<p>
 						Markdown kód bude automaticky vložen do aktivního textového pole nebo zkopírován do

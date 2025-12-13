@@ -17,7 +17,9 @@ const config = {
 			},
 			handleMissingId: ({ path, id, referrers }) => {
 				// Warn about missing anchor IDs but don't fail the build
-				console.warn(`Warning: Missing id="${id}" on ${path} (referenced from ${referrers.join(', ')})`);
+				console.warn(
+					`Warning: Missing id="${id}" on ${path} (referenced from ${referrers.join(', ')})`
+				);
 			}
 		}
 	},
