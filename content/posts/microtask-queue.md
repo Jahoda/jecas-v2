@@ -13,6 +13,8 @@ format: "html"
 
 <p>Klíčem k pochopení je znalost <b>event loopu</b> a rozdíl mezi <b>task queue</b> (někdy též <i>macro task queue</i>) a <b>microtask queue</b>.</p>
 
+<p><img src="/files/microtask-queue/event-loop.svg" alt="Diagram event loopu s microtask a task queue" class="border"></p>
+
 <h2 id="event-loop">Event loop</h2>
 
 <p>JavaScript je <b>jednovláknový</b> jazyk. To znamená, že v daném okamžiku může probíhat jen jedna operace.</p>
