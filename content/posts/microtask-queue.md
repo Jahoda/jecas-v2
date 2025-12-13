@@ -17,9 +17,9 @@ format: "html"
 
 <h2 id="event-loop">Event loop</h2>
 
-<p>JavaScript je <b>jednovláknový</b> jazyk. To znamená, že v daném okamžiku může probíhat jen jedna operace.</p>
+<p>JavaScript v prohlížeči běží na <b>hlavním vlákně</b>, kde v daném okamžiku může probíhat jen jedna operace. I když existují <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">Web Workers</a> pro práci na pozadí, hlavní vlákno zůstává jednovláknové.</p>
 
-<p>Event loop je mechanismus, který umožňuje asynchronní chování JavaScriptu. Neustále kontroluje, zda je <i>call stack</i> (zásobník volání) prázdný, a pokud ano, vezme další úlohu z fronty a provede ji.</p>
+<p>Event loop je mechanismus, který umožňuje asynchronní chování JavaScriptu na hlavním vlákně. Neustále kontroluje, zda je <i>call stack</i> (zásobník volání) prázdný, a pokud ano, vezme další úlohu z fronty a provede ji.</p>
 
 <p>Důležité je, že existují <b>dva typy front</b>:</p>
 
@@ -161,7 +161,122 @@ console.log('4: po volání');
 });
 </code></pre>
 
-<p>Je to čistší alternativa k <code>Promise.resolve().then(...)</code> v případech, kdy potřebujete jen zařadit kód do microtask queue bez použití Promise.</p>
+<p>Je to <b>čistší a efektivnější alternativa</b> k <code>Promise.resolve().then(...)</code>. Na rozdíl od Promise nevytváří zbytečný Promise objekt – jde přímo k věci.</p>
+
+<pre><code>// Starý způsob - vytváří Promise objekt
+Promise.resolve().then(() => {
+  console.log('Microtask přes Promise');
+});
+
+// Nový způsob - přímé zařazení do fronty
+queueMicrotask(() => {
+  console.log('Microtask přímo');
+});
+</code></pre>
+
+
+<h3 id="realne-pouziti">Reálné použití queueMicrotask()</h3>
+
+<h4 id="batch-aktualizace">Batch aktualizace DOM</h4>
+
+<p>Seskupení více DOM operací do jedné, aby se stránka překreslila jen jednou:</p>
+
+<pre><code>let updatesPending = false;
+const updates = [];
+
+function scheduleUpdate(element, value) {
+  updates.push({ element, value });
+
+  if (!updatesPending) {
+    updatesPending = true;
+    queueMicrotask(() => {
+      // Provede všechny aktualizace najednou
+      updates.forEach(({ element, value }) => {
+        element.textContent = value;
+      });
+      updates.length = 0;
+      updatesPending = false;
+    });
+  }
+}
+
+// Použití - všechny tři aktualizace se provedou najednou
+scheduleUpdate(div1, 'hodnota 1');
+scheduleUpdate(div2, 'hodnota 2');
+scheduleUpdate(div3, 'hodnota 3');
+</code></pre>
+
+
+<h4 id="error-handling">Zpracování chyb mimo try/catch</h4>
+
+<p>Oddělení error handlingu od synchronního kódu:</p>
+
+<pre><code>function asyncOperation(data) {
+  if (!data) {
+    queueMicrotask(() => {
+      throw new Error('Data chybí');
+    });
+    return;
+  }
+
+  // Zpracování dat...
+}
+
+// Chyba se hodí až v microtasku,
+// takže try/catch zde nechytí nic
+try {
+  asyncOperation(null);
+} catch (e) {
+  console.log('Toto se nikdy nespustí');
+}
+
+// Místo toho použij:
+window.addEventListener('error', (e) => {
+  console.log('Chyba zachycena:', e.message);
+});
+</code></pre>
+
+
+<h4 id="plugin-hooks">Plugin/Hook systém</h4>
+
+<p>Umožnění pluginům reagovat na události v dalším microtasku:</p>
+
+<pre><code>class EventSystem {
+  constructor() {
+    this.hooks = [];
+  }
+
+  registerHook(fn) {
+    this.hooks.push(fn);
+  }
+
+  trigger(data) {
+    // Synchronní zpracování
+    this.processData(data);
+
+    // Hooks se spustí až po dokončení
+    queueMicrotask(() => {
+      this.hooks.forEach(hook => hook(data));
+    });
+  }
+
+  processData(data) {
+    console.log('Zpracování:', data);
+  }
+}
+
+const events = new EventSystem();
+events.registerHook(data => console.log('Hook 1:', data));
+events.registerHook(data => console.log('Hook 2:', data));
+
+events.trigger('test');
+// Výstup:
+// Zpracování: test
+// Hook 1: test
+// Hook 2: test
+</code></pre>
+
+<p>Více informací: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/queueMicrotask">MDN - queueMicrotask()</a></p>
 
 
 <h2 id="mutation-observer">MutationObserver</h2>
@@ -225,23 +340,66 @@ queueMicrotask(() => {
 
 <h3 id="debouncing">Debouncing pomocí microtasků</h3>
 
-<p>Občas je vhodné seskupit více operací do jedné:</p>
+<p>Občas je vhodné seskupit více operací do jedné. Například při sledování změn stavu v reactive frameworku:</p>
 
-<pre><code>let pending = false;
-let queue = [];
+<pre><code>class StateManager {
+  constructor() {
+    this.state = {};
+    this.listeners = [];
+    this.updatePending = false;
+    this.changes = [];
+  }
 
-function pridejDoFronty(polozka) {
-  queue.push(polozka);
+  setState(key, value) {
+    const oldValue = this.state[key];
+    this.state[key] = value;
 
-  if (!pending) {
-    pending = true;
-    queueMicrotask(() => {
-      zpracujFrontu(queue);
-      queue = [];
-      pending = false;
-    });
+    // Uložit změnu
+    this.changes.push({ key, oldValue, newValue: value });
+
+    // Naplánovat batch aktualizaci
+    if (!this.updatePending) {
+      this.updatePending = true;
+      queueMicrotask(() => {
+        this.notifyListeners(this.changes);
+        this.changes = [];
+        this.updatePending = false;
+      });
+    }
+  }
+
+  notifyListeners(changes) {
+    console.log('Notifikace o změnách:', changes);
+    this.listeners.forEach(listener => listener(changes));
+  }
+
+  subscribe(listener) {
+    this.listeners.push(listener);
   }
 }
+
+// Použití
+const state = new StateManager();
+
+state.subscribe(changes => {
+  console.log(`Provedeno ${changes.length} změn najednou`);
+});
+
+// Všechny tři změny se zpracují v jednom microtasku
+state.setState('name', 'Jan');
+state.setState('age', 30);
+state.setState('city', 'Praha');
+
+console.log('Změny naplánované, ale ještě neprovedené');
+
+// Výstup:
+// Změny naplánované, ale ještě neprovedené
+// Notifikace o změnách: [
+//   { key: 'name', oldValue: undefined, newValue: 'Jan' },
+//   { key: 'age', oldValue: undefined, newValue: 30 },
+//   { key: 'city', oldValue: undefined, newValue: 'Praha' }
+// ]
+// Provedeno 3 změn najednou
 </code></pre>
 
 
