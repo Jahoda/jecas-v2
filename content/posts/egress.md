@@ -88,7 +88,7 @@ format: "html"
 <p><b>CDN</b> (<i lang="en">Content Delivery Network</i>) může výrazně snížit egress náklady:</p>
 
 <ul>
-<li><b>Cachování statického obsahu</b> – obrázky, CSS, JavaScript se doručují z edge serverů (TODO: vysvětli)</li>
+<li><b>Cachování statického obsahu</b> – obrázky, CSS, JavaScript se doručují z edge serverů (servery rozmístěné blízko uživatelů po celém světě)</li>
 <li><b>Geografická blízkost</b> – uživatelé dostávají data z nejbližšího serveru</li>
 <li><b>Levnější egress</b> – CDN často nabízejí nižší ceny než běžný cloud egress</li>
 </ul>
