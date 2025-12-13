@@ -14,6 +14,7 @@ Tento průvodce popisuje, jak vytvořit náhledové obrázky pro články, kter�
 ### Automatické použití
 
 Systém automaticky:
+
 - Načte obrázek podle URL slugu článku
 - Nastaví `og:image` meta tag pro Facebook/LinkedIn
 - Nastaví `twitter:image` meta tag pro Twitter
@@ -122,6 +123,7 @@ git push
 ### Barevné palety podle tématu
 
 **Databáze/SQL:**
+
 ```python
 BG_COLOR = "#336791"      # PostgreSQL modrá
 ELEMENT_COLOR = "#4A90C8" # Světlejší modrá
@@ -129,6 +131,7 @@ ACCENT_COLOR = "#FFC107"  # Žlutá
 ```
 
 **JavaScript:**
+
 ```python
 BG_COLOR = "#F7DF1E"      # JS žlutá
 ELEMENT_COLOR = "#323330" # Tmavá
@@ -136,6 +139,7 @@ ACCENT_COLOR = "#FFFFFF"  # Bílá
 ```
 
 **CSS:**
+
 ```python
 BG_COLOR = "#264DE4"      # CSS modrá
 ELEMENT_COLOR = "#2965F1" # Světlá modrá
@@ -143,6 +147,7 @@ ACCENT_COLOR = "#EBEBEB"  # Šedá
 ```
 
 **AI/ML:**
+
 ```python
 BG_COLOR = "#00A67E"      # OpenAI zelená
 ELEMENT_COLOR = "#74AA9C" # Světlá zelená
@@ -150,6 +155,7 @@ ACCENT_COLOR = "#FFD700"  # Zlatá
 ```
 
 **Bezpečnost:**
+
 ```python
 BG_COLOR = "#D32F2F"      # Červená
 ELEMENT_COLOR = "#F44336" # Světle červená
@@ -159,21 +165,25 @@ ACCENT_COLOR = "#FFC107"  # Žlutá
 ### Typy ikon a symbolů
 
 **Pro databázové články:**
+
 - Tabulky (mřížky s řádky a sloupci)
 - Cylindry (klasická DB ikona)
 - Grafy vztahů
 
 **Pro frontend články:**
+
 - Značky `< >` pro HTML
 - Kudrlinky `{ }` pro CSS/JS
 - Komponenty/box layout
 
 **Pro API články:**
+
 - Šipky (směr toku dat)
 - Brány/portály
 - Spojené body (síťový graf)
 
 **Pro výkon/optimalizace:**
+
 - Blesky ⚡
 - Rakety 🚀
 - Rychloměry
@@ -189,6 +199,7 @@ ACCENT_COLOR = "#FFC107"  # Žlutá
 ## Příklady z projektu
 
 ### Příklad 1: AI Programování
+
 ```python
 # Jednoduché logo s ikonami nástrojů
 # ai-programovani.png
@@ -198,6 +209,7 @@ ACCENT_COLOR = "#FFC107"  # Žlutá
 ```
 
 ### Příklad 2: AMP HTML
+
 ```python
 # Textový banner
 # amp-html.png
@@ -207,6 +219,7 @@ ACCENT_COLOR = "#FFC107"  # Žlutá
 ```
 
 ### Příklad 3: Materializované pohledy
+
 ```python
 # Ikona + text
 # materializovane-pohledy.png
@@ -263,6 +276,7 @@ img.save(f"static/files/article/{SLUG}.png")
 ### Obrázek se nezobrazuje
 
 1. **Zkontroluj cestu**:
+
    ```bash
    ls -la static/files/article/{slug}.png
    ```
@@ -270,6 +284,7 @@ img.save(f"static/files/article/{SLUG}.png")
 2. **Zkontroluj slug**: Musí přesně odpovídat URL článku
 
 3. **Restart dev serveru**:
+
    ```bash
    pnpm run dev
    ```
@@ -287,6 +302,7 @@ Vždy po přidání/změně obrázku je potřeba "re-scrape" URL na těchto nás
 ## Závěr
 
 Vytváření náhledových obrázků:
+
 1. ✅ Nainstaluj Pillow
 2. ✅ Vytvoř Python skript pro konkrétní článek
 3. ✅ Vygeneruj obrázek do `static/files/article/{slug}.png`
