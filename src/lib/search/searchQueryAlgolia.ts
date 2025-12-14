@@ -1,5 +1,4 @@
-import { algoliasearch } from 'algoliasearch';
-import type { Hit } from '@algolia/client-search';
+import { algoliasearch, type Hit } from 'algoliasearch';
 
 import {
 	PUBLIC_ALGOLIA_APP_ID,
