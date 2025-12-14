@@ -173,7 +173,7 @@ CREATE TABLE posts (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );</code></pre>
 
-<p><b>3. Rate limiting</b></p>
+<p><b>3. Rate limiting a DoS útoky</b></p>
 
 <ul>
 <li>Frontend může posílat neomezené množství dotazů</li>
@@ -181,7 +181,78 @@ CREATE TABLE posts (
 <li>Pro kritické operace použít backend API s vlastním rate limitingem</li>
 </ul>
 
-<p><b>4. Složité dotazy a N+1 problém</b></p>
+<p><b>4. Náročné dotazy a DoS útoky</b></p>
+
+<p><b>Ano, útočník může záměrně posílat výkonnostně náročné dotazy!</b> To je jeden z hlavních bezpečnostních problémů přímého přístupu.</p>
+
+<pre><code>// Útočník může poslat náročný dotaz z DevTools:
+await supabase
+  .from('posts')
+  .select('*, comments(*, author(*)), likes(*, user(*))')
+  .limit(10000)  // Načte tisíce záznamů s vnořenými JOINy</code></pre>
+
+<p><b>Jak to řeší Supabase:</b></p>
+
+<ul>
+<li><b>Query timeout</b> – dotazy delší než X sekund (typicky 8-30s) jsou automaticky zabity</li>
+<li><b>Max rows limit</b> – omezení maximálního počtu vrácených řádků (default 1000)</li>
+<li><b>Connection pooling</b> – omezený počet souběžných spojení na projekt</li>
+<li><b>Rate limiting na API</b> – limit požadavků za minutu podle tier (60/min na free, 500+/min na Pro)</li>
+<li><b>Statement timeout</b> – PostgreSQL konfigurace <code>statement_timeout</code></li>
+<li><b>Resource limits</b> – paměť a CPU jsou omezené podle tarifu</li>
+</ul>
+
+<p><b>Dodatečná ochrana, kterou můžete implementovat:</b></p>
+
+<pre><code>-- Vytvořit VIEW s předem optimalizovaným dotazem
+CREATE VIEW posts_with_stats AS
+SELECT
+  p.*,
+  COUNT(DISTINCT c.id) as comment_count,
+  COUNT(DISTINCT l.id) as like_count
+FROM posts p
+LEFT JOIN comments c ON c.post_id = p.id
+LEFT JOIN likes l ON l.post_id = p.id
+GROUP BY p.id;
+
+-- RLS platí i na VIEW
+ALTER VIEW posts_with_stats SET (security_barrier = true);
+
+-- Frontend pak volá VIEW místo složitého dotazu
+const { data } = await supabase
+  .from('posts_with_stats')
+  .select('*')
+  .limit(20)  // Přiměřený limit</code></pre>
+
+<p><b>Alternativně použít PostgreSQL funkci s limity:</b></p>
+
+<pre><code>-- Funkce s vestavěným limitem
+CREATE FUNCTION get_user_posts(user_id UUID, max_limit INT DEFAULT 100)
+RETURNS SETOF posts AS $$
+BEGIN
+  IF max_limit > 100 THEN
+    RAISE EXCEPTION 'Limit cannot exceed 100';
+  END IF;
+
+  RETURN QUERY
+  SELECT * FROM posts
+  WHERE author_id = user_id
+  LIMIT max_limit;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;</code></pre>
+
+<p><b>Best practices pro ochranu:</b></p>
+
+<ul>
+<li><b>Vždy používejte LIMIT</b> – nikdy nenačítejte neomezené množství dat</li>
+<li><b>Views pro složité dotazy</b> – kontrolujete, co lze dělat</li>
+<li><b>Index na sloupce v RLS</b> – jinak každý dotaz dělá full table scan</li>
+<li><b>Monitoring</b> – sledujte pomalé dotazy v Supabase dashboardu</li>
+<li><b>Expensive operations přes backend</b> – agregace, reporty, statistiky</li>
+<li><b>Edge Functions pro business logiku</b> – middleware mezi frontendem a DB</li>
+</ul>
+
+<p><b>5. N+1 problém</b></p>
 
 <pre><code>// ❌ Špatně: N+1 dotazů z frontendu
 const posts = await supabase.from('posts').select('*')
@@ -195,7 +266,7 @@ const posts = await supabase
   .from('posts')
   .select('*, author:users(*)')  // Supabase automaticky udělá JOIN</code></pre>
 
-<p><b>5. Citlivá data v odpovědích</b></p>
+<p><b>6. Citlivá data v odpovědích</b></p>
 
 <ul>
 <li>I s RLS může databáze vrátit více dat, než byste chtěli zobrazit</li>
@@ -208,7 +279,7 @@ await supabase
   .from('users')
   .select('id, name, avatar_url')  // NE select('*')</code></pre>
 
-<p><b>6. Error messages a info leaks</b></p>
+<p><b>7. Error messages a info leaks</b></p>
 
 <ul>
 <li>Chybové hlášky z DB můžou prozradit strukturu tabulek</li>
