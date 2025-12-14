@@ -4,7 +4,10 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+			// Use Node.js runtime for ISR support
+			runtime: 'nodejs22.x'
+		}),
 		prerender: {
 			concurrency: 50,
 			handleHttpError: ({ path, referrer, message }) => {
