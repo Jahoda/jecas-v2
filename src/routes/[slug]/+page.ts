@@ -5,10 +5,9 @@ export const prerender = false;
 
 export const config = {
 	isr: {
-		// Pages are cached indefinitely until a new deployment
-		// This gives us the best of both worlds:
-		// - Fast builds (no prerendering of all articles)
-		// - Fast page loads (cached at edge after first request)
-		expiration: false
+		// Cache survives deployments - pages are only regenerated when explicitly invalidated
+		// To invalidate a page, visit: /slug?x-prerender-revalidate=<REVALIDATE_TOKEN>
+		expiration: false,
+		bypassToken: process.env.REVALIDATE_TOKEN
 	}
 };
