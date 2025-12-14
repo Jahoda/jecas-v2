@@ -11,7 +11,7 @@ format: "html"
 
 <p><b>Row Level Security (RLS)</b> je bezpečnostní funkce databází, která umožňuje <b>omezit přístup k jednotlivým řádkům v tabulce</b> na základě definovaných pravidel. Místo aby aplikace kontrolovala, která data může uživatel vidět, tuto kontrolu provádí přímo databáze.</p>
 
-<p><img src="/files/rls/rls-thumbnail.svg" alt="Row Level Security - schéma zabezpečení na úrovni řádků" /></p>
+<p><img src="/files/rls/rls-thumbnail.png" alt="Row Level Security - schéma zabezpečení na úrovni řádků" /></p>
 
 <h2 id="princip-fungovani">Jak RLS funguje</h2>
 
@@ -50,6 +50,76 @@ format: "html"
   <p><b>Kompatibilita s nástroji</b> – funguje i s BI nástroji, admin panely třetích stran</p>
 </li>
 </ul>
+
+<h2 id="pristup-z-frontendu">Přímý přístup z frontendu</h2>
+
+<p>Jednou z <b>nejzajímavějších výhod RLS</b> je možnost <b>volat databázi přímo z JavaScriptu</b> na frontendu, bez nutnosti psát backend API.</p>
+
+<h3 id="tradicni-pristup">Tradiční přístup bez RLS</h3>
+
+<pre><code>Frontend → Backend API → Databáze
+- Frontend volá API endpoint
+- Backend kontroluje oprávnění v kódu
+- Backend sestaví dotaz s WHERE podmínkami
+- Vrátí filtrovaná data frontendu</code></pre>
+
+<p>Tento přístup vyžaduje psát a udržovat backend kód pro každou operaci.</p>
+
+<h3 id="pristup-s-rls">Přístup s RLS</h3>
+
+<pre><code>Frontend → Databáze (s RLS)
+- Frontend volá databázi přímo přes SDK
+- Databáze kontroluje oprávnění pomocí RLS politik
+- Vrací automaticky filtrovaná data</code></pre>
+
+<p>Výhody tohoto přístupu:</p>
+
+<ul>
+<li><b>Méně kódu</b> – není potřeba psát REST/GraphQL API pro CRUD operace</li>
+<li><b>Rychlejší vývoj</b> – změny v databázi se projeví okamžitě</li>
+<li><b>Bezpečnost zaručená DB</b> – nelze obejít, i když frontend kód je kompromitován</li>
+<li><b>Real-time aktualizace</b> – snadná integrace s WebSockets/subscriptions</li>
+</ul>
+
+<h3 id="priklad-supabase">Praktický příklad (Supabase)</h3>
+
+<pre><code>// Nastavení RLS v databázi (jednou)
+CREATE POLICY "Users can read own posts" ON posts
+  FOR SELECT USING (auth.uid() = user_id);
+
+// Frontend kód - přímý přístup k DB
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(url, anonKey)
+
+// Přihlášení uživatele
+await supabase.auth.signInWithPassword({ email, password })
+
+// Čtení dat - RLS automaticky vrátí jen data aktuálního uživatele
+const { data } = await supabase
+  .from('posts')
+  .select('*')  // Žádné WHERE user_id! RLS to dělá automaticky
+
+// Vkládání dat
+const { data } = await supabase
+  .from('posts')
+  .insert({ title: 'Nový příspěvek', content: '...' })</code></pre>
+
+<p>Díky RLS je zaručeno, že uživatel vidí a mění jen svá data, i když volá databázi přímo z prohlížeče.</p>
+
+<h3 id="kdyz-potrebujete-backend">Kdy stále potřebujete backend</h3>
+
+<p>RLS <b>nenahrazuje backend úplně</b>. Backend je stále potřeba pro:</p>
+
+<ul>
+<li><b>Složitou business logiku</b> – validace, výpočty, integrace s třetími stranami</li>
+<li><b>Platby a citlivé operace</b> – komunikace s platební bránou</li>
+<li><b>Dávkové operace</b> – import dat, generování reportů</li>
+<li><b>Rate limiting</b> – omezení počtu požadavků na uživatele</li>
+<li><b>Náročné dotazy</b> – agregace, joiny přes více tabulek</li>
+</ul>
+
+<p>Ideální je <b>kombinace</b>: jednoduché CRUD operace přímo z frontendu s RLS, složitější logika přes backend API.</p>
 
 <h2 id="postgresql">RLS v PostgreSQL</h2>
 
