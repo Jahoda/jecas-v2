@@ -23,6 +23,19 @@ format: "html"
 
 <pre><code>SELECT * FROM documents  -- databáze automaticky vrátí jen data aktuálního uživatele</code></pre>
 
+<h3 id="historie-rls">Kde se RLS vzalo</h3>
+
+<p>RLS není vynález PostgreSQL. Koncept vznikl v <b>Oracle 8i v roce 1999</b> pod názvem Virtual Private Database (VPD). PostgreSQL přidal RLS až v roce 2016 – o 17 let později. Ale díky tomu, že PostgreSQL je open-source, mohl vzniknout Supabase a tento přístup se zpopularizoval.</p>
+
+<ul>
+<li><b>1999</b> – Oracle 8i: Virtual Private Database (VPD)</li>
+<li><b>2015</b> – SQL Server CTP (preview): Row-Level Security</li>
+<li><b>Leden 2016</b> – PostgreSQL 9.5: Row Level Security</li>
+<li><b>Červen 2016</b> – SQL Server 2016: Row-Level Security</li>
+</ul>
+
+<p><b>Původ názvu:</b> Oracle používal název "Virtual Private Database", který se neujal jako obecný termín. Název <b>"Row Level Security"</b> popularizoval <b>Microsoft</b> v SQL Server preview (2015). PostgreSQL ho převzal (bez pomlčky) a díky open-source povaze a Supabase se rozšířil nejvíc.</p>
+
 <h2 id="vyhody">Proč používat RLS</h2>
 
 <ul>
@@ -550,6 +563,42 @@ CREATE POLICY insert_own ON new_table
 <li><b>Testujte RLS politiky důkladně</b> – zkuste obejít vlastní zabezpečení</li>
 <li><b>Citlivé operace přes backend</b> – platby, změna emailu, admin operace</li>
 </ul>
+
+<h2 id="rls-na-backendu">RLS na backendu vs. WHERE podmínky</h2>
+
+<p>Pokud máte klasický backend (Node.js, PHP, Python), <b>většina aplikací RLS nepoužívá</b>. Místo toho přidávají WHERE podmínky v aplikačním kódu:</p>
+
+<pre><code>// Laravel (PHP)
+$posts = Post::where('user_id', auth()->id())->get();
+
+// Django (Python)
+posts = Post.objects.filter(user_id=request.user.id)
+
+// Prisma (Node.js)
+const posts = await prisma.post.findMany({
+  where: { userId: user.id }
+})</code></pre>
+
+<h3 id="proc-backend-nepouziva-rls">Proč většina backendů RLS nepoužívá</h3>
+
+<ul>
+<li><b>ORM to nepodporují</b> – Laravel Eloquent, Django ORM, Rails ActiveRecord, Prisma – všechny používají WHERE podmínky</li>
+<li><b>Session proměnné</b> – RLS vyžaduje nastavit <code>SET app.user_id = X</code> pro každý request</li>
+<li><b>Přenositelnost</b> – WHERE funguje na MySQL, PostgreSQL, SQLite... RLS je PostgreSQL-only</li>
+<li><b>Kontrola v kódu</b> – vývojáři chtějí vidět logiku v aplikaci, ne skrytou v databázi</li>
+<li><b>Testovatelnost</b> – WHERE podmínky jsou snazší testovat</li>
+</ul>
+
+<h3 id="kdy-pouzit-rls-backend">Kdy použít RLS i na backendu</h3>
+
+<ul>
+<li><b>Přímý přístup z frontendu</b> (Supabase, Neon) – RLS je nutnost</li>
+<li><b>Multi-tenant jako extra vrstva</b> – defense in depth, pojistka proti chybám v kódu</li>
+<li><b>Compliance požadavky</b> (GDPR, HIPAA) – vyžadují bezpečnost na více vrstvách</li>
+<li><b>Citlivá data</b> – zdravotnictví, finance, kde je potřeba maximální ochrana</li>
+</ul>
+
+<p><b>Shrnutí:</b> Na backendu je WHERE v ORM standardní praxe. RLS používejte pro přímý přístup z frontendu nebo jako extra vrstvu ochrany u citlivých dat.</p>
 
 <h2 id="postgresql">RLS v PostgreSQL</h2>
 
