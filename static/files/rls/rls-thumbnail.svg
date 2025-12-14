@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGradient)"/>
+
+  <!-- Database table -->
+  <g transform="translate(100, 80)">
+    <!-- Table header -->
+    <rect x="0" y="0" width="600" height="50" fill="#ffffff" rx="8" ry="8"/>
+    <text x="20" y="32" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#333">
+      users
+    </text>
+
+    <!-- Column headers -->
+    <text x="20" y="75" font-family="monospace" font-size="14" font-weight="bold" fill="#ffffff">
+      id
+    </text>
+    <text x="100" y="75" font-family="monospace" font-size="14" font-weight="bold" fill="#ffffff">
+      name
+    </text>
+    <text x="280" y="75" font-family="monospace" font-size="14" font-weight="bold" fill="#ffffff">
+      email
+    </text>
+    <text x="480" y="75" font-family="monospace" font-size="14" font-weight="bold" fill="#ffffff">
+      role
+    </text>
+
+    <!-- Row 1 - Accessible -->
+    <rect x="0" y="90" width="600" height="45" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="4"/>
+    <text x="20" y="118" font-family="monospace" font-size="14" fill="#333">1</text>
+    <text x="100" y="118" font-family="monospace" font-size="14" fill="#333">Jan Novák</text>
+    <text x="280" y="118" font-family="monospace" font-size="14" fill="#333">jan@example.com</text>
+    <text x="480" y="118" font-family="monospace" font-size="14" fill="#333">user</text>
+
+    <!-- Unlock icon for accessible row -->
+    <g transform="translate(560, 100)">
+      <circle cx="12" cy="15" r="8" fill="none" stroke="#4caf50" stroke-width="2"/>
+      <rect x="8" y="14" width="8" height="10" fill="none" stroke="#4caf50" stroke-width="2" rx="1"/>
+      <path d="M 8 14 L 8 10 Q 8 6 12 6 Q 16 6 16 10 L 16 12" fill="none" stroke="#4caf50" stroke-width="2"/>
+    </g>
+
+    <!-- Row 2 - Accessible -->
+    <rect x="0" y="140" width="600" height="45" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="4"/>
+    <text x="20" y="168" font-family="monospace" font-size="14" fill="#333">2</text>
+    <text x="100" y="168" font-family="monospace" font-size="14" fill="#333">Marie Nová</text>
+    <text x="280" y="168" font-family="monospace" font-size="14" fill="#333">marie@example.com</text>
+    <text x="480" y="168" font-family="monospace" font-size="14" fill="#333">user</text>
+
+    <!-- Unlock icon -->
+    <g transform="translate(560, 150)">
+      <circle cx="12" cy="15" r="8" fill="none" stroke="#4caf50" stroke-width="2"/>
+      <rect x="8" y="14" width="8" height="10" fill="none" stroke="#4caf50" stroke-width="2" rx="1"/>
+      <path d="M 8 14 L 8 10 Q 8 6 12 6 Q 16 6 16 10 L 16 12" fill="none" stroke="#4caf50" stroke-width="2"/>
+    </g>
+
+    <!-- Row 3 - Restricted -->
+    <rect x="0" y="190" width="600" height="45" fill="#ffebee" stroke="#f44336" stroke-width="2" rx="4" opacity="0.6"/>
+    <text x="20" y="218" font-family="monospace" font-size="14" fill="#999">3</text>
+    <text x="100" y="218" font-family="monospace" font-size="14" fill="#999">████████</text>
+    <text x="280" y="218" font-family="monospace" font-size="14" fill="#999">███████████</text>
+    <text x="480" y="218" font-family="monospace" font-size="14" fill="#999">admin</text>
+
+    <!-- Lock icon -->
+    <g transform="translate(560, 200)">
+      <circle cx="12" cy="15" r="8" fill="none" stroke="#f44336" stroke-width="2"/>
+      <rect x="8" y="14" width="8" height="10" fill="none" stroke="#f44336" stroke-width="2" rx="1"/>
+      <path d="M 8 14 L 8 10 Q 8 6 12 6 Q 16 6 16 10 L 16 14" fill="none" stroke="#f44336" stroke-width="2"/>
+    </g>
+
+    <!-- Row 4 - Restricted -->
+    <rect x="0" y="240" width="600" height="45" fill="#ffebee" stroke="#f44336" stroke-width="2" rx="4" opacity="0.6"/>
+    <text x="20" y="268" font-family="monospace" font-size="14" fill="#999">4</text>
+    <text x="100" y="268" font-family="monospace" font-size="14" fill="#999">████████</text>
+    <text x="280" y="268" font-family="monospace" font-size="14" fill="#999">███████████</text>
+    <text x="480" y="268" font-family="monospace" font-size="14" fill="#999">admin</text>
+
+    <!-- Lock icon -->
+    <g transform="translate(560, 250)">
+      <circle cx="12" cy="15" r="8" fill="none" stroke="#f44336" stroke-width="2"/>
+      <rect x="8" y="14" width="8" height="10" fill="none" stroke="#f44336" stroke-width="2" rx="1"/>
+      <path d="M 8 14 L 8 10 Q 8 6 12 6 Q 16 6 16 10 L 16 14" fill="none" stroke="#f44336" stroke-width="2"/>
+    </g>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Row Level Security
+  </text>
+
+  <!-- Legend -->
+  <g transform="translate(50, 400)">
+    <rect x="0" y="0" width="20" height="20" fill="#e8f5e9" stroke="#4caf50" stroke-width="2" rx="2"/>
+    <text x="30" y="15" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">
+      Přístupné řádky
+    </text>
+
+    <rect x="200" y="0" width="20" height="20" fill="#ffebee" stroke="#f44336" stroke-width="2" rx="2" opacity="0.6"/>
+    <text x="230" y="15" font-family="Arial, sans-serif" font-size="14" fill="#ffffff">
+      Omezené řádky
+    </text>
+  </g>
+</svg>
