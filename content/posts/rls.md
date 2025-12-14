@@ -2,8 +2,8 @@
 title: "Co je Row Level Security (RLS)"
 headline: "Row Level Security: Zabezpečení na úrovni řádků v databázi"
 description: "Co je Row Level Security (RLS), jak funguje v PostgreSQL a dalších databázích, praktické příklady použití a výhody oproti aplikační logice."
-date: "2025-12-14"
-last_modification: "2025-12-14"
+date: "2025-12-15"
+last_modification: "2025-12-15"
 status: 1
 tags: ["sql", "zabezpeceni"]
 format: "html"
@@ -43,11 +43,7 @@ format: "html"
 </li>
 
 <li>
-  <p><b>Ochrana před SQL injection</b> – i při útoku útočník neuvidí cizí data</p>
-</li>
-
-<li>
-  <p><b>Kompatibilita s nástroji</b> – funguje i s BI nástroji, admin panely třetích stran</p>
+  <p><b>Omezení dopadu SQL injection</b> – i při úspěšném útoku útočník neuvidí cizí data (ale RLS nenahrazuje ochranu proti injection!)</p>
 </li>
 </ul>
 
@@ -57,26 +53,71 @@ format: "html"
 
 <h3 id="tradicni-pristup">Tradiční přístup bez RLS</h3>
 
-<pre><code>Frontend → Backend API → Databáze
-- Frontend volá API endpoint
-- Backend kontroluje oprávnění v kódu
-- Backend sestaví dotaz s WHERE podmínkami
-- Vrátí filtrovaná data frontendu</code></pre>
+<svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="max-width: 700px; width: 100%; height: auto;">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect width="700" height="200" rx="12" fill="url(#bg1)"/>
+  <rect x="30" y="55" width="130" height="70" rx="10" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-width="2"/>
+  <text x="95" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#60a5fa">Frontend</text>
+  <text x="95" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">JavaScript</text>
+  <rect x="230" y="45" width="160" height="90" rx="10" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-width="2"/>
+  <text x="310" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">Backend API</text>
+  <text x="310" y="95" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">kontrola oprávnění</text>
+  <text x="310" y="115" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#fbbf24">WHERE user_id = ?</text>
+  <rect x="460" y="55" width="130" height="70" rx="10" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e" stroke-width="2"/>
+  <text x="525" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#4ade80">Databáze</text>
+  <text x="525" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">PostgreSQL</text>
+  <line x1="160" y1="90" x2="220" y2="90" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow1)"/>
+  <line x1="390" y1="90" x2="450" y2="90" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow1)"/>
+  <text x="190" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#64748b">request</text>
+  <text x="420" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#64748b">SQL</text>
+  <text x="350" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">⚠️ Backend musí ručně přidávat WHERE podmínky do každého dotazu</text>
+</svg>
 
 <p>Tento přístup vyžaduje psát a udržovat backend kód pro každou operaci.</p>
 
 <h3 id="pristup-s-rls">Přístup s RLS</h3>
 
-<pre><code>Frontend → Databáze (s RLS)
-- Frontend volá databázi přímo přes SDK
-- Databáze kontroluje oprávnění pomocí RLS politik
-- Vrací automaticky filtrovaná data</code></pre>
+<svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="max-width: 700px; width: 100%; height: auto;">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="shieldGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#22c55e"/>
+    </marker>
+  </defs>
+  <rect width="700" height="200" rx="12" fill="url(#bg2)"/>
+  <rect x="50" y="55" width="130" height="70" rx="10" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-width="2"/>
+  <text x="115" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#60a5fa">Frontend</text>
+  <text x="115" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">JavaScript</text>
+  <rect x="350" y="35" width="220" height="120" rx="12" fill="#22c55e" fill-opacity="0.1" stroke="#22c55e" stroke-width="2"/>
+  <text x="460" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#4ade80">Databáze + RLS</text>
+  <text x="460" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">PostgreSQL / Supabase</text>
+  <rect x="370" y="95" width="180" height="45" rx="6" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="460" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#60a5fa">🛡️ RLS Policy</text>
+  <text x="460" y="130" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#94a3b8">user_id = auth.uid()</text>
+  <line x1="180" y1="90" x2="340" y2="90" stroke="#22c55e" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arrow2)"/>
+  <text x="260" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#4ade80">přímý přístup</text>
+  <text x="350" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">✅ Databáze automaticky filtruje data – není potřeba backend</text>
+</svg>
 
 <p>Výhody tohoto přístupu:</p>
 
 <ul>
-<li><b>Méně kódu</b> – není potřeba psát REST/GraphQL API pro CRUD operace</li>
-<li><b>Rychlejší vývoj</b> – změny v databázi se projeví okamžitě</li>
+<li><b>Méně kódu</b> a <b>rychlejší vývoj</b> – není potřeba psát REST/GraphQL API pro CRUD operace</li>
 <li><b>Bezpečnost zaručená DB</b> – nelze obejít, i když frontend kód je kompromitován</li>
 <li><b>Real-time aktualizace</b> – snadná integrace s WebSockets/subscriptions</li>
 </ul>
@@ -631,7 +672,7 @@ WITH (STATE = ON);</code></pre>
 <ul>
 <li>Použití VIEW s WHERE podmínkami pro jednotlivé role</li>
 <li>Aplikační logika v kódu</li>
-<li>Migrace na PostgreSQL nebo MySQL-kompatibilní databáze s RLS (např. <a href="https://planetscale.com/">PlanetScale</a> s experimentální podporou)</li>
+<li>Migrace na PostgreSQL nebo jinou databázi s nativní podporou RLS</li>
 </ul>
 
 <h2 id="vykonne-aspekty">Výkonnostní aspekty</h2>
@@ -657,7 +698,7 @@ ALTER TABLE documents FORCE ROW LEVEL SECURITY; -- platí i pro vlastníka
 -- Nebo explicitly povolit bypass pro specifickou roli
 ALTER ROLE admin_role BYPASSRLS;</code></pre>
 
-<h2 id="castecne-chyby">Časté chyby a problémy</h2>
+<h2 id="caste-chyby">Časté chyby a problémy</h2>
 
 <h3 id="zapomenute-povoleni">Zapomenuté povolení RLS</h3>
 
