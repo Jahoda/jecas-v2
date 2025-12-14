@@ -49,7 +49,7 @@ format: "html"
 
 <h2 id="pristup-z-frontendu">Přímý přístup z frontendu</h2>
 
-<p>Jednou z <b>nejzajímavějších výhod RLS</b> je možnost <b>volat databázi přímo z JavaScriptu</b> na frontendu, bez nutnosti psát backend API.</p>
+<p>Jednou z <b>nejzajímavějších výhod RLS</b> je možnost <b>volat databázi přímo z JavaScriptu</b> na frontendu, bez nutnosti psát backend API. Platformy jako <b>Supabase jsou přímo navržené pro tento přístup</b> – není to hack ani kompromis, ale doporučený způsob práce.</p>
 
 <h3 id="tradicni-pristup">Tradiční přístup bez RLS</h3>
 
@@ -122,6 +122,43 @@ format: "html"
 <li><b>Real-time aktualizace</b> – snadná integrace s WebSockets/subscriptions</li>
 </ul>
 
+<h3 id="proc-to-funguje">Proč je to bezpečné (a kdy ne)</h3>
+
+<p><b>Frontend se nepřipojuje k PostgreSQL přímo!</b> Mezi frontendem a databází je API vrstva (PostgREST u Supabase), která zajišťuje bezpečnost:</p>
+
+<pre><code>Frontend → Supabase API (PostgREST) → PostgreSQL + RLS
+               ↑
+          rate limiting
+          validace požadavků
+          connection pooling
+          timeouty
+          žádné surové SQL</code></pre>
+
+<p><b>Přímé připojení k PostgreSQL z frontendu je bezpečnostní katastrofa:</b></p>
+
+<ul>
+<li>Connection string (včetně hesla) je viditelný v DevTools</li>
+<li>Útočník může spouštět libovolné SQL (<code>DROP TABLE</code>, <code>DELETE FROM</code>)</li>
+<li>RLS nepomůže – útočník má plné credentials vlastníka</li>
+<li>Žádný rate limiting ani ochrana proti DoS</li>
+</ul>
+
+<p><b>Pravidlo:</b> PostgreSQL connection string <b>nikdy</b> nepatří do frontend kódu. Supabase používá veřejný <code>anon key</code> + JWT tokeny – to je zásadní rozdíl.</p>
+
+<h3 id="alternativy">Alternativy k Supabase</h3>
+
+<p>Supabase není jediná platforma umožňující bezpečný přístup z frontendu. Podobný přístup nabízí:</p>
+
+<ul>
+<li><b><a href="https://hasura.io/">Hasura</a></b> – GraphQL engine pro PostgreSQL s propracovaným systémem permissions. Lze nasadit self-hosted nebo jako cloud službu.</li>
+<li><b><a href="https://nhost.io/">Nhost</a></b> – open-source alternativa k Supabase, postavená na PostgreSQL + Hasura GraphQL. Nabízí auth, storage i serverless functions.</li>
+<li><b><a href="https://firebase.google.com/">Firebase</a></b> – Google platforma s NoSQL databází (Firestore) a Security Rules. Jiný přístup než RLS, ale stejný princip – bezpečnost na úrovni databáze.</li>
+<li><b><a href="https://pocketbase.io/">PocketBase</a></b> – jednoduchý self-hosted backend v jednom Go binárce. SQLite databáze s pravidly přístupu definovanými v administraci.</li>
+<li><b><a href="https://appwrite.io/">Appwrite</a></b> – open-source BaaS s vlastní databází, auth a permissions systémem. Self-hosted nebo cloud.</li>
+</ul>
+
+<p>Všechny tyto platformy sdílejí klíčový princip: <b>frontend komunikuje přes bezpečné API</b>, ne přímo s databází, a oprávnění jsou vynucována na serverové straně.</p>
+
 <h3 id="priklad-supabase">Praktický příklad (Supabase)</h3>
 
 <pre><code>// Nastavení RLS v databázi (jednou)
@@ -146,21 +183,22 @@ const { data } = await supabase
   .from('posts')
   .insert({ title: 'Nový příspěvek', content: '...' })</code></pre>
 
-<p>Díky RLS je zaručeno, že uživatel vidí a mění jen svá data, i když volá databázi přímo z prohlížeče.</p>
+<p>Díky RLS je zaručeno, že uživatel vidí a mění jen svá data, i když volá databázi přímo z prohlížeče. <b>Toto je standardní a doporučený způsob práce se Supabase</b> – tisíce produkčních aplikací takto fungují.</p>
 
-<h3 id="kdyz-potrebujete-backend">Kdy stále potřebujete backend</h3>
+<h3 id="kdyz-potrebujete-backend">Kdy přidat backend (Edge Functions)</h3>
 
-<p>RLS <b>nenahrazuje backend úplně</b>. Backend je stále potřeba pro:</p>
+<p><b>Většina aplikací může fungovat pouze s přímým přístupem z frontendu.</b> Supabase má vestavěné ochrany (rate limiting, query timeout, connection pooling), takže pro běžné CRUD operace nepotřebujete nic dalšího.</p>
+
+<p>Backend (nebo Supabase Edge Functions) přidejte pouze pro:</p>
 
 <ul>
-<li><b>Složitou business logiku</b> – validace, výpočty, integrace s třetími stranami</li>
-<li><b>Platby a citlivé operace</b> – komunikace s platební bránou</li>
-<li><b>Dávkové operace</b> – import dat, generování reportů</li>
-<li><b>Rate limiting</b> – omezení počtu požadavků na uživatele</li>
-<li><b>Náročné dotazy</b> – agregace, joiny přes více tabulek</li>
+<li><b>Platby</b> – komunikace s platební bránou (Stripe, PayPal)</li>
+<li><b>Integrace s 3rd party API</b> – kde potřebujete skrýt API klíče</li>
+<li><b>Složitou business logiku</b> – validace napříč více tabulkami, výpočty</li>
+<li><b>Odesílání emailů</b> – triggery po akcích uživatele</li>
 </ul>
 
-<p>Ideální je <b>kombinace</b>: jednoduché CRUD operace přímo z frontendu s RLS, složitější logika přes backend API.</p>
+<p>Pro většinu aplikací platí: <b>začněte s přímým přístupem</b> a backend přidávejte jen když narazíte na konkrétní potřebu.</p>
 
 <h3 id="bezpecnostni-aspekty">Bezpečnostní aspekty a úskalí</h3>
 
