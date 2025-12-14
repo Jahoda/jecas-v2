@@ -121,6 +121,111 @@ const { data } = await supabase
 
 <p>Ideální je <b>kombinace</b>: jednoduché CRUD operace přímo z frontendu s RLS, složitější logika přes backend API.</p>
 
+<h3 id="bezpecnostni-aspekty">Bezpečnostní aspekty a úskalí</h3>
+
+<h4 id="defense-in-depth">RLS + aplikační validace (Defense in Depth)</h4>
+
+<p><b>Ano, kombinace RLS s ověřováním v aplikaci je doporučená praxe!</b> Jde o princip "obrany do hloubky":</p>
+
+<ul>
+<li><b>Frontend validace</b> – kontrola formátu, UX feedback, rychlá odezva</li>
+<li><b>Backend validace</b> (pokud existuje) – business pravidla, složitější kontroly</li>
+<li><b>RLS v databázi</b> – poslední a nejdůležitější obrana, kterou nelze obejít</li>
+</ul>
+
+<pre><code>// Frontend validace - rychlá odezva pro uživatele
+if (!title || title.length < 3) {
+  return { error: 'Název musí mít alespoň 3 znaky' }
+}
+
+// Volání DB s RLS - i kdyby frontend validace selhala,
+// RLS zajistí, že uživatel může upravit jen své záznamy
+await supabase
+  .from('posts')
+  .update({ title })
+  .eq('id', postId)  // RLS automaticky ověří vlastnictví</code></pre>
+
+<p><b>Nikdy nespoléhejte jen na frontend validaci</b> – ta může být obejita otevřením DevTools. RLS je vaše poslední pojistka.</p>
+
+<h4 id="uskali-pristupu">Úskalí přímého přístupu z frontendu</h4>
+
+<p><b>1. Bezpečnost credentials</b></p>
+
+<ul>
+<li>Frontend používá <b>anonymní klíč</b> (anon key), který je veřejný a všichni ho vidí</li>
+<li>Databázové heslo <b>NIKDY</b> nesmí být ve frontend kódu</li>
+<li>Supabase používá JWT tokeny – databáze rozlišuje uživatele podle <code>auth.uid()</code> z tokenu</li>
+<li>Service role klíč (s admin právy) patří <b>jen na backend</b></li>
+</ul>
+
+<p><b>2. Validace dat</b></p>
+
+<pre><code>-- Špatně: Frontend může poslat cokoliv
+CREATE TABLE posts (
+  title TEXT,
+  content TEXT
+);
+
+-- Lépe: DB constraints jako další vrstva ochrany
+CREATE TABLE posts (
+  title TEXT NOT NULL CHECK (length(title) >= 3 AND length(title) <= 200),
+  content TEXT NOT NULL CHECK (length(content) <= 50000),
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);</code></pre>
+
+<p><b>3. Rate limiting</b></p>
+
+<ul>
+<li>Frontend může posílat neomezené množství dotazů</li>
+<li>Řešení: Supabase má vestavěný rate limiting, nebo použít Edge Functions</li>
+<li>Pro kritické operace použít backend API s vlastním rate limitingem</li>
+</ul>
+
+<p><b>4. Složité dotazy a N+1 problém</b></p>
+
+<pre><code>// ❌ Špatně: N+1 dotazů z frontendu
+const posts = await supabase.from('posts').select('*')
+for (const post of posts.data) {
+  const author = await supabase.from('users').select('*').eq('id', post.user_id)
+  // N dotazů!
+}
+
+// ✅ Lépe: JOIN v jednom dotazu
+const posts = await supabase
+  .from('posts')
+  .select('*, author:users(*)')  // Supabase automaticky udělá JOIN</code></pre>
+
+<p><b>5. Citlivá data v odpovědích</b></p>
+
+<ul>
+<li>I s RLS může databáze vrátit více dat, než byste chtěli zobrazit</li>
+<li>Používejte <code>.select()</code> k výběru jen potřebných sloupců</li>
+<li>Citlivá pole (hesla, tokeny) nastavte jako <b>SECURITY DEFINER</b> funkce nebo views</li>
+</ul>
+
+<pre><code>-- Vždy vybírejte jen potřebné sloupce
+await supabase
+  .from('users')
+  .select('id, name, avatar_url')  // NE select('*')</code></pre>
+
+<p><b>6. Error messages a info leaks</b></p>
+
+<ul>
+<li>Chybové hlášky z DB můžou prozradit strukturu tabulek</li>
+<li>V produkci logujte detailní chyby, ale uživateli ukažte obecnou hlášku</li>
+</ul>
+
+<h4 id="best-practices-pristup">Best practices pro přímý přístup</h4>
+
+<ul>
+<li><b>Vždy používejte RLS</b> – nikdy nepovolejte přístup k tabulce bez RLS politik</li>
+<li><b>Kombinujte s DB constraints</b> – NOT NULL, CHECK, UNIQUE jako další vrstva validace</li>
+<li><b>Používejte Views pro složité dotazy</b> – místo složitých JOINů z frontendu</li>
+<li><b>Auditujte přístupy</b> – logujte všechny operace pro analýzu bezpečnosti</li>
+<li><b>Testujte RLS politiky důkladně</b> – zkuste obejít vlastní zabezpečení</li>
+<li><b>Citlivé operace přes backend</b> – platby, změna emailu, admin operace</li>
+</ul>
+
 <h2 id="postgresql">RLS v PostgreSQL</h2>
 
 <p>PostgreSQL podporuje RLS od verze 9.5 a je to nejpoužívanější implementace.</p>
