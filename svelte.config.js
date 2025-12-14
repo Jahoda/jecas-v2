@@ -6,7 +6,7 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		prerender: {
-			concurrency: 10,
+			concurrency: 50,
 			handleHttpError: ({ path, referrer, message }) => {
 				// Warn about 404s for missing pages/images during prerender
 				// These should be fixed in content but shouldn't block the build

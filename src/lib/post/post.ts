@@ -7,6 +7,7 @@ import {
 	getPostsByTag,
 	getRelatedPostsByMostTags as getMarkdownRelatedPosts,
 	getPrevNextPosts as getMarkdownPrevNextPosts,
+	getFuturePosts as getMarkdownFuturePosts,
 	type MarkdownPost
 } from './markdown';
 import type { TagPost, Tag } from '$lib/tag/tags';
@@ -57,7 +58,6 @@ export async function getAllDrafts(limit: number | null = null): Promise<Post[]>
 }
 
 export async function getFuturePosts(limit: number | null = null): Promise<Post[]> {
-	const { getFuturePosts: getMarkdownFuturePosts } = await import('./markdown');
 	return await getMarkdownFuturePosts(limit);
 }
 
