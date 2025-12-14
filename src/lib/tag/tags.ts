@@ -1,5 +1,6 @@
 import matter from 'gray-matter';
 import { marked } from 'marked';
+import { getAllPosts as getMarkdownAllPosts, getSinglePostBySlug } from '../post/markdown';
 
 function removeDiacritics(str: string): string {
 	return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -128,34 +129,28 @@ async function loadAllTagFiles(): Promise<Map<string, Tag>> {
 async function calculateAllUsageCounts(): Promise<Map<string, number>> {
 	const now = Date.now();
 
-	// Return cached data if still fresh
 	if (usageCountsCache && now - usageCountsLastCalculated < CACHE_DURATION) {
 		return usageCountsCache;
 	}
 
-	const { getAllPosts } = await import('../post/markdown');
-	const posts = await getAllPosts(null, 1); // Only published posts
+	const posts = await getMarkdownAllPosts(null, 1);
 
 	const counts = new Map<string, number>();
 	const tags = await loadAllTagFiles();
 
-	// Initialize counts for all existing tags
 	Array.from(tags.values()).forEach((tag) => {
 		counts.set(tag.url_slug, 0);
 	});
 
-	// Count usage in a single pass through posts
 	for (const post of posts) {
 		if (post.tags) {
-			const processedSlugs = new Set<string>(); // Prevent double counting same tag in one post
+			const processedSlugs = new Set<string>();
 
 			for (const tagName of post.tags) {
-				// Try exact name match first (with diacritics normalization)
 				let matchingTag = Array.from(tags.values()).find(
 					(t) => removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
 				);
 
-				// If not found, try slug match
 				if (!matchingTag) {
 					const tagSlug = tagName.toLowerCase().replace(/\s+/g, '-');
 					matchingTag = tags.get(tagSlug);
@@ -169,45 +164,37 @@ async function calculateAllUsageCounts(): Promise<Map<string, number>> {
 		}
 	}
 
-	// Cache the results
 	usageCountsCache = counts;
 	usageCountsLastCalculated = now;
 
 	return counts;
 }
 
-// Calculate tag-to-posts mapping in one pass
 async function calculateAllTagPosts(): Promise<Map<string, string[]>> {
 	const now = Date.now();
 
-	// Return cached data if still fresh
 	if (tagPostsCache && now - tagPostsLastCalculated < CACHE_DURATION) {
 		return tagPostsCache;
 	}
 
-	const { getAllPosts } = await import('../post/markdown');
-	const posts = await getAllPosts(null, 1); // Only published posts
+	const posts = await getMarkdownAllPosts(null, 1);
 
 	const tagPosts = new Map<string, string[]>();
 	const tags = await loadAllTagFiles();
 
-	// Initialize arrays for all existing tags
 	Array.from(tags.values()).forEach((tag) => {
 		tagPosts.set(tag.url_slug, []);
 	});
 
-	// Map posts to tags in a single pass
 	for (const post of posts) {
 		if (post.tags) {
-			const processedSlugs = new Set<string>(); // Prevent double adding same tag
+			const processedSlugs = new Set<string>();
 
 			for (const tagName of post.tags) {
-				// Try exact name match first (with diacritics normalization)
 				let matchingTag = Array.from(tags.values()).find(
 					(t) => removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
 				);
 
-				// If not found, try slug match
 				if (!matchingTag) {
 					const tagSlug = tagName.toLowerCase().replace(/\s+/g, '-');
 					matchingTag = tags.get(tagSlug);
@@ -223,7 +210,6 @@ async function calculateAllTagPosts(): Promise<Map<string, string[]>> {
 		}
 	}
 
-	// Cache the results
 	tagPostsCache = tagPosts;
 	tagPostsLastCalculated = now;
 
@@ -272,8 +258,6 @@ export async function getSingleTagBySlug(slug: string): Promise<Tag | undefined>
 }
 
 export async function getAllTagsByPageId(postSlug: string): Promise<Tag[]> {
-	// Get tags from the actual post markdown file
-	const { getSinglePostBySlug } = await import('../post/markdown');
 	const post = await getSinglePostBySlug(postSlug);
 
 	if (!post || !post.tags) return [];
@@ -283,12 +267,10 @@ export async function getAllTagsByPageId(postSlug: string): Promise<Tag[]> {
 	const matchingTags: Tag[] = [];
 
 	for (const tagName of post.tags) {
-		// Try exact title match first (with diacritics normalization)
 		let matchingTag = Array.from(tags.values()).find(
 			(t) => removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
 		);
 
-		// If not found, try slug match
 		if (!matchingTag) {
 			const tagSlug = tagName.toLowerCase().replace(/\s+/g, '-');
 			matchingTag = tags.get(tagSlug);

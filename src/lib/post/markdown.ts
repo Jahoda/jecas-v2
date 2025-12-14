@@ -27,9 +27,11 @@ export interface PostFrontmatter {
 
 const postModules = import.meta.glob('/content/posts/*.md', {
 	query: '?raw',
-	import: 'default',
-	eager: true
-}) as Record<string, string>;
+	import: 'default'
+}) as Record<string, () => Promise<string>>;
+
+let postsCache: Map<string, MarkdownPost> | null = null;
+let allPostsSortedCache: MarkdownPost[] | null = null;
 
 function getPostFiles(): string[] {
 	return Object.keys(postModules).map((path) => path.split('/').pop()!);
@@ -41,11 +43,13 @@ function getEffectiveModificationDate(post: MarkdownPost): Date {
 
 async function parseMarkdownFile(fileName: string): Promise<MarkdownPost> {
 	const fullPath = `/content/posts/${fileName}`;
-	const fileContent = postModules[fullPath];
+	const loader = postModules[fullPath];
 
-	if (!fileContent) {
+	if (!loader) {
 		throw new Error(`Post file not found: ${fileName}`);
 	}
+
+	const fileContent = await loader();
 
 	const { data, content } = matter(fileContent);
 	const frontmatter = data as PostFrontmatter;
@@ -72,13 +76,30 @@ async function parseMarkdownFile(fileName: string): Promise<MarkdownPost> {
 	};
 }
 
+async function loadAllPostsToCache(): Promise<Map<string, MarkdownPost>> {
+	if (postsCache) return postsCache;
+
+	const postFiles = getPostFiles();
+	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
+
+	postsCache = new Map();
+	for (const post of posts) {
+		postsCache.set(post.url_slug, post);
+	}
+
+	return postsCache;
+}
+
 export async function getAllPosts(
 	limit: number | null = null,
 	status = 1
 ): Promise<MarkdownPost[]> {
-	const postFiles = getPostFiles();
+	if (status === 1 && !limit && allPostsSortedCache) {
+		return allPostsSortedCache;
+	}
 
-	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
+	const cache = await loadAllPostsToCache();
+	const posts = Array.from(cache.values());
 
 	const now = new Date();
 	const filteredPosts = posts
@@ -92,6 +113,10 @@ export async function getAllPosts(
 				getEffectiveModificationDate(b).getTime() - getEffectiveModificationDate(a).getTime()
 		);
 
+	if (status === 1 && !limit) {
+		allPostsSortedCache = filteredPosts;
+	}
+
 	return limit ? filteredPosts.slice(0, limit) : filteredPosts;
 }
 
@@ -100,9 +125,8 @@ export async function getAllDrafts(limit: number | null = null): Promise<Markdow
 }
 
 export async function getFuturePosts(limit: number | null = null): Promise<MarkdownPost[]> {
-	const postFiles = getPostFiles();
-
-	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
+	const cache = await loadAllPostsToCache();
+	const posts = Array.from(cache.values());
 
 	const now = new Date();
 	const futurePosts = posts
@@ -118,19 +142,14 @@ export async function getFuturePosts(limit: number | null = null): Promise<Markd
 }
 
 export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
+	const cache = await loadAllPostsToCache();
 	const posts: MarkdownPost[] = [];
 	const now = new Date();
 
 	for (const slug of slugs) {
-		const fileName = `${slug}.md`;
-		const fullPath = `/content/posts/${fileName}`;
-
-		if (postModules[fullPath]) {
-			const post = await parseMarkdownFile(fileName);
-			// Only include published posts in lists that are not in the future
-			if (post.status === 1 && getEffectiveModificationDate(post) <= now) {
-				posts.push(post);
-			}
+		const post = cache.get(slug);
+		if (post && post.status === 1 && getEffectiveModificationDate(post) <= now) {
+			posts.push(post);
 		}
 	}
 
@@ -138,14 +157,8 @@ export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
 }
 
 export async function getSinglePostBySlug(slug: string): Promise<MarkdownPost | undefined> {
-	const fileName = `${slug}.md`;
-	const fullPath = `/content/posts/${fileName}`;
-
-	if (!postModules[fullPath]) {
-		return undefined;
-	}
-
-	return await parseMarkdownFile(fileName);
+	const cache = await loadAllPostsToCache();
+	return cache.get(slug);
 }
 
 export async function getPostsCount(): Promise<number> {
@@ -204,14 +217,11 @@ export async function getPrevNextPosts(currentSlug: string): Promise<{
 }
 
 export async function getAllUsedTags(): Promise<string[]> {
-	const postFiles = getPostFiles();
+	const allPosts = await getAllPosts();
 	const allTags = new Set<string>();
-	const now = new Date();
 
-	for (const fileName of postFiles) {
-		const post = await parseMarkdownFile(fileName);
-		// Only include tags from published posts that are not in the future
-		if (post.status === 1 && getEffectiveModificationDate(post) <= now && post.tags) {
+	for (const post of allPosts) {
+		if (post.tags) {
 			post.tags.forEach((tag) => allTags.add(tag));
 		}
 	}
