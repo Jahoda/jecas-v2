@@ -145,11 +145,34 @@ format: "html"
 
 <p><b>Pravidlo:</b> PostgreSQL connection string <b>nikdy</b> nepatří do frontend kódu. Supabase používá veřejný <code>anon key</code> + JWT tokeny – to je zásadní rozdíl.</p>
 
-<h3 id="alternativy">Alternativy k Supabase</h3>
+<h3 id="historie">Historie přímého přístupu z frontendu</h3>
 
-<p>Supabase není jediná platforma umožňující bezpečný přístup z frontendu. Podobný přístup nabízí:</p>
+<p>Přímý přístup z frontendu není vynález Supabase. Vývoj tohoto přístupu:</p>
 
 <ul>
+<li><b>2012 – Firebase</b> – první masově populární řešení pro přímý přístup z frontendu. NoSQL databáze se Security Rules. Ukázal, že tento přístup funguje ve velkém měřítku.</li>
+<li><b>2014 – <a href="https://postgrest.org/">PostgREST</a></b> – open-source projekt, který automaticky vytváří REST API z PostgreSQL schématu a využívá RLS. Umožňoval přímý přístup k PostgreSQL, ale vyžadoval self-hosting a vlastní správu.</li>
+<li><b>2016 – PostgreSQL 9.5</b> – přidává nativní Row Level Security, což je základ pro bezpečný přímý přístup.</li>
+<li><b>2020 – Supabase</b> – vzal PostgREST a udělal z něj managed službu s auth, storage a hezkým SDK. Zpopularizoval přímý přístup k PostgreSQL pro široké publikum.</li>
+<li><b>2025 – Neon Data API</b> – druhá managed služba s vestavěným PostgREST.</li>
+</ul>
+
+<p><b>Supabase interně používá PostgREST</b> – jeho SDK je jen hezčí wrapper:</p>
+
+<pre><code>// PostgREST API (přímé volání)
+fetch('https://api.example.com/posts?user_id=eq.123')
+
+// Supabase SDK (wrapper kolem PostgREST)
+supabase.from('posts').select('*').eq('user_id', 123)</code></pre>
+
+<p>Supabase nevynalezl přímý přístup – udělal ho <b>snadným a přístupným</b> pro PostgreSQL.</p>
+
+<h3 id="alternativy">Alternativy k Supabase</h3>
+
+<p>Supabase není jediná platforma umožňující bezpečný přístup z frontendu. <b>Neon</b> je jediná další služba s vestavěným PostgREST, ostatní platformy jdou cestou GraphQL nebo vlastního API:</p>
+
+<ul>
+<li><b><a href="https://neon.tech/">Neon</a></b> – serverless PostgreSQL s vestavěným PostgREST (Data API od 2025). Nabízí unikátní funkce jako database branching. Jediná přímá alternativa k Supabase s PostgREST.</li>
 <li><b><a href="https://hasura.io/">Hasura</a></b> – GraphQL engine pro PostgreSQL s propracovaným systémem permissions. Lze nasadit self-hosted nebo jako cloud službu.</li>
 <li><b><a href="https://nhost.io/">Nhost</a></b> – open-source alternativa k Supabase, postavená na PostgreSQL + Hasura GraphQL. Nabízí auth, storage i serverless functions.</li>
 <li><b><a href="https://firebase.google.com/">Firebase</a></b> – Google platforma s NoSQL databází (Firestore) a Security Rules. Jiný přístup než RLS, ale stejný princip – bezpečnost na úrovni databáze.</li>
