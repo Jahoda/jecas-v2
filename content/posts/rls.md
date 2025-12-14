@@ -286,6 +286,141 @@ await supabase
 <li>V produkci logujte detailní chyby, ale uživateli ukažte obecnou hlášku</li>
 </ul>
 
+<p><b>8. Zapomenuté RLS nastavení – kritické bezpečnostní riziko!</b></p>
+
+<p><b>Toto je jeden z nejnebezpečnějších problémů RLS!</b> Pokud vytvoříte tabulku během vývoje a zapomenete nastavit RLS, aplikace funguje normálně – a právě to je problém.</p>
+
+<pre><code>-- ❌ NEBEZPEČNÉ: Tabulka bez RLS
+CREATE TABLE private_documents (
+  id SERIAL PRIMARY KEY,
+  user_id UUID,
+  secret_data TEXT
+);
+
+-- Aplikace funguje! Frontend může číst všechno.
+-- Během vývoje to nikoho nebolí.
+-- V produkci je to OBROVSKÁ bezpečnostní díra!</code></pre>
+
+<p><b>Výchozí chování PostgreSQL:</b></p>
+
+<ul>
+<li><b>Bez RLS</b> – tabulka je OTEVŘENÁ, všichni vidí všechna data</li>
+<li><b>S RLS ale bez politik</b> – tabulka je UZAMČENÁ, nikdo nic nevidí (kromě superusers)</li>
+<li><b>S RLS a s politikami</b> – funguje podle pravidel</li>
+</ul>
+
+<pre><code>-- Tabulka bez RLS
+CREATE TABLE posts (...);
+-- ✗ Všichni uživatelé vidí všechna data!
+
+-- Tabulka s RLS ale bez politik
+CREATE TABLE posts (...);
+ALTER TABLE posts ENABLE ROW LEVEL SECURITY;
+-- ✓ Nikdo nevidí nic (bezpečné, ale nefunkční)
+-- ✗ V dev módu se zdá, že "nefunguje", tak se RLS vypne
+
+-- Správně: RLS s politikami
+CREATE TABLE posts (...);
+ALTER TABLE posts ENABLE ROW LEVEL SECURITY;
+CREATE POLICY user_posts ON posts USING (user_id = auth.uid());
+-- ✓ Funguje a je bezpečné</code></pre>
+
+<p><b>Rizikový scénář:</b></p>
+
+<ol>
+<li>Vývojář vytvoří tabulku během vývoje bez RLS</li>
+<li>Aplikace funguje (všichni vidí všechno, ale v dev to nevadí)</li>
+<li>Vývojář si řekne "RLS dodělám později"</li>
+<li>Funkce se nasadí do produkce</li>
+<li><b>BEZPEČNOSTNÍ DÍRA</b> – všichni uživatelé vidí data všech ostatních!</li>
+</ol>
+
+<p><b>Jak se bránit:</b></p>
+
+<pre><code>-- 1. RLS VŽDY jako první, ještě před vložením dat
+CREATE TABLE sensitive_data (...);
+ALTER TABLE sensitive_data ENABLE ROW LEVEL SECURITY;
+-- Tabulka je teď uzamčená - bezpečné
+
+-- 2. Pak vytvořit politiky
+CREATE POLICY ... ON sensitive_data ...;
+
+-- 3. Nebo použít FORCE ROW LEVEL SECURITY pro extra ochranu
+ALTER TABLE sensitive_data FORCE ROW LEVEL SECURITY;
+-- Platí i pro vlastníka tabulky a adminy!</code></pre>
+
+<p><b>Automatická kontrola v migraci:</b></p>
+
+<pre><code>-- Přidat do každé migrace kontrolu, že RLS je zapnuté
+DO $$
+DECLARE
+  tbl record;
+BEGIN
+  FOR tbl IN
+    SELECT schemaname, tablename
+    FROM pg_tables
+    WHERE schemaname = 'public'
+    AND tablename NOT IN ('migrations', 'schema_migrations')
+  LOOP
+    IF NOT EXISTS (
+      SELECT 1 FROM pg_class c
+      JOIN pg_namespace n ON n.oid = c.relnamespace
+      WHERE n.nspname = tbl.schemaname
+      AND c.relname = tbl.tablename
+      AND c.relrowsecurity = true
+    ) THEN
+      RAISE EXCEPTION 'Tabulka %.% nemá zapnuté RLS!',
+        tbl.schemaname, tbl.tablename;
+    END IF;
+  END LOOP;
+END $$;</code></pre>
+
+<p><b>CI/CD kontroly:</b></p>
+
+<pre><code>-- SQL skript pro CI/CD pipeline
+-- Selže, pokud nějaká tabulka nemá RLS
+SELECT
+  schemaname,
+  tablename,
+  'CHYBÍ RLS!' as problem
+FROM pg_tables
+WHERE schemaname = 'public'
+AND tablename NOT IN ('migrations')
+AND NOT EXISTS (
+  SELECT 1 FROM pg_class c
+  JOIN pg_namespace n ON n.oid = c.relnamespace
+  WHERE n.nspname = schemaname
+  AND c.relname = tablename
+  AND c.relrowsecurity = true
+);</code></pre>
+
+<p><b>Supabase strategie:</b></p>
+
+<ul>
+<li>Supabase Dashboard zobrazuje WARNING pro tabulky bez RLS</li>
+<li>Lze nastavit výchozí politiku "deny all" pro nové tabulky</li>
+<li>Policy editor v dashboardu znemožní nasazení bez politik</li>
+</ul>
+
+<p><b>Best practice: "Secure by default"</b></p>
+
+<pre><code>-- Šablona pro KAŽDOU novou tabulku:
+
+-- 1. Vytvořit tabulku
+CREATE TABLE new_table (...);
+
+-- 2. OKAMŽITĚ zapnout RLS
+ALTER TABLE new_table ENABLE ROW LEVEL SECURITY;
+
+-- 3. OKAMŽITĚ vytvořit základní politiky
+CREATE POLICY select_own ON new_table
+  FOR SELECT USING (user_id = auth.uid());
+
+CREATE POLICY insert_own ON new_table
+  FOR INSERT WITH CHECK (user_id = auth.uid());
+
+-- 4. Teprve pak testovat a vyvíjet</code></pre>
+
 <h4 id="best-practices-pristup">Best practices pro přímý přístup</h4>
 
 <ul>
