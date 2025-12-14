@@ -159,6 +159,23 @@ format: "html"
 
 <p>Všechny tyto platformy sdílejí klíčový princip: <b>frontend komunikuje přes bezpečné API</b>, ne přímo s databází, a oprávnění jsou vynucována na serverové straně.</p>
 
+<h3 id="ai-nastroje">Proč AI nástroje používají Supabase</h3>
+
+<p>Všimli jste si, že AI nástroje pro generování aplikací (<a href="https://bolt.new/">Bolt</a>, <a href="https://lovable.dev/">Lovable</a>, <a href="https://v0.dev/">v0</a>) často používají právě Supabase? Není to náhoda.</p>
+
+<p><b>AI generuje primárně frontend kód</b> (React, Svelte, Vue). Díky přímému přístupu k databázi nepotřebuje generovat backend:</p>
+
+<ul>
+<li><b>Bez Supabase</b> – AI musí generovat frontend + backend, řešit hosting, psát API endpoints, implementovat autentizaci</li>
+<li><b>Se Supabase</b> – AI generuje jen frontend, vše ostatní je hotové</li>
+</ul>
+
+<p>Supabase funguje jako <b>"backend v jednom řádku"</b>:</p>
+
+<pre><code>const supabase = createClient(url, anonKey)</code></pre>
+
+<p>A máte auth, databázi, storage i realtime – vše volatelné přímo z frontendu. AI nástroj vygeneruje React komponentu, připojí Supabase klienta a má fungující aplikaci bez jediného řádku backendového kódu.</p>
+
 <h3 id="priklad-supabase">Praktický příklad (Supabase)</h3>
 
 <pre><code>// Nastavení RLS v databázi (jednou)
