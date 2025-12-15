@@ -17,6 +17,19 @@ format: "html"
   return novyAkumulator;
 }, pocatecniHodnota);</code></pre>
 
+<h2 id="proc-naduzivani">Proč se reduce nadužívá</h2>
+
+<p>Metoda <code>reduce</code> se v praxi používá mnohem častěji, než by bylo vhodné. Důvodů je několik:</p>
+
+<ul>
+  <li><b>Působí „funkcionálně"</b> — přišla s vlnou funkcionálního programování spolu s <code>map</code> a <code>filter</code>, a tak ji lidé automaticky považují za moderní přístup</li>
+  <li><b>Tutoriály</b> — často ji prezentují jako „pokročilou techniku", kterou by měl znát každý JS vývojář</li>
+  <li><b>One-liner syndrom</b> — láká k zápisu všeho na jeden řádek, i když výsledek je nečitelný</li>
+  <li><b>Univerzálnost</b> — teoreticky lze pomocí <code>reduce</code> implementovat všechny ostatní array metody, což vede k dojmu, že je to „správný" nástroj na vše</li>
+</ul>
+
+<p>Ve skutečnosti je <code>reduce</code> <b>okrajový nástroj</b> pro specifické případy. Pro většinu úloh existuje čitelnější alternativa.</p>
+
 <h2 id="kdy-nepouzivat">Kdy reduce nepoužívat</h2>
 
 <p>Ve většině případů existuje <b>kratší a čitelnější</b> alternativa:</p>
@@ -107,9 +120,10 @@ for (const o of ovoce) {
 
 <h3>1. Skládání funkcí (compose/pipe)</h3>
 
-<p>Toto je <b>ideální use case</b> pro <code>reduce</code> — žádná lepší alternativa neexistuje:</p>
+<p>Toto je <b>ideální use case</b> pro <code>reduce</code>:</p>
 
-<pre><code>const pipe = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x);
+<pre><code>// S reduce
+const pipe = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x);
 const compose = (...fns) => x => fns.reduceRight((acc, fn) => fn(acc), x);
 
 const pricti5 = x => x + 5;
@@ -118,12 +132,27 @@ const vynasob2 = x => x * 2;
 const vypocet = pipe(pricti5, vynasob2);
 console.log(vypocet(10)); // (10 + 5) * 2 = 30</code></pre>
 
+<p><b>Alternativa bez reduce:</b></p>
+
+<pre><code>// Vnořené volání — nečitelné při více funkcích
+const vysledek = vynasob2(pricti5(10));
+
+// Nebo cyklem
+const pipe = (...fns) => x => {
+  let result = x;
+  for (const fn of fns) result = fn(result);
+  return result;
+};</code></pre>
+
+<p>Zde je <code>reduce</code> skutečně nejelegantnější řešení.</p>
+
 <h3>2. Více agregací najednou</h3>
 
 <p>Když potřebujete spočítat <b>více hodnot v jednom průchodu</b>:</p>
 
 <pre><code>const cisla = [3, 7, 2, 9, 1, 5];
 
+// S reduce
 const stats = cisla.reduce((acc, n) => ({
   sum: acc.sum + n,
   count: acc.count + 1,
@@ -132,11 +161,19 @@ const stats = cisla.reduce((acc, n) => ({
 }), { sum: 0, count: 0, min: Infinity, max: -Infinity });
 
 stats.avg = stats.sum / stats.count;
-
-console.log(stats);
 // { sum: 27, count: 6, min: 1, max: 9, avg: 4.5 }</code></pre>
 
-<p>Alternativa s cyklem by vyžadovala 4 samostatné proměnné.</p>
+<p><b>Alternativa bez reduce:</b></p>
+
+<pre><code>let sum = 0, min = Infinity, max = -Infinity;
+for (const n of cisla) {
+  sum += n;
+  min = Math.min(min, n);
+  max = Math.max(max, n);
+}
+const stats = { sum, count: cisla.length, min, max, avg: sum / cisla.length };</code></pre>
+
+<p>Cyklus je srovnatelně čitelný. Reduce má výhodu, že stav je zapouzdřený v objektu.</p>
 
 <h3>3. Stavový automat / parsing</h3>
 
@@ -145,6 +182,7 @@ console.log(stats);
 <pre><code>// Parsování závorek — kontrola správného párování
 const text = "((a + b) * (c - d))";
 
+// S reduce
 const vysledek = text.split("").reduce((acc, znak) => {
   if (acc.chyba) return acc;
   if (znak === "(") acc.hloubka++;
@@ -153,8 +191,20 @@ const vysledek = text.split("").reduce((acc, znak) => {
   return acc;
 }, { hloubka: 0, chyba: false });
 
-const jeValidni = vysledek.hloubka === 0 && !vysledek.chyba;
-console.log(jeValidni); // true</code></pre>
+const jeValidni = vysledek.hloubka === 0 && !vysledek.chyba; // true</code></pre>
+
+<p><b>Alternativa bez reduce:</b></p>
+
+<pre><code>let hloubka = 0;
+let chyba = false;
+for (const znak of text) {
+  if (znak === "(") hloubka++;
+  if (znak === ")") hloubka--;
+  if (hloubka &lt; 0) { chyba = true; break; }
+}
+const jeValidni = hloubka === 0 && !chyba;</code></pre>
+
+<p>Cyklus umožňuje <code>break</code> při chybě — efektivnější. Reduce vždy projde celé pole.</p>
 
 <h3>4. Sekvenční async operace</h3>
 
@@ -162,7 +212,7 @@ console.log(jeValidni); // true</code></pre>
 
 <pre><code>const urls = ["/api/1", "/api/2", "/api/3"];
 
-// Každý request čeká na dokončení předchozího
+// S reduce
 const vysledky = await urls.reduce(async (accPromise, url) => {
   const acc = await accPromise;
   const res = await fetch(url);
@@ -170,7 +220,15 @@ const vysledky = await urls.reduce(async (accPromise, url) => {
   return acc;
 }, Promise.resolve([]));</code></pre>
 
-<p><i>Poznámka:</i> Pro jednoduchost lze použít i <code>for...of</code> s <code>await</code>.</p>
+<p><b>Alternativa bez reduce:</b></p>
+
+<pre><code>const vysledky = [];
+for (const url of urls) {
+  const res = await fetch(url);
+  vysledky.push(await res.json());
+}</code></pre>
+
+<p>Cyklus <code>for...of</code> s <code>await</code> je výrazně čitelnější.</p>
 
 <h3>5. Rekurzivní zpracování stromové struktury</h3>
 
@@ -184,6 +242,7 @@ const vysledky = await urls.reduce(async (accPromise, url) => {
   ]
 };
 
+// S reduce
 const soucetStromu = (uzel) => {
   return uzel.deti.reduce(
     (acc, dite) => acc + soucetStromu(dite),
@@ -192,6 +251,18 @@ const soucetStromu = (uzel) => {
 };
 
 console.log(soucetStromu(strom)); // 1 + 2 + 3 + 4 = 10</code></pre>
+
+<p><b>Alternativa bez reduce:</b></p>
+
+<pre><code>const soucetStromu = (uzel) => {
+  let suma = uzel.hodnota;
+  for (const dite of uzel.deti) {
+    suma += soucetStromu(dite);
+  }
+  return suma;
+};</code></pre>
+
+<p>Obě varianty jsou srovnatelně čitelné.</p>
 
 <h2 id="reduceright">Metoda reduceRight</h2>
 
