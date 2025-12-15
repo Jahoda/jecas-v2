@@ -41,9 +41,11 @@ format: "html"
 // S reduce
 const soucet = cisla.reduce((acc, n) => acc + n, 0);
 
-// Bez reduce — stejně dlouhé, ale přímočařejší
+// Bez reduce
 let soucet = 0;
 for (const n of cisla) soucet += n;</code></pre>
+
+<p><i>Poznámka:</i> Reduce má výhodu, že výsledek je <code>const</code> a pomocná proměnná neuniká do scope. Pro jednoduchý součet je to legitimní důvod pro použití reduce.</p>
 
 <h3>Maximum a minimum</h3>
 
