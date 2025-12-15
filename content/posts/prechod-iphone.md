@@ -3,7 +3,7 @@ title: "Na co nezapomenout při přechodu na novější iPhone"
 headline: "Checklist věcí, na které se při přechodu na nový iPhone zapomíná"
 description: "Na co se nejčastěji zapomíná při migraci na nový iPhone? Bankovní aplikace, messengery, eGovernment služby a další aplikace."
 date: "2025-12-03"
-last_modification: "2025-12-03"
+last_modification: "2025-12-15"
 status: 1
 tags: ["apple", "produktivita"]
 format: "html"
@@ -362,6 +362,55 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 </ol>
 
 <p>Pokud nepoužíváte správce hesel, pravděpodobně nějaký čas zabere resetování zapomenutých hesel.</p>
+
+<h2 id="ztrata-nebo-zniceni-telefonu">Co dělat při ztrátě nebo zničení telefonu</h2>
+
+<p>
+Článek výše počítá s tím, že máte přístup ke starému telefonu. Co ale dělat, když o telefon <strong>přijdete neplánovaně</strong> – ztráta, krádež nebo poškození?
+</p>
+
+<h3 id="prevence-pred-ztratou">Prevence – co udělat předem</h3>
+
+<ul>
+<li><strong>Uložte si záložní kódy pro 2FA</strong> – Vytiskněte nebo uložte do správce hesel. Bez nich můžete ztratit přístup k účtům.</li>
+<li><strong>Používejte správce hesel s cloudovou synchronizací</strong> – 1Password, Bitwarden nebo iCloud Klíčenka synchronizují i 2FA kódy.</li>
+<li><strong>Zapněte iCloud zálohu</strong> – Většina dat se obnoví automaticky na novém zařízení.</li>
+<li><strong>WhatsApp: Zapněte zálohu do iCloudu</strong> – Jinak při ztrátě přijdete o celou historii zpráv.</li>
+</ul>
+
+<h3 id="obnova-bez-stareho-telefonu">Obnova jednotlivých služeb bez starého telefonu</h3>
+
+<p><strong>Messengery:</strong></p>
+<ul>
+<li><strong>Signal</strong> – Historie zpráv je nenávratně ztracena. Nový telefon = čistý začátek. Kontakty zůstanou.</li>
+<li><strong>WhatsApp</strong> – Pokud máte zálohu v iCloudu, obnovíte zprávy. Bez zálohy ztratíte historii.</li>
+<li><strong>Telegram</strong> – Běžné chaty se synchronizují z cloudu automaticky. Tajné chaty jsou ztraceny.</li>
+</ul>
+
+<p><strong>Bankovní aplikace:</strong></p>
+<ul>
+<li>Většina bank má nouzový postup: zavolejte na linku, prokažte totožnost, případně navštivte pobočku s dokladem.</li>
+<li>Některé banky (Airbank, Revolut) umožní selfie verifikaci i bez starého zařízení.</li>
+<li>Banky s QR kódem (Moneta, KB, Raiffeisenbank) typicky vyžadují návštěvu pobočky nebo telefonické ověření.</li>
+</ul>
+
+<p><strong>eGovernment:</strong></p>
+<ul>
+<li><strong>eDoklady</strong> – Přihlásíte se znovu pomocí Identity občana (NIA). Nepotřebujete starý telefon.</li>
+<li><strong>Mobilní klíč eGovernmentu</strong> – Aktivace znovu přes datovou schránku nebo Czech POINT.</li>
+<li><strong>MojeID</strong> – Přes webové rozhraní odeberete starý klíč a přidáte nový. Vyžaduje datovou schránku.</li>
+</ul>
+
+<p><strong>2FA autentizátory:</strong></p>
+<ul>
+<li><strong>Google Authenticator</strong> – Bez záložních kódů nebo cloud sync (nově dostupná) je přístup velmi složitý. U každé služby zvlášť žádejte o reset 2FA.</li>
+<li><strong>Authy</strong> – Automaticky synchronizuje do cloudu, stačí se přihlásit na novém zařízení.</li>
+<li><strong>iCloud Klíčenka</strong> – 2FA kódy se synchronizují automaticky mezi zařízeními Apple.</li>
+</ul>
+
+<p>
+<strong>Tip:</strong> Pokud používáte Google Authenticator bez cloud sync, zvažte přechod na řešení se zálohou – Authy, 1Password, Bitwarden nebo přímo iCloud Klíčenku.
+</p>
 
 <h2 id="zaver">Závěr</h2>
 
