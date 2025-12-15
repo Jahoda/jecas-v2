@@ -366,14 +366,14 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 <h2 id="ztrata-nebo-zniceni-telefonu">Co dělat při ztrátě nebo zničení telefonu</h2>
 
 <p>
-Článek výše počítá s tím, že máte přístup ke starému telefonu. Co ale dělat, když o telefon <strong>přijdete neplánovaně</strong> – ztráta, krádež nebo poškození?
+Článek výše počítá s tím, že máte přístup ke starému telefonu. Co ale dělat, když o telefon <strong>přijdete neplánovaně</strong> – ztráta, krádež nebo zničení?
 </p>
 
 <h3 id="prevence-pred-ztratou">Prevence – co udělat předem</h3>
 
 <ul>
-<li><strong>Uložte si záložní kódy pro 2FA</strong> – Vytiskněte nebo uložte do správce hesel. Bez nich můžete ztratit přístup k účtům.</li>
-<li><strong>Používejte správce hesel s cloudovou synchronizací</strong> – 1Password, Bitwarden nebo iCloud Klíčenka synchronizují i 2FA kódy.</li>
+<li><strong>Uložte si záložní kódy pro 2FA</strong> – Ideálně do správce hesel. Bez nich můžete ztratit přístup k účtům.</li>
+<li><strong>Používejte správce hesel s cloudovou synchronisací</strong> – iCloud Klíčenka, případně 1Password nebo Bitwarden synchronisují i 2FA kódy.</li>
 <li><strong>Zapněte iCloud zálohu</strong> – Většina dat se obnoví automaticky na novém zařízení.</li>
 <li><strong>WhatsApp: Zapněte zálohu do iCloudu</strong> – Jinak při ztrátě přijdete o celou historii zpráv.</li>
 </ul>
@@ -382,35 +382,32 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 
 <p><strong>Messengery:</strong></p>
 <ul>
-<li><strong>Signal</strong> – Historie zpráv je nenávratně ztracena. Nový telefon = čistý začátek. Kontakty zůstanou.</li>
+<li><strong>Signal</strong> – Historie zpráv je nenávratně ztracena. Kontakty zůstanou. Prevence může být mít aplikaci ještě na dalším zařízení, odkud půjdou data obnovit.</li>
 <li><strong>WhatsApp</strong> – Pokud máte zálohu v iCloudu, obnovíte zprávy. Bez zálohy ztratíte historii.</li>
-<li><strong>Telegram</strong> – Běžné chaty se synchronizují z cloudu automaticky. Tajné chaty jsou ztraceny.</li>
+<li><strong>Telegram</strong> – Běžné chaty se synchronisují z cloudu automaticky. Tajné chaty jsou ztraceny.</li>
 </ul>
 
 <p><strong>Bankovní aplikace:</strong></p>
-<ul>
-<li>Většina bank má nouzový postup: zavolejte na linku, prokažte totožnost, případně navštivte pobočku s dokladem.</li>
-<li>Některé banky (Airbank, Revolut) umožní selfie verifikaci i bez starého zařízení.</li>
-<li>Banky s QR kódem (Moneta, KB, Raiffeisenbank) typicky vyžadují návštěvu pobočky nebo telefonické ověření.</li>
-</ul>
 
-<p><strong>eGovernment:</strong></p>
-<ul>
-<li><strong>eDoklady</strong> – Přihlásíte se znovu pomocí Identity občana (NIA). Nepotřebujete starý telefon.</li>
-<li><strong>Mobilní klíč eGovernmentu</strong> – Aktivace znovu přes datovou schránku nebo Czech POINT.</li>
-<li><strong>MojeID</strong> – Přes webové rozhraní odeberete starý klíč a přidáte nový. Vyžaduje datovou schránku.</li>
-</ul>
+<p>Zde je situace nejhorší, protože řada bank má kamenné pobočky a mohou vyžadovat jejich návštěvu pro ověření.</p>
 
-<p><strong>2FA autentizátory:</strong></p>
-<ul>
-<li><strong>Google Authenticator</strong> – Bez záložních kódů nebo cloud sync (nově dostupná) je přístup velmi složitý. U každé služby zvlášť žádejte o reset 2FA.</li>
-<li><strong>Authy</strong> – Automaticky synchronizuje do cloudu, stačí se přihlásit na novém zařízení.</li>
-<li><strong>iCloud Klíčenka</strong> – 2FA kódy se synchronizují automaticky mezi zařízeními Apple.</li>
-</ul>
+<p>V tomto má výhodu např. Revolut, který funguje vzdáleně, takže má člověk jistotu, že nikam chodit nebudete muset.</p>
 
-<p>
-<strong>Tip:</strong> Pokud používáte Google Authenticator bez cloud sync, zvažte přechod na řešení se zálohou – Authy, 1Password, Bitwarden nebo přímo iCloud Klíčenku.
-</p>
+<p>U řady bank (např. Air Bank) se člověk dokáže přihlásit i bez aplikace pomocí SMS kódu.</p>
+
+<h3 id="obnova-sim">Obnova SIM</h3>
+
+<p>Co ale když nemáte ani přístup k SMS (tj. nemáte přístup k telefonnímu číslu)? Zde záleží na operátorovi, jestli z něj dostanete novou eSIM vzádleně. Nebo to bude taky znamenat návštěvu pobočky.</p>
+
+<p>Dovedu si představit, že by mohlo jít něco vyřídit (s trochou neodbytnosti) zavoláním do banky/operátorovi, ale naštěstí s tím nemám zkušenosti.</p>
+
+<p>Hlavní prevence je mít synchronisovaná data do iCloudu, používat klíčenku. Dále potom mít více Apple zařízení.</p>
+
+<p>Snížit risiko jde tak, že jedno zařízení dokáže přijímat ověřovací SMS zprávy a druhé má ověřovací aplikaci. Takže ztráta jednoho jde rozumně vykrýt. Ideálně mít odzkoušenou možnost se přihlašovat dvoufaktorově aplikací z více zařízení, ale některé banky to neumožňují.</p>
+
+<p>Zajímavý cestovatelský tip je místo powerbanky vozit další telefon. Nové iPhony umí fungovat jako powerbanka. Člověk tím získá záložní zařízení a odpadnou občasné problémy s kontrolami, kde mohou být powebanky problematické.</p>
+
+<p>Má-li člověk obavu ze ztráty telefonu, není od věci si ji zkusit nasimulovat.</p>
 
 <h2 id="zaver">Závěr</h2>
 
