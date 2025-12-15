@@ -5,6 +5,7 @@ export const prerender = true;
 
 // Generate entries for all posts and tags at build time
 // Note: Drafts are excluded from prerendering to stay under the 2048 route limit
+// Exception: kontakt page is explicitly included
 export const entries: EntryGenerator = async () => {
 	const { getAllPosts } = await import('$lib/post/post');
 	const { getAllUsedTags } = await import('$lib/tag/tags');
@@ -15,5 +16,5 @@ export const entries: EntryGenerator = async () => {
 	const postEntries = posts.map((post) => ({ slug: post.url_slug }));
 	const tagEntries = tags.map((tag) => ({ slug: tag.url_slug }));
 
-	return [...postEntries, ...tagEntries];
+	return [...postEntries, ...tagEntries, { slug: 'kontakt' }];
 };
