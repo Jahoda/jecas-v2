@@ -1,7 +1,7 @@
 ---
 title: "Metoda reduce v JavaScriptu"
 headline: "Metoda <code>reduce</code> v JavaScriptu"
-description: "Jak funguje metoda reduce v JavaScriptu. Praktické příklady použití pro součet, průměr, seskupování dat a další operace s poli."
+description: "Kdy použít a kdy nepoužít metodu reduce v JavaScriptu. Praktické příklady a srovnání s alternativami."
 date: "2025-01-15"
 last_modification: "2025-01-15"
 status: 1
@@ -9,405 +9,222 @@ tags: ["js", "hotova-reseni"]
 format: "html"
 ---
 
-<p>Metoda <code>reduce</code> je jedna z <b>nejužitečnějších</b> metod pro práci s poli v JavaScriptu. Umožňuje <b>redukovat</b> pole na jedinou hodnotu — číslo, řetězec, objekt nebo dokonce jiné pole.</p>
+<p>Metoda <code>reduce</code> umožňuje <b>redukovat</b> pole na jedinou hodnotu. Je to mocný nástroj, ale v praxi existuje téměř vždy <b>čitelnější alternativa</b>. Tento článek ukazuje, kdy <code>reduce</code> skutečně použít a kdy sáhnout po jiném řešení.</p>
 
 <h2 id="syntaxe">Základní syntaxe</h2>
 
-<p>Metoda <code>reduce</code> přijímá dva parametry: <b>callback funkci</b> a volitelnou <b>počáteční hodnotu</b> akumulátoru.</p>
-
-<pre><code>pole.reduce((akumulator, aktualniHodnota, index, pole) => {
-  return novaHodnotaAkumulatoru;
+<pre><code>pole.reduce((akumulator, hodnota, index, pole) => {
+  return novyAkumulator;
 }, pocatecniHodnota);</code></pre>
 
-<p>Callback funkce má čtyři parametry:</p>
-<ul>
-  <li><code>akumulator</code> — průběžný výsledek, který se předává mezi iteracemi</li>
-  <li><code>aktualniHodnota</code> — aktuální prvek pole</li>
-  <li><code>index</code> — index aktuálního prvku (volitelný)</li>
-  <li><code>pole</code> — původní pole (volitelný)</li>
-</ul>
+<h2 id="kdy-nepouzivat">Kdy reduce nepoužívat</h2>
 
-<h2 id="soucet">Součet čísel</h2>
+<p>Ve většině případů existuje <b>kratší a čitelnější</b> alternativa:</p>
 
-<p>Nejčastější použití <code>reduce</code> je <b>sečtení</b> všech prvků pole:</p>
+<h3>Součet čísel</h3>
 
 <pre><code>const cisla = [1, 2, 3, 4, 5];
 
 // S reduce
-const soucet = cisla.reduce((acc, cislo) => acc + cislo, 0);
+const soucet = cisla.reduce((acc, n) => acc + n, 0);
 
-console.log(soucet); // 15</code></pre>
-
-<p>Počáteční hodnota <code>0</code> zajistí, že pro prázdné pole dostaneme <code>0</code> místo chyby.</p>
-
-<p><b>Alternativa bez reduce:</b></p>
-
-<pre><code>// S cyklem for
+// Bez reduce — stejně dlouhé, ale přímočařejší
 let soucet = 0;
-for (const cislo of cisla) {
-  soucet += cislo;
-}
+for (const n of cisla) soucet += n;</code></pre>
 
-// Nebo s forEach
-let soucet = 0;
-cisla.forEach(cislo => soucet += cislo);</code></pre>
+<h3>Maximum a minimum</h3>
 
-<h2 id="prumer">Výpočet průměru</h2>
-
-<p>Pro výpočet <b>průměru</b> využijeme třetí parametr (index) k detekci posledního prvku:</p>
-
-<pre><code>const cisla = [10, 20, 30, 40];
+<pre><code>const cisla = [3, 7, 2, 9, 1];
 
 // S reduce
-const prumer = cisla.reduce((acc, cislo, index, pole) => {
-  acc += cislo;
-  if (index === pole.length - 1) {
-    return acc / pole.length;
-  }
-  return acc;
-}, 0);
+const max = cisla.reduce((a, b) => a > b ? a : b);
 
-console.log(prumer); // 25</code></pre>
-
-<p><b>Alternativa bez reduce:</b></p>
-
-<pre><code>// Čitelnější varianta
-let soucet = 0;
-for (const cislo of cisla) {
-  soucet += cislo;
-}
-const prumer = cisla.length ? soucet / cisla.length : 0;</code></pre>
-
-<h2 id="max-min">Nalezení maxima a minima</h2>
-
-<p>Metoda <code>reduce</code> umí najít <b>největší</b> nebo <b>nejmenší</b> hodnotu v poli:</p>
-
-<pre><code>const cisla = [3, 7, 2, 9, 1, 5];
-
-// S reduce
-const max = cisla.reduce((acc, cislo) => cislo > acc ? cislo : acc);
-const min = cisla.reduce((acc, cislo) => cislo &lt; acc ? cislo : acc);
-
-console.log(max); // 9
-console.log(min); // 1</code></pre>
-
-<p>Všimněte si, že zde <b>není počáteční hodnota</b> — použije se první prvek pole.</p>
-
-<p><b>Alternativa bez reduce:</b></p>
-
-<pre><code>// S Math.max/min a spread operátorem (lepší volba)
+// Bez reduce — kratší a jasnější
 const max = Math.max(...cisla);
-const min = Math.min(...cisla);
+const min = Math.min(...cisla);</code></pre>
 
-// S cyklem
-let max = cisla[0];
-for (const cislo of cisla) {
-  if (cislo > max) max = cislo;
-}</code></pre>
-
-<h2 id="pocitani">Počítání výskytů</h2>
-
-<p>Pomocí <code>reduce</code> lze snadno <b>spočítat</b>, kolikrát se každý prvek v poli vyskytuje:</p>
-
-<pre><code>const ovoce = ["jablko", "banán", "jablko", "pomeranč", "banán", "jablko"];
-
-// S reduce
-const pocty = ovoce.reduce((acc, polozka) => {
-  acc[polozka] = (acc[polozka] || 0) + 1;
-  return acc;
-}, {});
-
-console.log(pocty);
-// { jablko: 3, banán: 2, pomeranč: 1 }</code></pre>
-
-<p><b>Alternativa bez reduce:</b></p>
-
-<pre><code>const pocty = {};
-for (const polozka of ovoce) {
-  pocty[polozka] = (pocty[polozka] || 0) + 1;
-}</code></pre>
-
-<h2 id="seskupovani">Seskupování dat</h2>
-
-<p>Data lze <b>seskupit</b> podle určité vlastnosti:</p>
-
-<pre><code>const lide = [
-  { jmeno: "Anna", vek: 25 },
-  { jmeno: "Petr", vek: 30 },
-  { jmeno: "Jana", vek: 25 },
-  { jmeno: "Karel", vek: 30 }
-];
-
-// S reduce
-const podleVeku = lide.reduce((acc, osoba) => {
-  const klic = osoba.vek;
-  if (!acc[klic]) {
-    acc[klic] = [];
-  }
-  acc[klic].push(osoba);
-  return acc;
-}, {});
-
-console.log(podleVeku);
-// { 25: [{jmeno: "Anna", ...}, {jmeno: "Jana", ...}], 30: [...] }</code></pre>
-
-<p><b>Alternativa bez reduce:</b></p>
-
-<pre><code>// S Object.groupBy (moderní prohlížeče)
-const podleVeku = Object.groupBy(lide, osoba => osoba.vek);
-
-// S cyklem
-const podleVeku = {};
-for (const osoba of lide) {
-  const klic = osoba.vek;
-  if (!podleVeku[klic]) {
-    podleVeku[klic] = [];
-  }
-  podleVeku[klic].push(osoba);
-}</code></pre>
-
-<h2 id="zplosteni">Zploštění pole</h2>
-
-<p>Víceúrovňové pole lze pomocí <code>reduce</code> <b>zploštit</b> na jednoúrovňové:</p>
+<h3>Zploštění pole</h3>
 
 <pre><code>const vnorene = [[1, 2], [3, 4], [5, 6]];
 
 // S reduce
-const ploche = vnorene.reduce((acc, pole) => acc.concat(pole), []);
+const ploche = vnorene.reduce((acc, arr) => acc.concat(arr), []);
 
-console.log(ploche); // [1, 2, 3, 4, 5, 6]</code></pre>
+// Bez reduce — kratší
+const ploche = vnorene.flat();</code></pre>
 
-<p><b>Alternativa bez reduce:</b></p>
+<h3>Seskupování dat</h3>
 
-<pre><code>// S flat (lepší volba)
-const ploche = vnorene.flat();
+<pre><code>const lide = [
+  { jmeno: "Anna", vek: 25 },
+  { jmeno: "Petr", vek: 30 },
+  { jmeno: "Jana", vek: 25 }
+];
 
-// Pro hluboké zanoření
-const hluboce = [[1, [2, [3]]]];
-const ploche = hluboce.flat(Infinity); // [1, 2, 3]</code></pre>
-
-<h2 id="retezeni">Nahrazení map a filter</h2>
-
-<p>Metoda <code>reduce</code> dokáže nahradit kombinaci <code>map</code> a <code>filter</code> v jednom průchodu:</p>
-
-<pre><code>const cisla = [1, 2, 3, 4, 5, 6];
-
-// S reduce (jeden průchod)
-const vysledek = cisla.reduce((acc, n) => {
-  if (n % 2 === 0) {
-    acc.push(n * 2);
-  }
-  return acc;
-}, []);
-
-console.log(vysledek); // [4, 8, 12]</code></pre>
-
-<p><b>Alternativa bez reduce:</b></p>
-
-<pre><code>// S filter a map (čitelnější)
-const vysledek = cisla
-  .filter(n => n % 2 === 0)
-  .map(n => n * 2);
-
-// S cyklem
-const vysledek = [];
-for (const n of cisla) {
-  if (n % 2 === 0) {
-    vysledek.push(n * 2);
-  }
-}</code></pre>
-
-<h2 id="reduceright">Metoda reduceRight</h2>
-
-<p>Existuje také <code>reduceRight</code>, která prochází pole <b>od konce</b>:</p>
-
-<pre><code>const slova = ["svět", " ", "Ahoj"];
-
-// S reduceRight
-const veta = slova.reduceRight((acc, slovo) => acc + slovo, "");
-
-console.log(veta); // "Ahoj svět"</code></pre>
-
-<p><b>Alternativa bez reduce:</b></p>
-
-<pre><code>// S reverse a join
-const veta = slova.slice().reverse().join("");
-
-// S cyklem
-let veta = "";
-for (let i = slova.length - 1; i >= 0; i--) {
-  veta += slova[i];
-}</code></pre>
-
-<h2 id="best-practice">Kdy je reduce nejlepší volba</h2>
-
-<p>Metoda <code>reduce</code> vyniká v těchto situacích:</p>
-
-<h3>Skládání funkcí (compose)</h3>
-
-<p>Vytvoření pipeline funkcí, které se postupně aplikují na hodnotu:</p>
-
-<pre><code>const compose = (...fns) => x => fns.reduceRight((acc, fn) => fn(acc), x);
-const pipe = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x);
-
-const pricti5 = x => x + 5;
-const vynasob2 = x => x * 2;
-const odecti3 = x => x - 3;
-
-const vypocet = pipe(pricti5, vynasob2, odecti3);
-console.log(vypocet(10)); // ((10 + 5) * 2) - 3 = 27</code></pre>
-
-<h3>Převod pole na objekt</h3>
-
-<pre><code>const pole = [["a", 1], ["b", 2], ["c", 3]];
-
-const objekt = pole.reduce((acc, [klic, hodnota]) => {
-  acc[klic] = hodnota;
+// S reduce — 8 řádků
+const podleVeku = lide.reduce((acc, osoba) => {
+  const klic = osoba.vek;
+  if (!acc[klic]) acc[klic] = [];
+  acc[klic].push(osoba);
   return acc;
 }, {});
 
-console.log(objekt); // { a: 1, b: 2, c: 3 }
+// Bez reduce — 1 řádek (moderní prohlížeče)
+const podleVeku = Object.groupBy(lide, o => o.vek);</code></pre>
 
-// Alternativa: Object.fromEntries (lepší)
-const objekt = Object.fromEntries(pole);</code></pre>
+<h3>Filtrování a mapování</h3>
 
-<h3>Sekvenční Promise</h3>
+<pre><code>const cisla = [1, 2, 3, 4, 5, 6];
 
-<p>Spuštění asynchronních operací <b>postupně</b> (ne paralelně):</p>
+// S reduce
+const vysledek = cisla.reduce((acc, n) => {
+  if (n % 2 === 0) acc.push(n * 2);
+  return acc;
+}, []);
+
+// Bez reduce — čitelnější
+const vysledek = cisla.filter(n => n % 2 === 0).map(n => n * 2);</code></pre>
+
+<h3>Počítání výskytů</h3>
+
+<pre><code>const ovoce = ["jablko", "banán", "jablko", "banán", "jablko"];
+
+// S reduce
+const pocty = ovoce.reduce((acc, o) => {
+  acc[o] = (acc[o] || 0) + 1;
+  return acc;
+}, {});
+
+// Bez reduce — podobná délka, ale přímočařejší
+const pocty = {};
+for (const o of ovoce) {
+  pocty[o] = (pocty[o] || 0) + 1;
+}</code></pre>
+
+<h2 id="kdy-pouzit">Kdy reduce skutečně použít</h2>
+
+<p>Existuje několik případů, kdy je <code>reduce</code> <b>nejlepší nebo jediná rozumná volba</b>:</p>
+
+<h3>1. Skládání funkcí (compose/pipe)</h3>
+
+<p>Toto je <b>ideální use case</b> pro <code>reduce</code> — žádná lepší alternativa neexistuje:</p>
+
+<pre><code>const pipe = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x);
+const compose = (...fns) => x => fns.reduceRight((acc, fn) => fn(acc), x);
+
+const pricti5 = x => x + 5;
+const vynasob2 = x => x * 2;
+
+const vypocet = pipe(pricti5, vynasob2);
+console.log(vypocet(10)); // (10 + 5) * 2 = 30</code></pre>
+
+<h3>2. Více agregací najednou</h3>
+
+<p>Když potřebujete spočítat <b>více hodnot v jednom průchodu</b>:</p>
+
+<pre><code>const cisla = [3, 7, 2, 9, 1, 5];
+
+const stats = cisla.reduce((acc, n) => ({
+  sum: acc.sum + n,
+  count: acc.count + 1,
+  min: Math.min(acc.min, n),
+  max: Math.max(acc.max, n)
+}), { sum: 0, count: 0, min: Infinity, max: -Infinity });
+
+stats.avg = stats.sum / stats.count;
+
+console.log(stats);
+// { sum: 27, count: 6, min: 1, max: 9, avg: 4.5 }</code></pre>
+
+<p>Alternativa s cyklem by vyžadovala 4 samostatné proměnné.</p>
+
+<h3>3. Stavový automat / parsing</h3>
+
+<p>Když procházíte data a potřebujete <b>udržovat stav</b> mezi iteracemi:</p>
+
+<pre><code>// Parsování závorek — kontrola správného párování
+const text = "((a + b) * (c - d))";
+
+const vysledek = text.split("").reduce((acc, znak) => {
+  if (acc.chyba) return acc;
+  if (znak === "(") acc.hloubka++;
+  if (znak === ")") acc.hloubka--;
+  if (acc.hloubka &lt; 0) acc.chyba = true;
+  return acc;
+}, { hloubka: 0, chyba: false });
+
+const jeValidni = vysledek.hloubka === 0 && !vysledek.chyba;
+console.log(jeValidni); // true</code></pre>
+
+<h3>4. Sekvenční async operace</h3>
+
+<p>Když potřebujete spustit Promise <b>postupně</b> (ne paralelně):</p>
 
 <pre><code>const urls = ["/api/1", "/api/2", "/api/3"];
 
+// Každý request čeká na dokončení předchozího
 const vysledky = await urls.reduce(async (accPromise, url) => {
   const acc = await accPromise;
-  const response = await fetch(url);
-  const data = await response.json();
-  acc.push(data);
+  const res = await fetch(url);
+  acc.push(await res.json());
   return acc;
 }, Promise.resolve([]));</code></pre>
 
-<h3>Deduplikace s podmínkou</h3>
+<p><i>Poznámka:</i> Pro jednoduchost lze použít i <code>for...of</code> s <code>await</code>.</p>
 
-<p>Odstranění duplicit podle vlastnosti objektu:</p>
+<h3>5. Rekurzivní zpracování stromové struktury</h3>
 
-<pre><code>const lide = [
-  { id: 1, jmeno: "Anna" },
-  { id: 2, jmeno: "Petr" },
-  { id: 1, jmeno: "Anna" }
-];
+<pre><code>const strom = {
+  hodnota: 1,
+  deti: [
+    { hodnota: 2, deti: [] },
+    { hodnota: 3, deti: [
+      { hodnota: 4, deti: [] }
+    ]}
+  ]
+};
 
-const unikatni = lide.reduce((acc, osoba) => {
-  if (!acc.some(o => o.id === osoba.id)) {
-    acc.push(osoba);
-  }
+const soucetStromu = (uzel) => {
+  return uzel.deti.reduce(
+    (acc, dite) => acc + soucetStromu(dite),
+    uzel.hodnota
+  );
+};
+
+console.log(soucetStromu(strom)); // 1 + 2 + 3 + 4 = 10</code></pre>
+
+<h2 id="reduceright">Metoda reduceRight</h2>
+
+<p>Prochází pole <b>od konce</b>. Užitečné pro <code>compose</code> funkce:</p>
+
+<pre><code>const compose = (...fns) => x => fns.reduceRight((acc, fn) => fn(acc), x);</code></pre>
+
+<h2 id="mutace">Mutace vs. imutabilita</h2>
+
+<p>Při práci s objekty/poli jako akumulátorem:</p>
+
+<pre><code>// S mutací — rychlejší, ale pozor v React/Redux
+pole.reduce((acc, item) => {
+  acc.push(item);
   return acc;
 }, []);
 
-// Alternativa s Map
-const unikatni = [...new Map(lide.map(o => [o.id, o])).values()];</code></pre>
+// Bez mutace — bezpečnější, ale pomalejší
+pole.reduce((acc, item) => [...acc, item], []);</code></pre>
 
-<h2 id="kdy-nepouzivat">Kdy reduce nepoužívat</h2>
+<p>Pro běžné skripty je mutace v pořádku. Pro React/Redux preferujte imutabilní přístup.</p>
 
-<p>Metoda <code>reduce</code> <b>není vždy nejlepší volba</b>. Vyhněte se jí v těchto případech:</p>
-
-<h3>Jednoduché transformace</h3>
-
-<p>Pro <code>map</code>, <code>filter</code> nebo <code>find</code> operace použijte přímo tyto metody:</p>
-
-<pre><code>// Špatně — zbytečně složité
-const dvojnasobky = cisla.reduce((acc, n) => {
-  acc.push(n * 2);
-  return acc;
-}, []);
-
-// Správně — čitelné a jasné
-const dvojnasobky = cisla.map(n => n * 2);</code></pre>
-
-<h3>Hledání max/min</h3>
-
-<p>Pro čísla je <code>Math.max/min</code> čitelnější:</p>
-
-<pre><code>// Zbytečně složité
-const max = cisla.reduce((a, b) => a > b ? a : b);
-
-// Lepší
-const max = Math.max(...cisla);</code></pre>
-
-<h3>Zploštění pole</h3>
-
-<p>Metoda <code>flat()</code> je určena přesně pro tento účel:</p>
-
-<pre><code>// Zbytečně složité
-const ploche = vnorene.reduce((acc, arr) => acc.concat(arr), []);
-
-// Lepší
-const ploche = vnorene.flat();</code></pre>
-
-<h3>Vedlejší efekty</h3>
-
-<p>Pokud jen procházíte pole a provádíte akce (DOM manipulace, console.log), použijte <code>forEach</code>:</p>
-
-<pre><code>// Špatně — reduce nemá vracet nic smysluplného
-cisla.reduce((_, cislo) => {
-  console.log(cislo);
-}, null);
-
-// Správně
-cisla.forEach(cislo => console.log(cislo));</code></pre>
-
-<h3>Příliš složitá logika</h3>
-
-<p>Pokud je callback <code>reduce</code> delší než 5–7 řádků, zvažte cyklus <code>for</code>:</p>
-
-<pre><code>// Těžko čitelné
-const vysledek = data.reduce((acc, item) => {
-  // 15 řádků složité logiky...
-  return acc;
-}, initial);
-
-// Lepší — cyklus s jasnou strukturou
-const vysledek = initial;
-for (const item of data) {
-  // Logika rozdělená do menších kroků
-}</code></pre>
-
-<h2 id="mutace">Co znamená „nemutujte akumulátor"</h2>
-
-<p>Při práci s <b>objekty</b> nebo <b>poli</b> jako akumulátorem existují dva přístupy:</p>
-
-<h3>S mutací (funkční, ale může způsobit problémy)</h3>
-
-<pre><code>const vysledek = pole.reduce((acc, item) => {
-  acc.push(item);  // Mutuje původní pole
-  acc[key] = val;  // Mutuje původní objekt
-  return acc;
-}, []);</code></pre>
-
-<h3>Bez mutace (bezpečnější)</h3>
-
-<pre><code>const vysledek = pole.reduce((acc, item) => {
-  return [...acc, item];           // Nové pole
-  return { ...acc, [key]: val };   // Nový objekt
-}, []);</code></pre>
-
-<p><b>Proč na tom záleží?</b></p>
+<h2 id="tipy">Shrnutí</h2>
 
 <ul>
-  <li><b>Předvídatelnost</b> — nemutující kód je snazší debugovat</li>
-  <li><b>React/Redux</b> — vyžadují nové reference pro detekci změn</li>
-  <li><b>Paralelní zpracování</b> — mutace může způsobit race conditions</li>
-</ul>
-
-<p><b>Prakticky:</b> Pro jednoduché skripty je mutace v pořádku. Pro React/Redux aplikace nebo sdílený kód preferujte imutabilní přístup.</p>
-
-<h2 id="tipy">Praktické tipy</h2>
-
-<ul>
+  <li><b>Nepoužívejte reduce</b> pro jednoduché operace — <code>map</code>, <code>filter</code>, <code>flat</code>, <code>Math.max</code> jsou čitelnější</li>
+  <li><b>Používejte reduce</b> pro compose/pipe, více agregací najednou, stavové automaty</li>
   <li><b>Vždy uvádějte počáteční hodnotu</b> — předejdete chybám u prázdných polí</li>
-  <li><b>Nezapomeňte na return</b> — callback musí vždy vrátit novou hodnotu akumulátoru</li>
-  <li><b>Preferujte čitelnost</b> — pokud je <code>map</code>/<code>filter</code>/<code>for</code> jasnější, použijte je</li>
-  <li><b>Pojmenujte akumulátor smysluplně</b> — <code>sum</code>, <code>groups</code>, <code>result</code> místo <code>acc</code></li>
+  <li>Pokud je callback delší než 5 řádků, zvažte <code>for...of</code></li>
 </ul>
 
-<h2 id="podpora">Podpora v prohlížečích</h2>
+<h2 id="odkazy">Odkazy</h2>
 
-<p>Metoda <code>reduce</code> je podporována ve všech moderních prohlížečích a v Internet Exploreru od verze 9.</p>
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce">MDN: Array.prototype.reduce()</a></li>
+</ul>
