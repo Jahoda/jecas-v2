@@ -3,7 +3,7 @@ title: "Na co nezapomenout při přechodu na novější iPhone"
 headline: "Checklist věcí, na které se při přechodu na nový iPhone zapomíná"
 description: "Na co se nejčastěji zapomíná při migraci na nový iPhone? Bankovní aplikace, messengery, eGovernment služby a další aplikace."
 date: "2025-12-03"
-last_modification: "2025-12-03"
+last_modification: "2025-12-15"
 status: 1
 tags: ["apple", "produktivita"]
 format: "html"
@@ -346,7 +346,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 <ol>
 <li>Naskenovat kód a spustit převod</li>
 <li>Aktualisovat nový telefon (+ restart)</li>
-<li>Počkat cca hodinu na přenost dat</li>
+<li>Počkat cca hodinu na přenos dat</li>
 <li>Projít intro nového systému</li>
 <li><strong>Nastavit akční tlačítko</strong> (iPhone 15 Pro a novější) – Vyberte si funkci pro Action Button podle vašich preferencí</li>
 <li><strong>Nastavit Camera Control</strong> (iPhone 16 a novější) – Nakonfigurujte tlačítko fotoaparátu a jeho gesta</li>
@@ -362,6 +362,52 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 </ol>
 
 <p>Pokud nepoužíváte správce hesel, pravděpodobně nějaký čas zabere resetování zapomenutých hesel.</p>
+
+<h2 id="ztrata-nebo-zniceni-telefonu">Co dělat při ztrátě nebo zničení telefonu</h2>
+
+<p>
+Článek výše počítá s tím, že máte přístup ke starému telefonu. Co ale dělat, když o telefon <strong>přijdete neplánovaně</strong> – ztráta, krádež nebo zničení?
+</p>
+
+<h3 id="prevence-pred-ztratou">Prevence – co udělat předem</h3>
+
+<ul>
+<li><strong>Uložte si záložní kódy pro 2FA</strong> – Ideálně do správce hesel. Bez nich můžete ztratit přístup k účtům.</li>
+<li><strong>Používejte správce hesel s cloudovou synchronisací</strong> – iCloud Klíčenka, případně 1Password nebo Bitwarden synchronisují i 2FA kódy.</li>
+<li><strong>Zapněte iCloud zálohu</strong> – Většina dat se obnoví automaticky na novém zařízení.</li>
+<li><strong>WhatsApp: Zapněte zálohu do iCloudu</strong> – Jinak při ztrátě přijdete o celou historii zpráv.</li>
+</ul>
+
+<h3 id="obnova-bez-stareho-telefonu">Obnova jednotlivých služeb bez starého telefonu</h3>
+
+<p><strong>Messengery:</strong></p>
+<ul>
+<li><strong>Signal</strong> – Historie zpráv je nenávratně ztracena. Kontakty zůstanou. Prevence může být mít aplikaci ještě na dalším zařízení, odkud půjdou data obnovit.</li>
+<li><strong>WhatsApp</strong> – Pokud máte zálohu v iCloudu, obnovíte zprávy. Bez zálohy ztratíte historii.</li>
+<li><strong>Telegram</strong> – Běžné chaty se synchronisují z cloudu automaticky. Tajné chaty jsou ztraceny.</li>
+</ul>
+
+<p><strong>Bankovní aplikace:</strong></p>
+
+<p>Zde je situace nejhorší, protože řada bank má kamenné pobočky a mohou vyžadovat jejich návštěvu pro ověření.</p>
+
+<p>V tomto má výhodu např. Revolut, který funguje vzdáleně, takže má člověk jistotu, že nikam chodit nebudete muset.</p>
+
+<p>U řady bank (např. Air Bank) se člověk dokáže přihlásit i bez aplikace pomocí SMS kódu.</p>
+
+<h3 id="obnova-sim">Obnova SIM</h3>
+
+<p>Co ale když nemáte ani přístup k SMS (tj. nemáte přístup k telefonnímu číslu)? Zde záleží na operátorovi, jestli z něj dostanete novou eSIM vzdáleně. Nebo to bude taky znamenat návštěvu pobočky.</p>
+
+<p>Dovedu si představit, že by mohlo jít něco vyřídit (s trochou neodbytnosti) zavoláním do banky/operátorovi, ale naštěstí s tím nemám zkušenosti.</p>
+
+<p>Hlavní prevence je mít synchronisovaná data do iCloudu, používat klíčenku. Dále potom mít více Apple zařízení.</p>
+
+<p>Snížit risiko jde tak, že jedno zařízení dokáže přijímat ověřovací SMS zprávy a druhé má ověřovací aplikaci. Takže ztráta jednoho jde rozumně vykrýt. Ideálně mít odzkoušenou možnost se přihlašovat dvoufaktorově aplikací z více zařízení, ale některé banky to neumožňují.</p>
+
+<p>Zajímavý cestovatelský tip je místo powerbanky vozit další telefon. Nové iPhony umí fungovat jako powerbanka. Člověk tím získá záložní zařízení a odpadnou občasné problémy s kontrolami, kde mohou být powerbanky problematické.</p>
+
+<p>Má-li člověk obavu ze ztráty telefonu, není od věci si ji zkusit nasimulovat.</p>
 
 <h2 id="zaver">Závěr</h2>
 
