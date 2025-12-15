@@ -346,7 +346,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 <ol>
 <li>Naskenovat kód a spustit převod</li>
 <li>Aktualisovat nový telefon (+ restart)</li>
-<li>Počkat cca hodinu na přenost dat</li>
+<li>Počkat cca hodinu na přenos dat</li>
 <li>Projít intro nového systému</li>
 <li><strong>Nastavit akční tlačítko</strong> (iPhone 15 Pro a novější) – Vyberte si funkci pro Action Button podle vašich preferencí</li>
 <li><strong>Nastavit Camera Control</strong> (iPhone 16 a novější) – Nakonfigurujte tlačítko fotoaparátu a jeho gesta</li>
@@ -397,7 +397,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 
 <h3 id="obnova-sim">Obnova SIM</h3>
 
-<p>Co ale když nemáte ani přístup k SMS (tj. nemáte přístup k telefonnímu číslu)? Zde záleží na operátorovi, jestli z něj dostanete novou eSIM vzádleně. Nebo to bude taky znamenat návštěvu pobočky.</p>
+<p>Co ale když nemáte ani přístup k SMS (tj. nemáte přístup k telefonnímu číslu)? Zde záleží na operátorovi, jestli z něj dostanete novou eSIM vzdáleně. Nebo to bude taky znamenat návštěvu pobočky.</p>
 
 <p>Dovedu si představit, že by mohlo jít něco vyřídit (s trochou neodbytnosti) zavoláním do banky/operátorovi, ale naštěstí s tím nemám zkušenosti.</p>
 
@@ -405,7 +405,7 @@ Hodně věcí naštěstí Apple už opravil klíčenkou – hesla k webům a Wi-
 
 <p>Snížit risiko jde tak, že jedno zařízení dokáže přijímat ověřovací SMS zprávy a druhé má ověřovací aplikaci. Takže ztráta jednoho jde rozumně vykrýt. Ideálně mít odzkoušenou možnost se přihlašovat dvoufaktorově aplikací z více zařízení, ale některé banky to neumožňují.</p>
 
-<p>Zajímavý cestovatelský tip je místo powerbanky vozit další telefon. Nové iPhony umí fungovat jako powerbanka. Člověk tím získá záložní zařízení a odpadnou občasné problémy s kontrolami, kde mohou být powebanky problematické.</p>
+<p>Zajímavý cestovatelský tip je místo powerbanky vozit další telefon. Nové iPhony umí fungovat jako powerbanka. Člověk tím získá záložní zařízení a odpadnou občasné problémy s kontrolami, kde mohou být powerbanky problematické.</p>
 
 <p>Má-li člověk obavu ze ztráty telefonu, není od věci si ji zkusit nasimulovat.</p>
 
