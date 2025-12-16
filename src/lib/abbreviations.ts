@@ -35,6 +35,10 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'SSR', title: 'Server-Side Rendering' },
 	{ short: 'SSG', title: 'Static Site Generation' },
 	{ short: 'PWA', title: 'Progressive Web App' },
+	{ short: 'JSONP', title: 'JSON with Padding' },
+	{ short: 'AMP', title: 'Accelerated Mobile Pages' },
+	{ short: 'ARIA', title: 'Accessible Rich Internet Applications' },
+	{ short: 'WYSIWYG', title: 'What You See Is What You Get' },
 
 	// Obrázky a média
 	{ short: 'PNG', title: 'Portable Network Graphics' },
@@ -76,7 +80,34 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'HSL', title: 'Hue, Saturation, Lightness' },
 
 	// Prohlížeče
-	{ short: 'IE', title: 'Internet Explorer' }
+	{ short: 'IE', title: 'Internet Explorer' },
+
+	// Bezpečnost
+	{ short: 'XSS', title: 'Cross-Site Scripting' },
+	{ short: 'CSRF', title: 'Cross-Site Request Forgery' },
+	{ short: 'SSL', title: 'Secure Sockets Layer' },
+	{ short: 'TLS', title: 'Transport Layer Security' },
+	{ short: 'GDPR', title: 'General Data Protection Regulation' },
+
+	// Programování
+	{ short: 'OOP', title: 'Object-Oriented Programming' },
+	{ short: 'DRY', title: "Don't Repeat Yourself" },
+	{ short: 'KISS', title: 'Keep It Simple, Stupid' },
+	{ short: 'CI', title: 'Continuous Integration' },
+	{ short: 'CD', title: 'Continuous Deployment' },
+	{ short: 'MD', title: 'Markdown' },
+	{ short: 'RegEx', title: 'Regular Expression' },
+
+	// Servery a hosting
+	{ short: 'WAMP', title: 'Windows, Apache, MySQL, PHP' },
+	{ short: 'LAMP', title: 'Linux, Apache, MySQL, PHP' },
+	{ short: 'MAMP', title: 'macOS, Apache, MySQL, PHP' },
+	{ short: 'IIS', title: 'Internet Information Services' },
+	{ short: 'GZIP', title: 'GNU Zip' },
+
+	// Kódování
+	{ short: 'BOM', title: 'Byte Order Mark' },
+	{ short: 'BASE64', title: 'Base64 encoding' }
 ];
 
 // Seřadit od nejdelších po nejkratší, aby se "HTTPS" nahradilo dřív než "HTTP"
