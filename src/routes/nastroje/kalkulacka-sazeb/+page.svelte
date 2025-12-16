@@ -46,6 +46,11 @@
 	let actualExpenses = $state(0);
 	let actualExpensesInput = $state('0');
 
+	// Inflační navýšení
+	let inflationRate = $state(3);
+	let inflationRateInput = $state('3');
+	let inflationYears = $state(5);
+
 	// Textové hodnoty pro inputy (umožňují psát výrazy)
 	let hourlyRateInput = $state('625');
 	let dailyRateInput = $state('5000');
@@ -339,6 +344,50 @@
 	let employerTotalCostMonthly = $derived(Math.round(employerTotalCost / 12));
 	let osvcNetMonthly = $derived(Math.round(osvcNetIncome / 12));
 
+	// === INFLAČNÍ NAVÝŠENÍ ===
+	interface InflationYear {
+		year: number;
+		hourlyRate: number;
+		dailyRate: number;
+		monthlyRate: number;
+		yearlyRate: number;
+		cumulativeInflation: number;
+	}
+
+	// Výpočet sazeb po inflaci pro jednotlivé roky
+	let inflationProjection = $derived(() => {
+		const projection: InflationYear[] = [];
+		const rate = inflationRate / 100;
+
+		for (let i = 0; i <= inflationYears; i++) {
+			const multiplier = Math.pow(1 + rate, i);
+			projection.push({
+				year: year + i,
+				hourlyRate: Math.round(hourlyRate * multiplier),
+				dailyRate: Math.round(dailyRate * multiplier),
+				monthlyRate: Math.round(monthlyRate * multiplier),
+				yearlyRate: Math.round(yearlyRate * multiplier),
+				cumulativeInflation: Math.round((multiplier - 1) * 1000) / 10
+			});
+		}
+
+		return projection;
+	});
+
+	// Koncová hodnota po inflaci
+	let inflatedHourlyRate = $derived(
+		Math.round(hourlyRate * Math.pow(1 + inflationRate / 100, inflationYears))
+	);
+	let inflatedDailyRate = $derived(
+		Math.round(dailyRate * Math.pow(1 + inflationRate / 100, inflationYears))
+	);
+	let inflatedYearlyRate = $derived(
+		Math.round(yearlyRate * Math.pow(1 + inflationRate / 100, inflationYears))
+	);
+	let totalInflationPercent = $derived(
+		Math.round((Math.pow(1 + inflationRate / 100, inflationYears) - 1) * 1000) / 10
+	);
+
 	// Přepočet sazeb (bez sync - pro živé vyhodnocování)
 	function recalculateFromHourly(hourly: number, sync = true) {
 		hourlyRate = hourly;
@@ -467,8 +516,16 @@
 		}
 	}
 
+	function onInflationRateInput() {
+		if (!initialized) return;
+		const result = evaluateExpression(inflationRateInput);
+		if (result !== null && result >= 0 && result <= 100) {
+			inflationRate = result;
+		}
+	}
+
 	// Finalizace při opuštění pole (přepíše input na výsledek)
-	function finalizeInput(inputType: 'hourly' | 'daily' | 'monthly' | 'yearly' | 'vacation' | 'hoursPerDay' | 'actualExpenses') {
+	function finalizeInput(inputType: 'hourly' | 'daily' | 'monthly' | 'yearly' | 'vacation' | 'hoursPerDay' | 'actualExpenses' | 'inflationRate') {
 		if (inputType === 'hourly') {
 			hourlyRateInput = hourlyRate.toString();
 		} else if (inputType === 'daily') {
@@ -483,6 +540,8 @@
 			hoursPerDayInput = hoursPerDay.toString();
 		} else if (inputType === 'actualExpenses') {
 			actualExpensesInput = actualExpenses.toString();
+		} else if (inputType === 'inflationRate') {
+			inflationRateInput = inflationRate.toString();
 		}
 	}
 
@@ -1012,6 +1071,106 @@
 					</li>
 				{/if}
 			</ul>
+		</div>
+	</Box>
+</div>
+
+<!-- Inflační navýšení -->
+<div class="mt-6">
+	<Box>
+		<h2 class="mb-4 text-lg font-semibold">Inflační navýšení sazeb</h2>
+		<p class="mb-4 text-sm text-slate-600 dark:text-slate-400">
+			Projekce sazeb při pravidelném navyšování o inflaci.
+		</p>
+
+		<div class="mb-6 grid gap-4 md:grid-cols-2">
+			<div>
+				<label for="inflationRate" class="block text-sm font-medium">Roční inflace (%)</label>
+				<div class="mt-1"></div>
+				<input
+					type="text"
+					inputmode="numeric"
+					id="inflationRate"
+					name="inflationRate"
+					bind:value={inflationRateInput}
+					oninput={onInflationRateInput}
+					onblur={() => finalizeInput('inflationRate')}
+					class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
+					placeholder="např. 3"
+				/>
+			</div>
+
+			<div>
+				<label for="inflationYears" class="block text-sm font-medium">Počet let</label>
+				<div class="mt-1"></div>
+				<input
+					type="number"
+					id="inflationYears"
+					name="inflationYears"
+					bind:value={inflationYears}
+					min={1}
+					max={30}
+					class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
+				/>
+			</div>
+		</div>
+
+		<div class="mb-4 rounded-lg bg-blue-50 p-4 dark:bg-blue-900/20">
+			<div class="grid gap-4 md:grid-cols-3">
+				<div>
+					<div class="text-sm text-slate-600 dark:text-slate-400">Současná denní sazba</div>
+					<div class="text-xl font-bold text-slate-700 dark:text-slate-300">
+						{formatNumber(dailyRate)} Kč
+					</div>
+				</div>
+				<div class="flex items-center justify-center text-2xl text-slate-400">→</div>
+				<div>
+					<div class="text-sm text-slate-600 dark:text-slate-400">Za {inflationYears} let (+{totalInflationPercent}%)</div>
+					<div class="text-xl font-bold text-blue-600 dark:text-blue-400">
+						{formatNumber(inflatedDailyRate)} Kč
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="overflow-x-auto">
+			<table class="w-full text-sm">
+				<thead>
+					<tr class="border-b border-slate-200 dark:border-slate-600">
+						<th class="pb-2 text-left font-medium text-slate-600 dark:text-slate-400">Rok</th>
+						<th class="pb-2 text-right font-medium text-slate-600 dark:text-slate-400">Hod.</th>
+						<th class="pb-2 text-right font-medium text-slate-600 dark:text-slate-400">Denní</th>
+						<th class="pb-2 text-right font-medium text-slate-600 dark:text-slate-400">Měsíční</th>
+						<th class="pb-2 text-right font-medium text-slate-600 dark:text-slate-400">Roční</th>
+						<th class="pb-2 text-right font-medium text-slate-600 dark:text-slate-400">Inflace</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each inflationProjection() as row, i (row.year)}
+						<tr class="border-b border-slate-100 last:border-0 dark:border-slate-700" class:bg-slate-50={i === 0} class:dark:bg-slate-800={i === 0}>
+							<td class="py-2 font-medium">{row.year}</td>
+							<td class="py-2 text-right tabular-nums">{formatNumber(row.hourlyRate)}</td>
+							<td class="py-2 text-right tabular-nums">{formatNumber(row.dailyRate)}</td>
+							<td class="py-2 text-right tabular-nums">{formatNumber(row.monthlyRate)}</td>
+							<td class="py-2 text-right tabular-nums font-medium">{formatNumber(row.yearlyRate)}</td>
+							<td class="py-2 text-right tabular-nums text-slate-500">
+								{#if i === 0}
+									<span class="text-slate-400">—</span>
+								{:else}
+									+{row.cumulativeInflation}%
+								{/if}
+							</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
+
+		<div class="mt-4 text-sm text-slate-500 dark:text-slate-400">
+			<p>
+				<strong>Tip:</strong> Pokud nenavyšujete sazby každý rok o inflaci, reálná hodnota vaší práce klesá.
+				Při {inflationRate}% inflaci za {inflationYears} let ztratíte <strong>{totalInflationPercent}%</strong> kupní síly.
+			</p>
 		</div>
 	</Box>
 </div>
