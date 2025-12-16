@@ -124,6 +124,22 @@
 	);
 	let billableDays = $derived(workingDaysInfo.totalWorkDays);
 
+	// Porovnání - dny při různých nastaveních
+	let daysWithAll = $derived(
+		calculateWorkingDays(year, true, true, vacationDays).totalWorkDays
+	);
+	let daysWithoutAll = $derived(
+		calculateWorkingDays(year, false, false, vacationDays).totalWorkDays
+	);
+
+	// Ekvivalentní sazby pro porovnání
+	let equivalentDailyWithAll = $derived(
+		daysWithAll > 0 ? Math.round(yearlyRate / daysWithAll) : 0
+	);
+	let equivalentDailyWithoutAll = $derived(
+		daysWithoutAll > 0 ? Math.round(yearlyRate / daysWithoutAll) : 0
+	);
+
 	// Přepočet sazeb
 	function recalculateFromDaily(daily: number) {
 		monthlyRate = Math.round((daily * billableDays) / 12);
@@ -186,7 +202,7 @@
 		params.set('fakturovat_svatky', billableHolidays ? '1' : '0');
 		params.set('fakturovat_dovolenou', billableVacation ? '1' : '0');
 
-		goto(`?${params.toString()}`, { replaceState: true, keepFocus: true });
+		goto(`?${params.toString()}`, { replaceState: true, keepFocus: true, noScroll: true });
 	}
 
 	// Inicializace z URL parametrů - jen jednou při načtení
@@ -380,6 +396,50 @@
 				</p>
 			</div>
 		</div>
+	</Box>
+</div>
+
+<!-- Porovnání sazeb -->
+<div class="mt-6">
+	<Box>
+		<h2 class="mb-4 text-lg font-semibold">Porovnání denních sazeb</h2>
+		<p class="mb-4 text-sm text-slate-600 dark:text-slate-400">
+			Ekvivalentní denní sazby pro stejný roční příjem ({formatNumber(yearlyRate)} Kč):
+		</p>
+
+		<div class="grid gap-4 md:grid-cols-2">
+			<div class="rounded-lg border border-slate-200 p-4 dark:border-slate-600">
+				<div class="mb-2 text-sm text-slate-500 dark:text-slate-400">
+					S fakturací svátků i dovolené
+				</div>
+				<div class="text-2xl font-bold text-slate-800 dark:text-slate-200">
+					{formatNumber(equivalentDailyWithAll)} Kč/den
+				</div>
+				<div class="mt-1 text-xs text-slate-400">
+					{daysWithAll} fakturovatelných dní
+				</div>
+			</div>
+
+			<div class="rounded-lg border border-slate-200 p-4 dark:border-slate-600">
+				<div class="mb-2 text-sm text-slate-500 dark:text-slate-400">
+					Bez fakturace svátků a dovolené
+				</div>
+				<div class="text-2xl font-bold text-slate-800 dark:text-slate-200">
+					{formatNumber(equivalentDailyWithoutAll)} Kč/den
+				</div>
+				<div class="mt-1 text-xs text-slate-400">
+					{daysWithoutAll} fakturovatelných dní
+				</div>
+			</div>
+		</div>
+
+		{#if equivalentDailyWithoutAll > equivalentDailyWithAll}
+			<p class="mt-4 text-sm text-slate-600 dark:text-slate-400">
+				Rozdíl: <strong class="text-orange-600 dark:text-orange-400">+{formatNumber(equivalentDailyWithoutAll - equivalentDailyWithAll)} Kč/den</strong>
+				({Math.round(((equivalentDailyWithoutAll - equivalentDailyWithAll) / equivalentDailyWithAll) * 100)}% více)
+				při nefakturování svátků a dovolené.
+			</p>
+		{/if}
 	</Box>
 </div>
 
