@@ -245,6 +245,53 @@ sleduj(state, "count");
 state.count = 1; // "count: 0 → 1" + stack trace
 state.count = 2; // "count: 1 → 2" + stack trace</code></pre>
 
+<h3>Reaktivita ve Vue 2</h3>
+
+<p>Vue 2 používal <code>Object.defineProperty</code> jako základ svého reaktivního systému. Zjednodušená verze toho, co framework dělá interně:</p>
+
+<pre><code>function defineReactive(obj, key) {
+  let value = obj[key];
+  const subscribers = [];  // komponenty závislé na této vlastnosti
+
+  Object.defineProperty(obj, key, {
+    get() {
+      // Při renderování komponenty ji zaregistruj jako závislost
+      if (currentlyRenderingComponent) {
+        subscribers.push(currentlyRenderingComponent);
+      }
+      return value;
+    },
+    set(newValue) {
+      value = newValue;
+      // Při změně překresli všechny závislé komponenty
+      subscribers.forEach(component => component.update());
+    }
+  });
+}
+
+// Vue 2 toto volá pro každou vlastnost v data()
+function observe(obj) {
+  for (const key of Object.keys(obj)) {
+    defineReactive(obj, key);
+  }
+}</code></pre>
+
+<p>Tento přístup měl <b>známá omezení</b>:</p>
+
+<pre><code>// Nefungovalo reaktivně — vlastnost neexistovala při observe()
+this.novaVlastnost = "hodnota";
+
+// Workaround
+Vue.set(this, "novaVlastnost", "hodnota");
+
+// Nefungovalo reaktivně — index pole není "vlastnost"
+this.pole[0] = "nova";
+
+// Workaround
+Vue.set(this.pole, 0, "nova");</code></pre>
+
+<p><b>Vue 3 přešel na Proxy</b>, který tyto problémy nemá — zachytí i nové vlastnosti a přístup přes index. Právě limity <code>Object.defineProperty</code> byly hlavním důvodem přechodu.</p>
+
 <h2 id="vice-vlastnosti">Definice více vlastností najednou</h2>
 
 <p>Pro definici více vlastností použijte <code>Object.defineProperties</code>:</p>
