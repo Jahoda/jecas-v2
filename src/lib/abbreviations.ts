@@ -32,6 +32,7 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'HTTP', title: 'HyperText Transfer Protocol' },
 	{ short: 'HTTPS', title: 'HyperText Transfer Protocol Secure' },
 	{ short: 'AJAX', title: 'Asynchronous JavaScript and XML' },
+	{ short: 'XHR', title: 'XMLHttpRequest' },
 	{ short: 'SPA', title: 'Single Page Application' },
 	{ short: 'SSR', title: 'Server-Side Rendering' },
 	{ short: 'SSG', title: 'Static Site Generation' },
@@ -94,6 +95,7 @@ export const abbreviations: Abbreviation[] = [
 	// SEO a marketing
 	{ short: 'SEO', title: 'Search Engine Optimization' },
 	{ short: 'SEM', title: 'Search Engine Marketing' },
+	{ short: 'SERP', title: 'Search Engine Results Page' },
 	{ short: 'CTA', title: 'Call to Action' },
 	{ short: 'CTR', title: 'Click-Through Rate' },
 	{ short: 'GA', title: 'Google Analytics' },
@@ -135,6 +137,7 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'JWT', title: 'JSON Web Token' },
 	{ short: 'OAuth', title: 'Open Authorization' },
 	{ short: 'WCAG', title: 'Web Content Accessibility Guidelines' },
+	{ short: 'WAI', title: 'Web Accessibility Initiative' },
 	{ short: 'W3C', title: 'World Wide Web Consortium' },
 	{ short: 'WHATWG', title: 'Web Hypertext Application Technology Working Group' },
 	{ short: 'RFC', title: 'Request for Comments' },
@@ -185,6 +188,8 @@ export const abbreviations: Abbreviation[] = [
 	// Verzování
 	{ short: 'Git', title: 'Distribuovaný verzovací systém' },
 	{ short: 'SVN', title: 'Apache Subversion' },
+	{ short: 'PR', title: 'Pull Request' },
+	{ short: 'MR', title: 'Merge Request' },
 
 	// Servery a hosting
 	{ short: 'WAMP', title: 'Windows, Apache, MySQL, PHP' },
@@ -204,6 +209,8 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'TOML', title: "Tom's Obvious, Minimal Language" },
 	{ short: 'PDF', title: 'Portable Document Format' },
 	{ short: 'EPUB', title: 'Electronic Publication' },
+	{ short: 'ZIP', title: 'Zone Information Protocol archive' },
+	{ short: 'ISO', title: 'International Organization for Standardization image' },
 
 	// Geolokace
 	{ short: 'GPX', title: 'GPS Exchange Format' },
