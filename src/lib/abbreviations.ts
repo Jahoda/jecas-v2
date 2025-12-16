@@ -39,6 +39,14 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'AMP', title: 'Accelerated Mobile Pages' },
 	{ short: 'ARIA', title: 'Accessible Rich Internet Applications' },
 	{ short: 'WYSIWYG', title: 'What You See Is What You Get' },
+	{ short: 'HMR', title: 'Hot Module Replacement' },
+	{ short: 'FOUT', title: 'Flash of Unstyled Text' },
+	{ short: 'FOIT', title: 'Flash of Invisible Text' },
+
+	// CSS preprocesory
+	{ short: 'SASS', title: 'Syntactically Awesome Style Sheets' },
+	{ short: 'SCSS', title: 'Sassy CSS' },
+	{ short: 'LESS', title: 'Leaner Style Sheets' },
 
 	// Obrázky a média
 	{ short: 'PNG', title: 'Portable Network Graphics' },
@@ -47,6 +55,16 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'GIF', title: 'Graphics Interchange Format' },
 	{ short: 'WebP', title: 'Web Picture format' },
 	{ short: 'AVIF', title: 'AV1 Image File Format' },
+	{ short: 'APNG', title: 'Animated PNG' },
+	{ short: 'HEIC', title: 'High Efficiency Image Container' },
+	{ short: 'EXIF', title: 'Exchangeable Image File Format' },
+
+	// Fonty
+	{ short: 'WOFF', title: 'Web Open Font Format' },
+	{ short: 'WOFF2', title: 'Web Open Font Format 2' },
+	{ short: 'TTF', title: 'TrueType Font' },
+	{ short: 'OTF', title: 'OpenType Font' },
+	{ short: 'EOT', title: 'Embedded OpenType' },
 
 	// SEO a marketing
 	{ short: 'SEO', title: 'Search Engine Optimization' },
@@ -58,6 +76,7 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'SQL', title: 'Structured Query Language' },
 	{ short: 'PHP', title: 'PHP: Hypertext Preprocessor' },
 	{ short: 'NPM', title: 'Node Package Manager' },
+	{ short: 'NPX', title: 'Node Package eXecute' },
 	{ short: 'CLI', title: 'Command Line Interface' },
 	{ short: 'GUI', title: 'Graphical User Interface' },
 	{ short: 'IDE', title: 'Integrated Development Environment' },
@@ -88,6 +107,9 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'SSL', title: 'Secure Sockets Layer' },
 	{ short: 'TLS', title: 'Transport Layer Security' },
 	{ short: 'GDPR', title: 'General Data Protection Regulation' },
+	{ short: 'RSA', title: 'Rivest–Shamir–Adleman' },
+	{ short: 'SHA', title: 'Secure Hash Algorithm' },
+	{ short: 'MD5', title: 'Message Digest 5' },
 
 	// Programování
 	{ short: 'OOP', title: 'Object-Oriented Programming' },
@@ -107,7 +129,24 @@ export const abbreviations: Abbreviation[] = [
 
 	// Kódování
 	{ short: 'BOM', title: 'Byte Order Mark' },
-	{ short: 'BASE64', title: 'Base64 encoding' }
+	{ short: 'BASE64', title: 'Base64 encoding' },
+	{ short: 'MIME', title: 'Multipurpose Internet Mail Extensions' },
+
+	// Datové formáty
+	{ short: 'CSV', title: 'Comma-Separated Values' },
+	{ short: 'YAML', title: "YAML Ain't Markup Language" },
+	{ short: 'TOML', title: "Tom's Obvious, Minimal Language" },
+	{ short: 'PDF', title: 'Portable Document Format' },
+	{ short: 'EPUB', title: 'Electronic Publication' },
+
+	// Geolokace
+	{ short: 'GPX', title: 'GPS Exchange Format' },
+	{ short: 'KML', title: 'Keyhole Markup Language' },
+
+	// Ostatní
+	{ short: 'QR', title: 'Quick Response' },
+	{ short: 'OCR', title: 'Optical Character Recognition' },
+	{ short: 'SMS', title: 'Short Message Service' }
 ];
 
 // Seřadit od nejdelších po nejkratší, aby se "HTTPS" nahradilo dřív než "HTTP"
