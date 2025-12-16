@@ -1,9 +1,9 @@
 ---
 title: "Metoda reduce v JavaScriptu"
 headline: "Metoda <code>reduce</code> v JavaScriptu"
-description: "Kdy použít a kdy nepoužít metodu reduce v JavaScriptu. Praktické příklady a srovnání s alternativami."
-date: "2025-01-15"
-last_modification: "2025-01-15"
+description: "Kdy (ne)použít metodu reduce v JavaScriptu. Praktické příklady a srovnání s alternativami."
+date: "2025-12-16"
+last_modification: "2025-12-16"
 status: 1
 tags: ["js", "hotova-reseni"]
 format: "html"
