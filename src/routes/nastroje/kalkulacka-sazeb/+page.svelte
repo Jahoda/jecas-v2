@@ -41,6 +41,11 @@
 	let scenarios = $state<Scenario[]>([]);
 	let nextScenarioId = $state(1);
 
+	// OSVČ nastavení
+	let expenseType = $state<'flat60' | 'flat40' | 'flat80' | 'actual'>('flat60');
+	let actualExpenses = $state(0);
+	let actualExpensesInput = $state('0');
+
 	// Textové hodnoty pro inputy (umožňují psát výrazy)
 	let hourlyRateInput = $state('625');
 	let dailyRateInput = $state('5000');
@@ -196,6 +201,144 @@
 		daysWithoutAll > 0 ? Math.round(yearlyRate / daysWithoutAll) : 0
 	);
 
+	// === OSVČ VÝPOČTY ===
+	// Konstanty pro rok 2024/2025
+	const TAX_RATE_LOW = 0.15; // 15% daň
+	const TAX_RATE_HIGH = 0.23; // 23% daň pro vysoké příjmy
+	const TAX_THRESHOLD = 1935552; // Hranice pro 23% daň (48x průměrná mzda)
+	const TAX_CREDIT = 30840; // Sleva na poplatníka
+	const HEALTH_RATE = 0.135; // 13.5% zdravotní pojištění
+	const SOCIAL_RATE = 0.292; // 29.2% sociální pojištění
+	const ASSESSMENT_BASE = 0.5; // Vyměřovací základ = 50% zisku
+	const MIN_HEALTH_BASE_MONTHLY = 21983; // Minimální vyměřovací základ ZP 2024
+	const MIN_SOCIAL_BASE_MONTHLY = 11411; // Minimální vyměřovací základ SP 2024
+
+	// Paušální výdaje - limity
+	const FLAT_LIMITS: Record<string, { rate: number; maxExpenses: number }> = {
+		flat80: { rate: 0.8, maxExpenses: 1600000 }, // Řemeslné živnosti
+		flat60: { rate: 0.6, maxExpenses: 1200000 }, // Ostatní živnosti
+		flat40: { rate: 0.4, maxExpenses: 800000 } // Jiná činnost (autorské honoráře apod.)
+	};
+
+	// Výpočet výdajů podle typu
+	let expenses = $derived(() => {
+		if (expenseType === 'actual') {
+			return actualExpenses;
+		}
+		const limit = FLAT_LIMITS[expenseType];
+		const calculated = yearlyRate * limit.rate;
+		return Math.min(calculated, limit.maxExpenses);
+	});
+
+	// Základ daně (příjmy - výdaje)
+	let taxBase = $derived(Math.max(0, yearlyRate - expenses()));
+
+	// Vyměřovací základ pro pojištění (50% ze základu daně)
+	let assessmentBase = $derived(taxBase * ASSESSMENT_BASE);
+
+	// Zdravotní pojištění OSVČ
+	let osvcHealthInsurance = $derived(() => {
+		const minYearlyBase = MIN_HEALTH_BASE_MONTHLY * 12;
+		const base = Math.max(assessmentBase, minYearlyBase);
+		return Math.round(base * HEALTH_RATE);
+	});
+
+	// Sociální pojištění OSVČ
+	let osvcSocialInsurance = $derived(() => {
+		const minYearlyBase = MIN_SOCIAL_BASE_MONTHLY * 12;
+		const base = Math.max(assessmentBase, minYearlyBase);
+		return Math.round(base * SOCIAL_RATE);
+	});
+
+	// Daň z příjmu OSVČ (progresivní)
+	let osvcIncomeTax = $derived(() => {
+		if (taxBase <= 0) return 0;
+		let tax: number;
+		if (taxBase <= TAX_THRESHOLD) {
+			tax = taxBase * TAX_RATE_LOW;
+		} else {
+			tax = TAX_THRESHOLD * TAX_RATE_LOW + (taxBase - TAX_THRESHOLD) * TAX_RATE_HIGH;
+		}
+		// Uplatníme slevu na poplatníka
+		return Math.max(0, Math.round(tax - TAX_CREDIT));
+	});
+
+	// Celkové odvody OSVČ
+	let osvcTotalDeductions = $derived(osvcHealthInsurance() + osvcSocialInsurance() + osvcIncomeTax());
+
+	// Čistý příjem OSVČ
+	let osvcNetIncome = $derived(yearlyRate - osvcTotalDeductions);
+
+	// Efektivní daňová zátěž OSVČ (%)
+	let osvcEffectiveTaxRate = $derived(
+		yearlyRate > 0 ? Math.round((osvcTotalDeductions / yearlyRate) * 1000) / 10 : 0
+	);
+
+	// === HPP VÝPOČTY (pro porovnání) ===
+	// Konstanty pro zaměstnance
+	const EMPLOYEE_HEALTH_RATE = 0.045; // 4.5% ZP zaměstnanec
+	const EMPLOYEE_SOCIAL_RATE = 0.065; // 6.5% SP zaměstnanec
+	const EMPLOYER_HEALTH_RATE = 0.09; // 9% ZP zaměstnavatel
+	const EMPLOYER_SOCIAL_RATE = 0.248; // 24.8% SP zaměstnavatel
+
+	// Výpočet čistého příjmu zaměstnance z hrubé mzdy
+	function calculateEmployeeNetFromGross(yearlyGross: number): number {
+		// Pojištění placené zaměstnancem
+		const employeeHealth = Math.round(yearlyGross * EMPLOYEE_HEALTH_RATE);
+		const employeeSocial = Math.round(yearlyGross * EMPLOYEE_SOCIAL_RATE);
+
+		// Základ daně = hrubá mzda (od 2021 zrušena superhrubá mzda)
+		const taxBase = yearlyGross;
+
+		// Daň z příjmu (progresivní)
+		let tax: number;
+		if (taxBase <= TAX_THRESHOLD) {
+			tax = taxBase * TAX_RATE_LOW;
+		} else {
+			tax = TAX_THRESHOLD * TAX_RATE_LOW + (taxBase - TAX_THRESHOLD) * TAX_RATE_HIGH;
+		}
+		tax = Math.max(0, Math.round(tax - TAX_CREDIT));
+
+		return yearlyGross - employeeHealth - employeeSocial - tax;
+	}
+
+	// Výpočet hrubé mzdy zaměstnance pro daný čistý příjem (iterativní)
+	function calculateGrossFromNet(targetNet: number): number {
+		// Binární hledání hrubé mzdy
+		let low = targetNet;
+		let high = targetNet * 2;
+
+		for (let i = 0; i < 50; i++) {
+			const mid = (low + high) / 2;
+			const net = calculateEmployeeNetFromGross(mid);
+
+			if (Math.abs(net - targetNet) < 10) {
+				return Math.round(mid);
+			}
+
+			if (net < targetNet) {
+				low = mid;
+			} else {
+				high = mid;
+			}
+		}
+
+		return Math.round((low + high) / 2);
+	}
+
+	// Ekvivalentní hrubá mzda zaměstnance pro stejný čistý příjem
+	let equivalentGrossSalary = $derived(calculateGrossFromNet(osvcNetIncome));
+
+	// Celkové náklady zaměstnavatele (superhrubá mzda)
+	let employerTotalCost = $derived(
+		Math.round(equivalentGrossSalary * (1 + EMPLOYER_HEALTH_RATE + EMPLOYER_SOCIAL_RATE))
+	);
+
+	// Měsíční hodnoty pro zobrazení
+	let equivalentGrossMonthly = $derived(Math.round(equivalentGrossSalary / 12));
+	let employerTotalCostMonthly = $derived(Math.round(employerTotalCost / 12));
+	let osvcNetMonthly = $derived(Math.round(osvcNetIncome / 12));
+
 	// Přepočet sazeb (bez sync - pro živé vyhodnocování)
 	function recalculateFromHourly(hourly: number, sync = true) {
 		hourlyRate = hourly;
@@ -316,8 +459,16 @@
 		}
 	}
 
+	function onActualExpensesInput() {
+		if (!initialized) return;
+		const result = evaluateExpression(actualExpensesInput);
+		if (result !== null && result >= 0) {
+			actualExpenses = result;
+		}
+	}
+
 	// Finalizace při opuštění pole (přepíše input na výsledek)
-	function finalizeInput(inputType: 'hourly' | 'daily' | 'monthly' | 'yearly' | 'vacation' | 'hoursPerDay') {
+	function finalizeInput(inputType: 'hourly' | 'daily' | 'monthly' | 'yearly' | 'vacation' | 'hoursPerDay' | 'actualExpenses') {
 		if (inputType === 'hourly') {
 			hourlyRateInput = hourlyRate.toString();
 		} else if (inputType === 'daily') {
@@ -330,6 +481,8 @@
 			vacationDaysInput = vacationDays.toString();
 		} else if (inputType === 'hoursPerDay') {
 			hoursPerDayInput = hoursPerDay.toString();
+		} else if (inputType === 'actualExpenses') {
+			actualExpensesInput = actualExpenses.toString();
 		}
 	}
 
@@ -688,6 +841,178 @@
 				při nefakturování svátků a dovolené.
 			</p>
 		{/if}
+	</Box>
+</div>
+
+<!-- Čistý příjem OSVČ -->
+<div class="mt-6">
+	<Box>
+		<h2 class="mb-4 text-lg font-semibold">Čistý příjem OSVČ</h2>
+
+		<div class="mb-6 grid gap-4 md:grid-cols-2">
+			<div>
+				<label for="expenseType" class="block text-sm font-medium">Typ výdajů</label>
+				<div class="mt-1"></div>
+				<select
+					id="expenseType"
+					bind:value={expenseType}
+					class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
+				>
+					<option value="flat60">Paušál 60% (ostatní živnosti, max 1,2M)</option>
+					<option value="flat80">Paušál 80% (řemeslné živnosti, max 1,6M)</option>
+					<option value="flat40">Paušál 40% (jiná činnost, max 800k)</option>
+					<option value="actual">Skutečné výdaje</option>
+				</select>
+			</div>
+
+			{#if expenseType === 'actual'}
+				<div>
+					<label for="actualExpenses" class="block text-sm font-medium">Skutečné výdaje (Kč/rok)</label>
+					<div class="mt-1"></div>
+					<input
+						type="text"
+						inputmode="numeric"
+						id="actualExpenses"
+						name="actualExpenses"
+						bind:value={actualExpensesInput}
+						oninput={onActualExpensesInput}
+						onblur={() => finalizeInput('actualExpenses')}
+						class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
+						placeholder="např. 200000"
+					/>
+				</div>
+			{:else}
+				<div>
+					<span class="block text-sm font-medium">Paušální výdaje</span>
+					<div class="mt-1"></div>
+					<div class="rounded-md border border-slate-200 bg-slate-50 px-4 py-2 dark:border-slate-600 dark:bg-slate-700">
+						{formatNumber(expenses())} Kč
+					</div>
+				</div>
+			{/if}
+		</div>
+
+		<div class="mb-4 space-y-2 text-sm">
+			<div class="flex justify-between">
+				<span class="text-slate-600 dark:text-slate-400">Roční příjmy (fakturace):</span>
+				<span class="font-medium">{formatNumber(yearlyRate)} Kč</span>
+			</div>
+			<div class="flex justify-between">
+				<span class="text-slate-600 dark:text-slate-400">Výdaje:</span>
+				<span class="font-medium">-{formatNumber(expenses())} Kč</span>
+			</div>
+			<div class="flex justify-between">
+				<span class="text-slate-600 dark:text-slate-400">Základ daně:</span>
+				<span class="font-medium">{formatNumber(taxBase)} Kč</span>
+			</div>
+			<hr class="my-2 border-slate-200 dark:border-slate-600" />
+			<div class="flex justify-between">
+				<span class="text-slate-600 dark:text-slate-400">Zdravotní pojištění:</span>
+				<span class="font-medium text-red-600 dark:text-red-400">-{formatNumber(osvcHealthInsurance())} Kč</span>
+			</div>
+			<div class="flex justify-between">
+				<span class="text-slate-600 dark:text-slate-400">Sociální pojištění:</span>
+				<span class="font-medium text-red-600 dark:text-red-400">-{formatNumber(osvcSocialInsurance())} Kč</span>
+			</div>
+			<div class="flex justify-between">
+				<span class="text-slate-600 dark:text-slate-400">Daň z příjmu (po slevě):</span>
+				<span class="font-medium text-red-600 dark:text-red-400">-{formatNumber(osvcIncomeTax())} Kč</span>
+			</div>
+			<hr class="my-2 border-slate-200 dark:border-slate-600" />
+			<div class="flex justify-between">
+				<span class="text-slate-600 dark:text-slate-400">Celkové odvody:</span>
+				<span class="font-medium text-red-600 dark:text-red-400">-{formatNumber(osvcTotalDeductions)} Kč</span>
+			</div>
+		</div>
+
+		<div class="rounded-lg bg-green-50 p-4 dark:bg-green-900/20">
+			<div class="flex items-center justify-between">
+				<div>
+					<div class="text-sm text-slate-600 dark:text-slate-400">Čistý roční příjem OSVČ</div>
+					<div class="text-3xl font-bold text-green-600 dark:text-green-400">
+						{formatNumber(osvcNetIncome)} Kč
+					</div>
+					<div class="mt-1 text-sm text-slate-500">
+						{formatNumber(osvcNetMonthly)} Kč měsíčně
+					</div>
+				</div>
+				<div class="text-right">
+					<div class="text-sm text-slate-600 dark:text-slate-400">Efektivní daňová zátěž</div>
+					<div class="text-2xl font-bold text-slate-700 dark:text-slate-300">
+						{osvcEffectiveTaxRate}%
+					</div>
+				</div>
+			</div>
+		</div>
+	</Box>
+</div>
+
+<!-- Porovnání s HPP -->
+<div class="mt-6">
+	<Box>
+		<h2 class="mb-4 text-lg font-semibold">Porovnání s HPP (zaměstnancem)</h2>
+		<p class="mb-4 text-sm text-slate-600 dark:text-slate-400">
+			Kolik musí brát zaměstnanec hrubého, aby měl stejný čistý příjem jako OSVČ?
+		</p>
+
+		<div class="grid gap-4 md:grid-cols-3">
+			<div class="rounded-lg border border-slate-200 p-4 dark:border-slate-600">
+				<div class="mb-2 text-sm text-slate-500 dark:text-slate-400">
+					Čistý příjem (cíl)
+				</div>
+				<div class="text-2xl font-bold text-green-600 dark:text-green-400">
+					{formatNumber(osvcNetIncome)} Kč/rok
+				</div>
+				<div class="mt-1 text-sm text-slate-400">
+					{formatNumber(osvcNetMonthly)} Kč/měsíc
+				</div>
+			</div>
+
+			<div class="rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-900/20">
+				<div class="mb-2 text-sm text-slate-500 dark:text-slate-400">
+					Potřebná hrubá mzda
+				</div>
+				<div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
+					{formatNumber(equivalentGrossSalary)} Kč/rok
+				</div>
+				<div class="mt-1 text-sm text-slate-400">
+					{formatNumber(equivalentGrossMonthly)} Kč/měsíc
+				</div>
+			</div>
+
+			<div class="rounded-lg border border-orange-200 bg-orange-50 p-4 dark:border-orange-800 dark:bg-orange-900/20">
+				<div class="mb-2 text-sm text-slate-500 dark:text-slate-400">
+					Náklady zaměstnavatele
+				</div>
+				<div class="text-2xl font-bold text-orange-600 dark:text-orange-400">
+					{formatNumber(employerTotalCost)} Kč/rok
+				</div>
+				<div class="mt-1 text-sm text-slate-400">
+					{formatNumber(employerTotalCostMonthly)} Kč/měsíc
+				</div>
+			</div>
+		</div>
+
+		<div class="mt-4 rounded-lg bg-slate-50 p-3 text-sm dark:bg-slate-800">
+			<div class="font-medium text-slate-700 dark:text-slate-300">Co to znamená:</div>
+			<ul class="mt-2 space-y-1 text-slate-600 dark:text-slate-400">
+				<li>
+					• Zaměstnanec potřebuje hrubou mzdu <strong>{formatNumber(equivalentGrossMonthly)} Kč/měsíc</strong>, aby měl stejný čistý příjem jako Vy.
+				</li>
+				<li>
+					• Zaměstnavatel by za něj zaplatil celkem <strong>{formatNumber(employerTotalCostMonthly)} Kč/měsíc</strong> (včetně odvodů).
+				</li>
+				{#if yearlyRate > employerTotalCost}
+					<li class="text-green-600 dark:text-green-400">
+						• Vaše fakturace ({formatNumber(yearlyRate)} Kč) je <strong>vyšší</strong> než náklady zaměstnavatele - jste pro firmu dražší.
+					</li>
+				{:else}
+					<li class="text-orange-600 dark:text-orange-400">
+						• Vaše fakturace ({formatNumber(yearlyRate)} Kč) je <strong>nižší</strong> než náklady zaměstnavatele - jste pro firmu levnější.
+					</li>
+				{/if}
+			</ul>
+		</div>
 	</Box>
 </div>
 
