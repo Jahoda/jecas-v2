@@ -5,7 +5,7 @@ description: "Kdy (ne)použít metodu reduce v JavaScriptu. Praktické příklad
 date: "2025-12-16"
 last_modification: "2025-12-16"
 status: 1
-tags: ["js", "hotova-reseni"]
+tags: ["js", "napady"]
 format: "html"
 ---
 
