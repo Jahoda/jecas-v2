@@ -416,14 +416,63 @@ const obj = new Proxy({}, {
 config.API_URL = "jina"; // Tiše selže (v strict mode TypeError)
 config.NOVA = "x";       // Tiše selže</code></pre>
 
+<h2 id="antipattern">Kdy je to antipattern</h2>
+
+<p>Gettery a settery s <code>Object.defineProperty</code> umožňují vytvořit "magické" objekty — vypadají jako běžné vlastnosti, ale na pozadí spouští libovolný kód. To může být problém:</p>
+
+<pre><code>// Tohle vypadá nevinně...
+user.email = "test@example.com"
+
+// ...ale spustilo validaci, API call, toast notifikaci a analytics event</code></pre>
+
+<h3>Problematické použití</h3>
+
+<ul>
+  <li><b>Skryté side-effecty</b> — přiřazení vypadá triviálně, ale dělá netriviální věci</li>
+  <li><b>Těžko debugovatelné</b> — když <code>obj.x = 5</code> nefunguje, je těžké zjistit proč</li>
+  <li><b>Porušení principu nejmenšího překvapení</b> — kolega netuší, že jednoduchý assignment má vedlejší efekty</li>
+</ul>
+
+<h3>Kdy je to v pořádku</h3>
+
+<ul>
+  <li><b>Framework s jasnou konvencí</b> — Vue, Svelte, MobX — všichni vědí, že reaktivní state "dělá věci"</li>
+  <li><b>Dobře zdokumentované API</b> — název funkce jasně říká, co objekt dělá (např. <code>createReactiveStore()</code>)</li>
+  <li><b>Interní implementace</b> — uživatel knihovny přímo s gettery nepracuje</li>
+  <li><b>Computed properties bez side-effectů</b> — getter jen počítá hodnotu z jiných vlastností</li>
+</ul>
+
+<h3>Alternativa — explicitní API</h3>
+
+<pre><code>// Místo magie
+params.limit = 50
+
+// Explicitní metoda
+params.set("limit", 50)
+// nebo
+updateParams({ limit: 50 })</code></pre>
+
+<p><b>Doporučení:</b> Pro běžný aplikační kód preferujte explicitní metody. Pro knihovny a frameworky je "magie" akceptovatelná, pokud je <b>konzistentní</b>, <b>zdokumentovaná</b> a <b>očekávatelná</b>.</p>
+
 <h2 id="kdy-pouzit">Kdy použít Object.defineProperty</h2>
+
+<p>Hlavní síla <code>Object.defineProperty</code> je v tom, že vytvoříte objekt, který <b>vypadá běžně, ale chová se "magicky"</b>:</p>
+
+<pre><code>// Uživatel vidí toto:
+params.limit = 50
+
+// Ale pod kapotou se děje:
+// setter: validace → aktualizace URL → sync do storage</code></pre>
+
+<p>Typické legitimní použití:</p>
 
 <ul>
   <li><b>Monkey-patching</b> — úprava chování knihoven třetích stran nebo globálních objektů</li>
   <li><b>Skryté vlastnosti</b> — interní stav, který nemá být vidět v JSON nebo enumeraci</li>
   <li><b>Neměnné vlastnosti</b> — konstanty, které nelze přepsat</li>
   <li><b>Polyfilly</b> — přidání chybějících metod do prototypů (např. <code>Array.prototype.includes</code>)</li>
-  <li><b>Podpora starších prohlížečů</b> — kde Proxy není k dispozici</li>
+  <li><b>Dynamické gettery/settery</b> — když názvy vlastností nejsou známé v době kompilace</li>
+  <li><b>Reaktivní systémy</b> — Vue 2 používal <code>defineProperty</code> pro sledování změn</li>
 </ul>
 
 <p>Pro většinu běžného kódu jsou objektové literály s gettery/settery, třídy nebo Proxy čitelnější a flexibilnější.</p>
