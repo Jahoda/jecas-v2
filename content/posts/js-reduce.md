@@ -148,20 +148,6 @@ console.log(vypocet(10)); // (10 + 5) * 2 = 30</code></pre>
 
 <pre><code>const compose = (...fns) => x => fns.reduceRight((acc, fn) => fn(acc), x);</code></pre>
 
-<h2 id="mutace">Mutace vs. imutabilita</h2>
-
-<p>Reduce jde používat s mutací i bez:</p>
-
-<pre><code>// S mutací — rychlejší
-pole.reduce((acc, item) => {
-  acc.push(item);
-  return acc;
-}, []);
-
-// Bez mutace — bezpečnější, ale pomalejší
-pole.reduce((acc, item) => [...acc, item], []);</code></pre>
-
-<p>Pro běžné skripty je mutace v pořádku. Pro React/Redux preferujte imutabilní přístup.</p>
 
 <h2 id="tipy">Shrnutí</h2>
 
