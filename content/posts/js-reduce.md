@@ -166,8 +166,7 @@ const pipe = (...fns) => x => {
 <ul>
   <li><b>Nepoužívejte reduce</b> pro jednoduché operace — <code>map</code>, <code>filter</code>, <code>flat</code>, <code>Math.max</code> jsou čitelnější</li>
   <li><b>Používejte reduce</b> pro součty a compose/pipe</li>
-  <li><b>Vždy uvádějte počáteční hodnotu</b> — předejdete chybám u prázdných polí (todo: proč?)</li>
-  <li>Pokud je callback delší než 5 řádků, zvažte <code>for...of</code> (todo: proč?)</li>
+  <li><b>Vždy uvádějte počáteční hodnotu</b> — bez ní reduce na prázdném poli vyhodí <code>TypeError</code></li>
 </ul>
 
 <h2 id="odkazy">Odkazy</h2>
