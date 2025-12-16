@@ -22,19 +22,34 @@ format: "html"
 <p>Metoda <code>reduce</code> se v praxi používá mnohem častěji, než by bylo vhodné. Důvodů je několik:</p>
 
 <ul>
-  <li><b>Působí „funkcionálně"</b> — přišla s vlnou funkcionálního programování spolu s <code>map</code> a <code>filter</code>, a tak ji lidé automaticky považují za moderní přístup</li>
+  <li><b>Působí „funkcionálně"</b> — pochází z funkcionálního programování a přišla s vlnou FP spolu s <code>map</code> a <code>filter</code>, takže ji lidé automaticky považují za moderní přístup</li>
   <li><b>Tutoriály</b> — často ji prezentují jako „pokročilou techniku", kterou by měl znát každý JS vývojář</li>
   <li><b>One-liner syndrom</b> — láká k zápisu všeho na jeden řádek, i když výsledek je nečitelný</li>
-  <li><b>Univerzálnost</b> — teoreticky lze pomocí <code>reduce</code> implementovat všechny ostatní array metody, což vede k dojmu, že je to „správný" nástroj na vše</li>
+  <li><b>Univerzálnost</b> — pomocí <code>reduce</code> lze skutečně implementovat všechny ostatní array metody (<code>map</code>, <code>filter</code>, <code>find</code>, <code>some</code>, <code>every</code>, <code>flat</code>…), což vede k dojmu, že je to „správný" nástroj na vše</li>
 </ul>
 
 <p>Ve skutečnosti je <code>reduce</code> <b>okrajový nástroj</b> pro specifické případy. Pro většinu úloh existuje čitelnější alternativa.</p>
+
+<h2 id="vyhody">Výhody reduce</h2>
+
+<p>Přesto má <code>reduce</code> několik legitimních výhod:</p>
+
+<ul>
+  <li><b>Výsledek jako const</b> — nepotřebujete <code>let</code> proměnnou, kterou postupně měníte. To má tu výhodu, že nehrozí, že se dále v kódu omylem přepíše</li>
+  <li><b>Zapouzdřený stav</b> — akumulátor neuniká do okolního scope</li>
+  <li><b>Jeden výraz</b> — lze použít přímo v expression kontextu (přiřazení, return, ternární operátor)</li>
+  <li><b>Žádné mezivýsledky</b> — na rozdíl od <code>filter().map()</code> nevytváří mezipole</li>
+</ul>
+
+<p><b>Výkonnost:</b> Samotný <code>reduce</code> je kvůli režii volání funkce o něco pomalejší než prostý <code>for</code> cyklus. Výhodu má při nahrazení řetězených metod (<code>filter().map()</code>), kde ušetří vytváření mezipole a druhý průchod. V praxi je rozdíl zanedbatelný, že bych doporučoval řešit spíš čitelnost.</p>
 
 <h2 id="kdy-nepouzivat">Kdy reduce nepoužívat</h2>
 
 <p>Ve většině případů existuje <b>kratší a čitelnější</b> alternativa:</p>
 
 <h3>Součet čísel</h3>
+
+<p>Tohle je dost sporné. A zrovna pro součet mi <code>reduce</code> přijde jako relativně rozumnná volba.</p>
 
 <pre><code>const cisla = [1, 2, 3, 4, 5];
 
@@ -45,7 +60,7 @@ const soucet = cisla.reduce((acc, n) => acc + n, 0);
 let soucet = 0;
 for (const n of cisla) soucet += n;</code></pre>
 
-<p><i>Poznámka:</i> Reduce má výhodu, že výsledek je <code>const</code> a pomocná proměnná neuniká do scope. Pro jednoduchý součet je to legitimní důvod pro použití reduce.</p>
+<p>Reduce má výhodu, že výsledek je <code>const</code> a pomocná proměnná neuniká do scope. Pro jednoduchý součet je to podle mě legitimní důvod pro použití reduce.</p>
 
 <h3>Maximum a minimum</h3>
 
@@ -76,7 +91,7 @@ const ploche = vnorene.flat();</code></pre>
   { jmeno: "Jana", vek: 25 }
 ];
 
-// S reduce — 8 řádků
+// S reduce — 6 řádků
 const podleVeku = lide.reduce((acc, osoba) => {
   const klic = osoba.vek;
   if (!acc[klic]) acc[klic] = [];
@@ -88,6 +103,8 @@ const podleVeku = lide.reduce((acc, osoba) => {
 const podleVeku = Object.groupBy(lide, o => o.vek);</code></pre>
 
 <h3>Filtrování a mapování</h3>
+
+<p>Vyfiltruje sudá čísla a zdvojnásobí je — výsledek je <code>[4, 8, 12]</code>.</p>
 
 <pre><code>const cisla = [1, 2, 3, 4, 5, 6];
 
