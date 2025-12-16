@@ -172,80 +172,93 @@
 		daysWithoutAll > 0 ? Math.round(yearlyRate / daysWithoutAll) : 0
 	);
 
-	// Přepočet sazeb
-	function recalculateFromDaily(daily: number) {
+	// Přepočet sazeb (bez sync - pro živé vyhodnocování)
+	function recalculateFromDaily(daily: number, sync = true) {
 		dailyRate = daily;
 		monthlyRate = Math.round((daily * billableDays) / 12);
 		yearlyRate = Math.round(daily * billableDays);
-		syncInputs();
+		if (sync) syncInputs();
 	}
 
-	function recalculateFromMonthly(monthly: number) {
+	function recalculateFromMonthly(monthly: number, sync = true) {
 		monthlyRate = monthly;
 		dailyRate = Math.round((monthly * 12) / billableDays);
 		yearlyRate = monthly * 12;
-		syncInputs();
+		if (sync) syncInputs();
 	}
 
-	function recalculateFromYearly(yearly: number) {
+	function recalculateFromYearly(yearly: number, sync = true) {
 		yearlyRate = yearly;
 		dailyRate = Math.round(yearly / billableDays);
 		monthlyRate = Math.round(yearly / 12);
-		syncInputs();
+		if (sync) syncInputs();
 	}
 
-	// Handlery pro vyhodnocení výrazů (při blur nebo Enter)
-	function evaluateDaily() {
+	// Živé vyhodnocování při psaní (nepřepisuje aktivní input)
+	function onDailyInput() {
 		if (!initialized) return;
 		const result = evaluateExpression(dailyRateInput);
 		if (result !== null && result >= 0) {
 			lastEdited = 'daily';
-			recalculateFromDaily(result);
+			dailyRate = result;
+			monthlyRate = Math.round((result * billableDays) / 12);
+			yearlyRate = Math.round(result * billableDays);
+			// Sync jen ostatní inputy, ne aktivní
+			monthlyRateInput = monthlyRate.toString();
+			yearlyRateInput = yearlyRate.toString();
 			updateUrl();
-		} else {
-			dailyRateInput = dailyRate.toString();
 		}
 	}
 
-	function evaluateMonthly() {
+	function onMonthlyInput() {
 		if (!initialized) return;
 		const result = evaluateExpression(monthlyRateInput);
 		if (result !== null && result >= 0) {
 			lastEdited = 'monthly';
-			recalculateFromMonthly(result);
+			monthlyRate = result;
+			dailyRate = Math.round((result * 12) / billableDays);
+			yearlyRate = result * 12;
+			// Sync jen ostatní inputy
+			dailyRateInput = dailyRate.toString();
+			yearlyRateInput = yearlyRate.toString();
 			updateUrl();
-		} else {
-			monthlyRateInput = monthlyRate.toString();
 		}
 	}
 
-	function evaluateYearly() {
+	function onYearlyInput() {
 		if (!initialized) return;
 		const result = evaluateExpression(yearlyRateInput);
 		if (result !== null && result >= 0) {
 			lastEdited = 'yearly';
-			recalculateFromYearly(result);
+			yearlyRate = result;
+			dailyRate = Math.round(result / billableDays);
+			monthlyRate = Math.round(result / 12);
+			// Sync jen ostatní inputy
+			dailyRateInput = dailyRate.toString();
+			monthlyRateInput = monthlyRate.toString();
 			updateUrl();
-		} else {
-			yearlyRateInput = yearlyRate.toString();
 		}
 	}
 
-	function evaluateVacation() {
+	function onVacationInput() {
 		if (!initialized) return;
 		const result = evaluateExpression(vacationDaysInput);
 		if (result !== null && result >= 0 && result <= 365) {
 			vacationDays = result;
-			vacationDaysInput = result.toString();
 			handleSettingsChange();
-		} else {
-			vacationDaysInput = vacationDays.toString();
 		}
 	}
 
-	function handleKeyDown(e: KeyboardEvent, evaluateFn: () => void) {
-		if (e.key === 'Enter') {
-			evaluateFn();
+	// Finalizace při opuštění pole (přepíše input na výsledek)
+	function finalizeInput(inputType: 'daily' | 'monthly' | 'yearly' | 'vacation') {
+		if (inputType === 'daily') {
+			dailyRateInput = dailyRate.toString();
+		} else if (inputType === 'monthly') {
+			monthlyRateInput = monthlyRate.toString();
+		} else if (inputType === 'yearly') {
+			yearlyRateInput = yearlyRate.toString();
+		} else if (inputType === 'vacation') {
+			vacationDaysInput = vacationDays.toString();
 		}
 	}
 
@@ -357,8 +370,8 @@
 				id="vacation"
 				name="vacation"
 				bind:value={vacationDaysInput}
-				onblur={evaluateVacation}
-				onkeydown={(e: KeyboardEvent) => handleKeyDown(e, evaluateVacation)}
+				oninput={onVacationInput}
+				onblur={() => finalizeInput('vacation')}
 				class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
 				placeholder="např. 20+5"
 			/>
@@ -429,8 +442,8 @@
 					id="daily"
 					name="daily"
 					bind:value={dailyRateInput}
-					onblur={evaluateDaily}
-					onkeydown={(e: KeyboardEvent) => handleKeyDown(e, evaluateDaily)}
+					oninput={onDailyInput}
+					onblur={() => finalizeInput('daily')}
 					class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
 					placeholder="např. 5000+500"
 				/>
@@ -448,8 +461,8 @@
 					id="monthly"
 					name="monthly"
 					bind:value={monthlyRateInput}
-					onblur={evaluateMonthly}
-					onkeydown={(e: KeyboardEvent) => handleKeyDown(e, evaluateMonthly)}
+					oninput={onMonthlyInput}
+					onblur={() => finalizeInput('monthly')}
 					class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
 					placeholder="např. 100000*1.1"
 				/>
@@ -467,8 +480,8 @@
 					id="yearly"
 					name="yearly"
 					bind:value={yearlyRateInput}
-					onblur={evaluateYearly}
-					onkeydown={(e: KeyboardEvent) => handleKeyDown(e, evaluateYearly)}
+					oninput={onYearlyInput}
+					onblur={() => finalizeInput('yearly')}
 					class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
 					placeholder="např. 1000000+200000"
 				/>
