@@ -174,7 +174,105 @@ console.log(deskriptor);
 //   configurable: true
 // }</code></pre>
 
-<h2 id="alternativy">Moderní alternativy</h2>
+<h2 id="monkey-patching">Monkey-patching knihoven</h2>
+
+<p>Častý use case pro <code>Object.defineProperty</code> je <b>úprava chování existujícího kódu</b> — například knihovny třetí strany, kterou nemůžete přímo upravit:</p>
+
+<pre><code>// Přidání logování do existující metody knihovny
+const puvodniFetch = window.fetch;
+
+Object.defineProperty(window, "fetch", {
+  value: function(...args) {
+    console.log("Fetch volán s:", args[0]);
+    return puvodniFetch.apply(this, args);
+  },
+  writable: true,
+  configurable: true
+});</code></pre>
+
+<p>Nebo sledování přístupu k vlastnosti:</p>
+
+<pre><code>// Zachycení, kdy někdo čte localStorage
+const puvodniStorage = window.localStorage;
+let storageProxy = {};
+
+Object.defineProperty(window, "localStorage", {
+  get() {
+    console.log("Přístup k localStorage");
+    return puvodniStorage;
+  },
+  configurable: true
+});</code></pre>
+
+<p><b>Pozor:</b> Monkey-patching je mocný nástroj, ale snadno vede k těžko laditelným chybám. Používejte opatrně a pouze tam, kde není jiná možnost.</p>
+
+<h2 id="proxy">Srovnání s Proxy</h2>
+
+<p><code>Proxy</code> je modernější alternativa (ES6+), která umožňuje zachytit <b>jakoukoliv operaci</b> nad objektem:</p>
+
+<pre><code>// Object.defineProperty — musíte definovat každou vlastnost zvlášť
+const obj = {};
+Object.defineProperty(obj, "a", {
+  get() { console.log("čtení a"); return this._a; },
+  set(v) { console.log("zápis a"); this._a = v; }
+});
+
+// Proxy — zachytí všechny vlastnosti najednou
+const obj = new Proxy({}, {
+  get(target, prop) {
+    console.log(`čtení ${prop}`);
+    return target[prop];
+  },
+  set(target, prop, value) {
+    console.log(`zápis ${prop}`);
+    target[prop] = value;
+    return true;
+  }
+});</code></pre>
+
+<h3>Kdy použít co</h3>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Object.defineProperty</th>
+    <th>Proxy</th>
+  </tr>
+  <tr>
+    <td><b>Známé vlastnosti</b></td>
+    <td>Ano</td>
+    <td>Ano</td>
+  </tr>
+  <tr>
+    <td><b>Dynamické vlastnosti</b></td>
+    <td>Ne (musíte znát název předem)</td>
+    <td>Ano (zachytí cokoliv)</td>
+  </tr>
+  <tr>
+    <td><b>Úprava existujícího objektu</b></td>
+    <td>Ano (in-place)</td>
+    <td>Ne (vytváří wrapper)</td>
+  </tr>
+  <tr>
+    <td><b>Zachycení delete, in, ...</b></td>
+    <td>Ne</td>
+    <td>Ano</td>
+  </tr>
+  <tr>
+    <td><b>Podpora IE11</b></td>
+    <td>Ano</td>
+    <td>Ne</td>
+  </tr>
+  <tr>
+    <td><b>Výkon</b></td>
+    <td>Rychlejší</td>
+    <td>Pomalejší (režie trapu)</td>
+  </tr>
+</table>
+
+<p><b>Proxy je lepší volba</b> pro reaktivní systémy (Vue 3), validaci vstupů, nebo když potřebujete zachytit operace nad neznámými vlastnostmi. <b>defineProperty je lepší</b> pro úpravu konkrétních vlastností existujících objektů (monkey-patching) nebo když potřebujete podporu starších prohlížečů.</p>
+
+<h2 id="alternativy">Jednodušší alternativy</h2>
 
 <p>Pro běžné případy existují jednodušší přístupy:</p>
 
@@ -212,13 +310,14 @@ config.NOVA = "x";       // Tiše selže</code></pre>
 <h2 id="kdy-pouzit">Kdy použít Object.defineProperty</h2>
 
 <ul>
+  <li><b>Monkey-patching</b> — úprava chování knihoven třetích stran nebo globálních objektů</li>
   <li><b>Skryté vlastnosti</b> — interní stav, který nemá být vidět v JSON nebo enumeraci</li>
   <li><b>Neměnné vlastnosti</b> — konstanty, které nelze přepsat</li>
-  <li><b>Metaprogramování</b> — knihovny, frameworky, proxy objekty</li>
-  <li><b>Zpětná kompatibilita</b> — přidání getterů/setterů do existujících objektů</li>
+  <li><b>Polyfilly</b> — přidání chybějících metod do prototypů (např. <code>Array.prototype.includes</code>)</li>
+  <li><b>Podpora starších prohlížečů</b> — kde Proxy není k dispozici</li>
 </ul>
 
-<p>Pro většinu běžného kódu jsou objektové literály s gettery/settery nebo třídy čitelnější.</p>
+<p>Pro většinu běžného kódu jsou objektové literály s gettery/settery, třídy nebo Proxy čitelnější a flexibilnější.</p>
 
 <h2 id="odkazy">Odkazy</h2>
 
@@ -226,4 +325,5 @@ config.NOVA = "x";       // Tiše selže</code></pre>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty">MDN: Object.defineProperty()</a></li>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties">MDN: Object.defineProperties()</a></li>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor">MDN: Object.getOwnPropertyDescriptor()</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">MDN: Proxy</a></li>
 </ul>
