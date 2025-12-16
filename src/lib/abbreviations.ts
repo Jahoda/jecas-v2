@@ -89,12 +89,22 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'SEM', title: 'Search Engine Marketing' },
 	{ short: 'CTA', title: 'Call to Action' },
 	{ short: 'CTR', title: 'Click-Through Rate' },
+	{ short: 'GA', title: 'Google Analytics' },
+	{ short: 'UTM', title: 'Urchin Tracking Module' },
+	{ short: 'OG', title: 'Open Graph' },
+
+	// UX/UI
+	{ short: 'UX', title: 'User Experience' },
+	{ short: 'UI', title: 'User Interface' },
+	{ short: 'MVP', title: 'Minimum Viable Product' },
+	{ short: 'DX', title: 'Developer Experience' },
 
 	// Obecné IT
 	{ short: 'SQL', title: 'Structured Query Language' },
 	{ short: 'PHP', title: 'PHP: Hypertext Preprocessor' },
 	{ short: 'NPM', title: 'Node Package Manager' },
 	{ short: 'NPX', title: 'Node Package eXecute' },
+	{ short: 'NVM', title: 'Node Version Manager' },
 	{ short: 'CLI', title: 'Command Line Interface' },
 	{ short: 'GUI', title: 'Graphical User Interface' },
 	{ short: 'IDE', title: 'Integrated Development Environment' },
@@ -107,6 +117,10 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'IP', title: 'Internet Protocol' },
 	{ short: 'SMTP', title: 'Simple Mail Transfer Protocol' },
 	{ short: 'IMAP', title: 'Internet Message Access Protocol' },
+	{ short: 'POP3', title: 'Post Office Protocol 3' },
+	{ short: 'SPF', title: 'Sender Policy Framework' },
+	{ short: 'DKIM', title: 'DomainKeys Identified Mail' },
+	{ short: 'DMARC', title: 'Domain-based Message Authentication' },
 	{ short: 'CDN', title: 'Content Delivery Network' },
 	{ short: 'CMS', title: 'Content Management System' },
 	{ short: 'CORS', title: 'Cross-Origin Resource Sharing' },
@@ -194,7 +208,12 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'QR', title: 'Quick Response' },
 	{ short: 'OCR', title: 'Optical Character Recognition' },
 	{ short: 'SMS', title: 'Short Message Service' },
-	{ short: 'ISP', title: 'Internet Service Provider' }
+	{ short: 'ISP', title: 'Internet Service Provider' },
+	{ short: 'RSS', title: 'Really Simple Syndication' },
+	{ short: 'TLD', title: 'Top Level Domain' },
+	{ short: 'AI', title: 'Artificial Intelligence' },
+	{ short: 'SOAP', title: 'Simple Object Access Protocol' },
+	{ short: 'LDAP', title: 'Lightweight Directory Access Protocol' }
 ];
 
 // Seřadit od nejdelších po nejkratší, aby se "HTTPS" nahradilo dřív než "HTTP"
