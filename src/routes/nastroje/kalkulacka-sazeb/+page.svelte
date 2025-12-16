@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
 	import Box from '$lib/box/Box.svelte';
@@ -18,6 +18,7 @@
 	let billableHolidays = $state(false);
 	let billableVacation = $state(false);
 	let lastEdited = $state<'daily' | 'monthly' | 'yearly'>('daily');
+	let initialized = $state(false);
 
 	// Výpočet Velikonoční neděle (Computus algorithm)
 	function getEasterSunday(year: number): Date {
@@ -139,44 +140,30 @@
 		monthlyRate = Math.round(yearly / 12);
 	}
 
-	// Efekt pro přepočet při změně parametrů
-	$effect(() => {
-		// Sleduj změny v billableDays
-		const days = billableDays;
-		if (days > 0) {
-			if (lastEdited === 'daily') {
-				recalculateFromDaily(dailyRate);
-			} else if (lastEdited === 'monthly') {
-				recalculateFromMonthly(monthlyRate);
-			} else {
-				recalculateFromYearly(yearlyRate);
-			}
-		}
-	});
-
 	// Handlery pro změnu hodnot
 	function handleDailyChange(value: number) {
-		dailyRate = value;
+		if (!initialized) return;
 		lastEdited = 'daily';
 		recalculateFromDaily(value);
 		updateUrl();
 	}
 
 	function handleMonthlyChange(value: number) {
-		monthlyRate = value;
+		if (!initialized) return;
 		lastEdited = 'monthly';
 		recalculateFromMonthly(value);
 		updateUrl();
 	}
 
 	function handleYearlyChange(value: number) {
-		yearlyRate = value;
+		if (!initialized) return;
 		lastEdited = 'yearly';
 		recalculateFromYearly(value);
 		updateUrl();
 	}
 
 	function handleSettingsChange() {
+		if (!initialized) return;
 		// Přepočítej podle posledně editované hodnoty
 		if (lastEdited === 'daily') {
 			recalculateFromDaily(dailyRate);
@@ -202,35 +189,30 @@
 		goto(`?${params.toString()}`, { replaceState: true, keepFocus: true });
 	}
 
-	// Inicializace z URL parametrů
-	$effect(() => {
-		if (browser) {
-			const params = $page.url.searchParams;
+	// Inicializace z URL parametrů - jen jednou při načtení
+	onMount(() => {
+		const params = new URLSearchParams(window.location.search);
 
-			const urlYear = params.get('rok');
-			const urlDaily = params.get('denni');
-			const urlVacation = params.get('dovolena');
-			const urlBillableHolidays = params.get('fakturovat_svatky');
-			const urlBillableVacation = params.get('fakturovat_dovolenou');
+		const urlYear = params.get('rok');
+		const urlDaily = params.get('denni');
+		const urlVacation = params.get('dovolena');
+		const urlBillableHolidays = params.get('fakturovat_svatky');
+		const urlBillableVacation = params.get('fakturovat_dovolenou');
 
-			if (urlYear) year = parseInt(urlYear);
-			if (urlVacation) vacationDays = parseInt(urlVacation);
-			if (urlBillableHolidays) billableHolidays = urlBillableHolidays === '1';
-			if (urlBillableVacation) billableVacation = urlBillableVacation === '1';
+		if (urlYear) year = parseInt(urlYear);
+		if (urlVacation) vacationDays = parseInt(urlVacation);
+		if (urlBillableHolidays) billableHolidays = urlBillableHolidays === '1';
+		if (urlBillableVacation) billableVacation = urlBillableVacation === '1';
 
-			if (urlDaily) {
-				dailyRate = parseInt(urlDaily);
-				lastEdited = 'daily';
-				recalculateFromDaily(dailyRate);
-			}
+		if (urlDaily) {
+			dailyRate = parseInt(urlDaily);
 		}
-	});
 
-	// Inicializace při prvním renderování
-	$effect(() => {
-		if (browser && !$page.url.searchParams.has('denni')) {
+		// Počkej na další tick, aby se aktualizovaly derived hodnoty
+		setTimeout(() => {
 			recalculateFromDaily(dailyRate);
-		}
+			initialized = true;
+		}, 0);
 	});
 
 	// Formátování čísla s mezerami jako oddělovač tisíců
