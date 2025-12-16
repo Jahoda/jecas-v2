@@ -9,6 +9,21 @@
 	const description =
 		'Přepočítej mezi hodinovou, denní, měsíční a roční sazbou. Zohledni státní svátky, dovolenou a další volné dny.';
 
+	// Typ pro scénář
+	interface Scenario {
+		id: number;
+		name: string;
+		hourlyRate: number;
+		dailyRate: number;
+		monthlyRate: number;
+		yearlyRate: number;
+		hoursPerDay: number;
+		vacationDays: number;
+		billableHolidays: boolean;
+		billableVacation: boolean;
+		billableDays: number;
+	}
+
 	// State
 	let year = $state(new Date().getFullYear());
 	let hoursPerDay = $state(8);
@@ -21,6 +36,10 @@
 	let billableVacation = $state(false);
 	let lastEdited = $state<'hourly' | 'daily' | 'monthly' | 'yearly'>('daily');
 	let initialized = $state(false);
+
+	// Scénáře pro porovnání
+	let scenarios = $state<Scenario[]>([]);
+	let nextScenarioId = $state(1);
 
 	// Textové hodnoty pro inputy (umožňují psát výrazy)
 	let hourlyRateInput = $state('625');
@@ -391,6 +410,45 @@
 		copied = true;
 		setTimeout(() => (copied = false), 2000);
 	}
+
+	// Správa scénářů
+	function addScenario() {
+		const scenario: Scenario = {
+			id: nextScenarioId++,
+			name: `Scénář ${scenarios.length + 1}`,
+			hourlyRate,
+			dailyRate,
+			monthlyRate,
+			yearlyRate,
+			hoursPerDay,
+			vacationDays,
+			billableHolidays,
+			billableVacation,
+			billableDays
+		};
+		scenarios = [...scenarios, scenario];
+	}
+
+	function removeScenario(id: number) {
+		scenarios = scenarios.filter((s) => s.id !== id);
+	}
+
+	function loadScenario(scenario: Scenario) {
+		hoursPerDay = scenario.hoursPerDay;
+		hoursPerDayInput = scenario.hoursPerDay.toString();
+		vacationDays = scenario.vacationDays;
+		vacationDaysInput = scenario.vacationDays.toString();
+		billableHolidays = scenario.billableHolidays;
+		billableVacation = scenario.billableVacation;
+		dailyRate = scenario.dailyRate;
+		lastEdited = 'daily';
+
+		// Počkej na přepočet billableDays
+		setTimeout(() => {
+			recalculateFromDaily(dailyRate);
+			updateUrl();
+		}, 0);
+	}
 </script>
 
 <svelte:head>
@@ -629,6 +687,98 @@
 				({Math.round(((equivalentDailyWithoutAll - equivalentDailyWithAll) / equivalentDailyWithAll) * 100)}% více)
 				při nefakturování svátků a dovolené.
 			</p>
+		{/if}
+	</Box>
+</div>
+
+<!-- Porovnání scénářů -->
+<div class="mt-6">
+	<Box>
+		<div class="mb-4 flex items-center justify-between">
+			<h2 class="text-lg font-semibold">Porovnání scénářů</h2>
+			<button
+				onclick={addScenario}
+				class="rounded-lg bg-green-600 px-4 py-2 text-white transition-colors hover:bg-green-500"
+			>
+				+ Uložit jako scénář
+			</button>
+		</div>
+
+		{#if scenarios.length === 0}
+			<p class="text-sm text-slate-500 dark:text-slate-400">
+				Zatím nemáte žádné uložené scénáře. Nastavte různé parametry a klikněte na "Uložit jako scénář" pro porovnání.
+			</p>
+		{:else}
+			<div class="overflow-x-auto">
+				<table class="w-full text-sm">
+					<thead>
+						<tr class="border-b border-slate-200 dark:border-slate-600">
+							<th class="pb-2 text-left font-medium text-slate-600 dark:text-slate-400">Scénář</th>
+							<th class="pb-2 text-right font-medium text-slate-600 dark:text-slate-400">Hod.</th>
+							<th class="pb-2 text-right font-medium text-slate-600 dark:text-slate-400">Denní</th>
+							<th class="pb-2 text-right font-medium text-slate-600 dark:text-slate-400">Měsíční</th>
+							<th class="pb-2 text-right font-medium text-slate-600 dark:text-slate-400">Roční</th>
+							<th class="pb-2 text-right font-medium text-slate-600 dark:text-slate-400">Dní</th>
+							<th class="pb-2 text-right font-medium text-slate-600 dark:text-slate-400">Akce</th>
+						</tr>
+					</thead>
+					<tbody>
+						{#each scenarios as scenario (scenario.id)}
+							<tr class="border-b border-slate-100 last:border-0 dark:border-slate-700">
+								<td class="py-2">
+									<div class="font-medium">{scenario.name}</div>
+									<div class="text-xs text-slate-400">
+										{scenario.hoursPerDay}h/den, {scenario.vacationDays}d dov.
+										{#if scenario.billableHolidays}+sv{/if}
+										{#if scenario.billableVacation}+dov{/if}
+									</div>
+								</td>
+								<td class="py-2 text-right tabular-nums">{formatNumber(scenario.hourlyRate)}</td>
+								<td class="py-2 text-right tabular-nums">{formatNumber(scenario.dailyRate)}</td>
+								<td class="py-2 text-right tabular-nums">{formatNumber(scenario.monthlyRate)}</td>
+								<td class="py-2 text-right tabular-nums font-medium">{formatNumber(scenario.yearlyRate)}</td>
+								<td class="py-2 text-right tabular-nums">{scenario.billableDays}</td>
+								<td class="py-2 text-right">
+									<button
+										onclick={() => loadScenario(scenario)}
+										class="mr-1 rounded px-2 py-1 text-xs text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-slate-700"
+										title="Načíst tento scénář"
+									>
+										Načíst
+									</button>
+									<button
+										onclick={() => removeScenario(scenario.id)}
+										class="rounded px-2 py-1 text-xs text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-slate-700"
+										title="Smazat tento scénář"
+									>
+										Smazat
+									</button>
+								</td>
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+			</div>
+
+			{#if scenarios.length >= 2}
+				<div class="mt-4 rounded-lg bg-slate-50 p-3 dark:bg-slate-800">
+					<div class="text-sm font-medium text-slate-600 dark:text-slate-400">Rozdíl mezi scénáři</div>
+					<div class="mt-2 grid gap-2 text-sm md:grid-cols-2">
+						<div>
+							<span class="text-slate-500">Roční příjem:</span>
+							<span class="ml-1 font-medium">
+								{formatNumber(Math.max(...scenarios.map(s => s.yearlyRate)) - Math.min(...scenarios.map(s => s.yearlyRate)))} Kč
+							</span>
+						</div>
+						<div>
+							<span class="text-slate-500">Denní sazba:</span>
+							<span class="ml-1 font-medium">
+								{formatNumber(Math.max(...scenarios.map(s => s.dailyRate)) - Math.min(...scenarios.map(s => s.dailyRate)))} Kč
+							</span>
+						</div>
+					</div>
+				</div>
+			{/if}
 		{/if}
 	</Box>
 </div>
