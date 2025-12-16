@@ -123,39 +123,51 @@ for (const o of ovoce) {
 <h3>Součet čísel</h3>
 
 <pre><code>const cisla = [1, 2, 3, 4, 5];
-const soucet = cisla.reduce((acc, n) => acc + n, 0);</code></pre>
 
-<p>Výsledek je <code>const</code> a pomocná proměnná neuniká do scope. Alternativa s <code>for</code> cyklem vyžaduje <code>let</code>.</p>
+// S reduce
+const soucet = cisla.reduce((acc, n) => acc + n, 0);
+
+// Bez reduce
+let soucet = 0;
+for (const n of cisla) soucet += n;</code></pre>
+
+<p>Výsledek s reduce je <code>const</code> a pomocná proměnná neuniká do scope.</p>
 
 <h3>Skládání funkcí (compose/pipe)</h3>
 
-<pre><code>const pipe = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x);
+<pre><code>const pricti5 = x => x + 5;
+const vynasob2 = x => x * 2;
+const odecti3 = x => x - 3;
+
+// S reduce
+const pipe = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x);
 const compose = (...fns) => x => fns.reduceRight((acc, fn) => fn(acc), x);
 
-const pricti5 = x => x + 5;
-const vynasob2 = x => x * 2;
+// pipe: funkce se volají zleva doprava
+pipe(pricti5, vynasob2, odecti3)(10);    // ((10 + 5) * 2) - 3 = 27
 
-const vypocet = pipe(pricti5, vynasob2);
-console.log(vypocet(10)); // (10 + 5) * 2 = 30</code></pre>
+// compose: funkce se volají zprava doleva
+compose(odecti3, vynasob2, pricti5)(10); // ((10 + 5) * 2) - 3 = 27
 
-<p>Alternativa s vnořeným voláním <code>vynasob2(pricti5(10))</code> je při více funkcích nečitelná. Cyklus by fungoval, ale reduce je zde skutečně nejelegantnější.</p>
+// Bez reduce — vnořené volání
+odecti3(vynasob2(pricti5(10)));          // ((10 + 5) * 2) - 3 = 27
 
-<p>Pro ostatní případy (více agregací, stavové automaty, async operace, rekurzivní struktury) <b>existují vždy srovnatelně nebo více čitelné alternativy</b> pomocí <code>for...of</code>. Cyklus navíc umožňuje <code>break</code> pro předčasné ukončení, což reduce neumí.</p>
+// Bez reduce — cyklem
+const pipe = (...fns) => x => {
+  let result = x;
+  for (const fn of fns) result = fn(result);
+  return result;
+};</code></pre>
 
-<h2 id="reduceright">Metoda reduceRight</h2>
-
-<p>Prochází pole <b>od konce</b>. Užitečné pro <code>compose</code> funkce:</p>
-
-<pre><code>const compose = (...fns) => x => fns.reduceRight((acc, fn) => fn(acc), x);</code></pre>
-
+<p>Vnořené volání je při více funkcích nečitelné. Cyklus funguje, ale reduce je zde nejelegantnější.</p>
 
 <h2 id="tipy">Shrnutí</h2>
 
 <ul>
   <li><b>Nepoužívejte reduce</b> pro jednoduché operace — <code>map</code>, <code>filter</code>, <code>flat</code>, <code>Math.max</code> jsou čitelnější</li>
-  <li><b>Používejte reduce</b> pro compose/pipe, více agregací najednou, stavové automaty</li>
-  <li><b>Vždy uvádějte počáteční hodnotu</b> — předejdete chybám u prázdných polí</li>
-  <li>Pokud je callback delší než 5 řádků, zvažte <code>for...of</code></li>
+  <li><b>Používejte reduce</b> pro součty a compose/pipe</li>
+  <li><b>Vždy uvádějte počáteční hodnotu</b> — předejdete chybám u prázdných polí (todo: proč?)</li>
+  <li>Pokud je callback delší než 5 řádků, zvažte <code>for...of</code> (todo: proč?)</li>
 </ul>
 
 <h2 id="odkazy">Odkazy</h2>
