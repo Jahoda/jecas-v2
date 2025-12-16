@@ -136,6 +136,115 @@ Object.defineProperty(osoba, "vek", {
 osoba.vek = 25;           // OK
 osoba.vek = -5;           // Error: Věk musí být kladné číslo</code></pre>
 
+<h2 id="realne-priklady">Reálné příklady z praxe</h2>
+
+<h3>Deprecation warning</h3>
+
+<p>Označení vlastnosti jako zastaralé — uživatel dostane varování, ale kód stále funguje:</p>
+
+<pre><code>function deprecate(obj, prop, novyNazev) {
+  const hodnota = obj[prop];
+  Object.defineProperty(obj, prop, {
+    get() {
+      console.warn(`${prop} je zastaralé, použijte ${novyNazev}`);
+      return hodnota;
+    },
+    enumerable: false
+  });
+}
+
+const config = { apiUrl: "https://api.example.com" };
+config.API_URL = config.apiUrl; // stará verze
+deprecate(config, "API_URL", "apiUrl");
+
+config.API_URL; // Warning: API_URL je zastaralé, použijte apiUrl</code></pre>
+
+<h3>Lazy loading (memoizace)</h3>
+
+<p>Hodnota se vypočítá až při prvním přístupu a pak se uloží:</p>
+
+<pre><code>function lazy(obj, prop, vypocet) {
+  Object.defineProperty(obj, prop, {
+    get() {
+      const hodnota = vypocet();
+      // Přepíše getter na prostou hodnotu
+      Object.defineProperty(obj, prop, {
+        value: hodnota,
+        writable: false,
+        enumerable: true
+      });
+      return hodnota;
+    },
+    configurable: true,
+    enumerable: true
+  });
+}
+
+const modul = {};
+lazy(modul, "tezkéData", () => {
+  console.log("Načítám data...");
+  return { /* ... velký objekt ... */ };
+});
+
+// Nic se nenačítá, dokud nepřistoupíme
+console.log(modul.tezkéData); // "Načítám data..." + vrátí objekt
+console.log(modul.tezkéData); // Vrátí objekt bez logování (už je uložené)</code></pre>
+
+<h3>Polyfill pro chybějící metodu</h3>
+
+<p>Přidání metody do prototypu s korektními příznaky:</p>
+
+<pre><code>// Polyfill pro Array.prototype.at (před ES2022)
+if (!Array.prototype.at) {
+  Object.defineProperty(Array.prototype, "at", {
+    value: function(index) {
+      if (index < 0) index = this.length + index;
+      return this[index];
+    },
+    writable: true,
+    enumerable: false,  // Nesmí se objevit ve for...in
+    configurable: true
+  });
+}
+
+[1, 2, 3].at(-1); // 3</code></pre>
+
+<h3>Ochrana globálních objektů</h3>
+
+<p>Zabránění přepsání důležitých funkcí (např. v security kontextu):</p>
+
+<pre><code>// Zamknutí console.log proti přepsání
+Object.defineProperty(console, "log", {
+  value: console.log,
+  writable: false,
+  configurable: false
+});
+
+console.log = function() {}; // TypeError v strict mode, tiše selže jinak
+console.log("Stále funguje!"); // Funguje</code></pre>
+
+<h3>Sledování změn (debugging)</h3>
+
+<p>Zjištění, kdo a kdy mění hodnotu:</p>
+
+<pre><code>function sleduj(obj, prop) {
+  let hodnota = obj[prop];
+  Object.defineProperty(obj, prop, {
+    get() { return hodnota; },
+    set(nova) {
+      console.log(`${prop}: ${hodnota} → ${nova}`);
+      console.trace(); // Zobrazí call stack
+      hodnota = nova;
+    }
+  });
+}
+
+const state = { count: 0 };
+sleduj(state, "count");
+
+state.count = 1; // "count: 0 → 1" + stack trace
+state.count = 2; // "count: 1 → 2" + stack trace</code></pre>
+
 <h2 id="vice-vlastnosti">Definice více vlastností najednou</h2>
 
 <p>Pro definici více vlastností použijte <code>Object.defineProperties</code>:</p>
