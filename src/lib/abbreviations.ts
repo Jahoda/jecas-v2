@@ -119,6 +119,21 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'CD', title: 'Continuous Deployment' },
 	{ short: 'MD', title: 'Markdown' },
 	{ short: 'RegEx', title: 'Regular Expression' },
+	{ short: 'ES6', title: 'ECMAScript 2015' },
+	{ short: 'ESM', title: 'ECMAScript Modules' },
+	{ short: 'CJS', title: 'CommonJS Modules' },
+	{ short: 'AMD', title: 'Asynchronous Module Definition' },
+	{ short: 'UMD', title: 'Universal Module Definition' },
+
+	// Databáze
+	{ short: 'MySQL', title: 'Relační databázový systém' },
+	{ short: 'SQLite', title: 'Lightweight SQL databáze' },
+	{ short: 'NoSQL', title: 'Non-relational databases' },
+	{ short: 'PDO', title: 'PHP Data Objects' },
+
+	// Verzování
+	{ short: 'Git', title: 'Distribuovaný verzovací systém' },
+	{ short: 'SVN', title: 'Apache Subversion' },
 
 	// Servery a hosting
 	{ short: 'WAMP', title: 'Windows, Apache, MySQL, PHP' },
