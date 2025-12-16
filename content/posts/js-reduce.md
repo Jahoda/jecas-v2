@@ -17,15 +17,17 @@ format: "html"
   return novyAkumulator;
 }, pocatecniHodnota);</code></pre>
 
+<p>Přestože je počáteční hodnota volitelná, v praxi je téměř vždy lepší ji uvést. Zabráníte tím chování, které je v krajních případech překvapivé (například prázdné pole).</p>
+
 <h2 id="proc-naduzivani">Proč se reduce nadužívá</h2>
 
 <p>Metoda <code>reduce</code> se v praxi používá mnohem častěji, než by bylo vhodné. Důvodů je několik:</p>
 
 <ul>
-  <li><b>Působí „funkcionálně"</b> — pochází z funkcionálního programování a přišla s vlnou FP spolu s <code>map</code> a <code>filter</code>, takže ji lidé automaticky považují za moderní přístup</li>
-  <li><b>Tutoriály</b> — často ji prezentují jako „pokročilou techniku", kterou by měl znát každý JS vývojář</li>
+  <li><b>Působí „funkcionálně“</b> — pochází z funkcionálního programování a přišla s vlnou FP spolu s <code>map</code> a <code>filter</code>, takže ji lidé automaticky považují za moderní přístup</li>
+  <li><b>Tutoriály</b> — často ji prezentují jako „pokročilou techniku“, kterou by měl znát každý JS vývojář</li>
   <li><b>One-liner syndrom</b> — láká k zápisu všeho na jeden řádek, i když výsledek je nečitelný</li>
-  <li><b>Univerzálnost</b> — pomocí <code>reduce</code> lze skutečně implementovat všechny ostatní array metody (<code>map</code>, <code>filter</code>, <code>find</code>, <code>some</code>, <code>every</code>, <code>flat</code>…), což vede k dojmu, že je to „správný" nástroj na vše</li>
+  <li><b>Universálnost</b> — pomocí <code>reduce</code> lze skutečně implementovat všechny ostatní array metody (<code>map</code>, <code>filter</code>, <code>find</code>, <code>some</code>, <code>every</code>, <code>flat</code>…), což vede k dojmu, že je to „správný“ nástroj na vše</li>
 </ul>
 
 <p>Ve skutečnosti je <code>reduce</code> <b>okrajový nástroj</b> pro specifické případy. Pro většinu úloh existuje čitelnější alternativa.</p>
@@ -41,13 +43,15 @@ format: "html"
   <li><b>Žádné mezivýsledky</b> — na rozdíl od <code>filter().map()</code> nevytváří mezipole</li>
 </ul>
 
-<p><b>Výkonnost:</b> Samotný <code>reduce</code> je kvůli režii volání funkce o něco pomalejší než prostý <code>for</code> cyklus. Výhodu má při nahrazení řetězených metod (<code>filter().map()</code>), kde ušetří vytváření mezipole a druhý průchod. V praxi je rozdíl zanedbatelný, že bych doporučoval řešit spíš čitelnost.</p>
+<p><b>Výkonnost:</b> Samotný <code>reduce</code> je kvůli režii volání funkce o něco pomalejší než prostý <code>for</code> cyklus. Výhodu má při nahrazení řetězených metod (<code>filter().map()</code>), kde ušetří vytváření mezipole a druhý průchod. V praxi je rozdíl obvykle tak malý, že má větší smysl řešit čitelnost.</p>
 
 <h2 id="kdy-nepouzivat">Kdy reduce nepoužívat</h2>
 
 <p>Ve většině případů existuje <b>kratší a čitelnější</b> alternativa:</p>
 
 <h3>Maximum a minimum</h3>
+
+<p>Pokud použijete <code>reduce</code>, vždy dejte počáteční hodnotu, ať se vám chování nerozpadne na prázdném poli.</p>
 
 <pre><code>const cisla = [3, 7, 2, 9, 1];
 
@@ -86,6 +90,8 @@ const podleVeku = lide.reduce((acc, osoba) => {
 
 // Bez reduce — 1 řádek (moderní prohlížeče)
 const podleVeku = Object.groupBy(lide, o => o.vek);</code></pre>
+
+<p><b>Poznámka:</b> <code>Object.groupBy</code> je relativně nová funkce, takže ji používejte jen tam, kde máte jistotu podpory v cílovém prostředí (nebo máte transpiling/polyfill).</p>
 
 <h3>Filtrování a mapování</h3>
 
@@ -131,7 +137,7 @@ const soucet = cisla.reduce((acc, n) => acc + n, 0);
 let soucet = 0;
 for (const n of cisla) soucet += n;</code></pre>
 
-<p>Výsledek s reduce je <code>const</code> a pomocná proměnná neuniká do scope.</p>
+<p>Výsledek s <code>reduce</code> je <code>const</code> a pomocná proměnná neuniká do scope.</p>
 
 <h3>Skládání funkcí (compose/pipe)</h3>
 
@@ -164,9 +170,9 @@ const pipe = (...fns) => x => {
 <h2 id="tipy">Shrnutí</h2>
 
 <ul>
-  <li><b>Nepoužívejte reduce</b> pro jednoduché operace — <code>map</code>, <code>filter</code>, <code>flat</code>, <code>Math.max</code> jsou čitelnější</li>
-  <li><b>Používejte reduce</b> pro součty a compose/pipe</li>
-  <li><b>Vždy uvádějte počáteční hodnotu</b> — bez ní reduce na prázdném poli vyhodí <code>TypeError</code></li>
+  <li><b>Nepoužívejte <code>reduce</code></b> pro jednoduché operace — <code>map</code>, <code>filter</code>, <code>flat</code>, <code>Math.max</code> bývají čitelnější</li>
+  <li><b>Používejte <code>reduce</code></b> pro součty a skládání funkcí (pipe/compose)</li>
+  <li><b>Vždy uvádějte počáteční hodnotu</b> — bez ní <code>reduce</code> na prázdném poli vyhodí <code>TypeError</code></li>
 </ul>
 
 <h2 id="odkazy">Odkazy</h2>
