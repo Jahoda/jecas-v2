@@ -213,6 +213,11 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'CPU', title: 'Central Processing Unit' },
 	{ short: 'GPU', title: 'Graphics Processing Unit' },
 	{ short: 'RAM', title: 'Random Access Memory' },
+	{ short: 'SSD', title: 'Solid State Drive' },
+	{ short: 'HDD', title: 'Hard Disk Drive' },
+	{ short: 'USB', title: 'Universal Serial Bus' },
+	{ short: 'HDMI', title: 'High-Definition Multimedia Interface' },
+	{ short: 'UEFI', title: 'Unified Extensible Firmware Interface' },
 	{ short: 'GPS', title: 'Global Positioning System' },
 	{ short: 'NFC', title: 'Near Field Communication' },
 	{ short: 'WiFi', title: 'Wireless Fidelity' },
@@ -223,6 +228,20 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'GCP', title: 'Google Cloud Platform' },
 	{ short: 'VPS', title: 'Virtual Private Server' },
 
+	// Business
+	{ short: 'B2B', title: 'Business to Business' },
+	{ short: 'B2C', title: 'Business to Consumer' },
+	{ short: 'CRM', title: 'Customer Relationship Management' },
+	{ short: 'ERP', title: 'Enterprise Resource Planning' },
+	{ short: 'SLA', title: 'Service Level Agreement' },
+	{ short: 'ROI', title: 'Return on Investment' },
+	{ short: 'KPI', title: 'Key Performance Indicator' },
+
+	// Zabezpečení formulářů
+	{ short: 'CAPTCHA', title: 'Completely Automated Public Turing test' },
+	{ short: 'OTP', title: 'One-Time Password' },
+	{ short: 'PIN', title: 'Personal Identification Number' },
+
 	// Ostatní
 	{ short: 'QR', title: 'Quick Response' },
 	{ short: 'OCR', title: 'Optical Character Recognition' },
@@ -232,7 +251,12 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'TLD', title: 'Top Level Domain' },
 	{ short: 'AI', title: 'Artificial Intelligence' },
 	{ short: 'SOAP', title: 'Simple Object Access Protocol' },
-	{ short: 'LDAP', title: 'Lightweight Directory Access Protocol' }
+	{ short: 'LDAP', title: 'Lightweight Directory Access Protocol' },
+	{ short: 'SDK', title: 'Software Development Kit' },
+	{ short: 'FAQ', title: 'Frequently Asked Questions' },
+	{ short: 'WIP', title: 'Work in Progress' },
+	{ short: 'EOL', title: 'End of Life' },
+	{ short: 'LTS', title: 'Long Term Support' }
 ];
 
 // Seřadit od nejdelších po nejkratší, aby se "HTTPS" nahradilo dřív než "HTTP"
