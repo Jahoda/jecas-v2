@@ -17,6 +17,7 @@ export interface Abbreviation {
 export const abbreviations: Abbreviation[] = [
 	// Webové technologie
 	{ short: 'HTML', title: 'HyperText Markup Language' },
+	{ short: 'XHTML', title: 'eXtensible HyperText Markup Language' },
 	{ short: 'CSS', title: 'Cascading Style Sheets' },
 	{ short: 'JS', title: 'JavaScript' },
 	{ short: 'TS', title: 'TypeScript' },
@@ -43,10 +44,11 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'FOUT', title: 'Flash of Unstyled Text' },
 	{ short: 'FOIT', title: 'Flash of Invisible Text' },
 
-	// CSS preprocesory
+	// CSS preprocesory a metodologie
 	{ short: 'SASS', title: 'Syntactically Awesome Style Sheets' },
 	{ short: 'SCSS', title: 'Sassy CSS' },
 	{ short: 'LESS', title: 'Leaner Style Sheets' },
+	{ short: 'BEM', title: 'Block, Element, Modifier' },
 
 	// Obrázky a média
 	{ short: 'PNG', title: 'Portable Network Graphics' },
@@ -72,8 +74,13 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'MP4', title: 'MPEG-4 Part 14' },
 	{ short: 'WebM', title: 'WebM Video Format' },
 	{ short: 'AV1', title: 'AOMedia Video 1' },
+	{ short: 'VP9', title: 'VP9 Video Codec' },
 	{ short: 'HEVC', title: 'High Efficiency Video Coding' },
+	{ short: 'HLS', title: 'HTTP Live Streaming' },
+	{ short: 'HDR', title: 'High Dynamic Range' },
 	{ short: 'FPS', title: 'Frames Per Second' },
+	{ short: 'FLV', title: 'Flash Video' },
+	{ short: 'SWF', title: 'Shockwave Flash' },
 	{ short: 'WebGL', title: 'Web Graphics Library' },
 	{ short: 'WebRTC', title: 'Web Real-Time Communication' },
 
@@ -129,6 +136,7 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'OAuth', title: 'Open Authorization' },
 	{ short: 'WCAG', title: 'Web Content Accessibility Guidelines' },
 	{ short: 'W3C', title: 'World Wide Web Consortium' },
+	{ short: 'WHATWG', title: 'Web Hypertext Application Technology Working Group' },
 	{ short: 'RFC', title: 'Request for Comments' },
 	{ short: 'UTF', title: 'Unicode Transformation Format' },
 	{ short: 'ASCII', title: 'American Standard Code for Information Interchange' },
@@ -157,8 +165,11 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'KISS', title: 'Keep It Simple, Stupid' },
 	{ short: 'CI', title: 'Continuous Integration' },
 	{ short: 'CD', title: 'Continuous Deployment' },
+	{ short: 'TDD', title: 'Test Driven Development' },
+	{ short: 'QA', title: 'Quality Assurance' },
 	{ short: 'MD', title: 'Markdown' },
 	{ short: 'RegEx', title: 'Regular Expression' },
+	{ short: 'AST', title: 'Abstract Syntax Tree' },
 	{ short: 'ES6', title: 'ECMAScript 2015' },
 	{ short: 'ESM', title: 'ECMAScript Modules' },
 	{ short: 'CJS', title: 'CommonJS Modules' },
@@ -199,10 +210,18 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'KML', title: 'Keyhole Markup Language' },
 
 	// Hardware a mobilní
+	{ short: 'CPU', title: 'Central Processing Unit' },
+	{ short: 'GPU', title: 'Graphics Processing Unit' },
+	{ short: 'RAM', title: 'Random Access Memory' },
 	{ short: 'GPS', title: 'Global Positioning System' },
 	{ short: 'NFC', title: 'Near Field Communication' },
 	{ short: 'WiFi', title: 'Wireless Fidelity' },
 	{ short: 'LTE', title: 'Long-Term Evolution' },
+
+	// Cloud
+	{ short: 'AWS', title: 'Amazon Web Services' },
+	{ short: 'GCP', title: 'Google Cloud Platform' },
+	{ short: 'VPS', title: 'Virtual Private Server' },
 
 	// Ostatní
 	{ short: 'QR', title: 'Quick Response' },
