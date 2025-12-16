@@ -5,26 +5,30 @@
 	import Box from '$lib/box/Box.svelte';
 	import MainPost from '$lib/mainPost/MainPost.svelte';
 
-	const title = 'Kalkulačka denní / měsíční / roční sazby';
+	const title = 'Kalkulačka hodinové / denní / měsíční / roční sazby';
 	const description =
-		'Přepočítej mezi denní, měsíční a roční sazbou. Zohledni státní svátky, dovolenou a další volné dny.';
+		'Přepočítej mezi hodinovou, denní, měsíční a roční sazbou. Zohledni státní svátky, dovolenou a další volné dny.';
 
 	// State
 	let year = $state(new Date().getFullYear());
+	let hoursPerDay = $state(8);
+	let hourlyRate = $state(625);
 	let dailyRate = $state(5000);
 	let monthlyRate = $state(0);
 	let yearlyRate = $state(0);
 	let vacationDays = $state(25);
 	let billableHolidays = $state(false);
 	let billableVacation = $state(false);
-	let lastEdited = $state<'daily' | 'monthly' | 'yearly'>('daily');
+	let lastEdited = $state<'hourly' | 'daily' | 'monthly' | 'yearly'>('daily');
 	let initialized = $state(false);
 
 	// Textové hodnoty pro inputy (umožňují psát výrazy)
+	let hourlyRateInput = $state('625');
 	let dailyRateInput = $state('5000');
 	let monthlyRateInput = $state('0');
 	let yearlyRateInput = $state('0');
 	let vacationDaysInput = $state('25');
+	let hoursPerDayInput = $state('8');
 
 	// Bezpečné vyhodnocení matematického výrazu
 	function evaluateExpression(expr: string): number | null {
@@ -47,6 +51,7 @@
 
 	// Synchronizace textových inputů s číselnými hodnotami
 	function syncInputs() {
+		hourlyRateInput = hourlyRate.toString();
 		dailyRateInput = dailyRate.toString();
 		monthlyRateInput = monthlyRate.toString();
 		yearlyRateInput = yearlyRate.toString();
@@ -173,8 +178,17 @@
 	);
 
 	// Přepočet sazeb (bez sync - pro živé vyhodnocování)
+	function recalculateFromHourly(hourly: number, sync = true) {
+		hourlyRate = hourly;
+		dailyRate = Math.round(hourly * hoursPerDay);
+		monthlyRate = Math.round((dailyRate * billableDays) / 12);
+		yearlyRate = Math.round(dailyRate * billableDays);
+		if (sync) syncInputs();
+	}
+
 	function recalculateFromDaily(daily: number, sync = true) {
 		dailyRate = daily;
+		hourlyRate = Math.round(daily / hoursPerDay);
 		monthlyRate = Math.round((daily * billableDays) / 12);
 		yearlyRate = Math.round(daily * billableDays);
 		if (sync) syncInputs();
@@ -183,6 +197,7 @@
 	function recalculateFromMonthly(monthly: number, sync = true) {
 		monthlyRate = monthly;
 		dailyRate = Math.round((monthly * 12) / billableDays);
+		hourlyRate = Math.round(dailyRate / hoursPerDay);
 		yearlyRate = monthly * 12;
 		if (sync) syncInputs();
 	}
@@ -190,20 +205,40 @@
 	function recalculateFromYearly(yearly: number, sync = true) {
 		yearlyRate = yearly;
 		dailyRate = Math.round(yearly / billableDays);
+		hourlyRate = Math.round(dailyRate / hoursPerDay);
 		monthlyRate = Math.round(yearly / 12);
 		if (sync) syncInputs();
 	}
 
 	// Živé vyhodnocování při psaní (nepřepisuje aktivní input)
+	function onHourlyInput() {
+		if (!initialized) return;
+		const result = evaluateExpression(hourlyRateInput);
+		if (result !== null && result >= 0) {
+			lastEdited = 'hourly';
+			hourlyRate = result;
+			dailyRate = Math.round(result * hoursPerDay);
+			monthlyRate = Math.round((dailyRate * billableDays) / 12);
+			yearlyRate = Math.round(dailyRate * billableDays);
+			// Sync jen ostatní inputy
+			dailyRateInput = dailyRate.toString();
+			monthlyRateInput = monthlyRate.toString();
+			yearlyRateInput = yearlyRate.toString();
+			updateUrl();
+		}
+	}
+
 	function onDailyInput() {
 		if (!initialized) return;
 		const result = evaluateExpression(dailyRateInput);
 		if (result !== null && result >= 0) {
 			lastEdited = 'daily';
 			dailyRate = result;
+			hourlyRate = Math.round(result / hoursPerDay);
 			monthlyRate = Math.round((result * billableDays) / 12);
 			yearlyRate = Math.round(result * billableDays);
 			// Sync jen ostatní inputy, ne aktivní
+			hourlyRateInput = hourlyRate.toString();
 			monthlyRateInput = monthlyRate.toString();
 			yearlyRateInput = yearlyRate.toString();
 			updateUrl();
@@ -217,8 +252,10 @@
 			lastEdited = 'monthly';
 			monthlyRate = result;
 			dailyRate = Math.round((result * 12) / billableDays);
+			hourlyRate = Math.round(dailyRate / hoursPerDay);
 			yearlyRate = result * 12;
 			// Sync jen ostatní inputy
+			hourlyRateInput = hourlyRate.toString();
 			dailyRateInput = dailyRate.toString();
 			yearlyRateInput = yearlyRate.toString();
 			updateUrl();
@@ -232,8 +269,10 @@
 			lastEdited = 'yearly';
 			yearlyRate = result;
 			dailyRate = Math.round(result / billableDays);
+			hourlyRate = Math.round(dailyRate / hoursPerDay);
 			monthlyRate = Math.round(result / 12);
 			// Sync jen ostatní inputy
+			hourlyRateInput = hourlyRate.toString();
 			dailyRateInput = dailyRate.toString();
 			monthlyRateInput = monthlyRate.toString();
 			updateUrl();
@@ -249,9 +288,20 @@
 		}
 	}
 
+	function onHoursPerDayInput() {
+		if (!initialized) return;
+		const result = evaluateExpression(hoursPerDayInput);
+		if (result !== null && result > 0 && result <= 24) {
+			hoursPerDay = result;
+			handleSettingsChange();
+		}
+	}
+
 	// Finalizace při opuštění pole (přepíše input na výsledek)
-	function finalizeInput(inputType: 'daily' | 'monthly' | 'yearly' | 'vacation') {
-		if (inputType === 'daily') {
+	function finalizeInput(inputType: 'hourly' | 'daily' | 'monthly' | 'yearly' | 'vacation' | 'hoursPerDay') {
+		if (inputType === 'hourly') {
+			hourlyRateInput = hourlyRate.toString();
+		} else if (inputType === 'daily') {
 			dailyRateInput = dailyRate.toString();
 		} else if (inputType === 'monthly') {
 			monthlyRateInput = monthlyRate.toString();
@@ -259,13 +309,17 @@
 			yearlyRateInput = yearlyRate.toString();
 		} else if (inputType === 'vacation') {
 			vacationDaysInput = vacationDays.toString();
+		} else if (inputType === 'hoursPerDay') {
+			hoursPerDayInput = hoursPerDay.toString();
 		}
 	}
 
 	function handleSettingsChange() {
 		if (!initialized) return;
 		// Přepočítej podle posledně editované hodnoty
-		if (lastEdited === 'daily') {
+		if (lastEdited === 'hourly') {
+			recalculateFromHourly(hourlyRate);
+		} else if (lastEdited === 'daily') {
 			recalculateFromDaily(dailyRate);
 		} else if (lastEdited === 'monthly') {
 			recalculateFromMonthly(monthlyRate);
@@ -281,6 +335,7 @@
 
 		const params = new URLSearchParams();
 		params.set('rok', year.toString());
+		params.set('hodiny', hoursPerDay.toString());
 		params.set('denni', dailyRate.toString());
 		params.set('dovolena', vacationDays.toString());
 		params.set('fakturovat_svatky', billableHolidays ? '1' : '0');
@@ -294,12 +349,17 @@
 		const params = new URLSearchParams(window.location.search);
 
 		const urlYear = params.get('rok');
+		const urlHours = params.get('hodiny');
 		const urlDaily = params.get('denni');
 		const urlVacation = params.get('dovolena');
 		const urlBillableHolidays = params.get('fakturovat_svatky');
 		const urlBillableVacation = params.get('fakturovat_dovolenou');
 
 		if (urlYear) year = parseInt(urlYear);
+		if (urlHours) {
+			hoursPerDay = parseInt(urlHours);
+			hoursPerDayInput = urlHours;
+		}
 		if (urlVacation) {
 			vacationDays = parseInt(urlVacation);
 			vacationDaysInput = urlVacation;
@@ -362,6 +422,23 @@
 		<div class="mt-4"></div>
 
 		<div>
+			<label for="hoursPerDay">Hodin denně</label>
+			<div class="mt-1"></div>
+			<input
+				type="text"
+				inputmode="numeric"
+				id="hoursPerDay"
+				name="hoursPerDay"
+				bind:value={hoursPerDayInput}
+				oninput={onHoursPerDayInput}
+				onblur={() => finalizeInput('hoursPerDay')}
+				class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
+				placeholder="např. 8"
+			/>
+		</div>
+		<div class="mt-4"></div>
+
+		<div>
 			<label for="vacation">Dny dovolené / volna</label>
 			<div class="mt-1"></div>
 			<input
@@ -378,7 +455,7 @@
 		</div>
 		<div class="mt-4"></div>
 
-		<div class="mt-4 space-y-3">
+		<div class="space-y-3">
 			<label class="flex cursor-pointer items-center gap-3">
 				<input
 					type="checkbox"
@@ -432,7 +509,26 @@
 	<Box>
 		<h2 class="mb-4 text-lg font-semibold">Sazby</h2>
 
-		<div class="grid gap-6 md:grid-cols-3">
+		<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+			<div>
+				<label for="hourly">Hodinová sazba (Kč)</label>
+				<div class="mt-1"></div>
+				<input
+					type="text"
+					inputmode="numeric"
+					id="hourly"
+					name="hourly"
+					bind:value={hourlyRateInput}
+					oninput={onHourlyInput}
+					onblur={() => finalizeInput('hourly')}
+					class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
+					placeholder="např. 600+25"
+				/>
+				<p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+					{formatNumber(hourlyRate)} Kč / hod
+				</p>
+			</div>
+
 			<div>
 				<label for="daily">Denní sazba (Kč)</label>
 				<div class="mt-1"></div>
