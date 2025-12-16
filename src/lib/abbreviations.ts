@@ -18,6 +18,8 @@ export const abbreviations: Abbreviation[] = [
 	// Webové technologie
 	{ short: 'HTML', title: 'HyperText Markup Language' },
 	{ short: 'XHTML', title: 'eXtensible HyperText Markup Language' },
+	{ short: 'SGML', title: 'Standard Generalized Markup Language' },
+	{ short: 'DTD', title: 'Document Type Definition' },
 	{ short: 'CSS', title: 'Cascading Style Sheets' },
 	{ short: 'JS', title: 'JavaScript' },
 	{ short: 'TS', title: 'TypeScript' },
