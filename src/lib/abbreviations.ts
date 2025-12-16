@@ -265,7 +265,14 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'FAQ', title: 'Frequently Asked Questions' },
 	{ short: 'WIP', title: 'Work in Progress' },
 	{ short: 'EOL', title: 'End of Life' },
-	{ short: 'LTS', title: 'Long Term Support' }
+	{ short: 'LTS', title: 'Long Term Support' },
+
+	// České zkratky
+	{ short: 'IČO', title: 'Identifikační číslo osoby' },
+	{ short: 'DIČ', title: 'Daňové identifikační číslo' },
+	{ short: 'DPH', title: 'Daň z přidané hodnoty' },
+	{ short: 'ARES', title: 'Administrativní registr ekonomických subjektů' },
+	{ short: 'IBAN', title: 'International Bank Account Number' }
 ];
 
 // Seřadit od nejdelších po nejkratší, aby se "HTTPS" nahradilo dřív než "HTTP"
