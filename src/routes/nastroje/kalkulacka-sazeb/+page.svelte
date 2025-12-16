@@ -20,6 +20,38 @@
 	let lastEdited = $state<'daily' | 'monthly' | 'yearly'>('daily');
 	let initialized = $state(false);
 
+	// Textové hodnoty pro inputy (umožňují psát výrazy)
+	let dailyRateInput = $state('5000');
+	let monthlyRateInput = $state('0');
+	let yearlyRateInput = $state('0');
+	let vacationDaysInput = $state('25');
+
+	// Bezpečné vyhodnocení matematického výrazu
+	function evaluateExpression(expr: string): number | null {
+		// Povol pouze čísla, operátory a závorky
+		const sanitized = expr.replace(/\s/g, '').replace(/,/g, '.');
+		if (!/^[\d+\-*/().]+$/.test(sanitized)) {
+			return null;
+		}
+		try {
+			// Použij Function místo eval pro lepší izolaci
+			const result = new Function(`return (${sanitized})`)();
+			if (typeof result === 'number' && !isNaN(result) && isFinite(result)) {
+				return Math.round(result);
+			}
+			return null;
+		} catch {
+			return null;
+		}
+	}
+
+	// Synchronizace textových inputů s číselnými hodnotami
+	function syncInputs() {
+		dailyRateInput = dailyRate.toString();
+		monthlyRateInput = monthlyRate.toString();
+		yearlyRateInput = yearlyRate.toString();
+	}
+
 	// Výpočet Velikonoční neděle (Computus algorithm)
 	function getEasterSunday(year: number): Date {
 		const a = year % 19;
@@ -142,40 +174,79 @@
 
 	// Přepočet sazeb
 	function recalculateFromDaily(daily: number) {
+		dailyRate = daily;
 		monthlyRate = Math.round((daily * billableDays) / 12);
 		yearlyRate = Math.round(daily * billableDays);
+		syncInputs();
 	}
 
 	function recalculateFromMonthly(monthly: number) {
+		monthlyRate = monthly;
 		dailyRate = Math.round((monthly * 12) / billableDays);
 		yearlyRate = monthly * 12;
+		syncInputs();
 	}
 
 	function recalculateFromYearly(yearly: number) {
+		yearlyRate = yearly;
 		dailyRate = Math.round(yearly / billableDays);
 		monthlyRate = Math.round(yearly / 12);
+		syncInputs();
 	}
 
-	// Handlery pro změnu hodnot
-	function handleDailyChange(value: number) {
+	// Handlery pro vyhodnocení výrazů (při blur nebo Enter)
+	function evaluateDaily() {
 		if (!initialized) return;
-		lastEdited = 'daily';
-		recalculateFromDaily(value);
-		updateUrl();
+		const result = evaluateExpression(dailyRateInput);
+		if (result !== null && result >= 0) {
+			lastEdited = 'daily';
+			recalculateFromDaily(result);
+			updateUrl();
+		} else {
+			dailyRateInput = dailyRate.toString();
+		}
 	}
 
-	function handleMonthlyChange(value: number) {
+	function evaluateMonthly() {
 		if (!initialized) return;
-		lastEdited = 'monthly';
-		recalculateFromMonthly(value);
-		updateUrl();
+		const result = evaluateExpression(monthlyRateInput);
+		if (result !== null && result >= 0) {
+			lastEdited = 'monthly';
+			recalculateFromMonthly(result);
+			updateUrl();
+		} else {
+			monthlyRateInput = monthlyRate.toString();
+		}
 	}
 
-	function handleYearlyChange(value: number) {
+	function evaluateYearly() {
 		if (!initialized) return;
-		lastEdited = 'yearly';
-		recalculateFromYearly(value);
-		updateUrl();
+		const result = evaluateExpression(yearlyRateInput);
+		if (result !== null && result >= 0) {
+			lastEdited = 'yearly';
+			recalculateFromYearly(result);
+			updateUrl();
+		} else {
+			yearlyRateInput = yearlyRate.toString();
+		}
+	}
+
+	function evaluateVacation() {
+		if (!initialized) return;
+		const result = evaluateExpression(vacationDaysInput);
+		if (result !== null && result >= 0 && result <= 365) {
+			vacationDays = result;
+			vacationDaysInput = result.toString();
+			handleSettingsChange();
+		} else {
+			vacationDaysInput = vacationDays.toString();
+		}
+	}
+
+	function handleKeyDown(e: KeyboardEvent, evaluateFn: () => void) {
+		if (e.key === 'Enter') {
+			evaluateFn();
+		}
 	}
 
 	function handleSettingsChange() {
@@ -216,7 +287,10 @@
 		const urlBillableVacation = params.get('fakturovat_dovolenou');
 
 		if (urlYear) year = parseInt(urlYear);
-		if (urlVacation) vacationDays = parseInt(urlVacation);
+		if (urlVacation) {
+			vacationDays = parseInt(urlVacation);
+			vacationDaysInput = urlVacation;
+		}
 		if (urlBillableHolidays) billableHolidays = urlBillableHolidays === '1';
 		if (urlBillableVacation) billableVacation = urlBillableVacation === '1';
 
@@ -278,14 +352,15 @@
 			<label for="vacation">Dny dovolené / volna</label>
 			<div class="mt-1"></div>
 			<input
-				type="number"
+				type="text"
+				inputmode="numeric"
 				id="vacation"
 				name="vacation"
-				bind:value={vacationDays}
-				min={0}
-				max={365}
-				oninput={handleSettingsChange}
+				bind:value={vacationDaysInput}
+				onblur={evaluateVacation}
+				onkeydown={(e: KeyboardEvent) => handleKeyDown(e, evaluateVacation)}
 				class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
+				placeholder="např. 20+5"
 			/>
 		</div>
 		<div class="mt-4"></div>
@@ -349,13 +424,15 @@
 				<label for="daily">Denní sazba (Kč)</label>
 				<div class="mt-1"></div>
 				<input
-					type="number"
+					type="text"
+					inputmode="numeric"
 					id="daily"
 					name="daily"
-					bind:value={dailyRate}
-					min={0}
-					oninput={(e: Event) => handleDailyChange(parseInt((e.currentTarget as HTMLInputElement).value) || 0)}
+					bind:value={dailyRateInput}
+					onblur={evaluateDaily}
+					onkeydown={(e: KeyboardEvent) => handleKeyDown(e, evaluateDaily)}
 					class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
+					placeholder="např. 5000+500"
 				/>
 				<p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
 					{formatNumber(dailyRate)} Kč / den
@@ -366,13 +443,15 @@
 				<label for="monthly">Měsíční sazba (Kč)</label>
 				<div class="mt-1"></div>
 				<input
-					type="number"
+					type="text"
+					inputmode="numeric"
 					id="monthly"
 					name="monthly"
-					bind:value={monthlyRate}
-					min={0}
-					oninput={(e: Event) => handleMonthlyChange(parseInt((e.currentTarget as HTMLInputElement).value) || 0)}
+					bind:value={monthlyRateInput}
+					onblur={evaluateMonthly}
+					onkeydown={(e: KeyboardEvent) => handleKeyDown(e, evaluateMonthly)}
 					class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
+					placeholder="např. 100000*1.1"
 				/>
 				<p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
 					{formatNumber(monthlyRate)} Kč / měsíc
@@ -383,13 +462,15 @@
 				<label for="yearly">Roční sazba (Kč)</label>
 				<div class="mt-1"></div>
 				<input
-					type="number"
+					type="text"
+					inputmode="numeric"
 					id="yearly"
 					name="yearly"
-					bind:value={yearlyRate}
-					min={0}
-					oninput={(e: Event) => handleYearlyChange(parseInt((e.currentTarget as HTMLInputElement).value) || 0)}
+					bind:value={yearlyRateInput}
+					onblur={evaluateYearly}
+					onkeydown={(e: KeyboardEvent) => handleKeyDown(e, evaluateYearly)}
 					class="w-full rounded-md border border-slate-300 px-4 py-2 shadow dark:border-slate-700 dark:bg-slate-600"
+					placeholder="např. 1000000+200000"
 				/>
 				<p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
 					{formatNumber(yearlyRate)} Kč / rok
