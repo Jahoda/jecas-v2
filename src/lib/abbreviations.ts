@@ -58,6 +58,24 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'APNG', title: 'Animated PNG' },
 	{ short: 'HEIC', title: 'High Efficiency Image Container' },
 	{ short: 'EXIF', title: 'Exchangeable Image File Format' },
+	{ short: 'RGBA', title: 'Red, Green, Blue, Alpha' },
+	{ short: 'DPI', title: 'Dots Per Inch' },
+
+	// Audio formáty
+	{ short: 'MP3', title: 'MPEG-1 Audio Layer III' },
+	{ short: 'AAC', title: 'Advanced Audio Coding' },
+	{ short: 'OGG', title: 'Ogg Vorbis' },
+	{ short: 'WAV', title: 'Waveform Audio File Format' },
+	{ short: 'FLAC', title: 'Free Lossless Audio Codec' },
+
+	// Video formáty
+	{ short: 'MP4', title: 'MPEG-4 Part 14' },
+	{ short: 'WebM', title: 'WebM Video Format' },
+	{ short: 'AV1', title: 'AOMedia Video 1' },
+	{ short: 'HEVC', title: 'High Efficiency Video Coding' },
+	{ short: 'FPS', title: 'Frames Per Second' },
+	{ short: 'WebGL', title: 'Web Graphics Library' },
+	{ short: 'WebRTC', title: 'Web Real-Time Communication' },
 
 	// Fonty
 	{ short: 'WOFF', title: 'Web Open Font Format' },
@@ -81,8 +99,14 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'GUI', title: 'Graphical User Interface' },
 	{ short: 'IDE', title: 'Integrated Development Environment' },
 	{ short: 'FTP', title: 'File Transfer Protocol' },
+	{ short: 'SFTP', title: 'SSH File Transfer Protocol' },
 	{ short: 'SSH', title: 'Secure Shell' },
 	{ short: 'DNS', title: 'Domain Name System' },
+	{ short: 'TCP', title: 'Transmission Control Protocol' },
+	{ short: 'UDP', title: 'User Datagram Protocol' },
+	{ short: 'IP', title: 'Internet Protocol' },
+	{ short: 'SMTP', title: 'Simple Mail Transfer Protocol' },
+	{ short: 'IMAP', title: 'Internet Message Access Protocol' },
 	{ short: 'CDN', title: 'Content Delivery Network' },
 	{ short: 'CMS', title: 'Content Management System' },
 	{ short: 'CORS', title: 'Cross-Origin Resource Sharing' },
@@ -110,6 +134,8 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'RSA', title: 'Rivest–Shamir–Adleman' },
 	{ short: 'SHA', title: 'Secure Hash Algorithm' },
 	{ short: 'MD5', title: 'Message Digest 5' },
+	{ short: 'CSP', title: 'Content Security Policy' },
+	{ short: 'HSTS', title: 'HTTP Strict Transport Security' },
 
 	// Programování
 	{ short: 'OOP', title: 'Object-Oriented Programming' },
@@ -158,10 +184,17 @@ export const abbreviations: Abbreviation[] = [
 	{ short: 'GPX', title: 'GPS Exchange Format' },
 	{ short: 'KML', title: 'Keyhole Markup Language' },
 
+	// Hardware a mobilní
+	{ short: 'GPS', title: 'Global Positioning System' },
+	{ short: 'NFC', title: 'Near Field Communication' },
+	{ short: 'WiFi', title: 'Wireless Fidelity' },
+	{ short: 'LTE', title: 'Long-Term Evolution' },
+
 	// Ostatní
 	{ short: 'QR', title: 'Quick Response' },
 	{ short: 'OCR', title: 'Optical Character Recognition' },
-	{ short: 'SMS', title: 'Short Message Service' }
+	{ short: 'SMS', title: 'Short Message Service' },
+	{ short: 'ISP', title: 'Internet Service Provider' }
 ];
 
 // Seřadit od nejdelších po nejkratší, aby se "HTTPS" nahradilo dřív než "HTTP"
