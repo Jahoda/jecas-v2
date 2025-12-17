@@ -289,25 +289,55 @@ function escapeRegex(str: string): string {
  * Nahradí první výskyt každé zkratky v HTML obsahu tagem <abbr>.
  *
  * - Nahrazuje pouze první výskyt každé zkratky
- * - Přeskakuje zkratky uvnitř HTML tagů a atributů
+ * - Přeskakuje zkratky uvnitř <script>, <style>, <pre>, <code>, <samp>, <kbd> tagů
+ * - Přeskakuje zkratky uvnitř HTML atributů
  * - Přeskakuje zkratky již obalené v <abbr>
  * - Respektuje hranice slov
  */
 export function processAbbreviations(html: string): string {
+	// Tagy, ve kterých se nemá nahrazovat
+	const protectedTags = ['script', 'style', 'pre', 'code', 'samp', 'kbd', 'abbr'];
+
+	// Placeholder prefix pro ochranné tokeny
+	const placeholder = '\x00PROTECTED_';
+	const protectedChunks: string[] = [];
+
 	let result = html;
 
-	for (const abbr of sortedAbbreviations) {
-		// Regex pro nalezení zkratky:
-		// - (?<!<[^>]*) - není uvnitř HTML tagu
-		// - (?<![a-zA-Z]) - není součástí delšího slova (před)
-		// - (?![a-zA-Z]) - není součástí delšího slova (za)
-		// - (?![^<]*<\/abbr>) - není už uvnitř <abbr> tagu
-		const pattern = new RegExp(
-			`(?<!<[^>]*)(?<![a-zA-Z])${escapeRegex(abbr.short)}(?![a-zA-Z])(?![^<]*<\\/abbr>)`,
-			'm' // pouze první výskyt (bez 'g' flagu)
-		);
+	// 1. Ochránit obsah speciálních tagů
+	for (const tag of protectedTags) {
+		const tagPattern = new RegExp(`<${tag}[^>]*>[\\s\\S]*?<\\/${tag}>`, 'gi');
+		result = result.replace(tagPattern, (match) => {
+			const index = protectedChunks.length;
+			protectedChunks.push(match);
+			return `${placeholder}${index}\x00`;
+		});
+	}
 
+	// 2. Ochránit obsah HTML atributů (="..." nebo ='...')
+	result = result.replace(/(?<==)(["'])([\s\S]*?)\1/g, (match) => {
+		const index = protectedChunks.length;
+		protectedChunks.push(match);
+		return `${placeholder}${index}\x00`;
+	});
+
+	// 3. Ochránit samotné HTML tagy (otevírací i uzavírací)
+	result = result.replace(/<[^>]+>/g, (match) => {
+		const index = protectedChunks.length;
+		protectedChunks.push(match);
+		return `${placeholder}${index}\x00`;
+	});
+
+	// 4. Aplikovat náhrady zkratek
+	for (const abbr of sortedAbbreviations) {
+		// Respektovat hranice slov (nesmí být součástí delšího slova)
+		const pattern = new RegExp(`(?<![a-zA-Z0-9])${escapeRegex(abbr.short)}(?![a-zA-Z0-9])`, 'm');
 		result = result.replace(pattern, `<abbr title="${abbr.title}">${abbr.short}</abbr>`);
+	}
+
+	// 5. Obnovit chráněný obsah
+	for (let i = protectedChunks.length - 1; i >= 0; i--) {
+		result = result.replace(`${placeholder}${i}\x00`, protectedChunks[i]);
 	}
 
 	return result;
