@@ -435,6 +435,11 @@ dialog:not([open]) {
         transform 0.25s ease-out,
         display 0.25s allow-discrete,
         overlay 0.25s allow-discrete;
+      /* Centrování */
+      inset: 0;
+      margin: auto;
+      width: fit-content;
+      height: fit-content;
     }
 
     .popover-demo:popover-open {
@@ -472,6 +477,11 @@ dialog:not([open]) {
         transform 0.3s ease-out,
         display 0.3s allow-discrete,
         overlay 0.3s allow-discrete;
+      /* Centrování */
+      inset: 0;
+      margin: auto;
+      width: fit-content;
+      height: fit-content;
     }
 
     .animated-dialog[open] {
@@ -508,6 +518,73 @@ dialog:not([open]) {
     <button onclick="this.closest('dialog').close()">Zavřít</button>
   </dialog>
 </div>
+
+<h2 id="drive">Jak se to řešilo dříve</h2>
+
+<p>Před <code>@starting-style</code> existovalo několik workaroundů:</p>
+
+<h3>1. @keyframes animace</h3>
+
+<p>Nejběžnější řešení — definovat animaci s explicitním počátkem:</p>
+
+<pre><code>@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.element {
+  animation: fadeIn 0.3s ease-out;
+}</code></pre>
+
+<p><b>Nevýhody:</b></p>
+<ul>
+  <li>Animace běží vždy, i když element už byl viditelný</li>
+  <li>Pro exit animaci potřebujete další keyframes a JavaScript</li>
+  <li>Složitější správa stavů</li>
+</ul>
+
+<h3>2. JavaScript s requestAnimationFrame</h3>
+
+<p>Přidání třídy až po vykreslení:</p>
+
+<pre><code>element.style.display = 'block';
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    element.classList.add('is-visible');
+  });
+});
+</code></pre>
+
+<p>Dvojité <code>requestAnimationFrame</code> zajistí, že prohlížeč stihne vykreslit počáteční stav před přidáním třídy.</p>
+
+<h3>3. setTimeout hack</h3>
+
+<pre><code>element.style.display = 'block';
+setTimeout(() => {
+  element.classList.add('is-visible');
+}, 10);</code></pre>
+
+<p><b>Nevýhody:</b></p>
+<ul>
+  <li>Nespolehlivé — závisí na rychlosti prohlížeče</li>
+  <li>Může způsobit probliknutí</li>
+  <li>Není deklarativní</li>
+</ul>
+
+<h3>Proč je @starting-style lepší</h3>
+
+<ul>
+  <li><b>Čistě v CSS</b> — žádný JavaScript</li>
+  <li><b>Deklarativní</b> — jasně říká "toto je počáteční stav"</li>
+  <li><b>Spolehlivé</b> — prohlížeč garantuje správné pořadí</li>
+  <li><b>Funguje s display</b> — díky <code>allow-discrete</code></li>
+</ul>
 
 <h2 id="rozdil">Rozdíl oproti @keyframes</h2>
 
