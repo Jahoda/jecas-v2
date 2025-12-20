@@ -99,6 +99,11 @@ dialog:not([open]) {
         transform: translateY(-20px);
       }
     }
+
+    .starting-demo:not(.is-visible) {
+      opacity: 0;
+      transform: translateY(20px);
+    }
   </style>
   <button onclick="document.querySelector('.starting-demo').classList.toggle('is-visible')">Zobrazit / Skrýt</button>
   <div class="starting-demo">Animovaný element</div>
@@ -255,6 +260,11 @@ dialog:not([open]) {
       }
     }
 
+    .card-demo:not(.is-visible) {
+      opacity: 0;
+      transform: scale(0.8) rotateX(15deg);
+    }
+
     .card-demo h3 {
       margin: 0 0 0.5em;
       color: #333;
@@ -312,6 +322,16 @@ dialog:not([open]) {
     .list-demo.is-visible li:nth-child(2) { transition-delay: 0.1s; }
     .list-demo.is-visible li:nth-child(3) { transition-delay: 0.2s; }
     .list-demo.is-visible li:nth-child(4) { transition-delay: 0.3s; }
+
+    .list-demo:not(.is-visible) li {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+
+    .list-demo:not(.is-visible) li:nth-child(1) { transition-delay: 0.3s; }
+    .list-demo:not(.is-visible) li:nth-child(2) { transition-delay: 0.2s; }
+    .list-demo:not(.is-visible) li:nth-child(3) { transition-delay: 0.1s; }
+    .list-demo:not(.is-visible) li:nth-child(4) { transition-delay: 0s; }
   </style>
   <button onclick="document.querySelector('.list-demo').classList.toggle('is-visible')">Zobrazit / Skrýt seznam</button>
   <ul class="list-demo">
@@ -321,6 +341,34 @@ dialog:not([open]) {
     <li>Čtvrtá položka</li>
   </ul>
 </div>
+
+<h2 id="exit">Zpětná animace (exit)</h2>
+
+<p>Pravidlo <code>@starting-style</code> definuje jen <b>vstupní stav</b>. Pro animaci při skrytí musíte definovat <b>výstupní stav</b> pomocí selektoru:</p>
+
+<pre><code>.element {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s, display 0.3s allow-discrete;
+}
+
+/* Vstupní animace */
+.element.is-visible {
+  display: block;
+
+  @starting-style {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Výstupní animace */
+.element:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(20px);
+}</code></pre>
+
+<p>Prohlížeč animuje přechod <b>do</b> stavu <code>:not(.is-visible)</code>. Vlastnost <code>display</code> se přepne <b>na konci</b> animace, takže element zůstane viditelný po celou dobu přechodu.</p>
 
 <h2 id="display">Animace vlastnosti display</h2>
 
