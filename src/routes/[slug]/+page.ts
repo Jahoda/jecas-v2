@@ -16,5 +16,5 @@ export const entries: EntryGenerator = async () => {
 	const postEntries = posts.map((post) => ({ slug: post.url_slug }));
 	const tagEntries = tags.map((tag) => ({ slug: tag.url_slug }));
 
-	return [...postEntries, ...tagEntries, { slug: 'kontakt' }];
+	return [{ slug: 'kontakt' }, ...postEntries, ...tagEntries];
 };
