@@ -230,7 +230,7 @@ dialog:not([open]) {
 
 <h2 id="karta">Animovaná karta</h2>
 
-<p>Karta, která se při zobrazení "rozbalí":</p>
+<p>Karta, která se při zobrazení „rozbalí":</p>
 
 <div class="live">
   <style>
@@ -581,7 +581,7 @@ setTimeout(() => {
 
 <ul>
   <li><b>Čistě v CSS</b> — žádný JavaScript</li>
-  <li><b>Deklarativní</b> — jasně říká "toto je počáteční stav"</li>
+  <li><b>Deklarativní</b> — jasně říká „toto je počáteční stav"</li>
   <li><b>Spolehlivé</b> — prohlížeč garantuje správné pořadí</li>
   <li><b>Funguje s display</b> — díky <code>allow-discrete</code></li>
 </ul>
