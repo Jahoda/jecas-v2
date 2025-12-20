@@ -631,7 +631,7 @@ setTimeout(() => {
   <li><b>Firefox</b> od verze 129</li>
 </ul>
 
-<p>Pro starší prohlížeče element jednoduše nebude animovaný — zobrazí se okamžitě. To je přijatelný fallback.</p>
+<p>Pro starší prohlížeče element jednoduše nebude animovaný — zobrazí se okamžitě. Přijatelná degradace.</p>
 
 <h2 id="tipy">Tipy</h2>
 
