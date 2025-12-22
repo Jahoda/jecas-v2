@@ -125,6 +125,36 @@ function bezpecnePorovnejHash(a: string, b: string): boolean {
 
 <p><b>Poznámka:</b> XOR porovnání je constant-time, protože projde vždy všechny bajty bez ohledu na to, kde se hodnoty liší.</p>
 
+<h2 id="frontend">A co frontend?</h2>
+
+<p><b>Na frontendu timing attack prakticky nehrozí.</b> Důvody jsou dva:</p>
+
+<ol>
+  <li><b>Tajné hodnoty na frontend nepatří</b> — pokud máte API klíč nebo heslo v JavaScriptu prohlížeče, útočník ho najde ve zdrojovém kódu nebo DevTools během sekund. Timing attack je zbytečně složitý.</li>
+  <li><b>Útočník by útočil sám na sebe</b> — frontend kód běží v prohlížeči uživatele. Útočník by měřil čas operací ve svém vlastním prohlížeči, kde už má plný přístup ke všemu.</li>
+</ol>
+
+<p>Timing attack dává smysl pouze tam, kde:</p>
+
+<ul>
+  <li>Tajná hodnota je na <b>serveru</b> (útočník ji nezná)</li>
+  <li>Útočník může <b>opakovaně posílat requesty</b> a měřit čas odpovědi</li>
+</ul>
+
+<pre><code>// Backend (Node.js) — RIZIKO
+app.post("/api", (req, res) => {
+  if (req.headers["x-api-key"] === process.env.SECRET) {
+    // Útočník měří čas odpovědi a postupně uhodne SECRET
+  }
+});
+
+// Frontend (prohlížeč) — BEZ RIZIKA
+if (userInput === "nějaká hodnota") {
+  // Útočník vidí "nějaká hodnota" přímo ve zdrojovém kódu
+}</code></pre>
+
+<p>Sekce <a href="#prohlizec">Co v prohlížeči</a> výše je tedy relevantní hlavně pro <b>symetrické scénáře</b> — například když frontend i backend sdílí stejnou logiku (isomorphic JS) a chcete mít jednotný kód.</p>
+
 <h2 id="kdy-je-dulezite">Kdy na tom záleží</h2>
 
 <p>Constant-time porovnání je důležité při:</p>
