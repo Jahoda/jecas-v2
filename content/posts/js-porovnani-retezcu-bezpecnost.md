@@ -1,6 +1,6 @@
 ---
-title: "Proč JavaScript !== není bezpečné pro porovnávání tajných řetězců"
-headline: "Proč JavaScript <code>!==</code> není bezpečné pro porovnávání tajných řetězců"
+title: "Proč !== v JS není bezpečné pro porovnávání tajných řetězců"
+headline: "Proč <code>!==</code> v JS není bezpečné pro porovnávání tajných řetězců"
 description: "Operátor !== v JavaScriptu není constant-time. Při porovnávání hesel, tokenů nebo API klíčů to umožňuje timing attack."
 date: "2025-12-22"
 last_modification: "2025-12-22"
@@ -125,9 +125,7 @@ function bezpecnePorovnejHash(a: string, b: string): boolean {
 
 <p><b>Poznámka:</b> XOR porovnání je constant-time, protože projde vždy všechny bajty bez ohledu na to, kde se hodnoty liší.</p>
 
-<h2 id="frontend">A co frontend?</h2>
-
-<p><b>Na frontendu timing attack prakticky nehrozí.</b> Důvody jsou dva:</p>
+<p><b>Na frontendu ale timing attack prakticky nehrozí.</b> Důvody jsou dva:</p>
 
 <ol>
   <li><b>Tajné hodnoty na frontend nepatří</b> — pokud máte API klíč nebo heslo v JavaScriptu prohlížeče, útočník ho najde ve zdrojovém kódu nebo DevTools během sekund. Timing attack je zbytečně složitý.</li>
@@ -153,7 +151,7 @@ if (userInput === "nějaká hodnota") {
   // Útočník vidí "nějaká hodnota" přímo ve zdrojovém kódu
 }</code></pre>
 
-<p>Sekce <a href="#prohlizec">Co v prohlížeči</a> výše je tedy relevantní hlavně pro <b>symetrické scénáře</b> — například když frontend i backend sdílí stejnou logiku (isomorphic JS) a chcete mít jednotný kód.</p>
+<p>Kód výše je tedy relevantní hlavně pro hypotetické situace, když frontend i backend sdílí stejnou logiku a chcete mít jednotný kód.</p>
 
 <h2 id="kdy-je-dulezite">Kdy na tom záleží</h2>
 
@@ -175,18 +173,6 @@ if (userInput === "nějaká hodnota") {
   <li>Jednorázových tokenů s krátkým TTL a rate limitingem</li>
 </ul>
 
-<h2 id="frameworky">Jak to řeší frameworky</h2>
-
-<p>Většina bezpečnostních knihoven to řeší správně:</p>
-
-<ul>
-  <li><b>Express session</b> — používá constant-time porovnání pro session ID</li>
-  <li><b>Passport.js</b> — záleží na strategii, u vlastní implementace ověřte</li>
-  <li><b>bcrypt/argon2</b> — funkce pro porovnání hesel jsou constant-time</li>
-</ul>
-
-<p>Problém nastává, když implementujete vlastní ověřování a použijete <code>===</code>.</p>
-
 <h2 id="shrnuti">Shrnutí</h2>
 
 <ul>
@@ -200,6 +186,5 @@ if (userInput === "nějaká hodnota") {
 
 <ul>
   <li><a href="https://nodejs.org/api/crypto.html#cryptotimingsafeequala-b">Node.js: crypto.timingSafeEqual()</a></li>
-  <li><a href="https://codahale.com/a-lesson-in-timing-attacks/">A Lesson In Timing Attacks</a> — klasický článek od Coda Hale</li>
   <li><a href="https://en.wikipedia.org/wiki/Timing_attack">Wikipedia: Timing attack</a></li>
 </ul>
