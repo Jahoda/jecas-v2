@@ -9,7 +9,7 @@ tags: ["js", "zabezpeceni"]
 format: "html"
 ---
 
-<p>Operátory <code>===</code> a <code>!==</code> v JavaScriptu porovnávají řetězce <b>znak po znaku</b> a vrátí výsledek ihned, jakmile najdou rozdíl. To je efektivní, ale při porovnávání tajných hodnot (hesla, tokeny, API klíče) to představuje bezpečnostní riziko.</p>
+<p>Operátory <code>===</code> a <code>!==</code> v JavaScriptu porovnávají řetězce <b>znak po znaku</b> a vrátí výsledek ihned, jakmile najdou rozdíl. To je efektivní, ale při porovnávání tajných hodnot (hesla, tokeny, API klíče) to představuje bezpečnostní risiko.</p>
 
 <h2 id="problem">V čem je problém</h2>
 
@@ -55,7 +55,7 @@ format: "html"
 "XB..." → 0.2 ms
 "XX..." → 0.3 ms  ← druhý znak je správně!</code></pre>
 
-<p>U lokálního útoku stačí nanosekundové rozdíly. U síťového útoku je potřeba více pokusů pro statistickou analýzu, ale moderní techniky (např. analýza TCP timestampů) to umožňují i přes internet.</p>
+<p>U lokálního útoku stačí nanosekundové rozdíly. U síťového útoku je potřeba více pokusů pro statistickou analysu, ale moderní techniky (např. analysa TCP timestampů) to umožňují i přes internet.</p>
 
 <h2 id="reseni">Řešení: constant-time porovnání</h2>
 
@@ -100,7 +100,7 @@ function bezpecnePorovnejHash(a: string, b: string): boolean {
 
 <h2 id="prohlizec">Co v prohlížeči</h2>
 
-<p>V prohlížeči není <code>crypto.timingSafeEqual</code> k dispozici. Můžete použít Web Crypto API pro hashování:</p>
+<p>V prohlížeči není <code>crypto.timingSafeEqual</code> k disposici. Můžete použít Web Crypto API pro hashování:</p>
 
 <pre><code>async function bezpecnePorovnejProhlizec(
   a: string,
@@ -139,14 +139,14 @@ function bezpecnePorovnejHash(a: string, b: string): boolean {
   <li>Útočník může <b>opakovaně posílat requesty</b> a měřit čas odpovědi</li>
 </ul>
 
-<pre><code>// Backend (Node.js) — RIZIKO
+<pre><code>// Backend (Node.js) — RISIKO
 app.post("/api", (req, res) => {
   if (req.headers["x-api-key"] === process.env.SECRET) {
     // Útočník měří čas odpovědi a postupně uhodne SECRET
   }
 });
 
-// Frontend (prohlížeč) — BEZ RIZIKA
+// Frontend (prohlížeč) — BEZ RISIKA
 if (userInput === "nějaká hodnota") {
   // Útočník vidí "nějaká hodnota" přímo ve zdrojovém kódu
 }</code></pre>
