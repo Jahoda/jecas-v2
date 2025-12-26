@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { mount, onMount } from 'svelte';
 	import { toggle, toggleClass, zkopirovat } from '$lib/post/utils';
+	import { processAbbreviations } from '$lib/abbreviations';
 	import LiveDemo from '$lib/liveDemo/LiveDemo.svelte';
 	import { afterNavigate } from '$app/navigation';
 
@@ -9,6 +10,7 @@
 	}
 
 	let { content }: Props = $props();
+	let processedContent = $derived(processAbbreviations(content));
 
 	let postContent: HTMLDivElement | undefined = $state();
 
@@ -50,5 +52,5 @@
 		"
 	bind:this={postContent}
 >
-	{@html content}
+	{@html processedContent}
 </div>
