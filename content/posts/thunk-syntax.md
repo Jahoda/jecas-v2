@@ -13,7 +13,7 @@ format: "html"
 
 <h2 id="co-je-thunk">Co je thunk</h2>
 
-<p>Slovo „thunk" pochází z raných dob programování. Označuje hodnotu, která „už byla promyšlena" (past tense od „think"). V praxi jde o wrapper funkci bez parametrů:</p>
+<p>Slovo „thunk" vzniklo v 60. letech při vývoji ALGOL 60. Programátoři potřebovali pojmenovat kus kódu, který se vyhodnotí později — a vtipně prohlásili, že o něm „už bylo promyšleno" (humorné „thunk" místo „thought"). V praxi jde o wrapper funkci:</p>
 
 <pre><code>// Přímá hodnota
 const value = 1 + 2;
@@ -27,9 +27,9 @@ console.log(thunk()); // 3</code></pre>
 <p>Thunk je tedy funkce, která:</p>
 
 <ul>
-  <li>Nepřijímá žádné argumenty</li>
-  <li>Vrací hodnotu (nebo provádí side effect)</li>
+  <li>Obaluje výpočet nebo operaci</li>
   <li>Odkládá vyhodnocení až do momentu zavolání</li>
+  <li>Typicky nepřijímá argumenty (ale existují varianty)</li>
 </ul>
 
 <h2 id="synchronni-thunk">Synchronní thunk</h2>
@@ -265,8 +265,8 @@ const getEditor = () => import('monaco-editor');
 
 // Použití - modul se načte až při volání
 async function showChart(data) {
-  const Chart = await getChart();
-  new Chart.default(canvas, { data });
+  const { Chart } = await getChart();
+  new Chart(canvas, { type: 'line', data });
 }
 
 // Editor se nenačte, dokud uživatel neklikne
@@ -294,7 +294,7 @@ const createService = (getLogger, getDatabase) => ({
 
 // Konfigurace závislostí
 const service = createService(
-  () => console.log,           // dev logger
+  () => console,               // dev logger (console.info)
   () => new SQLiteDatabase()   // dev database
 );
 
@@ -341,7 +341,7 @@ console.log(trampoline(() => factorialThunk(10000)));</code></pre>
 
 <pre><code>const config = {
   apiUrl: () => process.env.API_URL || 'http://localhost:3000',
-  timeout: () => parseInt(process.env.TIMEOUT) || 5000,
+  retries: () => parseInt(process.env.RETRIES) || 3,
   features: () => ({
     darkMode: localStorage.getItem('darkMode') === 'true',
     beta: document.cookie.includes('beta=1')
@@ -349,10 +349,11 @@ console.log(trampoline(() => factorialThunk(10000)));</code></pre>
 };
 
 // Hodnoty se načtou až při přístupu
-function makeRequest(endpoint) {
-  return fetch(config.apiUrl() + endpoint, {
-    timeout: config.timeout()
-  });
+async function makeRequest(endpoint) {
+  for (let i = 0; i < config.retries(); i++) {
+    const response = await fetch(config.apiUrl() + endpoint);
+    if (response.ok) return response;
+  }
 }</code></pre>
 
 <p>Konfigurace může záviset na stavu, který není dostupný při inicializaci (localStorage, cookies, env proměnné).</p>
@@ -389,26 +390,25 @@ describe('UserService', () => {
 <p>Thunky oddělují definici handleru od jeho spuštění:</p>
 
 <pre><code>// Factory pro event handlery
-const createClickHandler = (elementId, action) => {
-  return () => {
-    const element = document.getElementById(elementId);
-    if (element) {
-      action(element);
-    }
+const createClickHandler = (action) => {
+  return (event) => {
+    action(event.target);
   };
 };
 
-// Definice handlerů - DOM ještě nemusí existovat
+// Definice handlerů - logika oddělená od DOM
 const handlers = {
-  submit: createClickHandler('submit-btn', (el) => el.form.submit()),
-  reset: createClickHandler('reset-btn', (el) => el.form.reset()),
-  toggle: createClickHandler('menu', (el) => el.classList.toggle('open'))
+  'submit-btn': createClickHandler((el) => el.form.submit()),
+  'reset-btn': createClickHandler((el) => el.form.reset()),
+  'menu-btn': createClickHandler((el) => {
+    document.getElementById('menu').classList.toggle('open');
+  })
 };
 
 // Připojení až když DOM existuje
 document.addEventListener('DOMContentLoaded', () => {
-  Object.entries(handlers).forEach(([name, handler]) => {
-    document.getElementById(`${name}-btn`)?.addEventListener('click', handler);
+  Object.entries(handlers).forEach(([id, handler]) => {
+    document.getElementById(id)?.addEventListener('click', handler);
   });
 });</code></pre>
 
