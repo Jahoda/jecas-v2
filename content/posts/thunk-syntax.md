@@ -1,7 +1,7 @@
 ---
 title: "Thunk syntax v JavaScriptu"
 headline: "Thunk syntax v JavaScriptu"
-description: "Co je thunk, jak funguje a k čemu se používá. Odložené vyhodnocení, asynchronní operace a Redux Thunk."
+description: "Co je thunk, jak funguje a k čemu se používá. Lazy loading, dependency injection, trampolining, testování a Redux Thunk."
 date: "2025-12-29"
 last_modification: "2025-12-29"
 status: 1
@@ -255,6 +255,163 @@ const debouncedSearch = (query) => {
   };
 };</code></pre>
 
+<h2 id="lazy-loading">Lazy loading modulů</h2>
+
+<p>Thunky umožňují načítat moduly až když jsou potřeba:</p>
+
+<pre><code>// Thunk pro lazy import
+const getChart = () => import('chart.js');
+const getEditor = () => import('monaco-editor');
+
+// Použití - modul se načte až při volání
+async function showChart(data) {
+  const Chart = await getChart();
+  new Chart.default(canvas, { data });
+}
+
+// Editor se nenačte, dokud uživatel neklikne
+button.onclick = async () => {
+  const monaco = await getEditor();
+  monaco.editor.create(container, options);
+};</code></pre>
+
+<p>Výhoda oproti přímému importu: moduly se nenačítají při startu aplikace, ale až když jsou skutečně potřeba.</p>
+
+<h2 id="dependency-injection">Dependency injection</h2>
+
+<p>Thunky lze použít pro předávání závislostí:</p>
+
+<pre><code>// Závislosti jako thunky
+const createService = (getLogger, getDatabase) => ({
+  async save(data) {
+    const logger = getLogger();
+    const db = getDatabase();
+
+    logger.info('Saving data...');
+    await db.insert(data);
+  }
+});
+
+// Konfigurace závislostí
+const service = createService(
+  () => console.log,           // dev logger
+  () => new SQLiteDatabase()   // dev database
+);
+
+// V produkci
+const prodService = createService(
+  () => new CloudLogger(),
+  () => new PostgresDatabase()
+);</code></pre>
+
+<p>Závislosti se vytvoří až při použití, ne při inicializaci.</p>
+
+<h2 id="trampolining">Trampolining</h2>
+
+<p>Thunky řeší problém přetečení zásobníku u rekurzivních funkcí:</p>
+
+<pre><code>// Klasická rekurze - může přetéct stack
+function factorial(n) {
+  if (n <= 1) return 1;
+  return n * factorial(n - 1);
+}
+
+// Trampolining s thunky
+function trampoline(fn) {
+  let result = fn();
+  while (typeof result === 'function') {
+    result = result();
+  }
+  return result;
+}
+
+function factorialThunk(n, acc = 1) {
+  if (n <= 1) return acc;
+  return () => factorialThunk(n - 1, n * acc); // Vrací thunk
+}
+
+// Bezpečné i pro velká čísla
+console.log(trampoline(() => factorialThunk(10000)));</code></pre>
+
+<p>Místo rekurzivního volání funkce vrací thunk. Trampolína thunky rozbaluje v cyklu, takže nedochází k hromadění na zásobníku.</p>
+
+<h2 id="konfigurace">Odložená konfigurace</h2>
+
+<p>Thunky umožňují definovat konfiguraci, která se vyhodnotí až za běhu:</p>
+
+<pre><code>const config = {
+  apiUrl: () => process.env.API_URL || 'http://localhost:3000',
+  timeout: () => parseInt(process.env.TIMEOUT) || 5000,
+  features: () => ({
+    darkMode: localStorage.getItem('darkMode') === 'true',
+    beta: document.cookie.includes('beta=1')
+  })
+};
+
+// Hodnoty se načtou až při přístupu
+function makeRequest(endpoint) {
+  return fetch(config.apiUrl() + endpoint, {
+    timeout: config.timeout()
+  });
+}</code></pre>
+
+<p>Konfigurace může záviset na stavu, který není dostupný při inicializaci (localStorage, cookies, env proměnné).</p>
+
+<h2 id="testovani">Testování a mockování</h2>
+
+<p>Thunky usnadňují testování tím, že oddělují vytvoření závislosti od jejího použití:</p>
+
+<pre><code>// Produkční kód
+const createUserService = (getApi = () => realApi) => ({
+  async getUser(id) {
+    const api = getApi();
+    return api.fetch(`/users/${id}`);
+  }
+});
+
+// Test
+describe('UserService', () => {
+  it('fetches user by id', async () => {
+    const mockApi = {
+      fetch: jest.fn().mockResolvedValue({ id: 1, name: 'Jan' })
+    };
+
+    const service = createUserService(() => mockApi);
+    const user = await service.getUser(1);
+
+    expect(mockApi.fetch).toHaveBeenCalledWith('/users/1');
+    expect(user.name).toBe('Jan');
+  });
+});</code></pre>
+
+<h2 id="event-handlers">Event handlery</h2>
+
+<p>Thunky oddělují definici handleru od jeho spuštění:</p>
+
+<pre><code>// Factory pro event handlery
+const createClickHandler = (elementId, action) => {
+  return () => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      action(element);
+    }
+  };
+};
+
+// Definice handlerů - DOM ještě nemusí existovat
+const handlers = {
+  submit: createClickHandler('submit-btn', (el) => el.form.submit()),
+  reset: createClickHandler('reset-btn', (el) => el.form.reset()),
+  toggle: createClickHandler('menu', (el) => el.classList.toggle('open'))
+};
+
+// Připojení až když DOM existuje
+document.addEventListener('DOMContentLoaded', () => {
+  Object.entries(handlers).forEach(([name, handler]) => {
+    document.getElementById(`${name}-btn`)?.addEventListener('click', handler);
+  });
+});</code></pre>
+
 <h2 id="alternativy">Alternativy k Redux Thunk</h2>
 
 <p>Pro komplexnější asynchronní logiku existují alternativy:</p>
@@ -272,6 +429,16 @@ const debouncedSearch = (query) => {
 <ul>
   <li>Thunk je funkce obalující výraz pro odložené vyhodnocení</li>
   <li>Umožňuje lazy evaluation — výpočet proběhne až když je potřeba</li>
-  <li>Redux Thunk middleware umožňuje asynchronní akce v Reduxu</li>
   <li>Na rozdíl od Promise se thunk spustí až při zavolání</li>
+</ul>
+
+<p>Využití thunků:</p>
+
+<ul>
+  <li><b>Redux Thunk</b> — asynchronní akce v Reduxu</li>
+  <li><b>Lazy loading</b> — dynamický import modulů</li>
+  <li><b>Dependency injection</b> — odložené vytváření závislostí</li>
+  <li><b>Trampolining</b> — optimalizace rekurze</li>
+  <li><b>Konfigurace</b> — hodnoty závislé na runtime stavu</li>
+  <li><b>Testování</b> — snadné mockování závislostí</li>
 </ul>
