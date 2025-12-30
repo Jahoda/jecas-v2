@@ -126,9 +126,9 @@ console.log(expensiveThunk()); // 0.123... (bez výpisu)</code></pre>
 
 <h2 id="redux-thunk">Redux Thunk</h2>
 
-<p>Nejznámější využití thunků v JavaScriptu je <a href="https://github.com/reduxjs/redux-thunk">Redux Thunk</a> middleware. Umožňuje dispatchovat funkce místo plain objektů:</p>
+<p>Nejznámější využití thunků v JavaScriptu je <a href="https://github.com/reduxjs/redux-thunk">Redux Thunk</a> middleware. Umožňuje odesílat funkce místo obyčejných objektů:</p>
 
-<pre><code>// Běžná akce - plain objekt
+<pre><code>// Běžná akce - obyčejný objekt
 const setUser = (user) => ({
   type: 'SET_USER',
   payload: user
@@ -156,9 +156,9 @@ store.dispatch(fetchUser(42));</code></pre>
 
 <ul>
   <li>Asynchronní operace (API volání)</li>
-  <li>Podmíněné dispatchování</li>
+  <li>Podmíněné odesílání</li>
   <li>Přístup k aktuálnímu stavu</li>
-  <li>Dispatchování více akcí</li>
+  <li>Odesílání více akcí</li>
 </ul>
 
 <h2 id="implementace-middleware">Implementace middleware</h2>
@@ -194,7 +194,7 @@ store.dispatch(fetchUser(42));</code></pre>
   <tr>
     <td>Opakované volání</td>
     <td>Spustí znovu</td>
-    <td>Vrací cached výsledek</td>
+    <td>Vrací uložený výsledek</td>
   </tr>
   <tr>
     <td>Lazy evaluation</td>
