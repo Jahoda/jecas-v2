@@ -1,6 +1,6 @@
 ---
-title: "Thunk syntax v JavaScriptu"
-headline: "Thunk syntax v JavaScriptu"
+title: "Thunk v JavaScriptu"
+headline: "Thunk v JavaScriptu"
 description: "Co je thunk, jak funguje a k čemu se používá. Lazy loading, dependency injection, trampolining, testování a Redux Thunk."
 date: "2025-12-29"
 last_modification: "2025-12-29"
@@ -178,7 +178,7 @@ store.dispatch(fetchUser(42));</code></pre>
 
 <h2 id="thunk-vs-promise">Thunk vs Promise</h2>
 
-<p>Thunky a Promise řeší podobný problém — reprezentaci budoucí hodnoty. Hlavní rozdíl:</p>
+<p>Thunky a Promise se často srovnávají, ale řeší odlišné problémy. Thunk odkládá vyhodnocení, Promise reprezentuje budoucí hodnotu. Hlavní rozdíly:</p>
 
 <table>
   <tr>
