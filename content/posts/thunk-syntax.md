@@ -230,7 +230,10 @@ const thunk = () => fetch('/api/data');
 
     dispatch(fetchData());
   };
-};</code></pre>
+};
+
+// Volání
+store.dispatch(loadDataIfNeeded());</code></pre>
 
 <h3>Debounced akce</h3>
 
@@ -242,7 +245,10 @@ const debouncedSearch = (query) => {
       dispatch(search(query));
     }, 300);
   };
-};</code></pre>
+};
+
+// Volání - např. při psaní do inputu
+input.oninput = (e) => store.dispatch(debouncedSearch(e.target.value));</code></pre>
 
 <h3>Sekvenční akce</h3>
 
@@ -253,7 +259,10 @@ const debouncedSearch = (query) => {
     await dispatch(sendConfirmation());
     dispatch(clearCart());
   };
-};</code></pre>
+};
+
+// Volání - např. při kliknutí na tlačítko
+checkoutButton.onclick = () => store.dispatch(checkout());</code></pre>
 
 <h2 id="lazy-loading">Lazy loading modulů</h2>
 
