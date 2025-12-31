@@ -132,6 +132,75 @@ test('zobrazí dnešní události', async () => {
   await expect(page.locator('.today-events')).toBeVisible();
 });</code></pre>
 
+<h3>9. Používání force: true</h3>
+
+<p>Volba <code>force: true</code> obchází všechny kontroly — viditelnost, překrytí jinými elementy, disabled stav. Je to <b>lék horší než nemoc</b>:</p>
+
+<pre><code>// Špatně — maskuje skutečný problém
+await page.click('.submit-button', { force: true });
+
+// Proč je to problém:
+// - Element může být překrytý modalem nebo loaderem
+// - Element může být mimo viewport
+// - Element může být disabled
+// - Uživatel by na něj reálně kliknout nemohl</code></pre>
+
+<p>Když test selhává bez <code>force: true</code>, je to signál, že něco není v pořádku. Místo obcházení kontroly zjistěte příčinu:</p>
+
+<pre><code>// Správně — počkat až element bude kliknutelný
+await page.locator('.submit-button').click(); // Auto-waiting
+
+// Nebo explicitně počkat na podmínky
+await expect(page.locator('.loader')).toBeHidden();
+await expect(page.locator('.submit-button')).toBeEnabled();
+await page.locator('.submit-button').click();</code></pre>
+
+<p><code>force: true</code> má smysl jen ve výjimečných případech — například testování custom komponenty, která záměrně zachytává kliknutí na jiném elementu.</p>
+
+<h3>10. Hledání neviditelného textu</h3>
+
+<p>Text může být v DOM, ale uživatel ho nevidí. Test projde, ale testuje něco, co uživatel nemůže vidět:</p>
+
+<pre><code>// Špatně — text může být skrytý (display: none, visibility: hidden, opacity: 0)
+await expect(page.locator('.message')).toHaveText('Úspěch');
+
+// Element existuje a má správný text, ale:
+// - Může být schovaný v collapsed sekci
+// - Může být mimo viewport
+// - Může mít opacity: 0 během animace
+// - Může být překrytý jiným elementem</code></pre>
+
+<p>Vždy ověřte, že element je viditelný:</p>
+
+<pre><code>// Správně — ověřit viditelnost před kontrolou textu
+await expect(page.locator('.message')).toBeVisible();
+await expect(page.locator('.message')).toHaveText('Úspěch');
+
+// Nebo použít getByText s výchozím filtrováním
+await expect(page.getByText('Úspěch')).toBeVisible();</code></pre>
+
+<p>Podobný problém nastává u elementů mimo viewport:</p>
+
+<pre><code>// Element je v DOM, ale uživatel musí scrollovat
+const message = page.locator('.message-at-bottom');
+
+// Špatně — nekontroluje, zda uživatel zprávu vidí
+await expect(message).toHaveText('Hotovo');
+
+// Správně — scrollovat do view a ověřit viditelnost
+await message.scrollIntoViewIfNeeded();
+await expect(message).toBeVisible();
+await expect(message).toHaveText('Hotovo');</code></pre>
+
+<p>Playwright a Cypress mají různé výchozí chování:</p>
+
+<ul>
+  <li><b>Playwright</b> — <code>toHaveText()</code> nekontroluje viditelnost, pouze DOM</li>
+  <li><b>Cypress</b> — <code>should('have.text')</code> také nekontroluje viditelnost</li>
+</ul>
+
+<p>Proto vždy explicitně testujte viditelnost, když je to pro uživatele důležité.</p>
+
 <h2 id="identifikace">Jak identifikovat flaky testy</h2>
 
 <h3>Opakované spouštění</h3>
@@ -329,6 +398,8 @@ test('nestabilní test', {
   <li>Viewport je konzistentní</li>
   <li>Animace jsou vypnuté nebo počkám na jejich dokončení</li>
   <li>Selektory používají <code>data-testid</code></li>
+  <li>Nepoužívám <code>force: true</code> (kromě výjimečných případů)</li>
+  <li>Kontroluji viditelnost elementů, ne jen jejich přítomnost v DOM</li>
   <li>CI má nastavené retries</li>
   <li>Trace a video jsou zapnuté pro selhání</li>
 </ul>
