@@ -201,6 +201,187 @@ await expect(message).toHaveText('Hotovo');</code></pre>
 
 <p>Proto vždy explicitně testujte viditelnost, když je to pro uživatele důležité.</p>
 
+<h3>11. Nejednoznačné selektory</h3>
+
+<p>Selektor, který matchuje více elementů, je časovaná bomba:</p>
+
+<pre><code>// Špatně — na stránce může být víc tlačítek "Odeslat"
+await page.click('button:has-text("Odeslat")');
+
+// Playwright klikne na první nalezený element, ale:
+// - Pořadí elementů se může změnit
+// - Může přibýt nové tlačítko výše v DOM
+// - V různých stavech UI může být viditelné jiné tlačítko</code></pre>
+
+<p>Používejte specifické selektory:</p>
+
+<pre><code>// Správně — jednoznačný selektor
+await page.click('[data-testid="contact-form-submit"]');
+
+// Nebo zúžit kontext
+await page.locator('.contact-form').getByRole('button', { name: 'Odeslat' }).click();
+
+// Playwright strict mode — selže, pokud matchuje více elementů
+await page.locator('button:has-text("Odeslat")').click(); // Strict by default</code></pre>
+
+<h3>12. Spoléhání na pořadí elementů</h3>
+
+<p>Selektory jako <code>:nth-child()</code> nebo <code>:first</code> jsou křehké:</p>
+
+<pre><code>// Špatně — závisí na pořadí
+await page.click('.product-list li:nth-child(2) .buy-button');
+cy.get('.product-list li').eq(1).find('.buy-button').click();
+
+// Problémy:
+// - Pořadí se může změnit při řazení
+// - Může přibýt/ubýt položka
+// - Lazy loading může změnit index</code></pre>
+
+<p>Vybírejte podle obsahu nebo atributů:</p>
+
+<pre><code>// Správně — výběr podle obsahu
+await page.locator('.product-list li', { hasText: 'MacBook Pro' })
+  .getByRole('button', { name: 'Koupit' }).click();
+
+// Nebo podle data atributu
+await page.click('[data-product-id="macbook-pro"] .buy-button');</code></pre>
+
+<h3>13. Toast a notifikace</h3>
+
+<p>Notifikace se zobrazí a rychle zmizí — test nestihne ověřit:</p>
+
+<pre><code>// Špatně — toast může zmizet než ho test najde
+await page.click('.save-button');
+await expect(page.locator('.toast')).toHaveText('Uloženo');
+
+// Toast má animaci 300ms + zobrazení 2s + animace 300ms
+// Test může "minout" okno, kdy je toast viditelný</code></pre>
+
+<p>Řešení:</p>
+
+<pre><code>// Správně — počkat na toast ihned po akci
+await page.click('.save-button');
+await expect(page.locator('.toast')).toBeVisible({ timeout: 5000 });
+await expect(page.locator('.toast')).toHaveText('Uloženo');
+
+// Nebo použít waitFor s podmínkou
+await expect(page.getByRole('alert')).toContainText('Uloženo');
+
+// Případně prodloužit dobu zobrazení toastu v testech
+// (nastavit env proměnnou TOAST_DURATION=10000)</code></pre>
+
+<h3>14. iframe a Shadow DOM</h3>
+
+<p>Elementy v iframe nebo Shadow DOM nejsou dostupné běžnými selektory:</p>
+
+<pre><code>// Špatně — element je v iframe
+await page.click('.payment-button'); // Nenajde
+
+// Správně — přepnout se do iframe
+const frame = page.frameLocator('iframe.payment-widget');
+await frame.locator('.payment-button').click();
+
+// Shadow DOM
+const host = page.locator('custom-element');
+await host.locator('button.internal').click(); // Playwright prochází shadow DOM automaticky
+
+// Cypress potřebuje shadow: true
+cy.get('custom-element').shadow().find('button.internal').click();</code></pre>
+
+<h3>15. Stale element reference</h3>
+
+<p>Element byl odebrán z DOM a znovu přidán (např. při rerenderování):</p>
+
+<pre><code>// Špatně — uložená reference může být stale
+const button = await page.$('.dynamic-button');
+await page.click('.trigger-rerender');
+await button.click(); // StaleElementReferenceError
+
+// Správně — vždy používat čerstvý locator
+await page.click('.trigger-rerender');
+await page.locator('.dynamic-button').click(); // Nové vyhledání</code></pre>
+
+<p>Playwright locatory jsou "lazy" — vyhledávají element až při akci. Proto preferujte locatory před element handles.</p>
+
+<h3>16. Popup okna a nové taby</h3>
+
+<p>Kliknutí otevře nový tab nebo popup — test pokračuje ve špatném kontextu:</p>
+
+<pre><code>// Špatně — kliknutí otevře nový tab, ale test zůstane v původním
+await page.click('a[target="_blank"]');
+await expect(page.locator('.new-page-content')).toBeVisible(); // Nenajde
+
+// Správně — zachytit novou stránku
+const [newPage] = await Promise.all([
+  context.waitForEvent('page'),
+  page.click('a[target="_blank"]')
+]);
+await newPage.waitForLoadState();
+await expect(newPage.locator('.new-page-content')).toBeVisible();</code></pre>
+
+<h3>17. Lazy loading a virtualizace</h3>
+
+<p>Elementy se načítají až při scrollu (infinite scroll, virtualizované seznamy):</p>
+
+<pre><code>// Špatně — element ještě není v DOM
+await expect(page.locator('.item-500')).toBeVisible();
+
+// Správně — scrollovat dokud se element neobjeví
+while (!(await page.locator('.item-500').isVisible())) {
+  await page.mouse.wheel(0, 500);
+  await page.waitForTimeout(100);
+}
+
+// Nebo použít scrollIntoViewIfNeeded (pokud element existuje v DOM)
+await page.locator('.item-500').scrollIntoViewIfNeeded();
+
+// Pro virtualizované seznamy — element nemusí být v DOM vůbec
+// Potřebujete scrollovat a čekat na načtení</code></pre>
+
+<h3>18. Testování downloadu souborů</h3>
+
+<p>Download souboru je asynchronní a cesta k souboru se může lišit:</p>
+
+<pre><code>// Špatně — nekontroluje, že download proběhl
+await page.click('.download-button');
+// ... a co dál?
+
+// Správně — zachytit download event
+const [download] = await Promise.all([
+  page.waitForEvent('download'),
+  page.click('.download-button')
+]);
+
+// Ověřit název souboru
+expect(download.suggestedFilename()).toBe('report.pdf');
+
+// Uložit do konkrétní cesty
+await download.saveAs('/tmp/test-downloads/report.pdf');
+
+// Ověřit obsah (pro textové soubory)
+const content = await download.createReadStream();
+</code></pre>
+
+<h3>19. Testování clipboard</h3>
+
+<p>Operace s clipboardem vyžadují oprávnění a mohou selhat:</p>
+
+<pre><code>// Nastavit oprávnění v configu
+// playwright.config.ts
+use: {
+  permissions: ['clipboard-read', 'clipboard-write'],
+}
+
+// Test
+await page.click('.copy-button');
+const clipboardText = await page.evaluate(() => navigator.clipboard.readText());
+expect(clipboardText).toBe('Zkopírovaný text');
+
+// Pozor: V headless módu clipboard nemusí fungovat
+// Fallback — ověřit přes UI feedback
+await page.click('.copy-button');
+await expect(page.locator('.toast')).toHaveText('Zkopírováno');</code></pre>
+
 <h2 id="identifikace">Jak identifikovat flaky testy</h2>
 
 <h3>Opakované spouštění</h3>
@@ -397,9 +578,13 @@ test('nestabilní test', {
   <li>Externí API jsou mockované</li>
   <li>Viewport je konzistentní</li>
   <li>Animace jsou vypnuté nebo počkám na jejich dokončení</li>
-  <li>Selektory používají <code>data-testid</code></li>
+  <li>Selektory používají <code>data-testid</code> a jsou jednoznačné</li>
+  <li>Nepoužívám <code>:nth-child()</code> nebo pozicové selektory</li>
   <li>Nepoužívám <code>force: true</code> (kromě výjimečných případů)</li>
   <li>Kontroluji viditelnost elementů, ne jen jejich přítomnost v DOM</li>
+  <li>Používám locatory místo element handles (kvůli stale references)</li>
+  <li>Zachytávám nové taby a popup okna přes <code>waitForEvent('page')</code></li>
+  <li>Pro iframe používám <code>frameLocator()</code></li>
   <li>CI má nastavené retries</li>
   <li>Trace a video jsou zapnuté pro selhání</li>
 </ul>
