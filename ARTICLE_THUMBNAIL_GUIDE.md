@@ -32,7 +32,18 @@ Systém automaticky:
 pip3 install Pillow
 ```
 
-### 2. Vytvoření obrázku pomocí Python skriptu
+### 2. Stažení moderního fontu Inter
+
+Pro lepší vzhled použij font Inter (Google Fonts):
+
+```bash
+# Stáhni a rozbal Inter font
+mkdir -p /tmp/fonts && cd /tmp/fonts
+curl -sL "https://github.com/rsms/inter/releases/download/v4.0/Inter-4.0.zip" -o inter.zip
+unzip -j inter.zip "extras/ttf/Inter-Bold.ttf" "extras/ttf/Inter-Medium.ttf" "extras/ttf/Inter-Regular.ttf" -d .
+```
+
+### 3. Vytvoření obrázku pomocí Python skriptu
 
 Vytvoř dočasný Python skript pro generování obrázku:
 
@@ -45,11 +56,28 @@ SLUG = "nazev-clanku"  # ← ZMĚŇ TOTO!
 WIDTH = 200
 HEIGHT = 200
 
-# Barvy - přizpůsob podle tématu článku
-BG_COLOR = "#336791"      # Hlavní barva pozadí
-ELEMENT_COLOR = "#4A90C8" # Barva hlavního prvku
-ACCENT_COLOR = "#FFC107"  # Akcentová barva
-WHITE = "#FFFFFF"
+# Moderní Slate barevná paleta (Tailwind)
+BG_COLOR = "#0f172a"       # Slate 900
+ELEMENT_COLOR = "#1e293b"  # Slate 800
+BORDER_COLOR = "#334155"   # Slate 700
+TEXT_COLOR = "#f8fafc"     # Slate 50
+GRAY = "#64748b"           # Slate 500
+ACCENT_COLOR = "#3b82f6"   # Blue 500
+
+# Fonty - Inter (moderní, čistý)
+FONT_BOLD = "/tmp/fonts/Inter-Bold.ttf"
+FONT_MEDIUM = "/tmp/fonts/Inter-Medium.ttf"
+FONT_REGULAR = "/tmp/fonts/Inter-Regular.ttf"
+
+# Fallback na systémový font
+def load_font(path, size):
+    try:
+        return ImageFont.truetype(path, size)
+    except:
+        try:
+            return ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", size)
+        except:
+            return ImageFont.load_default()
 
 # Vytvoř obrázek
 img = Image.new('RGB', (WIDTH, HEIGHT), BG_COLOR)
@@ -58,34 +86,42 @@ draw = ImageDraw.Draw(img)
 # === TU NAKRESLI SVÉ PRVKY ===
 # Příklady:
 
-# 1. Text
-try:
-    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24)
-except:
-    font = ImageFont.load_default()
-
+# 1. Text (nadpis)
+font_title = load_font(FONT_BOLD, 32)
 text = "SQL"
-bbox = draw.textbbox((0, 0), text, font=font)
+bbox = draw.textbbox((0, 0), text, font=font_title)
 text_width = bbox[2] - bbox[0]
 text_x = (WIDTH - text_width) // 2
-text_y = 20
+draw.text((text_x, 15), text, fill=TEXT_COLOR, font=font_title)
 
-# Stín
-draw.text((text_x + 2, text_y + 2), text, fill="#000000", font=font)
-# Text
-draw.text((text_x, text_y), text, fill=WHITE, font=font)
-
-# 2. Obdélník/tabulka
+# 2. Box s border radius
 draw.rounded_rectangle(
-    [40, 80, 160, 170],
-    radius=8,
+    [20, 60, 180, 140],
+    radius=6,
     fill=ELEMENT_COLOR,
-    outline=WHITE,
-    width=2
+    outline=BORDER_COLOR,
+    width=1
 )
 
-# 3. Ikona (čtverec, kruh, hvězda...)
-draw.ellipse([150, 30, 180, 60], fill=ACCENT_COLOR)
+# 3. Menší text v boxu
+font_small = load_font(FONT_REGULAR, 13)
+draw.text((30, 70), "SELECT * FROM", fill=GRAY, font=font_small)
+
+# 4. Badge dole
+font_badge = load_font(FONT_BOLD, 14)
+badge_text = "DATABASE"
+bbox = draw.textbbox((0, 0), badge_text, font=font_badge)
+text_width = bbox[2] - bbox[0]
+text_x = (WIDTH - text_width) // 2
+
+draw.rounded_rectangle(
+    [text_x - 10, 165, text_x + text_width + 10, 185],
+    radius=4,
+    fill="#1e3a5f",
+    outline=ACCENT_COLOR,
+    width=1
+)
+draw.text((text_x, 167), badge_text, fill=ACCENT_COLOR, font=font_badge)
 
 # === KONEC KRESLENÍ ===
 
@@ -95,13 +131,13 @@ img.save(output_path, "PNG")
 print(f"✓ Obrázek vytvořen: {output_path}")
 ```
 
-### 3. Spuštění skriptu
+### 4. Spuštění skriptu
 
 ```bash
 python3 create_thumbnail.py
 ```
 
-### 4. Ověření
+### 5. Ověření
 
 ```bash
 # Zkontroluj, že obrázek má správné rozměry
@@ -110,7 +146,7 @@ file static/files/article/{slug}.png
 # Mělo by vypsat: PNG image data, 200 x 200, ...
 ```
 
-### 5. Commit
+### 6. Commit
 
 ```bash
 git add static/files/article/{slug}.png
@@ -120,46 +156,66 @@ git push
 
 ## Tipy pro design
 
-### Barevné palety podle tématu
+### Barevné palety podle tématu (Tailwind CSS)
 
-**Databáze/SQL:**
+**Databáze/SQL (Slate + Blue):**
 
 ```python
-BG_COLOR = "#336791"      # PostgreSQL modrá
-ELEMENT_COLOR = "#4A90C8" # Světlejší modrá
-ACCENT_COLOR = "#FFC107"  # Žlutá
+BG_COLOR = "#0f172a"       # Slate 900
+ELEMENT_COLOR = "#1e293b"  # Slate 800
+BORDER_COLOR = "#334155"   # Slate 700
+TEXT_COLOR = "#f8fafc"     # Slate 50
+ACCENT_COLOR = "#3b82f6"   # Blue 500
 ```
 
-**JavaScript:**
+**JavaScript (Amber):**
 
 ```python
-BG_COLOR = "#F7DF1E"      # JS žlutá
-ELEMENT_COLOR = "#323330" # Tmavá
-ACCENT_COLOR = "#FFFFFF"  # Bílá
+BG_COLOR = "#78350f"       # Amber 900
+ELEMENT_COLOR = "#92400e"  # Amber 800
+BORDER_COLOR = "#b45309"   # Amber 700
+TEXT_COLOR = "#fef3c7"     # Amber 100
+ACCENT_COLOR = "#fbbf24"   # Amber 400
 ```
 
-**CSS:**
+**CSS (Indigo):**
 
 ```python
-BG_COLOR = "#264DE4"      # CSS modrá
-ELEMENT_COLOR = "#2965F1" # Světlá modrá
-ACCENT_COLOR = "#EBEBEB"  # Šedá
+BG_COLOR = "#1e1b4b"       # Indigo 950
+ELEMENT_COLOR = "#312e81"  # Indigo 900
+BORDER_COLOR = "#3730a3"   # Indigo 800
+TEXT_COLOR = "#e0e7ff"     # Indigo 100
+ACCENT_COLOR = "#818cf8"   # Indigo 400
 ```
 
-**AI/ML:**
+**AI/ML (Emerald):**
 
 ```python
-BG_COLOR = "#00A67E"      # OpenAI zelená
-ELEMENT_COLOR = "#74AA9C" # Světlá zelená
-ACCENT_COLOR = "#FFD700"  # Zlatá
+BG_COLOR = "#022c22"       # Emerald 950
+ELEMENT_COLOR = "#064e3b"  # Emerald 900
+BORDER_COLOR = "#065f46"   # Emerald 800
+TEXT_COLOR = "#d1fae5"     # Emerald 100
+ACCENT_COLOR = "#34d399"   # Emerald 400
 ```
 
-**Bezpečnost:**
+**Bezpečnost (Rose):**
 
 ```python
-BG_COLOR = "#D32F2F"      # Červená
-ELEMENT_COLOR = "#F44336" # Světle červená
-ACCENT_COLOR = "#FFC107"  # Žlutá
+BG_COLOR = "#4c0519"       # Rose 950
+ELEMENT_COLOR = "#881337"  # Rose 900
+BORDER_COLOR = "#9f1239"   # Rose 800
+TEXT_COLOR = "#ffe4e6"     # Rose 100
+ACCENT_COLOR = "#fb7185"   # Rose 400
+```
+
+**Testování (Amber + Red + Green):**
+
+```python
+BG_COLOR = "#0f172a"       # Slate 900
+PASS_COLOR = "#22c55e"     # Green 500
+FAIL_COLOR = "#ef4444"     # Red 500
+WARN_COLOR = "#f59e0b"     # Amber 500
+TEXT_COLOR = "#f8fafc"     # Slate 50
 ```
 
 ### Typy ikon a symbolů
