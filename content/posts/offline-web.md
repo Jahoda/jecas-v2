@@ -46,6 +46,8 @@ file_put_contents("nazev-souboru.html", ob_get_clean());</code></pre>
   <li>Přepsat adresy na volání JS funkce, která bude z objektu s daty načítat jednotlivé stránky.</li>
 </ul>
 
+<p><a href="/files/download/jecas.cz.html" class="button">Ukázka tohoto webu</a></p>
+
 <ul>
   <li><a href="https://kod.djpw.cz/fhv">Zjednodušená ukázka principu</a></li>
   <li><a href="https://github.com/Jahoda/web-jeden-soubor">Zdrojový PHP kód</a></li>  
