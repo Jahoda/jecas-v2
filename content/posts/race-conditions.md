@@ -98,16 +98,45 @@ searchInput.addEventListener('input', async (e) => {
 
 <p><code>AbortController</code> umožňuje zrušit <code>fetch</code> požadavek. Když zavoláme <code>controller.abort()</code>, požadavek vyhodí <code>AbortError</code>.</p>
 
+<p><b>Pozor:</b> Abort zruší požadavek na straně <b>klienta</b>, ale server o tom neví a požadavek zpracuje až do konce. Pokud jde o náročnou operaci (generování reportu, odesílání e-mailů), abort vám nepomůže snížit zátěž serveru — jen přestanete čekat na odpověď.</p>
+
+<h2 id="reseni-3">Řešení 3: Zablokování UI během načítání</h2>
+
+<p>Nejjednodušší prevence — nedovolit uživateli spustit další akci, dokud předchozí neskončí:</p>
+
+<pre><code>const button = document.querySelector('#load-button');
+let loading = false;
+
+button.addEventListener('click', async () => {
+  if (loading) return;
+
+  loading = true;
+  button.disabled = true;
+
+  try {
+    const response = await fetch('/api/data');
+    const data = await response.json();
+    displayData(data);
+  } finally {
+    loading = false;
+    button.disabled = false;
+  }
+});</code></pre>
+
+<p>Zablokované tlačítko jasně signalizuje, že akce probíhá. Nevznikne race condition, protože druhý požadavek nelze odeslat.</p>
+
+<p><b>Kdy použít:</b> Pro akce s jasným začátkem a koncem — odeslání formuláře, načtení detailu, smazání položky. <b>Nehodí se</b> pro vyhledávání při psaní nebo jiné situace, kde chcete reagovat na každou změnu.</p>
+
 <h2 id="stav">Race condition při nastavování stavu</h2>
 
 <p>Další častý případ — načítání dat při změně stavu komponenty:</p>
 
 <pre><code>async function loadUser(userId) {
-  setLoading(true);
+  loading = true;
   const response = await fetch(`/api/users/${userId}`);
   const user = await response.json();
-  setUser(user);
-  setLoading(false);
+  currentUser = user;
+  loading = false;
 }</code></pre>
 
 <p>Pokud uživatel rychle přepíná mezi profily, může se stát:</p>
@@ -121,7 +150,7 @@ searchInput.addEventListener('input', async (e) => {
 
 <p>Výsledek: uživatel klikl na B, ale vidí A.</p>
 
-<h2 id="reseni-3">Řešení 3: Identifikátor požadavku</h2>
+<h2 id="reseni-4">Řešení 4: Identifikátor požadavku</h2>
 
 <p>Použít unikátní identifikátor pro každý požadavek:</p>
 
@@ -130,92 +159,132 @@ searchInput.addEventListener('input', async (e) => {
 async function loadUser(userId) {
   const thisRequestId = ++requestId;
 
-  setLoading(true);
+  loading = true;
   const response = await fetch(`/api/users/${userId}`);
   const user = await response.json();
 
   // Zpracovat jen pokud je toto stále poslední požadavek
   if (thisRequestId === requestId) {
-    setUser(user);
-    setLoading(false);
+    currentUser = user;
+    loading = false;
   }
 }</code></pre>
 
 <p>Každý nový požadavek zvýší <code>requestId</code>. Při zpracování odpovědi ověříme, jestli se ID shoduje — pokud ne, odpověď ignorujeme.</p>
 
-<h2 id="react">Race conditions v Reactu</h2>
+<h2 id="svelte">Race conditions ve Svelte</h2>
 
-<p>V Reactu je situace složitější kvůli životnímu cyklu komponent. Komponenta může být <b>odmontována</b> před dokončením požadavku:</p>
+<p>Ve Svelte můžete využít reaktivní příkaz <code>$:</code> pro načítání dat při změně proměnné. Je ale potřeba ošetřit race conditions:</p>
 
-<pre><code>function UserProfile({ userId }) {
-  const [user, setUser] = useState(null);
+<pre><code>&lt;script&gt;
+  export let userId;
 
-  useEffect(() => {
+  let user = null;
+  let loading = true;
+  let error = null;
+
+  $: {
     let cancelled = false;
 
     async function fetchUser() {
-      const response = await fetch(`/api/users/${userId}`);
-      const data = await response.json();
+      loading = true;
+      error = null;
 
-      if (!cancelled) {
-        setUser(data);
+      try {
+        const response = await fetch(`/api/users/${userId}`);
+        const data = await response.json();
+
+        if (!cancelled) {
+          user = data;
+        }
+      } catch (err) {
+        if (!cancelled) {
+          error = err.message;
+        }
+      } finally {
+        if (!cancelled) {
+          loading = false;
+        }
       }
     }
 
     fetchUser();
 
+    // Cleanup při změně userId
     return () => {
       cancelled = true;
     };
-  }, [userId]);
+  }
+&lt;/script&gt;
 
-  return user ? &lt;div&gt;{user.name}&lt;/div&gt; : &lt;div&gt;Načítání...&lt;/div&gt;;
-}</code></pre>
+{#if loading}
+  &lt;p&gt;Načítání...&lt;/p&gt;
+{:else if error}
+  &lt;p&gt;Chyba: {error}&lt;/p&gt;
+{:else}
+  &lt;p&gt;{user.name}&lt;/p&gt;
+{/if}</code></pre>
 
-<p>Cleanup funkce v <code>useEffect</code> nastaví <code>cancelled = true</code> při změně <code>userId</code> nebo odmontování komponenty. Odpověď pro předchozí <code>userId</code> se pak ignoruje.</p>
+<p>Reaktivní blok vrací cleanup funkci, která se zavolá při změně <code>userId</code>. Nastaví <code>cancelled = true</code>, takže odpověď pro předchozí <code>userId</code> se ignoruje.</p>
 
-<h2 id="react-abort">React s AbortController</h2>
+<h2 id="svelte-abort">Svelte s AbortController</h2>
 
 <p>Kompletní řešení kombinující oba přístupy:</p>
 
-<pre><code>function UserProfile({ userId }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+<pre><code>&lt;script&gt;
+  import { onDestroy } from 'svelte';
 
-  useEffect(() => {
-    const controller = new AbortController();
+  export let userId;
 
-    async function fetchUser() {
-      setLoading(true);
-      setError(null);
+  let user = null;
+  let loading = true;
+  let error = null;
+  let controller = null;
 
-      try {
-        const response = await fetch(`/api/users/${userId}`, {
-          signal: controller.signal
-        });
-        const data = await response.json();
-        setUser(data);
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          setError(err.message);
-        }
-      } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false);
-        }
-      }
+  $: loadUser(userId);
+
+  async function loadUser(id) {
+    // Zrušit předchozí požadavek
+    if (controller) {
+      controller.abort();
     }
 
-    fetchUser();
+    controller = new AbortController();
+    loading = true;
+    error = null;
 
-    return () => controller.abort();
-  }, [userId]);
+    try {
+      const response = await fetch(`/api/users/${id}`, {
+        signal: controller.signal
+      });
+      user = await response.json();
+    } catch (err) {
+      if (err.name !== 'AbortError') {
+        error = err.message;
+      }
+    } finally {
+      if (!controller.signal.aborted) {
+        loading = false;
+      }
+    }
+  }
 
-  if (loading) return &lt;div&gt;Načítání...&lt;/div&gt;;
-  if (error) return &lt;div&gt;Chyba: {error}&lt;/div&gt;;
-  return &lt;div&gt;{user.name}&lt;/div&gt;;
-}</code></pre>
+  onDestroy(() => {
+    if (controller) {
+      controller.abort();
+    }
+  });
+&lt;/script&gt;
+
+{#if loading}
+  &lt;p&gt;Načítání...&lt;/p&gt;
+{:else if error}
+  &lt;p&gt;Chyba: {error}&lt;/p&gt;
+{:else}
+  &lt;p&gt;{user.name}&lt;/p&gt;
+{/if}</code></pre>
+
+<p>Funkce <code>onDestroy</code> zajistí zrušení požadavku při zničení komponenty.</p>
 
 <h2 id="debounce">Race condition a debounce</h2>
 
@@ -231,9 +300,13 @@ async function loadUser(userId) {
 
 <p><b>Debounce kombinujte s AbortControllerem nebo kontrolou aktuálnosti.</b></p>
 
-<h2 id="promise-race">Promise.race a timeout</h2>
+<h2 id="promise-race">Promise.race</h2>
 
-<p>Jiný typ race condition — záměrný. <code>Promise.race</code> vrátí výsledek první dokončené Promise:</p>
+<p><code>Promise.race</code> vrátí výsledek první dokončené Promise. Hodí se ve dvou situacích:</p>
+
+<h3>1. Timeout pro požadavek</h3>
+
+<p>Soutěž mezi fetch požadavkem a časovačem:</p>
 
 <pre><code>async function fetchWithTimeout(url, timeout = 5000) {
   const controller = new AbortController();
@@ -252,7 +325,45 @@ async function loadUser(userId) {
   }
 }</code></pre>
 
-<p>Zde záměrně soutěžíme mezi fetch požadavkem a timeoutem. Kdo vyhraje, ten určí výsledek.</p>
+<h3>2. Nejrychlejší odpověď z více zdrojů</h3>
+
+<p>Pokud stejná data poskytuje více API a chcete co nejrychlejší odpověď:</p>
+
+<pre><code>async function fetchFromFastestSource(query) {
+  const sources = [
+    fetch(`https://api1.example.com/search?q=${query}`),
+    fetch(`https://api2.example.com/search?q=${query}`),
+    fetch(`https://api3.example.com/search?q=${query}`)
+  ];
+
+  const response = await Promise.race(sources);
+  return response.json();
+}</code></pre>
+
+<p>Vrátí se výsledek od serveru, který odpoví první. Ostatní požadavky ale běží dál — pokud chcete šetřit prostředky, použijte <code>AbortController</code>:</p>
+
+<pre><code>async function fetchFromFastestSource(query) {
+  const controller = new AbortController();
+
+  const sources = [
+    'https://api1.example.com/search',
+    'https://api2.example.com/search',
+    'https://api3.example.com/search'
+  ].map(url =>
+    fetch(`${url}?q=${query}`, { signal: controller.signal })
+  );
+
+  try {
+    const response = await Promise.race(sources);
+    controller.abort(); // Zrušit ostatní požadavky
+    return response.json();
+  } catch (err) {
+    controller.abort();
+    throw err;
+  }
+}</code></pre>
+
+<p><b>Použití:</b> Geolokace z více poskytovatelů, ceny z více e-shopů, záložní CDN.</p>
 
 <h2 id="lokalni-stav">Race condition s lokálním stavem</h2>
 
@@ -319,8 +430,9 @@ function mockFetch(url) {
 
 <ul>
   <li><b>Ověřujte aktuálnost</b> — při zpracování odpovědi zkontrolujte, jestli je stále relevantní</li>
-  <li><b>Rušte předchozí požadavky</b> — použijte <code>AbortController</code></li>
-  <li><b>V Reactu používejte cleanup</b> — v <code>useEffect</code> vracejte funkci pro zrušení</li>
+  <li><b>Rušte předchozí požadavky</b> — použijte <code>AbortController</code> (ale pamatujte, že server stále dokončí zpracování)</li>
+  <li><b>Blokujte UI</b> — pro jednorázové akce zablokujte tlačítko během načítání</li>
+  <li><b>Ve Svelte používejte cleanup</b> — v reaktivních blocích a <code>onDestroy</code></li>
   <li><b>Debounce nestačí</b> — kombinujte ho s dalšími technikami</li>
   <li><b>Testujte s náhodným zpožděním</b> — odhalíte problémy dříve</li>
 </ul>
@@ -329,5 +441,5 @@ function mockFetch(url) {
 
 <ul>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController">MDN: AbortController</a></li>
-  <li><a href="https://react.dev/learn/synchronizing-with-effects#fetching-data">React: Fetching data in Effects</a></li>
+  <li><a href="https://svelte.dev/docs/svelte/legacy-reactive-assignments">Svelte: Reaktivní přiřazení</a></li>
 </ul>
