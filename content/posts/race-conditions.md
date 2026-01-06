@@ -9,7 +9,7 @@ tags: ["js"]
 format: "html"
 ---
 
-<p>Race condition nastává, když výsledek programu závisí na <b>pořadí nebo časování</b> nekontrolovaných událostí. V JavaScriptu jsou běžné kvůli asynchronnímu zpracování — sítě, uživatelských akcí a časovačů.</p>
+<p>Race condition nastává, když výsledek programu závisí na <b>pořadí nebo časování</b> nekontrolovaných událostí. V JavaScriptu jsou běžné kvůli asynchronnímu zpracování — síťových požadavků, uživatelských akcí a časovačů.</p>
 
 <h2 id="priklad">Základní příklad</h2>
 
@@ -174,62 +174,7 @@ async function loadUser(userId) {
 
 <h2 id="svelte">Race conditions ve Svelte</h2>
 
-<p>Ve Svelte můžete využít reaktivní příkaz <code>$:</code> pro načítání dat při změně proměnné. Je ale potřeba ošetřit race conditions:</p>
-
-<pre><code>&lt;script&gt;
-  export let userId;
-
-  let user = null;
-  let loading = true;
-  let error = null;
-
-  $: {
-    let cancelled = false;
-
-    async function fetchUser() {
-      loading = true;
-      error = null;
-
-      try {
-        const response = await fetch(`/api/users/${userId}`);
-        const data = await response.json();
-
-        if (!cancelled) {
-          user = data;
-        }
-      } catch (err) {
-        if (!cancelled) {
-          error = err.message;
-        }
-      } finally {
-        if (!cancelled) {
-          loading = false;
-        }
-      }
-    }
-
-    fetchUser();
-
-    // Cleanup při změně userId
-    return () => {
-      cancelled = true;
-    };
-  }
-&lt;/script&gt;
-
-{#if loading}
-  &lt;p&gt;Načítání...&lt;/p&gt;
-{:else if error}
-  &lt;p&gt;Chyba: {error}&lt;/p&gt;
-{:else}
-  &lt;p&gt;{user.name}&lt;/p&gt;
-{/if}</code></pre>
-
-<p>Reaktivní blok vrací cleanup funkci, která se zavolá při změně <code>userId</code>. Nastaví <code>cancelled = true</code>, takže odpověď pro předchozí <code>userId</code> se ignoruje.</p>
-
-<h2 id="svelte-abort">Svelte s AbortController</h2>
-
-<p>Kompletní řešení kombinující oba přístupy:</p>
+<p>Ve Svelte můžete využít reaktivní příkaz <code>$:</code> pro načítání dat při změně proměnné. Ošetření race conditions vyžaduje kombinaci s <code>AbortController</code>:</p>
 
 <pre><code>&lt;script&gt;
   import { onDestroy } from 'svelte';
@@ -284,7 +229,7 @@ async function loadUser(userId) {
   &lt;p&gt;{user.name}&lt;/p&gt;
 {/if}</code></pre>
 
-<p>Funkce <code>onDestroy</code> zajistí zrušení požadavku při zničení komponenty.</p>
+<p>Reaktivní příkaz <code>$: loadUser(userId)</code> zavolá funkci při každé změně <code>userId</code>. Funkce nejprve zruší předchozí požadavek pomocí <code>AbortController</code>, takže zastaralé odpovědi se ignorují. Funkce <code>onDestroy</code> zajistí zrušení požadavku při zničení komponenty.</p>
 
 <h2 id="debounce">Race condition a debounce</h2>
 
@@ -349,7 +294,7 @@ async function loadUser(userId) {
     'https://api1.example.com/search',
     'https://api2.example.com/search',
     'https://api3.example.com/search'
-  ].map(url =>
+  ].map(url =&gt;
     fetch(`${url}?q=${query}`, { signal: controller.signal })
   );
 
@@ -381,16 +326,11 @@ async function increment() {
 increment();
 increment();</code></pre>
 
-<p>Obě volání přečtou <code>count = 0</code>, provedou asynchronní operaci, a pak oba nastaví <code>count = 1</code>. Výsledek je 1 místo očekávaných 2.</p>
+<p>Obě volání přečtou <code>count = 0</code>, provedou asynchronní operaci, a pak obě nastaví <code>count = 1</code>. Výsledek je 1 místo očekávaných 2.</p>
 
-<h3>Řešení: Atomická operace</h3>
+<h3>Řešení: Fronta operací</h3>
 
-<pre><code>async function increment() {
-  await someAsyncOperation();
-  count++; // Atomické čtení a zápis
-}</code></pre>
-
-<p>Nebo použít frontu pro serializaci operací:</p>
+<p>Serializovat operace pomocí fronty:</p>
 
 <pre><code>let queue = Promise.resolve();
 
@@ -402,6 +342,8 @@ function increment() {
   });
   return queue;
 }</code></pre>
+
+<p>Každé volání se zařadí do fronty a čeká na dokončení předchozího. Operace proběhnou postupně, ne současně.</p>
 
 <h2 id="testovani">Testování race conditions</h2>
 
@@ -416,10 +358,10 @@ function increment() {
 
 <pre><code>// Mock s náhodným zpožděním
 function mockFetch(url) {
-  return new Promise(resolve => {
+  return new Promise(resolve =&gt; {
     const delay = Math.random() * 1000;
-    setTimeout(() => {
-      resolve({ json: () => ({ url }) });
+    setTimeout(() =&gt; {
+      resolve({ json: () =&gt; ({ url }) });
     }, delay);
   });
 }</code></pre>
@@ -432,7 +374,7 @@ function mockFetch(url) {
   <li><b>Ověřujte aktuálnost</b> — při zpracování odpovědi zkontrolujte, jestli je stále relevantní</li>
   <li><b>Rušte předchozí požadavky</b> — použijte <code>AbortController</code> (ale pamatujte, že server stále dokončí zpracování)</li>
   <li><b>Blokujte UI</b> — pro jednorázové akce zablokujte tlačítko během načítání</li>
-  <li><b>Ve Svelte používejte cleanup</b> — v reaktivních blocích a <code>onDestroy</code></li>
+  <li><b>Ve Svelte používejte AbortController</b> — v kombinaci s <code>$:</code> a <code>onDestroy</code></li>
   <li><b>Debounce nestačí</b> — kombinujte ho s dalšími technikami</li>
   <li><b>Testujte s náhodným zpožděním</b> — odhalíte problémy dříve</li>
 </ul>
@@ -441,5 +383,5 @@ function mockFetch(url) {
 
 <ul>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController">MDN: AbortController</a></li>
-  <li><a href="https://svelte.dev/docs/svelte/legacy-reactive-assignments">Svelte: Reaktivní přiřazení</a></li>
+  <li><a href="https://svelte.dev/docs/svelte/$effect">Svelte: $effect</a></li>
 </ul>
