@@ -449,6 +449,189 @@ _jsxs('div', {
   ]
 });</code></pre>
 
+<h2 id="ast">AST - Abstract Syntax Tree</h2>
+
+<p><b>Abstract Syntax Tree</b> (abstraktní syntaktický strom) je stromová reprezentace zdrojového kódu. Každý uzel stromu představuje konstrukci v kódu. Kompilátory a transpilery používají AST pro analýzu a transformaci kódu.</p>
+
+<h3>Jak vzniká AST</h3>
+
+<pre><code>Zdrojový kód → Lexer → Tokeny → Parser → AST → Transformer → Výstup</code></pre>
+
+<p><b>1. Lexer</b> (tokenizer) rozdělí kód na tokeny:</p>
+
+<pre><code>const x = 1 + 2;
+
+// Tokeny:
+[CONST, IDENTIFIER("x"), EQUALS, NUMBER(1), PLUS, NUMBER(2), SEMICOLON]</code></pre>
+
+<p><b>2. Parser</b> sestaví strom podle gramatiky jazyka:</p>
+
+<pre><code>// Jednoduchý příklad AST
+const x = 1 + 2;
+
+// AST (zjednodušeně):
+Program
+└── VariableDeclaration (const)
+    └── VariableDeclarator
+        ├── Identifier (name: "x")
+        └── BinaryExpression (operator: "+")
+            ├── NumericLiteral (value: 1)
+            └── NumericLiteral (value: 2)</code></pre>
+
+<h3>JSX v AST</h3>
+
+<p>JSX elementy mají vlastní typy uzlů v AST:</p>
+
+<pre><code>&lt;div className="box"&gt;Hello&lt;/div&gt;
+
+// AST:
+JSXElement
+├── JSXOpeningElement
+│   ├── JSXIdentifier (name: "div")
+│   └── JSXAttribute
+│       ├── JSXIdentifier (name: "className")
+│       └── StringLiteral (value: "box")
+├── JSXText (value: "Hello")
+└── JSXClosingElement
+    └── JSXIdentifier (name: "div")</code></pre>
+
+<p><b>3. Transformer</b> převede JSX uzly na volání funkcí:</p>
+
+<pre><code>// JSX AST uzel se transformuje na:
+CallExpression
+├── callee: MemberExpression (React.createElement)
+└── arguments:
+    ├── StringLiteral ("div")
+    ├── ObjectExpression ({ className: "box" })
+    └── StringLiteral ("Hello")</code></pre>
+
+<p>AST si můžete prohlédnout na <a href="https://astexplorer.net/">astexplorer.net</a> — zadáte kód a vidíte strom v reálném čase.</p>
+
+<h3>Nástroje pro transformaci</h3>
+
+<table>
+  <tr>
+    <th>Nástroj</th>
+    <th>Jazyk</th>
+    <th>Rychlost</th>
+  </tr>
+  <tr>
+    <td>Babel</td>
+    <td>JavaScript</td>
+    <td>Pomalý</td>
+  </tr>
+  <tr>
+    <td>TypeScript</td>
+    <td>TypeScript</td>
+    <td>Střední</td>
+  </tr>
+  <tr>
+    <td>esbuild</td>
+    <td>Go</td>
+    <td>Rychlý</td>
+  </tr>
+  <tr>
+    <td>SWC</td>
+    <td>Rust</td>
+    <td>Rychlý</td>
+  </tr>
+</table>
+
+<h2 id="historie">Historie JSX</h2>
+
+<h3>2004 — E4X (předchůdce)</h3>
+
+<p>ECMAScript for XML byl standardizovaný způsob psaní XML v JavaScriptu. Byl součástí Firefoxu 10–20, ale nikdy se neprosadil:</p>
+
+<pre><code>// E4X (dnes mrtvé)
+var person = &lt;person&gt;
+  &lt;name&gt;Jan&lt;/name&gt;
+  &lt;age&gt;25&lt;/age&gt;
+&lt;/person&gt;;
+
+var name = person.name; // "Jan"</code></pre>
+
+<h3>2013 — Facebook vytváří JSX</h3>
+
+<p>Jordan Walke a tým ve Facebooku vytvořili JSX pro React. Motivace:</p>
+
+<ul>
+  <li><code>React.createElement()</code> byl příliš verbose</li>
+  <li>Šablonové stringy neměly typovou kontrolu</li>
+  <li>HTML-like syntaxe je intuitivní pro UI</li>
+</ul>
+
+<pre><code>// Před JSX (2013)
+React.createElement('div', { className: 'box' },
+  React.createElement('h1', null, 'Title'),
+  React.createElement('p', null, 'Text')
+);
+
+// S JSX — mnohem čitelnější
+&lt;div className="box"&gt;
+  &lt;h1&gt;Title&lt;/h1&gt;
+  &lt;p&gt;Text&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+<p>Facebook publikoval <a href="https://facebook.github.io/jsx/">JSX specifikaci</a> jako nezávislý standard. JSX není vázané na React.</p>
+
+<h3>2014 — Babel</h3>
+
+<p>Sebastian McKenzie vytvořil 6to5 (později přejmenovaný na Babel), který přinesl snadnou kompilaci JSX pro všechny projekty.</p>
+
+<h3>2015 — TypeScript 1.6 přidává TSX</h3>
+
+<p>Microsoft přidal podporu <code>.tsx</code> souborů s plnou typovou kontrolou props:</p>
+
+<pre><code>interface Props {
+  name: string;
+}
+
+function Hello({ name }: Props) {
+  return &lt;h1&gt;Hello {name}&lt;/h1&gt;;
+}
+
+// Chyba: Property 'name' is missing
+&lt;Hello /&gt;</code></pre>
+
+<h3>2017 — Fragment syntax</h3>
+
+<p>React 16.2 přidal <code>&lt;&gt;...&lt;/&gt;</code> jako zkratku pro <code>React.Fragment</code>:</p>
+
+<pre><code>// Před
+&lt;React.Fragment&gt;
+  &lt;li&gt;A&lt;/li&gt;
+  &lt;li&gt;B&lt;/li&gt;
+&lt;/React.Fragment&gt;
+
+// Po
+&lt;&gt;
+  &lt;li&gt;A&lt;/li&gt;
+  &lt;li&gt;B&lt;/li&gt;
+&lt;/&gt;</code></pre>
+
+<h3>2020 — Nový JSX Transform (React 17)</h3>
+
+<p>Změna z <code>React.createElement</code> na automatický import z <code>react/jsx-runtime</code>. Výhody:</p>
+
+<ul>
+  <li>Není potřeba <code>import React</code> v každém souboru</li>
+  <li>Menší bundle size</li>
+  <li>Lepší výkon</li>
+</ul>
+
+<h3>Dnes</h3>
+
+<p>JSX používá mnoho frameworků:</p>
+
+<ul>
+  <li><b>React</b> — původní implementace</li>
+  <li><b>Preact</b> — lehká alternativa (3 KB)</li>
+  <li><b>SolidJS</b> — kompiluje JSX přímo do DOM operací</li>
+  <li><b>Qwik</b> — resumable framework</li>
+  <li><b>Vue</b> — volitelně s pluginem</li>
+</ul>
+
 <h2 id="nastaveni">Nastavení projektu</h2>
 
 <h3>Vite (doporučeno)</h3>
