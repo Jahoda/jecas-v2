@@ -22,6 +22,7 @@ class AnnotationState {
 	currentSelection = $state<SelectionInfo | null>(null);
 	showPopover = $state<boolean>(false);
 	activeAnnotationId = $state<string | null>(null);
+	editingAnnotationId = $state<string | null>(null);
 
 	init(slug: string) {
 		this.currentSlug = slug;
@@ -57,6 +58,23 @@ class AnnotationState {
 	closePopover() {
 		this.showPopover = false;
 		this.currentSelection = null;
+		this.editingAnnotationId = null;
+	}
+
+	editAnnotation(id: string, rect: DOMRect) {
+		const annotation = this.annotations.find((a) => a.id === id);
+		if (!annotation) return;
+
+		this.editingAnnotationId = id;
+		this.currentSelection = {
+			text: annotation.selectedText,
+			startOffset: annotation.startOffset,
+			endOffset: annotation.endOffset,
+			contextBefore: annotation.contextBefore,
+			contextAfter: annotation.contextAfter,
+			rect
+		};
+		this.showPopover = true;
 	}
 
 	addAnnotation(comment: string) {

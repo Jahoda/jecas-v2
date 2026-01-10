@@ -1,4 +1,5 @@
 import type { Annotation } from './annotation';
+import { annotationState } from './annotationStore.svelte';
 
 const HIGHLIGHT_CLASS = 'annotation-highlight';
 const ACTIVE_HIGHLIGHT_CLASS = 'annotation-highlight-active';
@@ -61,6 +62,14 @@ function highlightText(
 			const mark = document.createElement('mark');
 			mark.className = `${HIGHLIGHT_CLASS} ${isActive ? ACTIVE_HIGHLIGHT_CLASS : ''}`;
 			mark.dataset.annotationId = annotation.id;
+
+			// Add click handler for editing
+			mark.addEventListener('click', (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+				const rect = mark.getBoundingClientRect();
+				annotationState.editAnnotation(annotation.id, rect);
+			});
 
 			try {
 				range.surroundContents(mark);

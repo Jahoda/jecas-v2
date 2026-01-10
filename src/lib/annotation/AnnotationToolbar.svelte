@@ -7,8 +7,9 @@
 		if (!annotationState.currentSelection) return { top: 0, left: 0, visible: false };
 
 		const rect = annotationState.currentSelection.rect;
+		// For fixed positioning, use viewport coordinates directly (no scrollY needed)
 		return {
-			top: rect.top + window.scrollY - 45,
+			top: rect.top - 45,
 			left: rect.left + rect.width / 2,
 			visible: true
 		};
