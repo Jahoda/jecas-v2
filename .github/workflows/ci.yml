@@ -42,6 +42,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Setup environment
+        run: cp .env.example .env
+
       - name: Run svelte-check
         run: pnpm run check
 
@@ -61,6 +64,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Setup environment
+        run: cp .env.example .env
 
       - name: Build
         run: pnpm run build
