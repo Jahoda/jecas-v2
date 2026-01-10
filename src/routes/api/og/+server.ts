@@ -44,44 +44,51 @@ function pluralize(count: number) {
 }
 
 // SVG icons as objects for satori
-const CalendarIcon = {
-	type: 'svg',
-	props: {
-		width: 24,
-		height: 24,
-		viewBox: '0 0 24 24',
-		fill: 'none',
-		stroke: 'white',
-		strokeWidth: 1.5,
-		strokeLinecap: 'round',
-		strokeLinejoin: 'round',
-		children: [
-			{
-				type: 'rect',
-				props: { x: 3, y: 4, width: 18, height: 18, rx: 2 }
-			},
-			{ type: 'path', props: { d: 'M16 2v4M8 2v4M3 10h18' } }
-		]
-	}
-};
+function CalendarIcon() {
+	return {
+		type: 'svg',
+		props: {
+			width: 22,
+			height: 22,
+			viewBox: '0 0 24 24',
+			fill: 'none',
+			xmlns: 'http://www.w3.org/2000/svg',
+			children: {
+				type: 'path',
+				props: {
+					d: 'M8 2v4m8-4v4m-9 4h10M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z',
+					stroke: 'white',
+					strokeWidth: 2,
+					strokeLinecap: 'round',
+					strokeLinejoin: 'round'
+				}
+			}
+		}
+	};
+}
 
-const ClockIcon = {
-	type: 'svg',
-	props: {
-		width: 24,
-		height: 24,
-		viewBox: '0 0 24 24',
-		fill: 'none',
-		stroke: 'white',
-		strokeWidth: 1.5,
-		strokeLinecap: 'round',
-		strokeLinejoin: 'round',
-		children: [
-			{ type: 'circle', props: { cx: 12, cy: 12, r: 10 } },
-			{ type: 'path', props: { d: 'M12 6v6l4 2' } }
-		]
-	}
-};
+function ClockIcon() {
+	return {
+		type: 'svg',
+		props: {
+			width: 22,
+			height: 22,
+			viewBox: '0 0 24 24',
+			fill: 'none',
+			xmlns: 'http://www.w3.org/2000/svg',
+			children: {
+				type: 'path',
+				props: {
+					d: 'M12 6v6l4 2m6-2a10 10 0 1 1-20 0 10 10 0 0 1 20 0z',
+					stroke: 'white',
+					strokeWidth: 2,
+					strokeLinecap: 'round',
+					strokeLinejoin: 'round'
+				}
+			}
+		}
+	};
+}
 
 // Jecas logo SVG path
 const JecasLogo = {
@@ -249,7 +256,7 @@ export const GET: RequestHandler = async ({ url }) => {
 																							alignItems: 'center',
 																							gap: 8
 																						},
-																						children: [CalendarIcon, displayDate]
+																						children: [CalendarIcon(), displayDate]
 																					}
 																				}
 																			: null,
@@ -263,7 +270,7 @@ export const GET: RequestHandler = async ({ url }) => {
 																							gap: 8
 																						},
 																						children: [
-																							ClockIcon,
+																							ClockIcon(),
 																							`${readingTime} ${pluralize(readingTime)}`
 																						]
 																					}
