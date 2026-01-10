@@ -2,19 +2,18 @@ import { getSinglePostBySlug } from '$lib/post/post';
 import { getAllTagsByPageId, type Tag } from '$lib/tag/tags';
 import type { RequestHandler } from './$types';
 import { ImageResponse } from '@vercel/og';
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
 
 export const prerender = false;
 
 // Font cache
-let interBoldFont: Buffer | null = null;
+let fontCache: ArrayBuffer | null = null;
 
-async function getInterBoldFont(): Promise<Buffer> {
-	if (!interBoldFont) {
-		interBoldFont = await readFile(join(process.cwd(), 'src/lib/fonts/Inter-Bold.ttf'));
-	}
-	return interBoldFont;
+async function getInterBoldFont(baseUrl: string): Promise<ArrayBuffer> {
+	if (fontCache) return fontCache;
+
+	const response = await fetch(`${baseUrl}/fonts/Inter-Bold.ttf`);
+	fontCache = await response.arrayBuffer();
+	return fontCache;
 }
 
 function stripTags(str: string) {
@@ -119,7 +118,8 @@ function JecasLogo() {
 }
 
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = async ({ url, request }) => {
+	const baseUrl = new URL(request.url).origin;
 	const slug = url.searchParams.get('slug');
 
 	if (!slug) {
@@ -332,7 +332,7 @@ export const GET: RequestHandler = async ({ url }) => {
 			}
 		};
 
-		const fontData = await getInterBoldFont();
+		const fontData = await getInterBoldFont(baseUrl);
 
 		// @ts-expect-error - ImageResponse expects JSX but we use object syntax
 		return new ImageResponse(element, {
