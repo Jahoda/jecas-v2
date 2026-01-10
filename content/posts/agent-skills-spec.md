@@ -141,17 +141,37 @@ allowed-tools: Bash(git:*), Read, Grep, Write</code></pre>
 
 <h2 id="scripts">Složka scripts/</h2>
 
-<p>Obsahuje spustitelné skripty, které agent volá přes Bash:</p>
+<p>Obsahuje spustitelné skripty, které agent volá přes Bash. Výhodou je, že do kontextu se načítá pouze <b>výstup skriptu</b>, ne jeho zdrojový kód — šetří to tokeny.</p>
+
+<h3>Podporované jazyky</h3>
+
+<p>Specifikace neomezuje programovací jazyk. Použít můžete cokoli, co agent dokáže spustit:</p>
+
+<ul>
+  <li><b>Python</b> — nejčastější volba, bohatý ekosystém knihoven</li>
+  <li><b>Bash/Shell</b> — systémové operace, pipeline, práce se soubory</li>
+  <li><b>Node.js/TypeScript</b> — pro JS ekosystém a npm balíčky</li>
+  <li><b>Ruby, Go, Rust</b> — pokud jsou v prostředí dostupné</li>
+</ul>
+
+<p>Anthropic například ve vestavěném PDF skillu používá Python skript pro extrakci polí z PDF formulářů.</p>
 
 <pre><code>scripts/
-├── analyze.py         # Analýza kódu
-├── validate.sh        # Validace vstupů
-└── generate-report.py # Generování reportu</code></pre>
+├── analyze.py         # Python - analýza kódu
+├── validate.sh        # Bash - validace vstupů
+├── transform.ts       # TypeScript - transformace dat
+└── generate-report.py # Python - generování reportu</code></pre>
 
 <p>Ve <code>SKILL.md</code> na ně odkazujete pomocí proměnné <code>{baseDir}</code>:</p>
 
 <pre><code>Pro analýzu spusť:
-python {baseDir}/scripts/analyze.py --file {file}</code></pre>
+python {baseDir}/scripts/analyze.py --file {file}
+
+Pro validaci:
+bash {baseDir}/scripts/validate.sh {input}
+
+Pro TypeScript (s ts-node):
+npx ts-node {baseDir}/scripts/transform.ts</code></pre>
 
 <h2 id="references">Složka references/</h2>
 
@@ -281,6 +301,80 @@ python {baseDir}/scripts/run.py</code></pre>
 </table>
 
 <p>MCP definuje <b>jak</b> se agent připojuje k nástrojům. Agent Skills definuje <b>co</b> má agent s nástroji dělat.</p>
+
+<h2 id="mcp-integrace">Integrace s MCP</h2>
+
+<p>Agent Skills a MCP fungují na různých úrovních, ale dají se kombinovat. MCP servery poskytují nástroje (tools), které skill může používat přes pole <code>allowed-tools</code>.</p>
+
+<h3>Jak to funguje</h3>
+
+<ol>
+  <li><b>MCP server</b> běží jako samostatný proces a poskytuje nástroje (např. <code>slack_send_message</code>, <code>linear_create_issue</code>)</li>
+  <li><b>Agent</b> se k MCP serverům připojuje přes konfiguraci</li>
+  <li><b>Skill</b> v <code>allowed-tools</code> povolí konkrétní MCP nástroje</li>
+  <li>Instrukce ve skillu popisují <b>kdy a jak</b> tyto nástroje použít</li>
+</ol>
+
+<h3>Příklad: Skill využívající MCP</h3>
+
+<p>Představte si skill pro reportování bugů, který používá Linear (projektový management) a Slack:</p>
+
+<pre><code>---
+name: bug-report
+description: Vytvoří bug report v Linear a notifikuje tým na Slacku. Použij když uživatel reportuje bug.
+allowed-tools: Read, mcp__linear__create_issue, mcp__slack__send_message
+---
+
+# Bug Report
+
+## Postup
+
+1. Zeptej se na detaily bugu (co se děje, očekávané chování, kroky k reprodukci)
+2. Analyzuj relevantní kód pomocí Read
+3. Vytvoř issue v Linear:
+   - Použij `mcp__linear__create_issue`
+   - Nastav prioritu podle závažnosti
+   - Přidej label "bug"
+4. Notifikuj tým na Slacku:
+   - Použij `mcp__slack__send_message`
+   - Pošli do kanálu #bugs
+   - Připoj odkaz na Linear issue</code></pre>
+
+<h3>MCP nástroje v allowed-tools</h3>
+
+<p>MCP nástroje mají typicky prefix identifikující server:</p>
+
+<pre><code># Nástroje z Linear MCP serveru
+allowed-tools: mcp__linear__create_issue, mcp__linear__update_issue
+
+# Nástroje ze Slack MCP serveru
+allowed-tools: mcp__slack__send_message, mcp__slack__list_channels
+
+# Kombinace více MCP serverů s lokálními nástroji
+allowed-tools: Read, Grep, mcp__linear__*, mcp__slack__send_message</code></pre>
+
+<p>Wildcard <code>mcp__linear__*</code> povolí všechny nástroje z Linear serveru.</p>
+
+<h3>Kdy použít MCP vs. skripty</h3>
+
+<table>
+  <tr>
+    <th>Použij MCP když</th>
+    <th>Použij skripty když</th>
+  </tr>
+  <tr>
+    <td>Potřebuješ real-time přístup k externím službám (Slack, Linear, GitHub API)</td>
+    <td>Zpracováváš lokální soubory nebo data</td>
+  </tr>
+  <tr>
+    <td>Služba má oficiální MCP server</td>
+    <td>Potřebuješ komplexní logiku nebo transformace</td>
+  </tr>
+  <tr>
+    <td>Chceš využít autentizaci spravovanou MCP serverem</td>
+    <td>Chceš minimalizovat závislosti</td>
+  </tr>
+</table>
 
 <h2 id="proc">Proč je to důležité?</h2>
 
