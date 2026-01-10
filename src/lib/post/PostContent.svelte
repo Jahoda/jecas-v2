@@ -6,11 +6,17 @@
 
 	interface Props {
 		content: string;
+		containerRef?: HTMLDivElement;
 	}
 
-	let { content }: Props = $props();
+	let { content, containerRef = $bindable() }: Props = $props();
 
 	let postContent: HTMLDivElement | undefined = $state();
+
+	// Sync internal ref with bindable prop
+	$effect(() => {
+		containerRef = postContent;
+	});
 
 	function attachLiveCode() {
 		if (postContent) {

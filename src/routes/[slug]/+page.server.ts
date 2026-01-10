@@ -8,10 +8,12 @@ import {
 } from '$lib/post/post';
 import { getAllTagsByPageId, getSingleTagBySlug, getAllUsedTags, type Tag } from '$lib/tag/tags';
 import { groupByPageId } from '$lib/tags/tags';
+import { isAuthenticated } from '$lib/auth/auth';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-export const load = (async ({ params }) => {
+export const load = (async ({ params, cookies }) => {
+	const isAdmin = isAuthenticated(cookies);
 	const slug = params.slug;
 
 	let tags: Tag[] = [];
@@ -67,6 +69,7 @@ export const load = (async ({ params }) => {
 		relatedPosts,
 		allTags,
 		pagesTags,
-		prevNextPosts
+		prevNextPosts,
+		isAdmin
 	};
 }) satisfies PageServerLoad;
