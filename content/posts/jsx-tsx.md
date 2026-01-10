@@ -628,7 +628,7 @@ function Hello({ name }: Props) {
   <li><b>React</b> — původní implementace</li>
   <li><b>Preact</b> — lehká alternativa (3 KB)</li>
   <li><b>SolidJS</b> — kompiluje JSX přímo do DOM operací</li>
-  <li><b>Qwik</b> — framework s okamžitým obnovením stavu (HTML obsahuje serializovaný stav, JS se načítá lazy)</li>
+  <li><b>Qwik</b> — framework s okamžitým obnovením stavu (HTML obsahuje serialisovaný stav, JS se načítá lazy)</li>
   <li><b>Vue</b> — volitelně s pluginem</li>
 </ul>
 
