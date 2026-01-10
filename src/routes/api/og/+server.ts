@@ -18,36 +18,37 @@ function parseTextWithCode(str: string) {
 	const decoded = decodeHtmlEntities(str);
 	const parts = decoded.split(/(<code>.*?<\/code>)/gi);
 
-	// Split into word-level chunks for better flex wrapping
-	const result: (string | { type: string; props: { style?: object; children: string } })[] = [];
-
-	for (const part of parts) {
-		if (!part) continue;
-
-		const codeMatch = part.match(/<code>(.*?)<\/code>/i);
-		if (codeMatch) {
-			result.push({
+	return parts
+		.filter((part) => part.length > 0)
+		.map((part, index) => {
+			const codeMatch = part.match(/<code>(.*?)<\/code>/i);
+			if (codeMatch) {
+				return {
+					type: 'span',
+					props: {
+						style: {
+							display: 'flex',
+							fontFamily: 'monospace',
+							backgroundColor: 'rgba(255, 255, 255, 0.15)',
+							padding: '2px 8px',
+							borderRadius: 6
+						},
+						children: codeMatch[1]
+					}
+				};
+			}
+			// Return text wrapped in a span with pre-wrap to preserve spaces
+			return {
 				type: 'span',
 				props: {
 					style: {
-						fontFamily: 'monospace',
-						backgroundColor: 'rgba(255, 255, 255, 0.15)',
-						padding: '2px 8px',
-						borderRadius: 6
+						display: 'flex',
+						whiteSpace: 'pre-wrap'
 					},
-					children: codeMatch[1]
+					children: part
 				}
-			});
-		} else {
-			// Split plain text by spaces and add each word separately
-			const words = part.split(/(\s+)/);
-			for (const word of words) {
-				if (word) result.push(word);
-			}
-		}
-	}
-
-	return result;
+			};
+		});
 }
 
 function postGradient(tags: Tag[]) {
@@ -232,8 +233,7 @@ export const GET: RequestHandler = async ({ url }) => {
 																style: {
 																	display: 'flex',
 																	flexWrap: 'wrap',
-																	alignItems: 'baseline',
-																	gap: 12,
+																	alignItems: 'center',
 																	fontSize: 52,
 																	fontWeight: 700,
 																	color: 'white',
@@ -249,8 +249,7 @@ export const GET: RequestHandler = async ({ url }) => {
 																		style: {
 																			display: 'flex',
 																			flexWrap: 'wrap',
-																			alignItems: 'baseline',
-																			gap: 6,
+																			alignItems: 'center',
 																			fontSize: 26,
 																			color: 'rgba(255, 255, 255, 0.9)',
 																			lineHeight: 1.6
