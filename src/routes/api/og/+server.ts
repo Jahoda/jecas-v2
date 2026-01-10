@@ -229,6 +229,9 @@ export const GET: RequestHandler = async ({ url }) => {
 															type: 'div',
 															props: {
 																style: {
+																	display: 'flex',
+																	flexWrap: 'wrap',
+																	alignItems: 'baseline',
 																	fontSize: 52,
 																	fontWeight: 700,
 																	color: 'white',
@@ -242,6 +245,9 @@ export const GET: RequestHandler = async ({ url }) => {
 																	type: 'div',
 																	props: {
 																		style: {
+																			display: 'flex',
+																			flexWrap: 'wrap',
+																			alignItems: 'baseline',
 																			fontSize: 26,
 																			color: 'rgba(255, 255, 255, 0.9)',
 																			lineHeight: 1.6
