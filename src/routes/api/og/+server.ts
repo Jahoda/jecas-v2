@@ -326,7 +326,6 @@ export const GET: RequestHandler = async ({ url }) => {
 			}
 		};
 
-		// @ts-expect-error - ImageResponse expects JSX but we use object syntax
 		return new ImageResponse(element, {
 			width: 1200,
 			height: 630
