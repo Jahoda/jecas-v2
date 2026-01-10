@@ -238,6 +238,62 @@ npm run preview  # Náhled produkčního buildu</code></pre>
   </tbody>
 </table>
 
+<h3 id="tailwind">Tailwind CSS a AOT build</h3>
+
+<p>Fresh od verze 1.6 má oficiální <b>Tailwind CSS plugin</b>. Ten ale vyžaduje <b>AOT (Ahead-of-Time) build</b> – výjimku z jinak zero-build filozofie:</p>
+
+<pre><code># Fresh bez Tailwind
+deno run -A main.ts       # Spustí se rovnou
+
+# Fresh s Tailwind
+deno task build           # Vygeneruje CSS + předkompiluje islands
+deno run -A main.ts       # Pak spustí server</code></pre>
+
+<p>Konfigurace:</p>
+
+<pre><code>// fresh.config.ts
+import tailwind from "$fresh/plugins/tailwind.ts";
+
+export default defineConfig({
+  plugins: [tailwind()],
+});</code></pre>
+
+<p>Proč AOT? Tailwind skenuje zdrojové soubory a generuje CSS pouze pro použité třídy. To nelze efektivně dělat za běhu.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Twind (starý)</th>
+      <th>Tailwind (nový)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Build</td>
+      <td>Žádný</td>
+      <td>AOT (<code>deno task build</code>)</td>
+    </tr>
+    <tr>
+      <td>CSS generování</td>
+      <td>Runtime (per-request)</td>
+      <td>Předgenerované</td>
+    </tr>
+    <tr>
+      <td>Výkon</td>
+      <td>Pomalejší</td>
+      <td>Rychlejší</td>
+    </tr>
+    <tr>
+      <td>Editor IntelliSense</td>
+      <td>Omezený</td>
+      <td>Plná podpora</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><b>Poznámka:</b> Pro VS Code IntelliSense je potřeba nastavit <code>"nodeModulesDir": "manual"</code> v <code>deno.json</code>.</p>
+
 <h2 id="rychlost">Rychlost a výkon</h2>
 
 <h3 id="bundle-size">Velikost bundlu</h3>
