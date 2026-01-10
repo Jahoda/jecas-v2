@@ -188,7 +188,7 @@ function UserList() {
 
 <h3>HTML atributy</h3>
 
-<p>Některé HTML atributy mají v JSX jiný název kvůli rezervovaným slovům v JavaScriptu:</p>
+<p>Některé HTML atributy mají v JSX jiný název kvůli vyhrazeným slovům v JavaScriptu:</p>
 
 <table>
   <tr>
@@ -628,7 +628,7 @@ function Hello({ name }: Props) {
   <li><b>React</b> — původní implementace</li>
   <li><b>Preact</b> — lehká alternativa (3 KB)</li>
   <li><b>SolidJS</b> — kompiluje JSX přímo do DOM operací</li>
-  <li><b>Qwik</b> — resumable framework</li>
+  <li><b>Qwik</b> — framework s okamžitým obnovením stavu (HTML obsahuje serializovaný stav, JS se načítá lazy)</li>
   <li><b>Vue</b> — volitelně s pluginem</li>
 </ul>
 
@@ -709,7 +709,7 @@ export default defineConfig({
   <li><b>Extrahujte opakující se JSX</b> do samostatných komponent</li>
   <li><b>Používejte TypeScript</b> pro lepší typovou kontrolu props</li>
   <li><b>Vyhněte se inline funkcím</b> v props pro lepší výkon</li>
-  <li><b>Destructurujte props</b> pro přehlednější kód</li>
+  <li><b>Rozbalujte props</b> pro přehlednější kód</li>
   <li><b>Používejte fragmenty</b> místo zbytečných wrapper divů</li>
 </ul>
 
