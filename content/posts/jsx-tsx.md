@@ -29,7 +29,7 @@ const element = React.createElement(
 
 <h2 id="rozdil-jsx-tsx">Rozdíl mezi JSX a TSX</h2>
 
-<p>Jediný rozdíl je v příponu souboru a typové kontrole:</p>
+<p>Jediný rozdíl je v příponě souboru a typové kontrole:</p>
 
 <ul>
   <li><code>.jsx</code> — JavaScript s JSX syntaxí</li>
@@ -182,13 +182,15 @@ function UserList() {
   );
 }</code></pre>
 
-<p>Atribut <code>key</code> je povinný při vykreslování seznamů. Pomáhá Reactu identifikovat, které položky se změnily.</p>
+<p>Atribut <code>key</code> je povinný při vykreslování seznamů. Pomáhá Reactu identifikovat, které položky se změnily. Použijte unikátní ID z dat — <code>index</code> jako key způsobuje problémy při přeřazování položek.</p>
 
 <h2 id="atributy">Atributy a props</h2>
 
 <h3>HTML atributy</h3>
 
-<p>Některé HTML atributy mají v JSX jiný název kvůli vyhrazeným slovům v JavaScriptu:</p>
+<p>Některé HTML atributy mají v JSX jiný název. Důvody jsou dva:</p>
+
+<p><b>Vyhrazená slova v JavaScriptu</b> — <code>class</code> a <code>for</code> jsou klíčová slova JS:</p>
 
 <table>
   <tr>
@@ -202,6 +204,15 @@ function UserList() {
   <tr>
     <td><code>for</code></td>
     <td><code>htmlFor</code></td>
+  </tr>
+</table>
+
+<p><b>Konzistence s DOM API</b> — JSX používá camelCase jako nativní DOM vlastnosti:</p>
+
+<table>
+  <tr>
+    <th>HTML</th>
+    <th>JSX / DOM</th>
   </tr>
   <tr>
     <td><code>tabindex</code></td>
@@ -557,7 +568,7 @@ var name = person.name; // "Jan"</code></pre>
 
 <ul>
   <li><code>React.createElement()</code> byl příliš verbose</li>
-  <li>Šablonové stringy neměly typovou kontrolu</li>
+  <li>Stringové šablony (Mustache, Handlebars) neměly typovou kontrolu</li>
   <li>HTML-like syntaxe je intuitivní pro UI</li>
 </ul>
 
@@ -699,9 +710,9 @@ export default defineConfig({
   plugins: [solidPlugin()]
 });</code></pre>
 
-<h3>Vue (experimentálně)</h3>
+<h3>Vue</h3>
 
-<p>Vue podporuje JSX pomocí <code>@vitejs/plugin-vue-jsx</code>.</p>
+<p>Vue 3 podporuje JSX pomocí <code>@vitejs/plugin-vue-jsx</code>.</p>
 
 <h2 id="tipy">Tipy</h2>
 
