@@ -11,7 +11,7 @@
 	import ImageUploadManager from '$lib/imageUpload/ImageUploadManager.svelte';
 	import { htmlToPlainText } from '$lib/xml/xml';
 	import { schemaScript } from '$lib/schemaScript/schemaScript';
-	import { AnnotationPanel } from '$lib/annotation';
+	import { AnnotationLoader } from '$lib/annotation';
 
 	interface Props {
 		data: PageData;
@@ -144,7 +144,7 @@
 </Container>
 
 {#if data.page}
-	<AnnotationPanel
+	<AnnotationLoader
 		slug={data.page.url_slug}
 		articleTitle={data.page.title}
 		contentContainer={contentContainerRef}
