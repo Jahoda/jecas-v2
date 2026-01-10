@@ -1,4 +1,5 @@
 import {
+	getAllPosts,
 	getPostsByTagId,
 	getRelatedPostsByMostTags,
 	getSinglePostBySlug,
@@ -9,7 +10,32 @@ import {
 import { getAllTagsByPageId, getSingleTagBySlug, getAllUsedTags, type Tag } from '$lib/tag/tags';
 import { groupByPageId } from '$lib/tags/tags';
 import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import type { EntryGenerator, PageServerLoad } from './$types';
+import { env } from '$env/dynamic/private';
+
+// Skip prerendering on Vercel preview deployments for faster builds
+// Pages will be rendered on-demand via SSR instead
+const isPreviewBuild = env.VERCEL_ENV === 'preview';
+
+// Enable static pre-rendering for post and tag pages (production only)
+export const prerender = !isPreviewBuild;
+
+// Generate entries for all posts and tags at build time (production only)
+// Note: Drafts are excluded from prerendering to stay under the 2048 route limit
+// Exception: kontakt page is explicitly included
+export const entries: EntryGenerator = async () => {
+	if (isPreviewBuild) {
+		return [];
+	}
+
+	const posts = await getAllPosts();
+	const tags = await getAllUsedTags();
+
+	const postEntries = posts.map((post) => ({ slug: post.url_slug }));
+	const tagEntries = tags.map((tag) => ({ slug: tag.url_slug }));
+
+	return [{ slug: 'kontakt' }, ...postEntries, ...tagEntries];
+};
 
 export const load = (async ({ params }) => {
 	const slug = params.slug;
