@@ -227,64 +227,84 @@ export const GET: RequestHandler = async ({ url }) => {
 												props: {
 													style: {
 														display: 'flex',
-														alignItems: 'center',
-														gap: 24,
-														flexWrap: 'wrap'
+														flexDirection: 'column',
+														gap: 16
 													},
 													children: [
-														// Date
-														displayDate
+														// Date + Reading time
+														{
+															type: 'div',
+															props: {
+																style: {
+																	display: 'flex',
+																	alignItems: 'center',
+																	gap: 24
+																},
+																children: [
+																	displayDate
+																		? {
+																				type: 'div',
+																				props: {
+																					style: {
+																						display: 'flex',
+																						alignItems: 'center',
+																						gap: 8,
+																						color: 'white',
+																						fontSize: 20
+																					},
+																					children: [CalendarIcon(), displayDate]
+																				}
+																			}
+																		: null,
+																	readingTime
+																		? {
+																				type: 'div',
+																				props: {
+																					style: {
+																						display: 'flex',
+																						alignItems: 'center',
+																						gap: 8,
+																						color: 'white',
+																						fontSize: 20
+																					},
+																					children: [
+																						ClockIcon(),
+																						`${readingTime} ${pluralize(readingTime)}`
+																					]
+																				}
+																			}
+																		: null
+																].filter(Boolean)
+															}
+														},
+														// Tags
+														tags.length > 0
 															? {
 																	type: 'div',
 																	props: {
 																		style: {
 																			display: 'flex',
-																			alignItems: 'center',
-																			gap: 8,
-																			color: 'white',
-																			fontSize: 20
+																			gap: 12,
+																			flexWrap: 'wrap'
 																		},
-																		children: [CalendarIcon(), displayDate]
+																		children: tags.slice(0, 3).map((tag) => ({
+																			type: 'div',
+																			props: {
+																				style: {
+																					display: 'flex',
+																					padding: '8px 16px',
+																					borderRadius: 8,
+																					fontSize: 18,
+																					fontWeight: 600,
+																					backgroundColor: tag.background || '#6366f1',
+																					color: tag.color || 'white'
+																				},
+																				children: tag.name
+																			}
+																		}))
 																	}
 																}
-															: null,
-														// Reading time
-														readingTime
-															? {
-																	type: 'div',
-																	props: {
-																		style: {
-																			display: 'flex',
-																			alignItems: 'center',
-																			gap: 8,
-																			color: 'white',
-																			fontSize: 20
-																		},
-																		children: [
-																			ClockIcon(),
-																			`${readingTime} ${pluralize(readingTime)}`
-																		]
-																	}
-																}
-															: null,
-														// Tags inline
-														...(tags.length > 0
-															? tags.slice(0, 3).map((tag) => ({
-																	type: 'div',
-																	props: {
-																		style: {
-																			display: 'flex',
-																			padding: '8px 16px',
-																			borderRadius: 8,
-																			fontSize: 18,
-																			fontWeight: 600,
-																			backgroundColor: tag.background || '#6366f1',
-																			color: tag.color || 'white'
-																		},
-																		children: tag.name
-																	}
-																}))
-															: [])
+															: null
 													].filter(Boolean)
 												}
 											}
