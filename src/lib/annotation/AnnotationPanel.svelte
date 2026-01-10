@@ -15,14 +15,14 @@
 
 	let { slug, articleTitle, contentContainer }: Props = $props();
 
-	let isAdmin = $state(false);
+	let isReviewEnv = $state(false);
 	let panelOpen = $state(false);
 
 	// Show panel when there are annotations
 	let hasAnnotations = $derived(annotationState.annotations.length > 0);
 
 	function handleSelection() {
-		if (!isAdmin) return;
+		if (!isReviewEnv) return;
 
 		const selection = window.getSelection();
 		if (!selection || selection.isCollapsed || !selection.toString().trim()) {
@@ -60,7 +60,7 @@
 
 	// Apply highlights when annotations change
 	$effect(() => {
-		if (contentContainer && isAdmin) {
+		if (contentContainer && isReviewEnv) {
 			highlightAnnotationsInContent(
 				contentContainer,
 				annotationState.annotations,
@@ -69,17 +69,11 @@
 		}
 	});
 
-	onMount(async () => {
-		// Check admin status via API
-		try {
-			const response = await fetch('/api/admin/status');
-			const data = await response.json();
-			isAdmin = data.isAdmin;
-		} catch {
-			isAdmin = false;
-		}
+	onMount(() => {
+		// Check if we're on Vercel preview environment
+		isReviewEnv = window.location.hostname.endsWith('vercel.app');
 
-		if (!isAdmin) return;
+		if (!isReviewEnv) return;
 
 		annotationState.init(slug);
 		annotationState.enable();
@@ -96,7 +90,7 @@
 	});
 </script>
 
-{#if isAdmin}
+{#if isReviewEnv}
 	<!-- Selection toolbar - appears when text is selected -->
 	<AnnotationToolbar />
 
