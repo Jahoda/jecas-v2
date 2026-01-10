@@ -11,7 +11,7 @@
 	import ImageUploadManager from '$lib/imageUpload/ImageUploadManager.svelte';
 	import { htmlToPlainText } from '$lib/xml/xml';
 	import { schemaScript } from '$lib/schemaScript/schemaScript';
-	import { AnnotationLoader } from '$lib/annotation';
+	import AnnotationLoader from '$lib/annotation/AnnotationLoader.svelte';
 
 	interface Props {
 		data: PageData;
