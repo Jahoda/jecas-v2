@@ -21,6 +21,9 @@
 	let hasAnnotations = $derived(annotationState.annotations.length > 0);
 
 	function handleSelection() {
+		// Don't interfere when popover is open
+		if (annotationState.showPopover) return;
+
 		const selection = window.getSelection();
 		if (!selection || selection.isCollapsed || !selection.toString().trim()) {
 			annotationState.setSelection(null);
@@ -70,13 +73,11 @@
 		annotationState.init(slug);
 		annotationState.enable();
 
-		// Add selection listener
+		// Add selection listener (mouseup only - keyup can interfere with inputs)
 		document.addEventListener('mouseup', handleSelection);
-		document.addEventListener('keyup', handleSelection);
 
 		return () => {
 			document.removeEventListener('mouseup', handleSelection);
-			document.removeEventListener('keyup', handleSelection);
 			annotationState.disable();
 		};
 	});

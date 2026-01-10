@@ -48,16 +48,18 @@
 		type="button"
 		class="fixed inset-0 z-40"
 		onclick={handleCancel}
-		onkeydown={handleKeydown}
 		aria-label="Zavřít"
 	></button>
 
 	<!-- Popover -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
 		class="fixed z-50 w-96 -translate-x-1/2 transform"
 		style="top: {position.top}px; left: {position.left}px;"
 		role="dialog"
 		aria-modal="true"
+		onclick={(e) => e.stopPropagation()}
+		onmouseup={(e) => e.stopPropagation()}
 	>
 		<div
 			class="rounded-lg border border-gray-200 bg-white shadow-xl dark:border-gray-700 dark:bg-gray-800"
