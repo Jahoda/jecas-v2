@@ -30,14 +30,22 @@ function parseTextWithCode(str: string) {
 							fontFamily: 'monospace',
 							backgroundColor: 'rgba(255, 255, 255, 0.15)',
 							padding: '2px 8px',
-							margin: '0 6px',
-							borderRadius: 6
+							marginLeft: 6,
+							marginRight: 6,
+							borderRadius: 6,
+							whiteSpace: 'nowrap'
 						},
 						children: codeMatch[1]
 					}
 				};
 			}
-			return part;
+			// Wrap text in span for consistent inline behavior
+			return {
+				type: 'span',
+				props: {
+					children: part
+				}
+			};
 		});
 }
 
@@ -221,13 +229,10 @@ export const GET: RequestHandler = async ({ url }) => {
 															type: 'div',
 															props: {
 																style: {
-																	display: 'flex',
-																	flexWrap: 'wrap',
-																	alignItems: 'center',
 																	fontSize: 52,
 																	fontWeight: 700,
 																	color: 'white',
-																	lineHeight: 1.15
+																	lineHeight: 1.4
 																},
 																children: headlineParsed
 															}
@@ -237,12 +242,9 @@ export const GET: RequestHandler = async ({ url }) => {
 																	type: 'div',
 																	props: {
 																		style: {
-																			display: 'flex',
-																			flexWrap: 'wrap',
-																			alignItems: 'center',
 																			fontSize: 26,
 																			color: 'rgba(255, 255, 255, 0.9)',
-																			lineHeight: 1.4
+																			lineHeight: 1.6
 																		},
 																		children: descriptionParsed
 																	}
