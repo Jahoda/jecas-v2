@@ -143,7 +143,7 @@
 	</div>
 </Container>
 
-{#if data.isAdmin && data.page}
+{#if data.page}
 	<AnnotationPanel
 		slug={data.page.url_slug}
 		articleTitle={data.page.title}
