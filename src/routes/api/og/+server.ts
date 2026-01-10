@@ -5,10 +5,6 @@ import { ImageResponse } from '@vercel/og';
 
 export const prerender = false;
 
-function stripTags(str: string) {
-	return str.replace(/(<([^>]+)>)/gi, '');
-}
-
 function decodeHtmlEntities(str: string) {
 	return str
 		.replace(/&lt;/g, '<')
@@ -16,6 +12,32 @@ function decodeHtmlEntities(str: string) {
 		.replace(/&amp;/g, '&')
 		.replace(/&quot;/g, '"')
 		.replace(/&#39;/g, "'");
+}
+
+function parseTextWithCode(str: string) {
+	const decoded = decodeHtmlEntities(str);
+	const parts = decoded.split(/(<code>.*?<\/code>)/gi);
+
+	return parts
+		.filter((part) => part.length > 0)
+		.map((part) => {
+			const codeMatch = part.match(/<code>(.*?)<\/code>/i);
+			if (codeMatch) {
+				return {
+					type: 'span',
+					props: {
+						style: {
+							fontFamily: 'monospace',
+							backgroundColor: 'rgba(255, 255, 255, 0.15)',
+							padding: '2px 8px',
+							borderRadius: 6
+						},
+						children: codeMatch[1]
+					}
+				};
+			}
+			return part;
+		});
 }
 
 function postGradient(tags: Tag[]) {
@@ -124,7 +146,11 @@ export const GET: RequestHandler = async ({ url }) => {
 		tags = await getAllTagsByPageId(post.url_slug);
 	}
 
-	const description = decodeHtmlEntities(post.description || '');
+	const descriptionRaw = post.description || '';
+	const descriptionParsed = parseTextWithCode(
+		descriptionRaw.length > 140 ? descriptionRaw.slice(0, 140) + '...' : descriptionRaw
+	);
+	const headlineParsed = parseTextWithCode(post.headline || post.title || '');
 	const displayDate = formatDate(post.last_modification || post.date);
 	const readingTime = post.word_count ? calcReadingTime(post.word_count) : null;
 	const thumbnailUrl = `https://jecas.cz/files/article/${post.url_slug}.png`;
@@ -194,27 +220,28 @@ export const GET: RequestHandler = async ({ url }) => {
 															type: 'div',
 															props: {
 																style: {
+																	display: 'flex',
+																	flexWrap: 'wrap',
 																	fontSize: 52,
 																	fontWeight: 700,
 																	color: 'white',
 																	lineHeight: 1.15
 																},
-																children: post.headline || post.title
+																children: headlineParsed
 															}
 														},
-														description
+														descriptionRaw
 															? {
 																	type: 'div',
 																	props: {
 																		style: {
+																			display: 'flex',
+																			flexWrap: 'wrap',
 																			fontSize: 26,
 																			color: 'rgba(255, 255, 255, 0.9)',
 																			lineHeight: 1.4
 																		},
-																		children:
-																			description.length > 140
-																				? description.slice(0, 140) + '...'
-																				: description
+																		children: descriptionParsed
 																	}
 																}
 															: null
