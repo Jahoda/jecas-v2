@@ -16,7 +16,7 @@
 
 		// URL param ?annotate=1 sets cookie and enables mode
 		if (params.get('annotate') === '1') {
-			document.cookie = 'annotation_mode=1; path=/; max-age=86400'; // 24 hours
+			document.cookie = 'annotation_mode=1; path=/; max-age=315360000'; // 10 years
 		}
 		// URL param ?annotate=0 removes cookie
 		if (params.get('annotate') === '0') {
