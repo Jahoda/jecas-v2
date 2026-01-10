@@ -4,10 +4,9 @@
 	interface Props {
 		slug: string;
 		articleTitle: string;
-		contentContainer?: HTMLElement;
 	}
 
-	let { slug, articleTitle, contentContainer }: Props = $props();
+	let { slug, articleTitle }: Props = $props();
 
 	let shouldLoad = $state(false);
 	let AnnotationPanel: typeof import('./AnnotationPanel.svelte').default | null = $state(null);
@@ -42,5 +41,5 @@
 </script>
 
 {#if shouldLoad && AnnotationPanel}
-	<AnnotationPanel {slug} {articleTitle} {contentContainer} />
+	<AnnotationPanel {slug} {articleTitle} />
 {/if}

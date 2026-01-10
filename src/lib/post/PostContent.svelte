@@ -6,17 +6,11 @@
 
 	interface Props {
 		content: string;
-		containerRef?: HTMLDivElement;
 	}
 
-	let { content, containerRef = $bindable() }: Props = $props();
+	let { content }: Props = $props();
 
 	let postContent: HTMLDivElement | undefined = $state();
-
-	// Sync internal ref with bindable prop
-	$effect(() => {
-		containerRef = postContent;
-	});
 
 	function attachLiveCode() {
 		if (postContent) {
@@ -55,6 +49,7 @@
 		m-auto w-full max-w-3xl
 		"
 	bind:this={postContent}
+	id="post-content"
 >
 	{@html content}
 </div>

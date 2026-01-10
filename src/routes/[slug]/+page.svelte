@@ -20,7 +20,6 @@
 	let { data }: Props = $props();
 
 	let post = $derived(data.page || data.tag);
-	let contentContainerRef: HTMLDivElement | undefined = $state();
 
 	const baseUrl = 'https://jecas.cz';
 	const pageUrl = $derived(data.page ? `${baseUrl}/${data.page.url_slug}` : baseUrl);
@@ -111,7 +110,7 @@
 	<div class="grid grid-cols-1 gap-8 md:gap-16">
 		<div class="xl:grid-cols-post grid grid-cols-1 gap-8">
 			<div class="max-md:hidden"></div>
-			<div><PostContent content={post?.text_html || ''} bind:containerRef={contentContainerRef} /></div>
+			<div><PostContent content={post?.text_html || ''} /></div>
 			<div class="sticky top-2 w-[14rem] self-start text-sm max-xl:hidden">
 				{#if post}
 					<PostToc slug={post.url_slug} />
@@ -147,6 +146,5 @@
 	<AnnotationLoader
 		slug={data.page.url_slug}
 		articleTitle={data.page.title}
-		contentContainer={contentContainerRef}
 	/>
 {/if}

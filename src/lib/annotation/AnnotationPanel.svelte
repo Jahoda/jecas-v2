@@ -10,12 +10,12 @@
 	interface Props {
 		slug: string;
 		articleTitle: string;
-		contentContainer?: HTMLElement;
 	}
 
-	let { slug, articleTitle, contentContainer }: Props = $props();
+	let { slug, articleTitle }: Props = $props();
 
 	let panelOpen = $state(false);
+	let contentContainer: HTMLElement | null = $state(null);
 
 	// Show panel when there are annotations
 	let hasAnnotations = $derived(annotationState.annotations.length > 0);
@@ -70,6 +70,8 @@
 	});
 
 	onMount(() => {
+		contentContainer = document.getElementById('post-content');
+
 		annotationState.init(slug);
 		annotationState.enable();
 
