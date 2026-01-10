@@ -124,7 +124,7 @@ export const GET: RequestHandler = async ({ url }) => {
 		tags = await getAllTagsByPageId(post.url_slug);
 	}
 
-	const description = stripTags(decodeHtmlEntities(post.description || ''));
+	const description = decodeHtmlEntities(post.description || '');
 	const displayDate = formatDate(post.last_modification || post.date);
 	const readingTime = post.word_count ? calcReadingTime(post.word_count) : null;
 	const thumbnailUrl = `https://jecas.cz/files/article/${post.url_slug}.png`;
