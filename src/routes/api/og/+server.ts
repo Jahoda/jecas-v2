@@ -3,11 +3,6 @@ import { getAllTagsByPageId, type Tag } from '$lib/tag/tags';
 import type { RequestHandler } from './$types';
 import { ImageResponse } from '@vercel/og';
 
-// Use Edge runtime for best performance on Vercel
-export const config = {
-	runtime: 'edge'
-};
-
 export const prerender = false;
 
 function stripTags(str: string) {
