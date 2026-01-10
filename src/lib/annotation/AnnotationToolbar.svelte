@@ -19,7 +19,7 @@
 	}
 </script>
 
-{#if annotationState.isEnabled && annotationState.currentSelection && !annotationState.showPopover}
+{#if annotationState.currentSelection && !annotationState.showPopover}
 	<div
 		bind:this={toolbarRef}
 		class="fixed z-50 -translate-x-1/2 transform"

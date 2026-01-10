@@ -15,11 +15,12 @@
 
 	let { slug, articleTitle, contentContainer }: Props = $props();
 
-	let panelOpen = $state(true);
+	let panelOpen = $state(false);
+
+	// Show panel when there are annotations
+	let hasAnnotations = $derived(annotationState.annotations.length > 0);
 
 	function handleSelection() {
-		if (!annotationState.isEnabled) return;
-
 		const selection = window.getSelection();
 		if (!selection || selection.isCollapsed || !selection.toString().trim()) {
 			annotationState.setSelection(null);
@@ -56,7 +57,7 @@
 
 	// Apply highlights when annotations change
 	$effect(() => {
-		if (contentContainer && annotationState.isEnabled) {
+		if (contentContainer) {
 			highlightAnnotationsInContent(
 				contentContainer,
 				annotationState.annotations,
@@ -67,6 +68,7 @@
 
 	onMount(() => {
 		annotationState.init(slug);
+		annotationState.enable();
 
 		// Add selection listener
 		document.addEventListener('mouseup', handleSelection);
@@ -80,16 +82,23 @@
 	});
 </script>
 
-<!-- Floating toggle button -->
-<div class="fixed bottom-4 right-4 z-40">
+<!-- Selection toolbar - appears when text is selected -->
+<AnnotationToolbar />
+
+<!-- Comment popover -->
+<AnnotationPopover />
+
+<!-- Annotation panel button - only show when there are annotations -->
+{#if hasAnnotations}
 	<button
 		type="button"
-		onclick={() => annotationState.toggle()}
-		class="flex h-12 w-12 items-center justify-center rounded-full shadow-lg transition-all {annotationState.isEnabled
-			? 'bg-blue-600 text-white hover:bg-blue-700'
-			: 'bg-white text-gray-600 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'}"
-		title={annotationState.isEnabled ? 'Vypnout anotace' : 'Zapnout anotace'}
+		onclick={() => (panelOpen = !panelOpen)}
+		class="fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-all hover:bg-blue-700"
+		title="Zobrazit anotace ({annotationState.annotations.length})"
 	>
+		<span class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold">
+			{annotationState.annotations.length}
+		</span>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 24 24"
@@ -106,57 +115,49 @@
 			/>
 		</svg>
 	</button>
-</div>
+{/if}
 
 <!-- Annotation panel sidebar -->
-{#if annotationState.isEnabled}
+{#if panelOpen && hasAnnotations}
+	<!-- Backdrop -->
+	<button
+		type="button"
+		class="fixed inset-0 z-40 bg-black/20"
+		onclick={() => (panelOpen = false)}
+		aria-label="Zavřít panel"
+	></button>
+
 	<div
-		class="fixed right-0 top-0 z-30 h-full w-80 transform border-l border-gray-200 bg-white shadow-xl transition-transform dark:border-gray-700 dark:bg-gray-800 {panelOpen
-			? 'translate-x-0'
-			: 'translate-x-full'}"
+		class="fixed right-0 top-0 z-50 h-full w-96 border-l border-gray-200 bg-white shadow-xl dark:border-gray-700 dark:bg-gray-800"
 	>
 		<!-- Panel header -->
 		<div
 			class="flex items-center justify-between border-b border-gray-200 p-4 dark:border-gray-700"
 		>
-			<h2 class="text-lg font-semibold text-gray-900 dark:text-white">Anotace</h2>
-			<div class="flex items-center gap-2">
-				<span
-					class="rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+			<h2 class="text-lg font-semibold text-gray-900 dark:text-white">
+				Anotace ({annotationState.annotations.length})
+			</h2>
+			<button
+				type="button"
+				onclick={() => (panelOpen = false)}
+				class="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-700 dark:hover:text-gray-300"
+				title="Zavřít panel"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 20 20"
+					fill="currentColor"
+					class="h-5 w-5"
 				>
-					{annotationState.annotations.length}
-				</span>
-				<button
-					type="button"
-					onclick={() => (panelOpen = !panelOpen)}
-					class="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:hover:bg-gray-700 dark:hover:text-gray-300"
-					title={panelOpen ? 'Skrýt panel' : 'Zobrazit panel'}
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 20 20"
-						fill="currentColor"
-						class="h-5 w-5 transition-transform {panelOpen ? '' : 'rotate-180'}"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
-							clip-rule="evenodd"
-						/>
-					</svg>
-				</button>
-			</div>
+					<path
+						d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+					/>
+				</svg>
+			</button>
 		</div>
 
 		<!-- Panel content -->
 		<div class="flex h-[calc(100%-4rem)] flex-col">
-			<!-- Instructions -->
-			<div class="border-b border-gray-200 bg-blue-50 p-3 dark:border-gray-700 dark:bg-blue-900/20">
-				<p class="text-xs text-blue-700 dark:text-blue-300">
-					Označte text v článku a přidejte komentář s požadavkem na úpravu.
-				</p>
-			</div>
-
 			<!-- Annotations list -->
 			<div class="flex-1 overflow-y-auto p-4">
 				<AnnotationList onScrollTo={handleScrollToAnnotation} />
@@ -168,36 +169,7 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Collapse button when panel is closed -->
-	{#if !panelOpen}
-		<button
-			type="button"
-			onclick={() => (panelOpen = true)}
-			class="fixed right-0 top-1/2 z-30 -translate-y-1/2 rounded-l-lg bg-white p-2 shadow-lg dark:bg-gray-800"
-			title="Zobrazit panel anotací"
-		>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 20 20"
-				fill="currentColor"
-				class="h-5 w-5 text-gray-600 dark:text-gray-300"
-			>
-				<path
-					fill-rule="evenodd"
-					d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-					clip-rule="evenodd"
-				/>
-			</svg>
-		</button>
-	{/if}
 {/if}
-
-<!-- Selection toolbar -->
-<AnnotationToolbar />
-
-<!-- Comment popover -->
-<AnnotationPopover />
 
 <style>
 	:global(.annotation-highlight) {
