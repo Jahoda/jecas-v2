@@ -449,7 +449,7 @@ _jsxs('div', {
   ]
 });</code></pre>
 
-<h2 id="ast">AST - Abstract Syntax Tree</h2>
+<h2 id="ast">AST – Abstract Syntax Tree</h2>
 
 <p><b>Abstract Syntax Tree</b> (abstraktní syntaktický strom) je stromová reprezentace zdrojového kódu. Každý uzel stromu představuje konstrukci v kódu. Kompilátory a transpilery používají AST pro analýzu a transformaci kódu.</p>
 
