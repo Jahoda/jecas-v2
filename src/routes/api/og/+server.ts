@@ -138,7 +138,7 @@ export const GET: RequestHandler = async ({ url }) => {
 					flexDirection: 'column',
 					width: '100%',
 					height: '100%',
-					padding: 48,
+					padding: 40,
 					backgroundImage: postGradient(tags)
 				},
 				children: [
@@ -149,9 +149,10 @@ export const GET: RequestHandler = async ({ url }) => {
 							style: {
 								display: 'flex',
 								flex: 1,
-								backgroundColor: 'rgba(15, 23, 42, 0.7)',
+								backgroundColor: 'rgba(15, 23, 42, 0.75)',
 								borderRadius: 24,
-								padding: 40
+								padding: 36,
+								gap: 36
 							},
 							children: [
 								// Thumbnail
@@ -159,10 +160,11 @@ export const GET: RequestHandler = async ({ url }) => {
 									type: 'img',
 									props: {
 										src: thumbnailUrl,
-										width: 200,
-										height: 200,
+										width: 280,
+										height: 280,
 										style: {
-											borderRadius: 16
+											borderRadius: 16,
+											alignSelf: 'center'
 										}
 									}
 								},
@@ -174,8 +176,8 @@ export const GET: RequestHandler = async ({ url }) => {
 											display: 'flex',
 											flexDirection: 'column',
 											flex: 1,
-											marginLeft: 40,
-											justifyContent: 'space-between'
+											justifyContent: 'center',
+											gap: 24
 										},
 										children: [
 											// Title + Description
@@ -192,10 +194,10 @@ export const GET: RequestHandler = async ({ url }) => {
 															type: 'div',
 															props: {
 																style: {
-																	fontSize: 48,
+																	fontSize: 52,
 																	fontWeight: 700,
 																	color: 'white',
-																	lineHeight: 1.1
+																	lineHeight: 1.15
 																},
 																children: post.headline || post.title
 															}
@@ -205,13 +207,13 @@ export const GET: RequestHandler = async ({ url }) => {
 																	type: 'div',
 																	props: {
 																		style: {
-																			fontSize: 24,
-																			color: 'rgba(255, 255, 255, 0.85)',
+																			fontSize: 26,
+																			color: 'rgba(255, 255, 255, 0.9)',
 																			lineHeight: 1.4
 																		},
 																		children:
-																			description.length > 100
-																				? description.slice(0, 100) + '...'
+																			description.length > 140
+																				? description.slice(0, 140) + '...'
 																				: description
 																	}
 																}
@@ -225,82 +227,64 @@ export const GET: RequestHandler = async ({ url }) => {
 												props: {
 													style: {
 														display: 'flex',
-														flexDirection: 'column',
-														gap: 16
+														alignItems: 'center',
+														gap: 24,
+														flexWrap: 'wrap'
 													},
 													children: [
-														// Date + Reading time
-														{
-															type: 'div',
-															props: {
-																style: {
-																	display: 'flex',
-																	alignItems: 'center',
-																	gap: 24,
-																	color: 'white',
-																	fontSize: 20
-																},
-																children: [
-																	displayDate
-																		? {
-																				type: 'div',
-																				props: {
-																					style: {
-																						display: 'flex',
-																						alignItems: 'center',
-																						gap: 8
-																					},
-																					children: [CalendarIcon(), displayDate]
-																				}
-																			}
-																		: null,
-																	readingTime
-																		? {
-																				type: 'div',
-																				props: {
-																					style: {
-																						display: 'flex',
-																						alignItems: 'center',
-																						gap: 8
-																					},
-																					children: [
-																						ClockIcon(),
-																						`${readingTime} ${pluralize(readingTime)}`
-																					]
-																				}
-																			}
-																		: null
-																].filter(Boolean)
-															}
-														},
-														// Tags
-														tags.length > 0
+														// Date
+														displayDate
 															? {
 																	type: 'div',
 																	props: {
 																		style: {
 																			display: 'flex',
-																			gap: 12,
-																			flexWrap: 'wrap'
+																			alignItems: 'center',
+																			gap: 8,
+																			color: 'white',
+																			fontSize: 20
 																		},
-																		children: tags.slice(0, 3).map((tag) => ({
-																			type: 'div',
-																			props: {
-																				style: {
-																					display: 'flex',
-																					padding: '8px 16px',
-																					borderRadius: 8,
-																					fontSize: 18,
-																					fontWeight: 600,
-																					backgroundColor: tag.background || '#6366f1',
-																					color: tag.color || 'white'
-																				},
-																				children: tag.name
-																			}
-																		}))
+																		children: [CalendarIcon(), displayDate]
 																	}
 																}
-															: null
+															: null,
+														// Reading time
+														readingTime
+															? {
+																	type: 'div',
+																	props: {
+																		style: {
+																			display: 'flex',
+																			alignItems: 'center',
+																			gap: 8,
+																			color: 'white',
+																			fontSize: 20
+																		},
+																		children: [
+																			ClockIcon(),
+																			`${readingTime} ${pluralize(readingTime)}`
+																		]
+																	}
+																}
+															: null,
+														// Tags inline
+														...(tags.length > 0
+															? tags.slice(0, 3).map((tag) => ({
+																	type: 'div',
+																	props: {
+																		style: {
+																			display: 'flex',
+																			padding: '8px 16px',
+																			borderRadius: 8,
+																			fontSize: 18,
+																			fontWeight: 600,
+																			backgroundColor: tag.background || '#6366f1',
+																			color: tag.color || 'white'
+																		},
+																		children: tag.name
+																	}
+																}))
+															: [])
 													].filter(Boolean)
 												}
 											}
@@ -317,7 +301,7 @@ export const GET: RequestHandler = async ({ url }) => {
 							style: {
 								display: 'flex',
 								justifyContent: 'center',
-								marginTop: 20
+								marginTop: 16
 							},
 							children: JecasLogo()
 						}
