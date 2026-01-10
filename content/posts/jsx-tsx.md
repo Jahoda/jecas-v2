@@ -207,7 +207,7 @@ function UserList() {
   </tr>
 </table>
 
-<p><b>Konzistence s DOM API</b> — JSX používá camelCase jako nativní DOM vlastnosti:</p>
+<p><b>Konsistence s DOM API</b> — JSX používá camelCase jako nativní DOM vlastnosti:</p>
 
 <table>
   <tr>
