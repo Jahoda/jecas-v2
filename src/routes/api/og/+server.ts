@@ -2,8 +2,20 @@ import { getSinglePostBySlug } from '$lib/post/post';
 import { getAllTagsByPageId, type Tag } from '$lib/tag/tags';
 import type { RequestHandler } from './$types';
 import { ImageResponse } from '@vercel/og';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 
 export const prerender = false;
+
+// Font cache
+let interBoldFont: Buffer | null = null;
+
+async function getInterBoldFont(): Promise<Buffer> {
+	if (!interBoldFont) {
+		interBoldFont = await readFile(join(process.cwd(), 'src/lib/fonts/Inter-Bold.ttf'));
+	}
+	return interBoldFont;
+}
 
 function stripTags(str: string) {
 	return str.replace(/(<([^>]+)>)/gi, '');
@@ -106,23 +118,6 @@ function JecasLogo() {
 	};
 }
 
-// Font cache
-let fontCache: ArrayBuffer | null = null;
-
-async function loadInterFont(): Promise<ArrayBuffer | null> {
-	if (fontCache) return fontCache;
-
-	try {
-		const response = await fetch(
-			'https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff'
-		);
-		if (!response.ok) return null;
-		fontCache = await response.arrayBuffer();
-		return fontCache;
-	} catch {
-		return null;
-	}
-}
 
 export const GET: RequestHandler = async ({ url }) => {
 	const slug = url.searchParams.get('slug');
@@ -148,8 +143,6 @@ export const GET: RequestHandler = async ({ url }) => {
 	const thumbnailUrl = `https://jecas.cz/files/article/${post.url_slug}.png`;
 
 	try {
-		const interFont = await loadInterFont();
-
 		const element = {
 			type: 'div',
 			props: {
@@ -159,7 +152,7 @@ export const GET: RequestHandler = async ({ url }) => {
 					width: '100%',
 					height: '100%',
 					padding: 48,
-					fontFamily: interFont ? 'Inter' : 'sans-serif',
+					fontFamily: 'Inter',
 					backgroundImage: postGradient(tags)
 				},
 				children: [
@@ -339,24 +332,21 @@ export const GET: RequestHandler = async ({ url }) => {
 			}
 		};
 
-		const options: { width: number; height: number; fonts?: Array<{ name: string; data: ArrayBuffer; style: 'normal'; weight: number }> } = {
-			width: 1200,
-			height: 630
-		};
-
-		if (interFont) {
-			options.fonts = [
-				{
-					name: 'Inter',
-					data: interFont,
-					style: 'normal',
-					weight: 400
-				}
-			];
-		}
+		const fontData = await getInterBoldFont();
 
 		// @ts-expect-error - ImageResponse expects JSX but we use object syntax
-		return new ImageResponse(element, options);
+		return new ImageResponse(element, {
+			width: 1200,
+			height: 630,
+			fonts: [
+				{
+					name: 'Inter',
+					data: fontData,
+					style: 'normal',
+					weight: 700
+				}
+			]
+		});
 	} catch (error) {
 		console.error('OG image generation error:', error);
 		return new Response(`Failed to generate image: ${error}`, { status: 500 });
