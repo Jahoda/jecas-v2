@@ -17,6 +17,43 @@ format: "html"
 
 <p>Interaktivita se přidává pouze tam, kde je potřeba – pomocí tzv. <b>islands</b> (ostrovů). Zbytek stránky zůstává jako statické HTML.</p>
 
+<h3 id="co-je-preact">Co je Preact</h3>
+
+<p>Fresh používá <a href="https://preactjs.com/">Preact</a> – odlehčenou alternativu k Reactu s téměř identickým API. Hlavní rozdíl je velikost: Preact má pouze <b>3 KB</b>, zatímco React ~40 KB.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Preact</th>
+      <th>React</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Velikost</td>
+      <td><b>3 KB</b></td>
+      <td>~40 KB</td>
+    </tr>
+    <tr>
+      <td>Virtual DOM</td>
+      <td>Ano</td>
+      <td>Ano</td>
+    </tr>
+    <tr>
+      <td>Hooks</td>
+      <td>Ano</td>
+      <td>Ano</td>
+    </tr>
+    <tr>
+      <td>API kompatibilita</td>
+      <td colspan="2">Téměř stejné</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Pro Fresh je Preact ideální volba – minimální runtime pro islands, ale známá syntaxe pro React vývojáře. Většina React kódu funguje v Preact s aliasem <code>preact/compat</code>.</p>
+
 <h2 id="islands-architektura">Islands architektura</h2>
 
 <p>Hlavní myšlenka islands architektury je jednoduchá: <b>většina webových stránek je statická</b>. Interaktivní jsou jen některé části – formuláře, menu, košík v e-shopu.</p>
@@ -50,6 +87,88 @@ export default function ProductPage() {
 }</code></pre>
 
 <p>Rozdíl může být <b>až 10×</b> v množství JavaScriptu poslaného do prohlížeče.</p>
+
+<h3 id="partials">Partials: Client-side navigace</h3>
+
+<p>Od verze 1.5 Fresh podporuje <b>client-side navigaci</b> bez full page reload pomocí tzv. Partials. Stačí přidat atribut <code>f-client-nav</code> a označit měnící se části stránky:</p>
+
+<pre><code>// routes/_app.tsx
+export default function App({ Component }) {
+  return (
+    &lt;html>
+      &lt;body f-client-nav>  {/* Zapne client-side navigaci */}
+        &lt;Header />
+        &lt;Partial name="main-content">
+          &lt;Component />  {/* Pouze tato část se mění */}
+        &lt;/Partial>
+        &lt;Footer />
+      &lt;/body>
+    &lt;/html>
+  );
+}</code></pre>
+
+<p>Výhody Partials:</p>
+
+<ul>
+  <li><b>SPA-like navigace</b> – stránky se mění bez reloadu</li>
+  <li><b>Zachování stavu</b> – islands si pamatují svůj stav při navigaci</li>
+  <li><b>Optimalizace</b> – s atributem <code>f-partial</code> server vrací pouze potřebné části</li>
+</ul>
+
+<pre><code>&lt;!-- Optimalizovaný link – fetchuje pouze partial -->
+&lt;a href="/products" f-partial="/partials/products">
+  Produkty
+&lt;/a></code></pre>
+
+<h3 id="sdileni-stavu">Sdílení stavu mezi ostrovy</h3>
+
+<p>Ostrovy jsou izolované Preact aplikace, ale stav mezi nimi lze sdílet pomocí <b>exportovaných signálů</b>:</p>
+
+<pre><code>// utils/cart.ts
+import { signal } from "@preact/signals";
+
+export const cart = signal&lt;string[]>([]);</code></pre>
+
+<pre><code>// islands/AddToCart.tsx
+import { cart } from "../utils/cart.ts";
+
+export default function AddToCart({ product }) {
+  return (
+    &lt;button onClick={() => cart.value = [...cart.value, product]}>
+      Přidat do košíku
+    &lt;/button>
+  );
+}</code></pre>
+
+<pre><code>// islands/Cart.tsx
+import { cart } from "../utils/cart.ts";
+
+export default function Cart() {
+  return &lt;span>Položek: {cart.value.length}&lt;/span>;
+}</code></pre>
+
+<p>Oba ostrovy importují stejný signál → automatická synchronizace. Důležité rozdíly:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Přístup</th>
+      <th>Použití</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>useSignal()</code></td>
+      <td>Lokální stav (každý island má svůj)</td>
+    </tr>
+    <tr>
+      <td>Exportovaný <code>signal()</code></td>
+      <td>Sdílený stav mezi ostrovy</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><b>Omezení:</b> <code>useContext</code> nefunguje napříč ostrovy (context existuje jen na serveru) a funkce nelze předávat jako props.</p>
 
 <h2 id="build-runtime">Build a runtime na produkci</h2>
 
@@ -350,10 +469,12 @@ export default function Counter() {
 <p>Fresh není ideální pro:</p>
 
 <ul>
-  <li><b>Vysoce interaktivní aplikace</b> – dashboard, editor, hry</li>
-  <li>Projekty vyžadující <b>rozsáhlý npm ekosystém</b></li>
-  <li>Týmy zvyklé na <b>Node.js</b> workflow</li>
+  <li>Projekty vyžadující <b>rozsáhlý npm ekosystém</b> – mnoho React knihoven nefunguje</li>
+  <li>Týmy zvyklé na <b>Node.js</b> workflow – Fresh běží pouze na Deno</li>
+  <li>Aplikace s <b>komplexním sdíleným stavem</b> – <code>useContext</code> nefunguje napříč ostrovy</li>
 </ul>
+
+<p>Pro běžné interaktivní aplikace (e-shop, dashboard) je Fresh díky Partials a sdíleným signálům použitelný. Limitující je především menší ekosystém.</p>
 
 <h2 id="zaver">Závěr</h2>
 
