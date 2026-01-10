@@ -3,8 +3,6 @@ import { getAllTagsByPageId, type Tag } from '$lib/tag/tags';
 import type { RequestHandler } from './$types';
 import satori from 'satori';
 import { Resvg, initWasm } from '@resvg/resvg-wasm';
-// @ts-ignore - wasm import
-import resvgWasm from '@resvg/resvg-wasm/index_bg.wasm?url';
 
 // OG images are generated on-demand, not prerendered
 export const prerender = false;
@@ -12,18 +10,25 @@ export const prerender = false;
 // Best practice for Vercel: cache OG images aggressively
 const CACHE_HEADER = 'public, s-maxage=86400, stale-while-revalidate=604800';
 
+// WASM URL from unpkg CDN
+const RESVG_WASM_URL = 'https://unpkg.com/@resvg/resvg-wasm@2.6.2/index_bg.wasm';
+
 let wasmInitialized = false;
 
 async function initResvg() {
 	if (!wasmInitialized) {
 		try {
-			const wasmResponse = await fetch(resvgWasm);
+			const wasmResponse = await fetch(RESVG_WASM_URL);
 			const wasmBuffer = await wasmResponse.arrayBuffer();
 			await initWasm(wasmBuffer);
 			wasmInitialized = true;
 		} catch (e) {
-			// Already initialized
-			wasmInitialized = true;
+			// Already initialized or error
+			if (String(e).includes('Already initialized')) {
+				wasmInitialized = true;
+			} else {
+				throw e;
+			}
 		}
 	}
 }
