@@ -30,7 +30,7 @@ jobs:
         id: detect
         run: |
           echo "Detecting new articles..."
-          node scripts/get-new-articles.js --json > new-articles.json
+          node scripts/social/get-new-articles.js --json > new-articles.json
           cat new-articles.json
 
           # Check if there are any articles
@@ -65,7 +65,7 @@ jobs:
               const articleJson = JSON.stringify(article);
               process.env.ARTICLE_JSON = articleJson;
               try {
-                execSync('node scripts/post-to-x.js', {
+                execSync('node scripts/social/post-to-x.js', {
                   stdio: 'inherit',
                   env: { ...process.env, ARTICLE_JSON: articleJson }
                 });
@@ -93,7 +93,7 @@ jobs:
               console.log('Posting article:', article.title);
               const articleJson = JSON.stringify(article);
               try {
-                execSync('node scripts/post-to-facebook.js', {
+                execSync('node scripts/social/post-to-facebook.js', {
                   stdio: 'inherit',
                   env: { ...process.env, ARTICLE_JSON: articleJson }
                 });
@@ -122,7 +122,7 @@ jobs:
               console.log('Posting article:', article.title);
               const articleJson = JSON.stringify(article);
               try {
-                execSync('node scripts/post-to-linkedin.js', {
+                execSync('node scripts/social/post-to-linkedin.js', {
                   stdio: 'inherit',
                   env: { ...process.env, ARTICLE_JSON: articleJson }
                 });

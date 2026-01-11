@@ -173,7 +173,7 @@ Můžete otestovat skripty lokálně:
 
 ### Test detekce nových článků
 ```bash
-node scripts/get-new-articles.js --json
+node scripts/social/get-new-articles.js --json
 ```
 
 ### Test postování na X
@@ -183,7 +183,7 @@ export X_API_SECRET="..."
 export X_ACCESS_TOKEN="..."
 export X_ACCESS_TOKEN_SECRET="..."
 
-node scripts/post-to-x.js --article='{"title":"Test článek","url":"https://jecas.cz/test","tags":["javascript"]}'
+node scripts/social/post-to-x.js --article='{"title":"Test článek","url":"https://jecas.cz/test","tags":["javascript"]}'
 ```
 
 ### Test postování na Facebook
@@ -191,7 +191,7 @@ node scripts/post-to-x.js --article='{"title":"Test článek","url":"https://jec
 export FACEBOOK_PAGE_ID="..."
 export FACEBOOK_ACCESS_TOKEN="..."
 
-node scripts/post-to-facebook.js --article='{"title":"Test článek","url":"https://jecas.cz/test","description":"Popis článku","tags":["javascript"]}'
+node scripts/social/post-to-facebook.js --article='{"title":"Test článek","url":"https://jecas.cz/test","description":"Popis článku","tags":["javascript"]}'
 ```
 
 ### Test postování na LinkedIn
@@ -199,7 +199,7 @@ node scripts/post-to-facebook.js --article='{"title":"Test článek","url":"http
 export LINKEDIN_ACCESS_TOKEN="..."
 export LINKEDIN_PERSON_ID="urn:li:person:..."  # nebo LINKEDIN_ORGANIZATION_ID
 
-node scripts/post-to-linkedin.js --article='{"title":"Test článek","url":"https://jecas.cz/test","description":"Popis článku","tags":["javascript"]}'
+node scripts/social/post-to-linkedin.js --article='{"title":"Test článek","url":"https://jecas.cz/test","description":"Popis článku","tags":["javascript"]}'
 ```
 
 ---
