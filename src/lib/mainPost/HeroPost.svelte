@@ -20,6 +20,7 @@
 		background?: string | null;
 		isTag?: boolean;
 		wordCount?: number | null;
+		customImageUrl?: string | null;
 	}
 
 	let {
@@ -33,8 +34,11 @@
 		noImage = false,
 		background = null,
 		isTag = false,
-		wordCount = null
+		wordCount = null,
+		customImageUrl = null
 	}: Props = $props();
+
+	const imageUrl = $derived(customImageUrl || `/files/article/${href}.png`);
 
 	let backgroundGradient: string | null = $state(null);
 
@@ -49,7 +53,7 @@
 
 <div
 	class="relative overflow-hidden p-4 text-white shadow-inner max-md:text-center md:p-16 dark:text-white"
-	style="--image: url({`/files/article/${href}.png`}); background-image: {backgroundGradient}"
+	style="--image: url({imageUrl}); background-image: {backgroundGradient}"
 >
 	{#if !isTag}
 		<div
@@ -65,7 +69,7 @@
 						: 'h-[200px] w-[200px]'}"
 				>
 					{#if href}
-						<PostImage slug={href} lazy={false} />
+						<PostImage slug={href} lazy={false} {customImageUrl} />
 					{/if}
 				</div>
 			{/if}

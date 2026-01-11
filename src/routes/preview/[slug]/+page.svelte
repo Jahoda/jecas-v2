@@ -13,6 +13,10 @@
 	const ogImageUrl = $derived(
 		`https://jecas.cz/api/og/preview?slug=${data.post.url_slug}&branch=${data.branch}`
 	);
+
+	const articleImageUrl = $derived(
+		`/preview/files/article/${data.post.url_slug}.png?branch=${data.branch}`
+	);
 </script>
 
 <svelte:head>
@@ -38,6 +42,7 @@
 	href={data.post.url_slug}
 	tags={[]}
 	wordCount={0}
+	customImageUrl={articleImageUrl}
 />
 
 <Container verticalSpace>

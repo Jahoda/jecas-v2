@@ -4,15 +4,15 @@
 	interface Props {
 		slug: string;
 		lazy?: boolean;
+		customImageUrl?: string | null;
 	}
 
-	let { slug, lazy = true }: Props = $props();
+	let { slug, lazy = true, customImageUrl = null }: Props = $props();
 
 	let postImageUrl: string | null = $state(null);
 
-	//$: postImageUrl = `https://upipiocepvscgharpdkz.supabase.co/storage/v1/object/public/post-thumbnails/${slug}.png`;
 	run(() => {
-		postImageUrl = `/files/article/${slug}.png`;
+		postImageUrl = customImageUrl || `/files/article/${slug}.png`;
 	});
 </script>
 

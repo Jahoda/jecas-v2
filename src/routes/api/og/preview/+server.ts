@@ -114,7 +114,7 @@ export const GET: RequestHandler = async ({ url }) => {
 	);
 	const headlineParsed = parseTextWithCode(post.headline || post.title || '');
 	const displayDate = formatDate(post.last_modification || post.date);
-	const thumbnailUrl = `https://jecas.cz/files/article/${post.url_slug}.png`;
+	const thumbnailUrl = `${GITHUB_RAW_BASE}/${branch}/static/files/article/${post.url_slug}.png`;
 
 	try {
 		const element = {
