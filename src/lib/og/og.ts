@@ -316,7 +316,10 @@ export function generateOgImage(post: OgPostData, options: OgOptions): Response 
 																		color: 'white',
 																		fontSize: 20
 																	},
-																	children: [ClockIcon(), `${readingTime} ${pluralize(readingTime)}`]
+																	children: [
+																		ClockIcon(),
+																		`${readingTime} ${pluralize(readingTime)}`
+																	]
 																}
 															}
 														: null
