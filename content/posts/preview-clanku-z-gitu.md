@@ -91,14 +91,6 @@ export const GET = async ({ params, url }) => {
   });
 };</code></pre>
 
-<h2 id="og-obrazky">OG obrázky pro sdílení</h2>
-
-<p>Pro správné zobrazení při sdílení na sociálních sítích jsem vytvořil i preview verzi OG obrázku:</p>
-
-<pre><code>/api/og/preview?slug=clanek&amp;branch=feature-xyz</code></pre>
-
-<p>Tento endpoint používá stejnou sdílenou funkci <code>fetchPostFromGitHub</code> a generuje obrázek s amber gradientem a badge s názvem větve.</p>
-
 <h2 id="github-action">Automatické odkazy v PR</h2>
 
 <p>Aby nebylo potřeba ručně skládat URL, přidal jsem GitHub Action, která automaticky přidá komentář k pull requestu:</p>
