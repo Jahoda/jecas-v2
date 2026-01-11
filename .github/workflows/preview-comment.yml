@@ -28,22 +28,20 @@ jobs:
 
           echo "has_changes=true" >> $GITHUB_OUTPUT
 
-          # Build markdown list of preview links
+          # Build markdown with preview links and images
           BRANCH="${{ github.head_ref }}"
           BASE_URL="https://jecas.cz/preview"
+          OG_URL="https://jecas.cz/api/og/preview"
 
-          LINKS=""
+          BODY="## Náhled článků\n\n"
           for file in $CHANGED_FILES; do
             slug=$(basename "$file" .md)
-            LINKS="${LINKS}- [${slug}](${BASE_URL}/${slug}?branch=${BRANCH})\n"
+            BODY="${BODY}### [${slug}](${BASE_URL}/${slug}?branch=${BRANCH})\n"
+            BODY="${BODY}![${slug}](${OG_URL}?slug=${slug}&branch=${BRANCH})\n\n"
           done
 
-          # Escape for GitHub Actions
-          LINKS="${LINKS//'%'/'%25'}"
-          LINKS="${LINKS//$'\n'/'%0A'}"
-          LINKS="${LINKS//$'\r'/'%0D'}"
-
-          echo "links=$LINKS" >> $GITHUB_OUTPUT
+          # Write to file to preserve formatting
+          echo -e "$BODY" > /tmp/preview-body.md
 
       - name: Find existing comment
         if: steps.changed.outputs.has_changes == 'true'
@@ -61,7 +59,4 @@ jobs:
           comment-id: ${{ steps.find-comment.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           edit-mode: replace
-          body: |
-            ## Náhled článků
-
-            ${{ steps.changed.outputs.links }}
+          body-path: /tmp/preview-body.md
