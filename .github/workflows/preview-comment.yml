@@ -1,0 +1,67 @@
+name: Preview Comment
+
+on:
+  pull_request:
+    paths:
+      - 'content/posts/*.md'
+
+jobs:
+  comment:
+    name: Add Preview Links
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get changed articles
+        id: changed
+        run: |
+          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'content/posts/*.md')
+
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+
+          # Build markdown list of preview links
+          BRANCH="${{ github.head_ref }}"
+          BASE_URL="https://jecas.cz/preview"
+
+          LINKS=""
+          for file in $CHANGED_FILES; do
+            slug=$(basename "$file" .md)
+            LINKS="${LINKS}- [${slug}](${BASE_URL}/${slug}?branch=${BRANCH})\n"
+          done
+
+          # Escape for GitHub Actions
+          LINKS="${LINKS//'%'/'%25'}"
+          LINKS="${LINKS//$'\n'/'%0A'}"
+          LINKS="${LINKS//$'\r'/'%0D'}"
+
+          echo "links=$LINKS" >> $GITHUB_OUTPUT
+
+      - name: Find existing comment
+        if: steps.changed.outputs.has_changes == 'true'
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '## Náhled článků'
+
+      - name: Create or update comment
+        if: steps.changed.outputs.has_changes == 'true'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          edit-mode: replace
+          body: |
+            ## Náhled článků
+
+            ${{ steps.changed.outputs.links }}
