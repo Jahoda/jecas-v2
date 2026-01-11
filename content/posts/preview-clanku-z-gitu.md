@@ -152,4 +152,4 @@ jobs:
 <li>Změny v kódu → klasický Vercel build</li>
 </ul>
 
-<p>Není potřeba žádná externí služba ani databáze. Stačí GitHub raw URL a pár řádků kódu.</p>
+<p>Není potřeba žádná externí služba ani database. Stačí GitHub raw URL a pár řádků kódu.</p>
