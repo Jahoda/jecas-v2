@@ -1,15 +1,16 @@
 name: Share New Articles on Social Media
 
 on:
-  push:
-    branches: [main, master]
-    paths:
-      - 'content/posts/*.md'
+  deployment_status:
 
 jobs:
   share-articles:
     name: Share New Articles
     runs-on: ubuntu-latest
+    # Only run when Vercel production deployment succeeds
+    if: |
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment.environment == 'Production'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -41,49 +42,6 @@ jobs:
           else
             echo "has_articles=false" >> $GITHUB_OUTPUT
           fi
-
-      - name: Wait for Vercel deployment
-        if: steps.detect.outputs.has_articles == 'true'
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-        run: |
-          echo "Waiting for Vercel deployment to complete..."
-
-          MAX_ATTEMPTS=30
-          ATTEMPT=0
-
-          while [ $ATTEMPT -lt $MAX_ATTEMPTS ]; do
-            ATTEMPT=$((ATTEMPT + 1))
-            echo "Checking deployment status (attempt $ATTEMPT/$MAX_ATTEMPTS)..."
-
-            # Get latest production deployment
-            RESPONSE=$(curl -s -H "Authorization: Bearer $VERCEL_TOKEN" \
-              "https://api.vercel.com/v6/deployments?projectId=$VERCEL_PROJECT_ID&target=production&limit=1&state=READY")
-
-            # Check if deployment matches current commit
-            DEPLOYMENT_COMMIT=$(echo "$RESPONSE" | node -e "
-              const data = JSON.parse(require('fs').readFileSync('/dev/stdin', 'utf-8'));
-              console.log(data.deployments?.[0]?.meta?.githubCommitSha || '');
-            ")
-
-            if [ "$DEPLOYMENT_COMMIT" = "${{ github.sha }}" ]; then
-              echo "Deployment is ready!"
-
-              # Extra wait for CDN propagation
-              echo "Waiting 30s for CDN propagation..."
-              sleep 30
-              break
-            fi
-
-            if [ $ATTEMPT -eq $MAX_ATTEMPTS ]; then
-              echo "Timeout waiting for deployment. Proceeding anyway..."
-              break
-            fi
-
-            echo "Deployment not ready yet. Waiting 20s..."
-            sleep 20
-          done
 
       - name: Post to X (Twitter)
         if: steps.detect.outputs.has_articles == 'true' && vars.ENABLE_X_POSTING == 'true'
