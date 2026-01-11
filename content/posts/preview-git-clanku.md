@@ -3,8 +3,8 @@ title: "Preview článků přímo z Gitu"
 headline: "Preview článků přímo z Gitu"
 description: "Jak zobrazit náhled článku z pull requestu bez čekání na build a deploy."
 date: "2026-01-11"
-status: 0
-tags: ["git", "produktivita", "svelte"]
+status: 1
+tags: ["git", "produktivita", "svelte", "napady"]
 ---
 
 <p>Při práci s blogem postaveným na <b>SvelteKit</b> a hostovaným na <b>Vercelu</b> jsem řešil problém – jak rychle zobrazit náhled rozpracovaného článku?</p>
@@ -91,13 +91,7 @@ export const GET = async ({ params, url }) => {
   });
 };</code></pre>
 
-<h2 id="og-obrazky">OG obrázky pro sdílení</h2>
-
-<p>Pro správné zobrazení při sdílení na sociálních sítích jsem vytvořil i preview verzi OG obrázku:</p>
-
-<pre><code>/api/og/preview?slug=clanek&amp;branch=feature-xyz</code></pre>
-
-<p>Tento endpoint používá stejnou sdílenou funkci <code>fetchPostFromGitHub</code> a generuje obrázek s amber gradientem a badge s názvem větve.</p>
+<p>Proč proxy a ne přímé načítání z GitHubu? Kvůli <b>CORS</b> – GitHub raw URL nemá potřebné hlavičky pro všechny use-cases. Proxy endpoint navíc zachovává konzistentní URL strukturu (<code>/files/article/slug.png</code>) stejnou jako na produkci.</p>
 
 <h2 id="github-action">Automatické odkazy v PR</h2>
 
@@ -158,4 +152,4 @@ jobs:
 <li>Změny v kódu → klasický Vercel build</li>
 </ul>
 
-<p>Není potřeba žádná externí služba ani databáze. Stačí GitHub raw URL a pár řádků kódu.</p>
+<p>Není potřeba žádná externí služba ani database. Stačí GitHub raw URL a pár řádků kódu.</p>
