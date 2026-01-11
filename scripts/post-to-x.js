@@ -90,6 +90,15 @@ function formatHashtags(tags) {
  * @returns {string}
  */
 function createTweetText(article) {
+	// Use custom social text if provided
+	if (article.socialText) {
+		// Append URL if not already included
+		if (!article.socialText.includes(article.url)) {
+			return `${article.socialText}\n\n${article.url}`;
+		}
+		return article.socialText;
+	}
+
 	const hashtags = formatHashtags(article.tags);
 
 	// Twitter limit is 280 characters

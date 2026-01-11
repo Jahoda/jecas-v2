@@ -117,7 +117,8 @@ function parseArticle(filePath) {
 			url: `${SITE_URL}/${slug}`,
 			ogImageUrl: `${SITE_URL}/api/og?slug=${slug}`,
 			date: data.date,
-			tags: data.tags || []
+			tags: data.tags || [],
+			socialText: data.social_text || null
 		};
 	} catch (error) {
 		console.error(`Error parsing ${filePath}:`, error.message);

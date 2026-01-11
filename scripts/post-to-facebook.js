@@ -18,6 +18,11 @@ const GRAPH_API_URL = `https://graph.facebook.com/${GRAPH_API_VERSION}`;
  * @returns {string}
  */
 function createPostMessage(article) {
+	// Use custom social text if provided
+	if (article.socialText) {
+		return article.socialText;
+	}
+
 	const parts = [];
 
 	// Add title

@@ -20,6 +20,11 @@ const LINKEDIN_API_URL = 'https://api.linkedin.com/v2/ugcPosts';
  * @returns {string}
  */
 function createPostText(article) {
+	// Use custom social text if provided
+	if (article.socialText) {
+		return article.socialText;
+	}
+
 	const parts = [];
 
 	// Add title
