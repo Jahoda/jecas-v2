@@ -49,6 +49,7 @@
 		m-auto w-full max-w-3xl
 		"
 	bind:this={postContent}
+	id="post-content"
 >
 	{@html content}
 </div>

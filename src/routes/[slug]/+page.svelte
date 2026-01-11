@@ -11,6 +11,7 @@
 	import ImageUploadManager from '$lib/imageUpload/ImageUploadManager.svelte';
 	import { htmlToPlainText } from '$lib/xml/xml';
 	import { schemaScript } from '$lib/schemaScript/schemaScript';
+	import AnnotationLoader from '$lib/annotation/AnnotationLoader.svelte';
 
 	interface Props {
 		data: PageData;
@@ -140,3 +141,7 @@
 		{/if}
 	</div>
 </Container>
+
+{#if data.page}
+	<AnnotationLoader slug={data.page.url_slug} articleTitle={data.page.title} />
+{/if}
