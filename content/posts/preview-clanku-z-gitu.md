@@ -91,6 +91,8 @@ export const GET = async ({ params, url }) => {
   });
 };</code></pre>
 
+<p>Proč proxy a ne přímé načítání z GitHubu? Kvůli <b>CORS</b> – GitHub raw URL nemá potřebné hlavičky pro všechny use-cases. Proxy endpoint navíc zachovává konzistentní URL strukturu (<code>/files/article/slug.png</code>) stejnou jako na produkci.</p>
+
 <h2 id="github-action">Automatické odkazy v PR</h2>
 
 <p>Aby nebylo potřeba ručně skládat URL, přidal jsem GitHub Action, která automaticky přidá komentář k pull requestu:</p>
