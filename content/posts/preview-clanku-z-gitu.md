@@ -3,7 +3,7 @@ title: "Preview článků přímo z Gitu"
 headline: "Preview článků přímo z Gitu"
 description: "Jak zobrazit náhled článku z pull requestu bez čekání na build a deploy."
 date: "2026-01-11"
-status: 0
+status: 1
 tags: ["git", "produktivita", "svelte"]
 ---
 
