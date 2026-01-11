@@ -36,6 +36,16 @@ function parseArgs() {
 }
 
 /**
+ * Validate git reference (commit hash or HEAD~n)
+ * @param {string} ref
+ * @returns {boolean}
+ */
+function isValidGitRef(ref) {
+	// Allow HEAD~n, HEAD^n, branch names, commit hashes
+	return /^[a-zA-Z0-9_\-./~^]+$/.test(ref) && ref.length < 100;
+}
+
+/**
  * Get newly added article files from git
  * @param {string | null} since - Commit to compare from
  * @returns {string[]}
@@ -44,6 +54,12 @@ function getNewArticleFiles(since) {
 	try {
 		// If no since commit, compare with HEAD~1
 		const compareFrom = since || 'HEAD~1';
+
+		// Validate git reference to prevent command injection
+		if (!isValidGitRef(compareFrom)) {
+			console.error('Invalid git reference:', compareFrom);
+			return [];
+		}
 
 		// Get only Added files (A) in the content/posts directory
 		const result = execSync(
