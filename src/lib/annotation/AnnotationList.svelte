@@ -82,7 +82,7 @@
 						<textarea
 							bind:value={editComment}
 							rows="2"
-							class="w-full resize-none rounded-md border border-gray-300 bg-white p-2 text-sm text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+							class="w-full resize-none rounded-md border border-gray-300 bg-white p-2 text-sm text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white"
 						></textarea>
 						<div class="flex justify-end gap-2">
 							<button

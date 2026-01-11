@@ -38,11 +38,7 @@ export function removeAllHighlights(container: HTMLElement): void {
 	});
 }
 
-function highlightText(
-	container: HTMLElement,
-	annotation: Annotation,
-	isActive: boolean
-): void {
+function highlightText(container: HTMLElement, annotation: Annotation, isActive: boolean): void {
 	const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null);
 
 	const searchText = annotation.selectedText;

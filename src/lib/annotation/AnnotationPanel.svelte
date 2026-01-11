@@ -96,26 +96,21 @@
 	<button
 		type="button"
 		onclick={() => (panelOpen = !panelOpen)}
-		class="fixed bottom-4 right-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-all hover:bg-blue-700"
+		class="fixed right-4 bottom-4 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-all hover:bg-blue-700"
 		title="Zobrazit anotace ({annotationState.annotations.length})"
 	>
-		<span class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold">
+		<span
+			class="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold"
+		>
 			{annotationState.annotations.length}
 		</span>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			viewBox="0 0 24 24"
-			fill="currentColor"
-			class="h-6 w-6"
-		>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6">
 			<path
 				fill-rule="evenodd"
 				d="M4.125 3C3.089 3 2.25 3.84 2.25 4.875V18a3 3 0 003 3h15a3 3 0 01-3-3V4.875C17.25 3.839 16.41 3 15.375 3H4.125zM12 9.75a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5H12zm-.75-2.25a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75zM6 12.75a.75.75 0 000 1.5h7.5a.75.75 0 000-1.5H6zm-.75 3.75a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5H6a.75.75 0 01-.75-.75zM6 6.75a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h3a.75.75 0 00.75-.75v-3A.75.75 0 009 6.75H6z"
 				clip-rule="evenodd"
 			/>
-			<path
-				d="M18.75 6.75h1.875c.621 0 1.125.504 1.125 1.125V18a1.5 1.5 0 01-3 0V6.75z"
-			/>
+			<path d="M18.75 6.75h1.875c.621 0 1.125.504 1.125 1.125V18a1.5 1.5 0 01-3 0V6.75z" />
 		</svg>
 	</button>
 {/if}
@@ -131,7 +126,7 @@
 	></button>
 
 	<div
-		class="fixed right-0 top-0 z-50 h-full w-96 border-l border-gray-200 bg-white shadow-xl dark:border-gray-700 dark:bg-gray-800"
+		class="fixed top-0 right-0 z-50 h-full w-96 border-l border-gray-200 bg-white shadow-xl dark:border-gray-700 dark:bg-gray-800"
 	>
 		<!-- Panel header -->
 		<div

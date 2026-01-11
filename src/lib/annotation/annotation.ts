@@ -20,7 +20,10 @@ export function createAnnotationId(): string {
 	return `ann_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
 }
 
-export function generateChatbotInstructions(annotations: Annotation[], articleTitle: string): string {
+export function generateChatbotInstructions(
+	annotations: Annotation[],
+	articleTitle: string
+): string {
 	if (annotations.length === 0) {
 		return 'Žádné anotace k exportu.';
 	}
@@ -69,7 +72,7 @@ export function loadAnnotations(slug: string): Annotation[] {
 	try {
 		const data: AnnotationStore = JSON.parse(stored);
 		// Convert date strings back to Date objects
-		return data.annotations.map(ann => ({
+		return data.annotations.map((ann) => ({
 			...ann,
 			createdAt: new Date(ann.createdAt)
 		}));

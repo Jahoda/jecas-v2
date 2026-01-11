@@ -72,11 +72,7 @@
 
 {#if annotationState.showPopover && annotationState.currentSelection}
 	<!-- Backdrop -->
-	<button
-		type="button"
-		class="fixed inset-0 z-40"
-		onclick={handleCancel}
-		aria-label="Zavřít"
+	<button type="button" class="fixed inset-0 z-40" onclick={handleCancel} aria-label="Zavřít"
 	></button>
 
 	<!-- Popover -->
@@ -106,7 +102,10 @@
 
 			<!-- Comment form -->
 			<form onsubmit={handleSubmit} class="p-3">
-				<label for="annotation-comment" class="mb-1 block text-xs font-medium text-gray-500 dark:text-gray-400">
+				<label
+					for="annotation-comment"
+					class="mb-1 block text-xs font-medium text-gray-500 dark:text-gray-400"
+				>
 					Požadavek na úpravu:
 				</label>
 				<textarea
@@ -115,7 +114,7 @@
 					id="annotation-comment"
 					rows="3"
 					placeholder="Napište, co by se mělo změnit..."
-					class="w-full resize-none rounded-md border border-gray-300 bg-white p-2 text-sm text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500"
+					class="w-full resize-none rounded-md border border-gray-300 bg-white p-2 text-sm text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500"
 					onkeydown={handleKeydown}
 				></textarea>
 

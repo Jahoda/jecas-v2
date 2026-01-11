@@ -11,9 +11,7 @@
 	let showExport = $state(false);
 	let copied = $state(false);
 
-	let exportText = $derived(
-		generateChatbotInstructions(annotationState.annotations, articleTitle)
-	);
+	let exportText = $derived(generateChatbotInstructions(annotationState.annotations, articleTitle));
 
 	async function handleCopy() {
 		try {

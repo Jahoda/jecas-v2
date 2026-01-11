@@ -102,9 +102,7 @@ class AnnotationState {
 	}
 
 	updateAnnotation(id: string, comment: string) {
-		this.annotations = this.annotations.map((a) =>
-			a.id === id ? { ...a, comment } : a
-		);
+		this.annotations = this.annotations.map((a) => (a.id === id ? { ...a, comment } : a));
 		this.save();
 	}
 

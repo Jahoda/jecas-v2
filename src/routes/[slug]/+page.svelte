@@ -143,8 +143,5 @@
 </Container>
 
 {#if data.page}
-	<AnnotationLoader
-		slug={data.page.url_slug}
-		articleTitle={data.page.title}
-	/>
+	<AnnotationLoader slug={data.page.url_slug} articleTitle={data.page.title} />
 {/if}
