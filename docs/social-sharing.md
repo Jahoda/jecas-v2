@@ -1,13 +1,13 @@
 # Automatické sdílení článků na sociální sítě
 
-Tento dokument popisuje nastavení automatického sdílení nových článků na X (Twitter) a Facebook.
+Tento dokument popisuje nastavení automatického sdílení nových článků na X (Twitter), Facebook a LinkedIn.
 
 ## Jak to funguje
 
 1. Když pushnete nový článek do `content/posts/` na `main` branch, Vercel automaticky spustí deployment
 2. Po úspěšném dokončení Vercel deploymentu se spustí GitHub Actions workflow (pomocí `deployment_status` eventu)
 3. Workflow extrahuje metadata článku (titulek, popis, tagy, URL)
-4. Článek je automaticky sdílen na X a Facebook (pokud jsou nastaveny API klíče)
+4. Článek je automaticky sdílen na X, Facebook a LinkedIn (pokud jsou nastaveny API klíče)
 
 Toto řešení využívá nativní integraci Vercelu s GitHubem - není potřeba žádné extra nastavení ani API tokeny pro čekání na deployment.
 
@@ -117,6 +117,56 @@ V **Settings > Variables** přidejte:
 
 ---
 
+## Nastavení LinkedIn
+
+### 1. Vytvoření LinkedIn App
+
+1. Jděte na [LinkedIn Developers](https://www.linkedin.com/developers/apps)
+2. Klikněte na **Create app**
+3. Vyplňte název aplikace a přiřaďte ji k LinkedIn stránce (nebo osobnímu profilu)
+
+### 2. Nastavení oprávnění
+
+V nastavení aplikace:
+1. Jděte do **Products** a požádejte o **Share on LinkedIn** (pro osobní profil) nebo **Marketing Developer Platform** (pro firemní stránku)
+2. V **Auth** zkontrolujte, že máte scope `w_member_social`
+
+### 3. Získání Access Token
+
+#### Pro osobní profil:
+
+1. V **Auth** najdete **OAuth 2.0 settings**
+2. Použijte OAuth 2.0 flow pro získání access tokenu s scope `w_member_social`
+3. Pro získání Person ID zavolejte:
+```
+GET https://api.linkedin.com/v2/me
+Authorization: Bearer {access_token}
+```
+Odpověď obsahuje `id` - váš Person URN je `urn:li:person:{id}`
+
+#### Pro firemní stránku:
+
+1. Požádejte o **Marketing Developer Platform** access
+2. Získejte access token s scope `w_organization_social`
+3. Organization ID najdete v URL vaší LinkedIn stránky
+
+### 4. Nastavení GitHub Secrets
+
+| Secret | Popis |
+|--------|-------|
+| `LINKEDIN_ACCESS_TOKEN` | OAuth 2.0 Access Token |
+| `LINKEDIN_PERSON_ID` | Pro osobní profil: `urn:li:person:ABC123` |
+| `LINKEDIN_ORGANIZATION_ID` | Pro firemní stránku: `urn:li:organization:123456` |
+
+**Poznámka:** Stačí nastavit buď `LINKEDIN_PERSON_ID` nebo `LINKEDIN_ORGANIZATION_ID`.
+
+### 5. Povolení postování
+
+V **Settings > Variables** přidejte:
+- `ENABLE_LINKEDIN_POSTING` = `true`
+
+---
+
 ## Manuální testování
 
 Můžete otestovat skripty lokálně:
@@ -144,6 +194,14 @@ export FACEBOOK_ACCESS_TOKEN="..."
 node scripts/post-to-facebook.js --article='{"title":"Test článek","url":"https://jecas.cz/test","description":"Popis článku","tags":["javascript"]}'
 ```
 
+### Test postování na LinkedIn
+```bash
+export LINKEDIN_ACCESS_TOKEN="..."
+export LINKEDIN_PERSON_ID="urn:li:person:..."  # nebo LINKEDIN_ORGANIZATION_ID
+
+node scripts/post-to-linkedin.js --article='{"title":"Test článek","url":"https://jecas.cz/test","description":"Popis článku","tags":["javascript"]}'
+```
+
 ---
 
 ## Troubleshooting
@@ -165,6 +223,16 @@ node scripts/post-to-facebook.js --article='{"title":"Test článek","url":"http
 
 **Token expiroval**
 - Vygenerujte nový Long-Lived Page Access Token (viz instrukce výše)
+
+### LinkedIn
+
+**Chyba 401 Unauthorized**
+- Access token expiroval - LinkedIn tokeny vydrží 60 dní
+- Vygenerujte nový access token
+
+**Chyba 403 Forbidden**
+- Zkontrolujte, že máte správný scope (`w_member_social` nebo `w_organization_social`)
+- Ověřte, že Person/Organization ID je ve správném formátu (`urn:li:person:...`)
 
 ---
 
