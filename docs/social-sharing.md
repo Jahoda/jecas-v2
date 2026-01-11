@@ -5,8 +5,32 @@ Tento dokument popisuje nastavení automatického sdílení nových článků na
 ## Jak to funguje
 
 1. Když pushnete nový článek do `content/posts/` na `main` branch, GitHub Actions workflow automaticky detekuje nový soubor
-2. Workflow extrahuje metadata článku (titulek, popis, tagy, URL)
-3. Článek je automaticky sdílen na X a Facebook (pokud jsou nastaveny API klíče)
+2. Workflow počká na dokončení Vercel deploymentu (aby článek byl dostupný)
+3. Workflow extrahuje metadata článku (titulek, popis, tagy, URL)
+4. Článek je automaticky sdílen na X a Facebook (pokud jsou nastaveny API klíče)
+
+## Nastavení Vercel (povinné)
+
+Workflow čeká na dokončení Vercel deploymentu, aby se článek nesdílel dřív, než je dostupný na webu.
+
+### 1. Získání Vercel tokenu
+
+1. Jděte na [Vercel Account Tokens](https://vercel.com/account/tokens)
+2. Klikněte na **Create Token**
+3. Pojmenujte token (např. "GitHub Actions Social Share")
+4. Zkopírujte vygenerovaný token
+
+### 2. Získání Project ID
+
+1. Jděte do nastavení projektu na Vercelu
+2. V sekci **General** najdete **Project ID**
+
+### 3. Nastavení GitHub Secrets
+
+| Secret | Popis |
+|--------|-------|
+| `VERCEL_TOKEN` | Vercel API token |
+| `VERCEL_PROJECT_ID` | ID vašeho Vercel projektu |
 
 ## Nastavení X (Twitter)
 
