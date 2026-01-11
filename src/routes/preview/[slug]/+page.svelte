@@ -9,11 +9,20 @@
 	}
 
 	let { data }: Props = $props();
+
+	const ogImageUrl = $derived(
+		`https://jecas.cz/api/og/preview?slug=${data.post.url_slug}&branch=${data.branch}`
+	);
 </script>
 
 <svelte:head>
 	<title>Preview: {data.post.title}</title>
 	<meta name="robots" content="noindex, nofollow" />
+	<meta property="og:title" content={`Preview: ${data.post.title}`} />
+	<meta property="og:description" content={data.post.description} />
+	<meta property="og:image" content={ogImageUrl} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content={ogImageUrl} />
 </svelte:head>
 
 <div class="bg-amber-500 py-2 text-center text-sm font-medium text-black">
