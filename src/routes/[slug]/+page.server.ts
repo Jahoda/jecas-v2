@@ -1,5 +1,4 @@
 import {
-	getAllPosts,
 	getPostsByTagId,
 	getRelatedPostsByMostTags,
 	getSinglePostBySlug,
@@ -10,23 +9,7 @@ import {
 import { getAllTagsByPageId, getSingleTagBySlug, getAllUsedTags, type Tag } from '$lib/tag/tags';
 import { groupByPageId } from '$lib/tags/tags';
 import { error } from '@sveltejs/kit';
-import type { EntryGenerator, PageServerLoad } from './$types';
-
-// Enable static pre-rendering for all post and tag pages
-export const prerender = true;
-
-// Generate entries for all posts and tags at build time
-// Note: Drafts are excluded from prerendering to stay under the 2048 route limit
-// Exception: kontakt page is explicitly included
-export const entries: EntryGenerator = async () => {
-	const posts = await getAllPosts();
-	const tags = await getAllUsedTags();
-
-	const postEntries = posts.map((post) => ({ slug: post.url_slug }));
-	const tagEntries = tags.map((tag) => ({ slug: tag.url_slug }));
-
-	return [{ slug: 'kontakt' }, ...postEntries, ...tagEntries];
-};
+import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params }) => {
 	const slug = params.slug;
