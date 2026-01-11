@@ -44,11 +44,6 @@ V repozitáři jděte do **Settings > Secrets and variables > Actions** a přide
 | `X_ACCESS_TOKEN` | Access Token |
 | `X_ACCESS_TOKEN_SECRET` | Access Token Secret |
 
-### 5. Povolení postování
-
-V **Settings > Variables** přidejte:
-- `ENABLE_X_POSTING` = `true`
-
 ---
 
 ## Nastavení Facebook
@@ -110,11 +105,6 @@ V repozitáři jděte do **Settings > Secrets and variables > Actions** a přide
 | `FACEBOOK_PAGE_ID` | ID vaší Facebook stránky |
 | `FACEBOOK_ACCESS_TOKEN` | Long-Lived Page Access Token |
 
-### 4. Povolení postování
-
-V **Settings > Variables** přidejte:
-- `ENABLE_FACEBOOK_POSTING` = `true`
-
 ---
 
 ## Nastavení LinkedIn
@@ -159,11 +149,6 @@ Odpověď obsahuje `id` - váš Person URN je `urn:li:person:{id}`
 | `LINKEDIN_ORGANIZATION_ID` | Pro firemní stránku: `urn:li:organization:123456` |
 
 **Poznámka:** Stačí nastavit buď `LINKEDIN_PERSON_ID` nebo `LINKEDIN_ORGANIZATION_ID`.
-
-### 5. Povolení postování
-
-V **Settings > Variables** přidejte:
-- `ENABLE_LINKEDIN_POSTING` = `true`
 
 ---
 

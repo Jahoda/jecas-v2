@@ -44,7 +44,7 @@ jobs:
           fi
 
       - name: Post to X (Twitter)
-        if: steps.detect.outputs.has_articles == 'true' && vars.ENABLE_X_POSTING == 'true'
+        if: steps.detect.outputs.has_articles == 'true' && env.X_API_KEY != ''
         env:
           X_API_KEY: ${{ secrets.X_API_KEY }}
           X_API_SECRET: ${{ secrets.X_API_SECRET }}
@@ -76,7 +76,7 @@ jobs:
           "
 
       - name: Post to Facebook
-        if: steps.detect.outputs.has_articles == 'true' && vars.ENABLE_FACEBOOK_POSTING == 'true'
+        if: steps.detect.outputs.has_articles == 'true' && env.FACEBOOK_ACCESS_TOKEN != ''
         env:
           FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
           FACEBOOK_ACCESS_TOKEN: ${{ secrets.FACEBOOK_ACCESS_TOKEN }}
@@ -104,7 +104,7 @@ jobs:
           "
 
       - name: Post to LinkedIn
-        if: steps.detect.outputs.has_articles == 'true' && vars.ENABLE_LINKEDIN_POSTING == 'true'
+        if: steps.detect.outputs.has_articles == 'true' && env.LINKEDIN_ACCESS_TOKEN != ''
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_PERSON_ID: ${{ secrets.LINKEDIN_PERSON_ID }}
