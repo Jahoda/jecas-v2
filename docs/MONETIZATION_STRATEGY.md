@@ -368,3 +368,381 @@ Projekt Ječas.cz má **vynikající základ pro monetizaci**:
 **Doporučení:** Začít s affiliate odkazy a stránkou pro spolupráci (nejnižší bariéra vstupu), pak postupně budovat digitální produkty a premium obsah.
 
 Klíčem k úspěchu je **zachovat kvalitu a autenticitu** - čtenáři oceňují nezávislý, nekomerční přístup. Monetizace by měla být nenásilná a přinášet hodnotu i čtenářům.
+
+---
+
+## Kreativní a netradiční monetizační strategie
+
+### 8. "Roast My Website" - Brutálně upřímná kritika
+
+**Koncept:** Lidé pošlou URL svého webu a za poplatek dostanou nemilosrdně upřímnou, ale konstruktivní kritiku.
+
+#### Formáty
+| Typ | Cena | Co zahrnuje |
+|-----|------|-------------|
+| **Quick Roast** | 990 Kč | 5min video rozbor, 3 hlavní problémy |
+| **Full Roast** | 2 990 Kč | 15min video, písemný report, priority fixes |
+| **Live Roast** | 4 990 Kč | 30min live session, Q&A, screen share |
+
+#### Proč to funguje
+- Zábavný formát (inspirace: "Roast my startup" na YouTube)
+- Virální potenciál - lidé sdílejí svůj roast
+- Osobní brand building
+- Lze streamovat na YouTube/Twitch (double monetizace)
+
+#### Marketing hook
+> "Tvůj web je... zajímavý. Za 990 Kč ti řeknu proč to tak není."
+
+---
+
+### 9. CSS Battle Turnaje
+
+**Koncept:** Soutěže v CSS umění s účastnickými poplatky a cenami.
+
+#### Formát
+```
+Měsíční CSS Challenge
+├── Vstupné: 99 Kč
+├── Výzva: Nakresli [objekt] pouze pomocí CSS
+├── Hlasování: Komunita + odborná porota
+├── Ceny:
+│   ├── 1. místo: 50% prize pool
+│   ├── 2. místo: 30% prize pool
+│   └── 3. místo: 20% prize pool
+└── Zbytek: Provozní náklady + zisk
+```
+
+#### Příklad výzev
+- "Nakresli české pivo pouze CSS"
+- "CSS pixel art: Tvůj oblíbený editor"
+- "Animovaný loader bez JS"
+
+#### Technická implementace
+```svelte
+<!-- /nastroje/css-battle -->
+<script>
+  let submissions = $state([]);
+  let deadline = new Date('2026-02-01');
+  let challenge = {
+    title: "CSS Pivo Challenge",
+    prize_pool: 5000,
+    participants: 52
+  };
+</script>
+```
+
+---
+
+### 10. "Adoptuj Bug" - Sponzorovaná open source práce
+
+**Koncept:** Firmy nebo jednotlivci sponzorují opravu konkrétních bugů nebo vytvoření features v open source projektech.
+
+#### Jak to funguje
+1. Autor vytvoří seznam "adoptovatelných" úkolů
+2. Sponzoři si vyberou, co chtějí podpořit
+3. Po dokončení dostanou mention v kódu/dokumentaci
+4. Transparentní tracking na webu
+
+#### Ceník
+| Úkol | Cena |
+|------|------|
+| Drobný bug fix | 500 Kč |
+| Nová komponenta | 2 000 Kč |
+| Velká feature | 5 000+ Kč |
+| Celý projekt | Individuální |
+
+#### Výhody
+- Win-win: Sponzoři získají viditelnost, komunita lepší nástroje
+- Transparentnost buduje důvěru
+- Motivace k open source práci
+
+---
+
+### 11. Adventní Kalendář Premium
+
+**Koncept:** 24 dní exkluzivního obsahu v prosinci.
+
+#### Obsah za 499 Kč
+- **Den 1-8:** Mini tutoriály (CSS triky, JS snippety)
+- **Den 9-16:** Nástroje a šablony ke stažení
+- **Den 17-23:** Video content a live sessions
+- **Den 24:** Velká cena - konzultace zdarma (pro náhodného účastníka)
+
+#### Gamifikace
+```typescript
+interface AdventDay {
+  day: number;
+  type: 'tutorial' | 'download' | 'video' | 'challenge';
+  unlocked: boolean;
+  completed: boolean;
+  xp: number;
+}
+
+// Uživatelé sbírají XP, top 10 získá bonus odměny
+```
+
+#### Marketing
+- FOMO efekt (časově omezené)
+- Tradice - opakuje se každý rok
+- Komunita - sdílení pokroků
+
+---
+
+### 12. "Mass-produced Nesmysls" - Dev Merch s humorem
+
+**Koncept:** Trička, hrnky a samolepky s inside jokes pro vývojáře.
+
+#### Produktové nápady
+
+| Produkt | Text/Design | Cena |
+|---------|-------------|------|
+| Tričko | `/* TODO: přestat prokrastinovat */` | 499 Kč |
+| Tričko | `!important` v srdíčku | 499 Kč |
+| Hrnek | "Nejdřív kafe, pak git push" | 299 Kč |
+| Samolepka | "Works on my machine" certifikát | 49 Kč |
+| Samolepka | CSS specificity pyramid | 49 Kč |
+| Plakát | "Evoluce webdesignu 1995-2025" | 399 Kč |
+
+#### Realizace
+- Print-on-demand (Printful, FOMO) = žádné skladové zásoby
+- Integrace s Shopify nebo vlastní řešení
+
+---
+
+### 13. "Office Hours" - Veřejné Q&A session
+
+**Koncept:** Pravidelné live streamy kde autor odpovídá na dotazy.
+
+#### Model
+```
+Každý pátek 16:00-17:00
+├── Zdarma: Sledování streamu
+├── 99 Kč: Prioritní otázka (zaručená odpověď)
+├── 499 Kč: 5min screen share s tvým kódem
+└── Sponzor streamu: 2000 Kč (logo + zmínka)
+```
+
+#### Platformy
+- YouTube Live (největší dosah)
+- Twitch (dev komunita)
+- Discord stage (intimnější)
+
+#### Bonus monetizace
+- Záznamy jako premium obsah
+- Super chats / donace
+- Highlight clips na sociální sítě
+
+---
+
+### 14. "Tech Předpovědi" - Sázky na technologie
+
+**Koncept:** Gamifikované předpovědi o budoucnosti technologií.
+
+#### Jak to funguje
+1. Autor publikuje předpovědi na rok dopředu
+2. Čtenáři sází (virtuální měna nebo mikroplatby)
+3. Na konci roku vyhodnocení
+4. Výherci získají ceny/kredit
+
+#### Příklad předpovědí 2026
+- "React ztratí market share pod 40%" - 2:1
+- "CSS container queries budou v 90% browserů" - 1.5:1
+- "Svelte překoná Vue v npm downloads" - 5:1
+- "AI vygeneruje 30% produkčního kódu" - 3:1
+
+#### Proč to funguje
+- Engagement a diskuze
+- Virální potenciál
+- Opakující se obsah každý rok
+- Buduje autoritu (pokud předpovědi vychází)
+
+---
+
+### 15. "Code Escape Room" - Interaktivní hádanky
+
+**Koncept:** Série programátorských hádanek, které musíš vyřešit, abys "unikl".
+
+#### Formát
+```
+Escape Room: "Bug v produkci"
+├── Obtížnost: Střední
+├── Čas: 60 minut
+├── Cena: 199 Kč / tým
+├── Hráči: 1-4
+└── Obsahuje:
+    ├── 5 úrovní debugování
+    ├── Skryté hinty v kódu
+    ├── Finální "deployment" puzzle
+    └── Certifikát po dokončení
+```
+
+#### Témata escape rooms
+1. **"Legacy Codebase"** - Rozluštit 10 let starý jQuery kód
+2. **"The Missing Semicolon"** - Najít bug v minifikovaném JS
+3. **"CSS Specificity Hell"** - Opravit rozbitý layout
+4. **"The Infinite Loop"** - Zastavit rekurzi před crash
+
+#### Technická realizace
+- Interaktivní komponenty v SvelteKitu
+- Timer + leaderboard
+- Hints systém (platba za hinty = extra revenue)
+
+---
+
+### 16. "Vývojářské Tarotové Karty"
+
+**Koncept:** Fyzický produkt - sada karet pro rozhodování v developmentu.
+
+#### Obsah balíčku (499 Kč)
+52 karet rozdělených do kategorií:
+
+**Velká Arkána (rozhodnutí)**
+- "Refaktoruj" / "Ship it"
+- "Přidej dependency" / "Napiš vlastní"
+- "Microservices" / "Monolit"
+
+**Malá Arkána (denní výzvy)**
+- "Dnes napíšeš testy"
+- "Dokumentace first"
+- "Pair programming den"
+
+**Easter eggs**
+- "Wildcard: Smaž node_modules a začni znovu"
+- "Joker: Zeptej se na Stack Overflow"
+
+#### Proč to funguje
+- Unikátní, instagramovatelný produkt
+- Low-cost výroba (print on demand)
+- Virální potenciál
+- Skvělý firemní dárek
+
+---
+
+### 17. "Web Therapie" - Psychologický přístup ke code review
+
+**Koncept:** Humorný formát - "Tvůj kód potřebuje terapii."
+
+#### Služby
+| Session | Cena | Popis |
+|---------|------|-------|
+| **Úvodní sezení** | 500 Kč | "Řekni mi o svém prvním frameworku" |
+| **Hloubková analýza** | 2 000 Kč | "Proč používáš !important? Co ti chybí?" |
+| **Párová terapie** | 3 000 Kč | "Ty a tvůj backend - pojďme si promluvit" |
+| **Skupinová terapie** | 5 000 Kč | Celý tým, facilitovaná retrospektiva |
+
+#### Content marketing
+Blog série: "Zápisky webového terapeuta"
+- "Klient #47: Závislost na npm packages"
+- "Případová studie: Strach z git rebase"
+- "Když CSS grid způsobuje úzkost"
+
+---
+
+### 18. Speed Coding Challenges s cenami
+
+**Koncept:** Kdo nejrychleji vyřeší úlohu, vyhrává.
+
+#### Formát
+```
+Denní challenge (zdarma)
+├── Úloha zveřejněna v 9:00
+├── Leaderboard podle času
+└── Top 3 získají body
+
+Měsíční finále (vstup 199 Kč)
+├── 10 úloh, 60 minut
+├── Prize pool z vstupného
+└── Streamed live
+```
+
+#### Příklad úloh
+- "Vycentruj div 5 různými způsoby" (čas + elegance)
+- "Regex pro validaci emailu" (správnost + rychlost)
+- "CSS pouze: nakresli logo Ječas" (kreativita)
+
+---
+
+### 19. "Patreon pro český web" - Micro-sponzoring článků
+
+**Koncept:** Čtenáři sponzorují konkrétní články nebo témata.
+
+#### Jak to funguje
+```
+Článek: "CSS Container Queries - kompletní průvodce"
+├── Náklady na tvorbu: ~2000 Kč (čas)
+├── Cíl sponzoringu: 2000 Kč
+├── Aktuální stav: ████████░░ 1600 Kč (80%)
+└── Sponzoři:
+    ├── @petr_dev - 500 Kč
+    ├── ACME Corp - 1000 Kč
+    └── 2 anonymní - 100 Kč
+```
+
+#### Výhody
+- Transparentnost
+- Čtenáři se cítí jako součást tvorby
+- Validace témat před psaním
+- Sponzoři získají early access
+
+---
+
+### 20. "Bug Bounty" pro vlastní projekty
+
+**Koncept:** Odměny za nalezení bugů na Ječas.cz.
+
+#### Program
+| Typ bugu | Odměna |
+|----------|--------|
+| Typo v článku | Zmínka v článku |
+| Broken link | 50 Kč kredit |
+| UI bug | 100 Kč |
+| Security issue | 500-2000 Kč |
+| Performance improvement | 200 Kč |
+
+#### Proč to funguje
+- Komunita pomáhá zlepšovat web
+- Engagement a loajalita
+- PR a buzz
+- Reálné zlepšení kvality
+
+---
+
+## Shrnutí kreativních strategií
+
+### Nejnižší bariéra vstupu
+1. Office Hours (jen čas, žádné náklady)
+2. Roast My Website (jen čas)
+3. Bug Bounty (minimální náklady)
+
+### Nejvyšší virální potenciál
+1. CSS Battle turnaje
+2. Dev Merch s humorem
+3. Tarotové karty
+4. Tech Předpovědi
+
+### Nejvyšší potenciální výnos
+1. Code Escape Room (škálovatelné)
+2. Adventní kalendář (opakující se)
+3. Speed Coding Challenges (komunita roste)
+
+### Nejlepší pro brand building
+1. Web Therapie (unikátní positioning)
+2. Roast My Website (osobnost)
+3. Micro-sponzoring článků (transparentnost)
+
+---
+
+## Doporučení: Začni s kombinací
+
+**Ideální start (první měsíc):**
+1. **Office Hours** - Každý pátek, buduj komunitu
+2. **Roast My Website** - Okamžitý příjem, zábavný obsah
+3. **Bug Bounty** - Engagement s minimálními náklady
+
+**Rozšíření (měsíc 2-3):**
+4. **CSS Battle** - Měsíční soutěže
+5. **Adventní kalendář** - Připrav na prosinec
+
+**Dlouhodobě:**
+6. **Merch** - Pasivní příjem
+7. **Escape Room** - Unikátní produkt
