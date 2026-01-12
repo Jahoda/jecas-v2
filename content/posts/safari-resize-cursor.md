@@ -34,9 +34,52 @@ Táhni za pravý dolní roh
 </div>
 
 
+<h2 id="test-cursoru">Test resize cursorů ve vašem prohlížeči</h2>
+
+<p>Nejprve si ověřte, jestli váš prohlížeč vůbec podporuje resize cursor hodnoty. Najeďte myší na jednotlivé boxy:</p>
+
+<div class="live">
+<style>
+.cursor-test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin: 16px 0;
+}
+.cursor-test-box {
+  padding: 12px 8px;
+  background: #334155;
+  border-radius: 6px;
+  text-align: center;
+  color: #e2e8f0;
+  font-size: 12px;
+  font-family: monospace;
+}
+</style>
+<div class="cursor-test-grid">
+  <div class="cursor-test-box" style="cursor: ew-resize;">ew-resize ↔</div>
+  <div class="cursor-test-box" style="cursor: ns-resize;">ns-resize ↕</div>
+  <div class="cursor-test-box" style="cursor: nwse-resize;">nwse-resize ↘</div>
+  <div class="cursor-test-box" style="cursor: nesw-resize;">nesw-resize ↙</div>
+  <div class="cursor-test-box" style="cursor: col-resize;">col-resize</div>
+  <div class="cursor-test-box" style="cursor: row-resize;">row-resize</div>
+  <div class="cursor-test-box" style="cursor: n-resize;">n-resize ↑</div>
+  <div class="cursor-test-box" style="cursor: e-resize;">e-resize →</div>
+  <div class="cursor-test-box" style="cursor: s-resize;">s-resize ↓</div>
+  <div class="cursor-test-box" style="cursor: w-resize;">w-resize ←</div>
+  <div class="cursor-test-box" style="cursor: se-resize;">se-resize</div>
+  <div class="cursor-test-box" style="cursor: sw-resize;">sw-resize</div>
+</div>
+</div>
+
+<p>Pokud se cursor mění na všech boxech, váš prohlížeč podporuje CSS cursor resize hodnoty. Problém je tedy specificky v tom, jak Safari zachází s <b>resize handle</b> u elementů s <code>resize: both</code>.</p>
+
+<p>Pokud cursor <b>nefunguje ani zde</b>, může jít o bug v macOS. Uživatelé hlásí problémy s kurzory od macOS Sonoma 14.2.</p>
+
+
 <h2 id="pricina">Proč Safari nezobrazuje resize cursor</h2>
 
-<p>Toto <b>není bug, ale záměrné chování WebKitu</b>. Safari používá pro resize handle pseudo-element <code>::-webkit-resizer</code>. I když na tomto pseudo-elementu můžete změnit barvu pozadí, <b>vlastnost cursor změnit nelze</b>:</p>
+<p>Safari používá pro resize handle pseudo-element <code>::-webkit-resizer</code>. I když na tomto pseudo-elementu můžete změnit barvu pozadí, <b>vlastnost cursor změnit nelze</b>:</p>
 
 <pre><code>/* Funguje - změní barvu pozadí */
 ::-webkit-resizer {
