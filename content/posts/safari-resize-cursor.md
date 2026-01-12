@@ -250,6 +250,371 @@ Táhni za pravý dolní roh (funguje v Safari)
 </div>
 
 
+<h2 id="window-resize">Resize ze všech stran jako okno v macOS</h2>
+
+<p>Pro kompletní resize funkcionalitu jako u systémových oken potřebujeme handly na všech <b>4 hranách</b> a <b>4 rozích</b>. Každý směr vyžaduje jiný SVG cursor:</p>
+
+<h3>SVG cursory pro všechny směry</h3>
+
+<pre><code>/* Svislý resize (↕) - horní/dolní hrana */
+--cursor-ns: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M12 2l4 4h-3v5h-2V6H8l4-4zm0 20l-4-4h3v-5h2v5h3l-4 4z'/%3E%3C/svg%3E") 12 12, ns-resize;
+
+/* Vodorovný resize (↔) - levá/pravá hrana */
+--cursor-ew: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M2 12l4-4v3h5v2H6v3l-4-4zm20 0l-4 4v-3h-5v-2h5V8l4 4z'/%3E%3C/svg%3E") 12 12, ew-resize;
+
+/* Diagonální NW-SE (↘↖) - levý horní / pravý dolní roh */
+--cursor-nwse: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M4 4l5 0 0 2-2.5 0 4 4-1.4 1.4-4-4 0 2.5-2 0 0-5zm16 16l-5 0 0-2 2.5 0-4-4 1.4-1.4 4 4 0-2.5 2 0 0 5z'/%3E%3C/svg%3E") 12 12, nwse-resize;
+
+/* Diagonální NE-SW (↙↗) - pravý horní / levý dolní roh */
+--cursor-nesw: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M20 4l0 5-2 0 0-2.5-4 4-1.4-1.4 4-4-2.5 0 0-2 5 0zM4 20l0-5 2 0 0 2.5 4-4 1.4 1.4-4 4 2.5 0 0 2-5 0z'/%3E%3C/svg%3E") 12 12, nesw-resize;</code></pre>
+
+<h3>Test všech SVG cursorů</h3>
+
+<p>Najeďte myší na jednotlivé boxy – tyto custom cursory fungují i v Safari:</p>
+
+<div class="live">
+<style>
+.svg-cursor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+  margin: 16px 0;
+}
+.svg-cursor-box {
+  padding: 16px 8px;
+  background: #059669;
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  font-family: monospace;
+}
+</style>
+<div class="svg-cursor-grid">
+  <div class="svg-cursor-box" style="cursor: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M12 2l4 4h-3v5h-2V6H8l4-4zm0 20l-4-4h3v-5h2v5h3l-4 4z'/%3E%3C/svg%3E&quot;) 12 12, ns-resize;">ns-resize ↕</div>
+  <div class="svg-cursor-box" style="cursor: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M2 12l4-4v3h5v2H6v3l-4-4zm20 0l-4 4v-3h-5v-2h5V8l4 4z'/%3E%3C/svg%3E&quot;) 12 12, ew-resize;">ew-resize ↔</div>
+  <div class="svg-cursor-box" style="cursor: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M4 4l5 0 0 2-2.5 0 4 4-1.4 1.4-4-4 0 2.5-2 0 0-5zm16 16l-5 0 0-2 2.5 0-4-4 1.4-1.4 4 4 0-2.5 2 0 0 5z'/%3E%3C/svg%3E&quot;) 12 12, nwse-resize;">nwse-resize ↘</div>
+  <div class="svg-cursor-box" style="cursor: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M20 4l0 5-2 0 0-2.5-4 4-1.4-1.4 4-4-2.5 0 0-2 5 0zM4 20l0-5 2 0 0 2.5 4-4 1.4 1.4-4 4 2.5 0 0 2-5 0z'/%3E%3C/svg%3E&quot;) 12 12, nesw-resize;">nesw-resize ↙</div>
+</div>
+</div>
+
+
+<h3 id="window-demo">Ukázka: Resize ze všech stran</h3>
+
+<p>Následující element lze zvětšovat/zmenšovat ze všech stran a rohů – stejně jako okno v macOS:</p>
+
+<div class="live">
+<style>
+.window-resize-box {
+  position: relative;
+  width: 240px;
+  height: 140px;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  min-width: 120px;
+  min-height: 80px;
+  max-width: 500px;
+  max-height: 400px;
+  box-sizing: border-box;
+  user-select: none;
+  margin: 20px;
+}
+
+/* Hrany */
+.window-resize-box .edge {
+  position: absolute;
+  background: transparent;
+}
+.window-resize-box .edge-n,
+.window-resize-box .edge-s {
+  left: 8px;
+  right: 8px;
+  height: 8px;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M12 2l4 4h-3v5h-2V6H8l4-4zm0 20l-4-4h3v-5h2v5h3l-4 4z'/%3E%3C/svg%3E") 12 12, ns-resize;
+}
+.window-resize-box .edge-n { top: 0; }
+.window-resize-box .edge-s { bottom: 0; }
+
+.window-resize-box .edge-w,
+.window-resize-box .edge-e {
+  top: 8px;
+  bottom: 8px;
+  width: 8px;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M2 12l4-4v3h5v2H6v3l-4-4zm20 0l-4 4v-3h-5v-2h5V8l4 4z'/%3E%3C/svg%3E") 12 12, ew-resize;
+}
+.window-resize-box .edge-w { left: 0; }
+.window-resize-box .edge-e { right: 0; }
+
+/* Rohy */
+.window-resize-box .corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: transparent;
+}
+.window-resize-box .corner-nw {
+  top: 0; left: 0;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M4 4l5 0 0 2-2.5 0 4 4-1.4 1.4-4-4 0 2.5-2 0 0-5zm16 16l-5 0 0-2 2.5 0-4-4 1.4-1.4 4 4 0-2.5 2 0 0 5z'/%3E%3C/svg%3E") 12 12, nwse-resize;
+}
+.window-resize-box .corner-ne {
+  top: 0; right: 0;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M20 4l0 5-2 0 0-2.5-4 4-1.4-1.4 4-4-2.5 0 0-2 5 0zM4 20l0-5 2 0 0 2.5 4-4 1.4 1.4-4 4 2.5 0 0 2-5 0z'/%3E%3C/svg%3E") 12 12, nesw-resize;
+}
+.window-resize-box .corner-sw {
+  bottom: 0; left: 0;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M20 4l0 5-2 0 0-2.5-4 4-1.4-1.4 4-4-2.5 0 0-2 5 0zM4 20l0-5 2 0 0 2.5 4-4 1.4 1.4-4 4 2.5 0 0 2-5 0z'/%3E%3C/svg%3E") 12 12, nesw-resize;
+}
+.window-resize-box .corner-se {
+  bottom: 0; right: 0;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M4 4l5 0 0 2-2.5 0 4 4-1.4 1.4-4-4 0 2.5-2 0 0-5zm16 16l-5 0 0-2 2.5 0-4-4 1.4-1.4 4 4 0-2.5 2 0 0 5z'/%3E%3C/svg%3E") 12 12, nwse-resize;
+}
+
+/* Hover efekt pro vizuální zpětnou vazbu */
+.window-resize-box .edge:hover,
+.window-resize-box .corner:hover {
+  background: rgba(255,255,255,0.2);
+}
+</style>
+<div class="window-resize-box" id="window-box">
+  Táhni za libovolnou hranu
+  <div class="edge edge-n" data-resize="n"></div>
+  <div class="edge edge-s" data-resize="s"></div>
+  <div class="edge edge-w" data-resize="w"></div>
+  <div class="edge edge-e" data-resize="e"></div>
+  <div class="corner corner-nw" data-resize="nw"></div>
+  <div class="corner corner-ne" data-resize="ne"></div>
+  <div class="corner corner-sw" data-resize="sw"></div>
+  <div class="corner corner-se" data-resize="se"></div>
+</div>
+<script>
+(function() {
+  const box = document.getElementById('window-box');
+  if (!box) return;
+
+  const cursors = {
+    n: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M12 2l4 4h-3v5h-2V6H8l4-4zm0 20l-4-4h3v-5h2v5h3l-4 4z'/%3E%3C/svg%3E\") 12 12, ns-resize",
+    s: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M12 2l4 4h-3v5h-2V6H8l4-4zm0 20l-4-4h3v-5h2v5h3l-4 4z'/%3E%3C/svg%3E\") 12 12, ns-resize",
+    w: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M2 12l4-4v3h5v2H6v3l-4-4zm20 0l-4 4v-3h-5v-2h5V8l4 4z'/%3E%3C/svg%3E\") 12 12, ew-resize",
+    e: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M2 12l4-4v3h5v2H6v3l-4-4zm20 0l-4 4v-3h-5v-2h5V8l4 4z'/%3E%3C/svg%3E\") 12 12, ew-resize",
+    nw: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M4 4l5 0 0 2-2.5 0 4 4-1.4 1.4-4-4 0 2.5-2 0 0-5zm16 16l-5 0 0-2 2.5 0-4-4 1.4-1.4 4 4 0-2.5 2 0 0 5z'/%3E%3C/svg%3E\") 12 12, nwse-resize",
+    se: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M4 4l5 0 0 2-2.5 0 4 4-1.4 1.4-4-4 0 2.5-2 0 0-5zm16 16l-5 0 0-2 2.5 0-4-4 1.4-1.4 4 4 0-2.5 2 0 0 5z'/%3E%3C/svg%3E\") 12 12, nwse-resize",
+    ne: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M20 4l0 5-2 0 0-2.5-4 4-1.4-1.4 4-4-2.5 0 0-2 5 0zM4 20l0-5 2 0 0 2.5 4-4 1.4 1.4-4 4 2.5 0 0 2-5 0z'/%3E%3C/svg%3E\") 12 12, nesw-resize",
+    sw: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M20 4l0 5-2 0 0-2.5-4 4-1.4-1.4 4-4-2.5 0 0-2 5 0zM4 20l0-5 2 0 0 2.5 4-4 1.4 1.4-4 4 2.5 0 0 2-5 0z'/%3E%3C/svg%3E\") 12 12, nesw-resize"
+  };
+
+  let resizing = null;
+  let startX, startY, startW, startH, startL, startT;
+
+  const minW = 120, minH = 80, maxW = 500, maxH = 400;
+
+  box.querySelectorAll('[data-resize]').forEach(handle => {
+    handle.addEventListener('mousedown', e => {
+      resizing = handle.dataset.resize;
+      startX = e.clientX;
+      startY = e.clientY;
+      startW = box.offsetWidth;
+      startH = box.offsetHeight;
+      startL = box.offsetLeft;
+      startT = box.offsetTop;
+      document.body.style.cursor = cursors[resizing];
+      document.body.style.userSelect = 'none';
+      e.preventDefault();
+    });
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!resizing) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    let newW = startW, newH = startH, newL = startL, newT = startT;
+
+    if (resizing.includes('e')) newW = Math.min(maxW, Math.max(minW, startW + dx));
+    if (resizing.includes('w')) {
+      newW = Math.min(maxW, Math.max(minW, startW - dx));
+      newL = startL + (startW - newW);
+    }
+    if (resizing.includes('s')) newH = Math.min(maxH, Math.max(minH, startH + dy));
+    if (resizing.includes('n')) {
+      newH = Math.min(maxH, Math.max(minH, startH - dy));
+      newT = startT + (startH - newH);
+    }
+
+    box.style.width = newW + 'px';
+    box.style.height = newH + 'px';
+    if (resizing.includes('w')) box.style.marginLeft = (newL - startL + 20) + 'px';
+    if (resizing.includes('n')) box.style.marginTop = (newT - startT + 20) + 'px';
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (resizing) {
+      resizing = null;
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    }
+  });
+})();
+</script>
+</div>
+
+
+<h2 id="window-code">Kompletní kód pro resize ze všech stran</h2>
+
+<h3>HTML struktura</h3>
+
+<pre><code>&lt;div class="resizable-window" id="my-window"&gt;
+  Obsah
+  &lt;!-- Hrany --&gt;
+  &lt;div class="edge edge-n" data-resize="n"&gt;&lt;/div&gt;
+  &lt;div class="edge edge-s" data-resize="s"&gt;&lt;/div&gt;
+  &lt;div class="edge edge-w" data-resize="w"&gt;&lt;/div&gt;
+  &lt;div class="edge edge-e" data-resize="e"&gt;&lt;/div&gt;
+  &lt;!-- Rohy --&gt;
+  &lt;div class="corner corner-nw" data-resize="nw"&gt;&lt;/div&gt;
+  &lt;div class="corner corner-ne" data-resize="ne"&gt;&lt;/div&gt;
+  &lt;div class="corner corner-sw" data-resize="sw"&gt;&lt;/div&gt;
+  &lt;div class="corner corner-se" data-resize="se"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<h3>CSS s SVG cursory</h3>
+
+<pre><code>:root {
+  /* SVG cursory pro Safari kompatibilitu */
+  --cursor-ns: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M12 2l4 4h-3v5h-2V6H8l4-4zm0 20l-4-4h3v-5h2v5h3l-4 4z'/%3E%3C/svg%3E") 12 12, ns-resize;
+  --cursor-ew: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M2 12l4-4v3h5v2H6v3l-4-4zm20 0l-4 4v-3h-5v-2h5V8l4 4z'/%3E%3C/svg%3E") 12 12, ew-resize;
+  --cursor-nwse: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M4 4l5 0 0 2-2.5 0 4 4-1.4 1.4-4-4 0 2.5-2 0 0-5zm16 16l-5 0 0-2 2.5 0-4-4 1.4-1.4 4 4 0-2.5 2 0 0 5z'/%3E%3C/svg%3E") 12 12, nwse-resize;
+  --cursor-nesw: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M20 4l0 5-2 0 0-2.5-4 4-1.4-1.4 4-4-2.5 0 0-2 5 0zM4 20l0-5 2 0 0 2.5 4-4 1.4 1.4-4 4 2.5 0 0 2-5 0z'/%3E%3C/svg%3E") 12 12, nesw-resize;
+}
+
+.resizable-window {
+  position: relative;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+/* Hrany */
+.resizable-window .edge {
+  position: absolute;
+  background: transparent;
+}
+.resizable-window .edge-n,
+.resizable-window .edge-s {
+  left: 8px;
+  right: 8px;
+  height: 8px;
+  cursor: var(--cursor-ns);
+}
+.resizable-window .edge-n { top: 0; }
+.resizable-window .edge-s { bottom: 0; }
+
+.resizable-window .edge-w,
+.resizable-window .edge-e {
+  top: 8px;
+  bottom: 8px;
+  width: 8px;
+  cursor: var(--cursor-ew);
+}
+.resizable-window .edge-w { left: 0; }
+.resizable-window .edge-e { right: 0; }
+
+/* Rohy */
+.resizable-window .corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+}
+.resizable-window .corner-nw { top: 0; left: 0; cursor: var(--cursor-nwse); }
+.resizable-window .corner-se { bottom: 0; right: 0; cursor: var(--cursor-nwse); }
+.resizable-window .corner-ne { top: 0; right: 0; cursor: var(--cursor-nesw); }
+.resizable-window .corner-sw { bottom: 0; left: 0; cursor: var(--cursor-nesw); }</code></pre>
+
+<h3>JavaScript</h3>
+
+<pre><code>function makeWindowResizable(box, options = {}) {
+  const minW = options.minWidth || 100;
+  const minH = options.minHeight || 60;
+  const maxW = options.maxWidth || Infinity;
+  const maxH = options.maxHeight || Infinity;
+
+  const cursors = {
+    n: getComputedStyle(document.documentElement).getPropertyValue('--cursor-ns'),
+    s: getComputedStyle(document.documentElement).getPropertyValue('--cursor-ns'),
+    w: getComputedStyle(document.documentElement).getPropertyValue('--cursor-ew'),
+    e: getComputedStyle(document.documentElement).getPropertyValue('--cursor-ew'),
+    nw: getComputedStyle(document.documentElement).getPropertyValue('--cursor-nwse'),
+    se: getComputedStyle(document.documentElement).getPropertyValue('--cursor-nwse'),
+    ne: getComputedStyle(document.documentElement).getPropertyValue('--cursor-nesw'),
+    sw: getComputedStyle(document.documentElement).getPropertyValue('--cursor-nesw')
+  };
+
+  let resizing = null;
+  let startX, startY, startW, startH, startL, startT;
+
+  box.querySelectorAll('[data-resize]').forEach(handle =&gt; {
+    handle.addEventListener('mousedown', e =&gt; {
+      resizing = handle.dataset.resize;
+      startX = e.clientX;
+      startY = e.clientY;
+      startW = box.offsetWidth;
+      startH = box.offsetHeight;
+      startL = box.offsetLeft;
+      startT = box.offsetTop;
+      document.body.style.cursor = cursors[resizing];
+      document.body.style.userSelect = 'none';
+      e.preventDefault();
+    });
+  });
+
+  document.addEventListener('mousemove', e =&gt; {
+    if (!resizing) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    let newW = startW, newH = startH;
+
+    // Vodorovný resize
+    if (resizing.includes('e')) {
+      newW = Math.min(maxW, Math.max(minW, startW + dx));
+    }
+    if (resizing.includes('w')) {
+      newW = Math.min(maxW, Math.max(minW, startW - dx));
+    }
+
+    // Svislý resize
+    if (resizing.includes('s')) {
+      newH = Math.min(maxH, Math.max(minH, startH + dy));
+    }
+    if (resizing.includes('n')) {
+      newH = Math.min(maxH, Math.max(minH, startH - dy));
+    }
+
+    box.style.width = newW + 'px';
+    box.style.height = newH + 'px';
+  });
+
+  document.addEventListener('mouseup', () =&gt; {
+    if (resizing) {
+      resizing = null;
+      document.body.style.cursor = '';
+      document.body.style.userSelect = '';
+    }
+  });
+}
+
+// Použití
+makeWindowResizable(document.getElementById('my-window'), {
+  minWidth: 120,
+  minHeight: 80,
+  maxWidth: 500,
+  maxHeight: 400
+});</code></pre>
+
+
 <h2 id="kod">Kompletní kód řešení</h2>
 
 <h3>HTML</h3>
