@@ -72,66 +72,68 @@ Táhni za pravý dolní roh
 </div>
 </div>
 
-<p>Pokud se cursor mění na všech boxech, váš prohlížeč podporuje CSS cursor resize hodnoty. Problém je tedy specificky v tom, jak Safari zachází s <b>resize handle</b> u elementů s <code>resize: both</code>.</p>
-
-<p>Pokud cursor <b>nefunguje ani zde</b>, může jít o bug v macOS. Uživatelé hlásí problémy s kurzory od macOS Sonoma 14.2.</p>
+<p><b>V Safari typicky fungují pouze <code>col-resize</code> a <code>row-resize</code>.</b> Ostatní resize cursory (včetně diagonálních <code>nwse-resize</code>, <code>nesw-resize</code>) Safari nepodporuje.</p>
 
 
-<h2 id="pricina">Proč Safari nezobrazuje resize cursor</h2>
+<h2 id="pricina">Proč Safari nepodporuje resize cursory</h2>
 
-<p>Safari používá pro resize handle pseudo-element <code>::-webkit-resizer</code>. I když na tomto pseudo-elementu můžete změnit barvu pozadí, <b>vlastnost cursor změnit nelze</b>:</p>
+<p>Safari/WebKit má dva samostatné problémy:</p>
 
-<pre><code>/* Funguje - změní barvu pozadí */
-::-webkit-resizer {
-  background: #000;
+<ol>
+  <li><b>Nepodporuje diagonální cursor hodnoty</b> – <code>nwse-resize</code>, <code>nesw-resize</code>, <code>ew-resize</code>, <code>ns-resize</code> a směrové varianty nefungují. Fungují pouze <code>col-resize</code> a <code>row-resize</code>.</li>
+  <li><b>Resize handle ignoruje cursor</b> – i kdyby cursory fungovaly, pseudo-element <code>::-webkit-resizer</code> nepodporuje vlastnost <code>cursor</code>.</li>
+</ol>
+
+<pre><code>/* NEFUNGUJE v Safari - hodnota není podporovaná */
+.element {
+  cursor: nwse-resize;
 }
 
-/* NEFUNGUJE - cursor zůstává výchozí */
-::-webkit-resizer {
-  cursor: nwse-resize;
+/* FUNGUJE v Safari */
+.element {
+  cursor: col-resize;  /* vodorovný */
+  cursor: row-resize;  /* svislý */
 }</code></pre>
 
-<p>Rozdíl mezi prohlížeči:</p>
+<h2 id="custom-cursor">Řešení: Custom SVG cursor</h2>
 
-<ul>
-  <li><b>Firefox</b> – při <code>resize: both</code> automaticky nastaví <code>cursor: nwse-resize</code></li>
-  <li><b>Chrome</b> – zobrazuje resize cursor na resize handle</li>
-  <li><b>Safari/WebKit</b> – cursor zůstává výchozí (šipka)</li>
-</ul>
+<p>Protože Safari nepodporuje standardní resize cursor hodnoty, můžeme použít <b>vlastní SVG cursor</b> jako data URI:</p>
 
-
-<h2 id="proc-workaroundy-nefunguji">Proč běžné workaroundy nefungují</h2>
-
-<h3>Pseudo-element ::after</h3>
-
-<p>První nápad je použít <code>::after</code> pseudo-element s nastaveným cursorem:</p>
-
-<pre><code>.resizable::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 16px;
-  height: 16px;
-  cursor: nwse-resize;
+<pre><code>/* Diagonální resize cursor pro Safari */
+.resize-handle {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M19 12l-4-4v3h-4V7h3l-4-4-4 4h3v4H5v-3l-4 4 4 4v-3h4v4H6l4 4 4-4h-3v-4h4v3z'/%3E%3C/svg%3E") 12 12, move;
 }</code></pre>
 
-<p><b>Nefunguje v Safari.</b> Safari dlouhodobě nepodporuje vlastnost <code>cursor</code> na pseudo-elementech. Podpora byla přidána až v Safari Technology Preview 227.</p>
+<p>Zde je test custom cursoru – najeďte myší:</p>
 
-<h3>JavaScript nastavení cursoru na elementu</h3>
+<div class="live">
+<style>
+.custom-cursor-test {
+  padding: 20px;
+  background: #334155;
+  border-radius: 8px;
+  color: #e2e8f0;
+  text-align: center;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M18 10L14 6v3h-4V5h3L9 1 5 5h3v4H4V6L0 10l4 4v-3h4v4H5l4 4 4-4h-3v-4h4v3z'/%3E%3C/svg%3E") 12 12, move;
+}
+</style>
+<div class="custom-cursor-test">
+Custom SVG cursor (funguje v Safari)
+</div>
+</div>
 
-<p>Další nápad je nastavit cursor pomocí JavaScriptu na samotném elementu:</p>
 
-<pre><code>element.addEventListener('mousemove', (e) =&gt; {
-  const rect = element.getBoundingClientRect();
-  const isNearCorner =
-    rect.right - e.clientX &lt; 16 &amp;&amp;
-    rect.bottom - e.clientY &lt; 16;
+<h3>SVG kód pro diagonální resize</h3>
 
-  element.style.cursor = isNearCorner ? 'nwse-resize' : '';
-});</code></pre>
+<p>SVG pro diagonální šipku (↘↖):</p>
 
-<p><b>Nefunguje spolehlivě.</b> I když nastavíte cursor na elementu, resize handle (který vykresluje prohlížeč) má vlastní cursor, který přepíše váš.</p>
+<pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"&gt;
+  &lt;path fill="#000" stroke="#fff" stroke-width="1"
+    d="M18 10L14 6v3h-4V5h3L9 1 5 5h3v4H4V6L0 10l4 4v-3h4v4H5l4 4
+       4-4h-3v-4h4v3z"/&gt;
+&lt;/svg&gt;</code></pre>
+
+<p>Hodnota <code>12 12</code> určuje hotspot (střed kurzoru).</p>
 
 
 <h2 id="reseni">Funkční řešení: Vlastní resize handle</h2>
@@ -163,7 +165,7 @@ Táhni za pravý dolní roh
   bottom: 0;
   width: 20px;
   height: 20px;
-  cursor: nwse-resize;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M18 10L14 6v3h-4V5h3L9 1 5 5h3v4H4V6L0 10l4 4v-3h4v4H5l4 4 4-4h-3v-4h4v3z'/%3E%3C/svg%3E") 12 12, move;
   background:
     linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.4) 50%);
   border-radius: 0 0 8px 0;
@@ -187,13 +189,15 @@ Táhni za pravý dolní roh (funguje v Safari)
   let isResizing = false;
   let startX, startY, startWidth, startHeight;
 
+  const resizeCursor = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M18 10L14 6v3h-4V5h3L9 1 5 5h3v4H4V6L0 10l4 4v-3h4v4H5l4 4 4-4h-3v-4h4v3z'/%3E%3C/svg%3E\") 12 12, move";
+
   handle.addEventListener('mousedown', function(e) {
     isResizing = true;
     startX = e.clientX;
     startY = e.clientY;
     startWidth = box.offsetWidth;
     startHeight = box.offsetHeight;
-    document.body.style.cursor = 'nwse-resize';
+    document.body.style.cursor = resizeCursor;
     document.body.style.userSelect = 'none';
     e.preventDefault();
   });
@@ -275,7 +279,8 @@ Táhni za pravý dolní roh (funguje v Safari)
   bottom: 0;
   width: 20px;
   height: 20px;
-  cursor: nwse-resize;
+  /* Custom SVG cursor pro Safari */
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' d='M18 10L14 6v3h-4V5h3L9 1 5 5h3v4H4V6L0 10l4 4v-3h4v4H5l4 4 4-4h-3v-4h4v3z'/%3E%3C/svg%3E") 12 12, move;
   background:
     linear-gradient(135deg,
       transparent 50%,
@@ -290,6 +295,9 @@ Táhni za pravý dolní roh (funguje v Safari)
   const maxWidth = options.maxWidth || Infinity;
   const maxHeight = options.maxHeight || Infinity;
 
+  // Custom SVG cursor pro Safari kompatibilitu
+  const resizeCursor = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' d='M18 10L14 6v3h-4V5h3L9 1 5 5h3v4H4V6L0 10l4 4v-3h4v4H5l4 4 4-4h-3v-4h4v3z'/%3E%3C/svg%3E") 12 12, move`;
+
   let isResizing = false;
   let startX, startY, startWidth, startHeight;
 
@@ -300,7 +308,7 @@ Táhni za pravý dolní roh (funguje v Safari)
     startWidth = box.offsetWidth;
     startHeight = box.offsetHeight;
 
-    document.body.style.cursor = 'nwse-resize';
+    document.body.style.cursor = resizeCursor;
     document.body.style.userSelect = 'none';
     e.preventDefault();
   });
@@ -345,28 +353,33 @@ Táhni za pravý dolní roh (funguje v Safari)
 <table>
 <tr>
   <th>Prohlížeč</th>
-  <th>CSS resize cursor</th>
-  <th>::-webkit-resizer</th>
+  <th>nwse-resize, ew-resize...</th>
+  <th>col-resize, row-resize</th>
+  <th>Custom cursor (SVG)</th>
 </tr>
 <tr>
   <td>Chrome</td>
-  <td>Funguje automaticky</td>
-  <td>Nepodporuje (od v28)</td>
+  <td>Funguje</td>
+  <td>Funguje</td>
+  <td>Funguje</td>
 </tr>
 <tr>
   <td>Firefox</td>
-  <td>Funguje automaticky</td>
-  <td>Nepodporuje</td>
+  <td>Funguje</td>
+  <td>Funguje</td>
+  <td>Funguje</td>
 </tr>
 <tr>
   <td>Safari</td>
-  <td>Cursor nefunguje</td>
-  <td>Funguje (kromě cursor)</td>
+  <td>Nefunguje</td>
+  <td>Funguje</td>
+  <td>Funguje</td>
 </tr>
 <tr>
   <td>Edge</td>
-  <td>Funguje automaticky</td>
-  <td>Nepodporuje</td>
+  <td>Funguje</td>
+  <td>Funguje</td>
+  <td>Funguje</td>
 </tr>
 </table>
 
