@@ -9,7 +9,14 @@ const REPLACEMENTS = {
 	analýz: 'analys',
 	pozic: 'posic',
 	rizik: 'risik',
-	sanitiz: 'sanitis'
+	sanitiz: 'sanitis',
+	optimaliz: 'optimalis',
+	organiz: 'organis',
+	vizuál: 'visuál',
+	vizualiz: 'visualis',
+	lokaliz: 'lokalis',
+	realiz: 'realis',
+	specializ: 'specialis'
 };
 
 /**
