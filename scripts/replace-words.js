@@ -16,7 +16,17 @@ const REPLACEMENTS = {
 	vizualiz: 'visualis',
 	lokaliz: 'lokalis',
 	realiz: 'realis',
-	specializ: 'specialis'
+	specializ: 'specialis',
+	aktualiz: 'aktualis',
+	serializ: 'serialis',
+	automatiz: 'automatis',
+	standardiz: 'standardis',
+	synchroniz: 'synchronis',
+	inicializ: 'inicialis',
+	normaliz: 'normalis',
+	stabiliz: 'stabilis',
+	centraliz: 'centralis',
+	symboliz: 'symbolis'
 };
 
 /**
