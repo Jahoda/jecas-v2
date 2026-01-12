@@ -1,10 +1,10 @@
 ---
 title: "Resize cursor v Safari"
 headline: "Proč v Safari nefunguje resize cursor a jak to opravit"
-description: "Safari nezobrazuje resize cursor u elementů s CSS resize property. Článek vysvětluje příčinu problému a nabízí funkční řešení."
+description: "Safari nezobrazuje resize cursor u elementů s CSS resize property a nepodporuje cursor na pseudo-elementech. Článek vysvětluje příčinu a nabízí funkční JavaScript řešení."
 date: "2026-01-12"
 status: 1
-tags: ["css", "css-vlastnosti", "apple", "webove-prohlizece"]
+tags: ["css", "css-vlastnosti", "apple", "webove-prohlizece", "js"]
 format: "html"
 ---
 
@@ -14,8 +14,6 @@ format: "html"
 <h2 id="problem">V čem je problém</h2>
 
 <p>CSS vlastnost <code>resize</code> umožňuje uživateli měnit velikost elementu tažením za jeho roh. V Chromu a Firefoxu se při najetí na oblast změny velikosti automaticky zobrazí <a href="/cursor">resize cursor</a> (<code>nwse-resize</code>). Safari tento cursor <b>vůbec nezobrazuje</b>.</p>
-
-<p>Klasický zápis vypadá takto:</p>
 
 <pre><code>.resizable {
   resize: both;
@@ -36,19 +34,11 @@ Táhni za pravý dolní roh
 </div>
 
 
-<h2 id="reseni">Řešení pro Safari</h2>
+<h2 id="proc-pseudo-element-nefunguje">Proč pseudo-element nefunguje</h2>
 
-<p>Řešením je explicitně nastavit <code>cursor</code> na oblast, kde se nachází úchyt pro změnu velikosti. Problém je, že CSS neposkytuje přímý způsob, jak cílit pouze na resize handle.</p>
+<p>První nápad, který vás možná napadne, je použít <code>::after</code> pseudo-element s nastaveným cursorem:</p>
 
-<p>Můžeme ale využít <b>pseudo-element</b>, který překryje pravý dolní roh elementu a nastaví správný cursor:</p>
-
-<pre><code>.resizable {
-  resize: both;
-  overflow: auto;
-  position: relative;
-}
-
-.resizable::after {
+<pre><code>.resizable::after {
   content: '';
   position: absolute;
   right: 0;
@@ -58,7 +48,34 @@ Táhni za pravý dolní roh
   cursor: nwse-resize;
 }</code></pre>
 
-<p>Pseudo-element <code>::after</code> vytvoří neviditelnou oblast v pravém dolním rohu, která má nastavený správný cursor. Velikost 16×16 px odpovídá přibližně velikosti resize handle ve většině prohlížečů.</p>
+<p><b>Toto řešení v Safari nefunguje.</b> Safari dlouhodobě nepodporuje vlastnost <code>cursor</code> na pseudo-elementech. Důvodem je, že pseudo-elementy nejsou skutečné DOM elementy a Safari je nepovažuje za interaktivní.</p>
+
+<p>Podpora pro <code>cursor</code> na pseudo-elementech byla přidána až v <b>Safari Technology Preview 227</b>, takže v budoucích verzích Safari by to mělo fungovat. Do té doby je potřeba použít jiné řešení.</p>
+
+
+<h2 id="reseni-javascript">Funkční řešení: JavaScript</h2>
+
+<p>Spolehlivé řešení je detekovat pozici myši pomocí JavaScriptu a nastavit cursor přímo na elementu:</p>
+
+<pre><code>function fixSafariResizeCursor(element) {
+  element.addEventListener('mousemove', (e) =&gt; {
+    const rect = element.getBoundingClientRect();
+    const threshold = 16;
+    const isNearCorner =
+      rect.right - e.clientX &lt; threshold &amp;&amp;
+      rect.bottom - e.clientY &lt; threshold;
+
+    element.style.cursor = isNearCorner
+      ? 'nwse-resize'
+      : '';
+  });
+
+  element.addEventListener('mouseleave', () =&gt; {
+    element.style.cursor = '';
+  });
+}</code></pre>
+
+<p>Funkce sleduje pozici myši a když je v oblasti 16×16 px od pravého dolního rohu, nastaví příslušný cursor.</p>
 
 
 <h2 id="ukazka-reseni">Funkční ukázka</h2>
@@ -67,10 +84,9 @@ Táhni za pravý dolní roh
 
 <div class="live">
 <style>
-.safari-resize-fix {
+.safari-resize-demo {
   resize: both;
   overflow: auto;
-  position: relative;
   width: 200px;
   height: 100px;
   background: linear-gradient(135deg, #059669 0%, #10b981 100%);
@@ -83,60 +99,127 @@ Táhni za pravý dolní roh
   max-width: 400px;
   max-height: 300px;
 }
+</style>
+<div class="safari-resize-demo" id="safari-resize-demo">
+Táhni za pravý dolní roh (funguje i v Safari)
+</div>
+<script>
+(function() {
+  const el = document.getElementById('safari-resize-demo');
+  if (!el) return;
 
-.safari-resize-fix::after {
+  el.addEventListener('mousemove', function(e) {
+    const rect = el.getBoundingClientRect();
+    const threshold = 16;
+    const isNearCorner =
+      rect.right - e.clientX < threshold &&
+      rect.bottom - e.clientY < threshold;
+
+    el.style.cursor = isNearCorner ? 'nwse-resize' : '';
+  });
+
+  el.addEventListener('mouseleave', function() {
+    el.style.cursor = '';
+  });
+})();
+</script>
+</div>
+
+
+<h2 id="vizualni-indikace">Vizuální indikace resize oblasti</h2>
+
+<p>Pro lepší UX můžete přidat vizuální indikátor, že element lze zvětšovat. Protože pseudo-elementy v Safari nepodporují <code>cursor</code>, ale jiné styly ano, můžete přidat alespoň vizuální nápovědu:</p>
+
+<pre><code>.resizable {
+  position: relative;
+}
+
+.resizable::after {
   content: '';
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid rgba(255,255,255,0.5);
+  border-bottom: 2px solid rgba(255,255,255,0.5);
+  pointer-events: none;
+}</code></pre>
+
+
+<h2 id="vlastni-resize">Vlastní resize handle</h2>
+
+<p>Pokud potřebujete plnou kontrolu nad resize chováním, můžete CSS <code>resize</code> úplně vynechat a implementovat vlastní resize pomocí JavaScriptu:</p>
+
+<div class="live">
+<style>
+.custom-resizable {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  border-radius: 8px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  min-width: 100px;
+  min-height: 60px;
+  max-width: 400px;
+  max-height: 300px;
+  box-sizing: border-box;
+}
+
+.resize-handle {
   position: absolute;
   right: 0;
   bottom: 0;
   width: 16px;
   height: 16px;
   cursor: nwse-resize;
+  background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.3) 50%);
+  border-radius: 0 0 8px 0;
 }
 </style>
-<div class="safari-resize-fix">
-Táhni za pravý dolní roh (funguje i v Safari)
+<div class="custom-resizable" id="custom-resizable">
+Vlastní resize handle
+<div class="resize-handle" id="resize-handle"></div>
 </div>
+<script>
+(function() {
+  const container = document.getElementById('custom-resizable');
+  const handle = document.getElementById('resize-handle');
+  if (!container || !handle) return;
+
+  let isResizing = false;
+  let startX, startY, startWidth, startHeight;
+
+  handle.addEventListener('mousedown', function(e) {
+    isResizing = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    startWidth = container.offsetWidth;
+    startHeight = container.offsetHeight;
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', function(e) {
+    if (!isResizing) return;
+
+    const newWidth = Math.min(400, Math.max(100, startWidth + e.clientX - startX));
+    const newHeight = Math.min(300, Math.max(60, startHeight + e.clientY - startY));
+
+    container.style.width = newWidth + 'px';
+    container.style.height = newHeight + 'px';
+  });
+
+  document.addEventListener('mouseup', function() {
+    isResizing = false;
+  });
+})();
+</script>
 </div>
 
-
-<h2 id="alternativy">Alternativní řešení</h2>
-
-<h3 id="vizualni-indikace">Vizuální indikace</h3>
-
-<p>Pokud chcete uživateli jasně ukázat, že element lze zvětšovat, můžete přidat vizuální indikátor:</p>
-
-<pre><code>.resizable::after {
-  content: '';
-  position: absolute;
-  right: 2px;
-  bottom: 2px;
-  width: 12px;
-  height: 12px;
-  cursor: nwse-resize;
-  background:
-    linear-gradient(135deg,
-      transparent 50%,
-      rgba(255,255,255,0.5) 50%);
-  border-radius: 0 0 6px 0;
-  pointer-events: none;
-}</code></pre>
-
-
-<h3 id="javascript">JavaScript řešení</h3>
-
-<p>Pro složitější případy můžete detekovat pozici myši a nastavit cursor dynamicky:</p>
-
-<pre><code>element.addEventListener('mousemove', (e) => {
-  const rect = element.getBoundingClientRect();
-  const isNearCorner =
-    rect.right - e.clientX < 16 &&
-    rect.bottom - e.clientY < 16;
-
-  element.style.cursor = isNearCorner
-    ? 'nwse-resize'
-    : 'default';
-});</code></pre>
+<p>Tento přístup má výhodu v tom, že <b>cursor na reálném DOM elementu funguje ve všech prohlížečích</b> včetně Safari. Navíc máte plnou kontrolu nad vzhledem a chováním resize handle.</p>
 
 
 <h2 id="podpora">Podpora prohlížečů</h2>
@@ -144,23 +227,28 @@ Táhni za pravý dolní roh (funguje i v Safari)
 <table>
 <tr>
   <th>Prohlížeč</th>
-  <th>Resize cursor</th>
+  <th>CSS resize cursor</th>
+  <th>Cursor na pseudo-el.</th>
 </tr>
 <tr>
   <td>Chrome</td>
-  <td>Funguje automaticky</td>
+  <td>Funguje</td>
+  <td>Funguje</td>
 </tr>
 <tr>
   <td>Firefox</td>
-  <td>Funguje automaticky</td>
+  <td>Funguje</td>
+  <td>Funguje</td>
 </tr>
 <tr>
   <td>Safari</td>
-  <td>Vyžaduje workaround</td>
+  <td>Nefunguje</td>
+  <td>Nefunguje (zatím)</td>
 </tr>
 <tr>
   <td>Edge</td>
-  <td>Funguje automaticky (Chromium)</td>
+  <td>Funguje</td>
+  <td>Funguje</td>
 </tr>
 </table>
 
