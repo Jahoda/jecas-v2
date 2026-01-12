@@ -45,29 +45,37 @@ Náhledové obrázky se generují pomocí Python/Pillow. Obrázek musí být **1
 
 ### Šablona kódu
 
+Pro hladké hrany použít **4× supersampling** (vykreslit ve 400×400, zmenšit na 100×100):
+
 ```python
 from PIL import Image, ImageDraw, ImageFont
 
-img = Image.new('RGB', (100, 100), '#1e293b')
+# 4× supersampling pro anti-aliasing
+scale = 4
+size = 100 * scale
+
+img = Image.new('RGB', (size, size), '#1e293b')
 draw = ImageDraw.Draw(img)
 
 # Gradient pozadí
-for y in range(100):
-    r = int(30 + (y * 0.15))
-    g = int(41 + (y * 0.2))
-    b = int(59 + (y * 0.25))
-    draw.line([(0, y), (100, y)], fill=(r, g, b))
+for y in range(size):
+    r = int(30 + (y / scale * 0.15))
+    g = int(41 + (y / scale * 0.2))
+    b = int(59 + (y / scale * 0.25))
+    draw.line([(0, y), (size, y)], fill=(r, g, b))
 
-# Font
+# Font (velikost × scale)
 try:
-    font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", 18)
+    font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", 18 * scale)
 except:
-    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 18)
+    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 18 * scale)
 
-# Badge s textem
-draw.rounded_rectangle([(10, 35), (90, 65)], radius=4, fill='#2563eb')
-draw.text((50, 50), "TEXT", fill='#ffffff', font=font, anchor='mm')
+# Badge s textem (souřadnice × scale)
+draw.rounded_rectangle([(10 * scale, 35 * scale), (90 * scale, 65 * scale)], radius=4 * scale, fill='#2563eb')
+draw.text((50 * scale, 50 * scale), "TEXT", fill='#ffffff', font=font, anchor='mm')
 
+# Zmenšení s LANCZOS pro hladké hrany
+img = img.resize((100, 100), Image.LANCZOS)
 img.save('static/files/article/nazev-clanku.png', 'PNG')
 ```
 
