@@ -12,13 +12,13 @@
 
 ```yaml
 ---
-title: "Krátký název"
-headline: "SEO titulek"
-description: "Meta popis 1-2 věty."
-date: "YYYY-MM-DD"
+title: 'Krátký název'
+headline: 'SEO titulek'
+description: 'Meta popis 1-2 věty.'
+date: 'YYYY-MM-DD'
 status: 1
-tags: ["tag1", "tag2"]
-format: "html"
+tags: ['tag1', 'tag2']
+format: 'html'
 ---
 ```
 
