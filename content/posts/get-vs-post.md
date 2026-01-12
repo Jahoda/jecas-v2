@@ -29,7 +29,7 @@ format: "html"
 <tr>
 <td>Viditelnost dat</td>
 <td>Data viditelná v adresním řádku</td>
-<td>Data skrytá</td>
+<td>Data skrytá (ale viditelná v <a href="/chrome-devtools">dev tools</a>)</td>
 </tr>
 <tr>
 <td>Záložky</td>
@@ -55,9 +55,9 @@ format: "html"
 </table>
 
 <h3 id="idempotence">Co je idempotence?</h3>
-<p><b>Idempotentní operace</b> je taková, která při opakovaném provedení dává <b>stejný výsledek</b> jako při prvním provedení. Metoda GET je idempotentní - když 10× načtete stejnou stránku, dostanete 10× stejný výsledek a na serveru se nic nezmění.</p>
+<p><b>Idempotentní operace</b> je taková, která při opakovaném provedení dává <b>stejný výsledek</b> jako při prvním provedení. Metoda GET je idempotentní – když 10× načtete stejnou stránku, dostanete 10× stejný výsledek a na serveru se nic nezmění.</p>
 
-<p>Metoda POST idempotentní <b>není</b> - když 10× odešlete objednávku, vytvoří se 10 objednávek. Proto prohlížeče zobrazují varování při obnovení stránky s POST požadavkem.</p>
+<p>Metoda POST idempotentní <b>není</b> – když 10× odešlete objednávku, vytvoří se 10 objednávek. Proto prohlížeče zobrazují varování při obnovení stránky s POST požadavkem.</p>
 
 <h2 id="datove-limity">Datové limity</h2>
 
@@ -91,14 +91,16 @@ format: "html"
 <p>Metodu GET použijte pro:</p>
 
 <ol>
-<li><b>Načítání dat</b> - zobrazení stránky, článku, produktu</li>
-<li><b>Vyhledávání</b> - výsledky vyhledávání by měly být sdílitelné přes URL</li>
-<li><b>Filtrování a řazení</b> - parametry v URL umožní uložit konkrétní pohled</li>
-<li><b>Stránkování</b> - číslo stránky v URL (<code>?page=2</code>)</li>
-<li><b>API požadavky na čtení</b> - RESTful GET endpointy</li>
+<li><b>Načítání dat</b> – zobrazení stránky, článku, produktu</li>
+<li><b>Vyhledávání</b> – výsledky vyhledávání by měly být sdílitelné přes URL</li>
+<li><b>Filtrování a řazení</b> – parametry v URL umožní uložit konkrétní pohled</li>
+<li><b>Stránkování</b> – číslo stránky v URL (<code>?page=2</code>)</li>
+<li><b>API požadavky na čtení</b> – RESTful GET endpointy</li>
 </ol>
 
-<pre><code>&lt;!-- Vyhledávací formulář - GET je správná volba --&gt;
+<p>GET je vhodný tam, kde potřebujete na výsledek <b>odkázat</b> nebo ho sdílet. Vyhledávače mohou stránky s <a href="/query-string">query stringem</a> indexovat, což je někdy nežádoucí (duplicitní obsah). V takovém případě se problém řeší pomocí <code>&lt;link rel="canonical"&gt;</code>.</p>
+
+<pre><code>&lt;!-- Vyhledávací formulář – GET je správná volba --&gt;
 &lt;form action="/search" method="get"&gt;
   &lt;input type="text" name="q" placeholder="Hledat..."&gt;
   &lt;button type="submit"&gt;Hledat&lt;/button&gt;
@@ -110,14 +112,14 @@ format: "html"
 <p>Metodu POST použijte pro:</p>
 
 <ol>
-<li><b>Odesílání formulářů</b> - registrace, přihlášení, kontaktní formuláře</li>
-<li><b>Nahrávání souborů</b> - GET neumožňuje přenos souborů</li>
-<li><b>Citlivá data</b> - hesla, osobní údaje, platební informace</li>
-<li><b>Operace měnící stav</b> - vytvoření objednávky, odeslání komentáře</li>
-<li><b>Velký objem dat</b> - cokoliv nad 2 000 znaků</li>
+<li><b>Odesílání formulářů</b> – registrace, přihlášení, kontaktní formuláře</li>
+<li><b>Nahrávání souborů</b> – GET neumožňuje přenos souborů</li>
+<li><b>Citlivá data</b> – hesla, osobní údaje, platební informace</li>
+<li><b>Operace měnící stav</b> – vytvoření objednávky, odeslání komentáře</li>
+<li><b>Velký objem dat</b> – cokoliv nad 2 000 znaků</li>
 </ol>
 
-<pre><code>&lt;!-- Přihlašovací formulář - POST je bezpečnější --&gt;
+<pre><code>&lt;!-- Přihlašovací formulář – POST je bezpečnější --&gt;
 &lt;form action="/login" method="post"&gt;
   &lt;input type="text" name="username"&gt;
   &lt;input type="password" name="password"&gt;
@@ -201,11 +203,11 @@ format: "html"
 <p>Kromě GET a POST existují další metody používané zejména v <b>REST API</b>:</p>
 
 <ul>
-<li><b>PUT</b> - aktualizace celého záznamu</li>
-<li><b>PATCH</b> - částečná aktualizace záznamu</li>
-<li><b>DELETE</b> - smazání záznamu</li>
-<li><b>HEAD</b> - jako GET, ale vrací pouze hlavičky</li>
-<li><b>OPTIONS</b> - zjištění podporovaných metod</li>
+<li><b>PUT</b> – aktualizace celého záznamu</li>
+<li><b>PATCH</b> – částečná aktualizace záznamu</li>
+<li><b>DELETE</b> – smazání záznamu</li>
+<li><b>HEAD</b> – jako GET, ale vrací pouze hlavičky</li>
+<li><b>OPTIONS</b> – zjištění podporovaných metod</li>
 </ul>
 
 <p>HTML formuláře podporují pouze <b>GET a POST</b>. Pro ostatní metody je nutné použít <a href="/ajax">AJAX</a> nebo skrytý <code>_method</code> parametr.</p>
