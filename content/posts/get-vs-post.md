@@ -141,7 +141,7 @@ format: "html"
 <ul>
 <li>Používat <b>HTTPS</b> pro šifrování přenosu</li>
 <li>Implementovat <a href="/bezpecnost#csrf">CSRF ochranu</a></li>
-<li>Validovat a sanitizovat vstupní data na serveru</li>
+<li>Validovat a sanitisovat vstupní data na serveru</li>
 </ul>
 
 <h2 id="prehled">Přehled použití</h2>
