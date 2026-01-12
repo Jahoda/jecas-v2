@@ -26,7 +26,10 @@ const REPLACEMENTS = {
 	normaliz: 'normalis',
 	stabiliz: 'stabilis',
 	centraliz: 'centralis',
-	symboliz: 'symbolis'
+	symboliz: 'symbolis',
+	konverz: 'konvers',
+	prezent: 'present',
+	reverz: 'revers'
 };
 
 /**
