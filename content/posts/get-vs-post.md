@@ -54,6 +54,11 @@ format: "html"
 </tbody>
 </table>
 
+<h3 id="idempotence">Co je idempotence?</h3>
+<p><b>Idempotentní operace</b> je taková, která při opakovaném provedení dává <b>stejný výsledek</b> jako při prvním provedení. Metoda GET je idempotentní - když 10× načtete stejnou stránku, dostanete 10× stejný výsledek a na serveru se nic nezmění.</p>
+
+<p>Metoda POST idempotentní <b>není</b> - když 10× odešlete objednávku, vytvoří se 10 objednávek. Proto prohlížeče zobrazují varování při obnovení stránky s POST požadavkem.</p>
+
 <h2 id="datove-limity">Datové limity</h2>
 
 <h3>GET</h3>
@@ -79,7 +84,7 @@ format: "html"
 <li><b>IIS</b>: <code>maxRequestLength</code> (výchozí 4 MB)</li>
 </ul>
 
-<p>Tyto limity lze na serveru <b>upravit podle potřeby</b>.</p>
+<p>Tyto limity lze na serveru <b>upravit podle potřeby</b>. Při vývoji na <a href="/localhost">lokálním serveru</a> (WAMP, XAMPP) se limity nastavují v souboru <code>php.ini</code>.</p>
 
 <h2 id="kdy-get">Kdy použít GET</h2>
 
@@ -133,7 +138,7 @@ format: "html"
 <p>Samotné použití POST <b>nezajišťuje bezpečnost</b>. Pro skutečné zabezpečení je nutné:</p>
 <ul>
 <li>Používat <b>HTTPS</b> pro šifrování přenosu</li>
-<li>Implementovat <a href="/csrf-ochrana">CSRF ochranu</a></li>
+<li>Implementovat <a href="/bezpecnost#csrf">CSRF ochranu</a></li>
 <li>Validovat a sanitizovat vstupní data na serveru</li>
 </ul>
 
