@@ -8,7 +8,8 @@ const REPLACEMENTS = {
 	riziko: 'risiko',
 	analýz: 'analys',
 	pozic: 'posic',
-	rizik: 'risik'
+	rizik: 'risik',
+	sanitiz: 'sanitis'
 };
 
 /**
