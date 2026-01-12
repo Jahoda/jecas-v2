@@ -29,7 +29,7 @@ format: "html"
 <tr>
 <td>Viditelnost dat</td>
 <td>Data viditelná v adresním řádku</td>
-<td>Data skrytá (ale viditelná v <a href="/chrome-devtools">dev tools</a>)</td>
+<td>Data skrytá (ale viditelná ve <a href="/vyvojarske-nastroje">vývojářských nástrojích</a>)</td>
 </tr>
 <tr>
 <td>Záložky</td>
