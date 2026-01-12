@@ -97,14 +97,7 @@ Táhni za pravý dolní roh
 
 <h2 id="custom-cursor">Řešení: Custom SVG cursor</h2>
 
-<p>Protože Safari nepodporuje standardní resize cursor hodnoty, můžeme použít <b>vlastní SVG cursor</b> jako data URI:</p>
-
-<pre><code>/* Diagonální resize cursor pro Safari */
-.resize-handle {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M19 12l-4-4v3h-4V7h3l-4-4-4 4h3v4H5v-3l-4 4 4 4v-3h4v4H6l4 4 4-4h-3v-4h4v3z'/%3E%3C/svg%3E") 12 12, move;
-}</code></pre>
-
-<p>Zde je test custom cursoru – najeďte myší:</p>
+<p>Protože Safari nepodporuje standardní resize cursor hodnoty, můžeme použít <b>vlastní SVG cursor</b> jako data URI. Může to být jakýkoliv obrázek – třeba logo:</p>
 
 <div class="live">
 <style>
@@ -114,26 +107,19 @@ Táhni za pravý dolní roh
   border-radius: 8px;
   color: #e2e8f0;
   text-align: center;
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M18 10L14 6v3h-4V5h3L9 1 5 5h3v4H4V6L0 10l4 4v-3h4v4H5l4 4 4-4h-3v-4h4v3z'/%3E%3C/svg%3E") 12 12, move;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect width='24' height='24' rx='4' fill='%232196F3'/%3E%3Cpath stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none' d='M5 16l7-8 7 8'/%3E%3C/svg%3E") 12 12, pointer;
 }
 </style>
 <div class="custom-cursor-test">
-Custom SVG cursor (funguje v Safari)
+Najeďte myší – cursor je logo jecas.cz
 </div>
 </div>
 
+<pre><code>.element {
+  cursor: url("data:image/svg+xml,...") 12 12, pointer;
+}</code></pre>
 
-<h3>SVG kód pro diagonální resize</h3>
-
-<p>SVG pro diagonální šipku (↘↖):</p>
-
-<pre><code>&lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"&gt;
-  &lt;path fill="#000" stroke="#fff" stroke-width="1"
-    d="M18 10L14 6v3h-4V5h3L9 1 5 5h3v4H4V6L0 10l4 4v-3h4v4H5l4 4
-       4-4h-3v-4h4v3z"/&gt;
-&lt;/svg&gt;</code></pre>
-
-<p>Hodnota <code>12 12</code> určuje hotspot (střed kurzoru).</p>
+<p>Hodnota <code>12 12</code> určuje hotspot (střed kurzoru 24×24 px).</p>
 
 
 <h2 id="reseni">Funkční řešení: Vlastní resize handle</h2>
@@ -165,7 +151,7 @@ Custom SVG cursor (funguje v Safari)
   bottom: 0;
   width: 20px;
   height: 20px;
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M18 10L14 6v3h-4V5h3L9 1 5 5h3v4H4V6L0 10l4 4v-3h4v4H5l4 4 4-4h-3v-4h4v3z'/%3E%3C/svg%3E") 12 12, move;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M4 4l5 0 0 2-2.5 0 4 4-1.4 1.4-4-4 0 2.5-2 0 0-5zm16 16l-5 0 0-2 2.5 0-4-4 1.4-1.4 4 4 0-2.5 2 0 0 5z'/%3E%3C/svg%3E") 12 12, nwse-resize;
   background:
     linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.4) 50%);
   border-radius: 0 0 8px 0;
@@ -189,7 +175,7 @@ Táhni za pravý dolní roh (funguje v Safari)
   let isResizing = false;
   let startX, startY, startWidth, startHeight;
 
-  const resizeCursor = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M18 10L14 6v3h-4V5h3L9 1 5 5h3v4H4V6L0 10l4 4v-3h4v4H5l4 4 4-4h-3v-4h4v3z'/%3E%3C/svg%3E\") 12 12, move";
+  const resizeCursor = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M4 4l5 0 0 2-2.5 0 4 4-1.4 1.4-4-4 0 2.5-2 0 0-5zm16 16l-5 0 0-2 2.5 0-4-4 1.4-1.4 4 4 0-2.5 2 0 0 5z'/%3E%3C/svg%3E\") 12 12, nwse-resize";
 
   handle.addEventListener('mousedown', function(e) {
     isResizing = true;
@@ -463,158 +449,6 @@ Táhni za pravý dolní roh (funguje v Safari)
 </div>
 
 
-<h2 id="window-code">Kompletní kód pro resize ze všech stran</h2>
-
-<h3>HTML struktura</h3>
-
-<pre><code>&lt;div class="resizable-window" id="my-window"&gt;
-  Obsah
-  &lt;!-- Hrany --&gt;
-  &lt;div class="edge edge-n" data-resize="n"&gt;&lt;/div&gt;
-  &lt;div class="edge edge-s" data-resize="s"&gt;&lt;/div&gt;
-  &lt;div class="edge edge-w" data-resize="w"&gt;&lt;/div&gt;
-  &lt;div class="edge edge-e" data-resize="e"&gt;&lt;/div&gt;
-  &lt;!-- Rohy --&gt;
-  &lt;div class="corner corner-nw" data-resize="nw"&gt;&lt;/div&gt;
-  &lt;div class="corner corner-ne" data-resize="ne"&gt;&lt;/div&gt;
-  &lt;div class="corner corner-sw" data-resize="sw"&gt;&lt;/div&gt;
-  &lt;div class="corner corner-se" data-resize="se"&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-
-<h3>CSS s SVG cursory</h3>
-
-<pre><code>:root {
-  /* SVG cursory pro Safari kompatibilitu */
-  --cursor-ns: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M12 2l4 4h-3v5h-2V6H8l4-4zm0 20l-4-4h3v-5h2v5h3l-4 4z'/%3E%3C/svg%3E") 12 12, ns-resize;
-  --cursor-ew: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M2 12l4-4v3h5v2H6v3l-4-4zm20 0l-4 4v-3h-5v-2h5V8l4 4z'/%3E%3C/svg%3E") 12 12, ew-resize;
-  --cursor-nwse: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M4 4l5 0 0 2-2.5 0 4 4-1.4 1.4-4-4 0 2.5-2 0 0-5zm16 16l-5 0 0-2 2.5 0-4-4 1.4-1.4 4 4 0-2.5 2 0 0 5z'/%3E%3C/svg%3E") 12 12, nwse-resize;
-  --cursor-nesw: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' stroke-width='1' d='M20 4l0 5-2 0 0-2.5-4 4-1.4-1.4 4-4-2.5 0 0-2 5 0zM4 20l0-5 2 0 0 2.5 4-4 1.4 1.4-4 4 2.5 0 0 2-5 0z'/%3E%3C/svg%3E") 12 12, nesw-resize;
-}
-
-.resizable-window {
-  position: relative;
-  box-sizing: border-box;
-  user-select: none;
-}
-
-/* Hrany */
-.resizable-window .edge {
-  position: absolute;
-  background: transparent;
-}
-.resizable-window .edge-n,
-.resizable-window .edge-s {
-  left: 8px;
-  right: 8px;
-  height: 8px;
-  cursor: var(--cursor-ns);
-}
-.resizable-window .edge-n { top: 0; }
-.resizable-window .edge-s { bottom: 0; }
-
-.resizable-window .edge-w,
-.resizable-window .edge-e {
-  top: 8px;
-  bottom: 8px;
-  width: 8px;
-  cursor: var(--cursor-ew);
-}
-.resizable-window .edge-w { left: 0; }
-.resizable-window .edge-e { right: 0; }
-
-/* Rohy */
-.resizable-window .corner {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-}
-.resizable-window .corner-nw { top: 0; left: 0; cursor: var(--cursor-nwse); }
-.resizable-window .corner-se { bottom: 0; right: 0; cursor: var(--cursor-nwse); }
-.resizable-window .corner-ne { top: 0; right: 0; cursor: var(--cursor-nesw); }
-.resizable-window .corner-sw { bottom: 0; left: 0; cursor: var(--cursor-nesw); }</code></pre>
-
-<h3>JavaScript</h3>
-
-<pre><code>function makeWindowResizable(box, options = {}) {
-  const minW = options.minWidth || 100;
-  const minH = options.minHeight || 60;
-  const maxW = options.maxWidth || Infinity;
-  const maxH = options.maxHeight || Infinity;
-
-  const cursors = {
-    n: getComputedStyle(document.documentElement).getPropertyValue('--cursor-ns'),
-    s: getComputedStyle(document.documentElement).getPropertyValue('--cursor-ns'),
-    w: getComputedStyle(document.documentElement).getPropertyValue('--cursor-ew'),
-    e: getComputedStyle(document.documentElement).getPropertyValue('--cursor-ew'),
-    nw: getComputedStyle(document.documentElement).getPropertyValue('--cursor-nwse'),
-    se: getComputedStyle(document.documentElement).getPropertyValue('--cursor-nwse'),
-    ne: getComputedStyle(document.documentElement).getPropertyValue('--cursor-nesw'),
-    sw: getComputedStyle(document.documentElement).getPropertyValue('--cursor-nesw')
-  };
-
-  let resizing = null;
-  let startX, startY, startW, startH, startL, startT;
-
-  box.querySelectorAll('[data-resize]').forEach(handle =&gt; {
-    handle.addEventListener('mousedown', e =&gt; {
-      resizing = handle.dataset.resize;
-      startX = e.clientX;
-      startY = e.clientY;
-      startW = box.offsetWidth;
-      startH = box.offsetHeight;
-      startL = box.offsetLeft;
-      startT = box.offsetTop;
-      document.body.style.cursor = cursors[resizing];
-      document.body.style.userSelect = 'none';
-      e.preventDefault();
-    });
-  });
-
-  document.addEventListener('mousemove', e =&gt; {
-    if (!resizing) return;
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
-
-    let newW = startW, newH = startH;
-
-    // Vodorovný resize
-    if (resizing.includes('e')) {
-      newW = Math.min(maxW, Math.max(minW, startW + dx));
-    }
-    if (resizing.includes('w')) {
-      newW = Math.min(maxW, Math.max(minW, startW - dx));
-    }
-
-    // Svislý resize
-    if (resizing.includes('s')) {
-      newH = Math.min(maxH, Math.max(minH, startH + dy));
-    }
-    if (resizing.includes('n')) {
-      newH = Math.min(maxH, Math.max(minH, startH - dy));
-    }
-
-    box.style.width = newW + 'px';
-    box.style.height = newH + 'px';
-  });
-
-  document.addEventListener('mouseup', () =&gt; {
-    if (resizing) {
-      resizing = null;
-      document.body.style.cursor = '';
-      document.body.style.userSelect = '';
-    }
-  });
-}
-
-// Použití
-makeWindowResizable(document.getElementById('my-window'), {
-  minWidth: 120,
-  minHeight: 80,
-  maxWidth: 500,
-  maxHeight: 400
-});</code></pre>
-
-
 <h2 id="kod">Kompletní kód řešení</h2>
 
 <h3>HTML</h3>
@@ -645,7 +479,7 @@ makeWindowResizable(document.getElementById('my-window'), {
   width: 20px;
   height: 20px;
   /* Custom SVG cursor pro Safari */
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' d='M18 10L14 6v3h-4V5h3L9 1 5 5h3v4H4V6L0 10l4 4v-3h4v4H5l4 4 4-4h-3v-4h4v3z'/%3E%3C/svg%3E") 12 12, move;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' d='M4 4l5 0 0 2-2.5 0 4 4-1.4 1.4-4-4 0 2.5-2 0 0-5zm16 16l-5 0 0-2 2.5 0-4-4 1.4-1.4 4 4 0-2.5 2 0 0 5z'/%3E%3C/svg%3E") 12 12, nwse-resize;
   background:
     linear-gradient(135deg,
       transparent 50%,
@@ -661,7 +495,7 @@ makeWindowResizable(document.getElementById('my-window'), {
   const maxHeight = options.maxHeight || Infinity;
 
   // Custom SVG cursor pro Safari kompatibilitu
-  const resizeCursor = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' d='M18 10L14 6v3h-4V5h3L9 1 5 5h3v4H4V6L0 10l4 4v-3h4v4H5l4 4 4-4h-3v-4h4v3z'/%3E%3C/svg%3E") 12 12, move`;
+  const resizeCursor = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath fill='%23000' stroke='%23fff' d='M4 4l5 0 0 2-2.5 0 4 4-1.4 1.4-4-4 0 2.5-2 0 0-5zm16 16l-5 0 0-2 2.5 0-4-4 1.4-1.4 4 4 0-2.5 2 0 0 5z'/%3E%3C/svg%3E") 12 12, nwse-resize`;
 
   let isResizing = false;
   let startX, startY, startWidth, startHeight;
