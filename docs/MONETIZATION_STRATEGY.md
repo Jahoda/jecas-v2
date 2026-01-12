@@ -746,3 +746,396 @@ Měsíční finále (vstup 199 Kč)
 **Dlouhodobě:**
 6. **Merch** - Pasivní příjem
 7. **Escape Room** - Unikátní produkt
+
+---
+
+## Další nekonvenční monetizační nápady
+
+### 21. "Code Karaoke" - Vysvětli cizí kód
+
+**Koncept:** Soutěž kde účastníci musí vysvětlit neznámý kód v reálném čase.
+
+#### Formát
+```
+Code Karaoke Night (online event)
+├── Vstupné: 149 Kč (účastník) / zdarma (divák)
+├── Pravidla:
+│   ├── 3 minuty na vysvětlení kódu
+│   ├── Žádná příprava - kód vidíš poprvé
+│   └── Hodnotí se: přesnost, srozumitelnost, humor
+├── Kategorie:
+│   ├── "Legacy Hell" - starý jQuery/PHP kód
+│   ├── "Regex Roulette" - vysvětli regex
+│   └── "Framework Bingo" - React/Vue/Svelte
+└── Ceny: 1000-3000 Kč + merch
+```
+
+#### Proč to funguje
+- Extrémně zábavné pro diváky
+- Testuje skutečné znalosti
+- Skvělý obsah pro YouTube/TikTok
+- Buduje komunitu
+
+---
+
+### 22. Micro-SaaS nástroje
+
+**Koncept:** Malé placené nástroje přímo na webu.
+
+#### Produktové nápady
+| Nástroj | Cena | Popis |
+|---------|------|-------|
+| **CSS-to-Tailwind konvertor** | 49 Kč/měsíc | Automatická konverze |
+| **Responsive Screenshot Tool** | 29 Kč/měsíc | Screenshoty ve všech breakpointech |
+| **SEO Analyzer pro dev blogy** | 99 Kč/měsíc | Specificky pro technické články |
+| **Color Palette Generator** | Freemium | Export do CSS/Tailwind/Figma |
+| **SVG Optimizer Pro** | 49 Kč jednorázově | Rozšířená verze stávajícího nástroje |
+
+#### Výhoda
+- Už máš nástroje na webu (`/nastroje/`)
+- Stačí přidat premium features
+- Recurring revenue
+
+---
+
+### 23. "GitHub Archeologie" - Série
+
+**Koncept:** Rozbory slavných open source projektů a jejich evoluce.
+
+#### Formát epizod
+```
+Episode: "Jak jQuery změnil web (a proč umírá)"
+├── Video: 20-30 minut
+├── Obsah:
+│   ├── První commit analýza
+│   ├── Klíčové milníky
+│   ├── Architektonická rozhodnutí
+│   └── Co se můžeme naučit
+├── Monetizace:
+│   ├── YouTube ads
+│   ├── Sponzoři
+│   └── Premium: extended cuts + source code walkthrough
+```
+
+#### Témata epizod
+1. "React: Od Facebook hackathonu k dominanci"
+2. "Vue.js: Jak jeden člověk porazil korporace"
+3. "Tailwind: Proč všichni nenáviděli utility-first (a pak ne)"
+4. "Node.js: Runtime, který změnil backend"
+
+---
+
+### 24. "Debuguj za mě" - Express služba
+
+**Koncept:** Urgentní debugging pomoc s garantovanou odezvou.
+
+#### Ceník
+| Tier | Cena | Odezva | Co zahrnuje |
+|------|------|--------|-------------|
+| **Standard** | 500 Kč | 24h | Písemná odpověď |
+| **Priority** | 1 500 Kč | 4h | Písemná + short video |
+| **Emergency** | 3 000 Kč | 1h | Live call + screen share |
+| **Retainer** | 5 000 Kč/měsíc | 2h/měsíc | Ongoing support |
+
+#### Jak to funguje
+1. Zákazník pošle kód + popis problému
+2. Platba předem (Stripe)
+3. Autor debuguje a posílá řešení
+4. Následný follow-up zdarma
+
+---
+
+### 25. "First Job Ready" - Junior Program
+
+**Koncept:** Placený program pro juniory hledající první práci.
+
+#### Obsah programu (4 990 Kč)
+```
+8týdenní program "Od nuly k první práci"
+├── Týden 1-2: Portfolio audit + vylepšení
+├── Týden 3-4: GitHub profil optimalizace
+├── Týden 5: CV/LinkedIn masterclass
+├── Týden 6: Technické pohovory příprava
+├── Týden 7: Live mock interview
+├── Týden 8: Job search strategie
+└── Bonus: Slack skupina absolventů
+```
+
+#### Proč to funguje
+- Vysoká hodnota pro cílovou skupinu
+- Jasný výstup (práce)
+- Word-of-mouth marketing
+- Alumni network = budoucí klienti
+
+---
+
+### 26. "Dev Audiobook" - Články jako podcast
+
+**Koncept:** Audio verze nejlepších článků.
+
+#### Model
+```
+Podcast "Ječas Audio"
+├── Zdarma: 1 epizoda týdně (starší články)
+├── Premium (99 Kč/měsíc):
+│   ├── Všechny epizody ihned
+│   ├── Bonus komentáře autora
+│   └── Q&A segmenty
+└── Platformy: Spotify, Apple Podcasts, vlastní RSS
+```
+
+#### Proč to dává smysl
+- Repurposing existujícího obsahu
+- Nová audience (dojíždění, sport)
+- Nízké náklady (AI text-to-speech nebo vlastní hlas)
+- Sponzoři podcastů platí dobře
+
+---
+
+### 27. "Code Poetry Slam" - Umělecká soutěž
+
+**Koncept:** Soutěž v psaní "poetického" kódu - funkční, ale krásný.
+
+#### Kategorie
+| Kategorie | Popis | Příklad |
+|-----------|-------|---------|
+| **Haiku Code** | 3 řádky, funkční | `const life = (t) => t > 0 ? live(t-1) : die()` |
+| **Ascii Art Function** | Kód co vykreslí sám sebe | Quine varianty |
+| **One-liner Magic** | Nejvíc v jednom řádku | Array manipulace |
+| **Comment Poetry** | Příběh v komentářích | `// She said "semicolon"...` |
+
+#### Odměny
+- Vítěz: Tričko + 1000 Kč
+- Sbírka nejlepších: E-book (prodej)
+- Galerie na webu (traffic)
+
+---
+
+### 28. "Mass Hiring" - Hromadné pohovory
+
+**Koncept:** Organizovat technické pohovory pro firmy.
+
+#### Služba pro firmy (15 000 - 50 000 Kč)
+```
+"Ječas Tech Screening"
+├── 1. Technické zadání (custom pro firmu)
+├── 2. Online test pro kandidáty
+├── 3. Automatické vyhodnocení
+├── 4. Top 10 kandidátů → shortlist
+└── Výstup: Report + doporučení
+```
+
+#### Výhoda
+- Firmy šetří čas
+- Kandidáti získají férové hodnocení
+- Autor buduje B2B vztahy
+- Recurring (firmy najímají opakovaně)
+
+---
+
+### 29. "Reverse Job Board" - Profily vývojářů
+
+**Koncept:** Vývojáři platí za prémiový profil, firmy prohlížejí zdarma.
+
+#### Model
+| Tier | Cena | Funkce |
+|------|------|--------|
+| **Basic** | Zdarma | Jméno + skills + kontakt |
+| **Pro** | 199 Kč/měsíc | Portfolio + projekty + video intro |
+| **Featured** | 499 Kč/měsíc | Top pozice + newsletter zmínka |
+
+#### Proč to funguje
+- Vývojáři chtějí být vidět
+- Firmy dostanou kvalifikované kandidáty
+- Nižší konkurence než LinkedIn
+- Cílená audience
+
+---
+
+### 30. "AI Pair Programming" - Asistent
+
+**Koncept:** Vlastní AI asistent trénovaný na článcích z Ječas.cz.
+
+#### Produkt
+```
+"Ječas AI" - Chatbot pro webdesign otázky
+├── Trénovaný na 1082 článcích
+├── Zná české specifika
+├── Odpovídá v češtině
+├── Cituje zdroje z webu
+└── Cena: 149 Kč/měsíc nebo 1 490 Kč/rok
+```
+
+#### Technická realizace
+- RAG (Retrieval Augmented Generation)
+- OpenAI/Anthropic API
+- Embeddings článků
+- SvelteKit frontend
+
+---
+
+### 31. "The 100 Days Challenge" - Platforma
+
+**Koncept:** Strukturovaný 100denní challenge s komunitou.
+
+#### Program (999 Kč)
+```
+"100 Days of CSS"
+├── Den 1-30: Základy (jeden koncept denně)
+├── Den 31-60: Intermediate projekty
+├── Den 61-90: Advanced techniky
+├── Den 91-100: Finální projekt
+├── Komunita: Discord + daily check-ins
+├── Accountability: Veřejný tracker
+└── Certifikát po dokončení
+```
+
+#### Gamifikace
+- Streak counter
+- Public leaderboard
+- Badges za milníky
+- Penalty za vynechání (donace na charitu?)
+
+---
+
+### 32. "Web Roast Subscription" - Měsíční roast box
+
+**Koncept:** Každý měsíc nový web k roastnutí + edukativní obsah.
+
+#### Subscription (299 Kč/měsíc)
+```
+Měsíční "Roast Box"
+├── 1x Video roast slavného webu (20 min)
+├── 1x Písemná analýza (PDF)
+├── 3x Quick tips související s problémy
+├── 1x "Jak to udělat lépe" tutoriál
+└── Bonus: Komunita hlasuje o dalším webu
+```
+
+#### Weby k roastnutí
+- Slavné české weby (iDnes, Seznam, Alza)
+- Vládní weby (vždy zlato!)
+- Startup weby
+- "Předěláno" - sledování zlepšení
+
+---
+
+### 33. "Hotfix Hotline" - Telefonní podpora
+
+**Koncept:** Skutečná telefonní linka pro dev emergency.
+
+#### Jak to funguje
+```
+Hotfix Hotline: +420 XXX XXX XXX
+├── Dostupnost: Po-Pá 9:00-18:00
+├── Cena: 50 Kč/minuta (max 500 Kč)
+├── Platba: Stripe po hovoru
+└── Garantie: Problém vyřešen nebo peníze zpět
+```
+
+#### Proč to je unikátní
+- Nikdo to v ČR nedělá
+- Urgentní problémy = vysoká ochota platit
+- Osobní přístup
+- PR hodnota ("Zavolej, když hoří produkce")
+
+---
+
+### 34. "Code Time Capsule" - Archiv
+
+**Koncept:** Služba pro uchovávání kódu s poznámkami pro budoucnost.
+
+#### Produkt
+```
+"Code Time Capsule"
+├── Ulož svůj kód + poznámky
+├── Nastav datum otevření (1-10 let)
+├── Dostaneš email v budoucnosti
+├── Bonus: Porovnání s aktuálními best practices
+└── Cena: 99 Kč / kapsle
+```
+
+#### Marketingový úhel
+- "Podívej se na svůj kód za 5 let"
+- Nostalgie + humor
+- Virální sdílení ("Můj kód z 2020!")
+- Edukativní hodnota
+
+---
+
+### 35. "Dev Confession" - Anonymní příběhy
+
+**Koncept:** Platforma pro anonymní dev příběhy + monetizace.
+
+#### Model
+```
+"Dev Confessions"
+├── Zdarma: Čtení příběhů
+├── 49 Kč: Odeslání vlastní confession
+├── 99 Kč: Prioritní zveřejnění
+├── Moderace: Autor vybírá nejlepší
+└── Výstup: Týdenní newsletter + social
+```
+
+#### Příklady confessions
+- "Pushoval jsem na main v pátek v 17:00"
+- "Používám !important a nelituju toho"
+- "Můj senior neví, že používám ChatGPT"
+- "Nikdy jsem nepsal unit testy"
+
+#### Monetizace
+- Submission fees
+- Sponzoři newsletteru
+- Kniha "Best of Dev Confessions"
+
+---
+
+## Experimentální a futuristické nápady
+
+### 36. "Mass Collab" - Komunitní projekty
+
+Celá komunita staví jeden produkt, příjmy se dělí podle contributionů.
+
+### 37. "Code NFT Gallery"
+
+Vizualizace kódu jako umění, prodej jako NFT (kontroverzní, ale unikátní).
+
+### 38. "Dev Dating" - Networking platforma
+
+Spojování vývojářů pro side projekty, ne romanticky (nebo možná?).
+
+### 39. "Failure Museum"
+
+Placený archiv neúspěšných projektů s post-mortem analýzou.
+
+### 40. "Code Translate"
+
+Překládání tutoriálů do/z angličtiny za poplatek.
+
+---
+
+## Souhrn všech strategií
+
+### Celkový přehled (40 nápadů)
+
+| Kategorie | Počet | Příklady |
+|-----------|-------|----------|
+| **Tradiční** | 7 | Affiliate, kurzy, konzultace |
+| **Kreativní** | 13 | Roast, Escape Room, Tarot |
+| **Experimentální** | 20 | Code Karaoke, AI Asistent, Hotline |
+
+### Top 5 doporučení pro okamžitý start
+
+1. **Roast My Website** - Nulové náklady, okamžitý příjem
+2. **Micro-SaaS rozšíření** - Už máš základ v `/nastroje/`
+3. **Dev Confession** - Virální, nízká údržba
+4. **Audio podcast** - Repurposing obsahu
+5. **Debuguj za mě** - Přímá monetizace expertízy
+
+### Top 5 pro dlouhodobý růst
+
+1. **AI Asistent** - Škálovatelný produkt
+2. **100 Days Challenge** - Komunita + recurring
+3. **First Job Ready** - Vysoká hodnota
+4. **Mass Hiring služba** - B2B relationships
+5. **GitHub Archeologie série** - Brand building
