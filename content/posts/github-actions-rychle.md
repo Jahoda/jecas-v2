@@ -1,7 +1,7 @@
 ---
 title: 'Rychlejší GitHub Actions'
-headline: 'Jak zrychlit GitHub Actions: paralelizace, composite actions a gh CLI'
-description: 'Praktické tipy pro optimalisaci GitHub Actions workflows - paralelní joby, znovupoužitelné composite actions, paths filter a použití gh CLI místo checkout.'
+headline: 'Jak zrychlit GitHub Actions'
+description: 'Praktické tipy pro optimalisaci GitHub Actions pomocí paralelisace, composite actions a gh CLI'
 date: '2026-01-13'
 status: 1
 tags: ['hotova-reseni']
@@ -38,8 +38,8 @@ format: 'html'
 <p>Záleží na situaci:</p>
 
 <ul>
-  <li><b>Bez <code>needs</code></b> - build běží paralelně, CI je rychlejší. Pokud lint selže, build proběhne zbytečně, ale ušetříte čas když vše projde.</li>
-  <li><b>S <code>needs: [lint, check]</code></b> - build čeká. Šetří CI minuty při selhání, ale zpomaluje úspěšné běhy.</li>
+  <li><b>Bez <code>needs</code></b> – build běží paralelně, CI je rychlejší. Pokud lint selže, build proběhne zbytečně, ale ušetříte čas když vše projde.</li>
+  <li><b>S <code>needs: [lint, check]</code></b> – build čeká. Šetří CI minuty při selhání, ale zpomaluje úspěšné běhy.</li>
 </ul>
 
 <p>Pro malé projekty s rychlým buildem se vyplatí paralelizace. Pro dlouhé buildy (10+ minut) může být lepší čekat.</p>
@@ -128,7 +128,7 @@ runs:
           gh pr comment ${{ github.event.pull_request.number }} \
             --body "Changed: $FILES"</code></pre>
 
-<p>Tím ušetříte 10-15 sekund na checkout a případný setup Node.js pro actions.</p>
+<p>Tím ušetříte 10–15 sekund na checkout a případný setup Node.js pro actions.</p>
 
 <h2 id="cache">Cachování závislostí</h2>
 
@@ -155,7 +155,7 @@ env:
   BRANCH: ${{ github.head_ref }}
 run: echo "Branch: $BRANCH"</code></pre>
 
-<p>V kontextu GitHub Actions je risiko minimální - GitHub striktně omezuje povolené znaky v názvech větví, takže shell injection přes <code>github.head_ref</code> prakticky není možný. Použití environment variables je spíše konvence a best practice než reálné bezpečnostní opatření.</p>
+<p>V kontextu GitHub Actions je risiko minimální – GitHub striktně omezuje povolené znaky v názvech větví, takže shell injection přes <code>github.head_ref</code> prakticky není možný. Použití environment variables je spíše konvence a best practice než reálné bezpečnostní opatření.</p>
 
 <h3 id="pinning">Pinning actions</h3>
 
@@ -167,7 +167,7 @@ run: echo "Branch: $BRANCH"</code></pre>
 # SHA - neměnné
 - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11</code></pre>
 
-<p>Git tagy (jako <code>v4</code>) může vlastník repozitáře kdykoli přesunout na jiný commit. Pokud by byl účet kompromitován, útočník může tag přepsat na škodlivý kód. SHA commit hash je neměnný - vždy ukazuje na stejný kód. Pro oficiální actions od GitHubu je risiko minimální, ale pro third-party actions z neznámých zdrojů je pinning na SHA rozumná pojistka.</p>
+<p>Git tagy (jako <code>v4</code>) může vlastník repozitáře kdykoli přesunout na jiný commit. Pokud by byl účet kompromitován, útočník může tag přepsat na škodlivý kód. SHA commit hash je neměnný – vždy ukazuje na stejný kód. Pro oficiální actions od GitHubu je risiko minimální, ale pro third-party actions z neznámých zdrojů je pinning na SHA rozumná pojistka.</p>
 
 <h2 id="checklist">Checklist optimalisace</h2>
 
@@ -175,7 +175,7 @@ run: echo "Branch: $BRANCH"</code></pre>
   <li>Joby bez závislostí běží paralelně (bez <code>needs</code>)</li>
   <li>Opakující se kroky v composite action</li>
   <li>Paths filter pro selektivní spouštění</li>
-  <li>GitHub CLI místo checkout kde to jde</li>
+  <li>GitHub CLI místo checkout, kde to jde</li>
   <li>Cachování závislostí zapnuto</li>
-  <li>Node.js verse jako <code>lts/*</code> - pohodlnější než manuální aktualisace, ale s risikem, že nová verse rozbije build</li>
+  <li>Node.js verse jako <code>lts/*</code> – pohodlnější než manuální aktualisace, ale s risikem, že nová verse rozbije build</li>
 </ul>
