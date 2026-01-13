@@ -72,52 +72,42 @@ jobs:
     if: github.event_name == 'pull_request'
     permissions:
       pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Get changed articles
-        id: changed
+      - name: Add preview comment
         run: |
-          CHANGED_FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD -- 'content/posts/*.md')
-
-          if [ -z "$CHANGED_FILES" ]; then
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
-          echo "has_changes=true" >> $GITHUB_OUTPUT
-
-          # Build markdown with preview links and images
+          PR_NUMBER=${{ github.event.pull_request.number }}
           BRANCH="${{ github.head_ref }}"
           BASE_URL="https://jecas.cz/preview"
           OG_URL="https://jecas.cz/api/og/preview"
 
-          BODY="## Náhled článků\n\n"
+          # Get changed .md files from PR via GitHub API
+          CHANGED_FILES=$(gh pr view "$PR_NUMBER" --json files --jq '.files[].path | select(startswith("content/posts/") and endswith(".md"))')
+
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No article changes found"
+            exit 0
+          fi
+
+          # Build comment body
+          BODY="## Náhled článků"$'\n\n'
           for file in $CHANGED_FILES; do
             slug=$(basename "$file" .md)
-            BODY="${BODY}### [${slug}](${BASE_URL}/${slug}?branch=${BRANCH})\n"
-            BODY="${BODY}![${slug}](${OG_URL}?slug=${slug}&branch=${BRANCH})\n\n"
+            BODY+="### [${slug}](${BASE_URL}/${slug}?branch=${BRANCH})"$'\n'
+            BODY+="![${slug}](${OG_URL}?slug=${slug}&branch=${BRANCH})"$'\n\n'
           done
 
-          # Write to file to preserve formatting
-          echo -e "$BODY" > /tmp/preview-body.md
+          # Find existing comment
+          COMMENT_ID=$(gh api "repos/$GH_REPO/issues/$PR_NUMBER/comments" --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | contains("## Náhled článků"))) | .id' | head -1)
 
-      - name: Find existing comment
-        if: steps.changed.outputs.has_changes == 'true'
-        uses: peter-evans/find-comment@v3
-        id: find-comment
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          comment-author: 'github-actions[bot]'
-          body-includes: '## Náhled článků'
-
-      - name: Create or update comment
-        if: steps.changed.outputs.has_changes == 'true'
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          comment-id: ${{ steps.find-comment.outputs.comment-id }}
-          issue-number: ${{ github.event.pull_request.number }}
-          edit-mode: replace
-          body-path: /tmp/preview-body.md
+          if [ -n "$COMMENT_ID" ]; then
+            # Update existing comment
+            gh api "repos/$GH_REPO/issues/comments/$COMMENT_ID" -X PATCH -f body="$BODY"
+            echo "Updated comment $COMMENT_ID"
+          else
+            # Create new comment
+            gh pr comment "$PR_NUMBER" --body "$BODY"
+            echo "Created new comment"
+          fi
