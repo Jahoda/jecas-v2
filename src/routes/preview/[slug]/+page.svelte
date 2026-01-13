@@ -2,6 +2,7 @@
 	import Container from '$lib/container/Container.svelte';
 	import PostContent from '$lib/post/PostContent.svelte';
 	import HeroPost from '$lib/mainPost/HeroPost.svelte';
+	import AnnotationLoader from '$lib/annotation/AnnotationLoader.svelte';
 	import type { PageData } from './$types';
 
 	interface Props {
@@ -54,3 +55,5 @@
 		</div>
 	</div>
 </Container>
+
+<AnnotationLoader slug={data.post.url_slug} articleTitle={data.post.title} forceEnable />
