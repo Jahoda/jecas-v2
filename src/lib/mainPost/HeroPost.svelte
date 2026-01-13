@@ -7,6 +7,7 @@
 	import type { Tag } from '$lib/tag/tags';
 	import Tags from '$lib/tags/Tags.svelte';
 	import { postGradient } from './postGradient';
+	import { preventWidows } from '$lib/typography/typography';
 
 	interface Props {
 		title: string;
@@ -49,6 +50,9 @@
 			backgroundGradient = postGradient(tags);
 		}
 	});
+
+	const safeTitle = $derived(preventWidows(title));
+	const safeDescription = $derived(preventWidows(description));
 </script>
 
 <div
@@ -76,11 +80,11 @@
 
 			<div class="{small ? 'gap-4' : 'gap-8'} flex flex-col max-md:items-center">
 				<h1 class="{small ? 'text-2xl' : 'text-3xl sm:text-5xl'} font-bold">
-					{@html title}
+					{@html safeTitle}
 				</h1>
 				{#if description}
 					<p class={small ? 'text-sm' : 'text-xl sm:text-2xl'}>
-						{@html description}
+						{@html safeDescription}
 					</p>
 				{/if}
 

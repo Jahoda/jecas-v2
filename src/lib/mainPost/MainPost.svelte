@@ -4,6 +4,7 @@
 	import ReadingTime from '$lib/readingTime/ReadingTime.svelte';
 	import type { Tag } from '$lib/tag/tags';
 	import Tags from '$lib/tags/Tags.svelte';
+	import { preventWidows } from '$lib/typography/typography';
 
 	interface Props {
 		title: string;
@@ -40,6 +41,9 @@
 	let backgroundGradient = $derived(
 		`linear-gradient(to right top, ${tagsColors.join(',')}, #5b63b9)`
 	);
+
+	const safeTitle = $derived(preventWidows(title));
+	const safeDescription = $derived(preventWidows(description));
 </script>
 
 <div
@@ -93,12 +97,12 @@
 					class={href ? 'hover:underline' : ''}
 				>
 					<h1 class="{small ? 'text-2xl' : 'text-3xl md:text-5xl'} font-bold">
-						{@html title}
+						{@html safeTitle}
 					</h1>
 				</svelte:element>
 				{#if description}
 					<p class={small ? 'text-sm' : 'text-xl md:text-2xl'}>
-						{@html description}
+						{@html safeDescription}
 					</p>
 				{/if}
 
