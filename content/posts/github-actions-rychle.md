@@ -1,14 +1,14 @@
 ---
 title: 'Rychlejší GitHub Actions'
 headline: 'Jak zrychlit GitHub Actions: paralelizace, composite actions a gh CLI'
-description: 'Praktické tipy pro optimalizaci GitHub Actions workflows - paralelní joby, znovupoužitelné composite actions, paths filter a použití gh CLI místo checkout.'
+description: 'Praktické tipy pro optimalisaci GitHub Actions workflows - paralelní joby, znovupoužitelné composite actions, paths filter a použití gh CLI místo checkout.'
 date: '2026-01-13'
 status: 1
 tags: ['hotova-reseni']
 format: 'html'
 ---
 
-<p>GitHub Actions jsou mocný nástroj pro CI/CD, ale bez optimalizace mohou workflows trvat zbytečně dlouho. Zde jsou praktické tipy, jak je zrychlit.</p>
+<p>GitHub Actions jsou mocný nástroj pro CI/CD, ale bez optimalisace mohou workflows trvat zbytečně dlouho. Zde jsou praktické tipy, jak je zrychlit.</p>
 
 <h2 id="paralelni-joby">Paralelní joby</h2>
 
@@ -155,7 +155,7 @@ env:
   BRANCH: ${{ github.head_ref }}
 run: echo "Branch: $BRANCH"</code></pre>
 
-<p>V kontextu GitHub Actions je riziko minimální - GitHub striktně omezuje povolené znaky v názvech větví, takže shell injection přes <code>github.head_ref</code> prakticky není možný. Použití environment variables je spíše konvence a best practice než reálné bezpečnostní opatření.</p>
+<p>V kontextu GitHub Actions je risiko minimální - GitHub striktně omezuje povolené znaky v názvech větví, takže shell injection přes <code>github.head_ref</code> prakticky není možný. Použití environment variables je spíše konvence a best practice než reálné bezpečnostní opatření.</p>
 
 <h3 id="pinning">Pinning actions</h3>
 
@@ -167,9 +167,9 @@ run: echo "Branch: $BRANCH"</code></pre>
 # SHA - neměnné
 - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11</code></pre>
 
-<p>Git tagy (jako <code>v4</code>) může vlastník repozitáře kdykoli přesunout na jiný commit. Pokud by byl účet kompromitován, útočník může tag přepsat na škodlivý kód. SHA commit hash je neměnný - vždy ukazuje na stejný kód. Pro oficiální actions od GitHubu je riziko minimální, ale pro third-party actions z neznámých zdrojů je pinning na SHA rozumná pojistka.</p>
+<p>Git tagy (jako <code>v4</code>) může vlastník repozitáře kdykoli přesunout na jiný commit. Pokud by byl účet kompromitován, útočník může tag přepsat na škodlivý kód. SHA commit hash je neměnný - vždy ukazuje na stejný kód. Pro oficiální actions od GitHubu je risiko minimální, ale pro third-party actions z neznámých zdrojů je pinning na SHA rozumná pojistka.</p>
 
-<h2 id="checklist">Checklist optimalizace</h2>
+<h2 id="checklist">Checklist optimalisace</h2>
 
 <ul>
   <li>Joby bez závislostí běží paralelně (bez <code>needs</code>)</li>
@@ -177,5 +177,5 @@ run: echo "Branch: $BRANCH"</code></pre>
   <li>Paths filter pro selektivní spouštění</li>
   <li>GitHub CLI místo checkout kde to jde</li>
   <li>Cachování závislostí zapnuto</li>
-  <li>Node.js verze jako <code>lts/*</code> - pohodlnější než manuální aktualizace, ale s rizikem, že nová verze rozbije build</li>
+  <li>Node.js verze jako <code>lts/*</code> - pohodlnější než manuální aktualisace, ale s risikem, že nová verze rozbije build</li>
 </ul>
