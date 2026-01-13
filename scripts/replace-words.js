@@ -8,7 +8,28 @@ const REPLACEMENTS = {
 	riziko: 'risiko',
 	analýz: 'analys',
 	pozic: 'posic',
-	rizik: 'risik'
+	rizik: 'risik',
+	sanitiz: 'sanitis',
+	optimaliz: 'optimalis',
+	organiz: 'organis',
+	vizuál: 'visuál',
+	vizualiz: 'visualis',
+	lokaliz: 'lokalis',
+	realiz: 'realis',
+	specializ: 'specialis',
+	aktualiz: 'aktualis',
+	serializ: 'serialis',
+	automatiz: 'automatis',
+	standardiz: 'standardis',
+	synchroniz: 'synchronis',
+	inicializ: 'inicialis',
+	normaliz: 'normalis',
+	stabiliz: 'stabilis',
+	centraliz: 'centralis',
+	symboliz: 'symbolis',
+	konverz: 'konvers',
+	prezent: 'present',
+	reverz: 'revers'
 };
 
 /**
