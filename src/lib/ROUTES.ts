@@ -20,7 +20,10 @@ const PAGES = {
   "/archiv": `/archiv`,
   "/nastroje/preklady-prevod-textu": `/nastroje/preklady-prevod-textu`,
   "/nastroje/prevod-svg": `/nastroje/prevod-svg`,
-  "/nastroje/vypocet-procent-sloupcu": `/nastroje/vypocet-procent-sloupcu`
+  "/nastroje/vypocet-procent-sloupcu": `/nastroje/vypocet-procent-sloupcu`,
+  "/preview/[slug]": (params: { slug: (string | number) }) => {
+    return `/preview/${params['slug']}`
+  }
 }
 
 /**
@@ -35,7 +38,12 @@ const SERVERS = {
   "POST /api/newsletter/subscribe": `/api/newsletter/subscribe`,
   "prerender /api/og": `/api/og`,
   "GET /api/og": `/api/og`,
+  "prerender /api/og/preview": `/api/og/preview`,
+  "GET /api/og/preview": `/api/og/preview`,
   "POST /api/upload": `/api/upload`,
+  "GET /preview/files/article/[slug]": (params: { slug: (string | number) }) => {
+    return `/preview/files/article/${params['slug']}`
+  },
   "prerender /rss": `/rss`,
   "GET /rss": `/rss`,
   "prerender /sitemap.xml": `/sitemap.xml`,
@@ -162,8 +170,8 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/admin': never, '/admin/login': never, '/admin/logout': never, '/admin/newsletter': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/prevod-svg': never, '/nastroje/vypocet-procent-sloupcu': never }
-  SERVERS: { 'prerender /algolia': never, 'GET /algolia': never, 'GET /api/images/[slug]': 'slug', 'POST /api/newsletter/subscribe': never, 'prerender /api/og': never, 'GET /api/og': never, 'POST /api/upload': never, 'prerender /rss': never, 'GET /rss': never, 'prerender /sitemap.xml': never, 'GET /sitemap.xml': never }
+  PAGES: { '/': never, '/admin': never, '/admin/login': never, '/admin/logout': never, '/admin/newsletter': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/prevod-svg': never, '/nastroje/vypocet-procent-sloupcu': never, '/preview/[slug]': 'slug' }
+  SERVERS: { 'prerender /algolia': never, 'GET /algolia': never, 'GET /api/images/[slug]': 'slug', 'POST /api/newsletter/subscribe': never, 'prerender /api/og': never, 'GET /api/og': never, 'prerender /api/og/preview': never, 'GET /api/og/preview': never, 'POST /api/upload': never, 'GET /preview/files/article/[slug]': 'slug', 'prerender /rss': never, 'GET /rss': never, 'prerender /sitemap.xml': never, 'GET /sitemap.xml': never }
   ACTIONS: { 'default /admin/login': never, 'default /admin/logout': never }
   LINKS: Record<string, never>
   Params: { 'slug': never }
