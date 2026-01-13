@@ -92,7 +92,7 @@ runs:
 
       - run: pnpm run build</code></pre>
 
-<p>Změna verze Node.js nebo package manageru se dělá na jednom místě.</p>
+<p>Změna verse Node.js nebo package manageru se dělá na jednom místě.</p>
 
 <h2 id="paths-filter">Paths filter</h2>
 
@@ -177,5 +177,5 @@ run: echo "Branch: $BRANCH"</code></pre>
   <li>Paths filter pro selektivní spouštění</li>
   <li>GitHub CLI místo checkout kde to jde</li>
   <li>Cachování závislostí zapnuto</li>
-  <li>Node.js verze jako <code>lts/*</code> - pohodlnější než manuální aktualisace, ale s risikem, že nová verze rozbije build</li>
+  <li>Node.js verse jako <code>lts/*</code> - pohodlnější než manuální aktualisace, ale s risikem, že nová verse rozbije build</li>
 </ul>
