@@ -4,9 +4,10 @@
 	interface Props {
 		slug: string;
 		articleTitle: string;
+		forceEnable?: boolean;
 	}
 
-	let { slug, articleTitle }: Props = $props();
+	let { slug, articleTitle, forceEnable = false }: Props = $props();
 
 	let shouldLoad = $state(false);
 	let AnnotationPanel: typeof import('./AnnotationPanel.svelte').default | null = $state(null);
@@ -18,18 +19,20 @@
 		if (params.get('annotate') === '1') {
 			document.cookie = 'annotation_mode=1; path=/; max-age=315360000'; // 10 years
 		}
-		// URL param ?annotate=0 removes cookie
+		// URL param ?annotate=0 removes cookie and disables mode (even if forceEnable)
 		if (params.get('annotate') === '0') {
 			document.cookie = 'annotation_mode=; path=/; max-age=0';
+			return;
 		}
 
 		// Check if we should show annotations:
-		// 1. Vercel preview environment (*.vercel.app)
-		// 2. Cookie 'annotation_mode' is set
+		// 1. forceEnable prop is true
+		// 2. Vercel preview environment (*.vercel.app)
+		// 3. Cookie 'annotation_mode' is set
 		const isVercelPreview = window.location.hostname.endsWith('vercel.app');
 		const hasCookie = document.cookie.includes('annotation_mode=1');
 
-		shouldLoad = isVercelPreview || hasCookie;
+		shouldLoad = forceEnable || isVercelPreview || hasCookie;
 
 		if (shouldLoad) {
 			// Dynamically import the annotation panel

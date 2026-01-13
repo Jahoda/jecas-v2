@@ -56,4 +56,4 @@
 	</div>
 </Container>
 
-<AnnotationLoader slug={data.post.url_slug} articleTitle={data.post.title} />
+<AnnotationLoader slug={data.post.url_slug} articleTitle={data.post.title} forceEnable />
