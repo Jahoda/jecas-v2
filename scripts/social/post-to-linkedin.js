@@ -73,9 +73,7 @@ async function postToLinkedIn(text, articleUrl, title) {
 	}
 
 	if (!personId && !organizationId) {
-		throw new Error(
-			'Missing LINKEDIN_PERSON_ID or LINKEDIN_ORGANIZATION_ID environment variable.'
-		);
+		throw new Error('Missing LINKEDIN_PERSON_ID or LINKEDIN_ORGANIZATION_ID environment variable.');
 	}
 
 	// Use organization if provided, otherwise use person

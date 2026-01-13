@@ -51,9 +51,7 @@ function getNewArticleFiles(since) {
 			{ encoding: 'utf-8' }
 		);
 
-		return result
-			.split('\n')
-			.filter((f) => f.trim() !== '' && f.endsWith('.md'));
+		return result.split('\n').filter((f) => f.trim() !== '' && f.endsWith('.md'));
 	} catch (error) {
 		// If git diff fails (e.g., first commit), return empty array
 		console.error('Warning: Could not get git diff:', error.message);
