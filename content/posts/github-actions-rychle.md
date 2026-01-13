@@ -42,7 +42,7 @@ format: 'html'
   <li><b>S <code>needs: [lint, check]</code></b> – build čeká. Šetří CI minuty při selhání, ale zpomaluje úspěšné běhy.</li>
 </ul>
 
-<p>Pro malé projekty s rychlým buildem se vyplatí paralelizace. Pro dlouhé buildy (10+ minut) může být lepší čekat.</p>
+<p>Pro malé projekty s rychlým buildem se vyplatí paralelisace. Pro dlouhé buildy (10+ minut) může být lepší čekat.</p>
 
 <h2 id="composite-actions">Composite actions pro DRY</h2>
 
