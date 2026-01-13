@@ -4,6 +4,7 @@ import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { resolve } from 'path';
 
 const REPLACEMENTS = {
+	verze: 'verse',
 	univerzál: 'universál',
 	riziko: 'risiko',
 	analýz: 'analys',
