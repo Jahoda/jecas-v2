@@ -295,6 +295,16 @@ format: "html"
 <li><b>línuks</b> - podle Linuse Torvaldse (finská výslovnost)</li>
 </ul>
 
+<h3 id="php">PHP</h3>
+<p>Zkratka <b>PHP</b> (PHP: Hypertext Preprocessor) se čte různě podle jazyka:</p>
+<ul>
+<li><b>pé-há-pé</b> - česká výslovnost (podle českých názvů písmen)</li>
+<li><b>pí-ejč-pí</b> - anglická výslovnost</li>
+</ul>
+<p>V českém prostředí jednoznačně dominuje <b>"pé-há-pé"</b>. Anglická varianta zní nepřirozeně a používá ji málokdo. Zajímavé je, že u jiných zkratek (API, CPU, GPU) Češi často míchají české a anglické názvy písmen, ale u PHP zůstává čistě česká forma.</p>
+
+<p>Podobně fungují i další "české" zkratky: <b>HTML</b> (há-té-em-el), <b>CSS</b> (cé-es-es), <b>SQL</b> (es-ká-el), <b>PDF</b> (pé-dé-ef).</p>
+
 <h3 id="javascript">JavaScript a Java</h3>
 <p>Písmeno <b>J</b> se v angličtině vyslovuje jako "dž", ale v češtině často zůstává jako "j":</p>
 <ul>
