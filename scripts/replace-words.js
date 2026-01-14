@@ -26,10 +26,13 @@ const REPLACEMENTS = {
 	synchroniz: 'synchronis',
 	inicializ: 'inicialis',
 	normaliz: 'normalis',
+	minimaliz: 'minimalis',
 	stabiliz: 'stabilis',
 	centraliz: 'centralis',
+	customiz: 'customis',
 	symboliz: 'symbolis',
 	konverz: 'konvers',
+	databaz: 'databas',
 	prezent: 'present',
 	reverz: 'revers'
 };
