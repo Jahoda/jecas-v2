@@ -54,7 +54,7 @@ import './utils.js'              // relativní import</code></pre>
 
 <p>Pre-bundling řeší dva problémy:</p>
 
-<h3 id="konverze-formatu">Konverze formátů</h3>
+<h3 id="konverse-formatu">Konverse formátů</h3>
 
 <p>Mnoho npm balíčků je distribuováno jako CommonJS nebo UMD. Vite je musí převést na ESM, protože dev server pracuje výhradně s nativními ES moduly.</p>
 
@@ -94,7 +94,7 @@ console.log(math.add(2, 3))</code></pre>
   return { /* ... */ }
 }))</code></pre>
 
-<p>UMD vznikl jako univerzální řešení před standardizací ES modulů. Dnes je považován za <i>legacy</i> formát.</p>
+<p>UMD vznikl jako universální řešení před standardisací ES modulů. Dnes je považován za <i>legacy</i> formát.</p>
 
 <h4 id="esm">ESM (ES Modules)</h4>
 
@@ -110,13 +110,13 @@ export function add(a, b) {
 import { PI, add } from './math.js'
 console.log(add(2, 3))</code></pre>
 
-<p>ESM moduly se načítají <b>asynchronně</b> a podporují statickou analýzu – bundler tak může provést tree-shaking a odstranit nepoužitý kód.</p>
+<p>ESM moduly se načítají <b>asynchronně</b> a podporují statickou analysu – bundler tak může provést tree-shaking a odstranit nepoužitý kód.</p>
 
-<h4 id="proc-konverze">Proč Vite potřebuje konverzi</h4>
+<h4 id="proc-konverse">Proč Vite potřebuje konversi</h4>
 
 <p>Dev server Vite servíruje moduly přímo prohlížeči jako nativní ESM. Prohlížeč ale neumí zpracovat <code>require()</code> ani UMD wrapper – proto musí Vite tyto formáty převést na <code>import</code>/<code>export</code>.</p>
 
-<h3 id="optimalizace-http">Optimalizace HTTP požadavků</h3>
+<h3 id="optimalisace-http">Optimalisace HTTP požadavků</h3>
 
 <p>Některé ESM balíčky mají stovky interních modulů. Například <code>lodash-es</code> obsahuje přes 600 souborů.</p>
 
@@ -235,11 +235,11 @@ export default defineConfig({
 <ol>
   <li>Analyzuje všechny importy</li>
   <li>Provádí tree-shaking (odstraňuje nepoužitý kód)</li>
-  <li>Vytváří optimalizované chunky</li>
+  <li>Vytváří optimalisované chunky</li>
   <li>Minifikuje výstup</li>
 </ol>
 
-<p>Vite přidává předkonfigurované nastavení optimalizované pro moderní prohlížeče, ale veškeré Rollup možnosti jsou dostupné přes <code>build.rollupOptions</code>.</p>
+<p>Vite přidává předkonfigurované nastavení optimalisované pro moderní prohlížeče, ale veškeré Rollup možnosti jsou dostupné přes <code>build.rollupOptions</code>.</p>
 
 
 <h2 id="souhrn">Souhrn</h2>
