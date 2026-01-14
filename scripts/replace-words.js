@@ -26,6 +26,7 @@ const REPLACEMENTS = {
 	synchroniz: 'synchronis',
 	inicializ: 'inicialis',
 	normaliz: 'normalis',
+	minimaliz: 'minimalis',
 	stabiliz: 'stabilis',
 	centraliz: 'centralis',
 	symboliz: 'symbolis',
