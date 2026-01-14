@@ -54,11 +54,11 @@ import './utils.js'              // relativní import</code></pre>
 
 <p>Pre-bundling řeší dva problémy:</p>
 
-<h3 id="konverze-formatu">Konverze formátů</h3>
+<h3 id="konverse-formatu">Konverse formátů</h3>
 
 <p>Mnoho npm balíčků je distribuováno jako CommonJS nebo UMD. Vite je musí převést na ESM, protože dev server pracuje výhradně s nativními ES moduly.</p>
 
-<h3 id="optimalizace-http">Optimalizace HTTP požadavků</h3>
+<h3 id="optimalisace-http">Optimalisace HTTP požadavků</h3>
 
 <p>Některé ESM balíčky mají stovky interních modulů. Například <code>lodash-es</code> obsahuje přes 600 souborů.</p>
 
@@ -177,11 +177,11 @@ export default defineConfig({
 <ol>
   <li>Analyzuje všechny importy</li>
   <li>Provádí tree-shaking (odstraňuje nepoužitý kód)</li>
-  <li>Vytváří optimalizované chunky</li>
+  <li>Vytváří optimalisované chunky</li>
   <li>Minifikuje výstup</li>
 </ol>
 
-<p>Vite přidává předkonfigurované nastavení optimalizované pro moderní prohlížeče, ale veškeré Rollup možnosti jsou dostupné přes <code>build.rollupOptions</code>.</p>
+<p>Vite přidává předkonfigurované nastavení optimalisované pro moderní prohlížeče, ale veškeré Rollup možnosti jsou dostupné přes <code>build.rollupOptions</code>.</p>
 
 
 <h2 id="souhrn">Souhrn</h2>
