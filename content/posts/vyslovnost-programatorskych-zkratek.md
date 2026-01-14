@@ -31,7 +31,7 @@ format: "html"
 <h3>Praktické doporučení</h3>
 <p>Cílem komunikace je <b>porozumění</b>, ne demonstrace znalosti angličtiny. Pokud řeknete perfektní anglické "rɪˈpɒzɪtəri" a kolega se zeptá "cože?", komunikace selhala. Naopak české "repozitář" pochopí každý.</p>
 
-<p><b>Obecné pravidlo:</b> V českém prostředí používejte výslovnost, kterou používá váš tým nebo česká komunita. V mezinárodním prostředí přepněte na angličtinu. Nejdůležitější je <b>konzistence</b> – v rámci jednoho hovoru nebo prezentace neměňte styl.</p>
+<p><b>Obecné pravidlo:</b> V českém prostředí používejte výslovnost, kterou používá váš tým nebo česká komunita. V mezinárodním prostředí přepněte na angličtinu. Nejdůležitější je <b>konzistence</b> – v rámci jednoho hovoru nebo presentace neměňte styl.</p>
 
 <p>Tabulky níže uvádějí <b>běžnou českou výslovnost</b>, tedy tu, které rozumí většina českých programátorů.</p>
 
