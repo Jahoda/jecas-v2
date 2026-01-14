@@ -697,6 +697,81 @@ format: "html"
 </tbody>
 </table>
 
+<h2 id="zdrobneliny">Hovorové tvary a zdrobněliny</h2>
+
+<p>V češtině se ze zkratek běžně tvoří <b>zdrobněliny a hovorová slova</b> pomocí přípon -ko, -čko, -ina. Tento jev je typicky český a v angličtině nemá obdobu:</p>
+
+<table>
+<thead>
+<tr>
+<th>Zkratka</th>
+<th>Hovorový tvar</th>
+<th>Příklad použití</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PHP</td>
+<td>péhápko, péhápéčko</td>
+<td>"Tohle je napsaný v péhápku"</td>
+</tr>
+<tr>
+<td>CSS</td>
+<td>céesesko</td>
+<td>"Styly jsou v céesesku"</td>
+</tr>
+<tr>
+<td>FTP</td>
+<td>eftýpko</td>
+<td>"Hodím to na eftýpko"</td>
+</tr>
+<tr>
+<td>PDF</td>
+<td>pédéefko</td>
+<td>"Pošli mi to jako pédéefko"</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>eskvélko</td>
+<td>"Dotaz v eskvélku"</td>
+</tr>
+<tr>
+<td>API</td>
+<td>apíčko</td>
+<td>"Zavolám to přes apíčko"</td>
+</tr>
+<tr>
+<td>HTML</td>
+<td>hátéemelko</td>
+<td>"Čistý hátéemelko bez stylů"</td>
+</tr>
+<tr>
+<td>JS</td>
+<td>džejsko</td>
+<td>"Frontend v džejsku"</td>
+</tr>
+<tr>
+<td>JSON</td>
+<td>džejsonko</td>
+<td>"Data přijdou jako džejsonko"</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>úerelko</td>
+<td>"Dej mi to úerelko"</td>
+</tr>
+<tr>
+<td>Git</td>
+<td>gítek</td>
+<td>"Commitni to do gítku"</td>
+</tr>
+</tbody>
+</table>
+
+<p>Tyto tvary jsou <b>neformální</b> a používají se v běžné konverzaci mezi kolegy. V oficiální dokumentaci nebo na pohovorech se jim raději vyhněte. Zajímavé je, že zdrobněliny vznikají především u zkratek čtených česky – proto "péhápko" (z pé-há-pé), ale ne *"píejčpíčko".</p>
+
+<p>Některé zkratky mají i <b>přechýlené tvary</b>: "Ta apíčka nefunguje" (ženský rod), "To céesesko je rozbité" (střední rod).</p>
+
 <h2 id="tipy">Praktické tipy</h2>
 
 <ul>
