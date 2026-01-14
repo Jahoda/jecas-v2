@@ -1,7 +1,7 @@
 ---
 title: "Výslovnost zkratek"
 headline: "Jak správně vyslovovat programátorské zkratky a názvy"
-description: "Průvodce výslovností IT zkratek a názvů technologií v češtině. SQL, GIF, JSON, nginx a další kontroverzní případy."
+description: "Průvodce výslovností IT zkratek a názvů technologií v češtině. SQL, GIF, JSON, nginx a další kontroversní případy."
 date: "2026-01-14"
 status: 1
 tags: ["produktivita"]
@@ -242,7 +242,7 @@ format: "html"
 </tbody>
 </table>
 
-<h2 id="kontroverzni-pripady">Kontroverzní případy</h2>
+<h2 id="kontroversni-pripady">Kontroversní případy</h2>
 
 <p>U některých zkratek se vedou <b>nekonečné debaty</b> o správné výslovnosti:</p>
 
@@ -624,7 +624,7 @@ format: "html"
 <li><b>Konzistence</b> - Důležitější než "správná" výslovnost je být konzistentní v rámci týmu</li>
 <li><b>Kontext</b> - V mezinárodním prostředí preferujte anglickou výslovnost</li>
 <li><b>Odvozená slova</b> - Zkratky se často skloňují česky: "v API", "bez CSS", "s JSONem"</li>
-<li><b>Nové technologie</b> - Oficiální výslovnost často najdete v dokumentaci nebo prezentacích autorů</li>
+<li><b>Nové technologie</b> - Oficiální výslovnost často najdete v dokumentaci nebo presentacích autorů</li>
 </ul>
 
-<p>Při nejistotě je vždy bezpečné použít <b>výslovnost po písmenech</b> - je univerzálně srozumitelná a nikdo vás za ni nebude kritizovat.</p>
+<p>Při nejistotě je vždy bezpečné použít <b>výslovnost po písmenech</b> - je universálně srozumitelná a nikdo vás za ni nebude kritizovat.</p>
