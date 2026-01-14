@@ -295,6 +295,21 @@ format: "html"
 <li><b>línuks</b> - podle Linuse Torvaldse (finská výslovnost)</li>
 </ul>
 
+<h3 id="javascript">JavaScript a Java</h3>
+<p>Písmeno <b>J</b> se v angličtině vyslovuje jako "dž", ale v češtině často zůstává jako "j":</p>
+<ul>
+<li><b>džavaskript</b> - anglická výslovnost</li>
+<li><b>javaskript</b> - počeštěná výslovnost (většinová v ČR)</li>
+</ul>
+<p>Podobně u <b>Java</b>:</p>
+<ul>
+<li><b>džáva</b> - anglická výslovnost</li>
+<li><b>jáva</b> - počeštěná výslovnost (jako ostrov Jáva)</li>
+</ul>
+<p>V českém prostředí výrazně převažuje <b>"javaskript"</b> a <b>"jáva"</b>. Anglická výslovnost "dž" zní v české větě nepřirozeně a může působit afektovaně. Zajímavé je, že zkratku <b>JS</b> většina Čechů čte anglicky jako "džej-es", nikoli "jé-es".</p>
+
+<p>Podobný vzorec platí i pro další J-názvy: <b>jQuery</b> (džej-kvíri), <b>JSON</b> (džejson), <b>JWT</b> (džot) – u zkratek se "dž" zachovává častěji než u plných slov.</p>
+
 <h3 id="char">char</h3>
 <p>Datový typ <b>char</b> (character):</p>
 <ul>
