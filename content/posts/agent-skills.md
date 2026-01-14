@@ -93,7 +93,7 @@ Pro každý nález uveď:
   <tr>
     <td><code>version</code></td>
     <td>Ne</td>
-    <td>Verze skillu</td>
+    <td>Verse skillu</td>
   </tr>
   <tr>
     <td><code>license</code></td>
@@ -157,14 +157,14 @@ allowed-tools: Bash(git:*), Read, Grep, Write</code></pre>
 <p>Anthropic například ve vestavěném PDF skillu používá Python skript pro extrakci polí z PDF formulářů.</p>
 
 <pre><code>scripts/
-├── analyze.py         # Python - analýza kódu
+├── analyze.py         # Python - analysa kódu
 ├── validate.sh        # Bash - validace vstupů
 ├── transform.ts       # TypeScript - transformace dat
 └── generate-report.py # Python - generování reportu</code></pre>
 
 <p>Ve <code>SKILL.md</code> na ně odkazujete pomocí proměnné <code>{baseDir}</code>:</p>
 
-<pre><code>Pro analýzu spusť:
+<pre><code>Pro analysu spusť:
 python {baseDir}/scripts/analyze.py --file {file}
 
 Pro validaci:
