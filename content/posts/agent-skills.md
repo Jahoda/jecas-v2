@@ -17,7 +17,7 @@ format: "html"
 
 <p>Podobně jako <a href="https://modelcontextprotocol.io">Model Context Protocol (MCP)</a> pro připojení agentů k externím nástrojům, Agent Skills standardisuje způsob, jakým agenti <b>získávají a používají nové schopnosti</b>.</p>
 
-<p>Standard už přijali Microsoft, OpenAI, Atlassian, Figma, Cursor, GitHub a další. Partnerské skills od Canva, Stripe, Notion nebo Zapier jsou dostupné od prvního dne.</p>
+<p>Standard je podporován řadou vývojářských nástrojů pro AI agenty a je otevřený pro příspěvky od širší komunity.</p>
 
 <h2 id="struktura">Struktura skillu</h2>
 
@@ -378,16 +378,16 @@ allowed-tools: Read, Grep, mcp__linear__*, mcp__slack__send_message</code></pre>
 
 <h2 id="proc">Proč je to důležité?</h2>
 
-<p>Otevřené standardy redukují fragmentaci. Vývojáři mohou vytvořit skill jednou a nasadit ho napříč platformami — Claude Code, Cursor, ChatGPT, Codex CLI a dalšími.</p>
+<p>Otevřené standardy redukují fragmentaci. Vývojáři mohou vytvořit skill jednou a nasadit ho napříč různými AI agenty a platformami.</p>
 
-<p>Pro firmy to znamená, že mohou přecházet mezi poskytovateli AI bez přepisování customizací. Skill pro firemní coding standards bude fungovat všude.</p>
+<p>Pro firmy to znamená možnost přecházet mezi poskytovateli AI bez přepisování customizací. Skill pro firemní coding standards bude fungovat všude, kde je standard podporován.</p>
 
-<p>Anthropic následuje vzor, který zavedl s MCP — vytvořit standard, otevřít ho komunitě a předat správu Linux Foundation. MCP tento proces dokončil 9. prosince 2025, kdy se Google, Microsoft a AWS stali členy nadace.</p>
+<p>Anthropic následuje podobný vzor jako u <a href="/model-context-protocol">MCP</a> — vytvořit specifikaci a otevřít ji komunitě jako standard.</p>
 
 <h2 id="odkazy">Odkazy</h2>
 
 <ul>
-  <li><a href="https://agentskills.io/specification">Agent Skills Specification</a></li>
-  <li><a href="https://github.com/agentskills/agentskills">GitHub: agentskills/agentskills</a></li>
-  <li><a href="https://simonwillison.net/2025/Dec/19/agent-skills/">Simon Willison: Agent Skills</a></li>
+  <li><a href="https://agentskills.io">Agent Skills</a></li>
+  <li><a href="https://agentskills.io/specification">Specifikace</a></li>
+  <li><a href="https://github.com/anthropics/skills">GitHub: anthropics/skills</a></li>
 </ul>
