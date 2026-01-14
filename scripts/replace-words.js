@@ -29,6 +29,7 @@ const REPLACEMENTS = {
 	minimaliz: 'minimalis',
 	stabiliz: 'stabilis',
 	centraliz: 'centralis',
+	customiz: 'customis',
 	symboliz: 'symbolis',
 	konverz: 'konvers',
 	prezent: 'present',
