@@ -14,6 +14,28 @@ import { resolve, basename } from 'path';
 import matter from 'gray-matter';
 
 const SITE_URL = 'https://jecas.cz';
+const SHARED_ARTICLES_PATH = '.github/shared-articles.json';
+
+/**
+ * Get list of already shared article slugs
+ * @returns {Set<string>}
+ */
+function getSharedArticles() {
+	const filePath = resolve(process.cwd(), SHARED_ARTICLES_PATH);
+
+	if (!existsSync(filePath)) {
+		return new Set();
+	}
+
+	try {
+		const content = readFileSync(filePath, 'utf-8');
+		const data = JSON.parse(content);
+		return new Set(data.articles || []);
+	} catch (error) {
+		console.error('Warning: Could not read shared articles file:', error.message);
+		return new Set();
+	}
+}
 
 /**
  * Parse command line arguments
@@ -138,7 +160,19 @@ async function main() {
 		process.exit(0);
 	}
 
-	const articles = newFiles.map(parseArticle).filter((a) => a !== null);
+	// Get already shared articles to prevent duplicates
+	const sharedArticles = getSharedArticles();
+
+	const articles = newFiles
+		.map(parseArticle)
+		.filter((a) => a !== null)
+		.filter((a) => {
+			if (sharedArticles.has(a.slug)) {
+				console.log(`Skipping already shared article: ${a.slug}`);
+				return false;
+			}
+			return true;
+		});
 
 	if (json) {
 		console.log(JSON.stringify({ articles }, null, 2));

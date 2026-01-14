@@ -132,6 +132,42 @@ jobs:
             }
           "
 
+      - name: Mark articles as shared
+        if: steps.detect.outputs.has_articles == 'true'
+        run: |
+          node -e "
+            const fs = require('fs');
+            const sharedPath = '.github/shared-articles.json';
+
+            // Read current shared articles
+            let shared = { articles: [] };
+            if (fs.existsSync(sharedPath)) {
+              shared = JSON.parse(fs.readFileSync(sharedPath, 'utf-8'));
+            }
+
+            // Add new articles
+            const newArticles = JSON.parse(fs.readFileSync('new-articles.json', 'utf-8'));
+            for (const article of newArticles.articles) {
+              if (!shared.articles.includes(article.slug)) {
+                shared.articles.push(article.slug);
+                console.log('Marked as shared:', article.slug);
+              }
+            }
+
+            // Sort and save
+            shared.articles.sort();
+            fs.writeFileSync(sharedPath, JSON.stringify(shared, null, 2) + '\n');
+          "
+
+      - name: Commit shared articles tracking
+        if: steps.detect.outputs.has_articles == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .github/shared-articles.json
+          git diff --staged --quiet || git commit -m "chore: mark articles as shared [skip ci]"
+          git push
+
       - name: Summary
         if: steps.detect.outputs.has_articles == 'true'
         run: |
