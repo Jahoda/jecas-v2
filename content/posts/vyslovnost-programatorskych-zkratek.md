@@ -305,6 +305,15 @@ format: "html"
 
 <p>Podobně fungují i další "české" zkratky: <b>HTML</b> (há-té-em-el), <b>CSS</b> (cé-es-es), <b>SQL</b> (es-ká-el), <b>PDF</b> (pé-dé-ef).</p>
 
+<p><b>Výjimka - PhpStorm:</b> U IDE <b>PhpStorm</b> od JetBrains se situace komplikuje. Teoreticky by mělo být "pé-há-pé-storm", ale v praxi uslyšíte:</p>
+<ul>
+<li><b>fépéstorm</b> - zjednodušená výslovnost (PHP čteno jako "fépé")</li>
+<li><b>pépéstorm</b> - další zjednodušení</li>
+<li><b>pé-há-pé-storm</b> - formální česká výslovnost</li>
+<li><b>fipstorm</b> - maximální zkrácení</li>
+</ul>
+<p>Podobný vzorec má <b>PyCharm</b> (pajčarm / pičarm) nebo <b>WebStorm</b> (vebstorm). U složených názvů se zkratková část často zjednodušuje pro plynulejší výslovnost.</p>
+
 <h3 id="javascript">JavaScript a Java</h3>
 <p>Písmeno <b>J</b> se v angličtině vyslovuje jako "dž", ale v češtině často zůstává jako "j":</p>
 <ul>
