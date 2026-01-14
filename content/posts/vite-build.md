@@ -54,11 +54,69 @@ import './utils.js'              // relativní import</code></pre>
 
 <p>Pre-bundling řeší dva problémy:</p>
 
-<h3 id="konverse-formatu">Konverse formátů</h3>
+<h3 id="konverze-formatu">Konverze formátů</h3>
 
 <p>Mnoho npm balíčků je distribuováno jako CommonJS nebo UMD. Vite je musí převést na ESM, protože dev server pracuje výhradně s nativními ES moduly.</p>
 
-<h3 id="optimalisace-http">Optimalisace HTTP požadavků</h3>
+<p>Jaký je mezi nimi rozdíl?</p>
+
+<h4 id="commonjs">CommonJS (CJS)</h4>
+
+<p>Původní modulový systém Node.js. Používá <code>require()</code> a <code>module.exports</code>:</p>
+
+<pre><code>// math.js (CommonJS)
+const PI = 3.14159
+function add(a, b) {
+  return a + b
+}
+module.exports = { PI, add }
+
+// použití
+const math = require('./math')
+console.log(math.add(2, 3))</code></pre>
+
+<p>CommonJS moduly se načítají <b>synchronně</b>, což funguje v Node.js, ale ne v prohlížeči.</p>
+
+<h4 id="umd">UMD (Universal Module Definition)</h4>
+
+<p>Hybridní formát kompatibilní s CommonJS, AMD i globálními proměnnými:</p>
+
+<pre><code>// UMD wrapper (zjednodušeně)
+(function (root, factory) {
+  if (typeof define === 'function' &amp;&amp; define.amd) {
+    define(['dependency'], factory)  // AMD
+  } else if (typeof module === 'object') {
+    module.exports = factory(require('dependency'))  // CommonJS
+  } else {
+    root.MyLib = factory(root.Dependency)  // globální proměnná
+  }
+}(this, function (dep) {
+  return { /* ... */ }
+}))</code></pre>
+
+<p>UMD vznikl jako univerzální řešení před standardizací ES modulů. Dnes je považován za <i>legacy</i> formát.</p>
+
+<h4 id="esm">ESM (ES Modules)</h4>
+
+<p>Nativní modulový systém JavaScriptu (od ES2015). Používá <code>import</code> a <code>export</code>:</p>
+
+<pre><code>// math.js (ESM)
+export const PI = 3.14159
+export function add(a, b) {
+  return a + b
+}
+
+// použití
+import { PI, add } from './math.js'
+console.log(add(2, 3))</code></pre>
+
+<p>ESM moduly se načítají <b>asynchronně</b> a podporují statickou analýzu – bundler tak může provést tree-shaking a odstranit nepoužitý kód.</p>
+
+<h4 id="proc-konverze">Proč Vite potřebuje konverzi</h4>
+
+<p>Dev server Vite servíruje moduly přímo prohlížeči jako nativní ESM. Prohlížeč ale neumí zpracovat <code>require()</code> ani UMD wrapper – proto musí Vite tyto formáty převést na <code>import</code>/<code>export</code>.</p>
+
+<h3 id="optimalizace-http">Optimalizace HTTP požadavků</h3>
 
 <p>Některé ESM balíčky mají stovky interních modulů. Například <code>lodash-es</code> obsahuje přes 600 souborů.</p>
 
@@ -177,11 +235,11 @@ export default defineConfig({
 <ol>
   <li>Analyzuje všechny importy</li>
   <li>Provádí tree-shaking (odstraňuje nepoužitý kód)</li>
-  <li>Vytváří optimalisované chunky</li>
+  <li>Vytváří optimalizované chunky</li>
   <li>Minifikuje výstup</li>
 </ol>
 
-<p>Vite přidává předkonfigurované nastavení optimalisované pro moderní prohlížeče, ale veškeré Rollup možnosti jsou dostupné přes <code>build.rollupOptions</code>.</p>
+<p>Vite přidává předkonfigurované nastavení optimalizované pro moderní prohlížeče, ale veškeré Rollup možnosti jsou dostupné přes <code>build.rollupOptions</code>.</p>
 
 
 <h2 id="souhrn">Souhrn</h2>
