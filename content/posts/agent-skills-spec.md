@@ -2,8 +2,8 @@
 title: "Agent Skills: Otevřený standard pro rozšíření AI agentů"
 headline: "Agent Skills: Otevřený standard pro rozšíření AI agentů"
 description: "Agent Skills je specifikace pro definování modulárních schopností AI agentů. Jak funguje a proč ji přijali Microsoft, OpenAI, Cursor i GitHub?"
-date: "2025-01-10"
-last_modification: "2025-01-10"
+date: "2026-01-14"
+last_modification: "2026-01-14"
 status: 1
 tags: ["ai", "napady", "produktivita"]
 format: "html"
