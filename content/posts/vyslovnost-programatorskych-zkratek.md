@@ -10,6 +10,31 @@ format: "html"
 
 <p>Programátoři denně používají desítky zkratek a názvů technologií. Většina z nich pochází z angličtiny a jejich <b>česká výslovnost</b> není vždy jednoznačná. Tento článek shrnuje nejčastější případy a doporučenou výslovnost.</p>
 
+<h2 id="dilema">Správnost vs. srozumitelnost</h2>
+
+<p>Při výslovnosti IT termínů stojíme před <b>základním dilematem</b>: máme preferovat originální (anglickou) výslovnost, nebo tu, které rozumí většina českých kolegů?</p>
+
+<h3>Argumenty pro anglickou výslovnost</h3>
+<ul>
+<li>Je "správná" podle původu slova</li>
+<li>Funguje v mezinárodním prostředí</li>
+<li>Snadnější rozpoznání v anglických podcastech a přednáškách</li>
+</ul>
+
+<h3>Argumenty pro počeštěnou výslovnost</h3>
+<ul>
+<li>Většina českých vývojářů ji používá a rozumí jí</li>
+<li>Přirozeně zapadá do české věty</li>
+<li>Snazší skloňování ("s Gitem", "v YAML souboru")</li>
+</ul>
+
+<h3>Praktické doporučení</h3>
+<p>Cílem komunikace je <b>porozumění</b>, ne demonstrace znalosti angličtiny. Pokud řeknete perfektní anglické "rɪˈpɒzɪtəri" a kolega se zeptá "cože?", komunikace selhala. Naopak české "repozitář" pochopí každý.</p>
+
+<p><b>Obecné pravidlo:</b> V českém prostředí používejte výslovnost, kterou používá váš tým nebo česká komunita. V mezinárodním prostředí přepněte na angličtinu. Nejdůležitější je <b>konzistence</b> – v rámci jednoho hovoru nebo prezentace neměňte styl.</p>
+
+<p>Tabulky níže uvádějí <b>běžnou českou výslovnost</b>, tedy tu, které rozumí většina českých programátorů.</p>
+
 <h2 id="zkratky-po-pismenech">Zkratky čtené po písmenech</h2>
 
 <p>Většina zkratek se v češtině čte <b>po jednotlivých písmenech</b> (česky nebo anglicky):</p>
