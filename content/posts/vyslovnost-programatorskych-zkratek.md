@@ -303,6 +303,26 @@ format: "html"
 <li><b>kerektr</b> - plná výslovnost "character"</li>
 </ul>
 
+<h3 id="vue">Vue.js</h3>
+<p>Framework <b>Vue.js</b> má název odvozený z francouzského slova "vue" (pohled, výhled):</p>
+<ul>
+<li><b>vjú</b> - správná výslovnost, stejná jako anglické "view"</li>
+<li><b>vú</b> - častá česká chyba (čtení podle písma)</li>
+<li><b>vjú-džej-es</b> - s příponou, když chceme zdůraznit celý název</li>
+</ul>
+<p>Autor Evan You potvrdil výslovnost <b>"vjú"</b> jako jedinou správnou. Název byl zvolen záměrně – framework představuje "pohled" (view) v architektuře MVC.</p>
+
+<h3 id="vite">Vite</h3>
+<p>Build nástroj <b>Vite</b> je francouzské slovo znamenající "rychlý":</p>
+<ul>
+<li><b>vít</b> - správná francouzská výslovnost (jako české "vít")</li>
+<li><b>vajt</b> - anglicizovaná výslovnost (jako "white" bez W)</li>
+<li><b>vítej</b> / <b>víte</b> - občasné české pokusy</li>
+</ul>
+<p>Autor Evan You (stejný jako u Vue) potvrdil francouzskou výslovnost <b>"vít"</b>. Název odkazuje na rychlost nástroje – Vite je výrazně rychlejší než Webpack díky využití nativních ES modulů.</p>
+
+<p>Zajímavost: V českém prostředí zní "vít" přirozeně a shodou okolností připomíná české sloveso "vít" (např. věnec). Francouzská výslovnost je tedy pro Čechy intuitivní.</p>
+
 <h2 id="nazvy-technologii">Názvy technologií a nástrojů</h2>
 
 <table>
