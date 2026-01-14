@@ -15,7 +15,7 @@ format: "html"
 
 <p>Agent Skills je specifikace vytvořená Anthropic a <a href="https://agentskills.io/specification">publikovaná jako otevřený standard</a> v prosinci 2025. Definuje formát, kterým můžete AI agentům předávat instrukce, skripty a zdroje pro konkrétní úkoly.</p>
 
-<p>Podobně jako <a href="https://modelcontextprotocol.io">Model Context Protocol (MCP)</a> pro připojení agentů k externím nástrojům, Agent Skills standardizuje způsob, jakým agenti <b>získávají a používají nové schopnosti</b>.</p>
+<p>Podobně jako <a href="https://modelcontextprotocol.io">Model Context Protocol (MCP)</a> pro připojení agentů k externím nástrojům, Agent Skills standardisuje způsob, jakým agenti <b>získávají a používají nové schopnosti</b>.</p>
 
 <p>Standard už přijali Microsoft, OpenAI, Atlassian, Figma, Cursor, GitHub a další. Partnerské skills od Canva, Stripe, Notion nebo Zapier jsou dostupné od prvního dne.</p>
 
@@ -93,7 +93,7 @@ Pro každý nález uveď:
   <tr>
     <td><code>version</code></td>
     <td>Ne</td>
-    <td>Verze skillu</td>
+    <td>Verse skillu</td>
   </tr>
   <tr>
     <td><code>license</code></td>
@@ -157,14 +157,14 @@ allowed-tools: Bash(git:*), Read, Grep, Write</code></pre>
 <p>Anthropic například ve vestavěném PDF skillu používá Python skript pro extrakci polí z PDF formulářů.</p>
 
 <pre><code>scripts/
-├── analyze.py         # Python - analýza kódu
+├── analyze.py         # Python - analysa kódu
 ├── validate.sh        # Bash - validace vstupů
 ├── transform.ts       # TypeScript - transformace dat
 └── generate-report.py # Python - generování reportu</code></pre>
 
 <p>Ve <code>SKILL.md</code> na ně odkazujete pomocí proměnné <code>{baseDir}</code>:</p>
 
-<pre><code>Pro analýzu spusť:
+<pre><code>Pro analysu spusť:
 python {baseDir}/scripts/analyze.py --file {file}
 
 Pro validaci:
