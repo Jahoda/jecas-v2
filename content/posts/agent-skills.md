@@ -1,7 +1,7 @@
 ---
-title: "Agent Skills: Otevřený standard pro rozšíření AI agentů"
-headline: "Agent Skills: Otevřený standard pro rozšíření AI agentů"
-description: "Agent Skills je specifikace pro definování modulárních schopností AI agentů. Jak funguje a proč ji přijali Microsoft, OpenAI, Cursor i GitHub?"
+title: "Agent Skills: rozšíření AI agentů"
+headline: "Agent Skills: rozšíření AI agentů"
+description: "Agent Skills je specifikace pro definování schopností AI agentů. Jak funguje?"
 date: "2026-01-14"
 last_modification: "2026-01-14"
 status: 1
@@ -239,10 +239,10 @@ allowed-tools: Read, Write, Bash(npm:test)
 <p>Pole <code>description</code> je klíčové pro správné spouštění. Pište explicitně:</p>
 
 <pre><code># Špatně
-description: Pracuje s databází
+description: Pracuje s databasí
 
 # Dobře
-description: Migruje databázové schéma. Použij když uživatel chce vytvořit nebo spustit migraci.</code></pre>
+description: Migruje databasové schéma. Použij když uživatel chce vytvořit nebo spustit migraci.</code></pre>
 
 <h3>Délka SKILL.md</h3>
 
@@ -296,7 +296,7 @@ python {baseDir}/scripts/run.py</code></pre>
   <tr>
     <td>Příklad</td>
     <td>Skill pro code review</td>
-    <td>Připojení k Slacku nebo databázi</td>
+    <td>Připojení k Slacku nebo databasi</td>
   </tr>
 </table>
 
@@ -372,7 +372,7 @@ allowed-tools: Read, Grep, mcp__linear__*, mcp__slack__send_message</code></pre>
   </tr>
   <tr>
     <td>Chceš využít autentizaci spravovanou MCP serverem</td>
-    <td>Chceš minimalizovat závislosti</td>
+    <td>Chceš minimalisovat závislosti</td>
   </tr>
 </table>
 
@@ -390,5 +390,4 @@ allowed-tools: Read, Grep, mcp__linear__*, mcp__slack__send_message</code></pre>
   <li><a href="https://agentskills.io/specification">Agent Skills Specification</a></li>
   <li><a href="https://github.com/agentskills/agentskills">GitHub: agentskills/agentskills</a></li>
   <li><a href="https://simonwillison.net/2025/Dec/19/agent-skills/">Simon Willison: Agent Skills</a></li>
-  <li><a href="https://thenewstack.io/agent-skills-anthropics-next-bid-to-define-ai-standards/">The New Stack: Agent Skills</a></li>
 </ul>
