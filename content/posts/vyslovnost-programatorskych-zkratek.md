@@ -768,7 +768,7 @@ format: "html"
 </tbody>
 </table>
 
-<p>Tyto tvary jsou <b>neformální</b> a používají se v běžné konverzaci mezi kolegy. V oficiální dokumentaci nebo na pohovorech se jim raději vyhněte. Zajímavé je, že zdrobněliny vznikají především u zkratek čtených česky – proto "péhápko" (z pé-há-pé), ale ne *"píejčpíčko".</p>
+<p>Tyto tvary jsou <b>neformální</b> a používají se v běžné konversaci mezi kolegy. V oficiální dokumentaci nebo na pohovorech se jim raději vyhněte. Zajímavé je, že zdrobněliny vznikají především u zkratek čtených česky – proto "péhápko" (z pé-há-pé), ale ne *"píejčpíčko".</p>
 
 <p>Některé zkratky mají i <b>přechýlené tvary</b>: "Ta apíčka nefunguje" (ženský rod), "To céesesko je rozbité" (střední rod).</p>
 
