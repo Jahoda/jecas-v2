@@ -251,6 +251,23 @@ format: "html"
 
 <p>Ale <b>nespoléhejte na ni pro přesné rozměry</b> běžného textu.</p>
 
+<h3 id="em-vs-ch">Rozdíl mezi em a ch</h3>
+
+<p>Obě jednotky jsou relativní, ale odvozují se od jiné vlastnosti:</p>
+
+<ul>
+<li><p><code>em</code> – relativní k <b>velikosti písma</b> (font-size) elementu. 1em = aktuální font-size. Název pochází z tiskařství (šířka velkého M), ale dnes <b>nesouvisí se šířkou znaků</b>.</p></li>
+<li><p><code>ch</code> – relativní k <b>šířce znaku „0"</b> v daném fontu. Používá se pro odhad šířky textu podle počtu znaků.</p></li>
+</ul>
+
+<pre><code>.box {
+  font-size: 16px;
+  padding: 1em;      /* = 16px (velikost písma) */
+  width: 20ch;       /* = 20× šířka "0" v tomto fontu */
+}</code></pre>
+
+<p>Praktický rozdíl: <code>em</code> se mění pouze s font-size, zatímco <code>ch</code> se mění s font-size <b>i</b> s typem fontu (Arial má jinou šířku 0 než Times New Roman).</p>
+
 <h3 id="ukazka-ch">Jednotka ch v praxi</h3>
 
 <div class="live">
