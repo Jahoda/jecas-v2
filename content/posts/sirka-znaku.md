@@ -148,7 +148,7 @@ format: "html"
 
 <ul>
 <li>
-  <p><b>Nemožnost předvídat šířku textu</b> – text „Willy" zabere víc místa než „Filip", i když mají stejný počet znaků</p>
+  <p><b>Nemožnost předvídat šířku textu</b> – text „Willy“ zabere víc místa než „Filip“, i když mají stejný počet znaků</p>
 </li>
 
 <li>
@@ -160,7 +160,7 @@ format: "html"
 </li>
 
 <li>
-  <p><b>Tlačítka a labely</b> – text „Submit" vs. „Odeslat formulář" vyžaduje jiný přístup</p>
+  <p><b>Tlačítka a labely</b> – text „Submit“ vs. „Odeslat formulář“ vyžaduje jiný přístup</p>
 </li>
 </ul>
 
@@ -257,7 +257,7 @@ format: "html"
 
 <ul>
 <li><p><code>em</code> – relativní k <b>velikosti písma</b> (font-size) elementu. 1em = aktuální font-size. Název pochází z tiskařství (šířka velkého M), ale dnes <b>nesouvisí se šířkou znaků</b>.</p></li>
-<li><p><code>ch</code> – relativní k <b>šířce znaku „0"</b> v daném fontu. Používá se pro odhad šířky textu podle počtu znaků.</p></li>
+<li><p><code>ch</code> – relativní k <b>šířce znaku „0“</b> v daném fontu. Používá se pro odhad šířky textu podle počtu znaků.</p></li>
 </ul>
 
 <pre><code>.box {
@@ -398,7 +398,7 @@ format: "html"
 
 <ul>
 <li>
-  <p><b>Testujte s extrémními hodnotami</b> – zkuste do inputu zadat „WWWWWWWWWW" i „iiiiiiiiii"</p>
+  <p><b>Testujte s extrémními hodnotami</b> – zkuste do inputu zadat „WWWWWWWWWW“ i „iiiiiiiiii“</p>
 </li>
 
 <li>
