@@ -162,6 +162,75 @@ format: "html"
 </li>
 </ul>
 
+<h3 id="ukazka-tlacitka">Živá ukázka: Tlačítka s fixní vs flexibilní šířkou</h3>
+
+<div style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+  <p style="margin-bottom: 15px;"><b>Problém:</b> Tlačítka s fixní šířkou</p>
+  <div style="margin-bottom: 20px;">
+    <button style="width: 100px; padding: 10px; margin: 5px; background: #dc2626; color: white; border: none; border-radius: 4px; cursor: pointer;">OK</button>
+    <button style="width: 100px; padding: 10px; margin: 5px; background: #dc2626; color: white; border: none; border-radius: 4px; cursor: pointer;">Odeslat</button>
+    <button style="width: 100px; padding: 10px; margin: 5px; background: #dc2626; color: white; border: none; border-radius: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: pointer;">Odeslat formulář</button>
+  </div>
+
+  <p style="margin-bottom: 15px;"><b>Řešení:</b> Tlačítka s paddingem</p>
+  <div>
+    <button style="padding: 10px 20px; margin: 5px; background: #059669; color: white; border: none; border-radius: 4px; cursor: pointer;">OK</button>
+    <button style="padding: 10px 20px; margin: 5px; background: #059669; color: white; border: none; border-radius: 4px; cursor: pointer;">Odeslat</button>
+    <button style="padding: 10px 20px; margin: 5px; background: #059669; color: white; border: none; border-radius: 4px; cursor: pointer;">Odeslat formulář</button>
+  </div>
+</div>
+
+<h3 id="ukazka-jmena">Živá ukázka: Uživatelská jména v layoutu</h3>
+
+<div style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+  <p style="margin-bottom: 15px;">Stejný počet znaků (5), různá šířka:</p>
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <div style="width: 32px; height: 32px; background: #3b82f6; border-radius: 50%; flex-shrink: 0;"></div>
+      <span style="font-weight: bold; background: #dbeafe; padding: 2px 6px; border-radius: 3px;">Willi</span>
+      <span style="color: #666;">napsal komentář</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <div style="width: 32px; height: 32px; background: #8b5cf6; border-radius: 50%; flex-shrink: 0;"></div>
+      <span style="font-weight: bold; background: #dbeafe; padding: 2px 6px; border-radius: 3px;">Jiřík</span>
+      <span style="color: #666;">napsal komentář</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <div style="width: 32px; height: 32px; background: #ec4899; border-radius: 50%; flex-shrink: 0;"></div>
+      <span style="font-weight: bold; background: #dbeafe; padding: 2px 6px; border-radius: 3px;">ilili</span>
+      <span style="color: #666;">napsal komentář</span>
+    </div>
+  </div>
+</div>
+
+<h3 id="ukazka-preteceni">Živá ukázka: Přetečení textu v kartě</h3>
+
+<div style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+  <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+    <div style="width: 180px; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: white;">
+      <div style="height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+      <div style="padding: 12px;">
+        <div style="font-weight: bold; margin-bottom: 5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Widget Pro</div>
+        <div style="font-size: 14px; color: #666;">Krátký název OK</div>
+      </div>
+    </div>
+    <div style="width: 180px; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: white;">
+      <div style="height: 80px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+      <div style="padding: 12px;">
+        <div style="font-weight: bold; margin-bottom: 5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">WWW Management System</div>
+        <div style="font-size: 14px; color: #666;">Široké znaky → ellipsis</div>
+      </div>
+    </div>
+    <div style="width: 180px; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: white;">
+      <div style="height: 80px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+      <div style="padding: 12px;">
+        <div style="font-weight: bold; margin-bottom: 5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">illicit infiltration</div>
+        <div style="font-size: 14px; color: #666;">Úzké znaky → vejde se</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <h2 id="jednotka-ch">CSS jednotka ch</h2>
 
 <p>CSS nabízí jednotku <code>ch</code>, která odpovídá šířce znaku <code>0</code> v daném fontu. Je to <b>aproximace</b>, protože předpokládá, že všechny znaky mají podobnou šířku.</p>
@@ -179,6 +248,24 @@ format: "html"
 </ul>
 
 <p>Ale <b>nespoléhejte na ni pro přesné rozměry</b> běžného textu.</p>
+
+<h3 id="ukazka-ch">Živá ukázka: Jednotka ch v praxi</h3>
+
+<div style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+  <p style="margin-bottom: 15px;">Input s <code>width: 10ch</code> – zkuste zadat různé znaky:</p>
+  <div style="margin-bottom: 15px;">
+    <input type="text" placeholder="WWWWWWWWWW" style="width: 10ch; padding: 8px; font-size: 16px; border: 2px solid #3b82f6; border-radius: 4px; font-family: inherit;">
+    <span style="font-size: 14px; color: #666; margin-left: 10px;">← široké znaky přetečou</span>
+  </div>
+  <div style="margin-bottom: 15px;">
+    <input type="text" placeholder="iiiiiiiiii" style="width: 10ch; padding: 8px; font-size: 16px; border: 2px solid #059669; border-radius: 4px; font-family: inherit;">
+    <span style="font-size: 14px; color: #666; margin-left: 10px;">← úzké znaky mají rezervu</span>
+  </div>
+  <div>
+    <input type="text" placeholder="0123456789" style="width: 10ch; padding: 8px; font-size: 16px; border: 2px solid #8b5cf6; border-radius: 4px; font-family: inherit;">
+    <span style="font-size: 14px; color: #666; margin-left: 10px;">← čísla sedí přesně (ch = šířka 0)</span>
+  </div>
+</div>
 
 <h2 id="monospace-fonty">Monospace fonty jako řešení</h2>
 
@@ -283,6 +370,89 @@ format: "html"
   font-variant-numeric: tabular-nums;
   /* Čísla budou mít stejnou šířku */
 }</code></pre>
+
+<h3 id="ukazka-tabular-nums">Živá ukázka: Proporcionální vs tabulární číslice</h3>
+
+<div style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+  <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+    <div>
+      <p style="margin-bottom: 10px; font-weight: bold;">Proporcionální (výchozí):</p>
+      <div style="font-size: 24px; background: white; padding: 15px; border-radius: 6px; border: 1px solid #e5e7eb;">
+        <div>1 111 111 Kč</div>
+        <div>8 888 888 Kč</div>
+        <div>1 234 567 Kč</div>
+      </div>
+      <p style="font-size: 12px; color: #666; margin-top: 5px;">↑ Čísla nejsou zarovnaná</p>
+    </div>
+    <div>
+      <p style="margin-bottom: 10px; font-weight: bold;">Tabulární (<code>tabular-nums</code>):</p>
+      <div style="font-size: 24px; background: white; padding: 15px; border-radius: 6px; border: 1px solid #e5e7eb; font-variant-numeric: tabular-nums;">
+        <div>1 111 111 Kč</div>
+        <div>8 888 888 Kč</div>
+        <div>1 234 567 Kč</div>
+      </div>
+      <p style="font-size: 12px; color: #666; margin-top: 5px;">↑ Čísla jsou zarovnaná</p>
+    </div>
+  </div>
+</div>
+
+<h3 id="ukazka-interaktivni-text">Živá ukázka: Zadejte vlastní text</h3>
+
+<div id="custom-text-demo" style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+  <p style="margin-bottom: 10px;">Zadejte text a sledujte jeho šířku v různých fontech:</p>
+  <input type="text" id="custom-text-input" value="Hello World" style="width: 100%; max-width: 400px; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 15px;">
+  <div id="custom-text-results"></div>
+</div>
+
+<script>
+(function() {
+  const fonts = [
+    'Arial, sans-serif',
+    'Times New Roman, serif',
+    'Georgia, serif',
+    'Verdana, sans-serif',
+    'Courier New, monospace'
+  ];
+
+  function measureText(text, font) {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.font = '20px ' + font;
+    return ctx.measureText(text).width;
+  }
+
+  function updateCustomDemo() {
+    const input = document.getElementById('custom-text-input');
+    const results = document.getElementById('custom-text-results');
+    const text = input.value || 'Hello World';
+
+    let html = '<table style="width: 100%; border-collapse: collapse;">';
+    html += '<tr style="background: #333; color: white;"><th style="padding: 8px; text-align: left;">Font</th><th style="padding: 8px; text-align: left;">Ukázka</th><th style="padding: 8px; text-align: right;">Šířka</th></tr>';
+
+    fonts.forEach((font, i) => {
+      const width = measureText(text, font);
+      const bg = i % 2 === 0 ? '#fff' : '#f9f9f9';
+      const fontName = font.split(',')[0];
+      html += '<tr style="background: ' + bg + ';">';
+      html += '<td style="padding: 8px;">' + fontName + '</td>';
+      html += '<td style="padding: 8px; font-family: ' + font + ';">' + text + '</td>';
+      html += '<td style="padding: 8px; text-align: right; font-family: monospace;">' + width.toFixed(1) + 'px</td>';
+      html += '</tr>';
+    });
+
+    html += '</table>';
+    results.innerHTML = html;
+  }
+
+  document.getElementById('custom-text-input').addEventListener('input', updateCustomDemo);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateCustomDemo);
+  } else {
+    updateCustomDemo();
+  }
+})();
+</script>
 
 <h2 id="zaver">Závěr</h2>
 
