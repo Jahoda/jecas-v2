@@ -14,7 +14,7 @@ format: "html"
 
 <h2 id="porovnani-sirky-znaku">Interaktivní porovnání šířky znaků</h2>
 
-<p>V tabulce níže můžete porovnat šířku jednotlivých znaků v pixelech. Referenční znak je <code>M</code>, protože se tradičně používá jako měrná jednotka (<a href="/em">em</a>).</p>
+<p>V tabulce níže můžete porovnat šířku jednotlivých znaků v pixelech. Referenční znak je <code>M</code>, protože se tradičně používá jako měrná jednotka (em).</p>
 
 <div class="live">
 <div id="font-width-demo" style="margin: 20px 0;">
