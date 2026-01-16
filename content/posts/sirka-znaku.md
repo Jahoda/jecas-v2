@@ -320,7 +320,7 @@ format: "html"
 
 <h3 id="flexbox-grid">Flexbox a Grid</h3>
 
-<p>Layoutové systémy <a href="/flexbox">Flexbox</a> a <a href="/css-grid">CSS Grid</a> se přizpůsobují obsahu automaticky:</p>
+<p>Layoutové systémy <a href="/flexbox">Flexbox</a> a CSS Grid se přizpůsobují obsahu automaticky:</p>
 
 <pre><code>.nav {
   display: flex;
@@ -508,7 +508,7 @@ format: "html"
 </li>
 
 <li>
-  <p>Používejte <b>flexibilní techniky</b>: <a href="/flexbox">flexbox</a>, <a href="/css-grid">grid</a>, min/max-width, padding</p>
+  <p>Používejte <b>flexibilní techniky</b>: <a href="/flexbox">flexbox</a>, grid, min/max-width, padding</p>
 </li>
 
 <li>
