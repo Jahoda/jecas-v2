@@ -86,12 +86,12 @@ format: "html"
     const refWidth = measureCharWidth('M', font);
 
     let html = '<table style="width: 100%; border-collapse: collapse; font-size: 14px;">';
-    html += '<thead><tr style="background: #333; color: white;">';
-    html += '<th style="padding: 10px; text-align: left;">Znak</th>';
-    html += '<th style="padding: 10px; text-align: center;">Ukázka</th>';
-    html += '<th style="padding: 10px; text-align: right;">Šířka (px)</th>';
-    html += '<th style="padding: 10px; text-align: right;">% vůči M</th>';
-    html += '<th style="padding: 10px; text-align: left;">Visuální poměr</th>';
+    html += '<thead><tr style="background: #333;">';
+    html += '<th style="padding: 10px; text-align: left; color: #fff;">Znak</th>';
+    html += '<th style="padding: 10px; text-align: center; color: #fff;">Ukázka</th>';
+    html += '<th style="padding: 10px; text-align: right; color: #fff;">Šířka (px)</th>';
+    html += '<th style="padding: 10px; text-align: right; color: #fff;">% vůči M</th>';
+    html += '<th style="padding: 10px; text-align: left; color: #fff;">Visuální poměr</th>';
     html += '</tr></thead><tbody>';
 
     characters.forEach((item, index) => {
@@ -432,7 +432,7 @@ format: "html"
     const text = input.value || 'Hello World';
 
     let html = '<table style="width: 100%; border-collapse: collapse;">';
-    html += '<tr style="background: #333; color: white;"><th style="padding: 8px; text-align: left;">Font</th><th style="padding: 8px; text-align: left;">Ukázka</th><th style="padding: 8px; text-align: right;">Šířka</th></tr>';
+    html += '<tr style="background: #333;"><th style="padding: 8px; text-align: left; color: #fff;">Font</th><th style="padding: 8px; text-align: left; color: #fff;">Ukázka</th><th style="padding: 8px; text-align: right; color: #fff;">Šířka</th></tr>';
 
     fonts.forEach((font, i) => {
       const width = measureText(text, font);
