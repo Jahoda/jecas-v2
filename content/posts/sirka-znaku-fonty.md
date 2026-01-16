@@ -16,6 +16,7 @@ format: "html"
 
 <p>V tabulce níže můžete porovnat šířku jednotlivých znaků v pixelech. Referenční znak je <code>M</code>, protože se tradičně používá jako měrná jednotka (<a href="/em">em</a>).</p>
 
+<div class="live">
 <div id="font-width-demo" style="margin: 20px 0;">
   <div style="margin-bottom: 15px;">
     <label for="font-select" style="font-weight: bold;">Vyberte font:</label>
@@ -76,10 +77,12 @@ format: "html"
   }
 
   function updateTable() {
-    const font = document.getElementById('font-select').value;
+    const fontSelect = document.getElementById('font-select');
     const container = document.getElementById('char-table-container');
     const visualContainer = document.getElementById('visual-strings');
+    if (!fontSelect || !container || !visualContainer) return;
 
+    const font = fontSelect.value;
     const refWidth = measureCharWidth('M', font);
 
     let html = '<table style="width: 100%; border-collapse: collapse; font-size: 14px;">';
@@ -130,15 +133,14 @@ format: "html"
     visualContainer.innerHTML = visualHtml;
   }
 
-  document.getElementById('font-select').addEventListener('change', updateTable);
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', updateTable);
-  } else {
-    updateTable();
+  const fontSelect = document.getElementById('font-select');
+  if (fontSelect) {
+    fontSelect.addEventListener('change', updateTable);
   }
+  updateTable();
 })();
 </script>
+</div>
 
 <h2 id="proc-je-to-dulezite">Proč je to důležité pro webdesign</h2>
 
@@ -398,6 +400,7 @@ format: "html"
 
 <h3 id="ukazka-interaktivni-text">Živá ukázka: Zadejte vlastní text</h3>
 
+<div class="live">
 <div id="custom-text-demo" style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
   <p style="margin-bottom: 10px;">Zadejte text a sledujte jeho šířku v různých fontech:</p>
   <input type="text" id="custom-text-input" value="Hello World" style="width: 100%; max-width: 400px; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 15px;">
@@ -424,6 +427,8 @@ format: "html"
   function updateCustomDemo() {
     const input = document.getElementById('custom-text-input');
     const results = document.getElementById('custom-text-results');
+    if (!input || !results) return;
+
     const text = input.value || 'Hello World';
 
     let html = '<table style="width: 100%; border-collapse: collapse;">';
@@ -444,15 +449,14 @@ format: "html"
     results.innerHTML = html;
   }
 
-  document.getElementById('custom-text-input').addEventListener('input', updateCustomDemo);
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', updateCustomDemo);
-  } else {
-    updateCustomDemo();
+  const input = document.getElementById('custom-text-input');
+  if (input) {
+    input.addEventListener('input', updateCustomDemo);
   }
+  updateCustomDemo();
 })();
 </script>
+</div>
 
 <h2 id="zaver">Závěr</h2>
 
