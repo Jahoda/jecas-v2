@@ -164,9 +164,9 @@ format: "html"
 </li>
 </ul>
 
-<h3 id="ukazka-tlacitka">Živá ukázka: Tlačítka s fixní vs flexibilní šířkou</h3>
+<h3 id="ukazka-tlacitka">Tlačítka s fixní vs flexibilní šířkou</h3>
 
-<div style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+<div class="live">
   <p style="margin-bottom: 15px;"><b>Problém:</b> Tlačítka s fixní šířkou</p>
   <div style="margin-bottom: 20px;">
     <button style="width: 100px; padding: 10px; margin: 5px; background: #dc2626; color: white; border: none; border-radius: 4px; cursor: pointer;">OK</button>
@@ -182,9 +182,9 @@ format: "html"
   </div>
 </div>
 
-<h3 id="ukazka-jmena">Živá ukázka: Uživatelská jména v layoutu</h3>
+<h3 id="ukazka-jmena">Uživatelská jména v layoutu</h3>
 
-<div style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+<div class="live">
   <p style="margin-bottom: 15px;">Stejný počet znaků (5), různá šířka:</p>
   <div style="display: flex; flex-direction: column; gap: 8px;">
     <div style="display: flex; align-items: center; gap: 10px;">
@@ -205,9 +205,9 @@ format: "html"
   </div>
 </div>
 
-<h3 id="ukazka-preteceni">Živá ukázka: Přetečení textu v kartě</h3>
+<h3 id="ukazka-preteceni">Přetečení textu v kartě</h3>
 
-<div style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+<div class="live">
   <div style="display: flex; gap: 15px; flex-wrap: wrap;">
     <div style="width: 180px; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: white;">
       <div style="height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
@@ -251,9 +251,9 @@ format: "html"
 
 <p>Ale <b>nespoléhejte na ni pro přesné rozměry</b> běžného textu.</p>
 
-<h3 id="ukazka-ch">Živá ukázka: Jednotka ch v praxi</h3>
+<h3 id="ukazka-ch">Jednotka ch v praxi</h3>
 
-<div style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+<div class="live">
   <p style="margin-bottom: 15px;">Input s <code>width: 10ch</code> – zkuste zadat různé znaky:</p>
   <div style="margin-bottom: 15px;">
     <input type="text" placeholder="WWWWWWWWWW" style="width: 10ch; padding: 8px; font-size: 16px; border: 2px solid #3b82f6; border-radius: 4px; font-family: inherit;">
@@ -373,9 +373,9 @@ format: "html"
   /* Čísla budou mít stejnou šířku */
 }</code></pre>
 
-<h3 id="ukazka-tabular-nums">Živá ukázka: Proporcionální vs tabulární číslice</h3>
+<h3 id="ukazka-tabular-nums">Proporcionální vs tabulární číslice</h3>
 
-<div style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
+<div class="live">
   <div style="display: flex; gap: 40px; flex-wrap: wrap;">
     <div>
       <p style="margin-bottom: 10px; font-weight: bold;">Proporcionální (výchozí):</p>
@@ -398,7 +398,7 @@ format: "html"
   </div>
 </div>
 
-<h3 id="ukazka-interaktivni-text">Živá ukázka: Zadejte vlastní text</h3>
+<h3 id="ukazka-interaktivni-text">Zadejte vlastní text</h3>
 
 <div class="live">
 <div id="custom-text-demo" style="margin: 20px 0; padding: 20px; background: #f8fafc; border-radius: 8px;">
