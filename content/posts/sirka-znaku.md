@@ -308,7 +308,7 @@ format: "html"
   white-space: nowrap;
 }</code></pre>
 
-<p>Samotný padding bez omezení <code>max-width</code> může způsobit, že tlačítko přeteče z kontejneru. Proto je vhodné přidat <code>max-width: 100%</code> a <code>text-overflow: ellipsis</code> jako záchrannou síť.</p>
+<p>Samotný padding bez omezení <code>max-width</code> může způsobit, že tlačítko přeteče z kontejneru. Proto je vhodné přidat <code>max-width: 100%</code> a <code>text-overflow: ellipsis</code> jako pojistku.</p>
 
 <h3 id="min-max-width">Min/max šířky místo fixních</h3>
 
@@ -319,6 +319,8 @@ format: "html"
 }</code></pre>
 
 <h3 id="flexbox-grid">Flexbox a Grid</h3>
+
+<p>Layoutové systémy <a href="/flexbox">Flexbox</a> a <a href="/css-grid">CSS Grid</a> se přizpůsobují obsahu automaticky:</p>
 
 <pre><code>.nav {
   display: flex;
@@ -349,7 +351,19 @@ format: "html"
   padding: clamp(8px, 2vw, 20px) clamp(16px, 4vw, 40px);
 }</code></pre>
 
-<p>Výhoda <code>clamp()</code> je, že nepotřebujete media queries – hodnota se plynule přizpůsobuje.</p>
+<p>Výhoda <code>clamp()</code> je, že nepotřebujete <a href="/media">media queries</a> – hodnota se plynule přizpůsobuje. Více o dynamických výpočtech v článku o <a href="/calc">CSS funkci calc()</a>.</p>
+
+<h3 id="ukazka-clamp">clamp() v praxi</h3>
+
+<div class="live">
+  <p style="margin-bottom: 15px;">Změňte šířku okna a sledujte, jak se mění velikost textu:</p>
+  <div style="background: white; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px;">
+    <p style="font-size: clamp(14px, 4vw, 32px); margin: 0; line-height: 1.4;">
+      Tento text má <code style="font-size: inherit;">font-size: clamp(14px, 4vw, 32px)</code>
+    </p>
+  </div>
+  <p style="font-size: 12px; color: #666; margin-top: 10px;">↑ Minimum 14px, maximum 32px, mezi tím roste podle šířky viewportu</p>
+</div>
 
 <h3 id="container-queries">Container queries</h3>
 
@@ -375,7 +389,7 @@ format: "html"
 </li>
 
 <li>
-  <p><b>Používejte <code>text-overflow: ellipsis</code></b> – jako záchrannou síť pro příliš dlouhý text</p>
+  <p><b>Používejte <code>text-overflow: ellipsis</code></b> – jako pojistku pro příliš dlouhý text</p>
 </li>
 
 <li>
@@ -494,7 +508,7 @@ format: "html"
 </li>
 
 <li>
-  <p>Používejte <b>flexibilní techniky</b>: flexbox, grid, min/max-width, padding</p>
+  <p>Používejte <b>flexibilní techniky</b>: <a href="/flexbox">flexbox</a>, <a href="/css-grid">grid</a>, min/max-width, padding</p>
 </li>
 
 <li>
