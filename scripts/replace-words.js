@@ -34,7 +34,8 @@ const REPLACEMENTS = {
 	konverz: 'konvers',
 	databaz: 'databas',
 	prezent: 'present',
-	reverz: 'revers'
+	reverz: 'revers',
+	konzist: 'konsist'
 };
 
 /**

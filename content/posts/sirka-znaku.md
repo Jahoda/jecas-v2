@@ -4,7 +4,7 @@ headline: "Šířka znaků ve fontech"
 description: "Proč mají znaky různou šířku a jak to řešit v responsivním designu."
 date: "2026-01-16"
 status: 1
-tags: ["css", "typografie"]
+tags: ["css", "typografie", "pisma"]
 format: "html"
 ---
 
@@ -148,11 +148,11 @@ format: "html"
 
 <ul>
 <li>
-  <p><b>Nemožnost předvídat šířku textu</b> – text „William" zabere víc místa než „Jiří", i když má méně znaků</p>
+  <p><b>Nemožnost předvídat šířku textu</b> – text „Willy" zabere víc místa než „Filip", i když mají stejný počet znaků</p>
 </li>
 
 <li>
-  <p><b>Problém s ořezáváním</b> – nastavení <code>max-width</code> podle počtu znaků může vést k nekonzistentním výsledkům</p>
+  <p><b>Problém s ořezáváním</b> – nastavení <code>max-width</code> podle počtu znaků může vést k nekonsistentním výsledkům</p>
 </li>
 
 <li>
@@ -160,7 +160,7 @@ format: "html"
 </li>
 
 <li>
-  <p><b>Tlačítka a labely</b> – text „Submit" vs „Odeslat formulář" vyžaduje jiný přístup</p>
+  <p><b>Tlačítka a labely</b> – text „Submit" vs. „Odeslat formulář" vyžaduje jiný přístup</p>
 </li>
 </ul>
 
@@ -185,21 +185,21 @@ format: "html"
 <h3 id="ukazka-jmena">Uživatelská jména v layoutu</h3>
 
 <div class="live">
-  <p style="margin-bottom: 15px;">Stejný počet znaků (5), různá šířka:</p>
+  <p style="margin-bottom: 15px;">Stejný počet znaků (10), různá šířka:</p>
   <div style="display: flex; flex-direction: column; gap: 8px;">
     <div style="display: flex; align-items: center; gap: 10px;">
       <div style="width: 32px; height: 32px; background: #3b82f6; border-radius: 50%; flex-shrink: 0;"></div>
-      <span style="font-weight: bold; background: #dbeafe; padding: 2px 6px; border-radius: 3px;">Willi</span>
+      <span style="font-weight: bold; background: #dbeafe; padding: 2px 6px; border-radius: 3px;">MattWilson</span>
       <span style="color: #666;">napsal komentář</span>
     </div>
     <div style="display: flex; align-items: center; gap: 10px;">
       <div style="width: 32px; height: 32px; background: #8b5cf6; border-radius: 50%; flex-shrink: 0;"></div>
-      <span style="font-weight: bold; background: #dbeafe; padding: 2px 6px; border-radius: 3px;">Jiřík</span>
+      <span style="font-weight: bold; background: #dbeafe; padding: 2px 6px; border-radius: 3px;">petr.novak</span>
       <span style="color: #666;">napsal komentář</span>
     </div>
     <div style="display: flex; align-items: center; gap: 10px;">
       <div style="width: 32px; height: 32px; background: #ec4899; border-radius: 50%; flex-shrink: 0;"></div>
-      <span style="font-weight: bold; background: #dbeafe; padding: 2px 6px; border-radius: 3px;">ilili</span>
+      <span style="font-weight: bold; background: #dbeafe; padding: 2px 6px; border-radius: 3px;">lilililiil</span>
       <span style="color: #666;">napsal komentář</span>
     </div>
   </div>
@@ -265,13 +265,13 @@ format: "html"
   </div>
   <div>
     <input type="text" placeholder="0123456789" style="width: 10ch; padding: 8px; font-size: 16px; border: 2px solid #8b5cf6; border-radius: 4px; font-family: inherit;">
-    <span style="font-size: 14px; color: #666; margin-left: 10px;">← čísla sedí přesně (ch = šířka 0)</span>
+    <span style="font-size: 14px; color: #666; margin-left: 10px;">← různé číslice mají různou šířku</span>
   </div>
 </div>
 
 <h2 id="monospace-fonty">Monospace fonty jako řešení</h2>
 
-<p>Pokud potřebujete konzistentní šířku znaků, použijte <b>monospace font</b>:</p>
+<p>Pokud potřebujete konsistentní šířku znaků, použijte <b>monospace font</b>:</p>
 
 <pre><code>.fixed-width {
   font-family: 'Courier New', Consolas, monospace;
@@ -295,8 +295,11 @@ format: "html"
 <h3 id="flexibilni-kontejnery">Flexibilní kontejnery</h3>
 
 <pre><code>.button {
-  padding: 10px 20px; /* Padding místo fixní šířky */
+  padding: 10px 20px;
   white-space: nowrap;
+  max-width: 100%; /* Omezí šířku v úzkém kontejneru */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-title {
@@ -304,6 +307,8 @@ format: "html"
   text-overflow: ellipsis;
   white-space: nowrap;
 }</code></pre>
+
+<p>Samotný padding bez omezení <code>max-width</code> může způsobit, že tlačítko přeteče z kontejneru. Proto je vhodné přidat <code>max-width: 100%</code> a <code>text-overflow: ellipsis</code> jako záchrannou síť.</p>
 
 <h3 id="min-max-width">Min/max šířky místo fixních</h3>
 
@@ -327,10 +332,24 @@ format: "html"
 
 <h3 id="clamp">CSS funkce clamp()</h3>
 
+<p>Funkce <code>clamp(min, preferred, max)</code> umožňuje nastavit hodnotu, která se plynule mění mezi minimem a maximem podle preferované hodnoty:</p>
+
 <pre><code>.heading {
+  /* Minimum 1rem, preferovaně 4vw, maximum 2rem */
   font-size: clamp(1rem, 4vw, 2rem);
-  /* Responsivní velikost fontu */
+}
+
+.container {
+  /* Šířka mezi 300px a 800px, preferovaně 90% */
+  width: clamp(300px, 90%, 800px);
+}
+
+.button {
+  /* Padding reagující na šířku viewportu */
+  padding: clamp(8px, 2vw, 20px) clamp(16px, 4vw, 40px);
 }</code></pre>
+
+<p>Výhoda <code>clamp()</code> je, že nepotřebujete media queries – hodnota se plynule přizpůsobuje.</p>
 
 <h3 id="container-queries">Container queries</h3>
 
@@ -414,7 +433,8 @@ format: "html"
     'Times New Roman, serif',
     'Georgia, serif',
     'Verdana, sans-serif',
-    'Courier New, monospace'
+    'Courier New, monospace',
+    'system-ui, sans-serif'
   ];
 
   function measureText(text, font) {
@@ -478,7 +498,7 @@ format: "html"
 </li>
 
 <li>
-  <p>Pro konzistentní šířku použijte <b>monospace fonty</b> nebo <code>tabular-nums</code></p>
+  <p>Pro konsistentní šířku použijte <b>monospace fonty</b> nebo <code>tabular-nums</code></p>
 </li>
 
 <li>
