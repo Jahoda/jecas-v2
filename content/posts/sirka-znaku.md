@@ -1,7 +1,7 @@
 ---
 title: "Šířka znaků ve fontech"
-headline: "Proč mají znaky různou šířku a jak to ovlivňuje design"
-description: "Různé znaky v písmu mají různou šířku. Porovnejte jednotlivé znaky s procentuálním rozdílem a zjistěte, proč se v responsivním designu nelze spoléhat na počet znaků."
+headline: "Šířka znaků ve fontech"
+description: "Proč mají znaky různou šířku a jak to řešit v responsivním designu."
 date: "2026-01-16"
 status: 1
 tags: ["css", "typografie"]
