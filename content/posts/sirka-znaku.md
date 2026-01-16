@@ -4,7 +4,7 @@ headline: "Šířka znaků ve fontech"
 description: "Proč mají znaky různou šířku a jak to řešit v responsivním designu."
 date: "2026-01-16"
 status: 1
-tags: ["css", "typografie", "pisma"]
+tags: ["css", "typografie", "pisma", "responsive"]
 format: "html"
 ---
 
