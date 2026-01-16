@@ -33,7 +33,7 @@ format: "html"
   <div id="char-table-container"></div>
 
   <div id="visual-comparison" style="margin-top: 25px; padding: 20px; background: #f5f5f5; border-radius: 8px;">
-    <h3 style="margin-top: 0;">Vizuální porovnání</h3>
+    <h3 style="margin-top: 0;">Visuální porovnání</h3>
     <p style="margin-bottom: 10px;">Text se stejným počtem znaků, ale různou šířkou:</p>
     <div id="visual-strings" style="font-size: 24px; line-height: 1.8;"></div>
   </div>
@@ -88,7 +88,7 @@ format: "html"
     html += '<th style="padding: 10px; text-align: center;">Ukázka</th>';
     html += '<th style="padding: 10px; text-align: right;">Šířka (px)</th>';
     html += '<th style="padding: 10px; text-align: right;">% vůči M</th>';
-    html += '<th style="padding: 10px; text-align: left;">Vizuální poměr</th>';
+    html += '<th style="padding: 10px; text-align: left;">Visuální poměr</th>';
     html += '</tr></thead><tbody>';
 
     characters.forEach((item, index) => {
