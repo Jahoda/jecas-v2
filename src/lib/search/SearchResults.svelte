@@ -2,12 +2,12 @@
 	import { run } from 'svelte/legacy';
 
 	import { goto } from '$app/navigation';
-	import type { HitPost } from '$lib/search/searchQueryAlgolia';
-	import SearchHit from '$lib/search/SearchHit.svelte';
+	import type { SearchHit } from '$lib/search/searchQuery';
+	import SearchHitComponent from '$lib/search/SearchHit.svelte';
 	import { flip } from 'svelte/animate';
 
 	interface Props {
-		hits?: HitPost[];
+		hits?: SearchHit[];
 		query: string;
 	}
 
@@ -37,10 +37,10 @@
 	});
 </script>
 
-{#each hits as hit, index (hit.id)}
+{#each hits as hit, index (hit.objectID)}
 	<div class="pt-4 first:pt-0" animate:flip={{ duration: 200 }}>
 		<div id="searchResult-{index}" tabindex="-1" class="outline-none">
-			<SearchHit {hit} selected={index === currentIndex} />
+			<SearchHitComponent {hit} selected={index === currentIndex} />
 		</div>
 	</div>
 {:else}

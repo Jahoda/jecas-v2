@@ -3,15 +3,15 @@
 
 	import SearchInput from '$lib/search/SearchInput.svelte';
 
-	import { searchQueryAlgolia, type HitPost } from '$lib/search/searchQueryAlgolia';
+	import { searchQuery, type SearchHit } from '$lib/search/searchQuery';
 	import SearchResults from '$lib/search/SearchResults.svelte';
 
 	let query = $state('');
-	let result: HitPost[] = $state([]);
+	let result: SearchHit[] = $state([]);
 
 	run(() => {
-		searchQueryAlgolia(query).then((response: any) => {
-			result = response.results?.[0]?.hits || response.hits || [];
+		searchQuery(query).then((response) => {
+			result = response.hits || [];
 		});
 	});
 </script>
