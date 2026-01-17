@@ -1,3 +1,5 @@
+import { browser } from '$app/environment';
+
 export interface SearchHit {
 	objectID: string | number;
 	url_slug: string;
@@ -19,27 +21,37 @@ let pagefind: any = null;
 let pagefindPromise: Promise<any> | null = null;
 
 async function loadPagefind(): Promise<any> {
+	if (!browser) return null;
 	if (pagefind) return pagefind;
 	if (pagefindPromise) return pagefindPromise;
 
 	pagefindPromise = (async () => {
-		// @ts-ignore - dynamic import from static files
-		const pf = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
-		await pf.init();
-		pagefind = pf;
-		return pf;
+		try {
+			// @ts-ignore - dynamic import from static files
+			const pf = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
+			await pf.init();
+			pagefind = pf;
+			return pf;
+		} catch (e) {
+			console.error('Failed to load Pagefind:', e);
+			return null;
+		}
 	})();
 
 	return pagefindPromise;
 }
 
 export async function searchQuery(query: string): Promise<SearchResponse> {
-	if (query.length < 2) {
+	if (!browser || query.length < 2) {
 		return { hits: [] };
 	}
 
 	try {
 		const pf = await loadPagefind();
+		if (!pf) {
+			return { hits: [] };
+		}
+
 		const search = await pf.search(query);
 
 		if (!search?.results || search.results.length === 0) {
@@ -65,7 +77,7 @@ export async function searchQuery(query: string): Promise<SearchResponse> {
 
 		return { hits: results };
 	} catch (e) {
-		console.error('Pagefind error:', e);
+		console.error('Pagefind search error:', e);
 		return { hits: [] };
 	}
 }
