@@ -25,11 +25,9 @@ async function loadPagefind(): Promise<any> {
 	pagefindPromise = (async () => {
 		// @ts-ignore - dynamic import from static files
 		const pf = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
-		// Pagefind uses default export
-		const instance = pf.default || pf;
-		await instance.init();
-		pagefind = instance;
-		return pagefind;
+		await pf.init();
+		pagefind = pf;
+		return pf;
 	})();
 
 	return pagefindPromise;
@@ -44,7 +42,7 @@ export async function searchQuery(query: string): Promise<SearchResponse> {
 		const pf = await loadPagefind();
 		const search = await pf.search(query);
 
-		if (!search.results || search.results.length === 0) {
+		if (!search?.results || search.results.length === 0) {
 			return { hits: [] };
 		}
 
