@@ -4,7 +4,7 @@
 
 - **Články**: `content/posts/*.md` - Markdown soubory s YAML frontmatter
 - **Tagy**: `content/tags/*.md` - Definice kategorií
-- **Náhledové obrázky**: `static/files/article/*.png` - 100x100 px PNG
+- **Náhledové obrázky**: `static/files/article/*.png` - 200x200 px PNG
 
 ## Vytváření článků
 
@@ -31,7 +31,7 @@ format: 'html'
 
 ## Generování náhledových obrázků
 
-Náhledové obrázky se generují pomocí Python/Pillow. Obrázek musí být **100x100 px PNG**.
+Náhledové obrázky se generují pomocí Python/Pillow. Obrázek musí být **200x200 px PNG**.
 
 ### Styl obrázků
 
@@ -45,37 +45,37 @@ Náhledové obrázky se generují pomocí Python/Pillow. Obrázek musí být **1
 
 ### Šablona kódu
 
-Pro hladké hrany použít **4× supersampling** (vykreslit ve 400×400, zmenšit na 100×100):
+Pro hladké hrany použít **4× supersampling** (vykreslit ve 800×800, zmenšit na 200×200):
 
 ```python
 from PIL import Image, ImageDraw, ImageFont
 
 # 4× supersampling pro anti-aliasing
 scale = 4
-size = 100 * scale
+size = 200 * scale
 
 img = Image.new('RGB', (size, size), '#1e293b')
 draw = ImageDraw.Draw(img)
 
 # Gradient pozadí
 for y in range(size):
-    r = int(30 + (y / scale * 0.15))
-    g = int(41 + (y / scale * 0.2))
-    b = int(59 + (y / scale * 0.25))
+    r = int(30 + (y / size * 30))
+    g = int(41 + (y / size * 40))
+    b = int(59 + (y / size * 50))
     draw.line([(0, y), (size, y)], fill=(r, g, b))
 
 # Font (velikost × scale)
 try:
-    font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", 18 * scale)
+    font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", 24 * scale)
 except:
-    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 18 * scale)
+    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24 * scale)
 
 # Badge s textem (souřadnice × scale)
-draw.rounded_rectangle([(10 * scale, 35 * scale), (90 * scale, 65 * scale)], radius=4 * scale, fill='#2563eb')
-draw.text((50 * scale, 50 * scale), "TEXT", fill='#ffffff', font=font, anchor='mm')
+draw.rounded_rectangle([(20 * scale, 70 * scale), (180 * scale, 130 * scale)], radius=8 * scale, fill='#2563eb')
+draw.text((100 * scale, 100 * scale), "TEXT", fill='#ffffff', font=font, anchor='mm')
 
 # Zmenšení s LANCZOS pro hladké hrany
-img = img.resize((100, 100), Image.LANCZOS)
+img = img.resize((200, 200), Image.LANCZOS)
 img.save('static/files/article/nazev-clanku.png', 'PNG')
 ```
 
