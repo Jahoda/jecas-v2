@@ -38,36 +38,22 @@
 
 	let tagsColors = $derived(tags?.map((tag) => tag.background).filter((color) => color) || []);
 
-	let backgroundGradient = $derived(
-		`linear-gradient(to right top, ${tagsColors.join(',')}, #5b63b9)`
-	);
-
 	const safeTitle = $derived(preventWidows(title));
 	const safeDescription = $derived(preventWidows(description));
 </script>
 
 <div
-	class="relative rounded-2xl {selected
-		? 'shadow-2xl shadow-blue-500/30'
-		: ''} @container p-2 shadow {small ? '' : ''} {neutral
-		? 'bg-gray-50 dark:bg-slate-700 dark:text-white'
-		: 'text-white dark:text-white'}"
-	style="--image: url({`/files/article/${href}.png`});{neutral
-		? ''
-		: background
-			? `background: ${background}`
-			: `background-image: ${backgroundGradient}`}"
+	class="group relative border border-slate-200 bg-white text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800 {selected
+		? 'ring-2 ring-blue-500'
+		: ''} @container"
+	style="--accent-color: {tagsColors[0] || '#3b82f6'};"
 >
+	<!-- Left accent bar -->
 	<div
-		class="{selected
-			? 'bg-blue-light/30'
-			: neutral
-				? 'bg-slate-500/10 dark:bg-slate-900/50'
-				: 'bg-slate-900/50'} rounded-xl {small ? 'p-3' : 'p-6'} h-full"
-	>
-		<div
-			class="bg-blur pointer-events-none absolute top-0 left-0 -z-10 hidden h-full w-full opacity-50 transition-all"
-		></div>
+		class="absolute top-0 left-0 h-full w-1 transition-all group-hover:w-1.5"
+		style="background-color: var(--accent-color);"
+	></div>
+	<div class="{small ? 'p-4 pl-5' : 'p-6 pl-7'} h-full">
 		<div
 			class="flex flex-col items-center text-center {small
 				? 'gap-4 @sm:flex-row @sm:items-start @sm:text-left'
@@ -122,11 +108,3 @@
 	</div>
 </div>
 
-<style>
-	.bg-blur {
-		background-image: var(--image);
-		background-size: cover;
-		background-position: center;
-		filter: blur(60px);
-	}
-</style>

@@ -11,19 +11,21 @@
 	let percent = $derived(((tag.count || 0) / max) * 100);
 </script>
 
-<a href={tag.url_slug} class="group relative flex overflow-hidden rounded-md">
-	<div class="absolute top-0 left-0 h-full w-full bg-slate-300 opacity-50 dark:bg-slate-600"></div>
+<a
+	href={tag.url_slug}
+	class="group relative flex overflow-hidden border border-slate-200 bg-white transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:hover:bg-slate-800"
+>
+	<div class="absolute top-0 left-0 h-full bg-slate-100 dark:bg-slate-800" style="width: {percent}%"></div>
 	<div
-		class="flex h-11 items-center justify-between gap-2 rounded-l-md border border-white/25 pr-2 pl-4 whitespace-nowrap shadow-black drop-shadow-2xl transition-all [text-shadow:0_0_1px_rgba(0,0,0,0.4),0_4px_8px_rgba(0,0,0,0.2)] group-hover:!w-full {percent <
-		0.3
-			? 'text-xs'
-			: ''}"
-		style="background: {tag.background}; color: {tag.color}; width: {percent}%"
+		class="relative flex h-11 w-full items-center justify-between gap-2 px-4 text-slate-900 dark:text-slate-100"
 	>
-		{tag.name}
+		<span class="flex items-center gap-2">
+			<span class="h-3 w-3 rounded-sm" style="background: {tag.background};"></span>
+			{tag.name}
+		</span>
 
-		<div class="rounded-md bg-slate-800/10 px-2 py-1 text-white">
+		<span class="text-xs text-slate-500 dark:text-slate-400">
 			{tag.count}
-		</div>
+		</span>
 	</div>
 </a>

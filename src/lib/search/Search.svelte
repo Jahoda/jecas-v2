@@ -53,7 +53,7 @@
 
 		<div
 			transition:fly={{ y: 50, duration: 200 }}
-			class="rounded-t-x relative flex max-h-full w-full flex-col overflow-hidden bg-white text-gray-800 md:max-h-[95vh] md:max-w-lg md:rounded-xl dark:bg-slate-800 dark:text-white"
+			class="relative flex max-h-full w-full flex-col overflow-hidden border border-slate-200 bg-white text-slate-900 md:max-h-[95vh] md:max-w-lg dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
 		>
 			<SearchHandler on:close={handleClose} />
 		</div>
@@ -63,12 +63,12 @@
 <button
 	onclick={() => (isSearchOpen = true)}
 	type="button"
-	class="dark:bg-blue-dark/30 flex h-10 w-10 items-center gap-x-3 rounded-lg bg-white text-left text-sm text-slate-400 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:ring-2 focus:ring-sky-500 focus:outline-none max-sm:justify-center sm:w-72 sm:px-4 dark:hover:ring-blue-700"
+	class="flex h-10 w-10 items-center gap-x-3 border border-slate-200 bg-white text-left text-sm text-slate-500 transition-colors hover:bg-slate-50 focus:ring-2 focus:ring-slate-300 focus:outline-none max-sm:justify-center sm:w-72 sm:px-4 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-700"
 >
 	<SearchIcon />
 	<span class="flex-auto max-sm:hidden"> Rychlé hledání </span>
-	<kbd class="font-sans font-semibold max-sm:hidden dark:text-slate-500">
-		<abbr title="Command" class="text-slate-300 no-underline dark:text-slate-500">⌘</abbr> K
+	<kbd class="font-sans text-xs font-medium max-sm:hidden text-slate-400 dark:text-slate-500">
+		<abbr title="Command" class="no-underline">⌘</abbr> K
 	</kbd>
 </button>
 
