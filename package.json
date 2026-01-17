@@ -8,7 +8,9 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch",
 		"lint": "prettier --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss --check .",
-		"format": "prettier --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss --write ."
+		"format": "prettier --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss --write .",
+		"index-articles": "bun run src/lib/ai/embeddings.ts",
+		"index-articles:dry": "bun run src/lib/ai/embeddings.ts --dry-run --verbose"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "^6.2.0",
