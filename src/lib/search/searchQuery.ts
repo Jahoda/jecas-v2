@@ -25,7 +25,6 @@ async function loadPagefind(): Promise<any> {
 	pagefindPromise = (async () => {
 		// @ts-ignore - dynamic import from static files
 		const pf = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
-		await pf.init();
 		pagefind = pf;
 		return pf;
 	})();
@@ -41,6 +40,10 @@ export async function searchQuery(query: string): Promise<SearchResponse> {
 	try {
 		const pf = await loadPagefind();
 		const search = await pf.search(query);
+
+		if (!search.results || search.results.length === 0) {
+			return { hits: [] };
+		}
 
 		const results = await Promise.all(
 			search.results.slice(0, 15).map(async (result: any) => {
