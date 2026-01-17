@@ -114,7 +114,7 @@ console.log(add(2, 3))</code></pre>
 
 <h4 id="proc-konverse">Proč Vite potřebuje konversi</h4>
 
-<p>Dev server Vite servíruje moduly přímo prohlížeči jako nativní ESM. Prohlížeč ale neumí zpracovat <code>require()</code> ani UMD wrapper – proto musí Vite tyto formáty převést na <code>import</code>/<code>export</code>.</p>
+<p>Během vývoje Vite posílá moduly přímo do prohlížeče. Prohlížeče ale rozumí pouze ESM syntaxi (<code>import</code>/<code>export</code>). Pokud nějaký balíček používá <code>require()</code>, prohlížeč ho nedokáže spustit. Proto Vite při pre-bundlingu převádí CommonJS a UMD balíčky na ESM.</p>
 
 <h3 id="optimalisace-http">Optimalisace HTTP požadavků</h3>
 
@@ -247,8 +247,8 @@ export default defineConfig({
 <table>
   <thead>
     <tr>
-      <th>Aspekt</th>
-      <th>Chování</th>
+      <th>Co</th>
+      <th>Jak to Vite řeší</th>
     </tr>
   </thead>
   <tbody>
@@ -275,4 +275,4 @@ export default defineConfig({
   </tbody>
 </table>
 
-<p>Tento přístup – sledování importů místo skenování složek – zajišťuje, že do výsledného buildu se dostane pouze skutečně používaný kód.</p>
+<p>Tento přístup – sledování importů místo skenování složek – zajišťuje, že se zpracují pouze importované soubory. Díky tree-shakingu se navíc z importovaných modulů odstraní nepoužité exporty (funkce, konstanty), pokud nemají vedlejší efekty.</p>
