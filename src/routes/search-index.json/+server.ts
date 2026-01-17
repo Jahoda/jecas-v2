@@ -4,6 +4,21 @@ import { getAllPosts } from '$lib/post/post';
 
 export const prerender = true;
 
+function stripHtml(html: string): string {
+	return html
+		.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+		.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+		.replace(/<[^>]+>/g, ' ')
+		.replace(/&nbsp;/g, ' ')
+		.replace(/&amp;/g, '&')
+		.replace(/&lt;/g, '<')
+		.replace(/&gt;/g, '>')
+		.replace(/&quot;/g, '"')
+		.replace(/&#(\d+);/g, (_, code) => String.fromCharCode(code))
+		.replace(/\s+/g, ' ')
+		.trim();
+}
+
 export const GET: RequestHandler = async () => {
 	const allPosts = await getAllPosts();
 
@@ -13,7 +28,8 @@ export const GET: RequestHandler = async () => {
 		t: post.title,
 		h: post.headline,
 		d: post.description,
-		g: post.tags || []
+		g: post.tags || [],
+		c: stripHtml(post.text_html)
 	}));
 
 	return json(index);

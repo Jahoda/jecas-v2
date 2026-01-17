@@ -22,6 +22,7 @@ interface IndexEntry {
 	h: string; // headline
 	d: string; // description
 	g: string[]; // tags
+	c: string; // content (text without HTML)
 }
 
 let indexCache: IndexEntry[] | null = null;
@@ -82,12 +83,14 @@ function calculateScore(entry: IndexEntry, words: string[]): number {
 	const headline = removeDiacritics(entry.h.toLowerCase());
 	const description = removeDiacritics(entry.d.toLowerCase());
 	const tags = entry.g.map((t) => removeDiacritics(t.toLowerCase()));
+	const content = removeDiacritics(entry.c.toLowerCase());
 
 	for (const word of words) {
 		if (title.includes(word)) score += 100;
 		if (headline.includes(word)) score += 80;
 		if (tags.some((t) => t.includes(word))) score += 60;
 		if (description.includes(word)) score += 40;
+		if (content.includes(word)) score += 20;
 	}
 
 	return score;
