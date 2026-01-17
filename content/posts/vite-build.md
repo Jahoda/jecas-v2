@@ -1,7 +1,7 @@
 ---
 title: "Jak Vite sestavuje build"
 headline: "Jak Vite sestavuje build"
-description: "Vite používá HTML jako vstupní bod a sleduje importy. Entry points, pre-bundling, monorepo."
+description: "Jak Vite hledá soubory ke zpracování, proč převádí CommonJS na ESM a jak funguje v monorepu."
 date: "2026-01-17"
 status: 1
 tags: ["js", "knihovny"]
