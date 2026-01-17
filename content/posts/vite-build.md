@@ -1,8 +1,8 @@
 ---
 title: "Jak Vite sestavuje build"
-headline: "Jak Vite sestavuje build a hledá soubory ke zpracování"
-description: "Vite používá HTML jako vstupní bod a sleduje importy. Podívejme se, jak funguje discovery souborů, pre-bundling a podpora monorepo workspace."
-date: "2026-01-14"
+headline: "Jak Vite sestavuje build"
+description: "Vite používá HTML jako vstupní bod a sleduje importy. Entry points, pre-bundling, monorepo."
+date: "2026-01-17"
 status: 1
 tags: ["js", "knihovny"]
 format: "html"
@@ -75,7 +75,7 @@ module.exports = { PI, add }
 const math = require('./math')
 console.log(math.add(2, 3))</code></pre>
 
-<p>CommonJS moduly se načítají <b>synchronně</b>, což funguje v Node.js, ale ne v prohlížeči.</p>
+<p>CommonJS moduly se načítají <b>synchronně</b>. Prohlížeče tento formát nativně nepodporují.</p>
 
 <h4 id="umd">UMD (Universal Module Definition)</h4>
 
@@ -257,7 +257,7 @@ export default defineConfig({
       <td>HTML soubory (výchozí <code>index.html</code>)</td>
     </tr>
     <tr>
-      <td>Discovery souborů</td>
+      <td>Hledání souborů</td>
       <td>Sledování importů od vstupního bodu</td>
     </tr>
     <tr>
