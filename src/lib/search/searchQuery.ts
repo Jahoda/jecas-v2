@@ -17,28 +17,22 @@ export interface SearchResponse {
 	hits: SearchHit[];
 }
 
-let pagefind: any = null;
-let pagefindPromise: Promise<any> | null = null;
+let pagefindModule: any = null;
 
 async function loadPagefind(): Promise<any> {
 	if (!browser) return null;
-	if (pagefind) return pagefind;
-	if (pagefindPromise) return pagefindPromise;
+	if (pagefindModule) return pagefindModule;
 
-	pagefindPromise = (async () => {
-		try {
-			// @ts-ignore - dynamic import from static files
-			const pf = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
-			await pf.init();
-			pagefind = pf;
-			return pf;
-		} catch (e) {
-			console.error('Failed to load Pagefind:', e);
-			return null;
-		}
-	})();
-
-	return pagefindPromise;
+	try {
+		// Use Function constructor to avoid Vite processing
+		const importFn = new Function('url', 'return import(url)');
+		pagefindModule = await importFn('/pagefind/pagefind.js');
+		await pagefindModule.init();
+		return pagefindModule;
+	} catch (e) {
+		console.error('Failed to load Pagefind:', e);
+		return null;
+	}
 }
 
 export async function searchQuery(query: string): Promise<SearchResponse> {
