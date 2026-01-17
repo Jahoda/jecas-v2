@@ -25,8 +25,9 @@ async function loadPagefind(): Promise<any> {
 	pagefindPromise = (async () => {
 		// @ts-ignore - dynamic import from static files
 		const pf = await import(/* @vite-ignore */ '/pagefind/pagefind.js');
-		pagefind = pf;
-		return pf;
+		// Pagefind uses named exports, get the default or the module itself
+		pagefind = pf.default || pf;
+		return pagefind;
 	})();
 
 	return pagefindPromise;
