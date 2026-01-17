@@ -29,7 +29,7 @@ export const GET: RequestHandler = async () => {
 		h: post.headline,
 		d: post.description,
 		g: post.tags || [],
-		c: stripHtml(post.text_html)
+		c: stripHtml(post.text_html).slice(0, 500)
 	}));
 
 	return json(index);
