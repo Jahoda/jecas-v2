@@ -7,10 +7,19 @@
 	import SearchResults from '$lib/search/SearchResults.svelte';
 
 	let query = $state('');
+	let debouncedQuery = $state('');
 	let result: SearchHit[] = $state([]);
+	let debounceTimer: ReturnType<typeof setTimeout>;
 
 	run(() => {
-		searchQuery(query).then((response) => {
+		clearTimeout(debounceTimer);
+		debounceTimer = setTimeout(() => {
+			debouncedQuery = query;
+		}, 200);
+	});
+
+	run(() => {
+		searchQuery(debouncedQuery).then((response) => {
 			result = response.hits || [];
 		});
 	});
