@@ -46,8 +46,6 @@ const SERVERS = {
   },
   "prerender /rss": `/rss`,
   "GET /rss": `/rss`,
-  "prerender /search-index.json": `/search-index.json`,
-  "GET /search-index.json": `/search-index.json`,
   "prerender /sitemap.xml": `/sitemap.xml`,
   "GET /sitemap.xml": `/sitemap.xml`
 }
@@ -173,7 +171,7 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 */
 export type KIT_ROUTES = {
   PAGES: { '/': never, '/admin': never, '/admin/login': never, '/admin/logout': never, '/admin/newsletter': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/prevod-svg': never, '/nastroje/vypocet-procent-sloupcu': never, '/preview/[slug]': 'slug' }
-  SERVERS: { 'prerender /algolia': never, 'GET /algolia': never, 'GET /api/images/[slug]': 'slug', 'POST /api/newsletter/subscribe': never, 'prerender /api/og': never, 'GET /api/og': never, 'prerender /api/og/preview': never, 'GET /api/og/preview': never, 'POST /api/upload': never, 'GET /preview/files/article/[slug]': 'slug', 'prerender /rss': never, 'GET /rss': never, 'prerender /search-index.json': never, 'GET /search-index.json': never, 'prerender /sitemap.xml': never, 'GET /sitemap.xml': never }
+  SERVERS: { 'prerender /algolia': never, 'GET /algolia': never, 'GET /api/images/[slug]': 'slug', 'POST /api/newsletter/subscribe': never, 'prerender /api/og': never, 'GET /api/og': never, 'prerender /api/og/preview': never, 'GET /api/og/preview': never, 'POST /api/upload': never, 'GET /preview/files/article/[slug]': 'slug', 'prerender /rss': never, 'GET /rss': never, 'prerender /sitemap.xml': never, 'GET /sitemap.xml': never }
   ACTIONS: { 'default /admin/login': never, 'default /admin/logout': never }
   LINKS: Record<string, never>
   Params: { 'slug': never }
