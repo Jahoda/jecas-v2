@@ -43,17 +43,17 @@
 </script>
 
 <div
-	class="group relative border border-slate-200 bg-white text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800 {selected
-		? 'ring-2 ring-blue-500'
+	class="group relative text-slate-900 transition-colors hover:bg-slate-50 dark:text-slate-100 dark:hover:bg-slate-900 {selected
+		? 'bg-slate-50 dark:bg-slate-900'
 		: ''} @container"
 	style="--accent-color: {tagsColors[0] || '#3b82f6'};"
 >
 	<!-- Left accent bar -->
 	<div
-		class="absolute top-0 left-0 h-full w-1 transition-all group-hover:w-1.5"
+		class="absolute top-0 left-0 h-full w-1"
 		style="background-color: var(--accent-color);"
 	></div>
-	<div class="{small ? 'p-4 pl-5' : 'p-6 pl-7'} h-full">
+	<div class="{small ? 'p-4 pl-5' : 'p-6 pl-8'} h-full">
 		<div
 			class="flex flex-col items-center text-center {small
 				? 'gap-4 @sm:flex-row @sm:items-start @sm:text-left'
