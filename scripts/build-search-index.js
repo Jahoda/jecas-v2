@@ -1,5 +1,5 @@
 import * as pagefind from 'pagefind';
-import { readdir, readFile } from 'fs/promises';
+import { readdir, readFile, access } from 'fs/promises';
 import { join } from 'path';
 import matter from 'gray-matter';
 
@@ -7,6 +7,14 @@ const POSTS_DIR = 'content/posts';
 
 async function buildSearchIndex() {
 	console.log('[Search Index] Starting...');
+
+	// Verify posts directory exists
+	try {
+		await access(POSTS_DIR);
+	} catch {
+		console.error(`[Search Index] Directory "${POSTS_DIR}" not found`);
+		process.exit(1);
+	}
 
 	// Create Pagefind index
 	const { index } = await pagefind.createIndex();
@@ -19,6 +27,10 @@ async function buildSearchIndex() {
 	// Read all markdown files
 	const files = await readdir(POSTS_DIR);
 	const mdFiles = files.filter((f) => f.endsWith('.md'));
+
+	if (mdFiles.length === 0) {
+		console.warn('[Search Index] No markdown files found');
+	}
 
 	console.log(`[Search Index] Found ${mdFiles.length} markdown files`);
 

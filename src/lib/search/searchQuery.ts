@@ -24,7 +24,8 @@ async function loadPagefind(): Promise<any> {
 	if (pagefindModule) return pagefindModule;
 
 	try {
-		// Use Function constructor to avoid Vite processing
+		// Dynamic import via Function constructor bypasses Vite's static analysis,
+		// allowing runtime loading of Pagefind which is generated during build
 		const importFn = new Function('url', 'return import(url)');
 		pagefindModule = await importFn('/pagefind/pagefind.js');
 		await pagefindModule.init();
@@ -64,28 +65,12 @@ export async function searchQuery(query: string): Promise<SearchResponse> {
 			return { hits: [] };
 		}
 
-		// Load data for all results first
-		const allResults = await Promise.all(
-			search.results.slice(0, 50).map(async (result: any) => {
-				const data = await result.data();
-				return data;
-			})
+		// Load data for top results (index contains only articles from markdown)
+		const resultsData = await Promise.all(
+			search.results.slice(0, 15).map((result: any) => result.data())
 		);
 
-		// Filter to only include article pages (root level, no subdirectories)
-		const excludedPaths = ['/files/', '/archiv', '/api/', '/nastroje/', '/kontakt', '/preview/', '/admin'];
-		const articleResults = allResults.filter((data: any) => {
-			const url = data.url || '';
-			// Exclude paths that are not articles
-			if (excludedPaths.some((path) => url.includes(path))) {
-				return false;
-			}
-			// Only include root-level pages (single path segment)
-			const cleanUrl = url.replace(/^\//, '').replace(/\/$/, '').replace(/\.html$/, '');
-			return cleanUrl.length > 0 && !cleanUrl.includes('/');
-		});
-
-		const results = articleResults.slice(0, 15).map((data: any) => {
+		const results = resultsData.map((data: any) => {
 			const slug = data.url
 				.replace(/^\//, '')
 				.replace(/\/$/, '')

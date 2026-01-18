@@ -13,8 +13,11 @@
 		if (q.length >= 2) {
 			isLoading = true;
 			searchQuery(q).then((response) => {
-				result = response.hits || [];
-				isLoading = false;
+				// Prevent race condition: only update if query hasn't changed
+				if (query === q) {
+					result = response.hits || [];
+					isLoading = false;
+				}
 			});
 		} else {
 			result = [];
