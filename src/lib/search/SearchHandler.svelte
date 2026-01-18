@@ -5,25 +5,13 @@
 	import SearchResults from '$lib/search/SearchResults.svelte';
 
 	let query = $state('');
-	let debouncedQuery = $state('');
 	let result: SearchHit[] = $state([]);
 	let isLoading = $state(false);
-	let debounceTimer: ReturnType<typeof setTimeout>;
 
 	$effect(() => {
-		const q = query; // track dependency
-		clearTimeout(debounceTimer);
+		const q = query;
 		if (q.length >= 2) {
 			isLoading = true;
-		}
-		debounceTimer = setTimeout(() => {
-			debouncedQuery = q;
-		}, 200);
-	});
-
-	$effect(() => {
-		const q = debouncedQuery; // track dependency
-		if (q && q.length >= 2) {
 			searchQuery(q).then((response) => {
 				result = response.hits || [];
 				isLoading = false;

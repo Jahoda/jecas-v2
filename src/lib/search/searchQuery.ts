@@ -52,10 +52,18 @@ export async function searchQuery(query: string): Promise<SearchResponse> {
 			return { hits: [] };
 		}
 
-		// Filter to only include article pages (root level, no subdirectories except single slug)
+		// Load data for all results first
+		const allResults = await Promise.all(
+			search.results.slice(0, 50).map(async (result: any) => {
+				const data = await result.data();
+				return data;
+			})
+		);
+
+		// Filter to only include article pages (root level, no subdirectories)
 		const excludedPaths = ['/files/', '/archiv', '/api/', '/nastroje/', '/kontakt', '/preview/', '/admin'];
-		const articleResults = search.results.filter((result: any) => {
-			const url = result.id || '';
+		const articleResults = allResults.filter((data: any) => {
+			const url = data.url || '';
 			// Exclude paths that are not articles
 			if (excludedPaths.some((path) => url.includes(path))) {
 				return false;
@@ -65,27 +73,23 @@ export async function searchQuery(query: string): Promise<SearchResponse> {
 			return cleanUrl.length > 0 && !cleanUrl.includes('/');
 		});
 
-		const results = await Promise.all(
-			articleResults.slice(0, 15).map(async (result: any) => {
-				const data = await result.data();
-				// Remove leading slash, trailing slash, and .html extension
-				const slug = data.url
-					.replace(/^\//, '')
-					.replace(/\/$/, '')
-					.replace(/\.html$/, '');
-				return {
-					objectID: data.url,
-					url_slug: slug,
-					title: data.meta?.title || '',
-					headline: data.meta?.title || '',
-					description: data.excerpt || '',
-					_highlightResult: {
-						headline: { value: data.meta?.title || '' },
-						description: { value: data.excerpt || '' }
-					}
-				};
-			})
-		);
+		const results = articleResults.slice(0, 15).map((data: any) => {
+			const slug = data.url
+				.replace(/^\//, '')
+				.replace(/\/$/, '')
+				.replace(/\.html$/, '');
+			return {
+				objectID: data.url,
+				url_slug: slug,
+				title: data.meta?.title || '',
+				headline: data.meta?.title || '',
+				description: data.excerpt || '',
+				_highlightResult: {
+					headline: { value: data.meta?.title || '' },
+					description: { value: data.excerpt || '' }
+				}
+			};
+		});
 
 		return { hits: results };
 	} catch (e) {
