@@ -42,12 +42,24 @@ format: "html"
 <p>Existuje několik implementací:</p>
 
 <ul>
-  <li><a href="https://github.com/snarktank/ralph">snarktank/ralph</a> — plnohodnotný agent s PRD a automatickými commity</li>
+  <li><a href="https://github.com/snarktank/ralph">snarktank/ralph</a> — plnohodnotný agent s <abbr title="Product Requirements Document">PRD</abbr> a automatickými commity</li>
   <li><a href="https://github.com/iannuttall/ralph">iannuttall/ralph</a> — minimalistická implementace</li>
   <li><a href="https://github.com/frankbria/ralph-claude-code">frankbria/ralph-claude-code</a> — s rate limitingem a circuit breakerem</li>
 </ul>
 
 <p>Některé implementace nabízejí TUI (terminálové rozhraní) pro sledování průběhu.</p>
+
+<h2 id="prd">Co je PRD?</h2>
+
+<p><b>PRD</b> (Product Requirements Document) je dokument popisující, co má být implementováno. V kontextu Ralph loop jde o soubor (typicky <code>PRD.md</code>), který obsahuje:</p>
+
+<ul>
+  <li>Seznam funkcí k implementaci</li>
+  <li>Kritéria přijetí pro každou funkci</li>
+  <li>Status dokončení (agent ho průběžně aktualizuje)</li>
+</ul>
+
+<p>Agent si z PRD vybírá úkoly, implementuje je a označuje jako hotové. Když jsou všechny položky splněny, loop končí.</p>
 
 <h2 id="modely">Jaké modely používá?</h2>
 
@@ -60,6 +72,14 @@ format: "html"
   <li>Spouštět příkazy v terminálu</li>
   <li>Pracovat s gitem</li>
 </ul>
+
+<h2 id="cena">Cena a předplatné</h2>
+
+<p>Ralph loop je nejvýhodnější s <b>předplatným Claude Max</b>. Na rozdíl od API, kde se platí za každý token, předplatné nabízí paušální cenu.</p>
+
+<p>To znamená, že noční běh, který spotřebuje miliony tokenů, vás nestojí nic navíc. Agent může chroustat celou noc a ráno máte hotový kód za cenu měsíčního předplatného.</p>
+
+<p>Při použití API by stejná práce stála stovky dolarů. S předplatným je to "zdarma" v rámci paušálu.</p>
 
 <h2 id="konfigurace">Konfigurace</h2>
 
