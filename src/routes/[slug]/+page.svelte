@@ -90,92 +90,59 @@
 	{/if}
 </svelte:head>
 
-{#if data.tag}
-	<div data-pagefind-ignore>
-		{#if post}
-			<HeroPost
-				title={post.headline || ('name' in post ? post.name : '')}
-				description={post && 'description' in post ? post.description : ''}
-				date={'last_modification' in post ? post.last_modification : null}
-				href={post.url_slug}
-				isTag={Boolean(data.tag)}
-				background={'background' in post ? post.background : '#3b82f6'}
-				tags={data.tags}
-				noImage={Boolean(data.tag)}
-				wordCount={'word_count' in post ? post.word_count : 0}
-			/>
-		{/if}
-		<Container verticalSpace>
-			<div class="grid grid-cols-1 gap-8 md:gap-16">
-				<div class="xl:grid-cols-post grid grid-cols-1 gap-8">
-					<div class="max-md:hidden"></div>
-					<div><PostContent content={post?.text_html || ''} /></div>
-					<div class="sticky top-2 w-[14rem] self-start text-sm max-xl:hidden">
-						{#if post}
-							<PostToc slug={post.url_slug} />
-						{/if}
-					</div>
-				</div>
-
-				{#if data.tagPosts}
-					<PostList posts={data.tagPosts} tags={data.allTags} pagesTags={data.pagesTags} />
-				{/if}
-			</div>
-		</Container>
-	</div>
-{:else}
-	{#if post}
-		<div data-pagefind-ignore>
-			<HeroPost
-				title={post.headline || ('name' in post ? post.name : '')}
-				description={post && 'description' in post ? post.description : ''}
-				date={'last_modification' in post ? post.last_modification : null}
-				href={post.url_slug}
-				isTag={false}
-				background={'background' in post ? post.background : '#3b82f6'}
-				tags={data.tags}
-				noImage={false}
-				wordCount={'word_count' in post ? post.word_count : 0}
-			/>
-		</div>
-	{/if}
-	<Container verticalSpace>
-		{#if dev && data.page}
-			<ImageUploadManager slug={data.page.url_slug} />
-		{/if}
-		<div class="grid grid-cols-1 gap-8 md:gap-16">
-			<div class="xl:grid-cols-post grid grid-cols-1 gap-8">
-				<div class="max-md:hidden"></div>
-				<div data-pagefind-body><PostContent content={post?.text_html || ''} /></div>
-				<div class="sticky top-2 w-[14rem] self-start text-sm max-xl:hidden" data-pagefind-ignore>
-					{#if post}
-						<PostToc slug={post.url_slug} />
-					{/if}
-				</div>
-			</div>
-
-			<div data-pagefind-ignore>
-				<div class="m-auto w-full max-w-3xl grid-cols-1">
-					{#if post && data.prevNextPosts}
-						<PostNavigation prev={data.prevNextPosts.prev} next={data.prevNextPosts.next} />
-					{/if}
-					{#if post}
-						<PostComments slug={post.url_slug} />
-					{/if}
-				</div>
-
-				{#if data.relatedPosts && data.relatedPosts.length > 0}
-					<div class="text-center">
-						<h2 class="mb-8 text-2xl font-bold md:text-3xl">Související články</h2>
-						<div class="mx-auto max-w-4xl">
-							<PostList posts={data.relatedPosts} tags={data.allTags} pagesTags={data.pagesTags} />
-						</div>
-					</div>
-				{/if}
-			</div>
-		</div>
-	</Container>
+{#if post}
+	<HeroPost
+		title={post.headline || ('name' in post ? post.name : '')}
+		description={post && 'description' in post ? post.description : ''}
+		date={'last_modification' in post ? post.last_modification : null}
+		href={post.url_slug}
+		isTag={Boolean(data.tag)}
+		background={'background' in post ? post.background : '#3b82f6'}
+		tags={data.tags}
+		noImage={Boolean(data.tag)}
+		wordCount={'word_count' in post ? post.word_count : 0}
+	/>
 {/if}
+<Container verticalSpace>
+	{#if dev && data.page}
+		<ImageUploadManager slug={data.page.url_slug} />
+	{/if}
+	<div class="grid grid-cols-1 gap-8 md:gap-16">
+		<div class="xl:grid-cols-post grid grid-cols-1 gap-8">
+			<div class="max-md:hidden"></div>
+			<div data-pagefind-body={data.page ? '' : undefined}>
+				<PostContent content={post?.text_html || ''} />
+			</div>
+			<div class="sticky top-2 w-[14rem] self-start text-sm max-xl:hidden">
+				{#if post}
+					<PostToc slug={post.url_slug} />
+				{/if}
+			</div>
+		</div>
+
+		{#if data.tagPosts}
+			<PostList posts={data.tagPosts} tags={data.allTags} pagesTags={data.pagesTags} />
+		{:else}
+			<div class="m-auto w-full max-w-3xl grid-cols-1">
+				{#if post && data.prevNextPosts}
+					<PostNavigation prev={data.prevNextPosts.prev} next={data.prevNextPosts.next} />
+				{/if}
+				{#if post}
+					<PostComments slug={post.url_slug} />
+				{/if}
+			</div>
+		{/if}
+
+		{#if data.relatedPosts && data.relatedPosts.length > 0}
+			<div class="text-center">
+				<h2 class="mb-8 text-2xl font-bold md:text-3xl">Související články</h2>
+				<div class="mx-auto max-w-4xl">
+					<PostList posts={data.relatedPosts} tags={data.allTags} pagesTags={data.pagesTags} />
+				</div>
+			</div>
+		{/if}
+	</div>
+</Container>
 
 {#if data.page}
 	<AnnotationLoader slug={data.page.url_slug} articleTitle={data.page.title} />
