@@ -82,12 +82,13 @@
 
 	:global(mark) {
 		background-color: #fef08a;
-		color: inherit;
+		color: #1f2937;
 		padding: 0.1em 0.2em;
 		border-radius: 0.2em;
 	}
 
 	:global(.dark mark) {
-		background-color: #854d0e;
+		background-color: #fef08a;
+		color: #1f2937;
 	}
 </style>

@@ -29,5 +29,5 @@
 </script>
 
 <div onmouseenter={onhover}>
-	<MainPost neutral {title} {description} {selected} small />
+	<MainPost neutral {title} {description} {selected} small slug={hit.url_slug} />
 </div>
