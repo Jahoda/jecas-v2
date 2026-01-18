@@ -5,8 +5,8 @@
  * Usage: node scripts/check-links.js [file1.md] [file2.md] ...
  */
 
-import { readFileSync } from 'fs';
-import { resolve } from 'path';
+import { readFileSync, existsSync, readdirSync } from 'fs';
+import { resolve, join } from 'path';
 
 const TIMEOUT = 10000;
 const MAX_RETRIES = 2;
@@ -26,25 +26,82 @@ const SKIP_DOMAINS = [
 	'instagram.com'
 ];
 
+// Cache for existing article slugs
+let articleSlugsCache = null;
+
+/**
+ * Get all existing article slugs from content/posts
+ * @returns {Set<string>}
+ */
+function getExistingArticleSlugs() {
+	if (articleSlugsCache) {
+		return articleSlugsCache;
+	}
+
+	const postsDir = resolve(process.cwd(), 'content/posts');
+	const files = readdirSync(postsDir);
+	articleSlugsCache = new Set(
+		files.filter((f) => f.endsWith('.md')).map((f) => f.replace('.md', ''))
+	);
+	return articleSlugsCache;
+}
+
 /**
  * Extract all URLs from HTML content
  * @param {string} content
- * @returns {string[]}
+ * @returns {{external: string[], internal: string[]}}
  */
 function extractUrls(content) {
 	const urlRegex = /href=["']([^"']+)["']/gi;
-	const urls = [];
+	const external = [];
+	const internal = [];
 	let match;
 
 	while ((match = urlRegex.exec(content)) !== null) {
 		const url = match[1];
-		// Only check http/https URLs
+		// External URLs (http/https)
 		if (url.startsWith('http://') || url.startsWith('https://')) {
-			urls.push(url);
+			external.push(url);
+		}
+		// Internal URLs (starting with / but not //)
+		else if (url.startsWith('/') && !url.startsWith('//')) {
+			internal.push(url);
 		}
 	}
 
-	return [...new Set(urls)]; // Remove duplicates
+	return {
+		external: [...new Set(external)],
+		internal: [...new Set(internal)]
+	};
+}
+
+/**
+ * Check if an internal link points to an existing article
+ * @param {string} url - Internal URL like "/json" or "/bezpecnost#xss"
+ * @returns {{url: string, ok: boolean, error?: string}}
+ */
+function checkInternalLink(url) {
+	// Extract slug (remove leading / and any anchor)
+	const slug = url.replace(/^\//, '').split('#')[0];
+
+	// Skip empty slugs (root link)
+	if (!slug) {
+		return { url, ok: true, skipped: true };
+	}
+
+	// Skip known special paths (like /files/, /static/, etc.)
+	if (slug.startsWith('files/') || slug.startsWith('static/') || slug.startsWith('tags/')) {
+		return { url, ok: true, skipped: true };
+	}
+
+	const existingSlugs = getExistingArticleSlugs();
+	const exists = existingSlugs.has(slug);
+
+	if (exists) {
+		return { url, ok: true };
+	} else {
+		return { url, ok: false, error: `Article "${slug}" does not exist` };
+	}
 }
 
 /**
@@ -142,18 +199,24 @@ async function checkUrl(url, attempt = 1) {
 /**
  * Process a single file
  * @param {string} filePath
- * @returns {Promise<{file: string, results: Array}>}
+ * @returns {Promise<{file: string, externalResults: Array, internalResults: Array}>}
  */
 async function processFile(filePath) {
 	const absolutePath = resolve(process.cwd(), filePath);
 	const content = readFileSync(absolutePath, 'utf-8');
-	const urls = extractUrls(content);
+	const { external, internal } = extractUrls(content);
 
-	console.log(`\nChecking ${urls.length} links in ${filePath}...`);
+	console.log(
+		`\nChecking ${external.length} external + ${internal.length} internal links in ${filePath}...`
+	);
 
-	const results = await Promise.all(urls.map((url) => checkUrl(url)));
+	// Check external URLs asynchronously
+	const externalResults = await Promise.all(external.map((url) => checkUrl(url)));
 
-	return { file: filePath, results };
+	// Check internal URLs synchronously (file system check)
+	const internalResults = internal.map((url) => checkInternalLink(url));
+
+	return { file: filePath, externalResults, internalResults };
 }
 
 async function main() {
@@ -169,21 +232,36 @@ async function main() {
 	const allResults = await Promise.all(files.map(processFile));
 
 	let hasErrors = false;
-	const summary = { total: 0, ok: 0, failed: 0, skipped: 0 };
+	const summary = {
+		external: { total: 0, ok: 0, failed: 0, skipped: 0 },
+		internal: { total: 0, ok: 0, failed: 0, skipped: 0 }
+	};
 
-	for (const { file, results } of allResults) {
-		const failed = results.filter((r) => !r.ok && !r.skipped);
-		const skipped = results.filter((r) => r.skipped);
+	for (const { file, externalResults, internalResults } of allResults) {
+		// Process external results
+		const externalFailed = externalResults.filter((r) => !r.ok && !r.skipped);
+		const externalSkipped = externalResults.filter((r) => r.skipped);
 
-		summary.total += results.length;
-		summary.ok += results.length - failed.length - skipped.length;
-		summary.failed += failed.length;
-		summary.skipped += skipped.length;
+		summary.external.total += externalResults.length;
+		summary.external.ok += externalResults.length - externalFailed.length - externalSkipped.length;
+		summary.external.failed += externalFailed.length;
+		summary.external.skipped += externalSkipped.length;
 
-		if (failed.length > 0) {
+		// Process internal results
+		const internalFailed = internalResults.filter((r) => !r.ok && !r.skipped);
+		const internalSkipped = internalResults.filter((r) => r.skipped);
+
+		summary.internal.total += internalResults.length;
+		summary.internal.ok += internalResults.length - internalFailed.length - internalSkipped.length;
+		summary.internal.failed += internalFailed.length;
+		summary.internal.skipped += internalSkipped.length;
+
+		// Report broken links
+		const allFailed = [...externalFailed, ...internalFailed];
+		if (allFailed.length > 0) {
 			hasErrors = true;
 			console.log(`\n--- ${file} ---`);
-			for (const result of failed) {
+			for (const result of allFailed) {
 				const reason = result.error || `HTTP ${result.status}`;
 				console.log(`  BROKEN: ${result.url}`);
 				console.log(`          Reason: ${reason}`);
@@ -191,11 +269,22 @@ async function main() {
 		}
 	}
 
+	const totalLinks = summary.external.total + summary.internal.total;
+	const totalOk = summary.external.ok + summary.internal.ok;
+	const totalSkipped = summary.external.skipped + summary.internal.skipped;
+	const totalFailed = summary.external.failed + summary.internal.failed;
+
 	console.log('\n=== Summary ===');
-	console.log(`Total links: ${summary.total}`);
-	console.log(`OK: ${summary.ok}`);
-	console.log(`Skipped: ${summary.skipped}`);
-	console.log(`Failed: ${summary.failed}`);
+	console.log(`Total links: ${totalLinks}`);
+	console.log(
+		`  External: ${summary.external.total} (OK: ${summary.external.ok}, Skipped: ${summary.external.skipped}, Failed: ${summary.external.failed})`
+	);
+	console.log(
+		`  Internal: ${summary.internal.total} (OK: ${summary.internal.ok}, Skipped: ${summary.internal.skipped}, Failed: ${summary.internal.failed})`
+	);
+	console.log(`OK: ${totalOk}`);
+	console.log(`Skipped: ${totalSkipped}`);
+	console.log(`Failed: ${totalFailed}`);
 
 	if (hasErrors) {
 		console.log('\nSome links are broken. Please fix them before merging.');
