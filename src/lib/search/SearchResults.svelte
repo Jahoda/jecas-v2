@@ -50,11 +50,15 @@
 	</p>
 {:else}
 	{#each hits as hit, index (hit.objectID)}
-		<div class="pt-4 first:pt-0" animate:flip={{ duration: 200 }}>
-			<div id="searchResult-{index}" tabindex="-1" class="outline-none">
-				<SearchHitComponent {hit} selected={index === currentIndex} />
-			</div>
-		</div>
+		<a
+			href="/{hit.url_slug}"
+			class="block pt-4 first:pt-0 outline-none"
+			id="searchResult-{index}"
+			tabindex="-1"
+			animate:flip={{ duration: 200 }}
+		>
+			<SearchHitComponent {hit} selected={index === currentIndex} onhover={() => (currentIndex = index)} />
+		</a>
 	{/each}
 {/if}
 
@@ -74,5 +78,16 @@
 		to {
 			transform: rotate(360deg);
 		}
+	}
+
+	:global(mark) {
+		background-color: #fef08a;
+		color: inherit;
+		padding: 0.1em 0.2em;
+		border-radius: 0.2em;
+	}
+
+	:global(.dark mark) {
+		background-color: #854d0e;
 	}
 </style>
