@@ -1,0 +1,8 @@
+site: .vercel/output/static
+glob: "**/*.html"
+exclude_selectors:
+  - "[data-pagefind-ignore]"
+  - "nav"
+  - "footer"
+  - ".post-navigation"
+  - ".post-comments"

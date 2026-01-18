@@ -22,6 +22,7 @@
 </svelte:head>
 
 <Container verticalSpace>
+	<h1 class="mb-8 text-center text-3xl font-bold md:text-5xl">Archiv</h1>
 	<div class="grid grid-cols-6 gap-8">
 		{#each data.posts as post, index}
 			<div

@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import PostImage from '$lib/postImage/PostImage.svelte';
 	import ReadingTime from '$lib/readingTime/ReadingTime.svelte';
@@ -43,7 +41,7 @@
 
 	let backgroundGradient: string | null = $state(null);
 
-	run(() => {
+	$effect(() => {
 		if (isTag) {
 			backgroundGradient = `linear-gradient(to right top, ${background}, #5b63b9)`;
 		} else if (tags) {
