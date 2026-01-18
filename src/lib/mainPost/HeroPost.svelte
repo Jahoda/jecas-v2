@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { run } from 'svelte/legacy';
+	import { onMount } from 'svelte';
 
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import PostImage from '$lib/postImage/PostImage.svelte';
@@ -39,7 +40,17 @@
 		customImageUrl = null
 	}: Props = $props();
 
-	const imageUrl = $derived(customImageUrl || `/files/article/${href}.png`);
+	// Try SVG first, fallback to PNG for blur background
+	let imageUrl = $state(customImageUrl || `/files/article/${href}.svg`);
+
+	onMount(() => {
+		if (customImageUrl) return;
+		const img = new Image();
+		img.onerror = () => {
+			imageUrl = `/files/article/${href}.png`;
+		};
+		img.src = imageUrl;
+	});
 
 	let backgroundGradient: string | null = $state(null);
 

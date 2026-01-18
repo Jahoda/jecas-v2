@@ -12,8 +12,16 @@
 	let postImageUrl: string | null = $state(null);
 
 	run(() => {
-		postImageUrl = customImageUrl || `/files/article/${slug}.png`;
+		postImageUrl = customImageUrl || `/files/article/${slug}.svg`;
 	});
+
+	function handleImageError(event: Event) {
+		const img = event.target as HTMLImageElement;
+		// Fallback to PNG if SVG doesn't exist
+		if (img.src.endsWith('.svg')) {
+			img.src = img.src.replace(/\.svg$/, '.png');
+		}
+	}
 </script>
 
 <img
@@ -23,4 +31,5 @@
 	alt=""
 	width="200"
 	height="200"
+	onerror={handleImageError}
 />
