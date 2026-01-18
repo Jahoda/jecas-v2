@@ -95,19 +95,19 @@
 			<div
 				class="{small
 					? 'gap-4 @sm:items-start'
-					: 'gap-8 @xl:items-start'} flex flex-col items-center"
+					: 'gap-8 @xl:items-start'} flex flex-col items-center overflow-hidden"
 			>
 				<svelte:element
 					this={href ? 'a' : 'div'}
 					href={href ? `/${href}` : null}
 					class={href ? 'hover:underline' : ''}
 				>
-					<svelte:element this={headingLevel} class="{small ? 'text-2xl' : 'text-3xl md:text-5xl'} font-bold">
+					<svelte:element this={headingLevel} class="{small ? 'text-2xl line-clamp-2' : 'text-3xl md:text-5xl'} font-bold">
 						{@html safeTitle}
 					</svelte:element>
 				</svelte:element>
 				{#if description}
-					<p class={small ? 'text-sm' : 'text-xl md:text-2xl'}>
+					<p class="{small ? 'text-sm line-clamp-3' : 'text-xl md:text-2xl'}">
 						{@html safeDescription}
 					</p>
 				{/if}
