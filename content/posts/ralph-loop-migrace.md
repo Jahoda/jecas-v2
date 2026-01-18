@@ -34,10 +34,10 @@ format: "html"
 <p>Úkol zněl jednoduše: vzít existující .NET službu a přepsat ji do TypeScriptu. V praxi to znamenalo:</p>
 
 <ol>
-  <li>Analýza struktury .NET projektu</li>
+  <li>Analysa struktury .NET projektu</li>
   <li>Mapování C# typů na TypeScript</li>
   <li>Přepis business logiky</li>
-  <li>Konverze Entity Framework na TypeORM/Prisma</li>
+  <li>Konverse Entity Framework na TypeORM/Prisma</li>
   <li>Úprava API endpointů</li>
   <li>Přepis testů</li>
 </ol>
@@ -89,7 +89,7 @@ format: "html"
   <li><b>Jasné zadání</b> — čím přesnější prompt, tím lepší výsledek</li>
   <li><b>Omezený scope</b> — lepší jedna služba než celý monolit</li>
   <li><b>Funkční testy</b> — agent je použije pro verifikaci</li>
-  <li><b>Verzování</b> — před spuštěním commitnout, aby šlo vrátit změny</li>
+  <li><b>Versování</b> — před spuštěním commitnout, aby šlo vrátit změny</li>
 </ul>
 
 <h2 id="zaver">Zkušenost</h2>
