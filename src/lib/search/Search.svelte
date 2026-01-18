@@ -48,14 +48,16 @@
 		class="fixed top-0 right-0 bottom-0 left-0 z-20 flex items-start justify-center pt-4 text-left whitespace-normal md:py-8"
 	>
 		<div
-			transition:fade={{ duration: 300 }}
+			in:fade={{ duration: 200 }}
+			out:fade={{ duration: 150 }}
 			aria-hidden="true"
 			class="absolute inset-0 bg-black/60 backdrop-blur"
 			onclick={handleClose}
 		></div>
 
 		<div
-			transition:fly={{ y: -20, duration: 200 }}
+			in:fly={{ y: -20, duration: 200 }}
+			out:fade={{ duration: 150 }}
 			class="relative flex max-h-[85%] w-full flex-col overflow-hidden rounded-xl bg-white text-gray-800 shadow-2xl max-md:mx-2 md:max-h-[95%] md:max-w-lg dark:bg-slate-800 dark:text-white"
 		>
 			<SearchHandler on:close={handleClose} />
