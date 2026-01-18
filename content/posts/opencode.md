@@ -1,7 +1,7 @@
 ---
-title: "OpenCode: open source AI agent pro terminál"
-headline: "OpenCode: open source AI agent pro terminál"
-description: "OpenCode je open source alternativa ke Claude Code. Nabízí AI agenta přímo v terminálu s podporou více modelů."
+title: "OpenCode: open source AI agent"
+headline: "OpenCode: open source AI agent"
+description: "Alternativa ke Claude Code. Nabízí AI agenta přímo v aplikaci/terminálu s podporou více modelů."
 date: "2026-01-18"
 status: 1
 tags: ["ai", "produktivita"]
