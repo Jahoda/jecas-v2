@@ -46,7 +46,7 @@
 
 {#if isSearchOpen}
 	<div
-		class="fixed inset-0 z-20 flex h-screen w-screen items-end justify-center text-left whitespace-normal md:items-start md:py-8"
+		class="fixed inset-0 z-20 flex min-h-dvh w-screen items-end justify-center text-left whitespace-normal md:items-start md:py-8"
 	>
 		<div
 			transition:fade={{ duration: 300 }}
@@ -57,7 +57,7 @@
 
 		<div
 			transition:fly={{ y: 50, duration: 200 }}
-			class="rounded-t-x relative flex max-h-full w-full flex-col overflow-hidden bg-white text-gray-800 md:max-h-[95vh] md:max-w-lg md:rounded-xl dark:bg-slate-800 dark:text-white"
+			class="relative flex max-h-[85dvh] w-full flex-col overflow-hidden rounded-t-xl bg-white text-gray-800 md:max-h-[95vh] md:max-w-lg md:rounded-xl dark:bg-slate-800 dark:text-white"
 		>
 			<SearchHandler on:close={handleClose} />
 		</div>
