@@ -197,7 +197,7 @@ opencode</code></pre>
 
 <p>Tyto modely jsou dostupné zdarma po omezenou dobu, zatímco poskytovatelé sbírají zpětnou vazbu.</p>
 
-<p>Kromě toho OpenCode nabízí <a href="https://opencode.ai/zen">OpenCode Zen</a> — kurátorovanou sadu optimalizovaných modelů pro programování.</p>
+<p>Kromě toho OpenCode nabízí <a href="https://opencode.ai/zen">OpenCode Zen</a> — kurátorovanou sadu optimalisovaných modelů pro programování.</p>
 
 <h2 id="srovnani">Srovnání s Claude Code</h2>
 
