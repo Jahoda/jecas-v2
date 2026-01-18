@@ -7,7 +7,7 @@ import { execSync } from 'child_process';
 /**
  * Typografické opravy pro českou typografii:
  * - Nedělitelné mezery před jednopísmennými předložkami/spojkami
- * - Správné české uvozovky „"
+ * - Správné české uvozovky „“
  * - Trojtečka … místo ...
  * - Pomlčka – v rozsazích
  * - Nedělitelná mezera před % a jednotkami
@@ -85,11 +85,11 @@ const TYPOGRAPHY_RULES = [
 		replace: '$1\u00A0$2'
 	},
 
-	// České uvozovky: "text" → „text"
+	// České uvozovky: "text" → „text“
 	{
 		name: 'české uvozovky',
 		find: /"([^"]+)"/g,
-		replace: '„$1"'
+		replace: '„$1“'
 	}
 ];
 
