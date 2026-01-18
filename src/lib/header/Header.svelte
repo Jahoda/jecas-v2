@@ -5,7 +5,7 @@
 	import Logo from '$lib/logo/Logo.svelte';
 </script>
 
-<div class="bg-blue-light dark:bg-blue-light/30 py-2 shadow-lg">
+<div class="bg-blue-light relative z-20 py-2 shadow-lg dark:bg-blue-light/30">
 	<Container verticalSpace={false}>
 		<div class="-mx-3 flex items-center justify-between gap-1 py-1 text-white md:gap-8">
 			<a

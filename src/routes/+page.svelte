@@ -36,55 +36,59 @@
 	/>
 </svelte:head>
 
-<section>
-	<div class="mt-4 md:mt-8"></div>
-
+<section class="border-t border-slate-200 dark:border-slate-800">
 	<Container>
-		<div class="lg:grid-cols-homepage-2 xl:grid-cols-homepage-3 grid grid-cols-1 gap-8">
-			<div class="xlx:col-span-6">
-				<div class="grid grid-cols-1 gap-8">
-					<div class="grid grid-cols-1 gap-4 md:gap-8">
-						{#each data.posts.slice(0, 3) as post, index (post.url_slug)}
-							<div class="grid">
-								<MainPost
-									title={post.headline}
-									description={post.description}
-									date={post.last_modification}
-									href={post.url_slug}
-									neutral={index > 1}
-									small={index > 0}
-									lazy={index > 1}
-									wordCount={post.word_count}
-									tags={data.tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
-								/>
-							</div>
-						{/each}
-					</div>
+		<div class="lg:grid-cols-homepage-2 xl:grid-cols-homepage-3 grid grid-cols-1">
+			<!-- Main content column -->
+			<div class="py-8">
+				<div class="grid grid-cols-1">
+					{#each data.posts.slice(0, 3) as post, index (post.url_slug)}
+						<div class={index > 0 ? '-mt-px' : ''}>
+							<MainPost
+								title={post.headline}
+								description={post.description}
+								date={post.last_modification}
+								href={post.url_slug}
+								neutral={index > 1}
+								small={index > 0}
+								lazy={index > 1}
+								wordCount={post.word_count}
+								tags={data.tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
+							/>
+						</div>
+					{/each}
+				</div>
 
+				<div class="mt-8">
 					<PostList posts={data.posts.slice(3)} tags={data.tags} {pagesTags} />
+				</div>
 
-					<div class="flex justify-center">
-						<Button large href="/archiv" arrow
-							>Dalších cca {data.postCount} článků je v archivu</Button
-						>
-					</div>
+				<div class="mt-8 flex justify-center">
+					<Button large href="/archiv" arrow
+						>Dalších cca {data.postCount} článků je v archivu</Button
+					>
 				</div>
 			</div>
 
-			<div class="xlx:col-span-2">
+			<!-- Sidebar: Tags & Comments -->
+			<div
+				class="border-slate-200 py-8 max-lg:border-t lg:border-l lg:pl-8 dark:border-slate-800"
+			>
 				<div class="grid grid-cols-1 gap-8">
 					<TagCloud tags={data.tags} />
-					<LatestComments />
+
+					<div class="border-t border-slate-200 pt-8 dark:border-slate-800">
+						<LatestComments />
+					</div>
 				</div>
 			</div>
 
-			<div class="xlx:col-span-3">
-				<div class="grid grid-cols-1 gap-8">
-					<TopPosts tags={data.tags} posts={data.favorite} {pagesTags} />
-				</div>
+			<!-- Sidebar: Top Posts -->
+			<div
+				class="border-slate-200 py-8 max-xl:border-t xl:border-l xl:pl-8 dark:border-slate-800"
+			>
+				<TopPosts tags={data.tags} posts={data.favorite} {pagesTags} />
 			</div>
 		</div>
 	</Container>
-
-	<div class="mt-4 md:mt-8"></div>
 </section>

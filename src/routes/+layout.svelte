@@ -30,38 +30,12 @@
 
 <ScrollbarWidthSetter />
 
-<Header />
+<div class="min-h-screen bg-white dark:bg-slate-950">
+	<Header />
 
-<div class="bg -mb-72 h-72 w-full opacity-20">
-	<div class="h-full w-full bg-gradient-to-t from-white dark:from-slate-900"></div>
+	<main>
+		{@render children?.()}
+	</main>
+
+	<Footer />
 </div>
-
-<main class="relative z-10">
-	{@render children?.()}
-</main>
-
-<div class="bg -mt-72 h-72 w-full opacity-20">
-	<div class="h-full w-full bg-gradient-to-b from-white dark:from-slate-900"></div>
-</div>
-
-<Footer />
-
-<style>
-	.bg {
-		background-image: linear-gradient(
-			to right top,
-			#0d6ab7,
-			#0e6ebe,
-			#0e72c5,
-			#0f77cc,
-			#0f7bd3,
-			#3b7ad7,
-			#5578d9,
-			#6b75da,
-			#916ad1,
-			#b05cc1,
-			#c84dad,
-			#da3f94
-		);
-	}
-</style>

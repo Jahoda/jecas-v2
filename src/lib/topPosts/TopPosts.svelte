@@ -12,14 +12,16 @@
 	let { posts, tags, pagesTags }: Props = $props();
 </script>
 
-<div class="grid gap-4">
-	{#each posts as post}
-		<MainPost
-			small
-			title={post.title}
-			description={post.description}
-			href={post.url_slug}
-			tags={tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
-		/>
+<div class="grid">
+	{#each posts as post, index}
+		<div class={index > 0 ? '-mt-px' : ''}>
+			<MainPost
+				small
+				title={post.title}
+				description={post.description}
+				href={post.url_slug}
+				tags={tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
+			/>
+		</div>
 	{/each}
 </div>

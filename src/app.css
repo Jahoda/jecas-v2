@@ -3,6 +3,12 @@
 @plugin '@tailwindcss/forms';
 
 @theme {
+	/* Grid Line Design Colors */
+	--color-grid-line: #e2e8f0;
+	--color-grid-line-dark: #334155;
+	--color-grid-bg: #ffffff;
+	--color-grid-bg-dark: #0f172a;
+
 	/* Custom Colors - Lochmara */
 	--color-lochmara-50: #f0f7ff;
 	--color-lochmara-100: #e0eefe;
@@ -41,6 +47,37 @@
 
 	/* Grid Template Areas */
 	--grid-template-areas-posts: 'main main' 'rest rest';
+}
+
+/* Grid Line Design System */
+@layer components {
+	/* Base grid-line card style */
+	.grid-card {
+		@apply border border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900;
+	}
+
+	.grid-card:hover {
+		@apply bg-slate-50 dark:bg-slate-800/50;
+	}
+
+	/* Grid container with visible lines */
+	.grid-lines {
+		@apply border-l border-slate-200 dark:border-slate-700;
+	}
+
+	.grid-lines > * {
+		@apply border-r border-b border-slate-200 dark:border-slate-700;
+	}
+
+	/* Horizontal separator line */
+	.grid-line-h {
+		@apply border-t border-slate-200 dark:border-slate-700;
+	}
+
+	/* Vertical separator line */
+	.grid-line-v {
+		@apply border-l border-slate-200 dark:border-slate-700;
+	}
 }
 
 /* Typography Configuration for prose elements */

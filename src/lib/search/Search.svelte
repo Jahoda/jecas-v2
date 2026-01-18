@@ -53,7 +53,7 @@
 
 		<div
 			transition:fly={{ y: 50, duration: 200 }}
-			class="rounded-t-x relative flex max-h-full w-full flex-col overflow-hidden bg-white text-gray-800 md:max-h-[95vh] md:max-w-lg md:rounded-xl dark:bg-slate-800 dark:text-white"
+			class="relative flex max-h-full w-full flex-col overflow-hidden border border-slate-200 bg-white text-slate-900 md:max-h-[95vh] md:max-w-lg dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
 		>
 			<SearchHandler on:close={handleClose} />
 		</div>
