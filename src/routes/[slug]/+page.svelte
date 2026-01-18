@@ -110,10 +110,7 @@
 	<div class="grid grid-cols-1 gap-8 md:gap-16">
 		<div class="xl:grid-cols-post grid grid-cols-1 gap-8">
 			<div class="max-md:hidden"></div>
-			<div data-pagefind-body={data.page ? '' : undefined}>
-				{#if data.page}
-					<h1 class="sr-only">{data.page.title}</h1>
-				{/if}
+			<div>
 				<PostContent content={post?.text_html || ''} />
 			</div>
 			<div class="sticky top-2 w-[14rem] self-start text-sm max-xl:hidden">

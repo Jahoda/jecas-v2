@@ -18,7 +18,7 @@
 				<Logo />
 			</a>
 
-			<svelte:element this={isHomepage ? 'h1' : 'span'} class="max-lg:hidden" data-pagefind-ignore>
+			<svelte:element this={isHomepage ? 'h1' : 'span'} class="max-lg:hidden">
 				Moderní tvorba webových aplikací
 			</svelte:element>
 
