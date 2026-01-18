@@ -79,7 +79,7 @@ format: "html"
 
 <p>To znamená, že noční běh, který spotřebuje miliony tokenů, vás nestojí nic navíc. Agent může chroustat celou noc a ráno máte hotový kód za cenu měsíčního předplatného.</p>
 
-<p>Při použití API by stejná práce stála stovky dolarů. S předplatným je to "zdarma" v rámci paušálu.</p>
+<p>Při použití API by stejná práce stála stovky dolarů. S předplatným je to „zdarma" v rámci paušálu.</p>
 
 <h2 id="konfigurace">Konfigurace</h2>
 
@@ -151,9 +151,23 @@ cd muj-projekt
 # Spuštění s monitoringem
 ralph --monitor</code></pre>
 
-<p>Alternativně můžete použít minimální bash loop:</p>
+<h3>Minimální bash loop</h3>
+
+<p>Alternativně můžete použít čistý bash bez závislostí:</p>
 
 <pre><code>while :; do cat PROMPT.md | claude ; done</code></pre>
+
+<p>Jak to funguje:</p>
+
+<ul>
+  <li><code>while :;</code> — nekonečná smyčka (dvojtečka je zkratka pro <code>true</code>)</li>
+  <li><code>cat PROMPT.md</code> — načte obsah souboru s úkolem</li>
+  <li><code>|</code> — předá text jako vstup dalšímu příkazu</li>
+  <li><code>claude</code> — spustí Claude Code s promptem</li>
+  <li><code>done</code> — konec smyčky, která se okamžitě opakuje</li>
+</ul>
+
+<p>Po každé iteraci Claude Code skončí (vyčerpá kontext nebo dokončí úkol), ale smyčka ho ihned spustí znovu se stejným promptem. Agent si přečte soubory, které předchozí iterace změnila, a pokračuje v práci.</p>
 
 <h2 id="odkazy">Odkazy</h2>
 
