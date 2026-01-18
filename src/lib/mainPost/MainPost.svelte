@@ -43,7 +43,7 @@
 </script>
 
 <div
-	class="group relative text-slate-900 transition-colors hover:bg-slate-50 dark:text-slate-100 dark:hover:bg-slate-900 {selected
+	class="group relative border border-slate-200 bg-white text-slate-900 transition-colors hover:bg-slate-50 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-100 dark:hover:bg-slate-900 {selected
 		? 'bg-slate-50 dark:bg-slate-900'
 		: ''} @container"
 	style="--accent-color: {tagsColors[0] || '#3b82f6'};"

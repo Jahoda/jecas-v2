@@ -5,21 +5,17 @@
 	import Logo from '$lib/logo/Logo.svelte';
 </script>
 
-<div
-	class="relative z-20 border-b border-slate-200 bg-white/80 py-2 backdrop-blur-sm dark:border-slate-700 dark:bg-slate-900/80"
->
+<div class="bg-blue-light relative z-20 py-2 shadow-lg dark:bg-blue-light/30">
 	<Container verticalSpace={false}>
-		<div
-			class="-mx-3 flex items-center justify-between gap-1 py-1 text-slate-900 dark:text-slate-100 md:gap-8"
-		>
+		<div class="-mx-3 flex items-center justify-between gap-1 py-1 text-white md:gap-8">
 			<a
 				href="/"
-				class="flex h-10 items-center rounded-lg px-3 transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
+				class="hover:bg-blue-dark dark:hover:bg-blue-dark/30 flex h-10 items-center rounded-xl px-3"
 			>
 				<Logo />
 			</a>
 
-			<svelte:element this={'h1'} class="text-sm font-medium text-slate-600 dark:text-slate-400 max-lg:hidden">
+			<svelte:element this={'h1'} class="max-lg:hidden">
 				Moderní tvorba webových aplikací
 			</svelte:element>
 
@@ -29,7 +25,7 @@
 
 			<a
 				href="/kontakt"
-				class="rounded-lg px-4 py-2 text-sm font-medium transition-colors hover:bg-slate-100 dark:hover:bg-slate-800"
+				class="hover:bg-blue-dark dark:hover:bg-blue-dark/30 rounded-md px-4 py-2 transition-colors"
 			>
 				O webu
 			</a>

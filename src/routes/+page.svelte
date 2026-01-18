@@ -41,36 +41,30 @@
 		<div class="lg:grid-cols-homepage-2 xl:grid-cols-homepage-3 grid grid-cols-1">
 			<!-- Main content column -->
 			<div class="py-8">
-				<div class="grid grid-cols-1 gap-px bg-slate-200 dark:bg-slate-800">
+				<div class="grid grid-cols-1 gap-4">
 					{#each data.posts.slice(0, 3) as post, index (post.url_slug)}
-						<div class="bg-white dark:bg-slate-950">
-							<MainPost
-								title={post.headline}
-								description={post.description}
-								date={post.last_modification}
-								href={post.url_slug}
-								neutral={index > 1}
-								small={index > 0}
-								lazy={index > 1}
-								wordCount={post.word_count}
-								tags={data.tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
-							/>
-						</div>
+						<MainPost
+							title={post.headline}
+							description={post.description}
+							date={post.last_modification}
+							href={post.url_slug}
+							neutral={index > 1}
+							small={index > 0}
+							lazy={index > 1}
+							wordCount={post.word_count}
+							tags={data.tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
+						/>
 					{/each}
 				</div>
 
-				<div class="mt-px bg-slate-200 dark:bg-slate-800">
-					<div class="bg-white py-8 dark:bg-slate-950">
-						<PostList posts={data.posts.slice(3)} tags={data.tags} {pagesTags} />
-					</div>
+				<div class="mt-8">
+					<PostList posts={data.posts.slice(3)} tags={data.tags} {pagesTags} />
 				</div>
 
-				<div class="mt-px bg-slate-200 dark:bg-slate-800">
-					<div class="flex justify-center bg-white py-8 dark:bg-slate-950">
-						<Button large href="/archiv" arrow
-							>Dalších cca {data.postCount} článků je v archivu</Button
-						>
-					</div>
+				<div class="mt-8 flex justify-center">
+					<Button large href="/archiv" arrow
+						>Dalších cca {data.postCount} článků je v archivu</Button
+					>
 				</div>
 			</div>
 
