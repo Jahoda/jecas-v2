@@ -144,7 +144,7 @@ cd ralph-claude-code
 
 <h3>Použití</h3>
 
-<pre><code># Inicializace projektu
+<pre><code># Inicialisace projektu
 ralph-setup muj-projekt
 cd muj-projekt
 
