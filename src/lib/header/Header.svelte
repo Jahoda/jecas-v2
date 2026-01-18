@@ -15,7 +15,7 @@
 				<Logo />
 			</a>
 
-			<svelte:element this={'h1'} class="max-lg:hidden">
+			<svelte:element this={'h1'} class="max-lg:hidden" data-pagefind-ignore>
 				Moderní tvorba webových aplikací
 			</svelte:element>
 

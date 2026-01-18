@@ -62,6 +62,7 @@ export async function searchQuery(query: string): Promise<SearchResponse> {
 		const results = await Promise.all(
 			search.results.slice(0, 15).map(async (result: any) => {
 				const data = await result.data();
+				console.log('[Pagefind] Result data:', data);
 				// Remove leading slash, trailing slash, and .html extension
 				const slug = data.url
 					.replace(/^\//, '')
