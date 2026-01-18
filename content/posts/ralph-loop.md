@@ -56,7 +56,7 @@ format: "html"
 <ul>
   <li>Seznam funkcí k implementaci</li>
   <li>Kritéria přijetí pro každou funkci</li>
-  <li>Status dokončení (agent ho průběžně aktualizuje)</li>
+  <li>Status dokončení (agent ho průběžně aktualisuje)</li>
 </ul>
 
 <p>Agent si z PRD vybírá úkoly, implementuje je a označuje jako hotové. Když jsou všechny položky splněny, loop končí.</p>
