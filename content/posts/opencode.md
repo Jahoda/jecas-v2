@@ -98,13 +98,7 @@ format: "html"
 <pre><code>cd ~/muj-projekt
 opencode</code></pre>
 
-<p>Pak stačí psát požadavky přirozeným jazykem:</p>
-
-<ul>
-  <li><i>"Vysvětli mi, co dělá funkce processPayment"</i></li>
-  <li><i>"Přidej validaci emailu do registračního formuláře"</i></li>
-  <li><i>"Napiš unit testy pro modul utils"</i></li>
-</ul>
+<p>Pak stačí psát požadavky přirozeným jazykem.</p>
 
 <h3>Režim plánování</h3>
 
@@ -197,7 +191,7 @@ opencode</code></pre>
 
 <p>Tyto modely jsou dostupné zdarma po omezenou dobu, zatímco poskytovatelé sbírají zpětnou vazbu.</p>
 
-<p>Kromě toho OpenCode nabízí <a href="https://opencode.ai/zen">OpenCode Zen</a> — kurátorovanou sadu optimalisovaných modelů pro programování.</p>
+<p>Kromě toho OpenCode nabízí <a href="https://opencode.ai/zen">OpenCode Zen</a> — sadu optimalisovaných modelů pro programování.</p>
 
 <h2 id="srovnani">Srovnání s Claude Code</h2>
 
