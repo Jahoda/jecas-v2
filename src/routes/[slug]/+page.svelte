@@ -112,7 +112,7 @@
 			<div class="max-md:hidden"></div>
 			<div data-pagefind-body={data.page ? '' : undefined}>
 				{#if data.page}
-					<h1 class="sr-only">{data.page.headline || data.page.title}</h1>
+					<h1 class="sr-only">{data.page.title}</h1>
 				{/if}
 				<PostContent content={post?.text_html || ''} />
 			</div>

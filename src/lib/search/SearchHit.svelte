@@ -9,8 +9,12 @@
 
 	let { hit, selected = false }: Props = $props();
 
-	let title = $derived(hit._highlightResult?.headline?.value || hit.headline);
-	let description = $derived(hit._highlightResult?.description?.value || hit.description);
+	function stripHtml(html: string): string {
+		return html.replace(/<[^>]*>/g, '');
+	}
+
+	let title = $derived(stripHtml(hit.title || hit.headline));
+	let description = $derived(stripHtml(hit.description));
 </script>
 
 <MainPost neutral {title} {description} href={hit.url_slug} {selected} small />
