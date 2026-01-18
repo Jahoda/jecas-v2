@@ -56,7 +56,7 @@ format: "html"
   <li>Vložte API klíč</li>
 </ol>
 
-<p>Pro inicializaci projektu použijte příkaz <code>/init</code>, který analyzuje strukturu kódu.</p>
+<p>Pro inicialisaci projektu použijte příkaz <code>/init</code>, který analyzuje strukturu kódu.</p>
 
 <h2 id="modely">Podporované modely</h2>
 
@@ -112,7 +112,7 @@ opencode</code></pre>
 
 <h3>Non-interaktivní režim</h3>
 
-<p>Pro automatizaci lze OpenCode spustit s parametrem <code>-p</code>:</p>
+<p>Pro automatisaci lze OpenCode spustit s parametrem <code>-p</code>:</p>
 
 <pre><code>opencode -p "Vypiš všechny TODO komentáře v projektu" -q</code></pre>
 
@@ -173,7 +173,7 @@ opencode</code></pre>
 
 <h2 id="architektura">Architektura</h2>
 
-<p>OpenCode je napsaný v Go a používá framework <a href="https://github.com/charmbracelet/bubbletea">Bubble Tea</a> pro terminálové rozhraní. Konverzace ukládá do lokální SQLite databáze.</p>
+<p>OpenCode je napsaný v Go a používá framework <a href="https://github.com/charmbracelet/bubbletea">Bubble Tea</a> pro terminálové rozhraní. Konversace ukládá do lokální SQLite databáze.</p>
 
 <p>Zajímavostí je klient/server architektura — OpenCode může běžet na počítači a ovládat ho můžete vzdáleně, třeba z mobilní aplikace.</p>
 
