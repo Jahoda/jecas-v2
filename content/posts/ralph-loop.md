@@ -132,11 +132,16 @@ Vypiš: &lt;promise&gt;COMPLETE&lt;/promise&gt;</code></pre>
   <li><b>Jasný prompt</b> — úspěch závisí na kvalitě promptu, ne jen na modelu</li>
 </ul>
 
-<h2 id="vysledky">Reálné výsledky</h2>
+<h2 id="jak-zacit">Jak začít?</h2>
 
-<p>Huntley uvádí příklad: zakázka za $50 000 USD dokončená za $297 pomocí Ralph loop. Jiný vývojář nechal agenta postavit klon Fruit Ninja — agent prošel 8 rotací kontextu, naučil se z několika neúspěšných pokusů a dodal funkční hru.</p>
+<ol>
+  <li><b>Nainstalujte Claude Code</b> — <code>npm install -g @anthropic-ai/claude-code</code></li>
+  <li><b>Vytvořte PROMPT.md</b> — popište úkol, kritéria dokončení a signál ukončení</li>
+  <li><b>Commitněte aktuální stav</b> — pro možnost rollbacku</li>
+  <li><b>Spusťte loop</b> — <code>while :; do cat PROMPT.md | claude ; done</code></li>
+</ol>
 
-<p>Ralph loop není náhrada za seniora, který navrhne architekturu. Ale na samotnou implementaci podle specifikace je to nástroj, který může ušetřit dny až týdny práce.</p>
+<p>Pro robustnější řešení použijte některou z hotových implementací na GitHubu, které přidávají rate limiting, error handling a TUI.</p>
 
 <h2 id="odkazy">Odkazy</h2>
 
