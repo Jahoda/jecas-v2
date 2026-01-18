@@ -46,7 +46,7 @@
 
 {#if isSearchOpen}
 	<div
-		class="fixed inset-0 z-20 flex min-h-dvh w-screen items-end justify-center text-left whitespace-normal md:items-start md:py-8"
+		class="fixed inset-0 z-20 flex h-[100dvh] w-screen items-end justify-center text-left whitespace-normal md:items-start md:py-8"
 	>
 		<div
 			transition:fade={{ duration: 300 }}
