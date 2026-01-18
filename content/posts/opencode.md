@@ -8,9 +8,9 @@ tags: ["ai", "produktivita"]
 format: "html"
 ---
 
-<p><a href="https://opencode.ai">OpenCode</a> je open source AI agent pro programátory, který běží přímo v terminálu. Je to alternativa k <b>Claude Code</b> od Anthropic, ale na rozdíl od něj podporuje více AI poskytovatelů a je kompletně open source.</p>
+<p><a href="https://opencode.ai">OpenCode</a> je open source AI agent pro programátory. Je to alternativa k <b>Claude Code</b> od Anthropic, ale na rozdíl od něj podporuje více AI poskytovatelů a je kompletně open source.</p>
 
-<p>Projekt má přes 70 000 hvězdiček na GitHubu a používá ho více než 650 000 vývojářů měsíčně.</p>
+<p>OpenCode je dostupný jako terminálová aplikace, <b>desktopová aplikace</b> (macOS, Windows, Linux) nebo rozšíření pro IDE.</p>
 
 <h2 id="co-umi">Co OpenCode umí?</h2>
 
@@ -69,11 +69,11 @@ format: "html"
   </tr>
   <tr>
     <td>OpenAI</td>
-    <td>GPT-4o, GPT-4 Turbo, o1, o3</td>
+    <td>GPT-4o, GPT-4.1, o1, o3</td>
   </tr>
   <tr>
     <td>Anthropic</td>
-    <td>Claude 3.5 Sonnet, Claude 3.7 Sonnet</td>
+    <td>Claude 4 Sonnet/Opus, Claude 3.5/3.7 Sonnet</td>
   </tr>
   <tr>
     <td>Google</td>
@@ -81,11 +81,11 @@ format: "html"
   </tr>
   <tr>
     <td>AWS Bedrock</td>
-    <td>Claude, Titan</td>
+    <td>Claude 3.7 Sonnet</td>
   </tr>
   <tr>
     <td>Groq</td>
-    <td>Llama, Mixtral</td>
+    <td>Llama 4, DeepSeek R1</td>
   </tr>
 </table>
 
@@ -134,20 +134,28 @@ opencode</code></pre>
     <td>Nová relace</td>
   </tr>
   <tr>
-    <td><kbd>Ctrl</kbd>+<kbd>A</kbd></td>
-    <td>Přepnout relaci</td>
+    <td><kbd>Ctrl</kbd>+<kbd>O</kbd></td>
+    <td>Výběr modelu</td>
+  </tr>
+  <tr>
+    <td><kbd>Ctrl</kbd>+<kbd>K</kbd></td>
+    <td>Příkazy</td>
   </tr>
   <tr>
     <td><kbd>Ctrl</kbd>+<kbd>E</kbd></td>
     <td>Otevřít v externím editoru</td>
   </tr>
   <tr>
-    <td><kbd>Ctrl</kbd>+<kbd>?</kbd></td>
-    <td>Nápověda</td>
+    <td><kbd>Ctrl</kbd>+<kbd>L</kbd></td>
+    <td>Zobrazit logy</td>
+  </tr>
+  <tr>
+    <td><kbd>Ctrl</kbd>+<kbd>X</kbd></td>
+    <td>Zrušit operaci</td>
   </tr>
   <tr>
     <td><kbd>Esc</kbd></td>
-    <td>Zrušit/Opustit</td>
+    <td>Opustit editor</td>
   </tr>
 </table>
 
@@ -168,7 +176,7 @@ opencode</code></pre>
 <ul>
   <li>Kód se neposílá na vzdálené servery (pokud nepoužíváte cloudové modely)</li>
   <li>Vy rozhodujete, který poskytovatel a model se použije</li>
-  <li>S lokálními modely (přes Ollama) zůstává vše na vašem počítači</li>
+  <li>Podporuje lokální modely přes proměnnou <code>LOCAL_ENDPOINT</code></li>
 </ul>
 
 <h2 id="architektura">Architektura</h2>
@@ -176,6 +184,20 @@ opencode</code></pre>
 <p>OpenCode je napsaný v Go a používá framework <a href="https://github.com/charmbracelet/bubbletea">Bubble Tea</a> pro terminálové rozhraní. Konversace ukládá do lokální SQLite databáze.</p>
 
 <p>Zajímavostí je klient/server architektura — OpenCode může běžet na počítači a ovládat ho můžete vzdáleně, třeba z mobilní aplikace.</p>
+
+<h2 id="free-modely">Free modely</h2>
+
+<p>OpenCode nabízí několik modelů zdarma:</p>
+
+<ul>
+  <li><b>Grok Code Fast 1</b> — model od xAI</li>
+  <li><b>GLM 4.7</b> — model od Zhipu AI</li>
+  <li><b>MiniMax M2.1</b></li>
+</ul>
+
+<p>Tyto modely jsou dostupné zdarma po omezenou dobu, zatímco poskytovatelé sbírají zpětnou vazbu.</p>
+
+<p>Kromě toho OpenCode nabízí <a href="https://opencode.ai/zen">OpenCode Zen</a> — kurátorovanou sadu optimalizovaných modelů pro programování.</p>
 
 <h2 id="srovnani">Srovnání s Claude Code</h2>
 
@@ -191,13 +213,28 @@ opencode</code></pre>
     <td>Proprietární</td>
   </tr>
   <tr>
+    <td>Cena</td>
+    <td>Zdarma (+ volitelné API kredity)</td>
+    <td>Předplatné Claude</td>
+  </tr>
+  <tr>
+    <td>Free modely</td>
+    <td>Ano</td>
+    <td>Ne</td>
+  </tr>
+  <tr>
     <td>Modely</td>
     <td>Více poskytovatelů</td>
     <td>Pouze Claude</td>
   </tr>
   <tr>
     <td>Lokální modely</td>
-    <td>Ano (Ollama)</td>
+    <td>Ano</td>
+    <td>Ne</td>
+  </tr>
+  <tr>
+    <td>Desktop aplikace</td>
+    <td>Ano</td>
     <td>Ne</td>
   </tr>
   <tr>
