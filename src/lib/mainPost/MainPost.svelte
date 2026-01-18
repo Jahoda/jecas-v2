@@ -19,6 +19,7 @@
 		noImage?: boolean;
 		wordCount?: number | null;
 		lazy?: boolean;
+		headingLevel?: 'h1' | 'h2';
 	}
 
 	let {
@@ -33,7 +34,8 @@
 		selected = false,
 		noImage = false,
 		wordCount = null,
-		lazy = true
+		lazy = true,
+		headingLevel = 'h2'
 	}: Props = $props();
 
 	let tagsColors = $derived(tags?.map((tag) => tag.background).filter((color) => color) || []);
@@ -96,9 +98,9 @@
 					href={href ? `/${href}` : null}
 					class={href ? 'hover:underline' : ''}
 				>
-					<h1 class="{small ? 'text-2xl' : 'text-3xl md:text-5xl'} font-bold">
+					<svelte:element this={headingLevel} class="{small ? 'text-2xl' : 'text-3xl md:text-5xl'} font-bold">
 						{@html safeTitle}
-					</h1>
+					</svelte:element>
 				</svelte:element>
 				{#if description}
 					<p class={small ? 'text-sm' : 'text-xl md:text-2xl'}>

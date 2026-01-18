@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import { goto } from '$app/navigation';
 	import type { SearchHit } from '$lib/search/searchQuery';
 	import SearchHitComponent from '$lib/search/SearchHit.svelte';
@@ -32,7 +30,7 @@
 		}
 	}
 
-	run(() => {
+	$effect(() => {
 		scrollToElement(currentIndex);
 	});
 </script>

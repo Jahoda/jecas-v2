@@ -34,7 +34,7 @@
 	<meta name="description" content={description} />
 </svelte:head>
 
-<MainPost noImage {title} {description} />
+<MainPost noImage {title} {description} headingLevel="h1" />
 
 <div class="flex gap-6">
 	{#each items as item, index}
