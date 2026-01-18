@@ -107,7 +107,7 @@
 					</svelte:element>
 				</svelte:element>
 				{#if description}
-					<p class="{small ? 'text-sm line-clamp-3' : 'text-xl md:text-2xl'}">
+					<p class="{small ? 'text-sm line-clamp-3' : 'text-xl md:text-2xl'} break-words">
 						{@html safeDescription}
 					</p>
 				{/if}
