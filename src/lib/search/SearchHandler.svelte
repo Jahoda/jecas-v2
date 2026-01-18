@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import SearchInput from '$lib/search/SearchInput.svelte';
 
 	import { searchQuery, type SearchHit } from '$lib/search/searchQuery';
@@ -11,17 +9,23 @@
 	let result: SearchHit[] = $state([]);
 	let debounceTimer: ReturnType<typeof setTimeout>;
 
-	run(() => {
+	$effect(() => {
+		const q = query; // track dependency
 		clearTimeout(debounceTimer);
 		debounceTimer = setTimeout(() => {
-			debouncedQuery = query;
+			debouncedQuery = q;
 		}, 200);
 	});
 
-	run(() => {
-		searchQuery(debouncedQuery).then((response) => {
-			result = response.hits || [];
-		});
+	$effect(() => {
+		const q = debouncedQuery; // track dependency
+		if (q) {
+			searchQuery(q).then((response) => {
+				result = response.hits || [];
+			});
+		} else {
+			result = [];
+		}
 	});
 </script>
 
