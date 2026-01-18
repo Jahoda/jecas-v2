@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import SearchHandler from '$lib/search/SearchHandler.svelte';
 	import SearchIcon from '$lib/search/SearchIcon.svelte';
+	import { preloadPagefind } from '$lib/search/searchQuery';
 
 	import { onMount } from 'svelte';
 	import { navigating } from '$app/stores';
@@ -14,12 +13,17 @@
 		if (event.key === 'Escape') {
 			isSearchOpen = false;
 		} else if (event.metaKey && event.key === 'k') {
-			isSearchOpen = true;
+			handleOpen();
 		}
 	};
 
 	function handleClose() {
 		isSearchOpen = false;
+	}
+
+	function handleOpen() {
+		isSearchOpen = true;
+		preloadPagefind();
 	}
 
 	let hasMounted = $state(false);
@@ -28,7 +32,7 @@
 		hasMounted = true;
 	});
 
-	run(() => {
+	$effect(() => {
 		if (hasMounted) {
 			document.body.classList.toggle('overflow-hidden', isSearchOpen);
 			document.body.classList.toggle('is-modal-open', isSearchOpen);
@@ -61,7 +65,7 @@
 {/if}
 
 <button
-	onclick={() => (isSearchOpen = true)}
+	onclick={handleOpen}
 	type="button"
 	class="dark:bg-blue-dark/30 flex h-10 w-10 items-center gap-x-3 rounded-lg bg-white text-left text-sm text-slate-400 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:ring-2 focus:ring-sky-500 focus:outline-none max-sm:justify-center sm:w-72 sm:px-4 dark:hover:ring-blue-700"
 >

@@ -35,6 +35,18 @@ async function loadPagefind(): Promise<any> {
 	}
 }
 
+// Preload Pagefind when search modal opens for faster first search
+export function preloadPagefind(): void {
+	loadPagefind();
+}
+
+// Decode HTML entities in text
+function decodeHtmlEntities(text: string): string {
+	const textarea = document.createElement('textarea');
+	textarea.innerHTML = text;
+	return textarea.value;
+}
+
 export async function searchQuery(query: string): Promise<SearchResponse> {
 	if (!browser || query.length < 2) {
 		return { hits: [] };
@@ -78,15 +90,17 @@ export async function searchQuery(query: string): Promise<SearchResponse> {
 				.replace(/^\//, '')
 				.replace(/\/$/, '')
 				.replace(/\.html$/, '');
+			const title = decodeHtmlEntities(data.meta?.title || '');
+			const excerpt = data.excerpt || '';
 			return {
 				objectID: data.url,
 				url_slug: slug,
-				title: data.meta?.title || '',
-				headline: data.meta?.title || '',
-				description: data.excerpt || '',
+				title,
+				headline: title,
+				description: excerpt,
 				_highlightResult: {
-					headline: { value: data.meta?.title || '' },
-					description: { value: data.excerpt || '' }
+					headline: { value: title },
+					description: { value: excerpt }
 				}
 			};
 		});
