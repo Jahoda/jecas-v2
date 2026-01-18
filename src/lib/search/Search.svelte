@@ -23,7 +23,6 @@
 
 	function handleOpen() {
 		isSearchOpen = true;
-		preloadPagefind();
 	}
 
 	let hasMounted = $state(false);
@@ -66,6 +65,8 @@
 
 <button
 	onclick={handleOpen}
+	onmouseenter={preloadPagefind}
+	onfocus={preloadPagefind}
 	type="button"
 	class="dark:bg-blue-dark/30 flex h-10 w-10 items-center gap-x-3 rounded-lg bg-white text-left text-sm text-slate-400 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:ring-2 focus:ring-sky-500 focus:outline-none max-sm:justify-center sm:w-72 sm:px-4 dark:hover:ring-blue-700"
 >
