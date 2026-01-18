@@ -58,36 +58,18 @@ format: "html"
 
 <p>Pro inicialisaci projektu použijte příkaz <code>/init</code>, který analyzuje strukturu kódu.</p>
 
+
+<h2 id="aplikace">Desktopová aplikace</h2>
+
+<p>Pro nepříznivce terminálu jde použít <a href="https://opencode.ai/download">desktopová aplikace</a>, kde je člověk od příkazů odstíněn.</p>
+
+<p><img src="/files/opencode/snimek-obrazovky-2026-01-18-v-8-29-16.png" class="border" alt="" /></p>
+
 <h2 id="modely">Podporované modely</h2>
 
-<p>OpenCode podporuje širokou škálu AI modelů:</p>
+<p>OpenCode podporuje širokou škálu AI modelů. Vzhledem k tomu, že přidání nového poskytovatele je díky standardisaci celkem triviální. Je typicky možné použít skoro cokoliv.</p>
 
-<table>
-  <tr>
-    <th>Poskytovatel</th>
-    <th>Modely</th>
-  </tr>
-  <tr>
-    <td>OpenAI</td>
-    <td>GPT-4o, GPT-4.1, o1, o3</td>
-  </tr>
-  <tr>
-    <td>Anthropic</td>
-    <td>Claude 4 Sonnet/Opus, Claude 3.5/3.7 Sonnet</td>
-  </tr>
-  <tr>
-    <td>Google</td>
-    <td>Gemini 2.5 Pro, Gemini 2.5 Flash</td>
-  </tr>
-  <tr>
-    <td>AWS Bedrock</td>
-    <td>Claude 3.7 Sonnet</td>
-  </tr>
-  <tr>
-    <td>Groq</td>
-    <td>Llama 4, DeepSeek R1</td>
-  </tr>
-</table>
+<p>V AI světě se všichni předhání s rychlostí, takže nové modely jsou zpravidla dostupné v řádu hodin od jejich uvedení.</p>
 
 <p>Možnost vybrat si model je klíčová výhoda oproti Claude Code, který je svázaný pouze s modely od Anthropic.</p>
 
@@ -112,46 +94,6 @@ opencode</code></pre>
 
 <p>Parametr <code>-q</code> potlačí interaktivní výstup, <code>-f json</code> vrátí výstup ve formátu JSON.</p>
 
-<h2 id="klavesove-zkratky">Klávesové zkratky</h2>
-
-<table>
-  <tr>
-    <th>Zkratka</th>
-    <th>Akce</th>
-  </tr>
-  <tr>
-    <td><kbd>Ctrl</kbd>+<kbd>S</kbd></td>
-    <td>Odeslat zprávu</td>
-  </tr>
-  <tr>
-    <td><kbd>Ctrl</kbd>+<kbd>N</kbd></td>
-    <td>Nová relace</td>
-  </tr>
-  <tr>
-    <td><kbd>Ctrl</kbd>+<kbd>O</kbd></td>
-    <td>Výběr modelu</td>
-  </tr>
-  <tr>
-    <td><kbd>Ctrl</kbd>+<kbd>K</kbd></td>
-    <td>Příkazy</td>
-  </tr>
-  <tr>
-    <td><kbd>Ctrl</kbd>+<kbd>E</kbd></td>
-    <td>Otevřít v externím editoru</td>
-  </tr>
-  <tr>
-    <td><kbd>Ctrl</kbd>+<kbd>L</kbd></td>
-    <td>Zobrazit logy</td>
-  </tr>
-  <tr>
-    <td><kbd>Ctrl</kbd>+<kbd>X</kbd></td>
-    <td>Zrušit operaci</td>
-  </tr>
-  <tr>
-    <td><kbd>Esc</kbd></td>
-    <td>Opustit editor</td>
-  </tr>
-</table>
 
 <h2 id="mcp">Model Context Protocol</h2>
 
