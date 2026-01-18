@@ -7,11 +7,15 @@
 	let query = $state('');
 	let debouncedQuery = $state('');
 	let result: SearchHit[] = $state([]);
+	let isLoading = $state(false);
 	let debounceTimer: ReturnType<typeof setTimeout>;
 
 	$effect(() => {
 		const q = query; // track dependency
 		clearTimeout(debounceTimer);
+		if (q.length >= 2) {
+			isLoading = true;
+		}
 		debounceTimer = setTimeout(() => {
 			debouncedQuery = q;
 		}, 200);
@@ -19,12 +23,14 @@
 
 	$effect(() => {
 		const q = debouncedQuery; // track dependency
-		if (q) {
+		if (q && q.length >= 2) {
 			searchQuery(q).then((response) => {
 				result = response.hits || [];
+				isLoading = false;
 			});
 		} else {
 			result = [];
+			isLoading = false;
 		}
 	});
 </script>
@@ -37,6 +43,6 @@
 
 <div class="overflow-y-auto">
 	<div class="p-3">
-		<SearchResults {query} hits={result} />
+		<SearchResults {query} hits={result} {isLoading} />
 	</div>
 </div>

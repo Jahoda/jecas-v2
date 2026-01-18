@@ -7,9 +7,10 @@
 	interface Props {
 		hits?: SearchHit[];
 		query: string;
+		isLoading?: boolean;
 	}
 
-	let { hits = [], query }: Props = $props();
+	let { hits = [], query, isLoading = false }: Props = $props();
 
 	let currentIndex = $state(0);
 
@@ -37,6 +38,10 @@
 
 {#if query.length < 2}
 	<p class="text-gray-500 dark:text-gray-400">Začněte psát pro vyhledávání...</p>
+{:else if isLoading}
+	<div class="flex items-center justify-center py-8">
+		<div class="loader"></div>
+	</div>
 {:else if hits.length === 0}
 	<p>
 		O „{query}" tu nic není,
@@ -54,3 +59,20 @@
 {/if}
 
 <svelte:window onkeydown={handleKeydown} />
+
+<style>
+	.loader {
+		width: 32px;
+		height: 32px;
+		border: 3px solid #e5e7eb;
+		border-top-color: #3b82f6;
+		border-radius: 50%;
+		animation: spin 0.8s linear infinite;
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+</style>

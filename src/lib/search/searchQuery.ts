@@ -52,8 +52,21 @@ export async function searchQuery(query: string): Promise<SearchResponse> {
 			return { hits: [] };
 		}
 
+		// Filter to only include article pages (root level, no subdirectories except single slug)
+		const excludedPaths = ['/files/', '/archiv', '/api/', '/nastroje/', '/kontakt', '/preview/', '/admin'];
+		const articleResults = search.results.filter((result: any) => {
+			const url = result.id || '';
+			// Exclude paths that are not articles
+			if (excludedPaths.some((path) => url.includes(path))) {
+				return false;
+			}
+			// Only include root-level pages (single path segment)
+			const cleanUrl = url.replace(/^\//, '').replace(/\/$/, '').replace(/\.html$/, '');
+			return cleanUrl.length > 0 && !cleanUrl.includes('/');
+		});
+
 		const results = await Promise.all(
-			search.results.slice(0, 15).map(async (result: any) => {
+			articleResults.slice(0, 15).map(async (result: any) => {
 				const data = await result.data();
 				// Remove leading slash, trailing slash, and .html extension
 				const slug = data.url
