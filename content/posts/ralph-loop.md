@@ -16,6 +16,18 @@ format: "html"
 
 <p>Techniku popularizoval <a href="https://ghuntley.com/ralph/">Geoffrey Huntley</a>, který ukázal, že jednoduchý bash loop dokáže nahradit týdny manuální práce.</p>
 
+<h2 id="hruba-sila">Hrubá síla místo elegance</h2>
+
+<p>Samotná technika není nic nového — používá se od uvedení Claude Code. Jde o pragmatický přístup: místo vymýšlení sofistikovaného řešení pustíte agenta v nekonečné smyčce a necháte ho pracovat hrubou silou.</p>
+
+<p>Typický příklad: máte v projektu stovky lint chyb. Pokus opravit všechny najednou pravděpodobně selže — agent se ztratí v kontextu nebo udělá chybu. Místo toho vytvoříte prompt:</p>
+
+<pre><code>Oprav 10 lint chyb. Pak skonči.</code></pre>
+
+<p>Agent opraví 10 chyb a skončí. Loop ho spustí znovu, agent najde dalších 10 chyb, opraví je. A tak dál, dokud nejsou všechny chyby pryč. Není to elegantní, ale funguje to.</p>
+
+<p>Pointa je v tom, že člověk nemusí vymýšlet chytré řešení. Stačí nechat agenta tupě opravovat projekt kus po kusu — klidně celou noc.</p>
+
 <h2 id="jak-funguje">Jak to funguje?</h2>
 
 <p>Základní implementace je překvapivě jednoduchá:</p>
