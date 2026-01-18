@@ -41,19 +41,21 @@
 		<div class="lg:grid-cols-homepage-2 xl:grid-cols-homepage-3 grid grid-cols-1">
 			<!-- Main content column -->
 			<div class="py-8">
-				<div class="grid grid-cols-1 gap-4">
+				<div class="grid grid-cols-1">
 					{#each data.posts.slice(0, 3) as post, index (post.url_slug)}
-						<MainPost
-							title={post.headline}
-							description={post.description}
-							date={post.last_modification}
-							href={post.url_slug}
-							neutral={index > 1}
-							small={index > 0}
-							lazy={index > 1}
-							wordCount={post.word_count}
-							tags={data.tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
-						/>
+						<div class={index > 0 ? '-mt-px' : ''}>
+							<MainPost
+								title={post.headline}
+								description={post.description}
+								date={post.last_modification}
+								href={post.url_slug}
+								neutral={index > 1}
+								small={index > 0}
+								lazy={index > 1}
+								wordCount={post.word_count}
+								tags={data.tags.filter((tag) => pagesTags[post.url_slug]?.includes(tag.url_slug))}
+							/>
+						</div>
 					{/each}
 				</div>
 
