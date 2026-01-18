@@ -62,9 +62,14 @@ export async function searchQuery(query: string): Promise<SearchResponse> {
 		const results = await Promise.all(
 			search.results.slice(0, 15).map(async (result: any) => {
 				const data = await result.data();
+				// Remove leading slash, trailing slash, and .html extension
+				const slug = data.url
+					.replace(/^\//, '')
+					.replace(/\/$/, '')
+					.replace(/\.html$/, '');
 				return {
 					objectID: data.url,
-					url_slug: data.url.replace(/^\//, '').replace(/\/$/, ''),
+					url_slug: slug,
 					title: data.meta?.title || '',
 					headline: data.meta?.title || '',
 					description: data.excerpt || '',
