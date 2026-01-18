@@ -155,7 +155,7 @@ opencode</code></pre>
 
 <h2 id="mcp">Model Context Protocol</h2>
 
-<p>OpenCode implementuje <a href="/model-context-protocol">Model Context Protocol (MCP)</a> pro rozšíření schopností. Přes MCP lze připojit externí nástroje — databáze, API služby nebo vlastní skripty.</p>
+<p>OpenCode implementuje Model Context Protocol (MCP) pro rozšíření schopností. Přes MCP lze připojit externí nástroje — databáze, API služby nebo vlastní skripty.</p>
 
 <p>Konfigurace MCP serverů se provádí v konfiguračním souboru projektu.</p>
 
@@ -168,7 +168,7 @@ opencode</code></pre>
 <p>Oproti cloudovým asistentům má OpenCode výhodu v kontrole nad daty:</p>
 
 <ul>
-  <li>Kód se neposílá na vzdálené servery (pokud nepoužíváte cloudové modely)</li>
+  <li>Kód se nemusí posílat na vzdálené servery (pokud nepoužíváte cloudové modely)</li>
   <li>Vy rozhodujete, který poskytovatel a model se použije</li>
   <li>Podporuje lokální modely přes proměnnou <code>LOCAL_ENDPOINT</code></li>
 </ul>
