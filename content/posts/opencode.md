@@ -63,7 +63,7 @@ format: "html"
 
 <p>Pro nepříznivce terminálu jde použít <a href="https://opencode.ai/download">desktopová aplikace</a>, kde je člověk od příkazů odstíněn.</p>
 
-<p><img src="/files/opencode/snimek-obrazovky-2026-01-18-v-8-29-16.png" class="border" alt="" /></p>
+<p><img src="/files/opencode/opencode-desktop-interface.png" class="border" alt="" /></p>
 
 <h2 id="modely">Podporované modely</h2>
 
