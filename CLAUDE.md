@@ -4,7 +4,7 @@
 
 - **Články**: `content/posts/*.md` - Markdown soubory s YAML frontmatter
 - **Tagy**: `content/tags/*.md` - Definice kategorií
-- **Náhledové obrázky**: `static/files/article/*.png` - 200x200 px PNG
+- **Náhledové obrázky**: `static/files/article/*.svg` a `*.png` - 200x200 px
 
 ## Vytváření článků
 
@@ -31,7 +31,10 @@ format: 'html'
 
 ## Generování náhledových obrázků
 
-Náhledové obrázky se generují pomocí Python/Pillow. Obrázek musí být **200x200 px PNG**.
+Pro nové články se vytvářejí **oba formáty** - SVG i PNG (200×200 px):
+
+- **SVG** - primární formát zobrazovaný na webu (vektorový, ostrý na všech rozlišeních)
+- **PNG** - fallback pro starší prohlížeče a pro Open Graph karty (sociální sítě nepodporují SVG)
 
 ### Styl obrázků
 
@@ -43,9 +46,9 @@ Náhledové obrázky se generují pomocí Python/Pillow. Obrázek musí být **2
   - Modrá: `#2563eb` (pro neutrální/POST)
   - Červená: `#dc2626` (pro varování/chyby)
 
-### Šablona kódu
+### PNG šablona (fallback)
 
-Pro hladké hrany použít **4× supersampling** (vykreslit ve 800×800, zmenšit na 200×200):
+Pro PNG použít **4× supersampling** (vykreslit ve 800×800, zmenšit na 200×200):
 
 ```python
 from PIL import Image, ImageDraw, ImageFont
@@ -79,8 +82,32 @@ img = img.resize((200, 200), Image.LANCZOS)
 img.save('static/files/article/nazev-clanku.png', 'PNG')
 ```
 
+### SVG šablona
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#334155"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Pozadí -->
+  <rect width="200" height="200" fill="url(#bg)"/>
+
+  <!-- Badge -->
+  <rect x="20" y="70" width="160" height="60" rx="8" fill="#2563eb"/>
+
+  <!-- Text -->
+  <text x="100" y="105" text-anchor="middle" fill="#ffffff"
+        font-family="Liberation Sans, DejaVu Sans, sans-serif"
+        font-size="24" font-weight="bold">TEXT</text>
+</svg>
+```
+
 ### Pojmenování
 
-Název souboru = slug článku + `.png`
+Název souborů = slug článku + přípona
 
-Příklad: článek `get-vs-post.md` → obrázek `get-vs-post.png`
+Příklad: článek `get-vs-post.md` → `get-vs-post.svg` + `get-vs-post.png`
