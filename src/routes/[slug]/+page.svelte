@@ -90,6 +90,7 @@
 	{/if}
 </svelte:head>
 
+<div data-pagefind-ignore={data.tag ? '' : undefined}>
 {#if post}
 	<HeroPost
 		title={post.headline || ('name' in post ? post.name : '')}
@@ -141,6 +142,7 @@
 		{/if}
 	</div>
 </Container>
+</div>
 
 {#if data.page}
 	<AnnotationLoader slug={data.page.url_slug} articleTitle={data.page.title} />

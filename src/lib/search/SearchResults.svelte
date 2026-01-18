@@ -37,18 +37,22 @@
 	});
 </script>
 
-{#each hits as hit, index (hit.objectID)}
-	<div class="pt-4 first:pt-0" animate:flip={{ duration: 200 }}>
-		<div id="searchResult-{index}" tabindex="-1" class="outline-none">
-			<SearchHitComponent {hit} selected={index === currentIndex} />
-		</div>
-	</div>
-{:else}
+{#if query.length < 2}
+	<p class="text-gray-500 dark:text-gray-400">Začněte psát pro vyhledávání...</p>
+{:else if hits.length === 0}
 	<p>
-		O „{query}“ tu nic není,
+		O „{query}" tu nic není,
 		<a href="/kontakt" class="underline hover:no-underline text-blue-500">napište mi</a>, jestli vás
 		toto téma zajímá
 	</p>
-{/each}
+{:else}
+	{#each hits as hit, index (hit.objectID)}
+		<div class="pt-4 first:pt-0" animate:flip={{ duration: 200 }}>
+			<div id="searchResult-{index}" tabindex="-1" class="outline-none">
+				<SearchHitComponent {hit} selected={index === currentIndex} />
+			</div>
+		</div>
+	{/each}
+{/if}
 
 <svelte:window onkeydown={handleKeydown} />
