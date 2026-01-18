@@ -169,6 +169,8 @@ ralph --monitor</code></pre>
 
 <p>Po každé iteraci Claude Code skončí (vyčerpá kontext nebo dokončí úkol), ale smyčka ho ihned spustí znovu se stejným promptem. Agent si přečte soubory, které předchozí iterace změnila, a pokračuje v práci.</p>
 
+<p><b>Pozor:</b> Minimální loop nedetekuje dokončení — poběží donekonečna, dokud ho ručně nezastavíte (<kbd>Ctrl+C</kbd>). Proto je lepší použít frankbria/ralph-claude-code, který umí rozpoznat, kdy je úkol hotový.</p>
+
 <h2 id="odkazy">Odkazy</h2>
 
 <ul>
