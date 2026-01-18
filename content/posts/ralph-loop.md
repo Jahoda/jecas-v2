@@ -2,7 +2,7 @@
 title: "Ralph loop: autonomní AI agent"
 headline: "Ralph loop: technika pro autonomní AI programování"
 description: "Ralph loop je technika iterativního spouštění AI agenta v nekonečné smyčce. Agent pracuje samostatně, dokud nesplní zadaný úkol."
-date: "2026-01-18"
+date: "2026-01-19"
 status: 1
 tags: ["ai", "produktivita"]
 format: "html"
@@ -79,7 +79,7 @@ format: "html"
 
 <p>To znamená, že noční běh, který spotřebuje miliony tokenů, vás nestojí nic navíc. Agent může chroustat celou noc a ráno máte hotový kód za cenu měsíčního předplatného.</p>
 
-<p>Při použití API by stejná práce stála stovky dolarů. S předplatným je to „zdarma" v rámci paušálu.</p>
+<p>Při použití API by stejná práce stála stovky dolarů. S předplatným je to „zdarma“ v rámci paušálu.</p>
 
 <h2 id="konfigurace">Konfigurace</h2>
 
