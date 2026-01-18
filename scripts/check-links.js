@@ -276,8 +276,12 @@ async function main() {
 
 	console.log('\n=== Summary ===');
 	console.log(`Total links: ${totalLinks}`);
-	console.log(`  External: ${summary.external.total} (OK: ${summary.external.ok}, Skipped: ${summary.external.skipped}, Failed: ${summary.external.failed})`);
-	console.log(`  Internal: ${summary.internal.total} (OK: ${summary.internal.ok}, Skipped: ${summary.internal.skipped}, Failed: ${summary.internal.failed})`);
+	console.log(
+		`  External: ${summary.external.total} (OK: ${summary.external.ok}, Skipped: ${summary.external.skipped}, Failed: ${summary.external.failed})`
+	);
+	console.log(
+		`  Internal: ${summary.internal.total} (OK: ${summary.internal.ok}, Skipped: ${summary.internal.skipped}, Failed: ${summary.internal.failed})`
+	);
 	console.log(`OK: ${totalOk}`);
 	console.log(`Skipped: ${totalSkipped}`);
 	console.log(`Failed: ${totalFailed}`);
