@@ -134,19 +134,32 @@ Vypiš: &lt;promise&gt;COMPLETE&lt;/promise&gt;</code></pre>
 
 <h2 id="jak-zacit">Jak začít?</h2>
 
-<ol>
-  <li><b>Nainstalujte Claude Code</b> — <code>npm install -g @anthropic-ai/claude-code</code></li>
-  <li><b>Vytvořte PROMPT.md</b> — popište úkol, kritéria dokončení a signál ukončení</li>
-  <li><b>Commitněte aktuální stav</b> — pro možnost rollbacku</li>
-  <li><b>Spusťte loop</b> — <code>while :; do cat PROMPT.md | claude ; done</code></li>
-</ol>
+<p>Pro Claude Code je nejlepší implementace <a href="https://github.com/frankbria/ralph-claude-code">frankbria/ralph-claude-code</a>. Nabízí rate limiting, circuit breaker, monitoring dashboard a spolehlivé ukončení.</p>
 
-<p>Pro robustnější řešení použijte některou z hotových implementací na GitHubu, které přidávají rate limiting, error handling a TUI.</p>
+<h3>Instalace</h3>
+
+<pre><code>git clone https://github.com/frankbria/ralph-claude-code.git
+cd ralph-claude-code
+./install.sh</code></pre>
+
+<h3>Použití</h3>
+
+<pre><code># Inicializace projektu
+ralph-setup muj-projekt
+cd muj-projekt
+
+# Spuštění s monitoringem
+ralph --monitor</code></pre>
+
+<p>Alternativně můžete použít minimální bash loop:</p>
+
+<pre><code>while :; do cat PROMPT.md | claude ; done</code></pre>
 
 <h2 id="odkazy">Odkazy</h2>
 
 <ul>
   <li><a href="https://ghuntley.com/ralph/">Ralph Wiggum as a "software engineer"</a> — původní článek</li>
-  <li><a href="https://github.com/snarktank/ralph">snarktank/ralph</a> — GitHub implementace</li>
-  <li><a href="https://awesomeclaude.ai/ralph-wiggum">Awesome Claude — Ralph Wiggum</a></li>
+  <li><a href="https://github.com/frankbria/ralph-claude-code">frankbria/ralph-claude-code</a> — doporučená implementace pro Claude Code</li>
+  <li><a href="https://github.com/snarktank/ralph">snarktank/ralph</a> — implementace pro Amp CLI</li>
+  <li><a href="https://github.com/iannuttall/ralph">iannuttall/ralph</a> — minimalistická implementace</li>
 </ul>
