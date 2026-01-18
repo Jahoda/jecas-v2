@@ -93,8 +93,56 @@ const TYPOGRAPHY_RULES = [
 	}
 ];
 
-function applyTypographyFixes(content) {
+/**
+ * Extrahuje bloky kódu a nahradí je placeholdery
+ */
+function extractCodeBlocks(content) {
+	const codeBlocks = [];
 	let result = content;
+
+	// <pre>...</pre> bloky (včetně <pre><code>)
+	result = result.replace(/<pre[\s\S]*?<\/pre>/gi, (match) => {
+		codeBlocks.push(match);
+		return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+	});
+
+	// <code>...</code> inline
+	result = result.replace(/<code>[\s\S]*?<\/code>/gi, (match) => {
+		codeBlocks.push(match);
+		return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+	});
+
+	// Markdown code blocks ```...```
+	result = result.replace(/```[\s\S]*?```/g, (match) => {
+		codeBlocks.push(match);
+		return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+	});
+
+	// Inline backticks `...`
+	result = result.replace(/`[^`]+`/g, (match) => {
+		codeBlocks.push(match);
+		return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+	});
+
+	return { content: result, codeBlocks };
+}
+
+/**
+ * Vrátí bloky kódu zpět na jejich místa
+ */
+function restoreCodeBlocks(content, codeBlocks) {
+	let result = content;
+	for (let i = 0; i < codeBlocks.length; i++) {
+		result = result.replace(`__CODE_BLOCK_${i}__`, codeBlocks[i]);
+	}
+	return result;
+}
+
+function applyTypographyFixes(content) {
+	// Extrahuj bloky kódu
+	const { content: withoutCode, codeBlocks } = extractCodeBlocks(content);
+
+	let result = withoutCode;
 	const changes = [];
 
 	for (const rule of TYPOGRAPHY_RULES) {
@@ -104,6 +152,9 @@ function applyTypographyFixes(content) {
 			result = result.replace(rule.find, rule.replace);
 		}
 	}
+
+	// Vrať bloky kódu zpět
+	result = restoreCodeBlocks(result, codeBlocks);
 
 	return { content: result, changes };
 }
