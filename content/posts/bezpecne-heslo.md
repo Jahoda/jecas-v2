@@ -537,7 +537,7 @@ format: "html"
     }
   });
 
-  // Inicializace
+  // Inicialisace
   generate();
 })();
 </script>
@@ -597,7 +597,7 @@ format: "html"
 <form id="checker-form" class="password-checker" onsubmit="return false">
   <h2 id="overeni">Ověření síly hesla</h2>
 
-  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analýza probíhá lokálně.</p>
+  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analysa probíhá lokálně.</p>
 
   <input type="text" class="password-input" id="check-password" placeholder="Zadejte heslo k ověření" autocomplete="off">
 
@@ -800,7 +800,7 @@ format: "html"
 <p>Pamatovat si desítky náhodných hesel je prakticky nemožné. Proto je doporučeno používat <b>správce hesel</b> (password manager):</p>
 
 <ul>
-  <li><b><a href="https://support.apple.com/cs-cz/guide/passwords/welcome/mac">Apple Hesla</a></b> – integrováno v iOS/macOS, synchronizace přes iCloud, zdarma pro uživatele Apple</li>
+  <li><b><a href="https://support.apple.com/cs-cz/guide/passwords/welcome/mac">Apple Hesla</a></b> – integrováno v iOS/macOS, synchronisace přes iCloud, zdarma pro uživatele Apple</li>
   <li><a href="https://bitwarden.com/">Bitwarden</a> – open-source, zdarma, multiplatformní</li>
   <li><a href="https://1password.com/">1Password</a> – placený, vynikající UX</li>
   <li><a href="https://keepassxc.org/">KeePassXC</a> – offline, open-source</li>
@@ -814,7 +814,7 @@ format: "html"
 
 <ul>
   <li>Automatické generování silných hesel při registraci</li>
-  <li>Synchronizaci přes iCloud mezi všemi Apple zařízeními</li>
+  <li>Synchronisaci přes iCloud mezi všemi Apple zařízeními</li>
   <li>Podporu passkeys (přihlašování bez hesla)</li>
   <li>Detekci uniklých hesel (upozornění pokud se heslo objevilo v úniku dat)</li>
   <li>Sdílení hesel s rodinou nebo skupinou</li>
@@ -856,7 +856,7 @@ format: "html"
 
 <h2 id="generator-kod">Kód generátoru v JavaScriptu</h2>
 
-<p>Generátor na této stránce používá <code>crypto.getRandomValues()</code> pro kryptograficky bezpečnou náhodnost. Zde je zjednodušená verze:</p>
+<p>Generátor na této stránce používá <code>crypto.getRandomValues()</code> pro kryptograficky bezpečnou náhodnost. Zde je zjednodušená verse:</p>
 
 <pre><code>function generatePassword(length, charset) {
   var array = new Uint32Array(length);
