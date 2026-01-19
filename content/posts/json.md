@@ -1,7 +1,7 @@
 ---
 title: "JSON"
-headline: "JSON – formát, validace, formátování a porovnání"
-description: "JSON je universální formát pro ukládání a přenos dat. Online nástroj pro formátování, minifikaci, validaci a porovnání JSON souborů."
+headline: "JSON – formát a online nástroje"
+description: "Co je JSON a jak s ním pracovat. Online formatter, validátor a diff."
 date: "2014-05-20"
 last_modification: "2026-01-19"
 status: 1
