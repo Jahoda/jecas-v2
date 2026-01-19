@@ -243,17 +243,6 @@ function updateCounter() {
   }
 }
 
-// Ukázkový JSON při načtení
-document.addEventListener('DOMContentLoaded', function() {
-  const input = document.getElementById('json-input');
-  if (input && !input.value) {
-    input.value = '{"name":"Jan Novák","age":30,"email":"jan@example.com","skills":["JavaScript","TypeScript","Python"],"address":{"city":"Praha","zip":"11000"}}';
-  }
-  if (input) {
-    input.addEventListener('input', updateCounter);
-    updateCounter();
-  }
-});
 </script>
 
 <h2 id="diff">Porovnání JSON (Diff)</h2>
