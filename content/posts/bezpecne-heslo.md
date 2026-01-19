@@ -752,11 +752,23 @@ format: "html"
 <p>Bezpečné heslo by mělo splňovat několik základních pravidel:</p>
 
 <ul>
-  <li><b>Délka</b> – čím delší, tím lepší. Minimum je 12 znaků, ideálně 16 a více.</li>
+  <li><b>Délka</b> – čím delší, tím lepší. Minimum je 12 znaků, ideálně 16 a více.</li>
   <li><b>Náhodnost</b> – heslo by nemělo obsahovat slovníková slova, jména, data narození ani jiné předvídatelné vzory.</li>
-  <li><b>Rozmanitost</b> – kombinace malých a velkých písmen, číslic a speciálních znaků výrazně zvyšuje počet možných kombinací.</li>
+  <li><b>Rozmanitost</b> – kombinace malých a velkých písmen, číslic a speciálních znaků výrazně zvyšuje počet možných kombinací.</li>
   <li><b>Unikátnost</b> – pro každou službu používejte jiné heslo.</li>
 </ul>
+
+<h3 id="best-practices">Best practices pro hesla</h3>
+
+<ol>
+  <li><b>Používejte správce hesel</b> – nechte si generovat a ukládat unikátní hesla pro každou službu. Pamatujete si jen jedno hlavní heslo.</li>
+  <li><b>Zapněte dvoufaktorové ověření (2FA)</b> – i když heslo unikne, útočník se bez druhého faktoru nepřihlásí.</li>
+  <li><b>Hlavní heslo do správce hesel</b> – použijte passphrase (4–6 náhodných slov), kterou si zapamatujete. Toto jediné heslo musí být silné a unikátní.</li>
+  <li><b>Neměňte hesla zbytečně</b> – pravidelná změna hesel (např. každých 90 dní) vede k volbě slabších hesel. Měňte heslo pouze při podezření na únik.</li>
+  <li><b>Zkontrolujte úniky</b> – na <a href="https://haveibeenpwned.com/">Have I Been Pwned</a> ověřte, zda vaše e-maily nefigurují v únicích. Pokud ano, změňte hesla na dotčených službách.</li>
+  <li><b>Pozor na phishing</b> – ani silné heslo nepomůže, pokud ho zadáte na podvodné stránce. Vždy kontrolujte URL.</li>
+  <li><b>Neposílejte hesla e-mailem ani chatem</b> – používejte správce hesel se sdílením nebo jednorázové odkazy.</li>
+</ol>
 
 <h2 id="entropie">Co je entropie hesla</h2>
 
@@ -834,7 +846,7 @@ format: "html"
 
 <p>Alternativou k náhodným znakům je <b>passphrase</b> – heslo složené z několika náhodných slov. Takové heslo je snazší zapamatovat a přitom může mít vysokou entropii.</p>
 
-<p>Příklad: <code>správný kůň baterie sponka</code> (inspirováno <a href="https://xkcd.com/936/">XKCD #936</a>)</p>
+<p>Příklad: <code>spravne kun svorka baterky</code> (inspirováno <a href="https://xkcd.com/936/">XKCD #936</a>)</p>
 
 <p><img class="border" src="/files/bezpecne-heslo/sila-hesla.png" alt="Vymýšlení bezpečného hesla snadného na zapamatování"></p>
 <p><i>Přeloženo z <a href="http://imgs.xkcd.com/comics/password_strength.png">originálu</a>.</i></p>
