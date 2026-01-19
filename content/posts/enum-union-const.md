@@ -142,7 +142,7 @@ console.log("active"); // Enum zmizí, hodnota se vloží přímo</code></pre>
 
 <h2 id="union-type">Union type</h2>
 
-<p>Union type definuje typ jako sjednocení literálů:</p>
+<p>Union type definuje typ jako sjednocení literálů (konkrétních hodnot jako <code>"active"</code> nebo <code>200</code>, na rozdíl od obecných typů jako <code>string</code> nebo <code>number</code>):</p>
 
 <pre><code class="language-typescript">type Status = 'active' | 'inactive' | 'pending';
 
@@ -182,7 +182,10 @@ const req: Request = {
   <li>Nelze iterovat — není runtime hodnota</li>
   <li>Nelze získat seznam hodnot za běhu</li>
   <li>Při mnoha hodnotách může být nepřehledné</li>
+  <li>Při volání funkce píšete stringy přímo v kódu (<code>setStatus('active')</code>) — náchylné na překlepy a IDE autocomplete funguje až po napsání uvozovky</li>
 </ul>
+
+<p>Poslední bod řeší <code>as const</code>, kde místo stringů používáte pojmenované konstanty (<code>Status.Active</code>).</p>
 
 <h2 id="as-const">Const assertion (<code>as const</code>)</h2>
 
