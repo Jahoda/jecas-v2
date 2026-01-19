@@ -178,8 +178,8 @@ format: "html"
     <div class="mode-panel" data-panel="passphrase">
       <div class="length-control">
         <label for="word-count"><b>Počet slov:</b></label>
-        <input type="range" id="word-count" name="wordCount" min="3" max="10" value="5">
-        <input type="number" id="word-count-num" min="3" max="12" value="5">
+        <input type="range" id="word-count" name="wordCount" min="3" max="10" value="6">
+        <input type="number" id="word-count-num" min="3" max="12" value="6">
         <span>slov</span>
       </div>
 
@@ -195,6 +195,7 @@ format: "html"
       </div>
 
       <div class="checkboxes" style="margin-top: 1em;">
+        <label><input type="checkbox" name="noDiacritics" checked> Bez diakritiky</label>
         <label><input type="checkbox" name="capitalize"> Velká počáteční písmena</label>
         <label><input type="checkbox" name="addNumber"> Přidat číslo</label>
       </div>
@@ -372,10 +373,18 @@ format: "html"
     return password;
   }
 
-  function generatePassphrase(wordCount, separator, capitalize, addNumber) {
+  function removeDiacritics(str) {
+    var map = {'á':'a','č':'c','ď':'d','é':'e','ě':'e','í':'i','ň':'n','ó':'o','ř':'r','š':'s','ť':'t','ú':'u','ů':'u','ý':'y','ž':'z'};
+    return str.replace(/[áčďéěíňóřšťúůýž]/g, function(c) { return map[c] || c; });
+  }
+
+  function generatePassphrase(wordCount, separator, capitalize, addNumber, noDiacritics) {
     var words = [];
     for (var i = 0; i < wordCount; i++) {
       var word = czechWords[secureRandom(czechWords.length)];
+      if (noDiacritics) {
+        word = removeDiacritics(word);
+      }
       if (capitalize) {
         word = word.charAt(0).toUpperCase() + word.slice(1);
       }
@@ -438,12 +447,13 @@ format: "html"
       var entropy = calculateEntropy(length, charset.length);
       updateStrengthDisplay(entropy);
     } else {
-      var wordCount = parseInt(wordCountNum.value) || 5;
+      var wordCount = parseInt(wordCountNum.value) || 6;
       var separator = form.separator.value;
+      var noDiacritics = form.noDiacritics.checked;
       var capitalize = form.capitalize.checked;
       var addNumber = form.addNumber.checked;
 
-      var passphrase = generatePassphrase(wordCount, separator, capitalize, addNumber);
+      var passphrase = generatePassphrase(wordCount, separator, capitalize, addNumber, noDiacritics);
       output.textContent = passphrase;
       var entropy = calculatePassphraseEntropy(wordCount, addNumber);
       updateStrengthDisplay(entropy);
@@ -465,7 +475,7 @@ format: "html"
     if (source === 'slider') {
       wordCountNum.value = wordCountSlider.value;
     } else {
-      var val = parseInt(wordCountNum.value) || 5;
+      var val = parseInt(wordCountNum.value) || 6;
       val = Math.max(3, Math.min(12, val));
       wordCountNum.value = val;
       wordCountSlider.value = Math.min(val, 10);
@@ -533,6 +543,20 @@ format: "html"
 </script>
 </div>
 
+<h2 id="overeni">Ověření síly hesla</h2>
+
+<p><b>Nejdůležitější faktor bezpečného hesla je náhodnost, nikoliv složitost.</b> Tradiční požadavky na hesla (velké písmeno, číslo, speciální znak) jsou často kontraproduktivní – vedou k heslům typu <code>František1!</code>, která tyto podmínky splňují, ale jsou snadno uhodnutelná.</p>
+
+<p>Útočníci totiž nezkouší náhodné kombinace znaků. Používají:</p>
+
+<ul>
+  <li><b>Slovníkové útoky</b> – běžná slova, jména, české výrazy</li>
+  <li><b>Pravidla substituce</b> – a→@, e→3, s→$, i→1</li>
+  <li><b>Typické vzory</b> – slovo + číslo, velké první písmeno, rok na konci</li>
+</ul>
+
+<p>Heslo <code>František1!</code> tak padne během sekund, zatímco skutečně náhodné <code>kx7$mQ2pL</code> (i bez „pravidel") odolá podstatně déle. Nejlepší volbou je nechat si heslo <b>vygenerovat</b> – buď náhodné znaky, nebo passphrase z náhodných slov.</p>
+
 <div class="live">
 <style>
 .password-checker {
@@ -590,9 +614,7 @@ format: "html"
 </style>
 
 <form id="checker-form" class="password-checker" onsubmit="return false">
-  <h2 id="overeni">Ověření síly hesla</h2>
-
-  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analysa probíhá lokálně.</p>
+  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analýza probíhá lokálně.</p>
 
   <p><small>Celkové hodnocení vychází z entropie hesla: <code>délka × log₂(počet typů znaků)</code>. Pokud heslo obsahuje běžné vzory (123, qwerty, rok narození), je entropie penalizována o 40 %.</small></p>
 
@@ -848,6 +870,8 @@ format: "html"
 <p><b>Poznámka k entropii passphrase:</b> Entropie se počítá jako <code>počet slov × log₂(velikost slovníku)</code>. Diakritika v českých slovech nemá vliv na entropii – útočník provádějící slovníkový útok zná velikost slovníku bez ohledu na to, jaké znaky slova obsahují. Síla passphrase pochází z počtu možných kombinací slov, nikoli ze složitosti jednotlivých znaků.</p>
 
 <p><b>Kerckhoffsův princip:</b> Výpočet entropie předpokládá, že útočník zná použitý slovník i všechna pravidla (počet slov, oddělovač, velká písmena). Jediné co nezná jsou konkrétní náhodné volby. Toto je správný přístup – bezpečnost nesmí záviset na utajení algoritmu (<i>security through obscurity</i>), pouze na kvalitě náhodných voleb. Proto je entropie konzervativní odhad: v praxi může být útok těžší (pokud útočník neví jaký slovník používáte), ale nikdy ne snazší.</p>
+
+<p><b>Praktické doporučení:</b> Pro passphrase používejte slova <b>bez diakritiky a speciálních znaků</b>. Bezpečnost zajišťuje náhodnost a počet slov, ne složitost znaků. Heslo bez háčků a čárek snadno zadáte i na dálkovém ovladači k TV, herním ovladači nebo zahraniční klávesnici.</p>
 
 <h2 id="dvoufaktorove">Dvoufaktorové ověření (2FA)</h2>
 
