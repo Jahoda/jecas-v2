@@ -602,9 +602,9 @@ format: "html"
 <form id="checker-form" class="password-checker" onsubmit="return false">
   <h2 id="overeni">Ověření síly hesla</h2>
 
-  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analysa probíhá lokálně.</p>
+  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analysa probíhá lokálně.</p>
 
-  <p><small>Celkové hodnocení vychází z entropie hesla: <code>délka × log₂(počet typů znaků)</code>. Pokud heslo obsahuje běžné vzory (123, qwerty, rok narození), je entropie penalizována o 40 %.</small></p>
+  <p><small>Celkové hodnocení vychází z entropie hesla: <code>délka × log₂(počet typů znaků)</code>. Pokud heslo obsahuje běžné vzory (123, qwerty, rok narození), je entropie penalizována o 40 %.</small></p>
 
   <input type="text" class="password-input" id="check-password" placeholder="Zadejte heslo k ověření" autocomplete="off">
 
@@ -839,9 +839,9 @@ format: "html"
 <p><img class="border" src="/files/bezpecne-heslo/sila-hesla.png" alt="Vymýšlení bezpečného hesla snadného na zapamatování"></p>
 <p><i>Přeloženo z <a href="http://imgs.xkcd.com/comics/password_strength.png">originálu</a>.</i></p>
 
-<p>Při použití slovníku o 7776 slovech (jako v metodě <a href="https://www.eff.org/dice">Diceware</a>) poskytuje každé slovo přibližně 12,9 bitů entropie. Čtyři slova = ~51 bitů, šest slov = ~77 bitů.</p>
+<p>Při použití slovníku o 7776 slovech (jako v metodě <a href="https://www.eff.org/dice">Diceware</a>) poskytuje každé slovo přibližně 12,9 bitů entropie. Čtyři slova = ~51 bitů, šest slov = ~77 bitů.</p>
 
-<p><b>Poznámka k entropii passphrase:</b> Entropie se počítá jako <code>počet slov × log₂(velikost slovníku)</code>. Diakritika v českých slovech nemá vliv na entropii – útočník provádějící slovníkový útok zná velikost slovníku bez ohledu na to, jaké znaky slova obsahují. Síla passphrase pochází z počtu možných kombinací slov, nikoli ze složitosti jednotlivých znaků.</p>
+<p><b>Poznámka k entropii passphrase:</b> Entropie se počítá jako <code>počet slov × log₂(velikost slovníku)</code>. Diakritika v českých slovech nemá vliv na entropii – útočník provádějící slovníkový útok zná velikost slovníku bez ohledu na to, jaké znaky slova obsahují. Síla passphrase pochází z počtu možných kombinací slov, nikoli ze složitosti jednotlivých znaků.</p>
 
 <h2 id="dvoufaktorove">Dvoufaktorové ověření (2FA)</h2>
 
