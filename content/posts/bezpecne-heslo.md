@@ -896,6 +896,16 @@ format: "html"
 
 <p><b>Je bezpečné generovat heslo v prohlížeči, nebo raději házet kostkou?</b> Pro většinu lidí je JavaScript generátor dostatečně bezpečný. Používá <code>crypto.getRandomValues()</code> – kryptograficky bezpečný generátor čerpající entropii z operačního systému. Stejný mechanismus používají i správci hesel. Teoretické riziko (kompromitovaný prohlížeč, škodlivé rozšíření) existuje, ale pokud je váš počítač takto napaden, keylogger zachytí heslo při zadávání tak jako tak. Fyzická kostka (<a href="https://www.eff.org/dice">Diceware</a>) poskytuje „pravou" náhodnost bez softwaru – má smysl pro hlavní heslo do správce hesel nebo pokud se obáváte cílených útoků.</p>
 
+<p><b>Nepoužívejte AI pro generování hesel.</b> ChatGPT, Claude ani jiné LLM nejsou vhodné pro vytváření hesel nebo PINů:</p>
+
+<ol>
+  <li>AI negeneruje kryptograficky náhodný výstup – používá naučené vzory, takže tíhne k určitým „náhodně vypadajícím" sekvencím</li>
+  <li>Konverzace se ukládají na serverech poskytovatele – vaše heslo může skončit v logu</li>
+  <li>Heslo putuje po síti k třetí straně</li>
+</ol>
+
+<p>Pro generování hesel používejte správce hesel, generátor v prohlížeči (<code>crypto.getRandomValues</code>), nebo fyzickou kostku.</p>
+
 <h2 id="dvoufaktorove">Dvoufaktorové ověření (2FA)</h2>
 
 <p>I silné heslo může být kompromitováno (phishing, únik databáze). Proto je důležité používat <b>dvoufaktorové ověření</b>:</p>
