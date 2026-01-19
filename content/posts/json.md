@@ -22,7 +22,7 @@ format: "html"
 
 <div class="live">
 
-<h2 id="formatter">JSON formátovač a validátor</h2>
+<h2 id="formatter">JSON formátovač a validátor</h2>
 
 <p>Vložte JSON pro <b>formátování</b>, <b>minifikaci</b> nebo <b>validaci</b>. Data se zpracovávají pouze v prohlížeči.</p>
 
