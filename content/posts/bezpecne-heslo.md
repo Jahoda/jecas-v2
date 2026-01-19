@@ -777,14 +777,54 @@ format: "html"
 <h3 id="best-practices">Best practices pro hesla</h3>
 
 <ol>
-  <li><b>Používejte správce hesel</b> – nechte si generovat a ukládat unikátní hesla pro každou službu. Pamatujete si jen jedno hlavní heslo.</li>
+  <li><b>Používejte správce hesel</b> – nechte si generovat a ukládat unikátní hesla pro každou službu. Pamatujete si jen hlavní heslo.</li>
   <li><b>Zapněte dvoufaktorové ověření (2FA)</b> – i když heslo unikne, útočník se bez druhého faktoru nepřihlásí.</li>
-  <li><b>Hlavní heslo do správce hesel</b> – použijte passphrase (4–6 náhodných slov), kterou si zapamatujete. Toto jediné heslo musí být silné a nesmíte ho používat nikde jinde.</li>
+  <li><b>Hlavní heslo do správce hesel</b> – použijte passphrase (4–6 náhodných slov), kterou si zapamatujete. Toto heslo musí být silné a nesmíte ho používat nikde jinde.</li>
+  <li><b>Heslo k e-mailu</b> – e-mail je často „klíč ke všemu", protože přes něj jde resetovat hesla většiny služeb. Použijte silnou passphrase (jinou než k správci hesel) a zapněte 2FA. Toto heslo byste měli znát zpaměti. Nebo viz níže.</li>
   <li><b>Neměňte hesla zbytečně</b> – pravidelná změna hesel (např. každých 90 dní) vede k volbě slabších hesel. Měňte heslo pouze při podezření na únik.</li>
   <li><b>Zkontrolujte úniky</b> – na <a href="https://haveibeenpwned.com/">Have I Been Pwned</a> ověřte, zda vaše e-maily nefigurují v únicích. Pokud ano, změňte hesla na dotčených službách.</li>
   <li><b>Pozor na phishing</b> – ani silné heslo nepomůže, pokud ho zadáte na podvodné stránce. Vždy kontrolujte URL.</li>
   <li><b>Neposílejte hesla e-mailem ani chatem</b> – používejte správce hesel se sdílením nebo jednorázové odkazy.</li>
 </ol>
+
+<p><b>Poznámka k e-mailu na vlastní doméně:</b> Vlastní doména poskytuje nezávislost na poskytovateli, ale ne nutně vyšší bezpečnost. Gmail nebo Outlook s hardwarovým klíčem (YubiKey) nabízí pokročilou ochranu proti phishingu a dedikované bezpečnostní týmy. U vlastní domény hrozí riziko expirace – pokud zapomenete doménu prodloužit, útočník ji může zaregistrovat a přijímat vaše e-maily včetně resetů hesel. Slabé místo může být i hostingová společnost.</p>
+
+<h2 id="kolik-hesel">Kolik hesel si musím pamatovat?</h2>
+
+<p>Záleží na tom, jaký přístup zvolíte. Existuje několik variant od nejjednodušší po nejbezpečnější:</p>
+
+<h3>Varianta 1: Jeden ekosystém (nejjednodušší)</h3>
+
+<p>Pokud používáte Apple nebo Google ekosystém, stačí si pamatovat <b>jedno heslo</b>:</p>
+
+<ul>
+  <li><b>Apple:</b> iCloud e-mail + aplikace Hesla (iCloud Klíčenka) – vše pod Apple ID</li>
+  <li><b>Google:</b> Gmail + Google Password Manager – vše pod Google účtem</li>
+</ul>
+
+<p>S dvoufaktorovým ověřením (ideálně hardwarovým klíčem) je to dostatečně bezpečné pro většinu lidí. Nevýhodou je závislost na jednom poskytovateli.</p>
+
+<h3>Varianta 2: Samostatný správce hesel + hardwarový klíč k e-mailu</h3>
+
+<p>Gmail i Outlook podporují přihlášení <b>pouze hardwarovým klíčem</b> (passkey) bez hesla. Pak si pamatujete jen heslo do správce hesel a k e-mailu se přihlásíte pomocí YubiKey nebo jiného klíče.</p>
+
+<ul>
+  <li>Pamatujete si: 1 heslo (správce hesel)</li>
+  <li>E-mail: hardwarový klíč (bez hesla)</li>
+</ul>
+
+<h3>Varianta 3: Dvě oddělené passphrase (nejbezpečnější)</h3>
+
+<p>Pro maximální bezpečnost a nezávislost:</p>
+
+<ul>
+  <li><b>Heslo do správce hesel</b> – passphrase, kterou znáte zpaměti</li>
+  <li><b>Heslo k e-mailu</b> – jiná passphrase, kterou také znáte zpaměti</li>
+</ul>
+
+<p>Proč dvě různá hesla? E-mail často slouží k obnově přístupu ke správci hesel. Pokud by někdo získal přístup k vašemu e-mailu a obě služby měly stejné heslo, má přístup ke všemu.</p>
+
+<p><b>Tip:</b> Pokud se bojíte, že heslo k e-mailu zapomenete, můžete ho zapsat a uložit na bezpečném fyzickém místě (trezor, bezpečnostní schránka v bance). Pro běžné přihlášení použijete správce hesel, papír je záloha pro případ nouze.</p>
 
 <h2 id="entropie">Co je entropie hesla</h2>
 
