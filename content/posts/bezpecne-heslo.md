@@ -894,6 +894,8 @@ format: "html"
 
 <p><b>Mohu generovat znovu, dokud se mi heslo nebude líbit?</b> Záleží na důvodu. Pár regenerací (2–3×) bezpečnost významně nesníží – ztratíte maximálně ~10 bitů entropie, což je u 6 slov stále bezpečné. Problém nastává, když hledáte slova, která „dávají smysl" dohromady nebo tvoří příběh – smysluplných frází je zlomek všech kombinací a útočník může mít stejnou preferenci. Ideální je vygenerovat jednou a použít.</p>
 
+<p><b>Je bezpečné generovat heslo v prohlížeči, nebo raději házet kostkou?</b> Pro většinu lidí je JavaScript generátor dostatečně bezpečný. Používá <code>crypto.getRandomValues()</code> – kryptograficky bezpečný generátor čerpající entropii z operačního systému. Stejný mechanismus používají i správci hesel. Teoretické riziko (kompromitovaný prohlížeč, škodlivé rozšíření) existuje, ale pokud je váš počítač takto napaden, keylogger zachytí heslo při zadávání tak jako tak. Fyzická kostka (<a href="https://www.eff.org/dice">Diceware</a>) poskytuje „pravou" náhodnost bez softwaru – má smysl pro hlavní heslo do správce hesel nebo pokud se obáváte cílených útoků.</p>
+
 <h2 id="dvoufaktorove">Dvoufaktorové ověření (2FA)</h2>
 
 <p>I silné heslo může být kompromitováno (phishing, únik databáze). Proto je důležité používat <b>dvoufaktorové ověření</b>:</p>
