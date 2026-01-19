@@ -9,7 +9,7 @@ tags: ["js"]
 format: "html"
 ---
 
-<p>V TypeScriptu máte několik způsobů, jak definovat sadu konstant. Nejčastější jsou <b>enum</b>, <b>union type</b> a <b>const assertion</b>. Každý přístup má své výhody a nevýhody.</p>
+<p>V TypeScriptu máte několik způsobů, jak definovat sadu konstant. Nejčastější jsou <b>enum</b>, <b>union type</b> a <b>const assertion</b>. Každý přístup má své výhody a nevýhody.</p>
 
 <h2 id="prehled">Přehled</h2>
 
@@ -48,7 +48,7 @@ format: "html"
 
 <h2 id="enum">Enum</h2>
 
-<p>TypeScript enum je speciální konstrukce, která vytváří pojmenované konstanty. Dnes je považován za <b>legacy pattern</b> — vznikl v době, kdy TypeScript neměl lepší alternativy. Moderní projekty preferují union types nebo <code>as const</code>.</p>
+<p>TypeScript enum je speciální konstrukce, která vytváří pojmenované konstanty. Dnes je považován za <b>legacy pattern</b> — vznikl v době, kdy TypeScript neměl lepší alternativy. Moderní projekty preferují union types nebo <code>as const</code>.</p>
 
 <pre><code class="language-typescript">enum Status {
   Active = 'active',
@@ -76,7 +76,7 @@ setStatus(Status.Active); // 'active'</code></pre>
 console.log(Direction.Up);   // 0
 console.log(Direction[0]);   // 'Up' (reversní mapování)</code></pre>
 
-<p>Číselné enumy mají <b>reversní mapování</b> — můžete získat název z hodnoty. To ale zvětšuje výstupní kód.</p>
+<p>Číselné enumy mají <b>reversní mapování</b> — můžete získat název z hodnoty. To ale zvětšuje výstupní kód.</p>
 
 <h3>Co se vygeneruje</h3>
 
@@ -110,9 +110,9 @@ var Status;
 
 <ul>
   <li>Generuje runtime kód</li>
-  <li>Nelze tree-shakovat — celý enum je vždy v bundlu (výsledném souboru po buildu)</li>
+  <li>Nelze tree-shakovat — celý enum je vždy v bundlu (výsledném souboru po buildu)</li>
   <li>Není nativní JavaScript — specifické pro TypeScript</li>
-  <li>Problémy s <code>isolatedModules</code> — tato volba v <code>tsconfig.json</code> zajišťuje, že každý soubor lze kompilovat samostatně (vyžadují ji nástroje jako Babel, esbuild nebo SWC). Při zapnuté volbě nelze re-exportovat enum z jiného souboru (<code>export { Status } from './types'</code>), protože kompilátor neví, jestli je <code>Status</code> typ nebo hodnota.</li>
+  <li>Problémy s <code>isolatedModules</code> — tato volba v <code>tsconfig.json</code> zajišťuje, že každý soubor lze kompilovat samostatně (vyžadují ji nástroje jako Babel, esbuild nebo SWC). Při zapnuté volbě nelze re-exportovat enum z jiného souboru (<code>export { Status } from './types'</code>), protože kompilátor neví, jestli je <code>Status</code> typ nebo hodnota.</li>
 </ul>
 
 <h2 id="const-enum">Const enum</h2>
@@ -133,12 +133,12 @@ console.log("active"); // Enum zmizí, hodnota se vloží přímo</code></pre>
 
 <ul>
   <li>Nelze iterovat — za běhu neexistuje</li>
-  <li>Problémy při použití z jiných balíčků</li>
-  <li>Nefunguje s <code>isolatedModules: true</code> — tato volba vyžaduje, aby každý soubor byl samostatně kompilovatelný. Const enum ale potřebuje znát hodnoty z jiného souboru v době kompilace, což není možné.</li>
+  <li>Problémy při použití z jiných balíčků</li>
+  <li>Nefunguje s <code>isolatedModules: true</code> — tato volba vyžaduje, aby každý soubor byl samostatně kompilovatelný. Const enum ale potřebuje znát hodnoty z jiného souboru v době kompilace, což není možné.</li>
   <li>Nelze použít computed hodnoty — hodnoty musí být konstantní výrazy (literály, reference na jiné členy enum). Nelze použít např. <code>Math.random()</code> nebo volání funkcí.</li>
 </ul>
 
-<p>TypeScript tým <a href="https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls">nedoporučuje const enum</a> v knihovnách.</p>
+<p>TypeScript tým <a href="https://www.typescriptlang.org/docs/handbook/enums.html#const-enum-pitfalls">nedoporučuje const enum</a> v knihovnách.</p>
 
 <h2 id="union-type">Union type</h2>
 
@@ -170,10 +170,10 @@ const req: Request = {
 <h3>Výhody union type</h3>
 
 <ul>
-  <li>Žádný runtime kód — existuje jen v typovém systému</li>
+  <li>Žádný runtime kód — existuje jen v typovém systému</li>
   <li>Nativní TypeScript pattern</li>
-  <li>Funguje s <code>isolatedModules</code></li>
-  <li>Výborná podpora v IDE (autocomplete)</li>
+  <li>Funguje s <code>isolatedModules</code></li>
+  <li>Výborná podpora v IDE (autocomplete)</li>
 </ul>
 
 <h3>Nevýhody union type</h3>
@@ -186,7 +186,7 @@ const req: Request = {
 
 <h2 id="as-const">Const assertion (<code>as const</code>)</h2>
 
-<p>Const assertion vytvoří readonly objekt nebo pole s literálními typy:</p>
+<p>Const assertion vytvoří readonly objekt nebo pole s literálními typy:</p>
 
 <pre><code class="language-typescript">const Status = {
   Active: 'active',
@@ -236,12 +236,12 @@ const Status = {
 <h3>Výhody as const</h3>
 
 <ul>
-  <li>Kombinuje výhody enum a union type</li>
+  <li>Kombinuje výhody enum a union type</li>
   <li>Runtime hodnoty existují</li>
   <li>Lze iterovat</li>
   <li>Minimální vygenerovaný kód</li>
   <li>Tree-shakeable</li>
-  <li>Funguje s <code>isolatedModules</code></li>
+  <li>Funguje s <code>isolatedModules</code></li>
   <li>Nativní JavaScript pattern</li>
 </ul>
 
@@ -254,7 +254,7 @@ const Status = {
 
 <h2 id="helper">Helper pro as const</h2>
 
-<p>Pro jednodušší práci s <code>as const</code> můžete vytvořit helper:</p>
+<p>Pro jednodušší práci s <code>as const</code> můžete vytvořit helper:</p>
 
 <pre><code class="language-typescript">// Helper pro získání union typu z objektu
 type ValueOf&lt;T&gt; = T[keyof T];
@@ -341,7 +341,7 @@ type HttpStatus = 200 | 201 | 400 | 404 | 500;</code></pre>
 <h3>Použijte as const když:</h3>
 
 <ul>
-  <li>Potřebujete runtime hodnoty i typy</li>
+  <li>Potřebujete runtime hodnoty i typy</li>
   <li>Chcete iterovat přes hodnoty</li>
   <li>Vytváříte knihovnu</li>
   <li>Máte <code>isolatedModules: true</code></li>
@@ -363,7 +363,7 @@ Object.entries(API_ENDPOINTS).forEach(([name, url]) => {
 <h3>Použijte enum když:</h3>
 
 <ul>
-  <li>Pracujete s existujícím kódem, který enumy používá</li>
+  <li>Pracujete s existujícím kódem, který enumy používá</li>
   <li>Potřebujete reversní mapování (číselné enumy)</li>
   <li>Tým je na enumy zvyklý</li>
 </ul>
@@ -374,7 +374,7 @@ Object.entries(API_ENDPOINTS).forEach(([name, url]) => {
 
 <h2 id="discriminated-union">Discriminated union</h2>
 
-<p>Pro složitější případy použijte <b>discriminated union</b> — union typů s rozlišovacím polem:</p>
+<p>Pro složitější případy použijte <b>discriminated union</b> — union typů s rozlišovacím polem:</p>
 
 <pre><code class="language-typescript">type Action =
   | { type: 'increment'; amount: number }
@@ -392,9 +392,9 @@ function reducer(state: number, action: Action): number {
   }
 }</code></pre>
 
-<p>TypeScript automaticky zúží typ v každé větvi switche.</p>
+<p>TypeScript automaticky zúží typ v každé větvi switche.</p>
 
-<h2 id="migrace">Migrace z enum na as const</h2>
+<h2 id="migrace">Migrace z enum na as const</h2>
 
 <p>Pokud chcete migrovat existující enum:</p>
 
@@ -419,7 +419,7 @@ type Status = typeof Status[keyof typeof Status];
 
 <ol>
   <li><b>Union type</b> — pro jednoduché případy bez runtime hodnot</li>
-  <li><b>As const</b> — pro většinu případů s runtime hodnotami</li>
+  <li><b>As const</b> — pro většinu případů s runtime hodnotami</li>
   <li><b>Enum</b> — pouze pokud máte dobrý důvod</li>
   <li><b>Const enum</b> — vyhněte se</li>
 </ol>
