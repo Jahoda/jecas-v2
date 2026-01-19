@@ -5,7 +5,7 @@ description: "Rozdíly mezi <code>null</code> a <code>undefined</code> v JavaScr
 date: "2025-08-22"
 last_modification: "2025-08-22"
 status: 1
-tags: ["javascript", "napady"]
+tags: ["javascript", "ts", "napady"]
 format: "html"
 ---
 

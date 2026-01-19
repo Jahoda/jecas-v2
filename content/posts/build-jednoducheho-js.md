@@ -5,7 +5,7 @@ description: "Jak zajistit transformaci jednoduchého JavaScriptu i pro staré p
 date: "2022-07-13"
 last_modification: "2022-12-22"
 status: 1
-tags: ["hotova-reseni", "js"]
+tags: ["hotova-reseni", "js", "ts"]
 format: "html"
 ---
 

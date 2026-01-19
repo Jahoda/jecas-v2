@@ -5,7 +5,7 @@ description: "Syntaktické rozšíření JavaScriptu a TypeScriptu pro psaní HT
 date: "2026-01-10"
 last_modification: "2026-01-10"
 status: 1
-tags: ["js"]
+tags: ["js", "ts"]
 format: "html"
 ---
 

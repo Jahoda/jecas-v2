@@ -5,7 +5,7 @@ description: "Jak povolit přístup na API vytvořené ve SvelteKitu z jiné dom
 date: "2023-02-16"
 last_modification: "2025-08-30"
 status: 1
-tags: ["js"]
+tags: ["js", "ts"]
 format: "html"
 ---
 
