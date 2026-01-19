@@ -602,7 +602,7 @@ format: "html"
 <form id="checker-form" class="password-checker" onsubmit="return false">
   <h2 id="overeni">Ověření síly hesla</h2>
 
-  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analýza probíhá lokálně.</p>
+  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analysa probíhá lokálně.</p>
 
   <p><small>Celkové hodnocení vychází z entropie hesla: <code>délka × log₂(počet typů znaků)</code>. Pokud heslo obsahuje běžné vzory (123, qwerty, rok narození), je entropie penalizována o 40 %.</small></p>
 
