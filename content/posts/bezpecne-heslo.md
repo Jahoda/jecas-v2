@@ -906,6 +906,30 @@ format: "html"
   <li><b>SMS</b> – nejslabší varianta, ale lepší než nic</li>
 </ul>
 
+<h2 id="pin">PIN kód</h2>
+
+<p>PIN je specifický případ hesla s velmi nízkou entropií:</p>
+
+<ul>
+  <li>4 číslice = 10 000 kombinací (~13 bitů)</li>
+  <li>6 číslic = 1 000 000 kombinací (~20 bitů)</li>
+</ul>
+
+<p>Bezpečnost PINu <b>nezávisí na entropii, ale na rate limitingu</b> – telefon nebo karta se zablokuje po 3–10 neúspěšných pokusech. Bez tohoto omezení by 4místný PIN padl za zlomek sekundy.</p>
+
+<h3>Doporučení pro PIN</h3>
+
+<ul>
+  <li><b>Používejte 6 číslic</b> místo 4, pokud to zařízení umožňuje</li>
+  <li><b>Náhodný výběr</b> – ne datum narození, rok, PSČ, číslo telefonu</li>
+  <li><b>Vyhněte se vzorům</b> – opakování (1111, 7777), sekvence (1234, 4321), prostřední sloupec (2580)</li>
+  <li><b>Unikátní PIN</b> pro každé zařízení – jiný pro telefon, kartu, alarm</li>
+</ul>
+
+<p>Studie ukázaly, že ~10 % lidí používá jeden z 20 nejčastějších PINů. Útočník s pouhými 3 pokusy má tak ~1,5% šanci uhodnout správný PIN.</p>
+
+<p><b>Nejčastější PINy (nepoužívejte):</b> 1234, 0000, 1111, 1212, 7777, 1004, 2000, 4321, 2222, 2001</p>
+
 <h2 id="uniky-hesel">Úniky hesel a proč nepoužívat stejné heslo</h2>
 
 <p><b>Největší bezpečnostní riziko není slabé heslo, ale používání stejného hesla na více službách.</b> Úniky databází jsou běžné – každý rok uniknou miliardy přihlašovacích údajů. Na webu <a href="https://haveibeenpwned.com/">Have I Been Pwned</a> si můžete ověřit, zda vaše e-mailová adresa figuruje v některém známém úniku.</p>
