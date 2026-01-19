@@ -9,12 +9,12 @@ tags: ["js", "php", "hotova-reseni"]
 format: "html"
 ---
 
-<p>Zkratka <b>JSON</b> znamená <i lang="en">JavaScript Object Notation</i> – česky by se dala přeložit třeba jako <i>styl zápisu JavaScriptového objektu</i>. Z toho plyne, že má něco společného s JS, ale v dnešní době se používá jako universální strojově čitelný formát pro výměnu dat.</p>
+<p>Zkratka <b>JSON</b> znamená <i lang="en">JavaScript Object Notation</i> – česky by se dala přeložit třeba jako <i>styl zápisu JavaScriptového objektu</i>. Z toho plyne, že má něco společného s JS, ale v dnešní době se používá jako universální strojově čitelný formát pro výměnu dat.</p>
 
 <p>Hlavní výhody JSONu:</p>
 
 <ul>
-  <li><b>Čitelnost</b> – na rozdíl od XML je kompaktnější a přehlednější</li>
+  <li><b>Čitelnost</b> – na rozdíl od XML je kompaktnější a přehlednější</li>
   <li><b>Snadné zpracování</b> – nativní podpora ve všech moderních jazycích</li>
   <li><b>Universálnost</b> – standard pro REST API, konfigurační soubory, databáze</li>
 </ul>
@@ -24,7 +24,7 @@ format: "html"
 
 <h2 id="formatter">JSON Formatter &amp; Validátor</h2>
 
-<p>Vložte JSON pro <b>formátování</b>, <b>minifikaci</b> nebo <b>validaci</b>. Data se zpracovávají pouze v prohlížeči.</p>
+<p>Vložte JSON pro <b>formátování</b>, <b>minifikaci</b> nebo <b>validaci</b>. Data se zpracovávají pouze v prohlížeči.</p>
 
 <style>
 .json-tool textarea {
@@ -118,7 +118,7 @@ format: "html"
 </style>
 
 <div class="json-tool">
-  <textarea id="json-input" placeholder='{"example": "Vložte sem JSON..."}'></textarea>
+  <textarea id="json-input" placeholder='{"example": „Vložte sem JSON…"}'></textarea>
 
   <div class="controls">
     <button class="primary" onclick="formatJSON()">Formátovat</button>
@@ -214,17 +214,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <h2 id="diff">Porovnání JSON (Diff)</h2>
 
-<p>Porovnejte dva JSON objekty a zobrazte <b>rozdíly</b> mezi nimi.</p>
+<p>Porovnejte dva JSON objekty a zobrazte <b>rozdíly</b> mezi nimi.</p>
 
 <div class="json-tool json-diff">
   <div class="diff-container">
     <div>
       <label><b>JSON A</b> (původní)</label>
-      <textarea id="json-a" placeholder='{"key": "value"}'></textarea>
+      <textarea id="json-a" placeholder='{"key": „value"}'></textarea>
     </div>
     <div>
       <label><b>JSON B</b> (nový)</label>
-      <textarea id="json-b" placeholder='{"key": "new value"}'></textarea>
+      <textarea id="json-b" placeholder='{"key": „new value"}'></textarea>
     </div>
   </div>
 
@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <ul>
   <li><b>Objekt</b> – <code>{}</code> kolekce párů klíč-hodnota</li>
   <li><b>Pole</b> – <code>[]</code> uspořádaný seznam hodnot</li>
-  <li><b>Řetězec</b> – text v dvojitých uvozovkách <code>"text"</code></li>
+  <li><b>Řetězec</b> – text v dvojitých uvozovkách <code>"text"</code></li>
   <li><b>Číslo</b> – integer nebo float <code>42</code>, <code>3.14</code></li>
   <li><b>Boolean</b> – <code>true</code> nebo <code>false</code></li>
   <li><b>Null</b> – <code>null</code></li>
@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <h3 id="objekt">Objekt</h3>
 
-<p>Objekt je ve složených závorkách a jednotlivé dvojice „klíč : hodnota" se oddělují čárkou:</p>
+<p>Objekt je ve složených závorkách a jednotlivé dvojice „klíč : hodnota" se oddělují čárkou:</p>
 
 <pre><code>{
   "jmeno": "Jan Novák",
@@ -405,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <h3 id="pole">Pole</h3>
 
-<p>Přísluší-li k jednomu klíči více položek, používají se hranaté závorky <code>[]</code>:</p>
+<p>Přísluší-li k jednomu klíči více položek, používají se hranaté závorky <code>[]</code>:</p>
 
 <pre><code>{
   "uzivatele": [
@@ -414,15 +414,15 @@ document.addEventListener('DOMContentLoaded', function() {
   ]
 }</code></pre>
 
-<p>Data z pole se dostanou pomocí číselného indexu (od nuly):</p>
+<p>Data z pole se dostanou pomocí číselného indexu (od nuly):</p>
 
 <pre><code>data.uzivatele[0].jmeno // "Jan"</code></pre>
 
 
 
-<h2 id="js">JSON v JavaScriptu</h2>
+<h2 id="js">JSON v JavaScriptu</h2>
 
-<p>JavaScript má dva základní nástroje pro práci s JSON:</p>
+<p>JavaScript má dva základní nástroje pro práci s JSON:</p>
 
 <h3 id="parse">JSON.parse()</h3>
 
@@ -445,7 +445,7 @@ const text = JSON.stringify(obj);
 const pretty = JSON.stringify(obj, null, 2);</code></pre>
 
 
-<h3 id="fetch">Načtení JSON z API</h3>
+<h3 id="fetch">Načtení JSON z API</h3>
 
 <p>Moderní způsob načtení JSON dat ze serveru pomocí <code>fetch</code>:</p>
 
@@ -460,7 +460,7 @@ fetch('/api/data.json')
 
 
 
-<h2 id="ts">JSON v TypeScriptu</h2>
+<h2 id="ts">JSON v TypeScriptu</h2>
 
 <p>TypeScript umožňuje definovat typy pro JSON data:</p>
 
@@ -481,9 +481,9 @@ function parseUser(json: string): User {
 
 
 
-<h2 id="php">JSON v PHP</h2>
+<h2 id="php">JSON v PHP</h2>
 
-<p>PHP má pro práci s JSON dvě hlavní funkce:</p>
+<p>PHP má pro práci s JSON dvě hlavní funkce:</p>
 
 <pre><code>&lt;?php
 // Dekódování JSON → PHP
@@ -503,7 +503,7 @@ $pretty = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);</code>
 
 
 
-<h2 id="python">JSON v Pythonu</h2>
+<h2 id="python">JSON v Pythonu</h2>
 
 <pre><code>import json
 
@@ -522,7 +522,7 @@ text = json.dumps(data, ensure_ascii=False, indent=2)</code></pre>
 
 <h2 id="json-js">JSON vs. JavaScript objekt</h2>
 
-<p>Objekt v JavaScriptu vypadá podobně jako JSON, ale existují <b>rozdíly</b>:</p>
+<p>Objekt v JavaScriptu vypadá podobně jako JSON, ale existují <b>rozdíly</b>:</p>
 
 <table class="wikitable">
   <tr>
@@ -532,13 +532,13 @@ text = json.dumps(data, ensure_ascii=False, indent=2)</code></pre>
   </tr>
   <tr>
     <td>Klíče</td>
-    <td>Musí být v <code>"dvojitých uvozovkách"</code></td>
+    <td>Musí být v <code>"dvojitých uvozovkách"</code></td>
     <td>Mohou být bez uvozovek</td>
   </tr>
   <tr>
     <td>Řetězce</td>
     <td>Pouze <code>"dvojité uvozovky"</code></td>
-    <td>Jednoduché i dvojité</td>
+    <td>Jednoduché i dvojité</td>
   </tr>
   <tr>
     <td>Trailing comma</td>
@@ -559,7 +559,7 @@ text = json.dumps(data, ensure_ascii=False, indent=2)</code></pre>
 
 
 
-<h2 id="jsonc">JSON s komentáři (JSONC)</h2>
+<h2 id="jsonc">JSON s komentáři (JSONC)</h2>
 
 <p>Standardní JSON nepodporuje komentáře. Pro konfigurační soubory existuje <b>JSONC</b> (JSON with Comments), který používá např. VS Code pro <code>settings.json</code>:</p>
 
@@ -571,7 +571,7 @@ text = json.dumps(data, ensure_ascii=False, indent=2)</code></pre>
   "editor.tabSize": 2
 }</code></pre>
 
-<p>JSONC není standardní JSON a vyžaduje speciální parser.</p>
+<p>JSONC není standardní JSON a vyžaduje speciální parser.</p>
 
 
 
@@ -580,7 +580,7 @@ text = json.dumps(data, ensure_ascii=False, indent=2)</code></pre>
 <p><a href="https://json5.org">JSON5</a> je rozšíření JSONu, které přidává:</p>
 
 <ul>
-  <li>Komentáře (<code>//</code> a <code>/* */</code>)</li>
+  <li>Komentáře (<code>//</code> a <code>/* */</code>)</li>
   <li>Trailing commas</li>
   <li>Klíče bez uvozovek</li>
   <li>Jednoduché uvozovky pro řetězce</li>
@@ -606,14 +606,14 @@ text = json.dumps(data, ensure_ascii=False, indent=2)</code></pre>
   <li><b>Konfigurační soubory</b> – <code>package.json</code>, <code>tsconfig.json</code>, VS Code settings</li>
   <li><b>NoSQL databáze</b> – MongoDB, CouchDB, Firebase</li>
   <li><b>Web Storage</b> – localStorage, sessionStorage (s JSON.stringify)</li>
-  <li><b>JWT tokeny</b> – payload je JSON zakódovaný v Base64</li>
+  <li><b>JWT tokeny</b> – payload je JSON zakódovaný v Base64</li>
 </ul>
 
 
 
 <h2 id="jsonp">JSONP (zastaralé)</h2>
 
-<p>JSONP je „JSON s vycpávkou" (písmeno P značí <i>padding</i>). Používal se v situacích, kdy bylo potřeba získat JavaScriptem data z cizí domény, protože AJAX byl omezen na stejnou doménu.</p>
+<p>JSONP je „JSON s vycpávkou" (písmeno P značí <i>padding</i>). Používal se v situacích, kdy bylo potřeba získat JavaScriptem data z cizí domény, protože AJAX byl omezen na stejnou doménu.</p>
 
 <p><b>Dnes je JSONP nahrazen technologií <a href="/cors">CORS</a></b>, která umožňuje bezpečnější cross-origin požadavky.</p>
 
@@ -631,7 +631,7 @@ function callback(data) {
 
 
 
-<h2 id="tipy">Tipy pro práci s JSON</h2>
+<h2 id="tipy">Tipy pro práci s JSON</h2>
 
 <ul>
   <li>Používejte <b>konzistentní pojmenování</b> klíčů (camelCase nebo snake_case)</li>
@@ -647,9 +647,9 @@ function callback(data) {
 
 <div class="external-content">
   <ul>
-    <li><a href="https://jsonlint.com/">JSONLint</a> – validátor a formátovač JSONu</li>
-    <li><a href="https://jsonformatter.org/">JSON Formatter</a> – formátování a konverze</li>
+    <li><a href="https://jsonlint.com/">JSONLint</a> – validátor a formátovač JSONu</li>
+    <li><a href="https://jsonformatter.org/">JSON Formatter</a> – formátování a konverze</li>
     <li><a href="https://json-schema.org/">JSON Schema</a> – specifikace pro validaci struktury</li>
-    <li><a href="https://transform.tools/json-to-typescript">JSON to TypeScript</a> – generování TS typů z JSON</li>
+    <li><a href="https://transform.tools/json-to-typescript">JSON to TypeScript</a> – generování TS typů z JSON</li>
   </ul>
 </div>
