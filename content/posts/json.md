@@ -148,7 +148,8 @@ function formatJSON() {
   try {
     const parsed = JSON.parse(input.value);
     input.value = JSON.stringify(parsed, null, 2);
-    setStatus('✓ JSON naformátován', 'valid');
+    const stats = countStats(parsed);
+    setStatus('✓ JSON naformátován (' + stats.keys + ' klíčů, ' + stats.items + ' položek)', 'valid');
   } catch (e) {
     setStatus('✗ Chyba: ' + e.message, 'invalid');
   }
@@ -159,7 +160,8 @@ function minifyJSON() {
   try {
     const parsed = JSON.parse(input.value);
     input.value = JSON.stringify(parsed);
-    setStatus('✓ JSON minifikován (' + input.value.length + ' znaků)', 'valid');
+    const stats = countStats(parsed);
+    setStatus('✓ JSON minifikován (' + stats.keys + ' klíčů, ' + stats.items + ' položek, ' + input.value.length + ' znaků)', 'valid');
   } catch (e) {
     setStatus('✗ Chyba: ' + e.message, 'invalid');
   }
@@ -169,26 +171,34 @@ function validateJSON() {
   const input = getJSONInput();
   try {
     const parsed = JSON.parse(input.value);
-    const keys = countKeys(parsed);
-    setStatus('✓ Validní JSON (' + keys + ' klíčů, ' + input.value.length + ' znaků)', 'valid');
+    const stats = countStats(parsed);
+    setStatus('✓ Validní JSON (' + stats.keys + ' klíčů, ' + stats.items + ' položek, ' + input.value.length + ' znaků)', 'valid');
   } catch (e) {
     setStatus('✗ Nevalidní JSON: ' + e.message, 'invalid');
   }
 }
 
-function countKeys(obj) {
-  let count = 0;
+function countStats(obj) {
+  let keys = 0;
+  let items = 0;
   if (typeof obj === 'object' && obj !== null) {
     if (Array.isArray(obj)) {
-      obj.forEach(item => count += countKeys(item));
+      items += obj.length;
+      obj.forEach(item => {
+        const sub = countStats(item);
+        keys += sub.keys;
+        items += sub.items;
+      });
     } else {
       for (const key in obj) {
-        count++;
-        count += countKeys(obj[key]);
+        keys++;
+        const sub = countStats(obj[key]);
+        keys += sub.keys;
+        items += sub.items;
       }
     }
   }
-  return count;
+  return { keys, items };
 }
 
 function copyJSON() {
