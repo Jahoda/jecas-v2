@@ -1,14 +1,14 @@
 ---
 title: "USB-C kabel kompatibilita"
 headline: "Proč některé USB-C kabely nefungují se všemi zařízeními"
-description: "USB-C je univerzální konektor, ale ne všechny kabely jsou stejné. Vysvětlení rozdílů mezi USB-C kabely a proč některé nepodporují nabíjení nebo přenos dat."
+description: "USB-C je universální konektor, ale ne všechny kabely jsou stejné. Vysvětlení rozdílů mezi USB-C kabely a proč některé nepodporují nabíjení nebo přenos dat."
 date: "2026-01-19"
 status: 1
 tags: ["produktivita"]
 format: "html"
 ---
 
-<p>USB-C mělo být <b>univerzální řešení</b> – jeden konektor pro nabíjení, data i video. Realita je složitější. Kabel, který nabíjí telefon, nemusí nabít notebook. Kabel od nabíječky nemusí přenášet data. A kabel, který fungoval včera, dnes nefunguje s novým zařízením.</p>
+<p>USB-C mělo být <b>universální řešení</b> – jeden konektor pro nabíjení, data i video. Realita je složitější. Kabel, který nabíjí telefon, nemusí nabít notebook. Kabel od nabíječky nemusí přenášet data. A kabel, který fungoval včera, dnes nefunguje s novým zařízením.</p>
 
 <h2 id="usb-c-neni-standard">USB-C není standard, je to jen tvar</h2>
 
@@ -72,7 +72,7 @@ format: "html"
 </tbody>
 </table>
 
-<p>Ano, pojmenování je <b>zmatek</b>. USB-IF (organizace spravující USB) ho několikrát přejmenovávala.</p>
+<p>Ano, pojmenování je <b>zmatek</b>. USB-IF (organisace spravující USB) ho několikrát přejmenovávala.</p>
 
 <h3 id="thunderbolt-kabel">Thunderbolt 3/4 kabel</h3>
 
@@ -127,7 +127,7 @@ format: "html"
 
 <p><b>Bez e-markeru</b> nabíječka i zařízení odmítnou vyšší výkon použít – z bezpečnostních důvodů. Proto notebook s 65W nebo 100W nabíječkou a obyčejným kabelem říká "připojeno, nenabíjí se" nebo nabíjí velmi pomalu.</p>
 
-<h3 id="ppe-vs-pps">USB PD verze</h3>
+<h3 id="ppe-vs-pps">USB PD verse</h3>
 
 <p>Starší USB PD 2.0 podporovalo <b>5/9/15/20 V</b> v pevných krocích až do 100 W. Novější USB PD 3.0 s PPS (Programmable Power Supply) umožňuje <b>plynulé nastavení napětí</b> – důležité pro rychlé nabíjení telefonů.</p>
 
@@ -135,7 +135,7 @@ format: "html"
 
 <h2 id="jak-poznat-kabel">Jak poznat, co kabel umí</h2>
 
-<h3>Vizuální znaky</h3>
+<h3>Visuální znaky</h3>
 
 <ul>
 <li><b>Tenký, ohebný</b> – pravděpodobně USB 2.0, max 3 A</li>
@@ -147,7 +147,7 @@ format: "html"
 
 <h3>USB-IF certifikace</h3>
 
-<p>Spolehlivé kabely mají <b>certifikační logo USB-IF</b>. Nové standardizované ikony:</p>
+<p>Spolehlivé kabely mají <b>certifikační logo USB-IF</b>. Nové standardisované ikony:</p>
 
 <ul>
 <li><b>Číslo v logu</b> – rychlost v Gb/s (5, 10, 20, 40)</li>
@@ -179,7 +179,7 @@ format: "html"
 <li><b>Označte si kabely</b> – štítkem nebo barevnou páskou podle schopností</li>
 <li><b>Kupujte certifikované kabely</b> – levné kabely z tržnice často lžou o parametrech</li>
 <li><b>Pro notebook pořiďte 100W kabel</b> – s e-markerem, bude fungovat všude</li>
-<li><b>Thunderbolt kabel je univerzální</b> – podporuje vše, ale je drahý</li>
+<li><b>Thunderbolt kabel je universální</b> – podporuje vše, ale je drahý</li>
 </ol>
 
 <h2 id="budoucnost">Zlepší se to?</h2>
@@ -188,4 +188,4 @@ format: "html"
 
 <p>Evropská unie navíc od 2024 vyžaduje <b>USB-C jako povinný konektor</b> pro mobilní zařízení, což tlačí na sjednocení. Bohužel to neřeší různorodost schopností kabelů – jen zaručuje, že konektor bude stejný.</p>
 
-<p>Do té doby platí: <b>USB-C je univerzální konektor, ale ne univerzální kabel</b>.</p>
+<p>Do té doby platí: <b>USB-C je universální konektor, ale ne universální kabel</b>.</p>
