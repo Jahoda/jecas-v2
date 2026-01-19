@@ -149,7 +149,7 @@ format: "html"
 <form id="password-form" class="password-generator" onsubmit="return false">
   <h2 id="generator">Generátor hesla</h2>
 
-  <p>Heslo se generuje <b>přímo v prohlížeči</b> pomocí kryptograficky bezpečného generátoru. Data se nikam neodesílají.</p>
+  <p>Heslo se generuje <b>přímo v prohlížeči</b> pomocí kryptograficky bezpečného generátoru. Data se nikam neodesílají.</p>
 
   <div class="mode-switch">
     <button type="button" data-mode="random" class="active">Náhodné znaky</button>
@@ -170,8 +170,8 @@ format: "html"
       <div class="checkboxes" style="margin-top: 1em;">
         <label><input type="checkbox" name="lowercase" checked> malá písmena (a-z)</label>
         <label><input type="checkbox" name="uppercase" checked> velká písmena (A-Z)</label>
-        <label><input type="checkbox" name="numbers" checked> čísla (0-9)</label>
-        <label><input type="checkbox" name="symbols" checked> speciální znaky (!@#...)</label>
+        <label><input type="checkbox" name="numbers" checked> čísla (0–9)</label>
+        <label><input type="checkbox" name="symbols" checked> speciální znaky (!@#…)</label>
       </div>
     </div>
 
@@ -597,9 +597,9 @@ format: "html"
 <form id="checker-form" class="password-checker" onsubmit="return false">
   <h2 id="overeni">Ověření síly hesla</h2>
 
-  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analysa probíhá lokálně.</p>
+  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analysa probíhá lokálně.</p>
 
-  <input type="text" class="password-input" id="check-password" placeholder="Zadejte heslo k ověření" autocomplete="off">
+  <input type="text" class="password-input" id="check-password" placeholder="Zadejte heslo k ověření" autocomplete="off">
 
   <div class="analysis" id="password-analysis" style="display: none;">
     <div class="analysis-row">
@@ -615,7 +615,7 @@ format: "html"
       <span id="check-upper"></span>
     </div>
     <div class="analysis-row">
-      <span>Číslice (0-9)</span>
+      <span>Číslice (0–9)</span>
       <span id="check-digits"></span>
     </div>
     <div class="analysis-row">
@@ -745,15 +745,15 @@ format: "html"
 <p>Bezpečné heslo by mělo splňovat několik základních pravidel:</p>
 
 <ul>
-  <li><b>Délka</b> – čím delší, tím lepší. Minimum je 12 znaků, ideálně 16 a více.</li>
+  <li><b>Délka</b> – čím delší, tím lepší. Minimum je 12 znaků, ideálně 16 a více.</li>
   <li><b>Náhodnost</b> – heslo by nemělo obsahovat slovníková slova, jména, data narození ani jiné předvídatelné vzory.</li>
-  <li><b>Rozmanitost</b> – kombinace malých a velkých písmen, číslic a speciálních znaků výrazně zvyšuje počet možných kombinací.</li>
+  <li><b>Rozmanitost</b> – kombinace malých a velkých písmen, číslic a speciálních znaků výrazně zvyšuje počet možných kombinací.</li>
   <li><b>Unikátnost</b> – pro každou službu používejte jiné heslo.</li>
 </ul>
 
 <h2 id="entropie">Co je entropie hesla</h2>
 
-<p>Entropie měří „náhodnost" hesla v bitech. Čím vyšší entropie, tím déle by trvalo heslo prolomit hrubou silou.</p>
+<p>Entropie měří „náhodnost" hesla v bitech. Čím vyšší entropie, tím déle by trvalo heslo prolomit hrubou silou.</p>
 
 <table class="wikitable">
   <tr>
@@ -793,46 +793,46 @@ format: "html"
   </tr>
 </table>
 
-<p>Entropie se počítá jako <code>délka × log₂(počet možných znaků)</code>. Například heslo o 16 znacích ze sady 94 znaků (malá + velká písmena + číslice + symboly) má entropii přibližně 105 bitů.</p>
+<p>Entropie se počítá jako <code>délka × log₂(počet možných znaků)</code>. Například heslo o 16 znacích ze sady 94 znaků (malá + velká písmena + číslice + symboly) má entropii přibližně 105 bitů.</p>
 
 <h2 id="spravce-hesel">Správce hesel</h2>
 
 <p>Pamatovat si desítky náhodných hesel je prakticky nemožné. Proto je doporučeno používat <b>správce hesel</b> (password manager):</p>
 
 <ul>
-  <li><b><a href="https://support.apple.com/cs-cz/guide/passwords/welcome/mac">Apple Hesla</a></b> – integrováno v iOS/macOS, synchronisace přes iCloud, zdarma pro uživatele Apple</li>
+  <li><b><a href="https://support.apple.com/cs-cz/guide/passwords/welcome/mac">Apple Hesla</a></b> – integrováno v iOS/macOS, synchronisace přes iCloud, zdarma pro uživatele Apple</li>
   <li><a href="https://bitwarden.com/">Bitwarden</a> – open-source, zdarma, multiplatformní</li>
   <li><a href="https://1password.com/">1Password</a> – placený, vynikající UX</li>
   <li><a href="https://keepassxc.org/">KeePassXC</a> – offline, open-source</li>
 </ul>
 
-<p>Správce hesel vám umožní mít pro každou službu unikátní silné heslo a pamatovat si pouze jedno hlavní heslo (master password).</p>
+<p>Správce hesel vám umožní mít pro každou službu unikátní silné heslo a pamatovat si pouze jedno hlavní heslo (master password).</p>
 
 <h3 id="apple-hesla">Apple Hesla (iCloud Klíčenka)</h3>
 
-<p>Od macOS Sequoia a iOS 18 má Apple samostatnou aplikaci <b>Hesla</b> (Passwords), která nahrazuje dřívější správu hesel v Nastavení. Nabízí:</p>
+<p>Od macOS Sequoia a iOS 18 má Apple samostatnou aplikaci <b>Hesla</b> (Passwords), která nahrazuje dřívější správu hesel v Nastavení. Nabízí:</p>
 
 <ul>
   <li>Automatické generování silných hesel při registraci</li>
   <li>Synchronisaci přes iCloud mezi všemi Apple zařízeními</li>
   <li>Podporu passkeys (přihlašování bez hesla)</li>
-  <li>Detekci uniklých hesel (upozornění pokud se heslo objevilo v úniku dat)</li>
-  <li>Sdílení hesel s rodinou nebo skupinou</li>
+  <li>Detekci uniklých hesel (upozornění pokud se heslo objevilo v úniku dat)</li>
+  <li>Sdílení hesel s rodinou nebo skupinou</li>
   <li>Import/export hesel (CSV)</li>
 </ul>
 
-<p>Pro uživatele v Apple ekosystému je to nejpohodlnější volba – hesla se automaticky vyplňují v Safari i aplikacích a jsou chráněna Face ID / Touch ID.</p>
+<p>Pro uživatele v Apple ekosystému je to nejpohodlnější volba – hesla se automaticky vyplňují v Safari i aplikacích a jsou chráněna Face ID / Touch ID.</p>
 
 <h2 id="passphrase">Passphrase – heslo ze slov</h2>
 
-<p>Alternativou k náhodným znakům je <b>passphrase</b> – heslo složené z několika náhodných slov. Takové heslo je snazší zapamatovat a přitom může mít vysokou entropii.</p>
+<p>Alternativou k náhodným znakům je <b>passphrase</b> – heslo složené z několika náhodných slov. Takové heslo je snazší zapamatovat a přitom může mít vysokou entropii.</p>
 
 <p>Příklad: <code>správný kůň baterie sponka</code> (inspirováno <a href="https://xkcd.com/936/">XKCD #936</a>)</p>
 
 <p><img class="border" src="/files/bezpecne-heslo/sila-hesla.png" alt="Vymýšlení bezpečného hesla snadného na zapamatování"></p>
-<p><i>Přeloženo z <a href="http://imgs.xkcd.com/comics/password_strength.png">originálu</a>.</i></p>
+<p><i>Přeloženo z <a href="http://imgs.xkcd.com/comics/password_strength.png">originálu</a>.</i></p>
 
-<p>Při použití slovníku o 7776 slovech (jako v metodě <a href="https://www.eff.org/dice">Diceware</a>) poskytuje každé slovo přibližně 12,9 bitů entropie. Čtyři slova = ~51 bitů, šest slov = ~77 bitů.</p>
+<p>Při použití slovníku o 7776 slovech (jako v metodě <a href="https://www.eff.org/dice">Diceware</a>) poskytuje každé slovo přibližně 12,9 bitů entropie. Čtyři slova = ~51 bitů, šest slov = ~77 bitů.</p>
 
 <h2 id="dvoufaktorove">Dvoufaktorové ověření (2FA)</h2>
 
@@ -851,10 +851,10 @@ format: "html"
   <li>Hesla založená na osobních údajích (jméno, datum narození)</li>
   <li>Jednoduchá substituce (p4ssw0rd místo password)</li>
   <li>Příliš krátká hesla (&lt; 8 znaků)</li>
-  <li>Zapisování hesel na papírky u monitoru</li>
+  <li>Zapisování hesel na papírky u monitoru</li>
 </ul>
 
-<h2 id="generator-kod">Kód generátoru v JavaScriptu</h2>
+<h2 id="generator-kod">Kód generátoru v JavaScriptu</h2>
 
 <p>Generátor na této stránce používá <code>crypto.getRandomValues()</code> pro kryptograficky bezpečnou náhodnost. Zde je zjednodušená verse:</p>
 
