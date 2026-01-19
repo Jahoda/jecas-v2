@@ -3,7 +3,7 @@ title: "Generátor bezpečných hesel"
 headline: "Generátor hesla online"
 description: "Online generátor silných hesel. Vytvořte si bezpečné heslo s nastavitelnou délkou a znaky."
 date: "2013-06-22"
-last_modification: "2026-01-19"
+last_modification: "2026-01-20"
 status: 1
 tags: ["hesla", "zabezpeceni", "hotova-reseni"]
 format: "html"
@@ -147,7 +147,7 @@ format: "html"
 </style>
 
 <form id="password-form" class="password-generator" onsubmit="return false">
-  <h2 id="generator">Generátor hesla</h2>
+  <h2 id="generator" class="mt-0">Generátor hesla</h2>
 
   <p>Heslo se generuje <b>přímo v prohlížeči</b> pomocí kryptograficky bezpečného generátoru. Data se nikam neodesílají.</p>
 
@@ -234,10 +234,10 @@ format: "html"
 
   var currentMode = 'random';
 
-  // Český slovník pro passphrase - 1024 běžných slov s diakritikou
-  // Inspirováno českým BIP39 wordlistem, upraveno pro lepší zapamatovatelnost
+  // Český slovník pro passphrase - 1024 slov
+  // Diakritika se odstraňuje při generování (volitelně)
   var czechWords = [
-    'abeceda','advent','akcie','aktovka','album','ananas','anděl','anketa','antéka','apartmá',
+    'abeceda','advent','akcie','aktovka','album','ananas','anděl','anketa','antika','apartmá',
     'armáda','asfalt','atlas','auto','babička','bageta','balík','balón','bambus','banán',
     'banda','banka','barva','baterka','batoh','bavlna','bažant','bazén','bedna','beran',
     'beseda','betlém','bezinka','bible','bicykl','bidlo','biftek','bílá','bizon','bláto',
@@ -541,7 +541,7 @@ format: "html"
     }
   });
 
-  // Inicialisace
+  // Inicializace
   generate();
 })();
 </script>
@@ -620,7 +620,7 @@ format: "html"
 <form id="checker-form" class="password-checker" onsubmit="return false">
   <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analýza probíhá lokálně.</p>
 
-  <p><small>Celkové hodnocení vychází z entropie hesla: <code>délka × log₂(počet typů znaků)</code>. Pokud heslo obsahuje běžné vzory (123, qwerty, rok narození), je entropie penalizována o 40 %.</small></p>
+  <p><small>Celkové hodnocení vychází z entropie hesla: <code>délka × log₂(velikost znakové sady)</code>. Pokud heslo obsahuje běžné vzory (123, qwerty, rok narození), je entropie penalizována o 40 %.</small></p>
 
   <input type="text" class="password-input" id="check-password" placeholder="Zadejte heslo k ověření" autocomplete="off">
 
@@ -828,14 +828,14 @@ format: "html"
   </tr>
 </table>
 
-<p>Entropie se počítá jako <code>délka × log₂(počet možných znaků)</code>. Například heslo o 16 znacích ze sady 94 znaků (malá + velká písmena + číslice + symboly) má entropii přibližně 105 bitů.</p>
+<p>Entropie se počítá jako <code>délka × log₂(počet možných znaků)</code>. Například 16znakové heslo ze sady 94 znaků (malá + velká písmena + číslice + symboly) má entropii přibližně 105 bitů.</p>
 
 <h2 id="spravce-hesel">Správce hesel</h2>
 
 <p>Pamatovat si desítky náhodných hesel je prakticky nemožné. Proto je doporučeno používat <b>správce hesel</b> (password manager):</p>
 
 <ul>
-  <li><b><a href="https://support.apple.com/cs-cz/guide/passwords/welcome/mac">Apple Hesla</a></b> – integrováno v iOS/macOS, synchronisace přes iCloud, zdarma pro uživatele Apple</li>
+  <li><b><a href="https://support.apple.com/cs-cz/guide/passwords/welcome/mac">Apple Hesla</a></b> – integrováno v iOS/macOS, synchronizace přes iCloud, zdarma pro uživatele Apple</li>
   <li><a href="https://bitwarden.com/">Bitwarden</a> – open-source, zdarma, multiplatformní</li>
   <li><a href="https://1password.com/">1Password</a> – placený, vynikající UX</li>
   <li><a href="https://keepassxc.org/">KeePassXC</a> – offline, open-source</li>
@@ -849,7 +849,7 @@ format: "html"
 
 <ul>
   <li>Automatické generování silných hesel při registraci</li>
-  <li>Synchronisaci přes iCloud mezi všemi Apple zařízeními</li>
+  <li>Synchronizaci přes iCloud mezi všemi Apple zařízeními</li>
   <li>Podporu passkeys (přihlašování bez hesla)</li>
   <li>Detekci uniklých hesel (upozornění pokud se heslo objevilo v úniku dat)</li>
   <li>Sdílení hesel s rodinou nebo skupinou</li>
