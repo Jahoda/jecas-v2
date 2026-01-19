@@ -178,8 +178,8 @@ format: "html"
     <div class="mode-panel" data-panel="passphrase">
       <div class="length-control">
         <label for="word-count"><b>Počet slov:</b></label>
-        <input type="range" id="word-count" name="wordCount" min="3" max="10" value="4">
-        <input type="number" id="word-count-num" min="3" max="12" value="4">
+        <input type="range" id="word-count" name="wordCount" min="3" max="10" value="5">
+        <input type="number" id="word-count-num" min="3" max="12" value="5">
         <span>slov</span>
       </div>
 
@@ -338,17 +338,7 @@ format: "html"
     'muzeum','muzikál','mýdlit','mýdlo','mýlka','mýtus','nabírat','náboj','nabrat','nábytek',
     'nacpat','nácvik','nadace','nadávat','nádoba','nadobit','nadpis','nadutý','nafouknout','nafta',
     'nahlas','náhled','nahoru','nahradit','naivní','najevo','najít','nakládat','nakonec','nakreslit',
-    'nakyprovat','nálada','nalévat','nalít','náměstí','namíchat','namořit','namotané','nandat','naoko',
-    'naopak','naorat','napájet','nápis','naplnit','napnout','nápoj','naposledy','napravo','náprstek',
-    'napsat','náraz','narcis','národ','narukovat','nasekat','naslepo','následek','naspat','nastoupit',
-    'nástroj','našup','naťukat','natáčet','naučit','navázat','navíc','navlékat','navrhovat','nazdar',
-    'náznak','názor','nebeský','nebezpečí','nebýt','nechat','nečekat','nedávno','neděle','nedostatek',
-    'nefrit','nehet','nehoda','nějaký','nejdřív','nejvíce','někde','někdo','několik','nějaký',
-    'nemít','nemoc','nemovitý','nenávist','neobvyklý','neon','nepřítel','nervový','nést','nestát',
-    'nestor','netopýr','neutrální','nevděk','nevěsta','nevina','nezdar','ničit','nikam','nikde',
-    'nikdo','nikdy','nikl','nimrod','nitka','nížina','nízký','noblesní','nocleh','noha',
-    'norma','normální','norovat','nos','nosit','nota','notář','nouze','novela','noviny',
-    'novinář','nový','nuda','nudle','nugát','nutit','nutnost','nůž','nýbrž','nylon'
+    'nakyprovat','nálada','nalévat','nalít'
   ];
 
   var charsets = {
@@ -448,7 +438,7 @@ format: "html"
       var entropy = calculateEntropy(length, charset.length);
       updateStrengthDisplay(entropy);
     } else {
-      var wordCount = parseInt(wordCountNum.value) || 4;
+      var wordCount = parseInt(wordCountNum.value) || 5;
       var separator = form.separator.value;
       var capitalize = form.capitalize.checked;
       var addNumber = form.addNumber.checked;
@@ -475,7 +465,7 @@ format: "html"
     if (source === 'slider') {
       wordCountNum.value = wordCountSlider.value;
     } else {
-      var val = parseInt(wordCountNum.value) || 4;
+      var val = parseInt(wordCountNum.value) || 5;
       val = Math.max(3, Math.min(12, val));
       wordCountNum.value = val;
       wordCountSlider.value = Math.min(val, 10);
@@ -846,14 +836,18 @@ format: "html"
 
 <p>Alternativou k náhodným znakům je <b>passphrase</b> – heslo složené z několika náhodných slov. Takové heslo je snazší zapamatovat a přitom může mít vysokou entropii.</p>
 
-<p>Příklad: <code>spravne kun svorka baterky</code> (inspirováno <a href="https://xkcd.com/936/">XKCD #936</a>)</p>
+<p>Koncept ilustruje slavný komiks <a href="https://xkcd.com/936/">XKCD #936</a> s frází „correct horse battery staple".</p>
+
+<p><b>Pozor:</b> Tuto konkrétní frázi (ani její překlady) nikdy nepoužívejte – je známá a figuruje v každém slovníku hesel. Vždy si nechte vygenerovat <b>vlastní náhodná slova</b> pomocí generátoru výše.</p>
 
 <p><img class="border" src="/files/bezpecne-heslo/sila-hesla.png" alt="Vymýšlení bezpečného hesla snadného na zapamatování"></p>
 <p><i>Přeloženo z <a href="http://imgs.xkcd.com/comics/password_strength.png">originálu</a>.</i></p>
 
 <p>Při použití slovníku o 7776 slovech (jako v metodě <a href="https://www.eff.org/dice">Diceware</a>) poskytuje každé slovo přibližně 12,9 bitů entropie. Čtyři slova = ~51 bitů, šest slov = ~77 bitů.</p>
 
-<p><b>Poznámka k entropii passphrase:</b> Entropie se počítá jako <code>počet slov × log₂(velikost slovníku)</code>. Diakritika v českých slovech nemá vliv na entropii – útočník provádějící slovníkový útok zná velikost slovníku bez ohledu na to, jaké znaky slova obsahují. Síla passphrase pochází z počtu možných kombinací slov, nikoli ze složitosti jednotlivých znaků.</p>
+<p><b>Poznámka k entropii passphrase:</b> Entropie se počítá jako <code>počet slov × log₂(velikost slovníku)</code>. Diakritika v českých slovech nemá vliv na entropii – útočník provádějící slovníkový útok zná velikost slovníku bez ohledu na to, jaké znaky slova obsahují. Síla passphrase pochází z počtu možných kombinací slov, nikoli ze složitosti jednotlivých znaků.</p>
+
+<p><b>Kerckhoffsův princip:</b> Výpočet entropie předpokládá, že útočník zná použitý slovník i všechna pravidla (počet slov, oddělovač, velká písmena). Jediné co nezná jsou konkrétní náhodné volby. Toto je správný přístup – bezpečnost nesmí záviset na utajení algoritmu (<i>security through obscurity</i>), pouze na kvalitě náhodných voleb. Proto je entropie konzervativní odhad: v praxi může být útok těžší (pokud útočník neví jaký slovník používáte), ale nikdy ne snazší.</p>
 
 <h2 id="dvoufaktorove">Dvoufaktorové ověření (2FA)</h2>
 
