@@ -182,7 +182,7 @@ const req: Request = {
   <li>Nelze iterovat — není runtime hodnota</li>
   <li>Nelze získat seznam hodnot za běhu</li>
   <li>Při mnoha hodnotách může být nepřehledné</li>
-  <li>Při volání funkce píšete stringy přímo v kódu (<code>setStatus('active')</code>) — náchylné na překlepy a IDE autocomplete funguje až po napsání uvozovky</li>
+  <li>Při volání funkce píšete stringy přímo v kódu (<code>setStatus('active')</code>) — náchylné na překlepy a IDE autocomplete funguje až po napsání uvozovky</li>
 </ul>
 
 <p>Poslední bod řeší <code>as const</code>, kde místo stringů používáte pojmenované konstanty (<code>Status.Active</code>).</p>
