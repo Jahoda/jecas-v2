@@ -85,64 +85,92 @@ const TYPOGRAPHY_RULES = [
 		replace: '$1\u00A0$2'
 	},
 
-	// České uvozovky: "text" → „text“
+	// České uvozovky: "text" → „text"
+	// Pouze v prose textu - NE v HTML atributech (po =)
+	// Matchuje uvozovky po: > (konec tagu), whitespace, ( nebo na začátku řádku
+	// České uvozovky: „ (U+201E) otevírací, " (U+201C) zavírací
 	{
 		name: 'české uvozovky',
-		find: /"([^"]+)"/g,
-		replace: '„$1“'
+		find: /(^|>|\s|\()"([^"<>=]+)"/gm,
+		replace: '$1\u201E$2\u201C'
 	}
 ];
 
 /**
- * Extrahuje bloky kódu a nahradí je placeholdery
+ * Extrahuje bloky kódu a další chráněné oblasti, nahradí je placeholdery
  */
-function extractCodeBlocks(content) {
-	const codeBlocks = [];
+function extractProtectedBlocks(content) {
+	const protectedBlocks = [];
 	let result = content;
+
+	// YAML frontmatter (---...---)
+	result = result.replace(/^---[\s\S]*?---/m, (match) => {
+		protectedBlocks.push(match);
+		return `__PROTECTED_BLOCK_${protectedBlocks.length - 1}__`;
+	});
+
+	// <script>...</script> bloky
+	result = result.replace(/<script[\s\S]*?<\/script>/gi, (match) => {
+		protectedBlocks.push(match);
+		return `__PROTECTED_BLOCK_${protectedBlocks.length - 1}__`;
+	});
+
+	// <style>...</style> bloky
+	result = result.replace(/<style[\s\S]*?<\/style>/gi, (match) => {
+		protectedBlocks.push(match);
+		return `__PROTECTED_BLOCK_${protectedBlocks.length - 1}__`;
+	});
 
 	// <pre>...</pre> bloky (včetně <pre><code>)
 	result = result.replace(/<pre[\s\S]*?<\/pre>/gi, (match) => {
-		codeBlocks.push(match);
-		return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+		protectedBlocks.push(match);
+		return `__PROTECTED_BLOCK_${protectedBlocks.length - 1}__`;
 	});
 
 	// <code>...</code> inline
 	result = result.replace(/<code>[\s\S]*?<\/code>/gi, (match) => {
-		codeBlocks.push(match);
-		return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+		protectedBlocks.push(match);
+		return `__PROTECTED_BLOCK_${protectedBlocks.length - 1}__`;
 	});
 
 	// Markdown code blocks ```...```
 	result = result.replace(/```[\s\S]*?```/g, (match) => {
-		codeBlocks.push(match);
-		return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+		protectedBlocks.push(match);
+		return `__PROTECTED_BLOCK_${protectedBlocks.length - 1}__`;
 	});
 
 	// Inline backticks `...`
 	result = result.replace(/`[^`]+`/g, (match) => {
-		codeBlocks.push(match);
-		return `__CODE_BLOCK_${codeBlocks.length - 1}__`;
+		protectedBlocks.push(match);
+		return `__PROTECTED_BLOCK_${protectedBlocks.length - 1}__`;
 	});
 
-	return { content: result, codeBlocks };
+	// HTML atributy s jednoduchými uvozovkami: attr='...'
+	// (obsah může obsahovat dvojité uvozovky, které nechceme měnit)
+	result = result.replace(/=('[^']*')/g, (match, p1) => {
+		protectedBlocks.push(p1);
+		return `=__PROTECTED_BLOCK_${protectedBlocks.length - 1}__`;
+	});
+
+	return { content: result, protectedBlocks };
 }
 
 /**
- * Vrátí bloky kódu zpět na jejich místa
+ * Vrátí chráněné bloky zpět na jejich místa
  */
-function restoreCodeBlocks(content, codeBlocks) {
+function restoreProtectedBlocks(content, protectedBlocks) {
 	let result = content;
-	for (let i = 0; i < codeBlocks.length; i++) {
-		result = result.replace(`__CODE_BLOCK_${i}__`, codeBlocks[i]);
+	for (let i = 0; i < protectedBlocks.length; i++) {
+		result = result.replace(`__PROTECTED_BLOCK_${i}__`, protectedBlocks[i]);
 	}
 	return result;
 }
 
 function applyTypographyFixes(content) {
-	// Extrahuj bloky kódu
-	const { content: withoutCode, codeBlocks } = extractCodeBlocks(content);
+	// Extrahuj chráněné bloky (frontmatter, script, style, code)
+	const { content: withoutProtected, protectedBlocks } = extractProtectedBlocks(content);
 
-	let result = withoutCode;
+	let result = withoutProtected;
 	const changes = [];
 
 	for (const rule of TYPOGRAPHY_RULES) {
@@ -153,8 +181,8 @@ function applyTypographyFixes(content) {
 		}
 	}
 
-	// Vrať bloky kódu zpět
-	result = restoreCodeBlocks(result, codeBlocks);
+	// Vrať chráněné bloky zpět
+	result = restoreProtectedBlocks(result, protectedBlocks);
 
 	return { content: result, changes };
 }
@@ -212,8 +240,10 @@ if (args.length === 0) {
 	console.log('  - Nedělitelné mezery před a, i, k, o, s, u, v, z');
 	console.log('  - Trojtečku ... → …');
 	console.log('  - Pomlčku v rozsazích 10-20 → 10–20');
-	console.log('  - České uvozovky "text" → „text"');
+	console.log('  - České uvozovky "text" → „text" (pouze v prose, ne v HTML atributech)');
 	console.log('  - Nedělitelné mezery před % a jednotkami');
+	console.log('');
+	console.log('Přeskakuje: frontmatter, <script>, <style>, <pre>, <code>, backticks');
 	process.exit(1);
 }
 
