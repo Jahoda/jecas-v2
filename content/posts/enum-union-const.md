@@ -189,7 +189,21 @@ const req: Request = {
 
 <h2 id="as-const">Const assertion (<code>as const</code>)</h2>
 
-<p>Const assertion vytvoří readonly objekt nebo pole s literálními typy:</p>
+<p>Const assertion vytvoří readonly objekt nebo pole s literálními typy. Nejjednodušší je <b>pole</b>:</p>
+
+<pre><code class="language-typescript">const STATUSES = ['active', 'inactive', 'pending'] as const;
+
+type Status = typeof STATUSES[number];
+// Typ: "active" | "inactive" | "pending"
+
+// Můžete iterovat
+STATUSES.forEach(status =&gt; console.log(status));</code></pre>
+
+<p>Zápis <code>[number]</code> znamená "typ libovolného prvku pole" — je výrazně kratší než <code>[keyof typeof]</code> u objektů.</p>
+
+<h3>S objektem (pojmenované klíče)</h3>
+
+<p>Pokud chcete pojmenované konstanty jako <code>Status.Active</code>:</p>
 
 <pre><code class="language-typescript">const Status = {
   Active: 'active',
@@ -197,28 +211,13 @@ const req: Request = {
   Pending: 'pending'
 } as const;
 
-// Typ: { readonly Active: "active"; readonly Inactive: "inactive"; readonly Pending: "pending" }
-
 type StatusType = typeof Status[keyof typeof Status];
 // Typ: "active" | "inactive" | "pending"
 
-function setStatus(status: StatusType) {
-  console.log(status);
-}
+setStatus(Status.Active);  // Pojmenovaná konstanta
+setStatus('active');       // Také funguje</code></pre>
 
-setStatus(Status.Active);  // OK
-setStatus('active');       // OK
-setStatus('unknown');      // Chyba</code></pre>
-
-<h3>S polem</h3>
-
-<pre><code class="language-typescript">const METHODS = ['GET', 'POST', 'PUT', 'DELETE'] as const;
-
-type Method = typeof METHODS[number];
-// Typ: "GET" | "POST" | "PUT" | "DELETE"
-
-// Můžete iterovat
-METHODS.forEach(method => console.log(method));</code></pre>
+<p>Zápis <code>typeof Status[keyof typeof Status]</code> je krkolomný, ale dá se zjednodušit pomocí <a href="#helper">helper typu</a>.</p>
 
 <h3>Co se vygeneruje</h3>
 
