@@ -199,7 +199,7 @@ type Status = typeof STATUSES[number];
 // Můžete iterovat
 STATUSES.forEach(status =&gt; console.log(status));</code></pre>
 
-<p>Zápis <code>[number]</code> znamená "typ libovolného prvku pole" — je výrazně kratší než <code>[keyof typeof]</code> u objektů.</p>
+<p>Zápis <code>[number]</code> znamená „typ libovolného prvku pole“ — je výrazně kratší než <code>[keyof typeof]</code> u objektů.</p>
 
 <h3>S objektem (pojmenované klíče)</h3>
 
