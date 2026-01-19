@@ -118,7 +118,7 @@ format: "html"
 </style>
 
 <div class="json-tool">
-  <textarea id="json-input" placeholder='{"example": „Vložte sem JSON…"}'></textarea>
+  <textarea id="json-input" placeholder='{"example": "Vložte sem JSON..."}'></textarea>
 
   <div class="controls">
     <button class="primary" onclick="formatJSON()">Formátovat</button>
@@ -220,11 +220,11 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="diff-container">
     <div>
       <label><b>JSON A</b> (původní)</label>
-      <textarea id="json-a" placeholder='{"key": „value"}'></textarea>
+      <textarea id="json-a" placeholder='{"key": "value"}'></textarea>
     </div>
     <div>
       <label><b>JSON B</b> (nový)</label>
-      <textarea id="json-b" placeholder='{"key": „new value"}'></textarea>
+      <textarea id="json-b" placeholder='{"key": "new value"}'></textarea>
     </div>
   </div>
 
