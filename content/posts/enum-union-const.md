@@ -420,6 +420,57 @@ type Status = typeof Status[keyof typeof Status];
 // Použití zůstává téměř stejné
 // OldStatus.Active → Status.Active</code></pre>
 
+<h2 id="idealni-reseni">Ideální řešení neexistuje</h2>
+
+<p>Každý přístup má kompromisy:</p>
+
+<table>
+  <tr>
+    <th>Požadavek</th>
+    <th>enum</th>
+    <th>union</th>
+    <th>as const</th>
+  </tr>
+  <tr>
+    <td>Runtime hodnoty</td>
+    <td>✓</td>
+    <td>✗</td>
+    <td>✓</td>
+  </tr>
+  <tr>
+    <td>Pojmenované konstanty</td>
+    <td>✓</td>
+    <td>✗</td>
+    <td>✓</td>
+  </tr>
+  <tr>
+    <td>Vynucení konstant (ne stringů)</td>
+    <td>✓</td>
+    <td>✗</td>
+    <td>✗</td>
+  </tr>
+  <tr>
+    <td>Žádný runtime overhead</td>
+    <td>✗</td>
+    <td>✓</td>
+    <td>✓</td>
+  </tr>
+  <tr>
+    <td>Funguje s isolatedModules</td>
+    <td>✗</td>
+    <td>✓</td>
+    <td>✓</td>
+  </tr>
+  <tr>
+    <td>Jednoduchý zápis</td>
+    <td>✓</td>
+    <td>✓</td>
+    <td>✗</td>
+  </tr>
+</table>
+
+<p><b>Nejbližší k ideálu je <code>as const</code></b> — má většinu výhod. Jediná skutečná nevýhoda je, že nevynucuje použití pojmenovaných konstant místo stringů. Pro většinu projektů to není problém, protože TypeScript zachytí překlepy.</p>
+
 <h2 id="zaver">Závěr</h2>
 
 <ol>
