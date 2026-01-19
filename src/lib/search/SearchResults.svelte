@@ -45,19 +45,23 @@
 {:else if hits.length === 0}
 	<p>
 		O „{query}" tu nic není,
-		<a href="/kontakt" class="underline hover:no-underline text-blue-500">napište mi</a>, jestli vás
+		<a href="/kontakt" class="text-blue-500 underline hover:no-underline">napište mi</a>, jestli vás
 		toto téma zajímá
 	</p>
 {:else}
 	{#each hits as hit, index (hit.objectID)}
 		<a
 			href="/{hit.url_slug}"
-			class="block pt-4 first:pt-0 outline-none"
+			class="block pt-4 outline-none first:pt-0"
 			id="searchResult-{index}"
 			tabindex="-1"
 			animate:flip={{ duration: 200 }}
 		>
-			<SearchHitComponent {hit} selected={index === currentIndex} onhover={() => (currentIndex = index)} />
+			<SearchHitComponent
+				{hit}
+				selected={index === currentIndex}
+				onhover={() => (currentIndex = index)}
+			/>
 		</a>
 	{/each}
 {/if}

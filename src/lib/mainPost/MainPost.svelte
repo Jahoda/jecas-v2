@@ -102,12 +102,15 @@
 					href={href ? `/${href}` : null}
 					class={href ? 'hover:underline' : ''}
 				>
-					<svelte:element this={headingLevel} class="{small ? 'text-2xl line-clamp-2' : 'text-3xl md:text-5xl'} font-bold">
+					<svelte:element
+						this={headingLevel}
+						class="{small ? 'line-clamp-2 text-2xl' : 'text-3xl md:text-5xl'} font-bold"
+					>
 						{@html safeTitle}
 					</svelte:element>
 				</svelte:element>
 				{#if description}
-					<p class="{small ? 'text-sm line-clamp-3' : 'text-xl md:text-2xl'} break-words">
+					<p class="{small ? 'line-clamp-3 text-sm' : 'text-xl md:text-2xl'} break-words">
 						{@html safeDescription}
 					</p>
 				{/if}

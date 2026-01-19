@@ -51,7 +51,10 @@ async function buildSearchIndex() {
 		const headline = frontmatter.headline || title;
 
 		// Strip HTML tags from body for plain text content
-		const plainContent = body.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+		const plainContent = body
+			.replace(/<[^>]*>/g, ' ')
+			.replace(/\s+/g, ' ')
+			.trim();
 
 		// Combine title and content for searching
 		const searchableContent = `${title} ${headline} ${plainContent}`;
