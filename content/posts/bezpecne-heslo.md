@@ -853,10 +853,28 @@ format: "html"
   <li><b>SMS</b> – nejslabší varianta, ale lepší než nic</li>
 </ul>
 
+<h2 id="uniky-hesel">Úniky hesel a proč nepoužívat stejné heslo</h2>
+
+<p><b>Největší bezpečnostní riziko není slabé heslo, ale používání stejného hesla na více službách.</b> Úniky databází jsou běžné – každý rok uniknou miliardy přihlašovacích údajů. Na webu <a href="https://haveibeenpwned.com/">Have I Been Pwned</a> si můžete ověřit, zda vaše e-mailová adresa figuruje v některém známém úniku.</p>
+
+<p>Problém je, že mnoho služeb neukládá hesla bezpečně:</p>
+
+<ul>
+  <li><b>Žádné hashování</b> – hesla uložena v čitelné podobě (ano, stále se to děje)</li>
+  <li><b>Slabé hashování</b> – MD5 nebo SHA1 bez soli, lze prolomit slovníkovým útokem během sekund</li>
+  <li><b>Rychlé hashovací funkce</b> – i SHA-256 je příliš rychlý; moderní GPU zvládne miliardy pokusů za sekundu</li>
+</ul>
+
+<p>Bezpečné služby používají <b>pomalé hashovací funkce</b> jako bcrypt, scrypt nebo Argon2, které záměrně zpomalují ověření hesla. I při úniku databáze pak trvá prolomení jednoho hesla hodiny až roky místo milisekund.</p>
+
+<p>Když útočník získá vaše heslo z jedné služby, zkusí ho automaticky na desítkách dalších – e-mail, sociální sítě, banky. Tomuto se říká <b>credential stuffing</b> a je to jeden z nejúspěšnějších typů útoků.</p>
+
+<p><b>Řešení:</b> Pro každou službu používejte unikátní heslo. S desítkami účtů je to bez správce hesel nemožné – proto je správce hesel nutností, ne luxusem.</p>
+
 <h2 id="caste-chyby">Časté chyby</h2>
 
 <ul>
-  <li>Používání stejného hesla na více službách</li>
+  <li>Používání stejného hesla na více službách (viz výše)</li>
   <li>Hesla založená na osobních údajích (jméno, datum narození)</li>
   <li>Jednoduchá substituce (p4ssw0rd místo password)</li>
   <li>Příliš krátká hesla (&lt; 8 znaků)</li>
