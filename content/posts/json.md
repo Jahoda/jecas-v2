@@ -515,7 +515,7 @@ print(data["jmeno"])  # Jan
 with open("data.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
-# Serializace
+# Serialisace
 text = json.dumps(data, ensure_ascii=False, indent=2)</code></pre>
 
 
@@ -634,7 +634,7 @@ function callback(data) {
 <h2 id="tipy">Tipy pro práci s JSON</h2>
 
 <ul>
-  <li>Používejte <b>konzistentní pojmenování</b> klíčů (camelCase nebo snake_case)</li>
+  <li>Používejte <b>konsistentní pojmenování</b> klíčů (camelCase nebo snake_case)</li>
   <li>Pro velká data zvažte <b>streaming parsery</b> (např. JSONStream pro Node.js)</li>
   <li>Validujte vstupní JSON pomocí <b>JSON Schema</b></li>
   <li>Pro binární data použijte <b>Base64</b> encoding</li>
@@ -648,7 +648,7 @@ function callback(data) {
 <div class="external-content">
   <ul>
     <li><a href="https://jsonlint.com/">JSONLint</a> – validátor a formátovač JSONu</li>
-    <li><a href="https://jsonformatter.org/">JSON Formatter</a> – formátování a konverze</li>
+    <li><a href="https://jsonformatter.org/">JSON Formatter</a> – formátování a konverse</li>
     <li><a href="https://json-schema.org/">JSON Schema</a> – specifikace pro validaci struktury</li>
     <li><a href="https://transform.tools/json-to-typescript">JSON to TypeScript</a> – generování TS typů z JSON</li>
   </ul>
