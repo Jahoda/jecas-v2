@@ -779,7 +779,7 @@ format: "html"
 <ol>
   <li><b>Používejte správce hesel</b> – nechte si generovat a ukládat unikátní hesla pro každou službu. Pamatujete si jen jedno hlavní heslo.</li>
   <li><b>Zapněte dvoufaktorové ověření (2FA)</b> – i když heslo unikne, útočník se bez druhého faktoru nepřihlásí.</li>
-  <li><b>Hlavní heslo do správce hesel</b> – použijte passphrase (4–6 náhodných slov), kterou si zapamatujete. Toto jediné heslo musí být silné a unikátní.</li>
+  <li><b>Hlavní heslo do správce hesel</b> – použijte passphrase (4–6 náhodných slov), kterou si zapamatujete. Toto jediné heslo musí být silné a nesmíte ho používat nikde jinde.</li>
   <li><b>Neměňte hesla zbytečně</b> – pravidelná změna hesel (např. každých 90 dní) vede k volbě slabších hesel. Měňte heslo pouze při podezření na únik.</li>
   <li><b>Zkontrolujte úniky</b> – na <a href="https://haveibeenpwned.com/">Have I Been Pwned</a> ověřte, zda vaše e-maily nefigurují v únicích. Pokud ano, změňte hesla na dotčených službách.</li>
   <li><b>Pozor na phishing</b> – ani silné heslo nepomůže, pokud ho zadáte na podvodné stránce. Vždy kontrolujte URL.</li>
