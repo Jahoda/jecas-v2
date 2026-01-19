@@ -115,10 +115,17 @@ format: "html"
 .json-diff .added { background: #d1fae5; color: #065f46; }
 .json-diff .removed { background: #fee2e2; color: #991b1b; }
 .json-diff .changed { background: #fef3c7; color: #92400e; }
+.json-counter {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 4px 0 8px;
+}
+.json-counter.invalid { color: #991b1b; }
 </style>
 
 <div class="json-tool">
   <textarea id="json-input" placeholder='{"example": "Vložte sem JSON..."}'></textarea>
+  <div id="json-counter" class="json-counter"></div>
 
   <div class="controls">
     <button class="primary" onclick="formatJSON()">Formátovat</button>
@@ -148,8 +155,8 @@ function formatJSON() {
   try {
     const parsed = JSON.parse(input.value);
     input.value = JSON.stringify(parsed, null, 2);
-    const stats = countStats(parsed);
-    setStatus('✓ JSON naformátován (' + stats.keys + ' klíčů, ' + stats.items + ' položek)', 'valid');
+    setStatus('✓ JSON naformátován', 'valid');
+    updateCounter();
   } catch (e) {
     setStatus('✗ Chyba: ' + e.message, 'invalid');
   }
@@ -160,8 +167,8 @@ function minifyJSON() {
   try {
     const parsed = JSON.parse(input.value);
     input.value = JSON.stringify(parsed);
-    const stats = countStats(parsed);
-    setStatus('✓ JSON minifikován (' + stats.keys + ' klíčů, ' + stats.items + ' položek, ' + input.value.length + ' znaků)', 'valid');
+    setStatus('✓ JSON minifikován', 'valid');
+    updateCounter();
   } catch (e) {
     setStatus('✗ Chyba: ' + e.message, 'invalid');
   }
@@ -170,9 +177,8 @@ function minifyJSON() {
 function validateJSON() {
   const input = getJSONInput();
   try {
-    const parsed = JSON.parse(input.value);
-    const stats = countStats(parsed);
-    setStatus('✓ Validní JSON (' + stats.keys + ' klíčů, ' + stats.items + ' položek, ' + input.value.length + ' znaků)', 'valid');
+    JSON.parse(input.value);
+    setStatus('✓ Validní JSON', 'valid');
   } catch (e) {
     setStatus('✗ Nevalidní JSON: ' + e.message, 'invalid');
   }
@@ -211,6 +217,30 @@ function copyJSON() {
 function clearJSON() {
   getJSONInput().value = '';
   document.getElementById('json-status').style.display = 'none';
+  updateCounter();
+}
+
+function updateCounter() {
+  const input = getJSONInput();
+  const counter = document.getElementById('json-counter');
+  if (!input || !counter) return;
+
+  const len = input.value.length;
+  if (len === 0) {
+    counter.textContent = '';
+    counter.className = 'json-counter';
+    return;
+  }
+
+  try {
+    const parsed = JSON.parse(input.value);
+    const stats = countStats(parsed);
+    counter.textContent = stats.keys + ' klíčů, ' + stats.items + ' položek, ' + len + ' znaků';
+    counter.className = 'json-counter';
+  } catch (e) {
+    counter.textContent = len + ' znaků (nevalidní JSON)';
+    counter.className = 'json-counter invalid';
+  }
 }
 
 // Ukázkový JSON při načtení
@@ -218,6 +248,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const input = document.getElementById('json-input');
   if (input && !input.value) {
     input.value = '{"name":"Jan Novák","age":30,"email":"jan@example.com","skills":["JavaScript","TypeScript","Python"],"address":{"city":"Praha","zip":"11000"}}';
+  }
+  if (input) {
+    input.addEventListener('input', updateCounter);
+    updateCounter();
   }
 });
 </script>
