@@ -852,7 +852,22 @@ format: "html"
   <li>Import/export hesel (CSV)</li>
 </ul>
 
-<p>Pro uživatele v Apple ekosystému je to nejpohodlnější volba – hesla se automaticky vyplňují v Safari i aplikacích a jsou chráněna Face ID / Touch ID.</p>
+<p>Pro uživatele v Apple ekosystému je to nejpohodlnější volba – hesla se automaticky vyplňují v Safari i aplikacích a jsou chráněna Face ID / Touch ID.</p>
+
+<h3 id="bez-spravce">Jde to bez správce hesel?</h3>
+
+<p>Správce hesel v prohlížeči (Chrome, Firefox, Safari) nebo v systému (iCloud Klíčenka, Google Password Manager) <b>je správce hesel</b> – jen ho nemusíte instalovat. Pro většinu lidí je to dostačující řešení.</p>
+
+<p>Pokud opravdu nechcete žádný správce hesel, existují alternativy s kompromisy:</p>
+
+<ul>
+  <li><b>Passphrase + osobní algoritmus</b> – základní fráze upravená podle služby (např. přidání prvních písmen názvu). Riziko: pokud jedno heslo unikne a útočník odhalí vzorec, má všechna.</li>
+  <li><b>Papír v trezoru</b> – hesla zapsaná na papíře v bezpečném místě. Lepší než jedno heslo všude, ale nepraktické mimo domov.</li>
+  <li><b>Přihlášení přes Google/Apple</b> – redukuje počet hesel. Riziko: vše závisí na jednom účtu.</li>
+  <li><b>Kategorizace služeb</b> – několik silných passphrase podle důležitosti: unikátní pro kritické (banka, e-mail), sdílená pro méně důležité.</li>
+</ul>
+
+<p><b>Upřímná odpověď:</b> Pro desítky unikátních silných hesel je správce hesel jediné praktické řešení. Dobrá zpráva je, že ho už pravděpodobně máte – v prohlížeči nebo telefonu.</p>
 
 <h2 id="passphrase">Passphrase – heslo ze slov</h2>
 
