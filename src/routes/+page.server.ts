@@ -1,5 +1,10 @@
-import { getAllPosts, getPagesTags, getPostsBySlug, getPostsCount } from '$lib/post/post';
-import { getAllUsedTags } from '$lib/tag/tags';
+// Use GitHub API loaders for ISR
+import {
+	getAllPosts,
+	getPostsBySlug,
+	getPostsCount
+} from '$lib/post/markdown-github';
+import { getAllUsedTags, getPagesTags } from '$lib/tag/tags-github';
 import type { PageServerLoad } from './$types';
 
 export const load = (async () => {

@@ -1,3 +1,9 @@
-// since there's no dynamic data here, we can prerender
-// it so that it gets served as a static asset in production
-export const prerender = true;
+// Disable prerender - use ISR for dynamic content updates
+export const prerender = false;
+
+// ISR configuration - revalidate every 60 seconds
+export const config = {
+	isr: {
+		expiration: 60
+	}
+};

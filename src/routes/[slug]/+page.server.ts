@@ -1,15 +1,46 @@
+// Use GitHub API loaders for ISR - content is fetched at runtime from GitHub
 import {
-	getPostsByTagId,
-	getRelatedPostsByMostTags,
 	getSinglePostBySlug,
-	getPagesTags,
+	getRelatedPostsByMostTags,
 	getPrevNextPosts,
-	type Post
-} from '$lib/post/post';
-import { getAllTagsByPageId, getSingleTagBySlug, getAllUsedTags, type Tag } from '$lib/tag/tags';
+	getAllPosts,
+	getPostsBySlug,
+	type MarkdownPost as Post
+} from '$lib/post/markdown-github';
+import {
+	getAllTagsByPageId,
+	getSingleTagBySlug,
+	getAllUsedTags,
+	getPostsByTagSlug,
+	getPagesTags,
+	type Tag
+} from '$lib/tag/tags-github';
 import { groupByPageId } from '$lib/tags/tags';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
+
+// Helper to get posts by tag ID using GitHub loader
+async function getPostsByTagId(tagSlug: string): Promise<Post[]> {
+	const postSlugs = await getPostsByTagSlug(tagSlug);
+	const now = new Date();
+	const posts: Post[] = [];
+
+	for (const slug of postSlugs) {
+		const post = await getSinglePostBySlug(slug);
+		if (post && post.status === 1) {
+			const effectiveDate = post.last_modification || post.date;
+			if (effectiveDate <= now) {
+				posts.push(post);
+			}
+		}
+	}
+
+	return posts.sort((a, b) => {
+		const dateA = a.last_modification || a.date;
+		const dateB = b.last_modification || b.date;
+		return dateB.getTime() - dateA.getTime();
+	});
+}
 
 export const load = (async ({ params }) => {
 	const slug = params.slug;
@@ -28,7 +59,10 @@ export const load = (async ({ params }) => {
 		tags = await getAllTagsByPageId(page.url_slug);
 
 		if (tags.length > 0) {
-			relatedPosts = await getRelatedPostsByMostTags(tags, page.url_slug);
+			relatedPosts = await getRelatedPostsByMostTags(
+				tags.map((t) => t.name),
+				page.url_slug
+			);
 		}
 
 		prevNextPosts = await getPrevNextPosts(page.url_slug);

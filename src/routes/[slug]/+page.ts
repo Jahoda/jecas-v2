@@ -1,20 +1,11 @@
-import type { EntryGenerator } from './$types';
+// Disable static prerendering - use ISR instead
+export const prerender = false;
 
-// Enable static pre-rendering for all post and tag pages
-export const prerender = true;
-
-// Generate entries for all posts and tags at build time
-// Note: Drafts are excluded from prerendering to stay under the 2048 route limit
-// Exception: kontakt page is explicitly included
-export const entries: EntryGenerator = async () => {
-	const { getAllPosts } = await import('$lib/post/post');
-	const { getAllUsedTags } = await import('$lib/tag/tags');
-
-	const posts = await getAllPosts();
-	const tags = await getAllUsedTags();
-
-	const postEntries = posts.map((post) => ({ slug: post.url_slug }));
-	const tagEntries = tags.map((tag) => ({ slug: tag.url_slug }));
-
-	return [{ slug: 'kontakt' }, ...postEntries, ...tagEntries];
+// ISR configuration for Vercel
+// Pages are cached and revalidated every 60 seconds
+// This allows content changes without redeployment
+export const config = {
+	isr: {
+		expiration: 60 // Revalidate every 60 seconds
+	}
 };
