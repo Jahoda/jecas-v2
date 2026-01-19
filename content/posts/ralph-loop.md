@@ -6,7 +6,7 @@ date: "2026-01-19"
 status: 1
 tags: ["ai", "produktivita"]
 format: "html"
-share: "Poslední dobou je dost populární Ralph loop postup pro AI programování, jak to funguje a jak to použít?"
+social_text: "Poslední dobou je dost populární Ralph loop postup pro AI programování, jak to funguje a jak to použít?"
 ---
 
 <p><b>Ralph loop</b> je technika pro autonomní programování s AI. V jádru jde o nekonečnou smyčku, která opakovaně spouští AI agenta se stejným promptem, dokud není úkol dokončen.</p>
