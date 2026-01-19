@@ -1,7 +1,7 @@
 ---
 title: "JSON"
 headline: "JSON – formát a online nástroje"
-description: "Co je JSON a jak s ním pracovat. Online formatter, validátor a diff."
+description: "Co je JSON a jak s ním pracovat. Online formátovač, validátor a diff."
 date: "2014-05-20"
 last_modification: "2026-01-19"
 status: 1
@@ -22,7 +22,7 @@ format: "html"
 
 <div class="live">
 
-<h2 id="formatter">JSON Formatter &amp; Validátor</h2>
+<h2 id="formatter">JSON formátovač a validátor</h2>
 
 <p>Vložte JSON pro <b>formátování</b>, <b>minifikaci</b> nebo <b>validaci</b>. Data se zpracovávají pouze v prohlížeči.</p>
 
