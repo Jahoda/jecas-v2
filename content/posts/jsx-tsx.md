@@ -462,7 +462,7 @@ _jsxs('div', {
 
 <h2 id="ast">AST – Abstract Syntax Tree</h2>
 
-<p><b>Abstract Syntax Tree</b> (abstraktní syntaktický strom) je stromová reprezentace zdrojového kódu. Každý uzel stromu představuje konstrukci v kódu. Kompilátory a transpilery používají AST pro analýzu a transformaci kódu.</p>
+<p><b>Abstract Syntax Tree</b> (abstraktní syntaktický strom) je stromová representace zdrojového kódu. Každý uzel stromu představuje konstrukci v kódu. Kompilátory a transpilery používají AST pro analysu a transformaci kódu.</p>
 
 <h3>Jak vzniká AST</h3>
 
@@ -552,7 +552,7 @@ CallExpression
 
 <h3>2004 — E4X (předchůdce)</h3>
 
-<p>ECMAScript for XML byl standardizovaný způsob psaní XML v JavaScriptu. Byl součástí Firefoxu 10–20, ale nikdy se neprosadil:</p>
+<p>ECMAScript for XML byl standardisovaný způsob psaní XML v JavaScriptu. Byl součástí Firefoxu 10–20, ale nikdy se neprosadil:</p>
 
 <pre><code>// E4X (dnes mrtvé)
 var person = &lt;person&gt;

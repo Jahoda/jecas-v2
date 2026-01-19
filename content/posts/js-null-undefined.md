@@ -28,7 +28,7 @@ format: "html"
     
     <div id="question-2" class="question hidden">
         <div class="question-box">
-            <strong>Je to neinicializovaná proměnná nebo volitelný parametr?</strong>
+            <strong>Je to neinicialisovaná proměnná nebo volitelný parametr?</strong>
         </div>
         <div class="answers">
             <button onclick="answerQuestion(2, 'yes')" class="answer-btn">ANO</button>
@@ -164,10 +164,10 @@ const questions = [
     },
     {
         id: 2,
-        text: "Je to neinicializovaná proměnná nebo volitelný parametr?",
+        text: "Je to neinicialisovaná proměnná nebo volitelný parametr?",
         yesResult: {
                     answer: "<code>undefined</code>",
-        reason: "Neinicializovaná proměnná nebo volitelný parametr",
+        reason: "Neinicialisovaná proměnná nebo volitelný parametr",
             example: `let hodnota;
 console.log(hodnota); // undefined
 
@@ -215,7 +215,7 @@ let apiResponse = {
         text: "Potřebujete rozlišit mezi „není nastaveno“ a „bylo vymazáno“?",
         yesResult: {
                     answer: "<code>null</code>",
-        reason: "Rozlišení mezi neinicializováno a vymazáno",
+        reason: "Rozlišení mezi neinicialisováno a vymazáno",
             example: `let cache = {};
 cache.data = "hodnota";
 cache.data = null; // Explicitně vymazáno
@@ -305,7 +305,7 @@ function resetDecisionTree() {
 
 <h3 id="co-je-undefined">Co je <code>undefined</code>?</h3>
 
-<p><code>undefined</code> je primitivní hodnota, která se automaticky přiřadí proměnným, které byly deklarovány, ale nebyly inicializovány.</p>
+<p><code>undefined</code> je primitivní hodnota, která se automaticky přiřadí proměnným, které byly deklarovány, ale nebyly inicialisovány.</p>
 
 <pre><code class="language-javascript">let promenna;
 console.log(promenna); // undefined
@@ -408,13 +408,13 @@ cache.data = null; // Vymazání cache</code></pre>
 <h3 id="kdy-pouzit-undefined">Kdy použít <code>undefined</code></h3>
 
 <ul>
-<li><strong>Neinicializované proměnné</strong> – když proměnná ještě nebyla nastavena.</li>
+<li><strong>Neinicialisované proměnné</strong> – když proměnná ještě nebyla nastavena.</li>
 <li><strong>Volitelné parametry</strong> – když funkce nemá povinný parametr.</li>
 <li><strong>Resetování konfigurace</strong> – návrat na výchozí hodnoty.</li>
 <li><strong>Neexistující vlastnosti</strong> – když objekt nemá danou vlastnost.</li>
 </ul>
 
-<pre><code class="language-javascript">// Neinicializovaná proměnná
+<pre><code class="language-javascript">// Neinicialisovaná proměnná
 let hodnota;
 console.log(hodnota); // undefined
 
@@ -541,7 +541,7 @@ console.log(jmeno.length); // Compile error: Object is possibly 'undefined'</cod
     // promenna není null/undefined
 }</code></pre>
 
-<p>Riziko v tomto kódu ale je, když bude proměnná např. číslo <code>0</code>, prázdný řetězec <code>""</code> nebo <code>false</code>, které se vyhodnotí jako <code>false</code>, i když jsou validní hodnoty.</p>
+<p>Risiko v tomto kódu ale je, když bude proměnná např. číslo <code>0</code>, prázdný řetězec <code>""</code> nebo <code>false</code>, které se vyhodnotí jako <code>false</code>, i když jsou validní hodnoty.</p>
 
 <p>Pro spolehlivou kontrolu, že je proměnná nastavená, použijte přísné porovnání:</p> 
 
@@ -561,7 +561,7 @@ console.log(jmeno.length); // Compile error: Object is possibly 'undefined'</cod
 
 <ol>
 <li>Používejte <code>null</code> pro explicitní absenci hodnoty.</li>
-<li>Nechte <code>undefined</code> pro neinicializované proměnné.</li>
+<li>Nechte <code>undefined</code> pro neinicialisované proměnné.</li>
 <li>Používejte přísné porovnání (<code>===</code>).</li>
 <li>Využívejte moderní operátory (<code>??</code>, <code>?.</code>).</li>
 <li>Buďte konsistentní v rámci projektu.</li>
