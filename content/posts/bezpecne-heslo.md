@@ -892,6 +892,8 @@ format: "html"
 
 <p><b>Praktické doporučení:</b> Pro passphrase používejte slova <b>bez diakritiky a speciálních znaků</b>. Bezpečnost zajišťuje náhodnost a počet slov, ne složitost znaků. Heslo bez háčků a čárek snadno zadáte i na dálkovém ovladači k TV, herním ovladači nebo zahraniční klávesnici.</p>
 
+<p><b>Mohu generovat znovu, dokud se mi heslo nebude líbit?</b> Záleží na důvodu. Pár regenerací (2–3×) bezpečnost významně nesníží – ztratíte maximálně ~10 bitů entropie, což je u 6 slov stále bezpečné. Problém nastává, když hledáte slova, která „dávají smysl" dohromady nebo tvoří příběh – smysluplných frází je zlomek všech kombinací a útočník může mít stejnou preferenci. Ideální je vygenerovat jednou a použít.</p>
+
 <h2 id="dvoufaktorove">Dvoufaktorové ověření (2FA)</h2>
 
 <p>I silné heslo může být kompromitováno (phishing, únik databáze). Proto je důležité používat <b>dvoufaktorové ověření</b>:</p>
