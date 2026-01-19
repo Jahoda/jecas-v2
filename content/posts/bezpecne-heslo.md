@@ -789,6 +789,8 @@ format: "html"
 
 <p><b>Poznámka k e-mailu na vlastní doméně:</b> Vlastní doména poskytuje nezávislost na poskytovateli, ale ne nutně vyšší bezpečnost. Gmail nebo Outlook s hardwarovým klíčem (YubiKey) nabízí pokročilou ochranu proti phishingu a dedikované bezpečnostní týmy. U vlastní domény hrozí riziko expirace – pokud zapomenete doménu prodloužit, útočník ji může zaregistrovat a přijímat vaše e-maily včetně resetů hesel. Slabé místo může být i hostingová společnost.</p>
 
+<p><b>Tip – náhodný alias pro přihlášení:</b> U Outlooku (a dalších služeb) můžete pro přihlášení používat jiný e-mail než ten veřejný. Vytvoříte si alias s náhodným řetězcem (např. <code>xk7mq2@outlook.com</code>) a nastavíte ho jako přihlašovací. Váš veřejný e-mail zůstane pro příjem pošty, ale útočník ho nemůže použít k pokusu o přihlášení. Podobný princip používají banky s klientským číslem. Není to náhrada za silné heslo a 2FA, ale přidává další vrstvu ochrany.</p>
+
 <h2 id="kolik-hesel">Kolik hesel si musím pamatovat?</h2>
 
 <p>Záleží na tom, jaký přístup zvolíte. Existuje několik variant od nejjednodušší po nejbezpečnější:</p>
