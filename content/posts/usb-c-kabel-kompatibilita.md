@@ -8,11 +8,11 @@ tags: ["produktivita"]
 format: "html"
 ---
 
-<p>USB-C mělo být <b>universální řešení</b> – jeden konektor pro nabíjení, data i video. Realita je složitější. Kabel, který nabíjí telefon, nemusí nabít notebook. Kabel od nabíječky nemusí přenášet data. A kabel, který fungoval včera, dnes nefunguje s novým zařízením.</p>
+<p>USB-C mělo být <b>universální řešení</b> – jeden konektor pro nabíjení, data i video. Realita je složitější. Kabel, který nabíjí telefon, nemusí nabít notebook. Kabel od nabíječky nemusí přenášet data. A kabel, který fungoval včera, dnes nefunguje s novým zařízením.</p>
 
 <h2 id="usb-c-neni-standard">USB-C není standard, je to jen tvar</h2>
 
-<p><b>USB-C</b> (oficiálně USB Type-C) označuje pouze <b>fyzický tvar konektoru</b> – ten malý oválný konektor, který jde zasunout oběma směry. Neříká nic o tom, co kabel umí.</p>
+<p><b>USB-C</b> (oficiálně USB Type-C) označuje pouze <b>fyzický tvar konektoru</b> – ten malý oválný konektor, který jde zasunout oběma směry. Neříká nic o tom, co kabel umí.</p>
 
 <p>Pod stejným konektorem se skrývají <b>úplně rozdílné technologie</b>:</p>
 
@@ -25,19 +25,19 @@ format: "html"
 <li><b>DisplayPort Alt Mode</b> – přenos videa</li>
 </ul>
 
-<p>Kabel s USB-C konektorem může podporovat <b>všechny tyto technologie</b>, jen některé, nebo <b>pouze nabíjení</b>.</p>
+<p>Kabel s USB-C konektorem může podporovat <b>všechny tyto technologie</b>, jen některé, nebo <b>pouze nabíjení</b>.</p>
 
 <h2 id="typy-kabelu">Typy USB-C kabelů</h2>
 
 <h3 id="nabijeci-kabel">Pouze nabíjecí kabel</h3>
 
-<p>Nejlevnější varianta. Obsahuje <b>pouze napájecí vodiče</b> (VBUS a GND). Telefon nabije, ale data nepřenese. Často přibalený k powerbankám nebo levným nabíječkám.</p>
+<p>Nejlevnější varianta. Obsahuje <b>pouze napájecí vodiče</b> (VBUS a GND). Telefon nabije, ale data nepřenese. Často přibalený k powerbankám nebo levným nabíječkám.</p>
 
-<p><b>Pozná se tak</b>, že po připojení k počítači se zařízení nenajde.</p>
+<p><b>Pozná se tak</b>, že po připojení k počítači se zařízení nenajde.</p>
 
 <h3 id="usb-20-kabel">USB 2.0 kabel</h3>
 
-<p>Obsahuje napájecí vodiče + <b>jeden pár datových vodičů</b> (D+ a D−). Nabíjí a přenáší data rychlostí <b>480 Mb/s</b>. Stačí pro telefony, klávesnice, myši.</p>
+<p>Obsahuje napájecí vodiče + <b>jeden pár datových vodičů</b> (D+ a D−). Nabíjí a přenáší data rychlostí <b>480 Mb/s</b>. Stačí pro telefony, klávesnice, myši.</p>
 
 <p>Většina tenkých, ohebných kabelů je USB 2.0.</p>
 
@@ -76,7 +76,7 @@ format: "html"
 
 <h3 id="thunderbolt-kabel">Thunderbolt 3/4 kabel</h3>
 
-<p>Nejvybavenější varianta. Podporuje <b>40 Gb/s</b>, přenos videa, připojení externích GPU a dalších PCIe zařízení. Obsahuje aktivní elektroniku a je <b>nejdražší</b>.</p>
+<p>Nejvybavenější varianta. Podporuje <b>40 Gb/s</b>, přenos videa, připojení externích GPU a dalších PCIe zařízení. Obsahuje aktivní elektroniku a je <b>nejdražší</b>.</p>
 
 <p>Pozná se podle <b>ikony blesku</b> na konektoru.</p>
 
@@ -123,15 +123,15 @@ format: "html"
 
 <h3 id="e-marker">E-Marker čip</h3>
 
-<p>Pro přenos <b>více než 60 W</b> (3 A při 20 V) musí mít kabel vestavěný <b>e-marker čip</b>. Tento čip komunikuje s nabíječkou a zařízením a potvrzuje, že kabel zvládne vyšší proud.</p>
+<p>Pro přenos <b>více než 60 W</b> (3 A při 20 V) musí mít kabel vestavěný <b>e-marker čip</b>. Tento čip komunikuje s nabíječkou a zařízením a potvrzuje, že kabel zvládne vyšší proud.</p>
 
-<p><b>Bez e-markeru</b> nabíječka i zařízení odmítnou vyšší výkon použít – z bezpečnostních důvodů. Proto notebook s 65W nebo 100W nabíječkou a obyčejným kabelem říká „připojeno, nenabíjí se“ nebo nabíjí velmi pomalu.</p>
+<p><b>Bez e-markeru</b> nabíječka i zařízení odmítnou vyšší výkon použít – z bezpečnostních důvodů. Proto notebook s 65W nebo 100W nabíječkou a obyčejným kabelem říká „připojeno, nenabíjí se" nebo nabíjí velmi pomalu.</p>
 
 <h3 id="ppe-vs-pps">USB PD verse</h3>
 
-<p>Starší USB PD 2.0 podporovalo <b>5/9/15/20 V</b> v pevných krocích až do 100 W. Novější USB PD 3.0 s PPS (Programmable Power Supply) umožňuje <b>plynulé nastavení napětí</b> – důležité pro rychlé nabíjení telefonů.</p>
+<p>Starší USB PD 2.0 podporovalo <b>5/9/15/20 V</b> v pevných krocích až do 100 W. Novější USB PD 3.0 s PPS (Programmable Power Supply) umožňuje <b>plynulé nastavení napětí</b> – důležité pro rychlé nabíjení telefonů.</p>
 
-<p>USB PD 3.1 (EPR – Extended Power Range) zvýšilo maximum na <b>240 W</b> s napětím až 48 V. Pro tyto výkony je potřeba kabel s odpovídajícím e-markerem.</p>
+<p>USB PD 3.1 (EPR – Extended Power Range) zvýšilo maximum na <b>240 W</b> s napětím až 48 V. Pro tyto výkony je potřeba kabel s odpovídajícím e-markerem.</p>
 
 <h2 id="jak-poznat-kabel">Jak poznat, co kabel umí</h2>
 
@@ -141,8 +141,8 @@ format: "html"
 <li><b>Tenký, ohebný</b> – pravděpodobně USB 2.0, max 3 A</li>
 <li><b>Silnější, tužší</b> – pravděpodobně USB 3.x</li>
 <li><b>Ikona blesku</b> – Thunderbolt</li>
-<li><b>Označení „5A“ nebo „100W“</b> – obsahuje e-marker</li>
-<li><b>Označení „SS“</b> – SuperSpeed (USB 3.x)</li>
+<li><b>Označení „5A" nebo „100W"</b> – obsahuje e-marker</li>
+<li><b>Označení „SS"</b> – SuperSpeed (USB 3.x)</li>
 </ul>
 
 <h3>USB-IF certifikace</h3>
@@ -150,11 +150,39 @@ format: "html"
 <p>Spolehlivé kabely mají <b>certifikační logo USB-IF</b>. Nové standardisované ikony:</p>
 
 <ul>
-<li><b>Číslo v logu</b> – rychlost v Gb/s (5, 10, 20, 40)</li>
-<li><b>Číslo s W</b> – podporovaný výkon (60W, 240W)</li>
+<li><b>Číslo v logu</b> – rychlost v Gb/s (5, 10, 20, 40)</li>
+<li><b>Číslo s W</b> – podporovaný výkon (60W, 240W)</li>
 </ul>
 
-<h2 id="konkretni-problemy">Konkrétní problémy a řešení</h2>
+<h2 id="realita">Realita: v šuplíku máš chaos</h2>
+
+<p>Teorie je hezká, ale praxe vypadá jinak. Otevřeš šuplík a vidíš <b>deset USB-C kabelů</b>. Většina nemá žádné označení. Některé jsou od zařízení, některé koupené, některé „odněkud". Nevíš, který je USB 2.0, který 3.0, který má e-marker.</p>
+
+<p>A právě to je <b>hlavní problém USB-C</b> – konektor je universální, ale ekosystém je chaos.</p>
+
+<h3>Co potřebuješ vědět o kabelu</h3>
+<ul>
+<li>Podporuje 60W nebo 100W nabíjení?</li>
+<li>Je to USB 2.0 nebo 3.x?</li>
+<li>Podporuje přenos videa?</li>
+<li>Má všechny vodiče, nebo jen některé?</li>
+</ul>
+
+<h3>Co ti kabel řekne</h3>
+<p>Většinou <b>nic</b>. Žádné označení, žádné logo, jen černý kabel s USB-C na obou koncích.</p>
+
+<h3>Praktické řešení</h3>
+
+<p><b>1. Pořiď si jeden „universální" kabel</b></p>
+<p>Kup Thunderbolt 4 nebo USB4 kabel od známého výrobce (Anker, Belkin, Apple, CalDigit). Stojí 500–800 Kč, ale <b>umí všechno</b> – 100W nabíjení, 40 Gb/s data, video. Když něco nefunguje, vytáhneš tenhle a víš, že problém není v kabelu.</p>
+
+<p><b>2. Originální kabely nech u zařízení</b></p>
+<p>Kabel od notebooku nech u notebooku, kabel od telefonu u telefonu. Výrobci přibalují kabely, které odpovídají zařízení.</p>
+
+<p><b>3. Zbytek označ nebo vyhoď</b></p>
+<p>Neoznačené kabely z čínského e-shopu jsou loterie. Buď je otestuj a označ štítkem (např. „USB 2.0", „100W"), nebo je vyhoď. Jeden kvalitní kabel je lepší než pět nespolehlivých.</p>
+
+<h2 id="konkretni-problemy">Konkrétní problémy a řešení</h2>
 
 <h3>Notebook se nenabíjí</h3>
 <p><b>Příčina</b>: Kabel nemá e-marker nebo nepodporuje USB PD.<br>
@@ -162,29 +190,19 @@ format: "html"
 
 <h3>Externí disk je pomalý nebo nefunguje</h3>
 <p><b>Příčina</b>: Kabel je USB 2.0, disk potřebuje USB 3.x.<br>
-<b>Řešení</b>: Použít silnější kabel s označením SS/SuperSpeed.</p>
+<b>Řešení</b>: Použít silnější kabel s označením SS/SuperSpeed.</p>
 
 <h3>Monitor přes USB-C nefunguje</h3>
 <p><b>Příčina</b>: Kabel nepodporuje DisplayPort Alt Mode nebo nemá všechny vodiče.<br>
-<b>Řešení</b>: Použít kabel s podporou videa (full-featured USB-C nebo Thunderbolt).</p>
+<b>Řešení</b>: Použít kabel s podporou videa (full-featured USB-C nebo Thunderbolt).</p>
 
 <h3>Dokovací stanice funguje jen částečně</h3>
 <p><b>Příčina</b>: Kabel nepodporuje všechny funkce (data + video + napájení současně).<br>
-<b>Řešení</b>: Použít „full-featured“ USB-C kabel nebo Thunderbolt kabel.</p>
-
-<h2 id="doporuceni">Praktická doporučení</h2>
-
-<ol>
-<li><b>Uchovávejte originální kabely</b> – výrobci přibalují kabely odpovídající zařízení</li>
-<li><b>Označte si kabely</b> – štítkem nebo barevnou páskou podle schopností</li>
-<li><b>Kupujte certifikované kabely</b> – levné kabely z tržnice často lžou o parametrech</li>
-<li><b>Pro notebook pořiďte 100W kabel</b> – s e-markerem, bude fungovat všude</li>
-<li><b>Thunderbolt kabel je universální</b> – podporuje vše, ale je drahý</li>
-</ol>
+<b>Řešení</b>: Použít „full-featured" USB-C kabel nebo Thunderbolt kabel.</p>
 
 <h2 id="budoucnost">Zlepší se to?</h2>
 
-<p>USB-IF se snaží situaci zlepšit <b>novými povinnými logy</b>, které jasně ukazují rychlost a výkon. Od roku 2022 musí certifikované kabely nést srozumitelné označení.</p>
+<p>USB-IF se snaží situaci zlepšit <b>novými povinnými logy</b>, které jasně ukazují rychlost a výkon. Od roku 2022 musí certifikované kabely nést srozumitelné označení.</p>
 
 <p>Evropská unie navíc od 2024 vyžaduje <b>USB-C jako povinný konektor</b> pro mobilní zařízení, což tlačí na sjednocení. Bohužel to neřeší různorodost schopností kabelů – jen zaručuje, že konektor bude stejný.</p>
 
