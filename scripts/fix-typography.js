@@ -88,10 +88,11 @@ const TYPOGRAPHY_RULES = [
 	// České uvozovky: "text" → „text"
 	// Pouze v prose textu - NE v HTML atributech (po =)
 	// Matchuje uvozovky po: > (konec tagu), whitespace, ( nebo na začátku řádku
+	// České uvozovky: „ (U+201E) otevírací, " (U+201C) zavírací
 	{
 		name: 'české uvozovky',
 		find: /(^|>|\s|\()"([^"<>=]+)"/gm,
-		replace: '$1„$2"'
+		replace: '$1\u201E$2\u201C'
 	}
 ];
 
@@ -142,6 +143,13 @@ function extractProtectedBlocks(content) {
 	result = result.replace(/`[^`]+`/g, (match) => {
 		protectedBlocks.push(match);
 		return `__PROTECTED_BLOCK_${protectedBlocks.length - 1}__`;
+	});
+
+	// HTML atributy s jednoduchými uvozovkami: attr='...'
+	// (obsah může obsahovat dvojité uvozovky, které nechceme měnit)
+	result = result.replace(/=('[^']*')/g, (match, p1) => {
+		protectedBlocks.push(p1);
+		return `=__PROTECTED_BLOCK_${protectedBlocks.length - 1}__`;
 	});
 
 	return { content: result, protectedBlocks };
