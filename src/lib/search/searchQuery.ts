@@ -28,7 +28,9 @@ async function loadPagefind(): Promise<any> {
 		// allowing runtime loading of Pagefind which is generated during build
 		const importFn = new Function('url', 'return import(url)');
 		pagefindModule = await importFn('/pagefind/pagefind.js');
-		await pagefindModule.init();
+		// Explicitly set bundlePath to ensure Pagefind can find its metadata files
+		// This is needed because dynamic imports don't preserve import.meta.url context
+		await pagefindModule.options({ bundlePath: '/pagefind/' });
 		return pagefindModule;
 	} catch (e) {
 		console.error('[Pagefind] Failed to load:', e);
