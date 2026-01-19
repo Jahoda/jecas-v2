@@ -3,7 +3,7 @@ title: "JSON"
 headline: "JSON – formát, validace, formátování a porovnání"
 description: "JSON je universální formát pro ukládání a přenos dat. Online nástroj pro formátování, minifikaci, validaci a porovnání JSON souborů."
 date: "2014-05-20"
-last_modification: "2025-01-19"
+last_modification: "2026-01-19"
 status: 1
 tags: ["js", "php", "hotova-reseni"]
 format: "html"
@@ -615,7 +615,7 @@ text = json.dumps(data, ensure_ascii=False, indent=2)</code></pre>
 
 <p>JSONP je „JSON s vycpávkou" (písmeno P značí <i>padding</i>). Používal se v situacích, kdy bylo potřeba získat JavaScriptem data z cizí domény, protože AJAX byl omezen na stejnou doménu.</p>
 
-<p><b>Dnes je JSONP nahrazen technologií <a href="/cors">CORS</a></b>, která umožňuje bezpečnější cross-origin požadavky.</p>
+<p><b>Dnes je JSONP nahrazen technologií <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">CORS</a></b>, která umožňuje bezpečnější cross-origin požadavky.</p>
 
 <p>JSONP fungoval tak, že server vracel data obalená do volání JS funkce:</p>
 

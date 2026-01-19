@@ -105,9 +105,9 @@ function applyTypographyFixes(content) {
 // === TESTY ===
 
 // České uvozovky: „ (U+201E) otevírací, " (U+201C) zavírací
-const CZ_OPEN = '\u201E';  // „
+const CZ_OPEN = '\u201E'; // „
 const CZ_CLOSE = '\u201C'; // "
-const NBSP = '\u00A0';     // nedělitelná mezera
+const NBSP = '\u00A0'; // nedělitelná mezera
 
 const tests = [
 	// České uvozovky - prose text
