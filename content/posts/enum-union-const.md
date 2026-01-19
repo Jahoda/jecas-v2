@@ -255,7 +255,7 @@ const Status = {
   <li>Stále můžete psát stringy přímo v kódu — <code>if (status === "active")</code> projde, i když máte <code>Status.Active</code></li>
 </ul>
 
-<p>Poslední bod řeší ESLint pravidlo <a href="https://typescript-eslint.io/rules/prefer-literal-enum-member/">@typescript-eslint/no-restricted-syntax</a> nebo vlastní pravidlo zakazující literály tam, kde existuje konstanta. TypeScript sám překlepy zachytí (typ nedovolí <code>"actve"</code>), ale nenutí vás používat pojmenované konstanty.</p>
+<p>Poslední bod lze řešit ESLint pravidlem zakazujícím stringové literály tam, kde existuje pojmenovaná konstanta. TypeScript sám překlepy zachytí (typ nedovolí <code>"actve"</code>), ale nenutí vás používat <code>Status.Active</code> místo <code>"active"</code>. U union types toto řešit nelze — tam pojmenované konstanty neexistují a stringy jsou jediná možnost.</p>
 
 <h2 id="helper">Helper pro as const</h2>
 
