@@ -793,7 +793,18 @@ format: "html"
 
 <h2 id="kolik-hesel">Kolik hesel si musím pamatovat?</h2>
 
-<p>Záleží na tom, jaký přístup zvolíte. Existuje několik variant od nejjednodušší po nejbezpečnější:</p>
+<p>Než zvolíte strategii, zamyslete se nad svou situací:</p>
+
+<ul>
+  <li><b>Co by bylo problematické ztratit?</b> – Přístup k e-mailu, fotkám, dokumentům, bankovnictví? Které účty jsou kritické pro váš život nebo práci?</li>
+  <li><b>Co by bylo drahé ztratit?</b> – Kryptoměny, předplacené služby, domény, licence k softwaru?</li>
+  <li><b>Jak moc chcete být závislí na třetích stranách?</b> – Apple nebo Google vám mohou zablokovat účet (omylem, kvůli porušení podmínek). Dokážete se z toho zotavit?</li>
+  <li><b>Jaké jsou vaše technické schopnosti?</b> – Zvládnete spravovat hardwarové klíče a zálohy, nebo potřebujete co nejjednodušší řešení?</li>
+</ul>
+
+<p>Pro běžného uživatele s pár desítkami účtů stačí jednodušší varianta. Pro někoho, kdo spravuje firemní přístupy, kryptoměny nebo citlivá data, má smysl investovat do složitějšího a bezpečnějšího řešení.</p>
+
+<p>Existuje několik základních obecných variant od nejjednodušší po bezpečnější:</p>
 
 <h3>Varianta 1: Jeden ekosystém (nejjednodušší)</h3>
 
