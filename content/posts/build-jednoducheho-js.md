@@ -9,21 +9,21 @@ tags: ["hotova-reseni", "js", "ts"]
 format: "html"
 ---
 
-<p>V dnešní době se zpravidla <b>výrazně liší</b> JavaScript, ve kterém se něco píše, a výsledek, který potom běží v prohlížeči.</p>
+<p>V dnešní době se zpravidla <b>výrazně liší</b> JavaScript, ve kterém se něco píše, a výsledek, který potom běží v prohlížeči.</p>
 
-<p>Teoreticky je možná psát pouze jeden kód a ten nijak pro produkční použití neupravovat, ale má to několik problémů:</p>
+<p>Teoreticky je možná psát pouze jeden kód a ten nijak pro produkční použití neupravovat, ale má to několik problémů:</p>
 
 <ol>
   <li>
     <p>
-      <b>Nekompatibilita</b> – v novějších prohlížečích funguje řada hezkých JS konstrukcí, které v <b>IE 11</b> ne.
+      <b>Nekompatibilita</b> – v novějších prohlížečích funguje řada hezkých JS konstrukcí, které v <b>IE 11</b> ne.
     </p>
     
     <p>To jsou věci jako například:</p>
     
     <ul>
       <li>
-        Psaní <code>const</code> a <a href="/js-var-let"><code>let</code> místo <code>var</code></a>.
+        Psaní <code>const</code> a <a href="/js-var-let"><code>let</code> místo <code>var</code></a>.
       </li>
       <li>
         Optional chaining operator (<code>objekt?.vlastnost?.dalsiVlastnost</code>)
@@ -39,7 +39,7 @@ format: "html"
   
   <li>
     <p>
-      <b>Horší čitelnost/udržitelnost</b> – pokud se naopak kód píše v kompatibilním režimu, nepoužívání novějších JS praktik vede k hůře čitelnému kódu.
+      <b>Horší čitelnost/udržitelnost</b> – pokud se naopak kód píše v kompatibilním režimu, nepoužívání novějších JS praktik vede k hůře čitelnému kódu.
     </p>
   </li>
   
@@ -48,7 +48,7 @@ format: "html"
       <b>Velikost</b> – pro vývoj čitelný kód je zbytečně velký.
     </p>
     
-    <p>Prohlížeč nepotřebuje rozumně pojmenované funkce a proměnné. Vystačí si v pohodě s tím, že místo <code>vystiznyNazevFunkce()</code> bude <code>a()</code>.</p>
+    <p>Prohlížeč nepotřebuje rozumně pojmenované funkce a proměnné. Vystačí si v pohodě s tím, že místo <code>vystiznyNazevFunkce()</code> bude <code>a()</code>.</p>
   </li>
   
   <li>
@@ -58,7 +58,7 @@ format: "html"
   </li>
 </ol>
 
-<p>Cílem je tedy psát kód se všemi vymoženostmi nového JS v TypeScriptu. A z toho nakonec dostat obyčejný JavaScript funkční i v <b>IE 11</b>.</p>
+<p>Cílem je tedy psát kód se všemi vymoženostmi nového JS v TypeScriptu. A z toho nakonec dostat obyčejný JavaScript funkční i v <b>IE 11</b>.</p>
 
 
 <h2 id="frameworky">Bez frameworků</h2>
@@ -72,9 +72,9 @@ format: "html"
 
 <h2 id="babel">Babel</h2>
 
-<p>Když jde o kompilaci do zpětně kompatibilního JS, nejznámější řešení je <a href="https://babeljs.io">Babel</a>.</p>
+<p>Když jde o kompilaci do zpětně kompatibilního JS, nejznámější řešení je <a href="https://babeljs.io">Babel</a>.</p>
 
-<p>Má i <a href="https://babeljs.io/repl">online nástroj</a>, kde je možné si vyzkoušet, co udělá.</p>
+<p>Má i <a href="https://babeljs.io/repl">online nástroj</a>, kde je možné si vyzkoušet, co udělá.</p>
 
 <p>Instalace je jednoduchá:</p>
 
@@ -96,7 +96,7 @@ format: "html"
 
 
 
-<p>Transformaci pro <b>IE 11</b> je třeba nastavit např. v souboru <code>.babelrc</code>:</p>
+<p>Transformaci pro <b>IE 11</b> je třeba nastavit např. v souboru <code>.babelrc</code>:</p>
 
 <pre><code>{
   "presets": [
@@ -124,7 +124,7 @@ format: "html"
 
 <h2 id="swc">SWC</h2>
 
-<p><a href="https://swc.rs">SWC</a> (Speedy Web Compiler) je mnohem méně známá a údajně 20–70krát rychlejší alternativa Babelu.</p>
+<p><a href="https://swc.rs">SWC</a> (Speedy Web Compiler) je mnohem méně známá a údajně 20–70krát rychlejší alternativa Babelu.</p>
 
 <p>Pro vyzkoušení jde použít <a href="https://swc.rs/playground">online nástroj</a>.</p>
 
@@ -132,18 +132,18 @@ format: "html"
 
 <h2 id="vite">Vite</h2>
 
-<p><a href="/vite">Vite</a> je nástroj pro super rychlé vývojové prostředí a build.</p>
+<p><a href="/vite">Vite</a> je nástroj pro super rychlé vývojové prostředí a build.</p>
 
-<p>Hodí se především pro větší aplikace napsané v Reactu/Vue/Svelte, ale má i <a href="https://vitejs.dev/guide/build.html#library-mode">library mode</a>.</p>
+<p>Hodí se především pro větší aplikace napsané v Reactu/Vue/Svelte, ale má i <a href="https://vitejs.dev/guide/build.html#library-mode">library mode</a>.</p>
 
-<p>Díky tomu jde obyčejný kód v TS spojit do jednoho souboru.</p>
+<p>Díky tomu jde obyčejný kód v TS spojit do jednoho souboru.</p>
 
 <p>Přes plugin <a href="https://github.com/owlsdepartment/vite-plugin-babel">vite-plugin-babel</a> zajistit funkčnost ve starých prohlížečích.</p>
 
 
 <h2 id="deleni">Dělení do souborů</h2>
 
-<p>Pro přehlednost a snažší týmovou práci je užitečné dělit části kódu do samostatných souborů.</p>
+<p>Pro přehlednost a snažší týmovou práci je užitečné dělit části kódu do samostatných souborů.</p>
 
 <p>Ty potom ve výsledku spojit.</p>
 
@@ -156,7 +156,7 @@ format: "html"
 
 <pre><code>npm install --save-exact esbuild</code></pre>
 
-<p>A přidat skripty pro vývoj a build:</p>
+<p>A přidat skripty pro vývoj a build:</p>
 
 <pre><code>{
   ...
@@ -176,14 +176,14 @@ format: "html"
 
 <h2 id="codestyle">Code style</h2>
 
-<p>Aby měl kód nějakou kulturu, hodí se nějak <b>automaticky formátovat kód</b>. Není potom potřeba při code review někomu připomínat, že používá taby místo mezer a podobně.</p>
+<p>Aby měl kód nějakou kulturu, hodí se nějak <b>automaticky formátovat kód</b>. Není potom potřeba při code review někomu připomínat, že používá taby místo mezer a podobně.</p>
 
-<p>Osvědčil se mi <a href="https://prettier.io">Prettier</a>, protože podporuje hromady formátů, má jednoduchou instalaci a nastavení a dobrou podporu v editorech.</p>
+<p>Osvědčil se mi <a href="https://prettier.io">Prettier</a>, protože podporuje hromady formátů, má jednoduchou instalaci a nastavení a dobrou podporu v editorech.</p>
 
 
-<h2 id="kompilace">Kompilace a minifikace</h2>
+<h2 id="kompilace">Kompilace a minifikace</h2>
 
-<p><a href="https://closure-compiler.appspot.com/home">Closure Compiler</a> dokáže ušetřit hodně dat díky tomu, že zkrátí všechny možné názvy identifikátorů. Dokáže i zjednodušit některý kód a vyházet nepoužívaný kód.</p>
+<p><a href="https://closure-compiler.appspot.com/home">Closure Compiler</a> dokáže ušetřit hodně dat díky tomu, že zkrátí všechny možné názvy identifikátorů. Dokáže i zjednodušit některý kód a vyházet nepoužívaný kód.</p>
 
 <p>Z následující funkce:</p>
 

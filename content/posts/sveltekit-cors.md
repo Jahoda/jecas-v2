@@ -11,11 +11,11 @@ format: "html"
 
 <p><a href="https://kit.svelte.dev">SvelteKit</a> je komplexní nástroj pro vytváření webů.</p>
 
-<p>Jednak umožňuje vytvářet skvelá uživatelská rozhraní ve <b>Svelte</b>, ale kromě toho řešit i renderování na straně serveru a další věci – například vytvářet API endpointy.</p>
+<p>Jednak umožňuje vytvářet skvelá uživatelská rozhraní ve <b>Svelte</b>, ale kromě toho řešit i renderování na straně serveru a další věci – například vytvářet API endpointy.</p>
 
 <p>To jde velmi jednoduše umístěním souboru <code>+server.ts</code> např. do složky <code>routes/api/test</code>.</p>
 
-<p>Automatický router založený na souborovém systému se postará o to, že vznikne endpoint <code>https://example.com/api/test</code>. Obsah souboru může být následující:</p>
+<p>Automatický router založený na souborovém systému se postará o to, že vznikne endpoint <code>https://example.com/api/test</code>. Obsah souboru může být následující:</p>
 
 <pre><code>import { json } from '@sveltejs/kit';
 
@@ -37,9 +37,9 @@ export async function GET() {
 
 <h2 id="cors">Nastavení CORS</h2>
 
-<p>Pro umožnění získání dat z cizí domény je potřeba použít tzv. <a href="https://kit.svelte.dev/docs/hooks#server-hooks">hook</a>.</p>
+<p>Pro umožnění získání dat z cizí domény je potřeba použít tzv. <a href="https://kit.svelte.dev/docs/hooks#server-hooks">hook</a>.</p>
 
-<p>Jde o soubor <code>hooks.server.ts</code> (umístěný rovnou ve složce <code>src</code>), který umožňuje modifikovat reqesty.</p>
+<p>Jde o soubor <code>hooks.server.ts</code> (umístěný rovnou ve složce <code>src</code>), který umožňuje modifikovat reqesty.</p>
 
 <p>V tomto případě přidá potřebnou hlavičku <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin"><code>Access-Control-Allow-Origin</code></a>, pokud doména volající SvelteKit vyhoví regulárnímu výrazu <code>/^(.*)?\.?example\.com$/</code>:</p>
 
