@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import SearchHandler from '$lib/search/SearchHandler.svelte';
 	import SearchIcon from '$lib/search/SearchIcon.svelte';
+	import { preloadPagefind } from '$lib/search/searchQuery';
 
 	import { onMount } from 'svelte';
 	import { navigating } from '$app/stores';
@@ -14,12 +13,16 @@
 		if (event.key === 'Escape') {
 			isSearchOpen = false;
 		} else if (event.metaKey && event.key === 'k') {
-			isSearchOpen = true;
+			handleOpen();
 		}
 	};
 
 	function handleClose() {
 		isSearchOpen = false;
+	}
+
+	function handleOpen() {
+		isSearchOpen = true;
 	}
 
 	let hasMounted = $state(false);
@@ -28,7 +31,7 @@
 		hasMounted = true;
 	});
 
-	run(() => {
+	$effect(() => {
 		if (hasMounted) {
 			document.body.classList.toggle('overflow-hidden', isSearchOpen);
 			document.body.classList.toggle('is-modal-open', isSearchOpen);
@@ -42,18 +45,20 @@
 
 {#if isSearchOpen}
 	<div
-		class="fixed inset-0 z-20 flex h-screen w-screen items-end justify-center text-left whitespace-normal md:items-start md:py-8"
+		class="fixed top-0 right-0 bottom-0 left-0 z-20 flex items-start justify-center pt-4 text-left whitespace-normal md:py-8"
 	>
 		<div
-			transition:fade={{ duration: 300 }}
+			in:fade={{ duration: 200 }}
+			out:fade={{ duration: 150 }}
 			aria-hidden="true"
 			class="absolute inset-0 bg-black/60 backdrop-blur"
 			onclick={handleClose}
 		></div>
 
 		<div
-			transition:fly={{ y: 50, duration: 200 }}
-			class="rounded-t-x relative flex max-h-full w-full flex-col overflow-hidden bg-white text-gray-800 md:max-h-[95vh] md:max-w-lg md:rounded-xl dark:bg-slate-800 dark:text-white"
+			in:fly={{ y: -20, duration: 200 }}
+			out:fade={{ duration: 150 }}
+			class="relative flex max-h-[85%] w-full flex-col overflow-hidden rounded-xl bg-white text-gray-800 shadow-2xl max-md:mx-2 md:max-h-[95%] md:max-w-lg dark:bg-slate-800 dark:text-white"
 		>
 			<SearchHandler on:close={handleClose} />
 		</div>
@@ -61,7 +66,9 @@
 {/if}
 
 <button
-	onclick={() => (isSearchOpen = true)}
+	onclick={handleOpen}
+	onmouseenter={preloadPagefind}
+	onfocus={preloadPagefind}
 	type="button"
 	class="dark:bg-blue-dark/30 flex h-10 w-10 items-center gap-x-3 rounded-lg bg-white text-left text-sm text-slate-400 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:ring-2 focus:ring-sky-500 focus:outline-none max-sm:justify-center sm:w-72 sm:px-4 dark:hover:ring-blue-700"
 >

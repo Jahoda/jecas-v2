@@ -1,8 +1,11 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import Search from '$lib/search/Search.svelte';
 
 	import Container from '$lib/container/Container.svelte';
 	import Logo from '$lib/logo/Logo.svelte';
+
+	const isHomepage = $derived($page.url.pathname === '/');
 </script>
 
 <div class="bg-blue-light dark:bg-blue-light/30 py-2 shadow-lg">
@@ -15,7 +18,7 @@
 				<Logo />
 			</a>
 
-			<svelte:element this={'h1'} class="max-lg:hidden">
+			<svelte:element this={isHomepage ? 'h1' : 'span'} class="max-lg:hidden">
 				Moderní tvorba webových aplikací
 			</svelte:element>
 

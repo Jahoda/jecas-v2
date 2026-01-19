@@ -30,7 +30,8 @@ const config = {
 					id.includes('.node') ||
 					id.includes('@resvg/resvg-js') ||
 					id.includes('resvgjs.') ||
-					id.includes('.wasm')
+					id.includes('.wasm') ||
+					id.includes('/pagefind/')
 				);
 			}
 		}

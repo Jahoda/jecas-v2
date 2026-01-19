@@ -1,16 +1,33 @@
 <script lang="ts">
 	import MainPost from '$lib/mainPost/MainPost.svelte';
-	import type { HitPost } from '$lib/search/searchQueryAlgolia';
+	import type { SearchHit } from '$lib/search/searchQuery';
 
 	interface Props {
-		hit: HitPost;
+		hit: SearchHit;
 		selected?: boolean;
+		onhover?: () => void;
 	}
 
-	let { hit, selected = false }: Props = $props();
+	let { hit, selected = false, onhover }: Props = $props();
 
-	let title = $derived((hit._highlightResult?.headline as any)?.value || hit.headline);
-	let description = $derived((hit._highlightResult?.description as any)?.value || hit.description);
+	function stripHtml(html: string): string {
+		return html.replace(/<[^>]*>/g, '');
+	}
+
+	// Keep only <mark> tags for highlighting, strip everything else
+	function sanitizeExcerpt(html: string): string {
+		// First escape any existing HTML entities that might be dangerous
+		// Then only allow <mark> tags
+		return html
+			.replace(/<(?!\/?mark\b)[^>]*>/gi, '')
+			.replace(/</g, '&lt;')
+			.replace(/&lt;(\/?)mark>/gi, '<$1mark>');
+	}
+
+	let title = $derived(stripHtml(hit.title || hit.headline));
+	let description = $derived(sanitizeExcerpt(hit.description));
 </script>
 
-<MainPost neutral {title} {description} href={hit.url_slug} {selected} small />
+<div onmouseenter={onhover}>
+	<MainPost neutral {title} {description} {selected} small slug={hit.url_slug} />
+</div>

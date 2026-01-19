@@ -1,17 +1,16 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import { goto } from '$app/navigation';
-	import type { HitPost } from '$lib/search/searchQueryAlgolia';
-	import SearchHit from '$lib/search/SearchHit.svelte';
+	import type { SearchHit } from '$lib/search/searchQuery';
+	import SearchHitComponent from '$lib/search/SearchHit.svelte';
 	import { flip } from 'svelte/animate';
 
 	interface Props {
-		hits?: HitPost[];
+		hits?: SearchHit[];
 		query: string;
+		isLoading?: boolean;
 	}
 
-	let { hits = [], query }: Props = $props();
+	let { hits = [], query, isLoading = false }: Props = $props();
 
 	let currentIndex = $state(0);
 
@@ -32,23 +31,68 @@
 		}
 	}
 
-	run(() => {
+	$effect(() => {
 		scrollToElement(currentIndex);
 	});
 </script>
 
-{#each hits as hit, index (hit.id)}
-	<div class="pt-4 first:pt-0" animate:flip={{ duration: 200 }}>
-		<div id="searchResult-{index}" tabindex="-1" class="outline-none">
-			<SearchHit {hit} selected={index === currentIndex} />
-		</div>
+{#if query.length < 2}
+	<p class="text-gray-500 dark:text-gray-400">Začněte psát pro vyhledávání...</p>
+{:else if isLoading}
+	<div class="flex items-center justify-center py-8">
+		<div class="loader"></div>
 	</div>
-{:else}
+{:else if hits.length === 0}
 	<p>
-		O „{query}“ tu nic není,
-		<a href="/kontakt" class="underline hover:no-underline text-blue-500">napište mi</a>, jestli vás
+		O „{query}" tu nic není,
+		<a href="/kontakt" class="text-blue-500 underline hover:no-underline">napište mi</a>, jestli vás
 		toto téma zajímá
 	</p>
-{/each}
+{:else}
+	{#each hits as hit, index (hit.objectID)}
+		<a
+			href="/{hit.url_slug}"
+			class="block pt-4 outline-none first:pt-0"
+			id="searchResult-{index}"
+			tabindex="-1"
+			animate:flip={{ duration: 200 }}
+		>
+			<SearchHitComponent
+				{hit}
+				selected={index === currentIndex}
+				onhover={() => (currentIndex = index)}
+			/>
+		</a>
+	{/each}
+{/if}
 
 <svelte:window onkeydown={handleKeydown} />
+
+<style>
+	.loader {
+		width: 32px;
+		height: 32px;
+		border: 3px solid #e5e7eb;
+		border-top-color: #3b82f6;
+		border-radius: 50%;
+		animation: spin 0.8s linear infinite;
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	:global(mark) {
+		background-color: #fef08a;
+		color: #1f2937;
+		padding: 0.1em 0.2em;
+		border-radius: 0.2em;
+	}
+
+	:global(.dark mark) {
+		background-color: #fef08a;
+		color: #1f2937;
+	}
+</style>

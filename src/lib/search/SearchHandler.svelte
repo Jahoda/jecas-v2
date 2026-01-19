@@ -1,18 +1,28 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import SearchInput from '$lib/search/SearchInput.svelte';
 
-	import { searchQueryAlgolia, type HitPost } from '$lib/search/searchQueryAlgolia';
+	import { searchQuery, type SearchHit } from '$lib/search/searchQuery';
 	import SearchResults from '$lib/search/SearchResults.svelte';
 
 	let query = $state('');
-	let result: HitPost[] = $state([]);
+	let result: SearchHit[] = $state([]);
+	let isLoading = $state(false);
 
-	run(() => {
-		searchQueryAlgolia(query).then((response: any) => {
-			result = response.results?.[0]?.hits || response.hits || [];
-		});
+	$effect(() => {
+		const q = query;
+		if (q.length >= 2) {
+			isLoading = true;
+			searchQuery(q).then((response) => {
+				// Prevent race condition: only update if query hasn't changed
+				if (query === q) {
+					result = response.hits || [];
+					isLoading = false;
+				}
+			});
+		} else {
+			result = [];
+			isLoading = false;
+		}
 	});
 </script>
 
@@ -24,6 +34,6 @@
 
 <div class="overflow-y-auto">
 	<div class="p-3">
-		<SearchResults {query} hits={result} />
+		<SearchResults {query} hits={result} {isLoading} />
 	</div>
 </div>

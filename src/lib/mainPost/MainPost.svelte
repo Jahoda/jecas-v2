@@ -11,6 +11,7 @@
 		description: string;
 		date?: Date | null;
 		href?: string | null;
+		slug?: string | null;
 		background?: string | null;
 		tags?: Tag[] | null;
 		small?: boolean;
@@ -19,6 +20,7 @@
 		noImage?: boolean;
 		wordCount?: number | null;
 		lazy?: boolean;
+		headingLevel?: 'h1' | 'h2';
 	}
 
 	let {
@@ -26,6 +28,7 @@
 		description,
 		date = null,
 		href = null,
+		slug = null,
 		background = null,
 		tags = null,
 		small = false,
@@ -33,8 +36,12 @@
 		selected = false,
 		noImage = false,
 		wordCount = null,
-		lazy = true
+		lazy = true,
+		headingLevel = 'h2'
 	}: Props = $props();
+
+	// Use slug for image if provided, otherwise fall back to href
+	const imageSlug = $derived(slug || href);
 
 	let tagsColors = $derived(tags?.map((tag) => tag.background).filter((color) => color) || []);
 
@@ -52,7 +59,7 @@
 		: ''} @container p-2 shadow {small ? '' : ''} {neutral
 		? 'bg-gray-50 dark:bg-slate-700 dark:text-white'
 		: 'text-white dark:text-white'}"
-	style="--image: url({`/files/article/${href}.png`});{neutral
+	style="--image: url({`/files/article/${imageSlug}.png`});{neutral
 		? ''
 		: background
 			? `background: ${background}`
@@ -73,35 +80,37 @@
 				? 'gap-4 @sm:flex-row @sm:items-start @sm:text-left'
 				: 'gap-8 @xl:flex-row @xl:items-start @xl:text-left'}"
 		>
-			{#if !noImage}
-				<a
+			{#if !noImage && imageSlug}
+				<svelte:element
+					this={href ? 'a' : 'div'}
 					href={href ? `/${href}` : null}
 					class="flex flex-shrink-0 overflow-hidden rounded-lg shadow {small
 						? 'h-[100px] w-[100px]'
 						: 'h-[200px] w-[200px]'}"
 				>
-					{#if href}
-						<PostImage slug={href} {lazy} />
-					{/if}
-				</a>
+					<PostImage slug={imageSlug} {lazy} />
+				</svelte:element>
 			{/if}
 
 			<div
 				class="{small
 					? 'gap-4 @sm:items-start'
-					: 'gap-8 @xl:items-start'} flex flex-col items-center"
+					: 'gap-8 @xl:items-start'} flex flex-col items-center overflow-hidden"
 			>
 				<svelte:element
 					this={href ? 'a' : 'div'}
 					href={href ? `/${href}` : null}
 					class={href ? 'hover:underline' : ''}
 				>
-					<h1 class="{small ? 'text-2xl' : 'text-3xl md:text-5xl'} font-bold">
+					<svelte:element
+						this={headingLevel}
+						class="{small ? 'line-clamp-2 text-2xl' : 'text-3xl md:text-5xl'} font-bold"
+					>
 						{@html safeTitle}
-					</h1>
+					</svelte:element>
 				</svelte:element>
 				{#if description}
-					<p class={small ? 'text-sm' : 'text-xl md:text-2xl'}>
+					<p class="{small ? 'line-clamp-3 text-sm' : 'text-xl md:text-2xl'} break-words">
 						{@html safeDescription}
 					</p>
 				{/if}
