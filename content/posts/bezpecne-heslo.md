@@ -930,9 +930,59 @@ format: "html"
   <li>Zapisování hesel na papírky u monitoru</li>
 </ul>
 
-<h2 id="generator-kod">Kód generátoru v JavaScriptu</h2>
+<h2 id="pro-vyvojare">Pro tvůrce webů a aplikací</h2>
 
-<p>Generátor na této stránce používá <code>crypto.getRandomValues()</code> pro kryptograficky bezpečnou náhodnost. Zde je zjednodušená verse:</p>
+<p>Pokud implementujete přihlašování, <b>nevynucujte složitá pravidla pro hesla</b>. Požadavky typu „musí obsahovat velké písmeno, číslo a speciální znak" vedou k předvídatelným heslům (<code>Heslo123!</code>) a frustrují uživatele se správci hesel.</p>
+
+<h3>Doporučené zásady (NIST SP 800-63B)</h3>
+
+<ul>
+  <li><b>Minimální délka 12–16 znaků</b> – délka je důležitější než složitost</li>
+  <li><b>Maximální délka alespoň 64 znaků</b> – neomezujte uživatele správců hesel</li>
+  <li><b>Žádné požadavky na typy znaků</b> – nevyžadujte velká písmena, čísla ani symboly</li>
+  <li><b>Povolte všechny znaky</b> – včetně mezer, emoji a Unicode</li>
+  <li><b>Neblokujte vkládání hesla</b> – rozbíjí to správce hesel</li>
+  <li><b>Nevyžadujte pravidelnou změnu hesla</b> – vede ke slabším heslům</li>
+</ul>
+
+<h3>Co implementovat</h3>
+
+<ul>
+  <li><b>Kontrola proti seznamu uniklých hesel</b> – <a href="https://haveibeenpwned.com/API/v3#PwnedPasswords">Have I Been Pwned API</a> (k-anonymity, bezpečné)</li>
+  <li><b>Blokace nejčastějších hesel</b> – top 10 000 hesel, slovníková slova</li>
+  <li><b>Rate limiting</b> – omezení počtu pokusů o přihlášení</li>
+  <li><b>Pomalé hashování</b> – bcrypt, scrypt nebo Argon2 (nikdy MD5/SHA1/SHA256)</li>
+  <li><b>Podpora passkeys/WebAuthn</b> – budoucnost přihlašování bez hesel</li>
+</ul>
+
+<h3>Příklad špatné vs. dobré politiky</h3>
+
+<table class="wikitable">
+  <tr>
+    <th>Špatně</th>
+    <th>Dobře</th>
+  </tr>
+  <tr>
+    <td>8–16 znaků, musí obsahovat A-Z, a-z, 0-9, speciální znak</td>
+    <td>Minimálně 12 znaků</td>
+  </tr>
+  <tr>
+    <td>Heslo musíte změnit každých 90 dní</td>
+    <td>Změňte heslo při podezření na únik</td>
+  </tr>
+  <tr>
+    <td>Heslo nesmí obsahovat mezery</td>
+    <td>Povoleny všechny znaky včetně mezer</td>
+  </tr>
+  <tr>
+    <td>Maximálně 20 znaků</td>
+    <td>Maximálně 4096 znaků</td>
+  </tr>
+</table>
+
+<h2 id="generator-kod">Kód generátoru v JavaScriptu</h2>
+
+<p>Generátor na této stránce používá <code>crypto.getRandomValues()</code> pro kryptograficky bezpečnou náhodnost. Zde je zjednodušená verze:</p>
 
 <pre><code>function generatePassword(length, charset) {
   var array = new Uint32Array(length);
