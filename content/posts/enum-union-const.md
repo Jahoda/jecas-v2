@@ -456,7 +456,7 @@ type Status = typeof Status[keyof typeof Status];
     <td>✓</td>
   </tr>
   <tr>
-    <td>Funguje s isolatedModules</td>
+    <td>Funguje s isolatedModules</td>
     <td>✗</td>
     <td>✓</td>
     <td>✓</td>
@@ -469,7 +469,7 @@ type Status = typeof Status[keyof typeof Status];
   </tr>
 </table>
 
-<p><b>Nejbližší k ideálu je <code>as const</code></b> — má většinu výhod. Jediná skutečná nevýhoda je, že nevynucuje použití pojmenovaných konstant místo stringů. Pro většinu projektů to není problém, protože TypeScript zachytí překlepy.</p>
+<p><b>Nejbližší k ideálu je <code>as const</code></b> — má většinu výhod. Jediná skutečná nevýhoda je, že nevynucuje použití pojmenovaných konstant místo stringů. Pro většinu projektů to není problém, protože TypeScript zachytí překlepy.</p>
 
 <h2 id="zaver">Závěr</h2>
 
