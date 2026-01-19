@@ -5,7 +5,7 @@ description: "Co je JSON a jak s ním pracovat. Online formátovač, validátor 
 date: "2014-05-20"
 last_modification: "2026-01-19"
 status: 1
-tags: ["js", "php", "hotova-reseni"]
+tags: ["js", "ts", "php", "hotova-reseni"]
 format: "html"
 ---
 

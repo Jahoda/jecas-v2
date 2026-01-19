@@ -5,11 +5,11 @@ description: "Syntaktické rozšíření JavaScriptu a TypeScriptu pro psaní HT
 date: "2026-01-10"
 last_modification: "2026-01-10"
 status: 1
-tags: ["js"]
+tags: ["js", "ts"]
 format: "html"
 ---
 
-<p>JSX (JavaScript XML) je <b>syntaktické rozšíření</b> JavaScriptu, které umožňuje psát HTML-like kód přímo v JavaScript souborech. TSX je totéž pro TypeScript. Popularitu získalo díky knihovně <b>React</b>, ale dnes ho používají i další frameworky.</p>
+<p>JSX (JavaScript XML) je <b>syntaktické rozšíření</b> JavaScriptu, které umožňuje psát HTML-like kód přímo v JavaScript souborech. TSX je totéž pro TypeScript. Popularitu získalo díky knihovně <b>React</b>, ale dnes ho používají i další frameworky.</p>
 
 <h2 id="co-je-jsx">Co je JSX</h2>
 
@@ -27,13 +27,13 @@ const element = React.createElement(
 
 <p>Prohlížeč JSX nerozumí — potřebujete nástroj jako <b>Babel</b>, <b>TypeScript</b> nebo <b>esbuild</b>, který JSX převede do běžného JavaScriptu.</p>
 
-<h2 id="rozdil-jsx-tsx">Rozdíl mezi JSX a TSX</h2>
+<h2 id="rozdil-jsx-tsx">Rozdíl mezi JSX a TSX</h2>
 
-<p>Jediný rozdíl je v příponě souboru a typové kontrole:</p>
+<p>Jediný rozdíl je v příponě souboru a typové kontrole:</p>
 
 <ul>
-  <li><code>.jsx</code> — JavaScript s JSX syntaxí</li>
-  <li><code>.tsx</code> — TypeScript s JSX syntaxí</li>
+  <li><code>.jsx</code> — JavaScript s JSX syntaxí</li>
+  <li><code>.tsx</code> — TypeScript s JSX syntaxí</li>
 </ul>
 
 <p>V TSX máte navíc typovou kontrolu props:</p>
@@ -57,7 +57,7 @@ function Button({ label, onClick, disabled }: ButtonProps) {
 
 <h3>Elementy</h3>
 
-<p>JSX elementy vypadají jako HTML, ale s drobnými rozdíly:</p>
+<p>JSX elementy vypadají jako HTML, ale s drobnými rozdíly:</p>
 
 <pre><code>// Jeden element
 const heading = &lt;h1&gt;Nadpis&lt;/h1&gt;;
@@ -99,7 +99,7 @@ function Items({ items }) {
   ));
 }</code></pre>
 
-<h2 id="vyrazy">Výrazy v JSX</h2>
+<h2 id="vyrazy">Výrazy v JSX</h2>
 
 <p>Složené závorky <code>{}</code> umožňují vkládat JavaScript výrazy:</p>
 
@@ -182,15 +182,15 @@ function UserList() {
   );
 }</code></pre>
 
-<p>Atribut <code>key</code> je povinný při vykreslování seznamů. Pomáhá Reactu identifikovat, které položky se změnily. Použijte unikátní ID z dat — <code>index</code> jako key způsobuje problémy při přeřazování položek.</p>
+<p>Atribut <code>key</code> je povinný při vykreslování seznamů. Pomáhá Reactu identifikovat, které položky se změnily. Použijte unikátní ID z dat — <code>index</code> jako key způsobuje problémy při přeřazování položek.</p>
 
-<h2 id="atributy">Atributy a props</h2>
+<h2 id="atributy">Atributy a props</h2>
 
 <h3>HTML atributy</h3>
 
-<p>Některé HTML atributy mají v JSX jiný název. Důvody jsou dva:</p>
+<p>Některé HTML atributy mají v JSX jiný název. Důvody jsou dva:</p>
 
-<p><b>Vyhrazená slova v JavaScriptu</b> — <code>class</code> a <code>for</code> jsou klíčová slova JS:</p>
+<p><b>Vyhrazená slova v JavaScriptu</b> — <code>class</code> a <code>for</code> jsou klíčová slova JS:</p>
 
 <table>
   <tr>
@@ -207,7 +207,7 @@ function UserList() {
   </tr>
 </table>
 
-<p><b>Konsistence s DOM API</b> — JSX používá camelCase jako nativní DOM vlastnosti:</p>
+<p><b>Konsistence s DOM API</b> — JSX používá camelCase jako nativní DOM vlastnosti:</p>
 
 <table>
   <tr>
@@ -281,7 +281,7 @@ const styles = {
 
 <h2 id="udalosti">Události</h2>
 
-<p>Události v JSX jsou camelCase a přijímají funkci jako handler:</p>
+<p>Události v JSX jsou camelCase a přijímají funkci jako handler:</p>
 
 <pre><code>function Button() {
   const handleClick = (event) =&gt; {
@@ -351,7 +351,7 @@ function App() {
 
 <h3>Children</h3>
 
-<p>Obsah mezi otevíracím a zavíracím tagem je dostupný jako <code>children</code>:</p>
+<p>Obsah mezi otevíracím a zavíracím tagem je dostupný jako <code>children</code>:</p>
 
 <pre><code>function Card({ title, children }) {
   return (
@@ -370,7 +370,7 @@ function App() {
   &lt;button&gt;Akce&lt;/button&gt;
 &lt;/Card&gt;</code></pre>
 
-<h2 id="tsx-typovani">TSX a typování</h2>
+<h2 id="tsx-typovani">TSX a typování</h2>
 
 <p>V TypeScriptu definujete typy pro props:</p>
 
@@ -462,7 +462,7 @@ _jsxs('div', {
 
 <h2 id="ast">AST – Abstract Syntax Tree</h2>
 
-<p><b>Abstract Syntax Tree</b> (abstraktní syntaktický strom) je stromová reprezentace zdrojového kódu. Každý uzel stromu představuje konstrukci v kódu. Kompilátory a transpilery používají AST pro analýzu a transformaci kódu.</p>
+<p><b>Abstract Syntax Tree</b> (abstraktní syntaktický strom) je stromová representace zdrojového kódu. Každý uzel stromu představuje konstrukci v kódu. Kompilátory a transpilery používají AST pro analysu a transformaci kódu.</p>
 
 <h3>Jak vzniká AST</h3>
 
@@ -489,9 +489,9 @@ Program
             ├── NumericLiteral (value: 1)
             └── NumericLiteral (value: 2)</code></pre>
 
-<h3>JSX v AST</h3>
+<h3>JSX v AST</h3>
 
-<p>JSX elementy mají vlastní typy uzlů v AST:</p>
+<p>JSX elementy mají vlastní typy uzlů v AST:</p>
 
 <pre><code>&lt;div className="box"&gt;Hello&lt;/div&gt;
 
@@ -516,7 +516,7 @@ CallExpression
     ├── ObjectExpression ({ className: "box" })
     └── StringLiteral ("Hello")</code></pre>
 
-<p>AST si můžete prohlédnout na <a href="https://astexplorer.net/">astexplorer.net</a> — zadáte kód a vidíte strom v reálném čase.</p>
+<p>AST si můžete prohlédnout na <a href="https://astexplorer.net/">astexplorer.net</a> — zadáte kód a vidíte strom v reálném čase.</p>
 
 <h3>Nástroje pro transformaci</h3>
 
@@ -552,7 +552,7 @@ CallExpression
 
 <h3>2004 — E4X (předchůdce)</h3>
 
-<p>ECMAScript for XML byl standardizovaný způsob psaní XML v JavaScriptu. Byl součástí Firefoxu 10–20, ale nikdy se neprosadil:</p>
+<p>ECMAScript for XML byl standardisovaný způsob psaní XML v JavaScriptu. Byl součástí Firefoxu 10–20, ale nikdy se neprosadil:</p>
 
 <pre><code>// E4X (dnes mrtvé)
 var person = &lt;person&gt;
@@ -564,7 +564,7 @@ var name = person.name; // "Jan"</code></pre>
 
 <h3>2013 — Facebook vytváří JSX</h3>
 
-<p>Jordan Walke a tým ve Facebooku vytvořili JSX pro React. Motivace:</p>
+<p>Jordan Walke a tým ve Facebooku vytvořili JSX pro React. Motivace:</p>
 
 <ul>
   <li><code>React.createElement()</code> byl příliš verbose</li>
@@ -592,7 +592,7 @@ React.createElement('div', { className: 'box' },
 
 <h3>2015 — TypeScript 1.6 přidává TSX</h3>
 
-<p>Microsoft přidal podporu <code>.tsx</code> souborů s plnou typovou kontrolou props:</p>
+<p>Microsoft přidal podporu <code>.tsx</code> souborů s plnou typovou kontrolou props:</p>
 
 <pre><code>interface Props {
   name: string;
@@ -623,10 +623,10 @@ function Hello({ name }: Props) {
 
 <h3>2020 — Nový JSX Transform (React 17)</h3>
 
-<p>Změna z <code>React.createElement</code> na automatický import z <code>react/jsx-runtime</code>. Výhody:</p>
+<p>Změna z <code>React.createElement</code> na automatický import z <code>react/jsx-runtime</code>. Výhody:</p>
 
 <ul>
-  <li>Není potřeba <code>import React</code> v každém souboru</li>
+  <li>Není potřeba <code>import React</code> v každém souboru</li>
   <li>Menší bundle size</li>
   <li>Lepší výkon</li>
 </ul>
@@ -637,10 +637,10 @@ function Hello({ name }: Props) {
 
 <ul>
   <li><b>React</b> — původní implementace</li>
-  <li><b>Preact</b> — lehká alternativa (3 KB)</li>
+  <li><b>Preact</b> — lehká alternativa (3 KB)</li>
   <li><b>SolidJS</b> — kompiluje JSX přímo do DOM operací</li>
-  <li><b>Qwik</b> — framework s okamžitým obnovením stavu (HTML obsahuje serialisovaný stav, JS se načítá lazy)</li>
-  <li><b>Vue</b> — volitelně s pluginem</li>
+  <li><b>Qwik</b> — framework s okamžitým obnovením stavu (HTML obsahuje serialisovaný stav, JS se načítá lazy)</li>
+  <li><b>Vue</b> — volitelně s pluginem</li>
 </ul>
 
 <h2 id="nastaveni">Nastavení projektu</h2>
@@ -656,7 +656,7 @@ npm run dev</code></pre>
 
 <h3>TypeScript konfigurace</h3>
 
-<p>Pro TSX soubory nastavte v <code>tsconfig.json</code>:</p>
+<p>Pro TSX soubory nastavte v <code>tsconfig.json</code>:</p>
 
 <pre><code>{
   "compilerOptions": {
@@ -671,7 +671,7 @@ npm run dev</code></pre>
 <ul>
   <li><code>react</code> — starý transform, vyžaduje <code>import React</code></li>
   <li><code>react-jsx</code> — nový transform (React 17+)</li>
-  <li><code>react-jsxdev</code> — nový transform s debug info</li>
+  <li><code>react-jsxdev</code> — nový transform s debug info</li>
   <li><code>preserve</code> — ponechá JSX pro další nástroj</li>
 </ul>
 
@@ -688,7 +688,7 @@ npm run dev</code></pre>
 
 <h2 id="bez-reactu">JSX bez Reactu</h2>
 
-<p>JSX můžete použít i s jinými knihovnami:</p>
+<p>JSX můžete použít i s jinými knihovnami:</p>
 
 <h3>Preact</h3>
 
@@ -719,7 +719,7 @@ export default defineConfig({
 <ul>
   <li><b>Extrahujte opakující se JSX</b> do samostatných komponent</li>
   <li><b>Používejte TypeScript</b> pro lepší typovou kontrolu props</li>
-  <li><b>Vyhněte se inline funkcím</b> v props pro lepší výkon</li>
+  <li><b>Vyhněte se inline funkcím</b> v props pro lepší výkon</li>
   <li><b>Rozbalujte props</b> pro přehlednější kód</li>
   <li><b>Používejte fragmenty</b> místo zbytečných wrapper divů</li>
 </ul>

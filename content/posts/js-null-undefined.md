@@ -5,15 +5,15 @@ description: "Rozdíly mezi <code>null</code> a <code>undefined</code> v JavaScr
 date: "2025-08-22"
 last_modification: "2025-08-22"
 status: 1
-tags: ["javascript", "napady"]
+tags: ["javascript", "ts", "napady"]
 format: "html"
 ---
 
-<p>V JavaScriptu jsou <code>null</code> a <code>undefined</code> dva speciální typy hodnot, které často způsobují zmatek. Pojďme si vysvětlit jejich rozdíly a kdy je používat.</p>
+<p>V JavaScriptu jsou <code>null</code> a <code>undefined</code> dva speciální typy hodnot, které často způsobují zmatek. Pojďme si vysvětlit jejich rozdíly a kdy je používat.</p>
 
 <h2 id="jak-zjistit-co-pouzit">Jak zjistit, co použít</h2>
 
-<p>Nejste si jisti, kdy použít <code>null</code> a kdy <code>undefined</code>?</p>
+<p>Nejste si jisti, kdy použít <code>null</code> a kdy <code>undefined</code>?</p>
 
 <div id="decision-tree" style="font-family: monospace; line-height: 1.6; margin: 20px 0;">
     <div id="question-1" class="question active">
@@ -28,7 +28,7 @@ format: "html"
     
     <div id="question-2" class="question hidden">
         <div class="question-box">
-            <strong>Je to neinicializovaná proměnná nebo volitelný parametr?</strong>
+            <strong>Je to neinicialisovaná proměnná nebo volitelný parametr?</strong>
         </div>
         <div class="answers">
             <button onclick="answerQuestion(2, 'yes')" class="answer-btn">ANO</button>
@@ -48,7 +48,7 @@ format: "html"
     
     <div id="question-4" class="question hidden">
         <div class="question-box">
-            <strong>Pracujete s databasí nebo API, které používá <code>null</code>?</strong>
+            <strong>Pracujete s databasí nebo API, které používá <code>null</code>?</strong>
         </div>
         <div class="answers">
             <button onclick="answerQuestion(4, 'yes')" class="answer-btn">ANO</button>
@@ -58,7 +58,7 @@ format: "html"
     
     <div id="question-5" class="question hidden">
         <div class="question-box">
-            <strong>Potřebujete rozlišit mezi „není nastaveno“ a „bylo vymazáno“?</strong>
+            <strong>Potřebujete rozlišit mezi „není nastaveno“ a „bylo vymazáno“?</strong>
         </div>
         <div class="answers">
             <button onclick="answerQuestion(5, 'yes')" class="answer-btn">ANO</button>
@@ -164,10 +164,10 @@ const questions = [
     },
     {
         id: 2,
-        text: "Je to neinicializovaná proměnná nebo volitelný parametr?",
+        text: "Je to neinicialisovaná proměnná nebo volitelný parametr?",
         yesResult: {
                     answer: "<code>undefined</code>",
-        reason: "Neinicializovaná proměnná nebo volitelný parametr",
+        reason: "Neinicialisovaná proměnná nebo volitelný parametr",
             example: `let hodnota;
 console.log(hodnota); // undefined
 
@@ -215,7 +215,7 @@ let apiResponse = {
         text: "Potřebujete rozlišit mezi „není nastaveno“ a „bylo vymazáno“?",
         yesResult: {
                     answer: "<code>null</code>",
-        reason: "Rozlišení mezi neinicializováno a vymazáno",
+        reason: "Rozlišení mezi neinicialisováno a vymazáno",
             example: `let cache = {};
 cache.data = "hodnota";
 cache.data = null; // Explicitně vymazáno
@@ -305,7 +305,7 @@ function resetDecisionTree() {
 
 <h3 id="co-je-undefined">Co je <code>undefined</code>?</h3>
 
-<p><code>undefined</code> je primitivní hodnota, která se automaticky přiřadí proměnným, které byly deklarovány, ale nebyly inicializovány.</p>
+<p><code>undefined</code> je primitivní hodnota, která se automaticky přiřadí proměnným, které byly deklarovány, ale nebyly inicialisovány.</p>
 
 <pre><code class="language-javascript">let promenna;
 console.log(promenna); // undefined
@@ -338,9 +338,9 @@ console.log(null == undefined);  // true (volné porovnání)
 console.log(typeof null);      // "object" (to je chyba v JavaScriptu!)
 console.log(typeof undefined); // "undefined"</code></pre>
 
-<h3 id="chovani-v-objektech">Chování v objektech</h3>
+<h3 id="chovani-v-objektech">Chování v objektech</h3>
 
-<p>V objektech se <code>null</code> a <code>undefined</code> chovají různě:</p>
+<p>V objektech se <code>null</code> a <code>undefined</code> chovají různě:</p>
 
 <pre><code class="language-javascript">let obj = {
     a: undefined,
@@ -383,7 +383,7 @@ console.log(json);
 <ul>
 <li><strong>Explicitní absence hodnoty</strong> – když chcete jasně říct, že hodnota neexistuje.</li>
 <li><strong>API komunikace</strong> – pro přenos dat na server.</li>
-<li><strong>Databasové hodnoty</strong> – když pole v databasi obsahuje <code>null</code>.</li>
+<li><strong>Databasové hodnoty</strong> – když pole v databasi obsahuje <code>null</code>.</li>
 <li><strong>Resetování proměnné</strong> – explicitní vymazání hodnoty.</li>
 </ul>
 
@@ -408,13 +408,13 @@ cache.data = null; // Vymazání cache</code></pre>
 <h3 id="kdy-pouzit-undefined">Kdy použít <code>undefined</code></h3>
 
 <ul>
-<li><strong>Neinicializované proměnné</strong> – když proměnná ještě nebyla nastavena.</li>
+<li><strong>Neinicialisované proměnné</strong> – když proměnná ještě nebyla nastavena.</li>
 <li><strong>Volitelné parametry</strong> – když funkce nemá povinný parametr.</li>
 <li><strong>Resetování konfigurace</strong> – návrat na výchozí hodnoty.</li>
 <li><strong>Neexistující vlastnosti</strong> – když objekt nemá danou vlastnost.</li>
 </ul>
 
-<pre><code class="language-javascript">// Neinicializovaná proměnná
+<pre><code class="language-javascript">// Neinicialisovaná proměnná
 let hodnota;
 console.log(hodnota); // undefined
 
@@ -464,7 +464,7 @@ console.log(promenna2 === null); // false</code></pre>
 
 <h3 id="proc-undefined-vadi">Proč <code>undefined</code> vadí pro API?</h3>
 
-<p>Používání <code>undefined</code> v API komunikaci způsobuje problémy:</p>
+<p>Používání <code>undefined</code> v API komunikaci způsobuje problémy:</p>
 
 <pre><code class="language-javascript">// undefined se ztratí
 let userData = {
@@ -517,11 +517,11 @@ console.log(uzivatel?.jmeno); // undefined</code></pre>
 
 <h2 id="typescript">TypeScript</h2>
 
-<p>TypeScript přidává typovou bezpečnost, která může odhalit situace, kdy by člověk chtěl omylem pracovat s <code>null</code> a <code>undefined</code>:</p>
+<p>TypeScript přidává typovou bezpečnost, která může odhalit situace, kdy by člověk chtěl omylem pracovat s <code>null</code> a <code>undefined</code>:</p>
 
 <h3 id="strict-null-checks">Strict null checks</h3>
 
-<p>Hlavní rozdíl je v <code>strictNullChecks</code>:</p>
+<p>Hlavní rozdíl je v <code>strictNullChecks</code>:</p>
 
 <pre><code class="language-typescript">// JavaScript - žádné kontroly
 let jmeno;
@@ -533,7 +533,7 @@ console.log(jmeno.length); // Compile error: Object is possibly 'undefined'</cod
 
 <h2 id="kontrola-hodnot">Kontrola hodnot</h2>
 
-<p>V praxi není takový rozdíl mezi prací s <code>null</code> a <code>undefined</code>.</p>
+<p>V praxi není takový rozdíl mezi prací s <code>null</code> a <code>undefined</code>.</p>
 
 <p>Stačí prostá podmínka pro zkontrolování, že je <code>promenna</code> <i>truthy</i>.</p>
 
@@ -541,7 +541,7 @@ console.log(jmeno.length); // Compile error: Object is possibly 'undefined'</cod
     // promenna není null/undefined
 }</code></pre>
 
-<p>Riziko v tomto kódu ale je, když bude proměnná např. číslo <code>0</code>, prázdný řetězec <code>""</code> nebo <code>false</code>, které se vyhodnotí jako <code>false</code>, i když jsou validní hodnoty.</p>
+<p>Risiko v tomto kódu ale je, když bude proměnná např. číslo <code>0</code>, prázdný řetězec <code>""</code> nebo <code>false</code>, které se vyhodnotí jako <code>false</code>, i když jsou validní hodnoty.</p>
 
 <p>Pro spolehlivou kontrolu, že je proměnná nastavená, použijte přísné porovnání:</p> 
 
@@ -549,7 +549,7 @@ console.log(jmeno.length); // Compile error: Object is possibly 'undefined'</cod
     // promenna není null ani undefined
 }</code></pre>
 
-<p>Případně udělat výjimku a použít stručnější zápis:</p>
+<p>Případně udělat výjimku a použít stručnější zápis:</p>
 
 <pre><code>if (promenna != null) {
     // promenna není null ani undefined
@@ -561,9 +561,9 @@ console.log(jmeno.length); // Compile error: Object is possibly 'undefined'</cod
 
 <ol>
 <li>Používejte <code>null</code> pro explicitní absenci hodnoty.</li>
-<li>Nechte <code>undefined</code> pro neinicializované proměnné.</li>
+<li>Nechte <code>undefined</code> pro neinicialisované proměnné.</li>
 <li>Používejte přísné porovnání (<code>===</code>).</li>
 <li>Využívejte moderní operátory (<code>??</code>, <code>?.</code>).</li>
-<li>Buďte konsistentní v rámci projektu.</li>
+<li>Buďte konsistentní v rámci projektu.</li>
 <li>Pro API komunikaci vždy používejte <code>null</code>.</li>
 </ol>
