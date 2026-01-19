@@ -419,13 +419,17 @@ format: "html"
     return { label: 'Extrémně silné', color: '#06b6d4', percent: 100 };
   }
 
-  function updateStrengthDisplay(entropy) {
+  function updateStrengthDisplay(entropy, charCount) {
     var info = getStrengthInfo(entropy);
     strengthFill.style.width = info.percent + '%';
     strengthFill.style.background = info.color;
     strengthLabel.textContent = 'Síla hesla: ' + info.label;
     strengthLabel.style.color = info.color;
-    entropyText.textContent = entropy + ' bitů entropie';
+    var text = entropy + ' bitů entropie';
+    if (charCount) {
+      text += ' · ' + charCount + ' znaků';
+    }
+    entropyText.textContent = text;
   }
 
   function generate() {
@@ -456,7 +460,7 @@ format: "html"
       var passphrase = generatePassphrase(wordCount, separator, capitalize, addNumber, noDiacritics);
       output.textContent = passphrase;
       var entropy = calculatePassphraseEntropy(wordCount, addNumber);
-      updateStrengthDisplay(entropy);
+      updateStrengthDisplay(entropy, passphrase.length);
     }
   }
 
