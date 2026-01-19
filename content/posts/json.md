@@ -124,7 +124,7 @@ format: "html"
 </style>
 
 <div class="json-tool">
-  <textarea id="json-input" placeholder='{"example": "Vložte sem JSON..."}'></textarea>
+  <textarea id="json-input" placeholder='{"example": "Vložte sem JSON..."}' oninput="updateCounter()"></textarea>
   <div id="json-counter" class="json-counter"></div>
 
   <div class="controls">
