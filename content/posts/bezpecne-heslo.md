@@ -541,7 +541,7 @@ format: "html"
     }
   });
 
-  // Inicializace
+  // Inicialisace
   generate();
 })();
 </script>
@@ -618,7 +618,7 @@ format: "html"
 </style>
 
 <form id="checker-form" class="password-checker" onsubmit="return false">
-  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analýza probíhá lokálně.</p>
+  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analysa probíhá lokálně.</p>
 
   <p><small>Celkové hodnocení vychází z entropie hesla: <code>délka × log₂(velikost znakové sady)</code>. Pokud heslo obsahuje běžné vzory (123, qwerty, rok narození), je entropie penalizována o 40 %.</small></p>
 
@@ -787,7 +787,7 @@ format: "html"
   <li><b>Neposílejte hesla e-mailem ani chatem</b> – používejte správce hesel se sdílením nebo jednorázové odkazy.</li>
 </ol>
 
-<p><b>Poznámka k e-mailu na vlastní doméně:</b> Vlastní doména poskytuje nezávislost na poskytovateli, ale ne nutně vyšší bezpečnost. Gmail nebo Outlook s hardwarovým klíčem (YubiKey) nabízí pokročilou ochranu proti phishingu a dedikované bezpečnostní týmy. U vlastní domény hrozí riziko expirace – pokud zapomenete doménu prodloužit, útočník ji může zaregistrovat a přijímat vaše e-maily včetně resetů hesel. Slabé místo může být i hostingová společnost.</p>
+<p><b>Poznámka k e-mailu na vlastní doméně:</b> Vlastní doména poskytuje nezávislost na poskytovateli, ale ne nutně vyšší bezpečnost. Gmail nebo Outlook s hardwarovým klíčem (YubiKey) nabízí pokročilou ochranu proti phishingu a dedikované bezpečnostní týmy. U vlastní domény hrozí risiko expirace – pokud zapomenete doménu prodloužit, útočník ji může zaregistrovat a přijímat vaše e-maily včetně resetů hesel. Slabé místo může být i hostingová společnost.</p>
 
 <p><b>Tip – náhodný alias pro přihlášení:</b> U Outlooku (a dalších služeb) můžete pro přihlášení používat jiný e-mail než ten veřejný. Vytvoříte si alias s náhodným řetězcem (např. <code>xk7mq2@outlook.com</code>) a nastavíte ho jako přihlašovací. Váš veřejný e-mail zůstane pro příjem pošty, ale útočník ho nemůže použít k pokusu o přihlášení. Podobný princip používají banky s klientským číslem. Není to náhrada za silné heslo a 2FA, ale přidává další vrstvu ochrany.</p>
 
@@ -888,7 +888,7 @@ format: "html"
 <p>Pamatovat si desítky náhodných hesel je prakticky nemožné. Proto je doporučeno používat <b>správce hesel</b> (password manager):</p>
 
 <ul>
-  <li><b><a href="https://support.apple.com/cs-cz/guide/passwords/welcome/mac">Apple Hesla</a></b> – integrováno v iOS/macOS, synchronizace přes iCloud, zdarma pro uživatele Apple</li>
+  <li><b><a href="https://support.apple.com/cs-cz/guide/passwords/welcome/mac">Apple Hesla</a></b> – integrováno v iOS/macOS, synchronisace přes iCloud, zdarma pro uživatele Apple</li>
   <li><a href="https://bitwarden.com/">Bitwarden</a> – open-source, zdarma, multiplatformní</li>
   <li><a href="https://1password.com/">1Password</a> – placený, vynikající UX</li>
   <li><a href="https://keepassxc.org/">KeePassXC</a> – offline, open-source</li>
@@ -902,7 +902,7 @@ format: "html"
 
 <ul>
   <li>Automatické generování silných hesel při registraci</li>
-  <li>Synchronizaci přes iCloud mezi všemi Apple zařízeními</li>
+  <li>Synchronisaci přes iCloud mezi všemi Apple zařízeními</li>
   <li>Podporu passkeys (přihlašování bez hesla)</li>
   <li>Detekci uniklých hesel (upozornění pokud se heslo objevilo v úniku dat)</li>
   <li>Sdílení hesel s rodinou nebo skupinou</li>
@@ -918,9 +918,9 @@ format: "html"
 <p>Pokud opravdu nechcete žádný správce hesel, existují alternativy s kompromisy:</p>
 
 <ul>
-  <li><b>Passphrase + osobní algoritmus</b> – základní fráze upravená podle služby (např. přidání prvních písmen názvu). Riziko: pokud jedno heslo unikne a útočník odhalí vzorec, má všechna.</li>
+  <li><b>Passphrase + osobní algoritmus</b> – základní fráze upravená podle služby (např. přidání prvních písmen názvu). Risiko: pokud jedno heslo unikne a útočník odhalí vzorec, má všechna.</li>
   <li><b>Papír v trezoru</b> – hesla zapsaná na papíře v bezpečném místě. Lepší než jedno heslo všude, ale nepraktické mimo domov.</li>
-  <li><b>Přihlášení přes Google/Apple</b> – redukuje počet hesel. Riziko: vše závisí na jednom účtu.</li>
+  <li><b>Přihlášení přes Google/Apple</b> – redukuje počet hesel. Risiko: vše závisí na jednom účtu.</li>
   <li><b>Kategorizace služeb</b> – několik silných passphrase podle důležitosti: unikátní pro kritické (banka, e-mail), sdílená pro méně důležité.</li>
 </ul>
 
@@ -947,13 +947,13 @@ format: "html"
 
 <p><b>Mohu generovat znovu, dokud se mi heslo nebude líbit?</b> Záleží na důvodu. Pár regenerací (2–3×) bezpečnost významně nesníží – ztratíte maximálně ~10 bitů entropie, což je u 6 slov stále bezpečné. Problém nastává, když hledáte slova, která „dávají smysl" dohromady nebo tvoří příběh – smysluplných frází je zlomek všech kombinací a útočník může mít stejnou preferenci. Ideální je vygenerovat jednou a použít.</p>
 
-<p><b>Je bezpečné generovat heslo v prohlížeči, nebo raději házet kostkou?</b> Pro většinu lidí je JavaScript generátor dostatečně bezpečný. Používá <code>crypto.getRandomValues()</code> – kryptograficky bezpečný generátor čerpající entropii z operačního systému. Stejný mechanismus používají i správci hesel. Teoretické riziko (kompromitovaný prohlížeč, škodlivé rozšíření) existuje, ale pokud je váš počítač takto napaden, keylogger zachytí heslo při zadávání tak jako tak. Fyzická kostka (<a href="https://www.eff.org/dice">Diceware</a>) poskytuje „pravou" náhodnost bez softwaru – má smysl pro hlavní heslo do správce hesel nebo pokud se obáváte cílených útoků.</p>
+<p><b>Je bezpečné generovat heslo v prohlížeči, nebo raději házet kostkou?</b> Pro většinu lidí je JavaScript generátor dostatečně bezpečný. Používá <code>crypto.getRandomValues()</code> – kryptograficky bezpečný generátor čerpající entropii z operačního systému. Stejný mechanismus používají i správci hesel. Teoretické risiko (kompromitovaný prohlížeč, škodlivé rozšíření) existuje, ale pokud je váš počítač takto napaden, keylogger zachytí heslo při zadávání tak jako tak. Fyzická kostka (<a href="https://www.eff.org/dice">Diceware</a>) poskytuje „pravou" náhodnost bez softwaru – má smysl pro hlavní heslo do správce hesel nebo pokud se obáváte cílených útoků.</p>
 
 <p><b>Nepoužívejte AI pro generování hesel.</b> ChatGPT, Claude ani jiné LLM nejsou vhodné pro vytváření hesel nebo PINů:</p>
 
 <ol>
   <li>AI negeneruje kryptograficky náhodný výstup – používá naučené vzory, takže tíhne k určitým „náhodně vypadajícím" sekvencím</li>
-  <li>Konverzace se ukládají na serverech poskytovatele – vaše heslo může skončit v logu</li>
+  <li>Konversace se ukládají na serverech poskytovatele – vaše heslo může skončit v logu</li>
   <li>Heslo putuje po síti k třetí straně</li>
 </ol>
 
@@ -995,7 +995,7 @@ format: "html"
 
 <h2 id="uniky-hesel">Úniky hesel a proč nepoužívat stejné heslo</h2>
 
-<p><b>Největší bezpečnostní riziko není slabé heslo, ale používání stejného hesla na více službách.</b> Úniky databází jsou běžné – každý rok uniknou miliardy přihlašovacích údajů. Na webu <a href="https://haveibeenpwned.com/">Have I Been Pwned</a> si můžete ověřit, zda vaše e-mailová adresa figuruje v některém známém úniku.</p>
+<p><b>Největší bezpečnostní risiko není slabé heslo, ale používání stejného hesla na více službách.</b> Úniky databází jsou běžné – každý rok uniknou miliardy přihlašovacích údajů. Na webu <a href="https://haveibeenpwned.com/">Have I Been Pwned</a> si můžete ověřit, zda vaše e-mailová adresa figuruje v některém známém úniku.</p>
 
 <p>Problém je, že mnoho služeb neukládá hesla bezpečně:</p>
 
@@ -1073,7 +1073,7 @@ format: "html"
 
 <h2 id="generator-kod">Kód generátoru v JavaScriptu</h2>
 
-<p>Generátor na této stránce používá <code>crypto.getRandomValues()</code> pro kryptograficky bezpečnou náhodnost. Zde je zjednodušená verze:</p>
+<p>Generátor na této stránce používá <code>crypto.getRandomValues()</code> pro kryptograficky bezpečnou náhodnost. Zde je zjednodušená verse:</p>
 
 <pre><code>function generatePassword(length, charset) {
   var array = new Uint32Array(length);
