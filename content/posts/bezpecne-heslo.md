@@ -549,7 +549,7 @@ format: "html"
 
 <h2 id="overeni">Ověření síly hesla</h2>
 
-<p><b>Nejdůležitější faktor bezpečného hesla je náhodnost, nikoliv složitost.</b> Tradiční požadavky na hesla (velké písmeno, číslo, speciální znak) jsou často kontraproduktivní – vedou k heslům typu <code>František1!</code>, která tyto podmínky splňují, ale jsou snadno uhodnutelná.</p>
+<p><b>Nejdůležitější faktor bezpečného hesla je náhodnost, nikoliv složitost.</b> Tradiční požadavky na hesla (velké písmeno, číslo, speciální znak) jsou často kontraproduktivní – vedou k heslům typu <code>František1!</code>, která tyto podmínky splňují, ale jsou snadno uhodnutelná.</p>
 
 <p>Útočníci totiž nezkouší náhodné kombinace znaků. Používají:</p>
 
@@ -559,7 +559,7 @@ format: "html"
   <li><b>Typické vzory</b> – slovo + číslo, velké první písmeno, rok na konci</li>
 </ul>
 
-<p>Heslo <code>František1!</code> tak padne během sekund, zatímco skutečně náhodné <code>kx7$mQ2pL</code> (i bez „pravidel") odolá podstatně déle. Nejlepší volbou je nechat si heslo <b>vygenerovat</b> – buď náhodné znaky, nebo passphrase z náhodných slov.</p>
+<p>Heslo <code>František1!</code> tak padne během sekund, zatímco skutečně náhodné <code>kx7$mQ2pL</code> (i bez „pravidel") odolá podstatně déle. Nejlepší volbou je nechat si heslo <b>vygenerovat</b> – buď náhodné znaky, nebo passphrase z náhodných slov.</p>
 
 <div class="live">
 <style>
@@ -618,7 +618,7 @@ format: "html"
 </style>
 
 <form id="checker-form" class="password-checker" onsubmit="return false">
-  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analysa probíhá lokálně.</p>
+  <p>Zadejte heslo a zjistěte jeho sílu. Heslo se <b>nikam neodesílá</b> – analysa probíhá lokálně.</p>
 
   <p><small>Celkové hodnocení vychází z entropie hesla: <code>délka × log₂(velikost znakové sady)</code>. Pokud heslo obsahuje běžné vzory (123, qwerty, rok narození), je entropie penalizována o 40 %.</small></p>
 
@@ -768,41 +768,41 @@ format: "html"
 <p>Bezpečné heslo by mělo splňovat několik základních pravidel:</p>
 
 <ul>
-  <li><b>Délka</b> – čím delší, tím lepší. Minimum je 12 znaků, ideálně 16 a více.</li>
+  <li><b>Délka</b> – čím delší, tím lepší. Minimum je 12 znaků, ideálně 16 a více.</li>
   <li><b>Náhodnost</b> – heslo by nemělo obsahovat slovníková slova, jména, data narození ani jiné předvídatelné vzory.</li>
-  <li><b>Rozmanitost</b> – kombinace malých a velkých písmen, číslic a speciálních znaků výrazně zvyšuje počet možných kombinací.</li>
+  <li><b>Rozmanitost</b> – kombinace malých a velkých písmen, číslic a speciálních znaků výrazně zvyšuje počet možných kombinací.</li>
   <li><b>Unikátnost</b> – pro každou službu používejte jiné heslo.</li>
 </ul>
 
 <h3 id="best-practices">Best practices pro hesla</h3>
 
 <ol>
-  <li><b>Používejte správce hesel</b> – nechte si generovat a ukládat unikátní hesla pro každou službu. Pamatujete si jen hlavní heslo.</li>
-  <li><b>Zapněte dvoufaktorové ověření (2FA)</b> – i když heslo unikne, útočník se bez druhého faktoru nepřihlásí.</li>
-  <li><b>Hlavní heslo do správce hesel</b> – použijte passphrase (4–6 náhodných slov), kterou si zapamatujete. Toto heslo musí být silné a nesmíte ho používat nikde jinde.</li>
-  <li><b>Heslo k e-mailu</b> – e-mail je často „klíč ke všemu", protože přes něj jde resetovat hesla většiny služeb. Použijte silnou passphrase (jinou než k správci hesel) a zapněte 2FA. Toto heslo byste měli znát zpaměti. Nebo viz níže.</li>
-  <li><b>Neměňte hesla zbytečně</b> – pravidelná změna hesel (např. každých 90 dní) vede k volbě slabších hesel. Měňte heslo pouze při podezření na únik.</li>
-  <li><b>Zkontrolujte úniky</b> – na <a href="https://haveibeenpwned.com/">Have I Been Pwned</a> ověřte, zda vaše e-maily nefigurují v únicích. Pokud ano, změňte hesla na dotčených službách.</li>
+  <li><b>Používejte správce hesel</b> – nechte si generovat a ukládat unikátní hesla pro každou službu. Pamatujete si jen hlavní heslo.</li>
+  <li><b>Zapněte dvoufaktorové ověření (2FA)</b> – i když heslo unikne, útočník se bez druhého faktoru nepřihlásí.</li>
+  <li><b>Hlavní heslo do správce hesel</b> – použijte passphrase (4–6 náhodných slov), kterou si zapamatujete. Toto heslo musí být silné a nesmíte ho používat nikde jinde.</li>
+  <li><b>Heslo k e-mailu</b> – e-mail je často „klíč ke všemu", protože přes něj jde resetovat hesla většiny služeb. Použijte silnou passphrase (jinou než k správci hesel) a zapněte 2FA. Toto heslo byste měli znát zpaměti. Nebo viz níže.</li>
+  <li><b>Neměňte hesla zbytečně</b> – pravidelná změna hesel (např. každých 90 dní) vede k volbě slabších hesel. Měňte heslo pouze při podezření na únik.</li>
+  <li><b>Zkontrolujte úniky</b> – na <a href="https://haveibeenpwned.com/">Have I Been Pwned</a> ověřte, zda vaše e-maily nefigurují v únicích. Pokud ano, změňte hesla na dotčených službách.</li>
   <li><b>Pozor na phishing</b> – ani silné heslo nepomůže, pokud ho zadáte na podvodné stránce. Vždy kontrolujte URL.</li>
   <li><b>Neposílejte hesla e-mailem ani chatem</b> – používejte správce hesel se sdílením nebo jednorázové odkazy.</li>
 </ol>
 
-<p><b>Poznámka k e-mailu na vlastní doméně:</b> Vlastní doména poskytuje nezávislost na poskytovateli, ale ne nutně vyšší bezpečnost. Gmail nebo Outlook s hardwarovým klíčem (YubiKey) nabízí pokročilou ochranu proti phishingu a dedikované bezpečnostní týmy. U vlastní domény hrozí risiko expirace – pokud zapomenete doménu prodloužit, útočník ji může zaregistrovat a přijímat vaše e-maily včetně resetů hesel. Slabé místo může být i hostingová společnost.</p>
+<p><b>Poznámka k e-mailu na vlastní doméně:</b> Vlastní doména poskytuje nezávislost na poskytovateli, ale ne nutně vyšší bezpečnost. Gmail nebo Outlook s hardwarovým klíčem (YubiKey) nabízí pokročilou ochranu proti phishingu a dedikované bezpečnostní týmy. U vlastní domény hrozí risiko expirace – pokud zapomenete doménu prodloužit, útočník ji může zaregistrovat a přijímat vaše e-maily včetně resetů hesel. Slabé místo může být i hostingová společnost.</p>
 
-<p><b>Tip – náhodný alias pro přihlášení:</b> U Outlooku (a dalších služeb) můžete pro přihlášení používat jiný e-mail než ten veřejný. Vytvoříte si alias s náhodným řetězcem (např. <code>xk7mq2@outlook.com</code>) a nastavíte ho jako přihlašovací. Váš veřejný e-mail zůstane pro příjem pošty, ale útočník ho nemůže použít k pokusu o přihlášení. Podobný princip používají banky s klientským číslem. Není to náhrada za silné heslo a 2FA, ale přidává další vrstvu ochrany.</p>
+<p><b>Tip – náhodný alias pro přihlášení:</b> U Outlooku (a dalších služeb) můžete pro přihlášení používat jiný e-mail než ten veřejný. Vytvoříte si alias s náhodným řetězcem (např. <code>xk7mq2@outlook.com</code>) a nastavíte ho jako přihlašovací. Váš veřejný e-mail zůstane pro příjem pošty, ale útočník ho nemůže použít k pokusu o přihlášení. Podobný princip používají banky s klientským číslem. Není to náhrada za silné heslo a 2FA, ale přidává další vrstvu ochrany.</p>
 
 <h2 id="kolik-hesel">Kolik hesel si musím pamatovat?</h2>
 
 <p>Než zvolíte strategii, zamyslete se nad svou situací:</p>
 
 <ul>
-  <li><b>Co by bylo problematické ztratit?</b> – Přístup k e-mailu, fotkám, dokumentům, bankovnictví? Které účty jsou kritické pro váš život nebo práci?</li>
-  <li><b>Co by bylo drahé ztratit?</b> – Kryptoměny, předplacené služby, domény, licence k softwaru?</li>
-  <li><b>Jak moc chcete být závislí na třetích stranách?</b> – Apple nebo Google vám mohou zablokovat účet (omylem, kvůli porušení podmínek). Dokážete se z toho zotavit?</li>
-  <li><b>Jaké jsou vaše technické schopnosti?</b> – Zvládnete spravovat hardwarové klíče a zálohy, nebo potřebujete co nejjednodušší řešení?</li>
+  <li><b>Co by bylo problematické ztratit?</b> – Přístup k e-mailu, fotkám, dokumentům, bankovnictví? Které účty jsou kritické pro váš život nebo práci?</li>
+  <li><b>Co by bylo drahé ztratit?</b> – Kryptoměny, předplacené služby, domény, licence k softwaru?</li>
+  <li><b>Jak moc chcete být závislí na třetích stranách?</b> – Apple nebo Google vám mohou zablokovat účet (omylem, kvůli porušení podmínek). Dokážete se z toho zotavit?</li>
+  <li><b>Jaké jsou vaše technické schopnosti?</b> – Zvládnete spravovat hardwarové klíče a zálohy, nebo potřebujete co nejjednodušší řešení?</li>
 </ul>
 
-<p>Pro běžného uživatele s pár desítkami účtů stačí jednodušší varianta. Pro někoho, kdo spravuje firemní přístupy, kryptoměny nebo citlivá data, má smysl investovat do složitějšího a bezpečnějšího řešení.</p>
+<p>Pro běžného uživatele s pár desítkami účtů stačí jednodušší varianta. Pro někoho, kdo spravuje firemní přístupy, kryptoměny nebo citlivá data, má smysl investovat do složitějšího a bezpečnějšího řešení.</p>
 
 <p>Existuje několik základních obecných variant od nejjednodušší po bezpečnější:</p>
 
@@ -817,9 +817,9 @@ format: "html"
 
 <p>S dvoufaktorovým ověřením (ideálně hardwarovým klíčem) je to dostatečně bezpečné pro většinu lidí. Nevýhodou je závislost na jednom poskytovateli.</p>
 
-<h3>Varianta 2: Samostatný správce hesel + hardwarový klíč k e-mailu</h3>
+<h3>Varianta 2: Samostatný správce hesel + hardwarový klíč k e-mailu</h3>
 
-<p>Gmail i Outlook podporují přihlášení <b>pouze hardwarovým klíčem</b> (passkey) bez hesla. Pak si pamatujete jen heslo do správce hesel a k e-mailu se přihlásíte pomocí YubiKey nebo jiného klíče.</p>
+<p>Gmail i Outlook podporují přihlášení <b>pouze hardwarovým klíčem</b> (passkey) bez hesla. Pak si pamatujete jen heslo do správce hesel a k e-mailu se přihlásíte pomocí YubiKey nebo jiného klíče.</p>
 
 <ul>
   <li>Pamatujete si: 1 heslo (správce hesel)</li>
@@ -828,16 +828,16 @@ format: "html"
 
 <h3>Varianta 3: Dvě oddělené passphrase (nejbezpečnější)</h3>
 
-<p>Pro maximální bezpečnost a nezávislost:</p>
+<p>Pro maximální bezpečnost a nezávislost:</p>
 
 <ul>
   <li><b>Heslo do správce hesel</b> – passphrase, kterou znáte zpaměti</li>
-  <li><b>Heslo k e-mailu</b> – jiná passphrase, kterou také znáte zpaměti</li>
+  <li><b>Heslo k e-mailu</b> – jiná passphrase, kterou také znáte zpaměti</li>
 </ul>
 
-<p>Proč dvě různá hesla? E-mail často slouží k obnově přístupu ke správci hesel. Pokud by někdo získal přístup k vašemu e-mailu a obě služby měly stejné heslo, má přístup ke všemu.</p>
+<p>Proč dvě různá hesla? E-mail často slouží k obnově přístupu ke správci hesel. Pokud by někdo získal přístup k vašemu e-mailu a obě služby měly stejné heslo, má přístup ke všemu.</p>
 
-<p><b>Tip:</b> Pokud se bojíte, že heslo k e-mailu zapomenete, můžete ho zapsat a uložit na bezpečném fyzickém místě (trezor, bezpečnostní schránka v bance). Pro běžné přihlášení použijete správce hesel, papír je záloha pro případ nouze.</p>
+<p><b>Tip:</b> Pokud se bojíte, že heslo k e-mailu zapomenete, můžete ho zapsat a uložit na bezpečném fyzickém místě (trezor, bezpečnostní schránka v bance). Pro běžné přihlášení použijete správce hesel, papír je záloha pro případ nouze.</p>
 
 <h2 id="entropie">Co je entropie hesla</h2>
 
@@ -909,55 +909,55 @@ format: "html"
   <li>Import/export hesel (CSV)</li>
 </ul>
 
-<p>Pro uživatele v Apple ekosystému je to nejpohodlnější volba – hesla se automaticky vyplňují v Safari i aplikacích a jsou chráněna Face ID / Touch ID.</p>
+<p>Pro uživatele v Apple ekosystému je to nejpohodlnější volba – hesla se automaticky vyplňují v Safari i aplikacích a jsou chráněna Face ID / Touch ID.</p>
 
 <h3 id="bez-spravce">Jde to bez správce hesel?</h3>
 
-<p>Správce hesel v prohlížeči (Chrome, Firefox, Safari) nebo v systému (iCloud Klíčenka, Google Password Manager) <b>je správce hesel</b> – jen ho nemusíte instalovat. Pro většinu lidí je to dostačující řešení.</p>
+<p>Správce hesel v prohlížeči (Chrome, Firefox, Safari) nebo v systému (iCloud Klíčenka, Google Password Manager) <b>je správce hesel</b> – jen ho nemusíte instalovat. Pro většinu lidí je to dostačující řešení.</p>
 
-<p>Pokud opravdu nechcete žádný správce hesel, existují alternativy s kompromisy:</p>
+<p>Pokud opravdu nechcete žádný správce hesel, existují alternativy s kompromisy:</p>
 
 <ul>
-  <li><b>Passphrase + osobní algoritmus</b> – základní fráze upravená podle služby (např. přidání prvních písmen názvu). Risiko: pokud jedno heslo unikne a útočník odhalí vzorec, má všechna.</li>
-  <li><b>Papír v trezoru</b> – hesla zapsaná na papíře v bezpečném místě. Lepší než jedno heslo všude, ale nepraktické mimo domov.</li>
+  <li><b>Passphrase + osobní algoritmus</b> – základní fráze upravená podle služby (např. přidání prvních písmen názvu). Risiko: pokud jedno heslo unikne a útočník odhalí vzorec, má všechna.</li>
+  <li><b>Papír v trezoru</b> – hesla zapsaná na papíře v bezpečném místě. Lepší než jedno heslo všude, ale nepraktické mimo domov.</li>
   <li><b>Přihlášení přes Google/Apple</b> – redukuje počet hesel. Risiko: vše závisí na jednom účtu.</li>
   <li><b>Kategorizace služeb</b> – několik silných passphrase podle důležitosti: unikátní pro kritické (banka, e-mail), sdílená pro méně důležité.</li>
 </ul>
 
-<p><b>Upřímná odpověď:</b> Pro desítky unikátních silných hesel je správce hesel jediné praktické řešení. Dobrá zpráva je, že ho už pravděpodobně máte – v prohlížeči nebo telefonu.</p>
+<p><b>Upřímná odpověď:</b> Pro desítky unikátních silných hesel je správce hesel jediné praktické řešení. Dobrá zpráva je, že ho už pravděpodobně máte – v prohlížeči nebo telefonu.</p>
 
 <h2 id="passphrase">Passphrase – heslo ze slov</h2>
 
 <p>Alternativou k náhodným znakům je <b>passphrase</b> – heslo složené z několika náhodných slov. Takové heslo je snazší zapamatovat a přitom může mít vysokou entropii.</p>
 
-<p>Koncept ilustruje slavný komiks <a href="https://xkcd.com/936/">XKCD #936</a> s frází „correct horse battery staple".</p>
+<p>Koncept ilustruje slavný komiks <a href="https://xkcd.com/936/">XKCD #936</a> s frází „correct horse battery staple".</p>
 
-<p><b>Pozor:</b> Tuto konkrétní frázi (ani její překlady) nikdy nepoužívejte – je známá a figuruje v každém slovníku hesel. Vždy si nechte vygenerovat <b>vlastní náhodná slova</b> pomocí generátoru výše.</p>
+<p><b>Pozor:</b> Tuto konkrétní frázi (ani její překlady) nikdy nepoužívejte – je známá a figuruje v každém slovníku hesel. Vždy si nechte vygenerovat <b>vlastní náhodná slova</b> pomocí generátoru výše.</p>
 
 <p><img class="border" src="/files/bezpecne-heslo/sila-hesla.png" alt="Vymýšlení bezpečného hesla snadného na zapamatování"></p>
 <p><i>Přeloženo z <a href="http://imgs.xkcd.com/comics/password_strength.png">originálu</a>.</i></p>
 
 <p>Při použití slovníku o 7776 slovech (jako v metodě <a href="https://www.eff.org/dice">Diceware</a>) poskytuje každé slovo přibližně 12,9 bitů entropie. Čtyři slova = ~51 bitů, šest slov = ~77 bitů.</p>
 
-<p><b>Poznámka k entropii passphrase:</b> Entropie se počítá jako <code>počet slov × log₂(velikost slovníku)</code>. Diakritika v českých slovech nemá vliv na entropii – útočník provádějící slovníkový útok zná velikost slovníku bez ohledu na to, jaké znaky slova obsahují. Síla passphrase pochází z počtu možných kombinací slov, nikoli ze složitosti jednotlivých znaků.</p>
+<p><b>Poznámka k entropii passphrase:</b> Entropie se počítá jako <code>počet slov × log₂(velikost slovníku)</code>. Diakritika v českých slovech nemá vliv na entropii – útočník provádějící slovníkový útok zná velikost slovníku bez ohledu na to, jaké znaky slova obsahují. Síla passphrase pochází z počtu možných kombinací slov, nikoli ze složitosti jednotlivých znaků.</p>
 
-<p><b>Kerckhoffsův princip:</b> Výpočet entropie předpokládá, že útočník zná použitý slovník i všechna pravidla (počet slov, oddělovač, velká písmena). Jediné co nezná jsou konkrétní náhodné volby. Toto je správný přístup – bezpečnost nesmí záviset na utajení algoritmu (<i>security through obscurity</i>), pouze na kvalitě náhodných voleb. Proto je entropie konzervativní odhad: v praxi může být útok těžší (pokud útočník neví jaký slovník používáte), ale nikdy ne snazší.</p>
+<p><b>Kerckhoffsův princip:</b> Výpočet entropie předpokládá, že útočník zná použitý slovník i všechna pravidla (počet slov, oddělovač, velká písmena). Jediné co nezná jsou konkrétní náhodné volby. Toto je správný přístup – bezpečnost nesmí záviset na utajení algoritmu (<i>security through obscurity</i>), pouze na kvalitě náhodných voleb. Proto je entropie konzervativní odhad: v praxi může být útok těžší (pokud útočník neví jaký slovník používáte), ale nikdy ne snazší.</p>
 
-<p><b>Praktické doporučení:</b> Pro passphrase používejte slova <b>bez diakritiky a speciálních znaků</b>. Bezpečnost zajišťuje náhodnost a počet slov, ne složitost znaků. Heslo bez háčků a čárek snadno zadáte i na dálkovém ovladači k TV, herním ovladači nebo zahraniční klávesnici.</p>
+<p><b>Praktické doporučení:</b> Pro passphrase používejte slova <b>bez diakritiky a speciálních znaků</b>. Bezpečnost zajišťuje náhodnost a počet slov, ne složitost znaků. Heslo bez háčků a čárek snadno zadáte i na dálkovém ovladači k TV, herním ovladači nebo zahraniční klávesnici.</p>
 
-<p><b>Mohu generovat znovu, dokud se mi heslo nebude líbit?</b> Záleží na důvodu. Pár regenerací (2–3×) bezpečnost významně nesníží – ztratíte maximálně ~10 bitů entropie, což je u 6 slov stále bezpečné. Problém nastává, když hledáte slova, která „dávají smysl" dohromady nebo tvoří příběh – smysluplných frází je zlomek všech kombinací a útočník může mít stejnou preferenci. Ideální je vygenerovat jednou a použít.</p>
+<p><b>Mohu generovat znovu, dokud se mi heslo nebude líbit?</b> Záleží na důvodu. Pár regenerací (2–3×) bezpečnost významně nesníží – ztratíte maximálně ~10 bitů entropie, což je u 6 slov stále bezpečné. Problém nastává, když hledáte slova, která „dávají smysl" dohromady nebo tvoří příběh – smysluplných frází je zlomek všech kombinací a útočník může mít stejnou preferenci. Ideální je vygenerovat jednou a použít.</p>
 
-<p><b>Je bezpečné generovat heslo v prohlížeči, nebo raději házet kostkou?</b> Pro většinu lidí je JavaScript generátor dostatečně bezpečný. Používá <code>crypto.getRandomValues()</code> – kryptograficky bezpečný generátor čerpající entropii z operačního systému. Stejný mechanismus používají i správci hesel. Teoretické risiko (kompromitovaný prohlížeč, škodlivé rozšíření) existuje, ale pokud je váš počítač takto napaden, keylogger zachytí heslo při zadávání tak jako tak. Fyzická kostka (<a href="https://www.eff.org/dice">Diceware</a>) poskytuje „pravou" náhodnost bez softwaru – má smysl pro hlavní heslo do správce hesel nebo pokud se obáváte cílených útoků.</p>
+<p><b>Je bezpečné generovat heslo v prohlížeči, nebo raději házet kostkou?</b> Pro většinu lidí je JavaScript generátor dostatečně bezpečný. Používá <code>crypto.getRandomValues()</code> – kryptograficky bezpečný generátor čerpající entropii z operačního systému. Stejný mechanismus používají i správci hesel. Teoretické risiko (kompromitovaný prohlížeč, škodlivé rozšíření) existuje, ale pokud je váš počítač takto napaden, keylogger zachytí heslo při zadávání tak jako tak. Fyzická kostka (<a href="https://www.eff.org/dice">Diceware</a>) poskytuje „pravou" náhodnost bez softwaru – má smysl pro hlavní heslo do správce hesel nebo pokud se obáváte cílených útoků.</p>
 
 <p><b>Nepoužívejte AI pro generování hesel.</b> ChatGPT, Claude ani jiné LLM nejsou vhodné pro vytváření hesel nebo PINů:</p>
 
 <ol>
-  <li>AI negeneruje kryptograficky náhodný výstup – používá naučené vzory, takže tíhne k určitým „náhodně vypadajícím" sekvencím</li>
-  <li>Konversace se ukládají na serverech poskytovatele – vaše heslo může skončit v logu</li>
-  <li>Heslo putuje po síti k třetí straně</li>
+  <li>AI negeneruje kryptograficky náhodný výstup – používá naučené vzory, takže tíhne k určitým „náhodně vypadajícím" sekvencím</li>
+  <li>Konversace se ukládají na serverech poskytovatele – vaše heslo může skončit v logu</li>
+  <li>Heslo putuje po síti k třetí straně</li>
 </ol>
 
-<p>Pro generování hesel používejte správce hesel, generátor v prohlížeči (<code>crypto.getRandomValues</code>), nebo fyzickou kostku.</p>
+<p>Pro generování hesel používejte správce hesel, generátor v prohlížeči (<code>crypto.getRandomValues</code>), nebo fyzickou kostku.</p>
 
 <h2 id="dvoufaktorove">Dvoufaktorové ověření (2FA)</h2>
 
@@ -971,7 +971,7 @@ format: "html"
 
 <h2 id="pin">PIN kód</h2>
 
-<p>PIN je specifický případ hesla s velmi nízkou entropií:</p>
+<p>PIN je specifický případ hesla s velmi nízkou entropií:</p>
 
 <ul>
   <li>4 číslice = 10 000 kombinací (~13 bitů)</li>
@@ -989,27 +989,27 @@ format: "html"
   <li><b>Unikátní PIN</b> pro každé zařízení – jiný pro telefon, kartu, alarm</li>
 </ul>
 
-<p>Studie ukázaly, že ~10 % lidí používá jeden z 20 nejčastějších PINů. Útočník s pouhými 3 pokusy má tak ~1,5% šanci uhodnout správný PIN.</p>
+<p>Studie ukázaly, že ~10 % lidí používá jeden z 20 nejčastějších PINů. Útočník s pouhými 3 pokusy má tak ~1,5% šanci uhodnout správný PIN.</p>
 
 <p><b>Nejčastější PINy (nepoužívejte):</b> 1234, 0000, 1111, 1212, 7777, 1004, 2000, 4321, 2222, 2001</p>
 
-<h2 id="uniky-hesel">Úniky hesel a proč nepoužívat stejné heslo</h2>
+<h2 id="uniky-hesel">Úniky hesel a proč nepoužívat stejné heslo</h2>
 
-<p><b>Největší bezpečnostní risiko není slabé heslo, ale používání stejného hesla na více službách.</b> Úniky databází jsou běžné – každý rok uniknou miliardy přihlašovacích údajů. Na webu <a href="https://haveibeenpwned.com/">Have I Been Pwned</a> si můžete ověřit, zda vaše e-mailová adresa figuruje v některém známém úniku.</p>
+<p><b>Největší bezpečnostní risiko není slabé heslo, ale používání stejného hesla na více službách.</b> Úniky databází jsou běžné – každý rok uniknou miliardy přihlašovacích údajů. Na webu <a href="https://haveibeenpwned.com/">Have I Been Pwned</a> si můžete ověřit, zda vaše e-mailová adresa figuruje v některém známém úniku.</p>
 
 <p>Problém je, že mnoho služeb neukládá hesla bezpečně:</p>
 
 <ul>
-  <li><b>Žádné hashování</b> – hesla uložena v čitelné podobě (ano, stále se to děje)</li>
+  <li><b>Žádné hashování</b> – hesla uložena v čitelné podobě (ano, stále se to děje)</li>
   <li><b>Slabé hashování</b> – MD5 nebo SHA1 bez soli, lze prolomit slovníkovým útokem během sekund</li>
-  <li><b>Rychlé hashovací funkce</b> – i SHA-256 je příliš rychlý; moderní GPU zvládne miliardy pokusů za sekundu</li>
+  <li><b>Rychlé hashovací funkce</b> – i SHA-256 je příliš rychlý; moderní GPU zvládne miliardy pokusů za sekundu</li>
 </ul>
 
-<p>Bezpečné služby používají <b>pomalé hashovací funkce</b> jako bcrypt, scrypt nebo Argon2, které záměrně zpomalují ověření hesla. I při úniku databáze pak trvá prolomení jednoho hesla hodiny až roky místo milisekund.</p>
+<p>Bezpečné služby používají <b>pomalé hashovací funkce</b> jako bcrypt, scrypt nebo Argon2, které záměrně zpomalují ověření hesla. I při úniku databáze pak trvá prolomení jednoho hesla hodiny až roky místo milisekund.</p>
 
-<p>Když útočník získá vaše heslo z jedné služby, zkusí ho automaticky na desítkách dalších – e-mail, sociální sítě, banky. Tomuto se říká <b>credential stuffing</b> a je to jeden z nejúspěšnějších typů útoků.</p>
+<p>Když útočník získá vaše heslo z jedné služby, zkusí ho automaticky na desítkách dalších – e-mail, sociální sítě, banky. Tomuto se říká <b>credential stuffing</b> a je to jeden z nejúspěšnějších typů útoků.</p>
 
-<p><b>Řešení:</b> Pro každou službu používejte unikátní heslo. S desítkami účtů je to bez správce hesel nemožné – proto je správce hesel nutností, ne luxusem.</p>
+<p><b>Řešení:</b> Pro každou službu používejte unikátní heslo. S desítkami účtů je to bez správce hesel nemožné – proto je správce hesel nutností, ne luxusem.</p>
 
 <h2 id="caste-chyby">Časté chyby</h2>
 
@@ -1021,17 +1021,17 @@ format: "html"
   <li>Zapisování hesel na papírky u monitoru</li>
 </ul>
 
-<h2 id="pro-vyvojare">Pro tvůrce webů a aplikací</h2>
+<h2 id="pro-vyvojare">Pro tvůrce webů a aplikací</h2>
 
-<p>Pokud implementujete přihlašování, <b>nevynucujte složitá pravidla pro hesla</b>. Požadavky typu „musí obsahovat velké písmeno, číslo a speciální znak" vedou k předvídatelným heslům (<code>Heslo123!</code>) a frustrují uživatele se správci hesel.</p>
+<p>Pokud implementujete přihlašování, <b>nevynucujte složitá pravidla pro hesla</b>. Požadavky typu „musí obsahovat velké písmeno, číslo a speciální znak" vedou k předvídatelným heslům (<code>Heslo123!</code>) a frustrují uživatele se správci hesel.</p>
 
-<h3>Doporučené zásady (NIST SP 800-63B)</h3>
+<h3>Doporučené zásady (NIST SP 800–63B)</h3>
 
 <ul>
   <li><b>Minimální délka 12–16 znaků</b> – délka je důležitější než složitost</li>
   <li><b>Maximální délka alespoň 64 znaků</b> – neomezujte uživatele správců hesel</li>
   <li><b>Žádné požadavky na typy znaků</b> – nevyžadujte velká písmena, čísla ani symboly</li>
-  <li><b>Povolte všechny znaky</b> – včetně mezer, emoji a Unicode</li>
+  <li><b>Povolte všechny znaky</b> – včetně mezer, emoji a Unicode</li>
   <li><b>Neblokujte vkládání hesla</b> – rozbíjí to správce hesel</li>
   <li><b>Nevyžadujte pravidelnou změnu hesla</b> – vede ke slabším heslům</li>
 </ul>
@@ -1039,9 +1039,9 @@ format: "html"
 <h3>Co implementovat</h3>
 
 <ul>
-  <li><b>Kontrola proti seznamu uniklých hesel</b> – <a href="https://haveibeenpwned.com/API/v3#PwnedPasswords">Have I Been Pwned API</a> (k-anonymity, bezpečné)</li>
+  <li><b>Kontrola proti seznamu uniklých hesel</b> – <a href="https://haveibeenpwned.com/API/v3#PwnedPasswords">Have I Been Pwned API</a> (k-anonymity, bezpečné)</li>
   <li><b>Blokace nejčastějších hesel</b> – top 10 000 hesel, slovníková slova</li>
-  <li><b>Rate limiting</b> – omezení počtu pokusů o přihlášení</li>
+  <li><b>Rate limiting</b> – omezení počtu pokusů o přihlášení</li>
   <li><b>Pomalé hashování</b> – bcrypt, scrypt nebo Argon2 (nikdy MD5/SHA1/SHA256)</li>
   <li><b>Podpora passkeys/WebAuthn</b> – budoucnost přihlašování bez hesel</li>
 </ul>
@@ -1054,7 +1054,7 @@ format: "html"
     <th>Dobře</th>
   </tr>
   <tr>
-    <td>8–16 znaků, musí obsahovat A-Z, a-z, 0-9, speciální znak</td>
+    <td>8–16 znaků, musí obsahovat A-Z, a-z, 0–9, speciální znak</td>
     <td>Minimálně 12 znaků</td>
   </tr>
   <tr>
@@ -1071,7 +1071,7 @@ format: "html"
   </tr>
 </table>
 
-<h2 id="generator-kod">Kód generátoru v JavaScriptu</h2>
+<h2 id="generator-kod">Kód generátoru v JavaScriptu</h2>
 
 <p>Generátor na této stránce používá <code>crypto.getRandomValues()</code> pro kryptograficky bezpečnou náhodnost. Zde je zjednodušená verse:</p>
 
