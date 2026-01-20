@@ -39,9 +39,9 @@ format: "html"
 }
 .password-generator .mode-switch button {
   padding: 0.5em 1em;
-  border: 2px solid #334155;
+  border: 2px solid currentColor;
+  color: currentColor;
   background: transparent;
-  color: #94a3b8;
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.95em;
