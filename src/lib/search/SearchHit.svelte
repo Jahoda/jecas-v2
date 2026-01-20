@@ -26,8 +26,9 @@
 
 	let title = $derived(stripHtml(hit.title || hit.headline));
 	let description = $derived(sanitizeExcerpt(hit.description));
+	let isTag = $derived(hit.type === 'tag');
 </script>
 
 <div onmouseenter={onhover}>
-	<MainPost neutral {title} {description} {selected} small slug={hit.url_slug} />
+	<MainPost neutral {title} {description} {selected} small slug={hit.url_slug} noImage={isTag} />
 </div>

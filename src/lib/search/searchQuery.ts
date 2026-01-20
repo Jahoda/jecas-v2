@@ -6,6 +6,7 @@ export interface SearchHit {
 	title: string;
 	headline: string;
 	description: string;
+	type: 'post' | 'tag';
 	tags?: string[];
 	_highlightResult?: {
 		headline?: { value: string };
@@ -67,7 +68,7 @@ export async function searchQuery(query: string): Promise<SearchResponse> {
 			return { hits: [] };
 		}
 
-		// Load data for top results (index contains only articles from markdown)
+		// Load data for top results
 		const resultsData = await Promise.all(
 			search.results.slice(0, 15).map((result: any) => result.data())
 		);
@@ -79,12 +80,14 @@ export async function searchQuery(query: string): Promise<SearchResponse> {
 				.replace(/\.html$/, '');
 			const title = decodeHtmlEntities(data.meta?.title || '');
 			const excerpt = data.excerpt || '';
+			const type = data.meta?.type || 'post';
 			return {
 				objectID: data.url,
 				url_slug: slug,
 				title,
 				headline: title,
 				description: excerpt,
+				type,
 				_highlightResult: {
 					headline: { value: title },
 					description: { value: excerpt }
