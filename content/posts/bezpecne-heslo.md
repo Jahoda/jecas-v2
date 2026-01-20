@@ -551,7 +551,7 @@ format: "html"
 
 <p><b>Nejdůležitější faktor bezpečného hesla je náhodnost, nikoliv složitost.</b> Tradiční požadavky na hesla (velké písmeno, číslo, speciální znak) jsou často kontraproduktivní – vedou k heslům typu <code>František1!</code>, která tyto podmínky splňují, ale jsou snadno uhodnutelná.</p>
 
-<p>Útočníci totiž nezkouší náhodné kombinace znaků. Používají:</p>
+<p>Útočníci totiž nemusí zkoušet jen náhodné kombinace znaků. Mohou zacílit primárně na uživatele se slabšími hesly a použít:</p>
 
 <ul>
   <li><b>Slovníkové útoky</b> – běžná slova, jména, české výrazy</li>
