@@ -5,7 +5,7 @@
 	import IconCopy from '$lib/icon/IconCopy.svelte';
 	import IconCheckCircle from '$lib/icon/IconCheckCircle.svelte';
 	import { onMount } from 'svelte';
-	import { beforeNavigate } from '$app/navigation';
+	import { registerCleanup } from './registry';
 
 	interface Props {
 		content: string;
@@ -16,7 +16,6 @@
 
 	let isShowSource = $state(false);
 	let addedScripts: HTMLScriptElement[] = $state([]);
-	let cleanupScriptContent: string | undefined = $state();
 
 	function handleToggleSource() {
 		isShowSource = !isShowSource;
@@ -79,12 +78,21 @@
 		});
 	}
 
-	function storeCleanupScript() {
+	function registerCleanupFromDataAttribute() {
 		const tempDiv = createTempDiv(content);
 		const cleanupElement = tempDiv.querySelector('[data-cleanup]');
 
-		if (cleanupElement && cleanupElement.textContent) {
-			cleanupScriptContent = cleanupElement.textContent;
+		if (cleanupElement?.textContent) {
+			const cleanupCode = cleanupElement.textContent;
+			// Zaregistrovat cleanup jako funkci do centrálního registry
+			registerCleanup(() => {
+				try {
+					// Spustit cleanup kód v kontextu window
+					new Function(cleanupCode)();
+				} catch (error) {
+					console.error('Cleanup script error:', error);
+				}
+			});
 		}
 	}
 
@@ -113,18 +121,8 @@
 
 	onMount(() => {
 		extractAndExecuteScripts();
-		storeCleanupScript();
+		registerCleanupFromDataAttribute();
 	});
-
-	function executeCleanupScript() {
-		if (cleanupScriptContent) {
-			const newScript = document.createElement('script');
-			newScript.textContent = cleanupScriptContent;
-			liveContainer.appendChild(newScript);
-		}
-	}
-
-	beforeNavigate(executeCleanupScript);
 </script>
 
 <div class="absolute top-0 right-0">
