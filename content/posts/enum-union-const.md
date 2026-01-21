@@ -381,6 +381,79 @@ Object.entries(API_ENDPOINTS).forEach(([name, url]) => {
 
 <p>Const enum má příliš mnoho problémů. Použijte raději <code>as const</code>.</p>
 
+<h2 id="magic-strings">Problém s porovnáváním stringů</h2>
+
+<p>Častý problém v kódu je použití stringů přímo při porovnávání:</p>
+
+<pre><code class="language-typescript">// "Magic string" - string přímo v kódu
+if (status === "active") {
+  // ...
+}
+
+// Lepší - pojmenovaná konstanta
+if (status === Status.Active) {
+  // ...
+}</code></pre>
+
+<p>Stringy přímo v kódu (tzv. <b>magic strings</b>) jsou problematické:</p>
+
+<ul>
+  <li>Náchylné na překlepy</li>
+  <li>Těžší refaktoring — při přejmenování musíte hledat všechny výskyty</li>
+  <li>Žádný autocomplete při psaní</li>
+</ul>
+
+<h3>Co TypeScript zachytí</h3>
+
+<p>Pokud máte správně definovaný typ, TypeScript <b>zachytí překlepy</b>:</p>
+
+<pre><code class="language-typescript">type Status = 'active' | 'inactive';
+
+function check(status: Status) {
+  if (status === "actve") { }   // ✗ Chyba - překlep
+  if (status === "unknown") { } // ✗ Chyba - není v typu
+  if (status === "active") { }  // ✓ OK
+}</code></pre>
+
+<h3>Co TypeScript nezachytí</h3>
+
+<p>TypeScript <b>nevynucuje použití pojmenovaných konstant</b>. I když máte <code>Status.Active</code>, můžete stále psát string přímo:</p>
+
+<pre><code class="language-typescript">const Status = { Active: 'active', Inactive: 'inactive' } as const;
+type StatusType = typeof Status[keyof typeof Status];
+
+function check(status: StatusType) {
+  if (status === Status.Active) { } // ✓ Pojmenovaná konstanta
+  if (status === "active") { }      // ✓ Také projde - TypeScript neprotestuje
+}</code></pre>
+
+<h3>Jak to řeší jednotlivé přístupy</h3>
+
+<table>
+  <tr>
+    <th>Přístup</th>
+    <th>Zachytí překlepy</th>
+    <th>Vynucuje konstanty</th>
+  </tr>
+  <tr>
+    <td>enum</td>
+    <td>✓</td>
+    <td>✓ — <code>"active"</code> neprojde</td>
+  </tr>
+  <tr>
+    <td>union type</td>
+    <td>✓</td>
+    <td>✗ — stringy jsou jediná možnost</td>
+  </tr>
+  <tr>
+    <td>as const</td>
+    <td>✓</td>
+    <td>✗ — stringy i konstanty projdou</td>
+  </tr>
+</table>
+
+<p>Pokud potřebujete striktně vynucovat použití konstant, <b>enum je jediná možnost</b>. Pro většinu projektů ale stačí, že TypeScript zachytí překlepy.</p>
+
 <h2 id="discriminated-union">Discriminated union</h2>
 
 <p>Pro složitější případy použijte <b>discriminated union</b> — union typů s rozlišovacím polem:</p>
