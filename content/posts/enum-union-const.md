@@ -46,9 +46,9 @@ format: "html"
   </tr>
 </table>
 
-<p><b>Runtime hodnota</b> znamená, že konstanta existuje i po kompilaci do JavaScriptu — můžete ji použít pro iteraci, validaci nebo ji předat do funkce. Union type existuje jen při kompilaci a v JavaScriptu zmizí.</p>
+<p><b>Runtime hodnota</b> znamená, že konstanta existuje i po kompilaci do JavaScriptu — můžete ji použít pro iteraci, validaci nebo ji předat do funkce. Union type existuje jen při kompilaci a v JavaScriptu zmizí.</p>
 
-<p><b>Tree-shaking</b> je optimalisace, kdy build nástroj (Vite, webpack, esbuild) automaticky odstraní nepoužívaný kód z výsledného bundlu. Enum nelze tree-shakovat — i když použijete jen jednu hodnotu, celý enum zůstane v bundlu.</p>
+<p><b>Tree-shaking</b> je optimalisace, kdy build nástroj (Vite, webpack, esbuild) automaticky odstraní nepoužívaný kód z výsledného bundlu. Enum nelze tree-shakovat — i když použijete jen jednu hodnotu, celý enum zůstane v bundlu.</p>
 
 <h2 id="enum">Enum</h2>
 
