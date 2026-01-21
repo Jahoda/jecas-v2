@@ -381,9 +381,9 @@ Object.entries(API_ENDPOINTS).forEach(([name, url]) => {
 
 <p>Const enum má příliš mnoho problémů. Použijte raději <code>as const</code>.</p>
 
-<h2 id="magic-strings">Problém s porovnáváním stringů</h2>
+<h2 id="magic-strings">Problém s porovnáváním stringů</h2>
 
-<p>Častý problém v kódu je použití stringů přímo při porovnávání:</p>
+<p>Častý problém v kódu je použití stringů přímo při porovnávání:</p>
 
 <pre><code class="language-typescript">// "Magic string" - string přímo v kódu
 if (status === "active") {
@@ -395,7 +395,7 @@ if (status === Status.Active) {
   // ...
 }</code></pre>
 
-<p>Stringy přímo v kódu (tzv. <b>magic strings</b>) jsou problematické:</p>
+<p>Stringy přímo v kódu (tzv. <b>magic strings</b>) jsou problematické:</p>
 
 <ul>
   <li>Náchylné na překlepy</li>
@@ -417,7 +417,7 @@ function check(status: Status) {
 
 <h3>Co TypeScript nezachytí</h3>
 
-<p>TypeScript <b>nevynucuje použití pojmenovaných konstant</b>. I když máte <code>Status.Active</code>, můžete stále psát string přímo:</p>
+<p>TypeScript <b>nevynucuje použití pojmenovaných konstant</b>. I když máte <code>Status.Active</code>, můžete stále psát string přímo:</p>
 
 <pre><code class="language-typescript">const Status = { Active: 'active', Inactive: 'inactive' } as const;
 type StatusType = typeof Status[keyof typeof Status];
@@ -448,7 +448,7 @@ function check(status: StatusType) {
   <tr>
     <td>as const</td>
     <td>✓</td>
-    <td>✗ — stringy i konstanty projdou</td>
+    <td>✗ — stringy i konstanty projdou</td>
   </tr>
 </table>
 
