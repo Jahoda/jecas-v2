@@ -1,11 +1,11 @@
 ---
 title: "Enum, union type, nebo const?"
 headline: "TypeScript: Enum, union type, nebo <code>as const</code>?"
-description: "Porovnání tří způsobů definování konstant v TypeScriptu – enum, union type a const assertion. Kdy který použít a jaké jsou jejich výhody a nevýhody."
+description: "Porovnání tří způsobů definování konstant v TypeScriptu. Kdy který použít a jaké jsou jejich výhody a nevýhody."
 date: "2026-01-21"
 last_modification: "2026-01-21"
 status: 1
-tags: ["js", "typescript"]
+tags: ["js", "ts"]
 format: "html"
 ---
 
