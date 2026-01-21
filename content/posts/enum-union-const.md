@@ -2,10 +2,10 @@
 title: "Enum, union type, nebo const?"
 headline: "TypeScript: Enum, union type, nebo <code>as const</code>?"
 description: "Porovnání tří způsobů definování konstant v TypeScriptu – enum, union type a const assertion. Kdy který použít a jaké jsou jejich výhody a nevýhody."
-date: "2026-01-19"
-last_modification: "2026-01-19"
+date: "2026-01-21"
+last_modification: "2026-01-21"
 status: 1
-tags: ["js"]
+tags: ["js", "typescript"]
 format: "html"
 ---
 
@@ -453,28 +453,6 @@ function check(status: StatusType) {
 </table>
 
 <p>Pokud potřebujete striktně vynucovat použití konstant, <b>enum je jediná možnost</b>. Pro většinu projektů ale stačí, že TypeScript zachytí překlepy.</p>
-
-<h2 id="discriminated-union">Discriminated union</h2>
-
-<p>Pro složitější případy použijte <b>discriminated union</b> — union typů s rozlišovacím polem:</p>
-
-<pre><code class="language-typescript">type Action =
-  | { type: 'increment'; amount: number }
-  | { type: 'decrement'; amount: number }
-  | { type: 'reset' };
-
-function reducer(state: number, action: Action): number {
-  switch (action.type) {
-    case 'increment':
-      return state + action.amount;
-    case 'decrement':
-      return state - action.amount;
-    case 'reset':
-      return 0;
-  }
-}</code></pre>
-
-<p>TypeScript automaticky zúží typ v každé větvi switche.</p>
 
 <h2 id="migrace">Migrace z enum na as const</h2>
 
