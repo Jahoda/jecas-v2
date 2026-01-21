@@ -78,9 +78,9 @@ setStatus(Status.Active); // 'active'</code></pre>
 }
 
 console.log(Direction.Up);   // 0
-console.log(Direction[0]);   // 'Up' (reversní mapování)</code></pre>
+console.log(Direction[0]);   // 'Up' (reverzní mapování)</code></pre>
 
-<p>Číselné enumy mají <b>reversní mapování</b> — můžete získat název z hodnoty. To ale zvětšuje výstupní kód.</p>
+<p>Číselné enumy mají <b>reverzní mapování</b> — můžete získat název z hodnoty. To ale zvětšuje výstupní kód.</p>
 
 <h3>Co se vygeneruje</h3>
 
@@ -99,7 +99,7 @@ var Status;
   Status["Inactive"] = "inactive";
 })(Status || (Status = {}));</code></pre>
 
-<p>Pro číselný enum je kód ještě delší kvůli reversnímu mapování.</p>
+<p>Pro číselný enum je kód ještě delší kvůli reverznímu mapování.</p>
 
 <h3>Výhody enum</h3>
 
@@ -324,7 +324,7 @@ paintConst('red'); // Také funguje</code></pre>
 
 <h3>Iterace</h3>
 
-<pre><code class="language-typescript">// Enum — funguje, ale komplikovaně
+<pre><code class="language-typescript">// Enum — pozor u číselných enumů (vrací i klíče)
 Object.values(ColorEnum).forEach(color => console.log(color));
 
 // Union type — nelze
@@ -373,7 +373,7 @@ Object.entries(API_ENDPOINTS).forEach(([name, url]) => {
 
 <ul>
   <li>Pracujete s existujícím kódem, který enumy používá</li>
-  <li>Potřebujete reversní mapování (číselné enumy)</li>
+  <li>Potřebujete reverzní mapování (číselné enumy)</li>
   <li>Tým je na enumy zvyklý</li>
 </ul>
 
@@ -512,7 +512,7 @@ type Status = typeof Status[keyof typeof Status];
   </tr>
   <tr>
     <td>Funguje s isolatedModules</td>
-    <td>✗</td>
+    <td>⚠️</td>
     <td>✓</td>
     <td>✓</td>
   </tr>
