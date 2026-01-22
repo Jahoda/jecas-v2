@@ -267,7 +267,7 @@ increment();</code></pre>
 
 <h3>Řešení: Fronta operací</h3>
 
-<p>Serializovat operace pomocí fronty:</p>
+<p>Serialisovat operace pomocí fronty:</p>
 
 <pre><code>let queue = Promise.resolve();
 
