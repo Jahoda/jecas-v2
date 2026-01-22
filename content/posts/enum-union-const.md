@@ -101,6 +101,8 @@ var Status;
   Status["Inactive"] = "inactive";
 })(Status || (Status = {}));</code></pre>
 
+<p>Vygenerovaný kód používá <b><a href="https://developer.mozilla.org/en-US/docs/Glossary/IIFE">IIFE</a></b> (Immediately Invoked Function Expression) — funkci, která se definuje a okamžitě spustí. Zápis <code>(function() { ... })()</code> vytvoří izolovaný scope. Konstrukce <code>Status || (Status = {})</code> umožňuje rozšiřovat enum napříč více soubory (pokud <code>Status</code> již existuje, použije se, jinak se vytvoří prázdný objekt).</p>
+
 <p>Pro číselný enum je kód ještě delší kvůli reversnímu mapování.</p>
 
 <h3>Výhody enum</h3>
