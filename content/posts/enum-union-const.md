@@ -116,7 +116,7 @@ var Status;
 
 <ul>
   <li>Generuje runtime kód</li>
-  <li>Bez bundleru generuje IIFE wrapper (moderní bundlery jako esbuild to optimalizují)</li>
+  <li>Bez bundleru generuje IIFE wrapper (moderní bundlery jako esbuild to optimalisují)</li>
   <li>Není nativní JavaScript — specifické pro TypeScript</li>
   <li>Problémy s <code>isolatedModules</code> — tato volba v <code>tsconfig.json</code> zajišťuje, že každý soubor lze kompilovat samostatně (vyžadují ji nástroje jako Babel, esbuild nebo SWC). Při zapnuté volbě nelze re-exportovat enum z jiného souboru (<code>export { Status } from './types'</code>), protože kompilátor neví, jestli je <code>Status</code> typ nebo hodnota.</li>
 </ul>
