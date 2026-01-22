@@ -23,7 +23,7 @@ format: "html"
   <tr>
     <td>enum</td>
     <td>Ano</td>
-    <td>Ne</td>
+    <td>Ano*</td>
     <td>Ano</td>
   </tr>
   <tr>
@@ -41,14 +41,16 @@ format: "html"
   <tr>
     <td>as const</td>
     <td>Ano</td>
-    <td>Ano</td>
+    <td>Ano*</td>
     <td>Ano</td>
   </tr>
 </table>
 
+<p><small>* Moderní bundlery (esbuild) dokáží hodnoty inlinovat a celý enum/objekt odstranit.</small></p>
+
 <p><b>Runtime hodnota</b> znamená, že konstanta existuje i po kompilaci do JavaScriptu — můžete ji použít pro iteraci, validaci nebo ji předat do funkce. Union type existuje jen při kompilaci a v JavaScriptu zmizí.</p>
 
-<p><b>Tree-shaking</b> je optimalisace, kdy build nástroj (Vite, webpack, esbuild) automaticky odstraní nepoužívaný kód z výsledného bundlu. Enum nelze tree-shakovat — i když použijete jen jednu hodnotu, celý enum zůstane v bundlu.</p>
+<p><b>Tree-shaking</b> je optimalisace, kdy build nástroj (Vite, webpack, esbuild) automaticky odstraní nepoužívaný kód z výsledného bundlu. Moderní bundlery jako esbuild dokáží enum hodnoty inlinovat a celý enum odstranit — výsledek je pak stejný jako u <code>const enum</code>.</p>
 
 <h2 id="enum">Enum</h2>
 
@@ -114,7 +116,7 @@ var Status;
 
 <ul>
   <li>Generuje runtime kód</li>
-  <li>Nelze tree-shakovat — celý enum je vždy v bundlu (výsledném souboru po buildu)</li>
+  <li>Bez bundleru generuje IIFE wrapper (moderní bundlery jako esbuild to optimalisují)</li>
   <li>Není nativní JavaScript — specifické pro TypeScript</li>
   <li>Problémy s <code>isolatedModules</code> — tato volba v <code>tsconfig.json</code> zajišťuje, že každý soubor lze kompilovat samostatně (vyžadují ji nástroje jako Babel, esbuild nebo SWC). Při zapnuté volbě nelze re-exportovat enum z jiného souboru (<code>export { Status } from './types'</code>), protože kompilátor neví, jestli je <code>Status</code> typ nebo hodnota.</li>
 </ul>
@@ -246,7 +248,7 @@ const Status = {
   <li>Runtime hodnoty existují</li>
   <li>Lze iterovat</li>
   <li>Minimální vygenerovaný kód</li>
-  <li>Tree-shakeable</li>
+  <li>Bez bundleru generuje menší kód než enum</li>
   <li>Funguje s <code>isolatedModules</code></li>
   <li>Nativní JavaScript pattern</li>
 </ul>
