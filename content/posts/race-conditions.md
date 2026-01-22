@@ -9,7 +9,7 @@ tags: ["js"]
 format: "html"
 ---
 
-<p>Race condition nastává, když výsledek programu závisí na <b>pořadí nebo časování</b> nekontrolovaných událostí. V JavaScriptu jsou běžné kvůli asynchronnímu zpracování — síťových požadavků, uživatelských akcí a časovačů.</p>
+<p>Race condition nastává, když výsledek programu závisí na <b>pořadí nebo časování</b> nekontrolovaných událostí. V JavaScriptu jsou běžné kvůli asynchronnímu zpracování — síťových požadavků, uživatelských akcí a časovačů.</p>
 
 <h2 id="priklad">Základní příklad</h2>
 
@@ -32,23 +32,23 @@ searchInput.addEventListener('input', async (e) => {
   <li>Požadavek pro „ab" (odeslán druhý)</li>
 </ol>
 
-<p>Pokud odpověď na „a" dorazí <b>později</b> než odpověď na „ab", zobrazí se <b>špatné výsledky</b>. Uživatel vidí výsledky pro „a", přestože v poli je „ab".</p>
+<p>Pokud odpověď na „a" dorazí <b>později</b> než odpověď na „ab", zobrazí se <b>špatné výsledky</b>. Uživatel vidí výsledky pro „a", přestože v poli je „ab".</p>
 
-<h2 id="proc">Proč k tomu dochází</h2>
+<h2 id="proc">Proč k tomu dochází</h2>
 
-<p>JavaScript je jednovláknový, ale síťové požadavky běží paralelně mimo hlavní vlákno. Odpovědi mohou dorazit v <b>libovolném pořadí</b>:</p>
+<p>JavaScript je jednovláknový, ale síťové požadavky běží paralelně mimo hlavní vlákno. Odpovědi mohou dorazit v <b>libovolném pořadí</b>:</p>
 
 <ul>
-  <li>Server může být zatížený a první požadavek zpracuje pomaleji</li>
+  <li>Server může být zatížený a první požadavek zpracuje pomaleji</li>
   <li>Síťová latence se liší</li>
   <li>CDN může cachovat jen některé odpovědi</li>
 </ul>
 
-<p>Kód ale zpracovává odpovědi v pořadí, v jakém <b>dorazí</b>, ne v jakém byly <b>odeslány</b>.</p>
+<p>Kód ale zpracovává odpovědi v pořadí, v jakém <b>dorazí</b>, ne v jakém byly <b>odeslány</b>.</p>
 
 <h2 id="reseni-1">Řešení 1: Ignorování zastaralých odpovědí</h2>
 
-<p>Nejjednodušší řešení — uložit si aktuální dotaz a při zpracování odpovědi ověřit, jestli je stále relevantní:</p>
+<p>Nejjednodušší řešení — uložit si aktuální dotaz a při zpracování odpovědi ověřit, jestli je stále relevantní:</p>
 
 <pre><code>let currentQuery = '';
 
@@ -98,7 +98,7 @@ searchInput.addEventListener('input', async (e) => {
 
 <p><code>AbortController</code> umožňuje zrušit <code>fetch</code> požadavek. Když zavoláme <code>controller.abort()</code>, požadavek vyhodí <code>AbortError</code>.</p>
 
-<p><b>Pozor:</b> Abort zruší požadavek na straně <b>klienta</b>, ale server o tom neví a požadavek zpracuje až do konce. Pokud jde o náročnou operaci (generování reportu, odesílání e-mailů), abort vám nepomůže snížit zátěž serveru — jen přestanete čekat na odpověď.</p>
+<p><b>Pozor:</b> Abort zruší požadavek na straně <b>klienta</b>, ale server o tom neví a požadavek zpracuje až do konce. Pokud jde o náročnou operaci (generování reportu, odesílání e-mailů), abort vám nepomůže snížit zátěž serveru — jen přestanete čekat na odpověď.</p>
 
 <h2 id="reseni-3">Řešení 3: Zablokování UI během načítání</h2>
 
@@ -125,7 +125,7 @@ button.addEventListener('click', async () => {
 
 <p>Zablokované tlačítko jasně signalizuje, že akce probíhá. Nevznikne race condition, protože druhý požadavek nelze odeslat.</p>
 
-<p><b>Kdy použít:</b> Pro akce s jasným začátkem a koncem — odeslání formuláře, načtení detailu, smazání položky. <b>Nehodí se</b> pro vyhledávání při psaní nebo jiné situace, kde chcete reagovat na každou změnu.</p>
+<p><b>Kdy použít:</b> Pro akce s jasným začátkem a koncem — odeslání formuláře, načtení detailu, smazání položky. <b>Nehodí se</b> pro vyhledávání při psaní nebo jiné situace, kde chcete reagovat na každou změnu.</p>
 
 <h2 id="stav">Race condition při nastavování stavu</h2>
 
@@ -142,10 +142,10 @@ button.addEventListener('click', async () => {
 <p>Pokud uživatel rychle přepíná mezi profily, může se stát:</p>
 
 <ol>
-  <li>Klik na uživatele A → požadavek pro A</li>
+  <li>Klik na uživatele A → požadavek pro A</li>
   <li>Klik na uživatele B → požadavek pro B</li>
   <li>Odpověď pro B (rychlejší) → zobrazí se B</li>
-  <li>Odpověď pro A (pomalejší) → <b>přepíše B na A</b></li>
+  <li>Odpověď pro A (pomalejší) → <b>přepíše B na A</b></li>
 </ol>
 
 <p>Výsledek: uživatel klikl na B, ale vidí A.</p>
@@ -172,7 +172,7 @@ async function loadUser(userId) {
 
 <p>Každý nový požadavek zvýší <code>requestId</code>. Při zpracování odpovědi ověříme, jestli se ID shoduje — pokud ne, odpověď ignorujeme.</p>
 
-<h2 id="debounce">Race condition a debounce</h2>
+<h2 id="debounce">Race condition a debounce</h2>
 
 <p>Debounce snižuje počet požadavků, ale <b>neřeší race conditions</b>:</p>
 
@@ -182,13 +182,13 @@ async function loadUser(userId) {
   results.innerHTML = data.map(item => `&lt;li&gt;${item}&lt;/li&gt;`).join('');
 }, 300);</code></pre>
 
-<p>I s debouncem může nastat situace, kdy uživatel napíše „abc", počká, pak napíše „xyz". Oba požadavky se odešlou, ale odpovědi mohou dorazit v opačném pořadí.</p>
+<p>I s debouncem může nastat situace, kdy uživatel napíše „abc", počká, pak napíše „xyz". Oba požadavky se odešlou, ale odpovědi mohou dorazit v opačném pořadí.</p>
 
-<p><b>Debounce kombinujte s AbortControllerem nebo kontrolou aktuálnosti.</b></p>
+<p><b>Debounce kombinujte s AbortControllerem nebo kontrolou aktuálnosti.</b></p>
 
 <h2 id="timeout">Timeout pro požadavek</h2>
 
-<p>Pokud chcete omezit maximální dobu čekání na odpověď, použijte <code>AbortController</code> s časovačem:</p>
+<p>Pokud chcete omezit maximální dobu čekání na odpověď, použijte <code>AbortController</code> s časovačem:</p>
 
 <pre><code>async function fetchWithTimeout(url, timeout = 5000) {
   const controller = new AbortController();
@@ -209,7 +209,7 @@ async function loadUser(userId) {
 
 <h2 id="promise-race">Promise.race pro nejrychlejší odpověď</h2>
 
-<p><code>Promise.race</code> vrátí výsledek první dokončené Promise. Hodí se, když stejná data poskytuje více API a chcete co nejrychlejší odpověď:</p>
+<p><code>Promise.race</code> vrátí výsledek první dokončené Promise. Hodí se, když stejná data poskytuje více API a chcete co nejrychlejší odpověď:</p>
 
 <pre><code>async function fetchFromFastestSource(query) {
   const sources = [
@@ -245,11 +245,11 @@ async function loadUser(userId) {
   }
 }</code></pre>
 
-<p><b>Použití:</b> Geolokace z více poskytovatelů, ceny z více e-shopů, záložní CDN.</p>
+<p><b>Použití:</b> Geolokace z více poskytovatelů, ceny z více e-shopů, záložní CDN.</p>
 
-<h2 id="lokalni-stav">Race condition s lokálním stavem</h2>
+<h2 id="lokalni-stav">Race condition s lokálním stavem</h2>
 
-<p>Race conditions se netýkají jen síťových požadavků. Mohou nastat i s lokálním stavem:</p>
+<p>Race conditions se netýkají jen síťových požadavků. Mohou nastat i s lokálním stavem:</p>
 
 <pre><code>let count = 0;
 
@@ -263,7 +263,7 @@ async function increment() {
 increment();
 increment();</code></pre>
 
-<p>Obě volání přečtou <code>count = 0</code>, provedou asynchronní operaci, a pak obě nastaví <code>count = 1</code>. Výsledek je 1 místo očekávaných 2.</p>
+<p>Obě volání přečtou <code>count = 0</code>, provedou asynchronní operaci, a pak obě nastaví <code>count = 1</code>. Výsledek je 1 místo očekávaných 2.</p>
 
 <h3>Řešení: Fronta operací</h3>
 
@@ -280,7 +280,7 @@ function increment() {
   return queue;
 }</code></pre>
 
-<p>Každé volání se zařadí do fronty a čeká na dokončení předchozího. Operace proběhnou postupně, ne současně.</p>
+<p>Každé volání se zařadí do fronty a čeká na dokončení předchozího. Operace proběhnou postupně, ne současně.</p>
 
 <h2 id="testovani">Testování race conditions</h2>
 
@@ -290,7 +290,7 @@ function increment() {
   <li><b>Umělé zpoždění</b> — přidejte náhodné zpoždění do odpovědí serveru</li>
   <li><b>Rychlé klikání</b> — testujte rychlé opakované akce</li>
   <li><b>Pomalá síť</b> — použijte DevTools Network throttling</li>
-  <li><b>Náhodné pořadí</b> — mockujte API tak, aby odpovědi přicházely v náhodném pořadí</li>
+  <li><b>Náhodné pořadí</b> — mockujte API tak, aby odpovědi přicházely v náhodném pořadí</li>
 </ul>
 
 <pre><code>// Mock s náhodným zpožděním
@@ -305,14 +305,14 @@ function mockFetch(url) {
 
 <h2 id="shrnuti">Shrnutí</h2>
 
-<p>Race conditions vznikají, když asynchronní operace dokončují v nepředvídatelném pořadí. Základní pravidla:</p>
+<p>Race conditions vznikají, když asynchronní operace dokončují v nepředvídatelném pořadí. Základní pravidla:</p>
 
 <ul>
   <li><b>Ověřujte aktuálnost</b> — při zpracování odpovědi zkontrolujte, jestli je stále relevantní</li>
   <li><b>Rušte předchozí požadavky</b> — použijte <code>AbortController</code> (ale pamatujte, že server stále dokončí zpracování)</li>
   <li><b>Blokujte UI</b> — pro jednorázové akce zablokujte tlačítko během načítání</li>
-  <li><b>Debounce nestačí</b> — kombinujte ho s dalšími technikami</li>
-  <li><b>Testujte s náhodným zpožděním</b> — odhalíte problémy dříve</li>
+  <li><b>Debounce nestačí</b> — kombinujte ho s dalšími technikami</li>
+  <li><b>Testujte s náhodným zpožděním</b> — odhalíte problémy dříve</li>
 </ul>
 
 <h2 id="odkazy">Odkazy</h2>
