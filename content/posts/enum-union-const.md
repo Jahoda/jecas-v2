@@ -46,11 +46,11 @@ format: "html"
   </tr>
 </table>
 
-<p><small>* Moderní bundlery (esbuild) dokáží hodnoty inlinovat a celý enum/objekt odstranit.</small></p>
+<p><small>* Moderní bundlery (esbuild) dokáží hodnoty inlinovat a celý enum/objekt odstranit.</small></p>
 
 <p><b>Runtime hodnota</b> znamená, že konstanta existuje i po kompilaci do JavaScriptu — můžete ji použít pro iteraci, validaci nebo ji předat do funkce. Union type existuje jen při kompilaci a v JavaScriptu zmizí.</p>
 
-<p><b>Tree-shaking</b> je optimalisace, kdy build nástroj (Vite, webpack, esbuild) automaticky odstraní nepoužívaný kód z výsledného bundlu. Moderní bundlery jako esbuild dokáží enum hodnoty inlinovat a celý enum odstranit — výsledek je pak stejný jako u <code>const enum</code>.</p>
+<p><b>Tree-shaking</b> je optimalisace, kdy build nástroj (Vite, webpack, esbuild) automaticky odstraní nepoužívaný kód z výsledného bundlu. Moderní bundlery jako esbuild dokáží enum hodnoty inlinovat a celý enum odstranit — výsledek je pak stejný jako u <code>const enum</code>.</p>
 
 <h2 id="enum">Enum</h2>
 
