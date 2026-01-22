@@ -3,7 +3,7 @@ title: "Race conditions v JavaScriptu"
 headline: "Race conditions v JavaScriptu"
 description: "Co jsou race conditions, proč vznikají v asynchronním kódu a jak jim předcházet."
 date: "2026-01-05"
-last_modification: "2026-01-05"
+last_modification: "2026-01-22"
 status: 1
 tags: ["js"]
 format: "html"
@@ -172,65 +172,6 @@ async function loadUser(userId) {
 
 <p>Každý nový požadavek zvýší <code>requestId</code>. Při zpracování odpovědi ověříme, jestli se ID shoduje — pokud ne, odpověď ignorujeme.</p>
 
-<h2 id="svelte">Race conditions ve Svelte</h2>
-
-<p>Ve Svelte můžete využít reaktivní příkaz <code>$:</code> pro načítání dat při změně proměnné. Ošetření race conditions vyžaduje kombinaci s <code>AbortController</code>:</p>
-
-<pre><code>&lt;script&gt;
-  import { onDestroy } from 'svelte';
-
-  export let userId;
-
-  let user = null;
-  let loading = true;
-  let error = null;
-  let controller = null;
-
-  $: loadUser(userId);
-
-  async function loadUser(id) {
-    // Zrušit předchozí požadavek
-    if (controller) {
-      controller.abort();
-    }
-
-    controller = new AbortController();
-    loading = true;
-    error = null;
-
-    try {
-      const response = await fetch(`/api/users/${id}`, {
-        signal: controller.signal
-      });
-      user = await response.json();
-    } catch (err) {
-      if (err.name !== 'AbortError') {
-        error = err.message;
-      }
-    } finally {
-      if (!controller.signal.aborted) {
-        loading = false;
-      }
-    }
-  }
-
-  onDestroy(() => {
-    if (controller) {
-      controller.abort();
-    }
-  });
-&lt;/script&gt;
-
-{#if loading}
-  &lt;p&gt;Načítání...&lt;/p&gt;
-{:else if error}
-  &lt;p&gt;Chyba: {error}&lt;/p&gt;
-{:else}
-  &lt;p&gt;{user.name}&lt;/p&gt;
-{/if}</code></pre>
-
-<p>Reaktivní příkaz <code>$: loadUser(userId)</code> zavolá funkci při každé změně <code>userId</code>. Funkce nejprve zruší předchozí požadavek pomocí <code>AbortController</code>, takže zastaralé odpovědi se ignorují. Funkce <code>onDestroy</code> zajistí zrušení požadavku při zničení komponenty.</p>
-
 <h2 id="debounce">Race condition a debounce</h2>
 
 <p>Debounce snižuje počet požadavků, ale <b>neřeší race conditions</b>:</p>
@@ -245,13 +186,9 @@ async function loadUser(userId) {
 
 <p><b>Debounce kombinujte s AbortControllerem nebo kontrolou aktuálnosti.</b></p>
 
-<h2 id="promise-race">Promise.race</h2>
+<h2 id="timeout">Timeout pro požadavek</h2>
 
-<p><code>Promise.race</code> vrátí výsledek první dokončené Promise. Hodí se ve dvou situacích:</p>
-
-<h3>1. Timeout pro požadavek</h3>
-
-<p>Soutěž mezi fetch požadavkem a časovačem:</p>
+<p>Pokud chcete omezit maximální dobu čekání na odpověď, použijte <code>AbortController</code> s časovačem:</p>
 
 <pre><code>async function fetchWithTimeout(url, timeout = 5000) {
   const controller = new AbortController();
@@ -270,9 +207,9 @@ async function loadUser(userId) {
   }
 }</code></pre>
 
-<h3>2. Nejrychlejší odpověď z více zdrojů</h3>
+<h2 id="promise-race">Promise.race pro nejrychlejší odpověď</h2>
 
-<p>Pokud stejná data poskytuje více API a chcete co nejrychlejší odpověď:</p>
+<p><code>Promise.race</code> vrátí výsledek první dokončené Promise. Hodí se, když stejná data poskytuje více API a chcete co nejrychlejší odpověď:</p>
 
 <pre><code>async function fetchFromFastestSource(query) {
   const sources = [
@@ -374,7 +311,6 @@ function mockFetch(url) {
   <li><b>Ověřujte aktuálnost</b> — při zpracování odpovědi zkontrolujte, jestli je stále relevantní</li>
   <li><b>Rušte předchozí požadavky</b> — použijte <code>AbortController</code> (ale pamatujte, že server stále dokončí zpracování)</li>
   <li><b>Blokujte UI</b> — pro jednorázové akce zablokujte tlačítko během načítání</li>
-  <li><b>Ve Svelte používejte AbortController</b> — v kombinaci s <code>$:</code> a <code>onDestroy</code></li>
   <li><b>Debounce nestačí</b> — kombinujte ho s dalšími technikami</li>
   <li><b>Testujte s náhodným zpožděním</b> — odhalíte problémy dříve</li>
 </ul>
@@ -383,5 +319,4 @@ function mockFetch(url) {
 
 <ul>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController">MDN: AbortController</a></li>
-  <li><a href="https://svelte.dev/docs/svelte/$effect">Svelte: $effect</a></li>
 </ul>
