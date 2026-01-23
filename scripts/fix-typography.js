@@ -89,25 +89,32 @@ const TYPOGRAPHY_RULES = [
 	// Opravuje: „text„ (obě dolní) → „text"
 	{
 		name: 'oprava špatně použitých českých uvozovek (obě dolní)',
-		find: /\u201E([^\u201E\u201C<>=]+)\u201E/g,
-		replace: '\u201E$1\u201C'
+		find: /\u201E([^\u201E\u201C\u201D<>=]+)\u201E/g,
+		replace: '\u201E$1\u201D'
 	},
 
 	// Opravuje: "text" (obě horní) → „text"
 	{
 		name: 'oprava špatně použitých českých uvozovek (obě horní)',
-		find: /\u201C([^\u201E\u201C<>=]+)\u201C/g,
-		replace: '\u201E$1\u201C'
+		find: /\u201C([^\u201E\u201C\u201D<>=]+)\u201C/g,
+		replace: '\u201E$1\u201D'
+	},
+
+	// Opravuje: „text" (dolní + ASCII) → „text"
+	{
+		name: 'oprava špatně použitých českých uvozovek (dolní + ASCII)',
+		find: /\u201E([^\u201E\u201C\u201D"<>=]+)"/g,
+		replace: '\u201E$1\u201D'
 	},
 
 	// České uvozovky: "text" → „text"
 	// Pouze v prose textu - NE v HTML atributech (po =)
 	// Matchuje uvozovky po: > (konec tagu), whitespace, ( nebo na začátku řádku
-	// České uvozovky: „ (U+201E) otevírací, " (U+201C) zavírací
+	// České uvozovky: „ (U+201E) otevírací, " (U+201D) zavírací
 	{
 		name: 'české uvozovky',
 		find: /(^|>|\s|\()"([^"<>=]+)"/gm,
-		replace: '$1\u201E$2\u201C'
+		replace: '$1\u201E$2\u201D'
 	}
 ];
 

@@ -33,7 +33,7 @@ format: "html"
 <p><b>Nevýhody:</b></p>
 <ul>
   <li>Uživatel čeká 200–500 ms (nebo déle při pomalém spojení)</li>
-  <li>UI „zamrzne" s loading stavem</li>
+  <li>UI „zamrzne” s loading stavem</li>
   <li>Pocit pomalé aplikace, i když server reaguje rychle</li>
 </ul>
 
@@ -1102,7 +1102,7 @@ window.addEventListener('online', () => {
   <li><b>Uložte původní stav</b> — abyste mohli vrátit změny při chybě serveru</li>
   <li><b>Animujte změny</b> — plynulý přechod je příjemnější než okamžité zmizení</li>
   <li><b>Dejte uživateli zpětnou vazbu</b> — pokud selže, jasně to oznámte</li>
-  <li><b>Nabídněte undo</b> — jako Gmail snackbar s tlačítkem „Vrátit zpět" (5 sekund)</li>
+  <li><b>Nabídněte undo</b> — jako Gmail snackbar s tlačítkem „Vrátit zpět” (5 sekund)</li>
   <li><b>Počítejte s offline režimem</b> — ukládejte operace do fronty v localStorage</li>
   <li><b>Řešte souběžnost</b> — co když uživatel klikne vícekrát rychle za sebou?</li>
   <li><b>Načasujte API volání</b> — volejte server až po uplynutí undo časovače (5 s)</li>
