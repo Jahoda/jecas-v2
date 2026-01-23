@@ -2,8 +2,8 @@
 title: "Optimistické mazání"
 headline: "Optimistické mazání"
 description: "Jak implementovat okamžitou reakci na uživatelské akce s optimistickým mazáním. UI vzor pro rychlejší aplikace."
-date: "2025-12-21"
-last_modification: "2025-12-22"
+date: "2026-01-23"
+last_modification: "2026-01-23"
 status: 1
 tags: ["js", "ux", "napady"]
 format: "html"
