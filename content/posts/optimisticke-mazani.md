@@ -59,7 +59,7 @@ format: "html"
 
 <h2 id="tanstack-query">Optimistické aktualisace s TanStack Query</h2>
 
-<p>Pro aplikace s hodně API voláním je nejlepší použít <a href="/tanstack-query">TanStack Query</a>, která má vestavěnou podporu pro optimistické aktualisace:</p>
+<p>Pro aplikace s hodně API voláním je nejlepší použít <a href="/tanstack-query">TanStack Query</a>, která má vestavěnou podporu pro optimistické aktualisace:</p>
 
 <pre><code>import { useMutation, useQueryClient } from '@tanstack/react-query';
 
