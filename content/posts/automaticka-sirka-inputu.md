@@ -162,7 +162,7 @@ adjustInputWidth(input);</code></pre>
 
 
 
-<h2 id="wrapper">Wrapper s absolutní pozicí</h2>
+<h2 id="wrapper">Wrapper s absolutní posicí</h2>
 
 <p>Podobný princip – input překrývá span se stejným obsahem:</p>
 
