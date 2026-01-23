@@ -247,88 +247,63 @@ format: "html"
   }
 }</code></pre>
 
-<h2 id="react">Optimistické mazání v React</h2>
+<h2 id="tanstack-query">Optimistické aktualizace s TanStack Query</h2>
 
-<p>Příklad s React hooku:</p>
+<p>Pro React aplikace je nejlepší použít <a href="/tanstack-query">TanStack Query</a>, která má vestavěnou podporu pro optimistické aktualizace:</p>
 
-<pre><code>function useOptimisticDelete(items, setItems) {
-  const [history, setHistory] = useState(new Map());
+<pre><code>import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-  const deleteItem = async (id) => {
-    // Uložit původní stav
-    const originalItems = [...items];
-
-    // Optimistická aktualisace
-    setItems(items.filter(item => item.id !== id));
-
-    try {
-      await fetch(`/api/items/${id}`, { method: 'DELETE' });
-    } catch (error) {
-      // Vrátit zpět
-      setItems(originalItems);
-      throw error;
-    }
-  };
-
-  return { deleteItem };
-}
-
-// Použití
 function TodoList() {
-  const [items, setItems] = useState([...]);
-  const { deleteItem } = useOptimisticDelete(items, setItems);
+  const queryClient = useQueryClient();
+
+  const deleteMutation = useMutation({
+    mutationFn: (id) => fetch(`/api/items/${id}`, { method: 'DELETE' }),
+
+    // Optimistická aktualizace
+    onMutate: async (id) => {
+      // Zrušit probíhající query
+      await queryClient.cancelQueries({ queryKey: ['todos'] });
+
+      // Uložit předchozí stav
+      const previousTodos = queryClient.getQueryData(['todos']);
+
+      // Optimisticky aktualizovat cache
+      queryClient.setQueryData(['todos'], (old) =>
+        old?.filter((todo) => todo.id !== id)
+      );
+
+      // Vrátit kontext pro rollback
+      return { previousTodos };
+    },
+
+    // Při chybě vrátit zpět
+    onError: (err, id, context) => {
+      queryClient.setQueryData(['todos'], context.previousTodos);
+    },
+
+    // Vždy invalidovat query po dokončení
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['todos'] });
+    },
+  });
 
   return (
-    &lt;ul&gt;
-      {items.map(item => (
-        &lt;li key={item.id}&gt;
-          {item.text}
-          &lt;button onClick={() => deleteItem(item.id)}&gt;
-            Smazat
-          &lt;/button&gt;
-        &lt;/li&gt;
-      ))}
-    &lt;/ul&gt;
+    &lt;button onClick={() => deleteMutation.mutate(todoId)}&gt;
+      Smazat
+    &lt;/button&gt;
   );
 }</code></pre>
 
-<h2 id="vue">Optimistické mazání ve Vue</h2>
+<p><b>Výhody TanStack Query:</b></p>
+<ul>
+  <li>Vestavěná podpora pro optimistické aktualizace</li>
+  <li>Automatické zrušení probíhajících dotazů</li>
+  <li>Rollback při chybě serveru</li>
+  <li>Synchronizace cache napříč aplikací</li>
+  <li>Podpora pro offline režim</li>
+</ul>
 
-<pre><code>&lt;script setup&gt;
-import { ref } from 'vue';
-
-const items = ref([
-  { id: 1, text: 'Nakoupit' },
-  { id: 2, text: 'Zavolat' },
-]);
-
-const history = ref(new Map());
-
-async function deleteItem(id) {
-  // Uložit původní stav
-  const original = [...items.value];
-
-  // Optimistická aktualisace
-  items.value = items.value.filter(item => item.id !== id);
-
-  try {
-    await fetch(`/api/items/${id}`, { method: 'DELETE' });
-  } catch (error) {
-    // Vrátit zpět
-    items.value = original;
-    console.error('Chyba při mazání:', error);
-  }
-}
-&lt;/script&gt;
-
-&lt;template&gt;
-  &lt;ul&gt;
-    &lt;li v-for="item in items" :key="item.id"&gt;
-      {{ item.text }}
-      &lt;button @click="deleteItem(item.id)"&gt;Smazat&lt;/button&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/template&gt;</code></pre>
+<p>Více informací v článku <a href="/tanstack-query">TanStack Query</a>.</p>
 
 <h2 id="animace">Plynulé animace</h2>
 
