@@ -1297,7 +1297,7 @@ window.addEventListener('online', () => {
         await new Promise(resolve => setTimeout(resolve, 300));
         item.remove();
 
-        timer.textContent = `⚡ UI aktualizace za ${uiTime}ms`;
+        timer.textContent = `⚡ UI aktualisace za ${uiTime}ms`;
 
         // API volání na pozadí (neblokuje UI)
         setTimeout(() => {
