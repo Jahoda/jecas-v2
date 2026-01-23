@@ -146,40 +146,42 @@ format: "html"
   <div class="opt-message" id="opt-msg-1"></div>
 
   <script>
-    async function optimisticDelete(id) {
-      const item = document.querySelector(`#opt-list-1 [data-id="${id}"]`);
-      const message = document.getElementById('opt-msg-1');
+    (function() {
+      window.optimisticDelete = async function(id) {
+        const item = document.querySelector(`#opt-list-1 [data-id="${id}"]`);
+        const message = document.getElementById('opt-msg-1');
 
-      // 1. Okamžitě animuj zmizení
-      item.classList.add('removing');
+        // 1. Okamžitě animuj zmizení
+        item.classList.add('removing');
 
-      // 2. Po animaci odeber z DOM
-      await new Promise(resolve => setTimeout(resolve, 200));
-      const parent = item.parentNode;
-      const html = item.outerHTML;
-      item.remove();
+        // 2. Po animaci odeber z DOM
+        await new Promise(resolve => setTimeout(resolve, 200));
+        const parent = item.parentNode;
+        const html = item.outerHTML;
+        item.remove();
 
-      // 3. Simuluj API volání (70% úspěch, 30% chyba)
-      const uspech = Math.random() > 0.3;
-      await new Promise(resolve => setTimeout(resolve, 300));
+        // 3. Simuluj API volání (70% úspěch, 30% chyba)
+        const uspech = Math.random() > 0.3;
+        await new Promise(resolve => setTimeout(resolve, 300));
 
-      if (uspech) {
-        // Server potvrdil
-        message.textContent = 'Úkol smazán';
-        message.className = 'opt-message show';
-        setTimeout(() => message.classList.remove('show'), 2000);
-      } else {
-        // Chyba - vrátit zpět
-        parent.insertAdjacentHTML('beforeend', html);
-        const restored = document.querySelector(`#opt-list-1 [data-id="${id}"]`);
-        restored.classList.add('error');
-        setTimeout(() => restored.classList.remove('error'), 400);
+        if (uspech) {
+          // Server potvrdil
+          message.textContent = 'Úkol smazán';
+          message.className = 'opt-message show';
+          setTimeout(() => message.classList.remove('show'), 2000);
+        } else {
+          // Chyba - vrátit zpět
+          parent.insertAdjacentHTML('beforeend', html);
+          const restored = document.querySelector(`#opt-list-1 [data-id="${id}"]`);
+          restored.classList.add('error');
+          setTimeout(() => restored.classList.remove('error'), 400);
 
-        message.textContent = 'Nepodařilo se smazat, zkuste to znovu';
-        message.className = 'opt-message error show';
-        setTimeout(() => message.classList.remove('show'), 3000);
-      }
-    }
+          message.textContent = 'Nepodařilo se smazat, zkuste to znovu';
+          message.className = 'opt-message error show';
+          setTimeout(() => message.classList.remove('show'), 3000);
+        }
+      };
+    })();
   </script>
 </div>
 
@@ -483,20 +485,22 @@ function undo(id) {
   </ul>
 
   <script>
-    function softDeleteDemo(id) {
-      const item = document.querySelector(`#soft-delete-list [data-id="${id}"]`);
-      const status = item.querySelector('.soft-delete-status');
+    (function() {
+      window.softDeleteDemo = function(id) {
+        const item = document.querySelector(`#soft-delete-list [data-id="${id}"]`);
+        const status = item.querySelector('.soft-delete-status');
 
-      // Soft delete - přidat třídu
-      item.classList.add('deleted');
-      status.textContent = '(označeno jako smazané)';
+        // Soft delete - přidat třídu
+        item.classList.add('deleted');
+        status.textContent = '(označeno jako smazané)';
 
-      // Po 3 sekundách obnovit
-      setTimeout(() => {
-        item.classList.remove('deleted');
-        status.textContent = '';
-      }, 3000);
-    }
+        // Po 3 sekundách obnovit
+        setTimeout(() => {
+          item.classList.remove('deleted');
+          status.textContent = '';
+        }, 3000);
+      };
+    })();
   </script>
 </div>
 
@@ -638,50 +642,52 @@ function undo(id) {
   </div>
 
   <script>
-    const hardDeleteStack = new Map();
+    (function() {
+      const hardDeleteStack = new Map();
 
-    async function hardDeleteDemo(id) {
-      const item = document.querySelector(`#hard-delete-list [data-id="${id}"]`);
-      const list = document.getElementById('hard-delete-list');
-      const msg = document.getElementById('hard-delete-msg');
+      window.hardDeleteDemo = async function(id) {
+        const item = document.querySelector(`#hard-delete-list [data-id="${id}"]`);
+        const list = document.getElementById('hard-delete-list');
+        const msg = document.getElementById('hard-delete-msg');
 
-      // Uložit pro rollback
-      const index = Array.from(list.children).indexOf(item);
-      hardDeleteStack.set(id, {
-        html: item.outerHTML,
-        index: index
-      });
+        // Uložit pro rollback
+        const index = Array.from(list.children).indexOf(item);
+        hardDeleteStack.set(id, {
+          html: item.outerHTML,
+          index: index
+        });
 
-      // Animace zmizení
-      item.classList.add('removing');
-      await new Promise(resolve => setTimeout(resolve, 300));
+        // Animace zmizení
+        item.classList.add('removing');
+        await new Promise(resolve => setTimeout(resolve, 300));
 
-      // Skutečné odstranění z DOM
-      item.remove();
-      msg.classList.add('show');
+        // Skutečné odstranění z DOM
+        item.remove();
+        msg.classList.add('show');
 
-      // Po 3 sekundách vrátit zpět
-      setTimeout(() => {
-        const saved = hardDeleteStack.get(id);
-        if (!saved) return;
+        // Po 3 sekundách vrátit zpět
+        setTimeout(() => {
+          const saved = hardDeleteStack.get(id);
+          if (!saved) return;
 
-        const children = Array.from(list.children);
-        const fragment = document.createRange().createContextualFragment(saved.html);
-        const newItem = fragment.firstElementChild;
+          const children = Array.from(list.children);
+          const fragment = document.createRange().createContextualFragment(saved.html);
+          const newItem = fragment.firstElementChild;
 
-        if (saved.index >= children.length) {
-          list.appendChild(newItem);
-        } else {
-          list.insertBefore(newItem, children[saved.index]);
-        }
+          if (saved.index >= children.length) {
+            list.appendChild(newItem);
+          } else {
+            list.insertBefore(newItem, children[saved.index]);
+          }
 
-        newItem.classList.add('restoring');
-        setTimeout(() => newItem.classList.remove('restoring'), 300);
+          newItem.classList.add('restoring');
+          setTimeout(() => newItem.classList.remove('restoring'), 300);
 
-        msg.classList.remove('show');
-        hardDeleteStack.delete(id);
-      }, 3000);
-    }
+          msg.classList.remove('show');
+          hardDeleteStack.delete(id);
+        }, 3000);
+      };
+    })();
   </script>
 </div>
 
@@ -834,33 +840,35 @@ return items
   </div>
 
   <script>
-    async function hybridDeleteDemo(id) {
-      const item = document.querySelector(`#hybrid-delete-list [data-id="${id}"]`);
-      const status = document.getElementById('hybrid-status');
+    (function() {
+      window.hybridDeleteDemo = async function(id) {
+        const item = document.querySelector(`#hybrid-delete-list [data-id="${id}"]`);
+        const status = document.getElementById('hybrid-status');
 
-      // Fáze 1: Animace zmizení
-      item.classList.add('deleting');
-      await new Promise(resolve => setTimeout(resolve, 300));
+        // Fáze 1: Animace zmizení
+        item.classList.add('deleting');
+        await new Promise(resolve => setTimeout(resolve, 300));
 
-      // Fáze 2: Soft delete (zůstává v DOM, ale skrytý)
-      item.classList.add('deleted');
-      item.classList.remove('deleting');
-      item.dataset.deleted = 'true';
+        // Fáze 2: Soft delete (zůstává v DOM, ale skrytý)
+        item.classList.add('deleted');
+        item.classList.remove('deleting');
+        item.dataset.deleted = 'true';
 
-      status.classList.add('show');
+        status.classList.add('show');
 
-      // Fáze 3: Po 3 sekundách obnovit
-      setTimeout(() => {
-        if (item.dataset.deleted === 'true') {
-          item.dataset.deleted = 'false';
-          item.classList.remove('deleted');
-          item.classList.add('restoring');
+        // Fáze 3: Po 3 sekundách obnovit
+        setTimeout(() => {
+          if (item.dataset.deleted === 'true') {
+            item.dataset.deleted = 'false';
+            item.classList.remove('deleted');
+            item.classList.add('restoring');
 
-          setTimeout(() => item.classList.remove('restoring'), 400);
-          status.classList.remove('show');
-        }
-      }, 3000);
-    }
+            setTimeout(() => item.classList.remove('restoring'), 400);
+            status.classList.remove('show');
+          }
+        }, 3000);
+      };
+    })();
   </script>
 </div>
 
@@ -1025,62 +1033,64 @@ window.addEventListener('online', () => {
   </div>
 
   <script>
-    let undoTimeout;
-    let currentDeletedId = null;
+    (function() {
+      let undoTimeout;
+      let currentDeletedId = null;
 
-    async function deleteWithUndo(id, text) {
-      const item = document.querySelector(`#undo-list [data-id="${id}"]`);
-      const snackbar = document.getElementById('undo-snackbar');
-      const undoText = document.getElementById('undo-text');
+      window.deleteWithUndo = async function(id, text) {
+        const item = document.querySelector(`#undo-list [data-id="${id}"]`);
+        const snackbar = document.getElementById('undo-snackbar');
+        const undoText = document.getElementById('undo-text');
 
-      // Zrušit předchozí timeout
-      if (undoTimeout) {
-        clearTimeout(undoTimeout);
-        // Pokud už bylo něco smazáno, definitivně to potvrdit
-        if (currentDeletedId) {
-          const prev = document.querySelector(`#undo-list [data-id="${currentDeletedId}"]`);
-          if (prev) prev.remove();
+        // Zrušit předchozí timeout
+        if (undoTimeout) {
+          clearTimeout(undoTimeout);
+          // Pokud už bylo něco smazáno, definitivně to potvrdit
+          if (currentDeletedId) {
+            const prev = document.querySelector(`#undo-list [data-id="${currentDeletedId}"]`);
+            if (prev) prev.remove();
+          }
         }
-      }
 
-      // Soft delete - přidat třídu (položka zůstává v DOM)
-      currentDeletedId = id;
-      item.classList.add('deleted');
+        // Soft delete - přidat třídu (položka zůstává v DOM)
+        currentDeletedId = id;
+        item.classList.add('deleted');
 
-      // Zobrazit snackbar
-      undoText.textContent = `${text} smazán`;
-      snackbar.classList.add('show');
+        // Zobrazit snackbar
+        undoText.textContent = `${text} smazán`;
+        snackbar.classList.add('show');
 
-      // Po 5 sekundách definitivně smazat
-      undoTimeout = setTimeout(async () => {
+        // Po 5 sekundách definitivně smazat
+        undoTimeout = setTimeout(async () => {
+          snackbar.classList.remove('show');
+
+          // Zde by se volalo API
+          console.log('Definitivně smazáno:', id);
+          // await fetch(`/api/items/${id}`, { method: 'DELETE' });
+
+          // Odebrat z DOM
+          item.remove();
+          currentDeletedId = null;
+        }, 5000);
+      };
+
+      window.undoDelete = function() {
+        if (!currentDeletedId) return;
+
+        const item = document.querySelector(`#undo-list [data-id="${currentDeletedId}"]`);
+        const snackbar = document.getElementById('undo-snackbar');
+
+        // Vrátit zpět - odebrat třídu deleted
+        item.classList.remove('deleted');
+        item.classList.add('restoring');
+        setTimeout(() => item.classList.remove('restoring'), 300);
+
+        // Skrýt snackbar
         snackbar.classList.remove('show');
-
-        // Zde by se volalo API
-        console.log('Definitivně smazáno:', id);
-        // await fetch(`/api/items/${id}`, { method: 'DELETE' });
-
-        // Odebrat z DOM
-        item.remove();
+        clearTimeout(undoTimeout);
         currentDeletedId = null;
-      }, 5000);
-    }
-
-    function undoDelete() {
-      if (!currentDeletedId) return;
-
-      const item = document.querySelector(`#undo-list [data-id="${currentDeletedId}"]`);
-      const snackbar = document.getElementById('undo-snackbar');
-
-      // Vrátit zpět - odebrat třídu deleted
-      item.classList.remove('deleted');
-      item.classList.add('restoring');
-      setTimeout(() => item.classList.remove('restoring'), 300);
-
-      // Skrýt snackbar
-      snackbar.classList.remove('show');
-      clearTimeout(undoTimeout);
-      currentDeletedId = null;
-    }
+      };
+    })();
   </script>
 </div>
 
@@ -1257,15 +1267,15 @@ window.addEventListener('online', () => {
       <ul class="compare-list" id="optimistic-list">
         <li class="compare-item" data-id="1">
           <span>Úkol 1</span>
-          <button class="compare-btn opt-btn-delete" onclick="optimisticDelete(1)">Smazat</button>
+          <button class="compare-btn opt-btn-delete" onclick="optimisticDeleteCompare(1)">Smazat</button>
         </li>
         <li class="compare-item" data-id="2">
           <span>Úkol 2</span>
-          <button class="compare-btn opt-btn-delete" onclick="optimisticDelete(2)">Smazat</button>
+          <button class="compare-btn opt-btn-delete" onclick="optimisticDeleteCompare(2)">Smazat</button>
         </li>
         <li class="compare-item" data-id="3">
           <span>Úkol 3</span>
-          <button class="compare-btn opt-btn-delete" onclick="optimisticDelete(3)">Smazat</button>
+          <button class="compare-btn opt-btn-delete" onclick="optimisticDeleteCompare(3)">Smazat</button>
         </li>
       </ul>
       <div class="compare-timer" id="optimistic-timer"></div>
@@ -1273,52 +1283,54 @@ window.addEventListener('online', () => {
   </div>
 
   <script>
-    async function classicDelete(id) {
-      const item = document.querySelector(`#classic-list [data-id="${id}"]`);
-      const timer = document.getElementById('classic-timer');
-      const btn = item.querySelector('button');
+    (function() {
+      window.classicDelete = async function(id) {
+        const item = document.querySelector(`#classic-list [data-id="${id}"]`);
+        const timer = document.getElementById('classic-timer');
+        const btn = item.querySelector('button');
 
-      const startTime = Date.now();
-      btn.disabled = true;
-      item.classList.add('loading');
-      timer.textContent = 'Čekání na server...';
+        const startTime = Date.now();
+        btn.disabled = true;
+        item.classList.add('loading');
+        timer.textContent = 'Čekání na server...';
 
-      // Simulace API volání
-      await new Promise(resolve => setTimeout(resolve, 500));
+        // Simulace API volání
+        await new Promise(resolve => setTimeout(resolve, 500));
 
-      const endTime = Date.now();
-      const duration = endTime - startTime;
+        const endTime = Date.now();
+        const duration = endTime - startTime;
 
-      // Teprve teď odstranit
-      item.classList.add('removing');
-      await new Promise(resolve => setTimeout(resolve, 300));
-      item.remove();
+        // Teprve teď odstranit
+        item.classList.add('removing');
+        await new Promise(resolve => setTimeout(resolve, 300));
+        item.remove();
 
-      timer.textContent = `✓ Smazáno za ${duration}ms`;
-      setTimeout(() => timer.textContent = '', 2000);
-    }
-
-    async function optimisticDelete(id) {
-      const item = document.querySelector(`#optimistic-list [data-id="${id}"]`);
-      const timer = document.getElementById('optimistic-timer');
-
-      const startTime = Date.now();
-
-      // Okamžitě odstranit
-      item.classList.add('removing');
-      const uiTime = Date.now() - startTime;
-
-      await new Promise(resolve => setTimeout(resolve, 300));
-      item.remove();
-
-      timer.textContent = `⚡ UI aktualisace za ${uiTime}ms`;
-
-      // API volání na pozadí (neblokuje UI)
-      setTimeout(() => {
-        timer.textContent += ' (API volání probíhá na pozadí)';
+        timer.textContent = `✓ Smazáno za ${duration}ms`;
         setTimeout(() => timer.textContent = '', 2000);
-      }, 100);
-    }
+      };
+
+      window.optimisticDeleteCompare = async function(id) {
+        const item = document.querySelector(`#optimistic-list [data-id="${id}"]`);
+        const timer = document.getElementById('optimistic-timer');
+
+        const startTime = Date.now();
+
+        // Okamžitě odstranit
+        item.classList.add('removing');
+        const uiTime = Date.now() - startTime;
+
+        await new Promise(resolve => setTimeout(resolve, 300));
+        item.remove();
+
+        timer.textContent = `⚡ UI aktualizace za ${uiTime}ms`;
+
+        // API volání na pozadí (neblokuje UI)
+        setTimeout(() => {
+          timer.textContent += ' (API volání probíhá na pozadí)';
+          setTimeout(() => timer.textContent = '', 2000);
+        }, 100);
+      };
+    })();
   </script>
 </div>
 
