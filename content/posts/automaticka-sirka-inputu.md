@@ -117,12 +117,96 @@ adjustInputWidth(input);</code></pre>
 <p>Nevýhodou je, že <code>contenteditable</code> nepodporuje některé vlastnosti inputu jako <code>placeholder</code>, <code>maxlength</code> nebo validaci formuláře.</p>
 
 
+
+<h2 id="size">HTML atribut <code>size</code></h2>
+
+<p>Nejjednodušší způsob je použít HTML atribut <code>size</code>, který určuje šířku v počtu znaků:</p>
+
+<pre><code>&lt;input type="text" <b>size="10"</b>></code></pre>
+
+<p>V kombinaci s JavaScriptem:</p>
+
+<pre><code>input.addEventListener('input', () => {
+  input.size = Math.max(1, input.value.length);
+});</code></pre>
+
+<p>Atribut <code>size</code> funguje podobně jako jednotka <code>ch</code> – počítá průměrnou šířku znaku. U proporcionálních fontů tak nebude výsledek přesný.</p>
+
+
+
+<h2 id="grid">CSS Grid trik</h2>
+
+<p>Čistě CSS řešení využívající <code>display: grid</code> a <code>data-value</code> atribut:</p>
+
+<pre><code>&lt;label class="auto-input">
+  &lt;input type="text" oninput="this.parentNode.dataset.value = this.value">
+&lt;/label></code></pre>
+
+<pre><code>.auto-input {
+  display: inline-grid;
+}
+
+.auto-input::after {
+  content: attr(data-value) ' ';
+  visibility: hidden;
+  white-space: pre;
+}
+
+.auto-input > input {
+  grid-area: 1 / 1;
+  width: auto;
+  min-width: 1em;
+}</code></pre>
+
+<p>Input a pseudo-element <code>::after</code> sdílejí stejnou grid buňku. Pseudo-element je neviditelný, ale roztahuje kontejner podle obsahu.</p>
+
+
+
+<h2 id="wrapper">Wrapper s absolutní pozicí</h2>
+
+<p>Podobný princip – input překrývá span se stejným obsahem:</p>
+
+<pre><code>&lt;span class="input-wrapper">
+  &lt;span class="input-sizer">&lt;/span>
+  &lt;input type="text">
+&lt;/span></code></pre>
+
+<pre><code>.input-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.input-sizer {
+  visibility: hidden;
+  white-space: pre;
+  padding: 0 2px;
+}
+
+.input-wrapper input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}</code></pre>
+
+<pre><code>const input = document.querySelector('input');
+const sizer = document.querySelector('.input-sizer');
+
+input.addEventListener('input', () => {
+  sizer.textContent = input.value || input.placeholder || 'M';
+});</code></pre>
+
+<p>Výhodou je, že span používá přesně stejný font a velikost jako input, takže měření je přesné.</p>
+
+
+
 <h2 id="doporuceni">Doporučení</h2>
 
 <ol>
   <li><b>Moderní prohlížeče</b> – použijte <code>field-sizing: content</code>.</li>
-  <li><b>Podpora Safari</b> – přidejte JavaScript fallback.</li>
-  <li><b>Monospace fonty</b> – stačí jednotka <code>ch</code>.</li>
+  <li><b>Bez JavaScriptu</b> – CSS Grid trik s <code>data-value</code>.</li>
+  <li><b>Podpora Safari</b> – přidejte JavaScript fallback (canvas nebo wrapper).</li>
+  <li><b>Monospace fonty</b> – stačí jednotka <code>ch</code> nebo atribut <code>size</code>.</li>
   <li><b>Komplexní případy</b> – zvažte <code>contenteditable</code>.</li>
 </ol>
 
