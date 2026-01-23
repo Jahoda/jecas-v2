@@ -57,199 +57,9 @@ format: "html"
 
 <p>Uživatel vidí <b>okamžitou reakci</b>. Ve většině případů server smazání potvrdí a uživatel si ani nevšimne čekání. Pokud selže, položka se vrátí zpět.</p>
 
-<h2 id="ukazka-basic">Základní ukázka</h2>
-
-<p>Seznam úkolů s optimistickým mazáním:</p>
-
-<div class="live">
-  <style>
-    .opt-list {
-      list-style: none;
-      padding: 0;
-      margin: 1em 0;
-    }
-
-    .opt-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75em;
-      padding: 0.75em 1em;
-      margin: 0.5em 0;
-      background: #f5f5f5;
-      border-radius: 6px;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .opt-item.removing {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
-
-    .opt-item.error {
-      background: #ffe0e0;
-      animation: shake 0.4s;
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-10px); }
-      75% { transform: translateX(10px); }
-    }
-
-    .opt-btn-delete {
-      background: #e74c3c;
-      color: white;
-      border: none;
-      padding: 0.5em 0.75em;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.875em;
-    }
-
-    .opt-btn-delete:hover {
-      background: #c0392b;
-    }
-
-    .opt-message {
-      padding: 0.75em;
-      margin: 0.5em 0;
-      border-radius: 4px;
-      background: #d4edda;
-      color: #155724;
-      display: none;
-    }
-
-    .opt-message.error {
-      background: #f8d7da;
-      color: #721c24;
-    }
-
-    .opt-message.show {
-      display: block;
-    }
-  </style>
-
-  <ul class="opt-list" id="opt-list-1">
-    <li class="opt-item" data-id="1">
-      <span>Nakoupit</span>
-      <button class="opt-btn-delete" onclick="optimisticDelete(1)">Smazat</button>
-    </li>
-    <li class="opt-item" data-id="2">
-      <span>Zavolat lékaři</span>
-      <button class="opt-btn-delete" onclick="optimisticDelete(2)">Smazat</button>
-    </li>
-    <li class="opt-item" data-id="3">
-      <span>Dokončit projekt</span>
-      <button class="opt-btn-delete" onclick="optimisticDelete(3)">Smazat</button>
-    </li>
-  </ul>
-  <div class="opt-message" id="opt-msg-1"></div>
-
-  <script>
-    (function() {
-      window.optimisticDelete = async function(id) {
-        const item = document.querySelector(`#opt-list-1 [data-id="${id}"]`);
-        const message = document.getElementById('opt-msg-1');
-
-        // 1. Okamžitě animuj zmizení
-        item.classList.add('removing');
-
-        // 2. Po animaci odeber z DOM
-        await new Promise(resolve => setTimeout(resolve, 200));
-        const parent = item.parentNode;
-        const html = item.outerHTML;
-        item.remove();
-
-        // 3. Simuluj API volání (70% úspěch, 30% chyba)
-        const uspech = Math.random() > 0.3;
-        await new Promise(resolve => setTimeout(resolve, 300));
-
-        if (uspech) {
-          // Server potvrdil
-          message.textContent = 'Úkol smazán';
-          message.className = 'opt-message show';
-          setTimeout(() => message.classList.remove('show'), 2000);
-        } else {
-          // Chyba - vrátit zpět
-          parent.insertAdjacentHTML('beforeend', html);
-          const restored = document.querySelector(`#opt-list-1 [data-id="${id}"]`);
-          restored.classList.add('error');
-          setTimeout(() => restored.classList.remove('error'), 400);
-
-          message.textContent = 'Nepodařilo se smazat, zkuste to znovu';
-          message.className = 'opt-message error show';
-          setTimeout(() => message.classList.remove('show'), 3000);
-        }
-      };
-    })();
-  </script>
-</div>
-
-<p>Zkuste smazat nějaký úkol. V 70 % případů smazání proběhne hladce, ve 30 % selže a položka se vrátí zpět s animací.</p>
-
-<h2 id="implementace">Kompletní implementace</h2>
-
-<p>Robustnější implementace s historií pro undo:</p>
-
-<pre><code>class OptimisticList {
-  constructor(container) {
-    this.container = container;
-    this.history = new Map();
-  }
-
-  async deleteItem(id) {
-    const item = this.container.querySelector(`[data-id="${id}"]`);
-    if (!item) return;
-
-    // Uložit původní stav
-    this.history.set(id, {
-      element: item.cloneNode(true),
-      nextSibling: item.nextElementSibling
-    });
-
-    // Optimistická aktualisace
-    item.classList.add('removing');
-    await this.wait(200);
-    item.remove();
-
-    try {
-      // API volání
-      await fetch(`/api/items/${id}`, { method: 'DELETE' });
-      // Úspěch - vyčistit historii
-      this.history.delete(id);
-    } catch (error) {
-      // Chyba - vrátit zpět
-      this.rollback(id);
-      throw error;
-    }
-  }
-
-  rollback(id) {
-    const saved = this.history.get(id);
-    if (!saved) return;
-
-    const { element, nextSibling } = saved;
-
-    if (nextSibling) {
-      this.container.insertBefore(element, nextSibling);
-    } else {
-      this.container.appendChild(element);
-    }
-
-    element.classList.add('error');
-    setTimeout(() => element.classList.remove('error'), 400);
-
-    this.history.delete(id);
-  }
-
-  wait(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-}</code></pre>
-
 <h2 id="tanstack-query">Optimistické aktualisace s TanStack Query</h2>
 
-<p>Pro React aplikace je nejlepší použít <a href="/tanstack-query">TanStack Query</a>, která má vestavěnou podporu pro optimistické aktualisace:</p>
+<p>Pro aplikace s hodně API voláním je nejlepší použít <a href="/tanstack-query">TanStack Query</a>, která má vestavěnou podporu pro optimistické aktualisace:</p>
 
 <pre><code>import { useMutation, useQueryClient } from '@tanstack/react-query';
 
@@ -304,27 +114,6 @@ function TodoList() {
 </ul>
 
 <p>Více informací v článku <a href="/tanstack-query">TanStack Query</a>.</p>
-
-<h2 id="animace">Plynulé animace</h2>
-
-<p>Pro lepší UX přidejte animaci při odebírání:</p>
-
-<pre><code>.item {
-  transition: all 0.3s ease-out;
-  max-height: 100px;
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.item.removing {
-  max-height: 0;
-  opacity: 0;
-  transform: translateX(-20px);
-  margin: 0;
-  padding: 0;
-}</code></pre>
-
-<p>Pro animaci výšky musíte znát konkrétní výšku nebo použít <code>max-height</code> s dostatečně velkou hodnotou.</p>
 
 <h2 id="strategie-undo">Strategie pro implementaci undo</h2>
 
@@ -1104,7 +893,7 @@ window.addEventListener('online', () => {
   <li><b>Dejte uživateli zpětnou vazbu</b> — pokud selže, jasně to oznámte</li>
   <li><b>Nabídněte undo</b> — jako Gmail snackbar s tlačítkem „Vrátit zpět” (5 sekund)</li>
   <li><b>Počítejte s offline režimem</b> — ukládejte operace do fronty v localStorage</li>
-  <li><b>Řešte souběžnost</b> — co když uživatel klikne vícekrát rychle za sebou?</li>
+  <li><b>Řešte <a href="/race-conditions">souběžnost</a></b> — co když uživatel klikne vícekrát rychle za sebou?</li>
   <li><b>Načasujte API volání</b> — volejte server až po uplynutí undo časovače (5 s)</li>
 </ul>
 
@@ -1342,9 +1131,3 @@ window.addEventListener('online', () => {
   </tr>
 </table>
 
-<h2 id="odkazy">Odkazy</h2>
-
-<ul>
-  <li><a href="https://react.dev/reference/react/useOptimistic">React: useOptimistic hook</a></li>
-  <li><a href="https://www.patterns.dev/react/optimistic-ui">Patterns.dev: Optimistic UI</a></li>
-</ul>
