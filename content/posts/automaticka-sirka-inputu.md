@@ -8,12 +8,12 @@ tags: ["css", "formulare", "html", "js", "css-vlastnosti"]
 format: "html"
 ---
 
-<p>Běžný <a href="/input"><code>&lt;input></code></a> má <b>pevnou šířku</b>. Někdy je ale potřeba, aby se pole přizpůsobilo délce textu, který obsahuje – například v inline editoru, při úpravě tagů nebo v dynamických formulářích.</p>
+<p>Běžný <a href="/input"><code>&lt;input></code></a> má <b>pevnou šířku</b>. Někdy je ale potřeba, aby se pole přizpůsobilo délce textu, který obsahuje – například v inline editoru, při úpravě tagů nebo v dynamických formulářích.</p>
 
 
 <h2 id="field-sizing">CSS řešení: <code>field-sizing</code></h2>
 
-<p>Od roku 2024 prohlížeče podporují novou CSS vlastnost <code>field-sizing</code>, která tento problém řeší elegantně a bez JavaScriptu.</p>
+<p>Od roku 2024 prohlížeče podporují novou CSS vlastnost <code>field-sizing</code>, která tento problém řeší elegantně a bez JavaScriptu.</p>
 
 <pre><code>input {
   <b>field-sizing: content;</b>
@@ -21,33 +21,33 @@ format: "html"
   max-width: 300px;
 }</code></pre>
 
-<p>Vlastnost <code>field-sizing: content</code> způsobí, že se input automaticky rozšíří podle obsahu. Je vhodné přidat <code>min-width</code> a <code>max-width</code> pro rozumné limity.</p>
+<p>Vlastnost <code>field-sizing: content</code> způsobí, že se input automaticky rozšíří podle obsahu. Je vhodné přidat <code>min-width</code> a <code>max-width</code> pro rozumné limity.</p>
 
-<p>Toto řešení funguje i pro <code>&lt;textarea></code> a <code>&lt;select></code>.</p>
+<p>Toto řešení funguje i pro <code>&lt;textarea></code> a <code>&lt;select></code>.</p>
 
-<h3 id="field-sizing-podpora">Podpora v prohlížečích</h3>
+<h3 id="field-sizing-podpora">Podpora v prohlížečích</h3>
 
-<p>Vlastnost <code>field-sizing</code> podporují všechny moderní prohlížeče: <b>Chrome 123+</b>, <b>Edge 123+</b>, <b>Firefox 132+</b> a <b>Safari 18+</b>.</p>
+<p>Vlastnost <code>field-sizing</code> podporují všechny moderní prohlížeče: <b>Chrome 123+</b>, <b>Edge 123+</b>, <b>Firefox 132+</b> a <b>Safari 18+</b>.</p>
 
-<div class="board board--demo board--left">
-  <style>
-    .demo-field-sizing {
-      field-sizing: content;
-      min-width: 50px;
-      max-width: 300px;
-      padding: 8px 12px;
-      font-size: 16px;
-      border: 2px solid #6366f1;
-      border-radius: 6px;
-    }
-  </style>
-  <input type="text" class="demo-field-sizing" value="Zkus psát…" placeholder="Zkus psát…">
+<div class="live">
+<style>
+  .demo-field-sizing {
+    field-sizing: content;
+    min-width: 50px;
+    max-width: 300px;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 2px solid #6366f1;
+    border-radius: 6px;
+  }
+</style>
+<input type="text" class="demo-field-sizing" value="Zkus psát..." placeholder="Zkus psát...">
 </div>
 
 
 <h2 id="javascript">JavaScript řešení</h2>
 
-<p>Pro starší prohlížeče nebo Safari je potřeba použít JavaScript. Princip spočívá v měření šířky textu a nastavení šířky inputu.</p>
+<p>Pro starší prohlížeče je potřeba použít JavaScript. Princip spočívá v měření šířky textu a nastavení šířky inputu.</p>
 
 <h3 id="js-canvas">Měření pomocí canvas</h3>
 
@@ -71,8 +71,25 @@ const input = document.querySelector('input');
 input.addEventListener('input', () => adjustInputWidth(input));
 adjustInputWidth(input);</code></pre>
 
-<div class="board board--demo board--left">
-  <input type="text" id="demo-canvas" value="Zkus psát…" placeholder="Zkus psát…" style="padding: 8px 12px; font-size: 16px; border: 2px solid #10b981; border-radius: 6px;">
+<div class="live">
+<input type="text" class="demo-canvas-input" value="Zkus psát..." placeholder="Zkus psát..." style="padding: 8px 12px; font-size: 16px; border: 2px solid #10b981; border-radius: 6px;">
+<script>
+(function() {
+  var input = document.querySelector('.demo-canvas-input');
+  function adjust() {
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    var style = getComputedStyle(input);
+    ctx.font = style.font;
+    var textWidth = ctx.measureText(input.value || input.placeholder).width;
+    var padding = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+    var border = parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth);
+    input.style.width = Math.ceil(textWidth + padding + border + 2) + 'px';
+  }
+  input.addEventListener('input', adjust);
+  adjust();
+})();
+</script>
 </div>
 
 
@@ -103,28 +120,38 @@ adjustInputWidth(input);</code></pre>
 
 <h2 id="ch">CSS jednotka <code>ch</code></h2>
 
-<p>Pro jednoduché případy s monospace fontem lze využít CSS jednotku <code>ch</code>, která odpovídá šířce znaku „0”.</p>
+<p>Pro jednoduché případy s monospace fontem lze využít CSS jednotku <code>ch</code>, která odpovídá šířce znaku „0".</p>
 
 <pre><code>input {
   font-family: monospace;
   width: 10ch; /* šířka 10 znaků */
 }</code></pre>
 
-<p>V kombinaci s JavaScriptem:</p>
+<p>V kombinaci s JavaScriptem:</p>
 
 <pre><code>input.style.width = (input.value.length || 1) + 'ch';</code></pre>
 
-<p>Toto řešení <b>nefunguje spolehlivě</b> s proporcionálními fonty, kde mají znaky různou šířku („i” vs ”m").</p>
+<p>Toto řešení <b>nefunguje spolehlivě</b> s proporcionálními fonty, kde mají znaky různou šířku („i" vs „m").</p>
 
-<div class="board board--demo board--left">
-  <input type="text" id="demo-ch" value="Zkus psát…" placeholder="Zkus psát…" style="padding: 8px 12px; font-size: 16px; font-family: monospace; border: 2px solid #f59e0b; border-radius: 6px;">
+<div class="live">
+<input type="text" class="demo-ch-input" value="Zkus psát..." placeholder="Zkus psát..." style="padding: 8px 12px; font-size: 16px; font-family: monospace; border: 2px solid #f59e0b; border-radius: 6px;">
+<script>
+(function() {
+  var input = document.querySelector('.demo-ch-input');
+  function adjust() {
+    input.style.width = (input.value.length || 1) + 'ch';
+  }
+  input.addEventListener('input', adjust);
+  adjust();
+})();
+</script>
 </div>
 
 
 
 <h2 id="contenteditable">Alternativa: <code>contenteditable</code></h2>
 
-<p>Místo <code>&lt;input></code> lze použít element s atributem <code>contenteditable</code>, který se automaticky rozšiřuje:</p>
+<p>Místo <code>&lt;input></code> lze použít element s atributem <code>contenteditable</code>, který se automaticky rozšiřuje:</p>
 
 <pre><code>&lt;span <b>contenteditable="true"</b> role="textbox">&lt;/span></code></pre>
 
@@ -138,35 +165,45 @@ adjustInputWidth(input);</code></pre>
 
 <p>Nevýhodou je, že <code>contenteditable</code> nepodporuje některé vlastnosti inputu jako <code>placeholder</code>, <code>maxlength</code> nebo validaci formuláře.</p>
 
-<div class="board board--demo board--left">
-  <span contenteditable="true" role="textbox" style="display: inline-block; min-width: 50px; padding: 8px 12px; font-size: 16px; border: 2px solid #ec4899; border-radius: 6px; outline: none;">Zkus psát…</span>
+<div class="live">
+<span contenteditable="true" role="textbox" style="display: inline-block; min-width: 50px; padding: 8px 12px; font-size: 16px; border: 2px solid #ec4899; border-radius: 6px; outline: none;">Zkus psát...</span>
 </div>
 
 
 
 <h2 id="size">HTML atribut <code>size</code></h2>
 
-<p>Nejjednodušší způsob je použít HTML atribut <code>size</code>, který určuje šířku v počtu znaků:</p>
+<p>Nejjednodušší způsob je použít HTML atribut <code>size</code>, který určuje šířku v počtu znaků:</p>
 
 <pre><code>&lt;input type="text" <b>size="10"</b>></code></pre>
 
-<p>V kombinaci s JavaScriptem:</p>
+<p>V kombinaci s JavaScriptem:</p>
 
 <pre><code>input.addEventListener('input', () => {
   input.size = Math.max(1, input.value.length);
 });</code></pre>
 
-<p>Atribut <code>size</code> funguje podobně jako jednotka <code>ch</code> – počítá průměrnou šířku znaku. U proporcionálních fontů tak nebude výsledek přesný.</p>
+<p>Atribut <code>size</code> funguje podobně jako jednotka <code>ch</code> – počítá průměrnou šířku znaku. U proporcionálních fontů tak nebude výsledek přesný.</p>
 
-<div class="board board--demo board--left">
-  <input type="text" id="demo-size" value="Zkus psát…" size="12" style="padding: 8px 12px; font-size: 16px; border: 2px solid #8b5cf6; border-radius: 6px;">
+<div class="live">
+<input type="text" class="demo-size-input" value="Zkus psát..." size="12" style="padding: 8px 12px; font-size: 16px; border: 2px solid #8b5cf6; border-radius: 6px;">
+<script>
+(function() {
+  var input = document.querySelector('.demo-size-input');
+  function adjust() {
+    input.size = Math.max(1, input.value.length);
+  }
+  input.addEventListener('input', adjust);
+  adjust();
+})();
+</script>
 </div>
 
 
 
 <h2 id="grid">CSS Grid trik</h2>
 
-<p>Čistě CSS řešení využívající <code>display: grid</code> a <code>data-value</code> atribut:</p>
+<p>Čistě CSS řešení využívající <code>display: grid</code> a <code>data-value</code> atribut:</p>
 
 <pre><code>&lt;label class="auto-input">
   &lt;input type="text" oninput="this.parentNode.dataset.value = this.value">
@@ -188,39 +225,39 @@ adjustInputWidth(input);</code></pre>
   min-width: 1em;
 }</code></pre>
 
-<p>Input a pseudo-element <code>::after</code> sdílejí stejnou grid buňku. Pseudo-element je neviditelný, ale roztahuje kontejner podle obsahu.</p>
+<p>Input a pseudo-element <code>::after</code> sdílejí stejnou grid buňku. Pseudo-element je neviditelný, ale roztahuje kontejner podle obsahu.</p>
 
-<div class="board board--demo board--left">
-  <style>
-    .demo-grid-wrapper {
-      display: inline-grid;
-    }
-    .demo-grid-wrapper::after {
-      content: attr(data-value) ' ';
-      visibility: hidden;
-      white-space: pre;
-      padding: 8px 12px;
-      font-size: 16px;
-      border: 2px solid transparent;
-    }
-    .demo-grid-wrapper > input {
-      grid-area: 1 / 1;
-      width: auto;
-      min-width: 2em;
-      padding: 8px 12px;
-      font-size: 16px;
-      border: 2px solid #06b6d4;
-      border-radius: 6px;
-    }
-  </style>
-  <label class="demo-grid-wrapper" data-value="Zkus psát…">
-    <input type="text" value="Zkus psát…" oninput="this.parentNode.dataset.value = this.value">
-  </label>
+<div class="live">
+<style>
+  .demo-grid-wrapper {
+    display: inline-grid;
+  }
+  .demo-grid-wrapper::after {
+    content: attr(data-value) ' ';
+    visibility: hidden;
+    white-space: pre;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 2px solid transparent;
+  }
+  .demo-grid-wrapper > input {
+    grid-area: 1 / 1;
+    width: auto;
+    min-width: 2em;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 2px solid #06b6d4;
+    border-radius: 6px;
+  }
+</style>
+<label class="demo-grid-wrapper" data-value="Zkus psát...">
+  <input type="text" value="Zkus psát..." oninput="this.parentNode.dataset.value = this.value">
+</label>
 </div>
 
 
 
-<h2 id="wrapper">Wrapper s absolutní posicí</h2>
+<h2 id="wrapper">Wrapper s absolutní pozicí</h2>
 
 <p>Podobný princip – input překrývá span se stejným obsahem:</p>
 
@@ -254,37 +291,46 @@ input.addEventListener('input', () => {
   sizer.textContent = input.value || input.placeholder || 'M';
 });</code></pre>
 
-<p>Výhodou je, že span používá přesně stejný font a velikost jako input, takže měření je přesné.</p>
+<p>Výhodou je, že span používá přesně stejný font a velikost jako input, takže měření je přesné.</p>
 
-<div class="board board--demo board--left">
-  <style>
-    .demo-wrapper {
-      display: inline-block;
-      position: relative;
-    }
-    .demo-wrapper-sizer {
-      visibility: hidden;
-      white-space: pre;
-      padding: 8px 12px;
-      font-size: 16px;
-      border: 2px solid transparent;
-    }
-    .demo-wrapper input {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      box-sizing: border-box;
-      padding: 8px 12px;
-      font-size: 16px;
-      border: 2px solid #ef4444;
-      border-radius: 6px;
-    }
-  </style>
-  <span class="demo-wrapper">
-    <span class="demo-wrapper-sizer">Zkus psát…</span>
-    <input type="text" id="demo-wrapper-input" value="Zkus psát…">
-  </span>
+<div class="live">
+<style>
+  .demo-wrapper {
+    display: inline-block;
+    position: relative;
+  }
+  .demo-wrapper-sizer {
+    visibility: hidden;
+    white-space: pre;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 2px solid transparent;
+  }
+  .demo-wrapper input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 2px solid #ef4444;
+    border-radius: 6px;
+  }
+</style>
+<span class="demo-wrapper">
+  <span class="demo-wrapper-sizer">Zkus psát...</span>
+  <input type="text" class="demo-wrapper-input" value="Zkus psát...">
+</span>
+<script>
+(function() {
+  var input = document.querySelector('.demo-wrapper-input');
+  var sizer = input.previousElementSibling;
+  input.addEventListener('input', function() {
+    sizer.textContent = input.value || 'M';
+  });
+})();
+</script>
 </div>
 
 
@@ -293,7 +339,7 @@ input.addEventListener('input', () => {
 
 <ol>
   <li><b>Moderní prohlížeče</b> – použijte <code>field-sizing: content</code> (funguje ve všech).</li>
-  <li><b>Bez JavaScriptu</b> – CSS Grid trik s <code>data-value</code>.</li>
+  <li><b>Bez JavaScriptu</b> – CSS Grid trik s <code>data-value</code>.</li>
   <li><b>Starší prohlížeče</b> – přidejte JavaScript fallback (canvas nebo wrapper).</li>
   <li><b>Monospace fonty</b> – stačí jednotka <code>ch</code> nebo atribut <code>size</code>.</li>
   <li><b>Komplexní případy</b> – zvažte <code>contenteditable</code>.</li>
@@ -311,53 +357,3 @@ input {
     max-width: 300px;
   }
 }</code></pre>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Canvas měření
-  var canvasInput = document.getElementById('demo-canvas');
-  if (canvasInput) {
-    function adjustCanvas() {
-      var canvas = document.createElement('canvas');
-      var ctx = canvas.getContext('2d');
-      var style = getComputedStyle(canvasInput);
-      ctx.font = style.font;
-      var textWidth = ctx.measureText(canvasInput.value || canvasInput.placeholder).width;
-      var padding = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
-      var border = parseFloat(style.borderLeftWidth) + parseFloat(style.borderRightWidth);
-      canvasInput.style.width = Math.ceil(textWidth + padding + border + 2) + 'px';
-    }
-    canvasInput.addEventListener('input', adjustCanvas);
-    adjustCanvas();
-  }
-
-  // Jednotka ch
-  var chInput = document.getElementById('demo-ch');
-  if (chInput) {
-    function adjustCh() {
-      chInput.style.width = (chInput.value.length || 1) + 'ch';
-    }
-    chInput.addEventListener('input', adjustCh);
-    adjustCh();
-  }
-
-  // Atribut size
-  var sizeInput = document.getElementById('demo-size');
-  if (sizeInput) {
-    function adjustSize() {
-      sizeInput.size = Math.max(1, sizeInput.value.length);
-    }
-    sizeInput.addEventListener('input', adjustSize);
-    adjustSize();
-  }
-
-  // Wrapper
-  var wrapperInput = document.getElementById('demo-wrapper-input');
-  if (wrapperInput) {
-    var sizer = wrapperInput.previousElementSibling;
-    wrapperInput.addEventListener('input', function() {
-      sizer.textContent = wrapperInput.value || 'M';
-    });
-  }
-});
-</script>
