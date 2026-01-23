@@ -128,14 +128,14 @@ function TodoList() {
 
 <p><b>Výhody:</b></p>
 <ul>
-  <li>Server okamžitě ví o smazání - konsistentní stav</li>
-  <li>Jednoduchá implementace - žádné timeouty</li>
-  <li>Funguje dobře i při zavření aplikace - smazání proběhlo</li>
+  <li>Server okamžitě ví o smazání – konsistentní stav</li>
+  <li>Jednoduchá implementace – žádné timeouty</li>
+  <li>Funguje dobře i při zavření aplikace – smazání proběhlo</li>
 </ul>
 
 <p><b>Nevýhody:</b></p>
 <ul>
-  <li>Undo je složitější - musíte znovu vytvořit položku</li>
+  <li>Undo je složitější – musíte znovu vytvořit položku</li>
   <li>Potřebujete endpoint pro vytvoření (může mít nové ID)</li>
   <li>Dvě API volání při undo (DELETE + POST)</li>
   <li>Pokud se změní ID, musíte aktualisovat reference</li>
@@ -149,16 +149,16 @@ function TodoList() {
 
 <p><b>Výhody:</b></p>
 <ul>
-  <li>Jednoduchý undo - jen zrušíte timeout</li>
+  <li>Jednoduchý undo – jen zrušíte timeout</li>
   <li>Jedno API volání (jen DELETE, žádný POST)</li>
   <li>Ušetříte síťový provoz pokud uživatel často používá undo</li>
 </ul>
 
 <p><b>Nevýhody:</b></p>
 <ul>
-  <li><b>Lže uživateli</b> - říkáte „smazáno”, ale ještě není</li>
-  <li>Server neví o smazání - nekonsistentní stav</li>
-  <li>Problém při zavření aplikace - timeout se nevykoná</li>
+  <li><b>Lže uživateli</b> – říkáte „smazáno”, ale ještě není</li>
+  <li>Server neví o smazání – nekonsistentní stav</li>
+  <li>Problém při zavření aplikace – timeout se nevykoná</li>
   <li>Složitější správa timeoutů</li>
   <li>Pokud se seznam načte znovu ze serveru, položka se vrátí</li>
 </ul>
@@ -171,12 +171,12 @@ function TodoList() {
 
 <p><b>Výhody:</b></p>
 <ul>
-  <li>Server okamžitě ví o smazání - konsistentní stav</li>
-  <li>Undo je jednoduché - jen odvolání soft deletu</li>
+  <li>Server okamžitě ví o smazání – konsistentní stav</li>
+  <li>Undo je jednoduché – jen odvolání soft deletu</li>
   <li>Položka zachovává stejné ID</li>
   <li>Můžete implementovat „koš” na serveru</li>
   <li>Funguje i při zavření aplikace</li>
-  <li>Audit trail - vidíte historii smazání</li>
+  <li>Audit trail – vidíte historii smazání</li>
 </ul>
 
 <p><b>Nevýhody:</b></p>
@@ -192,7 +192,7 @@ function TodoList() {
 
 <p>Volba přístupu záleží na konkrétní situaci a podmínkách vašeho projektu:</p>
 
-<p><b>Soft delete na backendu (přístup 3)</b> může být teoreticky nejčistší řešení s okamžitou konsistencí a jednoduchým undo, ale přináší komplexitu na backendu – složitější databázové dotazy, nutnost filtrovat smazané záznamy všude a řešit čištění starých dat.</p>
+<p><b>Soft delete na backendu (přístup 3)</b> může být teoreticky nejčistší řešení s okamžitou konzistencí a jednoduchým undo, ale přináší komplexitu na backendu – složitější databázové dotazy, nutnost filtrovat smazané záznamy všude a řešit čištění starých dat.</p>
 
 <p><b>Odložené smazání (přístup 2)</b> je nejjednodušší na implementaci a šetří síťový provoz, ale lže uživateli o skutečném stavu a může způsobit problémy při zavření aplikace nebo obnovení dat ze serveru.</p>
 

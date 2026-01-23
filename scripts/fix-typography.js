@@ -85,6 +85,22 @@ const TYPOGRAPHY_RULES = [
 		replace: '$1\u00A0$2'
 	},
 
+	// Typografická pomlčka: rozsahy čísel 200-500 → 200–500
+	{
+		name: 'pomlčka v rozsazích čísel',
+		find: /(\d+)-(\d+)/g,
+		replace: '$1\u2013$2'
+	},
+
+	// Typografická pomlčka: spojovník s mezerou jako oddělovač " - " → " – "
+	// Pouze v prose textu - NE v HTML atributech
+	// Matchuje po: > (konec tagu), whitespace, nebo na začátku řádku
+	{
+		name: 'pomlčka jako oddělovač',
+		find: /(^|>|\s)- /gm,
+		replace: '$1\u2013 '
+	},
+
 	// České uvozovky: oprava špatně použitých uvozovek
 	// Opravuje: „text„ (obě dolní) → „text"
 	{
