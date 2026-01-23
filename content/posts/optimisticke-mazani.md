@@ -247,9 +247,9 @@ format: "html"
   }
 }</code></pre>
 
-<h2 id="tanstack-query">Optimistické aktualizace s TanStack Query</h2>
+<h2 id="tanstack-query">Optimistické aktualisace s TanStack Query</h2>
 
-<p>Pro React aplikace je nejlepší použít <a href="/tanstack-query">TanStack Query</a>, která má vestavěnou podporu pro optimistické aktualizace:</p>
+<p>Pro React aplikace je nejlepší použít <a href="/tanstack-query">TanStack Query</a>, která má vestavěnou podporu pro optimistické aktualisace:</p>
 
 <pre><code>import { useMutation, useQueryClient } from '@tanstack/react-query';
 
@@ -259,7 +259,7 @@ function TodoList() {
   const deleteMutation = useMutation({
     mutationFn: (id) => fetch(`/api/items/${id}`, { method: 'DELETE' }),
 
-    // Optimistická aktualizace
+    // Optimistická aktualisace
     onMutate: async (id) => {
       // Zrušit probíhající query
       await queryClient.cancelQueries({ queryKey: ['todos'] });
@@ -267,7 +267,7 @@ function TodoList() {
       // Uložit předchozí stav
       const previousTodos = queryClient.getQueryData(['todos']);
 
-      // Optimisticky aktualizovat cache
+      // Optimisticky aktualisovat cache
       queryClient.setQueryData(['todos'], (old) =>
         old?.filter((todo) => todo.id !== id)
       );
@@ -296,10 +296,10 @@ function TodoList() {
 
 <p><b>Výhody TanStack Query:</b></p>
 <ul>
-  <li>Vestavěná podpora pro optimistické aktualizace</li>
+  <li>Vestavěná podpora pro optimistické aktualisace</li>
   <li>Automatické zrušení probíhajících dotazů</li>
   <li>Rollback při chybě serveru</li>
-  <li>Synchronizace cache napříč aplikací</li>
+  <li>Synchronisace cache napříč aplikací</li>
   <li>Podpora pro offline režim</li>
 </ul>
 
