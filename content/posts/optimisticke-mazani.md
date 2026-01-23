@@ -247,7 +247,7 @@ format: "html"
   }
 }</code></pre>
 
-<h2 id="tanstack-query">Optimistické aktualisace s TanStack Query</h2>
+<h2 id="tanstack-query">Optimistické aktualisace s TanStack Query</h2>
 
 <p>Pro React aplikace je nejlepší použít <a href="/tanstack-query">TanStack Query</a>, která má vestavěnou podporu pro optimistické aktualisace:</p>
 
@@ -303,7 +303,7 @@ function TodoList() {
   <li>Podpora pro offline režim</li>
 </ul>
 
-<p>Více informací v článku <a href="/tanstack-query">TanStack Query</a>.</p>
+<p>Více informací v článku <a href="/tanstack-query">TanStack Query</a>.</p>
 
 <h2 id="animace">Plynulé animace</h2>
 
