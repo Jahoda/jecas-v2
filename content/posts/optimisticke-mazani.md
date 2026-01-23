@@ -1,13 +1,13 @@
-–-
+---
 title: "Optimistické mazání"
 headline: "Optimistické mazání"
 description: "Jak implementovat okamžitou reakci na uživatelské akce s optimistickým mazáním. UI vzor pro rychlejší aplikace."
-date: "2026–01-23"
-last_modification: "2026–01-23"
+date: "2026-01-23"
+last_modification: "2026-01-23"
 status: 1
 tags: ["js", "ux", "napady"]
 format: "html"
-–-
+---
 
 <p>Optimistické mazání je <b>UX vzor</b>, kde aplikace okamžitě reaguje na akci uživatele (například smazání položky) a teprve poté ji posílá na server. Pokud server vrátí chybu, změna se vrátí zpět. Výsledkem je <b>rychlejší pocit aplikace</b> bez čekání na odpověď ze serveru.</p>
 
