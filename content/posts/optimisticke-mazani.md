@@ -9,7 +9,7 @@ tags: ["js", "ux", "napady"]
 format: "html"
 ---
 
-<p>Optimistické mazání je <b>UX vzor</b>, kde aplikace okamžitě reaguje na akci uživatele (například smazání položky) a teprve poté ji posílá na server. Pokud server vrátí chybu, změna se vrátí zpět. Výsledkem je <b>rychlejší pocit aplikace</b> bez čekání na odpověď ze serveru.</p>
+<p>Optimistické mazání je <b>UX vzor</b>, kde aplikace okamžitě reaguje na akci uživatele (například smazání položky) a teprve poté ji posílá na server. Pokud server vrátí chybu, změna se vrátí zpět. Výsledkem je <b>rychlejší pocit aplikace</b> bez čekání na odpověď ze serveru.</p>
 
 <h2 id="problem">Problém tradičního přístupu</h2>
 
@@ -32,14 +32,14 @@ format: "html"
 
 <p><b>Nevýhody:</b></p>
 <ul>
-  <li>Uživatel čeká 200–500 ms (nebo déle při pomalém spojení)</li>
-  <li>UI „zamrzne" s loading stavem</li>
-  <li>Pocit pomalé aplikace, i když server reaguje rychle</li>
+  <li>Uživatel čeká 200–500 ms (nebo déle při pomalém spojení)</li>
+  <li>UI „zamrzne" s loading stavem</li>
+  <li>Pocit pomalé aplikace, i když server reaguje rychle</li>
 </ul>
 
 <h2 id="reseni">Řešení: optimistický přístup</h2>
 
-<p>Optimistické mazání <b>nejdřív aktualisuje UI</b> a pak teprve volá server:</p>
+<p>Optimistické mazání <b>nejdřív aktualisuje UI</b> a pak teprve volá server:</p>
 
 <pre><code>async function smazatPolozku(id) {
   // Okamžitě zmizí z UI
@@ -55,11 +55,11 @@ format: "html"
   }
 }</code></pre>
 
-<p>Uživatel vidí <b>okamžitou reakci</b>. Ve většině případů server smazání potvrdí a uživatel si ani nevšimne čekání. Pokud selže, položka se vrátí zpět.</p>
+<p>Uživatel vidí <b>okamžitou reakci</b>. Ve většině případů server smazání potvrdí a uživatel si ani nevšimne čekání. Pokud selže, položka se vrátí zpět.</p>
 
 <h2 id="ukazka-basic">Základní ukázka</h2>
 
-<p>Seznam úkolů s optimistickým mazáním:</p>
+<p>Seznam úkolů s optimistickým mazáním:</p>
 
 <div class="live">
   <style>
@@ -183,11 +183,11 @@ format: "html"
   </script>
 </div>
 
-<p>Zkuste smazat nějaký úkol. V 70 % případů smazání proběhne hladce, ve 30 % selže a položka se vrátí zpět s animací.</p>
+<p>Zkuste smazat nějaký úkol. V 70 % případů smazání proběhne hladce, ve 30 % selže a položka se vrátí zpět s animací.</p>
 
 <h2 id="implementace">Kompletní implementace</h2>
 
-<p>Robustnější implementace s historií pro undo:</p>
+<p>Robustnější implementace s historií pro undo:</p>
 
 <pre><code>class OptimisticList {
   constructor(container) {
@@ -245,9 +245,9 @@ format: "html"
   }
 }</code></pre>
 
-<h2 id="react">Optimistické mazání v React</h2>
+<h2 id="react">Optimistické mazání v React</h2>
 
-<p>Příklad s React hooku:</p>
+<p>Příklad s React hooku:</p>
 
 <pre><code>function useOptimisticDelete(items, setItems) {
   const [history, setHistory] = useState(new Map());
@@ -347,7 +347,7 @@ async function deleteItem(id) {
   padding: 0;
 }</code></pre>
 
-<p>Pro animaci výšky musíte znát konkrétní výšku nebo použít <code>max-height</code> s dostatečně velkou hodnotou.</p>
+<p>Pro animaci výšky musíte znát konkrétní výšku nebo použít <code>max-height</code> s dostatečně velkou hodnotou.</p>
 
 <h2 id="strategie-undo">Strategie pro implementaci undo</h2>
 
@@ -408,10 +408,10 @@ function undo(id) {
 <p><b>Výhody soft delete:</b></p>
 <ul>
   <li>Jednoduchá implementace (jen boolean flag)</li>
-  <li>Zachováte posici v seznamu</li>
+  <li>Zachováte posici v seznamu</li>
   <li>Snadná synchronisace se serverem</li>
-  <li>Můžete zobrazit "šedý" stav místo úplného zmizení</li>
-  <li>Server může implementovat "koš" (trash bin)</li>
+  <li>Můžete zobrazit „šedý“ stav místo úplného zmizení</li>
+  <li>Server může implementovat „koš“ (trash bin)</li>
 </ul>
 
 <div class="live">
@@ -462,7 +462,7 @@ function undo(id) {
     }
   </style>
 
-  <p><b>Ukázka soft delete:</b> Položka zůstává v DOM, pouze se označí jako smazaná.</p>
+  <p><b>Ukázka soft delete:</b> Položka zůstává v DOM, pouze se označí jako smazaná.</p>
 
   <ul class="soft-delete-demo" id="soft-delete-list">
     <li class="soft-delete-item" data-id="1">
@@ -500,9 +500,9 @@ function undo(id) {
   </script>
 </div>
 
-<h3>2. Skutečné odstranění s rollbackem</h3>
+<h3>2. Skutečné odstranění s rollbackem</h3>
 
-<p>Položku <b>opravdu smažete</b> z UI a při undo ji vrátíte zpět:</p>
+<p>Položku <b>opravdu smažete</b> z UI a při undo ji vrátíte zpět:</p>
 
 <pre><code>const undoStack = new Map();
 
@@ -616,7 +616,7 @@ function undo(id) {
     }
   </style>
 
-  <p><b>Ukázka hard delete:</b> Položka se skutečně odebere z DOM a po 3 sekundách se vrátí zpět.</p>
+  <p><b>Ukázka hard delete:</b> Položka se skutečně odebere z DOM a po 3 sekundách se vrátí zpět.</p>
 
   <ul class="hard-delete-demo" id="hard-delete-list">
     <li class="hard-delete-item" data-id="1">
@@ -634,7 +634,7 @@ function undo(id) {
   </ul>
 
   <div class="hard-delete-msg" id="hard-delete-msg">
-    Položka odstraněna z DOM
+    Položka odstraněna z DOM
   </div>
 
   <script>
@@ -687,7 +687,7 @@ function undo(id) {
 
 <h3>3. Hybridní přístup</h3>
 
-<p>Visuálně zmizí, ale data zůstávají - nejlepší z obou světů:</p>
+<p>Visuálně zmizí, ale data zůstávají - nejlepší z obou světů:</p>
 
 <pre><code>const [items, setItems] = useState([...]);
 const [deletingIds, setDeletingIds] = useState(new Set());
@@ -741,7 +741,7 @@ return items
     &lt;/div&gt;
   ));</code></pre>
 
-<p>Tento přístup kombinuje plynulou animaci zmizení s jednoduchostí soft delete.</p>
+<p>Tento přístup kombinuje plynulou animaci zmizení s jednoduchostí soft delete.</p>
 
 <div class="live">
   <style>
@@ -830,7 +830,7 @@ return items
   </ul>
 
   <div class="hybrid-status" id="hybrid-status">
-    📊 Stav: Položka je smazaná v UI, ale stále existuje v datech. Obnoví se za 3 sekundy.
+    📊 Stav: Položka je smazaná v UI, ale stále existuje v datech. Obnoví se za 3 sekundy.
   </div>
 
   <script>
@@ -868,17 +868,17 @@ return items
 
 <p><b>Používejte soft delete</b>, protože:</p>
 <ul>
-  <li>Jednodušší kód a údržba</li>
+  <li>Jednodušší kód a údržba</li>
   <li>Spolehlivější - nemůžete ztratit posici</li>
-  <li>Lepší pro server - můžete implementovat "koš"</li>
-  <li>Snadnější debug - vidíte smazané položky v dev tools</li>
+  <li>Lepší pro server - můžete implementovat „koš“</li>
+  <li>Snadnější debug - vidíte smazané položky v dev tools</li>
 </ul>
 
 <p><b>Skutečné odstranění</b> použijte jen když:</p>
 <ul>
-  <li>Položka musí okamžitě zmizet z UI</li>
-  <li>Nemáte server-side "koš"</li>
-  <li>Jde o dočasná data (notifikace, toasty)</li>
+  <li>Položka musí okamžitě zmizet z UI</li>
+  <li>Nemáte server-side „koš“</li>
+  <li>Jde o dočasná data (notifikace, toasty)</li>
 </ul>
 
 <h2 id="offline">Optimistické operace offline</h2>
@@ -937,9 +937,9 @@ window.addEventListener('online', () => {
   queue.processQueue();
 });</code></pre>
 
-<h2 id="undo">Tlačítko Undo s soft delete</h2>
+<h2 id="undo">Tlačítko Undo s soft delete</h2>
 
-<p>Zobrazit možnost vrátit akci zpět (podobně jako Gmail). Tento příklad používá <b>soft delete</b> - položka zmizí, ale zůstává v datech:</p>
+<p>Zobrazit možnost vrátit akci zpět (podobně jako Gmail). Tento příklad používá <b>soft delete</b> - položka zmizí, ale zůstává v datech:</p>
 
 <div class="live">
   <style>
@@ -1087,7 +1087,7 @@ window.addEventListener('online', () => {
 <p>Výhody tohoto přístupu:</p>
 <ul>
   <li>Jednoduchá implementace - jen přidání/odebrání CSS třídy</li>
-  <li>Položka zachovává svou posici v seznamu</li>
+  <li>Položka zachovává svou posici v seznamu</li>
   <li>Plynulá animace při obnovení</li>
   <li>Můžete smazat další položku, zatímco čekáte na timeout předchozí</li>
 </ul>
@@ -1095,7 +1095,7 @@ window.addEventListener('online', () => {
 <h2 id="kdy-pouzit">Kdy použít optimistické mazání</h2>
 
 <ul>
-  <li><b>Vysoká spolehlivost</b> — server smazání téměř vždy potvrdí (99 %+)</li>
+  <li><b>Vysoká spolehlivost</b> — server smazání téměř vždy potvrdí (99 %+)</li>
   <li><b>Rychlá odezva důležitá</b> — seznamy úkolů, komentáře, příspěvky</li>
   <li><b>Vratné akce</b> — mazání není destruktivní (lze obnovit ze zálohy)</li>
   <li><b>Nízké risiko</b> — chyba nepoškodí data nebo nepřinese ztrátu</li>
@@ -1106,21 +1106,21 @@ window.addEventListener('online', () => {
 <ul>
   <li><b>Finanční transakce</b> — platby, převody (vyžadují potvrzení serveru)</li>
   <li><b>Kritická data</b> — nenávratné smazání důležitých záznamů</li>
-  <li><b>Složité validace</b> — server může smazání zamítnout z mnoha důvodů</li>
+  <li><b>Složité validace</b> — server může smazání zamítnout z mnoha důvodů</li>
   <li><b>Pomalé spojení</b> — uživatel může odejít před odesláním požadavku</li>
 </ul>
 
 <h2 id="tipy">Tipy pro implementaci</h2>
 
 <ul>
-  <li><b>Preferujte soft delete</b> — označte položku jako smazanou místo skutečného odstranění, je to jednodušší a spolehlivější</li>
+  <li><b>Preferujte soft delete</b> — označte položku jako smazanou místo skutečného odstranění, je to jednodušší a spolehlivější</li>
   <li><b>Uložte původní stav</b> — abyste mohli vrátit změny při chybě serveru</li>
   <li><b>Animujte změny</b> — plynulý přechod je příjemnější než okamžité zmizení</li>
   <li><b>Dejte uživateli zpětnou vazbu</b> — pokud selže, jasně to oznámte</li>
-  <li><b>Nabídněte undo</b> — jako Gmail snackbar s tlačítkem „Vrátit zpět" (5 sekund)</li>
-  <li><b>Počítejte s offline režimem</b> — ukládejte operace do fronty v localStorage</li>
+  <li><b>Nabídněte undo</b> — jako Gmail snackbar s tlačítkem „Vrátit zpět" (5 sekund)</li>
+  <li><b>Počítejte s offline režimem</b> — ukládejte operace do fronty v localStorage</li>
   <li><b>Řešte souběžnost</b> — co když uživatel klikne vícekrát rychle za sebou?</li>
-  <li><b>Načasujte API volání</b> — volejte server až po uplynutí undo časovače (5 s)</li>
+  <li><b>Načasujte API volání</b> — volejte server až po uplynutí undo časovače (5 s)</li>
 </ul>
 
 <h2 id="srovnani">Srovnání přístupů</h2>
@@ -1225,7 +1225,7 @@ window.addEventListener('online', () => {
     }
   </style>
 
-  <p><b>Interaktivní srovnání:</b> Zkuste smazat položku v obou seznamech a porovnejte dobu odezvy.</p>
+  <p><b>Interaktivní srovnání:</b> Zkuste smazat položku v obou seznamech a porovnejte dobu odezvy.</p>
 
   <div class="compare-demo">
     <div class="compare-column">
@@ -1330,13 +1330,13 @@ window.addEventListener('online', () => {
   </tr>
   <tr>
     <td>Rychlost UI</td>
-    <td>Čeká na server (200–500 ms)</td>
+    <td>Čeká na server (200–500 ms)</td>
     <td>Okamžitá odezva</td>
   </tr>
   <tr>
     <td>Konsistence</td>
-    <td>100 % — zobrazí jen potvrzený stav</td>
-    <td>~99 % — může se vrátit zpět</td>
+    <td>100 % — zobrazí jen potvrzený stav</td>
+    <td>~99 % — může se vrátit zpět</td>
   </tr>
   <tr>
     <td>Složitost</td>
@@ -1351,7 +1351,7 @@ window.addEventListener('online', () => {
   <tr>
     <td>Použití</td>
     <td>Kritické operace</td>
-    <td>Běžné akce s nízkou chybovostí</td>
+    <td>Běžné akce s nízkou chybovostí</td>
   </tr>
 </table>
 
