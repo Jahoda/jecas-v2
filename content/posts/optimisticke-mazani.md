@@ -414,6 +414,92 @@ function undo(id) {
   <li>Server může implementovat "koš" (trash bin)</li>
 </ul>
 
+<div class="live">
+  <style>
+    .soft-delete-demo {
+      list-style: none;
+      padding: 0;
+      margin: 1em 0;
+    }
+
+    .soft-delete-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75em;
+      padding: 0.75em 1em;
+      margin: 0.5em 0;
+      background: #f5f5f5;
+      border-radius: 6px;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .soft-delete-item.deleted {
+      opacity: 0.5;
+      text-decoration: line-through;
+      pointer-events: none;
+      background: #ffe0e0;
+    }
+
+    .soft-delete-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 0.5em 0.75em;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.875em;
+      margin-left: auto;
+    }
+
+    .soft-delete-btn:hover {
+      background: #c0392b;
+    }
+
+    .soft-delete-status {
+      font-size: 0.875em;
+      color: #666;
+      font-style: italic;
+    }
+  </style>
+
+  <p><b>Ukázka soft delete:</b> Položka zůstává v DOM, pouze se označí jako smazaná.</p>
+
+  <ul class="soft-delete-demo" id="soft-delete-list">
+    <li class="soft-delete-item" data-id="1">
+      <span>Úkol A</span>
+      <span class="soft-delete-status"></span>
+      <button class="soft-delete-btn opt-btn-delete" onclick="softDeleteDemo(1)">Smazat</button>
+    </li>
+    <li class="soft-delete-item" data-id="2">
+      <span>Úkol B</span>
+      <span class="soft-delete-status"></span>
+      <button class="soft-delete-btn opt-btn-delete" onclick="softDeleteDemo(2)">Smazat</button>
+    </li>
+    <li class="soft-delete-item" data-id="3">
+      <span>Úkol C</span>
+      <span class="soft-delete-status"></span>
+      <button class="soft-delete-btn opt-btn-delete" onclick="softDeleteDemo(3)">Smazat</button>
+    </li>
+  </ul>
+
+  <script>
+    function softDeleteDemo(id) {
+      const item = document.querySelector(`#soft-delete-list [data-id="${id}"]`);
+      const status = item.querySelector('.soft-delete-status');
+
+      // Soft delete - přidat třídu
+      item.classList.add('deleted');
+      status.textContent = '(označeno jako smazané)';
+
+      // Po 3 sekundách obnovit
+      setTimeout(() => {
+        item.classList.remove('deleted');
+        status.textContent = '';
+      }, 3000);
+    }
+  </script>
+</div>
+
 <h3>2. Skutečné odstranění s rollbackem</h3>
 
 <p>Položku <b>opravdu smažete</b> z UI a při undo ji vrátíte zpět:</p>
@@ -464,6 +550,140 @@ function undo(id) {
   <li>Může se změnit pořadí, pokud se seznam mezitím aktualizuje</li>
   <li>Animace návratu je náročnější</li>
 </ul>
+
+<div class="live">
+  <style>
+    .hard-delete-demo {
+      list-style: none;
+      padding: 0;
+      margin: 1em 0;
+    }
+
+    .hard-delete-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75em;
+      padding: 0.75em 1em;
+      margin: 0.5em 0;
+      background: #f5f5f5;
+      border-radius: 6px;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .hard-delete-item.removing {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+
+    .hard-delete-item.restoring {
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .hard-delete-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 0.5em 0.75em;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.875em;
+      margin-left: auto;
+    }
+
+    .hard-delete-msg {
+      padding: 0.5em 1em;
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      margin: 0.5em 0;
+      border-radius: 4px;
+      font-size: 0.875em;
+      display: none;
+    }
+
+    .hard-delete-msg.show {
+      display: block;
+    }
+  </style>
+
+  <p><b>Ukázka hard delete:</b> Položka se skutečně odebere z DOM a po 3 sekundách se vrátí zpět.</p>
+
+  <ul class="hard-delete-demo" id="hard-delete-list">
+    <li class="hard-delete-item" data-id="1">
+      <span>Položka X</span>
+      <button class="hard-delete-btn opt-btn-delete" onclick="hardDeleteDemo(1)">Smazat</button>
+    </li>
+    <li class="hard-delete-item" data-id="2">
+      <span>Položka Y</span>
+      <button class="hard-delete-btn opt-btn-delete" onclick="hardDeleteDemo(2)">Smazat</button>
+    </li>
+    <li class="hard-delete-item" data-id="3">
+      <span>Položka Z</span>
+      <button class="hard-delete-btn opt-btn-delete" onclick="hardDeleteDemo(3)">Smazat</button>
+    </li>
+  </ul>
+
+  <div class="hard-delete-msg" id="hard-delete-msg">
+    Položka odstraněna z DOM
+  </div>
+
+  <script>
+    const hardDeleteStack = new Map();
+
+    async function hardDeleteDemo(id) {
+      const item = document.querySelector(`#hard-delete-list [data-id="${id}"]`);
+      const list = document.getElementById('hard-delete-list');
+      const msg = document.getElementById('hard-delete-msg');
+
+      // Uložit pro rollback
+      const index = Array.from(list.children).indexOf(item);
+      hardDeleteStack.set(id, {
+        html: item.outerHTML,
+        index: index
+      });
+
+      // Animace zmizení
+      item.classList.add('removing');
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // Skutečné odstranění z DOM
+      item.remove();
+      msg.classList.add('show');
+
+      // Po 3 sekundách vrátit zpět
+      setTimeout(() => {
+        const saved = hardDeleteStack.get(id);
+        if (!saved) return;
+
+        const children = Array.from(list.children);
+        const fragment = document.createRange().createContextualFragment(saved.html);
+        const newItem = fragment.firstElementChild;
+
+        if (saved.index >= children.length) {
+          list.appendChild(newItem);
+        } else {
+          list.insertBefore(newItem, children[saved.index]);
+        }
+
+        newItem.classList.add('restoring');
+        setTimeout(() => newItem.classList.remove('restoring'), 300);
+
+        msg.classList.remove('show');
+        hardDeleteStack.delete(id);
+      }, 3000);
+    }
+  </script>
+</div>
 
 <h3>3. Hybridní přístup</h3>
 
@@ -522,6 +742,127 @@ return items
   ));</code></pre>
 
 <p>Tento přístup kombinuje plynulou animaci zmizení s jednoduchostí soft delete.</p>
+
+<div class="live">
+  <style>
+    .hybrid-delete-demo {
+      list-style: none;
+      padding: 0;
+      margin: 1em 0;
+    }
+
+    .hybrid-delete-item {
+      padding: 0.75em 1em;
+      margin: 0.5em 0;
+      background: #f5f5f5;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 0.75em;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .hybrid-delete-item.deleting {
+      opacity: 0;
+      transform: translateX(-20px) scale(0.95);
+    }
+
+    .hybrid-delete-item.deleted {
+      display: none;
+    }
+
+    .hybrid-delete-item.restoring {
+      animation: fadeSlideIn 0.4s ease-out;
+    }
+
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .hybrid-delete-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 0.5em 0.75em;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.875em;
+      margin-left: auto;
+    }
+
+    .hybrid-status {
+      padding: 0.5em 1em;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      margin: 0.5em 0;
+      border-radius: 4px;
+      font-size: 0.875em;
+      display: none;
+    }
+
+    .hybrid-status.show {
+      display: block;
+    }
+  </style>
+
+  <p><b>Ukázka hybridního přístupu:</b> Plynule zmizí, ale data zůstávají pro snadné obnovení.</p>
+
+  <ul class="hybrid-delete-demo" id="hybrid-delete-list">
+    <li class="hybrid-delete-item" data-id="1" data-deleted="false">
+      <span>Hybridní úkol 1</span>
+      <button class="hybrid-delete-btn opt-btn-delete" onclick="hybridDeleteDemo(1)">Smazat</button>
+    </li>
+    <li class="hybrid-delete-item" data-id="2" data-deleted="false">
+      <span>Hybridní úkol 2</span>
+      <button class="hybrid-delete-btn opt-btn-delete" onclick="hybridDeleteDemo(2)">Smazat</button>
+    </li>
+    <li class="hybrid-delete-item" data-id="3" data-deleted="false">
+      <span>Hybridní úkol 3</span>
+      <button class="hybrid-delete-btn opt-btn-delete" onclick="hybridDeleteDemo(3)">Smazat</button>
+    </li>
+  </ul>
+
+  <div class="hybrid-status" id="hybrid-status">
+    📊 Stav: Položka je smazaná v UI, ale stále existuje v datech. Obnoví se za 3 sekundy.
+  </div>
+
+  <script>
+    async function hybridDeleteDemo(id) {
+      const item = document.querySelector(`#hybrid-delete-list [data-id="${id}"]`);
+      const status = document.getElementById('hybrid-status');
+
+      // Fáze 1: Animace zmizení
+      item.classList.add('deleting');
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // Fáze 2: Soft delete (zůstává v DOM, ale skrytý)
+      item.classList.add('deleted');
+      item.classList.remove('deleting');
+      item.dataset.deleted = 'true';
+
+      status.classList.add('show');
+
+      // Fáze 3: Po 3 sekundách obnovit
+      setTimeout(() => {
+        if (item.dataset.deleted === 'true') {
+          item.dataset.deleted = 'false';
+          item.classList.remove('deleted');
+          item.classList.add('restoring');
+
+          setTimeout(() => item.classList.remove('restoring'), 400);
+          status.classList.remove('show');
+        }
+      }, 3000);
+    }
+  </script>
+</div>
 
 <h3>Doporučení</h3>
 
@@ -783,6 +1124,203 @@ window.addEventListener('online', () => {
 </ul>
 
 <h2 id="srovnani">Srovnání přístupů</h2>
+
+<div class="live">
+  <style>
+    .compare-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      margin: 2em 0;
+    }
+
+    .compare-column {
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1em;
+    }
+
+    .compare-column h4 {
+      margin: 0 0 1em;
+      padding-bottom: 0.5em;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .compare-list {
+      list-style: none;
+      padding: 0;
+      margin: 1em 0;
+      min-height: 180px;
+    }
+
+    .compare-item {
+      padding: 0.75em 1em;
+      margin: 0.5em 0;
+      background: #f5f5f5;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 0.75em;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .compare-item.loading {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .compare-item.removing {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    .compare-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 0.5em 0.75em;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.875em;
+      margin-left: auto;
+    }
+
+    .compare-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    .compare-spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: auto;
+      display: none;
+    }
+
+    .compare-item.loading .compare-spinner {
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .compare-timer {
+      font-size: 0.75em;
+      color: #666;
+      margin-top: 1em;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .compare-demo {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <p><b>Interaktivní srovnání:</b> Zkuste smazat položku v obou seznamech a porovnejte dobu odezvy.</p>
+
+  <div class="compare-demo">
+    <div class="compare-column">
+      <h4>⏱️ Klasické mazání</h4>
+      <p style="font-size: 0.875em; color: #666;">Čeká na server (simulováno 500ms)</p>
+      <ul class="compare-list" id="classic-list">
+        <li class="compare-item" data-id="1">
+          <span>Úkol 1</span>
+          <button class="compare-btn opt-btn-delete" onclick="classicDelete(1)">Smazat</button>
+          <div class="compare-spinner"></div>
+        </li>
+        <li class="compare-item" data-id="2">
+          <span>Úkol 2</span>
+          <button class="compare-btn opt-btn-delete" onclick="classicDelete(2)">Smazat</button>
+          <div class="compare-spinner"></div>
+        </li>
+        <li class="compare-item" data-id="3">
+          <span>Úkol 3</span>
+          <button class="compare-btn opt-btn-delete" onclick="classicDelete(3)">Smazat</button>
+          <div class="compare-spinner"></div>
+        </li>
+      </ul>
+      <div class="compare-timer" id="classic-timer"></div>
+    </div>
+
+    <div class="compare-column">
+      <h4>⚡ Optimistické mazání</h4>
+      <p style="font-size: 0.875em; color: #666;">Okamžitá reakce</p>
+      <ul class="compare-list" id="optimistic-list">
+        <li class="compare-item" data-id="1">
+          <span>Úkol 1</span>
+          <button class="compare-btn opt-btn-delete" onclick="optimisticDelete(1)">Smazat</button>
+        </li>
+        <li class="compare-item" data-id="2">
+          <span>Úkol 2</span>
+          <button class="compare-btn opt-btn-delete" onclick="optimisticDelete(2)">Smazat</button>
+        </li>
+        <li class="compare-item" data-id="3">
+          <span>Úkol 3</span>
+          <button class="compare-btn opt-btn-delete" onclick="optimisticDelete(3)">Smazat</button>
+        </li>
+      </ul>
+      <div class="compare-timer" id="optimistic-timer"></div>
+    </div>
+  </div>
+
+  <script>
+    async function classicDelete(id) {
+      const item = document.querySelector(`#classic-list [data-id="${id}"]`);
+      const timer = document.getElementById('classic-timer');
+      const btn = item.querySelector('button');
+
+      const startTime = Date.now();
+      btn.disabled = true;
+      item.classList.add('loading');
+      timer.textContent = 'Čekání na server...';
+
+      // Simulace API volání
+      await new Promise(resolve => setTimeout(resolve, 500));
+
+      const endTime = Date.now();
+      const duration = endTime - startTime;
+
+      // Teprve teď odstranit
+      item.classList.add('removing');
+      await new Promise(resolve => setTimeout(resolve, 300));
+      item.remove();
+
+      timer.textContent = `✓ Smazáno za ${duration}ms`;
+      setTimeout(() => timer.textContent = '', 2000);
+    }
+
+    async function optimisticDelete(id) {
+      const item = document.querySelector(`#optimistic-list [data-id="${id}"]`);
+      const timer = document.getElementById('optimistic-timer');
+
+      const startTime = Date.now();
+
+      // Okamžitě odstranit
+      item.classList.add('removing');
+      const uiTime = Date.now() - startTime;
+
+      await new Promise(resolve => setTimeout(resolve, 300));
+      item.remove();
+
+      timer.textContent = `⚡ UI aktualizace za ${uiTime}ms`;
+
+      // API volání na pozadí (neblokuje UI)
+      setTimeout(() => {
+        timer.textContent += ' (API volání probíhá na pozadí)';
+        setTimeout(() => timer.textContent = '', 2000);
+      }, 100);
+    }
+  </script>
+</div>
 
 <table>
   <tr>
