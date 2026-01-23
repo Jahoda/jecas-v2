@@ -88,7 +88,9 @@ function TodoList() {
 
     // Při chybě vrátit zpět
     onError: (err, id, context) => {
-      queryClient.setQueryData(['todos'], context.previousTodos);
+      if (context?.previousTodos) {
+        queryClient.setQueryData(['todos'], context.previousTodos);
+      }
     },
 
     // Vždy invalidovat query po dokončení
@@ -124,9 +126,11 @@ function TodoList() {
 <p>Položku <b>neodstraníte ze stavu</b>, jen ji označíte jako smazanou:</p>
 
 <pre><code>async function deleteItem(id) {
+  const deleteTime = Date.now();
+
   // Označit jako smazanou (zůstává v datech)
-  setItems(items.map(item =>
-    item.id === id ? { ...item, deleted: true } : item
+  setItems(items => items.map(item =>
+    item.id === id ? { ...item, deleted: true, deleteTime } : item
   ));
 
   // Zobrazit undo snackbar
@@ -136,11 +140,19 @@ function TodoList() {
   await new Promise(resolve => setTimeout(resolve, 5000));
 
   // Pokud nebyl undo, teprve teď skutečně smazat
-  const item = items.find(i => i.id === id);
-  if (item?.deleted) {
+  let shouldDelete = false;
+  setItems(items => {
+    const item = items.find(i => i.id === id);
+    if (item?.deleted && item.deleteTime === deleteTime) {
+      shouldDelete = true;
+      return items.filter(i => i.id !== id);
+    }
+    return items;
+  });
+
+  // API volání (jen pokud nebyl undo)
+  if (shouldDelete) {
     await fetch(`/api/items/${id}`, { method: 'DELETE' });
-    // Odebrat z UI definitivně
-    setItems(items => items.filter(i => i.id !== id));
   }
 }
 
@@ -275,14 +287,16 @@ function undo(id) {
 <pre><code>const undoStack = new Map();
 
 async function deleteItem(id) {
-  const index = items.findIndex(item => item.id === id);
-  const item = items[index];
+  let item;
+  let index;
 
-  // Uložit pro případný undo
-  undoStack.set(id, { item, index });
-
-  // Odebrat z UI
-  setItems(items.filter(i => i.id !== id));
+  // Odebrat z UI a uložit
+  setItems(items => {
+    index = items.findIndex(i => i.id === id);
+    item = items[index];
+    undoStack.set(id, { item, index });
+    return items.filter(i => i.id !== id);
+  });
 
   // Zobrazit undo
   showUndoSnackbar(id);
@@ -301,12 +315,8 @@ function undo(id) {
   const saved = undoStack.get(id);
   if (!saved) return;
 
-  // Vložit zpět na původní posici
-  setItems(items => {
-    const copy = [...items];
-    copy.splice(saved.index, 0, saved.item);
-    return copy;
-  });
+  // Vložit zpět (ale na konec seznamu, protože původní index už nemusí platit)
+  setItems(items => [...items, saved.item]);
 
   undoStack.delete(id);
   hideUndoSnackbar();
@@ -463,6 +473,8 @@ function undo(id) {
 const [deletingIds, setDeletingIds] = useState(new Set());
 
 async function deleteItem(id) {
+  const deleteTime = Date.now();
+
   // 1. Označit pro animaci zmizení
   setDeletingIds(prev => new Set(prev).add(id));
 
@@ -471,7 +483,7 @@ async function deleteItem(id) {
 
   // 3. Soft delete (zůstává v datech)
   setItems(items => items.map(item =>
-    item.id === id ? { ...item, deleted: true } : item
+    item.id === id ? { ...item, deleted: true, deleteTime } : item
   ));
 
   // 4. Odebrat z animujících
@@ -486,10 +498,18 @@ async function deleteItem(id) {
 
   // 6. Po 5 sekundách skutečně smazat
   setTimeout(async () => {
-    const item = items.find(i => i.id === id);
-    if (item?.deleted) {
+    let shouldDelete = false;
+    setItems(items => {
+      const item = items.find(i => i.id === id);
+      if (item?.deleted && item.deleteTime === deleteTime) {
+        shouldDelete = true;
+        return items.filter(i => i.id !== id);
+      }
+      return items;
+    });
+
+    if (shouldDelete) {
       await fetch(`/api/items/${id}`, { method: 'DELETE' });
-      setItems(items => items.filter(i => i.id !== id));
     }
   }, 5000);
 }
