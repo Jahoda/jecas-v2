@@ -1,13 +1,13 @@
----
+–-
 title: "Optimistické mazání"
 headline: "Optimistické mazání"
 description: "Jak implementovat okamžitou reakci na uživatelské akce s optimistickým mazáním. UI vzor pro rychlejší aplikace."
-date: "2026-01-23"
-last_modification: "2026-01-23"
+date: "2026–01-23"
+last_modification: "2026–01-23"
 status: 1
 tags: ["js", "ux", "napady"]
 format: "html"
----
+–-
 
 <p>Optimistické mazání je <b>UX vzor</b>, kde aplikace okamžitě reaguje na akci uživatele (například smazání položky) a teprve poté ji posílá na server. Pokud server vrátí chybu, změna se vrátí zpět. Výsledkem je <b>rychlejší pocit aplikace</b> bez čekání na odpověď ze serveru.</p>
 
@@ -190,27 +190,13 @@ function TodoList() {
 
 <h3>Doporučení</h3>
 
-<p><b>Používejte soft delete na backendu (přístup 3)</b>, protože:</p>
-<ul>
-  <li>Nejlepší ze všech světů - okamžitá konsistence + jednoduché undo</li>
-  <li>Server má vždy aktuální stav</li>
-  <li>Můžete implementovat automatické čištění po X dnech</li>
-  <li>Audit trail zdarma</li>
-</ul>
+<p>Volba přístupu záleží na konkrétní situaci a podmínkách vašeho projektu:</p>
 
-<p><b>Odložené smazání (přístup 2)</b> použijte jen když:</p>
-<ul>
-  <li>Nemůžete změnit backend</li>
-  <li>Ušetření síťového provozu je kritické</li>
-  <li>Uživatelé často používají undo</li>
-</ul>
+<p><b>Soft delete na backendu (přístup 3)</b> může být teoreticky nejčistší řešení s okamžitou konzistencí a jednoduchým undo, ale přináší komplexitu na backendu – složitější databázové dotazy, nutnost filtrovat smazané záznamy všude a řešit čištění starých dat.</p>
 
-<p><b>Okamžité smazání + undo vytvoří znovu (přístup 1)</b> je vhodný když:</p>
-<ul>
-  <li>Nemůžete implementovat soft delete</li>
-  <li>Nemůžete implementovat restore endpoint</li>
-  <li>Undo je vzácné</li>
-</ul>
+<p><b>Odložené smazání (přístup 2)</b> je nejjednodušší na implementaci a šetří síťový provoz, ale lže uživateli o skutečném stavu a může způsobit problémy při zavření aplikace nebo obnovení dat ze serveru.</p>
+
+<p><b>Okamžité smazání + undo vytvoří znovu (přístup 1)</b> je pragmatický kompromis bez změn na backendu, ale undo je složitější a může změnit ID položky, což může způsobit problémy s referencemi.</p>
 
 
 <h2 id="offline">Optimistické operace offline</h2>
