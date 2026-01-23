@@ -120,23 +120,23 @@ adjustInputWidth(input);</code></pre>
 
 <h2 id="size">HTML atribut <code>size</code></h2>
 
-<p>Nejjednodušší způsob je použít HTML atribut <code>size</code>, který určuje šířku v počtu znaků:</p>
+<p>Nejjednodušší způsob je použít HTML atribut <code>size</code>, který určuje šířku v počtu znaků:</p>
 
 <pre><code>&lt;input type="text" <b>size="10"</b>></code></pre>
 
-<p>V kombinaci s JavaScriptem:</p>
+<p>V kombinaci s JavaScriptem:</p>
 
 <pre><code>input.addEventListener('input', () => {
   input.size = Math.max(1, input.value.length);
 });</code></pre>
 
-<p>Atribut <code>size</code> funguje podobně jako jednotka <code>ch</code> – počítá průměrnou šířku znaku. U proporcionálních fontů tak nebude výsledek přesný.</p>
+<p>Atribut <code>size</code> funguje podobně jako jednotka <code>ch</code> – počítá průměrnou šířku znaku. U proporcionálních fontů tak nebude výsledek přesný.</p>
 
 
 
 <h2 id="grid">CSS Grid trik</h2>
 
-<p>Čistě CSS řešení využívající <code>display: grid</code> a <code>data-value</code> atribut:</p>
+<p>Čistě CSS řešení využívající <code>display: grid</code> a <code>data-value</code> atribut:</p>
 
 <pre><code>&lt;label class="auto-input">
   &lt;input type="text" oninput="this.parentNode.dataset.value = this.value">
@@ -158,11 +158,11 @@ adjustInputWidth(input);</code></pre>
   min-width: 1em;
 }</code></pre>
 
-<p>Input a pseudo-element <code>::after</code> sdílejí stejnou grid buňku. Pseudo-element je neviditelný, ale roztahuje kontejner podle obsahu.</p>
+<p>Input a pseudo-element <code>::after</code> sdílejí stejnou grid buňku. Pseudo-element je neviditelný, ale roztahuje kontejner podle obsahu.</p>
 
 
 
-<h2 id="wrapper">Wrapper s absolutní posicí</h2>
+<h2 id="wrapper">Wrapper s absolutní posicí</h2>
 
 <p>Podobný princip – input překrývá span se stejným obsahem:</p>
 
@@ -196,7 +196,7 @@ input.addEventListener('input', () => {
   sizer.textContent = input.value || input.placeholder || 'M';
 });</code></pre>
 
-<p>Výhodou je, že span používá přesně stejný font a velikost jako input, takže měření je přesné.</p>
+<p>Výhodou je, že span používá přesně stejný font a velikost jako input, takže měření je přesné.</p>
 
 
 
@@ -204,7 +204,7 @@ input.addEventListener('input', () => {
 
 <ol>
   <li><b>Moderní prohlížeče</b> – použijte <code>field-sizing: content</code>.</li>
-  <li><b>Bez JavaScriptu</b> – CSS Grid trik s <code>data-value</code>.</li>
+  <li><b>Bez JavaScriptu</b> – CSS Grid trik s <code>data-value</code>.</li>
   <li><b>Podpora Safari</b> – přidejte JavaScript fallback (canvas nebo wrapper).</li>
   <li><b>Monospace fonty</b> – stačí jednotka <code>ch</code> nebo atribut <code>size</code>.</li>
   <li><b>Komplexní případy</b> – zvažte <code>contenteditable</code>.</li>
