@@ -8,12 +8,12 @@ tags: ["css", "formulare", "html", "js", "css-vlastnosti"]
 format: "html"
 ---
 
-<p>Běžný <a href="/input"><code>&lt;input></code></a> má <b>pevnou šířku</b>. Někdy je ale potřeba, aby se pole přizpůsobilo délce textu, který obsahuje – například v inline editoru, při úpravě tagů nebo v dynamických formulářích.</p>
+<p>Běžný <a href="/input"><code>&lt;input></code></a> má <b>pevnou šířku</b>. Někdy je ale potřeba, aby se pole přizpůsobilo délce textu, který obsahuje – například v inline editoru, při úpravě tagů nebo v dynamických formulářích.</p>
 
 
 <h2 id="field-sizing">CSS řešení: <code>field-sizing</code></h2>
 
-<p>Od roku 2024 prohlížeče podporují novou CSS vlastnost <code>field-sizing</code>, která tento problém řeší elegantně a bez JavaScriptu.</p>
+<p>Od roku 2024 prohlížeče podporují novou CSS vlastnost <code>field-sizing</code>, která tento problém řeší elegantně a bez JavaScriptu.</p>
 
 <pre><code>input {
   <b>field-sizing: content;</b>
@@ -21,19 +21,19 @@ format: "html"
   max-width: 300px;
 }</code></pre>
 
-<p>Vlastnost <code>field-sizing: content</code> způsobí, že se input automaticky rozšíří podle obsahu. Je vhodné přidat <code>min-width</code> a <code>max-width</code> pro rozumné limity.</p>
+<p>Vlastnost <code>field-sizing: content</code> způsobí, že se input automaticky rozšíří podle obsahu. Je vhodné přidat <code>min-width</code> a <code>max-width</code> pro rozumné limity.</p>
 
-<p>Toto řešení funguje i pro <code>&lt;textarea></code> a <code>&lt;select></code>.</p>
+<p>Toto řešení funguje i pro <code>&lt;textarea></code> a <code>&lt;select></code>.</p>
 
-<h3 id="field-sizing-podpora">Podpora v prohlížečích</h3>
+<h3 id="field-sizing-podpora">Podpora v prohlížečích</h3>
 
-<p>Vlastnost <code>field-sizing</code> podporují <b>Chrome 123+</b>, <b>Edge 123+</b> a <b>Firefox 132+</b>. Safari zatím nepodporuje.</p>
+<p>Vlastnost <code>field-sizing</code> podporují <b>Chrome 123+</b>, <b>Edge 123+</b> a <b>Firefox 132+</b>. Safari zatím nepodporuje.</p>
 
 
 
 <h2 id="javascript">JavaScript řešení</h2>
 
-<p>Pro starší prohlížeče nebo Safari je potřeba použít JavaScript. Princip spočívá v měření šířky textu a nastavení šířky inputu.</p>
+<p>Pro starší prohlížeče nebo Safari je potřeba použít JavaScript. Princip spočívá v měření šířky textu a nastavení šířky inputu.</p>
 
 <h3 id="js-canvas">Měření pomocí canvas</h3>
 
@@ -85,24 +85,24 @@ adjustInputWidth(input);</code></pre>
 
 <h2 id="ch">CSS jednotka <code>ch</code></h2>
 
-<p>Pro jednoduché případy s monospace fontem lze využít CSS jednotku <code>ch</code>, která odpovídá šířce znaku „0".</p>
+<p>Pro jednoduché případy s monospace fontem lze využít CSS jednotku <code>ch</code>, která odpovídá šířce znaku „0”.</p>
 
 <pre><code>input {
   font-family: monospace;
   width: 10ch; /* šířka 10 znaků */
 }</code></pre>
 
-<p>V kombinaci s JavaScriptem:</p>
+<p>V kombinaci s JavaScriptem:</p>
 
 <pre><code>input.style.width = (input.value.length || 1) + 'ch';</code></pre>
 
-<p>Toto řešení <b>nefunguje spolehlivě</b> s proporcionálními fonty, kde mají znaky různou šířku („i" vs „m").</p>
+<p>Toto řešení <b>nefunguje spolehlivě</b> s proporcionálními fonty, kde mají znaky různou šířku („i” vs ”m").</p>
 
 
 
 <h2 id="contenteditable">Alternativa: <code>contenteditable</code></h2>
 
-<p>Místo <code>&lt;input></code> lze použít element s atributem <code>contenteditable</code>, který se automaticky rozšiřuje:</p>
+<p>Místo <code>&lt;input></code> lze použít element s atributem <code>contenteditable</code>, který se automaticky rozšiřuje:</p>
 
 <pre><code>&lt;span <b>contenteditable="true"</b> role="textbox">&lt;/span></code></pre>
 
