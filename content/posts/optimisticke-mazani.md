@@ -39,7 +39,7 @@ format: "html"
 
 <h2 id="reseni">Řešení: optimistický přístup</h2>
 
-<p>Optimistické mazání <b>nejdřív aktualizuje UI</b> a pak teprve volá server:</p>
+<p>Optimistické mazání <b>nejdřív aktualisuje UI</b> a pak teprve volá server:</p>
 
 <pre><code>async function smazatPolozku(id) {
   // Okamžitě zmizí z UI
@@ -205,7 +205,7 @@ format: "html"
       nextSibling: item.nextElementSibling
     });
 
-    // Optimistická aktualizace
+    // Optimistická aktualisace
     item.classList.add('removing');
     await this.wait(200);
     item.remove();
@@ -256,7 +256,7 @@ format: "html"
     // Uložit původní stav
     const originalItems = [...items];
 
-    // Optimistická aktualizace
+    // Optimistická aktualisace
     setItems(items.filter(item => item.id !== id));
 
     try {
@@ -306,7 +306,7 @@ async function deleteItem(id) {
   // Uložit původní stav
   const original = [...items.value];
 
-  // Optimistická aktualizace
+  // Optimistická aktualisace
   items.value = items.value.filter(item => item.id !== id);
 
   try {
@@ -386,7 +386,7 @@ function undo(id) {
   hideUndoSnackbar();
 }</code></pre>
 
-<p><b>CSS pro vizualizaci smazaného stavu:</b></p>
+<p><b>CSS pro visualisaci smazaného stavu:</b></p>
 
 <pre><code>.item {
   transition: opacity 0.3s, transform 0.3s;
@@ -408,8 +408,8 @@ function undo(id) {
 <p><b>Výhody soft delete:</b></p>
 <ul>
   <li>Jednoduchá implementace (jen boolean flag)</li>
-  <li>Zachováte pozici v seznamu</li>
-  <li>Snadná synchronizace se serverem</li>
+  <li>Zachováte posici v seznamu</li>
+  <li>Snadná synchronisace se serverem</li>
   <li>Můžete zobrazit "šedý" stav místo úplného zmizení</li>
   <li>Server může implementovat "koš" (trash bin)</li>
 </ul>
@@ -447,7 +447,7 @@ function undo(id) {
   const saved = undoStack.get(id);
   if (!saved) return;
 
-  // Vložit zpět na původní pozici
+  // Vložit zpět na původní posici
   setItems(items => {
     const copy = [...items];
     copy.splice(saved.index, 0, saved.item);
@@ -460,14 +460,14 @@ function undo(id) {
 
 <p><b>Nevýhody:</b></p>
 <ul>
-  <li>Složitější (musíte pamatovat pozici)</li>
-  <li>Může se změnit pořadí, pokud se seznam mezitím aktualizuje</li>
+  <li>Složitější (musíte pamatovat posici)</li>
+  <li>Může se změnit pořadí, pokud se seznam mezitím aktualisuje</li>
   <li>Animace návratu je náročnější</li>
 </ul>
 
 <h3>3. Hybridní přístup</h3>
 
-<p>Vizuálně zmizí, ale data zůstávají - nejlepší z obou světů:</p>
+<p>Visuálně zmizí, ale data zůstávají - nejlepší z obou světů:</p>
 
 <pre><code>const [items, setItems] = useState([...]);
 const [deletingIds, setDeletingIds] = useState(new Set());
@@ -528,7 +528,7 @@ return items
 <p><b>Používejte soft delete</b>, protože:</p>
 <ul>
   <li>Jednodušší kód a údržba</li>
-  <li>Spolehlivější - nemůžete ztratit pozici</li>
+  <li>Spolehlivější - nemůžete ztratit posici</li>
   <li>Lepší pro server - můžete implementovat "koš"</li>
   <li>Snadnější debug - vidíte smazané položky v dev tools</li>
 </ul>
@@ -746,7 +746,7 @@ window.addEventListener('online', () => {
 <p>Výhody tohoto přístupu:</p>
 <ul>
   <li>Jednoduchá implementace - jen přidání/odebrání CSS třídy</li>
-  <li>Položka zachovává svou pozici v seznamu</li>
+  <li>Položka zachovává svou posici v seznamu</li>
   <li>Plynulá animace při obnovení</li>
   <li>Můžete smazat další položku, zatímco čekáte na timeout předchozí</li>
 </ul>
@@ -757,7 +757,7 @@ window.addEventListener('online', () => {
   <li><b>Vysoká spolehlivost</b> — server smazání téměř vždy potvrdí (99 %+)</li>
   <li><b>Rychlá odezva důležitá</b> — seznamy úkolů, komentáře, příspěvky</li>
   <li><b>Vratné akce</b> — mazání není destruktivní (lze obnovit ze zálohy)</li>
-  <li><b>Nízké riziko</b> — chyba nepoškodí data nebo nepřinese ztrátu</li>
+  <li><b>Nízké risiko</b> — chyba nepoškodí data nebo nepřinese ztrátu</li>
 </ul>
 
 <h2 id="kdy-nepouzit">Kdy nepoužívat</h2>
@@ -796,7 +796,7 @@ window.addEventListener('online', () => {
     <td>Okamžitá odezva</td>
   </tr>
   <tr>
-    <td>Konzistence</td>
+    <td>Konsistence</td>
     <td>100 % — zobrazí jen potvrzený stav</td>
     <td>~99 % — může se vrátit zpět</td>
   </tr>
