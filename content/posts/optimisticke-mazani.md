@@ -117,13 +117,13 @@ function TodoList() {
 
 <p>Více informací v článku <a href="/tanstack-query">TanStack Query</a>.</p>
 
-<h2 id="strategie-undo">Jak řešit undo po smazání z UI</h2>
+<h2 id="strategie-undo">Jak řešit undo po smazání z UI</h2>
 
-<p>Položka <b>okamžitě zmizí z UI</b> (optimistický přístup), ale co s požadavkem na server? Máte <b>tři hlavní možnosti</b>:</p>
+<p>Položka <b>okamžitě zmizí z UI</b> (optimistický přístup), ale co s požadavkem na server? Máte <b>tři hlavní možnosti</b>:</p>
 
 <h3>1. Okamžité smazání + undo vytvoří znovu</h3>
 
-<p>Pošlete DELETE požadavek na server <b>ihned</b>, ale zobrazíte toast s tlačítkem „Vrátit zpět". Pokud uživatel klikne na undo, <b>vytvoříte položku znovu</b> pomocí POST/PUT požadavku.</p>
+<p>Pošlete DELETE požadavek na server <b>ihned</b>, ale zobrazíte toast s tlačítkem „Vrátit zpět”. Pokud uživatel klikne na undo, <b>vytvoříte položku znovu</b> pomocí POST/PUT požadavku.</p>
 
 <pre><code>const undoStack = new Map();
 
@@ -170,9 +170,9 @@ async function undo(id) {
 
 <p><b>Výhody:</b></p>
 <ul>
-  <li>Server okamžitě ví o smazání - konsistentní stav</li>
+  <li>Server okamžitě ví o smazání - konsistentní stav</li>
   <li>Jednoduchá implementace - žádné timeouty</li>
-  <li>Funguje dobře i při zavření aplikace - smazání proběhlo</li>
+  <li>Funguje dobře i při zavření aplikace - smazání proběhlo</li>
 </ul>
 
 <p><b>Nevýhody:</b></p>
@@ -330,7 +330,7 @@ async function undo(id) {
 
 <h3>2. Odložené smazání (čekání na timeout)</h3>
 
-<p>Zobrazíte toast „Smazáno", ale <b>DELETE požadavek pošlete až po 5 sekundách</b>. Pokud uživatel klikne na undo, požadavek se nikdy nepošle.</p>
+<p>Zobrazíte toast „Smazáno”, ale <b>DELETE požadavek pošlete až po 5 sekundách</b>. Pokud uživatel klikne na undo, požadavek se nikdy nepošle.</p>
 
 <pre><code>const deleteTimeouts = new Map();
 
@@ -377,8 +377,8 @@ function undo(id) {
 
 <p><b>Nevýhody:</b></p>
 <ul>
-  <li><b>Lže uživateli</b> - říkáte „smazáno", ale ještě není</li>
-  <li>Server neví o smazání - nekonsistentní stav</li>
+  <li><b>Lže uživateli</b> - říkáte „smazáno”, ale ještě není</li>
+  <li>Server neví o smazání - nekonsistentní stav</li>
   <li>Problém při zavření aplikace - timeout se nevykoná</li>
   <li>Složitější správa timeoutů</li>
   <li>Pokud se seznam načte znovu ze serveru, položka se vrátí</li>
@@ -435,7 +435,7 @@ function undo(id) {
     }
   </style>
 
-  <p><b>Ukázka přístupu 2:</b> Smazání se odloží o 5 sekund, undo zruší timeout.</p>
+  <p><b>Ukázka přístupu 2:</b> Smazání se odloží o 5 sekund, undo zruší timeout.</p>
 
   <ul class="delayed-delete-demo" id="delayed-list">
     <li class="delayed-delete-item" data-id="1">
@@ -589,11 +589,11 @@ async function undo(id) {
 
 <p><b>Výhody:</b></p>
 <ul>
-  <li>Server okamžitě ví o smazání - konsistentní stav</li>
+  <li>Server okamžitě ví o smazání - konsistentní stav</li>
   <li>Undo je jednoduché - jen odvolání soft deletu</li>
   <li>Položka zachovává stejné ID</li>
-  <li>Můžete implementovat „koš" na serveru</li>
-  <li>Funguje i při zavření aplikace</li>
+  <li>Můžete implementovat „koš” na serveru</li>
+  <li>Funguje i při zavření aplikace</li>
   <li>Audit trail - vidíte historii smazání</li>
 </ul>
 
