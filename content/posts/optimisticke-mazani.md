@@ -192,7 +192,7 @@ function TodoList() {
 
 <p>Volba přístupu záleží na konkrétní situaci a podmínkách vašeho projektu:</p>
 
-<p><b>Soft delete na backendu (přístup 3)</b> může být teoreticky nejčistší řešení s okamžitou konzistencí a jednoduchým undo, ale přináší komplexitu na backendu – složitější databázové dotazy, nutnost filtrovat smazané záznamy všude a řešit čištění starých dat.</p>
+<p><b>Soft delete na backendu (přístup 3)</b> může být teoreticky nejčistší řešení s okamžitou konsistencí a jednoduchým undo, ale přináší komplexitu na backendu – složitější databázové dotazy, nutnost filtrovat smazané záznamy všude a řešit čištění starých dat.</p>
 
 <p><b>Odložené smazání (přístup 2)</b> je nejjednodušší na implementaci a šetří síťový provoz, ale lže uživateli o skutečném stavu a může způsobit problémy při zavření aplikace nebo obnovení dat ze serveru.</p>
 
