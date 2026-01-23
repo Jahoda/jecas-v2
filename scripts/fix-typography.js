@@ -85,14 +85,52 @@ const TYPOGRAPHY_RULES = [
 		replace: '$1\u00A0$2'
 	},
 
+	// Typografická pomlčka: rozsahy čísel 200-500 → 200–500
+	{
+		name: 'pomlčka v rozsazích čísel',
+		find: /(\d+)-(\d+)/g,
+		replace: '$1\u2013$2'
+	},
+
+	// Typografická pomlčka: spojovník s mezerou jako oddělovač " - " → " – "
+	// Pouze v prose textu - NE v HTML atributech
+	// Matchuje po: > (konec tagu), whitespace, nebo na začátku řádku
+	{
+		name: 'pomlčka jako oddělovač',
+		find: /(^|>|\s)- /gm,
+		replace: '$1\u2013 '
+	},
+
+	// České uvozovky: oprava špatně použitých uvozovek
+	// Opravuje: „text„ (obě dolní) → „text"
+	{
+		name: 'oprava špatně použitých českých uvozovek (obě dolní)',
+		find: /\u201E([^\u201E\u201C\u201D<>=]+)\u201E/g,
+		replace: '\u201E$1\u201D'
+	},
+
+	// Opravuje: "text" (obě horní) → „text"
+	{
+		name: 'oprava špatně použitých českých uvozovek (obě horní)',
+		find: /\u201C([^\u201E\u201C\u201D<>=]+)\u201C/g,
+		replace: '\u201E$1\u201D'
+	},
+
+	// Opravuje: „text" (dolní + ASCII) → „text"
+	{
+		name: 'oprava špatně použitých českých uvozovek (dolní + ASCII)',
+		find: /\u201E([^\u201E\u201C\u201D"<>=]+)"/g,
+		replace: '\u201E$1\u201D'
+	},
+
 	// České uvozovky: "text" → „text"
 	// Pouze v prose textu - NE v HTML atributech (po =)
 	// Matchuje uvozovky po: > (konec tagu), whitespace, ( nebo na začátku řádku
-	// České uvozovky: „ (U+201E) otevírací, " (U+201C) zavírací
+	// České uvozovky: „ (U+201E) otevírací, " (U+201D) zavírací
 	{
 		name: 'české uvozovky',
 		find: /(^|>|\s|\()"([^"<>=]+)"/gm,
-		replace: '$1\u201E$2\u201C'
+		replace: '$1\u201E$2\u201D'
 	}
 ];
 
