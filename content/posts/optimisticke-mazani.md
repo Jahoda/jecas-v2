@@ -117,79 +117,492 @@ function TodoList() {
 
 <p>Více informací v článku <a href="/tanstack-query">TanStack Query</a>.</p>
 
-<h2 id="strategie-undo">Strategie pro implementaci undo</h2>
+<h2 id="strategie-undo">Jak řešit undo po smazání z UI</h2>
 
-<p>Při implementaci undo máte <b>tři hlavní možnosti</b>, jak řešit načasování skutečného smazání:</p>
+<p>Položka <b>okamžitě zmizí z UI</b> (optimistický přístup), ale co s požadavkem na server? Máte <b>tři hlavní možnosti</b>:</p>
 
-<h3>1. Soft delete (doporučeno)</h3>
+<h3>1. Okamžité smazání + undo vytvoří znovu</h3>
 
-<p>Položku <b>neodstraníte ze stavu</b>, jen ji označíte jako smazanou:</p>
+<p>Pošlete DELETE požadavek na server <b>ihned</b>, ale zobrazíte toast s tlačítkem „Vrátit zpět". Pokud uživatel klikne na undo, <b>vytvoříte položku znovu</b> pomocí POST/PUT požadavku.</p>
 
-<pre><code>async function deleteItem(id) {
-  const deleteTime = Date.now();
+<pre><code>const undoStack = new Map();
 
-  // Označit jako smazanou (zůstává v datech)
-  setItems(items => items.map(item =>
-    item.id === id ? { ...item, deleted: true, deleteTime } : item
-  ));
+async function deleteItem(id, item) {
+  // 1. Okamžitě odebrat z UI
+  setItems(items => items.filter(i => i.id !== id));
 
-  // Zobrazit undo snackbar
-  showUndoSnackbar(id);
+  // 2. Uložit pro případný undo
+  undoStack.set(id, item);
 
-  // Počkat 5 sekund na případný undo
-  await new Promise(resolve => setTimeout(resolve, 5000));
+  // 3. Zobrazit undo toast
+  showUndoToast(id);
 
-  // Pokud nebyl undo, teprve teď skutečně smazat
-  let shouldDelete = false;
-  setItems(items => {
-    const item = items.find(i => i.id === id);
-    if (item?.deleted && item.deleteTime === deleteTime) {
-      shouldDelete = true;
-      return items.filter(i => i.id !== id);
-    }
-    return items;
-  });
-
-  // API volání (jen pokud nebyl undo)
-  if (shouldDelete) {
+  // 4. Ihned smazat na serveru
+  try {
     await fetch(`/api/items/${id}`, { method: 'DELETE' });
+  } catch (error) {
+    // Při chybě vrátit zpět
+    setItems(items => [...items, item]);
+    undoStack.delete(id);
+    showError('Nepodařilo se smazat');
   }
 }
 
-function undo(id) {
-  // Jen zrušit flag deleted
-  setItems(items.map(item =>
-    item.id === id ? { ...item, deleted: false } : item
-  ));
-  hideUndoSnackbar();
+async function undo(id) {
+  const item = undoStack.get(id);
+  if (!item) return;
+
+  // Znovu vytvořit na serveru
+  try {
+    await fetch('/api/items', {
+      method: 'POST',
+      body: JSON.stringify(item)
+    });
+    
+    // Vrátit do UI
+    setItems(items => [...items, item]);
+    undoStack.delete(id);
+    hideUndoToast();
+  } catch (error) {
+    showError('Nepodařilo se obnovit');
+  }
 }</code></pre>
 
-<p><b>CSS pro visualisaci smazaného stavu:</b></p>
-
-<pre><code>.item {
-  transition: opacity 0.3s, transform 0.3s;
-}
-
-.item.deleted {
-  opacity: 0;
-  transform: translateX(-20px);
-  pointer-events: none;
-}
-
-/* Nebo s vyblednutím místo zmizení */
-.item.deleted {
-  opacity: 0.5;
-  text-decoration: line-through;
-  pointer-events: none;
-}</code></pre>
-
-<p><b>Výhody soft delete:</b></p>
+<p><b>Výhody:</b></p>
 <ul>
-  <li>Jednoduchá implementace (jen boolean flag)</li>
-  <li>Zachováte posici v seznamu</li>
-  <li>Snadná synchronisace se serverem</li>
-  <li>Můžete zobrazit „šedý“ stav místo úplného zmizení</li>
-  <li>Server může implementovat „koš“ (trash bin)</li>
+  <li>Server okamžitě ví o smazání - konzistentní stav</li>
+  <li>Jednoduchá implementace - žádné timeouty</li>
+  <li>Funguje dobře i při zavření aplikace - smazání proběhlo</li>
+</ul>
+
+<p><b>Nevýhody:</b></p>
+<ul>
+  <li>Undo je složitější - musíte znovu vytvořit položku</li>
+  <li>Potřebujete endpoint pro vytvoření (může mít nové ID)</li>
+  <li>Dvě API volání při undo (DELETE + POST)</li>
+  <li>Pokud se změní ID, musíte aktualisovat reference</li>
+</ul>
+
+<div class="live">
+  <style>
+    .immediate-delete-demo {
+      list-style: none;
+      padding: 0;
+      margin: 1em 0;
+    }
+
+    .immediate-delete-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75em;
+      padding: 0.75em 1em;
+      margin: 0.5em 0;
+      background: #f5f5f5;
+      border-radius: 6px;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .immediate-delete-item.removing {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    .immediate-toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #323232;
+      color: white;
+      padding: 1em 1.5em;
+      border-radius: 4px;
+      display: flex;
+      gap: 1em;
+      align-items: center;
+      transition: transform 0.3s;
+      z-index: 1000;
+    }
+
+    .immediate-toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .undo-btn {
+      background: #DA3F94;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 4px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 0.875em;
+    }
+
+    .opt-btn-delete {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 0.5em 0.75em;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.875em;
+      margin-left: auto;
+    }
+  </style>
+
+  <p><b>Ukázka přístupu 1:</b> Smazání probíhá ihned, undo znovu vytvoří položku.</p>
+
+  <ul class="immediate-delete-demo" id="immediate-list">
+    <li class="immediate-delete-item" data-id="1">
+      <span>Položka A</span>
+      <button class="opt-btn-delete" onclick="immediateDeleteDemo(1, 'Položka A')">Smazat</button>
+    </li>
+    <li class="immediate-delete-item" data-id="2">
+      <span>Položka B</span>
+      <button class="opt-btn-delete" onclick="immediateDeleteDemo(2, 'Položka B')">Smazat</button>
+    </li>
+    <li class="immediate-delete-item" data-id="3">
+      <span>Položka C</span>
+      <button class="opt-btn-delete" onclick="immediateDeleteDemo(3, 'Položka C')">Smazat</button>
+    </li>
+  </ul>
+
+  <div class="immediate-toast" id="immediate-toast">
+    <span id="immediate-text"></span>
+    <button class="undo-btn" onclick="immediateUndo()">Vrátit zpět</button>
+  </div>
+
+  <script>
+    (function() {
+      const undoStack = new Map();
+      let currentId = null;
+
+      window.immediateDeleteDemo = async function(id, text) {
+        const item = document.querySelector(`#immediate-list [data-id="${id}"]`);
+        const toast = document.getElementById('immediate-toast');
+        const toastText = document.getElementById('immediate-text');
+
+        // Uložit pro undo
+        undoStack.set(id, { id, text, element: item.cloneNode(true) });
+        currentId = id;
+
+        // Okamžitě odstranit z UI
+        item.classList.add('removing');
+        await new Promise(resolve => setTimeout(resolve, 300));
+        item.remove();
+
+        // Zobrazit toast
+        toastText.textContent = `${text} smazána (simulace DELETE)`;
+        toast.classList.add('show');
+
+        // Po 5 sekundách skrýt toast
+        setTimeout(() => {
+          if (currentId === id) {
+            toast.classList.remove('show');
+            undoStack.delete(id);
+            currentId = null;
+          }
+        }, 5000);
+      };
+
+      window.immediateUndo = function() {
+        if (!currentId) return;
+
+        const saved = undoStack.get(currentId);
+        if (!saved) return;
+
+        // Simulace POST - znovu vytvořit
+        const list = document.getElementById('immediate-list');
+        const newItem = saved.element.cloneNode(true);
+        list.appendChild(newItem);
+
+        // Skrýt toast
+        const toast = document.getElementById('immediate-toast');
+        toast.classList.remove('show');
+
+        undoStack.delete(currentId);
+        currentId = null;
+      };
+    })();
+  </script>
+</div>
+
+<h3>2. Odložené smazání (čekání na timeout)</h3>
+
+<p>Zobrazíte toast „Smazáno", ale <b>DELETE požadavek pošlete až po 5 sekundách</b>. Pokud uživatel klikne na undo, požadavek se nikdy nepošle.</p>
+
+<pre><code>const deleteTimeouts = new Map();
+
+async function deleteItem(id) {
+  // 1. Okamžitě odebrat z UI
+  setItems(items => items.filter(i => i.id !== id));
+
+  // 2. Zobrazit undo toast
+  showUndoToast(id);
+
+  // 3. Naplánovat smazání na později
+  const timeoutId = setTimeout(async () => {
+    // Po 5 sekundách teprve smazat na serveru
+    try {
+      await fetch(`/api/items/${id}`, { method: 'DELETE' });
+      deleteTimeouts.delete(id);
+    } catch (error) {
+      showError('Nepodařilo se smazat');
+    }
+  }, 5000);
+
+  deleteTimeouts.set(id, timeoutId);
+}
+
+function undo(id) {
+  // Zrušit timeout - smazání se nestane
+  const timeoutId = deleteTimeouts.get(id);
+  if (timeoutId) {
+    clearTimeout(timeoutId);
+    deleteTimeouts.delete(id);
+  }
+
+  // Vrátit do UI
+  setItems(items => [...items, savedItem]);
+  hideUndoToast();
+}</code></pre>
+
+<p><b>Výhody:</b></p>
+<ul>
+  <li>Jednoduchý undo - jen zrušíte timeout</li>
+  <li>Jedno API volání (jen DELETE, žádný POST)</li>
+  <li>Ušetříte síťový provoz pokud uživatel často používá undo</li>
+</ul>
+
+<p><b>Nevýhody:</b></p>
+<ul>
+  <li><b>Lže uživateli</b> - říkáte „smazáno", ale ještě není</li>
+  <li>Server neví o smazání - nekonzistentní stav</li>
+  <li>Problém při zavření aplikace - timeout se nevykoná</li>
+  <li>Složitější správa timeoutů</li>
+  <li>Pokud se seznam načte znovu ze serveru, položka se vrátí</li>
+</ul>
+
+<div class="live">
+  <style>
+    .delayed-delete-demo {
+      list-style: none;
+      padding: 0;
+      margin: 1em 0;
+    }
+
+    .delayed-delete-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75em;
+      padding: 0.75em 1em;
+      margin: 0.5em 0;
+      background: #f5f5f5;
+      border-radius: 6px;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    .delayed-delete-item.removing {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    .delayed-toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #323232;
+      color: white;
+      padding: 1em 1.5em;
+      border-radius: 4px;
+      display: flex;
+      gap: 1em;
+      align-items: center;
+      transition: transform 0.3s;
+      z-index: 1000;
+    }
+
+    .delayed-toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .delayed-toast small {
+      display: block;
+      opacity: 0.7;
+      font-size: 0.85em;
+    }
+  </style>
+
+  <p><b>Ukázka přístupu 2:</b> Smazání se odloží o 5 sekund, undo zruší timeout.</p>
+
+  <ul class="delayed-delete-demo" id="delayed-list">
+    <li class="delayed-delete-item" data-id="1">
+      <span>Úkol X</span>
+      <button class="opt-btn-delete" onclick="delayedDeleteDemo(1, 'Úkol X')">Smazat</button>
+    </li>
+    <li class="delayed-delete-item" data-id="2">
+      <span>Úkol Y</span>
+      <button class="opt-btn-delete" onclick="delayedDeleteDemo(2, 'Úkol Y')">Smazat</button>
+    </li>
+    <li class="delayed-delete-item" data-id="3">
+      <span>Úkol Z</span>
+      <button class="opt-btn-delete" onclick="delayedDeleteDemo(3, 'Úkol Z')">Smazat</button>
+    </li>
+  </ul>
+
+  <div class="delayed-toast" id="delayed-toast">
+    <div>
+      <span id="delayed-text"></span>
+      <small>DELETE se pošle za <span id="delayed-countdown">5</span>s</small>
+    </div>
+    <button class="undo-btn" onclick="delayedUndo()">Vrátit zpět</button>
+  </div>
+
+  <script>
+    (function() {
+      const deleteTimeouts = new Map();
+      const savedItems = new Map();
+      let currentId = null;
+      let countdownInterval = null;
+
+      window.delayedDeleteDemo = async function(id, text) {
+        const item = document.querySelector(`#delayed-list [data-id="${id}"]`);
+        const toast = document.getElementById('delayed-toast');
+        const toastText = document.getElementById('delayed-text');
+        const countdown = document.getElementById('delayed-countdown');
+
+        // Uložit pro undo
+        savedItems.set(id, { id, text, element: item.cloneNode(true) });
+        currentId = id;
+
+        // Okamžitě odstranit z UI
+        item.classList.add('removing');
+        await new Promise(resolve => setTimeout(resolve, 300));
+        item.remove();
+
+        // Zobrazit toast
+        toastText.textContent = `${text} smazán`;
+        toast.classList.add('show');
+
+        // Countdown
+        let remaining = 5;
+        countdown.textContent = remaining;
+        
+        if (countdownInterval) clearInterval(countdownInterval);
+        countdownInterval = setInterval(() => {
+          remaining--;
+          countdown.textContent = remaining;
+          if (remaining <= 0) {
+            clearInterval(countdownInterval);
+          }
+        }, 1000);
+
+        // Naplánovat smazání
+        const timeoutId = setTimeout(() => {
+          toast.classList.remove('show');
+          deleteTimeouts.delete(id);
+          savedItems.delete(id);
+          currentId = null;
+          clearInterval(countdownInterval);
+          console.log('DELETE požadavek odeslán na server');
+        }, 5000);
+
+        deleteTimeouts.set(id, timeoutId);
+      };
+
+      window.delayedUndo = function() {
+        if (!currentId) return;
+
+        // Zrušit timeout
+        const timeoutId = deleteTimeouts.get(currentId);
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+          deleteTimeouts.delete(currentId);
+        }
+
+        if (countdownInterval) {
+          clearInterval(countdownInterval);
+        }
+
+        // Vrátit položku
+        const saved = savedItems.get(currentId);
+        if (saved) {
+          const list = document.getElementById('delayed-list');
+          const newItem = saved.element.cloneNode(true);
+          list.appendChild(newItem);
+          savedItems.delete(currentId);
+        }
+
+        // Skrýt toast
+        const toast = document.getElementById('delayed-toast');
+        toast.classList.remove('show');
+        currentId = null;
+      };
+    })();
+  </script>
+</div>
+
+<h3>3. Soft delete na backendu</h3>
+
+<p>Pošlete DELETE požadavek <b>ihned</b>, ale backend neodstraní položku, jen ji označí jako smazanou (např. <code>deleted_at</code>). Undo pak pošle požadavek, který soft delete zruší.</p>
+
+<pre><code>async function deleteItem(id) {
+  // 1. Okamžitě odebrat z UI
+  setItems(items => items.filter(i => i.id !== id));
+
+  // 2. Soft delete na serveru (ihned)
+  try {
+    await fetch(`/api/items/${id}`, { 
+      method: 'DELETE',
+      headers: { 'X-Soft-Delete': 'true' }
+    });
+
+    // 3. Zobrazit undo toast
+    showUndoToast(id);
+  } catch (error) {
+    // Při chybě vrátit zpět
+    setItems(items => [...items, item]);
+    showError('Nepodařilo se smazat');
+  }
+}
+
+async function undo(id) {
+  // Zrušit soft delete na serveru
+  try {
+    await fetch(`/api/items/${id}/restore`, { 
+      method: 'POST' 
+    });
+
+    // Načíst znovu ze serveru
+    const response = await fetch(`/api/items/${id}`);
+    const item = await response.json();
+    
+    // Vrátit do UI
+    setItems(items => [...items, item]);
+    hideUndoToast();
+  } catch (error) {
+    showError('Nepodařilo se obnovit');
+  }
+}</code></pre>
+
+<p><b>Výhody:</b></p>
+<ul>
+  <li>Server okamžitě ví o smazání - konzistentní stav</li>
+  <li>Undo je jednoduché - jen odvolání soft deletu</li>
+  <li>Položka zachovává stejné ID</li>
+  <li>Můžete implementovat „koš" na serveru</li>
+  <li>Funguje i při zavření aplikace</li>
+  <li>Audit trail - vidíte historii smazání</li>
+</ul>
+
+<p><b>Nevýhody:</b></p>
+<ul>
+  <li>Vyžaduje změnu na backendu (soft delete)</li>
+  <li>Potřebujete endpoint pro restore</li>
+  <li>Dvě API volání při undo (DELETE + POST restore)</li>
+  <li>Složitější databázové query (musíte filtrovat <code>deleted_at IS NULL</code>)</li>
 </ul>
 
 <div class="live">
@@ -211,446 +624,116 @@ function undo(id) {
       transition: opacity 0.3s, transform 0.3s;
     }
 
-    .soft-delete-item.deleted {
-      opacity: 0.5;
-      text-decoration: line-through;
-      pointer-events: none;
-      background: #ffe0e0;
+    .soft-delete-item.removing {
+      opacity: 0;
+      transform: translateX(-20px);
     }
 
-    .soft-delete-btn {
-      background: #e74c3c;
+    .soft-toast {
+      position: fixed;
+      bottom: 140px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #323232;
       color: white;
-      border: none;
-      padding: 0.5em 0.75em;
+      padding: 1em 1.5em;
       border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.875em;
-      margin-left: auto;
+      display: flex;
+      gap: 1em;
+      align-items: center;
+      transition: transform 0.3s;
+      z-index: 1000;
     }
 
-    .soft-delete-btn:hover {
-      background: #c0392b;
+    .soft-toast.show {
+      transform: translateX(-50%) translateY(0);
     }
 
-    .soft-delete-status {
-      font-size: 0.875em;
-      color: #666;
-      font-style: italic;
+    .soft-toast small {
+      display: block;
+      opacity: 0.7;
+      font-size: 0.85em;
     }
   </style>
 
-  <p><b>Ukázka soft delete:</b> Položka zůstává v DOM, pouze se označí jako smazaná.</p>
+  <p><b>Ukázka přístupu 3:</b> Soft delete na serveru, undo odvolá smazání.</p>
 
-  <ul class="soft-delete-demo" id="soft-delete-list">
+  <ul class="soft-delete-demo" id="soft-list">
     <li class="soft-delete-item" data-id="1">
-      <span>Úkol A</span>
-      <span class="soft-delete-status"></span>
-      <button class="soft-delete-btn opt-btn-delete" onclick="softDeleteDemo(1)">Smazat</button>
+      <span>Email 1</span>
+      <button class="opt-btn-delete" onclick="softDeleteDemo(1, 'Email 1')">Smazat</button>
     </li>
     <li class="soft-delete-item" data-id="2">
-      <span>Úkol B</span>
-      <span class="soft-delete-status"></span>
-      <button class="soft-delete-btn opt-btn-delete" onclick="softDeleteDemo(2)">Smazat</button>
+      <span>Email 2</span>
+      <button class="opt-btn-delete" onclick="softDeleteDemo(2, 'Email 2')">Smazat</button>
     </li>
     <li class="soft-delete-item" data-id="3">
-      <span>Úkol C</span>
-      <span class="soft-delete-status"></span>
-      <button class="soft-delete-btn opt-btn-delete" onclick="softDeleteDemo(3)">Smazat</button>
+      <span>Email 3</span>
+      <button class="opt-btn-delete" onclick="softDeleteDemo(3, 'Email 3')">Smazat</button>
     </li>
   </ul>
 
-  <script>
-    (function() {
-      window.softDeleteDemo = function(id) {
-        const item = document.querySelector(`#soft-delete-list [data-id="${id}"]`);
-        const status = item.querySelector('.soft-delete-status');
-
-        // Soft delete - přidat třídu
-        item.classList.add('deleted');
-        status.textContent = '(označeno jako smazané)';
-
-        // Po 3 sekundách obnovit
-        setTimeout(() => {
-          item.classList.remove('deleted');
-          status.textContent = '';
-        }, 3000);
-      };
-    })();
-  </script>
-</div>
-
-<h3>2. Skutečné odstranění s rollbackem</h3>
-
-<p>Položku <b>opravdu smažete</b> z UI a při undo ji vrátíte zpět:</p>
-
-<pre><code>const undoStack = new Map();
-
-async function deleteItem(id) {
-  let item;
-  let index;
-
-  // Odebrat z UI a uložit
-  setItems(items => {
-    index = items.findIndex(i => i.id === id);
-    item = items[index];
-    undoStack.set(id, { item, index });
-    return items.filter(i => i.id !== id);
-  });
-
-  // Zobrazit undo
-  showUndoSnackbar(id);
-
-  // Po 5 sekundách potvrdit smazání
-  setTimeout(async () => {
-    if (undoStack.has(id)) {
-      // Volat API
-      await fetch(`/api/items/${id}`, { method: 'DELETE' });
-      undoStack.delete(id);
-    }
-  }, 5000);
-}
-
-function undo(id) {
-  const saved = undoStack.get(id);
-  if (!saved) return;
-
-  // Vložit zpět (ale na konec seznamu, protože původní index už nemusí platit)
-  setItems(items => [...items, saved.item]);
-
-  undoStack.delete(id);
-  hideUndoSnackbar();
-}</code></pre>
-
-<p><b>Nevýhody:</b></p>
-<ul>
-  <li>Složitější (musíte pamatovat posici)</li>
-  <li>Může se změnit pořadí, pokud se seznam mezitím aktualisuje</li>
-  <li>Animace návratu je náročnější</li>
-</ul>
-
-<div class="live">
-  <style>
-    .hard-delete-demo {
-      list-style: none;
-      padding: 0;
-      margin: 1em 0;
-    }
-
-    .hard-delete-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75em;
-      padding: 0.75em 1em;
-      margin: 0.5em 0;
-      background: #f5f5f5;
-      border-radius: 6px;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    .hard-delete-item.removing {
-      opacity: 0;
-      transform: translateX(-30px);
-    }
-
-    .hard-delete-item.restoring {
-      animation: slideIn 0.3s ease-out;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .hard-delete-btn {
-      background: #e74c3c;
-      color: white;
-      border: none;
-      padding: 0.5em 0.75em;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.875em;
-      margin-left: auto;
-    }
-
-    .hard-delete-msg {
-      padding: 0.5em 1em;
-      background: #fff3cd;
-      border-left: 4px solid #ffc107;
-      margin: 0.5em 0;
-      border-radius: 4px;
-      font-size: 0.875em;
-      display: none;
-    }
-
-    .hard-delete-msg.show {
-      display: block;
-    }
-  </style>
-
-  <p><b>Ukázka hard delete:</b> Položka se skutečně odebere z DOM a po 3 sekundách se vrátí zpět.</p>
-
-  <ul class="hard-delete-demo" id="hard-delete-list">
-    <li class="hard-delete-item" data-id="1">
-      <span>Položka X</span>
-      <button class="hard-delete-btn opt-btn-delete" onclick="hardDeleteDemo(1)">Smazat</button>
-    </li>
-    <li class="hard-delete-item" data-id="2">
-      <span>Položka Y</span>
-      <button class="hard-delete-btn opt-btn-delete" onclick="hardDeleteDemo(2)">Smazat</button>
-    </li>
-    <li class="hard-delete-item" data-id="3">
-      <span>Položka Z</span>
-      <button class="hard-delete-btn opt-btn-delete" onclick="hardDeleteDemo(3)">Smazat</button>
-    </li>
-  </ul>
-
-  <div class="hard-delete-msg" id="hard-delete-msg">
-    Položka odstraněna z DOM
+  <div class="soft-toast" id="soft-toast">
+    <div>
+      <span id="soft-text"></span>
+      <small>Soft delete na serveru (deleted_at nastaven)</small>
+    </div>
+    <button class="undo-btn" onclick="softUndo()">Vrátit zpět</button>
   </div>
 
   <script>
     (function() {
-      const hardDeleteStack = new Map();
+      const savedItems = new Map();
+      let currentId = null;
 
-      window.hardDeleteDemo = async function(id) {
-        const item = document.querySelector(`#hard-delete-list [data-id="${id}"]`);
-        const list = document.getElementById('hard-delete-list');
-        const msg = document.getElementById('hard-delete-msg');
+      window.softDeleteDemo = async function(id, text) {
+        const item = document.querySelector(`#soft-list [data-id="${id}"]`);
+        const toast = document.getElementById('soft-toast');
+        const toastText = document.getElementById('soft-text');
 
-        // Uložit pro rollback
-        const index = Array.from(list.children).indexOf(item);
-        hardDeleteStack.set(id, {
-          html: item.outerHTML,
-          index: index
-        });
+        // Uložit pro undo
+        savedItems.set(id, { id, text, element: item.cloneNode(true) });
+        currentId = id;
 
-        // Animace zmizení
+        // Okamžitě odstranit z UI
         item.classList.add('removing');
         await new Promise(resolve => setTimeout(resolve, 300));
-
-        // Skutečné odstranění z DOM
         item.remove();
-        msg.classList.add('show');
 
-        // Po 3 sekundách vrátit zpět
+        // Zobrazit toast
+        toastText.textContent = `${text} smazán`;
+        toast.classList.add('show');
+
+        console.log('Soft DELETE požadavek odeslán ihned');
+
+        // Po 5 sekundách skrýt toast
         setTimeout(() => {
-          const saved = hardDeleteStack.get(id);
-          if (!saved) return;
-
-          const children = Array.from(list.children);
-          const fragment = document.createRange().createContextualFragment(saved.html);
-          const newItem = fragment.firstElementChild;
-
-          if (saved.index >= children.length) {
-            list.appendChild(newItem);
-          } else {
-            list.insertBefore(newItem, children[saved.index]);
+          if (currentId === id) {
+            toast.classList.remove('show');
+            savedItems.delete(id);
+            currentId = null;
           }
-
-          newItem.classList.add('restoring');
-          setTimeout(() => newItem.classList.remove('restoring'), 300);
-
-          msg.classList.remove('show');
-          hardDeleteStack.delete(id);
-        }, 3000);
+        }, 5000);
       };
-    })();
-  </script>
-</div>
 
-<h3>3. Hybridní přístup</h3>
+      window.softUndo = function() {
+        if (!currentId) return;
 
-<p>Visuálně zmizí, ale data zůstávají - nejlepší z obou světů:</p>
+        // Simulace POST /restore
+        console.log('POST /restore požadavek odeslán');
 
-<pre><code>const [items, setItems] = useState([...]);
-const [deletingIds, setDeletingIds] = useState(new Set());
+        const saved = savedItems.get(currentId);
+        if (saved) {
+          const list = document.getElementById('soft-list');
+          const newItem = saved.element.cloneNode(true);
+          list.appendChild(newItem);
+          savedItems.delete(currentId);
+        }
 
-async function deleteItem(id) {
-  const deleteTime = Date.now();
-
-  // 1. Označit pro animaci zmizení
-  setDeletingIds(prev => new Set(prev).add(id));
-
-  // 2. Počkat na animaci (200ms)
-  await new Promise(resolve => setTimeout(resolve, 200));
-
-  // 3. Soft delete (zůstává v datech)
-  setItems(items => items.map(item =>
-    item.id === id ? { ...item, deleted: true, deleteTime } : item
-  ));
-
-  // 4. Odebrat z animujících
-  setDeletingIds(prev => {
-    const next = new Set(prev);
-    next.delete(id);
-    return next;
-  });
-
-  // 5. Zobrazit undo
-  showUndoSnackbar(id);
-
-  // 6. Po 5 sekundách skutečně smazat
-  setTimeout(async () => {
-    let shouldDelete = false;
-    setItems(items => {
-      const item = items.find(i => i.id === id);
-      if (item?.deleted && item.deleteTime === deleteTime) {
-        shouldDelete = true;
-        return items.filter(i => i.id !== id);
-      }
-      return items;
-    });
-
-    if (shouldDelete) {
-      await fetch(`/api/items/${id}`, { method: 'DELETE' });
-    }
-  }, 5000);
-}
-
-function undo(id) {
-  // Jen zrušit deleted flag
-  setItems(items => items.map(item =>
-    item.id === id ? { ...item, deleted: false } : item
-  ));
-  hideUndoSnackbar();
-}
-
-// Render - filtrovat smazané a animovat mizející
-return items
-  .filter(item => !item.deleted)
-  .map(item => (
-    &lt;div className={deletingIds.has(item.id) ? 'removing' : ''}&gt;
-      {item.text}
-    &lt;/div&gt;
-  ));</code></pre>
-
-<p>Tento přístup kombinuje plynulou animaci zmizení s jednoduchostí soft delete.</p>
-
-<div class="live">
-  <style>
-    .hybrid-delete-demo {
-      list-style: none;
-      padding: 0;
-      margin: 1em 0;
-    }
-
-    .hybrid-delete-item {
-      padding: 0.75em 1em;
-      margin: 0.5em 0;
-      background: #f5f5f5;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      gap: 0.75em;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    .hybrid-delete-item.deleting {
-      opacity: 0;
-      transform: translateX(-20px) scale(0.95);
-    }
-
-    .hybrid-delete-item.deleted {
-      display: none;
-    }
-
-    .hybrid-delete-item.restoring {
-      animation: fadeSlideIn 0.4s ease-out;
-    }
-
-    @keyframes fadeSlideIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9) translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-    }
-
-    .hybrid-delete-btn {
-      background: #e74c3c;
-      color: white;
-      border: none;
-      padding: 0.5em 0.75em;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 0.875em;
-      margin-left: auto;
-    }
-
-    .hybrid-status {
-      padding: 0.5em 1em;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      margin: 0.5em 0;
-      border-radius: 4px;
-      font-size: 0.875em;
-      display: none;
-    }
-
-    .hybrid-status.show {
-      display: block;
-    }
-  </style>
-
-  <p><b>Ukázka hybridního přístupu:</b> Plynule zmizí, ale data zůstávají pro snadné obnovení.</p>
-
-  <ul class="hybrid-delete-demo" id="hybrid-delete-list">
-    <li class="hybrid-delete-item" data-id="1" data-deleted="false">
-      <span>Hybridní úkol 1</span>
-      <button class="hybrid-delete-btn opt-btn-delete" onclick="hybridDeleteDemo(1)">Smazat</button>
-    </li>
-    <li class="hybrid-delete-item" data-id="2" data-deleted="false">
-      <span>Hybridní úkol 2</span>
-      <button class="hybrid-delete-btn opt-btn-delete" onclick="hybridDeleteDemo(2)">Smazat</button>
-    </li>
-    <li class="hybrid-delete-item" data-id="3" data-deleted="false">
-      <span>Hybridní úkol 3</span>
-      <button class="hybrid-delete-btn opt-btn-delete" onclick="hybridDeleteDemo(3)">Smazat</button>
-    </li>
-  </ul>
-
-  <div class="hybrid-status" id="hybrid-status">
-    📊 Stav: Položka je smazaná v UI, ale stále existuje v datech. Obnoví se za 3 sekundy.
-  </div>
-
-  <script>
-    (function() {
-      window.hybridDeleteDemo = async function(id) {
-        const item = document.querySelector(`#hybrid-delete-list [data-id="${id}"]`);
-        const status = document.getElementById('hybrid-status');
-
-        // Fáze 1: Animace zmizení
-        item.classList.add('deleting');
-        await new Promise(resolve => setTimeout(resolve, 300));
-
-        // Fáze 2: Soft delete (zůstává v DOM, ale skrytý)
-        item.classList.add('deleted');
-        item.classList.remove('deleting');
-        item.dataset.deleted = 'true';
-
-        status.classList.add('show');
-
-        // Fáze 3: Po 3 sekundách obnovit
-        setTimeout(() => {
-          if (item.dataset.deleted === 'true') {
-            item.dataset.deleted = 'false';
-            item.classList.remove('deleted');
-            item.classList.add('restoring');
-
-            setTimeout(() => item.classList.remove('restoring'), 400);
-            status.classList.remove('show');
-          }
-        }, 3000);
+        // Skrýt toast
+        const toast = document.getElementById('soft-toast');
+        toast.classList.remove('show');
+        currentId = null;
       };
     })();
   </script>
@@ -658,20 +741,28 @@ return items
 
 <h3>Doporučení</h3>
 
-<p><b>Používejte soft delete</b>, protože:</p>
+<p><b>Používejte soft delete na backendu (přístup 3)</b>, protože:</p>
 <ul>
-  <li>Jednodušší kód a údržba</li>
-  <li>Spolehlivější - nemůžete ztratit posici</li>
-  <li>Lepší pro server - můžete implementovat „koš“</li>
-  <li>Snadnější debug - vidíte smazané položky v dev tools</li>
+  <li>Nejlepší ze všech světů - okamžitá konzistence + jednoduché undo</li>
+  <li>Server má vždy aktuální stav</li>
+  <li>Můžete implementovat automatické čištění po X dnech</li>
+  <li>Audit trail zdarma</li>
 </ul>
 
-<p><b>Skutečné odstranění</b> použijte jen když:</p>
+<p><b>Odložené smazání (přístup 2)</b> použijte jen když:</p>
 <ul>
-  <li>Položka musí okamžitě zmizet z UI</li>
-  <li>Nemáte server-side „koš“</li>
-  <li>Jde o dočasná data (notifikace, toasty)</li>
+  <li>Nemůžete změnit backend</li>
+  <li>Ušetření síťového provozu je kritické</li>
+  <li>Uživatelé často používají undo</li>
 </ul>
+
+<p><b>Okamžité smazání + undo vytvoří znovu (přístup 1)</b> je vhodný když:</p>
+<ul>
+  <li>Nemůžete implementovat soft delete</li>
+  <li>Nemůžete implementovat restore endpoint</li>
+  <li>Undo je vzácné</li>
+</ul>
+
 
 <h2 id="offline">Optimistické operace offline</h2>
 
@@ -728,163 +819,6 @@ return items
 window.addEventListener('online', () => {
   queue.processQueue();
 });</code></pre>
-
-<h2 id="undo">Tlačítko Undo s soft delete</h2>
-
-<p>Zobrazit možnost vrátit akci zpět (podobně jako Gmail). Tento příklad používá <b>soft delete</b> - položka zmizí, ale zůstává v datech:</p>
-
-<div class="live">
-  <style>
-    .undo-list {
-      list-style: none;
-      padding: 0;
-      margin: 1em 0;
-    }
-
-    .undo-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75em;
-      padding: 0.75em 1em;
-      margin: 0.5em 0;
-      background: #f5f5f5;
-      border-radius: 6px;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    .undo-item.deleted {
-      opacity: 0;
-      transform: translateX(-20px);
-      pointer-events: none;
-    }
-
-    .undo-item.restoring {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .undo-snackbar {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: #323232;
-      color: white;
-      padding: 1em 1.5em;
-      border-radius: 4px;
-      display: flex;
-      gap: 1em;
-      align-items: center;
-      transition: transform 0.3s;
-      z-index: 1000;
-    }
-
-    .undo-snackbar.show {
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .undo-btn {
-      background: #DA3F94;
-      color: white;
-      border: none;
-      padding: 0.5em 1em;
-      border-radius: 4px;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: 0.875em;
-    }
-  </style>
-
-  <ul class="undo-list" id="undo-list">
-    <li class="undo-item" data-id="1">
-      <span>Úkol 1: Nakoupit</span>
-      <button class="opt-btn-delete" onclick="deleteWithUndo(1, 'Úkol 1')">Smazat</button>
-    </li>
-    <li class="undo-item" data-id="2">
-      <span>Úkol 2: Zavolat</span>
-      <button class="opt-btn-delete" onclick="deleteWithUndo(2, 'Úkol 2')">Smazat</button>
-    </li>
-    <li class="undo-item" data-id="3">
-      <span>Úkol 3: Napsat email</span>
-      <button class="opt-btn-delete" onclick="deleteWithUndo(3, 'Úkol 3')">Smazat</button>
-    </li>
-  </ul>
-
-  <div class="undo-snackbar" id="undo-snackbar">
-    <span id="undo-text"></span>
-    <button class="undo-btn" onclick="undoDelete()">Vrátit zpět</button>
-  </div>
-
-  <script>
-    (function() {
-      let undoTimeout;
-      let currentDeletedId = null;
-
-      window.deleteWithUndo = async function(id, text) {
-        const item = document.querySelector(`#undo-list [data-id="${id}"]`);
-        const snackbar = document.getElementById('undo-snackbar');
-        const undoText = document.getElementById('undo-text');
-
-        // Zrušit předchozí timeout
-        if (undoTimeout) {
-          clearTimeout(undoTimeout);
-          // Pokud už bylo něco smazáno, definitivně to potvrdit
-          if (currentDeletedId) {
-            const prev = document.querySelector(`#undo-list [data-id="${currentDeletedId}"]`);
-            if (prev) prev.remove();
-          }
-        }
-
-        // Soft delete - přidat třídu (položka zůstává v DOM)
-        currentDeletedId = id;
-        item.classList.add('deleted');
-
-        // Zobrazit snackbar
-        undoText.textContent = `${text} smazán`;
-        snackbar.classList.add('show');
-
-        // Po 5 sekundách definitivně smazat
-        undoTimeout = setTimeout(async () => {
-          snackbar.classList.remove('show');
-
-          // Zde by se volalo API
-          console.log('Definitivně smazáno:', id);
-          // await fetch(`/api/items/${id}`, { method: 'DELETE' });
-
-          // Odebrat z DOM
-          item.remove();
-          currentDeletedId = null;
-        }, 5000);
-      };
-
-      window.undoDelete = function() {
-        if (!currentDeletedId) return;
-
-        const item = document.querySelector(`#undo-list [data-id="${currentDeletedId}"]`);
-        const snackbar = document.getElementById('undo-snackbar');
-
-        // Vrátit zpět - odebrat třídu deleted
-        item.classList.remove('deleted');
-        item.classList.add('restoring');
-        setTimeout(() => item.classList.remove('restoring'), 300);
-
-        // Skrýt snackbar
-        snackbar.classList.remove('show');
-        clearTimeout(undoTimeout);
-        currentDeletedId = null;
-      };
-    })();
-  </script>
-</div>
-
-<p>Výhody tohoto přístupu:</p>
-<ul>
-  <li>Jednoduchá implementace - jen přidání/odebrání CSS třídy</li>
-  <li>Položka zachovává svou posici v seznamu</li>
-  <li>Plynulá animace při obnovení</li>
-  <li>Můžete smazat další položku, zatímco čekáte na timeout předchozí</li>
-</ul>
 
 <h2 id="kdy-pouzit">Kdy použít optimistické mazání</h2>
 
