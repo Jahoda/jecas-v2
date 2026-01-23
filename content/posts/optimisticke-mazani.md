@@ -170,7 +170,7 @@ async function undo(id) {
 
 <p><b>Výhody:</b></p>
 <ul>
-  <li>Server okamžitě ví o smazání - konzistentní stav</li>
+  <li>Server okamžitě ví o smazání - konsistentní stav</li>
   <li>Jednoduchá implementace - žádné timeouty</li>
   <li>Funguje dobře i při zavření aplikace - smazání proběhlo</li>
 </ul>
@@ -378,7 +378,7 @@ function undo(id) {
 <p><b>Nevýhody:</b></p>
 <ul>
   <li><b>Lže uživateli</b> - říkáte „smazáno", ale ještě není</li>
-  <li>Server neví o smazání - nekonzistentní stav</li>
+  <li>Server neví o smazání - nekonsistentní stav</li>
   <li>Problém při zavření aplikace - timeout se nevykoná</li>
   <li>Složitější správa timeoutů</li>
   <li>Pokud se seznam načte znovu ze serveru, položka se vrátí</li>
@@ -589,7 +589,7 @@ async function undo(id) {
 
 <p><b>Výhody:</b></p>
 <ul>
-  <li>Server okamžitě ví o smazání - konzistentní stav</li>
+  <li>Server okamžitě ví o smazání - konsistentní stav</li>
   <li>Undo je jednoduché - jen odvolání soft deletu</li>
   <li>Položka zachovává stejné ID</li>
   <li>Můžete implementovat „koš" na serveru</li>
@@ -743,7 +743,7 @@ async function undo(id) {
 
 <p><b>Používejte soft delete na backendu (přístup 3)</b>, protože:</p>
 <ul>
-  <li>Nejlepší ze všech světů - okamžitá konzistence + jednoduché undo</li>
+  <li>Nejlepší ze všech světů - okamžitá konsistence + jednoduché undo</li>
   <li>Server má vždy aktuální stav</li>
   <li>Můžete implementovat automatické čištění po X dnech</li>
   <li>Audit trail zdarma</li>
