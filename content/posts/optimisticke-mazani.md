@@ -39,7 +39,7 @@ format: "html"
 
 <h2 id="reseni">Řešení: optimistický přístup</h2>
 
-<p>Optimistické mazání <b>nejdřív aktualizuje UI</b> a pak teprve volá server:</p>
+<p>Optimistické mazání <b>nejdřív aktualisuje UI</b> a pak teprve volá server:</p>
 
 <pre><code>async function smazatPolozku(id) {
   // Okamžitě zmizí z UI
@@ -205,7 +205,7 @@ format: "html"
       nextSibling: item.nextElementSibling
     });
 
-    // Optimistická aktualizace
+    // Optimistická aktualisace
     item.classList.add('removing');
     await this.wait(200);
     item.remove();
@@ -256,7 +256,7 @@ format: "html"
     // Uložit původní stav
     const originalItems = [...items];
 
-    // Optimistická aktualizace
+    // Optimistická aktualisace
     setItems(items.filter(item => item.id !== id));
 
     try {
@@ -306,7 +306,7 @@ async function deleteItem(id) {
   // Uložit původní stav
   const original = [...items.value];
 
-  // Optimistická aktualizace
+  // Optimistická aktualisace
   items.value = items.value.filter(item => item.id !== id);
 
   try {
@@ -547,7 +547,7 @@ window.addEventListener('online', () => {
   <li><b>Vysoká spolehlivost</b> — server smazání téměř vždy potvrdí (99 %+)</li>
   <li><b>Rychlá odezva důležitá</b> — seznamy úkolů, komentáře, příspěvky</li>
   <li><b>Vratné akce</b> — mazání není destruktivní (lze obnovit ze zálohy)</li>
-  <li><b>Nízké riziko</b> — chyba nepoškodí data nebo nepřinese ztrátu</li>
+  <li><b>Nízké risiko</b> — chyba nepoškodí data nebo nepřinese ztrátu</li>
 </ul>
 
 <h2 id="kdy-nepouzit">Kdy nepoužívat</h2>
@@ -584,7 +584,7 @@ window.addEventListener('online', () => {
     <td>Okamžitá odezva</td>
   </tr>
   <tr>
-    <td>Konzistence</td>
+    <td>Konsistence</td>
     <td>100 % — zobrazí jen potvrzený stav</td>
     <td>~99 % — může se vrátit zpět</td>
   </tr>
