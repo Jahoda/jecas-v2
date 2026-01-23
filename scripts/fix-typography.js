@@ -85,6 +85,21 @@ const TYPOGRAPHY_RULES = [
 		replace: '$1\u00A0$2'
 	},
 
+	// České uvozovky: oprava špatně použitých uvozovek
+	// Opravuje: „text„ (obě dolní) → „text"
+	{
+		name: 'oprava špatně použitých českých uvozovek (obě dolní)',
+		find: /\u201E([^\u201E\u201C<>=]+)\u201E/g,
+		replace: '\u201E$1\u201C'
+	},
+
+	// Opravuje: "text" (obě horní) → „text"
+	{
+		name: 'oprava špatně použitých českých uvozovek (obě horní)',
+		find: /\u201C([^\u201E\u201C<>=]+)\u201C/g,
+		replace: '\u201E$1\u201C'
+	},
+
 	// České uvozovky: "text" → „text"
 	// Pouze v prose textu - NE v HTML atributech (po =)
 	// Matchuje uvozovky po: > (konec tagu), whitespace, ( nebo na začátku řádku
