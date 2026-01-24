@@ -2,7 +2,8 @@
 title: "Automatická šířka inputu"
 headline: "Jak udělat input s automatickou šířkou podle obsahu"
 description: "Několik způsobů, jak dosáhnout toho, aby se textové pole rozšiřovalo a zužovalo podle délky zadaného textu."
-date: "2026-01-23"
+date: "2026-01-24"
+last_modificaition: "2026-01-24" 
 status: 1
 tags: ["css", "formulare", "html", "js", "css-vlastnosti"]
 format: "html"
@@ -214,7 +215,7 @@ adjustInputWidth(input);</code></pre>
   input.size = Math.max(1, input.value.length);
 });</code></pre>
 
-<p>Atribut <code>size</code> funguje podobně jako jednotka <code>ch</code> – počítá průměrnou šířku znaku. U proporcionálních fontů tak nebude výsledek přesný.</p>
+<p>Atribut <code>size</code> funguje podobně jako jednotka <code>ch</code> – počítá průměrnou šířku znaku. U proporcionálních fontů tak nebude kvůli <a href="/sirka-znaku">různé šířce</a> výsledek přesný.</p>
 
 <div class="live">
 <input type="text" class="demo-size-input" value="Zkus psát…" size="12" style="padding: 8px 12px; font-size: 16px; border: 2px solid #8b5cf6; border-radius: 6px;">
