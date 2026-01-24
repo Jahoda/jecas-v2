@@ -244,6 +244,11 @@ adjustInputWidth(input);</code></pre>
   display: inline-grid;
 }
 
+.auto-input::after,
+.auto-input > input {
+  grid-area: 1 / 1;
+}
+
 .auto-input::after {
   content: attr(data-value) ' ';
   visibility: hidden;
@@ -251,7 +256,6 @@ adjustInputWidth(input);</code></pre>
 }
 
 .auto-input > input {
-  grid-area: 1 / 1;
   width: auto;
   min-width: 1em;
 }</code></pre>
@@ -265,6 +269,7 @@ adjustInputWidth(input);</code></pre>
   }
   .demo-grid-wrapper::after {
     content: attr(data-value) ' ';
+    grid-area: 1 / 1;
     visibility: hidden;
     white-space: pre;
     padding: 8px 12px;
