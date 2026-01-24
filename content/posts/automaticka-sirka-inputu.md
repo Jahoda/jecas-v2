@@ -76,6 +76,12 @@ format: "html"
 <textarea class="demo-textarea" placeholder="Zkus psát více řádků…">Zkus psát více řádků…</textarea>
 </div>
 
+<h3 id="field-sizing-tailwind">Tailwind CSS</h3>
+
+<p>V <a href="/tailwind-css">Tailwind CSS</a> lze použít třídu <code>field-sizing-content</code>:</p>
+
+<pre><code>&lt;input type="text" class="<b>field-sizing-content</b> min-w-12 max-w-xs" /></code></pre>
+
 
 <h2 id="javascript">JavaScript řešení</h2>
 
