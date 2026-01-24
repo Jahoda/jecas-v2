@@ -72,7 +72,7 @@ format: "html"
     resize: none;
   }
 </style>
-<textarea class="demo-textarea" placeholder="Zkus psát více řádků...">Zkus psát více řádků...</textarea>
+<textarea class="demo-textarea" placeholder="Zkus psát více řádků…">Zkus psát více řádků…</textarea>
 </div>
 
 
