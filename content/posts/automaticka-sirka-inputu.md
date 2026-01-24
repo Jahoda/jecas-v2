@@ -44,6 +44,37 @@ format: "html"
 <input type="text" class="demo-field-sizing" value="Zkus psát…" placeholder="Zkus psát…">
 </div>
 
+<h3 id="field-sizing-textarea">Textarea</h3>
+
+<p>U <code>&lt;textarea></code> funguje <code>field-sizing: content</code> ještě lépe – element se automaticky zvětšuje jak na šířku, tak na výšku podle obsahu.</p>
+
+<pre><code>textarea {
+  field-sizing: content;
+  min-height: 1lh;
+  max-height: 10lh;
+}</code></pre>
+
+<p>Jednotka <code>lh</code> odpovídá výšce řádku, takže <code>max-height: 10lh</code> omezí textarea na maximálně 10 řádků.</p>
+
+<div class="live">
+<style>
+  .demo-textarea {
+    field-sizing: content;
+    min-width: 150px;
+    max-width: 100%;
+    min-height: 1lh;
+    max-height: 10lh;
+    padding: 8px 12px;
+    font-size: 16px;
+    font-family: inherit;
+    border: 2px solid #6366f1;
+    border-radius: 6px;
+    resize: none;
+  }
+</style>
+<textarea class="demo-textarea" placeholder="Zkus psát více řádků...">Zkus psát více řádků...</textarea>
+</div>
+
 
 <h2 id="javascript">JavaScript řešení</h2>
 
