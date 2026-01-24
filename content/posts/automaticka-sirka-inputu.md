@@ -3,7 +3,7 @@ title: "Automatická šířka inputu"
 headline: "Jak udělat input s automatickou šířkou podle obsahu"
 description: "Několik způsobů, jak dosáhnout toho, aby se textové pole rozšiřovalo a zužovalo podle délky zadaného textu."
 date: "2026-01-24"
-last_modificaition: "2026-01-24" 
+last_modification: "2026-01-24" 
 status: 1
 tags: ["css", "formulare", "html", "js", "css-vlastnosti"]
 format: "html"
