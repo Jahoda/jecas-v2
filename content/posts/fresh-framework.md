@@ -116,8 +116,8 @@ export default function App({ Component }) {
   <li><b>Optimalisace</b> – s atributem <code>f-partial</code> server vrací pouze potřebné části</li>
 </ul>
 
-<pre><code>&lt;!-- Optimalisovaný link – fetchuje pouze partial -->
-&lt;a href="#products" f-partial="/partials/products">
+<pre><code>&lt;!-- Optimalizovaný link – fetchuje pouze partial -->
+&lt;a href="/produkty" f-partial="/partials/produkty">
   Produkty
 &lt;/a></code></pre>
 
@@ -181,7 +181,7 @@ export default function Cart() {
 
 <ul>
   <li>Žádný webpack, Vite, esbuild</li>
-  <li>Žádné <code>node_modules</code> – Deno stahuje závislosti z URL nebo pomocí <code>npm:</code> specifikátoru a cachuje je globálně</li>
+  <li>Žádné <code>node_modules</code> – Deno stahuje závislosti z URL nebo pomocí <code>npm:</code> prefixu (např. <code>import _ from "npm:lodash"</code>) a cachuje je globálně</li>
   <li>Žádný <code>dist</code> nebo <code>.next</code> adresář</li>
   <li>TypeScript funguje nativně bez konfigurace</li>
 </ul>
@@ -299,7 +299,7 @@ export default defineConfig({
 
 <h3 id="bundle-size">Velikost bundlu</h3>
 
-<p>Díky islands architektuře Fresh posílá <b>60–80% méně JavaScriptu</b> než Next.js. SvelteKit je někde mezi – menší bundle než React díky kompilaci, ale ve výchozím stavu hydratuje celou stránku (partial hydration vyžaduje komunitní pluginy).</p>
+<p>Díky islands architektuře Fresh posílá <b>60–80% méně JavaScriptu</b> než Next.js. SvelteKit je někde mezi – menší bundle než React díky kompilaci, ale ve výchozím stavu hydratuje celou stránku (partial hydration vyžaduje komunitní plugin jako <a href="https://github.com/geoffrich/sveltekit-is-land">sveltekit-is-land</a>).</p>
 
 <table>
   <thead>
