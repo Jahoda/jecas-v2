@@ -7,6 +7,7 @@ last_modification: "2026-01-25"
 status: 1
 tags: ["ai", "napady", "produktivita"]
 format: "html"
+social_text: "Už taky kupujete Mac Mini, abyste mohli svěřit svůj online život do rukou Clawdbota?"
 ---
 
 <p>Co kdyby váš AI asistent nebyl webová aplikace, ale <b>lokální agent</b>, se kterým si píšete přes WhatsApp nebo Telegram? Přesně to nabízí <a href="https://clawd.bot">Clawdbot</a> — open-source projekt, který propojuje messaging platformy s AI modely.</p>
@@ -420,9 +421,3 @@ npm link</code></pre>
   <li><a href="https://docs.clawd.bot">Dokumentace</a></li>
   <li><a href="https://clawdhub.com">ClawdHub</a> — katalog skills</li>
 </ul>
-
-<!--
-Sociální sítě:
-
-Už taky kupujete Mac Mini, abyste mohli svěřit svůj online život do rukou Clawdbota?
--->
