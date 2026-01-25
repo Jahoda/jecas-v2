@@ -420,3 +420,9 @@ npm link</code></pre>
   <li><a href="https://docs.clawd.bot">Dokumentace</a></li>
   <li><a href="https://clawdhub.com">ClawdHub</a> — katalog skills</li>
 </ul>
+
+<!--
+Sociální sítě:
+
+Už taky kupujete Mac Mini, abyste mohli svěřit svůj online život do rukou Clawdbota?
+-->
