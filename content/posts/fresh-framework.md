@@ -90,7 +90,7 @@ export default function ProductPage() {
 
 <h3 id="partials">Partials: Client-side navigace</h3>
 
-<p>Od verse 1.5 Fresh podporuje <b>client-side navigaci</b> bez full page reload pomocí tzv. Partials. Stačí přidat atribut <code>f-client-nav</code> a označit měnící se části stránky:</p>
+<p>Od verze 1.5 Fresh podporuje <b>client-side navigaci</b> bez full page reload pomocí tzv. Partials. Stačí přidat atribut <code>f-client-nav</code> a označit měnící se části stránky:</p>
 
 <pre><code>// routes/_app.tsx
 export default function App({ Component }) {
@@ -180,7 +180,7 @@ export default function Cart() {
 
 <ul>
   <li>Žádný webpack, Vite, esbuild</li>
-  <li>Žádné <code>node_modules</code></li>
+  <li>Žádné <code>node_modules</code> – Deno stahuje závislosti z URL nebo pomocí <code>npm:</code> specifikátoru a cachuje je globálně</li>
   <li>Žádný <code>dist</code> nebo <code>.next</code> adresář</li>
   <li>TypeScript funguje nativně bez konfigurace</li>
 </ul>
@@ -195,10 +195,10 @@ export default function Cart() {
 
 <p>Next.js vyžaduje klasický build proces:</p>
 
-<pre><code>npm run build    # Kompilace, bundling, optimalisace
+<pre><code>npm run build    # Kompilace, bundling, optimalizace
 npm run start    # Spuštění produkčního serveru</code></pre>
 
-<p>Výstupem je adresář <code>.next</code> s optimalisovanými assety. Na produkci běží <b>předkompilovaný kód</b>.</p>
+<p>Výstupem je adresář <code>.next</code> s optimalizovanými assety. Na produkci běží <b>předkompilovaný kód</b>.</p>
 
 <h3 id="sveltekit-build">SvelteKit: Kompilace jako výhoda</h3>
 
@@ -227,7 +227,7 @@ npm run preview  # Náhled produkčního buildu</code></pre>
     </tr>
     <tr>
       <td>Next.js</td>
-      <td>Webpack/Turbopack</td>
+      <td>Turbopack (od v16 výchozí)</td>
       <td>Optimalisované bundly + Node.js</td>
     </tr>
     <tr>
@@ -240,7 +240,7 @@ npm run preview  # Náhled produkčního buildu</code></pre>
 
 <h3 id="tailwind">Tailwind CSS a AOT build</h3>
 
-<p>Fresh od verse 1.6 má oficiální <b>Tailwind CSS plugin</b>. Ten ale vyžaduje <b>AOT (Ahead-of-Time) build</b> – výjimku z jinak zero-build filozofie:</p>
+<p>Fresh od verze 1.6 má oficiální <b><a href="/tailwind-css">Tailwind CSS</a> plugin</b>. Ten ale vyžaduje <b>AOT (Ahead-of-Time) build</b> – jednu z výjimek z jinak zero-build filozofie (další je např. předkompilace islands pro produkci):</p>
 
 <pre><code># Fresh bez Tailwind
 deno run -A main.ts       # Spustí se rovnou
@@ -298,7 +298,7 @@ export default defineConfig({
 
 <h3 id="bundle-size">Velikost bundlu</h3>
 
-<p>Díky islands architektuře Fresh posílá <b>60–80% méně JavaScriptu</b> než Next.js. SvelteKit je někde mezi – menší bundle než React díky kompilaci, ale stále hydratuje celou stránku.</p>
+<p>Díky islands architektuře Fresh posílá <b>60–80% méně JavaScriptu</b> než Next.js. SvelteKit je někde mezi – menší bundle než React díky kompilaci, ale ve výchozím stavu hydratuje celou stránku (partial hydration vyžaduje komunitní pluginy).</p>
 
 <table>
   <thead>
@@ -331,14 +331,13 @@ export default defineConfig({
 
 <p>Fresh dosahuje <b>nejrychlejší interaktivity</b>, protože prohlížeč zpracovává minimum JavaScriptu. SvelteKit je druhý díky menšímu bundlu. Next.js je nejpomalejší kvůli velikosti React runtime.</p>
 
-<p>Reálné výsledky z produkce (Deco.cx): přechod na Fresh přinesl <b>5× rychlejší načítání</b> a <b>30% nárůst konversí</b>.</p>
 
 <h3 id="ttfb">Time to First Byte (TTFB)</h3>
 
 <p>Zde je situace složitější:</p>
 
 <ul>
-  <li><b>Fresh</b> – každý request renderuje stránku znovu (žádný cache ve výchozím stavu)</li>
+  <li><b>Fresh</b> – každý request renderuje stránku znovu (žádná cache ve výchozím stavu)</li>
   <li><b>Next.js</b> – nabízí SSG, ISR, edge caching</li>
   <li><b>SvelteKit</b> – podobné možnosti jako Next.js</li>
 </ul>
@@ -416,7 +415,7 @@ export default function Counter() {
   <tbody>
     <tr>
       <td>Fresh (Signals)</td>
-      <td>Jemnozrnná reaktivita</td>
+      <td>Reaktivita na úrovni hodnot</td>
       <td>Pouze změněné DOM uzly</td>
     </tr>
     <tr>
@@ -462,7 +461,7 @@ export default function Counter() {
   &lt;div>{@html content}&lt;/div>
 &lt;/article></code></pre>
 
-<p>Výhody: čistší syntaxe, méně boilerplate, HTML-first přístup.</p>
+<p>Výhody: čistší syntaxe, méně boilerplate, HTML-first přístup. Validní HTML je zároveň validní Svelte šablona (JSX má drobné rozdíly – <code>className</code> místo <code>class</code>, <code>htmlFor</code> místo <code>for</code>).</p>
 
 <h3 id="srovnani-sablony">Srovnání syntaxe</h3>
 
@@ -518,6 +517,7 @@ export default function Counter() {
   <li>Používáte nebo chcete používat <b>Deno</b></li>
   <li>Nasazujete na <b>edge</b> (Deno Deploy)</li>
   <li>Vytváříte <b>obsahové weby</b> s minimální interaktivitou</li>
+  <li>Děláte <b>rychlý iterativní vývoj</b> (např. s AI) – absence buildu znamená okamžitou zpětnou vazbu bez čekání na kompilaci</li>
 </ul>
 
 <h2 id="kdy-nepouzit">Kdy Fresh nepoužít</h2>
@@ -525,7 +525,7 @@ export default function Counter() {
 <p>Fresh není ideální pro:</p>
 
 <ul>
-  <li>Projekty vyžadující <b>rozsáhlý npm ekosystém</b> – mnoho React knihoven nefunguje</li>
+  <li>Projekty vyžadující <b>specifické npm balíčky</b> – Deno podporuje <code>npm:</code> specifier, ale ne všechny balíčky fungují (zejména ty závislé na Node.js API)</li>
   <li>Týmy zvyklé na <b>Node.js</b> workflow – Fresh běží pouze na Deno</li>
   <li>Aplikace s <b>komplexním sdíleným stavem</b> – <code>useContext</code> nefunguje napříč ostrovy</li>
 </ul>
