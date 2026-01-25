@@ -225,13 +225,13 @@ npm link</code></pre>
 
 <ul>
   <li><b>Separátní účty</b> — založte si nový e-mail, GitHub, API klíče jen pro Clawdbot. Když agent něco pokazí nebo uniknou credentials, neohrozí to vaše hlavní účty.</li>
-  <li><b>Isolované prostředí</b> — spusťte na dedikovaném VPS nebo v Docker kontejneru, ne na počítači s citlivými daty.</li>
-  <li><b>Pravidelné zálohy</b> — agent může omylem smazat soubory. Mějte zálohy mimo jeho dosah (externí disk, cloud storage s read-only přístupem).</li>
+  <li><b>Isolované prostředí</b> — spusťte na dedikovaném VPS nebo v Docker kontejneru, ne na počítači s citlivými daty.</li>
+  <li><b>Pravidelné zálohy</b> — agent může omylem smazat soubory. Mějte zálohy mimo jeho dosah (externí disk, cloud storage s read-only přístupem).</li>
   <li><b>Omezený přístup</b> — nepřipojujte skills, které nepotřebujete. Každá integrace je další attack surface.</li>
-  <li><b>Auditujte historii</b> — pravidelně kontrolujte, co agent dělal. Logy jsou v <code>~/.clawdbot/logs/</code>.</li>
+  <li><b>Auditujte historii</b> — pravidelně kontrolujte, co agent dělal. Logy jsou v <code>~/.clawdbot/logs/</code>.</li>
 </ul>
 
-<p>Přistupujte k tomu jako k novému projektu — čistý štít, separátní identity, minimální oprávnění.</p>
+<p>Přistupujte k tomu jako k novému projektu — čistý štít, separátní identity, minimální oprávnění.</p>
 
 <h2 id="kde-spustit">Kde to spustit</h2>
 
