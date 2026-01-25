@@ -90,7 +90,7 @@ export default function ProductPage() {
 
 <h3 id="partials">Partials: Client-side navigace</h3>
 
-<p>Od verze 1.5 Fresh podporuje <b>client-side navigaci</b> bez full page reload pomocí tzv. Partials. Stačí přidat atribut <code>f-client-nav</code> a označit měnící se části stránky:</p>
+<p>Od verse 1.5 Fresh podporuje <b>client-side navigaci</b> bez full page reload pomocí tzv. Partials. Stačí přidat atribut <code>f-client-nav</code> a označit měnící se části stránky:</p>
 
 <pre><code>// routes/_app.tsx
 export default function App({ Component }) {
@@ -195,10 +195,10 @@ export default function Cart() {
 
 <p>Next.js vyžaduje klasický build proces:</p>
 
-<pre><code>npm run build    # Kompilace, bundling, optimalizace
+<pre><code>npm run build    # Kompilace, bundling, optimalisace
 npm run start    # Spuštění produkčního serveru</code></pre>
 
-<p>Výstupem je adresář <code>.next</code> s optimalizovanými assety. Na produkci běží <b>předkompilovaný kód</b>.</p>
+<p>Výstupem je adresář <code>.next</code> s optimalisovanými assety. Na produkci běží <b>předkompilovaný kód</b>.</p>
 
 <h3 id="sveltekit-build">SvelteKit: Kompilace jako výhoda</h3>
 
@@ -240,7 +240,7 @@ npm run preview  # Náhled produkčního buildu</code></pre>
 
 <h3 id="tailwind">Tailwind CSS a AOT build</h3>
 
-<p>Fresh od verze 1.6 má oficiální <b><a href="/tailwind-css">Tailwind CSS</a> plugin</b>. Ten ale vyžaduje <b>AOT (Ahead-of-Time) build</b> – jednu z výjimek z jinak zero-build filozofie (další je např. předkompilace islands pro produkci):</p>
+<p>Fresh od verse 1.6 má oficiální <b><a href="/tailwind-css">Tailwind CSS</a> plugin</b>. Ten ale vyžaduje <b>AOT (Ahead-of-Time) build</b> – jednu z výjimek z jinak zero-build filozofie (další je např. předkompilace islands pro produkci):</p>
 
 <pre><code># Fresh bez Tailwind
 deno run -A main.ts       # Spustí se rovnou
