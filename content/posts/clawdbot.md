@@ -219,6 +219,20 @@ npm link</code></pre>
 
 <p>Ale hlavní agent běží s plnými právy vašeho uživatelského účtu.</p>
 
+<h3>Jak minimalizovat riziko</h3>
+
+<p>Pokud chcete Clawdbot používat, zvažte tyto opatření:</p>
+
+<ul>
+  <li><b>Separátní účty</b> — založte si nový e-mail, GitHub, API klíče jen pro Clawdbot. Když agent něco pokazí nebo uniknou credentials, neohrozí to vaše hlavní účty.</li>
+  <li><b>Izolované prostředí</b> — spusťte na dedikovaném VPS nebo v Docker kontejneru, ne na počítači s citlivými daty.</li>
+  <li><b>Pravidelné zálohy</b> — agent může omylem smazat soubory. Mějte zálohy mimo jeho dosah (externí disk, cloud storage s read-only přístupem).</li>
+  <li><b>Omezený přístup</b> — nepřipojujte skills, které nepotřebujete. Každá integrace je další attack surface.</li>
+  <li><b>Auditujte historii</b> — pravidelně kontrolujte, co agent dělal. Logy jsou v <code>~/.clawdbot/logs/</code>.</li>
+</ul>
+
+<p>Přistupujte k tomu jako k novému projektu — čistý štít, separátní identity, minimální oprávnění.</p>
+
 <h2 id="kde-spustit">Kde to spustit</h2>
 
 <p>V komunitě se objevil trend kupování <b>Mac mini</b> jako dedikovaného zařízení pro Clawdbot. Je to zbytečné.</p>
