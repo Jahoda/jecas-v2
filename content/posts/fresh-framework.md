@@ -116,7 +116,7 @@ export default function App({ Component }) {
 </ul>
 
 <pre><code>&lt;!-- Optimalisovaný link – fetchuje pouze partial -->
-&lt;a href="/products" f-partial="/partials/products">
+&lt;a href="#products" f-partial="/partials/products">
   Produkty
 &lt;/a></code></pre>
 
