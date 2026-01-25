@@ -29,7 +29,7 @@ format: "html"
 
 <h2 id="instalace">Instalace</h2>
 
-<p>Vyžaduje Node.js verze 22 nebo vyšší:</p>
+<p>Vyžaduje Node.js verse 22 nebo vyšší:</p>
 
 <pre><code># Instalace
 npm install -g clawdbot@latest
@@ -118,7 +118,7 @@ npm link</code></pre>
 
 <h2 id="pamet">Trvalá paměť</h2>
 
-<p>Jedna z klíčových funkcí — Clawdbot si <b>pamatuje kontext</b> napříč konverzacemi. Paměť se ukládá jako Markdown soubory do složkové struktury podobné Obsidianu:</p>
+<p>Jedna z klíčových funkcí — Clawdbot si <b>pamatuje kontext</b> napříč konversacemi. Paměť se ukládá jako Markdown soubory do složkové struktury podobné Obsidianu:</p>
 
 <pre><code>~/.clawdbot/
 ├── memory/
@@ -175,13 +175,13 @@ npm link</code></pre>
 
 <h3>Spouštění příkazů</h3>
 
-<p>Může spouštět shell příkazy a skripty. Hodí se pro automatizaci — spuštění buildů, testů, deploymentů.</p>
+<p>Může spouštět shell příkazy a skripty. Hodí se pro automatisaci — spuštění buildů, testů, deploymentů.</p>
 
-<h3>Automatizace</h3>
+<h3>Automatisace</h3>
 
 <p>Podporuje cron jobs, webhooky a Gmail Pub/Sub triggery pro automatické spouštění úloh.</p>
 
-<h2 id="bezpecnost">Bezpečnostní rizika</h2>
+<h2 id="bezpecnost">Bezpečnostní risika</h2>
 
 <p>Clawdbot má <b>plný přístup k vašemu systému</b>. Může číst a mazat soubory, spouštět libovolné příkazy, přistupovat k internetu. V podstatě si dobrovolně instalujete software s právy, jaká má typický malware.</p>
 
@@ -203,7 +203,7 @@ npm link</code></pre>
 
 <p>Skutečně lokální je pouze varianta s <b>Ollama</b> — tam data nikam neodcházejí. Ale výkon lokálních modelů je výrazně nižší.</p>
 
-<h3>Riziko supply chain útoku</h3>
+<h3>Risiko supply chain útoku</h3>
 
 <p>Instalujete npm balíček s plnými systémovými právy. Pokud by byl repozitář kompromitován nebo závislost obsahovala malware, máte problém. Totéž platí pro skills z komunitního katalogu.</p>
 
@@ -214,7 +214,7 @@ npm link</code></pre>
 <ul>
   <li><b>DM pairing</b> — neznámí odesílatelé musí zadat kód</li>
   <li><b>Whitelist</b> — lze omezit na konkrétní čísla</li>
-  <li><b>Sandbox pro skupiny</b> — izolované prostředí pro skupinové chaty</li>
+  <li><b>Sandbox pro skupiny</b> — isolované prostředí pro skupinové chaty</li>
 </ul>
 
 <p>Ale hlavní agent běží s plnými právy vašeho uživatelského účtu.</p>
@@ -362,7 +362,7 @@ npm link</code></pre>
   </tr>
   <tr>
     <td>Přístup k souborům</td>
-    <td>Plný (riziko)</td>
+    <td>Plný (risiko)</td>
     <td>Omezený</td>
     <td>Omezený</td>
   </tr>
@@ -393,10 +393,10 @@ npm link</code></pre>
   <li>Komunikujete s ním přes <b>WhatsApp, Telegram, Discord</b> nebo jiné messengery</li>
   <li>Má <b>trvalou paměť</b> uloženou jako Markdown soubory</li>
   <li>Lze rozšiřovat pomocí <b>skills</b> pro Gmail, Notion, Spotify a další služby</li>
-  <li><b>Bezpečnostní riziko</b> — plný přístup k systému, data putují do cloudových API</li>
+  <li><b>Bezpečnostní risiko</b> — plný přístup k systému, data putují do cloudových API</li>
 </ul>
 
-<p>Clawdbot je zajímavý projekt, ale vyžaduje důvěru. Dáváte AI agentovi práva, která byste nedali ani kolegovi. Zvažte, zda vám pohodlí stojí za riziko.</p>
+<p>Clawdbot je zajímavý projekt, ale vyžaduje důvěru. Dáváte AI agentovi práva, která byste nedali ani kolegovi. Zvažte, zda vám pohodlí stojí za risiko.</p>
 
 <h2 id="odkazy">Odkazy</h2>
 
