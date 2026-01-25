@@ -250,7 +250,7 @@ npm link</code></pre>
   <li><b>Disk</b> — stovky MB pro aplikaci + paměť</li>
 </ul>
 
-<p>Raspberry Pi 4 to zvládne. Mac mini za 15 000 Kč je overkill. Pro některé speciální úlohy (např. lokální Ollama s většími modely nebo náročnější browser automation) může být vyšší výkon potřeba, ale pro běžné použití s cloudovými API stačí minimum.</p>
+<p>Raspberry Pi 4 to zvládne. Mac mini za 15 000 Kč je overkill. Pro některé speciální úlohy (např. lokální Ollama s většími modely nebo náročnější browser automation) může být vyšší výkon potřeba, ale pro běžné použití s cloudovými API stačí minimum.</p>
 
 <h3>Levnější alternativy</h3>
 
