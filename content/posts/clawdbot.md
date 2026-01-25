@@ -29,7 +29,7 @@ format: "html"
 
 <h2 id="instalace">Instalace</h2>
 
-<p>Vyžaduje Node.js verze 22 nebo vyšší:</p>
+<p>Vyžaduje Node.js verse 22 nebo vyšší:</p>
 
 <pre><code># Instalace
 npm install -g clawdbot@latest
@@ -118,7 +118,7 @@ npm link</code></pre>
 
 <h2 id="pamet">Trvalá paměť</h2>
 
-<p>Jedna z klíčových funkcí — Clawdbot si <b>pamatuje kontext</b> napříč konverzacemi. Paměť se ukládá jako Markdown soubory do složkové struktury podobné Obsidianu:</p>
+<p>Jedna z klíčových funkcí — Clawdbot si <b>pamatuje kontext</b> napříč konversacemi. Paměť se ukládá jako Markdown soubory do složkové struktury podobné Obsidianu:</p>
 
 <pre><code>~/.clawdbot/
 ├── memory/
@@ -175,9 +175,9 @@ npm link</code></pre>
 
 <h3>Spouštění příkazů</h3>
 
-<p>Může spouštět shell příkazy a skripty. Hodí se pro automatizaci — spuštění buildů, testů, deploymentů.</p>
+<p>Může spouštět shell příkazy a skripty. Hodí se pro automatisaci — spuštění buildů, testů, deploymentů.</p>
 
-<h3>Automatizace</h3>
+<h3>Automatisace</h3>
 
 <p>Podporuje cron jobs, webhooky a Gmail Pub/Sub triggery pro automatické spouštění úloh.</p>
 
@@ -187,7 +187,7 @@ npm link</code></pre>
 
 <ul>
   <li><b>DM pairing</b> — neznámí odesílatelé musí zadat párovací kód</li>
-  <li><b>Sandbox</b> — skupiny a kanály běží v izolovaném prostředí</li>
+  <li><b>Sandbox</b> — skupiny a kanály běží v isolovaném prostředí</li>
   <li><b>Whitelist</b> — lze omezit přístup na konkrétní čísla/účty</li>
 </ul>
 
