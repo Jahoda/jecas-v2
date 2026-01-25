@@ -116,7 +116,7 @@ export default function App({ Component }) {
   <li><b>Optimalisace</b> – s atributem <code>f-partial</code> server vrací pouze potřebné části</li>
 </ul>
 
-<pre><code>&lt;!-- Optimalizovaný link – fetchuje pouze partial -->
+<pre><code>&lt;!-- Optimalisovaný link – fetchuje pouze partial -->
 &lt;a href="/produkty" f-partial="/partials/produkty">
   Produkty
 &lt;/a></code></pre>
