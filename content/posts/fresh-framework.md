@@ -90,7 +90,7 @@ export default function ProductPage() {
 
 <h3 id="partials">Partials: Client-side navigace</h3>
 
-<p>Od verze 1.5 Fresh podporuje <b>client-side navigaci</b> bez full page reload pomocí tzv. Partials. Stačí přidat atribut <code>f-client-nav</code> a označit měnící se části stránky:</p>
+<p>Od verse 1.5 Fresh podporuje <b>client-side navigaci</b> bez full page reload pomocí tzv. Partials. Stačí přidat atribut <code>f-client-nav</code> a označit měnící se části stránky:</p>
 
 <pre><code>// routes/_app.tsx
 export default function App({ Component }) {
@@ -112,10 +112,10 @@ export default function App({ Component }) {
 <ul>
   <li><b>SPA-like navigace</b> – stránky se mění bez reloadu</li>
   <li><b>Zachování stavu</b> – islands si pamatují svůj stav při navigaci</li>
-  <li><b>Optimalizace</b> – s atributem <code>f-partial</code> server vrací pouze potřebné části</li>
+  <li><b>Optimalisace</b> – s atributem <code>f-partial</code> server vrací pouze potřebné části</li>
 </ul>
 
-<pre><code>&lt;!-- Optimalizovaný link – fetchuje pouze partial -->
+<pre><code>&lt;!-- Optimalisovaný link – fetchuje pouze partial -->
 &lt;a href="/products" f-partial="/partials/products">
   Produkty
 &lt;/a></code></pre>
@@ -147,7 +147,7 @@ export default function Cart() {
   return &lt;span>Položek: {cart.value.length}&lt;/span>;
 }</code></pre>
 
-<p>Oba ostrovy importují stejný signál → automatická synchronizace. Důležité rozdíly:</p>
+<p>Oba ostrovy importují stejný signál → automatická synchronisace. Důležité rozdíly:</p>
 
 <table>
   <thead>
@@ -195,10 +195,10 @@ export default function Cart() {
 
 <p>Next.js vyžaduje klasický build proces:</p>
 
-<pre><code>npm run build    # Kompilace, bundling, optimalizace
+<pre><code>npm run build    # Kompilace, bundling, optimalisace
 npm run start    # Spuštění produkčního serveru</code></pre>
 
-<p>Výstupem je adresář <code>.next</code> s optimalizovanými assety. Na produkci běží <b>předkompilovaný kód</b>.</p>
+<p>Výstupem je adresář <code>.next</code> s optimalisovanými assety. Na produkci běží <b>předkompilovaný kód</b>.</p>
 
 <h3 id="sveltekit-build">SvelteKit: Kompilace jako výhoda</h3>
 
@@ -228,7 +228,7 @@ npm run preview  # Náhled produkčního buildu</code></pre>
     <tr>
       <td>Next.js</td>
       <td>Webpack/Turbopack</td>
-      <td>Optimalizované bundly + Node.js</td>
+      <td>Optimalisované bundly + Node.js</td>
     </tr>
     <tr>
       <td>SvelteKit</td>
@@ -240,7 +240,7 @@ npm run preview  # Náhled produkčního buildu</code></pre>
 
 <h3 id="tailwind">Tailwind CSS a AOT build</h3>
 
-<p>Fresh od verze 1.6 má oficiální <b>Tailwind CSS plugin</b>. Ten ale vyžaduje <b>AOT (Ahead-of-Time) build</b> – výjimku z jinak zero-build filozofie:</p>
+<p>Fresh od verse 1.6 má oficiální <b>Tailwind CSS plugin</b>. Ten ale vyžaduje <b>AOT (Ahead-of-Time) build</b> – výjimku z jinak zero-build filozofie:</p>
 
 <pre><code># Fresh bez Tailwind
 deno run -A main.ts       # Spustí se rovnou
@@ -331,7 +331,7 @@ export default defineConfig({
 
 <p>Fresh dosahuje <b>nejrychlejší interaktivity</b>, protože prohlížeč zpracovává minimum JavaScriptu. SvelteKit je druhý díky menšímu bundlu. Next.js je nejpomalejší kvůli velikosti React runtime.</p>
 
-<p>Reálné výsledky z produkce (Deco.cx): přechod na Fresh přinesl <b>5× rychlejší načítání</b> a <b>30% nárůst konverzí</b>.</p>
+<p>Reálné výsledky z produkce (Deco.cx): přechod na Fresh přinesl <b>5× rychlejší načítání</b> a <b>30% nárůst konversí</b>.</p>
 
 <h3 id="ttfb">Time to First Byte (TTFB)</h3>
 
