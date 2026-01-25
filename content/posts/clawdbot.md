@@ -295,15 +295,6 @@ npm link</code></pre>
 
 <p>Kontejner izoluje aplikaci od hostitelského systému. I kdyby agent „zešílel”, nemůže smazat vaše soubory mimo namapovaný volume.</p>
 
-<p>Pro paranoidní uživatele: spusťte kontejner s omezenými právy:</p>
-
-<pre><code>docker run -d \
-  --name clawdbot \
-  --read-only \
-  --tmpfs /tmp \
-  --cap-drop ALL \
-  -v ~/.clawdbot:/root/.clawdbot \
-  clawdbot/clawdbot</code></pre>
 
 <h2 id="platformy">Podporované platformy</h2>
 
