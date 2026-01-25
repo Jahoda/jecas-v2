@@ -9,23 +9,23 @@ tags: ["ai", "napady", "produktivita"]
 format: "html"
 ---
 
-<p>Co kdyby váš AI asistent nebyl webová aplikace, ale <b>lokální agent</b>, se kterým si píšete přes WhatsApp nebo Telegram? Přesně to nabízí <a href="https://clawd.bot">Clawdbot</a> — open-source projekt, který propojuje messaging platformy s AI modely.</p>
+<p>Co kdyby váš AI asistent nebyl webová aplikace, ale <b>lokální agent</b>, se kterým si píšete přes WhatsApp nebo Telegram? Přesně to nabízí <a href="https://clawd.bot">Clawdbot</a> — open-source projekt, který propojuje messaging platformy s AI modely.</p>
 
-<p>Na rozdíl od ChatGPT nebo Claude.ai běží Clawdbot na vašem počítači. Ale pozor — <b>"lokální" neznamená "soukromé"</b>. Vaše data stále putují do cloudových API.</p>
+<p>Na rozdíl od ChatGPT nebo Claude.ai běží Clawdbot na vašem počítači. Ale pozor — <b>„lokální” neznamená „soukromé”</b>. Vaše data stále putují do cloudových API.</p>
 
 <h2 id="co-je">Co je Clawdbot?</h2>
 
-<p>Clawdbot je osobní AI asistent napsaný v TypeScriptu, který funguje jako gateway mezi chat aplikacemi a AI modely. Spustíte ho lokálně a komunikujete s ním přes běžné messengery:</p>
+<p>Clawdbot je osobní AI asistent napsaný v TypeScriptu, který funguje jako gateway mezi chat aplikacemi a AI modely. Spustíte ho lokálně a komunikujete s ním přes běžné messengery:</p>
 
 <ul>
   <li><b>WhatsApp</b> — přes knihovnu Baileys</li>
   <li><b>Telegram</b> — přes grammY framework</li>
-  <li><b>Discord</b> — jako bot na serveru nebo v DM</li>
+  <li><b>Discord</b> — jako bot na serveru nebo v DM</li>
   <li><b>iMessage</b> — na macOS</li>
-  <li><b>Slack, Signal, Teams</b> — a další platformy</li>
+  <li><b>Slack, Signal, Teams</b> — a další platformy</li>
 </ul>
 
-<p>Projekt vznikl koncem roku 2025 a rychle získal popularitu. GitHub repozitář má přes 8 000 hvězdiček a aktivní komunitu na Discordu.</p>
+<p>Projekt vznikl koncem roku 2025 a rychle získal popularitu. GitHub repozitář má přes 8 000 hvězdiček a aktivní komunitu na Discordu.</p>
 
 <h2 id="instalace">Instalace</h2>
 
@@ -40,7 +40,7 @@ clawdbot onboard --install-daemon
 # Přihlášení k chat kanálům
 clawdbot channels login</code></pre>
 
-<p>Příkaz <code>onboard</code> nastaví Clawdbot jako systémovou službu (daemon), která běží na pozadí. Na macOS, Linux i Windows (přes WSL2).</p>
+<p>Příkaz <code>onboard</code> nastaví Clawdbot jako systémovou službu (daemon), která běží na pozadí. Na macOS, Linux i Windows (přes WSL2).</p>
 
 <h3>Alternativní instalace</h3>
 
@@ -54,7 +54,7 @@ npm link</code></pre>
 
 <h2 id="architektura">Jak to funguje</h2>
 
-<p>Clawdbot používá architekturu s centrálním <b>Gateway</b> procesem:</p>
+<p>Clawdbot používá architekturu s centrálním <b>Gateway</b> procesem:</p>
 
 <pre><code>┌─────────────┐     ┌─────────────┐     ┌─────────────┐
 │  WhatsApp   │────▶│             │────▶│   Claude    │
@@ -64,11 +64,11 @@ npm link</code></pre>
 │  Discord    │────▶│             │────▶│  Ollama     │
 └─────────────┘     └─────────────┘     └─────────────┘</code></pre>
 
-<p>Gateway běží jako WebSocket server na <code>ws://127.0.0.1:18789</code> a spojuje všechny komponenty — chat kanály, AI agenta (Pi), CLI nástroje a webové rozhraní.</p>
+<p>Gateway běží jako WebSocket server na <code>ws://127.0.0.1:18789</code> a spojuje všechny komponenty — chat kanály, AI agenta (Pi), CLI nástroje a webové rozhraní.</p>
 
 <h3>Webové rozhraní</h3>
 
-<p>Po spuštění je dostupný WebChat na <code>http://127.0.0.1:18789/</code> pro testování a ladění bez nutnosti připojovat messaging platformy.</p>
+<p>Po spuštění je dostupný WebChat na <code>http://127.0.0.1:18789/</code> pro testování a ladění bez nutnosti připojovat messaging platformy.</p>
 
 <h2 id="modely">Podporované AI modely</h2>
 
@@ -97,11 +97,11 @@ npm link</code></pre>
   </tr>
 </table>
 
-<p>Tvůrci doporučují Anthropic Claude Pro/Max s modelem Opus 4.5 pro nejlepší výsledky při práci s dlouhým kontextem.</p>
+<p>Tvůrci doporučují Anthropic Claude Pro/Max s modelem Opus 4.5 pro nejlepší výsledky při práci s dlouhým kontextem.</p>
 
 <h2 id="konfigurace">Konfigurace</h2>
 
-<p>Nastavení se ukládá v <code>~/.clawdbot/clawdbot.json</code>. Příklad omezení přístupu pouze na konkrétní číslo:</p>
+<p>Nastavení se ukládá v <code>~/.clawdbot/clawdbot.json</code>. Příklad omezení přístupu pouze na konkrétní číslo:</p>
 
 <pre><code>{
   "channels": {
@@ -118,7 +118,7 @@ npm link</code></pre>
 
 <h2 id="pamet">Trvalá paměť</h2>
 
-<p>Jedna z klíčových funkcí — Clawdbot si <b>pamatuje kontext</b> napříč konversacemi. Paměť se ukládá jako Markdown soubory do složkové struktury podobné Obsidianu:</p>
+<p>Jedna z klíčových funkcí — Clawdbot si <b>pamatuje kontext</b> napříč konversacemi. Paměť se ukládá jako Markdown soubory do složkové struktury podobné Obsidianu:</p>
 
 <pre><code>~/.clawdbot/
 ├── memory/
@@ -130,16 +130,16 @@ npm link</code></pre>
 │       └── jan-novak.md
 └── clawdbot.json</code></pre>
 
-<p>Agent si pamatuje vaše preference, rozpracované projekty i informace o lidech, se kterými pracujete.</p>
+<p>Agent si pamatuje vaše preference, rozpracované projekty i informace o lidech, se kterými pracujete.</p>
 
 <h2 id="skills">Skills (dovednosti)</h2>
 
 <p>Clawdbot lze rozšiřovat pomocí <b>skills</b> — modulárních dovedností pro konkrétní služby:</p>
 
 <ul>
-  <li><b>Gmail</b> — čtení a odesílání e-mailů</li>
+  <li><b>Gmail</b> — čtení a odesílání e-mailů</li>
   <li><b>Google Calendar</b> — správa událostí</li>
-  <li><b>Notion</b> — práce s databázemi a stránkami</li>
+  <li><b>Notion</b> — práce s databázemi a stránkami</li>
   <li><b>Spotify</b> — ovládání přehrávání</li>
   <li><b>Philips Hue</b> — kontrola osvětlení</li>
   <li><b>GitHub</b> — issues, PR, repozitáře</li>
@@ -160,7 +160,7 @@ npm link</code></pre>
 
 <h3>Práce se soubory</h3>
 
-<p>Agent má přístup k filesystému — může číst, vytvářet a upravovat soubory. Ve výchozím stavu běží v sandboxu s omezenými právy.</p>
+<p>Agent má přístup k filesystému — může číst, vytvářet a upravovat soubory. Ve výchozím stavu běží v sandboxu s omezenými právy.</p>
 
 <h3>Webový prohlížeč</h3>
 
@@ -175,15 +175,15 @@ npm link</code></pre>
 
 <h3>Spouštění příkazů</h3>
 
-<p>Může spouštět shell příkazy a skripty. Hodí se pro automatisaci — spuštění buildů, testů, deploymentů.</p>
+<p>Může spouštět shell příkazy a skripty. Hodí se pro automatisaci — spuštění buildů, testů, deploymentů.</p>
 
 <h3>Automatisace</h3>
 
-<p>Podporuje cron jobs, webhooky a Gmail Pub/Sub triggery pro automatické spouštění úloh.</p>
+<p>Podporuje cron jobs, webhooky a Gmail Pub/Sub triggery pro automatické spouštění úloh.</p>
 
 <h2 id="bezpecnost">Bezpečnostní risika</h2>
 
-<p>Clawdbot má <b>plný přístup k vašemu systému</b>. Může číst a mazat soubory, spouštět libovolné příkazy, přistupovat k internetu. V podstatě si dobrovolně instalujete software s právy, jaká má typický malware.</p>
+<p>Clawdbot má <b>plný přístup k vašemu systému</b>. Může číst a mazat soubory, spouštět libovolné příkazy, přistupovat k internetu. V podstatě si dobrovolně instalujete software s právy, jaká má typický malware.</p>
 
 <h3>Co může Clawdbot udělat</h3>
 
@@ -191,21 +191,21 @@ npm link</code></pre>
   <li><b>Smazat soubory</b> — včetně důležitých dat</li>
   <li><b>Číst citlivé soubory</b> — SSH klíče, konfigurace, hesla</li>
   <li><b>Spouštět příkazy</b> — cokoliv, co můžete vy</li>
-  <li><b>Přistupovat k síti</b> — odesílat data kamkoliv</li>
+  <li><b>Přistupovat k síti</b> — odesílat data kamkoliv</li>
   <li><b>Instalovat software</b> — včetně dalších závislostí</li>
 </ul>
 
 <p>Sandbox ve výchozím nastavení omezuje pouze <b>skupinové chaty</b>, ne hlavního agenta.</p>
 
-<h3>"Lokální" neznamená "soukromé"</h3>
+<h3>„Lokální” neznamená „soukromé”</h3>
 
-<p>Pokud používáte Claude nebo GPT, všechny vaše zprávy, soubory a kontext <b>putují do cloudových API</b> Anthropic nebo OpenAI. Poskytovatelé je mohou ukládat, analyzovat, používat pro trénink modelů.</p>
+<p>Pokud používáte Claude nebo GPT, všechny vaše zprávy, soubory a kontext <b>putují do cloudových API</b> Anthropic nebo OpenAI. Poskytovatelé je mohou ukládat, analyzovat, používat pro trénink modelů.</p>
 
-<p>Skutečně lokální je pouze varianta s <b>Ollama</b> — tam data nikam neodcházejí. Ale výkon lokálních modelů je výrazně nižší.</p>
+<p>Skutečně lokální je pouze varianta s <b>Ollama</b> — tam data nikam neodcházejí. Ale výkon lokálních modelů je výrazně nižší.</p>
 
 <h3>Risiko supply chain útoku</h3>
 
-<p>Instalujete npm balíček s plnými systémovými právy. Pokud by byl repozitář kompromitován nebo závislost obsahovala malware, máte problém. Totéž platí pro skills z komunitního katalogu.</p>
+<p>Instalujete npm balíček s plnými systémovými právy. Pokud by byl repozitář kompromitován nebo závislost obsahovala malware, máte problém. Totéž platí pro skills z komunitního katalogu.</p>
 
 <h3>Výchozí ochranné mechanismy</h3>
 
@@ -217,7 +217,7 @@ npm link</code></pre>
   <li><b>Sandbox pro skupiny</b> — isolované prostředí pro skupinové chaty</li>
 </ul>
 
-<p>Ale hlavní agent běží s plnými právy vašeho uživatelského účtu.</p>
+<p>Ale hlavní agent běží s plnými právy vašeho uživatelského účtu.</p>
 
 <h2 id="kde-spustit">Kde to spustit</h2>
 
@@ -225,12 +225,12 @@ npm link</code></pre>
 
 <h3>Hardwarové nároky</h3>
 
-<p>Clawdbot je gateway napsaná v Node.js. Samotné AI výpočty probíhají v cloudu (Anthropic, OpenAI) nebo na separátním Ollama serveru. Gateway jen přeposílá zprávy.</p>
+<p>Clawdbot je gateway napsaná v Node.js. Samotné AI výpočty probíhají v cloudu (Anthropic, OpenAI) nebo na separátním Ollama serveru. Gateway jen přeposílá zprávy.</p>
 
 <p>Minimální požadavky:</p>
 
 <ul>
-  <li><b>RAM</b> — 512 MB (Node.js + Chromium pro browser skills)</li>
+  <li><b>RAM</b> — 512 MB (Node.js + Chromium pro browser skills)</li>
   <li><b>CPU</b> — jakýkoliv, většinu času idle</li>
   <li><b>Disk</b> — stovky MB pro aplikaci + paměť</li>
 </ul>
@@ -269,7 +269,7 @@ npm link</code></pre>
 
 <h3>Izolace pomocí Dockeru</h3>
 
-<p>Místo sandboxu v aplikaci můžete spustit celý Clawdbot v Docker kontejneru:</p>
+<p>Místo sandboxu v aplikaci můžete spustit celý Clawdbot v Docker kontejneru:</p>
 
 <pre><code>docker run -d \
   --name clawdbot \
@@ -278,9 +278,9 @@ npm link</code></pre>
   --restart unless-stopped \
   clawdbot/clawdbot</code></pre>
 
-<p>Kontejner izoluje aplikaci od hostitelského systému. I kdyby agent "zešílel", nemůže smazat vaše soubory mimo namapovaný volume.</p>
+<p>Kontejner izoluje aplikaci od hostitelského systému. I kdyby agent „zešílel”, nemůže smazat vaše soubory mimo namapovaný volume.</p>
 
-<p>Pro paranoidní uživatele: spusťte kontejner s omezenými právy:</p>
+<p>Pro paranoidní uživatele: spusťte kontejner s omezenými právy:</p>
 
 <pre><code>docker run -d \
   --name clawdbot \
@@ -330,16 +330,16 @@ npm link</code></pre>
 <p>Několik scénářů, kde Clawdbot vyniká:</p>
 
 <ul>
-  <li><b>Správa e-mailů</b> — „Shrň mi nepřečtené e-maily a odpověz na urgentní"</li>
-  <li><b>Kalendář</b> — „Naplánuj meeting s Petrem na příští týden"</li>
-  <li><b>Kódování</b> — „Spusť testy a oprav failing cases"</li>
-  <li><b>Domácnost</b> — „Ztlum světla v obýváku na 50%"</li>
-  <li><b>Research</b> — „Najdi informace o tomto tématu a shrň je"</li>
+  <li><b>Správa e-mailů</b> — „Shrň mi nepřečtené e-maily a odpověz na urgentní”</li>
+  <li><b>Kalendář</b> — „Naplánuj meeting s Petrem na příští týden”</li>
+  <li><b>Kódování</b> — „Spusť testy a oprav failing cases”</li>
+  <li><b>Domácnost</b> — „Ztlum světla v obýváku na 50%”</li>
+  <li><b>Research</b> — „Najdi informace o tomto tématu a shrň je”</li>
 </ul>
 
-<p>Výhodou je, že vše děláte z jedné chat aplikace, kterou už používáte.</p>
+<p>Výhodou je, že vše děláte z jedné chat aplikace, kterou už používáte.</p>
 
-<h2 id="srovnani">Srovnání s alternativami</h2>
+<h2 id="srovnani">Srovnání s alternativami</h2>
 
 <table>
   <tr>
@@ -361,7 +361,7 @@ npm link</code></pre>
     <td>Pouze web/app</td>
   </tr>
   <tr>
-    <td>Přístup k souborům</td>
+    <td>Přístup k souborům</td>
     <td>Plný (risiko)</td>
     <td>Omezený</td>
     <td>Omezený</td>
@@ -390,10 +390,10 @@ npm link</code></pre>
 
 <ul>
   <li><b>Clawdbot</b> je open-source AI asistent běžící lokálně na vašem zařízení</li>
-  <li>Komunikujete s ním přes <b>WhatsApp, Telegram, Discord</b> nebo jiné messengery</li>
+  <li>Komunikujete s ním přes <b>WhatsApp, Telegram, Discord</b> nebo jiné messengery</li>
   <li>Má <b>trvalou paměť</b> uloženou jako Markdown soubory</li>
-  <li>Lze rozšiřovat pomocí <b>skills</b> pro Gmail, Notion, Spotify a další služby</li>
-  <li><b>Bezpečnostní risiko</b> — plný přístup k systému, data putují do cloudových API</li>
+  <li>Lze rozšiřovat pomocí <b>skills</b> pro Gmail, Notion, Spotify a další služby</li>
+  <li><b>Bezpečnostní risiko</b> — plný přístup k systému, data putují do cloudových API</li>
 </ul>
 
 <p>Clawdbot je zajímavý projekt, ale vyžaduje důvěru. Dáváte AI agentovi práva, která byste nedali ani kolegovi. Zvažte, zda vám pohodlí stojí za risiko.</p>
