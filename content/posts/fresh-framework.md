@@ -7,6 +7,7 @@ last_modification: "2026-01-25"
 status: 1
 tags: ["js", "ts", "frameworky"]
 format: "html"
+social_text: "Chcete dělat web generovaný na serveru v TypeScriptu/JSX bez zdlouhavého build procesu a hromady JS na straně klienta? Fresh framework nad Deno může být zajímavá volba."
 ---
 
 <p><a href="https://fresh.deno.dev">Fresh</a> je webový framework postavený na <b>Deno</b>, který přináší zajímavý přístup k tvorbě webových aplikací. Na rozdíl od tradičních frameworků jako Next.js nebo SvelteKit používá tzv. <b>islands architekturu</b> a nemá žádný build krok.</p>
@@ -122,7 +123,7 @@ export default function App({ Component }) {
 
 <h3 id="sdileni-stavu">Sdílení stavu mezi ostrovy</h3>
 
-<p>Ostrovy jsou izolované Preact aplikace, ale stav mezi nimi lze sdílet pomocí <b>exportovaných signálů</b>:</p>
+<p>Ostrovy jsou isolované Preact aplikace, ale stav mezi nimi lze sdílet pomocí <b>exportovaných signálů</b>:</p>
 
 <pre><code>// utils/cart.ts
 import { signal } from "@preact/signals";
@@ -530,7 +531,28 @@ export default function Counter() {
   <li>Aplikace s <b>komplexním sdíleným stavem</b> – <code>useContext</code> nefunguje napříč ostrovy</li>
 </ul>
 
-<p>Pro běžné interaktivní aplikace (e-shop, dashboard) je Fresh díky Partials a sdíleným signálům použitelný. Limitující je především menší ekosystém.</p>
+<p>Pro běžné interaktivní aplikace (e-shop, dashboard) je Fresh díky Partials a sdíleným signálům použitelný. Limitující je především menší ekosystém.
+
+<b>Poznámka k npm závislostem:</b> V dnešní době není typicky potřeba tolik externích balíčků. S pomocí AI nástrojů je často jednodušší nechat si vygenerovat řešení na míru než hledat, instalovat a udržovat závislosti.</p>
+
+<h2 id="deno-deploy">Nasazení na Deno Deploy</h2>
+
+<p>Jednou z velkých výhod Fresh je snadné nasazení na <a href="https://deno.com/deploy">Deno Deploy</a> – edge hosting přímo od tvůrců Deno:</p>
+
+<ul>
+  <li><b>Nasazení na pár kliknutí</b> – propojení s GitHub repozitářem a automatický deploy při každém push</li>
+  <li><b>Globální edge síť</b> – kód běží blízko uživatelům po celém světě</li>
+  <li><b>Žádná konfigurace</b> – Fresh projekty fungují out-of-the-box</li>
+  <li><b>Bezplatný tarif</b> – 100 000 requestů denně zdarma</li>
+</ul>
+
+<pre><code># Postup nasazení:
+# 1. Push kódu na GitHub
+# 2. Přihlášení na dash.deno.com
+# 3. "New Project" → výběr repozitáře
+# 4. Hotovo – aplikace běží na *.deno.dev doméně</code></pre>
+
+<p>Pro produkční nasazení stačí připojit vlastní doménu a nastavit environment variables. Žádný Docker, žádný CI/CD pipeline – vše je integrované.</p>
 
 <h2 id="zaver">Závěr</h2>
 

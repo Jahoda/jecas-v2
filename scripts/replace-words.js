@@ -35,7 +35,8 @@ const REPLACEMENTS = {
 	databaz: 'databas',
 	prezent: 'present',
 	reverz: 'revers',
-	konzist: 'konsist'
+	konzist: 'konsist',
+	izolovan: 'isolovan'
 };
 
 /**
