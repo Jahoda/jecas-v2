@@ -9,17 +9,17 @@ tags: ["js", "frameworky"]
 format: "html"
 ---
 
-<p><a href="https://fresh.deno.dev">Fresh</a> je webový framework postavený na <b>Deno</b>, který přináší zajímavý přístup k tvorbě webových aplikací. Na rozdíl od tradičních frameworků jako Next.js nebo SvelteKit používá tzv. <b>islands architekturu</b> a nemá žádný build krok.</p>
+<p><a href="https://fresh.deno.dev">Fresh</a> je webový framework postavený na <b>Deno</b>, který přináší zajímavý přístup k tvorbě webových aplikací. Na rozdíl od tradičních frameworků jako Next.js nebo SvelteKit používá tzv. <b>islands architekturu</b> a nemá žádný build krok.</p>
 
 <h2 id="co-je-fresh">Co je Fresh</h2>
 
-<p>Fresh je framework pro <b>server-side rendering</b> s minimálním JavaScriptem na klientu. Stránky se renderují na serveru jako <b>Preact komponenty</b> a ve výchozím stavu se do prohlížeče neposílá žádný JavaScript.</p>
+<p>Fresh je framework pro <b>server-side rendering</b> s minimálním JavaScriptem na klientu. Stránky se renderují na serveru jako <b>Preact komponenty</b> a ve výchozím stavu se do prohlížeče neposílá žádný JavaScript.</p>
 
 <p>Interaktivita se přidává pouze tam, kde je potřeba – pomocí tzv. <b>islands</b> (ostrovů). Zbytek stránky zůstává jako statické HTML.</p>
 
 <h3 id="co-je-preact">Co je Preact</h3>
 
-<p>Fresh používá <a href="https://preactjs.com/">Preact</a> – odlehčenou alternativu k Reactu s téměř identickým API. Hlavní rozdíl je velikost: Preact má pouze <b>3 KB</b>, zatímco React ~40 KB.</p>
+<p>Fresh používá <a href="https://preactjs.com/">Preact</a> – odlehčenou alternativu k Reactu s téměř identickým API. Hlavní rozdíl je velikost: Preact má pouze <b>3 KB</b>, zatímco React ~40 KB.</p>
 
 <table>
   <thead>
@@ -32,8 +32,8 @@ format: "html"
   <tbody>
     <tr>
       <td>Velikost</td>
-      <td><b>3 KB</b></td>
-      <td>~40 KB</td>
+      <td><b>3 KB</b></td>
+      <td>~40 KB</td>
     </tr>
     <tr>
       <td>Virtual DOM</td>
@@ -52,11 +52,11 @@ format: "html"
   </tbody>
 </table>
 
-<p>Pro Fresh je Preact ideální volba – minimální runtime pro islands, ale známá syntaxe pro React vývojáře. Většina React kódu funguje v Preact s aliasem <code>preact/compat</code>.</p>
+<p>Pro Fresh je Preact ideální volba – minimální runtime pro islands, ale známá syntaxe pro React vývojáře. Většina React kódu funguje v Preact s aliasem <code>preact/compat</code>.</p>
 
 <h2 id="islands-architektura">Islands architektura</h2>
 
-<p>Hlavní myšlenka islands architektury je jednoduchá: <b>většina webových stránek je statická</b>. Interaktivní jsou jen některé části – formuláře, menu, košík v e-shopu.</p>
+<p>Hlavní myšlenka islands architektury je jednoduchá: <b>většina webových stránek je statická</b>. Interaktivní jsou jen některé části – formuláře, menu, košík v e-shopu.</p>
 
 <p>Proč tedy hydratovat celou stránku JavaScriptem, když interaktivní je jen malá část?</p>
 
@@ -72,7 +72,7 @@ export default function ProductPage() {
   );
 }</code></pre>
 
-<p>Srovnejme s tradičním přístupem v Next.js:</p>
+<p>Srovnejme s tradičním přístupem v Next.js:</p>
 
 <pre><code>// Next.js – celá stránka se hydratuje (~150 KB JS)
 export default function ProductPage() {
@@ -86,11 +86,11 @@ export default function ProductPage() {
   );
 }</code></pre>
 
-<p>Rozdíl může být <b>až 10×</b> v množství JavaScriptu poslaného do prohlížeče.</p>
+<p>Rozdíl může být <b>až 10×</b> v množství JavaScriptu poslaného do prohlížeče.</p>
 
 <h3 id="partials">Partials: Client-side navigace</h3>
 
-<p>Od verse 1.5 Fresh podporuje <b>client-side navigaci</b> bez full page reload pomocí tzv. Partials. Stačí přidat atribut <code>f-client-nav</code> a označit měnící se části stránky:</p>
+<p>Od verse 1.5 Fresh podporuje <b>client-side navigaci</b> bez full page reload pomocí tzv. Partials. Stačí přidat atribut <code>f-client-nav</code> a označit měnící se části stránky:</p>
 
 <pre><code>// routes/_app.tsx
 export default function App({ Component }) {
@@ -112,7 +112,7 @@ export default function App({ Component }) {
 <ul>
   <li><b>SPA-like navigace</b> – stránky se mění bez reloadu</li>
   <li><b>Zachování stavu</b> – islands si pamatují svůj stav při navigaci</li>
-  <li><b>Optimalisace</b> – s atributem <code>f-partial</code> server vrací pouze potřebné části</li>
+  <li><b>Optimalisace</b> – s atributem <code>f-partial</code> server vrací pouze potřebné části</li>
 </ul>
 
 <pre><code>&lt;!-- Optimalisovaný link – fetchuje pouze partial -->
@@ -168,15 +168,15 @@ export default function Cart() {
   </tbody>
 </table>
 
-<p><b>Omezení:</b> <code>useContext</code> nefunguje napříč ostrovy (context existuje jen na serveru) a funkce nelze předávat jako props.</p>
+<p><b>Omezení:</b> <code>useContext</code> nefunguje napříč ostrovy (context existuje jen na serveru) a funkce nelze předávat jako props.</p>
 
-<h2 id="build-runtime">Build a runtime na produkci</h2>
+<h2 id="build-runtime">Build a runtime na produkci</h2>
 
-<p>Zde je zásadní rozdíl mezi Fresh a ostatními frameworky.</p>
+<p>Zde je zásadní rozdíl mezi Fresh a ostatními frameworky.</p>
 
 <h3 id="fresh-zero-build">Fresh: Zero build</h3>
 
-<p>Fresh <b>nemá build krok</b>. Kód se kompiluje za běhu přímo v Deno. To znamená:</p>
+<p>Fresh <b>nemá build krok</b>. Kód se kompiluje za běhu přímo v Deno. To znamená:</p>
 
 <ul>
   <li>Žádný webpack, Vite, esbuild</li>
@@ -198,16 +198,16 @@ export default function Cart() {
 <pre><code>npm run build    # Kompilace, bundling, optimalisace
 npm run start    # Spuštění produkčního serveru</code></pre>
 
-<p>Výstupem je adresář <code>.next</code> s optimalisovanými assety. Na produkci běží <b>předkompilovaný kód</b>.</p>
+<p>Výstupem je adresář <code>.next</code> s optimalisovanými assety. Na produkci běží <b>předkompilovaný kód</b>.</p>
 
 <h3 id="sveltekit-build">SvelteKit: Kompilace jako výhoda</h3>
 
-<p>SvelteKit má také build krok, ale s důležitým rozdílem – Svelte je <b>kompilátor</b>:</p>
+<p>SvelteKit má také build krok, ale s důležitým rozdílem – Svelte je <b>kompilátor</b>:</p>
 
 <pre><code>npm run build    # Svelte kompiluje komponenty na vanilla JS
 npm run preview  # Náhled produkčního buildu</code></pre>
 
-<p>Svelte kompilace odstraní framework runtime z výsledného kódu. Proto má SvelteKit typicky <b>o 50% menší bundle</b> než React/Next.js.</p>
+<p>Svelte kompilace odstraní framework runtime z výsledného kódu. Proto má SvelteKit typicky <b>o 50% menší bundle</b> než React/Next.js.</p>
 
 <h3 id="srovnani-build">Srovnání build procesu</h3>
 
@@ -238,9 +238,9 @@ npm run preview  # Náhled produkčního buildu</code></pre>
   </tbody>
 </table>
 
-<h3 id="tailwind">Tailwind CSS a AOT build</h3>
+<h3 id="tailwind">Tailwind CSS a AOT build</h3>
 
-<p>Fresh od verse 1.6 má oficiální <b>Tailwind CSS plugin</b>. Ten ale vyžaduje <b>AOT (Ahead-of-Time) build</b> – výjimku z jinak zero-build filozofie:</p>
+<p>Fresh od verse 1.6 má oficiální <b>Tailwind CSS plugin</b>. Ten ale vyžaduje <b>AOT (Ahead-of-Time) build</b> – výjimku z jinak zero-build filozofie:</p>
 
 <pre><code># Fresh bez Tailwind
 deno run -A main.ts       # Spustí se rovnou
@@ -258,7 +258,7 @@ export default defineConfig({
   plugins: [tailwind()],
 });</code></pre>
 
-<p>Proč AOT? Tailwind skenuje zdrojové soubory a generuje CSS pouze pro použité třídy. To nelze efektivně dělat za běhu.</p>
+<p>Proč AOT? Tailwind skenuje zdrojové soubory a generuje CSS pouze pro použité třídy. To nelze efektivně dělat za běhu.</p>
 
 <table>
   <thead>
@@ -292,9 +292,9 @@ export default defineConfig({
   </tbody>
 </table>
 
-<p><b>Poznámka:</b> Pro VS Code IntelliSense je potřeba nastavit <code>"nodeModulesDir": "manual"</code> v <code>deno.json</code>.</p>
+<p><b>Poznámka:</b> Pro VS Code IntelliSense je potřeba nastavit <code>"nodeModulesDir": "manual"</code> v <code>deno.json</code>.</p>
 
-<h2 id="rychlost">Rychlost a výkon</h2>
+<h2 id="rychlost">Rychlost a výkon</h2>
 
 <h3 id="bundle-size">Velikost bundlu</h3>
 
@@ -311,17 +311,17 @@ export default defineConfig({
   <tbody>
     <tr>
       <td>Fresh</td>
-      <td>15–30 KB</td>
+      <td>15–30 KB</td>
       <td>Pouze interaktivní ostrovy</td>
     </tr>
     <tr>
       <td>SvelteKit</td>
-      <td>50–80 KB</td>
+      <td>50–80 KB</td>
       <td>Žádný runtime, kompilovaný kód</td>
     </tr>
     <tr>
       <td>Next.js</td>
-      <td>100–200 KB</td>
+      <td>100–200 KB</td>
       <td>React runtime + komponenty</td>
     </tr>
   </tbody>
@@ -331,7 +331,7 @@ export default defineConfig({
 
 <p>Fresh dosahuje <b>nejrychlejší interaktivity</b>, protože prohlížeč zpracovává minimum JavaScriptu. SvelteKit je druhý díky menšímu bundlu. Next.js je nejpomalejší kvůli velikosti React runtime.</p>
 
-<p>Reálné výsledky z produkce (Deco.cx): přechod na Fresh přinesl <b>5× rychlejší načítání</b> a <b>30% nárůst konversí</b>.</p>
+<p>Reálné výsledky z produkce (Deco.cx): přechod na Fresh přinesl <b>5× rychlejší načítání</b> a <b>30% nárůst konversí</b>.</p>
 
 <h3 id="ttfb">Time to First Byte (TTFB)</h3>
 
@@ -345,11 +345,11 @@ export default defineConfig({
 
 <p>Pro statické stránky může být Next.js/SvelteKit rychlejší díky předrenderování. Fresh ale může použít edge deployment na Deno Deploy.</p>
 
-<h2 id="reaktivita">Rozdíly v reaktivitě</h2>
+<h2 id="reaktivita">Rozdíly v reaktivitě</h2>
 
 <h3 id="fresh-signals">Fresh: Preact Signals</h3>
 
-<p>Fresh používá <b>Preact Signals</b> pro reaktivitu v islands:</p>
+<p>Fresh používá <b>Preact Signals</b> pro reaktivitu v islands:</p>
 
 <pre><code>import { signal } from "@preact/signals";
 
@@ -386,7 +386,7 @@ export default function Counter() {
 
 <h3 id="react-hooks">React/Next.js: Hooks</h3>
 
-<p>React používá <b>hooks</b> a virtuální DOM:</p>
+<p>React používá <b>hooks</b> a virtuální DOM:</p>
 
 <pre><code>import { useState } from "react";
 
@@ -401,7 +401,7 @@ export default function Counter() {
   );
 }</code></pre>
 
-<p>Při každé změně stavu se překreslí <b>celá komponenta</b> a React porovná virtuální DOM s reálným.</p>
+<p>Při každé změně stavu se překreslí <b>celá komponenta</b> a React porovná virtuální DOM s reálným.</p>
 
 <h3 id="srovnani-reaktivita">Srovnání reaktivity</h3>
 
@@ -432,11 +432,11 @@ export default function Counter() {
   </tbody>
 </table>
 
-<h2 id="sablony">Rozdíly v šablonách</h2>
+<h2 id="sablony">Rozdíly v šablonách</h2>
 
 <h3 id="fresh-jsx">Fresh: JSX/TSX</h3>
 
-<p>Fresh používá standardní <b>JSX</b> syntaxi (Preact je API kompatibilní s Reactem):</p>
+<p>Fresh používá standardní <b>JSX</b> syntaxi (Preact je API kompatibilní s Reactem):</p>
 
 <pre><code>export default function Article({ title, content }) {
   return (
@@ -488,7 +488,7 @@ export default function Counter() {
     <tr>
       <td>CSS</td>
       <td>CSS-in-JS nebo externí soubory</td>
-      <td>Scoped CSS přímo v komponentě</td>
+      <td>Scoped CSS přímo v komponentě</td>
     </tr>
     <tr>
       <td>Událost</td>
@@ -498,9 +498,9 @@ export default function Counter() {
   </tbody>
 </table>
 
-<h2 id="ecosystem">Ekosystém a adopce</h2>
+<h2 id="ecosystem">Ekosystém a adopce</h2>
 
-<p>Zde je Fresh v nevýhodě:</p>
+<p>Zde je Fresh v nevýhodě:</p>
 
 <ul>
   <li><b>Fresh</b> – běží pouze na Deno, menší komunita, méně knihoven</li>
@@ -517,7 +517,7 @@ export default function Counter() {
   <li>Preferujete <b>jednoduchost</b> bez build konfigurace</li>
   <li>Používáte nebo chcete používat <b>Deno</b></li>
   <li>Nasazujete na <b>edge</b> (Deno Deploy)</li>
-  <li>Vytváříte <b>obsahové weby</b> s minimální interaktivitou</li>
+  <li>Vytváříte <b>obsahové weby</b> s minimální interaktivitou</li>
 </ul>
 
 <h2 id="kdy-nepouzit">Kdy Fresh nepoužít</h2>
@@ -527,15 +527,15 @@ export default function Counter() {
 <ul>
   <li>Projekty vyžadující <b>rozsáhlý npm ekosystém</b> – mnoho React knihoven nefunguje</li>
   <li>Týmy zvyklé na <b>Node.js</b> workflow – Fresh běží pouze na Deno</li>
-  <li>Aplikace s <b>komplexním sdíleným stavem</b> – <code>useContext</code> nefunguje napříč ostrovy</li>
+  <li>Aplikace s <b>komplexním sdíleným stavem</b> – <code>useContext</code> nefunguje napříč ostrovy</li>
 </ul>
 
-<p>Pro běžné interaktivní aplikace (e-shop, dashboard) je Fresh díky Partials a sdíleným signálům použitelný. Limitující je především menší ekosystém.</p>
+<p>Pro běžné interaktivní aplikace (e-shop, dashboard) je Fresh díky Partials a sdíleným signálům použitelný. Limitující je především menší ekosystém.</p>
 
 <h2 id="zaver">Závěr</h2>
 
-<p>Fresh představuje zajímavou alternativu k tradičním meta-frameworkům. Jeho <b>islands architektura</b> a <b>zero-build přístup</b> jsou osvěžující v době, kdy se build konfigurace stávají stále složitějšími.</p>
+<p>Fresh představuje zajímavou alternativu k tradičním meta-frameworkům. Jeho <b>islands architektura</b> a <b>zero-build přístup</b> jsou osvěžující v době, kdy se build konfigurace stávají stále složitějšími.</p>
 
-<p>Pro obsahové weby a projekty s důrazem na výkon může být Fresh výbornou volbou. Pro komplexní aplikace s bohatou interaktivitou ale zůstává Next.js nebo SvelteKit praktičtější volbou díky většímu ekosystému.</p>
+<p>Pro obsahové weby a projekty s důrazem na výkon může být Fresh výbornou volbou. Pro komplexní aplikace s bohatou interaktivitou ale zůstává Next.js nebo SvelteKit praktičtější volbou díky většímu ekosystému.</p>
 
 <p>Klíčové je vybrat nástroj podle potřeb projektu, ne podle hype.</p>
