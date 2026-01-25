@@ -533,14 +533,14 @@ export default function Counter() {
 
 <p>Pro běžné interaktivní aplikace (e-shop, dashboard) je Fresh díky Partials a sdíleným signálům použitelný. Limitující je především menší ekosystém.
 
-<b>Poznámka k npm závislostem:</b> V dnešní době není typicky potřeba tolik externích balíčků. S pomocí AI nástrojů je často jednodušší nechat si vygenerovat řešení na míru než hledat, instalovat a udržovat závislosti.</p>
+<b>Poznámka k npm závislostem:</b> V dnešní době není typicky potřeba tolik externích balíčků. S pomocí AI nástrojů je často jednodušší nechat si vygenerovat řešení na míru než hledat, instalovat a udržovat závislosti.</p>
 
 <h2 id="deno-deploy">Nasazení na Deno Deploy</h2>
 
-<p>Jednou z velkých výhod Fresh je snadné nasazení na <a href="https://deno.com/deploy">Deno Deploy</a> – edge hosting přímo od tvůrců Deno:</p>
+<p>Jednou z velkých výhod Fresh je snadné nasazení na <a href="https://deno.com/deploy">Deno Deploy</a> – edge hosting přímo od tvůrců Deno:</p>
 
 <ul>
-  <li><b>Nasazení na pár kliknutí</b> – propojení s GitHub repozitářem a automatický deploy při každém push</li>
+  <li><b>Nasazení na pár kliknutí</b> – propojení s GitHub repozitářem a automatický deploy při každém push</li>
   <li><b>Globální edge síť</b> – kód běží blízko uživatelům po celém světě</li>
   <li><b>Žádná konfigurace</b> – Fresh projekty fungují out-of-the-box</li>
   <li><b>Bezplatný tarif</b> – 100 000 requestů denně zdarma</li>
@@ -552,7 +552,7 @@ export default function Counter() {
 # 3. "New Project" → výběr repozitáře
 # 4. Hotovo – aplikace běží na *.deno.dev doméně</code></pre>
 
-<p>Pro produkční nasazení stačí připojit vlastní doménu a nastavit environment variables. Žádný Docker, žádný CI/CD pipeline – vše je integrované.</p>
+<p>Pro produkční nasazení stačí připojit vlastní doménu a nastavit environment variables. Žádný Docker, žádný CI/CD pipeline – vše je integrované.</p>
 
 <h2 id="zaver">Závěr</h2>
 
