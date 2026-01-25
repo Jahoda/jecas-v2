@@ -180,7 +180,7 @@ export default function Cart() {
 
 <ul>
   <li>Žádný webpack, Vite, esbuild</li>
-  <li>Žádné <code>node_modules</code> – Deno stahuje závislosti z URL nebo pomocí <code>npm:</code> specifikátoru a cachuje je globálně</li>
+  <li>Žádné <code>node_modules</code> – Deno stahuje závislosti z URL nebo pomocí <code>npm:</code> specifikátoru a cachuje je globálně</li>
   <li>Žádný <code>dist</code> nebo <code>.next</code> adresář</li>
   <li>TypeScript funguje nativně bez konfigurace</li>
 </ul>
@@ -240,7 +240,7 @@ npm run preview  # Náhled produkčního buildu</code></pre>
 
 <h3 id="tailwind">Tailwind CSS a AOT build</h3>
 
-<p>Fresh od verse 1.6 má oficiální <b><a href="/tailwind-css">Tailwind CSS</a> plugin</b>. Ten ale vyžaduje <b>AOT (Ahead-of-Time) build</b> – jednu z výjimek z jinak zero-build filozofie (další je např. předkompilace islands pro produkci):</p>
+<p>Fresh od verse 1.6 má oficiální <b><a href="/tailwind-css">Tailwind CSS</a> plugin</b>. Ten ale vyžaduje <b>AOT (Ahead-of-Time) build</b> – jednu z výjimek z jinak zero-build filozofie (další je např. předkompilace islands pro produkci):</p>
 
 <pre><code># Fresh bez Tailwind
 deno run -A main.ts       # Spustí se rovnou
@@ -517,7 +517,7 @@ export default function Counter() {
   <li>Používáte nebo chcete používat <b>Deno</b></li>
   <li>Nasazujete na <b>edge</b> (Deno Deploy)</li>
   <li>Vytváříte <b>obsahové weby</b> s minimální interaktivitou</li>
-  <li>Děláte <b>rychlý iterativní vývoj</b> (např. s AI) – absence buildu znamená okamžitou zpětnou vazbu bez čekání na kompilaci</li>
+  <li>Děláte <b>rychlý iterativní vývoj</b> (např. s AI) – absence buildu znamená okamžitou zpětnou vazbu bez čekání na kompilaci</li>
 </ul>
 
 <h2 id="kdy-nepouzit">Kdy Fresh nepoužít</h2>
