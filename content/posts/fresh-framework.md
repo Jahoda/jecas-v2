@@ -2,10 +2,10 @@
 title: "Fresh: Deno framework s islands architekturou"
 headline: "Fresh: Deno framework s islands architekturou"
 description: "Porovnání Fresh frameworku s React/Next.js a Svelte/SvelteKit - build proces, runtime, reaktivita a šablony."
-date: "2026-01-10"
-last_modification: "2026-01-10"
+date: "2026-01-25"
+last_modification: "2026-01-25"
 status: 1
-tags: ["js", "frameworky"]
+tags: ["js", "ts", "frameworky"]
 format: "html"
 ---
 
