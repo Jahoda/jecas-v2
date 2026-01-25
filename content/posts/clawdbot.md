@@ -219,6 +219,77 @@ npm link</code></pre>
 
 <p>Ale hlavní agent běží s plnými právy vašeho uživatelského účtu.</p>
 
+<h2 id="kde-spustit">Kde to spustit</h2>
+
+<p>V komunitě se objevil trend kupování <b>Mac mini</b> jako dedikovaného zařízení pro Clawdbot. Je to zbytečné.</p>
+
+<h3>Hardwarové nároky</h3>
+
+<p>Clawdbot je gateway napsaná v Node.js. Samotné AI výpočty probíhají v cloudu (Anthropic, OpenAI) nebo na separátním Ollama serveru. Gateway jen přeposílá zprávy.</p>
+
+<p>Minimální požadavky:</p>
+
+<ul>
+  <li><b>RAM</b> — 512 MB (Node.js + Chromium pro browser skills)</li>
+  <li><b>CPU</b> — jakýkoliv, většinu času idle</li>
+  <li><b>Disk</b> — stovky MB pro aplikaci + paměť</li>
+</ul>
+
+<p>Raspberry Pi 4 to zvládne. Mac mini za 15 000 Kč je overkill.</p>
+
+<h3>Levnější alternativy</h3>
+
+<table>
+  <tr>
+    <th>Varianta</th>
+    <th>Cena</th>
+    <th>Poznámka</th>
+  </tr>
+  <tr>
+    <td>VPS (Hetzner, DigitalOcean)</td>
+    <td>~100 Kč/měsíc</td>
+    <td>Nejjednodušší, vždy online</td>
+  </tr>
+  <tr>
+    <td>Raspberry Pi</td>
+    <td>~2000 Kč jednorázově</td>
+    <td>Nízká spotřeba, tichý provoz</td>
+  </tr>
+  <tr>
+    <td>Starý notebook/PC</td>
+    <td>0 Kč</td>
+    <td>Využití existujícího hardware</td>
+  </tr>
+  <tr>
+    <td>Docker na NAS</td>
+    <td>0 Kč</td>
+    <td>Synology, QNAP — běží 24/7</td>
+  </tr>
+</table>
+
+<h3>Izolace pomocí Dockeru</h3>
+
+<p>Místo sandboxu v aplikaci můžete spustit celý Clawdbot v Docker kontejneru:</p>
+
+<pre><code>docker run -d \
+  --name clawdbot \
+  -v ~/.clawdbot:/root/.clawdbot \
+  -p 18789:18789 \
+  --restart unless-stopped \
+  clawdbot/clawdbot</code></pre>
+
+<p>Kontejner izoluje aplikaci od hostitelského systému. I kdyby agent "zešílel", nemůže smazat vaše soubory mimo namapovaný volume.</p>
+
+<p>Pro paranoidní uživatele: spusťte kontejner s omezenými právy:</p>
+
+<pre><code>docker run -d \
+  --name clawdbot \
+  --read-only \
+  --tmpfs /tmp \
+  --cap-drop ALL \
+  -v ~/.clawdbot:/root/.clawdbot \
+  clawdbot/clawdbot</code></pre>
+
 <h2 id="platformy">Podporované platformy</h2>
 
 <table>
