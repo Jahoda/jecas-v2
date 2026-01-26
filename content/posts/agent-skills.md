@@ -9,15 +9,15 @@ tags: ["ai", "napady", "produktivita"]
 format: "html"
 ---
 
-<p>Jak naučit AI agenta nové věci? Jak mu dát schopnost pracovat s konkrétními nástroji, frameworky nebo firemními procesy? Odpovědí je <b>Agent Skills</b> — otevřený standard pro definování modulárních schopností AI agentů.</p>
+<p>Jak naučit AI agenta nové věci? Jak mu dát schopnost pracovat s konkrétními nástroji, frameworky nebo firemními procesy? Odpovědí je <b>Agent Skills</b> — otevřený standard pro definování modulárních schopností AI agentů.</p>
 
 <h2 id="co-je">Co je Agent Skills?</h2>
 
-<p>Agent Skills je specifikace vytvořená Anthropic a <a href="https://agentskills.io/specification">publikovaná jako otevřený standard</a> v prosinci 2025. Definuje formát, kterým můžete AI agentům předávat instrukce, skripty a zdroje pro konkrétní úkoly.</p>
+<p>Agent Skills je specifikace vytvořená Anthropic a <a href="https://agentskills.io/specification">publikovaná jako otevřený standard</a> v prosinci 2025. Definuje formát, kterým můžete AI agentům předávat instrukce, skripty a zdroje pro konkrétní úkoly.</p>
 
-<p>Podobně jako <a href="https://modelcontextprotocol.io">Model Context Protocol (MCP)</a> pro připojení agentů k externím nástrojům, Agent Skills standardisuje způsob, jakým agenti <b>získávají a používají nové schopnosti</b>.</p>
+<p>Podobně jako <a href="https://modelcontextprotocol.io">Model Context Protocol (MCP)</a> pro připojení agentů k externím nástrojům, Agent Skills standardisuje způsob, jakým agenti <b>získávají a používají nové schopnosti</b>.</p>
 
-<p>Standard je podporován řadou vývojářských nástrojů pro AI agenty a je otevřený pro příspěvky od širší komunity.</p>
+<p>Standard je podporován řadou vývojářských nástrojů pro AI agenty a je otevřený pro příspěvky od širší komunity.</p>
 
 <h2 id="struktura">Struktura skillu</h2>
 
@@ -31,7 +31,7 @@ format: "html"
 
 <h3>SKILL.md</h3>
 
-<p>Hlavní soubor má dvě části — YAML frontmatter s metadaty a markdown s instrukcemi:</p>
+<p>Hlavní soubor má dvě části — YAML frontmatter s metadaty a markdown s instrukcemi:</p>
 
 <pre><code>---
 name: code-review
@@ -60,9 +60,9 @@ Pro každý nález uveď:
 - Popis problému
 - Návrh opravy</code></pre>
 
-<h2 id="frontmatter">Povinná a volitelná pole</h2>
+<h2 id="frontmatter">Povinná a volitelná pole</h2>
 
-<p>Frontmatter definuje metadata a konfiguraci skillu:</p>
+<p>Frontmatter definuje metadata a konfiguraci skillu:</p>
 
 <table>
   <tr>
@@ -78,12 +78,12 @@ Pro každý nález uveď:
   <tr>
     <td><code>description</code></td>
     <td>Ano</td>
-    <td>Popis pro matching s uživatelským záměrem</td>
+    <td>Popis pro matching s uživatelským záměrem</td>
   </tr>
   <tr>
     <td><code>allowed-tools</code></td>
     <td>Ne</td>
-    <td>Seznam povolených nástrojů s wildcard podporou</td>
+    <td>Seznam povolených nástrojů s wildcard podporou</td>
   </tr>
   <tr>
     <td><code>model</code></td>
@@ -131,13 +131,13 @@ allowed-tools: Bash(git:*), Read, Grep, Write</code></pre>
 
 <ol>
   <li>Agent při startu načte seznam dostupných skills</li>
-  <li>Pro každý skill vidí <code>name</code> a <code>description</code></li>
-  <li>Když uživatel zadá požadavek, agent porovná záměr s popisy</li>
+  <li>Pro každý skill vidí <code>name</code> a <code>description</code></li>
+  <li>Když uživatel zadá požadavek, agent porovná záměr s popisy</li>
   <li>Pokud najde shodu, načte celý obsah <code>SKILL.md</code></li>
-  <li>Podle potřeby načítá soubory z <code>references/</code> a spouští skripty ze <code>scripts/</code></li>
+  <li>Podle potřeby načítá soubory z <code>references/</code> a spouští skripty ze <code>scripts/</code></li>
 </ol>
 
-<p>Tomuto přístupu se říká <b>progressive disclosure</b> — agent nejdřív vidí jen metadata a plný obsah načte až když ho potřebuje. Šetří to kontext a zrychluje odezvu.</p>
+<p>Tomuto přístupu se říká <b>progressive disclosure</b> — agent nejdřív vidí jen metadata a plný obsah načte až když ho potřebuje. Šetří to kontext a zrychluje odezvu.</p>
 
 <h2 id="scripts">Složka scripts/</h2>
 
@@ -150,11 +150,11 @@ allowed-tools: Bash(git:*), Read, Grep, Write</code></pre>
 <ul>
   <li><b>Python</b> — nejčastější volba, bohatý ekosystém knihoven</li>
   <li><b>Bash/Shell</b> — systémové operace, pipeline, práce se soubory</li>
-  <li><b>Node.js/TypeScript</b> — pro JS ekosystém a npm balíčky</li>
-  <li><b>Ruby, Go, Rust</b> — pokud jsou v prostředí dostupné</li>
+  <li><b>Node.js/TypeScript</b> — pro JS ekosystém a npm balíčky</li>
+  <li><b>Ruby, Go, Rust</b> — pokud jsou v prostředí dostupné</li>
 </ul>
 
-<p>Anthropic například ve vestavěném PDF skillu používá Python skript pro extrakci polí z PDF formulářů.</p>
+<p>Anthropic například ve vestavěném PDF skillu používá Python skript pro extrakci polí z PDF formulářů.</p>
 
 <pre><code>scripts/
 ├── analyze.py         # Python - analysa kódu
@@ -186,7 +186,7 @@ npx ts-node {baseDir}/scripts/transform.ts</code></pre>
 
 <h2 id="assets">Složka assets/</h2>
 
-<p>Statické soubory, které agent nenamačítá do kontextu, ale pracuje s nimi cestou:</p>
+<p>Statické soubory, které agent nenamačítá do kontextu, ale pracuje s nimi cestou:</p>
 
 <pre><code>assets/
 ├── template.html      # HTML šablona
@@ -268,9 +268,9 @@ python /home/user/.skills/my-skill/scripts/run.py
 # Dobře
 python {baseDir}/scripts/run.py</code></pre>
 
-<h2 id="srovnani">Srovnání s MCP</h2>
+<h2 id="srovnani">Srovnání s MCP</h2>
 
-<p>Agent Skills a Model Context Protocol se doplňují:</p>
+<p>Agent Skills a Model Context Protocol se doplňují:</p>
 
 <table>
   <tr>
@@ -281,7 +281,7 @@ python {baseDir}/scripts/run.py</code></pre>
   <tr>
     <td>Účel</td>
     <td>Definice schopností agenta</td>
-    <td>Připojení k externím nástrojům</td>
+    <td>Připojení k externím nástrojům</td>
   </tr>
   <tr>
     <td>Formát</td>
@@ -296,28 +296,28 @@ python {baseDir}/scripts/run.py</code></pre>
   <tr>
     <td>Příklad</td>
     <td>Skill pro code review</td>
-    <td>Připojení k Slacku nebo databázi</td>
+    <td>Připojení k Slacku nebo databázi</td>
   </tr>
 </table>
 
-<p>MCP definuje <b>jak</b> se agent připojuje k nástrojům. Agent Skills definuje <b>co</b> má agent s nástroji dělat.</p>
+<p>MCP definuje <b>jak</b> se agent připojuje k nástrojům. Agent Skills definuje <b>co</b> má agent s nástroji dělat.</p>
 
-<h2 id="mcp-integrace">Integrace s MCP</h2>
+<h2 id="mcp-integrace">Integrace s MCP</h2>
 
-<p>Agent Skills a MCP fungují na různých úrovních, ale dají se kombinovat. MCP servery poskytují nástroje (tools), které skill může používat přes pole <code>allowed-tools</code>.</p>
+<p>Agent Skills a MCP fungují na různých úrovních, ale dají se kombinovat. MCP servery poskytují nástroje (tools), které skill může používat přes pole <code>allowed-tools</code>.</p>
 
 <h3>Jak to funguje</h3>
 
 <ol>
-  <li><b>MCP server</b> běží jako samostatný proces a poskytuje nástroje (např. <code>slack_send_message</code>, <code>linear_create_issue</code>)</li>
-  <li><b>Agent</b> se k MCP serverům připojuje přes konfiguraci</li>
-  <li><b>Skill</b> v <code>allowed-tools</code> povolí konkrétní MCP nástroje</li>
-  <li>Instrukce ve skillu popisují <b>kdy a jak</b> tyto nástroje použít</li>
+  <li><b>MCP server</b> běží jako samostatný proces a poskytuje nástroje (např. <code>slack_send_message</code>, <code>linear_create_issue</code>)</li>
+  <li><b>Agent</b> se k MCP serverům připojuje přes konfiguraci</li>
+  <li><b>Skill</b> v <code>allowed-tools</code> povolí konkrétní MCP nástroje</li>
+  <li>Instrukce ve skillu popisují <b>kdy a jak</b> tyto nástroje použít</li>
 </ol>
 
 <h3>Příklad: Skill využívající MCP</h3>
 
-<p>Představte si skill pro reportování bugů, který používá Linear (projektový management) a Slack:</p>
+<p>Představte si skill pro reportování bugů, který používá Linear (projektový management) a Slack:</p>
 
 <pre><code>---
 name: bug-report
@@ -340,7 +340,7 @@ allowed-tools: Read, mcp__linear__create_issue, mcp__slack__send_message
    - Pošli do kanálu #bugs
    - Připoj odkaz na Linear issue</code></pre>
 
-<h3>MCP nástroje v allowed-tools</h3>
+<h3>MCP nástroje v allowed-tools</h3>
 
 <p>MCP nástroje mají typicky prefix identifikující server:</p>
 
@@ -353,7 +353,7 @@ allowed-tools: mcp__slack__send_message, mcp__slack__list_channels
 # Kombinace více MCP serverů s lokálními nástroji
 allowed-tools: Read, Grep, mcp__linear__*, mcp__slack__send_message</code></pre>
 
-<p>Wildcard <code>mcp__linear__*</code> povolí všechny nástroje z Linear serveru.</p>
+<p>Wildcard <code>mcp__linear__*</code> povolí všechny nástroje z Linear serveru.</p>
 
 <h3>Kdy použít MCP vs. skripty</h3>
 
@@ -363,7 +363,7 @@ allowed-tools: Read, Grep, mcp__linear__*, mcp__slack__send_message</code></pre>
     <th>Použij skripty když</th>
   </tr>
   <tr>
-    <td>Potřebuješ real-time přístup k externím službám (Slack, Linear, GitHub API)</td>
+    <td>Potřebuješ real-time přístup k externím službám (Slack, Linear, GitHub API)</td>
     <td>Zpracováváš lokální soubory nebo data</td>
   </tr>
   <tr>
@@ -378,11 +378,11 @@ allowed-tools: Read, Grep, mcp__linear__*, mcp__slack__send_message</code></pre>
 
 <h2 id="proc">Proč je to důležité?</h2>
 
-<p>Otevřené standardy redukují fragmentaci. Vývojáři mohou vytvořit skill jednou a nasadit ho napříč různými AI agenty a platformami.</p>
+<p>Otevřené standardy redukují fragmentaci. Vývojáři mohou vytvořit skill jednou a nasadit ho napříč různými AI agenty a platformami.</p>
 
 <p>Pro firmy to znamená možnost přecházet mezi poskytovateli AI bez přepisování customisací. Skill pro firemní coding standards bude fungovat všude, kde je standard podporován.</p>
 
-<p>Anthropic následuje podobný vzor jako u <a href="https://modelcontextprotocol.io">MCP</a> — vytvořit specifikaci a otevřít ji komunitě jako standard.</p>
+<p>Anthropic následuje podobný vzor jako u <a href="https://modelcontextprotocol.io">MCP</a> — vytvořit specifikaci a otevřít ji komunitě jako standard.</p>
 
 <h2 id="odkazy">Odkazy</h2>
 

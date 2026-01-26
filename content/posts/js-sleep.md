@@ -9,7 +9,7 @@ tags: ["js", "napady"]
 format: "html"
 ---
 
-<p>JavaScript nemá nativní <code>sleep()</code> funkci jako jiné programovací jazyky. Můžeme ji ale snadno implementovat pomocí <code>Promise</code> a <code>setTimeout()</code>.</p>
+<p>JavaScript nemá nativní <code>sleep()</code> funkci jako jiné programovací jazyky. Můžeme ji ale snadno implementovat pomocí <code>Promise</code> a <code>setTimeout()</code>.</p>
 
 <h2 id="zakladni-implementace">Základní implementace</h2>
 
@@ -25,7 +25,7 @@ const funkce = async () => {
 
 <h2 id="alternativni-implementace">Alternativní implementace</h2>
 
-<h3 id="sleep-s-reject-moznosti">Sleep s reject možností</h3>
+<h3 id="sleep-s-reject-moznosti">Sleep s reject možností</h3>
 
 <pre><code>const sleep = (ms, shouldReject = false) => {
   return new Promise((resolve, reject) => {
@@ -63,7 +63,7 @@ const simulateTimeout = async () => {
   }
 }</code></pre>
 
-<h3 id="sleep-s-moznosti-zruseni">Sleep s možností zrušení</h3>
+<h3 id="sleep-s-moznosti-zruseni">Sleep s možností zrušení</h3>
 
 <pre><code>const sleepWithAbort = (ms) => {
   let timeoutId
@@ -101,7 +101,7 @@ setTimeout(() => sleepPromise.abort(), 2000) // zruší sleep po 2s</code></pre>
   }
 }</code></pre>
 
-<p>Často se hodí v případě opakovaného volání cizích API, aby nedošlo k zahlcení a chybě <i>429 Too Many Requests</i>.</p>
+<p>Často se hodí v případě opakovaného volání cizích API, aby nedošlo k zahlcení a chybě <i>429 Too Many Requests</i>.</p>
 
 
 
@@ -186,7 +186,7 @@ setTimeout(() => sleepPromise.abort(), 2000) // zruší sleep po 2s</code></pre>
 </script>
 </div>
 
-<p>Při lokalisaci jedné aplikace po jednotlivých částech přes OpenAI API používám sleep pro přidávání prodlevy mezi requesty, když dojde k chybě 429. Tím se vyhnu zahlcení API a zajistím plynulé zpracování celé aplikace.</p>
+<p>Při lokalisaci jedné aplikace po jednotlivých částech přes OpenAI API používám sleep pro přidávání prodlevy mezi requesty, když dojde k chybě 429. Tím se vyhnu zahlcení API a zajistím plynulé zpracování celé aplikace.</p>
 
 <h3 id="dynamicky-sleep">Dynamický sleep</h3>
 
@@ -233,7 +233,7 @@ setTimeout(() => sleepPromise.abort(), 2000) // zruší sleep po 2s</code></pre>
   throw new Error('Překročen maximální počet pokusů')
 }</code></pre>
 
-<p>Některé API vrací <code>Retry-After</code> hlavičku s doporučeným časem čekání. Pokud je k disposici, může se použít.</p>
+<p>Některé API vrací <code>Retry-After</code> hlavičku s doporučeným časem čekání. Pokud je k disposici, může se použít.</p>
 
 
 <h2 id="pozor-na-blokovani">Pozor na blokování</h2>
@@ -281,7 +281,7 @@ Konec (po 3 sekundách)</code></pre>
   <li>Simulaci API volání</li>
   <li>Rate limiting</li>
   <li>Sekvenční zpracování dat</li>
-  <li>Debugging a testování</li>
+  <li>Debugging a testování</li>
 </ul>
 
-<p>Doporučuji používat <code>async</code>/<code>await</code> zápis pro čitelnější kód a lepší zpracování chyb.</p>
+<p>Doporučuji používat <code>async</code>/<code>await</code> zápis pro čitelnější kód a lepší zpracování chyb.</p>

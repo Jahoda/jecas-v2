@@ -9,13 +9,13 @@ tags: ['ux', 'formulare', 'js']
 format: 'html'
 ---
 
-<p>Validace formulářů patří k nejčastějším UX problémům na webu. Špatně implementovaná validace dokáže z jednoduchého úkolu udělat frustrující zážitek.</p>
+<p>Validace formulářů patří k nejčastějším UX problémům na webu. Špatně implementovaná validace dokáže z jednoduchého úkolu udělat frustrující zážitek.</p>
 
 <h2 id="zakladni-principy">Základní principy dobré validace</h2>
 
 <p><strong>1. Nepřerušujte uživatele během psaní</strong> – zobrazujte chyby, až když má uživatel záměr pokračovat. Pokud mu během psaní „123“ zobrazíte chybu „Musí obsahovat 8 číslic“, pouze ho rozptýlíte.</p>
 
-<p><strong>2. Inteligentní načasování</strong> – analysujte stav vstupu a reagujte vhodně:</p>
+<p><strong>2. Inteligentní načasování</strong> – analysujte stav vstupu a reagujte vhodně:</p>
 
 <ul>
 <li><strong>Prázdné pole</strong> → bez validace</li>
@@ -26,9 +26,9 @@ format: 'html'
 </ul>
 
 
-<p><strong>3. Tolerance k chybám</strong> – je dobré se zamyslet nad tím, jestli by nešlo obsah od uživatele normalisovat do potřebné formy, než mu vynadat.</p>
+<p><strong>3. Tolerance k chybám</strong> – je dobré se zamyslet nad tím, jestli by nešlo obsah od uživatele normalisovat do potřebné formy, než mu vynadat.</p>
 
-<p>Typickým příkladem může být telefonní číslo nebo PSČ, kam někteří uživatelé mohou zadávat mezery. Je zbytečné je nutit do nějakého specifického formátu, když jde mezery jednoduše z obsahu políčka odstranit.</p>
+<p>Typickým příkladem může být telefonní číslo nebo PSČ, kam někteří uživatelé mohou zadávat mezery. Je zbytečné je nutit do nějakého specifického formátu, když jde mezery jednoduše z obsahu políčka odstranit.</p>
 
 <div class="live">
 <style>
@@ -93,7 +93,7 @@ format: 'html'
 <div class="validation-demo">
     <label for="demo-input">Zadejte 8-místné číslo:</label>
     <input type="text" id="demo-input" placeholder="Zkuste: 1234 5678, text, nebo 12345678">
-    <div id="demo-message" class="demo-message neutral">Začněte psát a sledujte, kdy se zobrazí validace</div>
+    <div id="demo-message" class="demo-message neutral">Začněte psát a sledujte, kdy se zobrazí validace</div>
 </div>
 
 <script>
@@ -164,9 +164,9 @@ updateDemoUI('');
 </script>
 </div>
 
-<h2 id="antipatterns">Běžné chyby a jak se jim vyhnout</h2>
+<h2 id="antipatterns">Běžné chyby a jak se jim vyhnout</h2>
 
-<p><strong>Nedeaktivujte tlačítka</strong> – místo toho, abyste zakázali tlačítko, když je vstup nevalidní, nechte ho aktivní a zobrazte chybu při kliknutí. Zakázané tlačítko nevysvětluje, co je špatně a nutí uživatele hádat. Aktivní tlačítko dává jasnou zpětnou vazbu a umožňuje uživateli vidět všechny chyby najednou, místo jejich postupného odhalování.</p>
+<p><strong>Nedeaktivujte tlačítka</strong> – místo toho, abyste zakázali tlačítko, když je vstup nevalidní, nechte ho aktivní a zobrazte chybu při kliknutí. Zakázané tlačítko nevysvětluje, co je špatně a nutí uživatele hádat. Aktivní tlačítko dává jasnou zpětnou vazbu a umožňuje uživateli vidět všechny chyby najednou, místo jejich postupného odhalování.</p>
 
 <p><strong>Pozor na tvrdé HTML limity</strong> – <code>maxlength</code> dokáže dost komplikovat třeba vložení ze schránky, kdy se ke kopírovanému textu něco připlete. Místo toho, aby mohl člověk nežádoucí věci odmazat, se mu rovnou oříznou. Použijte vlastní inteligentní validaci.</p>
 
@@ -175,14 +175,14 @@ updateDemoUI('');
 </div>
 
 
-<h2 id="komunikace-s-uzivatelem">Jak komunikovat s uživatelem</h2>
+<h2 id="komunikace-s-uzivatelem">Jak komunikovat s uživatelem</h2>
 
 <p>Neříkejte, co je špatně. Řekněte, co má uživatel udělat dál.</p>
 
 <h3 id="predchazejte-chybam">Předcházejte chybám</h3>
 
 <ul>
-<li>Automaticky odstraňujte mezery a nevhodné znaky</li>
+<li>Automaticky odstraňujte mezery a nevhodné znaky</li>
 <li>Normalisujte formáty (čísla účtů, telefonní čísla, PSČ)</li>
 <li>Navrhujte správný formát předem (placeholder, příklad)</li>
 </ul>
@@ -195,7 +195,7 @@ updateDemoUI('');
 <li>Buďte konkrétní – „Alespoň 8 znaků, jedno číslo“</li>
 <li>Uveďte příklad – „např. jan@email.cz“</li>
 <li>Nabídněte pomoc – odkaz na nápovědu nebo podporu</li>
-<li>Nebuďte příliš techničtí – chybové hlášky často píší programátoři a pro běžné uživatele může být problém takové vyjadřování pochopit.</li>
+<li>Nebuďte příliš techničtí – chybové hlášky často píší programátoři a pro běžné uživatele může být problém takové vyjadřování pochopit.</li>
 </ul>
 
 <p><strong>Příklady:</strong></p>
@@ -215,17 +215,17 @@ updateDemoUI('');
 </tr>
 <tr>
 <td>Chybné heslo</td>
-<td>Heslo musí mít alespoň 8 znaků a jedno číslo</td>
+<td>Heslo musí mít alespoň 8 znaků a jedno číslo</td>
 </tr>
 <tr>
 <td>Neplatné číslo</td>
-<td>Zadejte číslo mezi 1 a 10</td>
+<td>Zadejte číslo mezi 1 a 10</td>
 </tr>
 </table>
 
 <h3 id="adaptivni-hlasky">Adaptivní/progresivní hlášky</h3>
 
-<p>Pokročilá technika, kdy se nápověda stupňuje podle situace – při opakovaných pokusech přidávejte konkrétnější rady a příklady. Začněte stručně, detail přidávejte až podle potřeby. Při hodně neúspěšných pokusech třeba i přidat odkaz na nápovědu nebo kontakt na podporu.</p>
+<p>Pokročilá technika, kdy se nápověda stupňuje podle situace – při opakovaných pokusech přidávejte konkrétnější rady a příklady. Začněte stručně, detail přidávejte až podle potřeby. Při hodně neúspěšných pokusech třeba i přidat odkaz na nápovědu nebo kontakt na podporu.</p>
 
 <ul>
 <li><strong>Kdy použít:</strong> složitá pravidla (hesla, IČO), opakované selhání, potřeba vysvětlení</li>

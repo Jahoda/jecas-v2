@@ -9,9 +9,9 @@ tags: ["js", "ai"]
 format: "html"
 ---
 
-<p>3D objekty na webu už dávno nejsou jen technologické demo. Díky moderním technologiím jako <a href="https://threejs.org/">Three.js</a> a WebGL můžete na své stránky přidat interaktivní 3D modely, které uživatelé můžou otáčet, přibližovat a prozkoumávat.</p>
+<p>3D objekty na webu už dávno nejsou jen technologické demo. Díky moderním technologiím jako <a href="https://threejs.org/">Three.js</a> a WebGL můžete na své stránky přidat interaktivní 3D modely, které uživatelé můžou otáčet, přibližovat a prozkoumávat.</p>
 
-<p>Ale pozor – ne vždy je 3D model tou správnou volbou. Často je lepší použít <b>klasický obrázek nebo video</b> kvůli datové velikosti a výkonu.</p>
+<p>Ale pozor – ne vždy je 3D model tou správnou volbou. Často je lepší použít <b>klasický obrázek nebo video</b> kvůli datové velikosti a výkonu.</p>
 
 <h2 id="kdy-pouzit-3d">Kdy použít 3D objekty</h2>
 
@@ -19,11 +19,11 @@ format: "html"
 
 <ul>
 <li>
-  <p><b>Interaktivitu</b> – uživatel může model otáčet a prohlížet ze všech stran</p>
+  <p><b>Interaktivitu</b> – uživatel může model otáčet a prohlížet ze všech stran</p>
 </li>
 
 <li>
-  <p><b>Konfigurátor</b> – změny barev, materiálů nebo částí produktu v reálném čase</p>
+  <p><b>Konfigurátor</b> – změny barev, materiálů nebo částí produktu v reálném čase</p>
 </li>
 
 <li>
@@ -31,7 +31,7 @@ format: "html"
 </li>
 
 <li>
-  <p><b>Hry a aplikace</b></p>
+  <p><b>Hry a aplikace</b></p>
 </li>
 </ul>
 
@@ -49,17 +49,17 @@ format: "html"
 </li>
 
 <li>
-  <p><b>CSS 3D transformace</b> – jednoduché animace a efekty bez nutnosti načítat velké knihovny</p>
+  <p><b>CSS 3D transformace</b> – jednoduché animace a efekty bez nutnosti načítat velké knihovny</p>
 </li>
 </ul>
 
 <h2 id="threejs">Three.js – základ pro 3D na webu</h2>
 
-<p><a href="https://threejs.org/">Three.js</a> je jedna z nejpopulárnějších JavaScriptových knihoven pro práci s 3D grafikou na webu. Zjednodušuje práci s WebGL a nabízí jednoduchá API.</p>
+<p><a href="https://threejs.org/">Three.js</a> je jedna z nejpopulárnějších JavaScriptových knihoven pro práci s 3D grafikou na webu. Zjednodušuje práci s WebGL a nabízí jednoduchá API.</p>
 
 <h3 id="zakladni-priklad">Základní příklad</h3>
 
-<p>Jednoduchý příklad načtení a zobrazení 3D modelu:</p>
+<p>Jednoduchý příklad načtení a zobrazení 3D modelu:</p>
 
 <pre><code class="language-javascript">import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -112,7 +112,7 @@ animate();</code></pre>
 
 <h3 id="ziva-ukazka">Živá ukázka</h3>
 
-<p>Tady je interaktivní ukázka Three.js scény. Pomocí myši můžete scénou otáčet, přibližovat a posouvat.</p>
+<p>Tady je interaktivní ukázka Three.js scény. Pomocí myši můžete scénou otáčet, přibližovat a posouvat.</p>
 
 <div class="live">
 <style>
@@ -257,27 +257,27 @@ if (window.threejsDemoCleanup) {
 
 <h2 id="formaty">Formáty 3D souborů</h2>
 
-<p>Pro web se používá několik formátů 3D modelů. Každý má své výhody a nevýhody.</p>
+<p>Pro web se používá několik formátů 3D modelů. Každý má své výhody a nevýhody.</p>
 
 <h3 id="gltf-glb">GLTF / GLB (doporučeno)</h3>
 
-<p><b>GLTF</b> (<i>Graphics Library Transmission Format</i>) a jeho binární varianta <b>GLB</b> jsou <b>standardem</b> pro 3D na webu.</p>
+<p><b>GLTF</b> (<i>Graphics Library Transmission Format</i>) a jeho binární varianta <b>GLB</b> jsou <b>standardem</b> pro 3D na webu.</p>
 
 <p><b>Výhody:</b></p>
 <ul>
 <li><p>Optimalisováno pro web</p></li>
 <li><p>Malá velikost souborů</p></li>
-<li><p>Podpora animací, materiálů a textur</p></li>
-<li><p>Nativní podpora v Three.js</p></li>
+<li><p>Podpora animací, materiálů a textur</p></li>
+<li><p>Nativní podpora v Three.js</p></li>
 </ul>
 
 <p><b>GLB vs GLTF:</b></p>
 <ul>
-<li><p><b>GLB</b> – binární formát, vše v jednom souboru (model + textury)</p></li>
+<li><p><b>GLB</b> – binární formát, vše v jednom souboru (model + textury)</p></li>
 <li><p><b>GLTF</b> – textový formát (JSON), textury jako separátní soubory</p></li>
 </ul>
 
-<p><b>Doporučení:</b> Použijte <b>GLB</b> pro co nejjednodušší použití. Pokud máte 3D model v jiném formátu, lze ho převést některým z dostupných nástrojů.</p>
+<p><b>Doporučení:</b> Použijte <b>GLB</b> pro co nejjednodušší použití. Pokud máte 3D model v jiném formátu, lze ho převést některým z dostupných nástrojů.</p>
 
 <div class="external-content">
 <ul>
@@ -332,7 +332,7 @@ if (window.threejsDemoCleanup) {
 </style>
 
 <div class="gltf-demo-container" id="gltf-demo">
-  <div class="gltf-demo-loading" id="gltf-loading">Načítání modelu...</div>
+  <div class="gltf-demo-loading" id="gltf-loading">Načítání modelu…</div>
   <div class="gltf-demo-info">🖱️ Táhněte pro rotaci • Kolečko pro zoom</div>
 </div>
 
@@ -469,9 +469,9 @@ if (window.gltfDemoCleanup) {
 
 <p>Díky moderním AI nástrojům můžete vytvářet 3D modely <b>z textu nebo obrázků</b> během několika minut bez znalostí 3D grafiky:</p>
 
-<p><a href="https://www.meshy.ai/">Meshy.ai</a> – generování 3D modelů z textu nebo obrázků.</p>
-<p><a href="https://lumalabs.ai/genie">Luma Labs</a> – vytváření 3D modelů pomocí AI z videa nebo fotek.</p>
-<p><a href="https://studio.tripo3d.ai/">Tripo3D</a> – AI generování 3D modelů s podporou riggingu (kostra pro animace).</p>
+<p><a href="https://www.meshy.ai/">Meshy.ai</a> – generování 3D modelů z textu nebo obrázků.</p>
+<p><a href="https://lumalabs.ai/genie">Luma Labs</a> – vytváření 3D modelů pomocí AI z videa nebo fotek.</p>
+<p><a href="https://studio.tripo3d.ai/">Tripo3D</a> – AI generování 3D modelů s podporou riggingu (kostra pro animace).</p>
 
 <h2 id="css-3d">CSS 3D transformace – alternativa pro jednoduché efekty</h2>
 
@@ -567,7 +567,7 @@ if (window.gltfDemoCleanup) {
 <li><p>Jednoduché animace</p></li>
 </ul>
 
-<!--<p>Více o CSS 3D transformacích najdete v článku <a href="/3d-transformace">3D transformace v CSS</a>.</p>-->
+<!--<p>Více o CSS 3D transformacích najdete v článku <a href="/3d-transformace">3D transformace v CSS</a>.</p>-->
 
 <h2 id="velikost">Datová velikost – kdy raději použít obrázek nebo video</h2>
 
@@ -586,27 +586,27 @@ if (window.gltfDemoCleanup) {
 <tbody>
 <tr>
   <td>Statický obrázek (WebP)</td>
-  <td>~50 KB</td>
+  <td>~50 KB</td>
   <td>Ne</td>
 </tr>
 <tr>
   <td>Video (MP4, 5s smyčka)</td>
-  <td>~0,5–2 MB</td>
+  <td>~0,5–2 MB</td>
   <td>Ne</td>
 </tr>
 <tr>
   <td>3D model (GLB + textury)</td>
-  <td>~2-10 MB</td>
+  <td>~2–10 MB</td>
   <td>Ano</td>
 </tr>
 <tr>
-  <td>3D model s Draco kompresí</td>
-  <td>~0,5-2 MB</td>
+  <td>3D model s Draco kompresí</td>
+  <td>~0,5–2 MB</td>
   <td>Ano</td>
 </tr>
 <tr>
   <td>Three.js knihovna</td>
-  <td>~600 KB</td>
+  <td>~600 KB</td>
   <td>–</td>
 </tr>
 </tbody>
@@ -624,11 +624,11 @@ if (window.gltfDemoCleanup) {
 </li>
 
 <li>
-  <p><b>Komprese textur</b> – použijte WebP nebo zmenšete rozlišení (512×512 místo 4096×4096)</p>
+  <p><b>Komprese textur</b> – použijte WebP nebo zmenšete rozlišení (512×512 místo 4096×4096)</p>
 </li>
 
 <li>
-  <p><b>Draco komprese</b> – komprese geometrie v GLTF (až 90% menší soubory)</p>
+  <p><b>Draco komprese</b> – komprese geometrie v GLTF (až 90% menší soubory)</p>
 </li>
 
 <li>
@@ -652,7 +652,7 @@ if (window.gltfDemoCleanup) {
 <li><p>Lepší výkon na slabších zařízeních</p></li>
 </ul>
 
-<h2 id="performance">Výkon a kompatibilita</h2>
+<h2 id="performance">Výkon a kompatibilita</h2>
 
 <p>3D objekty na webu vyžadují slušný hardware. Na starých zařízeních nebo slabších mobilech může být zážitek špatný.</p>
 
@@ -696,7 +696,7 @@ if (!isWebGLAvailable()) {
 
 <ul>
 <li>
-  <p><b>Three.js</b> je jedna z nejpopulárnějších knihoven pro práci s 3D na webu</p>
+  <p><b>Three.js</b> je jedna z nejpopulárnějších knihoven pro práci s 3D na webu</p>
 </li>
 
 <li>
@@ -716,4 +716,4 @@ if (!isWebGLAvailable()) {
 </li>
 </ul>
 
-<p>3D objekty mohou výrazně oživit váš web, ale používejte je s rozvahou. Ne vždy je složitost a datová velikost ospravedlnitelná.</p>
+<p>3D objekty mohou výrazně oživit váš web, ale používejte je s rozvahou. Ne vždy je složitost a datová velikost ospravedlnitelná.</p>
