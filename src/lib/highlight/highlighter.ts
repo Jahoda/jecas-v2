@@ -28,10 +28,16 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /`[\s\S]*?`/g },
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
 		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
-		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield)\b/g },
+		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|static|get|set)\b/g },
+		// Built-in objects and constructors
+		{ type: 'tag', pattern: /\b(Array|Object|String|Number|Boolean|Function|Symbol|BigInt|Map|Set|WeakMap|WeakSet|Promise|Proxy|Reflect|Date|RegExp|Error|TypeError|ReferenceError|SyntaxError|Math|JSON|console|window|document|localStorage|sessionStorage|fetch|URL|URLSearchParams|FormData|Headers|Request|Response|AbortController|Event|EventTarget|Element|Node|NodeList|HTMLElement)\b/g },
+		// Property access after dot
+		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
 		{ type: 'function', pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(?=\()/g },
-		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+/g },
+		// Arrow function parameters
+		{ type: 'variable', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*=>)/g },
+		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+|=>/g },
 		{ type: 'punctuation', pattern: /[{}[\]();,.]/g },
 	],
 	jsx: [
@@ -41,15 +47,20 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /`[\s\S]*?`/g },
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
 		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
+		// JSX tags
 		{ type: 'tag', pattern: /<\/[a-zA-Z][a-zA-Z0-9-]*\s*>/g },
 		{ type: 'tag', pattern: /<[A-Z][a-zA-Z0-9]*(?=[\s\/>])/g },
 		{ type: 'tag', pattern: /<(?:html|head|body|div|span|p|a|ul|ol|li|table|thead|tbody|tfoot|tr|td|th|form|input|button|img|h[1-6]|section|article|nav|header|footer|main|aside|label|textarea|select|option|meta|link|script|style|title|br|hr|pre|code|blockquote|cite|em|strong|small|sub|sup|mark|del|ins|figure|figcaption|picture|source|video|audio|canvas|svg|path|circle|rect|line|polygon|iframe|object|embed|param|track|map|area|col|colgroup|caption|details|summary|dialog|menu|menuitem|slot|template|fragment)(?=[\s\/>])/g },
 		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9-]*(?=\s*=)/g },
 		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9-]*(?=[\s\/>])/g },
-		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield)\b/g },
+		// JS keywords
+		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|static|get|set)\b/g },
+		// Property access
+		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
 		{ type: 'function', pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(?=\()/g },
-		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+/g },
+		{ type: 'variable', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*=>)/g },
+		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+|=>/g },
 		{ type: 'punctuation', pattern: /[{}[\]();,.<>\/]/g },
 	],
 	tsx: [
@@ -59,15 +70,22 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /`[\s\S]*?`/g },
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
 		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
+		// JSX tags
 		{ type: 'tag', pattern: /<\/[a-zA-Z][a-zA-Z0-9-]*\s*>/g },
 		{ type: 'tag', pattern: /<\/?[A-Z][a-zA-Z0-9]*(?=[\s\/>])/g },
 		{ type: 'tag', pattern: /<\/?(?:html|head|body|div|span|p|a|ul|ol|li|table|thead|tbody|tfoot|tr|td|th|form|input|button|img|h[1-6]|section|article|nav|header|footer|main|aside|label|textarea|select|option|meta|link|script|style|title|br|hr|pre|code|blockquote|cite|em|strong|small|sub|sup|mark|del|ins|figure|figcaption|picture|source|video|audio|canvas|svg|path|circle|rect|line|polygon|iframe|object|embed|param|track|map|area|col|colgroup|caption|details|summary|dialog|menu|menuitem|slot|template|fragment)(?=[\s\/>])/g },
 		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9-]*(?=\s*=)/g },
 		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9-]*(?=[\s\/>])/g },
-		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|never|unknown|any)\b/g },
+		// TS/JS keywords
+		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|get|set)\b/g },
+		// Built-in types
+		{ type: 'value', pattern: /\b(string|number|boolean|object|symbol|bigint|any|unknown|never|void|null|undefined)\b/g },
+		// Property access
+		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
 		{ type: 'function', pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(?=\()/g },
-		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+/g },
+		{ type: 'variable', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*=>)/g },
+		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+|=>/g },
 		{ type: 'punctuation', pattern: /[{}[\]();,.<>\/]/g },
 	],
 	typescript: [
@@ -76,12 +94,17 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /`[\s\S]*?`/g },
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
 		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
-		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer)\b/g },
-		{ type: 'tag', pattern: /\b(string|number|boolean|object|symbol|bigint|any|unknown|never|void|null|undefined)\b/g },
+		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|get|set)\b/g },
+		// Built-in types
+		{ type: 'value', pattern: /\b(string|number|boolean|object|symbol|bigint|any|unknown|never|void|null|undefined)\b/g },
+		// Type/interface property names
 		{ type: 'property', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\??:)/g },
+		// Property access after dot
+		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
 		{ type: 'function', pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(?=\()/g },
-		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+/g },
+		{ type: 'variable', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*=>)/g },
+		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+|=>/g },
 		{ type: 'punctuation', pattern: /[{}[\]();,.]/g },
 	],
 	html: [
