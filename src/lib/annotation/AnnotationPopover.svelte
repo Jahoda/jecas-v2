@@ -82,7 +82,9 @@
 		style="top: {position.top}px; left: {position.left}px;"
 		role="dialog"
 		aria-modal="true"
+		tabindex="-1"
 		onclick={(e) => e.stopPropagation()}
+		onkeydown={(e) => e.stopPropagation()}
 		onmouseup={(e) => e.stopPropagation()}
 	>
 		<div

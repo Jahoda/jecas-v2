@@ -11,13 +11,13 @@ format: "html"
 
 <pre><code>http://<i>jecas</i>.<b>cz</b>/tld</code></pre>
 
-<p>Doména <b>prvního řádu</b> je to, co se nachází za poslední tečkou před lomítkem – v tomto případě „<code><b>cz</b></code>“, samotné <code><i>jecas</i></code> je potom doména <b>druhého řádu</b>.</p>
+<p>Doména <b>prvního řádu</b> je to, co se nachází za poslední tečkou před lomítkem – v tomto případě „<code><b>cz</b></code>“, samotné <code><i>jecas</i></code> je potom doména <b>druhého řádu</b>.</p>
 
 <p>Při některých případech, třeba při důslednějším ověřování e-mailových adres, se může hodit seznam všech existujících domén.</p>
 
-<p>Vždy akutální seznam je na <a href="/tld-list">této stránce</a> dostupný i v JSONu nebo jako PHP pole (<a href="http://data.iana.org/TLD/tlds-alpha-by-domain.txt">zdroj dat</a>).</p>
+<p>Vždy aktuální seznam je na <a href="/tld-list">této stránce</a> dostupný i v JSONu nebo jako PHP pole (<a href="http://data.iana.org/TLD/tlds-alpha-by-domain.txt">zdroj dat</a>).</p>
 
-<p>Více detailů k jednotlivým <b>top-level doménám</b> je na <a href="http://en.wikipedia.org/wiki/List_of_Internet_top-level_domains">Wikipedii</a>.</p>
+<p>Více detailů k jednotlivým <b>top-level doménám</b> je na <a href="http://en.wikipedia.org/wiki/List_of_Internet_top-level_domains">Wikipedii</a>.</p>
 
 <h2 id="seznam">Seznam domén</h2>
 
