@@ -493,19 +493,23 @@ export function guessLanguageFromContent(code: string): string {
 		return 'json';
 	}
 
-	// YAML detection - key: value pairs, list items with -, GitHub Actions patterns
-	// Check for ${{ }} first to not reject it due to braces
-	const hasGitHubActions = /\$\{\{.*\}\}/.test(code);
-	const codeWithoutGHActions = code.replace(/\$\{\{[^}]*\}\}/g, '');
+	// YAML detection - general patterns
+	// Remove template expressions like ${{ }} and strings before checking for problematic chars
+	const yamlClean = code
+		.replace(/\$\{\{[^}]*\}\}/g, '')  // GitHub Actions
+		.replace(/"(?:[^"\\]|\\.)*"/g, '') // double-quoted strings
+		.replace(/'(?:[^'\\]|\\.)*'/g, ''); // single-quoted strings
+
+	const hasKeyValueAtStart = /^[a-zA-Z_][a-zA-Z0-9_-]*:\s*(?:$|\S)/m.test(code);
+	const hasNestedKeys = /^\s{2,}[a-zA-Z_][a-zA-Z0-9_-]*:/m.test(code);
+	const hasListItems = /^\s*-\s+/m.test(code);
+	const hasMultilineString = /[|>]\s*$/m.test(code);
+	const noCodeBraces = !/[;]/.test(yamlClean) && !/\)\s*\{/.test(yamlClean) && !/\bfunction\b/.test(code);
+
 	if (
-		(
-			// GitHub Actions specific patterns
-			/^\s*(?:jobs|steps|runs-on|uses|with|env|name|on|permissions|if|needs|outputs|inputs|secrets):/m.test(code) ||
-			// General YAML patterns
-			(/^[a-zA-Z_][a-zA-Z0-9_-]*:\s*$/m.test(code) || /^[a-zA-Z_][a-zA-Z0-9_-]*:\s+\S/m.test(code))
-		) &&
-		(/^\s*-\s+/m.test(code) || /^\s+[a-zA-Z_][a-zA-Z0-9_-]*:/m.test(code) || /\|\s*$/m.test(code)) &&
-		(hasGitHubActions || !/[{};]/.test(codeWithoutGHActions))
+		hasKeyValueAtStart &&
+		(hasNestedKeys || hasListItems || hasMultilineString) &&
+		noCodeBraces
 	) {
 		return 'yaml';
 	}
