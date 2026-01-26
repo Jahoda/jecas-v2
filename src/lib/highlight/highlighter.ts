@@ -72,7 +72,9 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /`[\s\S]*?`/g },
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
 		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
-		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|never|unknown|any)\b/g },
+		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer)\b/g },
+		{ type: 'tag', pattern: /\b(string|number|boolean|object|symbol|bigint|any|unknown|never|void|null|undefined)\b/g },
+		{ type: 'property', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\??:)/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
 		{ type: 'function', pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(?=\()/g },
 		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+/g },
@@ -298,12 +300,13 @@ export function guessLanguageFromContent(code: string): string {
 		return 'diagram';
 	}
 
-	// Svelte detection - runes, directives, script/style tags with HTML
+	// Svelte detection - runes, directives, script tags with code inside
 	if (
 		/\$(?:state|props|derived|effect|bindable)\b/.test(code) ||
 		/\{[@#/:]\w+/.test(code) ||
-		(/<script[\s>]/.test(code) && /<\/script>/.test(code) && /<[a-z][\w-]*[\s>]/i.test(code)) ||
-		/\b(?:on|bind|class|use|transition|animate):\w+/.test(code)
+		/\b(?:on|bind|class|use|transition|animate):\w+/.test(code) ||
+		// Script tag with actual code inside (not just src attribute)
+		(/<script[\s>]/.test(code) && /<\/script>/.test(code) && /\b(?:let|const|function|import)\b/.test(code) && /<[a-z][\w-]*[\s>]/i.test(code))
 	) {
 		return 'svelte';
 	}
@@ -333,11 +336,15 @@ export function guessLanguageFromContent(code: string): string {
 		/=>\s*[{(]/.test(code) ||
 		/\b(?:const|let|var)\s+\w+\s*=/.test(code) ||
 		/\bfunction\s+\w+\s*\(/.test(code) ||
+		/\bfunction\s*\(\w+/.test(code) ||
 		/\bnew\s+(?:Promise|Map|Set|Array|Object|Date|RegExp)\b/.test(code) ||
 		/\.\s*(?:style|value|length|className|classList|dataset|textContent|innerText)\b/.test(code) ||
 		/\.\s*(?:push|pop|shift|unshift|map|filter|reduce|forEach|find|some|every|includes|indexOf|slice|splice|join|split|replace|match|test)\s*\(/.test(code) ||
 		/\bimport\s+.*\s+from\s+['"]/.test(code) ||
-		/\bexport\s+(?:default|const|let|var|function|class|async)\b/.test(code)
+		/\bexport\s+(?:default|const|let|var|function|class|async)\b/.test(code) ||
+		/\bmodule\.exports\b/.test(code) ||
+		/\brequire\s*\(['"]/.test(code) ||
+		/\btypeof\s+(?:module|exports|define)\b/.test(code)
 	) {
 		return 'javascript';
 	}
