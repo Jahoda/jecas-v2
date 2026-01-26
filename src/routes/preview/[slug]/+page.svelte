@@ -39,7 +39,7 @@
 <HeroPost
 	title={data.post.headline || data.post.title}
 	description={data.post.description}
-	date={data.post.last_modification}
+	date={data.post.last_modification ?? data.post.date}
 	href={data.post.url_slug}
 	tags={[]}
 	wordCount={0}

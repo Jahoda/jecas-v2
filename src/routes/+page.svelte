@@ -49,7 +49,7 @@
 								<MainPost
 									title={post.headline}
 									description={post.description}
-									date={post.last_modification}
+									date={post.last_modification ?? post.date}
 									href={post.url_slug}
 									neutral={index > 1}
 									small={index > 0}
