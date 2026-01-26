@@ -336,8 +336,9 @@ export function guessLanguageFromContent(code: string): string {
 
 	// JSX/TSX detection - React components, JSX comments (before TS/JS)
 	const hasJsxComponents = /<[A-Z][a-zA-Z0-9]*[\s\/>]/.test(code) || /\{\/\*[\s\S]*?\*\/\}/.test(code);
-	const hasJsxReturn = /return\s*\(\s*</.test(code) || /=>\s*\(\s*</.test(code) || /=>\s*<[A-Z]/.test(code);
-	if (hasJsxComponents || hasJsxReturn) {
+	const hasJsxReturn = /return\s*\(\s*</.test(code) || /return\s+<[a-zA-Z]/.test(code) || /=>\s*\(\s*</.test(code) || /=>\s*<[a-zA-Z]/.test(code);
+	const hasJsxInFunction = /\bfunction\s+\w+\s*\([^)]*\)\s*\{[\s\S]*?return\s+</.test(code) || /\bexport\s+(?:default\s+)?function\b/.test(code) && /<[a-zA-Z][\w-]*[\s>\/]/.test(code);
+	if (hasJsxComponents || hasJsxReturn || hasJsxInFunction) {
 		// Check if it's TSX (has TypeScript syntax)
 		if (/\b(?:interface|type)\s+\w+/.test(code) || /:\s*(?:string|number|boolean|void|any|unknown|never|React\.)\b/.test(code)) {
 			return 'tsx';
