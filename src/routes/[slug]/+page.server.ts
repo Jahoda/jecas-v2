@@ -14,6 +14,11 @@ import type { PageServerLoad } from './$types';
 export const load = (async ({ params }) => {
 	const slug = params.slug;
 
+	// Debug for js-parsovani-cisel
+	if (slug === 'js-parsovani-cisel') {
+		console.log('DEBUG [slug]/+page.server.ts: Loading js-parsovani-cisel');
+	}
+
 	let tags: Tag[] = [];
 	let tag: Tag | undefined;
 	let tagPosts: Post[] | undefined;
@@ -23,6 +28,14 @@ export const load = (async ({ params }) => {
 	let prevNextPosts: { prev: Post | null; next: Post | null } | undefined;
 
 	const page = await getSinglePostBySlug(slug);
+
+	// Debug for js-parsovani-cisel
+	if (slug === 'js-parsovani-cisel') {
+		console.log('DEBUG page result:', page ? 'FOUND' : 'NOT FOUND');
+		if (page) {
+			console.log('DEBUG page.url_slug:', page.url_slug);
+		}
+	}
 
 	if (page?.url_slug) {
 		tags = await getAllTagsByPageId(page.url_slug);
