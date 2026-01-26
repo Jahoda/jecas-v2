@@ -85,7 +85,7 @@ getUser((error, user) => {
   console.log(user);
 });</code></pre>
 
-<p>Modernější verze s Promise:</p>
+<p>Modernější verse s Promise:</p>
 
 <pre><code>// Thunk vracející Promise
 function fetchUserThunk(userId) {
@@ -178,7 +178,7 @@ store.dispatch(fetchUser(42));</code></pre>
 
 <h2 id="thunk-vs-promise">Thunk vs. Promise</h2>
 
-<p>Thunky a Promise řeší podobný problém — reprezentaci budoucí hodnoty. Hlavní rozdíl:</p>
+<p>Thunky a Promise řeší podobný problém — representaci budoucí hodnoty. Hlavní rozdíl:</p>
 
 <table>
   <tr>
@@ -281,7 +281,7 @@ button.onclick = async () => {
 
 <h2 id="dependency-injection">Dependency injection</h2>
 
-<p>Thunky lze použít pro jednoduché předávání závislostí. Není to typický přístup k DI (pro komplexní aplikace existují specializované knihovny jako <a href="https://inversify.io/">InversifyJS</a>), ale pro menší projekty může být dostatečný:</p>
+<p>Thunky lze použít pro jednoduché předávání závislostí. Není to typický přístup k DI (pro komplexní aplikace existují specialisované knihovny jako <a href="https://inversify.io/">InversifyJS</a>), ale pro menší projekty může být dostatečný:</p>
 
 <pre><code>// Závislosti jako thunky
 const createService = (getLogger, getDatabase) => ({
@@ -306,7 +306,7 @@ const prodService = createService(
   () => new PostgresDatabase()
 );</code></pre>
 
-<p>Závislosti se vytvoří až při použití, ne při inicializaci.</p>
+<p>Závislosti se vytvoří až při použití, ne při inicialisaci.</p>
 
 <h2 id="trampolining">Trampolining (odskakování)</h2>
 
@@ -358,7 +358,7 @@ async function makeRequest(endpoint) {
   }
 }</code></pre>
 
-<p>Konfigurace může záviset na stavu, který není dostupný při inicializaci (localStorage, cookies, env proměnné).</p>
+<p>Konfigurace může záviset na stavu, který není dostupný při inicialisaci (localStorage, cookies, env proměnné).</p>
 
 <h2 id="testovani">Testování a mockování</h2>
 
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <li><b>Redux Thunk</b> — asynchronní akce v Reduxu</li>
   <li><b>Lazy loading</b> — dynamický import modulů</li>
   <li><b>Dependency injection</b> — odložené vytváření závislostí</li>
-  <li><b>Trampolining</b> — optimalizace rekurze</li>
+  <li><b>Trampolining</b> — optimalisace rekurze</li>
   <li><b>Konfigurace</b> — hodnoty závislé na runtime stavu</li>
   <li><b>Testování</b> — snadné mockování závislostí</li>
 </ul>
