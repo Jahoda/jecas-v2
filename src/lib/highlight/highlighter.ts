@@ -192,14 +192,20 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /'[^']*'/g },
 		{ type: 'variable', pattern: /\$[a-zA-Z_][a-zA-Z0-9_]*/g },
 		{ type: 'variable', pattern: /\$\{[^}]+\}/g },
+		// Shell keywords
 		{ type: 'keyword', pattern: /\b(if|then|else|elif|fi|for|while|do|done|case|esac|in|function|return|exit|break|continue|export|source|alias|unalias|local|declare|readonly|unset|shift|eval|exec|trap|sudo)\b/g },
-		{ type: 'function', pattern: /\b(npm|yarn|pnpm|npx|node|deno|bun|git|docker|kubectl|curl|wget|pip|python|ruby|go|cargo|make|apt|brew|pacman|dnf|yum|cd|pwd|echo|printf|read|test|ls|cat|grep|awk|sed|chmod|mkdir|rm|cp|mv|touch|find|tar|zip|unzip|ssh|scp|rsync|docker-compose|podman)\b/g },
-		{ type: 'attr', pattern: /\b(install|uninstall|add|remove|run|start|stop|build|init|create|clone|push|pull|commit|checkout|merge|rebase|status|log|logs|diff|fetch|reset|stash|branch|tag|login|logout|publish|update|upgrade|config|set|get|list|show|info|help|version|exec|dev|test|lint|format|clean|deploy|serve|watch|images|ps|rm|rmi|network|volume|compose|up|down|restart|pause|unpause|kill|inspect|prune|attach|cp|top|stats|events|history|save|load|import|export|search|port)\b/g },
-		{ type: 'property', pattern: /[\w.-]+\/[\w.-]+(?::[\w.-]+)?/g },
-		{ type: 'property', pattern: /[\w.-]+@[\w.-]+/g },
+		// CLI commands - blue
+		{ type: 'function', pattern: /(?:^|(?<=\n)\s*|(?<=&&)\s*|(?<=\|\|)\s*|(?<=\|)\s*|(?<=;)\s*)(?:npm|yarn|pnpm|npx|node|deno|bun|git|docker|kubectl|curl|wget|pip|python|ruby|go|cargo|make|apt|brew|pacman|dnf|yum|cd|pwd|echo|printf|read|test|ls|cat|grep|awk|sed|chmod|mkdir|rm|cp|mv|touch|find|tar|zip|unzip|ssh|scp|rsync|docker-compose|podman|clawdbot|claude|clawd)\b/g },
+		// Flags --option or -o - cyan (property)
+		{ type: 'property', pattern: /\s--?[a-zA-Z][a-zA-Z0-9-]*/g },
+		// Package@version or image:tag
+		{ type: 'tag', pattern: /[\w.-]+@[\w.-]+/g },
+		{ type: 'tag', pattern: /[\w.-]+\/[\w.-]+(?::[\w.-]+)?/g },
+		// Port mappings
 		{ type: 'number', pattern: /\b\d+:\d+\b/g },
+		// Paths with colons (volume mounts)
 		{ type: 'string', pattern: /[~.]?\/[\w./-]+:[\w./-]+/g },
-		{ type: 'operator', pattern: /--?[\w-]+/g },
+		// Operators
 		{ type: 'operator', pattern: /[|&;<>]+|&&|\|\||\\$/gm },
 		{ type: 'punctuation', pattern: /[{}[\]();]/g },
 	],
