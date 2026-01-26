@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { mount, onMount } from 'svelte';
+	import { mount, unmount, onMount } from 'svelte';
 	import { toggle, toggleClass, zkopirovat } from '$lib/post/utils';
 	import LiveDemo from '$lib/liveDemo/LiveDemo.svelte';
-	import { afterNavigate } from '$app/navigation';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { cleanupAll } from '$lib/liveDemo/registry';
 
 	interface Props {
 		content: string;
@@ -11,6 +12,22 @@
 	let { content }: Props = $props();
 
 	let postContent: HTMLDivElement | undefined = $state();
+	let mountedComponents: ReturnType<typeof mount>[] = [];
+
+	function cleanupComponents() {
+		// Spustit všechny registrované cleanup funkce z článků
+		cleanupAll();
+
+		// Unmountnout všechny LiveDemo komponenty
+		mountedComponents.forEach((component) => {
+			try {
+				unmount(component);
+			} catch (error) {
+				console.error('Unmount error:', error);
+			}
+		});
+		mountedComponents = [];
+	}
 
 	function attachLiveCode() {
 		if (postContent) {
@@ -19,13 +36,14 @@
 			liveElements.forEach((element) => {
 				const content = element.innerHTML;
 				element.innerHTML = '';
-				mount(LiveDemo, {
+				const component = mount(LiveDemo, {
 					target: element,
 					props: {
 						liveContainer: element,
 						content: content
 					}
 				});
+				mountedComponents.push(component);
 			});
 		}
 	}
@@ -34,6 +52,10 @@
 		window.toggleClass = toggleClass;
 		window.toggle = toggle;
 		window.zkopirovat = zkopirovat;
+	});
+
+	beforeNavigate(() => {
+		cleanupComponents();
 	});
 
 	afterNavigate(() => {
