@@ -42,7 +42,7 @@ format: "html"
 
 <ol>
 <li>
-<p>Všechny hodnoty zadané do formulářů jsou řetězce. Ani <a href="/input#type-number">číselný <code>&lt;input type="number></code></a> není výjimkou.</p></li>
+<p>Všechny hodnoty zadané do formulářů jsou řetězce. Ani <a href="/input#type-number">číselný <code>&lt;input type="number"&gt;</code></a> není výjimkou.</p></li>
 <li>
 <p>URL parametry / <a href="/query-string">query string</a> jsou na tom stejně:</p>
 <pre><code>const params = new URLSearchParams(window.location.search);
