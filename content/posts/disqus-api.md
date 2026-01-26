@@ -82,4 +82,4 @@ src="http://jecas.disqus.com/combination_widget.js?num_items=3&hide_mods=0&color
 }</code></pre>
 
 
-<p>Výsledek můžete vidět na stránce s <a href="/posledni">posledními komentáři na Je čas.cz</a>.</p>
+<p>Výsledný kód zobrazí přehled posledních komentářů.</p>

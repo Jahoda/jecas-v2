@@ -54,7 +54,7 @@ format: "html"
 
 <h2 id="oznaceni">Označení</h2>
 
-<p>Zaměřit povinné pole je možné speciálním selektorem <a href="/css-selektory#requried"><code>:required</code></a> (<b>IE 10</b>+) nebo obecným <a href="/css-selektory#atributovy">atributovým</a> <code>input[required]</code> (<b>IE 7+</b>).</p>
+<p>Zaměřit povinné pole je možné speciálním selektorem <a href="/css-selektory#required"><code>:required</code></a> (<b>IE 10</b>+) nebo obecným <a href="/css-selektory#atributovy">atributovým</a> <code>input[required]</code> (<b>IE 7+</b>).</p>
 
 <p>Bývá zvykem povinná pole označovat hvězdičkou, tučným nebo barevně odlišeným popiskem či prostým textem „<i>povinné</i>“.</p>
 

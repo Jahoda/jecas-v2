@@ -265,7 +265,7 @@ format: "html"
 <p>V PHP se IP adresa získá z <a href="/server#remote-addr">pole <code>$_SERVER</code></a>. Celé řešení může vypadat následovně:</p>
 
 <pre><code>&lt;?php
-if ($_SERVER["REMOTE_ADDR"] !== "<a href="/ip/"><b>Moje IP adresa</b></a>"):
+if ($_SERVER["REMOTE_ADDR"] !== "<a href="/ip"><b>Moje IP adresa</b></a>"):
 ?>
 &lt;link rel="stylesheet" href="styl.css">
 &lt;?php

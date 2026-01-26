@@ -82,7 +82,7 @@ format: "html"
 
 <h3 id="lazy">Lazy loading</h3>
 
-<p><a href="/rychlost">Zrychlení webu</a> odloženým načítáním řeší knihovna <a href="https://github.com/verlok/lazyload">vanilla-lazyload</a>, která načítá obrázky a <code>&lt;iframe></code>, až když se k nim uživatel <a href="/scroll">proscrolluje</a>. </p>
+<p>Zrychlení webu odloženým načítáním řeší knihovna <a href="https://github.com/verlok/lazyload">vanilla-lazyload</a>, která načítá obrázky a <code>&lt;iframe></code>, až když se k nim uživatel <a href="/scroll">proscrolluje</a>. </p>
 
 <p>Knihovna je v čistém JS a využívá <a href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API">Intersection Observer API</a>.</p>
 

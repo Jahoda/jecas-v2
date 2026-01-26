@@ -15,7 +15,7 @@ format: "html"
 
 <ul>
   <li><a href="/svg">SVG</a> – JavaScriptem animované vektorové obrázky</li>
-  <li>Značka <b href="/html-video"><code>&lt;video></code></b> – připojení video-souboru do stránky (např. formát MP4)</li>
+  <li>Značka <code>&lt;video></code> – připojení video-souboru do stránky (např. formát MP4)</li>
 </ul>
 
 <p>Co ale zvolit?</p>

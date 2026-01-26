@@ -240,7 +240,7 @@ format: "html"
 
 <p>Nabízí se myšlenka třeba při kliknutí myší na políčko (<a href="/udalosti-mysi#onmousedown"><code>onmousedown</code></a>) přidat elementu třídu typu <code>is-mouse-focus</code> a při <code>onblur</code>u ji zase odebírat.</p>
 
-<p>V selektoru pro <code>:focus</code> potom použít ještě <a href="/css-selektory#not"><code>:not</code></a>, aby se styly v tomto případě neaplikovaly.</p>
+<p>V selektoru pro <code>:focus</code> potom použít ještě <a href="/css-selektory#negace"><code>:not</code></a>, aby se styly v tomto případě neaplikovaly.</p>
 
 
 <p>Bohužel současná pravidla v prohlížečích jsou tak komplexní, že to úplně jednoduše zapsat nejde. Například zůstávání <code>:focus</code>u se liší u jednotlivých typů <code>&lt;input></code>ů – tlačítka, checkboxy, radia nebo rozsahy <code>:focus</code> mít nemají, ale všechno ostatní ano.</p>

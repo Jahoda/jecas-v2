@@ -68,7 +68,7 @@ function moveLight(e) {
 
 <p>Řešení je možná jednodušší, než se zdá.</p>
 <ol>
-<li>Základem je velký černý <a href='/files/baterka.png'>obrázek</a> s průhlednou dírou uprostřed (asi by mohl mít větší rozměr než 5000 × 5000 px),
+<li>Základem je velký černý <a href='/files/baterka/baterka.png'>obrázek</a> s průhlednou dírou uprostřed (asi by mohl mít větší rozměr než 5000 × 5000 px),
 <li>ten se nastaví elementu roztaženému přes celou stránku jako <code>background-image</code>,
   <li>pomocí <a href="/opacity"><code>opacity</code></a> (popřípadě pro starší Explorery <code>filter:alpha(opacity=<b>XX</b>)</code>) se nastaví úroveň <i>tmy</i>,
 <li>JavaScript bude tento obrázek posouvat dle pohybu myši a tím vytvářet výsledný efekt.

@@ -29,7 +29,7 @@ format: "html"
   <input type="checkbox"> Souhlasím s podmínkami
 </div>
 
-<p>Co je na výše uvedeném příkladu špatně? Při kliknutí na <i>Souhlasím s podmínkami</i> se <a href="/input#checkbox"><code>checkbox</code></a> nezaškrtne. Nezbývá než se trefovat do miniaturního zaškrtávacího políčka.</p>
+<p>Co je na výše uvedeném příkladu špatně? Při kliknutí na <i>Souhlasím s podmínkami</i> se <a href="/input#type-checkbox"><code>checkbox</code></a> nezaškrtne. Nezbývá než se trefovat do miniaturního zaškrtávacího políčka.</p>
 
 <p>Přitom stačí jen použít značku <a href="/label-for"><code>&lt;label></code></a>.</p>
 
