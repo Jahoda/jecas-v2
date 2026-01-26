@@ -112,8 +112,15 @@ const languages: Record<string, Token[]> = {
 	],
 	diagram: [
 		{ type: 'punctuation', pattern: /[┌┐└┘├┤┬┴┼─│╔╗╚╝╠╣╦╩╬═║╭╮╯╰]+/g },
-		{ type: 'operator', pattern: /[─▶◀▲▼→←↑↓►◄⟶⟵⟷>]+/g },
+		{ type: 'operator', pattern: /[▶◀▲▼→←↑↓►◄⟶⟵⟷>]+/g },
 		{ type: 'keyword', pattern: /\b[A-Z][A-Za-z0-9]*(?:\s+[A-Z][A-Za-z0-9]*)*\b/g },
+	],
+	tree: [
+		{ type: 'comment', pattern: /#.*$/gm },
+		{ type: 'punctuation', pattern: /[├└│─┬┴┼]+/g },
+		{ type: 'function', pattern: /[~.]?\/[\w./-]*/g },
+		{ type: 'keyword', pattern: /[\w.-]+\//g },
+		{ type: 'string', pattern: /[\w.-]+\.\w+/g },
 	],
 	shell: [], // alias for bash, filled below
 	sh: [], // alias for bash, filled below
@@ -231,7 +238,12 @@ export function detectLanguageFromClass(className: string | null): string {
 export function guessLanguageFromContent(code: string): string {
 	const trimmed = code.trim();
 
-	// ASCII art / diagram detection - box-drawing characters
+	// Tree structure detection - tree characters with file/folder names
+	if (/[├└│─]/.test(code) && /[\w.-]+(?:\/|\.\w+)/.test(code) && !/[┌┐╔╗]/.test(code)) {
+		return 'tree';
+	}
+
+	// ASCII art / diagram detection - box-drawing characters (boxes)
 	if (/[┌┐└┘├┤┬┴┼─│╔╗╚╝╠╣╦╩╬═║╭╮╯╰]/.test(code)) {
 		return 'diagram';
 	}
