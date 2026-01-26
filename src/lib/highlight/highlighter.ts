@@ -477,11 +477,6 @@ export function guessLanguageFromContent(code: string): string {
 		return 'html';
 	}
 
-	// PHP detection - <?php or $variable with PHP functions
-	if (/^<\?php\b/.test(trimmed) || /<\?(?:php|=)/.test(code) || (/\$[a-zA-Z_]/.test(code) && /\b(?:echo|print|function|class|namespace|use|foreach|array|isset|empty)\b/.test(code))) {
-		return 'php';
-	}
-
 	// SQL detection - SQL keywords at start or common patterns
 	if (/^\s*(?:SELECT|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP|FROM|WHERE|JOIN|UNION)\b/i.test(trimmed) || /\b(?:SELECT\s+\*?\s+FROM|INSERT\s+INTO|UPDATE\s+\w+\s+SET|DELETE\s+FROM|CREATE\s+TABLE|ALTER\s+TABLE)\b/i.test(code)) {
 		return 'sql';
@@ -493,7 +488,7 @@ export function guessLanguageFromContent(code: string): string {
 		return 'json';
 	}
 
-	// YAML detection - general patterns
+	// YAML detection - general patterns (before PHP to avoid $VAR + echo false positive)
 	// Remove template expressions like ${{ }} and strings before checking for problematic chars
 	const yamlClean = code
 		.replace(/\$\{\{[^}]*\}\}/g, '')  // GitHub Actions
@@ -504,14 +499,24 @@ export function guessLanguageFromContent(code: string): string {
 	const hasNestedKeys = /^\s{2,}[a-zA-Z_][a-zA-Z0-9_-]*:/m.test(code);
 	const hasListItems = /^\s*-\s+/m.test(code);
 	const hasMultilineString = /[|>]\s*$/m.test(code);
+	const hasGitHubActions = /\$\{\{.*\}\}/.test(code);
 	const noCodeBraces = !/[;]/.test(yamlClean) && !/\)\s*\{/.test(yamlClean) && !/\bfunction\b/.test(code);
 
 	if (
 		hasKeyValueAtStart &&
-		(hasNestedKeys || hasListItems || hasMultilineString) &&
+		(hasNestedKeys || hasListItems || hasMultilineString || hasGitHubActions) &&
 		noCodeBraces
 	) {
 		return 'yaml';
+	}
+
+	// PHP detection - require <?php tag OR strong PHP indicators (not just $var + echo)
+	if (
+		/^<\?php\b/.test(trimmed) ||
+		/<\?(?:php|=)/.test(code) ||
+		(/\$[a-zA-Z_]/.test(code) && /\b(?:foreach|isset|empty|array_|str_|preg_|mysqli_|PDO)\b/.test(code))
+	) {
+		return 'php';
 	}
 
 	// Bash/Shell detection - must be before CSS (# comments vs #id selectors)
