@@ -9,11 +9,11 @@ tags: ["hotova-reseni", "js"]
 format: "html"
 ---
 
-<p>Práce s čísly v JavaScriptu přináší velkou porci zábavy. Některé věci se hodí znát pro běžnou praxi. Další jsou spíš kuriosity vhodné k šikanování uchazečů o práci na pohovorech.</p>
+<p>Práce s čísly v JavaScriptu přináší velkou porci zábavy. Některé věci se hodí znát pro běžnou praxi. Další jsou spíš kuriosity vhodné k šikanování uchazečů o práci na pohovorech.</p>
 
-<p>Většina zvláštních situací plyne z automatické typové konverse (tzv. <i>type coercion</i>), která často způsobuje, že číslo a řetězec „spolu komunikují“.</p>
+<p>Většina zvláštních situací plyne z automatické typové konverse (tzv. <i>type coercion</i>), která často způsobuje, že číslo a řetězec „spolu komunikují“.</p>
 
-<p>Při pokusu o sčítání platí, že pokud je <b>alespoň jeden operand řetězec</b>, dojde ke <b>zřetězení</b>:</p>
+<p>Při pokusu o sčítání platí, že pokud je <b>alespoň jeden operand řetězec</b>, dojde ke <b>zřetězení</b>:</p>
 
 <p>Operand je hodnota nebo proměnná, na které operátor provádí svou operaci.</p>
 
@@ -32,13 +32,13 @@ format: "html"
 "foo" * 2        // NaN
 </code></pre>
 
-<p>Této skutečnosti je možné využívat i pro převod na čísla, kdy se řetězec vynásobí jedničkou nebo se přidá <code>+</code> před číslo v řetězci.</p>
+<p>Této skutečnosti je možné využívat i pro převod na čísla, kdy se řetězec vynásobí jedničkou nebo se přidá <code>+</code> před číslo v řetězci.</p>
 
 <pre><code>+"1" + 1       // 2</code></pre>
 
 <h2 id="string">Skoro všechno je string</h2>
 
-<p>Reálné problémy plynoucí z míchání řetězců (<i>string</i>) s čísly (<i>number</i>) vyplývají z toho, že <b>skoro všechno může být řetězec</b>:</p>
+<p>Reálné problémy plynoucí z míchání řetězců (<i>string</i>) s čísly (<i>number</i>) vyplývají z toho, že <b>skoro všechno může být řetězec</b>:</p>
 
 <ol>
 <li>
@@ -50,7 +50,7 @@ const id = params.get("id");
 console.log(typeof id); // "string"</code></pre>
 </li>
 <li>
-<p>I u <a href="/json">JSONu</a> získaného z API je běžnou praxí, že jsou čísla posílána jako řetězce.</p>
+<p>I u <a href="/json">JSONu</a> získaného z API je běžnou praxí, že jsou čísla posílána jako řetězce.</p>
 <pre><code>const data = JSON.parse('{"age":"42"}');
 console.log(typeof data.age); // "string"</code></pre>
 </li>
@@ -59,7 +59,7 @@ console.log(typeof data.age); // "string"</code></pre>
 
 <h2 id="soucet">Součet čísel vs. součet řetězců</h2>
 
-<p>Hodnota z <code>&lt;input type="text"></code> je řetězec. Operace <code>x + 5</code> provede <b>zřetězení</b>, nikoliv sčítání.</p>
+<p>Hodnota z <code>&lt;input type="text"></code> je řetězec. Operace <code>x + 5</code> provede <b>zřetězení</b>, nikoliv sčítání.</p>
 
 <div class="live">
   <style>
@@ -74,7 +74,7 @@ console.log(typeof data.age); // "string"</code></pre>
   <div class="sum-demo">
     <div class="grid">
       <div>
-        <label for="sd-a">Vstup z pole (string)</label>
+        <label for="sd-a">Vstup z pole (string)</label>
         <input id="sd-a" type="text" value="1" autocomplete="off" spellcheck="false">
       </div>
       <div>
@@ -116,7 +116,7 @@ console.log(typeof data.age); // "string"</code></pre>
 </div>
 
 
-<p>Co s tím?</p>
+<p>Co s tím?</p>
 <h3 id="number"><code>Number</code></h3>
 
 
@@ -128,9 +128,9 @@ const id = Number(new URLSearchParams(location.search).get('id') ?? '')
 const data = JSON.parse('{"age":"42","items":[{"qty":"3"},{"qty":"5"}]}')
 const age2 = Number(data.age)</code></pre>
 
-<p>A zde začíná další zábava. Datům od uživatele není dobré věřit. Aplikace by si měla poradit s každým vstupem.</p>
+<p>A zde začíná další zábava. Datům od uživatele není dobré věřit. Aplikace by si měla poradit s každým vstupem.</p>
 
-<p>Funkce <code>Number</code> je relativně přísná. Poradí si s bílými znaky okolo čísla (to může být i nezalomitelná mezera, takže <code>Number("\u00A042")</code> nebo <code>Number("42\u00A0")</code> je v pořádku). Prázdný řetězec nebo <code>null</code> převede na <code>0</code>, jinak je výsledkem NaN (<i>not a number</i>):</p>
+<p>Funkce <code>Number</code> je relativně přísná. Poradí si s bílými znaky okolo čísla (to může být i nezalomitelná mezera, takže <code>Number("\u00A042")</code> nebo <code>Number("42\u00A0")</code> je v pořádku). Prázdný řetězec nebo <code>null</code> převede na <code>0</code>, jinak je výsledkem NaN (<i>not a number</i>):</p>
 
 <pre><code>Number(" 42 ")          // 42
 Number("")              // 0
@@ -144,13 +144,13 @@ Number("0xFF")          // 255
 Number("0b1010")        // 10
 Number("0o17")          // 15</code></pre>
 
-<p>Funkce <code>Number</code> převede na číslo i zápisy s exponentem (<code>42e4</code>). Stejně tak si podle prefixu dokáže zvolit jinou číselnou soustavu – šestnáctkovou/hexadecimální (prefix 0x), dvojkovou/binární (0b) nebo osmičkovou/oktalovou (0o).</p>
+<p>Funkce <code>Number</code> převede na číslo i zápisy s exponentem (<code>42e4</code>). Stejně tak si podle prefixu dokáže zvolit jinou číselnou soustavu – šestnáctkovou/hexadecimální (prefix 0x), dvojkovou/binární (0b) nebo osmičkovou/oktalovou (0o).</p>
 
 <h3 id="parse"><code>parseFloat</code>/<code>parseInt</code></h3>
 
-<p>Pro trochu tolerantnější přístup k číslům jde použít <code>parseFloat</code>/<code>parseInt</code> (pro parsování čísla s desetinnou čárkou nebo celého).</p>
+<p>Pro trochu tolerantnější přístup k číslům jde použít <code>parseFloat</code>/<code>parseInt</code> (pro parsování čísla s desetinnou čárkou nebo celého).</p>
 
-<p>Hlavní rozdíl je v tom, že tyto funkce dokáží odstranit nepořádek na konci čísla. Takže třeba v pohodě odstranit jednotky:</p>
+<p>Hlavní rozdíl je v tom, že tyto funkce dokáží odstranit nepořádek na konci čísla. Takže třeba v pohodě odstranit jednotky:</p>
 
 <pre><code>parseInt("42px", 10)       // 42
 parseFloat("3.14em")       // 3.14
@@ -223,7 +223,7 @@ parseInt("08")         // 8 nebo 0 (historicky), proto vždy parseInt(s, 10)
 
 <h3 id="radix">Číselná soustava (radix)</h3>
 
-<p><b>Radix</b> je základ číselné soustavy. <code>parseInt(text, radix)</code> říká, v jaké soustavě se má řetězec číst. <b>10</b> je desítková, <b>2</b> binární, <b>16</b> šestnáctková; povolený rozsah je <b>2…36</b>. Znaky <code>a</code> až <code>z</code> představují hodnoty 10 až 35 a nerozlišují velikost písmen. Funkce čte zleva a zastaví se na prvním nepovoleném znaku.</p>
+<p><b>Radix</b> je základ číselné soustavy. <code>parseInt(text, radix)</code> říká, v jaké soustavě se má řetězec číst. <b>10</b> je desítková, <b>2</b> binární, <b>16</b> šestnáctková; povolený rozsah je <b>2…36</b>. Znaky <code>a</code> až <code>z</code> představují hodnoty 10 až 35 a nerozlišují velikost písmen. Funkce čte zleva a zastaví se na prvním nepovoleném znaku.</p>
 
 <pre><code>parseInt("1010", 2)     // 10
 parseInt("ff", 16)      // 255
@@ -314,19 +314,19 @@ parseInt("08", 10)      // 8
 
 <p>Z různých specifik čísel jako je možnost zadat exponent nebo použít různé číselné soustavy plyne, že prostá validace, jestli je vstup od uživatele číslo, nemusí být dostatečná.</p>
 
-<p>Je tak potřeba zvolit pro konkrétní případ, jestli přijímat zápisy s exponentem, zápisy v jiné číselné soustavě nebo třeba nekonečno <code>Infinity</code>.</p>
+<p>Je tak potřeba zvolit pro konkrétní případ, jestli přijímat zápisy s exponentem, zápisy v jiné číselné soustavě nebo třeba nekonečno <code>Infinity</code>.</p>
 
-<p>K úvaze je i použití serialisace místo validace, kdy se neplatné znaky ve vstupu ignorují a algoritmus se snaží pochopit, co chtěl člověk zadat.</p>
+<p>K úvaze je i použití serialisace místo validace, kdy se neplatné znaky ve vstupu ignorují a algoritmus se snaží pochopit, co chtěl člověk zadat.</p>
 
-<p>Zde může být typicky problém s oddělovači tisíců nebo desetinných míst.</p>
-
-
+<p>Zde může být typicky problém s oddělovači tisíců nebo desetinných míst.</p>
 
 
 
-<h2 id="lokalisace">Lokalisovaná čísla: čárka a mezery</h2>
 
-<p>JavaScript parsuje desetinnou <b>tečku</b>. Vstup jako <code>"1 234,56"</code> je potřeba převést na <code>"1234.56"</code>. Zároveň je vhodné odstranit různé druhy mezer v tisících (<code>NBSP</code>, <code>narrow NBSP</code>, běžná mezera).</p>
+
+<h2 id="lokalisace">Lokalisovaná čísla: čárka a mezery</h2>
+
+<p>JavaScript parsuje desetinnou <b>tečku</b>. Vstup jako <code>"1 234,56"</code> je potřeba převést na <code>"1234.56"</code>. Zároveň je vhodné odstranit různé druhy mezer v tisících (<code>NBSP</code>, <code>narrow NBSP</code>, běžná mezera).</p>
 
 <pre><code>function parseCzDecimal(input) {
   const raw = String(input)
@@ -340,7 +340,7 @@ parseCzDecimal("12,0")       // 12
 parseCzDecimal("12 345")     // 12345
 </code></pre>
 
-<p>Udělat políčko tolerantní k českému číslu by šlo tímto způsobem.</p>
+<p>Udělat políčko tolerantní k českému číslu by šlo tímto způsobem.</p>
 
 <div class="live">
   <style>
@@ -390,10 +390,10 @@ parseCzDecimal("12 345")     // 12345
   </script>
 </div>
 
-<p>K úvaze je, jestli není validace až moc přísná, že si neporadí naopak s anglickým formátem <code>1,234.56</code>. Je potřeba to dobře vyzkoušet pro konkrétní případ.</p>
+<p>K úvaze je, jestli není validace až moc přísná, že si neporadí naopak s anglickým formátem <code>1,234.56</code>. Je potřeba to dobře vyzkoušet pro konkrétní případ.</p>
 
 
-<h2 id="edge">Okrajové hodnoty a další typy</h2>
+<h2 id="edge">Okrajové hodnoty a další typy</h2>
 
 <ul>
   <li><b>Number("")</b> → 0, <b>Number(null)</b> → 0, <b>Number(undefined)</b> → NaN.</li>
@@ -403,8 +403,8 @@ parseCzDecimal("12 345")     // 12345
   <li><b>Boolean</b>: <code>Number(true) → 1</code>, <code>Number(false) → 0</code>.</li>
   <li><b>Pole</b>: <code>[] → "" → 0</code>, <code>[1] → "1" → 1</code>, <code>[1,2] → "1,2" → NaN</code>.</li>
   <li><b>Objekt</b>: <code>{} → "[object Object]" → NaN</code>.</li>
-  <li><b>Symbol</b>: <code>Number(Symbol())</code> a <code>parseInt(Symbol())</code> vyhodí <b>TypeError</b>.</li>
-  <li><b>BigInt</b>: <code>Number(10n) → 10</code>, pozor na přesnost u velkých hodnot.</li>
+  <li><b>Symbol</b>: <code>Number(Symbol())</code> a <code>parseInt(Symbol())</code> vyhodí <b>TypeError</b>.</li>
+  <li><b>BigInt</b>: <code>Number(10n) → 10</code>, pozor na přesnost u velkých hodnot.</li>
   
 </ul>
 
@@ -491,8 +491,8 @@ parseCzDecimal("12 345")     // 12345
 <h2 id="doporuceni">Doporučení</h2>
 
 <ul>
-  <li>Chcete‑li zvalidovat, že <b>celý</b> vstup je číslo, použijte <code>Number</code> a <code>Number.isFinite</code>.</li>
-  <li>Potřebujete‑li číslo vyčíst z <b>počátku</b> textu (např. <code>"42px"</code>), použijte <code>parseInt(x, 10)</code> nebo <code>parseFloat</code>.</li>
+  <li>Chcete‑li zvalidovat, že <b>celý</b> vstup je číslo, použijte <code>Number</code> a <code>Number.isFinite</code>.</li>
+  <li>Potřebujete‑li číslo vyčíst z <b>počátku</b> textu (např. <code>"42px"</code>), použijte <code>parseInt(x, 10)</code> nebo <code>parseFloat</code>.</li>
   <li>Vždy předejte <code>radix</code> (číselnou soustavu) do <code>parseInt</code>: <code>parseInt(s, 10)</code>.</li>
-  <li>Pro lokální formáty (<b>1 234,56</b>) nejprve vstup normalisujte (mezery, <b>NBSP</b>, čárka → tečka) a pak použijte přísnou konversi.</li>
+  <li>Pro lokální formáty (<b>1 234,56</b>) nejprve vstup normalisujte (mezery, <b>NBSP</b>, čárka → tečka) a pak použijte přísnou konversi.</li>
 </ul>
