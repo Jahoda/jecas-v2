@@ -154,9 +154,7 @@ function validateFrontmatter(frontmatter, slug) {
 	if (frontmatter.last_modification !== undefined && frontmatter.last_modification !== null) {
 		const dateStr = String(frontmatter.last_modification);
 		if (!DATE_REGEX.test(dateStr)) {
-			errors.push(
-				`Field "last_modification" must be in YYYY-MM-DD format, got: ${dateStr}`
-			);
+			errors.push(`Field "last_modification" must be in YYYY-MM-DD format, got: ${dateStr}`);
 		}
 	}
 
@@ -278,7 +276,12 @@ function validateContent(content, slug) {
 
 	// Example slugs commonly used in documentation/tutorials
 	const exampleSlugs = new Set([
-		'clanek', 'jiny-clanek', 'produkty', 'url-stranky', 'like', 'items'
+		'clanek',
+		'jiny-clanek',
+		'produkty',
+		'url-stranky',
+		'like',
+		'items'
 	]);
 
 	while ((match = internalLinkRegex.exec(contentWithoutCode)) !== null) {
@@ -465,9 +468,7 @@ function main() {
 
 		// Only print articles with issues
 		if (hasErrors || (showWarnings && hasWarnings)) {
-			const status = result.isPublished
-				? colors.green('[published]')
-				: colors.dim('[draft]');
+			const status = result.isPublished ? colors.green('[published]') : colors.dim('[draft]');
 
 			console.log(`${colors.cyan(result.slug)} ${status}`);
 
@@ -492,7 +493,9 @@ function main() {
 	console.log(`  Draft: ${stats.draft}`);
 	console.log('');
 	console.log(`${colors.green('Valid:')} ${stats.valid}`);
-	console.log(`${colors.red('With errors:')} ${stats.withErrors} (${stats.totalErrors} total errors)`);
+	console.log(
+		`${colors.red('With errors:')} ${stats.withErrors} (${stats.totalErrors} total errors)`
+	);
 
 	if (showWarnings) {
 		console.log(
