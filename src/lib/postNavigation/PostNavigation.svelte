@@ -23,7 +23,7 @@
 					<MainPost
 						title={prev.headline}
 						description={prev.description}
-						date={prev.last_modification}
+						date={prev.last_modification ?? prev.date}
 						href={prev.url_slug}
 						small={true}
 						neutral={true}
@@ -43,7 +43,7 @@
 					<MainPost
 						title={next.headline}
 						description={next.description}
-						date={next.last_modification}
+						date={next.last_modification ?? next.date}
 						href={next.url_slug}
 						small={true}
 						neutral={true}

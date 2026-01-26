@@ -94,7 +94,7 @@
 	<HeroPost
 		title={post.headline || ('name' in post ? post.name : '')}
 		description={post && 'description' in post ? post.description : ''}
-		date={'last_modification' in post ? post.last_modification : null}
+		date={'last_modification' in post ? (post.last_modification ?? post.date) : null}
 		href={post.url_slug}
 		isTag={Boolean(data.tag)}
 		background={'background' in post ? post.background : '#3b82f6'}
