@@ -34,6 +34,38 @@ const languages: Record<string, Token[]> = {
 		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+/g },
 		{ type: 'punctuation', pattern: /[{}[\]();,.]/g },
 	],
+	jsx: [
+		{ type: 'comment', pattern: /\/\/.*$/gm },
+		{ type: 'comment', pattern: /\/\*[\s\S]*?\*\//g },
+		{ type: 'comment', pattern: /\{\/\*[\s\S]*?\*\/\}/g },
+		{ type: 'string', pattern: /`[\s\S]*?`/g },
+		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
+		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
+		{ type: 'tag', pattern: /<\/?[A-Z][a-zA-Z0-9]*(?=[\s\/>])/g },
+		{ type: 'tag', pattern: /<\/?(?:div|span|p|a|ul|ol|li|table|tr|td|th|form|input|button|img|h[1-6]|section|article|nav|header|footer|main|aside|label|textarea|select|option)(?=[\s\/>])/g },
+		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9]*(?=\s*=)/g },
+		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield)\b/g },
+		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
+		{ type: 'function', pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(?=\()/g },
+		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+/g },
+		{ type: 'punctuation', pattern: /[{}[\]();,.<>\/]/g },
+	],
+	tsx: [
+		{ type: 'comment', pattern: /\/\/.*$/gm },
+		{ type: 'comment', pattern: /\/\*[\s\S]*?\*\//g },
+		{ type: 'comment', pattern: /\{\/\*[\s\S]*?\*\/\}/g },
+		{ type: 'string', pattern: /`[\s\S]*?`/g },
+		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
+		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
+		{ type: 'tag', pattern: /<\/?[A-Z][a-zA-Z0-9]*(?=[\s\/>])/g },
+		{ type: 'tag', pattern: /<\/?(?:div|span|p|a|ul|ol|li|table|tr|td|th|form|input|button|img|h[1-6]|section|article|nav|header|footer|main|aside|label|textarea|select|option)(?=[\s\/>])/g },
+		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9]*(?=\s*=)/g },
+		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|never|unknown|any)\b/g },
+		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
+		{ type: 'function', pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(?=\()/g },
+		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+/g },
+		{ type: 'punctuation', pattern: /[{}[\]();,.<>\/]/g },
+	],
 	typescript: [
 		{ type: 'comment', pattern: /\/\/.*$/gm },
 		{ type: 'comment', pattern: /\/\*[\s\S]*?\*\//g },
@@ -125,8 +157,6 @@ const languages: Record<string, Token[]> = {
 	shell: [], // alias for bash, filled below
 	sh: [], // alias for bash, filled below
 	xml: [], // alias for html, filled below
-	jsx: [], // alias for javascript, filled below
-	tsx: [], // alias for typescript, filled below
 	scss: [], // alias for css, filled below
 	less: [], // alias for css, filled below
 	ascii: [], // alias for diagram
@@ -138,8 +168,6 @@ const languages: Record<string, Token[]> = {
 languages.shell = languages.bash;
 languages.sh = languages.bash;
 languages.xml = languages.html;
-languages.jsx = languages.javascript;
-languages.tsx = languages.typescript;
 languages.scss = languages.css;
 languages.less = languages.css;
 languages.js = languages.javascript;
@@ -248,8 +276,19 @@ export function guessLanguageFromContent(code: string): string {
 		return 'diagram';
 	}
 
+	// JSX/TSX detection - React components, JSX comments (before TS/JS)
+	const hasJsxComponents = /<[A-Z][a-zA-Z0-9]*[\s\/>]/.test(code) || /\{\/\*[\s\S]*?\*\/\}/.test(code);
+	const hasJsxReturn = /return\s*\(\s*</.test(code) || /=>\s*\(\s*</.test(code) || /=>\s*<[A-Z]/.test(code);
+	if (hasJsxComponents || hasJsxReturn) {
+		// Check if it's TSX (has TypeScript syntax)
+		if (/\b(?:interface|type)\s+\w+/.test(code) || /:\s*(?:string|number|boolean|void|any|unknown|never|React\.)\b/.test(code)) {
+			return 'tsx';
+		}
+		return 'jsx';
+	}
+
 	// TypeScript detection - type annotations, interface, type keyword (before JS)
-	if (/\b(?:interface|type|enum|namespace|readonly|public|private|protected)\s+\w+/.test(code) || /:\s*(?:string|number|boolean|void|any|unknown|never)\b/.test(code) || /<[A-Z]\w*>/.test(code)) {
+	if (/\b(?:interface|type|enum|namespace|readonly|public|private|protected)\s+\w+/.test(code) || /:\s*(?:string|number|boolean|void|any|unknown|never)\b/.test(code)) {
 		return 'typescript';
 	}
 
