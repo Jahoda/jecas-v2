@@ -35,6 +35,9 @@ const languages: Record<string, Token[]> = {
 		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
 		// Function parameters
 		{ type: 'variable', pattern: /(?<=\bfunction\s+\w*\s*\()[^)]*(?=\))/g },
+		// Variables in conditions and expressions
+		{ type: 'variable', pattern: /(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g },
+		{ type: 'variable', pattern: /(?<=[=!<>&|]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[;)\]}])/g },
 		// Property access after dot
 		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
@@ -61,6 +64,9 @@ const languages: Record<string, Token[]> = {
 		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|static|get|set)\b/g },
 		// Variable declarations
 		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
+		// Variables in conditions and expressions
+		{ type: 'variable', pattern: /(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g },
+		{ type: 'variable', pattern: /(?<=[=!<>&|]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[;)\]}])/g },
 		// Property access
 		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
@@ -94,6 +100,9 @@ const languages: Record<string, Token[]> = {
 		{ type: 'value', pattern: /(?<=:\s*)[A-Z][a-zA-Z0-9_]*(?![a-z(])/g },
 		// Variable declarations
 		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
+		// Variables in conditions and expressions
+		{ type: 'variable', pattern: /(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g },
+		{ type: 'variable', pattern: /(?<=[=!<>&|]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[;)\]}])/g },
 		// Property access
 		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
@@ -121,6 +130,9 @@ const languages: Record<string, Token[]> = {
 		{ type: 'tag', pattern: /(?<=\bas\s+)[A-Z][a-zA-Z0-9_]*/g },
 		// Variable declarations
 		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
+		// Variables in conditions and expressions
+		{ type: 'variable', pattern: /(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g },
+		{ type: 'variable', pattern: /(?<=[=!<>&|]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[;)\]}])/g },
 		// Type/interface property names
 		{ type: 'property', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\??:)/g },
 		// Property access after dot
