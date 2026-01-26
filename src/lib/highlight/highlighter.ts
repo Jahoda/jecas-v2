@@ -224,8 +224,27 @@ export function detectLanguageFromClass(className: string | null): string {
 export function guessLanguageFromContent(code: string): string {
 	const trimmed = code.trim();
 
-	// HTML detection - starts with < or contains HTML tags
-	if (/^<[!a-zA-Z]/.test(trimmed) || /<\/?(?:div|span|p|a|ul|ol|li|table|tr|td|th|form|input|button|img|head|body|html|script|style|link|meta|h[1-6]|section|article|nav|header|footer|main|aside)\b/i.test(code)) {
+	// TypeScript detection - type annotations, interface, type keyword (before JS)
+	if (/\b(?:interface|type|enum|namespace|readonly|public|private|protected)\s+\w+/.test(code) || /:\s*(?:string|number|boolean|void|any|unknown|never)\b/.test(code) || /<[A-Z]\w*>/.test(code)) {
+		return 'typescript';
+	}
+
+	// JavaScript detection - must be before HTML (template literals can contain HTML)
+	// Strong JS indicators: DOM methods, arrow functions, async/await, variable declarations
+	if (
+		/\b(?:document|window|console)\.\w+/.test(code) ||
+		/\b(?:querySelector|getElementById|addEventListener|createElement|appendChild|innerHTML|fetch)\b/.test(code) ||
+		/\b(?:async|await)\s+/.test(code) ||
+		/=>\s*[{(]/.test(code) ||
+		/\b(?:const|let|var)\s+\w+\s*=/.test(code) ||
+		/\bfunction\s+\w+\s*\(/.test(code) ||
+		/\bnew\s+(?:Promise|Map|Set|Array|Object|Date|RegExp)\b/.test(code)
+	) {
+		return 'javascript';
+	}
+
+	// HTML detection - starts with < tag (not in string context)
+	if (/^<[!a-zA-Z]/.test(trimmed) || /^\s*<\/?(?:div|span|p|a|ul|ol|li|table|tr|td|th|form|input|button|img|head|body|html|script|style|link|meta|h[1-6]|section|article|nav|header|footer|main|aside)\b/im.test(code)) {
 		return 'html';
 	}
 
@@ -261,16 +280,6 @@ export function guessLanguageFromContent(code: string): string {
 	// CSS detection - selectors with braces or @rules
 	if (/^(?:\.|#[a-zA-Z][\w-]*\s*\{|@|[a-zA-Z][\w-]*\s*\{)/.test(trimmed) || /(?:^|\n)\s*(?:\.|#[a-zA-Z]|@media|@keyframes|@import|@font-face)[^{]*\{/.test(code) || /\b(?:color|background|margin|padding|display|position|width|height|font-size|border)\s*:/.test(code)) {
 		return 'css';
-	}
-
-	// TypeScript detection - type annotations, interface, type keyword
-	if (/\b(?:interface|type|enum|namespace|readonly|public|private|protected)\s+\w+/.test(code) || /:\s*(?:string|number|boolean|void|any|unknown|never)\b/.test(code) || /<[A-Z]\w*>/.test(code)) {
-		return 'typescript';
-	}
-
-	// JavaScript detection - common JS patterns
-	if (/\b(?:const|let|var|function|return|if|else|for|while|class|import|export|async|await|=>)\b/.test(code) || /(?:document|window|console)\.\w+/.test(code) || /\bfunction\s*\w*\s*\(/.test(code)) {
-		return 'javascript';
 	}
 
 	// Default - return empty (will still try to highlight with basic patterns)
