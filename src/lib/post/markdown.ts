@@ -32,7 +32,6 @@ const postModules = import.meta.glob('/content/posts/*.md', {
 
 let postsCache: Map<string, MarkdownPost> | null = null;
 let allPostsSortedCache: MarkdownPost[] | null = null;
-let loadingPromise: Promise<Map<string, MarkdownPost>> | null = null;
 
 function getPostFiles(): string[] {
 	return Object.keys(postModules).map((path) => path.split('/').pop()!);
@@ -81,29 +80,17 @@ async function loadAllPostsToCache(): Promise<Map<string, MarkdownPost>> {
 	// Return cached result if available
 	if (postsCache) return postsCache;
 
-	// If already loading, wait for that to complete (prevents race condition)
-	if (loadingPromise) return loadingPromise;
+	// Load all posts in parallel
+	const postFiles = getPostFiles();
+	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
 
-	// Start loading and store the promise
-	loadingPromise = (async () => {
-		try {
-			const postFiles = getPostFiles();
-			const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
+	const cache = new Map<string, MarkdownPost>();
+	for (const post of posts) {
+		cache.set(post.url_slug, post);
+	}
 
-			const cache = new Map<string, MarkdownPost>();
-			for (const post of posts) {
-				cache.set(post.url_slug, post);
-			}
-
-			postsCache = cache;
-			return cache;
-		} finally {
-			// Reset loading promise after completion
-			loadingPromise = null;
-		}
-	})();
-
-	return loadingPromise;
+	postsCache = cache;
+	return cache;
 }
 
 export async function getAllPosts(

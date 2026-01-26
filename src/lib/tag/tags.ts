@@ -40,13 +40,10 @@ const tagModules = import.meta.glob('/content/tags/*.md', {
 	eager: true
 }) as Record<string, string>;
 
-// Caching
+// Simple caching - no complex promise patterns
 let tagFilesCache: Map<string, Tag> | null = null;
 let usageCountsCache: Map<string, number> | null = null;
 let tagPostsCache: Map<string, string[]> | null = null;
-let tagFilesLoadingPromise: Promise<Map<string, Tag>> | null = null;
-let usageCountsLoadingPromise: Promise<Map<string, number>> | null = null;
-let tagPostsLoadingPromise: Promise<Map<string, string[]>> | null = null;
 
 function getContrastColor(bgColor: string | null): string {
 	if (!bgColor) return '#000000';
@@ -89,46 +86,39 @@ function normalizeTag(frontmatter: TagFrontmatter, content: string, slug: string
 }
 
 async function loadAllTagFiles(): Promise<Map<string, Tag>> {
-	// Return cached data if still fresh
+	// Return cached data if available
 	if (tagFilesCache) {
 		return tagFilesCache;
 	}
 
-	// If already loading, wait for that to complete (prevents race condition)
-	if (tagFilesLoadingPromise) {
-		return tagFilesLoadingPromise;
+	// Load all tags
+	const tags = new Map<string, Tag>();
+
+	// Process all tag files in parallel for speed
+	const tagEntries = Object.entries(tagModules);
+	const processedTags = await Promise.all(
+		tagEntries.map(async ([filePath, fileContent]) => {
+			const { data: frontmatter, content } = matter(fileContent);
+
+			// Extract slug from filename (remove .md extension)
+			const filename = filePath.split('/').pop()!;
+			const slug = filename.replace(/\.md$/, '');
+
+			// Convert markdown to HTML
+			const htmlContent = await marked(content);
+
+			// Create normalized tag
+			return normalizeTag(frontmatter as TagFrontmatter, htmlContent, slug);
+		})
+	);
+
+	// Add all tags to the map
+	for (const tag of processedTags) {
+		tags.set(tag.url_slug, tag);
 	}
 
-	// Start loading and store the promise
-	tagFilesLoadingPromise = (async () => {
-		const tags = new Map<string, Tag>();
-
-		try {
-			for (const [filePath, fileContent] of Object.entries(tagModules)) {
-				const { data: frontmatter, content } = matter(fileContent);
-
-				// Extract slug from filename (remove .md extension)
-				const filename = filePath.split('/').pop()!;
-				const slug = filename.replace(/\.md$/, '');
-
-				// Convert markdown to HTML
-				const htmlContent = await marked(content);
-
-				// Create normalized tag
-				const tag = normalizeTag(frontmatter as TagFrontmatter, htmlContent, slug);
-
-				tags.set(tag.url_slug, tag);
-			}
-
-			tagFilesCache = tags;
-			return tags;
-		} finally {
-			// Reset loading promise after completion (success or failure)
-			tagFilesLoadingPromise = null;
-		}
-	})();
-
-	return tagFilesLoadingPromise;
+	tagFilesCache = tags;
+	return tags;
 }
 
 // Calculate ALL tag usage counts in one pass for efficiency
@@ -137,54 +127,40 @@ async function calculateAllUsageCounts(): Promise<Map<string, number>> {
 		return usageCountsCache;
 	}
 
-	// If already calculating, wait for that to complete (prevents race condition)
-	if (usageCountsLoadingPromise) {
-		return usageCountsLoadingPromise;
+	const posts = await getMarkdownAllPosts(null, 1);
+	const counts = new Map<string, number>();
+	const tags = await loadAllTagFiles();
+
+	// Initialize all tag counts to 0
+	for (const tag of tags.values()) {
+		counts.set(tag.url_slug, 0);
 	}
 
-	// Start calculating and store the promise
-	usageCountsLoadingPromise = (async () => {
-		try {
-			const posts = await getMarkdownAllPosts(null, 1);
+	// Count articles for each tag
+	for (const post of posts) {
+		if (post.tags) {
+			const processedSlugs = new Set<string>();
 
-			const counts = new Map<string, number>();
-			const tags = await loadAllTagFiles();
+			for (const tagName of post.tags) {
+				let matchingTag = Array.from(tags.values()).find(
+					(t) => removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
+				);
 
-			Array.from(tags.values()).forEach((tag) => {
-				counts.set(tag.url_slug, 0);
-			});
+				if (!matchingTag) {
+					const tagSlug = tagName.toLowerCase().replace(/\s+/g, '-');
+					matchingTag = tags.get(tagSlug);
+				}
 
-			for (const post of posts) {
-				if (post.tags) {
-					const processedSlugs = new Set<string>();
-
-					for (const tagName of post.tags) {
-						let matchingTag = Array.from(tags.values()).find(
-							(t) =>
-								removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
-						);
-
-						if (!matchingTag) {
-							const tagSlug = tagName.toLowerCase().replace(/\s+/g, '-');
-							matchingTag = tags.get(tagSlug);
-						}
-
-						if (matchingTag && !processedSlugs.has(matchingTag.url_slug)) {
-							counts.set(matchingTag.url_slug, (counts.get(matchingTag.url_slug) || 0) + 1);
-							processedSlugs.add(matchingTag.url_slug);
-						}
-					}
+				if (matchingTag && !processedSlugs.has(matchingTag.url_slug)) {
+					counts.set(matchingTag.url_slug, (counts.get(matchingTag.url_slug) || 0) + 1);
+					processedSlugs.add(matchingTag.url_slug);
 				}
 			}
-
-			usageCountsCache = counts;
-			return counts;
-		} finally {
-			usageCountsLoadingPromise = null;
 		}
-	})();
+	}
 
-	return usageCountsLoadingPromise;
+	usageCountsCache = counts;
+	return counts;
 }
 
 async function calculateAllTagPosts(): Promise<Map<string, string[]>> {
@@ -192,56 +168,42 @@ async function calculateAllTagPosts(): Promise<Map<string, string[]>> {
 		return tagPostsCache;
 	}
 
-	// If already calculating, wait for that to complete (prevents race condition)
-	if (tagPostsLoadingPromise) {
-		return tagPostsLoadingPromise;
+	const posts = await getMarkdownAllPosts(null, 1);
+	const tagPosts = new Map<string, string[]>();
+	const tags = await loadAllTagFiles();
+
+	// Initialize empty arrays for all tags
+	for (const tag of tags.values()) {
+		tagPosts.set(tag.url_slug, []);
 	}
 
-	// Start calculating and store the promise
-	tagPostsLoadingPromise = (async () => {
-		try {
-			const posts = await getMarkdownAllPosts(null, 1);
+	// Collect posts for each tag
+	for (const post of posts) {
+		if (post.tags) {
+			const processedSlugs = new Set<string>();
 
-			const tagPosts = new Map<string, string[]>();
-			const tags = await loadAllTagFiles();
+			for (const tagName of post.tags) {
+				let matchingTag = Array.from(tags.values()).find(
+					(t) => removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
+				);
 
-			Array.from(tags.values()).forEach((tag) => {
-				tagPosts.set(tag.url_slug, []);
-			});
+				if (!matchingTag) {
+					const tagSlug = tagName.toLowerCase().replace(/\s+/g, '-');
+					matchingTag = tags.get(tagSlug);
+				}
 
-			for (const post of posts) {
-				if (post.tags) {
-					const processedSlugs = new Set<string>();
-
-					for (const tagName of post.tags) {
-						let matchingTag = Array.from(tags.values()).find(
-							(t) =>
-								removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
-						);
-
-						if (!matchingTag) {
-							const tagSlug = tagName.toLowerCase().replace(/\s+/g, '-');
-							matchingTag = tags.get(tagSlug);
-						}
-
-						if (matchingTag && !processedSlugs.has(matchingTag.url_slug)) {
-							const currentPosts = tagPosts.get(matchingTag.url_slug) || [];
-							currentPosts.push(post.url_slug);
-							tagPosts.set(matchingTag.url_slug, currentPosts);
-							processedSlugs.add(matchingTag.url_slug);
-						}
-					}
+				if (matchingTag && !processedSlugs.has(matchingTag.url_slug)) {
+					const currentPosts = tagPosts.get(matchingTag.url_slug) || [];
+					currentPosts.push(post.url_slug);
+					tagPosts.set(matchingTag.url_slug, currentPosts);
+					processedSlugs.add(matchingTag.url_slug);
 				}
 			}
-
-			tagPostsCache = tagPosts;
-			return tagPosts;
-		} finally {
-			tagPostsLoadingPromise = null;
 		}
-	})();
+	}
 
-	return tagPostsLoadingPromise;
+	tagPostsCache = tagPosts;
+	return tagPosts;
 }
 
 // Main API functions
@@ -381,7 +343,4 @@ export function invalidateTagCaches(): void {
 	tagFilesCache = null;
 	usageCountsCache = null;
 	tagPostsCache = null;
-	tagFilesLoadingPromise = null;
-	usageCountsLoadingPromise = null;
-	tagPostsLoadingPromise = null;
 }
