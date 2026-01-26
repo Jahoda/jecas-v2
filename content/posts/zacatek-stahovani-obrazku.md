@@ -74,7 +74,7 @@ format: "html"
 <p>Tato chytrá vlastnost prohlížečů je značnou překážkou při <a href="/lazy-loading-obrazky">lazy loadingu obrázků</a>, kdy je potřeba automatickému načtení obrázku zabránit.</p>
 
 
-<p>Podle mých testů je jediné řešení funkční napříč prohlížeči značka <code>&lt;noscript></code>:</p>
+<p>Podle mých testů je jediné řešení funkční napříč prohlížeči značka <a href="/noscript"><code>&lt;noscript></code></a>:</p>
 
 <pre><code>&lt;noscript>
   &lt;img src="obrazek.png">
