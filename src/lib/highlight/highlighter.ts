@@ -102,10 +102,10 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /'[^']*'/g },
 		{ type: 'variable', pattern: /\$[a-zA-Z_][a-zA-Z0-9_]*/g },
 		{ type: 'variable', pattern: /\$\{[^}]+\}/g },
-		{ type: 'keyword', pattern: /\b(if|then|else|elif|fi|for|while|do|done|case|esac|in|function|return|exit|break|continue|export|source|alias|unalias|cd|pwd|echo|printf|read|test|local|declare|readonly|unset|shift|eval|exec|trap)\b/g },
-		{ type: 'function', pattern: /\b([a-zA-Z_][a-zA-Z0-9_-]*)\s*(?=\()/g },
-		{ type: 'operator', pattern: /[|&;<>]+|&&|\|\|/g },
-		{ type: 'punctuation', pattern: /[{}[\]();]/g },
+		{ type: 'keyword', pattern: /\b(if|then|else|elif|fi|for|while|do|done|case|esac|in|function|return|exit|break|continue|export|source|alias|unalias|local|declare|readonly|unset|shift|eval|exec|trap|sudo)\b/g },
+		{ type: 'function', pattern: /\b(npm|yarn|pnpm|npx|node|deno|bun|git|docker|kubectl|curl|wget|pip|python|ruby|go|cargo|make|apt|brew|pacman|dnf|yum|cd|pwd|echo|printf|read|test|ls|cat|grep|awk|sed|chmod|mkdir|rm|cp|mv|touch|find|tar|zip|unzip|ssh|scp|rsync)\b/g },
+		{ type: 'operator', pattern: /[|&;<>]+|&&|\|\||--?[\w-]+/g },
+		{ type: 'punctuation', pattern: /[{}[\]();@]/g },
 	],
 	shell: [], // alias for bash, filled below
 	sh: [], // alias for bash, filled below
@@ -241,14 +241,23 @@ export function guessLanguageFromContent(code: string): string {
 		return 'json';
 	}
 
-	// CSS detection - selectors with braces or @rules
-	if (/^(?:\.|#|@|[a-zA-Z][\w-]*\s*\{)/.test(trimmed) || /(?:^|\n)\s*(?:\.|#|@media|@keyframes|@import|@font-face)[^{]*\{/.test(code) || /\b(?:color|background|margin|padding|display|position|width|height|font-size|border)\s*:/.test(code)) {
-		return 'css';
+	// Bash/Shell detection - must be before CSS (# comments vs #id selectors)
+	// Shebang, common CLI commands, shell syntax
+	if (
+		/^#!\/(?:usr\/)?bin\/(?:ba)?sh/.test(trimmed) ||
+		/^\s*(?:if\s+\[|for\s+\w+\s+in|while\s+\[|case\s+\$)/.test(trimmed) ||
+		(/\$\{?\w+\}?/.test(code) && /\b(?:echo|export|cd|ls|grep|awk|sed|cat|chmod|mkdir|rm|cp|mv)\b/.test(code)) ||
+		// Common CLI tools at line start
+		/(?:^|\n)\s*(?:npm|yarn|pnpm|npx|node|deno|bun|git|docker|kubectl|curl|wget|pip|python|ruby|go|cargo|make|sudo|apt|brew|pacman|dnf|yum)\s+\w+/.test(code) ||
+		// Shell comments (# followed by space or word, not #selector{)
+		(/(?:^|\n)\s*#\s+\w/.test(code) && !/\{/.test(code))
+	) {
+		return 'bash';
 	}
 
-	// Bash/Shell detection - shebang, common commands, or shell syntax
-	if (/^#!\/(?:usr\/)?bin\/(?:ba)?sh/.test(trimmed) || /^\s*(?:if\s+\[|for\s+\w+\s+in|while\s+\[|case\s+\$)/.test(trimmed) || /\$\{?\w+\}?/.test(code) && /\b(?:echo|export|cd|ls|grep|awk|sed|cat|chmod|mkdir|rm|cp|mv)\b/.test(code)) {
-		return 'bash';
+	// CSS detection - selectors with braces or @rules
+	if (/^(?:\.|#[a-zA-Z][\w-]*\s*\{|@|[a-zA-Z][\w-]*\s*\{)/.test(trimmed) || /(?:^|\n)\s*(?:\.|#[a-zA-Z]|@media|@keyframes|@import|@font-face)[^{]*\{/.test(code) || /\b(?:color|background|margin|padding|display|position|width|height|font-size|border)\s*:/.test(code)) {
+		return 'css';
 	}
 
 	// TypeScript detection - type annotations, interface, type keyword
