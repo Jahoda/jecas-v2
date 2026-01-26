@@ -82,6 +82,8 @@ async function loadAllPostsToCache(): Promise<Map<string, MarkdownPost>> {
 
 	// Load all posts in parallel
 	const postFiles = getPostFiles();
+	console.log(`[posts] Loading ${postFiles.length} post files`);
+
 	const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
 
 	const cache = new Map<string, MarkdownPost>();
@@ -89,6 +91,7 @@ async function loadAllPostsToCache(): Promise<Map<string, MarkdownPost>> {
 		cache.set(post.url_slug, post);
 	}
 
+	console.log(`[posts] Loaded ${cache.size} posts to cache`);
 	postsCache = cache;
 	return cache;
 }
@@ -115,6 +118,8 @@ export async function getAllPosts(
 			(a, b) =>
 				getEffectiveModificationDate(b).getTime() - getEffectiveModificationDate(a).getTime()
 		);
+
+	console.log(`[posts] getAllPosts(${limit}, ${status}): ${filteredPosts.length} posts after filtering`);
 
 	if (status === 1 && !limit) {
 		allPostsSortedCache = filteredPosts;

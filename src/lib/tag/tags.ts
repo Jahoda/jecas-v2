@@ -135,6 +135,8 @@ async function calculateAllUsageCounts(): Promise<Map<string, number>> {
 	}
 
 	const posts = await getMarkdownAllPosts(null, 1);
+	console.log(`[tags] calculateAllUsageCounts: processing ${posts.length} posts`);
+
 	const counts = new Map<string, number>();
 	const tags = await loadAllTagFiles();
 
@@ -165,6 +167,9 @@ async function calculateAllUsageCounts(): Promise<Map<string, number>> {
 			}
 		}
 	}
+
+	// Debug: log hacky count
+	console.log(`[tags] Tag 'hacky' count: ${counts.get('hacky')}`);
 
 	usageCountsCache = counts;
 	return counts;
