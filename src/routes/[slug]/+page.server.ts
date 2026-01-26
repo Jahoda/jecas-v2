@@ -14,6 +14,9 @@ import type { PageServerLoad } from './$types';
 export const load = (async ({ params }) => {
 	const slug = params.slug;
 
+	// Debug: log page load
+	console.log(`[page.server] Loading slug: '${slug}'`);
+
 	let tags: Tag[] = [];
 	let tag: Tag | undefined;
 	let tagPosts: Post[] | undefined;
@@ -23,6 +26,7 @@ export const load = (async ({ params }) => {
 	let prevNextPosts: { prev: Post | null; next: Post | null } | undefined;
 
 	const page = await getSinglePostBySlug(slug);
+	console.log(`[page.server] Post found: ${!!page}`);
 
 	if (page?.url_slug) {
 		tags = await getAllTagsByPageId(page.url_slug);
@@ -40,13 +44,16 @@ export const load = (async ({ params }) => {
 		pagesTags = groupByPageId(pagesTagsArray);
 	} else {
 		// Try to find tag
+		console.log(`[page.server] Looking for tag: '${slug}'`);
 		tag = await getSingleTagBySlug(slug);
+		console.log(`[page.server] Tag found: ${!!tag}, name: ${tag?.name}`);
 
 		if (tag?.name) {
 			tagPosts = await getPostsByTagId(tag.url_slug);
 		}
 
 		if (!tag) {
+			console.log(`[page.server] 404 for slug: '${slug}'`);
 			throw error(404, {
 				message: 'Not found'
 			});

@@ -13,6 +13,10 @@ export const entries: EntryGenerator = async () => {
 	const posts = await getAllPosts();
 	const tags = await getAllUsedTags();
 
+	// Debug: log entry counts
+	console.log(`[entries] Posts: ${posts.length}, Tags: ${tags.length}`);
+	console.log(`[entries] Tag 'hacky' in list: ${tags.some((t) => t.url_slug === 'hacky')}`);
+
 	const postEntries = posts.map((post) => ({ slug: post.url_slug }));
 	const tagEntries = tags.map((tag) => ({ slug: tag.url_slug }));
 
