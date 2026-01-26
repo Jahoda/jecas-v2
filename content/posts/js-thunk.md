@@ -98,11 +98,11 @@ function fetchUserThunk(userId) {
 const getUser = fetchUserThunk(42);
 getUser().then(user => console.log(user));</code></pre>
 
-<h2 id="memoizace">Thunk s memoizací</h2>
+<h2 id="memoisace">Thunk s memoisací</h2>
 
-<p>Thunk lze rozšířit o <b>memoizaci</b> — výpočet proběhne jen jednou a výsledek se uloží:</p>
+<p>Thunk lze rozšířit o <b>memoisaci</b> — výpočet proběhne jen jednou a výsledek se uloží:</p>
 
-<pre><code>function memoizedThunk(fn) {
+<pre><code>function memoisedThunk(fn) {
   let cached = false;
   let result;
 
@@ -115,7 +115,7 @@ getUser().then(user => console.log(user));</code></pre>
   };
 }
 
-const expensiveThunk = memoizedThunk(() => {
+const expensiveThunk = memoisedThunk(() => {
   console.log("Počítám pouze jednou");
   return Math.random();
 });
@@ -310,9 +310,9 @@ const prodService = createService(
 
 <h2 id="trampolining">Trampolining (odskakování)</h2>
 
-<p>Trampolining je technika, která řeší přetečení zásobníku u rekurzivních funkcí. Název pochází z analogie s trampolínou — místo zanořování do rekurze se funkce „odráží” zpět a volání probíhá v cyklu:</p>
+<p>Trampolining je technika, která řeší přetečení zásobníku u rekursivních funkcí. Název pochází z analogie s trampolínou — místo zanořování do rekurse se funkce „odráží” zpět a volání probíhá v cyklu:</p>
 
-<pre><code>// Klasická rekurze - může přetéct stack
+<pre><code>// Klasická rekurse - může přetéct stack
 function factorial(n) {
   if (n <= 1) return 1;
   return n * factorial(n - 1);
@@ -335,7 +335,7 @@ function factorialThunk(n, acc = 1n) {
 // Bezpečné i pro velká čísla (BigInt)
 console.log(trampoline(() => factorialThunk(100))); // 93326215443944152...</code></pre>
 
-<p>Místo rekurzivního volání funkce vrací thunk. Trampolína thunky rozbaluje v cyklu, takže nedochází k hromadění na zásobníku.</p>
+<p>Místo rekursivního volání funkce vrací thunk. Trampolína thunky rozbaluje v cyklu, takže nedochází k hromadění na zásobníku.</p>
 
 <h2 id="konfigurace">Odložená konfigurace</h2>
 
@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <ul>
   <li><b>Horší čitelnost</b> — vnořené funkce mohou být matoucí, zejména pro začátečníky</li>
   <li><b>Těžší debugování</b> — stack trace nemusí být přehledný, protože thunky jsou anonymní funkce</li>
-  <li><b>Opakované vyhodnocení</b> — na rozdíl od Promise se thunk při každém volání spustí znovu (pokud není memoizovaný)</li>
+  <li><b>Opakované vyhodnocení</b> — na rozdíl od Promise se thunk při každém volání spustí znovu (pokud není memoisovaný)</li>
   <li><b>Implicitní závislosti</b> — thunky v Redux Thunk mají přístup k dispatch a getState, což může vést k těsné vazbě na store</li>
   <li><b>Složitější testování</b> — pro testování Redux thunků je potřeba mockovat dispatch a getState</li>
 </ul>
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <li><b>Redux Thunk</b> — asynchronní akce v Reduxu</li>
   <li><b>Lazy loading</b> — dynamický import modulů</li>
   <li><b>Dependency injection</b> — odložené vytváření závislostí</li>
-  <li><b>Trampolining</b> — optimalisace rekurze</li>
+  <li><b>Trampolining</b> — optimalisace rekurse</li>
   <li><b>Konfigurace</b> — hodnoty závislé na runtime stavu</li>
   <li><b>Testování</b> — snadné mockování závislostí</li>
 </ul>
