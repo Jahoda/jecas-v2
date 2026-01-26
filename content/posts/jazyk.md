@@ -74,7 +74,7 @@ format: "html"
 
 <div class="internal-content">
   <ul>
-    <li><a href="/ip">IP adresa, prohlížeč a jazyk</a></li>
+    <li><a href="/ip">IP adresa, prohlížeč a jazyk</a></li>
   </ul>
 </div>
 

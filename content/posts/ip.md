@@ -8,23 +8,23 @@ tags: ["lokalisace", "php"]
 format: "html"
 ---
 
-<p>Tato stránka ukazuje informace, které server dokáže zjistit o návštěvníkovi.</p>
+<p>Tato stránka ukazuje informace, které server dokáže zjistit o návštěvníkovi.</p>
 
 <h2 id="ip">IP adresa</h2>
 
-<p>IP adresa je unikátní identifikátor zařízení v síti. Server ji získá z každého HTTP požadavku.</p>
+<p>IP adresa je unikátní identifikátor zařízení v síti. Server ji získá z každého HTTP požadavku.</p>
 
-<p>V <a href="/php">PHP</a> je IP adresa dostupná v proměnné <code>$_SERVER['REMOTE_ADDR']</code>:</p>
+<p>V <a href="/php">PHP</a> je IP adresa dostupná v proměnné <code>$_SERVER['REMOTE_ADDR']</code>:</p>
 
 <pre><code>$ip = $_SERVER['REMOTE_ADDR'];</code></pre>
 
-<p>Pokud je návštěvník za proxy serverem, skutečná IP může být v hlavičce <code>X-Forwarded-For</code>:</p>
+<p>Pokud je návštěvník za proxy serverem, skutečná IP může být v hlavičce <code>X-Forwarded-For</code>:</p>
 
 <pre><code>$ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'];</code></pre>
 
 <h2 id="prohlizec">Prohlížeč (User-Agent)</h2>
 
-<p>Informace o prohlížeči jsou dostupné v hlavičce <code>User-Agent</code>:</p>
+<p>Informace o prohlížeči jsou dostupné v hlavičce <code>User-Agent</code>:</p>
 
 <pre><code>$userAgent = $_SERVER['HTTP_USER_AGENT'];</code></pre>
 
@@ -39,7 +39,7 @@ format: "html"
 
 <h2 id="jazyk">Preferovaný jazyk</h2>
 
-<p>Jazyk návštěvníka lze zjistit z HTTP hlavičky <code>Accept-Language</code>:</p>
+<p>Jazyk návštěvníka lze zjistit z HTTP hlavičky <code>Accept-Language</code>:</p>
 
 <pre><code>$jazyk = $_SERVER['HTTP_ACCEPT_LANGUAGE'];</code></pre>
 
@@ -52,11 +52,11 @@ format: "html"
   <script>document.getElementById('lang').textContent = navigator.language || navigator.userLanguage;</script>
 </div>
 
-<p>Více o detekci jazyka:</p>
+<p>Více o detekci jazyka:</p>
 
 <div class="internal-content">
   <ul>
     <li><a href="/jazyk">Výběr jazyku stránky</a></li>
-    <li><a href="/geoip">Lokalisace podle IP v PHP</a></li>
+    <li><a href="/geoip">Lokalisace podle IP v PHP</a></li>
   </ul>
 </div>

@@ -15,7 +15,7 @@ format: "html"
 
 <p>Při některých případech, třeba při důslednějším ověřování e-mailových adres, se může hodit seznam všech existujících domén.</p>
 
-<p>Vždy aktuální seznam je na <a href="/tld-list">této stránce</a> dostupný i v JSONu nebo jako PHP pole (<a href="http://data.iana.org/TLD/tlds-alpha-by-domain.txt">zdroj dat</a>).</p>
+<p>Vždy aktuální seznam je na <a href="/tld-list">této stránce</a> dostupný i v JSONu nebo jako PHP pole (<a href="http://data.iana.org/TLD/tlds-alpha-by-domain.txt">zdroj dat</a>).</p>
 
 <p>Více detailů k jednotlivým <b>top-level doménám</b> je na <a href="http://en.wikipedia.org/wiki/List_of_Internet_top-level_domains">Wikipedii</a>.</p>
 

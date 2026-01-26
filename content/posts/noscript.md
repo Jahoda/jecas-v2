@@ -8,7 +8,7 @@ tags: ["html", "html-tagy", "javascript"]
 format: "html"
 ---
 
-<p>Značka <code>&lt;noscript></code> slouží k zobrazení <b>alternativního obsahu</b> v případě, že prohlížeč nepodporuje nebo nemá zapnutý <a href="/js">JavaScript</a>.</p>
+<p>Značka <code>&lt;noscript></code> slouží k zobrazení <b>alternativního obsahu</b> v případě, že prohlížeč nepodporuje nebo nemá zapnutý <a href="/js">JavaScript</a>.</p>
 
 <h2 id="pouziti">Použití</h2>
 
@@ -26,7 +26,7 @@ format: "html"
 
 <h2 id="umisteni">Umístění</h2>
 
-<p>Značku <code>&lt;noscript></code> lze použít jak v <code>&lt;head></code>, tak v <code>&lt;body></code>:</p>
+<p>Značku <code>&lt;noscript></code> lze použít jak v <code>&lt;head></code>, tak v <code>&lt;body></code>:</p>
 
 <pre><code>&lt;head>
   &lt;noscript>
@@ -34,7 +34,7 @@ format: "html"
   &lt;/noscript>
 &lt;/head></code></pre>
 
-<p>V hlavičce může obsahovat pouze značky <code>&lt;link></code>, <code>&lt;style></code> a <code>&lt;meta></code>.</p>
+<p>V hlavičce může obsahovat pouze značky <code>&lt;link></code>, <code>&lt;style></code> a <code>&lt;meta></code>.</p>
 
 <h2 id="lazy-loading">Využití pro lazy loading</h2>
 
@@ -44,7 +44,7 @@ format: "html"
   &lt;img src="obrazek.png" alt="Popis">
 &lt;/noscript></code></pre>
 
-<p>Na rozdíl od skrytého <code>&lt;img></code> přes CSS se obrázek uvnitř <code>&lt;noscript></code> <b>nestáhne</b>, dokud ho JavaScript nevytáhne a nevloží do DOM.</p>
+<p>Na rozdíl od skrytého <code>&lt;img></code> přes CSS se obrázek uvnitř <code>&lt;noscript></code> <b>nestáhne</b>, dokud ho JavaScript nevytáhne a nevloží do DOM.</p>
 
 <div class="internal-content">
   <ul>
@@ -62,7 +62,7 @@ format: "html"
   document.documentElement.classList.add('js');
 &lt;/script></code></pre>
 
-<p>Pak lze v CSS stylovat:</p>
+<p>Pak lze v CSS stylovat:</p>
 
 <pre><code>.no-js .pouze-s-js { display: none; }
 .js .bez-js { display: none; }</code></pre>

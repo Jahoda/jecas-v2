@@ -12,11 +12,11 @@ format: "html"
 
 <h2 id="zdroj">Zdroj dat</h2>
 
-<p>Oficiální a vždy aktuální seznam TLD spravuje organisace <b>IANA</b> (Internet Assigned Numbers Authority):</p>
+<p>Oficiální a vždy aktuální seznam TLD spravuje organisace <b>IANA</b> (Internet Assigned Numbers Authority):</p>
 
 <div class="external-content">
   <ul>
-    <li><a href="http://data.iana.org/TLD/tlds-alpha-by-domain.txt">IANA TLD List</a> – textový soubor s aktuálním seznamem</li>
+    <li><a href="http://data.iana.org/TLD/tlds-alpha-by-domain.txt">IANA TLD List</a> – textový soubor s aktuálním seznamem</li>
   </ul>
 </div>
 
@@ -26,7 +26,7 @@ format: "html"
 
 <pre><code>["ac","ad","ae","aero","af","ag",...]</code></pre>
 
-<p>Získání v JavaScriptu:</p>
+<p>Získání v JavaScriptu:</p>
 
 <pre><code>fetch('http://data.iana.org/TLD/tlds-alpha-by-domain.txt')
   .then(r => r.text())
@@ -40,7 +40,7 @@ format: "html"
 
 <h2 id="php">PHP pole</h2>
 
-<p>Získání seznamu TLD v <a href="/php">PHP</a>:</p>
+<p>Získání seznamu TLD v <a href="/php">PHP</a>:</p>
 
 <pre><code>$text = file_get_contents('http://data.iana.org/TLD/tlds-alpha-by-domain.txt');
 $lines = explode("\n", $text);
