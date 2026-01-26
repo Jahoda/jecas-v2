@@ -10,6 +10,42 @@ format: "html"
 
 <p>Tato stránka ukazuje informace, které server dokáže zjistit o návštěvníkovi.</p>
 
+<div class="live">
+  <table>
+    <tr>
+      <th>IP adresa</th>
+      <td><code id="visitor-ip">načítám…</code></td>
+    </tr>
+    <tr>
+      <th>Prohlížeč</th>
+      <td><code id="visitor-ua">načítám…</code></td>
+    </tr>
+    <tr>
+      <th>Jazyk (HTTP)</th>
+      <td><code id="visitor-lang-http">načítám…</code></td>
+    </tr>
+    <tr>
+      <th>Jazyk (JS)</th>
+      <td><code id="visitor-lang-js">načítám…</code></td>
+    </tr>
+  </table>
+  <script>
+    document.getElementById('visitor-lang-js').textContent = navigator.language || navigator.userLanguage;
+    fetch('/api/ip')
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('visitor-ip').textContent = data.ip;
+        document.getElementById('visitor-ua').textContent = data.userAgent;
+        document.getElementById('visitor-lang-http').textContent = data.acceptLanguage;
+      })
+      .catch(() => {
+        document.getElementById('visitor-ip').textContent = 'nedostupné';
+        document.getElementById('visitor-ua').textContent = navigator.userAgent;
+        document.getElementById('visitor-lang-http').textContent = 'nedostupné';
+      });
+  </script>
+</div>
+
 <h2 id="ip">IP adresa</h2>
 
 <p>IP adresa je unikátní identifikátor zařízení v síti. Server ji získá z každého HTTP požadavku.</p>
@@ -32,11 +68,6 @@ format: "html"
 
 <pre><code>navigator.userAgent</code></pre>
 
-<div class="live">
-  <p>Váš User-Agent: <code id="ua"></code></p>
-  <script>document.getElementById('ua').textContent = navigator.userAgent;</script>
-</div>
-
 <h2 id="jazyk">Preferovaný jazyk</h2>
 
 <p>Jazyk návštěvníka lze zjistit z HTTP hlavičky <code>Accept-Language</code>:</p>
@@ -47,10 +78,7 @@ format: "html"
 
 <pre><code>navigator.language</code></pre>
 
-<div class="live">
-  <p>Váš jazyk: <code id="lang"></code></p>
-  <script>document.getElementById('lang').textContent = navigator.language || navigator.userLanguage;</script>
-</div>
+<p>Jazyk zjištěný JavaScriptem se může lišit od HTTP hlavičky – záleží na nastavení prohlížeče vs. operačního systému.</p>
 
 <p>Více o detekci jazyka:</p>
 
