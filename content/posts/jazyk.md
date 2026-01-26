@@ -72,11 +72,6 @@ format: "html"
 
 <p>Jde o relativně spolehlivou metodu. Stačí vyzkoušet. Zjistit aktuální jazyk dle HTTP hlavičky a IP detekce je možné na následující stránce:</p>
 
-<div class="internal-content">
-  <ul>
-    <li><a href="/ip">IP adresa, prohlížeč a jazyk</a></li>
-  </ul>
-</div>
 
 
 <h3 id="risiko">Risiko autodetekce</h3>
