@@ -12,7 +12,7 @@ format: "html"
 
 <h2 id="zdroj">Zdroj dat</h2>
 
-<p>Oficiální a vždy aktuální seznam TLD spravuje organizace <b>IANA</b> (Internet Assigned Numbers Authority):</p>
+<p>Oficiální a vždy aktuální seznam TLD spravuje organisace <b>IANA</b> (Internet Assigned Numbers Authority):</p>
 
 <div class="external-content">
   <ul>
@@ -66,7 +66,7 @@ foreach ($lines as $line) {
     return in_array($tld, $tlds);
 }</code></pre>
 
-<p>Pozor: Seznam TLD se průběžně mění (přibývají nové domény), proto je vhodné ho <b>pravidelně aktualizovat</b> nebo načítat dynamicky.</p>
+<p>Pozor: Seznam TLD se průběžně mění (přibývají nové domény), proto je vhodné ho <b>pravidelně aktualisovat</b> nebo načítat dynamicky.</p>
 
 <div class="internal-content">
   <ul>
