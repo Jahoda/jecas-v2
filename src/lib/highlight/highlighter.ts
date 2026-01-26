@@ -110,6 +110,11 @@ const languages: Record<string, Token[]> = {
 		{ type: 'operator', pattern: /[|&;<>]+|&&|\|\|/g },
 		{ type: 'punctuation', pattern: /[{}[\]();]/g },
 	],
+	diagram: [
+		{ type: 'punctuation', pattern: /[┌┐└┘├┤┬┴┼─│╔╗╚╝╠╣╦╩╬═║╭╮╯╰]+/g },
+		{ type: 'operator', pattern: /[─▶◀▲▼→←↑↓►◄⟶⟵⟷>]+/g },
+		{ type: 'keyword', pattern: /\b[A-Z][A-Za-z0-9]*(?:\s+[A-Z][A-Za-z0-9]*)*\b/g },
+	],
 	shell: [], // alias for bash, filled below
 	sh: [], // alias for bash, filled below
 	xml: [], // alias for html, filled below
@@ -117,6 +122,7 @@ const languages: Record<string, Token[]> = {
 	tsx: [], // alias for typescript, filled below
 	scss: [], // alias for css, filled below
 	less: [], // alias for css, filled below
+	ascii: [], // alias for diagram
 	plaintext: [],
 	text: [],
 };
@@ -131,6 +137,7 @@ languages.scss = languages.css;
 languages.less = languages.css;
 languages.js = languages.javascript;
 languages.ts = languages.typescript;
+languages.ascii = languages.diagram;
 
 /**
  * Highlight code string with the specified language
@@ -223,6 +230,11 @@ export function detectLanguageFromClass(className: string | null): string {
  */
 export function guessLanguageFromContent(code: string): string {
 	const trimmed = code.trim();
+
+	// ASCII art / diagram detection - box-drawing characters
+	if (/[┌┐└┘├┤┬┴┼─│╔╗╚╝╠╣╦╩╬═║╭╮╯╰]/.test(code)) {
+		return 'diagram';
+	}
 
 	// TypeScript detection - type annotations, interface, type keyword (before JS)
 	if (/\b(?:interface|type|enum|namespace|readonly|public|private|protected)\s+\w+/.test(code) || /:\s*(?:string|number|boolean|void|any|unknown|never)\b/.test(code) || /<[A-Z]\w*>/.test(code)) {
