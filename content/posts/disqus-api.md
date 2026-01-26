@@ -19,7 +19,7 @@ format: "html"
 src="http://<b>jecas</b>.disqus.com/recent_comments_widget.js">
 &lt;/script></code></pre>
 
-<p>Stačí jen jako subdoménu (obsah mezi „<code>http://</code>“ a „<code>.disqus.com</code>“) uvést vlastní název.</p>
+<p>Stačí jen jako subdoménu (obsah mezi „<code>http://</code>“ a „<code>.disqus.com</code>“) uvést vlastní název.</p>
 
 <p>Ten se nastavuje při <b>vytváření nové diskuse</b>. Zjisti potřebnou část URL je možné při najetí na název diskuse na <a href="https://disqus.com/home">domácí stránce Disqusu</a>.</p>
 
@@ -50,7 +50,7 @@ src="http://jecas.disqus.com/recent_comments_widget.js
   <li><code>excerpt_length</code> – omezení délky příspěvků</li>
 </ul>
 
-<p>Kromě tohoto <i>widgetu</i> existuje ještě jeden, kde je i přehled <b>top komentátorů</b> a <b>populárních debat</b>.</p>
+<p>Kromě tohoto <i>widgetu</i> existuje ještě jeden, kde je i přehled <b>top komentátorů</b> a <b>populárních debat</b>.</p>
 
 <div class="live" style="overflow: hidden"><script 
 src="http://jecas.disqus.com/combination_widget.js?num_items=3&hide_mods=0&color=white&default_tab=recent&excerpt_length=50">
@@ -61,7 +61,7 @@ src="http://jecas.disqus.com/combination_widget.js?num_items=3&hide_mods=0&color
 
 <h2 id="styl">Stylování</h2>
 
-<p>Ačkoliv <b>vložený skript</b> vloží do stránky i nějaké to CSS, úplně dobře bez zásahu komentáře nevypadají. Naštěstí se JavaScriptem vytvořený <b>HTML kód</b> dá rozumně stylovat.</p>
+<p>Ačkoliv <b>vložený skript</b> vloží do stránky i nějaké to CSS, úplně dobře bez zásahu komentáře nevypadají. Naštěstí se JavaScriptem vytvořený <b>HTML kód</b> dá rozumně stylovat.</p>
 
 <pre><code>.dsq-widget-list .dsq-widget-avatar {
   border-radius: 50%; 
