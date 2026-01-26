@@ -3,7 +3,19 @@
  * Supports: JavaScript, TypeScript, HTML, CSS, PHP, SQL, JSON, Bash
  */
 
-type TokenType = 'keyword' | 'string' | 'comment' | 'number' | 'function' | 'operator' | 'tag' | 'attr' | 'value' | 'punctuation' | 'variable' | 'property';
+type TokenType =
+	| 'keyword'
+	| 'string'
+	| 'comment'
+	| 'number'
+	| 'function'
+	| 'operator'
+	| 'tag'
+	| 'attr'
+	| 'value'
+	| 'punctuation'
+	| 'variable'
+	| 'property';
 
 interface Token {
 	type: TokenType;
@@ -28,18 +40,34 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /`[\s\S]*?`/g },
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
 		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
-		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|static|get|set)\b/g },
+		{
+			type: 'keyword',
+			pattern:
+				/\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|static|get|set)\b/g
+		},
 		// Built-in objects and constructors
-		{ type: 'tag', pattern: /\b(Array|Object|String|Number|Boolean|Function|Symbol|BigInt|Map|Set|WeakMap|WeakSet|Promise|Proxy|Reflect|Date|RegExp|Error|TypeError|ReferenceError|SyntaxError|Math|JSON|console|window|document|localStorage|sessionStorage|fetch|URL|URLSearchParams|FormData|Headers|Request|Response|AbortController|Event|EventTarget|Element|Node|NodeList|HTMLElement)\b/g },
+		{
+			type: 'tag',
+			pattern:
+				/\b(Array|Object|String|Number|Boolean|Function|Symbol|BigInt|Map|Set|WeakMap|WeakSet|Promise|Proxy|Reflect|Date|RegExp|Error|TypeError|ReferenceError|SyntaxError|Math|JSON|console|window|document|localStorage|sessionStorage|fetch|URL|URLSearchParams|FormData|Headers|Request|Response|AbortController|Event|EventTarget|Element|Node|NodeList|HTMLElement)\b/g
+		},
 		// Variable declarations: const foo, let bar
 		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
 		// Function parameters (after ( or ,)
 		{ type: 'variable', pattern: /(?<=[(,]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[,)=])/g },
 		// Variables in conditions and expressions
-		{ type: 'variable', pattern: /(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g },
+		{
+			type: 'variable',
+			pattern:
+				/(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g
+		},
 		{ type: 'variable', pattern: /(?<=[=!<>&|]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[;)\]}])/g },
 		// Variables before dot (property access) - but not built-in objects
-		{ type: 'variable', pattern: /(?<![.\w])(?!(?:Array|Object|String|Number|Boolean|Function|Symbol|BigInt|Map|Set|WeakMap|WeakSet|Promise|Proxy|Reflect|Date|RegExp|Error|TypeError|ReferenceError|SyntaxError|Math|JSON|console|window|document|localStorage|sessionStorage|fetch|URL|URLSearchParams|FormData|Headers|Request|Response|AbortController|Event|EventTarget|Element|Node|NodeList|HTMLElement)\b)[a-z_$][a-zA-Z0-9_$]*(?=\.)/g },
+		{
+			type: 'variable',
+			pattern:
+				/(?<![.\w])(?!(?:Array|Object|String|Number|Boolean|Function|Symbol|BigInt|Map|Set|WeakMap|WeakSet|Promise|Proxy|Reflect|Date|RegExp|Error|TypeError|ReferenceError|SyntaxError|Math|JSON|console|window|document|localStorage|sessionStorage|fetch|URL|URLSearchParams|FormData|Headers|Request|Response|AbortController|Event|EventTarget|Element|Node|NodeList|HTMLElement)\b)[a-z_$][a-zA-Z0-9_$]*(?=\.)/g
+		},
 		// Property access after dot
 		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
@@ -47,7 +75,7 @@ const languages: Record<string, Token[]> = {
 		// Arrow function parameters
 		{ type: 'variable', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*=>)/g },
 		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+|=>/g },
-		{ type: 'punctuation', pattern: /[{}[\]();,.]/g },
+		{ type: 'punctuation', pattern: /[{}[\]();,.]/g }
 	],
 	jsx: [
 		{ type: 'comment', pattern: /\/\/.*$/gm },
@@ -59,17 +87,29 @@ const languages: Record<string, Token[]> = {
 		// JSX tags
 		{ type: 'tag', pattern: /<\/[a-zA-Z][a-zA-Z0-9-]*\s*>/g },
 		{ type: 'tag', pattern: /<[A-Z][a-zA-Z0-9]*(?=[\s\/>])/g },
-		{ type: 'tag', pattern: /<(?:html|head|body|div|span|p|a|ul|ol|li|table|thead|tbody|tfoot|tr|td|th|form|input|button|img|h[1-6]|section|article|nav|header|footer|main|aside|label|textarea|select|option|meta|link|script|style|title|br|hr|pre|code|blockquote|cite|em|strong|small|sub|sup|mark|del|ins|figure|figcaption|picture|source|video|audio|canvas|svg|path|circle|rect|line|polygon|iframe|object|embed|param|track|map|area|col|colgroup|caption|details|summary|dialog|menu|menuitem|slot|template|fragment)(?=[\s\/>])/g },
+		{
+			type: 'tag',
+			pattern:
+				/<(?:html|head|body|div|span|p|a|ul|ol|li|table|thead|tbody|tfoot|tr|td|th|form|input|button|img|h[1-6]|section|article|nav|header|footer|main|aside|label|textarea|select|option|meta|link|script|style|title|br|hr|pre|code|blockquote|cite|em|strong|small|sub|sup|mark|del|ins|figure|figcaption|picture|source|video|audio|canvas|svg|path|circle|rect|line|polygon|iframe|object|embed|param|track|map|area|col|colgroup|caption|details|summary|dialog|menu|menuitem|slot|template|fragment)(?=[\s\/>])/g
+		},
 		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9-]*(?=\s*=)/g },
 		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9-]*(?=[\s\/>])/g },
 		// JS keywords
-		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|static|get|set)\b/g },
+		{
+			type: 'keyword',
+			pattern:
+				/\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|static|get|set)\b/g
+		},
 		// Variable declarations
 		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
 		// Function parameters
 		{ type: 'variable', pattern: /(?<=[(,]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[,)=])/g },
 		// Variables in conditions and expressions
-		{ type: 'variable', pattern: /(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g },
+		{
+			type: 'variable',
+			pattern:
+				/(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g
+		},
 		{ type: 'variable', pattern: /(?<=[=!<>&|]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[;)\]}])/g },
 		// Variables before dot
 		{ type: 'variable', pattern: /(?<![.\w])[a-z_$][a-zA-Z0-9_$]*(?=\.)/g },
@@ -79,7 +119,7 @@ const languages: Record<string, Token[]> = {
 		{ type: 'function', pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(?=\()/g },
 		{ type: 'variable', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*=>)/g },
 		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+|=>/g },
-		{ type: 'punctuation', pattern: /[{}[\]();,.<>\/]/g },
+		{ type: 'punctuation', pattern: /[{}[\]();,.<>\/]/g }
 	],
 	tsx: [
 		{ type: 'comment', pattern: /\/\/.*$/gm },
@@ -91,13 +131,25 @@ const languages: Record<string, Token[]> = {
 		// JSX tags
 		{ type: 'tag', pattern: /<\/[a-zA-Z][a-zA-Z0-9-]*\s*>/g },
 		{ type: 'tag', pattern: /<\/?[A-Z][a-zA-Z0-9]*(?=[\s\/>])/g },
-		{ type: 'tag', pattern: /<\/?(?:html|head|body|div|span|p|a|ul|ol|li|table|thead|tbody|tfoot|tr|td|th|form|input|button|img|h[1-6]|section|article|nav|header|footer|main|aside|label|textarea|select|option|meta|link|script|style|title|br|hr|pre|code|blockquote|cite|em|strong|small|sub|sup|mark|del|ins|figure|figcaption|picture|source|video|audio|canvas|svg|path|circle|rect|line|polygon|iframe|object|embed|param|track|map|area|col|colgroup|caption|details|summary|dialog|menu|menuitem|slot|template|fragment)(?=[\s\/>])/g },
+		{
+			type: 'tag',
+			pattern:
+				/<\/?(?:html|head|body|div|span|p|a|ul|ol|li|table|thead|tbody|tfoot|tr|td|th|form|input|button|img|h[1-6]|section|article|nav|header|footer|main|aside|label|textarea|select|option|meta|link|script|style|title|br|hr|pre|code|blockquote|cite|em|strong|small|sub|sup|mark|del|ins|figure|figcaption|picture|source|video|audio|canvas|svg|path|circle|rect|line|polygon|iframe|object|embed|param|track|map|area|col|colgroup|caption|details|summary|dialog|menu|menuitem|slot|template|fragment)(?=[\s\/>])/g
+		},
 		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9-]*(?=\s*=)/g },
 		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9-]*(?=[\s\/>])/g },
 		// TS/JS keywords
-		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|get|set)\b/g },
+		{
+			type: 'keyword',
+			pattern:
+				/\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|get|set)\b/g
+		},
 		// Built-in types
-		{ type: 'value', pattern: /\b(string|number|boolean|object|symbol|bigint|any|unknown|never|void|null|undefined)\b/g },
+		{
+			type: 'value',
+			pattern:
+				/\b(string|number|boolean|object|symbol|bigint|any|unknown|never|void|null|undefined)\b/g
+		},
 		// Type/interface/enum names (after keyword)
 		{ type: 'value', pattern: /(?<=\b(?:type|interface|enum)\s+)[A-Z][a-zA-Z0-9_]*/g },
 		// Generic type parameters <T, U>
@@ -109,7 +161,11 @@ const languages: Record<string, Token[]> = {
 		// Function parameters
 		{ type: 'variable', pattern: /(?<=[(,]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[,:)=])/g },
 		// Variables in conditions and expressions
-		{ type: 'variable', pattern: /(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g },
+		{
+			type: 'variable',
+			pattern:
+				/(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g
+		},
 		{ type: 'variable', pattern: /(?<=[=!<>&|]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[;)\]}])/g },
 		// Variables before dot
 		{ type: 'variable', pattern: /(?<![.\w])[a-z_$][a-zA-Z0-9_$]*(?=\.)/g },
@@ -119,7 +175,7 @@ const languages: Record<string, Token[]> = {
 		{ type: 'function', pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(?=\()/g },
 		{ type: 'variable', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*=>)/g },
 		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+|=>/g },
-		{ type: 'punctuation', pattern: /[{}[\]();,.<>\/]/g },
+		{ type: 'punctuation', pattern: /[{}[\]();,.<>\/]/g }
 	],
 	typescript: [
 		{ type: 'comment', pattern: /\/\/.*$/gm },
@@ -127,9 +183,17 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /`[\s\S]*?`/g },
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
 		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
-		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|get|set)\b/g },
+		{
+			type: 'keyword',
+			pattern:
+				/\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|get|set)\b/g
+		},
 		// Built-in types
-		{ type: 'value', pattern: /\b(string|number|boolean|object|symbol|bigint|any|unknown|never|void|null|undefined)\b/g },
+		{
+			type: 'value',
+			pattern:
+				/\b(string|number|boolean|object|symbol|bigint|any|unknown|never|void|null|undefined)\b/g
+		},
 		// Type/interface/enum names (after keyword)
 		{ type: 'tag', pattern: /(?<=\b(?:type|interface|enum)\s+)[A-Z][a-zA-Z0-9_]*/g },
 		// Generic type parameters <T, U>
@@ -143,7 +207,11 @@ const languages: Record<string, Token[]> = {
 		// Function parameters (after ( or , before : or , or ))
 		{ type: 'variable', pattern: /(?<=[(,]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[,:)])/g },
 		// Variables in conditions and expressions
-		{ type: 'variable', pattern: /(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g },
+		{
+			type: 'variable',
+			pattern:
+				/(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g
+		},
 		{ type: 'variable', pattern: /(?<=[=!<>&|]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[;)\]}])/g },
 		// Variables before dot
 		{ type: 'variable', pattern: /(?<![.\w])[a-z_$][a-zA-Z0-9_$]*(?=\.)/g },
@@ -155,7 +223,7 @@ const languages: Record<string, Token[]> = {
 		{ type: 'function', pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(?=\()/g },
 		{ type: 'variable', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*=>)/g },
 		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+|=>/g },
-		{ type: 'punctuation', pattern: /[{}[\]();,.]/g },
+		{ type: 'punctuation', pattern: /[{}[\]();,.]/g }
 	],
 	html: [
 		{ type: 'comment', pattern: /<!--[\s\S]*?-->/g },
@@ -163,7 +231,7 @@ const languages: Record<string, Token[]> = {
 		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9-]*(?=\s*=)/g },
 		{ type: 'string', pattern: /=\s*"[^"]*"/g },
 		{ type: 'string', pattern: /=\s*'[^']*'/g },
-		{ type: 'punctuation', pattern: /[<>\/=]/g },
+		{ type: 'punctuation', pattern: /[<>\/=]/g }
 	],
 	svelte: [
 		{ type: 'comment', pattern: /<!--[\s\S]*?-->/g },
@@ -174,16 +242,28 @@ const languages: Record<string, Token[]> = {
 		{ type: 'tag', pattern: /<\/[a-zA-Z][a-zA-Z0-9-]*\s*>/g },
 		{ type: 'tag', pattern: /<\/?(?:script|style)(?=[\s>])/g },
 		{ type: 'tag', pattern: /<\/?[A-Z][a-zA-Z0-9]*(?=[\s\/>])/g },
-		{ type: 'tag', pattern: /<\/?(?:div|span|p|a|ul|ol|li|table|tr|td|th|form|input|button|img|h[1-6]|section|article|nav|header|footer|main|aside|label|textarea|select|option|slot|svelte:[\w-]+)(?=[\s\/>])/g },
-		{ type: 'attr', pattern: /\s(?:on:\w+|bind:\w+|class:\w+|use:\w+|in:\w+|out:\w+|transition:\w+|animate:\w+)(?=[\s=\/>])/g },
+		{
+			type: 'tag',
+			pattern:
+				/<\/?(?:div|span|p|a|ul|ol|li|table|tr|td|th|form|input|button|img|h[1-6]|section|article|nav|header|footer|main|aside|label|textarea|select|option|slot|svelte:[\w-]+)(?=[\s\/>])/g
+		},
+		{
+			type: 'attr',
+			pattern:
+				/\s(?:on:\w+|bind:\w+|class:\w+|use:\w+|in:\w+|out:\w+|transition:\w+|animate:\w+)(?=[\s=\/>])/g
+		},
 		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9-]*(?=\s*=)/g },
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
 		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
-		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|null|undefined|true|false)\b/g },
+		{
+			type: 'keyword',
+			pattern:
+				/\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|null|undefined|true|false)\b/g
+		},
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
 		{ type: 'function', pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(?=\()/g },
 		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+/g },
-		{ type: 'punctuation', pattern: /[{}[\]();,.<>\/]/g },
+		{ type: 'punctuation', pattern: /[{}[\]();,.<>\/]/g }
 	],
 	css: [
 		{ type: 'comment', pattern: /\/\*[\s\S]*?\*\//g },
@@ -209,11 +289,15 @@ const languages: Record<string, Token[]> = {
 		// Numbers - orange
 		{ type: 'number', pattern: /\b\d+\.?\d*/g },
 		// Units - different orange (attr)
-		{ type: 'attr', pattern: /(?<=\d)(?:px|em|rem|ex|ch|lh|rlh|cap|ic|rex|rch|ric|rcap|vh|vw|vmin|vmax|vi|vb|dvh|dvw|dvmin|dvmax|dvi|dvb|svh|svw|svmin|svmax|svi|svb|lvh|lvw|lvmin|lvmax|lvi|lvb|cqw|cqh|cqi|cqb|cqmin|cqmax|pt|pc|in|cm|mm|Q|deg|rad|grad|turn|s|ms|fr|dpi|dpcm|dppx|x)\b/g },
+		{
+			type: 'attr',
+			pattern:
+				/(?<=\d)(?:px|em|rem|ex|ch|lh|rlh|cap|ic|rex|rch|ric|rcap|vh|vw|vmin|vmax|vi|vb|dvh|dvw|dvmin|dvmax|dvi|dvb|svh|svw|svmin|svmax|svi|svb|lvh|lvw|lvmin|lvmax|lvi|lvb|cqw|cqh|cqi|cqb|cqmin|cqmax|pt|pc|in|cm|mm|Q|deg|rad|grad|turn|s|ms|fr|dpi|dpcm|dppx|x)\b/g
+		},
 		{ type: 'attr', pattern: /(?<=\d)%/g },
 		// Functions like url(), calc(), rgb()
 		{ type: 'function', pattern: /[a-zA-Z-]+(?=\()/g },
-		{ type: 'punctuation', pattern: /[{}();:,]/g },
+		{ type: 'punctuation', pattern: /[{}();:,]/g }
 	],
 	php: [
 		{ type: 'comment', pattern: /\/\/.*$/gm },
@@ -222,22 +306,30 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
 		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
 		{ type: 'variable', pattern: /\$[a-zA-Z_][a-zA-Z0-9_]*/g },
-		{ type: 'keyword', pattern: /\b(function|return|if|else|elseif|for|foreach|while|do|switch|case|break|continue|new|class|extends|implements|interface|trait|namespace|use|public|private|protected|static|final|abstract|const|echo|print|require|include|require_once|include_once|true|false|null|array|isset|unset|empty|die|exit|throw|try|catch|finally|as|match)\b/g },
+		{
+			type: 'keyword',
+			pattern:
+				/\b(function|return|if|else|elseif|for|foreach|while|do|switch|case|break|continue|new|class|extends|implements|interface|trait|namespace|use|public|private|protected|static|final|abstract|const|echo|print|require|include|require_once|include_once|true|false|null|array|isset|unset|empty|die|exit|throw|try|catch|finally|as|match)\b/g
+		},
 		{ type: 'number', pattern: /\b\d+\.?\d*\b/g },
 		{ type: 'function', pattern: /\b([a-zA-Z_][a-zA-Z0-9_]*)\s*(?=\()/g },
 		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:.]+|=>/g },
-		{ type: 'punctuation', pattern: /[{}[\]();,]/g },
+		{ type: 'punctuation', pattern: /[{}[\]();,]/g }
 	],
 	sql: [
 		{ type: 'comment', pattern: /--.*$/gm },
 		{ type: 'comment', pattern: /\/\*[\s\S]*?\*\//g },
 		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
-		{ type: 'keyword', pattern: /\b(SELECT|FROM|WHERE|AND|OR|NOT|IN|IS|NULL|AS|ON|JOIN|LEFT|RIGHT|INNER|OUTER|FULL|CROSS|ORDER|BY|GROUP|HAVING|LIMIT|OFFSET|INSERT|INTO|VALUES|UPDATE|SET|DELETE|CREATE|TABLE|INDEX|VIEW|DROP|ALTER|ADD|COLUMN|PRIMARY|KEY|FOREIGN|REFERENCES|UNIQUE|DEFAULT|CHECK|CONSTRAINT|TRUNCATE|UNION|ALL|DISTINCT|BETWEEN|LIKE|EXISTS|CASE|WHEN|THEN|ELSE|END|COUNT|SUM|AVG|MIN|MAX|COALESCE|NULLIF|CAST|CONVERT|DATABASE|SCHEMA|GRANT|REVOKE|COMMIT|ROLLBACK|TRANSACTION|BEGIN|DECLARE|CURSOR|FETCH|OPEN|CLOSE|DEALLOCATE|ASC|DESC)\b/gi },
+		{
+			type: 'keyword',
+			pattern:
+				/\b(SELECT|FROM|WHERE|AND|OR|NOT|IN|IS|NULL|AS|ON|JOIN|LEFT|RIGHT|INNER|OUTER|FULL|CROSS|ORDER|BY|GROUP|HAVING|LIMIT|OFFSET|INSERT|INTO|VALUES|UPDATE|SET|DELETE|CREATE|TABLE|INDEX|VIEW|DROP|ALTER|ADD|COLUMN|PRIMARY|KEY|FOREIGN|REFERENCES|UNIQUE|DEFAULT|CHECK|CONSTRAINT|TRUNCATE|UNION|ALL|DISTINCT|BETWEEN|LIKE|EXISTS|CASE|WHEN|THEN|ELSE|END|COUNT|SUM|AVG|MIN|MAX|COALESCE|NULLIF|CAST|CONVERT|DATABASE|SCHEMA|GRANT|REVOKE|COMMIT|ROLLBACK|TRANSACTION|BEGIN|DECLARE|CURSOR|FETCH|OPEN|CLOSE|DEALLOCATE|ASC|DESC)\b/gi
+		},
 		{ type: 'number', pattern: /\b\d+\.?\d*\b/g },
 		{ type: 'function', pattern: /\b([a-zA-Z_][a-zA-Z0-9_]*)\s*(?=\()/g },
 		{ type: 'operator', pattern: /[+\-*/%=<>!]+/g },
-		{ type: 'punctuation', pattern: /[{}[\]();,.*]/g },
+		{ type: 'punctuation', pattern: /[{}[\]();,.*]/g }
 	],
 	json: [
 		{ type: 'comment', pattern: /\/\/.*$/gm },
@@ -246,7 +338,7 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /"[^"]*"/g },
 		{ type: 'number', pattern: /-?\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
 		{ type: 'keyword', pattern: /\b(true|false|null)\b/g },
-		{ type: 'punctuation', pattern: /[{}[\]:,]/g },
+		{ type: 'punctuation', pattern: /[{}[\]:,]/g }
 	],
 	yaml: [
 		{ type: 'comment', pattern: /#.*$/gm },
@@ -257,7 +349,7 @@ const languages: Record<string, Token[]> = {
 		{ type: 'number', pattern: /\b\d+\.?\d*\b/g },
 		{ type: 'variable', pattern: /\$\{\{[^}]+\}\}/g },
 		{ type: 'attr', pattern: /(?<=:\s*)[a-zA-Z][a-zA-Z0-9_.-]*(?=\s*$)/gm },
-		{ type: 'punctuation', pattern: /[[\]:,|>-]/g },
+		{ type: 'punctuation', pattern: /[[\]:,|>-]/g }
 	],
 	bash: [
 		{ type: 'comment', pattern: /#.*$/gm },
@@ -266,9 +358,17 @@ const languages: Record<string, Token[]> = {
 		{ type: 'variable', pattern: /\$[a-zA-Z_][a-zA-Z0-9_]*/g },
 		{ type: 'variable', pattern: /\$\{[^}]+\}/g },
 		// Shell keywords
-		{ type: 'keyword', pattern: /\b(if|then|else|elif|fi|for|while|do|done|case|esac|in|function|return|exit|break|continue|export|source|alias|unalias|local|declare|readonly|unset|shift|eval|exec|trap|sudo)\b/g },
+		{
+			type: 'keyword',
+			pattern:
+				/\b(if|then|else|elif|fi|for|while|do|done|case|esac|in|function|return|exit|break|continue|export|source|alias|unalias|local|declare|readonly|unset|shift|eval|exec|trap|sudo)\b/g
+		},
 		// CLI commands - blue
-		{ type: 'function', pattern: /(?:^|(?<=\n)\s*|(?<=&&)\s*|(?<=\|\|)\s*|(?<=\|)\s*|(?<=;)\s*)(?:npm|yarn|pnpm|npx|node|deno|bun|git|docker|kubectl|curl|wget|pip|python|ruby|go|cargo|make|apt|brew|pacman|dnf|yum|cd|pwd|echo|printf|read|test|ls|cat|grep|awk|sed|chmod|mkdir|rm|cp|mv|touch|find|tar|zip|unzip|ssh|scp|rsync|docker-compose|podman|clawdbot|claude|clawd)\b/g },
+		{
+			type: 'function',
+			pattern:
+				/(?:^|(?<=\n)\s*|(?<=&&)\s*|(?<=\|\|)\s*|(?<=\|)\s*|(?<=;)\s*)(?:npm|yarn|pnpm|npx|node|deno|bun|git|docker|kubectl|curl|wget|pip|python|ruby|go|cargo|make|apt|brew|pacman|dnf|yum|cd|pwd|echo|printf|read|test|ls|cat|grep|awk|sed|chmod|mkdir|rm|cp|mv|touch|find|tar|zip|unzip|ssh|scp|rsync|docker-compose|podman|clawdbot|claude|clawd)\b/g
+		},
 		// Flags --option or -o - cyan (property)
 		{ type: 'property', pattern: /\s--?[a-zA-Z][a-zA-Z0-9-]*/g },
 		// Package@version or image:tag
@@ -280,19 +380,19 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /[~.]?\/[\w./-]+:[\w./-]+/g },
 		// Operators
 		{ type: 'operator', pattern: /[|&;<>]+|&&|\|\||\\$/gm },
-		{ type: 'punctuation', pattern: /[{}[\]();]/g },
+		{ type: 'punctuation', pattern: /[{}[\]();]/g }
 	],
 	diagram: [
 		{ type: 'punctuation', pattern: /[┌┐└┘├┤┬┴┼─│╔╗╚╝╠╣╦╩╬═║╭╮╯╰]+/g },
 		{ type: 'operator', pattern: /[▶◀▲▼→←↑↓►◄⟶⟵⟷>]+/g },
-		{ type: 'keyword', pattern: /\b[A-Z][A-Za-z0-9]*(?:\s+[A-Z][A-Za-z0-9]*)*\b/g },
+		{ type: 'keyword', pattern: /\b[A-Z][A-Za-z0-9]*(?:\s+[A-Z][A-Za-z0-9]*)*\b/g }
 	],
 	tree: [
 		{ type: 'comment', pattern: /#.*$/gm },
 		{ type: 'punctuation', pattern: /[├└│─┬┴┼]+/g },
 		{ type: 'function', pattern: /[~.]?\/[\w./-]*/g },
 		{ type: 'keyword', pattern: /[\w.-]+\//g },
-		{ type: 'string', pattern: /[\w.-]+\.\w+/g },
+		{ type: 'string', pattern: /[\w.-]+\.\w+/g }
 	],
 	shell: [], // alias for bash, filled below
 	sh: [], // alias for bash, filled below
@@ -302,7 +402,7 @@ const languages: Record<string, Token[]> = {
 	ascii: [], // alias for diagram
 	yml: [], // alias for yaml
 	plaintext: [],
-	text: [],
+	text: []
 };
 
 // Set up aliases
@@ -424,7 +524,10 @@ export function guessLanguageFromContent(code: string): string {
 		/\{[@#/:]\w+/.test(code) ||
 		/\b(?:on|bind|class|use|transition|animate):\w+/.test(code) ||
 		// Script tag with actual code inside (not just src attribute)
-		(/<script[\s>]/.test(code) && /<\/script>/.test(code) && /\b(?:let|const|function|import)\b/.test(code) && /<[a-z][\w-]*[\s>]/i.test(code))
+		(/<script[\s>]/.test(code) &&
+			/<\/script>/.test(code) &&
+			/\b(?:let|const|function|import)\b/.test(code) &&
+			/<[a-z][\w-]*[\s>]/i.test(code))
 	) {
 		return 'svelte';
 	}
@@ -435,19 +538,32 @@ export function guessLanguageFromContent(code: string): string {
 	}
 
 	// JSX/TSX detection - React components, JSX comments (before TS/JS)
-	const hasJsxComponents = /<[A-Z][a-zA-Z0-9]*[\s\/>]/.test(code) || /\{\/\*[\s\S]*?\*\/\}/.test(code);
-	const hasJsxReturn = /return\s*\(\s*</.test(code) || /return\s+<[a-zA-Z]/.test(code) || /=>\s*\(\s*</.test(code) || /=>\s*<[a-zA-Z]/.test(code);
-	const hasJsxInFunction = /\bfunction\s+\w+\s*\([^)]*\)\s*\{[\s\S]*?return\s+</.test(code) || /\bexport\s+(?:default\s+)?function\b/.test(code) && /<[a-zA-Z][\w-]*[\s>\/]/.test(code);
+	const hasJsxComponents =
+		/<[A-Z][a-zA-Z0-9]*[\s\/>]/.test(code) || /\{\/\*[\s\S]*?\*\/\}/.test(code);
+	const hasJsxReturn =
+		/return\s*\(\s*</.test(code) ||
+		/return\s+<[a-zA-Z]/.test(code) ||
+		/=>\s*\(\s*</.test(code) ||
+		/=>\s*<[a-zA-Z]/.test(code);
+	const hasJsxInFunction =
+		/\bfunction\s+\w+\s*\([^)]*\)\s*\{[\s\S]*?return\s+</.test(code) ||
+		(/\bexport\s+(?:default\s+)?function\b/.test(code) && /<[a-zA-Z][\w-]*[\s>\/]/.test(code));
 	if (hasJsxComponents || hasJsxReturn || hasJsxInFunction) {
 		// Check if it's TSX (has TypeScript syntax)
-		if (/\b(?:interface|type)\s+\w+/.test(code) || /:\s*(?:string|number|boolean|void|any|unknown|never|React\.)\b/.test(code)) {
+		if (
+			/\b(?:interface|type)\s+\w+/.test(code) ||
+			/:\s*(?:string|number|boolean|void|any|unknown|never|React\.)\b/.test(code)
+		) {
 			return 'tsx';
 		}
 		return 'jsx';
 	}
 
 	// TypeScript detection - type annotations, interface, type keyword (before JS)
-	if (/\b(?:interface|type|enum|namespace|readonly|public|private|protected)\s+\w+/.test(code) || /:\s*(?:string|number|boolean|void|any|unknown|never)\b/.test(code)) {
+	if (
+		/\b(?:interface|type|enum|namespace|readonly|public|private|protected)\s+\w+/.test(code) ||
+		/:\s*(?:string|number|boolean|void|any|unknown|never)\b/.test(code)
+	) {
 		return 'typescript';
 	}
 
@@ -455,14 +571,18 @@ export function guessLanguageFromContent(code: string): string {
 	// Strong JS indicators: DOM methods, arrow functions, async/await, variable declarations
 	if (
 		/\b(?:document|window|console)\.\w+/.test(code) ||
-		/\b(?:querySelector|getElementById|addEventListener|createElement|appendChild|innerHTML|fetch)\b/.test(code) ||
+		/\b(?:querySelector|getElementById|addEventListener|createElement|appendChild|innerHTML|fetch)\b/.test(
+			code
+		) ||
 		/\b(?:async|await)\s+/.test(code) ||
 		/=>\s*[{(]/.test(code) ||
 		/\b(?:const|let|var)\s+\w+\s*=/.test(code) ||
 		/\bfunction\s+\w+\s*\(/.test(code) ||
 		/\bfunction\s*\(\w+/.test(code) ||
 		/\bnew\s+(?:Promise|Map|Set|Array|Object|Date|RegExp)\b/.test(code) ||
-		/\.\s*(?:push|pop|shift|unshift|map|filter|reduce|forEach|find|some|every|includes|indexOf|slice|splice|join|split|replace|match|test)\s*\(/.test(code) ||
+		/\.\s*(?:push|pop|shift|unshift|map|filter|reduce|forEach|find|some|every|includes|indexOf|slice|splice|join|split|replace|match|test)\s*\(/.test(
+			code
+		) ||
 		/\bimport\s+.*\s+from\s+['"]/.test(code) ||
 		/\bexport\s+(?:default|const|let|var|function|class|async)\b/.test(code) ||
 		/\bmodule\.exports\b/.test(code) ||
@@ -473,25 +593,43 @@ export function guessLanguageFromContent(code: string): string {
 	}
 
 	// HTML detection - fallback for HTML that doesn't start with tag
-	if (/^\s*<\/?(?:div|span|p|a|ul|ol|li|table|tr|td|th|form|input|button|img|head|body|html|script|style|link|meta|h[1-6]|section|article|nav|header|footer|main|aside)\b/im.test(code)) {
+	if (
+		/^\s*<\/?(?:div|span|p|a|ul|ol|li|table|tr|td|th|form|input|button|img|head|body|html|script|style|link|meta|h[1-6]|section|article|nav|header|footer|main|aside)\b/im.test(
+			code
+		)
+	) {
 		return 'html';
 	}
 
 	// SQL detection - SQL keywords at start or common patterns
-	if (/^\s*(?:SELECT|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP|FROM|WHERE|JOIN|UNION)\b/i.test(trimmed) || /\b(?:SELECT\s+\*?\s+FROM|INSERT\s+INTO|UPDATE\s+\w+\s+SET|DELETE\s+FROM|CREATE\s+TABLE|ALTER\s+TABLE)\b/i.test(code)) {
+	if (
+		/^\s*(?:SELECT|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP|FROM|WHERE|JOIN|UNION)\b/i.test(
+			trimmed
+		) ||
+		/\b(?:SELECT\s+\*?\s+FROM|INSERT\s+INTO|UPDATE\s+\w+\s+SET|DELETE\s+FROM|CREATE\s+TABLE|ALTER\s+TABLE)\b/i.test(
+			code
+		)
+	) {
 		return 'sql';
 	}
 
 	// JSON/JSONC detection - starts with { or [ (or comment then {/[) and has key-value pairs
-	const codeWithoutComments = code.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '').trim();
-	if (/^[\[{]/.test(codeWithoutComments) && /"[^"]*"\s*:/.test(code) && !(/\bfunction\b/.test(code))) {
+	const codeWithoutComments = code
+		.replace(/\/\/.*$/gm, '')
+		.replace(/\/\*[\s\S]*?\*\//g, '')
+		.trim();
+	if (
+		/^[\[{]/.test(codeWithoutComments) &&
+		/"[^"]*"\s*:/.test(code) &&
+		!/\bfunction\b/.test(code)
+	) {
 		return 'json';
 	}
 
 	// YAML detection - general patterns (before PHP to avoid $VAR + echo false positive)
 	// Remove template expressions like ${{ }} and strings before checking for problematic chars
 	const yamlClean = code
-		.replace(/\$\{\{[^}]*\}\}/g, '')  // GitHub Actions
+		.replace(/\$\{\{[^}]*\}\}/g, '') // GitHub Actions
 		.replace(/"(?:[^"\\]|\\.)*"/g, '') // double-quoted strings
 		.replace(/'(?:[^'\\]|\\.)*'/g, ''); // single-quoted strings
 
@@ -501,7 +639,8 @@ export function guessLanguageFromContent(code: string): string {
 	const hasListItems = /^\s*-\s+/m.test(code);
 	const hasMultilineString = /[|>]\s*$/m.test(code);
 	const hasGitHubActions = /\$\{\{.*\}\}/.test(code);
-	const noCodeBraces = !/[;]/.test(yamlClean) && !/\)\s*\{/.test(yamlClean) && !/\bfunction\b/.test(code);
+	const noCodeBraces =
+		!/[;]/.test(yamlClean) && !/\)\s*\{/.test(yamlClean) && !/\bfunction\b/.test(code);
 
 	if (
 		(hasKeyValueAtStart || hasListItemWithKey) &&
@@ -515,7 +654,8 @@ export function guessLanguageFromContent(code: string): string {
 	if (
 		/^<\?php\b/.test(trimmed) ||
 		/<\?(?:php|=)/.test(code) ||
-		(/\$[a-zA-Z_]/.test(code) && /\b(?:foreach|isset|empty|array_|str_|preg_|mysqli_|PDO)\b/.test(code))
+		(/\$[a-zA-Z_]/.test(code) &&
+			/\b(?:foreach|isset|empty|array_|str_|preg_|mysqli_|PDO)\b/.test(code))
 	) {
 		return 'php';
 	}
@@ -525,9 +665,12 @@ export function guessLanguageFromContent(code: string): string {
 	if (
 		/^#!\/(?:usr\/)?bin\/(?:ba)?sh/.test(trimmed) ||
 		/^\s*(?:if\s+\[|for\s+\w+\s+in|while\s+\[|case\s+\$)/.test(trimmed) ||
-		(/\$\{?\w+\}?/.test(code) && /\b(?:echo|export|cd|ls|grep|awk|sed|cat|chmod|mkdir|rm|cp|mv)\b/.test(code)) ||
+		(/\$\{?\w+\}?/.test(code) &&
+			/\b(?:echo|export|cd|ls|grep|awk|sed|cat|chmod|mkdir|rm|cp|mv)\b/.test(code)) ||
 		// Common CLI tools at line start
-		/(?:^|\n)\s*(?:npm|yarn|pnpm|npx|node|deno|bun|git|docker|kubectl|curl|wget|pip|python|ruby|go|cargo|make|sudo|apt|brew|pacman|dnf|yum)\s+\w+/.test(code) ||
+		/(?:^|\n)\s*(?:npm|yarn|pnpm|npx|node|deno|bun|git|docker|kubectl|curl|wget|pip|python|ruby|go|cargo|make|sudo|apt|brew|pacman|dnf|yum)\s+\w+/.test(
+			code
+		) ||
 		// Shell comments (# followed by space or word, not #selector{)
 		(/(?:^|\n)\s*#\s+\w/.test(code) && !/\{/.test(code))
 	) {
@@ -535,7 +678,13 @@ export function guessLanguageFromContent(code: string): string {
 	}
 
 	// CSS detection - selectors with braces or @rules
-	if (/^(?:\.|#[a-zA-Z][\w-]*\s*\{|@|[a-zA-Z][\w-]*\s*\{)/.test(trimmed) || /(?:^|\n)\s*(?:\.|#[a-zA-Z]|@media|@keyframes|@import|@font-face)[^{]*\{/.test(code) || /\b(?:color|background|margin|padding|display|position|width|height|font-size|border)\s*:/.test(code)) {
+	if (
+		/^(?:\.|#[a-zA-Z][\w-]*\s*\{|@|[a-zA-Z][\w-]*\s*\{)/.test(trimmed) ||
+		/(?:^|\n)\s*(?:\.|#[a-zA-Z]|@media|@keyframes|@import|@font-face)[^{]*\{/.test(code) ||
+		/\b(?:color|background|margin|padding|display|position|width|height|font-size|border)\s*:/.test(
+			code
+		)
+	) {
 		return 'css';
 	}
 

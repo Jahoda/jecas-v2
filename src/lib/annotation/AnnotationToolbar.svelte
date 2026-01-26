@@ -53,7 +53,9 @@
 		<div
 			class="rounded-lg border border-gray-200 bg-white p-2 shadow-xl dark:border-gray-700 dark:bg-gray-800"
 		>
-			<div class="mb-1.5 max-h-16 overflow-y-auto rounded bg-yellow-50 p-1.5 text-xs text-gray-600 dark:bg-yellow-900/20 dark:text-gray-400">
+			<div
+				class="mb-1.5 max-h-16 overflow-y-auto rounded bg-yellow-50 p-1.5 text-xs text-gray-600 dark:bg-yellow-900/20 dark:text-gray-400"
+			>
 				{annotationState.currentSelection.text.length > 100
 					? annotationState.currentSelection.text.substring(0, 100) + '...'
 					: annotationState.currentSelection.text}

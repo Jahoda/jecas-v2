@@ -232,7 +232,7 @@ pre.hl-pre code {
 
 /* Token colors - Light mode */
 .hl-keyword {
-	@apply text-purple-600 font-semibold;
+	@apply font-semibold text-purple-600;
 }
 
 .hl-string {
@@ -256,7 +256,7 @@ pre.hl-pre code {
 }
 
 .hl-tag {
-	@apply text-pink-600 font-semibold;
+	@apply font-semibold text-pink-600;
 }
 
 .hl-attr {
