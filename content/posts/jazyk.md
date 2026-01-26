@@ -151,7 +151,7 @@ format: "html"
 
 
 
-<p>Pokud jsou k disposici pouze dvě jazykové verse, nabízí se použít třeba styl, který používá <a href="http://hosting.wedos.com/d/117947">Wedos</a>:</p>
+<p>Pokud jsou k disposici pouze dvě jazykové verse, nabízí se použít třeba styl, který používá <b>Wedos</b>:</p>
 
 <p><img src="/files/jazyk/wedos-zmena.png" alt="Změna jazyka" class="border"></p>
 

@@ -23,7 +23,8 @@ const SKIP_DOMAINS = [
 	'x.com',
 	'facebook.com',
 	'linkedin.com',
-	'instagram.com'
+	'instagram.com',
+	'sitepoint.com'
 ];
 
 // Cache for existing article and tag slugs
