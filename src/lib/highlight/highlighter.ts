@@ -208,11 +208,71 @@ export function highlight(code: string, lang: string): string {
 /**
  * Detect language from class attribute (e.g., "language-javascript" or "lang-js")
  */
-export function detectLanguage(className: string | null): string {
+export function detectLanguageFromClass(className: string | null): string {
 	if (!className) return '';
 
 	const match = className.match(/(?:language|lang)-(\w+)/);
 	return match ? match[1].toLowerCase() : '';
+}
+
+/**
+ * Guess language from code content based on characteristic patterns
+ */
+export function guessLanguageFromContent(code: string): string {
+	const trimmed = code.trim();
+
+	// HTML detection - starts with < or contains HTML tags
+	if (/^<[!a-zA-Z]/.test(trimmed) || /<\/?(?:div|span|p|a|ul|ol|li|table|tr|td|th|form|input|button|img|head|body|html|script|style|link|meta|h[1-6]|section|article|nav|header|footer|main|aside)\b/i.test(code)) {
+		return 'html';
+	}
+
+	// PHP detection - <?php or $variable with PHP functions
+	if (/^<\?php\b/.test(trimmed) || /<\?(?:php|=)/.test(code) || (/\$[a-zA-Z_]/.test(code) && /\b(?:echo|print|function|class|namespace|use|foreach|array|isset|empty)\b/.test(code))) {
+		return 'php';
+	}
+
+	// SQL detection - SQL keywords at start or common patterns
+	if (/^\s*(?:SELECT|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP|FROM|WHERE|JOIN|UNION)\b/i.test(trimmed) || /\b(?:SELECT\s+\*?\s+FROM|INSERT\s+INTO|UPDATE\s+\w+\s+SET|DELETE\s+FROM|CREATE\s+TABLE|ALTER\s+TABLE)\b/i.test(code)) {
+		return 'sql';
+	}
+
+	// JSON detection - starts with { or [ and has key-value pairs
+	if (/^\s*[\[{]/.test(trimmed) && /"[^"]*"\s*:/.test(code) && !(/\bfunction\b/.test(code))) {
+		return 'json';
+	}
+
+	// CSS detection - selectors with braces or @rules
+	if (/^(?:\.|#|@|[a-zA-Z][\w-]*\s*\{)/.test(trimmed) || /(?:^|\n)\s*(?:\.|#|@media|@keyframes|@import|@font-face)[^{]*\{/.test(code) || /\b(?:color|background|margin|padding|display|position|width|height|font-size|border)\s*:/.test(code)) {
+		return 'css';
+	}
+
+	// Bash/Shell detection - shebang, common commands, or shell syntax
+	if (/^#!\/(?:usr\/)?bin\/(?:ba)?sh/.test(trimmed) || /^\s*(?:if\s+\[|for\s+\w+\s+in|while\s+\[|case\s+\$)/.test(trimmed) || /\$\{?\w+\}?/.test(code) && /\b(?:echo|export|cd|ls|grep|awk|sed|cat|chmod|mkdir|rm|cp|mv)\b/.test(code)) {
+		return 'bash';
+	}
+
+	// TypeScript detection - type annotations, interface, type keyword
+	if (/\b(?:interface|type|enum|namespace|readonly|public|private|protected)\s+\w+/.test(code) || /:\s*(?:string|number|boolean|void|any|unknown|never)\b/.test(code) || /<[A-Z]\w*>/.test(code)) {
+		return 'typescript';
+	}
+
+	// JavaScript detection - common JS patterns
+	if (/\b(?:const|let|var|function|return|if|else|for|while|class|import|export|async|await|=>)\b/.test(code) || /(?:document|window|console)\.\w+/.test(code) || /\bfunction\s*\w*\s*\(/.test(code)) {
+		return 'javascript';
+	}
+
+	// Default - return empty (will still try to highlight with basic patterns)
+	return '';
+}
+
+/**
+ * Detect language - first try class, then guess from content
+ */
+export function detectLanguage(className: string | null, code: string): string {
+	const fromClass = detectLanguageFromClass(className);
+	if (fromClass) return fromClass;
+
+	return guessLanguageFromContent(code);
 }
 
 /**
@@ -225,11 +285,12 @@ export function highlightAllCodeBlocks(container: HTMLElement): void {
 		// Skip already highlighted blocks
 		if (codeBlock.dataset.highlighted === 'true') continue;
 
-		const lang = detectLanguage(codeBlock.className);
-		if (!lang) continue;
-
 		// Get original text content
 		const code = codeBlock.textContent || '';
+
+		// Detect language from class or content
+		const lang = detectLanguage(codeBlock.className, code);
+		if (!lang) continue;
 
 		// Highlight and replace
 		codeBlock.innerHTML = highlight(code, lang);
