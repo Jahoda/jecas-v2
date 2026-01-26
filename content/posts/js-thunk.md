@@ -9,11 +9,11 @@ tags: ["javascript"]
 format: "html"
 ---
 
-<p><b>Thunk</b> je funkce, která obaluje výraz a odkládá jeho vyhodnocení. Místo okamžitého výpočtu vrátíte funkci, která výpočet provede až při zavolání.</p>
+<p><b>Thunk</b> je funkce, která obaluje výraz a odkládá jeho vyhodnocení. Místo okamžitého výpočtu vrátíte funkci, která výpočet provede až při zavolání.</p>
 
 <h2 id="co-je-thunk">Co je thunk</h2>
 
-<p>Slovo „thunk" vzniklo v 60. letech při vývoji ALGOL 60. Programátoři potřebovali pojmenovat kus kódu, který se vyhodnotí později — a vtipně použili neformální minulý čas slovesa „think": „it has already been thunk" (místo správného „thought"). V praxi jde o wrapper funkci:</p>
+<p>Slovo „thunk” vzniklo v 60. letech při vývoji ALGOL 60. Programátoři potřebovali pojmenovat kus kódu, který se vyhodnotí později — a vtipně použili neformální minulý čas slovesa ”think": „it has already been thunk” (místo správného ”thought"). V praxi jde o wrapper funkci:</p>
 
 <pre><code>// Přímá hodnota
 const value = 1 + 2;
@@ -67,7 +67,7 @@ if (needsResult) {
 
 <h2 id="asynchronni-thunk">Asynchronní thunk</h2>
 
-<p>Thunk může obalovat i asynchronní operaci. Místo hodnoty pak vrací Promise nebo přijímá callback:</p>
+<p>Thunk může obalovat i asynchronní operaci. Místo hodnoty pak vrací Promise nebo přijímá callback:</p>
 
 <pre><code>// Thunk s callbackem
 function fetchUserThunk(userId) {
@@ -85,7 +85,7 @@ getUser((error, user) => {
   console.log(user);
 });</code></pre>
 
-<p>Modernější verse s Promise:</p>
+<p>Modernější verse s Promise:</p>
 
 <pre><code>// Thunk vracející Promise
 function fetchUserThunk(userId) {
@@ -98,9 +98,9 @@ function fetchUserThunk(userId) {
 const getUser = fetchUserThunk(42);
 getUser().then(user => console.log(user));</code></pre>
 
-<h2 id="memoizace">Thunk s memoizací</h2>
+<h2 id="memoizace">Thunk s memoizací</h2>
 
-<p>Thunk lze rozšířit o <b>memoizaci</b> — výpočet proběhne jen jednou a výsledek se uloží:</p>
+<p>Thunk lze rozšířit o <b>memoizaci</b> — výpočet proběhne jen jednou a výsledek se uloží:</p>
 
 <pre><code>function memoizedThunk(fn) {
   let cached = false;
@@ -126,7 +126,7 @@ console.log(expensiveThunk()); // 0.123... (bez výpisu)</code></pre>
 
 <h2 id="redux-thunk">Redux Thunk</h2>
 
-<p>Nejznámější využití thunků v JavaScriptu je <a href="https://github.com/reduxjs/redux-thunk">Redux Thunk</a> middleware. Umožňuje dispatchovat funkce místo plain objektů:</p>
+<p>Nejznámější využití thunků v JavaScriptu je <a href="https://github.com/reduxjs/redux-thunk">Redux Thunk</a> middleware. Umožňuje dispatchovat funkce místo plain objektů:</p>
 
 <pre><code>// Běžná akce - plain objekt
 const setUser = (user) => ({
@@ -152,12 +152,12 @@ const fetchUser = (userId) => {
 // Použití
 store.dispatch(fetchUser(42));</code></pre>
 
-<p>Redux Thunk middleware detekuje, že akce je funkce, a zavolá ji s <code>dispatch</code> a <code>getState</code> jako argumenty. To umožňuje:</p>
+<p>Redux Thunk middleware detekuje, že akce je funkce, a zavolá ji s <code>dispatch</code> a <code>getState</code> jako argumenty. To umožňuje:</p>
 
 <ul>
   <li>Asynchronní operace (API volání)</li>
   <li>Podmíněné dispatchování</li>
-  <li>Přístup k aktuálnímu stavu</li>
+  <li>Přístup k aktuálnímu stavu</li>
   <li>Dispatchování více akcí</li>
 </ul>
 
@@ -178,7 +178,7 @@ store.dispatch(fetchUser(42));</code></pre>
 
 <h2 id="thunk-vs-promise">Thunk vs. Promise</h2>
 
-<p>Thunky a Promise řeší podobný problém — representaci budoucí hodnoty. Hlavní rozdíl:</p>
+<p>Thunky a Promise řeší podobný problém — representaci budoucí hodnoty. Hlavní rozdíl:</p>
 
 <table>
   <tr>
@@ -219,7 +219,7 @@ const thunk = () => fetch('/api/data');
 
 <h2 id="prakticke-vyuziti">Praktické využití</h2>
 
-<p>Následující příklady ukazují thunky v kontextu Reduxu. Funkce <code>dispatch</code> odesílá akce do Redux store — je to způsob, jak říct Reduxu „změň stav podle této akce".</p>
+<p>Následující příklady ukazují thunky v kontextu Reduxu. Funkce <code>dispatch</code> odesílá akce do Redux store — je to způsob, jak říct Reduxu „změň stav podle této akce”.</p>
 
 <h3>Podmíněné načítání</h3>
 
@@ -281,7 +281,7 @@ button.onclick = async () => {
 
 <h2 id="dependency-injection">Dependency injection</h2>
 
-<p>Thunky lze použít pro jednoduché předávání závislostí. Není to typický přístup k DI (pro komplexní aplikace existují specialisované knihovny jako <a href="https://inversify.io/">InversifyJS</a>), ale pro menší projekty může být dostatečný:</p>
+<p>Thunky lze použít pro jednoduché předávání závislostí. Není to typický přístup k DI (pro komplexní aplikace existují specialisované knihovny jako <a href="https://inversify.io/">InversifyJS</a>), ale pro menší projekty může být dostatečný:</p>
 
 <pre><code>// Závislosti jako thunky
 const createService = (getLogger, getDatabase) => ({
@@ -310,7 +310,7 @@ const prodService = createService(
 
 <h2 id="trampolining">Trampolining (odskakování)</h2>
 
-<p>Trampolining je technika, která řeší přetečení zásobníku u rekurzivních funkcí. Název pochází z analogie s trampolínou — místo zanořování do rekurze se funkce „odráží" zpět a volání probíhá v cyklu:</p>
+<p>Trampolining je technika, která řeší přetečení zásobníku u rekurzivních funkcí. Název pochází z analogie s trampolínou — místo zanořování do rekurze se funkce „odráží” zpět a volání probíhá v cyklu:</p>
 
 <pre><code>// Klasická rekurze - může přetéct stack
 function factorial(n) {
@@ -335,7 +335,7 @@ function factorialThunk(n, acc = 1n) {
 // Bezpečné i pro velká čísla (BigInt)
 console.log(trampoline(() => factorialThunk(100))); // 93326215443944152...</code></pre>
 
-<p>Místo rekurzivního volání funkce vrací thunk. Trampolína thunky rozbaluje v cyklu, takže nedochází k hromadění na zásobníku.</p>
+<p>Místo rekurzivního volání funkce vrací thunk. Trampolína thunky rozbaluje v cyklu, takže nedochází k hromadění na zásobníku.</p>
 
 <h2 id="konfigurace">Odložená konfigurace</h2>
 
@@ -360,7 +360,7 @@ async function makeRequest(endpoint) {
 
 <p>Konfigurace může záviset na stavu, který není dostupný při inicialisaci (localStorage, cookies, env proměnné).</p>
 
-<h2 id="testovani">Testování a mockování</h2>
+<h2 id="testovani">Testování a mockování</h2>
 
 <p>Thunky usnadňují testování tím, že oddělují vytvoření závislosti od jejího použití:</p>
 
@@ -414,17 +414,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });</code></pre>
 
-<h2 id="alternativy">Alternativy k Redux Thunk</h2>
+<h2 id="alternativy">Alternativy k Redux Thunk</h2>
 
 <p>Pro komplexnější asynchronní logiku existují alternativy:</p>
 
 <ul>
   <li><a href="https://redux-saga.js.org/"><b>Redux Saga</b></a> — používá generátory, lepší pro komplexní flow</li>
   <li><a href="https://redux-observable.js.org/"><b>Redux Observable</b></a> — používá RxJS, reaktivní přístup</li>
-  <li><a href="https://redux-toolkit.js.org/rtk-query/overview"><b>RTK Query</b></a> — vestavěné řešení v Redux Toolkit pro data fetching</li>
+  <li><a href="https://redux-toolkit.js.org/rtk-query/overview"><b>RTK Query</b></a> — vestavěné řešení v Redux Toolkit pro data fetching</li>
 </ul>
 
-<p>Pro většinu aplikací je však Redux Thunk dostatečný a jeho jednoduchost je výhodou.</p>
+<p>Pro většinu aplikací je však Redux Thunk dostatečný a jeho jednoduchost je výhodou.</p>
 
 <h2 id="nevyhody">Nevýhody thunků</h2>
 
@@ -432,8 +432,8 @@ document.addEventListener('DOMContentLoaded', () => {
   <li><b>Horší čitelnost</b> — vnořené funkce mohou být matoucí, zejména pro začátečníky</li>
   <li><b>Těžší debugování</b> — stack trace nemusí být přehledný, protože thunky jsou anonymní funkce</li>
   <li><b>Opakované vyhodnocení</b> — na rozdíl od Promise se thunk při každém volání spustí znovu (pokud není memoizovaný)</li>
-  <li><b>Implicitní závislosti</b> — thunky v Redux Thunk mají přístup k dispatch a getState, což může vést k těsné vazbě na store</li>
-  <li><b>Složitější testování</b> — pro testování Redux thunků je potřeba mockovat dispatch a getState</li>
+  <li><b>Implicitní závislosti</b> — thunky v Redux Thunk mají přístup k dispatch a getState, což může vést k těsné vazbě na store</li>
+  <li><b>Složitější testování</b> — pro testování Redux thunků je potřeba mockovat dispatch a getState</li>
 </ul>
 
 <h2 id="shrnuti">Shrnutí</h2>
@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <p>Využití thunků:</p>
 
 <ul>
-  <li><b>Redux Thunk</b> — asynchronní akce v Reduxu</li>
+  <li><b>Redux Thunk</b> — asynchronní akce v Reduxu</li>
   <li><b>Lazy loading</b> — dynamický import modulů</li>
   <li><b>Dependency injection</b> — odložené vytváření závislostí</li>
   <li><b>Trampolining</b> — optimalisace rekurze</li>
