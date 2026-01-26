@@ -33,11 +33,13 @@ const languages: Record<string, Token[]> = {
 		{ type: 'tag', pattern: /\b(Array|Object|String|Number|Boolean|Function|Symbol|BigInt|Map|Set|WeakMap|WeakSet|Promise|Proxy|Reflect|Date|RegExp|Error|TypeError|ReferenceError|SyntaxError|Math|JSON|console|window|document|localStorage|sessionStorage|fetch|URL|URLSearchParams|FormData|Headers|Request|Response|AbortController|Event|EventTarget|Element|Node|NodeList|HTMLElement)\b/g },
 		// Variable declarations: const foo, let bar
 		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
-		// Function parameters
-		{ type: 'variable', pattern: /(?<=\bfunction\s+\w*\s*\()[^)]*(?=\))/g },
+		// Function parameters (after ( or ,)
+		{ type: 'variable', pattern: /(?<=[(,]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[,)=])/g },
 		// Variables in conditions and expressions
 		{ type: 'variable', pattern: /(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g },
 		{ type: 'variable', pattern: /(?<=[=!<>&|]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[;)\]}])/g },
+		// Variables before dot (property access) - but not built-in objects
+		{ type: 'variable', pattern: /(?<![.\w])(?!(?:Array|Object|String|Number|Boolean|Function|Symbol|BigInt|Map|Set|WeakMap|WeakSet|Promise|Proxy|Reflect|Date|RegExp|Error|TypeError|ReferenceError|SyntaxError|Math|JSON|console|window|document|localStorage|sessionStorage|fetch|URL|URLSearchParams|FormData|Headers|Request|Response|AbortController|Event|EventTarget|Element|Node|NodeList|HTMLElement)\b)[a-z_$][a-zA-Z0-9_$]*(?=\.)/g },
 		// Property access after dot
 		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
@@ -64,9 +66,13 @@ const languages: Record<string, Token[]> = {
 		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|static|get|set)\b/g },
 		// Variable declarations
 		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
+		// Function parameters
+		{ type: 'variable', pattern: /(?<=[(,]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[,)=])/g },
 		// Variables in conditions and expressions
 		{ type: 'variable', pattern: /(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g },
 		{ type: 'variable', pattern: /(?<=[=!<>&|]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[;)\]}])/g },
+		// Variables before dot
+		{ type: 'variable', pattern: /(?<![.\w])[a-z_$][a-zA-Z0-9_$]*(?=\.)/g },
 		// Property access
 		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
@@ -100,9 +106,13 @@ const languages: Record<string, Token[]> = {
 		{ type: 'value', pattern: /(?<=:\s*)[A-Z][a-zA-Z0-9_]*(?![a-z(])/g },
 		// Variable declarations
 		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
+		// Function parameters
+		{ type: 'variable', pattern: /(?<=[(,]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[,:)=])/g },
 		// Variables in conditions and expressions
 		{ type: 'variable', pattern: /(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g },
 		{ type: 'variable', pattern: /(?<=[=!<>&|]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[;)\]}])/g },
+		// Variables before dot
+		{ type: 'variable', pattern: /(?<![.\w])[a-z_$][a-zA-Z0-9_$]*(?=\.)/g },
 		// Property access
 		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
@@ -130,11 +140,15 @@ const languages: Record<string, Token[]> = {
 		{ type: 'tag', pattern: /(?<=\bas\s+)[A-Z][a-zA-Z0-9_]*/g },
 		// Variable declarations
 		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
+		// Function parameters (after ( or , before : or , or ))
+		{ type: 'variable', pattern: /(?<=[(,]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[,:)])/g },
 		// Variables in conditions and expressions
 		{ type: 'variable', pattern: /(?<=\b(?:if|while|switch|return|case)\s*\(?)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[=!<>&|)])/g },
 		{ type: 'variable', pattern: /(?<=[=!<>&|]\s*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\s*[;)\]}])/g },
-		// Type/interface property names
-		{ type: 'property', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\??:)/g },
+		// Variables before dot
+		{ type: 'variable', pattern: /(?<![.\w])[a-z_$][a-zA-Z0-9_$]*(?=\.)/g },
+		// Type/interface property names (NOT function params - those are handled above)
+		{ type: 'property', pattern: /(?<=\{[^}]*)[a-zA-Z_$][a-zA-Z0-9_$]*(?=\??:)/g },
 		// Property access after dot
 		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
