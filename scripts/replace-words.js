@@ -36,7 +36,9 @@ const REPLACEMENTS = {
 	prezent: 'present',
 	reverz: 'revers',
 	konzist: 'konsist',
-	izolovan: 'isolovan'
+	izolovan: 'isolovan',
+	rekurz: 'rekurs',
+	memoiz: 'memois'
 };
 
 /**
