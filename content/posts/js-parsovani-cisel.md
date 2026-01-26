@@ -370,12 +370,12 @@ parseCzDecimal("12 345")     // 12345
       var outDot = root.querySelector('#cz-dot');
       var outNumber = root.querySelector('#cz-number');
       var outValid = root.querySelector('#cz-valid');
-      function normalizeSpaces(s){ return String(s).replace(/[\u00A0\u202F\s]/g, ""); }
+      function normaliseSpaces(s){ return String(s).replace(/[\u00A0\u202F\s]/g, ""); }
       function unifyDecimal(s){ return s.replace(",", "."); }
       function isStrictNumber(s){ return /^[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i.test(s); }
       function update(){
         var v = input.value;
-        var noSpace = normalizeSpaces(v);
+        var noSpace = normaliseSpaces(v);
         var dot = unifyDecimal(noSpace);
         var valid = isStrictNumber(dot);
         var n = valid ? Number(dot) : NaN;
