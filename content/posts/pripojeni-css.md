@@ -143,7 +143,7 @@ body {
   <li><code>@import</code> pravidla</li>
 </ol>
 
-<h2 id="javascript">JavaScript</h2>
+<h2 id="js">JavaScript</h2>
 
 <p>V JS jde připojit CSS stejnými principy, jako se tak děje v HTML. Nejčastěji značkou <code>&lt;link&gt;</code>:</p>
 

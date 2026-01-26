@@ -69,7 +69,7 @@ format: "html"
 
 <p>V hodně starých stránkách může být <code>&lt;script></code> uveden s atributem <code>language</code>.</p>
 
-<pre><code>&lt;script <b>language</b>="javascript"></code></pre>
+<pre><code>&lt;script <b>language</b>="js"></code></pre>
 
 <p>Pochází to z doby, kdy nebylo jasné, jaký jazyk se pro skriptování bude používat. Jelikož převládl JavaScript, není tento atribut k ničemu potřebný.</p>
 

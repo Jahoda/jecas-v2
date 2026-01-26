@@ -6,6 +6,7 @@ date: '2025-09-17'
 last_modification: '2025-09-17'
 status: 1
 tags: ['formulare', 'ux', 'js']
+format: 'html'
 ---
 
 

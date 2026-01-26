@@ -5,7 +5,7 @@ description: "Co je thunk, jak funguje a k čemu se používá. Lazy loading, de
 date: "2026-01-26"
 last_modification: "2026-01-26"
 status: 1
-tags: ["javascript"]
+tags: ["js"]
 format: "html"
 ---
 

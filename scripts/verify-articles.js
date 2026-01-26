@@ -266,13 +266,28 @@ function validateContent(content, slug) {
 	}
 
 	// Check for internal links to non-existent articles
+	// First, remove code blocks to avoid false positives from examples
+	const contentWithoutCode = content
+		.replace(/<pre[^>]*>[\s\S]*?<\/pre>/gi, '')
+		.replace(/<code[^>]*>[\s\S]*?<\/code>/gi, '');
+
 	const internalLinkRegex = /href=["']\/([^"'#]+)(?:#[^"']*)?["']/gi;
 	const existingPostsSet = getExistingPosts();
 	const existingTagsSet = getExistingTags();
 	let match;
 
-	while ((match = internalLinkRegex.exec(content)) !== null) {
-		const linkedSlug = match[1];
+	// Example slugs commonly used in documentation/tutorials
+	const exampleSlugs = new Set([
+		'clanek', 'jiny-clanek', 'produkty', 'url-stranky', 'like', 'items'
+	]);
+
+	while ((match = internalLinkRegex.exec(contentWithoutCode)) !== null) {
+		let linkedSlug = match[1];
+
+		// Skip protocol-relative URLs (//example.com)
+		if (linkedSlug.startsWith('/')) {
+			continue;
+		}
 
 		// Skip known special paths
 		if (
@@ -281,6 +296,24 @@ function validateContent(content, slug) {
 			linkedSlug.startsWith('tags/') ||
 			linkedSlug === ''
 		) {
+			continue;
+		}
+
+		// Skip file paths (contain extension like .png, .svg, .ico)
+		if (/\.[a-z]{2,4}$/i.test(linkedSlug)) {
+			continue;
+		}
+
+		// Skip URLs with query parameters (examples in tutorials)
+		if (linkedSlug.includes('?')) {
+			continue;
+		}
+
+		// Remove trailing slash if present
+		linkedSlug = linkedSlug.replace(/\/$/, '');
+
+		// Skip known example slugs used in documentation
+		if (exampleSlugs.has(linkedSlug)) {
 			continue;
 		}
 

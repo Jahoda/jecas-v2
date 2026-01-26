@@ -5,7 +5,7 @@ description: "Jak zjistit, že se na stránce otevřely vývojářské nástroje
 date: "2025-08-23"
 last_modification: "2025-08-23"
 status: 1
-tags: ["javascript", "hotova-reseni"]
+tags: ["js", "hotova-reseni"]
 format: "html"
 ---
 

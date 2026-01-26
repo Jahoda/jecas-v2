@@ -6,6 +6,7 @@ date: '2025-10-21'
 last_modification: '2025-10-21'
 status: 1
 tags: ['ux', 'formulare', 'js']
+format: 'html'
 ---
 
 <p>Validace formulářů patří k nejčastějším UX problémům na webu. Špatně implementovaná validace dokáže z jednoduchého úkolu udělat frustrující zážitek.</p>

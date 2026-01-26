@@ -83,7 +83,7 @@ format: "html"
 <pre><code>&lt;input type="text" class="<b>field-sizing-content</b> min-w-12 max-w-xs" /></code></pre>
 
 
-<h2 id="javascript">JavaScript řešení</h2>
+<h2 id="js">JavaScript řešení</h2>
 
 <p>Pro starší prohlížeče je potřeba použít JavaScript. Princip spočívá v měření šířky textu a nastavení šířky inputu.</p>
 

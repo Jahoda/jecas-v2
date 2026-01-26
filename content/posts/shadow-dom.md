@@ -5,7 +5,7 @@ description: "Shadow DOM je technologie, která umožňuje vytvářet zapouzdře
 date: "2018-10-29"
 last_modification: "2018-10-29"
 status: 0
-tags: ["shadow-dom", "web-components", "css", "javascript", "html"]
+tags: ["shadow-dom", "web-components", "css", "js", "html"]
 format: "markdown"
 ---
 

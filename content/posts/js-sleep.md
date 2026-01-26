@@ -5,7 +5,7 @@ description: "Jak implementovat sleep/delay funkcionalitu v JavaScriptu pomocí 
 date: "2025-08-19"
 last_modification: "2025-08-19"
 status: 1
-tags: ["javascript", "napady"]
+tags: ["js", "napady"]
 format: "html"
 ---
 

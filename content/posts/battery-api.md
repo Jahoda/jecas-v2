@@ -5,7 +5,7 @@ description: "Jak v JS zjistit stav baterie, co dnes funguje a kdy API nepouží
 date: "2016-01-19"
 last_modification: "2025-08-16"
 status: 1
-tags: ["javascript", "prohlizece"]
+tags: ["js", "webove-prohlizece"]
 format: "html"
 ---
 

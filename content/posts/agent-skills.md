@@ -382,7 +382,7 @@ allowed-tools: Read, Grep, mcp__linear__*, mcp__slack__send_message</code></pre>
 
 <p>Pro firmy to znamená možnost přecházet mezi poskytovateli AI bez přepisování customizací. Skill pro firemní coding standards bude fungovat všude, kde je standard podporován.</p>
 
-<p>Anthropic následuje podobný vzor jako u <a href="/model-context-protocol">MCP</a> — vytvořit specifikaci a otevřít ji komunitě jako standard.</p>
+<p>Anthropic následuje podobný vzor jako u <a href="https://modelcontextprotocol.io">MCP</a> — vytvořit specifikaci a otevřít ji komunitě jako standard.</p>
 
 <h2 id="odkazy">Odkazy</h2>
 

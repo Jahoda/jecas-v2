@@ -5,7 +5,7 @@ description: "Které formáty použít, jak vytvářet modely pomocí AI a kdy r
 date: "2025-12-02"
 last_modification: "2025-12-02"
 status: 1
-tags: ["javascript", "ai"]
+tags: ["js", "ai"]
 format: "html"
 ---
 

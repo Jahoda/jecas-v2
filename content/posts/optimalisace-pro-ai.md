@@ -222,7 +222,7 @@ Sitemap: https://example.com/sitemap.xml
 </code></pre>
 <p>Pokud chcete povolit, raději explicitně uvádějte <i>Allow</i> v robots.txt a zachovejte sitemapu. Při blokování AI botů zvažte dopad na citace v odpovědích.</p>
 
-<h2 id="javascript">Podpora JavaScriptu v AI nástrojích</h2>
+<h2 id="js">Podpora JavaScriptu v AI nástrojích</h2>
 <ul>
   <li><b>Nespoléhejte na vykonávání JS</b> – část crawlerů JS nespouští nebo jen omezeně. Klíčový obsah a metadata musí být v HTML.</li>
   <li><b>SSR/prerender</b> – renderujte hlavní obsah na serveru; <code>JSON‑LD</code> vkládejte inline, ne generováním až po načtení.</li>

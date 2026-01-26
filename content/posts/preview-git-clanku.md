@@ -5,6 +5,7 @@ description: "Jak zobrazit náhled článku z pull requestu bez čekání na bui
 date: "2026-01-11"
 status: 1
 tags: ["git", "produktivita", "svelte", "napady"]
+format: "html"
 ---
 
 <p>Při práci s blogem postaveným na <b>SvelteKit</b> a hostovaným na <b>Vercelu</b> jsem řešil problém – jak rychle zobrazit náhled rozpracovaného článku?</p>
