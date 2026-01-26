@@ -3,7 +3,7 @@ title: "Parsování čísel v JavaScriptu"
 headline: "Parsování čísel v JavaScriptu: správně a bezpečně"
 description: "Funkce pro práci s čísly <code>parseInt</code>, <code>Number</code>, <code>NaN</code>, doporučení a ukázky."
 date: "2025-09-10"
-last_modification: "2025-09-10"
+last_modification: "2025-09-11"
 status: 1
 tags: ["hotova-reseni", "js"]
 format: "html"
