@@ -112,10 +112,16 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
 		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
 		{ type: 'keyword', pattern: /@[a-zA-Z][a-zA-Z0-9-]*/g },
-		{ type: 'property', pattern: /[a-zA-Z-]+(?=\s*:)/g },
-		{ type: 'number', pattern: /\b\d+\.?\d*(px|em|rem|%|vh|vw|deg|s|ms)?\b/g },
-		{ type: 'function', pattern: /[a-zA-Z-]+(?=\()/g },
+		{ type: 'tag', pattern: /(?:^|\s|,)[a-zA-Z][a-zA-Z0-9-]*(?=\s*[{,:])/gm },
+		{ type: 'function', pattern: /\.[a-zA-Z][a-zA-Z0-9_-]*/g },
+		{ type: 'variable', pattern: /#[a-zA-Z][a-zA-Z0-9_-]*(?=\s*[{,])/g },
 		{ type: 'variable', pattern: /--[a-zA-Z][a-zA-Z0-9-]*/g },
+		{ type: 'property', pattern: /[a-zA-Z-]+(?=\s*:)/g },
+		{ type: 'value', pattern: /#[a-fA-F0-9]{3,8}\b/g },
+		{ type: 'value', pattern: /:\s*[a-zA-Z-]+(?=[;\s}])/g },
+		{ type: 'number', pattern: /\b\d+\.?\d*/g },
+		{ type: 'attr', pattern: /(?:px|em|rem|%|vh|vw|vmin|vmax|ch|ex|deg|rad|turn|s|ms|fr)\b/g },
+		{ type: 'function', pattern: /[a-zA-Z-]+(?=\()/g },
 		{ type: 'punctuation', pattern: /[{}();:,]/g },
 	],
 	php: [
@@ -150,6 +156,17 @@ const languages: Record<string, Token[]> = {
 		{ type: 'number', pattern: /-?\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
 		{ type: 'keyword', pattern: /\b(true|false|null)\b/g },
 		{ type: 'punctuation', pattern: /[{}[\]:,]/g },
+	],
+	yaml: [
+		{ type: 'comment', pattern: /#.*$/gm },
+		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
+		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
+		{ type: 'property', pattern: /^[\s-]*[a-zA-Z_][a-zA-Z0-9_-]*(?=\s*:)/gm },
+		{ type: 'keyword', pattern: /\b(true|false|null|yes|no|on|off)\b/gi },
+		{ type: 'number', pattern: /\b\d+\.?\d*\b/g },
+		{ type: 'variable', pattern: /\$\{\{[^}]+\}\}/g },
+		{ type: 'attr', pattern: /(?<=:\s*)[a-zA-Z][a-zA-Z0-9_.-]*(?=\s*$)/gm },
+		{ type: 'punctuation', pattern: /[[\]:,|>-]/g },
 	],
 	bash: [
 		{ type: 'comment', pattern: /#.*$/gm },
@@ -186,6 +203,7 @@ const languages: Record<string, Token[]> = {
 	scss: [], // alias for css, filled below
 	less: [], // alias for css, filled below
 	ascii: [], // alias for diagram
+	yml: [], // alias for yaml
 	plaintext: [],
 	text: [],
 };
@@ -199,6 +217,7 @@ languages.less = languages.css;
 languages.js = languages.javascript;
 languages.ts = languages.typescript;
 languages.ascii = languages.diagram;
+languages.yml = languages.yaml;
 
 /**
  * Highlight code string with the specified language
@@ -370,6 +389,15 @@ export function guessLanguageFromContent(code: string): string {
 	const codeWithoutComments = code.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '').trim();
 	if (/^[\[{]/.test(codeWithoutComments) && /"[^"]*"\s*:/.test(code) && !(/\bfunction\b/.test(code))) {
 		return 'json';
+	}
+
+	// YAML detection - key: value pairs, list items with -, no braces required
+	if (
+		(/^[a-zA-Z_][a-zA-Z0-9_-]*:\s*$/m.test(code) || /^[a-zA-Z_][a-zA-Z0-9_-]*:\s+\S/m.test(code)) &&
+		(/^\s*-\s+/m.test(code) || /^\s+[a-zA-Z_][a-zA-Z0-9_-]*:/m.test(code)) &&
+		!/[{};]/.test(code)
+	) {
+		return 'yaml';
 	}
 
 	// Bash/Shell detection - must be before CSS (# comments vs #id selectors)
