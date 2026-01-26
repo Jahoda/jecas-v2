@@ -3,6 +3,7 @@
 	import { toggle, toggleClass, zkopirovat } from '$lib/post/utils';
 	import LiveDemo from '$lib/liveDemo/LiveDemo.svelte';
 	import { afterNavigate } from '$app/navigation';
+	import { highlightAllCodeBlocks } from '$lib/highlight';
 
 	interface Props {
 		content: string;
@@ -30,6 +31,12 @@
 		}
 	}
 
+	function applyCodeHighlighting() {
+		if (postContent) {
+			highlightAllCodeBlocks(postContent);
+		}
+	}
+
 	onMount(() => {
 		window.toggleClass = toggleClass;
 		window.toggle = toggle;
@@ -37,6 +44,7 @@
 	});
 
 	afterNavigate(() => {
+		applyCodeHighlighting();
 		attachLiveCode();
 	});
 </script>

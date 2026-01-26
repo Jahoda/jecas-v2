@@ -216,6 +216,120 @@ code {
 	@apply px-0.5;
 }
 
+/* Syntax Highlighting */
+pre.hl-pre {
+	@apply relative overflow-x-auto;
+}
+
+pre.hl-pre::before {
+	content: attr(data-language);
+	@apply absolute top-0 right-0 rounded-bl bg-gray-200 px-2 py-0.5 text-xs text-gray-500 uppercase dark:bg-gray-700 dark:text-gray-400;
+}
+
+pre.hl-pre code {
+	@apply !text-gray-800 dark:!text-gray-200;
+}
+
+/* Token colors - Light mode */
+.hl-keyword {
+	@apply text-purple-600 font-semibold;
+}
+
+.hl-string {
+	@apply text-green-600;
+}
+
+.hl-comment {
+	@apply text-gray-500 italic;
+}
+
+.hl-number {
+	@apply text-orange-600;
+}
+
+.hl-function {
+	@apply text-blue-600;
+}
+
+.hl-operator {
+	@apply text-gray-700;
+}
+
+.hl-tag {
+	@apply text-pink-600 font-semibold;
+}
+
+.hl-attr {
+	@apply text-orange-500;
+}
+
+.hl-value {
+	@apply text-green-600;
+}
+
+.hl-punctuation {
+	@apply text-gray-600;
+}
+
+.hl-variable {
+	@apply text-red-600;
+}
+
+.hl-property {
+	@apply text-cyan-600;
+}
+
+/* Token colors - Dark mode */
+@media (prefers-color-scheme: dark) {
+	.hl-keyword {
+		@apply text-purple-400;
+	}
+
+	.hl-string {
+		@apply text-green-400;
+	}
+
+	.hl-comment {
+		@apply text-gray-500;
+	}
+
+	.hl-number {
+		@apply text-orange-400;
+	}
+
+	.hl-function {
+		@apply text-blue-400;
+	}
+
+	.hl-operator {
+		@apply text-gray-400;
+	}
+
+	.hl-tag {
+		@apply text-pink-400;
+	}
+
+	.hl-attr {
+		@apply text-orange-300;
+	}
+
+	.hl-value {
+		@apply text-green-400;
+	}
+
+	.hl-punctuation {
+		@apply text-gray-500;
+	}
+
+	.hl-variable {
+		@apply text-red-400;
+	}
+
+	.hl-property {
+		@apply text-cyan-400;
+	}
+}
+
 .prose button:not(.custom-button) {
 	@apply bg-blue-light hover:bg-blue-dark inline-flex items-center gap-2 truncate rounded-lg px-4 py-2 leading-6 font-semibold text-white transition-all active:translate-y-0.5;
 }
