@@ -3,7 +3,7 @@ title: "CSS selektory"
 headline: null
 background: "#0271BB"
 color: "null"
-status: 0
+status: 1
 ---
 
 <p>Detailní popis vybraných CSS 3 selektorů.</p>

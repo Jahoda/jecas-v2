@@ -272,16 +272,14 @@ export async function getAllTags(): Promise<Tag[]> {
 
 export async function getAllUsedTags(): Promise<Tag[]> {
 	const allTags = await getAllTags();
-	// Filter: must have articles (count > 0) AND be active (status === 1)
-	return allTags.filter((tag) => (tag.count || 0) > 0 && tag.status === 1);
+	return allTags.filter((tag) => (tag.count || 0) > 0);
 }
 
 export async function getSingleTagBySlug(slug: string): Promise<Tag | undefined> {
 	const tags = await loadAllTagFiles();
 	const tag = tags.get(slug);
 
-	// Return undefined for non-existent or draft tags
-	if (!tag || tag.status !== 1) return undefined;
+	if (!tag) return undefined;
 
 	// Add usage count
 	const allCounts = await calculateAllUsageCounts();
