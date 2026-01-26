@@ -330,7 +330,9 @@ export function guessLanguageFromContent(code: string): string {
 		/=>\s*[{(]/.test(code) ||
 		/\b(?:const|let|var)\s+\w+\s*=/.test(code) ||
 		/\bfunction\s+\w+\s*\(/.test(code) ||
-		/\bnew\s+(?:Promise|Map|Set|Array|Object|Date|RegExp)\b/.test(code)
+		/\bnew\s+(?:Promise|Map|Set|Array|Object|Date|RegExp)\b/.test(code) ||
+		/\.\s*(?:style|value|length|className|classList|dataset|textContent|innerText)\b/.test(code) ||
+		/\.\s*(?:push|pop|shift|unshift|map|filter|reduce|forEach|find|some|every|includes|indexOf|slice|splice|join|split|replace|match|test)\s*\(/.test(code)
 	) {
 		return 'javascript';
 	}
