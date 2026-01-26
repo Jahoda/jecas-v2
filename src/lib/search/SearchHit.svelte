@@ -29,6 +29,7 @@
 	let isTag = $derived(hit.type === 'tag');
 </script>
 
-<div onmouseenter={onhover}>
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<div onmouseenter={onhover} role="presentation">
 	<MainPost neutral {title} {description} {selected} small slug={hit.url_slug} noImage={isTag} />
 </div>
