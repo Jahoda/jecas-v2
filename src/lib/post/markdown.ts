@@ -157,11 +157,23 @@ export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
 }
 
 export async function getSinglePostBySlug(slug: string): Promise<MarkdownPost | undefined> {
+	// Debug: Check if the file exists in postModules
+	if (slug === 'js-parsovani-cisel') {
+		const expectedPath = `/content/posts/${slug}.md`;
+		const exists = expectedPath in postModules;
+		console.log('DEBUG getSinglePostBySlug:', slug);
+		console.log('DEBUG expectedPath:', expectedPath);
+		console.log('DEBUG exists in postModules:', exists);
+		console.log('DEBUG postModules keys count:', Object.keys(postModules).length);
+		if (!exists) {
+			console.log('DEBUG sample keys:', Object.keys(postModules).slice(0, 5));
+		}
+	}
+
 	const cache = await loadAllPostsToCache();
 	const post = cache.get(slug);
 	if (!post && slug === 'js-parsovani-cisel') {
-		console.warn('DEBUG getSinglePostBySlug: js-parsovani-cisel not found in cache');
-		console.warn('DEBUG cache keys sample:', Array.from(cache.keys()).slice(0, 10));
+		console.warn('DEBUG cache miss for js-parsovani-cisel');
 		console.warn('DEBUG cache size:', cache.size);
 	}
 	return post;
