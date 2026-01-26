@@ -13,6 +13,15 @@ export const entries: EntryGenerator = async () => {
 	const posts = await getAllPosts();
 	const tags = await getAllUsedTags();
 
+	// Debug: Check if js-parsovani-cisel is in posts
+	const jsParsovani = posts.find((p) => p.url_slug === 'js-parsovani-cisel');
+	if (!jsParsovani) {
+		console.warn('WARNING: js-parsovani-cisel NOT found in getAllPosts()!');
+		console.warn('Total posts:', posts.length);
+	} else {
+		console.log('OK: js-parsovani-cisel found, date:', jsParsovani.date);
+	}
+
 	const postEntries = posts.map((post) => ({ slug: post.url_slug }));
 	const tagEntries = tags.map((tag) => ({ slug: tag.url_slug }));
 
