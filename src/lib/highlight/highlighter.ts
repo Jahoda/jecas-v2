@@ -116,16 +116,28 @@ const languages: Record<string, Token[]> = {
 		{ type: 'comment', pattern: /\/\*[\s\S]*?\*\//g },
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
 		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
+		// @rules
 		{ type: 'keyword', pattern: /@[a-zA-Z][a-zA-Z0-9-]*/g },
-		{ type: 'tag', pattern: /(?:^|\s|,)[a-zA-Z][a-zA-Z0-9-]*(?=\s*[{,:])/gm },
-		{ type: 'function', pattern: /\.[a-zA-Z][a-zA-Z0-9_-]*/g },
-		{ type: 'variable', pattern: /#[a-zA-Z][a-zA-Z0-9_-]*(?=\s*[{,])/g },
+		// Selectors - all pink (tag type)
+		{ type: 'tag', pattern: /\.[a-zA-Z][a-zA-Z0-9_-]*/g },
+		{ type: 'tag', pattern: /#[a-zA-Z][a-zA-Z0-9_-]*(?=\s*[{,])/g },
+		{ type: 'tag', pattern: /(?:^|\s|,)[a-zA-Z][a-zA-Z0-9-]*(?=\s*[{,])/gm },
+		{ type: 'tag', pattern: /\[[a-zA-Z][a-zA-Z0-9_-]*(?:[~|^$*]?=)?[^\]]*\]/g },
+		{ type: 'tag', pattern: /::?[a-zA-Z][a-zA-Z0-9-]*/g },
+		// CSS variables
 		{ type: 'variable', pattern: /--[a-zA-Z][a-zA-Z0-9-]*/g },
+		// Properties - cyan
 		{ type: 'property', pattern: /[a-zA-Z-]+(?=\s*:)/g },
+		// Values - green (keyword values after colon)
+		{ type: 'value', pattern: /(?<=:\s*)[a-zA-Z][a-zA-Z-]*(?=[\s;},])/g },
+		{ type: 'value', pattern: /(?<=:\s*)(?:[a-zA-Z-]+\s+)*[a-zA-Z-]+(?=\s*!important)/g },
 		{ type: 'value', pattern: /#[a-fA-F0-9]{3,8}\b/g },
-		{ type: 'value', pattern: /:\s*[a-zA-Z-]+(?=[;\s}])/g },
+		{ type: 'value', pattern: /!important\b/g },
+		// Numbers - orange
 		{ type: 'number', pattern: /\b\d+\.?\d*/g },
-		{ type: 'attr', pattern: /(?:px|em|rem|%|vh|vw|vmin|vmax|ch|ex|deg|rad|turn|s|ms|fr)\b/g },
+		// Units - different orange (attr)
+		{ type: 'attr', pattern: /(?<=\d)(?:px|em|rem|%|vh|vw|vmin|vmax|ch|ex|deg|rad|turn|s|ms|fr)\b/g },
+		// Functions like url(), calc(), rgb()
 		{ type: 'function', pattern: /[a-zA-Z-]+(?=\()/g },
 		{ type: 'punctuation', pattern: /[{}();:,]/g },
 	],
