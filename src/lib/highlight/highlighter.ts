@@ -379,6 +379,11 @@ export function guessLanguageFromContent(code: string): string {
 		return 'svelte';
 	}
 
+	// HTML detection - starts with HTML tag (before JS to avoid inline handlers triggering JS)
+	if (/^<[!a-zA-Z]/.test(trimmed) && !/^<[A-Z]/.test(trimmed)) {
+		return 'html';
+	}
+
 	// JSX/TSX detection - React components, JSX comments (before TS/JS)
 	const hasJsxComponents = /<[A-Z][a-zA-Z0-9]*[\s\/>]/.test(code) || /\{\/\*[\s\S]*?\*\/\}/.test(code);
 	const hasJsxReturn = /return\s*\(\s*</.test(code) || /return\s+<[a-zA-Z]/.test(code) || /=>\s*\(\s*</.test(code) || /=>\s*<[a-zA-Z]/.test(code);
@@ -396,7 +401,7 @@ export function guessLanguageFromContent(code: string): string {
 		return 'typescript';
 	}
 
-	// JavaScript detection - must be before HTML (template literals can contain HTML)
+	// JavaScript detection - must be before generic HTML check
 	// Strong JS indicators: DOM methods, arrow functions, async/await, variable declarations
 	if (
 		/\b(?:document|window|console)\.\w+/.test(code) ||
@@ -407,7 +412,6 @@ export function guessLanguageFromContent(code: string): string {
 		/\bfunction\s+\w+\s*\(/.test(code) ||
 		/\bfunction\s*\(\w+/.test(code) ||
 		/\bnew\s+(?:Promise|Map|Set|Array|Object|Date|RegExp)\b/.test(code) ||
-		/\.\s*(?:style|value|length|className|classList|dataset|textContent|innerText)\b/.test(code) ||
 		/\.\s*(?:push|pop|shift|unshift|map|filter|reduce|forEach|find|some|every|includes|indexOf|slice|splice|join|split|replace|match|test)\s*\(/.test(code) ||
 		/\bimport\s+.*\s+from\s+['"]/.test(code) ||
 		/\bexport\s+(?:default|const|let|var|function|class|async)\b/.test(code) ||
@@ -418,8 +422,8 @@ export function guessLanguageFromContent(code: string): string {
 		return 'javascript';
 	}
 
-	// HTML detection - starts with < tag (not in string context)
-	if (/^<[!a-zA-Z]/.test(trimmed) || /^\s*<\/?(?:div|span|p|a|ul|ol|li|table|tr|td|th|form|input|button|img|head|body|html|script|style|link|meta|h[1-6]|section|article|nav|header|footer|main|aside)\b/im.test(code)) {
+	// HTML detection - fallback for HTML that doesn't start with tag
+	if (/^\s*<\/?(?:div|span|p|a|ul|ol|li|table|tr|td|th|form|input|button|img|head|body|html|script|style|link|meta|h[1-6]|section|article|nav|header|footer|main|aside)\b/im.test(code)) {
 		return 'html';
 	}
 
