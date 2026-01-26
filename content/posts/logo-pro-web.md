@@ -8,21 +8,27 @@ tags: ["napady", "obrazky", "ux"]
 format: "html"
 ---
 
-<p>Logo je jedním z nejdůležitějších prvků visuální identity webu. Je to první věc, kterou návštěvník uvidí, a často rozhoduje o tom, zda si web zapamatuje.</p>
+<h2 id="dulezitost">Jak moc je logo důležité?</h2>
 
-<p>Kvalitní logo buduje důvěru, odlišuje od konkurence a pomáhá vytvářet konsistentní značku napříč všemi kanály.</p>
+<p><b>Upřímně? Mnohem méně, než si většina lidí myslí.</b> Logo má minimální vliv na obchodní úspěch projektu. Kvalita produktu, marketing, zákaznický servis a cenová politika jsou nesrovnatelně důležitější.</p>
+
+<p>Začínající projekty často tráví týdny laděním loga, zatímco by měly řešit důležitější věci. Dokud nemáte tisíce zákazníků, nikdo si vaše logo stejně nezapamatuje.</p>
+
+<p>Praktická rada: <b>Věnujte tvorbě loga maximálně pár hodin.</b> Použijte jednoduchý text ve slušném fontu a vraťte se k logu až když bude projekt úspěšný a budete mít důvod investovat do rebrandingu.</p>
+
+<p>Pokud přesto chcete vytvořit logo hned na začátku, čtěte dál.</p>
 
 <h2 id="typy-log">Typy log</h2>
 
-<p>Než začnete s návrhem, je důležité rozhodnout se, jaký typ loga chcete vytvořit.</p>
+<p>Než začnete s návrhem, je důležité rozhodnout se, jaký typ loga chcete vytvořit.</p>
 
 <h3 id="wordmark">Wordmark (logotyp)</h3>
 
-<p>Logo složené pouze z názvu společnosti ve specifickém fontu. Příklady: <b>Google</b>, <b>Coca-Cola</b>, <b>FedEx</b>.</p>
+<p>Logo složené pouze z názvu společnosti ve specifickém fontu. Příklady: <b>Google</b>, <b>Coca-Cola</b>, <b>FedEx</b>.</p>
 
 <p>Výhody:</p>
 <ul>
-    <li>Jednoduchost a čitelnost</li>
+    <li>Jednoduchost a čitelnost</li>
     <li>Název je přímo součástí loga</li>
     <li>Funguje dobře pro kratší názvy</li>
 </ul>
@@ -31,19 +37,19 @@ format: "html"
 
 <p>Logo tvořené iniciálami nebo zkratkou. Příklady: <b>IBM</b>, <b>HBO</b>, <b>NASA</b>.</p>
 
-<p>Hodí se pro společnosti s dlouhými názvy nebo když chcete vytvořit kompaktní symbol.</p>
+<p>Hodí se pro společnosti s dlouhými názvy nebo když chcete vytvořit kompaktní symbol.</p>
 
 <h3 id="pictorial">Pictorial mark (symbol)</h3>
 
 <p>Obrazový symbol bez textu. Příklady: jablko <b>Apple</b>, ptáček <b>Twitter</b>, swoosh <b>Nike</b>.</p>
 
-<p>Tento typ vyžaduje již zavedenou značku, protože sám o sobě neříká název společnosti.</p>
+<p>Tento typ vyžaduje již zavedenou značku, protože sám o sobě neříká název společnosti.</p>
 
 <h3 id="combination">Combination mark</h3>
 
-<p>Kombinace symbolu a textu. Nejčastější typ loga. Příklady: <b>Adidas</b>, <b>Burger King</b>, <b>Lacoste</b>.</p>
+<p>Kombinace symbolu a textu. Nejčastější typ loga. Příklady: <b>Adidas</b>, <b>Burger King</b>, <b>Lacoste</b>.</p>
 
-<p>Nabízí flexibilitu – symbol i text lze používat samostatně.</p>
+<p>Nabízí flexibilitu – symbol i text lze používat samostatně.</p>
 
 <h3 id="emblem">Emblem (znak)</h3>
 
@@ -57,27 +63,27 @@ format: "html"
 
 <h3 id="jednoduchost">Jednoduchost</h3>
 
-<p>Jednoduché logo je snáze zapamatovatelné a funguje ve všech velikostech. Vyvarujte se příliš mnoha detailů a složitých tvarů.</p>
+<p>Jednoduché logo je snáze zapamatovatelné a funguje ve všech velikostech. Vyvarujte se příliš mnoha detailů a složitých tvarů.</p>
 
 <p>Otestujte si logo zmenšené na 16×16 pixelů (velikost faviconu) – pokud je stále rozpoznatelné, jste na dobré cestě.</p>
 
 <h3 id="nadcasovost">Nadčasovost</h3>
 
-<p>Trendy přicházejí a odcházejí. Logo by mělo fungovat roky, ne měsíce. Vyhněte se módním efektům jako přehnané stíny, 3D efekty nebo aktuálně populární styly.</p>
+<p>Trendy přicházejí a odcházejí. Logo by mělo fungovat roky, ne měsíce. Vyhněte se módním efektům jako přehnané stíny, 3D efekty nebo aktuálně populární styly.</p>
 
 <h3 id="versatilita">Versatilita</h3>
 
 <p>Logo musí fungovat:</p>
 <ul>
-    <li>Na světlém i tmavém pozadí</li>
-    <li>V barevné i černobílé versi</li>
-    <li>Ve velkém i malém rozměru</li>
-    <li>Na obrazovce i v tisku</li>
+    <li>Na světlém i tmavém pozadí</li>
+    <li>V barevné i černobílé versi</li>
+    <li>Ve velkém i malém rozměru</li>
+    <li>Na obrazovce i v tisku</li>
 </ul>
 
 <h3 id="relevance">Relevance</h3>
 
-<p>Logo by mělo odpovídat oboru a cílové skupině. Právnická kancelář potřebuje jiné logo než herní studio.</p>
+<p>Logo by mělo odpovídat oboru a cílové skupině. Právnická kancelář potřebuje jiné logo než herní studio.</p>
 
 <h2 id="nastroje">Nástroje pro tvorbu loga</h2>
 
@@ -124,23 +130,23 @@ format: "html"
 <p>Pro rychlé prototypy nebo jednoduché projekty:</p>
 
 <ul>
-    <li><a href="https://www.canva.com">Canva</a> – jednoduchý editor s šablonami</li>
+    <li><a href="https://www.canva.com">Canva</a> – jednoduchý editor s šablonami</li>
     <li><a href="https://hatchful.shopify.com">Shopify Hatchful</a> – bezplatný generátor</li>
     <li><a href="https://looka.com">Looka</a> – AI generátor log</li>
     <li><a href="https://www.brandmark.io">Brandmark</a> – AI návrhy log</li>
 </ul>
 
-<p>Online generátory jsou dobré pro inspiraci, ale výsledky bývají generické a často se opakují.</p>
+<p>Online generátory jsou dobré pro inspiraci, ale výsledky bývají generické a často se opakují.</p>
 
 <h3 id="ai-nastroje">AI nástroje</h3>
 
 <p>Moderní AI nástroje jako <b>Midjourney</b>, <b>DALL-E</b> nebo <b>Stable Diffusion</b> mohou generovat návrhy log.</p>
 
-<p>Pozor ale na to, že AI generuje rastrové obrázky, které je potřeba následně převést na vektory. Také není zaručena unikátnost – podobný výstup může dostat i někdo jiný.</p>
+<p>Pozor ale na to, že AI generuje rastrové obrázky, které je potřeba následně převést na vektory. Také není zaručena unikátnost – podobný výstup může dostat i někdo jiný.</p>
 
 <h2 id="barvy">Výběr barev</h2>
 
-<p>Barvy mají psychologický vliv a nesou význam.</p>
+<p>Barvy mají psychologický vliv a nesou význam.</p>
 
 <table>
     <thead>
@@ -184,7 +190,7 @@ format: "html"
     </tbody>
 </table>
 
-<p>Doporučení: Použijte maximálně <b>2–3 barvy</b>. Více barev působí chaoticky a zhoršuje zapamatovatelnost.</p>
+<p>Doporučení: Použijte maximálně <b>2–3 barvy</b>. Více barev působí chaoticky a zhoršuje zapamatovatelnost.</p>
 
 <h2 id="fonty">Výběr fontu</h2>
 
@@ -192,21 +198,21 @@ format: "html"
 
 <h3 id="serif">Serifové fonty</h3>
 
-<p>Písma s patkami (Times New Roman, Georgia). Působí tradičně, důvěryhodně a elegantně. Vhodné pro právníky, finance, luxusní značky.</p>
+<p>Písma s patkami (Times New Roman, Georgia). Působí tradičně, důvěryhodně a elegantně. Vhodné pro právníky, finance, luxusní značky.</p>
 
 <h3 id="sans-serif">Bezserifové fonty</h3>
 
-<p>Písma bez patek (Helvetica, Arial, Roboto). Moderní, čisté, přístupné. Vhodné pro technologické firmy a startupy.</p>
+<p>Písma bez patek (Helvetica, Arial, Roboto). Moderní, čisté, přístupné. Vhodné pro technologické firmy a startupy.</p>
 
-<h3 id="display">Display a dekorativní fonty</h3>
+<h3 id="display">Display a dekorativní fonty</h3>
 
 <p>Výrazné fonty pro specifické použití. Mohou být zajímavé, ale snižují čitelnost. Používejte opatrně.</p>
 
-<p>Tip: Nikdy nepoužívejte více než <b>dva fonty</b> v jednom logu.</p>
+<p>Tip: Nikdy nepoužívejte více než <b>dva fonty</b> v jednom logu.</p>
 
 <h2 id="formaty">Formáty pro web</h2>
 
-<p>Pro použití na webu potřebujete logo v několika formátech.</p>
+<p>Pro použití na webu potřebujete logo v několika formátech.</p>
 
 <h3 id="svg">SVG (doporučeno)</h3>
 
@@ -228,20 +234,20 @@ format: "html"
 
 <h3 id="png">PNG</h3>
 
-<p>Rastrový formát s průhledností. Používejte jako zálohu pro starší systémy nebo tam, kde SVG není podporováno.</p>
+<p>Rastrový formát s průhledností. Používejte jako zálohu pro starší systémy nebo tam, kde SVG není podporováno.</p>
 
-<p>Připravte verse v různých velikostech: 1×, 2× a 3× pro různé hustoty pixelů.</p>
+<p>Připravte verse v různých velikostech: 1×, 2× a 3× pro různé hustoty pixelů.</p>
 
 <h3 id="favicon">Favicon</h3>
 
-<p>Malá ikona zobrazovaná v záložce prohlížeče. Potřebné velikosti:</p>
+<p>Malá ikona zobrazovaná v záložce prohlížeče. Potřebné velikosti:</p>
 
 <ul>
-    <li><b>16×16 px</b> – základní favicon</li>
-    <li><b>32×32 px</b> – záložky, panely</li>
-    <li><b>180×180 px</b> – Apple touch icon</li>
-    <li><b>192×192 px</b> – Android ikona</li>
-    <li><b>512×512 px</b> – PWA ikona</li>
+    <li><b>16×16 px</b> – základní favicon</li>
+    <li><b>32×32 px</b> – záložky, panely</li>
+    <li><b>180×180 px</b> – Apple touch icon</li>
+    <li><b>192×192 px</b> – Android ikona</li>
+    <li><b>512×512 px</b> – PWA ikona</li>
 </ul>
 
 <pre><code>&lt;link rel="icon" type="image/svg+xml" href="/favicon.svg"&gt;
@@ -268,8 +274,8 @@ format: "html"
 <p>Než logo nasadíte na web, ověřte následující:</p>
 
 <ul>
-    <li>Funguje na světlém i tmavém pozadí</li>
-    <li>Je čitelné i při malé velikosti (16 px)</li>
+    <li>Funguje na světlém i tmavém pozadí</li>
+    <li>Je čitelné i při malé velikosti (16 px)</li>
     <li>Máte SVG versi pro web</li>
     <li>Máte PNG verse pro různé hustoty pixelů</li>
     <li>Favicon je připraven ve všech potřebných velikostech</li>
@@ -292,14 +298,14 @@ format: "html"
 
 <h2 id="zaver">Závěr</h2>
 
-<p>Vytvoření kvalitního loga vyžaduje čas a promyšlený přístup. Klíčové body:</p>
+<p>Nejdůležitější rada: <b>Netravte na logu víc času, než je nutné.</b> Pro začínající projekt stačí název ve slušném fontu.</p>
+
+<p>Pokud se přesto rozhodnete vytvořit propracovanější logo:</p>
 
 <ul>
-    <li>Zvolte typ loga podle potřeb vaší značky</li>
-    <li>Držte se principů jednoduchosti a nadčasovosti</li>
+    <li>Držte se jednoduchosti – složité logo nikomu nepomůže</li>
     <li>Používejte vektorovou grafiku (SVG)</li>
-    <li>Připravte varianty pro různé velikosti a kontexty</li>
-    <li>Testujte logo v reálných podmínkách před nasazením</li>
+    <li>Připravte favicon a základní varianty</li>
 </ul>
 
-<p>Pokud nejste designér, zvažte spolupráci s profesionálem. Kvalitní logo je investice, která se vyplatí.</p>
+<p>Logo můžete kdykoliv později změnit. Mnoho úspěšných firem prošlo několika redesigny. Soustřeďte energii na produkt a zákazníky – to je to, co skutečně rozhoduje o úspěchu.</p>
