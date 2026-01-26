@@ -136,7 +136,8 @@ const languages: Record<string, Token[]> = {
 		// Numbers - orange
 		{ type: 'number', pattern: /\b\d+\.?\d*/g },
 		// Units - different orange (attr)
-		{ type: 'attr', pattern: /(?<=\d)(?:px|em|rem|%|vh|vw|vmin|vmax|ch|ex|deg|rad|turn|s|ms|fr)\b/g },
+		{ type: 'attr', pattern: /(?<=\d)(?:px|em|rem|vh|vw|vmin|vmax|ch|ex|deg|rad|turn|s|ms|fr)\b/g },
+		{ type: 'attr', pattern: /(?<=\d)%/g },
 		// Functions like url(), calc(), rgb()
 		{ type: 'function', pattern: /[a-zA-Z-]+(?=\()/g },
 		{ type: 'punctuation', pattern: /[{}();:,]/g },
