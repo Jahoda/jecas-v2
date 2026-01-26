@@ -158,7 +158,13 @@ export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
 
 export async function getSinglePostBySlug(slug: string): Promise<MarkdownPost | undefined> {
 	const cache = await loadAllPostsToCache();
-	return cache.get(slug);
+	const post = cache.get(slug);
+	if (!post && slug === 'js-parsovani-cisel') {
+		console.warn('DEBUG getSinglePostBySlug: js-parsovani-cisel not found in cache');
+		console.warn('DEBUG cache keys sample:', Array.from(cache.keys()).slice(0, 10));
+		console.warn('DEBUG cache size:', cache.size);
+	}
+	return post;
 }
 
 export async function getPostsCount(): Promise<number> {
