@@ -168,7 +168,8 @@ async function calculateAllUsageCounts(): Promise<Map<string, number>> {
 
 				for (const tagName of post.tags) {
 					let matchingTag = Array.from(tags.values()).find(
-						(t) => removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
+						(t) =>
+							removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
 					);
 
 					if (!matchingTag) {
@@ -222,7 +223,8 @@ async function calculateAllTagPosts(): Promise<Map<string, string[]>> {
 
 				for (const tagName of post.tags) {
 					let matchingTag = Array.from(tags.values()).find(
-						(t) => removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
+						(t) =>
+							removeDiacritics(t.name.toLowerCase()) === removeDiacritics(tagName.toLowerCase())
 					);
 
 					if (!matchingTag) {
