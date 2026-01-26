@@ -86,6 +86,25 @@ const languages: Record<string, Token[]> = {
 		{ type: 'string', pattern: /=\s*'[^']*'/g },
 		{ type: 'punctuation', pattern: /[<>\/=]/g },
 	],
+	svelte: [
+		{ type: 'comment', pattern: /<!--[\s\S]*?-->/g },
+		{ type: 'comment', pattern: /\/\/.*$/gm },
+		{ type: 'comment', pattern: /\/\*[\s\S]*?\*\//g },
+		{ type: 'variable', pattern: /\$(?:state|props|derived|effect|bindable|inspect|host)\b/g },
+		{ type: 'tag', pattern: /\{[@#/:][a-zA-Z]+/g },
+		{ type: 'tag', pattern: /<\/?(?:script|style)(?=[\s>])/g },
+		{ type: 'tag', pattern: /<\/?[A-Z][a-zA-Z0-9]*(?=[\s\/>])/g },
+		{ type: 'tag', pattern: /<\/?(?:div|span|p|a|ul|ol|li|table|tr|td|th|form|input|button|img|h[1-6]|section|article|nav|header|footer|main|aside|label|textarea|select|option|slot|svelte:[\w-]+)(?=[\s\/>])/g },
+		{ type: 'attr', pattern: /\s(?:on:\w+|bind:\w+|class:\w+|use:\w+|in:\w+|out:\w+|transition:\w+|animate:\w+)(?=[\s=\/>])/g },
+		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9-]*(?=\s*=)/g },
+		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
+		{ type: 'string', pattern: /'(?:[^'\\]|\\.)*'/g },
+		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|null|undefined|true|false)\b/g },
+		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
+		{ type: 'function', pattern: /\b([a-zA-Z_$][a-zA-Z0-9_$]*)\s*(?=\()/g },
+		{ type: 'operator', pattern: /[+\-*/%=<>!&|^~?:]+/g },
+		{ type: 'punctuation', pattern: /[{}[\]();,.<>\/]/g },
+	],
 	css: [
 		{ type: 'comment', pattern: /\/\*[\s\S]*?\*\//g },
 		{ type: 'string', pattern: /"(?:[^"\\]|\\.)*"/g },
@@ -274,6 +293,16 @@ export function guessLanguageFromContent(code: string): string {
 	// ASCII art / diagram detection - box-drawing characters (boxes)
 	if (/[┌┐└┘├┤┬┴┼─│╔╗╚╝╠╣╦╩╬═║╭╮╯╰]/.test(code)) {
 		return 'diagram';
+	}
+
+	// Svelte detection - runes, directives, script/style tags with HTML
+	if (
+		/\$(?:state|props|derived|effect|bindable)\b/.test(code) ||
+		/\{[@#/:]\w+/.test(code) ||
+		(/<script[\s>]/.test(code) && /<\/script>/.test(code) && /<[a-z][\w-]*[\s>]/i.test(code)) ||
+		/\b(?:on|bind|class|use|transition|animate):\w+/.test(code)
+	) {
+		return 'svelte';
 	}
 
 	// JSX/TSX detection - React components, JSX comments (before TS/JS)
