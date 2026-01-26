@@ -96,6 +96,10 @@ async function loadAllTagFiles(): Promise<Map<string, Tag>> {
 
 	// Process all tag files in parallel for speed
 	const tagEntries = Object.entries(tagModules);
+
+	// Debug: log the number of tag files found
+	console.log(`[tags] Loading ${tagEntries.length} tag files`);
+
 	const processedTags = await Promise.all(
 		tagEntries.map(async ([filePath, fileContent]) => {
 			const { data: frontmatter, content } = matter(fileContent);
@@ -116,6 +120,9 @@ async function loadAllTagFiles(): Promise<Map<string, Tag>> {
 	for (const tag of processedTags) {
 		tags.set(tag.url_slug, tag);
 	}
+
+	// Debug: log if hacky exists
+	console.log(`[tags] Tag 'hacky' exists: ${tags.has('hacky')}`);
 
 	tagFilesCache = tags;
 	return tags;
@@ -233,6 +240,9 @@ export async function getAllUsedTags(): Promise<Tag[]> {
 export async function getSingleTagBySlug(slug: string): Promise<Tag | undefined> {
 	const tags = await loadAllTagFiles();
 	const tag = tags.get(slug);
+
+	// Debug: log lookup result
+	console.log(`[tags] getSingleTagBySlug('${slug}'): found=${!!tag}, totalTags=${tags.size}`);
 
 	if (!tag) return undefined;
 
