@@ -31,6 +31,10 @@ const languages: Record<string, Token[]> = {
 		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|static|get|set)\b/g },
 		// Built-in objects and constructors
 		{ type: 'tag', pattern: /\b(Array|Object|String|Number|Boolean|Function|Symbol|BigInt|Map|Set|WeakMap|WeakSet|Promise|Proxy|Reflect|Date|RegExp|Error|TypeError|ReferenceError|SyntaxError|Math|JSON|console|window|document|localStorage|sessionStorage|fetch|URL|URLSearchParams|FormData|Headers|Request|Response|AbortController|Event|EventTarget|Element|Node|NodeList|HTMLElement)\b/g },
+		// Variable declarations: const foo, let bar
+		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
+		// Function parameters
+		{ type: 'variable', pattern: /(?<=\bfunction\s+\w*\s*\()[^)]*(?=\))/g },
 		// Property access after dot
 		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
@@ -55,6 +59,8 @@ const languages: Record<string, Token[]> = {
 		{ type: 'attr', pattern: /\s[a-zA-Z][a-zA-Z0-9-]*(?=[\s\/>])/g },
 		// JS keywords
 		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|static|get|set)\b/g },
+		// Variable declarations
+		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
 		// Property access
 		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
@@ -80,6 +86,8 @@ const languages: Record<string, Token[]> = {
 		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|get|set)\b/g },
 		// Built-in types
 		{ type: 'value', pattern: /\b(string|number|boolean|object|symbol|bigint|any|unknown|never|void|null|undefined)\b/g },
+		// Variable declarations
+		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
 		// Property access
 		{ type: 'property', pattern: /(?<=\.)[a-zA-Z_$][a-zA-Z0-9_$]*(?![(\s]*[<])/g },
 		{ type: 'number', pattern: /\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
@@ -97,6 +105,8 @@ const languages: Record<string, Token[]> = {
 		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|get|set)\b/g },
 		// Built-in types
 		{ type: 'value', pattern: /\b(string|number|boolean|object|symbol|bigint|any|unknown|never|void|null|undefined)\b/g },
+		// Variable declarations
+		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
 		// Type/interface property names
 		{ type: 'property', pattern: /\b[a-zA-Z_$][a-zA-Z0-9_$]*(?=\??:)/g },
 		// Property access after dot
