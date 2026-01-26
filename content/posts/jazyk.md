@@ -383,7 +383,7 @@ kanonickou adresu v SERPu vždy použije <code>example.com/xx</code></p>
   <dt>Přijde ti postup s kanonickým odkazem v pořádku, nebo je lepší postupovat jinak?</dt>
   <dd>
     <p><b>Yuhů</b>: Já bych se smířil s tím přesměrováním, aby mohly vyhledávače pohodlně
-zaindexovat všechny jazykové verze na jejich URL.
+zaindexovat všechny jazykové verse na jejich URL.
 </p>
   </dd>
   <dt>Posílá SeznamBot hlavičku HTTP_ACCEPT_LANGUAGE, ze které lze detekovat češtinu?
