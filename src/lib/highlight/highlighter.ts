@@ -104,8 +104,11 @@ const languages: Record<string, Token[]> = {
 		{ type: 'variable', pattern: /\$\{[^}]+\}/g },
 		{ type: 'keyword', pattern: /\b(if|then|else|elif|fi|for|while|do|done|case|esac|in|function|return|exit|break|continue|export|source|alias|unalias|local|declare|readonly|unset|shift|eval|exec|trap|sudo)\b/g },
 		{ type: 'function', pattern: /\b(npm|yarn|pnpm|npx|node|deno|bun|git|docker|kubectl|curl|wget|pip|python|ruby|go|cargo|make|apt|brew|pacman|dnf|yum|cd|pwd|echo|printf|read|test|ls|cat|grep|awk|sed|chmod|mkdir|rm|cp|mv|touch|find|tar|zip|unzip|ssh|scp|rsync)\b/g },
-		{ type: 'operator', pattern: /[|&;<>]+|&&|\|\||--?[\w-]+/g },
-		{ type: 'punctuation', pattern: /[{}[\]();@]/g },
+		{ type: 'attr', pattern: /\b(install|uninstall|add|remove|run|start|build|init|create|clone|push|pull|commit|checkout|merge|rebase|status|log|diff|fetch|reset|stash|branch|tag|login|logout|publish|update|upgrade|config|set|get|list|show|info|help|version|exec|dev|test|lint|format|clean|deploy|serve|watch)\b/g },
+		{ type: 'property', pattern: /[\w.-]+@[\w.-]+/g },
+		{ type: 'operator', pattern: /--?[\w-]+/g },
+		{ type: 'operator', pattern: /[|&;<>]+|&&|\|\|/g },
+		{ type: 'punctuation', pattern: /[{}[\]();]/g },
 	],
 	shell: [], // alias for bash, filled below
 	sh: [], // alias for bash, filled below
