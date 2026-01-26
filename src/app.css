@@ -203,7 +203,47 @@
 }
 
 .live {
-	@apply relative rounded border border-blue-400 bg-blue-300 p-4 dark:border-blue-700 dark:bg-blue-800;
+	@apply relative overflow-hidden rounded-xl pt-10 pr-4 pb-4 pl-4;
+	background: #1e1e2e;
+	border: 1px solid #313244;
+	box-shadow:
+		0 4px 6px -1px rgba(0, 0, 0, 0.2),
+		0 10px 20px -5px rgba(0, 0, 0, 0.3);
+}
+
+.live::before {
+	content: '';
+	@apply absolute top-0 left-0 right-0 h-8;
+	background: linear-gradient(180deg, #2a2a3c 0%, #252536 100%);
+	border-bottom: 1px solid #313244;
+	background-image: radial-gradient(circle at 16px 50%, #ff5f56 5px, transparent 5px),
+		radial-gradient(circle at 36px 50%, #ffbd2e 5px, transparent 5px),
+		radial-gradient(circle at 56px 50%, #27ca41 5px, transparent 5px);
+}
+
+.live,
+.live * {
+	color: #cdd6f4;
+}
+
+@media (prefers-color-scheme: light) {
+	.live {
+		background: #f8fafc;
+		border: 1px solid #e2e8f0;
+		box-shadow:
+			0 4px 6px -1px rgba(0, 0, 0, 0.07),
+			0 10px 20px -5px rgba(0, 0, 0, 0.1);
+	}
+
+	.live::before {
+		background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+		border-bottom: 1px solid #cbd5e1;
+	}
+
+	.live,
+	.live * {
+		color: #334155;
+	}
 }
 
 code,
