@@ -143,6 +143,8 @@ const languages: Record<string, Token[]> = {
 		{ type: 'punctuation', pattern: /[{}[\]();,.*]/g },
 	],
 	json: [
+		{ type: 'comment', pattern: /\/\/.*$/gm },
+		{ type: 'comment', pattern: /\/\*[\s\S]*?\*\//g },
 		{ type: 'property', pattern: /"[^"]*"(?=\s*:)/g },
 		{ type: 'string', pattern: /"[^"]*"/g },
 		{ type: 'number', pattern: /-?\b\d+\.?\d*([eE][+-]?\d+)?\b/g },
@@ -364,8 +366,9 @@ export function guessLanguageFromContent(code: string): string {
 		return 'sql';
 	}
 
-	// JSON detection - starts with { or [ and has key-value pairs
-	if (/^\s*[\[{]/.test(trimmed) && /"[^"]*"\s*:/.test(code) && !(/\bfunction\b/.test(code))) {
+	// JSON/JSONC detection - starts with { or [ (or comment then {/[) and has key-value pairs
+	const codeWithoutComments = code.replace(/\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '').trim();
+	if (/^[\[{]/.test(codeWithoutComments) && /"[^"]*"\s*:/.test(code) && !(/\bfunction\b/.test(code))) {
 		return 'json';
 	}
 
