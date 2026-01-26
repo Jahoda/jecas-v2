@@ -6,16 +6,17 @@ date: '2025-09-17'
 last_modification: '2025-09-17'
 status: 1
 tags: ['formulare', 'ux', 'js']
+format: 'html'
 ---
 
 
-<p>V mnoha webových aplikacích, jako jsou e-shopy, fakturační systémy nebo registrační formuláře, je užitečné umožnit uživatelům předvyplnit firemní údaje na základě IČO (Identifikační číslo osoby) nebo DIČ (Daňové identifikační číslo). V České republice lze tyto údaje získat z veřejného registru ARES (Administrativní registr ekonomických subjektů), který spravuje Ministerstvo financí.</p>
+<p>V mnoha webových aplikacích, jako jsou e-shopy, fakturační systémy nebo registrační formuláře, je užitečné umožnit uživatelům předvyplnit firemní údaje na základě IČO (Identifikační číslo osoby) nebo DIČ (Daňové identifikační číslo). V České republice lze tyto údaje získat z veřejného registru ARES (Administrativní registr ekonomických subjektů), který spravuje Ministerstvo financí.</p>
 
-<p>Tento článek vysvětluje, jak data z ARES načíst a použít je pro předvyplnění formulářů. Ukážeme si příklad v JavaScriptu.</p>
+<p>Tento článek vysvětluje, jak data z ARES načíst a použít je pro předvyplnění formulářů. Ukážeme si příklad v JavaScriptu.</p>
 
 <h2 id="co-je-ares">Co je ARES?</h2>
 
-<p>ARES je veřejný registr, který obsahuje informace o firmách, podnikatelích a dalších subjektech v ČR. Mezi dostupné údaje patří:</p>
+<p>ARES je veřejný registr, který obsahuje informace o firmách, podnikatelích a dalších subjektech v ČR. Mezi dostupné údaje patří:</p>
 
 <ul>
 <li>Název firmy</li>
@@ -25,7 +26,7 @@ tags: ['formulare', 'ux', 'js']
 <li>A další</li>
 </ul>
 
-<h2 id="jak-nacist-data-z-ares">Jak načíst data z ARES</h2>
+<h2 id="jak-nacist-data-z-ares">Jak načíst data z ARES</h2>
 
 <p>Kromě jiných možností existuje Swagger dokumentace:</p>
 
@@ -39,12 +40,12 @@ tags: ['formulare', 'ux', 'js']
 
 <pre><code>https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/<b>XXX</b></code></pre>
 
-<p>Kde <code>XXX</code> je IČO. Odpověď je v <a href="/json">JSON</a> formátu.</p>
+<p>Kde <code>XXX</code> je IČO. Odpověď je v <a href="/json">JSON</a> formátu.</p>
 
 
 <h3>Živá ukázka</h3>
 
-<p>Zadejte platné IČO (například 27604977 pro Google Czech Republic) a klikněte na tlačítko:</p>
+<p>Zadejte platné IČO (například 27604977 pro Google Czech Republic) a klikněte na tlačítko:</p>
 
 <div class="live">
 <style>
@@ -135,7 +136,7 @@ tags: ['formulare', 'ux', 'js']
 <div class="ares-demo">
     <label for="ico-input">IČO:</label>
     <input type="text" id="ico-input">
-    <button id="load-button" onclick="loadCompanyData()">Načíst data z ARES</button>
+    <button id="load-button" onclick="loadCompanyData()">Načíst data z ARES</button>
     <div id="validation-message" class="validation-message"></div>
     
     <div id="result" class="ares-result">
@@ -181,7 +182,7 @@ function validateICO(ico) {
 }
 
 async function loadCompanyData() {
-    const ico = normalizeICO(document.getElementById('ico-input').value);
+    const ico = normaliseICO(document.getElementById('ico-input').value);
     const resultDiv = document.getElementById('result');
     const errorDiv = document.getElementById('error');
     const dataDiv = document.getElementById('company-data');
@@ -285,19 +286,19 @@ function updateValidationUI(ico) {
     }
 }
 
-function normalizeICO(value) {
+function normaliseICO(value) {
     return value.trim();
 }
 
 function shouldValidateInput(value) {
-    const normalized = normalizeICO(value);
-    if (!normalized) return false;
+    const normalised = normaliseICO(value);
+    if (!normalised) return false;
     
-    if (!/^\d*$/.test(normalized)) {
+    if (!/^\d*$/.test(normalised)) {
         return 'immediate';
     }
     
-    if (normalized.length === 8) {
+    if (normalised.length === 8) {
         return 'immediate';
     }
     
@@ -309,11 +310,11 @@ document.getElementById('ico-input').addEventListener('input', function(e) {
     errorDiv.style.display = 'none';
     
     const value = e.target.value;
-    const normalized = normalizeICO(value);
+    const normalised = normaliseICO(value);
     const shouldValidate = shouldValidateInput(value);
     
     if (shouldValidate === 'immediate') {
-        updateValidationUI(normalized);
+        updateValidationUI(normalised);
     } else {
         const message = document.getElementById('validation-message');
         message.textContent = '';
@@ -326,14 +327,14 @@ document.getElementById('ico-input').addEventListener('input', function(e) {
 
 document.getElementById('ico-input').addEventListener('blur', function(e) {
     const value = e.target.value;
-    const normalized = normalizeICO(value);
+    const normalised = normaliseICO(value);
     
-    if (value !== normalized) {
-        e.target.value = normalized;
+    if (value !== normalised) {
+        e.target.value = normalised;
     }
     
-    if (normalized) {
-        updateValidationUI(normalized);
+    if (normalised) {
+        updateValidationUI(normalised);
     }
 });
 
@@ -353,8 +354,8 @@ updateValidationUI('');
 <p>Po získání dat je jednoduše vložte do příslušných polí formuláře. Doporučuji:</p>
 
 <ul>
-<li>Přidat tlačítko „Načíst data z ARES“ vedle pole pro IČO.</li>
-<li>Ověřit formální platnost IČO (např. 8 čísel a zkontrolovat kontrolní číslici), aby se nemusela stahovat vzdálená data u evidentně špatně vyplněného pole.</li>
+<li>Přidat tlačítko „Načíst data z ARES“ vedle pole pro IČO.</li>
+<li>Ověřit formální platnost IČO (např. 8 čísel a zkontrolovat kontrolní číslici), aby se nemusela stahovat vzdálená data u evidentně špatně vyplněného pole.</li>
 <li>Umožnit uživateli data upravit, protože ARES nemusí být vždy aktuální.</li>
 <li>Neposílat požadavky na ARES příliš často, abyste se vyhnuli blokování.</li>
 </ul>
@@ -368,14 +369,14 @@ updateValidationUI('');
 <p>Nicméně našel jsem jen tyto zdroje pro získávání dat na základě DIČ, které ale nenabízejí tak jednoduché API:</p>
 
 <ul>
-<li><a href="https://adisspr.mfcr.cz/adis/jepo/epo/dpr/apl_ramce.htm?R=/dpr/DphReg?ZPRAC=FDPHI1%26poc_dic=2%26OK=Zobraz" target="_blank" rel="noopener noreferrer">Registr plátců DPH</a> – Ověření platnosti DIČ v ČR.</li>
-<li><a href="https://ec.europa.eu/taxation_customs/vies/#/vat-validation" target="_blank" rel="noopener noreferrer">EU VAT Validation</a> – Ověření DIČ v rámci EU.</li>
+<li><a href="https://adisspr.mfcr.cz/adis/jepo/epo/dpr/apl_ramce.htm?R=/dpr/DphReg?ZPRAC=FDPHI1%26poc_dic=2%26OK=Zobraz" target="_blank" rel="noopener noreferrer">Registr plátců DPH</a> – Ověření platnosti DIČ v ČR.</li>
+<li><a href="https://ec.europa.eu/taxation_customs/vies/#/vat-validation" target="_blank" rel="noopener noreferrer">EU VAT Validation</a> – Ověření DIČ v rámci EU.</li>
 </ul>
 
 
 <h2 id="zaver">Závěr</h2>
 
-<p>Použití ARES API výrazně zlepšuje uživatelskou zkušenost tím, že minimalisuje ruční zadávání dat. Implementace je jednoduchá a lze ji integrovat do jakéhokoli webového projektu.</p>
+<p>Použití ARES API výrazně zlepšuje uživatelskou zkušenost tím, že minimalisuje ruční zadávání dat. Implementace je jednoduchá a lze ji integrovat do jakéhokoli webového projektu.</p>
 
 
-<p>Pokud máte zkušenosti s ARES nebo tipy na lepší implementaci, nebo jak jednoduše získat data pro DIČ, dejte mi prosím vědět v komentářích.</p>
+<p>Pokud máte zkušenosti s ARES nebo tipy na lepší implementaci, nebo jak jednoduše získat data pro DIČ, dejte mi prosím vědět v komentářích.</p>

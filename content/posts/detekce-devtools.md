@@ -5,21 +5,21 @@ description: "Jak zjistit, že se na stránce otevřely vývojářské nástroje
 date: "2025-08-23"
 last_modification: "2025-08-23"
 status: 1
-tags: ["javascript", "hotova-reseni"]
+tags: ["js", "hotova-reseni"]
 format: "html"
 ---
 
-<p>Detekce otevření DevTools může být užitečná pro různé účely – od debugování až po pokus o bezpečnostní opatření. Existuje několik způsobů, jak zjišťovat, že uživatel otevřel vývojářské nástroje.</p>
+<p>Detekce otevření DevTools může být užitečná pro různé účely – od debugování až po pokus o bezpečnostní opatření. Existuje několik způsobů, jak zjišťovat, že uživatel otevřel vývojářské nástroje.</p>
 
-<p>Jsou i možnosti, jak se otevření <a href="/vyvojarske-nastroje">vývojářských nástrojů</a> snažit zabránit.</p>
+<p>Jsou i možnosti, jak se otevření <a href="/vyvojarske-nastroje">vývojářských nástrojů</a> snažit zabránit.</p>
 
 <blockquote>
 <p>Žádný způsob není 100%. Pokud nechcete, aby někdo viděl váš zdrojový kód, nedávejte ho na internet.</p>
 </blockquote>
 
-<h2 id="detekce">Detekce velikosti okna a její změny</h2>
+<h2 id="detekce">Detekce velikosti okna a její změny</h2>
 
-<p>Vychází se z úvahy, že otevření DevTools obvykle změní rozměry viewportu. Tato metoda funguje na principu rozdílu mezi vnější a vnitřní velikostí okna prohlížeče.</p>
+<p>Vychází se z úvahy, že otevření DevTools obvykle změní rozměry viewportu. Tato metoda funguje na principu rozdílu mezi vnější a vnitřní velikostí okna prohlížeče.</p>
 
 
 <h3 id="jak-funguje">Jak funguje</h3>
@@ -29,7 +29,7 @@ format: "html"
   <li>Rozdíl větší než např. 160px obvykle znamená otevřené DevTools</li>
 </ul>
 
-<p>Výhodou je nízká režie této detekce. Nevýhodou je nefunkčnost při DevTools v samostatném okně a falešně positivní vyhodnocení při otevření různých postranních panelů, pokud jimi prohlížeč disponuje.</p>
+<p>Výhodou je nízká režie této detekce. Nevýhodou je nefunkčnost při DevTools v samostatném okně a falešně positivní vyhodnocení při otevření různých postranních panelů, pokud jimi prohlížeč disponuje.</p>
 
 <div class="live">
   <style>
@@ -58,7 +58,7 @@ format: "html"
   
   <div id="demo1" class="devtools-demo">
     <div id="status1" class="status safe">DevTools nejsou detekovány</div>
-    <p>Zkuste otevřít DevTools (F12) a sledujte změnu stavu.</p>
+    <p>Zkuste otevřít DevTools (F12) a sledujte změnu stavu.</p>
   </div>
   
   <script>
@@ -100,7 +100,7 @@ format: "html"
 
 <p>Čas jde měřit přes <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance/now">Performance: now() metodu</a>.</p>
 
-<p>Problém je, že na rychlém hardwaru bude i volání s otevřenými DevTools hodně rychlé. Naopak při přetížení systému může být pomalé i volání bez DevTools.</p>
+<p>Problém je, že na rychlém hardwaru bude i volání s otevřenými DevTools hodně rychlé. Naopak při přetížení systému může být pomalé i volání bez DevTools.</p>
 
 <div class="live">
   <style>
@@ -230,7 +230,7 @@ format: "html"
 
 <h2 id="debugger">Detekce pomocí debugger</h2>
 
-<p>Použití <code>debugger</code> statementu. Tato metoda využívá skutečnost, že debugger statement způsobí pausu v kódu pouze při otevřených DevTools.</p>
+<p>Použití <code>debugger</code> statementu. Tato metoda využívá skutečnost, že debugger statement způsobí pausu v kódu pouze při otevřených DevTools.</p>
 
 <p>Při zavřených DevTools se debugger ignoruje (rychlé vykonání).</p>
 
@@ -300,7 +300,7 @@ format: "html"
     <p>Klikněte na tlačítko pro změření času vykonání debugger statementu. Při otevřených DevTools bude čas delší.</p>
     
     <div class="warning">
-      ⚠️ <strong>Pozor:</strong> Tento test může způsobovat pauzy v kódu při otevřených DevTools. 
+      ⚠️ <strong>Pozor:</strong> Tento test může způsobovat pauzy v kódu při otevřených DevTools. 
       Pokud máte DevTools otevřené, může se kód pozastavit na debugger statementu.
     </div>
     
@@ -383,9 +383,9 @@ format: "html"
 
 <h2 id="zablokovani-devtools">Zablokování otevření DevTools</h2>
 
-<p>Kromě detekce otevřených DevTools můžete také zkusit zabránit jejich otevření. Existuje několik způsobů, jak omezit přístup k vývojářským nástrojům.</p>
+<p>Kromě detekce otevřených DevTools můžete také zkusit zabránit jejich otevření. Existuje několik způsobů, jak omezit přístup k vývojářským nástrojům.</p>
 
-<p>Nejčastější způsob otevření DevTools je pomocí klávesových zkratek. Můžete je zachytit a zabránit jejich spuštění:</p>
+<p>Nejčastější způsob otevření DevTools je pomocí klávesových zkratek. Můžete je zachytit a zabránit jejich spuštění:</p>
 
 <pre><code class="language-javascript">document.addEventListener('keydown', function(event) {
     // F12
@@ -457,9 +457,9 @@ document.addEventListener('contextmenu', function(event) {
   </style>
   
   <div id="blockDemo" class="block-demo">
-    <div id="blockStatus" class="status active">Sledování pokusů o otevření DevTools</div>
+    <div id="blockStatus" class="status active">Sledování pokusů o otevření DevTools</div>
     <p>Zkuste otevřít DevTools pomocí <kbd>F12</kbd>, <kbd>Ctrl<kbd>+<kbd>Shift</kbd>+</kbd>I</kbd> nebo pravého kliknutí. Pokusy budou zaznamenány, ale DevTools se otevřou normálně.</p>
-    <div id="blockAttempts" class="attempts">Pokusy o otevření: 0</div>
+    <div id="blockAttempts" class="attempts">Pokusy o otevření: 0</div>
   </div>
   
   <script>
@@ -573,7 +573,7 @@ document.addEventListener('contextmenu', function(event) {
 
 <h2 id="obfuskace">Obfuskace kódu</h2>
 
-<p>Obfuskace kódu se snaží ztížit jeho čtení a modifikaci. Vzhledem k tomu, že z podstaty webu se všechny skripty a styly stahují k uživateli, má k nim vždy přístup.</p>
+<p>Obfuskace kódu se snaží ztížit jeho čtení a modifikaci. Vzhledem k tomu, že z podstaty webu se všechny skripty a styly stahují k uživateli, má k nim vždy přístup.</p>
 
 <p>Pro <i>ochranu</i> kódu lze použít nějaký nástroj pro obfuskaci: <a href="https://github.com/javascript-obfuscator/javascript-obfuscator">JavaScript obfuscator</a> (<a href="https://obfuscator.io">online</a>).</p>
 
@@ -581,7 +581,7 @@ document.addEventListener('contextmenu', function(event) {
 
 <pre><code class="language-javascript">(function(_0x394301,_0x1aff2f){var _0x3cc9b5=_0xfda4,_0x4301eb=_0x394301();while(!![]){try{var _0x2eca77=-parseInt(_0x3cc9b5(0x191))/0x1+-parseInt(_0x3cc9b5(0x189))/0x2*(parseInt(_0x3cc9b5(0x190))/0x3)+-parseInt(_0x3cc9b5(0x18c))/0x4*(-parseInt(_0x3cc9b5(0x193))/0x5)+parseInt(_0x3cc9b5(0x18d))/0x6*(parseInt(_0x3cc9b5(0x192))/0x7)+parseInt(_0x3cc9b5(0x18b))/0x8+-parseInt(_0x3cc9b5(0x18e))/0x9*(-parseInt(_0x3cc9b5(0x188))/0xa)+-parseInt(_0x3cc9b5(0x18a))/0xb;if(_0x2eca77===_0x1aff2f)break;else _0x4301eb['push'](_0x4301eb['shift']());}catch(_0x35e1ed){_0x4301eb['push'](_0x4301eb['shift']());}}}(_0x195e,0xb12ed));function _0x195e(){var _0x493f9d=['26iVFDSU','5049627aPRImx','3813168pzeJjs','131872kqQiHw','269898aqDVfc','379521QRuwaA','log','327909QoSSmj','192311uHIQmu','175ybtpoA','60uohBYN','190qAZQCv'];_0x195e=function(){return _0x493f9d;};return _0x195e();}function _0xfda4(_0x5b891a,_0x428281){var _0x195e96=_0x195e();return _0xfda4=function(_0xfda4c9,_0x507e09){_0xfda4c9=_0xfda4c9-0x188;var _0x4464db=_0x195e96[_0xfda4c9];return _0x4464db;},_0xfda4(_0x5b891a,_0x428281);}function hi(){var _0x154fa1=_0xfda4;console[_0x154fa1(0x18f)]('Hello\x20World!');}hi();</code></pre>
 
-<p>Problém v dnešní době je, že lze kód relativně snadno deobfuskovat pomocí AI:</p>
+<p>Problém v dnešní době je, že lze kód relativně snadno deobfuskovat pomocí AI:</p>
 
 <p><img src="/files/detekce-devtools/rozmotani-kodu.png" alt="Rozmotání kódu" class="border" /></p>
 
@@ -599,5 +599,5 @@ document.addEventListener('contextmenu', function(event) {
 <h2 id="odkazy">Odkazy jinam</h2>
 
 <ul>
-  <li><a href="https://stackoverflow.com/questions/7798748/find-out-whether-chrome-console-is-open">Stack Overflow - Find out whether Chrome console is open</a></li>
+  <li><a href="https://stackoverflow.com/questions/7798748/find-out-whether-chrome-console-is-open">Stack Overflow – Find out whether Chrome console is open</a></li>
 </ul>

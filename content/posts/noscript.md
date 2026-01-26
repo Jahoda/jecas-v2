@@ -4,7 +4,7 @@ headline: "HTML značka <code>&lt;noscript></code>"
 description: "Značka noscript zobrazí obsah pouze když je vypnutý JavaScript."
 date: "2015-11-03"
 status: 1
-tags: ["html", "html-tagy", "javascript"]
+tags: ["html", "html-tagy", "js"]
 format: "html"
 ---
 
