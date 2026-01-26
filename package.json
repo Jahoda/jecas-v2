@@ -11,7 +11,9 @@
 		"lint": "prettier --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss --check .",
 		"format": "prettier --plugin prettier-plugin-svelte --plugin prettier-plugin-tailwindcss --write .",
 		"verify": "node scripts/verify-articles.js",
-		"verify:published": "node scripts/verify-articles.js --published --no-warnings"
+		"verify:published": "node scripts/verify-articles.js --published --no-warnings",
+		"verify:urls": "node scripts/verify-urls.js",
+		"verify:urls:prod": "node scripts/verify-urls.js --base-url=https://jecas.cz --published"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-vercel": "^6.3.1",
