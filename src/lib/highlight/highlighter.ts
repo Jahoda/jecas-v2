@@ -86,6 +86,12 @@ const languages: Record<string, Token[]> = {
 		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|get|set)\b/g },
 		// Built-in types
 		{ type: 'value', pattern: /\b(string|number|boolean|object|symbol|bigint|any|unknown|never|void|null|undefined)\b/g },
+		// Type/interface/enum names (after keyword)
+		{ type: 'value', pattern: /(?<=\b(?:type|interface|enum)\s+)[A-Z][a-zA-Z0-9_]*/g },
+		// Generic type parameters <T, U>
+		{ type: 'value', pattern: /(?<=<)[A-Z][a-zA-Z0-9_]*(?=[,>])/g },
+		// Type annotations after : (capitalized = custom type)
+		{ type: 'value', pattern: /(?<=:\s*)[A-Z][a-zA-Z0-9_]*(?![a-z(])/g },
 		// Variable declarations
 		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
 		// Property access
@@ -105,6 +111,14 @@ const languages: Record<string, Token[]> = {
 		{ type: 'keyword', pattern: /\b(const|let|var|function|return|if|else|for|while|do|switch|case|break|continue|new|class|extends|import|export|from|default|async|await|try|catch|finally|throw|typeof|instanceof|in|of|this|super|null|undefined|true|false|void|delete|yield|type|interface|enum|namespace|module|declare|readonly|public|private|protected|static|abstract|implements|as|is|keyof|infer|get|set)\b/g },
 		// Built-in types
 		{ type: 'value', pattern: /\b(string|number|boolean|object|symbol|bigint|any|unknown|never|void|null|undefined)\b/g },
+		// Type/interface/enum names (after keyword)
+		{ type: 'tag', pattern: /(?<=\b(?:type|interface|enum)\s+)[A-Z][a-zA-Z0-9_]*/g },
+		// Generic type parameters <T, U>
+		{ type: 'tag', pattern: /(?<=<)[A-Z][a-zA-Z0-9_]*(?=[,>])/g },
+		{ type: 'tag', pattern: /(?<=,\s*)[A-Z][a-zA-Z0-9_]*(?=[,>])/g },
+		// Type annotations after : or as (capitalized = custom type)
+		{ type: 'tag', pattern: /(?<=:\s*)[A-Z][a-zA-Z0-9_]*(?![a-z])/g },
+		{ type: 'tag', pattern: /(?<=\bas\s+)[A-Z][a-zA-Z0-9_]*/g },
 		// Variable declarations
 		{ type: 'variable', pattern: /(?<=\b(?:const|let|var)\s+)[a-zA-Z_$][a-zA-Z0-9_$]*/g },
 		// Type/interface property names
