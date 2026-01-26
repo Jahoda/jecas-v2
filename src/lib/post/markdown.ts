@@ -86,16 +86,21 @@ async function loadAllPostsToCache(): Promise<Map<string, MarkdownPost>> {
 
 	// Start loading and store the promise
 	loadingPromise = (async () => {
-		const postFiles = getPostFiles();
-		const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
+		try {
+			const postFiles = getPostFiles();
+			const posts = await Promise.all(postFiles.map((fileName) => parseMarkdownFile(fileName)));
 
-		const cache = new Map<string, MarkdownPost>();
-		for (const post of posts) {
-			cache.set(post.url_slug, post);
+			const cache = new Map<string, MarkdownPost>();
+			for (const post of posts) {
+				cache.set(post.url_slug, post);
+			}
+
+			postsCache = cache;
+			return cache;
+		} finally {
+			// Reset loading promise after completion
+			loadingPromise = null;
 		}
-
-		postsCache = cache;
-		return cache;
 	})();
 
 	return loadingPromise;
