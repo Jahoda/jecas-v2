@@ -31,7 +31,7 @@ header("Link: &lt;styl.css>; rel=stylesheet");
 <p>Připojení přes HTTP hlavičku má několik důležitých omezení:</p>
 
 <ul>
-  <li><strong>Nefunguje v Internet Exploreru</strong> – žádná verze IE nepodporuje <code>Link</code> hlavičku pro CSS</li>
+  <li><strong>Nefunguje v Internet Exploreru</strong> – žádná verse IE nepodporuje <code>Link</code> hlavičku pro CSS</li>
   <li><strong>Vyžaduje server-side kód</strong> – nelze použít na statických stránkách</li>
   <li><strong>Omezené možnosti</strong> – nelze použít <a href="/media">media queries</a> nebo podmíněné načítání</li>
   <li><strong>Cache management na straně serveru</strong> – cache musí být řízena na serveru, což může být méně praktické než u <code>&lt;link&gt;</code> elementu</li>

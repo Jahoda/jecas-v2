@@ -1,7 +1,7 @@
 ---
 title: "Shadow DOM"
 headline: "Shadow DOM"
-description: "Shadow DOM je technologie, která umožňuje vytvářet zapouzdřené komponenty s izolovaným CSS a JavaScriptem. Podíváme se na to, jak funguje a jak ji využít."
+description: "Shadow DOM je technologie, která umožňuje vytvářet zapouzdřené komponenty s isolovaným CSS a JavaScriptem. Podíváme se na to, jak funguje a jak ji využít."
 date: "2018-10-29"
 last_modification: "2018-10-29"
 status: 0
@@ -9,11 +9,11 @@ tags: ["shadow-dom", "web-components", "css", "js", "html"]
 format: "markdown"
 ---
 
-Shadow DOM je klíčovou součástí specifikace Web Components, která umožňuje vytvářet zapouzdřené HTML komponenty s izolovaným CSS a JavaScriptem. Tato technologie řeší problém s globálními styly a konflikty v CSS.
+Shadow DOM je klíčovou součástí specifikace Web Components, která umožňuje vytvářet zapouzdřené HTML komponenty s isolovaným CSS a JavaScriptem. Tato technologie řeší problém s globálními styly a konflikty v CSS.
 
 ## Co je Shadow DOM?
 
-Shadow DOM vytváří izolovaný DOM strom, který je připojen k elementu, ale je oddělený od hlavního dokumentu. To znamená, že styly a skripty uvnitř Shadow DOM neovlivňují zbytek stránky a naopak.
+Shadow DOM vytváří isolovaný DOM strom, který je připojen k elementu, ale je oddělený od hlavního dokumentu. To znamená, že styly a skripty uvnitř Shadow DOM neovlivňují zbytek stránky a naopak.
 
 ```html
 <div id="host">
@@ -44,7 +44,7 @@ V open režimu je Shadow DOM přístupný zvenčí pomocí `element.shadowRoot`.
 ```javascript
 const shadow = element.attachShadow({mode: 'closed'});
 ```
-V closed režimu je Shadow DOM zcela izolovaný a není přístupný zvenčí.
+V closed režimu je Shadow DOM zcela isolovaný a není přístupný zvenčí.
 
 ## Praktický příklad
 

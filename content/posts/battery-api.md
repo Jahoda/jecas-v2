@@ -13,7 +13,7 @@ format: "html"
 
 
 <h2 id="podpora">Podpora</h2>
-  <p>Kvůli risikům pro soukromí byla podpora Battery Status API v některých prohlížečích omezena nebo odstraněna. <b>Firefox</b> jej odstranil od verze 52, <b>Safari</b> nepodporuje. V <b>Chrome</b> je dostupné pouze v <b>secure contextu</b> (HTTPS) a podpora se může měnit. API používejte jen tehdy, když přináší jasný užitek.</p>
+  <p>Kvůli risikům pro soukromí byla podpora Battery Status API v některých prohlížečích omezena nebo odstraněna. <b>Firefox</b> jej odstranil od verse 52, <b>Safari</b> nepodporuje. V <b>Chrome</b> je dostupné pouze v <b>secure contextu</b> (HTTPS) a podpora se může měnit. API používejte jen tehdy, když přináší jasný užitek.</p>
   <p>Prohlížeče: Chrome/Edge/Opera – omezeně podporováno, Firefox – odstraněno, Safari – nepodporováno.</p>
 
   <div class="external-content"> 

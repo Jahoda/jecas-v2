@@ -97,25 +97,25 @@ format: 'html'
 </div>
 
 <script>
-function normalizeNumber(value) {
+function normaliseNumber(value) {
     return value.replace(/\s+/g, '');
 }
 
 function validateDemo(value) {
     if (!value) return { valid: null, message: 'Začněte psát a sledujte, kdy se zobrazí validace' };
     
-    const normalized = normalizeNumber(value);
+    const normalised = normaliseNumber(value);
     
-    if (!/^\d*$/.test(normalized)) {
+    if (!/^\d*$/.test(normalised)) {
         return { valid: false, message: '❌ Okamžitá chyba - obsahuje neplatné znaky' };
     }
     
-    if (normalized.length < 8) {
+    if (normalised.length < 8) {
         return { valid: null, message: '⏳ Čekám, můžete ještě dopsat...' };
     }
     
-    if (normalized.length === 8) {
-        const message = value !== normalized ? 
+    if (normalised.length === 8) {
+        const message = value !== normalised ? 
             '✅ Perfektní! Automaticky jsem odstranil mezery' : 
             '✅ Perfektní! Kompletní a platné číslo';
         return { valid: true, message: message };
@@ -126,10 +126,10 @@ function validateDemo(value) {
 
 function shouldValidateDemo(value) {
     if (!value) return false;
-    const normalized = normalizeNumber(value);
-    if (!/^\d*$/.test(normalized)) return 'immediate';
-    if (normalized.length === 8) return 'immediate';
-    if (normalized.length > 8) return 'immediate';
+    const normalised = normaliseNumber(value);
+    if (!/^\d*$/.test(normalised)) return 'immediate';
+    if (normalised.length === 8) return 'immediate';
+    if (normalised.length > 8) return 'immediate';
     return false;
 }
 

@@ -15,7 +15,7 @@ format: "html"
 
 <h2 id="proc-to-resit">Proč to řešit</h2>
 
-<p>Být citován v chatbotech je jako být v „top 3 výsledcích" v éře AI. I když AI odpovědi snižují celkové prokliky na weby, citované zdroje dostávají kvalifikovanou návštěvnost od uživatelů, kteří chtějí zjistit víc nebo ověřit informace. AI asistenti citují jen autoritativní zdroje – být mezi nimi posiluje vaši pozici experta a dostává vaši značku před miliony uživatelů. Lidé, kteří prokliknou z AI odpovědi, už mají kontext a přicházejí s konkrétním záměrem, což znamená vyšší šanci na konverzi než u běžného prokliku z vyhledávání.</p>
+<p>Být citován v chatbotech je jako být v „top 3 výsledcích" v éře AI. I když AI odpovědi snižují celkové prokliky na weby, citované zdroje dostávají kvalifikovanou návštěvnost od uživatelů, kteří chtějí zjistit víc nebo ověřit informace. AI asistenti citují jen autoritativní zdroje – být mezi nimi posiluje vaši posici experta a dostává vaši značku před miliony uživatelů. Lidé, kteří prokliknou z AI odpovědi, už mají kontext a přicházejí s konkrétním záměrem, což znamená vyšší šanci na konversi než u běžného prokliku z vyhledávání.</p>
 
 <ul>
   <li><b>Návštěvnost</b> – AI odpovědi omezují prokliky, o to důležitější je být zdrojem.</li>
@@ -40,13 +40,13 @@ format: "html"
 <ul>
   <li><b>Aplikace za přihlášením</b> – není co crawlovat, obsah není veřejný.</li>
   <li><b>Rychle se měnící data</b> – akciové kurzy, live skóre. AI pracuje se statickým obsahem.</li>
-  <li><b>Vizuálně závislé weby</b> – portfolia designérů, galerie. Text není hlavní hodnota.</li>
+  <li><b>Visuálně závislé weby</b> – portfolia designérů, galerie. Text není hlavní hodnota.</li>
   <li><b>Zábavní/virální obsah</b> – memes, sociální sítě. Citovatelnost není cíl.</li>
   <li><b>Velmi malé weby</b> – pár stránek bez ambice být zdrojem informací.</li>
   <li><b>Weby s citlivým obsahem</b> – kde nechcete být citováni bez kontroly kontextu.</li>
 </ul>
 
-<p><b>Pravidlo:</b> Pokud už děláte SEO a máte kvalitní informační obsah, AEO je přirozené rozšíření. Pokud je váš web primárně aplikace nebo vizuální prezentace, investujte jinde.</p>
+<p><b>Pravidlo:</b> Pokud už děláte SEO a máte kvalitní informační obsah, AEO je přirozené rozšíření. Pokud je váš web primárně aplikace nebo visuální presentace, investujte jinde.</p>
 
 <h2 id="zkratka">Zkrácený seznam priorit</h2>
 <ol>
@@ -80,7 +80,7 @@ format: "html"
 
 <h2 id="rozdily-seo">Rozdíly oproti klasickému SEO</h2>
 
-<p>Klasické SEO cílí na proklik a pozici ve výsledcích vyhledávání, zatímco optimalizace pro AI se zaměřuje na to, aby váš obsah byl citován jako zdroj v odpovědích AI asistentů – vyžaduje proto větší důraz na strojovou srozumitelnost (rozšířená JSON‑LD schémata, stabilní kotvy), segmentovatelnost obsahu a explicitní citovatelnost s ověřitelnými daty.</p>
+<p>Klasické SEO cílí na proklik a posici ve výsledcích vyhledávání, zatímco optimalisace pro AI se zaměřuje na to, aby váš obsah byl citován jako zdroj v odpovědích AI asistentů – vyžaduje proto větší důraz na strojovou srozumitelnost (rozšířená JSON‑LD schémata, stabilní kotvy), segmentovatelnost obsahu a explicitní citovatelnost s ověřitelnými daty.</p>
 <table>
   <tr>
     <td><b>Téma</b></td>
@@ -89,7 +89,7 @@ format: "html"
   </tr>
   <tr>
     <td>Primární cíl</td>
-    <td>Proklik na web, pozice ve výsledcích</td>
+    <td>Proklik na web, posice ve výsledcích</td>
     <td>Být citovaným/zdrojovým dokumentem v odpovědi</td>
   </tr>
   <tr>
@@ -100,7 +100,7 @@ format: "html"
   <tr>
     <td>Data pro stroje</td>
     <td>Rich snippets pro SERP</td>
-    <td>Rozšířená schémata, konzistentní JSON‑LD, datové feedy</td>
+    <td>Rozšířená schémata, konsistentní JSON‑LD, datové feedy</td>
   </tr>
   <tr>
     <td>Hodnocení kvality</td>
@@ -114,7 +114,7 @@ format: "html"
   </tr>
   <tr>
     <td>Měření</td>
-    <td>Imprese, prokliky, pozice</td>
+    <td>Imprese, prokliky, posice</td>
     <td>Počet citací/zmínek v odpovědích, referral z AI platforem</td>
   </tr>
   <tr>
@@ -153,7 +153,7 @@ format: "html"
   <li><b>Stabilní URL a kotvy</b> – per‑sekci/per‑odstavec kotvy, které se v čase nemění.</li>
   <li><b>Jasná tvrzení + zdroje</b> – explicitní závěry, data a odkazy na autoritativní zdroje.</li>
   <li><b>Kontext a metadata</b> – autor, <code>datePublished</code>, <code>dateModified</code>, kanonická URL a JSON‑LD.</li>
-  <li><b>Konzistentní HTML</b> – sémantika, opakovatelné selektory, bez závislosti na JS pro hlavní text.</li>
+  <li><b>Konsistentní HTML</b> – sémantika, opakovatelné selektory, bez závislosti na JS pro hlavní text.</li>
   <li><b>Copy‑friendly UI</b> – možnost „zkopírovat odkaz na odstavec“ nebo permalink ikona.</li>
   </ul>
 
@@ -185,7 +185,7 @@ format: "html"
   <li><b>Core Web Vitals</b> – rychlé načtení a stabilní layout.</li>
   <li><b>Robots + sitemapa</b> – přístupnost obsahu, jasně vyloučené části.</li>
   <li><b>Kanonické URL</b> – zamezí duplicitám a ředění signálů.</li>
-  <li><b>Jazyk</b> – <code>lang="cs"</code>, případně <code>hreflang</code> verze.</li>
+  <li><b>Jazyk</b> – <code>lang="cs"</code>, případně <code>hreflang</code> verse.</li>
   <li><b>Open Graph + Twitter</b> – lepší sdílení i pro nástroje.</li>
   </ul>
 
@@ -197,7 +197,7 @@ format: "html"
   <li><b>Microsoft Copilot (Bing)</b> – navazuje na vyhledávání; sitemapa, kanonické URL, čistý HTML a stabilní selektory.</li>
   <li><b>Claude (Anthropic)</b> – ocení jasná tvrzení a citelné zdroje; stabilní kotvy a FAQ.</li>
 </ul>
-<p><b>Společný jmenovatel:</b> segmentovatelný HTML obsah, stabilní kotvy, konzistentní JSON‑LD, uvedený autor a data publikace/aktualisace.</p>
+<p><b>Společný jmenovatel:</b> segmentovatelný HTML obsah, stabilní kotvy, konsistentní JSON‑LD, uvedený autor a data publikace/aktualisace.</p>
 
 <h2 id="ai-crawlers">AI crawleři a řízení přístupu</h2>
 <p>Definujte, jaké AI boty mohou váš web číst. Pokud nechcete být zdrojem pro konkrétní nástroje, nastavte to explicitně.</p>
@@ -228,7 +228,7 @@ Sitemap: https://example.com/sitemap.xml
   <li><b>SSR/prerender</b> – renderujte hlavní obsah na serveru; <code>JSON‑LD</code> vkládejte inline, ne generováním až po načtení.</li>
   <li><b>Progressive enhancement</b> – JavaScript přidává interakci, ne základní text. Důležitý text neodkládat do XHR/SPA routingu.</li>
   <li><b>Noscript a fallbacky</b> – zajistěte čitelné minimum i bez JS.</li>
-  <li><b>Praktický test</b> – zkontrolujte verzi „bez JS“: <code>curl</code>, vypnutý JS v prohlížeči, textový náhled.</li>
+  <li><b>Praktický test</b> – zkontrolujte versi „bez JS“: <code>curl</code>, vypnutý JS v prohlížeči, textový náhled.</li>
 </ul>
 
 <h2 id="media">Obrázky, video, audio</h2>
@@ -247,7 +247,7 @@ Sitemap: https://example.com/sitemap.xml
 <ul>
   <li><b>Tokenová efektivita</b> – méně značek = menší náklady na zpracování</li>
   <li><b>RAG optimalisace</b> – čistší text se snadněji rozděluje na chunky</li>
-  <li><b>Parsování</b> – konzistentní syntaxe bez HTML šumu</li>
+  <li><b>Parsování</b> – konsistentní syntaxe bez HTML šumu</li>
   <li><b>Použití</b> – trénink modelů, dokumentační systémy, znalostní báze</li>
 </ul>
 
@@ -269,14 +269,14 @@ Sitemap: https://example.com/sitemap.xml
 <h2 id="rag">Připraveno pro RAG a agenty</h2>
 <ul>
   <li><b>Stabilní kotvy</b> – per‑odstavec/per‑sekce <code>id</code> pro přesné citace.</li>
-  <li><b>Konzistentní HTML</b> – semantika a opakovatelné selektory.</li>
-  <li><b>Čistý text</b> – minimum šumu, konzistentní interpunkce, beze skrývání.</li>
+  <li><b>Konsistentní HTML</b> – semantika a opakovatelné selektory.</li>
+  <li><b>Čistý text</b> – minimum šumu, konsistentní interpunkce, beze skrývání.</li>
   </ul>
 
 <h2 id="zkratky">Zkratky a pojmy</h2>
 <dl>
   <dt>AEO</dt>
-  <dd><b>Answer Engine Optimization</b> – optimalisace pro odpovědní/konverzační enginy.</dd>
+  <dd><b>Answer Engine Optimization</b> – optimalisace pro odpovědní/konversační enginy.</dd>
   <dt>AIO</dt>
   <dd><b>AI Optimization</b> – širší pojem pro přípravu obsahu pro AI nástroje.</dd>
   <dt>LLMO</dt>
@@ -304,7 +304,7 @@ Sitemap: https://example.com/sitemap.xml
   <dt>Musím přidat AI chatbot?</dt>
   <dd>Nemusíte. Důležitější je, aby váš obsah chápaly ostatní AI nástroje.</dd>
   <dt>Má smysl blokovat AI crawler?</dt>
-  <dd>Jen pokud nechcete být použitelní jako zdroj. Zvažte přínosy vs. rizika.</dd>
+  <dd>Jen pokud nechcete být použitelní jako zdroj. Zvažte přínosy vs. risika.</dd>
   <dt>Mám poskytovat obsah v Markdown?</dt>
   <dd>Jako doplněk ano, ne jako náhradu HTML. MD je vhodný pro datové API a RAG systémy kvůli tokenové efektivitě.</dd>
   <dt>Je SEO mrtvé?</dt>

@@ -182,7 +182,7 @@ function validateICO(ico) {
 }
 
 async function loadCompanyData() {
-    const ico = normalizeICO(document.getElementById('ico-input').value);
+    const ico = normaliseICO(document.getElementById('ico-input').value);
     const resultDiv = document.getElementById('result');
     const errorDiv = document.getElementById('error');
     const dataDiv = document.getElementById('company-data');
@@ -286,19 +286,19 @@ function updateValidationUI(ico) {
     }
 }
 
-function normalizeICO(value) {
+function normaliseICO(value) {
     return value.trim();
 }
 
 function shouldValidateInput(value) {
-    const normalized = normalizeICO(value);
-    if (!normalized) return false;
+    const normalised = normaliseICO(value);
+    if (!normalised) return false;
     
-    if (!/^\d*$/.test(normalized)) {
+    if (!/^\d*$/.test(normalised)) {
         return 'immediate';
     }
     
-    if (normalized.length === 8) {
+    if (normalised.length === 8) {
         return 'immediate';
     }
     
@@ -310,11 +310,11 @@ document.getElementById('ico-input').addEventListener('input', function(e) {
     errorDiv.style.display = 'none';
     
     const value = e.target.value;
-    const normalized = normalizeICO(value);
+    const normalised = normaliseICO(value);
     const shouldValidate = shouldValidateInput(value);
     
     if (shouldValidate === 'immediate') {
-        updateValidationUI(normalized);
+        updateValidationUI(normalised);
     } else {
         const message = document.getElementById('validation-message');
         message.textContent = '';
@@ -327,14 +327,14 @@ document.getElementById('ico-input').addEventListener('input', function(e) {
 
 document.getElementById('ico-input').addEventListener('blur', function(e) {
     const value = e.target.value;
-    const normalized = normalizeICO(value);
+    const normalised = normaliseICO(value);
     
-    if (value !== normalized) {
-        e.target.value = normalized;
+    if (value !== normalised) {
+        e.target.value = normalised;
     }
     
-    if (normalized) {
-        updateValidationUI(normalized);
+    if (normalised) {
+        updateValidationUI(normalised);
     }
 });
 

@@ -372,7 +372,7 @@ allowed-tools: Read, Grep, mcp__linear__*, mcp__slack__send_message</code></pre>
   </tr>
   <tr>
     <td>Chceš využít autentizaci spravovanou MCP serverem</td>
-    <td>Chceš minimalizovat závislosti</td>
+    <td>Chceš minimalisovat závislosti</td>
   </tr>
 </table>
 
@@ -380,7 +380,7 @@ allowed-tools: Read, Grep, mcp__linear__*, mcp__slack__send_message</code></pre>
 
 <p>Otevřené standardy redukují fragmentaci. Vývojáři mohou vytvořit skill jednou a nasadit ho napříč různými AI agenty a platformami.</p>
 
-<p>Pro firmy to znamená možnost přecházet mezi poskytovateli AI bez přepisování customizací. Skill pro firemní coding standards bude fungovat všude, kde je standard podporován.</p>
+<p>Pro firmy to znamená možnost přecházet mezi poskytovateli AI bez přepisování customisací. Skill pro firemní coding standards bude fungovat všude, kde je standard podporován.</p>
 
 <p>Anthropic následuje podobný vzor jako u <a href="https://modelcontextprotocol.io">MCP</a> — vytvořit specifikaci a otevřít ji komunitě jako standard.</p>
 

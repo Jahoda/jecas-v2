@@ -282,7 +282,7 @@ if (window.threejsDemoCleanup) {
 <div class="external-content">
 <ul>
 <li><p><a href="https://www.blender.org/">Blender</a> – zdarma, otevřený 3D editor</p></li>
-<li><p><a href="https://github.com/CesiumGS/obj2gltf">obj2gltf</a> – konverze OBJ → GLTF</p></li>
+<li><p><a href="https://github.com/CesiumGS/obj2gltf">obj2gltf</a> – konverse OBJ → GLTF</p></li>
 <li><p><a href="https://products.aspose.app/3d/conversion">Online konvertor</a></p></li>
 </ul>
 </div>

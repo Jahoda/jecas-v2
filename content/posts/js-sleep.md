@@ -153,7 +153,7 @@ setTimeout(() => sleepPromise.abort(), 2000) // zruší sleep po 2s</code></pre>
     }
   }
   
-  // Inicializace při načtení stránky
+  // Inicialisace při načtení stránky
   document.addEventListener('DOMContentLoaded', () => {
     const rateLimitBtn = document.getElementById('rate-limit-demo');
     
@@ -186,7 +186,7 @@ setTimeout(() => sleepPromise.abort(), 2000) // zruší sleep po 2s</code></pre>
 </script>
 </div>
 
-<p>Při lokalizaci jedné aplikace po jednotlivých částech přes OpenAI API používám sleep pro přidávání prodlevy mezi requesty, když dojde k chybě 429. Tím se vyhnu zahlcení API a zajistím plynulé zpracování celé aplikace.</p>
+<p>Při lokalisaci jedné aplikace po jednotlivých částech přes OpenAI API používám sleep pro přidávání prodlevy mezi requesty, když dojde k chybě 429. Tím se vyhnu zahlcení API a zajistím plynulé zpracování celé aplikace.</p>
 
 <h3 id="dynamicky-sleep">Dynamický sleep</h3>
 
