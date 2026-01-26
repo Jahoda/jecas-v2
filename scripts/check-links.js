@@ -26,24 +26,29 @@ const SKIP_DOMAINS = [
 	'instagram.com'
 ];
 
-// Cache for existing article slugs
-let articleSlugsCache = null;
+// Cache for existing article and tag slugs
+let slugsCache = null;
 
 /**
- * Get all existing article slugs from content/posts
+ * Get all existing slugs from content/posts and content/tags
  * @returns {Set<string>}
  */
-function getExistingArticleSlugs() {
-	if (articleSlugsCache) {
-		return articleSlugsCache;
+function getExistingSlugs() {
+	if (slugsCache) {
+		return slugsCache;
 	}
 
 	const postsDir = resolve(process.cwd(), 'content/posts');
-	const files = readdirSync(postsDir);
-	articleSlugsCache = new Set(
-		files.filter((f) => f.endsWith('.md')).map((f) => f.replace('.md', ''))
-	);
-	return articleSlugsCache;
+	const tagsDir = resolve(process.cwd(), 'content/tags');
+
+	const postFiles = readdirSync(postsDir);
+	const tagFiles = existsSync(tagsDir) ? readdirSync(tagsDir) : [];
+
+	const postSlugs = postFiles.filter((f) => f.endsWith('.md')).map((f) => f.replace('.md', ''));
+	const tagSlugs = tagFiles.filter((f) => f.endsWith('.md')).map((f) => f.replace('.md', ''));
+
+	slugsCache = new Set([...postSlugs, ...tagSlugs]);
+	return slugsCache;
 }
 
 /**
@@ -94,13 +99,13 @@ function checkInternalLink(url) {
 		return { url, ok: true, skipped: true };
 	}
 
-	const existingSlugs = getExistingArticleSlugs();
+	const existingSlugs = getExistingSlugs();
 	const exists = existingSlugs.has(slug);
 
 	if (exists) {
 		return { url, ok: true };
 	} else {
-		return { url, ok: false, error: `Article "${slug}" does not exist` };
+		return { url, ok: false, error: `Page "${slug}" does not exist (not in posts or tags)` };
 	}
 }
 
