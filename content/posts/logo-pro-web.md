@@ -8,9 +8,9 @@ tags: ["napady", "obrazky", "ux"]
 format: "html"
 ---
 
-<p>Logo je jedním z nejdůležitějších prvků vizuální identity webu. Je to první věc, kterou návštěvník uvidí, a často rozhoduje o tom, zda si web zapamatuje.</p>
+<p>Logo je jedním z nejdůležitějších prvků visuální identity webu. Je to první věc, kterou návštěvník uvidí, a často rozhoduje o tom, zda si web zapamatuje.</p>
 
-<p>Kvalitní logo buduje důvěru, odlišuje od konkurence a pomáhá vytvářet konzistentní značku napříč všemi kanály.</p>
+<p>Kvalitní logo buduje důvěru, odlišuje od konkurence a pomáhá vytvářet konsistentní značku napříč všemi kanály.</p>
 
 <h2 id="typy-log">Typy log</h2>
 
@@ -70,7 +70,7 @@ format: "html"
 <p>Logo musí fungovat:</p>
 <ul>
     <li>Na světlém i tmavém pozadí</li>
-    <li>V barevné i černobílé verzi</li>
+    <li>V barevné i černobílé versi</li>
     <li>Ve velkém i malém rozměru</li>
     <li>Na obrazovce i v tisku</li>
 </ul>
@@ -230,7 +230,7 @@ format: "html"
 
 <p>Rastrový formát s průhledností. Používejte jako zálohu pro starší systémy nebo tam, kde SVG není podporováno.</p>
 
-<p>Připravte verze v různých velikostech: 1×, 2× a 3× pro různé hustoty pixelů.</p>
+<p>Připravte verse v různých velikostech: 1×, 2× a 3× pro různé hustoty pixelů.</p>
 
 <h3 id="favicon">Favicon</h3>
 
@@ -253,9 +253,9 @@ format: "html"
 <p>Na malých obrazovkách může být plné logo příliš velké nebo nečitelné. Připravte si varianty:</p>
 
 <ul>
-    <li><b>Plná verze</b> – symbol + název</li>
-    <li><b>Kompaktní verze</b> – pouze symbol nebo zkratka</li>
-    <li><b>Favicon</b> – maximálně zjednodušená verze</li>
+    <li><b>Plná verse</b> – symbol + název</li>
+    <li><b>Kompaktní verse</b> – pouze symbol nebo zkratka</li>
+    <li><b>Favicon</b> – maximálně zjednodušená verse</li>
 </ul>
 
 <pre><code>&lt;picture&gt;
@@ -270,11 +270,11 @@ format: "html"
 <ul>
     <li>Funguje na světlém i tmavém pozadí</li>
     <li>Je čitelné i při malé velikosti (16 px)</li>
-    <li>Máte SVG verzi pro web</li>
-    <li>Máte PNG verze pro různé hustoty pixelů</li>
+    <li>Máte SVG versi pro web</li>
+    <li>Máte PNG verse pro různé hustoty pixelů</li>
     <li>Favicon je připraven ve všech potřebných velikostech</li>
     <li>Logo má definované ochranné zóny (minimální okolní prostor)</li>
-    <li>Máte černobílou verzi pro speciální použití</li>
+    <li>Máte černobílou versi pro speciální použití</li>
 </ul>
 
 <h2 id="chyby">Časté chyby</h2>
