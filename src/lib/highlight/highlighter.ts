@@ -496,6 +496,7 @@ export function guessLanguageFromContent(code: string): string {
 		.replace(/'(?:[^'\\]|\\.)*'/g, ''); // single-quoted strings
 
 	const hasKeyValueAtStart = /^[a-zA-Z_][a-zA-Z0-9_-]*:\s*(?:$|\S)/m.test(code);
+	const hasListItemWithKey = /^\s*-\s+[a-zA-Z_][a-zA-Z0-9_-]*:/m.test(code);
 	const hasNestedKeys = /^\s{2,}[a-zA-Z_][a-zA-Z0-9_-]*:/m.test(code);
 	const hasListItems = /^\s*-\s+/m.test(code);
 	const hasMultilineString = /[|>]\s*$/m.test(code);
@@ -503,7 +504,7 @@ export function guessLanguageFromContent(code: string): string {
 	const noCodeBraces = !/[;]/.test(yamlClean) && !/\)\s*\{/.test(yamlClean) && !/\bfunction\b/.test(code);
 
 	if (
-		hasKeyValueAtStart &&
+		(hasKeyValueAtStart || hasListItemWithKey) &&
 		(hasNestedKeys || hasListItems || hasMultilineString || hasGitHubActions) &&
 		noCodeBraces
 	) {
