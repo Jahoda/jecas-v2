@@ -159,7 +159,7 @@ const languages: Record<string, Token[]> = {
 		// Numbers - orange
 		{ type: 'number', pattern: /\b\d+\.?\d*/g },
 		// Units - different orange (attr)
-		{ type: 'attr', pattern: /(?<=\d)(?:px|em|rem|vh|vw|vmin|vmax|ch|ex|deg|rad|turn|s|ms|fr)\b/g },
+		{ type: 'attr', pattern: /(?<=\d)(?:px|em|rem|ex|ch|lh|rlh|cap|ic|rex|rch|ric|rcap|vh|vw|vmin|vmax|vi|vb|dvh|dvw|dvmin|dvmax|dvi|dvb|svh|svw|svmin|svmax|svi|svb|lvh|lvw|lvmin|lvmax|lvi|lvb|cqw|cqh|cqi|cqb|cqmin|cqmax|pt|pc|in|cm|mm|Q|deg|rad|grad|turn|s|ms|fr|dpi|dpcm|dppx|x)\b/g },
 		{ type: 'attr', pattern: /(?<=\d)%/g },
 		// Functions like url(), calc(), rgb()
 		{ type: 'function', pattern: /[a-zA-Z-]+(?=\()/g },
