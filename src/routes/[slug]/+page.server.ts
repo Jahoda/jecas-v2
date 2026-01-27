@@ -8,7 +8,7 @@ import {
 } from '$lib/post/post';
 import { getAllTagsByPageId, getSingleTagBySlug, getAllUsedTags, type Tag } from '$lib/tag/tags';
 import { groupByPageId } from '$lib/tags/tags';
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 // ISR: pages generated on first request, cached permanently until next deploy
@@ -54,6 +54,16 @@ export const load = (async ({ params }) => {
 		}
 
 		if (!tag) {
+			// Try stripping trailing invalid characters (., , ¨ etc.) and redirect
+			const cleaned = slug.replace(/[\.,;:\)¨"'\s&]+$/, '');
+			if (cleaned && cleaned !== slug) {
+				const cleanedPost = await getSinglePostBySlug(cleaned);
+				const cleanedTag = !cleanedPost ? await getSingleTagBySlug(cleaned) : undefined;
+				if (cleanedPost || cleanedTag) {
+					throw redirect(301, `/${cleaned}`);
+				}
+			}
+
 			throw error(404, {
 				message: 'Not found'
 			});
