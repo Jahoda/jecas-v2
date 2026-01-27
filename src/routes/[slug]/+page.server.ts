@@ -55,7 +55,7 @@ export const load = (async ({ params }) => {
 
 		if (!tag) {
 			// Try stripping trailing invalid characters (., , ¨ etc.) and redirect
-			const cleaned = slug.replace(/[\.,;:\)¨"'\s&\/]+$/, '');
+			const cleaned = slug.replace(/[\.,;:\)¨"'\s&]+$/, '');
 			if (cleaned && cleaned !== slug) {
 				const cleanedPost = await getSinglePostBySlug(cleaned);
 				const cleanedTag = !cleanedPost ? await getSingleTagBySlug(cleaned) : undefined;

@@ -5,6 +5,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
 	kit: {
 		adapter: adapter(),
+		trailingSlash: 'never',
 		prerender: {
 			concurrency: 50,
 			handleHttpError: ({ path, referrer, message }) => {
