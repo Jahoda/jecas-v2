@@ -5,7 +5,7 @@ description: ""
 date: "2019-08-07"
 last_modification: "2019-08-07"
 status: 0
-tags: []
+tags: ["svelte"]
 format: "html"
 ---
 
@@ -13,7 +13,7 @@ format: "html"
 
 <ul>
   <li>
-    <a href="https://blog.openreplay.com/exploring-sveltekit-in-2022-by-building-a-portfolio-website">Exploring SvelteKit in 2022 by Building a Portfolio Website</a> – blog ve Svelte včetně deploye
+    <a href="https://blog.openreplay.com/exploring-sveltekit-in-2022-by-building-a-portfolio-website">Exploring SvelteKit in 2022 by Building a Portfolio Website</a> – blog ve Svelte včetně deploye
   </li>
 </ul>
 

@@ -5,7 +5,7 @@ description: "Jak správně nastavovat na webových stránkách písma."
 date: "2014-12-16"
 last_modification: "2014-12-16"
 status: 0
-tags: []
+tags: ["typografie"]
 format: "html"
 ---
 

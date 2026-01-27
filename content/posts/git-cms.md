@@ -5,7 +5,7 @@ description: "K čemu jsou dobré redakční systémy postavené na Gitu."
 date: "2023-01-29"
 last_modification: "2025-09-02"
 status: 1
-tags: ["cms", "produktivita"]
+tags: ["cms", "produktivita", "git"]
 format: "html"
 ---
 
@@ -13,7 +13,7 @@ format: "html"
 
 <p>Otázka je, kam redakční systém ukládá data.</p>
 
-<p>Například v roce 2025 stále nejrozšířenější <a href="/wordpress">WordPress</a> ukládá data do <b>SQL databáse</b>.</p>
+<p>Například v roce 2025 stále nejrozšířenější <a href="/wordpress">WordPress</a> ukládá data do <b>SQL database</b>.</p>
 
 <p>To přináší jistou režii pro provoz – DB někde musí běžet, musí být někde <a href="/hosting">hostovaná</a>.</p>
 
@@ -21,7 +21,7 @@ format: "html"
 
 <p>V posledních letech se znovu do hry vrátily <b>statické stránky</b>. To nutně neznamená, že tvůrce obsahu <a href="https://www.jakpsatweb.cz/jak-udelat.html#soubory">ručně vytváří</a> jednotlivé <code>*.html</code> soubory.</p>
 
-<p>Statické soubory mohou vzniknout až v okamžiku <i>buildu</i>.</p>
+<p>Statické soubory mohou vzniknout až v okamžiku <i>buildu</i>.</p>
 
 <p>Existuje řada hotových řešení pro generování statických stránek:</p>
 
@@ -32,7 +32,7 @@ format: "html"
   <li><a href="https://jekyllrb.com">Jekyll</a></li>
 </ul>
 
-<p>Případně i klasické fullstack JS frameworky, zvládají generovat statický web:</p>
+<p>Případně i klasické fullstack JS frameworky, zvládají generovat statický web:</p>
 
 <ul>
   <li><a href="https://svelte.dev">SvelteKit</a></li>
@@ -44,7 +44,7 @@ format: "html"
 
 <h2 id="md">Markdown</h2>
 
-<p><a href="/markdown">Markdown</a> nabízí způsob, jak v obyčejném textu používat strojově pochopitelné formátování. Místo HTML značek se používají lidsky intuitivnější symboly:</p>
+<p><a href="/markdown">Markdown</a> nabízí způsob, jak v obyčejném textu používat strojově pochopitelné formátování. Místo HTML značek se používají lidsky intuitivnější symboly:</p>
 
 <pre><code># Nadpis
 Odstavec s **tučným** a *šikmým textem*
@@ -52,13 +52,13 @@ Odstavec s **tučným** a *šikmým textem*
 2. s několika
 3. položkami</code></pre>
 
-<p>Pro Markdown existuje hromada nástrojů, pluginů a editorů a pomalu se rozšiřuje i mimo programátory.</p>
+<p>Pro Markdown existuje hromada nástrojů, pluginů a editorů a pomalu se rozšiřuje i mimo programátory.</p>
 
-<p>Kromě toho Markdown dovoluje i psát v HTML, takže při přechodu na MD není potřeba nic konvertovat, ale vše může zůstat v HTML.</p>
+<p>Kromě toho Markdown dovoluje i psát v HTML, takže při přechodu na MD není potřeba nic konvertovat, ale vše může zůstat v HTML.</p>
 
 <h3 id="frontmatter">Frontmatter</h3>
 
-<p><i>Frontmatter</i> je způsob, jak do Markdown souboru přidat různá metadata. Jedná se o blok YAML nebo TOML na začátku souboru, který je oddělený třemi pomlčkami na začátku a konci.</p>
+<p><i>Frontmatter</i> je způsob, jak do Markdown souboru přidat různá metadata. Jedná se o blok YAML nebo TOML na začátku souboru, který je oddělený třemi pomlčkami na začátku a konci.</p>
 
 <p>Typický frontmatter může obsahovat:</p>
 
@@ -73,22 +73,22 @@ draft: false
 <p>Git-based CMS systémy často využívají frontmatter pro:</p>
 
 <ul>
-  <li><b>Kategorisaci obsahu</b> – pomocí tagů a kategorií</li>
+  <li><b>Kategorisaci obsahu</b> – pomocí tagů a kategorií</li>
   <li><b>Řízení workflow</b> – draft vs. publikovaný stav</li>
   <li><b>SEO metadata</b> – title, description, keywords</li>
   <li><b>Automatisaci</b> – datum publikování, autor, verse</li>
-  <li><b>Integraci s build procesem</b> – formát, layout, šablona</li>
+  <li><b>Integraci s build procesem</b> – formát, layout, šablona</li>
 </ul>
 
 <h2 id="git">Git</h2>
 
 <p><a href="/git-prakticky">Git</a> je nástroj pro versování zdrojových kódů. Nad Gitem jsou navíc postavené online služby pro jeho nahrávání na internet.</p>
 
-<p>Nejpoužívanější je <a href="https://github.com">GitHub</a> a <a href="https://about.gitlab.com">GitLab</a>.</p>
+<p>Nejpoužívanější je <a href="https://github.com">GitHub</a> a <a href="https://about.gitlab.com">GitLab</a>.</p>
 
-<h2 id="hosting">Hosting s podporou Gitu</h2>
+<h2 id="hosting">Hosting s podporou Gitu</h2>
 
-<p>Existuje mnoho služeb, které se na pár kliknutí dokáží napojit na Git repositář na GitHubu nebo GitLabu a jeho obsah automaticky deployovat (vystavit na veřejnou URL).</p>
+<p>Existuje mnoho služeb, které se na pár kliknutí dokáží napojit na Git repositář na GitHubu nebo GitLabu a jeho obsah automaticky deployovat (vystavit na veřejnou URL).</p>
 
 <ul>
   <li><a href="https://www.netlify.com">Netlify</a></li>
@@ -103,25 +103,25 @@ draft: false
 
 <h2 id="serverless">Serverless hosting</h2>
 
-<p>Serverless je v překladu <i>bezserverový</i>. Co to znamená? Přece to musí běžet na nějakém serveru.</p>
+<p>Serverless je v překladu <i>bezserverový</i>. Co to znamená? Přece to musí běžet na nějakém serveru.</p>
 
-<p>Zjednodušeně řečeno se termínem serverless myslí situace, kdy se vývojář vůbec nestará o server. Nemusí řešit potřebné prostředky, ale vše škáluje automaticky.</p>
+<p>Zjednodušeně řečeno se termínem serverless myslí situace, kdy se vývojář vůbec nestará o server. Nemusí řešit potřebné prostředky, ale vše škáluje automaticky.</p>
 
 <p>Aplikace tak vytěžuje servery, jen když je zrovna potřeba.</p>
 
-<p>Takže v situaci, kdy na web nechodí moc lidí, je jeho provoz velmi levný.</p>
+<p>Takže v situaci, kdy na web nechodí moc lidí, je jeho provoz velmi levný.</p>
 
 <h2 id="stateless">Stateless</h2>
 
 <p><i>Stateless</i> – tedy bezstavové – jsou aplikace, které neukládají trvalá data na server.</p>
 
-<p>Tato architektura umožňuje snadnější škálování a zlepšuje dostupnost aplikace, protože stav aplikace není uložen na konkrétním serveru.</p>
+<p>Tato architektura umožňuje snadnější škálování a zlepšuje dostupnost aplikace, protože stav aplikace není uložen na konkrétním serveru.</p>
 
 <h2 id="headless">Headless CMS</h2>
 
 <p>Česky přeloženo jako <i>bezhlavé</i> (headless) jsou redakční systémy, které neřeší frontend webu, ale pouze správu dat.</p>
 
-<p>Data se z takových CMS buď stahují přes API, nebo ukládají data do souborů.</p>
+<p>Data se z takových CMS buď stahují přes API, nebo ukládají data do souborů.</p>
 
 <div class="external-content">
 <ul><li><a href="https://jamstack.org/headless-cms/">Headless CMS</a> – seznam spousty headless CMS</li></ul>
@@ -133,9 +133,9 @@ draft: false
 
 <p>Z toho plyne, že Git repositář se používá jako <b>úložiště obsahu</b>. Změny na stránce se tak provádí klasickými <i>commity</i>.</p>
 
-<p>To ale nutně neznamená, že vyžadují <b>znalost práce s Gitem</b>, protože tak mohou fungovat jen na pozadí. Pro uživatele se to může tvářit jako běžný CMS.</p>
+<p>To ale nutně neznamená, že vyžadují <b>znalost práce s Gitem</b>, protože tak mohou fungovat jen na pozadí. Pro uživatele se to může tvářit jako běžný CMS.</p>
 
-<p>Implementace je obvykle velmi jednoduchá – víceméně stačí redakčnímu systému dát přístup k repositáři na GitHubu/GitLabu a rovnou začít provádět změny.</p>
+<p>Implementace je obvykle velmi jednoduchá – víceméně stačí redakčnímu systému dát přístup k repositáři na GitHubu/GitLabu a rovnou začít provádět změny.</p>
 
 <p>Některé CMS vyžadují konfiguraci, aby pochopily strukturu projektu.</p>
 
@@ -149,7 +149,7 @@ draft: false
 
 <h3 id="prose">Prose.io</h3>
 
-<p><a href="https://prose.io">Prose</a> dokáže po připojení GitHub repositáře upravovat libovolné soubory. Pro soubory v Markdownu nabízí přehledný editor i s možností uploadu souborů.</p>
+<p><a href="https://prose.io">Prose</a> dokáže po připojení GitHub repositáře upravovat libovolné soubory. Pro soubory v Markdownu nabízí přehledný editor i s možností uploadu souborů.</p>
 
 <p>Není potřeba ho nijak instalovat ani konfigurovat.</p>
 
@@ -157,9 +157,9 @@ draft: false
 
 <h3 id="tina">Tina</h3>
 
-<p><a href="https://tina.io">Tina</a> (dříve <a href="https://forestry.io">Forestry</a>) je moderní Git-based CMS s visuálním editorem. Umožňuje editaci obsahu přímo na webu s live preview.</p>
+<p><a href="https://tina.io">Tina</a> (dříve <a href="https://forestry.io">Forestry</a>) je moderní Git-based CMS s visuálním editorem. Umožňuje editaci obsahu přímo na webu s live preview.</p>
 
-<p>Tina se integruje s různými frameworky jako Next.js, Nuxt, Gatsby a další. Poskytuje TypeScript podporu a umožňuje definovat vlastní schémata obsahu.</p>
+<p>Tina se integruje s různými frameworky jako Next.js, Nuxt, Gatsby a další. Poskytuje TypeScript podporu a umožňuje definovat vlastní schémata obsahu.</p>
 
 <h3 id="github">GitHub Pages</h3>
 
@@ -170,19 +170,19 @@ draft: false
 
 <h3 id="zadny-cms">Skoro žádný CMS</h3>
 
-<p>Teoreticky není potřeba vůbec žádný CMS, ale obsah můžete rovnou upravovat v prostředí GitHubu/GitLabu.</p>
+<p>Teoreticky není potřeba vůbec žádný CMS, ale obsah můžete rovnou upravovat v prostředí GitHubu/GitLabu.</p>
 
-<p>Pro soubory v Markdown formátu mají editory se zvýrazňováním syntaxe, klávesovými zkratkami a problém není ani upload obrázků nebo videí.</p>
+<p>Pro soubory v Markdown formátu mají editory se zvýrazňováním syntaxe, klávesovými zkratkami a problém není ani upload obrázků nebo videí.</p>
 
 <h2 id="výhody">Výhody Git-based CMS</h2>
 
 <ul>
-  <li><b>Versování</b> – každá změna je uložena s kompletní historií</li>
-  <li><b>Záloha</b> – obsah je automaticky zálohován v Git repositáři</li>
+  <li><b>Versování</b> – každá změna je uložena s kompletní historií</li>
+  <li><b>Záloha</b> – obsah je automaticky zálohován v Git repositáři</li>
   <li><b>Spolupráce</b> – více autorů může pracovat na obsahu přes pull/merge requesty</li>
-  <li><b>Transparentnost</b> – všechny změny jsou viditelné a auditovatelné</li>
+  <li><b>Transparentnost</b> – všechny změny jsou viditelné a auditovatelné</li>
   <li><b>Offline práce</b> – obsah lze editovat lokálně bez internetu</li>
-  <li><b>Integrace</b> – snadná integrace s CI/CD pipeline</li>
+  <li><b>Integrace</b> – snadná integrace s CI/CD pipeline</li>
   <li><b>Nezávislost</b> – obsah může jít editovat současně různými CMS, velmi snadná migrace mezi CMS</li>
 </ul>
 
@@ -192,37 +192,37 @@ draft: false
 
 <ul>
   <li><b>Technická bariéra</b> – může být složitější pro netechnické uživatele</li>
-  <li><b>Workflow</b> – editace vyžaduje commit a push proces</li>
+  <li><b>Workflow</b> – editace vyžaduje commit a push proces</li>
   <li><b>Konflikty</b> – při současné editaci stejného souboru mohou vzniknout merge konflikty</li>
   <li><b>Omezené možnosti</b> – některé pokročilé CMS funkce mohou chybět</li>
 </ul>
 
-<h2 id="databazove-cms">Databásové CMS systémy</h2>
+<h2 id="databasove-cms">Databasové CMS systémy</h2>
 
-<p>Pro srovnání je dobré zmínit i tradiční CMS systémy, které ukládají obsah do databáze (např. WordPress).</p>
+<p>Pro srovnání je dobré zmínit i tradiční CMS systémy, které ukládají obsah do database (např. WordPress).</p>
 
-<h3 id="vyhody-databaze">Výhody DB CMS</h3>
+<h3 id="vyhody-database">Výhody DB CMS</h3>
 
 <ul>
   <li><b>Real-time aktualisace</b> – změny jsou okamžitě viditelné bez nutnosti buildu</li>
-  <li><b>Vyhledávání</b> – vyhledávání a filtrování ve velkém množství obsahu může být rychlejší</li>
+  <li><b>Vyhledávání</b> – vyhledávání a filtrování ve velkém množství obsahu může být rychlejší</li>
   <li><b>Pokročilé funkce</b> – workflow management, role-based přístup</li>
   <li><b>Spolupráce</b> – souběžná editace více autorů bez risika konfliktů</li>
   <li><b>Složitější vazby</b> – SQL se víc hodí pro provázání různých entit mez sebou</li>
 </ul>
 
-<h3 id="nevýhody-databaze">Nevýhody DB CMS</h3>
+<h3 id="nevýhody-database">Nevýhody DB CMS</h3>
 
 <ul>
-  <li><b>Provozní režie</b> – databáze musí běžet a být hostovaná</li>
+  <li><b>Provozní režie</b> – database musí běžet a být hostovaná</li>
   <li><b>Náklady</b> – vyšší hosting náklady, zejména při škálování</li>
-  <li><b>Komplexita</b> – složitější nastavení a údržba</li>
-  <li><b>Bezpečnost</b> – více potenciálních bezpečnostních rizik</li>
+  <li><b>Komplexita</b> – složitější nastavení a údržba</li>
+  <li><b>Bezpečnost</b> – více potenciálních bezpečnostních risik</li>
 </ul>
 
 <h3 id="kdy-volit">Kdy který přístup zvolit</h3>
 
-<p><b>Databásové CMS</b> se hodí pro vysoký objem obsahu, časté aktualisace, komplexní workflow a více autorů. <b>Git-based CMS</b> jsou ideální pro menší weby, méně časté aktualisace, technické týmy a nízké náklady.</p>
+<p><b>Databasové CMS</b> se hodí pro vysoký objem obsahu, časté aktualisace, komplexní workflow a více autorů. <b>Git-based CMS</b> jsou ideální pro menší weby, méně časté aktualisace, technické týmy a nízké náklady.</p>
 
 <h2 id="případy- použití">Případy použití</h2>
 

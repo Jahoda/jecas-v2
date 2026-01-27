@@ -5,14 +5,14 @@ description: "Jak snadno ve Svelte cokoliv na stránce plynule animovat."
 date: "2023-05-07"
 last_modification: "2023-05-07"
 status: 0
-tags: []
+tags: ["svelte"]
 format: "html"
 ---
 
-<p>JS knihovna pro snadnou tvorbu reaktivního frontendu – <a href="https://svelte.dev">Svelte</a> – má přímo v sobě zabudované nástroje pro plynulé visuální přechody a animace.</p>
+<p>JS knihovna pro snadnou tvorbu reaktivního frontendu – <a href="https://svelte.dev">Svelte</a> – má přímo v sobě zabudované nástroje pro plynulé visuální přechody a animace.</p>
 
 
-<p>Není potřeba nic dalšího instalovat, většinu běžné používaných přechodů má Svelte v sobě.</p>
+<p>Není potřeba nic dalšího instalovat, většinu běžné používaných přechodů má Svelte v sobě.</p>
 
 <p>Nejjednodušší použití vypadá následovně:</p>
 
@@ -26,11 +26,11 @@ format: "html"
 
 <ol>
   <li>
-    <p>Atribut <code>transition</code> značí, že se jedná přechod. Místo něj jde použít <code>in</code> a <code>out</code>, pokud mají být oba <i>směry</i> přechodu rozdílné.</p>
+    <p>Atribut <code>transition</code> značí, že se jedná přechod. Místo něj jde použít <code>in</code> a <code>out</code>, pokud mají být oba <i>směry</i> přechodu rozdílné.</p>
   </li>
   
   <li>
-    <p>Za dvojtečkou následuje funkce, která se stará o samotnou animaci. Ta může být i vlastní, ale typicky se importuje ze Svelte, kde je spoustu animací už hotových:</p>
+    <p>Za dvojtečkou následuje funkce, která se stará o samotnou animaci. Ta může být i vlastní, ale typicky se importuje ze Svelte, kde je spoustu animací už hotových:</p>
     
     <pre><code>import { slide } from 'svelte/transition'</code></pre>
   </li>

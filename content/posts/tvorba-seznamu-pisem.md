@@ -5,11 +5,11 @@ description: "Postup, kterým jsou vybírána a určována písma s českou diak
 date: "2014-01-22"
 last_modification: "2014-01-22"
 status: 1
-tags: ["napady", "php", "pisma"]
+tags: ["napady", "php", "pisma", "typografie"]
 format: "html"
 ---
 
-<p><a href="/ceska-pisma">Seznam cca 250 českých písem</a> pro použití na webu jsem pochopitelně nevytvářel ručně. Jak ale automaticky zjistit, jestli daný font umí znaky s háčky a čárkami. A jak to celé udělat?</p>
+<p><a href="/ceska-pisma">Seznam cca 250 českých písem</a> pro použití na webu jsem pochopitelně nevytvářel ručně. Jak ale automaticky zjistit, jestli daný font umí znaky s háčky a čárkami. A jak to celé udělat?</p>
 
 <h2 id="seznam-fontu">Seznam všech fontů</h2>
 <p>V první řadě bylo třeba získat všechna Google písma. To jde snadno přes <a href="https://developers.google.com/fonts/docs/developer_api">API</a>.</p>
@@ -28,21 +28,21 @@ $webfonts = json_decode(
 <h2 id="pripojeni-pisma">Připojení písma</h2>
 <p>Každé písmo je možné připojit <b>vložením CSS souboru</b>, který se dále odkazuje na existující písma. Přišlo mi trochu nešetrné připojovat stovky CSS definic písem, které připojí další stovky fontů.</p>
 
-<p>Zjistil jsem, že URL pro jeden CSS soubor (při oddělování <code>|</code> může být v jednom CSS více fontů) s písmy může mít bezpečně asi 1600 znaků, takže se takto požadavky rozdělují.</p>
+<p>Zjistil jsem, že URL pro jeden CSS soubor (při oddělování <code>|</code> může být v jednom CSS více fontů) s písmy může mít bezpečně asi 1600 znaků, takže se takto požadavky rozdělují.</p>
 
 <h2 id="zjisteni-znaku">Zjištění českých znaků</h2>
 <p>Testování diakritiky probíhá tak, že se pro každé písmo vytvoří dva elementy:</p>
 
 <ul>
-  <li>jeden má znaky s diakritikou <code>ěščřžýáéňóůú</code>,</li>
+  <li>jeden má znaky s diakritikou <code>ěščřžýáéňóůú</code>,</li>
   <li>druhý stejné znaky bez diakritiky <code>escrzyaenouu</code></li>
 </ul>
 
-<p>Potom se jim nastaví testované písmo a <b>JavaScriptem se přepočítá</b> <code>offsetWidth</code> (šířka výsledného elementu). Vychází se z toho, že v případě podpory diakritiky bude šířka stejná.</p>
+<p>Potom se jim nastaví testované písmo a <b>JavaScriptem se přepočítá</b> <code>offsetWidth</code> (šířka výsledného elementu). Vychází se z toho, že v případě podpory diakritiky bude šířka stejná.</p>
 
-<p>Některé znaky jako <code>í</code>, <code>ť</code> nebo <code>ď</code> se netestují, protože mají různé rozměry od svých bez-háčkových a bez-čárkových variant i v běžných písmech (např. Arial).</p>
+<p>Některé znaky jako <code>í</code>, <code>ť</code> nebo <code>ď</code> se netestují, protože mají různé rozměry od svých bez-háčkových a bez-čárkových variant i v běžných písmech (např. Arial).</p>
 
-<p>Nakonec proběhne vyfiltrování, kdy JS vyháže elementy, kde se <code>offsetWidth</code> nerovná. A výsledný HTML kód už tvoří <a href="/ceska-pisma">finální seznam</a>.</p>
+<p>Nakonec proběhne vyfiltrování, kdy JS vyháže elementy, kde se <code>offsetWidth</code> nerovná. A výsledný HTML kód už tvoří <a href="/ceska-pisma">finální seznam</a>.</p>
 
 <h2 id="nefunguje">Občas to nefunguje</h2>
 

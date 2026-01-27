@@ -5,11 +5,11 @@ description: "Seznam fontů z Google Fonts, které obsahují znaky s diakritikou
 date: "2014-01-21"
 last_modification: "2014-01-21"
 status: 1
-tags: ["google", "hotova-reseni", "napady", "pisma"]
+tags: ["google", "hotova-reseni", "napady", "pisma", "typografie"]
 format: "html"
 ---
 
-<p>Níže následuje automaticky generovaný <b>seznam cca 250 písem</b>, které umí háčky a čárky, tedy fonty, které jsou použitelné v češtině. V ostatních <a href="http://www.google.com/fonts">Google písmech</a> se místo českého znaku nezobrazí nic nebo bude znak v jiném stylu.</p>
+<p>Níže následuje automaticky generovaný <b>seznam cca 250 písem</b>, které umí háčky a čárky, tedy fonty, které jsou použitelné v češtině. V ostatních <a href="http://www.google.com/fonts">Google písmech</a> se místo českého znaku nezobrazí nic nebo bude znak v jiném stylu.</p>
 
 <h2>Použití</h2>
 <p>Vložit písmo na web je možné následovně:</p>
@@ -18,7 +18,7 @@ format: "html"
   <li>
     <p>Připojí se CSS:</p>
     <pre><code>&lt;link href='https://fonts.googleapis.com/css?family=<b>Nazev+pisma|Dalsi+pismo</b>&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'></code></pre>
-    <p>Místo mezer se píše plus a jednotlivá písma se oddělují <i>rourou</i> (<a href="/ceska-klavesnice">pravý <kbd>Alt</kbd> + <kbd>W</kbd></a>).</p>
+    <p>Místo mezer se píše plus a jednotlivá písma se oddělují <i>rourou</i> (<a href="/ceska-klavesnice">pravý <kbd>Alt</kbd> + <kbd>W</kbd></a>).</p>
   </li>
   <li>
     <p>Písmo se klasickým způsobem přiřadí elementu.</p>
@@ -62,7 +62,7 @@ format: "html"
 </style>
 
 <div class="pisma-search">
-  <input type="text" id="pisma-filtr" placeholder="Hledat písmo...">
+  <input type="text" id="pisma-filtr" placeholder="Hledat písmo…">
   <span class="pocet" id="pisma-pocet"></span>
 </div>
 
@@ -1276,36 +1276,36 @@ format: "html"
   var pisma = grid.querySelectorAll('.pismo');
   var celkem = pisma.length;
   
-  function aktualizujPocet(viditelnych) {
+  function aktualisujPocet(viditelnych) {
     pocet.textContent = viditelnych + ' / ' + celkem;
   }
   
-  function normalizuj(text) {
+  function normalisuj(text) {
     return text.toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .normalise('NFD').replace(/[\u0300-\u036f]/g, '')
       .replace(/\s+/g, ' ').trim();
   }
   
   function filtruj() {
-    var hledany = normalizuj(filtr.value);
+    var hledany = normalisuj(filtr.value);
     var viditelnych = 0;
     
     pisma.forEach(function(pismo) {
       var nazev = pismo.querySelector('h2');
       if (!nazev) return;
       
-      var normNazev = normalizuj(nazev.textContent);
+      var normNazev = normalisuj(nazev.textContent);
       var zobrazit = !hledany || normNazev.indexOf(hledany) !== -1;
       
       pismo.classList.toggle('skryto', !zobrazit);
       if (zobrazit) viditelnych++;
     });
     
-    aktualizujPocet(viditelnych);
+    aktualisujPocet(viditelnych);
   }
   
   filtr.addEventListener('input', filtruj);
-  aktualizujPocet(celkem);
+  aktualisujPocet(celkem);
 })();
 </script>
 </div>

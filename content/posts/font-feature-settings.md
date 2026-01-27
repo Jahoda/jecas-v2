@@ -5,13 +5,13 @@ description: "S CSS vlastností <code>font-feature-settings</code> lze dosáhnou
 date: "2014-05-07"
 last_modification: "2014-12-02"
 status: 1
-tags: ["css", "css-vlastnosti", "pisma"]
+tags: ["css", "css-vlastnosti", "pisma", "typografie"]
 format: "html"
 ---
 
-<p>Pro vytvoření lépe čitelného textu a lepší přenositelnosti písem vznikl tzv. formát <b>OpenType</b>. Tento formát umožňuje, aby v souboru s písmy bylo mnohem více symbolů. To má tu výhodu, že <i>OpenType</i> písmo může kromě <b>standardních znaků</b> a <b>diakritiky</b> nabízet i více variant téhož znaku, třeba <b>závislých na kontextu</b> a podobně.</p>
+<p>Pro vytvoření lépe čitelného textu a lepší přenositelnosti písem vznikl tzv. formát <b>OpenType</b>. Tento formát umožňuje, aby v souboru s písmy bylo mnohem více symbolů. To má tu výhodu, že <i>OpenType</i> písmo může kromě <b>standardních znaků</b> a <b>diakritiky</b> nabízet i více variant téhož znaku, třeba <b>závislých na kontextu</b> a podobně.</p>
 
-<p>Jde tak vytvořit i <b>spojité písmo</b>, kde se přirozeně napojují jednotlivé znaky. Daní za to je potom případná <b>větší datová náročnost</b>.</p>
+<p>Jde tak vytvořit i <b>spojité písmo</b>, kde se přirozeně napojují jednotlivé znaky. Daní za to je potom případná <b>větší datová náročnost</b>.</p>
 
 
 
@@ -33,7 +33,7 @@ format: "html"
   src: url('pismo.<i>otf</i>') format('<b>opentype</b>');  
 } </code></pre>
 
-<p>Následně ho nastavit nějakému prvku a konečně použít <code>font-feature-settings</code> (momentálně vyžaduje <a href="/css-prefixy">prefixy</a>):</p>
+<p>Následně ho nastavit nějakému prvku a konečně použít <code>font-feature-settings</code> (momentálně vyžaduje <a href="/css-prefixy">prefixy</a>):</p>
 
 <pre><code>element {
   font-feature-settings: 
@@ -41,7 +41,7 @@ format: "html"
     "dalsi-vlastnost" hodnota
 }</code></pre>
 
-<p>Hodnota bývá většinou <code>0</code> nebo <code>1</code> ve smyslu zapnuto/vypnuto, jednotlivé hodnoty je možné <b>kombinovat</b>. Funkčnost stojí a padá na podpoře dané vlastnosti přímo v <b>použitém fontu</b>.</p>
+<p>Hodnota bývá většinou <code>0</code> nebo <code>1</code> ve smyslu zapnuto/vypnuto, jednotlivé hodnoty je možné <b>kombinovat</b>. Funkčnost stojí a padá na podpoře dané vlastnosti přímo v <b>použitém fontu</b>.</p>
 
 
 
@@ -66,7 +66,7 @@ format: "html"
     
     <p><i>Calt</i> je zkratka pro <i><b>C</b>ontextual <b>Alt</b>ernates</i>.</p>
     
-    <p>Na následujícím pohyblivém obrázku je například písmeno „i“ ve 3 variantách (nespojené, spojené a na začátku slova).</p>
+    <p>Na následujícím pohyblivém obrázku je například písmeno „i“ ve 3 variantách (nespojené, spojené a na začátku slova).</p>
     
     <p><img src="/files/font-feature-settings/calt.gif" alt="Spojování písem" class="border"></p>
     
@@ -86,7 +86,7 @@ format: "html"
     
     <pre><code>font-feature-settings: "kern" 1</code></pre>
     
-    <p>Na obrázku <i>kerning</i> zmenší zbytečně velkou mezeru mezi „A“ a „T“.</p>
+    <p>Na obrázku <i>kerning</i> zmenší zbytečně velkou mezeru mezi „A“ a „T“.</p>
     
     <p><img src="/files/font-feature-settings/kern.gif" alt="Vyrovnání písem" class="border"></p>
     
@@ -94,7 +94,7 @@ format: "html"
   </li>
   
   <li>
-    <p><b>Svazování</b> (<a href="http://cs.wikipedia.org/wiki/Ligatura_(typografie)">Ligatura</a>) – optické spojení více písmen v jeden znak. Příkladem budiž například „fi“ nebo „fl“.</p>
+    <p><b>Svazování</b> (<a href="http://cs.wikipedia.org/wiki/Ligatura_(typografie)">Ligatura</a>) – optické spojení více písmen v jeden znak. Příkladem budiž například „fi“ nebo „fl“.</p>
     
     <pre><code>font-feature-settings: "liga" 1</code></pre>   
     
@@ -102,7 +102,7 @@ format: "html"
   </li>
   
   <li>
-    <p><b>Zlomky</b> – hezčí podoba zápisu zlomků, kdy je čitatel i jmenovatel vertikálně odlišen. Simulovat to někdy lze pomocí <a href="/ceska-klavesnice#mocniny-zlomky">speciálních znaků</a>: 3/4 vs. ¾.</p>
+    <p><b>Zlomky</b> – hezčí podoba zápisu zlomků, kdy je čitatel i jmenovatel vertikálně odlišen. Simulovat to někdy lze pomocí <a href="/ceska-klavesnice#mocniny-zlomky">speciálních znaků</a>: 3/4 vs. ¾.</p>
     
     <pre><code>font-feature-settings: "frac" 1</code></pre>
     
@@ -133,7 +133,7 @@ format: "html"
 
 <h2 id="pisma">OpenType písma</h2>
 
-<p>Aby speciální vlastnosti mohly fungovat, musí je podporovat dané písmo. Moc jich zatím není a <b>zdarma</b> ještě méně.</p>
+<p>Aby speciální vlastnosti mohly fungovat, musí je podporovat dané písmo. Moc jich zatím není a <b>zdarma</b> ještě méně.</p>
 
 
 
@@ -157,7 +157,7 @@ format: "html"
 
 
 <ul>
-  <li>Typo.cz: <a href="http://www.typo.cz/databaze/pismolijny-a-distributori/tvorba-a-editace-fontu/opentype/">Co to je OpenType</a> (česky)</li>
+  <li>Typo.cz: <a href="http://www.typo.cz/database/pismolijny-a-distributori/tvorba-a-editace-fontu/opentype/">Co to je OpenType</a> (česky)</li>
   
    <li><code>font-variant-ligatures</code>
     <ul>
