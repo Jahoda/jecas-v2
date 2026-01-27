@@ -3,9 +3,9 @@ title: "Co je Row Level Security (RLS)"
 headline: "Row Level Security: Zabezpečení na úrovni řádků v databázi"
 description: "Co je Row Level Security (RLS), jak funguje v PostgreSQL a dalších databázích, praktické příklady použití a výhody oproti aplikační logice."
 date: "2025-12-15"
-last_modification: "2025-12-15"
+last_modification: "2026-01-27"
 status: 1
-tags: ["sql", "zabezpeceni"]
+tags: ["sql", "zabezpeceni", "cloud"]
 format: "html"
 ---
 
@@ -25,7 +25,7 @@ format: "html"
 
 <h3 id="historie-rls">Kde se RLS vzalo</h3>
 
-<p>RLS není vynález PostgreSQL. Koncept vznikl v <b>Oracle 8i v roce 1999</b> pod názvem Virtual Private Database (VPD). PostgreSQL přidal RLS až v roce 2016 – o 17 let později. Ale díky tomu, že PostgreSQL je open-source, mohl vzniknout Supabase a tento přístup se zpopularizoval.</p>
+<p>RLS není vynález PostgreSQL. Koncept vznikl v <b>Oracle 8i v roce 1999</b> pod názvem Virtual Private Database (VPD). PostgreSQL přidal RLS až v roce 2016 – o 17 let později.</p>
 
 <ul>
 <li><b>1999</b> – Oracle 8i: Virtual Private Database (VPD)</li>
@@ -34,7 +34,7 @@ format: "html"
 <li><b>Červen 2016</b> – SQL Server 2016: Row-Level Security</li>
 </ul>
 
-<p><b>Původ názvu:</b> Oracle používal název "Virtual Private Database", který se neujal jako obecný termín. Název <b>"Row Level Security"</b> popularizoval <b>Microsoft</b> v SQL Server preview (2015). PostgreSQL ho převzal (bez pomlčky) a díky open-source povaze a Supabase se rozšířil nejvíc.</p>
+<p><b>Původ názvu:</b> Oracle používal název "Virtual Private Database", který se neujal jako obecný termín. Termín <b>"Row Level Security"</b> se objevil nezávisle v PostgreSQL i SQL Serveru přibližně ve stejné době (2015–2016). Díky open-source povaze PostgreSQL a platformám jako Supabase se rozšířil nejvíc.</p>
 
 <h2 id="vyhody">Proč používat RLS</h2>
 
@@ -164,7 +164,7 @@ format: "html"
 
 <ul>
 <li><b>2012 – Firebase</b> – první masově populární řešení pro přímý přístup z frontendu. NoSQL databáze se Security Rules. Ukázal, že tento přístup funguje ve velkém měřítku.</li>
-<li><b>2014 – <a href="https://postgrest.org/">PostgREST</a></b> – open-source projekt, který automaticky vytváří REST API z PostgreSQL schématu a využívá RLS. Umožňoval přímý přístup k PostgreSQL, ale vyžadoval self-hosting a vlastní správu.</li>
+<li><b>2014 – <a href="https://postgrest.org/">PostgREST</a></b> – open-source projekt, který automaticky vytváří REST API z PostgreSQL schématu. Původně využíval PostgreSQL role a GRANT/REVOKE, po vydání PostgreSQL 9.5 přidal podporu RLS.</li>
 <li><b>2016 – PostgreSQL 9.5</b> – přidává nativní Row Level Security, což je základ pro bezpečný přímý přístup.</li>
 <li><b>2020 – Supabase</b> – vzal PostgREST a udělal z něj managed službu s auth, storage a hezkým SDK. Zpopularizoval přímý přístup k PostgreSQL pro široké publikum.</li>
 <li><b>2025 – Neon Data API</b> – druhá managed služba s vestavěným PostgREST.</li>
@@ -371,7 +371,9 @@ BEGIN
   WHERE author_id = user_id
   LIMIT max_limit;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;</code></pre>
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+-- Pozor: SECURITY DEFINER obchází RLS! Funkce běží s právy vlastníka.
+-- Bezpečnost zajišťuje WHERE podmínka uvnitř funkce.</code></pre>
 
 <p><b>Best practices pro ochranu:</b></p>
 
@@ -556,7 +558,7 @@ CREATE POLICY insert_own ON new_table
 <h4 id="best-practices-pristup">Best practices pro přímý přístup</h4>
 
 <ul>
-<li><b>Vždy používejte RLS</b> – nikdy nepovolejte přístup k tabulce bez RLS politik</li>
+<li><b>Vždy používejte RLS</b> – nikdy nepovolte přístup k tabulce bez RLS politik</li>
 <li><b>Kombinujte s DB constraints</b> – NOT NULL, CHECK, UNIQUE jako další vrstva validace</li>
 <li><b>Používejte Views pro složité dotazy</b> – místo složitých JOINů z frontendu</li>
 <li><b>Auditujte přístupy</b> – logujte všechny operace pro analýzu bezpečnosti</li>
