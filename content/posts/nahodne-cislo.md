@@ -66,7 +66,7 @@ function genRozsah(od, doo) {
 
 <h2 id="vice-cisel">Generátor více náhodných čísel</h2>
 
-<p>Potřebujete vygenerovat více čísel najednou? Zadejte rozsah a počet.</p>
+<p>Potřebujete vygenerovat více čísel najednou? Zadejte rozsah a počet.</p>
 
 <div class="live">
 <style>
@@ -121,7 +121,7 @@ function genMulti() {
 
 <h2 id="generator">Generátor kódu pro náhodná čísla</h2>
 
-<p>Následující generátor po zadání nejnižšího a nejvyššího čísla připraví kód pro vygenerování náhodného čísla z daného rozsahu v různých jazycích.</p>
+<p>Následující generátor po zadání nejnižšího a nejvyššího čísla připraví kód pro vygenerování náhodného čísla z daného rozsahu v různých jazycích.</p>
 
 <div class="live">
 <style>
@@ -219,13 +219,13 @@ n := int(nBig.Int64()) + <span id="od-go">1</span></code></pre>
 </div>
 
 
-<h2 id="js">Náhodné číslo v JavaScriptu</h2>
+<h2 id="js">Náhodné číslo v JavaScriptu</h2>
 
 <p>V JS se pro generování náhodného čísla používá <code>Math.random()</code>.</p>
 
 <pre><code>const nahodne = Math.random();</code></pre>
 
-<p>V proměnné <code>nahodne</code> bude něco mezi 0 a 1, například <code>0.6577748781199532</code>. Vyjít může i přesná nula, ale vždy bude číslo menší než 1.</p>
+<p>V proměnné <code>nahodne</code> bude něco mezi 0 a 1, například <code>0.6577748781199532</code>. Vyjít může i přesná nula, ale vždy bude číslo menší než 1.</p>
 
 <p>Protože je zpravidla nutné mít čísla celá, násobí se to celé počtem požadovaných čísel. Tj. pro vygenerování deseti čísel:</p>
 
@@ -235,7 +235,7 @@ n := int(nBig.Int64()) + <span id="od-go">1</span></code></pre>
 
 <pre><code>nahodne = Math.floor(nahodne);</code></pre>
 
-<p>A výsledkem je <code>6</code>. Metoda <code>Math.floor</code> zaokrouhluje dolů, takže výsledek bude nabývat hodnot 0 až 9. Použití jiného způsobu zaokrouhlení (<code>Math.round</code>/<code>Math.ceil</code>) by vedlo k nerovnoměrnému rozdělení jednotlivých čísel.</p>
+<p>A výsledkem je <code>6</code>. Metoda <code>Math.floor</code> zaokrouhluje dolů, takže výsledek bude nabývat hodnot 0 až 9. Použití jiného způsobu zaokrouhlení (<code>Math.round</code>/<code>Math.ceil</code>) by vedlo k nerovnoměrnému rozdělení jednotlivých čísel.</p>
 
 <p>Následný obrázek srovnává četnosti jednotlivých čísel při různých způsobech zaokrouhlení.</p>
 
@@ -243,7 +243,7 @@ n := int(nBig.Int64()) + <span id="od-go">1</span></code></pre>
 
 <p><a href="https://kod.djpw.cz/etkb">Skript pro výpočet četnosti</a></p>
 
-<p>Je-li cílem dostat místo 0–9 číslo z rozsahu 1 až 10, stačí přičíst jedničku.</p>
+<p>Je-li cílem dostat místo 0–9 číslo z rozsahu 1 až 10, stačí přičíst jedničku.</p>
 
 <pre><code>nahodne = nahodne + 1;</code></pre>
 
@@ -257,13 +257,13 @@ n := int(nBig.Int64()) + <span id="od-go">1</span></code></pre>
 }</code></pre>
 
 
-<h3 id="jakou-nahodnost-zvolit">Jakou náhodnost zvolit v JavaScriptu</h3>
+<h3 id="jakou-nahodnost-zvolit">Jakou náhodnost zvolit v JavaScriptu</h3>
 
-<p>Pro běžné UI a logiku použijte <code>Math.random()</code>.</p>
+<p>Pro běžné UI a logiku použijte <code>Math.random()</code>.</p>
 
 <pre><code>const n = Math.floor(Math.random() * 10) + 1;</code></pre>
 
-<p>Pro bezpečnost, tokeny a identifikátory použijte Web Crypto.</p>
+<p>Pro bezpečnost, tokeny a identifikátory použijte Web Crypto.</p>
 
 <pre><code>crypto.randomUUID();</code></pre>
 
@@ -274,16 +274,16 @@ crypto.getRandomValues(bytes);</code></pre>
 
 <h3 id="typescript">TypeScript funkce</h3>
 
-<p>Užitečné typované funkce pro běžnou práci s náhodností v TypeScriptu.</p>
+<p>Užitečné typované funkce pro běžnou práci s náhodností v TypeScriptu.</p>
 
-<p><b>Celé číslo v rozsahu</b>:</p>
+<p><b>Celé číslo v rozsahu</b>:</p>
 <pre><code>export function randomInt(min: number, max: number): number {
   const a = Math.ceil(min);
   const b = Math.floor(max);
   return Math.floor(Math.random() * (b - a + 1)) + a;
 }</code></pre>
 
-<p><b>Náhodná položka z pole</b>:</p>
+<p><b>Náhodná položka z pole</b>:</p>
 <pre><code>export function randomItem<T>(items: readonly T[]): T {
   if (items.length === 0) throw new Error('items must not be empty');
   const index = Math.floor(Math.random() * items.length);
@@ -303,19 +303,19 @@ crypto.getRandomValues(bytes);</code></pre>
 
 <h2 id="php">Náhodné číslo PHP</h2>
 
-<p>V PHP je pro náhodné celé číslo z daného rozsahu doporučené použít <code>random_int</code> (od PHP 7). Funkci se zadává rozsah čísel, ze kterých se má výsledek vygenerovat.</p>
+<p>V PHP je pro náhodné celé číslo z daného rozsahu doporučené použít <code>random_int</code> (od PHP 7). Funkci se zadává rozsah čísel, ze kterých se má výsledek vygenerovat.</p>
 
 <p>Obě čísla parametrů znamenají <b>včetně</b>, takže následující kód vygeneruje čísla 1–10.</p>
 
 <pre><code>random_int(1, 10);</code></pre>
 
-<p>Pro kryptograficky bezpečná data (např. tokeny) použijte <code>random_bytes</code> a případně je převeďte do čitelného formátu.</p>
+<p>Pro kryptograficky bezpečná data (např. tokeny) použijte <code>random_bytes</code> a případně je převeďte do čitelného formátu.</p>
 
 
 
-<h2 id="ostatni-jazyky">Náhodné číslo v dalších jazycích</h2>
+<h2 id="ostatni-jazyky">Náhodné číslo v dalších jazycích</h2>
 
-<p>Nejčastější způsob, jak získat náhodné celé číslo v rozsahu <code>min..max</code> v populárních jazycích.</p>
+<p>Nejčastější způsob, jak získat náhodné celé číslo v rozsahu <code>min..max</code> v populárních jazycích.</p>
 
 <p><b>Python</b>:</p>
 <pre><code>import random
@@ -348,18 +348,18 @@ int n = ThreadLocalRandom.current().nextInt(1, 11); // 1..10</code></pre>
 
 <h2 id="stejne">Stále stejné náhodné číslo</h2>
 
-<p>Zvlášť při malém počtu čísel a malém počtu opakování se může stát, že bude nějaké číslo padat podezřele často.</p>
+<p>Zvlášť při malém počtu čísel a malém počtu opakování se může stát, že bude nějaké číslo padat podezřele často.</p>
 
 <figure>
   <img src="/files/nahodne-cislo/cetnost-10.png" alt="Graf četnosti malého počtu generování" class="border">
-  <figcaption>Četnost náhodných čísel z rozsahu 0–9 při pouhých deseti opakováních</figcaption>
+  <figcaption>Četnost náhodných čísel z rozsahu 0–9 při pouhých deseti opakováních</figcaption>
 </figure>
 
-<p>Pokud prvek náhody nemusí být matematicky <b>přesný</b>, ale jde hlavně o dojem uživatele, dá se tomu trochu pomoci. Například zabránit vygenerování téhož čísla dvakrát po sobě.</p>
+<p>Pokud prvek náhody nemusí být matematicky <b>přesný</b>, ale jde hlavně o dojem uživatele, dá se tomu trochu pomoci. Například zabránit vygenerování téhož čísla dvakrát po sobě.</p>
 
 <p><a href="https://kod.djpw.cz/otkb">Ukázka</a> – nikdy se nevygeneruje stejné číslo dvakrát za sebou</p>
 
-<p>Pokud je navíc cílem <b>zobrazit všechny náhodné</b> položky, hodí se ještě požadovat, aby se nějaké číslo mohlo vygenerovat podruhé až v okamžiku, kdy každé číslo z rozsahu už alespoň jednou padlo.</p>
+<p>Pokud je navíc cílem <b>zobrazit všechny náhodné</b> položky, hodí se ještě požadovat, aby se nějaké číslo mohlo vygenerovat podruhé až v okamžiku, kdy každé číslo z rozsahu už alespoň jednou padlo.</p>
 
 <p><a href="https://kod.djpw.cz/stkb">Živá ukázka</a></p>
 
@@ -368,4 +368,4 @@ int n = ThreadLocalRandom.current().nextInt(1, 11); // 1..10</code></pre>
 
 <h2 id="vyuziti">Využití</h2>
 
-<p>Na základě vygenerování náhodného čísla se dá potom i <a href="/random">vypisovat náhodný obsah</a>.</p>
+<p>Na základě vygenerování náhodného čísla se dá potom i <a href="/random">vypisovat náhodný obsah</a>.</p>
