@@ -264,8 +264,8 @@ let n = rand::thread_rng().gen_range(1..=10);</div>
 
 <p><b>Go</b>:</p>
 <div class="kod-gen-block" id="kod-go">import (
-  "crypto/rand"
-  "math/big"
+  „crypto/rand”
+  „math/big”
 )
 nBig, _ := rand.Int(rand.Reader, big.NewInt(10))
 n := int(nBig.Int64()) + 1</div>
