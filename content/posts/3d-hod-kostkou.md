@@ -68,40 +68,42 @@ format: "html"
     if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.error(gl.getShaderInfoLog(s)); return null; }
     return s;
   }
-  const vsSrc = `
-    attribute vec3 aPos;
-    attribute vec3 aNorm;
-    uniform mat4 uMVP;
-    uniform mat4 uModel;
-    uniform mat3 uNormMat;
-    varying vec3 vNorm;
-    varying vec3 vWorldPos;
-    void main() {
-      vNorm = normalise(uNormMat * aNorm);
-      vWorldPos = (uModel * vec4(aPos, 1.0)).xyz;
-      gl_Position = uMVP * vec4(aPos, 1.0);
-    }
-  `;
-  const fsSrc = `
-    precision mediump float;
-    varying vec3 vNorm;
-    varying vec3 vWorldPos;
-    uniform vec3 uColor;
-    uniform vec3 uEye;
-    void main() {
-      vec3 n = normalise(vNorm);
-      vec3 light1 = normalise(vec3(3.0, 5.0, 4.0));
-      vec3 light2 = normalise(vec3(-2.0, 3.0, -1.0));
-      float diff = max(dot(n, light1), 0.0) * 0.7 + max(dot(n, light2), 0.0) * 0.3;
-      float amb = 0.18;
-      vec3 viewDir = normalise(uEye - vWorldPos);
-      vec3 halfDir = normalise(light1 + viewDir);
-      float spec = pow(max(dot(n, halfDir), 0.0), 40.0) * 0.5;
-      vec3 col = uColor * (amb + diff) + vec3(1.0) * spec;
-      col = pow(col, vec3(1.0/2.2));
-      gl_FragColor = vec4(col, 1.0);
-    }
-  `;
+  // Build GLSL function name via JS to prevent CMS text transforms
+  const _N = 'normali' + 'ze';
+  const vsSrc = [
+    'attribute vec3 aPos;',
+    'attribute vec3 aNorm;',
+    'uniform mat4 uMVP;',
+    'uniform mat4 uModel;',
+    'uniform mat3 uNormMat;',
+    'varying vec3 vNorm;',
+    'varying vec3 vWorldPos;',
+    'void main() {',
+    '  vNorm = ' + _N + '(uNormMat * aNorm);',
+    '  vWorldPos = (uModel * vec4(aPos, 1.0)).xyz;',
+    '  gl_Position = uMVP * vec4(aPos, 1.0);',
+    '}'
+  ].join('\n');
+  const fsSrc = [
+    'precision mediump float;',
+    'varying vec3 vNorm;',
+    'varying vec3 vWorldPos;',
+    'uniform vec3 uColor;',
+    'uniform vec3 uEye;',
+    'void main() {',
+    '  vec3 n = ' + _N + '(vNorm);',
+    '  vec3 light1 = ' + _N + '(vec3(3.0, 5.0, 4.0));',
+    '  vec3 light2 = ' + _N + '(vec3(-2.0, 3.0, -1.0));',
+    '  float diff = max(dot(n, light1), 0.0) * 0.7 + max(dot(n, light2), 0.0) * 0.3;',
+    '  float amb = 0.18;',
+    '  vec3 viewDir = ' + _N + '(uEye - vWorldPos);',
+    '  vec3 halfDir = ' + _N + '(light1 + viewDir);',
+    '  float spec = pow(max(dot(n, halfDir), 0.0), 40.0) * 0.5;',
+    '  vec3 col = uColor * (amb + diff) + vec3(1.0) * spec;',
+    '  col = pow(col, vec3(1.0/2.2));',
+    '  gl_FragColor = vec4(col, 1.0);',
+    '}'
+  ].join('\n');
   const vs = createShader(gl.VERTEX_SHADER, vsSrc);
   const fs = createShader(gl.FRAGMENT_SHADER, fsSrc);
   const prog = gl.createProgram();
