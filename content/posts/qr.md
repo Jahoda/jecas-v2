@@ -1,7 +1,7 @@
 ---
-title: "QR code generátor"
-headline: "Generování QR kódu"
-description: "Co je to QR kód a jak ho okamžitě vytvořit pomocí jednoduchého online generátoru."
+title: "QR kód generátor online zdarma"
+headline: "QR kód generátor – online, zdarma"
+description: "Online QR kód generátor zdarma. Vytvořte QR kód pro text, URL, platbu, e-mail nebo telefon přímo v prohlížeči bez registrace."
 date: "2015-02-19"
 last_modification: "2025-09-16"
 status: 1
