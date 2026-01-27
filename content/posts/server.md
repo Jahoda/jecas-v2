@@ -39,11 +39,10 @@ format: "html"
     
     <p>Tytéž informace umí zjistit i JavaScript přes <code>navigator.userAgent</code>.</p>
     
-    <p class="live">
-<script>
-  document.write(navigator.userAgent);
-</script>
-    </p>
+    <p class="live" id="user-agent-output"></p>
+    <script>
+      document.getElementById('user-agent-output').textContent = navigator.userAgent;
+    </script>
     
     <p>Hodnota <code>$_SERVER["HTTP_USER_AGENT"]</code> se dá využívat k <a href="/css-pro-ie#detekce">detekcím verse prohlížeče</a> nebo třeba ke zjištěné <a href="/mobilni-web#detekce">prohlížeče mobilního</a>.</p>
   </dd>
