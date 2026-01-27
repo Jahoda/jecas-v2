@@ -48,7 +48,7 @@ format: "html"
 </li>
 
 <li>
-  <p><b>Centralizovaná pravidla</b> – oprávnění jsou definovaná na jednom místě</p>
+  <p><b>Centralisovaná pravidla</b> – oprávnění jsou definovaná na jednom místě</p>
 </li>
 
 <li>
@@ -132,7 +132,7 @@ format: "html"
 <ul>
 <li><b>Méně kódu</b> a <b>rychlejší vývoj</b> – není potřeba psát REST/GraphQL API pro CRUD operace (Create, Read, Update, Delete)</li>
 <li><b>Bezpečnost zaručená DB</b> – nelze obejít, i když frontend kód je kompromitován</li>
-<li><b>Real-time aktualizace</b> – snadná integrace s WebSockets/subscriptions</li>
+<li><b>Real-time aktualisace</b> – snadná integrace s WebSockets/subscriptions</li>
 </ul>
 
 <h3 id="proc-to-funguje">Proč je to bezpečné (a kdy ne)</h3>
@@ -336,7 +336,7 @@ await supabase
 
 <p><b>Dodatečná ochrana, kterou můžete implementovat:</b></p>
 
-<pre><code>-- Vytvořit VIEW s předem optimalizovaným dotazem
+<pre><code>-- Vytvořit VIEW s předem optimalisovaným dotazem
 CREATE VIEW posts_with_stats AS
 SELECT
   p.*,
@@ -420,7 +420,7 @@ await supabase
 <li>V produkci logujte detailní chyby, ale uživateli ukažte obecnou hlášku</li>
 </ul>
 
-<p><b>8. Zapomenuté RLS nastavení – kritické bezpečnostní riziko!</b></p>
+<p><b>8. Zapomenuté RLS nastavení – kritické bezpečnostní risiko!</b></p>
 
 <p><b>Toto je jeden z nejnebezpečnějších problémů RLS!</b> Pokud vytvoříte tabulku během vývoje a zapomenete nastavit RLS, aplikace funguje normálně – a právě to je problém.</p>
 
@@ -459,7 +459,7 @@ ALTER TABLE posts ENABLE ROW LEVEL SECURITY;
 CREATE POLICY user_posts ON posts USING (user_id = auth.uid());
 -- ✓ Funguje a je bezpečné</code></pre>
 
-<p><b>Rizikový scénář:</b></p>
+<p><b>Risikový scénář:</b></p>
 
 <ol>
 <li>Vývojář vytvoří tabulku během vývoje bez RLS</li>
@@ -561,7 +561,7 @@ CREATE POLICY insert_own ON new_table
 <li><b>Vždy používejte RLS</b> – nikdy nepovolte přístup k tabulce bez RLS politik</li>
 <li><b>Kombinujte s DB constraints</b> – NOT NULL, CHECK, UNIQUE jako další vrstva validace</li>
 <li><b>Používejte Views pro složité dotazy</b> – místo složitých JOINů z frontendu</li>
-<li><b>Auditujte přístupy</b> – logujte všechny operace pro analýzu bezpečnosti</li>
+<li><b>Auditujte přístupy</b> – logujte všechny operace pro analysu bezpečnosti</li>
 <li><b>Testujte RLS politiky důkladně</b> – zkuste obejít vlastní zabezpečení</li>
 <li><b>Citlivé operace přes backend</b> – platby, změna emailu, admin operace</li>
 </ul>
@@ -604,7 +604,7 @@ const posts = await prisma.post.findMany({
 
 <h2 id="postgresql">RLS v PostgreSQL</h2>
 
-<p>PostgreSQL podporuje RLS od verze 9.5 a je to nejpoužívanější implementace.</p>
+<p>PostgreSQL podporuje RLS od verse 9.5 a je to nejpoužívanější implementace.</p>
 
 <h3 id="zakladni-pouziti">Základní použití</h3>
 
@@ -674,22 +674,22 @@ CREATE POLICY update_own_posts ON posts
 
 <p>Aplikace, kde má každá firma své oddělené data:</p>
 
-<pre><code>-- Tabulka s ID organizace
+<pre><code>-- Tabulka s ID organisace
 CREATE TABLE tasks (
   id SERIAL PRIMARY KEY,
   title TEXT,
-  organization_id UUID NOT NULL
+  organisation_id UUID NOT NULL
 );
 
 ALTER TABLE tasks ENABLE ROW LEVEL SECURITY;
 
--- Použití session proměnné pro aktuální organizaci
+-- Použití session proměnné pro aktuální organisaci
 CREATE POLICY org_isolation ON tasks
-  USING (organization_id::text = current_setting('app.current_org_id'));
+  USING (organisation_id::text = current_setting('app.current_org_id'));
 
 -- V aplikaci nastavíte před dotazy:
 SET app.current_org_id = '123e4567-e89b-12d3-a456-426614174000';
-SELECT * FROM tasks; -- vrátí jen úkoly této organizace</code></pre>
+SELECT * FROM tasks; -- vrátí jen úkoly této organisace</code></pre>
 
 <h3 id="admin-pristup">Administrátorský přístup</h3>
 
@@ -760,11 +760,11 @@ CREATE POLICY premium_content ON articles
 
 <p>Supabase má GUI pro správu RLS politik přímo v dashboardu, což zjednodušuje jejich vytváření a testování.</p>
 
-<h2 id="jine-databaze">RLS v dalších databázích</h2>
+<h2 id="jine-database">RLS v dalších databázích</h2>
 
 <h3 id="oracle">Oracle Database</h3>
 
-<p>Oracle nazývá RLS jako <b>Virtual Private Database (VPD)</b> a podporuje ho již od verze 8i:</p>
+<p>Oracle nazývá RLS jako <b>Virtual Private Database (VPD)</b> a podporuje ho již od verse 8i:</p>
 
 <pre><code>BEGIN
   DBMS_RLS.ADD_POLICY(
@@ -895,7 +895,7 @@ USING (org_id = current_setting('app.org_id', true)::uuid)</code></pre>
 </li>
 
 <li>
-  <p>Hlavní výhody jsou <b>vyšší bezpečnost</b> (nelze obejít chybou v kódu), <b>jednodušší aplikační logika</b> a <b>centralizovaná správa oprávnění</b></p>
+  <p>Hlavní výhody jsou <b>vyšší bezpečnost</b> (nelze obejít chybou v kódu), <b>jednodušší aplikační logika</b> a <b>centralisovaná správa oprávnění</b></p>
 </li>
 
 <li>
