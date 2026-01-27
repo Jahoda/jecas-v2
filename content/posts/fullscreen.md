@@ -1,7 +1,7 @@
 ---
-title: "Fullscreen"
-headline: "Režim celé obrazovky"
-description: "Jak je možné stránku přepnout do fullscreenu (režimu celé obrazovky)."
+title: "Fullscreen – režim celé obrazovky"
+headline: "Režim celé obrazovky (fullscreen)"
+description: "Jak přepnout stránku do režimu celé obrazovky. Klávesová zkratka F11, Fullscreen API v JavaScriptu a CSS pseudotřída :fullscreen."
 date: "2015-01-18"
 last_modification: "2015-01-19"
 status: 1
