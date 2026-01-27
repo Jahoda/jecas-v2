@@ -8,10 +8,8 @@ const config = {
 		prerender: {
 			concurrency: 50,
 			handleHttpError: ({ path, referrer, message }) => {
-				// Warn about 404s for missing pages/images during prerender
-				// These should be fixed in content but shouldn't block the build
 				if (message.includes('404')) {
-					console.warn(`Warning: ${message} (from ${referrer})`);
+					console.warn(`[prerender 404] ${path} (from ${referrer})`);
 					return;
 				}
 				throw new Error(message);
@@ -21,7 +19,8 @@ const config = {
 				console.warn(
 					`Warning: Missing id="${id}" on ${path} (referenced from ${referrers.join(', ')})`
 				);
-			}
+			},
+			handleUnseenRoutes: 'warn'
 		}
 	},
 	preprocess: vitePreprocess(),
