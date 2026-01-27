@@ -129,11 +129,11 @@ function genMulti() {
   .wheel-wrap { text-align: center; }
   .wheel-wrap canvas { display: block; margin: 0 auto; cursor: pointer; }
   .wheel-wrap textarea { width: 100%; min-height: 5em; font-size: 100%; }
-  .wheel-result { font-size: 200%; font-weight: bold; min-height: 1.5em; margin: .5em 0; }
   .wheel-wrap button { font-size: 120%; padding: .5em 1.5em; cursor: pointer; }
+  .wheel-wrap textarea { resize: none; overflow: hidden; }
 </style>
 <div class="wheel-wrap">
-  <textarea id="wheel-items">Pizza
+  <textarea id="wheel-items" oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px';drawWheel(getWheelItems(),wheelAngle)">Pizza
 Sushi
 Burger
 Salát
@@ -141,7 +141,6 @@ Kebab
 Pasta</textarea>
   <p><button onclick="spinWheel()">Roztočit kolo</button></p>
   <canvas id="wheel-canvas" width="300" height="300"></canvas>
-  <div class="wheel-result" id="wheel-result">&nbsp;</div>
 </div>
 <script>
 var wheelAngle = 0;
@@ -198,7 +197,6 @@ function spinWheel() {
   var items = getWheelItems();
   if (items.length < 2) return;
   wheelSpinning = true;
-  document.getElementById('wheel-result').textContent = '';
   var totalRotation = Math.random() * 2 * Math.PI + 4 * 2 * Math.PI;
   var startAngle = wheelAngle;
   var duration = 3000;
@@ -213,19 +211,15 @@ function spinWheel() {
       requestAnimationFrame(animate);
     } else {
       wheelSpinning = false;
-      var step = 2 * Math.PI / items.length;
-      var normalised = ((2 * Math.PI - (wheelAngle % (2 * Math.PI))) + (2 * Math.PI)) % (2 * Math.PI);
-      var index = Math.floor(normalised / step) % items.length;
-      document.getElementById('wheel-result').textContent = items[index];
     }
   }
   requestAnimationFrame(animate);
 }
 
 drawWheel(getWheelItems(), wheelAngle);
-document.getElementById('wheel-items').addEventListener('input', function() {
-  drawWheel(getWheelItems(), wheelAngle);
-});
+var wheelTextarea = document.getElementById('wheel-items');
+wheelTextarea.style.height = 'auto';
+wheelTextarea.style.height = wheelTextarea.scrollHeight + 'px';
 </script>
 </div>
 
@@ -236,8 +230,8 @@ document.getElementById('wheel-items').addEventListener('input', function() {
 
 <div class="live">
 <p>
-  <label>Od: <input type="number" id="kod-od" value="1"> (včetně)</label>
-  <label>Do: <input type="number" id="kod-do" value="10"> (včetně)</label>
+  <label>Od: <input type="number" id="kod-od" value="1" oninput="kodUpdate()"> (včetně)</label>
+  <label>Do: <input type="number" id="kod-do" value="10" oninput="kodUpdate()"> (včetně)</label>
   Počet možných čísel: <output id="kolik-count">10</output>
 </p>
 
@@ -297,8 +291,6 @@ function kodUpdate() {
   document.getElementById("kolik-go").textContent = String(count);
   document.getElementById("od-go").textContent = od;
 }
-document.getElementById("kod-od").addEventListener("input", kodUpdate);
-document.getElementById("kod-do").addEventListener("input", kodUpdate);
 </script>
 </div>
 
@@ -452,4 +444,4 @@ int n = ThreadLocalRandom.current().nextInt(1, 11); // 1..10</code></pre>
 
 <h2 id="vyuziti">Využití</h2>
 
-<p>Na základě vygenerování náhodného čísla se dá potom i <a href="/random">vypisovat náhodný obsah</a>.</p>
+<p>Na základě vygenerování náhodného čísla se dá potom i <a href="/random">vypisovat náhodný obsah</a>. Náhodnost je také klíčová pro <a href="/bezpecne-heslo">generování bezpečných hesel</a>.</p>
