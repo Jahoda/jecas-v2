@@ -1,7 +1,7 @@
 ---
 title: "3D transformace"
 headline: "3D transformace"
-description: "Jak v CSS používat 3D transformace pro vytváření pokročilých vizuálních efektů."
+description: "Jak v CSS používat 3D transformace pro vytváření pokročilých visuálních efektů."
 date: "2014-03-03"
 last_modification: "2014-03-03"
 status: 0
@@ -9,11 +9,11 @@ tags: ["css", "webove-animace"]
 format: "html"
 ---
 
-<p>CSS 3D transformace umožňují vytvářet pokročilé vizuální efekty přímo v prohlížeči bez nutnosti používat JavaScript nebo externí knihovny. S pomocí těchto vlastností můžeme vytvářet realistické 3D efekty, které dříve vyžadovaly složité programování.</p>
+<p>CSS 3D transformace umožňují vytvářet pokročilé visuální efekty přímo v prohlížeči bez nutnosti používat JavaScript nebo externí knihovny. S pomocí těchto vlastností můžeme vytvářet realistické 3D efekty, které dříve vyžadovaly složité programování.</p>
 
 <h2 id="zakladni-principy">Základní principy</h2>
 
-<p>3D transformace fungují na principu transformační matice, která mění pozici, rotaci a velikost elementů v trojrozměrném prostoru. Klíčové vlastnosti pro 3D transformace jsou:</p>
+<p>3D transformace fungují na principu transformační matice, která mění posici, rotaci a velikost elementů v trojrozměrném prostoru. Klíčové vlastnosti pro 3D transformace jsou:</p>
 
 <ul>
 <li><code>transform-style: preserve-3d</code> – zachovává 3D prostor</li>
@@ -1802,7 +1802,7 @@ container.addEventListener('mousemove', (e) => {
 
 <h2 id="3d-particle-system">3D Particle System</h2>
 
-<p>Vytvoříme interaktivní 3D systém částic, který reaguje na pohyb myši a vytváří působivé vizuální efekty:</p>
+<p>Vytvoříme interaktivní 3D systém částic, který reaguje na pohyb myši a vytváří působivé visuální efekty:</p>
 
 <div class="live">
   <style>
@@ -2089,7 +2089,7 @@ container.addEventListener('mousemove', (e) => {
 
 <h2 id="3d-hry-alternativy">3D transformace vs. herní engine</h2>
 
-<p>Zatímco CSS 3D transformace poskytují skvělé možnosti pro vizuální efekty, pro skutečné hry existují lepší alternativy. Podíváme se na výhody a nevýhody různých přístupů:</p>
+<p>Zatímco CSS 3D transformace poskytují skvělé možnosti pro visuální efekty, pro skutečné hry existují lepší alternativy. Podíváme se na výhody a nevýhody různých přístupů:</p>
 
 <h3 id="css-3d-transformace">CSS 3D transformace pro hry</h3>
 
@@ -2346,10 +2346,10 @@ container.addEventListener('mousemove', (e) => {
 
 <ul>
 <li><strong>Webové hry</strong> - Jednoduché browser hry bez složité fyziky</li>
-<li><strong>Interaktivní prezentace</strong> - Demonstrace konceptů a nápadů</li>
+<li><strong>Interaktivní presentace</strong> - Demonstrace konceptů a nápadů</li>
 <li><strong>UI/UX efekty</strong> - Hover animace a přechody</li>
 <li><strong>Prototypování</strong> - Rychlé testování nápadů</li>
-<li><strong>Edukační obsah</strong> - Vizuální vysvětlení 3D konceptů</li>
+<li><strong>Edukační obsah</strong> - Visuální vysvětlení 3D konceptů</li>
 <li><strong>Mobilní aplikace</strong> - Lehké animace pro lepší UX</li>
 </ul>
 
@@ -2410,7 +2410,7 @@ container.addEventListener('mousemove', (e) => {
 </tr>
 <tr>
 <td><strong>Phaser</strong></td>
-<td>Specializovaný na hry</td>
+<td>Specialisovaný na hry</td>
 <td>Pouze 2D</td>
 <td>2D hry</td>
 </tr>
@@ -2510,7 +2510,7 @@ container.addEventListener('mousemove', (e) => {
         <div class="example-icon">🌐</div>
         <div class="example-title">Webové aplikace</div>
         <div class="example-desc">
-          Interaktivní prezentace, produktové galerie, 
+          Interaktivní presentace, produktové galerie, 
           vzdělávací obsah s 3D efekty.
         </div>
         <div style="text-align: center;">
@@ -2521,10 +2521,10 @@ container.addEventListener('mousemove', (e) => {
       
       <div class="example-card">
         <div class="example-icon">🏗️</div>
-        <div class="example-title">3D vizualizace</div>
+        <div class="example-title">3D visualisace</div>
         <div class="example-desc">
           Architektonické modely, produktové preview, 
-          vědecké vizualizace.
+          vědecké visualisace.
         </div>
         <div style="text-align: center;">
           <span class="tech-tag three">Three.js</span>
@@ -2550,20 +2550,20 @@ container.addEventListener('mousemove', (e) => {
 
 <h3 id="zavěr">Závěr</h3>
 
-<p>CSS 3D transformace jsou skvělým nástrojem pro vytváření vizuálně atraktivních webových prvků a jednoduchých interaktivních her. Jsou ideální pro:</p>
+<p>CSS 3D transformace jsou skvělým nástrojem pro vytváření visuálně atraktivních webových prvků a jednoduchých interaktivních her. Jsou ideální pro:</p>
 
 <ul>
 <li><strong>Rychlé prototypování</strong> - Testování nápadů bez složitého setupu</li>
-<li><strong>Webové prezentace</strong> - Demonstrace konceptů a produktů</li>
+<li><strong>Webové presentace</strong> - Demonstrace konceptů a produktů</li>
 <li><strong>Jednoduché hry</strong> - Browser hry s omezenou funkcionalitou</li>
 <li><strong>UI/UX design</strong> - Moderní animace a přechody</li>
 </ul>
 
-<p>Pro složitější hry a aplikace je však lepší zvážit specializované herní enginy nebo 3D knihovny jako Three.js nebo Babylon.js. Ty poskytují mnohem více možností pro vytváření profesionálních herních zážitků.</p>
+<p>Pro složitější hry a aplikace je však lepší zvážit specialisované herní enginy nebo 3D knihovny jako Three.js nebo Babylon.js. Ty poskytují mnohem více možností pro vytváření profesionálních herních zážitků.</p>
 
 <h2 id="3d-galerie">3D galerie s hover efekty</h2>
 
-<p>Vytvoříme pokročilou 3D galerii, která kombinuje různé transformace a vytváří působivé vizuální efekty:</p>
+<p>Vytvoříme pokročilou 3D galerii, která kombinuje různé transformace a vytváří působivé visuální efekty:</p>
 
 <div class="live">
   <style>
@@ -2720,7 +2720,7 @@ container.addEventListener('mousemove', (e) => {
   opacity: 0.3;
 }</code></pre>
 
-<h2 id="optimalizace-vykonu">Optimalizace výkonu</h2>
+<h2 id="optimalisace-vykonu">Optimalisace výkonu</h2>
 
 <p>Pro lepší výkon při 3D transformacích:</p>
 

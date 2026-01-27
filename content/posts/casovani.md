@@ -153,13 +153,13 @@ requestAnimationFrame(animace);</code></pre>
 <p>Příklad jednoduché animace pohybu elementu:</p>
 
 <pre><code>var element = document.getElementById('animovany');
-var pozice = 0;
+var posice = 0;
 
 function animace() {
-  pozice += 2;
-  element.style.left = pozice + 'px';
+  posice += 2;
+  element.style.left = posice + 'px';
   
-  if (pozice < 300) {
+  if (posice < 300) {
     requestAnimationFrame(animace);
   }
 }

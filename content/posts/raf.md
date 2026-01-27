@@ -275,7 +275,7 @@ animate();</code></pre>
 
 <ul>
   <li>Hry v prohlížeči</li>
-  <li>Data vizualizace s tisíci elementy</li>
+  <li>Data visualisace s tisíci elementy</li>
   <li>Canvas animace</li>
   <li>WebGL aplikace</li>
 </ul>
@@ -284,8 +284,8 @@ animate();</code></pre>
 
 <ul>
   <li>Ovlivňování CSS custom properties z JavaScriptu</li>
-  <li>Synchronizace více animací</li>
-  <li>Animace závislé na scroll pozici</li>
+  <li>Synchronisace více animací</li>
+  <li>Animace závislé na scroll posici</li>
 </ul>
 
 <h3 id="prakticky-priklad-scroll">Praktický příklad – scroll indikátor</h3>
@@ -357,19 +357,19 @@ measureFPS();</code></pre>
 
 <h3 id="devtools">DevTools pro animace</h3>
 
-<p>Moderní prohlížeče nabízejí nástroje pro analýzu animací:</p>
+<p>Moderní prohlížeče nabízejí nástroje pro analysu animací:</p>
 
 <ul>
   <li><b>Chrome DevTools</b> – Performance tab s Frame timeline</li>
   <li><b>Firefox DevTools</b> – Performance panel s Frame rate grafy</li>
-  <li><b>Safari Web Inspector</b> – Timeline tab pro analýzu animací</li>
+  <li><b>Safari Web Inspector</b> – Timeline tab pro analysu animací</li>
 </ul>
 
 <h2 id="pokrocilé-techniky">Pokročilé techniky</h2>
 
 <h3 id="throttling">Throttling s requestAnimationFrame</h3>
 
-<p>Pro optimalizaci scroll nebo resize událostí:</p>
+<p>Pro optimalisaci scroll nebo resize událostí:</p>
 
 <pre><code>let ticking = false;
 
@@ -429,7 +429,7 @@ animateBatch();</code></pre>
 <p><b>Výhody:</b></p>
 <ul>
   <li>Hardware acceleration (GPU)</li>
-  <li>Prohlížeč optimalizuje automaticky</li>
+  <li>Prohlížeč optimalisuje automaticky</li>
   <li>Žádný JavaScript overhead</li>
   <li>Nejlepší performance</li>
 </ul>
@@ -448,7 +448,7 @@ animateBatch();</code></pre>
 <ul>
   <li>GPU acceleration</li>
   <li>Lepší kontrola než CSS</li>
-  <li>Synchronizace více animací</li>
+  <li>Synchronisace více animací</li>
   <li>Compositor thread</li>
 </ul>
 
@@ -465,7 +465,7 @@ element.style.setProperty('--x', x + 'px');</code></pre>
 
 <h3 id="canvas-webgl">Canvas/WebGL – Pro složité animace</h3>
 
-<p>Canvas a WebGL animace také používají <code>requestAnimationFrame</code> pro synchronizaci s refresh rate monitoru, ale jsou efektivnější než DOM animace:</p>
+<p>Canvas a WebGL animace také používají <code>requestAnimationFrame</code> pro synchronisaci s refresh rate monitoru, ale jsou efektivnější než DOM animace:</p>
 
 <pre><code>const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -517,7 +517,7 @@ document.querySelectorAll('.lazy-animate').forEach(el => {
 <ul>
   <li><b>CSS</b> – pro jednoduché animace</li>
   <li><b>Web Animations API</b> – pro složité animace s JS kontrolou</li>
-  <li><b>Canvas/WebGL + rAF</b> – pro hry, data vizualizace nebo složité animace</li>
+  <li><b>Canvas/WebGL + rAF</b> – pro hry, data visualisace nebo složité animace</li>
   <li><b>DOM + rAF</b> – pro vlastní logiku nebo interaktivní animace</li>
 </ul>
 
@@ -691,7 +691,7 @@ function AnimatedComponent() {
     this.velocity.x *= this.friction;
     this.velocity.y *= this.friction;
     
-    // Update pozice
+    // Update posice
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
     
@@ -747,13 +747,13 @@ document.querySelector('.scroll-button').addEventListener('click', () => {
 
 <h2 id="best-practices">Best practices</h2>
 
-<h3 id="optimalizace">Optimalizace pro mobilní zařízení</h3>
+<h3 id="optimalisace">Optimalisace pro mobilní zařízení</h3>
 
 <ul>
   <li>Používejte <code>transform</code> a <code>opacity</code> místo <code>left</code>/<code>top</code></li>
   <li>Vyhýbejte se animacím <code>width</code>/<code>height</code> a <code>margin</code>/<code>padding</code></li>
   <li>Zvažte snížení FPS na 30 pro úsporu baterie</li>
-  <li>Používejte <code>will-change</code> CSS vlastnost pro optimalizaci</li>
+  <li>Používejte <code>will-change</code> CSS vlastnost pro optimalisaci</li>
 </ul>
 
 <h3 id="accessibility">Accessibility</h3>
