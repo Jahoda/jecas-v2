@@ -124,97 +124,93 @@ function genMulti() {
 <p>Následující generátor po zadání nejnižšího a nejvyššího čísla připraví kód pro vygenerování náhodného čísla z daného rozsahu v různých jazycích.</p>
 
 <div class="live">
-<style>
-  #priklad {
-    margin-left: 1em;
-  }
-</style>
-<form oninput="prepocitat(this)" onsubmit="prepocitat(this); return false">
-  <p><label>Od: <input type="number" name="od" value="1"></label> (včetně)</p>
-  <p><label>Do: <input type="number" name="do" value="10"></label> (včetně)</p>
-  <p><label>Počet možných čísel: <output id="kolik-count">10</output></label></p>
-  <button>Vygenerovat</button><span id="priklad"></span>
+<p>
+  <label>Od: <input type="number" id="kod-od" value="1"> (včetně)</label>
+  <label>Do: <input type="number" id="kod-do" value="10"> (včetně)</label>
+  Počet možných čísel: <output id="kolik-count">10</output>
+</p>
 
-  <p><b>JavaScript</b>:</p>
-  <pre><code>const nahodne = Math.floor(Math.random() * <span id="kolik">10</span>) + <span id="od">1</span>;</code></pre>
+<p><b>JavaScript</b>:</p>
+<pre><code>const nahodne = Math.floor(Math.random() * <span id="kolik">10</span>) + <span id="kod-od-js">1</span>;</code></pre>
 
-  <p><b>PHP</b>:</p>
-  <pre><code>random_int(<span id="od-php">1</span>, <span id="do-php">10</span>);</code></pre>
+<p><b>PHP</b>:</p>
+<pre><code>random_int(<span id="od-php">1</span>, <span id="do-php">10</span>);</code></pre>
 
-  <p><b>Python</b>:</p>
-  <pre><code>import random
+<p><b>Python</b>:</p>
+<pre><code>import random
 random.randint(<span id="od-py">1</span>, <span id="do-py">10</span>)</code></pre>
 
-  <p><b>Java</b>:</p>
-  <pre><code>import java.util.concurrent.ThreadLocalRandom;
+<p><b>Java</b>:</p>
+<pre><code>import java.util.concurrent.ThreadLocalRandom;
 int n = ThreadLocalRandom.current().nextInt(<span id="od-java">1</span>, <span id="do-plus1-java">11</span>);</code></pre>
 
-  <p><b>C#</b>:</p>
-  <pre><code>var n = Random.Shared.Next(<span id="od-cs">1</span>, <span id="do-plus1-cs">11</span>);</code></pre>
+<p><b>C#</b>:</p>
+<pre><code>var n = Random.Shared.Next(<span id="od-cs">1</span>, <span id="do-plus1-cs">11</span>);</code></pre>
 
-  <p><b>Ruby</b>:</p>
-  <pre><code>rand(<span id="od-rb">1</span>.. <span id="do-rb">10</span>)</code></pre>
+<p><b>Ruby</b>:</p>
+<pre><code>rand(<span id="od-rb">1</span>.. <span id="do-rb">10</span>)</code></pre>
 
-  <p><b>Rust</b>:</p>
-  <pre><code>use rand::Rng;
+<p><b>Rust</b>:</p>
+<pre><code>use rand::Rng;
 let n = rand::thread_rng().gen_range(<span id="od-rs">1</span>..=<span id="do-rs">10</span>);</code></pre>
 
-  <p><b>Go</b>:</p>
-  <pre><code>import (
+<p><b>Go</b>:</p>
+<pre><code>import (
   "crypto/rand"
   "math/big"
 )
 nBig, _ := rand.Int(rand.Reader, big.NewInt(<span id="kolik-go">10</span>))
 n := int(nBig.Int64()) + <span id="od-go">1</span></code></pre>
-</form>
+
 <script>
-  (function(){
-  const priklad = document.getElementById("priklad");
-  const kolik = document.getElementById("kolik");
-  const kolikCount = document.getElementById("kolik-count");
-  const od = document.getElementById("od");
-  const odPhp = document.getElementById("od-php");
-  const doPhp = document.getElementById("do-php");
-  const odPy = document.getElementById("od-py");
-  const doPy = document.getElementById("do-py");
-  const odJava = document.getElementById("od-java");
-  const doPlus1Java = document.getElementById("do-plus1-java");
-  const odCs = document.getElementById("od-cs");
-  const doPlus1Cs = document.getElementById("do-plus1-cs");
-  const odRb = document.getElementById("od-rb");
-  const doRb = document.getElementById("do-rb");
-  const odRs = document.getElementById("od-rs");
-  const doRs = document.getElementById("do-rs");
-  const kolikGo = document.getElementById("kolik-go");
-  const odGo = document.getElementById("od-go");
-  function prepocitat(form) {
-    const count = Number(form.do.value) - Number(form.od.value) + 1;
-    kolik.textContent = String(count);
-    kolikCount.textContent = String(count);
-    od.textContent = form.od.value;
-    odPhp.textContent = form.od.value;
-    doPhp.textContent = form.do.value;
-    // Python
-    odPy.textContent = form.od.value;
-    doPy.textContent = form.do.value;
-    // Java/C# upper bound is exclusive
-    odJava.textContent = form.od.value;
-    doPlus1Java.textContent = String(Number(form.do.value) + 1);
-    odCs.textContent = form.od.value;
-    doPlus1Cs.textContent = String(Number(form.do.value) + 1);
-    // Ruby inclusive range
-    odRb.textContent = form.od.value;
-    doRb.textContent = form.do.value;
-    // Rust inclusive range
-    odRs.textContent = form.od.value;
-    doRs.textContent = form.do.value;
-    // Go uses count and min
-    kolikGo.textContent = String(count);
-    odGo.textContent = form.od.value;
-    priklad.textContent = Math.floor(Math.random() * count) + Number(form.od.value);
+(function(){
+  var inputOd = document.getElementById("kod-od");
+  var inputDo = document.getElementById("kod-do");
+  var els = {
+    kolik: document.getElementById("kolik"),
+    kolikCount: document.getElementById("kolik-count"),
+    odJs: document.getElementById("kod-od-js"),
+    odPhp: document.getElementById("od-php"),
+    doPhp: document.getElementById("do-php"),
+    odPy: document.getElementById("od-py"),
+    doPy: document.getElementById("do-py"),
+    odJava: document.getElementById("od-java"),
+    doPlus1Java: document.getElementById("do-plus1-java"),
+    odCs: document.getElementById("od-cs"),
+    doPlus1Cs: document.getElementById("do-plus1-cs"),
+    odRb: document.getElementById("od-rb"),
+    doRb: document.getElementById("do-rb"),
+    odRs: document.getElementById("od-rs"),
+    doRs: document.getElementById("do-rs"),
+    kolikGo: document.getElementById("kolik-go"),
+    odGo: document.getElementById("od-go")
+  };
+  function update() {
+    var od = inputOd.value;
+    var doo = inputDo.value;
+    var count = Number(doo) - Number(od) + 1;
+    var doPlus1 = String(Number(doo) + 1);
+    els.kolik.textContent = String(count);
+    els.kolikCount.textContent = String(count);
+    els.odJs.textContent = od;
+    els.odPhp.textContent = od;
+    els.doPhp.textContent = doo;
+    els.odPy.textContent = od;
+    els.doPy.textContent = doo;
+    els.odJava.textContent = od;
+    els.doPlus1Java.textContent = doPlus1;
+    els.odCs.textContent = od;
+    els.doPlus1Cs.textContent = doPlus1;
+    els.odRb.textContent = od;
+    els.doRb.textContent = doo;
+    els.odRs.textContent = od;
+    els.doRs.textContent = doo;
+    els.kolikGo.textContent = String(count);
+    els.odGo.textContent = od;
   }
-  window.prepocitat = prepocitat;
-  })()
+  inputOd.addEventListener("input", update);
+  inputDo.addEventListener("input", update);
+})();
 </script>
 </div>
 
