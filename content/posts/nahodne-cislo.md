@@ -61,6 +61,7 @@ function genRozsah(od, doo) {
   document.getElementById('gen-do').value = doo;
   genNahodne();
 }
+genNahodne();
 </script>
 </div>
 
@@ -119,6 +120,116 @@ function genMulti() {
 </div>
 
 
+<h2 id="kolo-stesti">Kolo štěstí</h2>
+
+<p>Zadejte položky (každou na nový řádek) a roztočte kolo.</p>
+
+<div class="live">
+<style>
+  .wheel-wrap { text-align: center; }
+  .wheel-wrap canvas { display: block; margin: 0 auto; cursor: pointer; }
+  .wheel-wrap textarea { width: 100%; min-height: 5em; font-size: 100%; }
+  .wheel-result { font-size: 200%; font-weight: bold; min-height: 1.5em; margin: .5em 0; }
+  .wheel-wrap button { font-size: 120%; padding: .5em 1.5em; cursor: pointer; }
+</style>
+<div class="wheel-wrap">
+  <textarea id="wheel-items">Pizza
+Sushi
+Burger
+Salát
+Kebab
+Pasta</textarea>
+  <p><button onclick="spinWheel()">Roztočit kolo</button></p>
+  <canvas id="wheel-canvas" width="300" height="300"></canvas>
+  <div class="wheel-result" id="wheel-result">&nbsp;</div>
+</div>
+<script>
+var wheelAngle = 0;
+var wheelSpinning = false;
+var wheelColors = ['#2563eb','#059669','#dc2626','#d97706','#7c3aed','#db2777','#0891b2','#4f46e5'];
+
+function getWheelItems() {
+  return document.getElementById('wheel-items').value.split('\n').map(function(s){return s.trim()}).filter(function(s){return s.length > 0});
+}
+
+function drawWheel(items, angle) {
+  var canvas = document.getElementById('wheel-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var cx = 150, cy = 150, r = 140;
+  ctx.clearRect(0, 0, 300, 300);
+  if (items.length === 0) return;
+  var step = 2 * Math.PI / items.length;
+  for (var i = 0; i < items.length; i++) {
+    var start = angle + i * step;
+    var end = start + step;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, start, end);
+    ctx.closePath();
+    ctx.fillStyle = wheelColors[i % wheelColors.length];
+    ctx.fill();
+    ctx.strokeStyle = '#1e293b';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(start + step / 2);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold ' + Math.min(16, Math.floor(120 / items.length + 8)) + 'px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    var label = items[i].length > 12 ? items[i].substring(0, 11) + '…' : items[i];
+    ctx.fillText(label, r * 0.55, 0);
+    ctx.restore();
+  }
+  // Ukazatel (šipka nahoře)
+  ctx.beginPath();
+  ctx.moveTo(cx - 10, 5);
+  ctx.lineTo(cx + 10, 5);
+  ctx.lineTo(cx, 22);
+  ctx.closePath();
+  ctx.fillStyle = '#1e293b';
+  ctx.fill();
+}
+
+function spinWheel() {
+  if (wheelSpinning) return;
+  var items = getWheelItems();
+  if (items.length < 2) return;
+  wheelSpinning = true;
+  document.getElementById('wheel-result').textContent = '';
+  var totalRotation = Math.random() * 2 * Math.PI + 4 * 2 * Math.PI;
+  var startAngle = wheelAngle;
+  var duration = 3000;
+  var startTime = performance.now();
+  function animate(now) {
+    var elapsed = now - startTime;
+    var t = Math.min(elapsed / duration, 1);
+    var ease = 1 - Math.pow(1 - t, 3);
+    wheelAngle = startAngle + totalRotation * ease;
+    drawWheel(items, wheelAngle);
+    if (t < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      wheelSpinning = false;
+      var step = 2 * Math.PI / items.length;
+      var normalized = ((2 * Math.PI - (wheelAngle % (2 * Math.PI))) + (2 * Math.PI)) % (2 * Math.PI);
+      var index = Math.floor(normalized / step) % items.length;
+      document.getElementById('wheel-result').textContent = items[index];
+    }
+  }
+  requestAnimationFrame(animate);
+}
+
+drawWheel(getWheelItems(), wheelAngle);
+document.getElementById('wheel-items').addEventListener('input', function() {
+  drawWheel(getWheelItems(), wheelAngle);
+});
+</script>
+</div>
+
+
 <h2 id="generator">Generátor kódu pro náhodná čísla</h2>
 
 <p>Následující generátor po zadání nejnižšího a nejvyššího čísla připraví kód pro vygenerování náhodného čísla z daného rozsahu v různých jazycích.</p>
@@ -163,54 +274,31 @@ nBig, _ := rand.Int(rand.Reader, big.NewInt(<span id="kolik-go">10</span>))
 n := int(nBig.Int64()) + <span id="od-go">1</span></code></pre>
 
 <script>
-(function(){
-  var inputOd = document.getElementById("kod-od");
-  var inputDo = document.getElementById("kod-do");
-  var els = {
-    kolik: document.getElementById("kolik"),
-    kolikCount: document.getElementById("kolik-count"),
-    odJs: document.getElementById("kod-od-js"),
-    odPhp: document.getElementById("od-php"),
-    doPhp: document.getElementById("do-php"),
-    odPy: document.getElementById("od-py"),
-    doPy: document.getElementById("do-py"),
-    odJava: document.getElementById("od-java"),
-    doPlus1Java: document.getElementById("do-plus1-java"),
-    odCs: document.getElementById("od-cs"),
-    doPlus1Cs: document.getElementById("do-plus1-cs"),
-    odRb: document.getElementById("od-rb"),
-    doRb: document.getElementById("do-rb"),
-    odRs: document.getElementById("od-rs"),
-    doRs: document.getElementById("do-rs"),
-    kolikGo: document.getElementById("kolik-go"),
-    odGo: document.getElementById("od-go")
-  };
-  function update() {
-    var od = inputOd.value;
-    var doo = inputDo.value;
-    var count = Number(doo) - Number(od) + 1;
-    var doPlus1 = String(Number(doo) + 1);
-    els.kolik.textContent = String(count);
-    els.kolikCount.textContent = String(count);
-    els.odJs.textContent = od;
-    els.odPhp.textContent = od;
-    els.doPhp.textContent = doo;
-    els.odPy.textContent = od;
-    els.doPy.textContent = doo;
-    els.odJava.textContent = od;
-    els.doPlus1Java.textContent = doPlus1;
-    els.odCs.textContent = od;
-    els.doPlus1Cs.textContent = doPlus1;
-    els.odRb.textContent = od;
-    els.doRb.textContent = doo;
-    els.odRs.textContent = od;
-    els.doRs.textContent = doo;
-    els.kolikGo.textContent = String(count);
-    els.odGo.textContent = od;
-  }
-  inputOd.addEventListener("input", update);
-  inputDo.addEventListener("input", update);
-})();
+function kodUpdate() {
+  var od = document.getElementById("kod-od").value;
+  var doo = document.getElementById("kod-do").value;
+  var count = Number(doo) - Number(od) + 1;
+  var doPlus1 = String(Number(doo) + 1);
+  document.getElementById("kolik").textContent = String(count);
+  document.getElementById("kolik-count").textContent = String(count);
+  document.getElementById("kod-od-js").textContent = od;
+  document.getElementById("od-php").textContent = od;
+  document.getElementById("do-php").textContent = doo;
+  document.getElementById("od-py").textContent = od;
+  document.getElementById("do-py").textContent = doo;
+  document.getElementById("od-java").textContent = od;
+  document.getElementById("do-plus1-java").textContent = doPlus1;
+  document.getElementById("od-cs").textContent = od;
+  document.getElementById("do-plus1-cs").textContent = doPlus1;
+  document.getElementById("od-rb").textContent = od;
+  document.getElementById("do-rb").textContent = doo;
+  document.getElementById("od-rs").textContent = od;
+  document.getElementById("do-rs").textContent = doo;
+  document.getElementById("kolik-go").textContent = String(count);
+  document.getElementById("od-go").textContent = od;
+}
+document.getElementById("kod-od").addEventListener("input", kodUpdate);
+document.getElementById("kod-do").addEventListener("input", kodUpdate);
 </script>
 </div>
 
