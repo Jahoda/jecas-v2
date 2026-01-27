@@ -126,7 +126,7 @@ format: "html"
     <p>Třídy pro layout pomocí <a href="/float"><code>float</code>u</a> <a href="/flexbox">flexu</a> nebo gridu.</p>
   </li>
     <li>
-    <p><b><a href="/webove-animace">Animace</a>, transformace</b> a <a href="/transition"><code>transition</code></a> – jsou připravené základní animace jako otáčení (<code>animate-spin</code>), pulsování (<code>animate-pulse</code>) a další.</p>
+    <p><b><a href="/animace">Animace</a>, transformace</b> a <a href="/transition"><code>transition</code></a> – jsou připravené základní animace jako otáčení (<code>animate-spin</code>), pulsování (<code>animate-pulse</code>) a další.</p>
 
     <p><a href="/rotace">Rotace</a> objektu je otázka přidání třídy <code>rotate-*</code>.</p>
 

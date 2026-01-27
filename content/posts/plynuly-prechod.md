@@ -9,7 +9,7 @@ tags: ["css", "hotova-reseni", "js", "webove-animace"]
 format: "html"
 ---
 
-<p>Snažíme-li se webovou stránku vytvářet s <b>ohledem na krásu</b> (s využitím <a href="/webove-animace">animací</a> a různých <b>plynulých přechodů</b>), může působit přechod mezi dvěma stránkami lehce rušivě. Zvlášť potom u <b>komplikovanějších layoutů</b> lze pozorovat nepěkné probliknutí, než si prohlížeč <i>přechroupe</i> HTML, CSS a JavaScript.</p>
+<p>Snažíme-li se webovou stránku vytvářet s <b>ohledem na krásu</b> (s využitím <a href="/animace">animací</a> a různých <b>plynulých přechodů</b>), může působit přechod mezi dvěma stránkami lehce rušivě. Zvlášť potom u <b>komplikovanějších layoutů</b> lze pozorovat nepěkné probliknutí, než si prohlížeč <i>přechroupe</i> HTML, CSS a JavaScript.</p>
 
 <p>První možnost, jak se tomuto vyhnout, je použít <a href="/ajax">AJAX</a> a veškerý obsah načítat <i>asynchronně</i>.</p>
 

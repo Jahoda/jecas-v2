@@ -9,7 +9,7 @@ tags: ["js"]
 format: "html"
 ---
 
-<p>Pro vytváření působivějších <a href="/webove-animace">animací</a> při najetí nebo odjetí myší z elementu může být zajímavé zjistit směr, kterým kursor přijel/odjel.</p>
+<p>Pro vytváření působivějších <a href="/animace">animací</a> při najetí nebo odjetí myší z elementu může být zajímavé zjistit směr, kterým kursor přijel/odjel.</p>
 
 <p>Jak na to? Na jednotlivé strany umístit <a href="/position#absolute">absolutně posicovaná</a> „čidla“.</p>
 

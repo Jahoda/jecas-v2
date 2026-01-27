@@ -9,7 +9,7 @@ tags: ["hotova-reseni", "js", "webove-animace"]
 format: "html"
 ---
 
-<p>Vytvářet na webu <a href="/webove-animace">animace</a> různých CSS vlastností je díky <a href="/transition"><code>transition</code></a> a <a href="/animation"><code>@animation</code></a> poměrně snadné, jak ale <i>animovat</i> čísla? To jest vytvořit <a href="/odpocitavani">odpočítávání</a>, kde se třeba desítka vymění za devítku, ta za osmičku a tak dále…</p>
+<p>Vytvářet na webu <a href="/animace">animace</a> různých CSS vlastností je díky <a href="/transition"><code>transition</code></a> a <a href="/animation"><code>@animation</code></a> poměrně snadné, jak ale <i>animovat</i> čísla? To jest vytvořit <a href="/odpocitavani">odpočítávání</a>, kde se třeba desítka vymění za devítku, ta za osmičku a tak dále…</p>
 
 <ol>
   <li>Jedna možnost je všechna čísla nastrkat do HTML kódu a šikovně je posouvat, až vytvoří <a href="/odpocitavani#css">výsledný efekt</a>. Pozor, vlastnost <a href="/content-attr"><code>content</code></a> <b>není možné animovat</b>.</li>

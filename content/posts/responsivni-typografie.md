@@ -23,7 +23,7 @@ format: "html"
 
 <div class="internal-content">
   <ul>
-    <li><a href="/typografie-na-webu">Typografie v HTML na webu</a></li>
+    <li><a href="/typografie">Typografie v HTML na webu</a></li>
   </ul>
 </div>
 

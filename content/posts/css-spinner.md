@@ -9,7 +9,7 @@ tags: ["css", "webove-animace"]
 format: "html"
 ---
 
-<p>Pro <b>znázornění</b> <a href="/animace-nacitani">průběhu načítání</a> je možné použít od <b>IE 10</b> <a href="/webove-animace">animaci</a>. Jak si nějakou připravit čistě v CSS pomocí <a href="/animation"><code>animation</code></a>.</p>
+<p>Pro <b>znázornění</b> <a href="/animace-nacitani">průběhu načítání</a> je možné použít od <b>IE 10</b> <a href="/animace">animaci</a>. Jak si nějakou připravit čistě v CSS pomocí <a href="/animation"><code>animation</code></a>.</p>
 
 <div class="live">
 <style>
