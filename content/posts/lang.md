@@ -1,7 +1,7 @@
 ---
-title: "HTML atribut lang"
-headline: "HTML atribut <code>lang</code>"
-description: "K čemu slouží a vyplatí se používat HTML atribut <code>lang</code>?"
+title: "HTML lang – cs, sk, en a další kódy jazyků"
+headline: "HTML atribut <code>lang</code> – kódy cs, sk, en"
+description: "Jak správně nastavit HTML atribut lang. Kódy jazyků: cs pro češtinu, sk pro slovenštinu, en pro angličtinu. Příklady použití a seznam hodnot."
 date: "2014-09-21"
 last_modification: "2014-09-21"
 status: 1
