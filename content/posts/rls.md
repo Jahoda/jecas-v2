@@ -9,23 +9,23 @@ tags: ["sql", "zabezpeceni", "cloud"]
 format: "html"
 ---
 
-<p><b>Row Level Security (RLS)</b> je bezpečnostní funkce databází, která umožňuje <b>omezit přístup k jednotlivým řádkům v tabulce</b> na základě definovaných pravidel. Místo aby aplikace kontrolovala, která data může uživatel vidět, tuto kontrolu provádí přímo databáze.</p>
+<p><b>Row Level Security (RLS)</b> je bezpečnostní funkce databází, která umožňuje <b>omezit přístup k jednotlivým řádkům v tabulce</b> na základě definovaných pravidel. Místo aby aplikace kontrolovala, která data může uživatel vidět, tuto kontrolu provádí přímo databáze.</p>
 
-<p><img src="/files/rls/rls-thumbnail.png" alt="Row Level Security - schéma zabezpečení na úrovni řádků" /></p>
+<p><img src="/files/rls/rls-thumbnail.png" alt="Row Level Security – schéma zabezpečení na úrovni řádků" /></p>
 
 <h2 id="princip-fungovani">Jak RLS funguje</h2>
 
-<p>Představte si tabulku s tisíci záznamy, kde každý uživatel má vidět jen své vlastní data. Bez RLS musí aplikace do každého SQL dotazu přidat podmínku:</p>
+<p>Představte si tabulku s tisíci záznamy, kde každý uživatel má vidět jen své vlastní data. Bez RLS musí aplikace do každého SQL dotazu přidat podmínku:</p>
 
 <pre><code>SELECT * FROM documents WHERE user_id = current_user_id</code></pre>
 
-<p>S RLS tuto kontrolu dělá databáze automaticky. Stačí definovat <b>politiku</b> (policy) jednou a všechny dotazy se jí budou řídit:</p>
+<p>S RLS tuto kontrolu dělá databáze automaticky. Stačí definovat <b>politiku</b> (policy) jednou a všechny dotazy se jí budou řídit:</p>
 
 <pre><code>SELECT * FROM documents  -- databáze automaticky vrátí jen data aktuálního uživatele</code></pre>
 
 <h3 id="historie-rls">Kde se RLS vzalo</h3>
 
-<p>RLS není vynález PostgreSQL. Koncept vznikl v <b>Oracle 8i v roce 1999</b> pod názvem Virtual Private Database (VPD). PostgreSQL přidal RLS až v roce 2016 – o 17 let později.</p>
+<p>RLS není vynález PostgreSQL. Koncept vznikl v <b>Oracle 8i v roce 1999</b> pod názvem Virtual Private Database (VPD). PostgreSQL přidal RLS až v roce 2016 – o 17 let později.</p>
 
 <ul>
 <li><b>1999</b> – Oracle 8i: Virtual Private Database (VPD)</li>
@@ -34,13 +34,13 @@ format: "html"
 <li><b>Červen 2016</b> – SQL Server 2016: Row-Level Security</li>
 </ul>
 
-<p><b>Původ názvu:</b> Oracle používal název "Virtual Private Database", který se neujal jako obecný termín. Termín <b>"Row Level Security"</b> se objevil nezávisle v PostgreSQL i SQL Serveru přibližně ve stejné době (2015–2016). Díky open-source povaze PostgreSQL a platformám jako Supabase se rozšířil nejvíc.</p>
+<p><b>Původ názvu:</b> Oracle používal název „Virtual Private Database”, který se neujal jako obecný termín. Termín <b>„Row Level Security”</b> se objevil nezávisle v PostgreSQL i SQL Serveru přibližně ve stejné době (2015–2016). Díky open-source povaze PostgreSQL a platformám jako Supabase se rozšířil nejvíc.</p>
 
 <h2 id="vyhody">Proč používat RLS</h2>
 
 <ul>
 <li>
-  <p><b>Bezpečnost na úrovni databáze</b> – nelze obejít chybou v aplikačním kódu</p>
+  <p><b>Bezpečnost na úrovni databáze</b> – nelze obejít chybou v aplikačním kódu</p>
 </li>
 
 <li>
@@ -56,13 +56,13 @@ format: "html"
 </li>
 
 <li>
-  <p><b>Omezení dopadu SQL injection</b> – i při úspěšném útoku útočník neuvidí cizí data (ale RLS nenahrazuje ochranu proti injection!)</p>
+  <p><b>Omezení dopadu SQL injection</b> – i při úspěšném útoku útočník neuvidí cizí data (ale RLS nenahrazuje ochranu proti injection!)</p>
 </li>
 </ul>
 
-<h2 id="pristup-z-frontendu">Přímý přístup z frontendu</h2>
+<h2 id="pristup-z-frontendu">Přímý přístup z frontendu</h2>
 
-<p>Jednou z <b>nejzajímavějších výhod RLS</b> je možnost <b>volat databázi přímo z JavaScriptu</b> na frontendu, bez nutnosti psát backend API. Platformy jako <b>Supabase jsou přímo navržené pro tento přístup</b> – není to hack ani kompromis, ale doporučený způsob práce.</p>
+<p>Jednou z <b>nejzajímavějších výhod RLS</b> je možnost <b>volat databázi přímo z JavaScriptu</b> na frontendu, bez nutnosti psát backend API. Platformy jako <b>Supabase jsou přímo navržené pro tento přístup</b> – není to hack ani kompromis, ale doporučený způsob práce.</p>
 
 <h3 id="tradicni-pristup">Tradiční přístup bez RLS</h3>
 
@@ -94,9 +94,9 @@ format: "html"
   <text x="350" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">⚠️ Backend musí ručně přidávat WHERE podmínky do každého dotazu</text>
 </svg>
 
-<p>Tento přístup vyžaduje psát a udržovat backend kód pro každou operaci.</p>
+<p>Tento přístup vyžaduje psát a udržovat backend kód pro každou operaci.</p>
 
-<h3 id="pristup-s-rls">Přístup s RLS</h3>
+<h3 id="pristup-s-rls">Přístup s RLS</h3>
 
 <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="max-width: 700px; width: 100%; height: auto;">
   <defs>
@@ -130,14 +130,14 @@ format: "html"
 <p>Výhody tohoto přístupu:</p>
 
 <ul>
-<li><b>Méně kódu</b> a <b>rychlejší vývoj</b> – není potřeba psát REST/GraphQL API pro CRUD operace (Create, Read, Update, Delete)</li>
-<li><b>Bezpečnost zaručená DB</b> – nelze obejít, i když frontend kód je kompromitován</li>
-<li><b>Real-time aktualisace</b> – snadná integrace s WebSockets/subscriptions</li>
+<li><b>Méně kódu</b> a <b>rychlejší vývoj</b> – není potřeba psát REST/GraphQL API pro CRUD operace (Create, Read, Update, Delete)</li>
+<li><b>Bezpečnost zaručená DB</b> – nelze obejít, i když frontend kód je kompromitován</li>
+<li><b>Real-time aktualisace</b> – snadná integrace s WebSockets/subscriptions</li>
 </ul>
 
 <h3 id="proc-to-funguje">Proč je to bezpečné (a kdy ne)</h3>
 
-<p><b>Frontend se nepřipojuje k PostgreSQL přímo!</b> Mezi frontendem a databází je API vrstva (PostgREST u Supabase), která zajišťuje bezpečnost:</p>
+<p><b>Frontend se nepřipojuje k PostgreSQL přímo!</b> Mezi frontendem a databází je API vrstva (PostgREST u Supabase), která zajišťuje bezpečnost:</p>
 
 <pre><code>Frontend → Supabase API (PostgREST) → PostgreSQL + RLS
                ↑
@@ -147,10 +147,10 @@ format: "html"
           timeouty
           žádné surové SQL</code></pre>
 
-<p><b>Přímé připojení k PostgreSQL z frontendu je bezpečnostní katastrofa:</b></p>
+<p><b>Přímé připojení k PostgreSQL z frontendu je bezpečnostní katastrofa:</b></p>
 
 <ul>
-<li>Connection string (včetně hesla) je viditelný v DevTools</li>
+<li>Connection string (včetně hesla) je viditelný v DevTools</li>
 <li>Útočník může spouštět libovolné SQL (<code>DROP TABLE</code>, <code>DELETE FROM</code>)</li>
 <li>RLS nepomůže – útočník má plné credentials vlastníka</li>
 <li>Žádný rate limiting ani ochrana proti DoS</li>
@@ -158,16 +158,16 @@ format: "html"
 
 <p><b>Pravidlo:</b> PostgreSQL connection string <b>nikdy</b> nepatří do frontend kódu. Supabase používá veřejný <code>anon key</code> + JWT tokeny – to je zásadní rozdíl.</p>
 
-<h3 id="historie">Historie přímého přístupu z frontendu</h3>
+<h3 id="historie">Historie přímého přístupu z frontendu</h3>
 
-<p>Přímý přístup z frontendu není vynález Supabase. Vývoj tohoto přístupu:</p>
+<p>Přímý přístup z frontendu není vynález Supabase. Vývoj tohoto přístupu:</p>
 
 <ul>
-<li><b>2012 – Firebase</b> – první masově populární řešení pro přímý přístup z frontendu. NoSQL databáze se Security Rules. Ukázal, že tento přístup funguje ve velkém měřítku.</li>
-<li><b>2014 – <a href="https://postgrest.org/">PostgREST</a></b> – open-source projekt, který automaticky vytváří REST API z PostgreSQL schématu. Původně využíval PostgreSQL role a GRANT/REVOKE, po vydání PostgreSQL 9.5 přidal podporu RLS.</li>
+<li><b>2012 – Firebase</b> – první masově populární řešení pro přímý přístup z frontendu. NoSQL databáze se Security Rules. Ukázal, že tento přístup funguje ve velkém měřítku.</li>
+<li><b>2014 – <a href="https://postgrest.org/">PostgREST</a></b> – open-source projekt, který automaticky vytváří REST API z PostgreSQL schématu. Původně využíval PostgreSQL role a GRANT/REVOKE, po vydání PostgreSQL 9.5 přidal podporu RLS.</li>
 <li><b>2016 – PostgreSQL 9.5</b> – přidává nativní Row Level Security, což je základ pro bezpečný přímý přístup.</li>
-<li><b>2020 – Supabase</b> – vzal PostgREST a udělal z něj managed službu s auth, storage a hezkým SDK. Zpopularizoval přímý přístup k PostgreSQL pro široké publikum.</li>
-<li><b>2025 – Neon Data API</b> – druhá managed služba s vestavěným PostgREST.</li>
+<li><b>2020 – Supabase</b> – vzal PostgREST a udělal z něj managed službu s auth, storage a hezkým SDK. Zpopularizoval přímý přístup k PostgreSQL pro široké publikum.</li>
+<li><b>2025 – Neon Data API</b> – druhá managed služba s vestavěným PostgREST.</li>
 </ul>
 
 <p><b>Supabase interně používá PostgREST</b> – jeho SDK je jen hezčí wrapper:</p>
@@ -178,39 +178,39 @@ fetch('https://api.example.com/posts?user_id=eq.123')
 // Supabase SDK (wrapper kolem PostgREST)
 supabase.from('posts').select('*').eq('user_id', 123)</code></pre>
 
-<p>Supabase nevynalezl přímý přístup – udělal ho <b>snadným a přístupným</b> pro PostgreSQL.</p>
+<p>Supabase nevynalezl přímý přístup – udělal ho <b>snadným a přístupným</b> pro PostgreSQL.</p>
 
-<h3 id="alternativy">Alternativy k Supabase</h3>
+<h3 id="alternativy">Alternativy k Supabase</h3>
 
-<p>Supabase není jediná platforma umožňující bezpečný přístup z frontendu. <b>Neon</b> je jediná další služba s vestavěným PostgREST, ostatní platformy jdou cestou GraphQL nebo vlastního API:</p>
+<p>Supabase není jediná platforma umožňující bezpečný přístup z frontendu. <b>Neon</b> je jediná další služba s vestavěným PostgREST, ostatní platformy jdou cestou GraphQL nebo vlastního API:</p>
 
 <ul>
-<li><b><a href="https://neon.tech/">Neon</a></b> – serverless PostgreSQL s vestavěným PostgREST (Data API od 2025). Nabízí unikátní funkce jako database branching. Jediná přímá alternativa k Supabase s PostgREST.</li>
-<li><b><a href="https://hasura.io/">Hasura</a></b> – GraphQL engine pro PostgreSQL s propracovaným systémem permissions. Lze nasadit self-hosted nebo jako cloud službu.</li>
-<li><b><a href="https://nhost.io/">Nhost</a></b> – open-source alternativa k Supabase, postavená na PostgreSQL + Hasura GraphQL. Nabízí auth, storage i serverless functions.</li>
-<li><b><a href="https://firebase.google.com/">Firebase</a></b> – Google platforma s NoSQL databází (Firestore) a Security Rules. Jiný přístup než RLS, ale stejný princip – bezpečnost na úrovni databáze.</li>
-<li><b><a href="https://pocketbase.io/">PocketBase</a></b> – jednoduchý self-hosted backend v jednom Go binárce. SQLite databáze s pravidly přístupu definovanými v administraci.</li>
-<li><b><a href="https://appwrite.io/">Appwrite</a></b> – open-source BaaS s vlastní databází, auth a permissions systémem. Self-hosted nebo cloud.</li>
+<li><b><a href="https://neon.tech/">Neon</a></b> – serverless PostgreSQL s vestavěným PostgREST (Data API od 2025). Nabízí unikátní funkce jako database branching. Jediná přímá alternativa k Supabase s PostgREST.</li>
+<li><b><a href="https://hasura.io/">Hasura</a></b> – GraphQL engine pro PostgreSQL s propracovaným systémem permissions. Lze nasadit self-hosted nebo jako cloud službu.</li>
+<li><b><a href="https://nhost.io/">Nhost</a></b> – open-source alternativa k Supabase, postavená na PostgreSQL + Hasura GraphQL. Nabízí auth, storage i serverless functions.</li>
+<li><b><a href="https://firebase.google.com/">Firebase</a></b> – Google platforma s NoSQL databází (Firestore) a Security Rules. Jiný přístup než RLS, ale stejný princip – bezpečnost na úrovni databáze.</li>
+<li><b><a href="https://pocketbase.io/">PocketBase</a></b> – jednoduchý self-hosted backend v jednom Go binárce. SQLite databáze s pravidly přístupu definovanými v administraci.</li>
+<li><b><a href="https://appwrite.io/">Appwrite</a></b> – open-source BaaS s vlastní databází, auth a permissions systémem. Self-hosted nebo cloud.</li>
 </ul>
 
-<p>Všechny tyto platformy sdílejí klíčový princip: <b>frontend komunikuje přes bezpečné API</b>, ne přímo s databází, a oprávnění jsou vynucována na serverové straně.</p>
+<p>Všechny tyto platformy sdílejí klíčový princip: <b>frontend komunikuje přes bezpečné API</b>, ne přímo s databází, a oprávnění jsou vynucována na serverové straně.</p>
 
 <h3 id="ai-nastroje">Proč AI nástroje používají Supabase</h3>
 
 <p>Všimli jste si, že AI nástroje pro generování aplikací (<a href="https://bolt.new/">Bolt</a>, <a href="https://lovable.dev/">Lovable</a>, <a href="https://v0.dev/">v0</a>) často používají právě Supabase? Není to náhoda.</p>
 
-<p><b>AI generuje primárně frontend kód</b> (React, Svelte, Vue). Díky přímému přístupu k databázi nepotřebuje generovat backend:</p>
+<p><b>AI generuje primárně frontend kód</b> (React, Svelte, Vue). Díky přímému přístupu k databázi nepotřebuje generovat backend:</p>
 
 <ul>
 <li><b>Bez Supabase</b> – AI musí generovat frontend + backend, řešit hosting, psát API endpoints, implementovat autentizaci</li>
 <li><b>Se Supabase</b> – AI generuje jen frontend, vše ostatní je hotové</li>
 </ul>
 
-<p>Supabase funguje jako <b>"backend v jednom řádku"</b>:</p>
+<p>Supabase funguje jako <b>„backend v jednom řádku”</b>:</p>
 
 <pre><code>const supabase = createClient(url, anonKey)</code></pre>
 
-<p>A máte auth, databázi, storage i realtime – vše volatelné přímo z frontendu. AI nástroj vygeneruje React komponentu, připojí Supabase klienta a má fungující aplikaci bez jediného řádku backendového kódu.</p>
+<p>A máte auth, databázi, storage i realtime – vše volatelné přímo z frontendu. AI nástroj vygeneruje React komponentu, připojí Supabase klienta a má fungující aplikaci bez jediného řádku backendového kódu.</p>
 
 <h3 id="priklad-supabase">Praktický příklad (Supabase)</h3>
 
@@ -236,33 +236,33 @@ const { data } = await supabase
   .from('posts')
   .insert({ title: 'Nový příspěvek', content: '...' })</code></pre>
 
-<p>Díky RLS je zaručeno, že uživatel vidí a mění jen svá data, i když volá databázi přímo z prohlížeče. <b>Toto je standardní a doporučený způsob práce se Supabase</b> – tisíce produkčních aplikací takto fungují.</p>
+<p>Díky RLS je zaručeno, že uživatel vidí a mění jen svá data, i když volá databázi přímo z prohlížeče. <b>Toto je standardní a doporučený způsob práce se Supabase</b> – tisíce produkčních aplikací takto fungují.</p>
 
 <h3 id="kdyz-potrebujete-backend">Kdy přidat backend (Edge Functions)</h3>
 
-<p><b>Většina aplikací může fungovat pouze s přímým přístupem z frontendu.</b> Supabase má vestavěné ochrany (rate limiting, query timeout, connection pooling), takže pro běžné CRUD operace (čtení, zápis, úprava, mazání) nepotřebujete nic dalšího.</p>
+<p><b>Většina aplikací může fungovat pouze s přímým přístupem z frontendu.</b> Supabase má vestavěné ochrany (rate limiting, query timeout, connection pooling), takže pro běžné CRUD operace (čtení, zápis, úprava, mazání) nepotřebujete nic dalšího.</p>
 
 <p>Backend (nebo Supabase <b>Edge Functions</b> – serverless funkce běžící na edge serverech blízko uživatelům) přidejte pouze pro:</p>
 
 <ul>
-<li><b>Platby</b> – komunikace s platební bránou (Stripe, PayPal)</li>
-<li><b>Integrace s 3rd party API</b> – kde potřebujete skrýt API klíče</li>
+<li><b>Platby</b> – komunikace s platební bránou (Stripe, PayPal)</li>
+<li><b>Integrace s 3rd party API</b> – kde potřebujete skrýt API klíče</li>
 <li><b>Složitou business logiku</b> – validace napříč více tabulkami, výpočty</li>
 <li><b>Odesílání emailů</b> – triggery po akcích uživatele</li>
 </ul>
 
-<p>Pro většinu aplikací platí: <b>začněte s přímým přístupem</b> a backend přidávejte jen když narazíte na konkrétní potřebu.</p>
+<p>Pro většinu aplikací platí: <b>začněte s přímým přístupem</b> a backend přidávejte jen když narazíte na konkrétní potřebu.</p>
 
-<h3 id="bezpecnostni-aspekty">Bezpečnostní aspekty a úskalí</h3>
+<h3 id="bezpecnostni-aspekty">Bezpečnostní aspekty a úskalí</h3>
 
 <h4 id="defense-in-depth">RLS + aplikační validace (Defense in Depth)</h4>
 
-<p><b>Ano, kombinace RLS s ověřováním v aplikaci je doporučená praxe!</b> Jde o princip "obrany do hloubky":</p>
+<p><b>Ano, kombinace RLS s ověřováním v aplikaci je doporučená praxe!</b> Jde o princip „obrany do hloubky”:</p>
 
 <ul>
 <li><b>Frontend validace</b> – kontrola formátu, UX feedback, rychlá odezva</li>
 <li><b>Backend validace</b> (pokud existuje) – business pravidla, složitější kontroly</li>
-<li><b>RLS v databázi</b> – poslední a nejdůležitější obrana, kterou nelze obejít</li>
+<li><b>RLS v databázi</b> – poslední a nejdůležitější obrana, kterou nelze obejít</li>
 </ul>
 
 <pre><code>// Frontend validace - rychlá odezva pro uživatele
@@ -279,14 +279,14 @@ await supabase
 
 <p><b>Nikdy nespoléhejte jen na frontend validaci</b> – ta může být obejita otevřením DevTools. RLS je vaše poslední pojistka.</p>
 
-<h4 id="uskali-pristupu">Úskalí přímého přístupu z frontendu</h4>
+<h4 id="uskali-pristupu">Úskalí přímého přístupu z frontendu</h4>
 
 <p><b>1. Bezpečnost credentials</b></p>
 
 <ul>
-<li>Frontend používá <b>anonymní klíč</b> (anon key), který je veřejný a všichni ho vidí</li>
+<li>Frontend používá <b>anonymní klíč</b> (anon key), který je veřejný a všichni ho vidí</li>
 <li>Databázové heslo <b>NIKDY</b> nesmí být ve frontend kódu</li>
-<li>Supabase používá JWT tokeny – databáze rozlišuje uživatele podle <code>auth.uid()</code> z tokenu</li>
+<li>Supabase používá JWT tokeny – databáze rozlišuje uživatele podle <code>auth.uid()</code> z tokenu</li>
 <li>Service role klíč (s admin právy) patří <b>jen na backend</b></li>
 </ul>
 
@@ -305,17 +305,17 @@ CREATE TABLE posts (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );</code></pre>
 
-<p><b>3. Rate limiting a DoS útoky</b></p>
+<p><b>3. Rate limiting a DoS útoky</b></p>
 
 <ul>
 <li>Frontend může posílat neomezené množství dotazů</li>
 <li>Řešení: Supabase má vestavěný rate limiting, nebo použít Edge Functions</li>
-<li>Pro kritické operace použít backend API s vlastním rate limitingem</li>
+<li>Pro kritické operace použít backend API s vlastním rate limitingem</li>
 </ul>
 
-<p><b>4. Náročné dotazy a DoS útoky</b></p>
+<p><b>4. Náročné dotazy a DoS útoky</b></p>
 
-<p><b>Ano, útočník může záměrně posílat výkonnostně náročné dotazy!</b> To je jeden z hlavních bezpečnostních problémů přímého přístupu.</p>
+<p><b>Ano, útočník může záměrně posílat výkonnostně náročné dotazy!</b> To je jeden z hlavních bezpečnostních problémů přímého přístupu.</p>
 
 <pre><code>// Útočník může poslat náročný dotaz z DevTools:
 await supabase
@@ -326,12 +326,12 @@ await supabase
 <p><b>Jak to řeší Supabase:</b></p>
 
 <ul>
-<li><b>Query timeout</b> – dotazy delší než X sekund (typicky 8-30s) jsou automaticky zabity</li>
+<li><b>Query timeout</b> – dotazy delší než X sekund (typicky 8–30s) jsou automaticky zabity</li>
 <li><b>Max rows limit</b> – omezení maximálního počtu vrácených řádků (default 1000)</li>
 <li><b>Connection pooling</b> – omezený počet souběžných spojení na projekt</li>
 <li><b>Rate limiting na API</b> – limit požadavků za minutu podle tier (60/min na free, 500+/min na Pro)</li>
 <li><b>Statement timeout</b> – PostgreSQL konfigurace <code>statement_timeout</code></li>
-<li><b>Resource limits</b> – paměť a CPU jsou omezené podle tarifu</li>
+<li><b>Resource limits</b> – paměť a CPU jsou omezené podle tarifu</li>
 </ul>
 
 <p><b>Dodatečná ochrana, kterou můžete implementovat:</b></p>
@@ -356,11 +356,11 @@ const { data } = await supabase
   .select('*')
   .limit(20)  // Přiměřený limit</code></pre>
 
-<p><b>Alternativně použít PostgreSQL funkci s limity:</b></p>
+<p><b>Alternativně použít PostgreSQL funkci s limity:</b></p>
 
 <pre><code>-- Funkce s vestavěným limitem
 CREATE FUNCTION get_user_posts(user_id UUID, max_limit INT DEFAULT 100)
-RETURNS SETOF posts AS $$
+RETURNS SETOF posts AS $
 BEGIN
   IF max_limit > 100 THEN
     RAISE EXCEPTION 'Limit cannot exceed 100';
@@ -371,7 +371,7 @@ BEGIN
   WHERE author_id = user_id
   LIMIT max_limit;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$ LANGUAGE plpgsql SECURITY DEFINER;
 -- Pozor: SECURITY DEFINER obchází RLS! Funkce běží s právy vlastníka.
 -- Bezpečnost zajišťuje WHERE podmínka uvnitř funkce.</code></pre>
 
@@ -380,10 +380,10 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 <ul>
 <li><b>Vždy používejte LIMIT</b> – nikdy nenačítejte neomezené množství dat</li>
 <li><b>Views pro složité dotazy</b> – kontrolujete, co lze dělat</li>
-<li><b>Index na sloupce v RLS</b> – jinak každý dotaz dělá full table scan</li>
-<li><b>Monitoring</b> – sledujte pomalé dotazy v Supabase dashboardu</li>
+<li><b>Index na sloupce v RLS</b> – jinak každý dotaz dělá full table scan</li>
+<li><b>Monitoring</b> – sledujte pomalé dotazy v Supabase dashboardu</li>
 <li><b>Expensive operations přes backend</b> – agregace, reporty, statistiky</li>
-<li><b>Edge Functions pro business logiku</b> – middleware mezi frontendem a DB</li>
+<li><b>Edge Functions pro business logiku</b> – middleware mezi frontendem a DB</li>
 </ul>
 
 <p><b>5. N+1 problém</b></p>
@@ -400,11 +400,11 @@ const posts = await supabase
   .from('posts')
   .select('*, author:users(*)')  // Supabase automaticky udělá JOIN</code></pre>
 
-<p><b>6. Citlivá data v odpovědích</b></p>
+<p><b>6. Citlivá data v odpovědích</b></p>
 
 <ul>
-<li>I s RLS může databáze vrátit více dat, než byste chtěli zobrazit</li>
-<li>Používejte <code>.select()</code> k výběru jen potřebných sloupců</li>
+<li>I s RLS může databáze vrátit více dat, než byste chtěli zobrazit</li>
+<li>Používejte <code>.select()</code> k výběru jen potřebných sloupců</li>
 <li>Citlivá pole (hesla, tokeny) nastavte jako <b>SECURITY DEFINER</b> funkce nebo views</li>
 </ul>
 
@@ -413,16 +413,16 @@ await supabase
   .from('users')
   .select('id, name, avatar_url')  // NE select('*')</code></pre>
 
-<p><b>7. Error messages a info leaks</b></p>
+<p><b>7. Error messages a info leaks</b></p>
 
 <ul>
-<li>Chybové hlášky z DB můžou prozradit strukturu tabulek</li>
+<li>Chybové hlášky z DB můžou prozradit strukturu tabulek</li>
 <li>V produkci logujte detailní chyby, ale uživateli ukažte obecnou hlášku</li>
 </ul>
 
 <p><b>8. Zapomenuté RLS nastavení – kritické bezpečnostní risiko!</b></p>
 
-<p><b>Toto je jeden z nejnebezpečnějších problémů RLS!</b> Pokud vytvoříte tabulku během vývoje a zapomenete nastavit RLS, aplikace funguje normálně – a právě to je problém.</p>
+<p><b>Toto je jeden z nejnebezpečnějších problémů RLS!</b> Pokud vytvoříte tabulku během vývoje a zapomenete nastavit RLS, aplikace funguje normálně – a právě to je problém.</p>
 
 <pre><code>-- ❌ NEBEZPEČNÉ: Tabulka bez RLS
 CREATE TABLE private_documents (
@@ -440,7 +440,7 @@ CREATE TABLE private_documents (
 <ul>
 <li><b>Bez RLS</b> – tabulka je OTEVŘENÁ, všichni vidí všechna data</li>
 <li><b>S RLS ale bez politik</b> – tabulka je UZAMČENÁ, nikdo nic nevidí (kromě superusers)</li>
-<li><b>S RLS a s politikami</b> – funguje podle pravidel</li>
+<li><b>S RLS a s politikami</b> – funguje podle pravidel</li>
 </ul>
 
 <pre><code>-- Tabulka bez RLS
@@ -463,8 +463,8 @@ CREATE POLICY user_posts ON posts USING (user_id = auth.uid());
 
 <ol>
 <li>Vývojář vytvoří tabulku během vývoje bez RLS</li>
-<li>Aplikace funguje (všichni vidí všechno, ale v dev to nevadí)</li>
-<li>Vývojář si řekne "RLS dodělám později"</li>
+<li>Aplikace funguje (všichni vidí všechno, ale v dev to nevadí)</li>
+<li>Vývojář si řekne „RLS dodělám později”</li>
 <li>Funkce se nasadí do produkce</li>
 <li><b>BEZPEČNOSTNÍ DÍRA</b> – všichni uživatelé vidí data všech ostatních!</li>
 </ol>
@@ -483,10 +483,10 @@ CREATE POLICY ... ON sensitive_data ...;
 ALTER TABLE sensitive_data FORCE ROW LEVEL SECURITY;
 -- Platí i pro vlastníka tabulky a adminy!</code></pre>
 
-<p><b>Automatická kontrola v migraci:</b></p>
+<p><b>Automatická kontrola v migraci:</b></p>
 
 <pre><code>-- Přidat do každé migrace kontrolu, že RLS je zapnuté
-DO $$
+DO $
 DECLARE
   tbl record;
 BEGIN
@@ -507,7 +507,7 @@ BEGIN
         tbl.schemaname, tbl.tablename;
     END IF;
   END LOOP;
-END $$;</code></pre>
+END $;</code></pre>
 
 <p><b>CI/CD kontroly:</b></p>
 
@@ -532,11 +532,11 @@ AND NOT EXISTS (
 
 <ul>
 <li>Supabase Dashboard zobrazuje WARNING pro tabulky bez RLS</li>
-<li>Lze nastavit výchozí politiku "deny all" pro nové tabulky</li>
-<li>Policy editor v dashboardu znemožní nasazení bez politik</li>
+<li>Lze nastavit výchozí politiku „deny all” pro nové tabulky</li>
+<li>Policy editor v dashboardu znemožní nasazení bez politik</li>
 </ul>
 
-<p><b>Best practice: "Secure by default"</b></p>
+<p><b>Best practice: „Secure by default”</b></p>
 
 <pre><code>-- Šablona pro KAŽDOU novou tabulku:
 
@@ -558,9 +558,9 @@ CREATE POLICY insert_own ON new_table
 <h4 id="best-practices-pristup">Best practices pro přímý přístup</h4>
 
 <ul>
-<li><b>Vždy používejte RLS</b> – nikdy nepovolte přístup k tabulce bez RLS politik</li>
-<li><b>Kombinujte s DB constraints</b> – NOT NULL, CHECK, UNIQUE jako další vrstva validace</li>
-<li><b>Používejte Views pro složité dotazy</b> – místo složitých JOINů z frontendu</li>
+<li><b>Vždy používejte RLS</b> – nikdy nepovolte přístup k tabulce bez RLS politik</li>
+<li><b>Kombinujte s DB constraints</b> – NOT NULL, CHECK, UNIQUE jako další vrstva validace</li>
+<li><b>Používejte Views pro složité dotazy</b> – místo složitých JOINů z frontendu</li>
 <li><b>Auditujte přístupy</b> – logujte všechny operace pro analysu bezpečnosti</li>
 <li><b>Testujte RLS politiky důkladně</b> – zkuste obejít vlastní zabezpečení</li>
 <li><b>Citlivé operace přes backend</b> – platby, změna emailu, admin operace</li>
@@ -568,7 +568,7 @@ CREATE POLICY insert_own ON new_table
 
 <h2 id="rls-na-backendu">RLS na backendu vs. WHERE podmínky</h2>
 
-<p>Pokud máte klasický backend (Node.js, PHP, Python), <b>většina aplikací RLS nepoužívá</b>. Místo toho přidávají WHERE podmínky v aplikačním kódu:</p>
+<p>Pokud máte klasický backend (Node.js, PHP, Python), <b>většina aplikací RLS nepoužívá</b>. Místo toho přidávají WHERE podmínky v aplikačním kódu:</p>
 
 <pre><code>// Laravel (PHP)
 $posts = Post::where('user_id', auth()->id())->get();
@@ -586,29 +586,29 @@ const posts = await prisma.post.findMany({
 <ul>
 <li><b>ORM to nepodporují</b> – Laravel Eloquent, Django ORM, Rails ActiveRecord, Prisma – všechny používají WHERE podmínky</li>
 <li><b>Session proměnné</b> – RLS vyžaduje nastavit <code>SET app.user_id = X</code> pro každý request</li>
-<li><b>Přenositelnost</b> – WHERE funguje na MySQL, PostgreSQL, SQLite... RLS je PostgreSQL-only</li>
-<li><b>Kontrola v kódu</b> – vývojáři chtějí vidět logiku v aplikaci, ne skrytou v databázi</li>
+<li><b>Přenositelnost</b> – WHERE funguje na MySQL, PostgreSQL, SQLite… RLS je PostgreSQL-only</li>
+<li><b>Kontrola v kódu</b> – vývojáři chtějí vidět logiku v aplikaci, ne skrytou v databázi</li>
 <li><b>Testovatelnost</b> – WHERE podmínky jsou snazší testovat</li>
 </ul>
 
-<h3 id="kdy-pouzit-rls-backend">Kdy použít RLS i na backendu</h3>
+<h3 id="kdy-pouzit-rls-backend">Kdy použít RLS i na backendu</h3>
 
 <ul>
-<li><b>Přímý přístup z frontendu</b> (Supabase, Neon) – RLS je nutnost</li>
-<li><b>Multi-tenant jako extra vrstva</b> – defense in depth, pojistka proti chybám v kódu</li>
+<li><b>Přímý přístup z frontendu</b> (Supabase, Neon) – RLS je nutnost</li>
+<li><b>Multi-tenant jako extra vrstva</b> – defense in depth, pojistka proti chybám v kódu</li>
 <li><b>Compliance požadavky</b> (GDPR, HIPAA) – vyžadují bezpečnost na více vrstvách</li>
 <li><b>Citlivá data</b> – zdravotnictví, finance, kde je potřeba maximální ochrana</li>
 </ul>
 
-<p><b>Shrnutí:</b> Na backendu je WHERE v ORM standardní praxe. RLS používejte pro přímý přístup z frontendu nebo jako extra vrstvu ochrany u citlivých dat.</p>
+<p><b>Shrnutí:</b> Na backendu je WHERE v ORM standardní praxe. RLS používejte pro přímý přístup z frontendu nebo jako extra vrstvu ochrany u citlivých dat.</p>
 
-<h2 id="postgresql">RLS v PostgreSQL</h2>
+<h2 id="postgresql">RLS v PostgreSQL</h2>
 
-<p>PostgreSQL podporuje RLS od verse 9.5 a je to nejpoužívanější implementace.</p>
+<p>PostgreSQL podporuje RLS od verse 9.5 a je to nejpoužívanější implementace.</p>
 
 <h3 id="zakladni-pouziti">Základní použití</h3>
 
-<p>Vytvoříme tabulku s dokumenty, kde každý uživatel vidí jen své záznamy:</p>
+<p>Vytvoříme tabulku s dokumenty, kde každý uživatel vidí jen své záznamy:</p>
 
 <pre><code>-- Vytvoření tabulky
 CREATE TABLE documents (
@@ -735,13 +735,13 @@ CREATE POLICY current_events ON events
   FOR SELECT
   USING (end_date &gt; NOW());</code></pre>
 
-<h2 id="supabase">RLS v Supabase</h2>
+<h2 id="supabase">RLS v Supabase</h2>
 
-<p><a href="https://supabase.com/">Supabase</a> staví na PostgreSQL a RLS je jeho <b>základní bezpečnostní mechanismus</b>. Každá tabulka by měla mít definované RLS politiky.</p>
+<p><a href="https://supabase.com/">Supabase</a> staví na PostgreSQL a RLS je jeho <b>základní bezpečnostní mechanismus</b>. Každá tabulka by měla mít definované RLS politiky.</p>
 
-<h3 id="jwt-autentizace">Integrace s JWT</h3>
+<h3 id="jwt-autentizace">Integrace s JWT</h3>
 
-<p>Supabase automaticky nastavuje PostgreSQL proměnné z JWT tokenu:</p>
+<p>Supabase automaticky nastavuje PostgreSQL proměnné z JWT tokenu:</p>
 
 <pre><code>-- Přístup k user ID z JWT
 CREATE POLICY user_data ON profiles
@@ -758,13 +758,13 @@ CREATE POLICY premium_content ON articles
 
 <h3 id="supabase-dashboard">Supabase Dashboard</h3>
 
-<p>Supabase má GUI pro správu RLS politik přímo v dashboardu, což zjednodušuje jejich vytváření a testování.</p>
+<p>Supabase má GUI pro správu RLS politik přímo v dashboardu, což zjednodušuje jejich vytváření a testování.</p>
 
-<h2 id="jine-database">RLS v dalších databázích</h2>
+<h2 id="jine-database">RLS v dalších databázích</h2>
 
 <h3 id="oracle">Oracle Database</h3>
 
-<p>Oracle nazývá RLS jako <b>Virtual Private Database (VPD)</b> a podporuje ho již od verse 8i:</p>
+<p>Oracle nazývá RLS jako <b>Virtual Private Database (VPD)</b> a podporuje ho již od verse 8i:</p>
 
 <pre><code>BEGIN
   DBMS_RLS.ADD_POLICY(
@@ -799,9 +799,9 @@ WITH (STATE = ON);</code></pre>
 <p>MySQL <b>nepodporuje nativní RLS</b>. Alternativy:</p>
 
 <ul>
-<li>Použití VIEW s WHERE podmínkami pro jednotlivé role</li>
-<li>Aplikační logika v kódu</li>
-<li>Migrace na PostgreSQL nebo jinou databázi s nativní podporou RLS</li>
+<li>Použití VIEW s WHERE podmínkami pro jednotlivé role</li>
+<li>Aplikační logika v kódu</li>
+<li>Migrace na PostgreSQL nebo jinou databázi s nativní podporou RLS</li>
 </ul>
 
 <h2 id="vykonne-aspekty">Výkonnostní aspekty</h2>
@@ -827,7 +827,7 @@ ALTER TABLE documents FORCE ROW LEVEL SECURITY; -- platí i pro vlastníka
 -- Nebo explicitly povolit bypass pro specifickou roli
 ALTER ROLE admin_role BYPASSRLS;</code></pre>
 
-<h2 id="caste-chyby">Časté chyby a problémy</h2>
+<h2 id="caste-chyby">Časté chyby a problémy</h2>
 
 <h3 id="zapomenute-povoleni">Zapomenuté povolení RLS</h3>
 
@@ -867,23 +867,23 @@ USING (org_id = current_setting('app.org_id', true)::uuid)</code></pre>
 </li>
 
 <li>
-  <p><b>Testujte politiky důkladně</b> – zkuste se přihlásit jako různí uživatelé a ověřte, co vidí</p>
+  <p><b>Testujte politiky důkladně</b> – zkuste se přihlásit jako různí uživatelé a ověřte, co vidí</p>
 </li>
 
 <li>
-  <p><b>Kombinujte s application-level kontrolami</b> – RLS je poslední obrana, ne jediná</p>
+  <p><b>Kombinujte s application-level kontrolami</b> – RLS je poslední obrana, ne jediná</p>
 </li>
 
 <li>
-  <p><b>Dokumentujte politiky</b> – používejte komentáře k vysvětlení složitých pravidel</p>
+  <p><b>Dokumentujte politiky</b> – používejte komentáře k vysvětlení složitých pravidel</p>
 </li>
 
 <li>
-  <p><b>Monitorujte výkon</b> – sledujte pomalé dotazy a přidávejte indexy podle potřeby</p>
+  <p><b>Monitorujte výkon</b> – sledujte pomalé dotazy a přidávejte indexy podle potřeby</p>
 </li>
 
 <li>
-  <p><b>Používejte FORCE ROW LEVEL SECURITY</b> pro citlivá data – aby RLS platilo i pro admin účty</p>
+  <p><b>Používejte FORCE ROW LEVEL SECURITY</b> pro citlivá data – aby RLS platilo i pro admin účty</p>
 </li>
 </ul>
 
@@ -891,23 +891,23 @@ USING (org_id = current_setting('app.org_id', true)::uuid)</code></pre>
 
 <ul>
 <li>
-  <p><b>Row Level Security (RLS)</b> omezuje přístup k jednotlivým řádkům tabulky přímo na úrovni databáze, místo aby to řešila aplikace</p>
+  <p><b>Row Level Security (RLS)</b> omezuje přístup k jednotlivým řádkům tabulky přímo na úrovni databáze, místo aby to řešila aplikace</p>
 </li>
 
 <li>
-  <p>Hlavní výhody jsou <b>vyšší bezpečnost</b> (nelze obejít chybou v kódu), <b>jednodušší aplikační logika</b> a <b>centralisovaná správa oprávnění</b></p>
+  <p>Hlavní výhody jsou <b>vyšší bezpečnost</b> (nelze obejít chybou v kódu), <b>jednodušší aplikační logika</b> a <b>centralisovaná správa oprávnění</b></p>
 </li>
 
 <li>
-  <p>PostgreSQL má nejlepší podporu RLS a je základ pro platformy jako <b>Supabase</b>, které dělají RLS ještě dostupnější</p>
+  <p>PostgreSQL má nejlepší podporu RLS a je základ pro platformy jako <b>Supabase</b>, které dělají RLS ještě dostupnější</p>
 </li>
 
 <li>
-  <p>RLS je <b>ideální pro multi-tenant aplikace</b>, kde každý zákazník má svá oddělená data a nesmí vidět data ostatních</p>
+  <p>RLS je <b>ideální pro multi-tenant aplikace</b>, kde každý zákazník má svá oddělená data a nesmí vidět data ostatních</p>
 </li>
 
 <li>
-  <p>Pro dobrý výkon je nutné mít <b>správné indexy</b> na sloupce použité v RLS politikách</p>
+  <p>Pro dobrý výkon je nutné mít <b>správné indexy</b> na sloupce použité v RLS politikách</p>
 </li>
 
 <li>
@@ -918,8 +918,8 @@ USING (org_id = current_setting('app.org_id', true)::uuid)</code></pre>
 <h2 id="odkazy-jinam">Odkazy jinam</h2>
 
 <ul>
-  <li><a href="https://www.postgresql.org/docs/current/ddl-rowsecurity.html">PostgreSQL: Row Security Policies</a> – oficiální dokumentace PostgreSQL k RLS</li>
-  <li><a href="https://supabase.com/docs/guides/auth/row-level-security">Supabase: Row Level Security</a> – průvodce používáním RLS v Supabase</li>
+  <li><a href="https://www.postgresql.org/docs/current/ddl-rowsecurity.html">PostgreSQL: Row Security Policies</a> – oficiální dokumentace PostgreSQL k RLS</li>
+  <li><a href="https://supabase.com/docs/guides/auth/row-level-security">Supabase: Row Level Security</a> – průvodce používáním RLS v Supabase</li>
   <li><a href="https://learn.microsoft.com/en-us/sql/relational-databases/security/row-level-security">Microsoft SQL Server: Row-Level Security</a> – dokumentace RLS pro SQL Server</li>
   <li><a href="https://docs.oracle.com/en/database/oracle/oracle-database/19/dbseg/using-oracle-vpd-to-control-data-access.html">Oracle: Virtual Private Database</a> – Oracle implementace RLS</li>
 </ul>
