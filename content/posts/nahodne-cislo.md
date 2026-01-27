@@ -229,6 +229,9 @@ wheelTextarea.style.height = wheelTextarea.scrollHeight + 'px';
 <p>Následující generátor po zadání nejnižšího a nejvyššího čísla připraví kód pro vygenerování náhodného čísla z daného rozsahu v různých jazycích.</p>
 
 <div class="live">
+<style>
+  .kod-gen-block { font-family: monospace; background: #1e293b; color: #e2e8f0; padding: .75em 1em; border-radius: .375em; overflow-x: auto; white-space: pre; margin: .25em 0 1em; }
+</style>
 <p>
   <label>Od: <input type="number" id="kod-od" value="1" oninput="kodUpdate()"> (včetně)</label>
   <label>Do: <input type="number" id="kod-do" value="10" oninput="kodUpdate()"> (včetně)</label>
@@ -236,36 +239,36 @@ wheelTextarea.style.height = wheelTextarea.scrollHeight + 'px';
 </p>
 
 <p><b>JavaScript</b>:</p>
-<pre><code>const nahodne = Math.floor(Math.random() * <span id="kolik">10</span>) + <span id="kod-od-js">1</span>;</code></pre>
+<div class="kod-gen-block" id="kod-js">const nahodne = Math.floor(Math.random() * 10) + 1;</div>
 
 <p><b>PHP</b>:</p>
-<pre><code>random_int(<span id="od-php">1</span>, <span id="do-php">10</span>);</code></pre>
+<div class="kod-gen-block" id="kod-php">random_int(1, 10);</div>
 
 <p><b>Python</b>:</p>
-<pre><code>import random
-random.randint(<span id="od-py">1</span>, <span id="do-py">10</span>)</code></pre>
+<div class="kod-gen-block" id="kod-py">import random
+random.randint(1, 10)</div>
 
 <p><b>Java</b>:</p>
-<pre><code>import java.util.concurrent.ThreadLocalRandom;
-int n = ThreadLocalRandom.current().nextInt(<span id="od-java">1</span>, <span id="do-plus1-java">11</span>);</code></pre>
+<div class="kod-gen-block" id="kod-java">import java.util.concurrent.ThreadLocalRandom;
+int n = ThreadLocalRandom.current().nextInt(1, 11);</div>
 
 <p><b>C#</b>:</p>
-<pre><code>var n = Random.Shared.Next(<span id="od-cs">1</span>, <span id="do-plus1-cs">11</span>);</code></pre>
+<div class="kod-gen-block" id="kod-cs">var n = Random.Shared.Next(1, 11);</div>
 
 <p><b>Ruby</b>:</p>
-<pre><code>rand(<span id="od-rb">1</span>.. <span id="do-rb">10</span>)</code></pre>
+<div class="kod-gen-block" id="kod-rb">rand(1.. 10)</div>
 
 <p><b>Rust</b>:</p>
-<pre><code>use rand::Rng;
-let n = rand::thread_rng().gen_range(<span id="od-rs">1</span>..=<span id="do-rs">10</span>);</code></pre>
+<div class="kod-gen-block" id="kod-rs">use rand::Rng;
+let n = rand::thread_rng().gen_range(1..=10);</div>
 
 <p><b>Go</b>:</p>
-<pre><code>import (
+<div class="kod-gen-block" id="kod-go">import (
   "crypto/rand"
   "math/big"
 )
-nBig, _ := rand.Int(rand.Reader, big.NewInt(<span id="kolik-go">10</span>))
-n := int(nBig.Int64()) + <span id="od-go">1</span></code></pre>
+nBig, _ := rand.Int(rand.Reader, big.NewInt(10))
+n := int(nBig.Int64()) + 1</div>
 
 <script>
 function kodUpdate() {
@@ -273,23 +276,15 @@ function kodUpdate() {
   var doo = document.getElementById("kod-do").value;
   var count = Number(doo) - Number(od) + 1;
   var doPlus1 = String(Number(doo) + 1);
-  document.getElementById("kolik").textContent = String(count);
   document.getElementById("kolik-count").textContent = String(count);
-  document.getElementById("kod-od-js").textContent = od;
-  document.getElementById("od-php").textContent = od;
-  document.getElementById("do-php").textContent = doo;
-  document.getElementById("od-py").textContent = od;
-  document.getElementById("do-py").textContent = doo;
-  document.getElementById("od-java").textContent = od;
-  document.getElementById("do-plus1-java").textContent = doPlus1;
-  document.getElementById("od-cs").textContent = od;
-  document.getElementById("do-plus1-cs").textContent = doPlus1;
-  document.getElementById("od-rb").textContent = od;
-  document.getElementById("do-rb").textContent = doo;
-  document.getElementById("od-rs").textContent = od;
-  document.getElementById("do-rs").textContent = doo;
-  document.getElementById("kolik-go").textContent = String(count);
-  document.getElementById("od-go").textContent = od;
+  document.getElementById("kod-js").textContent = "const nahodne = Math.floor(Math.random() * " + count + ") + " + od + ";";
+  document.getElementById("kod-php").textContent = "random_int(" + od + ", " + doo + ");";
+  document.getElementById("kod-py").textContent = "import random\nrandom.randint(" + od + ", " + doo + ")";
+  document.getElementById("kod-java").textContent = "import java.util.concurrent.ThreadLocalRandom;\nint n = ThreadLocalRandom.current().nextInt(" + od + ", " + doPlus1 + ");";
+  document.getElementById("kod-cs").textContent = "var n = Random.Shared.Next(" + od + ", " + doPlus1 + ");";
+  document.getElementById("kod-rb").textContent = "rand(" + od + ".. " + doo + ")";
+  document.getElementById("kod-rs").textContent = "use rand::Rng;\nlet n = rand::thread_rng().gen_range(" + od + "..=" + doo + ");";
+  document.getElementById("kod-go").textContent = "import (\n  \"crypto/rand\"\n  \"math/big\"\n)\nnBig, _ := rand.Int(rand.Reader, big.NewInt(" + count + "))\nn := int(nBig.Int64()) + " + od;
 }
 </script>
 </div>
