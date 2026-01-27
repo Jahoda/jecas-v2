@@ -6,7 +6,7 @@ date: "2025-12-15"
 last_modification: "2026-01-27"
 status: 1
 tags: ["sql", "zabezpeceni", "cloud"]
-social_text: "Co je to RLS a jak umožňuje bezpečný přímý přístup do DB přímo z FE bez potřeby vytvářet backend."
+social_text: "Co je to RLS a jak umožňuje bezpečný přístup do DB přímo z frontendu bez potřeby vytvářet backend."
 format: "html"
 ---
 
