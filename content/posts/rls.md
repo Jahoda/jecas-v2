@@ -1,7 +1,7 @@
 ---
 title: "Co je Row Level Security (RLS)"
-headline: "Row Level Security: Zabezpečení na úrovni řádků v databási"
-description: "Co je Row Level Security (RLS), jak funguje v PostgreSQL a dalších databásích, praktické příklady použití a výhody oproti aplikační logice."
+headline: "Row Level Security: Zabezpečení na úrovni řádků v databasi"
+description: "Co je Row Level Security (RLS), jak funguje v PostgreSQL a dalších databasích, praktické příklady použití a výhody oproti aplikační logice."
 date: "2025-12-15"
 last_modification: "2026-01-27"
 status: 1
@@ -9,7 +9,7 @@ tags: ["sql", "zabezpeceni", "cloud"]
 format: "html"
 ---
 
-<p><b>Row Level Security (RLS)</b> je bezpečnostní funkce databásí, která umožňuje <b>omezit přístup k jednotlivým řádkům v tabulce</b> na základě definovaných pravidel. Místo aby aplikace kontrolovala, která data může uživatel vidět, tuto kontrolu provádí přímo databáse.</p>
+<p><b>Row Level Security (RLS)</b> je bezpečnostní funkce databasí, která umožňuje <b>omezit přístup k jednotlivým řádkům v tabulce</b> na základě definovaných pravidel. Místo aby aplikace kontrolovala, která data může uživatel vidět, tuto kontrolu provádí přímo database.</p>
 
 <p><img src="/files/rls/rls-thumbnail.png" alt="Row Level Security – schéma zabezpečení na úrovni řádků" /></p>
 
@@ -19,9 +19,9 @@ format: "html"
 
 <pre><code>SELECT * FROM documents WHERE user_id = current_user_id</code></pre>
 
-<p>S RLS tuto kontrolu dělá databáse automaticky. Stačí definovat <b>politiku</b> (policy) jednou a všechny dotazy se jí budou řídit:</p>
+<p>S RLS tuto kontrolu dělá database automaticky. Stačí definovat <b>politiku</b> (policy) jednou a všechny dotazy se jí budou řídit:</p>
 
-<pre><code>SELECT * FROM documents  -- databáse automaticky vrátí jen data aktuálního uživatele</code></pre>
+<pre><code>SELECT * FROM documents  -- database automaticky vrátí jen data aktuálního uživatele</code></pre>
 
 <h3 id="historie-rls">Kde se RLS vzalo</h3>
 
@@ -40,7 +40,7 @@ format: "html"
 
 <ul>
 <li>
-  <p><b>Bezpečnost na úrovni databáse</b> – nelze obejít chybou v aplikačním kódu</p>
+  <p><b>Bezpečnost na úrovni database</b> – nelze obejít chybou v aplikačním kódu</p>
 </li>
 
 <li>
@@ -62,7 +62,7 @@ format: "html"
 
 <h2 id="pristup-z-frontendu">Přímý přístup z frontendu</h2>
 
-<p>Jednou z <b>nejzajímavějších výhod RLS</b> je možnost <b>volat databási přímo z JavaScriptu</b> na frontendu, bez nutnosti psát backend API. Platformy jako <b>Supabase jsou přímo navržené pro tento přístup</b> – není to hack ani kompromis, ale doporučený způsob práce.</p>
+<p>Jednou z <b>nejzajímavějších výhod RLS</b> je možnost <b>volat databasi přímo z JavaScriptu</b> na frontendu, bez nutnosti psát backend API. Platformy jako <b>Supabase jsou přímo navržené pro tento přístup</b> – není to hack ani kompromis, ale doporučený způsob práce.</p>
 
 <h3 id="tradicni-pristup">Tradiční přístup bez RLS</h3>
 
@@ -85,7 +85,7 @@ format: "html"
   <text x="310" y="95" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">kontrola oprávnění</text>
   <text x="310" y="115" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#fbbf24">WHERE user_id = ?</text>
   <rect x="460" y="55" width="130" height="70" rx="10" fill="#22c55e" fill-opacity="0.15" stroke="#22c55e" stroke-width="2"/>
-  <text x="525" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#4ade80">Databáse</text>
+  <text x="525" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#4ade80">Database</text>
   <text x="525" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">PostgreSQL</text>
   <line x1="160" y1="90" x2="220" y2="90" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow1)"/>
   <line x1="390" y1="90" x2="450" y2="90" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow1)"/>
@@ -117,14 +117,14 @@ format: "html"
   <text x="115" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#60a5fa">Frontend</text>
   <text x="115" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">JavaScript</text>
   <rect x="350" y="35" width="220" height="120" rx="12" fill="#22c55e" fill-opacity="0.1" stroke="#22c55e" stroke-width="2"/>
-  <text x="460" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#4ade80">Databáse + RLS</text>
+  <text x="460" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#4ade80">Database + RLS</text>
   <text x="460" y="80" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#94a3b8">PostgreSQL / Supabase</text>
   <rect x="370" y="95" width="180" height="45" rx="6" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1.5"/>
   <text x="460" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#60a5fa">🛡️ RLS Policy</text>
   <text x="460" y="130" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9" fill="#94a3b8">user_id = auth.uid()</text>
   <line x1="180" y1="90" x2="340" y2="90" stroke="#22c55e" stroke-width="2" stroke-dasharray="8,4" marker-end="url(#arrow2)"/>
   <text x="260" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#4ade80">přímý přístup</text>
-  <text x="350" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">✅ Databáse automaticky filtruje data – není potřeba backend</text>
+  <text x="350" y="180" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#64748b">✅ Database automaticky filtruje data – není potřeba backend</text>
 </svg>
 
 <p>Výhody tohoto přístupu:</p>
@@ -137,7 +137,7 @@ format: "html"
 
 <h3 id="proc-to-funguje">Proč je to bezpečné (a kdy ne)</h3>
 
-<p><b>Frontend se nepřipojuje k PostgreSQL přímo!</b> Mezi frontendem a databásí je API vrstva (PostgREST u Supabase), která zajišťuje bezpečnost:</p>
+<p><b>Frontend se nepřipojuje k PostgreSQL přímo!</b> Mezi frontendem a databasí je API vrstva (PostgREST u Supabase), která zajišťuje bezpečnost:</p>
 
 <pre><code>Frontend → Supabase API (PostgREST) → PostgreSQL + RLS
                ↑
@@ -163,7 +163,7 @@ format: "html"
 <p>Přímý přístup z frontendu není vynález Supabase. Vývoj tohoto přístupu:</p>
 
 <ul>
-<li><b>2012 – Firebase</b> – první masově populární řešení pro přímý přístup z frontendu. NoSQL databáse se Security Rules. Ukázal, že tento přístup funguje ve velkém měřítku.</li>
+<li><b>2012 – Firebase</b> – první masově populární řešení pro přímý přístup z frontendu. NoSQL database se Security Rules. Ukázal, že tento přístup funguje ve velkém měřítku.</li>
 <li><b>2014 – <a href="https://postgrest.org/">PostgREST</a></b> – open-source projekt, který automaticky vytváří REST API z PostgreSQL schématu. Původně využíval PostgreSQL role a GRANT/REVOKE, po vydání PostgreSQL 9.5 přidal podporu RLS.</li>
 <li><b>2016 – PostgreSQL 9.5</b> – přidává nativní Row Level Security, což je základ pro bezpečný přímý přístup.</li>
 <li><b>2020 – Supabase</b> – vzal PostgREST a udělal z něj managed službu s auth, storage a hezkým SDK. Zpopularizoval přímý přístup k PostgreSQL pro široké publikum.</li>
@@ -188,18 +188,18 @@ supabase.from('posts').select('*').eq('user_id', 123)</code></pre>
 <li><b><a href="https://neon.tech/">Neon</a></b> – serverless PostgreSQL s vestavěným PostgREST (Data API od 2025). Nabízí unikátní funkce jako database branching. Jediná přímá alternativa k Supabase s PostgREST.</li>
 <li><b><a href="https://hasura.io/">Hasura</a></b> – GraphQL engine pro PostgreSQL s propracovaným systémem permissions. Lze nasadit self-hosted nebo jako cloud službu.</li>
 <li><b><a href="https://nhost.io/">Nhost</a></b> – open-source alternativa k Supabase, postavená na PostgreSQL + Hasura GraphQL. Nabízí auth, storage i serverless functions.</li>
-<li><b><a href="https://firebase.google.com/">Firebase</a></b> – Google platforma s NoSQL databásí (Firestore) a Security Rules. Jiný přístup než RLS, ale stejný princip – bezpečnost na úrovni databáse.</li>
-<li><b><a href="https://pocketbase.io/">PocketBase</a></b> – jednoduchý self-hosted backend v jednom Go binárce. SQLite databáse s pravidly přístupu definovanými v administraci.</li>
-<li><b><a href="https://appwrite.io/">Appwrite</a></b> – open-source BaaS s vlastní databásí, auth a permissions systémem. Self-hosted nebo cloud.</li>
+<li><b><a href="https://firebase.google.com/">Firebase</a></b> – Google platforma s NoSQL databasí (Firestore) a Security Rules. Jiný přístup než RLS, ale stejný princip – bezpečnost na úrovni database.</li>
+<li><b><a href="https://pocketbase.io/">PocketBase</a></b> – jednoduchý self-hosted backend v jednom Go binárce. SQLite database s pravidly přístupu definovanými v administraci.</li>
+<li><b><a href="https://appwrite.io/">Appwrite</a></b> – open-source BaaS s vlastní databasí, auth a permissions systémem. Self-hosted nebo cloud.</li>
 </ul>
 
-<p>Všechny tyto platformy sdílejí klíčový princip: <b>frontend komunikuje přes bezpečné API</b>, ne přímo s databásí, a oprávnění jsou vynucována na serverové straně.</p>
+<p>Všechny tyto platformy sdílejí klíčový princip: <b>frontend komunikuje přes bezpečné API</b>, ne přímo s databasí, a oprávnění jsou vynucována na serverové straně.</p>
 
 <h3 id="ai-nastroje">Proč AI nástroje používají Supabase</h3>
 
 <p>Všimli jste si, že AI nástroje pro generování aplikací (<a href="https://bolt.new/">Bolt</a>, <a href="https://lovable.dev/">Lovable</a>, <a href="https://v0.dev/">v0</a>) často používají právě Supabase? Není to náhoda.</p>
 
-<p><b>AI generuje primárně frontend kód</b> (React, Svelte, Vue). Díky přímému přístupu k databási nepotřebuje generovat backend:</p>
+<p><b>AI generuje primárně frontend kód</b> (React, Svelte, Vue). Díky přímému přístupu k databasi nepotřebuje generovat backend:</p>
 
 <ul>
 <li><b>Bez Supabase</b> – AI musí generovat frontend + backend, řešit hosting, psát API endpoints, implementovat autentizaci</li>
@@ -210,11 +210,11 @@ supabase.from('posts').select('*').eq('user_id', 123)</code></pre>
 
 <pre><code>const supabase = createClient(url, anonKey)</code></pre>
 
-<p>A máte auth, databási, storage i realtime – vše volatelné přímo z frontendu. AI nástroj vygeneruje React komponentu, připojí Supabase klienta a má fungující aplikaci bez jediného řádku backendového kódu.</p>
+<p>A máte auth, databasi, storage i realtime – vše volatelné přímo z frontendu. AI nástroj vygeneruje React komponentu, připojí Supabase klienta a má fungující aplikaci bez jediného řádku backendového kódu.</p>
 
 <h3 id="priklad-supabase">Praktický příklad (Supabase)</h3>
 
-<pre><code>// Nastavení RLS v databási (jednou)
+<pre><code>// Nastavení RLS v databasi (jednou)
 CREATE POLICY "Users can read own posts" ON posts
   FOR SELECT USING (auth.uid() = user_id);
 
@@ -236,7 +236,7 @@ const { data } = await supabase
   .from('posts')
   .insert({ title: 'Nový příspěvek', content: '...' })</code></pre>
 
-<p>Díky RLS je zaručeno, že uživatel vidí a mění jen svá data, i když volá databási přímo z prohlížeče. <b>Toto je standardní a doporučený způsob práce se Supabase</b> – tisíce produkčních aplikací takto fungují.</p>
+<p>Díky RLS je zaručeno, že uživatel vidí a mění jen svá data, i když volá databasi přímo z prohlížeče. <b>Toto je standardní a doporučený způsob práce se Supabase</b> – tisíce produkčních aplikací takto fungují.</p>
 
 <h3 id="kdyz-potrebujete-backend">Kdy přidat backend (Edge Functions)</h3>
 
@@ -262,7 +262,7 @@ const { data } = await supabase
 <ul>
 <li><b>Frontend validace</b> – kontrola formátu, UX feedback, rychlá odezva</li>
 <li><b>Backend validace</b> (pokud existuje) – business pravidla, složitější kontroly</li>
-<li><b>RLS v databási</b> – poslední a nejdůležitější obrana, kterou nelze obejít</li>
+<li><b>RLS v databasi</b> – poslední a nejdůležitější obrana, kterou nelze obejít</li>
 </ul>
 
 <pre><code>// Frontend validace - rychlá odezva pro uživatele
@@ -285,8 +285,8 @@ await supabase
 
 <ul>
 <li>Frontend používá <b>anonymní klíč</b> (anon key), který je veřejný a všichni ho vidí</li>
-<li>Databásové heslo <b>NIKDY</b> nesmí být ve frontend kódu</li>
-<li>Supabase používá JWT tokeny – databáse rozlišuje uživatele podle <code>auth.uid()</code> z tokenu</li>
+<li>Databasové heslo <b>NIKDY</b> nesmí být ve frontend kódu</li>
+<li>Supabase používá JWT tokeny – database rozlišuje uživatele podle <code>auth.uid()</code> z tokenu</li>
 <li>Service role klíč (s admin právy) patří <b>jen na backend</b></li>
 </ul>
 
@@ -403,7 +403,7 @@ const posts = await supabase
 <p><b>6. Citlivá data v odpovědích</b></p>
 
 <ul>
-<li>I s RLS může databáse vrátit více dat, než byste chtěli zobrazit</li>
+<li>I s RLS může database vrátit více dat, než byste chtěli zobrazit</li>
 <li>Používejte <code>.select()</code> k výběru jen potřebných sloupců</li>
 <li>Citlivá pole (hesla, tokeny) nastavte jako <b>SECURITY DEFINER</b> funkce nebo views</li>
 </ul>
@@ -587,7 +587,7 @@ const posts = await prisma.post.findMany({
 <li><b>ORM to nepodporují</b> – Laravel Eloquent, Django ORM, Rails ActiveRecord, Prisma – všechny používají WHERE podmínky</li>
 <li><b>Session proměnné</b> – RLS vyžaduje nastavit <code>SET app.user_id = X</code> pro každý request</li>
 <li><b>Přenositelnost</b> – WHERE funguje na MySQL, PostgreSQL, SQLite… RLS je PostgreSQL-only</li>
-<li><b>Kontrola v kódu</b> – vývojáři chtějí vidět logiku v aplikaci, ne skrytou v databási</li>
+<li><b>Kontrola v kódu</b> – vývojáři chtějí vidět logiku v aplikaci, ne skrytou v databasi</li>
 <li><b>Testovatelnost</b> – WHERE podmínky jsou snazší testovat</li>
 </ul>
 
@@ -760,7 +760,7 @@ CREATE POLICY premium_content ON articles
 
 <p>Supabase má GUI pro správu RLS politik přímo v dashboardu, což zjednodušuje jejich vytváření a testování.</p>
 
-<h2 id="jine-database">RLS v dalších databásích</h2>
+<h2 id="jine-database">RLS v dalších databasích</h2>
 
 <h3 id="oracle">Oracle Database</h3>
 
@@ -801,7 +801,7 @@ WITH (STATE = ON);</code></pre>
 <ul>
 <li>Použití VIEW s WHERE podmínkami pro jednotlivé role</li>
 <li>Aplikační logika v kódu</li>
-<li>Migrace na PostgreSQL nebo jinou databási s nativní podporou RLS</li>
+<li>Migrace na PostgreSQL nebo jinou databasi s nativní podporou RLS</li>
 </ul>
 
 <h2 id="vykonne-aspekty">Výkonnostní aspekty</h2>
@@ -891,7 +891,7 @@ USING (org_id = current_setting('app.org_id', true)::uuid)</code></pre>
 
 <ul>
 <li>
-  <p><b>Row Level Security (RLS)</b> omezuje přístup k jednotlivým řádkům tabulky přímo na úrovni databáse, místo aby to řešila aplikace</p>
+  <p><b>Row Level Security (RLS)</b> omezuje přístup k jednotlivým řádkům tabulky přímo na úrovni database, místo aby to řešila aplikace</p>
 </li>
 
 <li>
