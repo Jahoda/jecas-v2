@@ -214,8 +214,8 @@ function spinWheel() {
     } else {
       wheelSpinning = false;
       var step = 2 * Math.PI / items.length;
-      var normalized = ((2 * Math.PI - (wheelAngle % (2 * Math.PI))) + (2 * Math.PI)) % (2 * Math.PI);
-      var index = Math.floor(normalized / step) % items.length;
+      var normalised = ((2 * Math.PI - (wheelAngle % (2 * Math.PI))) + (2 * Math.PI)) % (2 * Math.PI);
+      var index = Math.floor(normalised / step) % items.length;
       document.getElementById('wheel-result').textContent = items[index];
     }
   }
