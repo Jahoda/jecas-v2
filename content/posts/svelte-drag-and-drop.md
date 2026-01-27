@@ -11,7 +11,7 @@ format: "html"
 
 <ul>
   <li>
-    <a href="https://medium.com/codex/things-ive-learned-building-a-drag-drop-component-with-svelte-2ad9169f1aff">Things I’ve learned building a Drag &amp; Drop component with Svelte
+    <a href="https://medium.com/codex/things-ive-learned-building-a-drag-drop-component-with-svelte-2ad9169f1aff">Things I’ve learned building a Drag &amp; Drop component with Svelte
 </a>
   </li>
   

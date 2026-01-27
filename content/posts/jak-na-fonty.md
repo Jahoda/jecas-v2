@@ -15,7 +15,7 @@ format: "html"
 <h3 id="font-display">CSS vlastnost <code>font-display</code></h3>
 
 <ul>
-  <li><a href="https://tabatkins.github.io/specs/css-font-display/#font-display-desc"> Controlling Font Display Per Font-Face: the <code>font-display</code> descriptor</a> – CSS vlastnost <code>font-display</code> umožňuje určit, jak se má prohlížeč chovat k (ne)načtenému fontu (kolik mu dát času na načtení)</li>
+  <li><a href="https://tabatkins.github.io/specs/css-font-display/#font-display-desc"> Controlling Font Display Per Font-Face: the <code>font-display</code> descriptor</a> – CSS vlastnost <code>font-display</code> umožňuje určit, jak se má prohlížeč chovat k (ne)načtenému fontu (kolik mu dát času na načtení)</li>
 </ul>
 
 <ul>

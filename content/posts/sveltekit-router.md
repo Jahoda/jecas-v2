@@ -37,11 +37,11 @@ format: "html"
 </ul>
 
 <p>
-  SvelteKit dříve používal hybrid mezi oběma přístupy, potom ale přešel na <i lang="en">directory-based</i>. Tedy co část cesty v URL mezi lomítky, to samostatná složka.
+  SvelteKit dříve používal hybrid mezi oběma přístupy, potom ale přešel na <i lang="en">directory-based</i>. Tedy co část cesty v URL mezi lomítky, to samostatná složka.
 </p>
 
 <p>
-  Z toho plyne asi hlavní nevýhoda tohoto přístupu, že se skoro všechno v projektu jmenuje <code>+page.svelte</code>.
+  Z toho plyne asi hlavní nevýhoda tohoto přístupu, že se skoro všechno v projektu jmenuje <code>+page.svelte</code>.
 </p>
 
 <p>
@@ -54,9 +54,9 @@ format: "html"
 
 <h2 id="layout">Layouty</h2>
 
-<p>Pro sdílení společných částí a kódu slouží soubory <code>+layout.svelte</code>. Takový kód se aplikuje na všechny stránky a podstránky, které jsou ve složce a podsložkách daného <code>+layout.svelte</code> souboru.</p>
+<p>Pro sdílení společných částí a kódu slouží soubory <code>+layout.svelte</code>. Takový kód se aplikuje na všechny stránky a podstránky, které jsou ve složce a podsložkách daného <code>+layout.svelte</code> souboru.</p>
 
-<p>Pro lepší organisaci a dědičnost layoutů je vhodné související celky členit do skupin. Ty se tvoří další složkou v závorkách.</p>
+<p>Pro lepší organisaci a dědičnost layoutů je vhodné související celky členit do skupin. Ty se tvoří další složkou v závorkách.</p>
 
 <pre><code>src/
 └── routes/
@@ -94,16 +94,16 @@ format: "html"
 
 
 
-<p>Tyto složky v (kulatých závorkách) nemají žádný vliv na podobu URL, slouží jen k seskupení pro pohodlnější práci.</p>
+<p>Tyto složky v (kulatých závorkách) nemají žádný vliv na podobu URL, slouží jen k seskupení pro pohodlnější práci.</p>
 
 
-<h3 id="vyskoceni">Vyskočení z layoutu</h3>
+<h3 id="vyskoceni">Vyskočení z layoutu</h3>
 
-<p>Pojmenované skupiny se hodí i k opuštění dědičnosti layoutů.</p>
+<p>Pojmenované skupiny se hodí i k opuštění dědičnosti layoutů.</p>
 
 <p>Jednotlivé <code>+layout.svelte</code> soubory zanořené do složek se do sebe zanořují.</p>
 
-<p>Pomocí <code>@</code> v názvu layoutu jde toto chování změnit.</p>
+<p>Pomocí <code>@</code> v názvu layoutu jde toto chování změnit.</p>
 
 <ul>
   <li>
@@ -119,11 +119,11 @@ format: "html"
 
 <h2 id="parametry">Dynamické parametry</h2>
 
-<p>Dost časo je potřeba mít některé části URL dynamické – ve SvelteKitu k tomu slouží složky s hranatými závorkami.</p>
+<p>Dost časo je potřeba mít některé části URL dynamické – ve SvelteKitu k tomu slouží složky s hranatými závorkami.</p>
 
 <p>Stačí např. vyvořit soubor <code>+page.svelte</code> ve složce <code>src/routes/blog/[slug]</code>, čímž všechny požadavky typu <code>blog/prvni-clanek</code>, <code>blog/jiny-clanek</code> apod. skončí na této stránce.</p>
 
-<p>V proměnné (storu) <code>$page.params.slug</code> bude k disposici slug článku, podle kterého se může dál <i>něco dělat</i>.</p>
+<p>V proměnné (storu) <code>$page.params.slug</code> bude k disposici slug článku, podle kterého se může dál <i>něco dělat</i>.</p>
 
 <p>Zde je třeba myslet na to, že hodnota <code>$page.params.slug</code> se neaktualisuje automaticky při <b>přechodu na jinou stránku</b>.</p>
 
@@ -132,12 +132,12 @@ format: "html"
 
 <pre><code>$: slug = $page.params.slug</code></pre>
 
-<p>A dál pracovat s proměnnou <code>slug</code>.</p>
+<p>A dál pracovat s proměnnou <code>slug</code>.</p>
 
 
 <h2 id="odkazy">Odkazování na stránky</h2>
 
-<p>SvelteKit nemá přímo v sobě pokročilejší mechanismus, jak vytvářet odkazy na jednotlivé stránky.</p>
+<p>SvelteKit nemá přímo v sobě pokročilejší mechanismus, jak vytvářet odkazy na jednotlivé stránky.</p>
 
 <p>Děje se tak prostým <a href="/odkaz">odkazem</a> <code>&lt;a href></code>.</p>
 
@@ -157,9 +157,9 @@ format: "html"
 
 <p>Bohužel nijak nekontroluje, jestli daná routa opravdu existuje.</p>
 
-<p>Doporučuji proto balíček <a href="https://www.kitql.dev/docs/tools/06_vite-plugin-kit-routes">vite-plugin-kit-routes</a>, který ze všech rout vygeneruje soubor s typovou kontrolou.</p>
+<p>Doporučuji proto balíček <a href="https://www.kitql.dev/docs/tools/06_vite-plugin-kit-routes">vite-plugin-kit-routes</a>, který ze všech rout vygeneruje soubor s typovou kontrolou.</p>
 
-<p>Zápis je obdobný jako s <code>resolveRoute</code>, ale je zajištěno, že stránka existuje:</p>
+<p>Zápis je obdobný jako s <code>resolveRoute</code>, ale je zajištěno, že stránka existuje:</p>
 
 
 <pre><code>&lt;a href="{route('/blog/[slug]', { slug: 'prvni-clanek' })}">
@@ -184,12 +184,12 @@ format: "html"
 
 <p>Pro věci jakou jsou třeba filtry nebo <a href="/strankovani">stránkování</a> může být rozumné nepoužívat <i>klasicke-hezke-url</i>, ale informace přenášet <i>?za=otaznikem</i>.</p>
 
-<p>SvelteKit nabízí přístup k těmto <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/searchParams"><i lang="en">search params</i></a> v <code>$page.url.searchParams</code>.</p>
+<p>SvelteKit nabízí přístup k těmto <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/searchParams"><i lang="en">search params</i></a> v <code>$page.url.searchParams</code>.</p>
 
 
-<p>Pro příjemnější práci s těmito parametry doporučuji knihovnu <a href="https://github.com/paoloricciuti/sveltekit-search-params">sveltekit-search-params</a>.</p>
+<p>Pro příjemnější práci s těmito parametry doporučuji knihovnu <a href="https://github.com/paoloricciuti/sveltekit-search-params">sveltekit-search-params</a>.</p>
 
-<p>Ta nabízí jednoduché rozhraní, které automaticky zajišťuje obousměrnou synchronisaci dat s URL:</p>
+<p>Ta nabízí jednoduché rozhraní, které automaticky zajišťuje obousměrnou synchronisaci dat s URL:</p>
 
 <pre><code>&lt;script lang="ts">
   import { queryParam } from 'sveltekit-search-params';
@@ -208,7 +208,7 @@ format: "html"
 
 <h2 id="aktivni-strank">Aktivní stránka</h2>
 
-<p>Adresu současné stránky jde vytáhnout z <code>$page.url.pathname</code>. Zvýraznit aktuální stránku jde tak jednoduchou podmínkou (přidá CSS třídu <code>active</code>):</p>
+<p>Adresu současné stránky jde vytáhnout z <code>$page.url.pathname</code>. Zvýraznit aktuální stránku jde tak jednoduchou podmínkou (přidá CSS třídu <code>active</code>):</p>
 
 <pre><code>&lt;a class:active={$page.url.pathname === '/about'} href="/about">
   Odkaz
@@ -249,7 +249,7 @@ export const isCurrent = derived([page], ([$page]) => {
 
 
 
-<p>Případně s vite-plugin-kit-routes:</p>
+<p>Případně s vite-plugin-kit-routes:</p>
 
 <pre><code>&lt;a class:active={$isCurrent(route('/about'))} href="route('/about')">
   Odkaz
@@ -265,9 +265,9 @@ export const isCurrent = derived([page], ([$page]) => {
 
 
 
-<p>U rout s <b>dynamickými parametry</b> se nabízí porovnávat <code>$page.route.id</code>. Pozor, propisují se tam i skupiny v závorkách.</p>
+<p>U rout s <b>dynamickými parametry</b> se nabízí porovnávat <code>$page.route.id</code>. Pozor, propisují se tam i skupiny v závorkách.</p>
 
-<p>Takže na adrese <code>blog/prvni-clanek</code> může být v <code>$page.route.id</code> např. následující hodnota:</p>
+<p>Takže na adrese <code>blog/prvni-clanek</code> může být v <code>$page.route.id</code> např. následující hodnota:</p>
 
 <pre><code>/(private)/blog/[slug]</code></pre>
 
@@ -280,7 +280,7 @@ export const isCurrent = derived([page], ([$page]) => {
 
 <h2 id="error">Chybové stránky</h2>
 
-<p>V případě nenalezení obsahu k dané routě je třeba zobrazit <a href="/sledovani-404">chybovou stránku</a>.</p>
+<p>V případě nenalezení obsahu k dané routě je třeba zobrazit <a href="/sledovani-404">chybovou stránku</a>.</p>
 
 <p>To jde zajistit velmi snadno souborem <code>+error.svelte</code>.</p>
 
@@ -289,7 +289,7 @@ export const isCurrent = derived([page], ([$page]) => {
 
 <p>Občas je potřeba měnit adresu stránky jiným způsobem než kliknutím na odkaz. Třeba po odeslání formuláře nebo vyhodnocením nějaké logiky.</p>
 
-<p>SvelteKit k tomu má funkci <code>goto</code>.</p>
+<p>SvelteKit k tomu má funkci <code>goto</code>.</p>
 
 <pre><code>&lt;button onclick="{() => goto(route('/blog/[slug]', { slug: 'prvni-clanek' }))}">
   Tlačítko
@@ -308,7 +308,7 @@ export const isCurrent = derived([page], ([$page]) => {
 
 <ul>
   <li>
-    <code>replaceState</code> – nahradí současnou stránky v historii
+    <code>replaceState</code> – nahradí současnou stránky v historii
   </li>
   <li>
     <code>noScroll</code> – neprovede odrolování nahoru
@@ -322,7 +322,7 @@ export const isCurrent = derived([page], ([$page]) => {
 
 <h2 id="afterNavigate">Akce po navigaci</h2>
 
-<p>Někdy je potřeba provést po navigaci akci – například zavřít hamburger menu na mobilu po kliknutí na okdaz. K tomu slouží <code>afterNavigate</code>:</p>
+<p>Někdy je potřeba provést po navigaci akci – například zavřít hamburger menu na mobilu po kliknutí na okdaz. K tomu slouží <code>afterNavigate</code>:</p>
 
 <pre><code>&lt;script lang="ts">
   import { afterNavigate } from '$app/navigation';
@@ -350,7 +350,7 @@ export const isCurrent = derived([page], ([$page]) => {
   </li>
   
   <li>
-    <p>V případě chyby jde <b>obnovit stránku</b> a uživatel zůstane na místě, kde byl.</p>
+    <p>V případě chyby jde <b>obnovit stránku</b> a uživatel zůstane na místě, kde byl.</p>
   </li>
   
   <li>
@@ -360,11 +360,11 @@ export const isCurrent = derived([page], ([$page]) => {
 
 <p>Asi nejčistší možnost je používat layouty. Ze stránky (<code>+page.svelte</code>), ze které se má modál zobrazit, se udělá <code>+layout.svelte</code> (<code>+page.svelte</code> zůstane prázdné).</p>
 
-<p>Na místo v kódu pro zobrazení modálu se dá značka <code>&lt;slot /></code>.</p>
+<p>Na místo v kódu pro zobrazení modálu se dá značka <code>&lt;slot /></code>.</p>
 
 <p>Samotný modál se potom zanoří do podadresáře (<code>modal/+page.svelte</code>).</p>
 
-<p>Jiný způsob je řídit zobrazení/skrytí modálu přes query parametr v URL.</p>
+<p>Jiný způsob je řídit zobrazení/skrytí modálu přes query parametr v URL.</p>
 
 <p>Případně si vystačit jen se zobrazením na základě proměnné bez ukládání stavu.</p>
 

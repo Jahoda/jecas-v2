@@ -107,5 +107,5 @@ https://www.igvita.com/2014/09/16/optimizing-webfont-selection-and-synthesis/
   
   <li><a href="https://webdesignledger.com/5-font-foundries">5 Font Foundries Web Designers should be Using</a></li>
   
-  <li><a href="http://www.typegenius.com/">Typegenius</a> – párování písem, co se k sobě hodí</li>
+  <li><a href="http://www.typegenius.com/">Typegenius</a> – párování písem, co se k sobě hodí</li>
 </ul>
