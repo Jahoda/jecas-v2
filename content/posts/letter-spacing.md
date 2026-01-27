@@ -5,7 +5,7 @@ description: "CSS vlastnost <code>letter-spacing</code> upravuje vzdálenost mez
 date: "2015-08-27"
 last_modification: "2015-09-21"
 status: 1
-tags: ["css", "css-vlastnosti", "pisma"]
+tags: ["css", "css-vlastnosti", "pisma", "typografie"]
 format: "html"
 ---
 

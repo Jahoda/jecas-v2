@@ -5,7 +5,7 @@ description: "K čemu jsou dobré redakční systémy postavené na Gitu."
 date: "2023-01-29"
 last_modification: "2025-09-02"
 status: 1
-tags: ["cms", "produktivita"]
+tags: ["cms", "produktivita", "git"]
 format: "html"
 ---
 

@@ -5,7 +5,7 @@ description: "CSS vlastnost <code>text-stroke</code> vytváří okraj písmen po
 date: "2014-04-07"
 last_modification: "2014-05-05"
 status: 1
-tags: ["css", "css-vlastnosti"]
+tags: ["css", "css-vlastnosti", "typografie"]
 format: "html"
 ---
 

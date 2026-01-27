@@ -5,7 +5,7 @@ description: "Pomocí CSS pravidla <code>@font-face</code> jde na stránce použ
 date: "2013-11-24"
 last_modification: "2017-08-20"
 status: 1
-tags: ["css", "css-pravidla", "pisma"]
+tags: ["css", "css-pravidla", "pisma", "typografie"]
 format: "html"
 ---
 

@@ -5,7 +5,7 @@ description: "Vysvětlení proč není možné na webu používat vlastní exter
 date: "2022-03-01"
 last_modification: "2025-03-26"
 status: 1
-tags: ["napady", "pisma"]
+tags: ["napady", "pisma", "typografie"]
 format: "html"
 ---
 

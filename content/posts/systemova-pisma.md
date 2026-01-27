@@ -5,7 +5,7 @@ description: "Jak a proč používat lokální písma dostupné v operačních s
 date: "2015-11-13"
 last_modification: "2016-07-21"
 status: 1
-tags: ["css", "napady", "pisma"]
+tags: ["css", "napady", "pisma", "typografie"]
 format: "html"
 ---
 

@@ -5,7 +5,7 @@ description: "Svelte drag & drop"
 date: "2022-03-15"
 last_modification: "2022-03-15"
 status: 0
-tags: []
+tags: ["svelte"]
 format: "html"
 ---
 

@@ -5,7 +5,7 @@ description: "Jak určit, jak se jmenuje písmo na obrázku nebo webu."
 date: "2014-06-17"
 last_modification: "2016-11-21"
 status: 1
-tags: ["napady", "pisma"]
+tags: ["napady", "pisma", "typografie"]
 format: "html"
 ---
 

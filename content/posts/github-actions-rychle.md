@@ -4,7 +4,7 @@ headline: 'Jak zrychlit GitHub Actions'
 description: 'Praktické tipy pro optimalisaci GitHub Actions pomocí paralelisace, composite actions a gh CLI'
 date: '2026-01-13'
 status: 1
-tags: ['hotova-reseni']
+tags: ['hotova-reseni', 'git']
 format: 'html'
 ---
 

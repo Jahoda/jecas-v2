@@ -5,7 +5,7 @@ description: "S CSS vlastností <code>font-feature-settings</code> lze dosáhnou
 date: "2014-05-07"
 last_modification: "2014-12-02"
 status: 1
-tags: ["css", "css-vlastnosti", "pisma"]
+tags: ["css", "css-vlastnosti", "pisma", "typografie"]
 format: "html"
 ---
 

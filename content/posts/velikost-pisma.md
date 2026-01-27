@@ -5,7 +5,7 @@ description: "Jaká je vhodná velikost písma na webové stránce."
 date: "2015-06-10"
 last_modification: "2015-06-10"
 status: 0
-tags: []
+tags: ["typografie"]
 format: "html"
 ---
 

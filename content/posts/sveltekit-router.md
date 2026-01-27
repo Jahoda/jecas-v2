@@ -5,7 +5,7 @@ description: "Jak ve SvelteKitu řešit routování adres. Příklady z praxe."
 date: "2024-05-31"
 last_modification: "2024-05-31"
 status: 0
-tags: []
+tags: ["svelte"]
 format: "html"
 ---
 

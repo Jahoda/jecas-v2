@@ -5,7 +5,7 @@ description: "Jak přizpůsobovat velikost písma aktuální šířce stránky."
 date: "2015-10-05"
 last_modification: "2015-10-05"
 status: 1
-tags: ["hotova-reseni", "pisma", "responsive"]
+tags: ["hotova-reseni", "pisma", "responsive", "typografie"]
 format: "html"
 ---
 

@@ -5,7 +5,7 @@ description: "Seznam fontů z Google Fonts, které obsahují znaky s diakritikou
 date: "2014-01-21"
 last_modification: "2014-01-21"
 status: 1
-tags: ["google", "hotova-reseni", "napady", "pisma"]
+tags: ["google", "hotova-reseni", "napady", "pisma", "typografie"]
 format: "html"
 ---
 

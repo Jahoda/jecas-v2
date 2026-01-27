@@ -5,7 +5,7 @@ description: "Jak rychle a efektivně používat versovací systém Git. "
 date: "2025-04-01"
 last_modification: "2025-08-12"
 status: 1
-tags: ["produktivita", "napady"]
+tags: ["produktivita", "napady", "git"]
 format: "html"
 ---
 

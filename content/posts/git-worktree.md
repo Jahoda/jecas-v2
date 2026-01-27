@@ -5,7 +5,7 @@ description: "Jak spustit více větví jednoho repositáře vedle sebe."
 date: "2025-08-15"
 last_modification: "2025-08-15"
 status: 1
-tags: ["napady", "produktivita"]
+tags: ["napady", "produktivita", "git"]
 format: "html"
 ---
 

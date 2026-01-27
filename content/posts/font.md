@@ -5,7 +5,7 @@ description: "CSS vlastnost <code>font</code> slouží k nastavení písma na st
 date: "2014-05-07"
 last_modification: "2015-01-17"
 status: 1
-tags: ["css", "css-vlastnosti", "pisma"]
+tags: ["css", "css-vlastnosti", "pisma", "typografie"]
 format: "html"
 ---
 

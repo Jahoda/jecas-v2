@@ -5,7 +5,7 @@ description: "Jak snadno ve Svelte cokoliv na stránce plynule animovat."
 date: "2023-05-07"
 last_modification: "2023-05-07"
 status: 0
-tags: []
+tags: ["svelte"]
 format: "html"
 ---
 

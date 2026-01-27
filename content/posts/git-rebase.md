@@ -5,7 +5,7 @@ description: "Proč a jak používat git rebase pro přehlednou historii v Gitu.
 date: "2020-06-05"
 last_modification: "2025-08-17"
 status: 1
-tags: ["napady", "produktivita"]
+tags: ["napady", "produktivita", "git"]
 format: "html"
 ---
 

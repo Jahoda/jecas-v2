@@ -5,7 +5,7 @@ description: "Postup, kterým jsou vybírána a určována písma s českou diak
 date: "2014-01-22"
 last_modification: "2014-01-22"
 status: 1
-tags: ["napady", "php", "pisma"]
+tags: ["napady", "php", "pisma", "typografie"]
 format: "html"
 ---
 

@@ -5,7 +5,7 @@ description: "Ikony tvořené fontem. Proč je nepoužívat a čím je nahradit.
 date: "2014-01-10"
 last_modification: "2015-12-04"
 status: 1
-tags: ["ikony", "pisma"]
+tags: ["ikony", "pisma", "typografie"]
 format: "html"
 ---
 

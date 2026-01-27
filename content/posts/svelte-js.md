@@ -5,7 +5,7 @@ description: ""
 date: "2019-08-07"
 last_modification: "2019-08-07"
 status: 0
-tags: []
+tags: ["svelte"]
 format: "html"
 ---
 

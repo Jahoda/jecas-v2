@@ -5,7 +5,7 @@ description: "CSS vlastnost <code>size-adjust</code> zabraňuje poskakování te
 date: "2021-11-30"
 last_modification: "2021-11-30"
 status: 0
-tags: []
+tags: ["typografie"]
 format: "html"
 ---
 

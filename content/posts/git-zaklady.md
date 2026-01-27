@@ -5,7 +5,7 @@ description: "Jak používat versovací systém GIT ve Windows i macOS."
 date: "2014-02-22"
 last_modification: "2014-02-22"
 status: 0
-tags: []
+tags: ["git"]
 format: "html"
 ---
 

@@ -5,7 +5,7 @@ description: "Jak si liší typografie na desktopu od mobilních zařízení."
 date: "2015-10-14"
 last_modification: "2015-10-14"
 status: 0
-tags: []
+tags: ["typografie"]
 format: "html"
 ---
 
