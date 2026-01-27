@@ -1,43 +1,127 @@
 ---
 title: "Generátor náhodných čísel"
-headline: "Generátor náhodného čísla"
-description: "Jak vygenerovat náhodné číslo z určitého rozsahu (v JavaScriptu, PHP atd.)"
+headline: "Generátor náhodných čísel online"
+description: "Online generátor náhodných čísel z libovolného rozsahu. Náhodné číslo jedním kliknutím + kód pro JavaScript, PHP, Python a další jazyky."
 date: "2015-02-15"
-last_modification: "2025-09-07"
+last_modification: "2026-01-27"
 status: 1
 tags: ["hotova-reseni", "js", "php"]
 format: "html"
 ---
 
 <div class="live">
-  <style>
-    .nahodne button {
-      min-width: 4em;
-      padding: .5em;
-      font-size: 150%;
-      margin: auto;
-      display: block;
-    }
-  </style>
-  <p class="nahodne">
-    <button onclick="
-    this.textContent = Math.floor(Math.random() * 10) + 1
-    ">
-      Náhodné číslo 1 až 10
-    </button>  
+<style>
+  .gen-main { text-align: center; }
+  .gen-main output {
+    display: block;
+    font-size: 300%;
+    font-weight: bold;
+    padding: .3em 0;
+    min-height: 1.5em;
+    letter-spacing: .05em;
+  }
+  .gen-main label { font-weight: bold; }
+  .gen-main input[type=number] { width: 5em; font-size: 110%; text-align: center; }
+  .gen-main button {
+    font-size: 130%;
+    padding: .5em 1.5em;
+    cursor: pointer;
+  }
+  .gen-extras { display: flex; flex-wrap: wrap; gap: .5em; justify-content: center; margin-top: 1em; }
+  .gen-extras button {
+    padding: .5em 1em;
+    font-size: 110%;
+    cursor: pointer;
+  }
+</style>
+<div class="gen-main">
+  <p>
+    <label>Od: <input type="number" id="gen-od" value="1"></label>
+    <label>Do: <input type="number" id="gen-do" value="10"></label>
   </p>
-  <p class="nahodne">
-    <button onclick="
-    this.textContent = Math.random() < 0.5 ? 'Ano' : 'Ne'
-    ">
-      Ano, nebo ne?
-    </button>  
-  </p>
+  <output id="gen-vysledek">&nbsp;</output>
+  <p><button onclick="genNahodne()">Generovat</button></p>
+  <div class="gen-extras">
+    <button onclick="genRozsah(1,6)">Kostka 1–6</button>
+    <button onclick="genRozsah(1,100)">1–100</button>
+    <button onclick="genRozsah(0,1)">0 nebo 1</button>
+    <button onclick="document.getElementById('gen-vysledek').textContent = Math.random() < 0.5 ? 'Ano' : 'Ne'">Ano / Ne</button>
+  </div>
 </div>
+<script>
+function genNahodne() {
+  var od = Number(document.getElementById('gen-od').value);
+  var doo = Number(document.getElementById('gen-do').value);
+  if (od > doo) { var t = od; od = doo; doo = t; }
+  var vysledek = Math.floor(Math.random() * (doo - od + 1)) + od;
+  document.getElementById('gen-vysledek').textContent = vysledek;
+}
+function genRozsah(od, doo) {
+  document.getElementById('gen-od').value = od;
+  document.getElementById('gen-do').value = doo;
+  genNahodne();
+}
+</script>
+</div>
+
+<h2 id="vice-cisel">Generátor více náhodných čísel</h2>
+
+<p>Potřebujete vygenerovat více čísel najednou? Zadejte rozsah a počet.</p>
+
+<div class="live">
+<style>
+  .gen-multi output {
+    display: block;
+    font-size: 150%;
+    font-weight: bold;
+    padding: .3em 0;
+    min-height: 1.5em;
+    word-spacing: .3em;
+  }
+</style>
+<div class="gen-multi">
+  <p>
+    <label>Od: <input type="number" id="multi-od" value="1" style="width:5em"></label>
+    <label>Do: <input type="number" id="multi-do" value="100" style="width:5em"></label>
+    <label>Počet: <input type="number" id="multi-pocet" value="5" min="1" max="100" style="width:4em"></label>
+  </p>
+  <p><button onclick="genMulti()">Generovat</button>
+  <label><input type="checkbox" id="multi-unikatni"> Bez opakování</label></p>
+  <output id="multi-vysledek">&nbsp;</output>
+</div>
+<script>
+function genMulti() {
+  var od = Number(document.getElementById('multi-od').value);
+  var doo = Number(document.getElementById('multi-do').value);
+  var pocet = Number(document.getElementById('multi-pocet').value);
+  var unikatni = document.getElementById('multi-unikatni').checked;
+  if (od > doo) { var t = od; od = doo; doo = t; }
+  var rozsah = doo - od + 1;
+  if (pocet > 100) pocet = 100;
+  if (unikatni && pocet > rozsah) pocet = rozsah;
+  var cisla = [];
+  if (unikatni) {
+    var pool = [];
+    for (var i = od; i <= doo; i++) pool.push(i);
+    for (var j = pool.length - 1; j > 0; j--) {
+      var k = Math.floor(Math.random() * (j + 1));
+      var tmp = pool[j]; pool[j] = pool[k]; pool[k] = tmp;
+    }
+    cisla = pool.slice(0, pocet);
+  } else {
+    for (var i = 0; i < pocet; i++) {
+      cisla.push(Math.floor(Math.random() * rozsah) + od);
+    }
+  }
+  document.getElementById('multi-vysledek').textContent = cisla.join(', ');
+}
+</script>
+</div>
+
 
 <h2 id="generator">Generátor kódu pro náhodná čísla</h2>
 
-<p>Následující generátor po zadání nejnižšího a nejvyššího čísla připraví JS/PHP kód, který slouží k vygenerování náhodného čísla z daného rozsahu.</p>
+<p>Následující generátor po zadání nejnižšího a nejvyššího čísla připraví kód pro vygenerování náhodného čísla z daného rozsahu v různých jazycích.</p>
 
 <div class="live">
 <style>
@@ -49,14 +133,14 @@ format: "html"
   <p><label>Od: <input type="number" name="od" value="1"></label> (včetně)</p>
   <p><label>Do: <input type="number" name="do" value="10"></label> (včetně)</p>
   <p><label>Počet možných čísel: <output id="kolik-count">10</output></label></p>
-  <button>Vygenerovat</button><span id="priklad"></span>  
-  
+  <button>Vygenerovat</button><span id="priklad"></span>
+
   <p><b>JavaScript</b>:</p>
   <pre><code>const nahodne = Math.floor(Math.random() * <span id="kolik">10</span>) + <span id="od">1</span>;</code></pre>
-  
+
   <p><b>PHP</b>:</p>
-  <pre><code>random_int(<span id="od-php">1</span>, <span id="do-php">10</span>);</code></pre>  
-  
+  <pre><code>random_int(<span id="od-php">1</span>, <span id="do-php">10</span>);</code></pre>
+
   <p><b>Python</b>:</p>
   <pre><code>import random
 random.randint(<span id="od-py">1</span>, <span id="do-py">10</span>)</code></pre>
@@ -84,7 +168,7 @@ nBig, _ := rand.Int(rand.Reader, big.NewInt(<span id="kolik-go">10</span>))
 n := int(nBig.Int64()) + <span id="od-go">1</span></code></pre>
 </form>
 <script>
-  (function(){ 
+  (function(){
   const priklad = document.getElementById("priklad");
   const kolik = document.getElementById("kolik");
   const kolikCount = document.getElementById("kolik-count");
@@ -135,15 +219,11 @@ n := int(nBig.Int64()) + <span id="od-go">1</span></code></pre>
 </div>
 
 
-
-
 <h2 id="js">Náhodné číslo v JavaScriptu</h2>
 
 <p>V JS se pro generování náhodného čísla používá <code>Math.random()</code>.</p>
 
 <pre><code>const nahodne = Math.random();</code></pre>
-
-
 
 <p>V proměnné <code>nahodne</code> bude něco mezi 0 a 1, například <code>0.6577748781199532</code>. Vyjít může i přesná nula, ale vždy bude číslo menší než 1.</p>
 
@@ -151,23 +231,15 @@ n := int(nBig.Int64()) + <span id="od-go">1</span></code></pre>
 
 <pre><code>nahodne = nahodne * 10;</code></pre>
 
-
-
-
 <p>Obsah <code>nahodne</code> teď bude něco jako <code>6.577748781199532</code>. Pro dosažení celých čísel se potom provede <b>zaokrouhlení</b>.</p>
 
 <pre><code>nahodne = Math.floor(nahodne);</code></pre>
-
 
 <p>A výsledkem je <code>6</code>. Metoda <code>Math.floor</code> zaokrouhluje dolů, takže výsledek bude nabývat hodnot 0 až 9. Použití jiného způsobu zaokrouhlení (<code>Math.round</code>/<code>Math.ceil</code>) by vedlo k nerovnoměrnému rozdělení jednotlivých čísel.</p>
 
 <p>Následný obrázek srovnává četnosti jednotlivých čísel při různých způsobech zaokrouhlení.</p>
 
 <p><img src="/files/nahodne-cislo/cetnost.png" alt="Četnosti čísel" class="border"></p>
-
-
-
-
 
 <p><a href="https://kod.djpw.cz/etkb">Skript pro výpočet četnosti</a></p>
 
@@ -229,19 +301,6 @@ crypto.getRandomValues(bytes);</code></pre>
 }</code></pre>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <h2 id="php">Náhodné číslo PHP</h2>
 
 <p>V PHP je pro náhodné celé číslo z daného rozsahu doporučené použít <code>random_int</code> (od PHP 7). Funkci se zadává rozsah čísel, ze kterých se má výsledek vygenerovat.</p>
@@ -296,12 +355,6 @@ int n = ThreadLocalRandom.current().nextInt(1, 11); // 1..10</code></pre>
   <figcaption>Četnost náhodných čísel z rozsahu 0–9 při pouhých deseti opakováních</figcaption>
 </figure>
 
-
-
-
-
-
-
 <p>Pokud prvek náhody nemusí být matematicky <b>přesný</b>, ale jde hlavně o dojem uživatele, dá se tomu trochu pomoci. Například zabránit vygenerování téhož čísla dvakrát po sobě.</p>
 
 <p><a href="https://kod.djpw.cz/otkb">Ukázka</a> – nikdy se nevygeneruje stejné číslo dvakrát za sebou</p>
@@ -311,8 +364,6 @@ int n = ThreadLocalRandom.current().nextInt(1, 11); // 1..10</code></pre>
 <p><a href="https://kod.djpw.cz/stkb">Živá ukázka</a></p>
 
 <p>V případě <b>PHP</b> je nutné vygenerovaná náhodná čísla někam ukládat – například do pole <code>$_SESSION</code>.</p>
-
-
 
 
 <h2 id="vyuziti">Využití</h2>
