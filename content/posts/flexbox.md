@@ -26,8 +26,12 @@ format: "html"
 <h2 id=flex>Flex</h2>
 <p>Totéž se dá vyřešit vlastnostmi kolem <code>flex</code>. Funguje to ovšem zatím <b>jen od Exploreru 10</b>. Kromě Opery ve všech prohlížečích (ve Firefoxu, Chrome i IE 10) jen s prefixy (<code>-moz-</code> a <code>-webkit-</code>, <code>-ms-</code>) a pomalu v každém prohlížeči pod jiným názvem. Ve Firefoxu funguje jen něco.
 <p>Nepoužíváte-li proto zmíněné prohlížeče, můžete si ukázky s klidem vypnout.</p>
+<span id="flexbox-toggle"></span>
 <script>
-document.write("<button onclick=\"this.parentNode.className = this.parentNode.className == '' ? 'tldr' : ''\">Zobrazit/skrýt ukázky</button><p>");
+var btn = document.createElement('button');
+btn.textContent = 'Zobrazit/skrýt ukázky';
+btn.onclick = function() { this.parentNode.parentNode.className = this.parentNode.parentNode.className == '' ? 'tldr' : ''; };
+document.getElementById('flexbox-toggle').appendChild(btn);
 </script>
 
 <div class='live code'>

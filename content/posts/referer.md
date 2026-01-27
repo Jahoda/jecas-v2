@@ -30,11 +30,10 @@ echo $_SERVER["HTTP_REFERER"];</code></pre>
 <p>V JS je informace o předchozí stránce dostupná v <code>document.referrer</code>:</p>
 
 <div class="live">
-  <p>
-    <script>
-      document.write("Předchozí stránka: " + document.referrer);
-    </script>
-  </p>
+  <p id="referer-output"></p>
+  <script>
+    document.getElementById('referer-output').textContent = "Předchozí stránka: " + document.referrer;
+  </script>
 </div>
 
 <h3 id="spolehlivost">Spolehlivost?</h3>

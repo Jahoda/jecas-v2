@@ -50,8 +50,9 @@ format: "html"
     <pre><code>var predchoziAdresa = document.referrer;</code></pre>
     
     <div class="live nosource">
+      <span id="noreferrer-referrer-output"></span>
       <script>
-        document.write("Předchozí URL: " + document.referrer);
+        document.getElementById('noreferrer-referrer-output').textContent = "Předchozí URL: " + document.referrer;
       </script>
     </div>
   </dd>

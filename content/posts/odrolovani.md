@@ -14,7 +14,13 @@ format: "html"
 <p>Nebo je možné použít metodu <code>scrollTo(X-souřadnice, Y-souřadnice)</code> (pro rolování celé stránky pomocí objektu <code>window</code>):
 <pre><code>// Odrolovat na 50 px zleva a 100 px shora
 window.scrollTo(50, 100);</code></pre>
-<script>document.write("<p><button onclick='window.scrollTo(0, 20)'>Odrolovat na 20 px shora</button>")</script>
+<p><span id="odrolovani-btn1"></span></p>
+<script>
+var btn = document.createElement('button');
+btn.textContent = 'Odrolovat na 20 px shora';
+btn.onclick = function() { window.scrollTo(0, 20); };
+document.getElementById('odrolovani-btn1').appendChild(btn);
+</script>
 
 <p>Posouvání nějakého elementu (např. s <code>overflow: auto</code>) vypadá následovně.
 <pre><code>var element = document.getElementById("idecko");
@@ -29,7 +35,13 @@ element.scrollTop = 50;</code></pre>
 <pre><code>var hodnota = document.documentElement.scrollTop + document.body.scrollTop</code></pre>
 <p>Chrome potřebuje <code>document.body</code>.
 
-<script>document.write("<p><button onclick='alert(\"Top: \" + (document.documentElement.scrollTop + document.body.scrollTop) + \", Left: \" + (document.documentElement.scrollLeft + document.body.scrollLeft))'>O kolik je?</button>")</script>
+<p><span id="odrolovani-btn2"></span></p>
+<script>
+var btn2 = document.createElement('button');
+btn2.textContent = 'O kolik je?';
+btn2.onclick = function() { alert("Top: " + (document.documentElement.scrollTop + document.body.scrollTop) + ", Left: " + (document.documentElement.scrollLeft + document.body.scrollLeft)); };
+document.getElementById('odrolovani-btn2').appendChild(btn2);
+</script>
 
 <h2 id=offset>Na konkrétní značku…</h2>
 <p>Tohle byla celkem nuda. Zajímavější je rolovat na nějaké dynamické hodnoty, tj. na souřadnice různých elementů.

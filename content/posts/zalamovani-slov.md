@@ -170,7 +170,7 @@ $text = wordwrap($text, 50, " ", true);</code></pre>
   </li>
   
   <li>
-    <p>Rozlámání slov <b>rozbije odkazy</b>. Zatímco dlouhá slova nemají moc opodstatnění, v případě odkazů je situace jiná. Typicky mívají minimálně desítky znaků, někdy se ale může délka blížit i stovce (tato stránka má URL dlouhou <script>document.write((window.location+"").length)</script> znaků).</p>
+    <p>Rozlámání slov <b>rozbije odkazy</b>. Zatímco dlouhá slova nemají moc opodstatnění, v případě odkazů je situace jiná. Typicky mívají minimálně desítky znaků, někdy se ale může délka blížit i stovce (tato stránka má URL dlouhou <span id="url-length"></span><script>document.getElementById('url-length').textContent = (window.location+"").length;</script> znaků).</p>
     
     <p>Řešením je odkazy převádět na klikací a <b>text odkazu zkrátit</b>. Osobně mi ale přijde lepší <b>použít CSS</b>, protože ani slova rozlámaná na určitý počet nejsou zárukou správného zobrazení. Stačí mít v prohlížeči nebo operačním systému <b>větší písmo</b> a přesně spočítaný počet znaků bude k ničemu.</p>
   </li>

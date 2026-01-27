@@ -11,8 +11,12 @@ format: "html"
 
 <p>Podpora „Vše“ znamená všechny relativně běžně používané prohlížeče (cca od Internet Exploreru 6). Některé selektory je možné ve starších IE <a href="/css3-ie">rozběhat JavaScriptem</a>.
 <div>
+<span id="css-selektory-toggle"></span>
 <script>
-document.write("<button onclick=\"this.parentNode.className = this.parentNode.className == '' ? 'filter' : ''\">Přepnout ukecanost</button><p>");
+var btn = document.createElement('button');
+btn.textContent = 'Přepnout ukecanost';
+btn.onclick = function() { this.parentNode.parentNode.className = this.parentNode.parentNode.className == '' ? 'filter' : ''; };
+document.getElementById('css-selektory-toggle').appendChild(btn);
 </script>
 <table>
  <thead>

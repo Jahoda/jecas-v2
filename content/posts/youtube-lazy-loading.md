@@ -18,8 +18,12 @@ format: "html"
 <p>Obrázek (náhled) videa lze získat překvapivě snadno. Různé varianty obrázku videa se nacházejí na jednotných URL, kam stačí zadat jenom kód videa (to je část za <code>wathc?v=</code>: <code>youtube.com/watch?v=<b>m_t4_6eHFdk</b></code>).
 
 <div class='tldr'>
+<span id="yt-lazy-toggle"></span>
 <script>
-document.write("<button onclick=\"this.parentNode.className = this.parentNode.className == '' ? 'tldr' : ''\">Zobrazit/skrýt ukázky</button><p>");
+var btn = document.createElement('button');
+btn.textContent = 'Zobrazit/skrýt ukázky';
+btn.onclick = function() { this.parentNode.parentNode.className = this.parentNode.parentNode.className == '' ? 'tldr' : ''; };
+document.getElementById('yt-lazy-toggle').appendChild(btn);
 </script>
 <dl>
 <dt>miniaturní náhledy</dt>
