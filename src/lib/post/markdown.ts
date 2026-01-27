@@ -27,9 +27,8 @@ export interface PostFrontmatter {
 
 const postModules = import.meta.glob('/content/posts/*.md', {
 	query: '?raw',
-	import: 'default',
-	eager: true
-}) as Record<string, string>;
+	import: 'default'
+}) as Record<string, () => Promise<string>>;
 
 let postsCache: Map<string, MarkdownPost> | null = null;
 let allPostsSortedCache: MarkdownPost[] | null = null;
@@ -64,14 +63,17 @@ function parseMarkdownContent(fileName: string, fileContent: string): MarkdownPo
 	};
 }
 
-function loadAllPostsToCache(): Map<string, MarkdownPost> {
+async function loadAllPostsToCache(): Promise<Map<string, MarkdownPost>> {
 	if (postsCache) return postsCache;
 
 	const cache = new Map<string, MarkdownPost>();
 
-	for (const [filePath, fileContent] of Object.entries(postModules)) {
-		const fileName = filePath.split('/').pop()!;
-		const post = parseMarkdownContent(fileName, fileContent);
+	const entries = Object.entries(postModules);
+	const results = await Promise.all(entries.map(([, loader]) => loader()));
+
+	for (let i = 0; i < entries.length; i++) {
+		const fileName = entries[i][0].split('/').pop()!;
+		const post = parseMarkdownContent(fileName, results[i]);
 		cache.set(post.url_slug, post);
 	}
 
@@ -87,7 +89,7 @@ export async function getAllPosts(
 		return allPostsSortedCache;
 	}
 
-	const cache = loadAllPostsToCache();
+	const cache = await loadAllPostsToCache();
 	const posts = Array.from(cache.values());
 
 	const now = new Date();
@@ -114,7 +116,7 @@ export async function getAllDrafts(limit: number | null = null): Promise<Markdow
 }
 
 export async function getFuturePosts(limit: number | null = null): Promise<MarkdownPost[]> {
-	const cache = loadAllPostsToCache();
+	const cache = await loadAllPostsToCache();
 	const posts = Array.from(cache.values());
 
 	const now = new Date();
@@ -131,7 +133,7 @@ export async function getFuturePosts(limit: number | null = null): Promise<Markd
 }
 
 export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
-	const cache = loadAllPostsToCache();
+	const cache = await loadAllPostsToCache();
 	const posts: MarkdownPost[] = [];
 	const now = new Date();
 
@@ -146,7 +148,7 @@ export async function getPostsBySlug(slugs: string[]): Promise<MarkdownPost[]> {
 }
 
 export async function getSinglePostBySlug(slug: string): Promise<MarkdownPost | undefined> {
-	const cache = loadAllPostsToCache();
+	const cache = await loadAllPostsToCache();
 	return cache.get(slug);
 }
 
