@@ -1,7 +1,7 @@
 ---
 title: "Jak funguje position: sticky"
 headline: "Jak funguje CSS <code>position: sticky</code>"
-description: "CSS <code>sticky</code> posice umožňuje bez JS zafixovat element ke kraji okna při rolování."
+description: "CSS position: sticky umožňuje bez JavaScriptu zafixovat element (menu, hlavičku) ke kraji okna při scrollování. Návod s příklady."
 date: "2015-06-02"
 last_modification: "2020-03-18"
 status: 1
