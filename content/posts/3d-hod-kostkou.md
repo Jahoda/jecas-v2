@@ -8,7 +8,7 @@ tags: ["hotova-reseni", "js"]
 format: "html"
 ---
 
-<p>Interaktivní 3D kostka s realistickým osvětlením a fyzikou. Kostka levituje ve vzduchu – kliknutím ji hodíte, nebo ji chytněte myší a hoďte sami. Můžete si zvolit počet stran (d4, d6, d8, d10, d12, d20).</p>
+<p>Interaktivní 3D kostka s realistickým osvětlením a fyzikou. Kostka levituje ve vzduchu – kliknutím ji hodíte, nebo ji chytněte myší a hoďte sami. Můžete si zvolit počet stran (d4, d6, d8, d10, d12, d20).</p>
 
 <div class="live">
 <style>
@@ -38,7 +38,7 @@ format: "html"
     <button id="dice-roll-btn">🎲 Hodit kostkou</button>
   </div>
   <div class="dice-result" id="dice-result">–</div>
-  <p class="dice-hint">Klikněte na kostku nebo ji chytněte a hoďte tažením myši</p>
+  <p class="dice-hint">Klikněte na kostku nebo ji chytněte a hoďte tažením myši</p>
   <canvas id="dice-canvas" width="500" height="400"></canvas>
 </div>
 
@@ -629,7 +629,7 @@ format: "html"
 
 <h2 id="jak-to-funguje">Jak to funguje</h2>
 
-<p>Simulátor používá čistý <b>WebGL</b> bez externích knihoven. Kostka je vykreslena jako 3D polyhedron s realistickým <b>Phong osvětlením</b> (difúzní + spekulární složka ze dvou světelných zdrojů).</p>
+<p>Simulátor používá čistý <b>WebGL</b> bez externích knihoven. Kostka je vykreslena jako 3D polyhedron s realistickým <b>Phong osvětlením</b> (difúzní + spekulární složka ze dvou světelných zdrojů).</p>
 
 <h3>Podporované kostky</h3>
 
@@ -640,27 +640,27 @@ format: "html"
 <tr><td>d8</td><td>Osmistěn</td><td>RPG, zásahy zbraní</td></tr>
 <tr><td>d10</td><td>Desetistěn</td><td>RPG, procentuální hody</td></tr>
 <tr><td>d12</td><td>Dvanáctistěn</td><td>RPG, speciální zbraně</td></tr>
-<tr><td>d20</td><td>Dvacetistěn</td><td>D&amp;D, útoky a záchranné hody</td></tr>
+<tr><td>d20</td><td>Dvacetistěn</td><td>D&amp;D, útoky a záchranné hody</td></tr>
 </table>
 
 <h2 id="ovladani">Ovládání</h2>
 
 <ul>
-<li><p><b>Klik na kostku</b> – automatický hod s náhodným roztočením</p></li>
-<li><p><b>Tažení myší</b> – chytíte kostku a můžete ji hodit směrem tažení</p></li>
-<li><p><b>Tlačítko „Hodit kostkou"</b> – hod vybrané kostky</p></li>
+<li><p><b>Klik na kostku</b> – automatický hod s náhodným roztočením</p></li>
+<li><p><b>Tažení myší</b> – chytíte kostku a můžete ji hodit směrem tažení</p></li>
+<li><p><b>Tlačítko „Hodit kostkou”</b> – hod vybrané kostky</p></li>
 <li><p><b>Výběr kostky</b> – přepínání mezi d4 až d20</p></li>
 </ul>
 
 <h2 id="technicke-detaily">Technické detaily</h2>
 
-<p>Celý simulátor běží v prohlížeči a nepotřebuje žádné externí knihovny:</p>
+<p>Celý simulátor běží v prohlížeči a nepotřebuje žádné externí knihovny:</p>
 
 <ul>
 <li><p><b>WebGL</b> – hardwarově akcelerované 3D vykreslování</p></li>
-<li><p><b>Vlastní fyzika</b> – gravitace, odrazy od podlahy a stěn, útlum rotace</p></li>
+<li><p><b>Vlastní fyzika</b> – gravitace, odrazy od podlahy a stěn, útlum rotace</p></li>
 <li><p><b>Quaterniony</b> – plynulá rotace bez gimbal locku</p></li>
-<li><p><b>Phong shading</b> – realistické osvětlení se dvěma světly a odlesky</p></li>
+<li><p><b>Phong shading</b> – realistické osvětlení se dvěma světly a odlesky</p></li>
 <li><p><b>Stavový automat</b> – levitace → hod → dopad → výsledek → levitace</p></li>
 </ul>
 
