@@ -9,7 +9,7 @@ tags: ["css", "hotova-reseni", "napady"]
 format: "html"
 ---
 
-<p>Při vytváření layoutu webové stránky i aplikace čelíme výzvě, jak vyřešit stav, kdy se text nevejde do stanoveného prostoru. Zvlášť v případě, kdy mají <b>návštěvníci</b> možnost <b>vkládat obsah na stránku</b>, je tento problém rozhodně nutné řešit.</p>
+<p>Při vytváření layoutu webové stránky i aplikace čelíme výzvě, jak vyřešit stav, kdy se text nevejde do stanoveného prostoru. Zvlášť v případě, kdy mají <b>návštěvníci</b> možnost <b>vkládat obsah na stránku</b>, je tento problém rozhodně nutné řešit.</p>
 
 <div class="live">
   <style>
@@ -27,7 +27,7 @@ format: "html"
   </div>
 </div>
 
-<p>Na ukázce je vidět, jak i při nastavení šířky text z obalu vyleze.</p>
+<p>Na ukázce je vidět, jak i při nastavení šířky text z obalu vyleze.</p>
 
 
 
@@ -62,9 +62,9 @@ format: "html"
 
 
 
-<h3 id="tabulky">Zalamování textu v tabulkách</h3>
+<h3 id="tabulky">Zalamování textu v tabulkách</h3>
 
-<p>Problém s tímto řešením může nastat v <a href="/tabulky"><b>tabulce</b></a>, kde <code>word-wrap</code> zdánlivě nic nedělá.</p>
+<p>Problém s tímto řešením může nastat v <a href="/tabulky"><b>tabulce</b></a>, kde <code>word-wrap</code> zdánlivě nic nedělá.</p>
 
 <div class="live">
   <table class="obal-sloupce" style="word-wrap: break-word">
@@ -118,7 +118,7 @@ format: "html"
 
 <h3 id="word-break">Vlastnost <code>word-break</code></h3>
 
-<p>I v jiných případech nemusí fungovat <code>word-wrap</code>. Třeba element s <a href="/display#inline-block"><code>display: inline-block</code></a> obsahující dlouhé slovo klidně vyleze ze svého rodiče.</p>
+<p>I v jiných případech nemusí fungovat <code>word-wrap</code>. Třeba element s <a href="/display#inline-block"><code>display: inline-block</code></a> obsahující dlouhé slovo klidně vyleze ze svého rodiče.</p>
 
 <p>Tento problém vyřeší <code>word-break</code>.</p>
 
@@ -128,14 +128,14 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li><a href="https://kod.djpw.cz/yahc">Živá ukázka</a> – zalamování dlouhých slov v <code>inline-block</code></li>
+    <li><a href="https://kod.djpw.cz/yahc">Živá ukázka</a> – zalamování dlouhých slov v <code>inline-block</code></li>
   </ul>
 </div>
 
 
 <h3 id="hyphens">CSS vlastnost <code>hyphens</code></h3>
 
-<p>Vlastnost <a href="/hyphens"><code>hyphens</code></a> s problémem nijak nepomůže.</p>
+<p>Vlastnost <a href="/hyphens"><code>hyphens</code></a> s problémem nijak nepomůže.</p>
 
 
 <h3 id="overflow">Oříznutí <code>overflow: hidden</code></h3>
@@ -152,12 +152,12 @@ format: "html"
   </div>
 </div>
 
-<p>Další tipy jsou v samostatném článku <a href="/oriznuti-textu">Oříznutí textu</a>.</p>
+<p>Další tipy jsou v samostatném článku <a href="/oriznuti-textu">Oříznutí textu</a>.</p>
 
 
 <h3 id="php">Rozdělení na straně serveru</h3>
 
-<p>V PHP je možné funkcí <code>wordwrap</code> automaticky rozdělit dlouhá slova v textu.</p>
+<p>V PHP je možné funkcí <code>wordwrap</code> automaticky rozdělit dlouhá slova v textu.</p>
 
 <pre><code>// Slovo delší 50 znaků rozdělí mezerou
 $text = wordwrap($text, 50, " ", true);</code></pre>
@@ -170,9 +170,9 @@ $text = wordwrap($text, 50, " ", true);</code></pre>
   </li>
   
   <li>
-    <p>Rozlámání slov <b>rozbije odkazy</b>. Zatímco dlouhá slova nemají moc opodstatnění, v případě odkazů je situace jiná. Typicky mívají minimálně desítky znaků, někdy se ale může délka blížit i stovce (tato stránka má URL dlouhou <script>document.write((window.location+"").length)</script> znaků).</p>
+    <p>Rozlámání slov <b>rozbije odkazy</b>. Zatímco dlouhá slova nemají moc opodstatnění, v případě odkazů je situace jiná. Typicky mívají minimálně desítky znaků, někdy se ale může délka blížit i stovce (tato stránka má URL dlouhou <span id="url-length"></span><script>document.getElementById('url-length').textContent = (window.location+"").length;</script> znaků).</p>
     
-    <p>Řešením je odkazy převádět na klikací a <b>text odkazu zkrátit</b>. Osobně mi ale přijde lepší <b>použít CSS</b>, protože ani slova rozlámaná na určitý počet nejsou zárukou správného zobrazení. Stačí mít v prohlížeči nebo operačním systému <b>větší písmo</b> a přesně spočítaný počet znaků bude k ničemu.</p>
+    <p>Řešením je odkazy převádět na klikací a <b>text odkazu zkrátit</b>. Osobně mi ale přijde lepší <b>použít CSS</b>, protože ani slova rozlámaná na určitý počet nejsou zárukou správného zobrazení. Stačí mít v prohlížeči nebo operačním systému <b>větší písmo</b> a přesně spočítaný počet znaků bude k ničemu.</p>
   </li>
 </ol>
 

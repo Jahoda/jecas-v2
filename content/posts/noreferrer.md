@@ -11,7 +11,7 @@ format: "html"
 
 <p>Standardní chování většiny prohlížečů je při přechodu na novou stránku odesílat URL, ze které se přišlo.</p>
 
-<p>Jedná se o hlavičku <a href="/referer"><b>HTTP referrer</b></a>. Hodnota atributu <code>rel</code> nastavená na <code>noreferrer</code> tomuto předávání zabrání:</p>
+<p>Jedná se o hlavičku <a href="/referer"><b>HTTP referrer</b></a>. Hodnota atributu <code>rel</code> nastavená na <code>noreferrer</code> tomuto předávání zabrání:</p>
 
 <pre><code>&lt;a href="http://jecas.cz/noreferrer" <b>rel="noreferrer"</b>>
   Na cíl odkazu nepošle podporovaný prohlížeč referrer
@@ -25,15 +25,15 @@ format: "html"
 
 <h2 id="vyuziti">Využití</h2>
 
-<p>Nastavit odkazu neposílání referreru se hodí z <b>bezpečnostních důvodů</b>. U aplikace, která obsahuje citlivé údaje v URL, se prokliknutím nějakého externího odkazu dostane tato informace na cílovou stránku.</p>
+<p>Nastavit odkazu neposílání referreru se hodí z <b>bezpečnostních důvodů</b>. U aplikace, která obsahuje citlivé údaje v URL, se prokliknutím nějakého externího odkazu dostane tato informace na cílovou stránku.</p>
 
-<p>I v případě, že v URL nic citlivého není, se zbytečně může prozradit adresa webu/aplikace, kterou do světa (ještě) pouštět nechceme.</p>
+<p>I v případě, že v URL nic citlivého není, se zbytečně může prozradit adresa webu/aplikace, kterou do světa (ještě) pouštět nechceme.</p>
 
 <p></p>
 
 <h2 id="blokovani">Ruční blokování referreru</h2>
 
-<p>Kvůli <b>soukromí</b> někteří uživatelé referer neposílají. Dá se to nastavit přímo v prohlížeči nebo tak činí některé firewally / proxy servery.</p>
+<p>Kvůli <b>soukromí</b> někteří uživatelé referer neposílají. Dá se to nastavit přímo v prohlížeči nebo tak činí některé firewally / proxy servery.</p>
 
 <p>V takovém případě je ale dobré mít pohodlnou možnost referrer alespoň občas zapnout, protože jisté weby ho vyžadují pro <a href="/bezpecnost#csrf">ochranu před CSRF</a>.</p>
 
@@ -50,8 +50,9 @@ format: "html"
     <pre><code>var predchoziAdresa = document.referrer;</code></pre>
     
     <div class="live nosource">
+      <span id="noreferrer-referrer-output"></span>
       <script>
-        document.write("Předchozí URL: " + document.referrer);
+        document.getElementById('noreferrer-referrer-output').textContent = "Předchozí URL: " + document.referrer;
       </script>
     </div>
   </dd>

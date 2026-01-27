@@ -10,7 +10,7 @@ format: "html"
 ---
 
 <h2>Float</h2>
-<p>Je-li potřeba umístit nějaké prvky <b>vedle sebe</b>, většinou se k tomu používá <a href="/float">obtékání elementů</a>. Přidá se <code>float: left/right</code>, nastaví se šířka (<code>width</code>) a jednotlivé prvky se tak dostanou vedle sebe. (Pod nimi se potom obtékání ukončí – <code>clear: both</code>.)
+<p>Je-li potřeba umístit nějaké prvky <b>vedle sebe</b>, většinou se k tomu používá <a href="/float">obtékání elementů</a>. Přidá se <code>float: left/right</code>, nastaví se šířka (<code>width</code>) a jednotlivé prvky se tak dostanou vedle sebe. (Pod nimi se potom obtékání ukončí – <code>clear: both</code>.)
 
 <div class=live>
 <p style='float: left; width: 50%; background: #ccc'>&lt;p style='float: left; width: 50%; background: #ccc'></p>
@@ -24,10 +24,14 @@ format: "html"
 
 <div>
 <h2 id=flex>Flex</h2>
-<p>Totéž se dá vyřešit vlastnostmi kolem <code>flex</code>. Funguje to ovšem zatím <b>jen od Exploreru 10</b>. Kromě Opery ve všech prohlížečích (ve Firefoxu, Chrome i IE 10) jen s prefixy (<code>-moz-</code> a <code>-webkit-</code>, <code>-ms-</code>) a pomalu v každém prohlížeči pod jiným názvem. Ve Firefoxu funguje jen něco.
-<p>Nepoužíváte-li proto zmíněné prohlížeče, můžete si ukázky s klidem vypnout.</p>
+<p>Totéž se dá vyřešit vlastnostmi kolem <code>flex</code>. Funguje to ovšem zatím <b>jen od Exploreru 10</b>. Kromě Opery ve všech prohlížečích (ve Firefoxu, Chrome i IE 10) jen s prefixy (<code>-moz-</code> a <code>-webkit-</code>, <code>-ms-</code>) a pomalu v každém prohlížeči pod jiným názvem. Ve Firefoxu funguje jen něco.
+<p>Nepoužíváte-li proto zmíněné prohlížeče, můžete si ukázky s klidem vypnout.</p>
+<span id="flexbox-toggle"></span>
 <script>
-document.write("<button onclick=\"this.parentNode.className = this.parentNode.className == '' ? 'tldr' : ''\">Zobrazit/skrýt ukázky</button><p>");
+var btn = document.createElement('button');
+btn.textContent = 'Zobrazit/skrýt ukázky';
+btn.onclick = function() { this.parentNode.parentNode.className = this.parentNode.parentNode.className == '' ? 'tldr' : ''; };
+document.getElementById('flexbox-toggle').appendChild(btn);
 </script>
 
 <div class='live code'>
@@ -57,18 +61,18 @@ document.write("<button onclick=\"this.parentNode.className = this.parentNode.cl
 </div>
 
 <h3 id=flex-direction><code>flex-direction</code>: Sloupce nebo řádky</h3>
-<p>Vlastnost <code>flex-direction</code> se nastavuje pro flex-obal (tj. rodiče (<code>display: flex</code>) flex-položek) a určuje způsob uspořádání.
+<p>Vlastnost <code>flex-direction</code> se nastavuje pro flex-obal (tj. rodiče (<code>display: flex</code>) flex-položek) a určuje způsob uspořádání.
 <table>
 <tr>
 <th>Hodnota<th>Význam
 <tr><td><code>flex-direction: row</code><td>v řádku – výchozí
-<tr><td><code>flex-direction: row-reverse</code><td>v řádku v obráceném pořadí
+<tr><td><code>flex-direction: row-reverse</code><td>v řádku v obráceném pořadí
 <tr><td><code>flex-direction: column</code><td>v sloupci
-<tr><td><code>flex-direction: column-reverse</code><td>v sloupci v obráceném pořadí
+<tr><td><code>flex-direction: column-reverse</code><td>v sloupci v obráceném pořadí
 </table>
 
 <h3 id=justify-content><code>justify-content</code>: Vodorovné zarovnání</h3>
-<p>Vlastnost <code>justify-content</code> určí způsob rozmístění flex-položek ve flex-obalu, pokud nemají plnou šířku. <p>Dává smysl jen při zobrazení v řádku – <code>flex-direction: row(-reverse)</code>.
+<p>Vlastnost <code>justify-content</code> určí způsob rozmístění flex-položek ve flex-obalu, pokud nemají plnou šířku. <p>Dává smysl jen při zobrazení v řádku – <code>flex-direction: row(-reverse)</code>.
 <style>
 .demo div > div, .demo div > span {padding: 0 1em; background: yellow; border: 1px solid #000}
 </style>
@@ -101,7 +105,7 @@ document.write("<button onclick=\"this.parentNode.className = this.parentNode.cl
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;'><div>První</div><div>Druhý</div><div>Třetí</div></div>
-<tr><td><code>justify-content: space-around</code><td>podobné jako předchozí, jen se nechá prostor i na krajích.
+<tr><td><code>justify-content: space-around</code><td>podobné jako předchozí, jen se nechá prostor i na krajích.
 <div style='display: flex; display: -webkit-flex; display: -moz-box; display: -ms-flexbox;     -webkit-box-pack: justify;
     -moz-box-pack: justify;
     -webkit-justify-content: space-around;
@@ -110,10 +114,10 @@ document.write("<button onclick=\"this.parentNode.className = this.parentNode.cl
 </table>
 
 <h3 id=align-items><code>align-items</code>: Zarovnání položek</h3>
-<p>Vlastnost <code>align-items</code>, nastavovaná pro flex-obal, se chová odlišně při řádkové a sloupcové orientaci boxů (<code>flex-direction</code>).
+<p>Vlastnost <code>align-items</code>, nastavovaná pro flex-obal, se chová odlišně při řádkové a sloupcové orientaci boxů (<code>flex-direction</code>).
 <dl>
 <dt>Při <code>flex-direction: row</code>
-<dd>Určuje svislé zarovnání nebo roztažení elementu v řádce. Projeví se v případě, že nejsou všechny boxy stejně vysoké.
+<dd>Určuje svislé zarovnání nebo roztažení elementu v řádce. Projeví se v případě, že nejsou všechny boxy stejně vysoké.
 
 <dt>Při <code>flex-direction: column</code>
 <dd>Určuje vodorovné zarovnání nebo roztažení.
@@ -191,7 +195,7 @@ document.write("<button onclick=\"this.parentNode.className = this.parentNode.cl
 <tr><th>Hodnota<th>Význam
 <tr><td><code>flex-wrap: nowrap</code><td>nic se nezalomí
 <tr><td><code>flex-wrap: wrap</code><td>zalomí se
-<tr><td><code>flex-wrap: wrap-reverse</code><td>zalomí se v obráceném pořadí</tr>
+<tr><td><code>flex-wrap: wrap-reverse</code><td>zalomí se v obráceném pořadí</tr>
 </table>
 
 <div class='live demo' style='width: 300px'>
@@ -204,18 +208,18 @@ document.write("<button onclick=\"this.parentNode.className = this.parentNode.cl
 
 
 <h3 id=order>Pořadí elementů</h3>
-<p>Hodně elegantní je možnost nastavování řazení. Stačí si je očíslovat vlastností <code>order</code> a mohou být v kódu libovolně uspořádány. Nastavuje se pro flex-položky.
+<p>Hodně elegantní je možnost nastavování řazení. Stačí si je očíslovat vlastností <code>order</code> a mohou být v kódu libovolně uspořádány. Nastavuje se pro flex-položky.
 <pre><code>&lt;p style="order: 1">Bude první
 &lt;p style="order: 3">Bude třetí
 &lt;p style="order: 2">Bude druhý
 </code></pre>
 
 <h3 id=align-self>Úprava zarovnání</h3>
-<p>Jednotlivé flex-položky dědí zarovnání od flex-obalu. Vlastnost <code>align-self</code> umí nastavení flex-obalu přebít. Hodnoty jsou stejné jako u <code>align-item</code>, jen je navíc výchozí vlastnost <code>auto</code> (tj. řídit se nastavením obalu).
+<p>Jednotlivé flex-položky dědí zarovnání od flex-obalu. Vlastnost <code>align-self</code> umí nastavení flex-obalu přebít. Hodnoty jsou stejné jako u <code>align-item</code>, jen je navíc výchozí vlastnost <code>auto</code> (tj. řídit se nastavením obalu).
 
 <h3 id=roztahovani>Poměry roztahování</h3>
-<p>Vlastnostmi <code>flex-grow</code>, <code>flex-shrink</code> a <code>flex-basis</code> nebo zkráceně <code>flex: grow shrink basis</code> lze pro flex-položku nastavit, jak bude růst či ubývat vůči ostatním při přebytku, respektive nedostatku místa.
-<p>Hodnota <code>flex-grow</code> a <code>flex-shrink</code> se nastavuje od 0 do 1 a udává <i>ochotu</i> při roztahování a zmenšování se.
+<p>Vlastnostmi <code>flex-grow</code>, <code>flex-shrink</code> a <code>flex-basis</code> nebo zkráceně <code>flex: grow shrink basis</code> lze pro flex-položku nastavit, jak bude růst či ubývat vůči ostatním při přebytku, respektive nedostatku místa.
+<p>Hodnota <code>flex-grow</code> a <code>flex-shrink</code> se nastavuje od 0 do 1 a udává <i>ochotu</i> při roztahování a zmenšování se.
 <p>Pomocí <code>flex-basis</code> se nastaví výchozí šířka/výška (v závislosti na <code>flex-direction</code>), kterou by element rád měl, když se nebude muset zmenšovat nebo zvětšovat.
 
 <h2 id=vyzkouset>Vyzkoušejte</h2>
@@ -226,10 +230,10 @@ document.write("<button onclick=\"this.parentNode.className = this.parentNode.cl
 </ul>
 
 <h2 id=vyuziti>Využití</h2>
-<p>Při dostatečné podpoře v prohlížečích bude možné takto:
+<p>Při dostatečné podpoře v prohlížečích bude možné takto:
 <ul>
 <li>stavět celý layout webu,
-  <li>řešit komplikované úlohy jako <a href="/centrovani#neznama-sirka-vyska">centrování položek s neznámou šířkou</a>, stejně vysoké sloupce a jiné půjde velmi jednoduše,
+  <li>řešit komplikované úlohy jako <a href="/centrovani#neznama-sirka-vyska">centrování položek s neznámou šířkou</a>, stejně vysoké sloupce a jiné půjde velmi jednoduše,
 <li>zjednoduší se přizpůsobování stránky šířce okna prohlížeče.
   </li></ul>
 </div>
