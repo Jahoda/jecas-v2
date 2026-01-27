@@ -1,7 +1,7 @@
 ---
-title: "K čemu slouží CDN?"
-headline: "K čemu slouží CDN?"
-description: "Má smysl používat pro připojení CSS a JS souborů CDN?"
+title: "Co je CDN a k čemu slouží"
+headline: "Co je CDN a k čemu slouží?"
+description: "Co je CDN (Content Delivery Network), jak funguje a kdy má smysl ho používat pro rychlejší načítání CSS, JS a obrázků na webu."
 date: "2016-01-23"
 last_modification: "2016-02-08"
 status: 1

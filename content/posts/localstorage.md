@@ -1,7 +1,7 @@
 ---
-title: "JS úložiště Local Storage"
-headline: "Úložiště <code>localStorage</code>"
-description: "Local Storage je úložiště v prohlížeči klienta přístupné JavaScriptem. K čemu se hodí?"
+title: "JavaScript localStorage – úložiště v prohlížeči"
+headline: "JavaScript <code>localStorage</code> – úložiště v prohlížeči"
+description: "Jak používat localStorage v JavaScriptu. Ukládání, čtení a mazání dat v prohlížeči klienta. Rozdíl oproti sessionStorage a cookies."
 date: "2015-03-13"
 last_modification: "2015-09-16"
 status: 1
