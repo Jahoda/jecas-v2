@@ -9,7 +9,7 @@ tags: ["css", "hotova-reseni", "prepinani-vzhledu"]
 format: "html"
 ---
 
-<p>Když chceme na stránce vytvořit obsah, který <b>nemá být ihned viditelný</b>, existuje relativně prosté řešení <a href="/zobrazit-skryt">skrývání a odkrývání v JavaScriptu</a>, které díky <a href="/animace">animacím</a> může být i <a href="/animace-skryt">plynulé</a> (ideální je skriptem jen <a href="/prepinani-trid">přepínat třídy</a>).</p>
+<p>Když chceme na stránce vytvořit obsah, který <b>nemá být ihned viditelný</b>, existuje relativně prosté řešení <a href="/zobrazit-skryt">skrývání a odkrývání v JavaScriptu</a>, které díky <a href="/webove-animace">animacím</a> může být i <a href="/animace-skryt">plynulé</a> (ideální je skriptem jen <a href="/prepinani-trid">přepínat třídy</a>).</p>
 
 <p>Kromě toho je možné od <b>IE 9</b> tuto funkci zajistit <b>čistě v CSS</b>.</p>
 

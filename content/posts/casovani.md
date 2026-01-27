@@ -5,7 +5,7 @@ description: "Jaké nabízí JavaScript možnosti pro vytváření animací. A j
 date: "2014-11-12"
 last_modification: "2025-08-26"
 status: 1
-tags: ["js", "animace"]
+tags: ["js", "webove-animace"]
 format: "html"
 ---
 

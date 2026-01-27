@@ -5,7 +5,7 @@ description: "Animování pomocí <code>requestAnimationFrame</code> umožňuje 
 date: "2015-09-30"
 last_modification: "2025-09-02"
 status: 0
-tags: ["js", "animace"]
+tags: ["js", "webove-animace"]
 format: "html"
 ---
 
