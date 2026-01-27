@@ -157,7 +157,7 @@ format: "html"
 
 
 <ul>
-  <li>Typo.cz: <a href="http://www.typo.cz/databaze/pismolijny-a-distributori/tvorba-a-editace-fontu/opentype/">Co to je OpenType</a> (česky)</li>
+  <li>Typo.cz: <a href="http://www.typo.cz/database/pismolijny-a-distributori/tvorba-a-editace-fontu/opentype/">Co to je OpenType</a> (česky)</li>
   
    <li><code>font-variant-ligatures</code>
     <ul>

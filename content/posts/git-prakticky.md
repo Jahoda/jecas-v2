@@ -119,7 +119,7 @@ git branch zachrana/&lt;popis&gt;</code></pre>
   <dd>Odstraní neaktuální vzdálené sledované větve (smazané na originu).</dd>
 
   <dt><code>git gc --prune=now</code></dt>
-  <dd>Úklid nepotřebných objektů a optimalizace balíků. Agresivnější varianta po expirování reflogu.</dd>
+  <dd>Úklid nepotřebných objektů a optimalisace balíků. Agresivnější varianta po expirování reflogu.</dd>
 
   <dt><code>git reflog expire --expire=now --all</code></dt>
   <dd>Okamžitě vyprázdní reflog, aby šlo následně uvolnit prostor přes <code>git gc</code>.</dd>
@@ -158,6 +158,6 @@ git branch zachrana/&lt;popis&gt;</code></pre>
 <h2 id="zaloha">Slouží Git jako záloha?</h2>
 
 <p>Git je versovací systém, ne plnohodnotná záloha. Umí skvěle chránit zdrojáky a historii, ale neřeší:
- dostupnost (off‑site kopie), snapshoty celého prostředí, databáze, velké binárky mimo repo.</p>
+ dostupnost (off‑site kopie), snapshoty celého prostředí, database, velké binárky mimo repo.</p>
 
 <p>Rozumné může být používat zrcadlení mezi GitHubem a GitLabem.</p>

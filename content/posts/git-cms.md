@@ -13,7 +13,7 @@ format: "html"
 
 <p>Otázka je, kam redakční systém ukládá data.</p>
 
-<p>Například v roce 2025 stále nejrozšířenější <a href="/wordpress">WordPress</a> ukládá data do <b>SQL databáse</b>.</p>
+<p>Například v roce 2025 stále nejrozšířenější <a href="/wordpress">WordPress</a> ukládá data do <b>SQL database</b>.</p>
 
 <p>To přináší jistou režii pro provoz – DB někde musí běžet, musí být někde <a href="/hosting">hostovaná</a>.</p>
 
@@ -197,11 +197,11 @@ draft: false
   <li><b>Omezené možnosti</b> – některé pokročilé CMS funkce mohou chybět</li>
 </ul>
 
-<h2 id="databazove-cms">Databásové CMS systémy</h2>
+<h2 id="databasove-cms">Databasové CMS systémy</h2>
 
-<p>Pro srovnání je dobré zmínit i tradiční CMS systémy, které ukládají obsah do databáze (např. WordPress).</p>
+<p>Pro srovnání je dobré zmínit i tradiční CMS systémy, které ukládají obsah do database (např. WordPress).</p>
 
-<h3 id="vyhody-databaze">Výhody DB CMS</h3>
+<h3 id="vyhody-database">Výhody DB CMS</h3>
 
 <ul>
   <li><b>Real-time aktualisace</b> – změny jsou okamžitě viditelné bez nutnosti buildu</li>
@@ -211,18 +211,18 @@ draft: false
   <li><b>Složitější vazby</b> – SQL se víc hodí pro provázání různých entit mez sebou</li>
 </ul>
 
-<h3 id="nevýhody-databaze">Nevýhody DB CMS</h3>
+<h3 id="nevýhody-database">Nevýhody DB CMS</h3>
 
 <ul>
-  <li><b>Provozní režie</b> – databáze musí běžet a být hostovaná</li>
+  <li><b>Provozní režie</b> – database musí běžet a být hostovaná</li>
   <li><b>Náklady</b> – vyšší hosting náklady, zejména při škálování</li>
   <li><b>Komplexita</b> – složitější nastavení a údržba</li>
-  <li><b>Bezpečnost</b> – více potenciálních bezpečnostních rizik</li>
+  <li><b>Bezpečnost</b> – více potenciálních bezpečnostních risik</li>
 </ul>
 
 <h3 id="kdy-volit">Kdy který přístup zvolit</h3>
 
-<p><b>Databásové CMS</b> se hodí pro vysoký objem obsahu, časté aktualisace, komplexní workflow a více autorů. <b>Git-based CMS</b> jsou ideální pro menší weby, méně časté aktualisace, technické týmy a nízké náklady.</p>
+<p><b>Databasové CMS</b> se hodí pro vysoký objem obsahu, časté aktualisace, komplexní workflow a více autorů. <b>Git-based CMS</b> jsou ideální pro menší weby, méně časté aktualisace, technické týmy a nízké náklady.</p>
 
 <h2 id="případy- použití">Případy použití</h2>
 

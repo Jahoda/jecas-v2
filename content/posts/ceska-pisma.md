@@ -1276,36 +1276,36 @@ format: "html"
   var pisma = grid.querySelectorAll('.pismo');
   var celkem = pisma.length;
   
-  function aktualizujPocet(viditelnych) {
+  function aktualisujPocet(viditelnych) {
     pocet.textContent = viditelnych + ' / ' + celkem;
   }
   
-  function normalizuj(text) {
+  function normalisuj(text) {
     return text.toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .normalise('NFD').replace(/[\u0300-\u036f]/g, '')
       .replace(/\s+/g, ' ').trim();
   }
   
   function filtruj() {
-    var hledany = normalizuj(filtr.value);
+    var hledany = normalisuj(filtr.value);
     var viditelnych = 0;
     
     pisma.forEach(function(pismo) {
       var nazev = pismo.querySelector('h2');
       if (!nazev) return;
       
-      var normNazev = normalizuj(nazev.textContent);
+      var normNazev = normalisuj(nazev.textContent);
       var zobrazit = !hledany || normNazev.indexOf(hledany) !== -1;
       
       pismo.classList.toggle('skryto', !zobrazit);
       if (zobrazit) viditelnych++;
     });
     
-    aktualizujPocet(viditelnych);
+    aktualisujPocet(viditelnych);
   }
   
   filtr.addEventListener('input', filtruj);
-  aktualizujPocet(celkem);
+  aktualisujPocet(celkem);
 })();
 </script>
 </div>
