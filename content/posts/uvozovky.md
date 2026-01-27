@@ -1,7 +1,7 @@
 ---
-title: "Uvozovky v HTML, CSS, JS, PHP, SQL"
+title: "Uvozovky – české, anglické, jednoduché"
 headline: "Uvozovky v HTML, CSS, JS, PHP, SQL"
-description: "Jak správně používat uvozovky v HTML, CSS, JavaScriptu, PHP a MySQL."
+description: "Přehled typů uvozovek (české „", anglické \"\", jednoduché '') a jak je správně používat v HTML, CSS, JavaScriptu, PHP a SQL."
 date: "2015-12-22"
 last_modification: "2015-12-24"
 status: 1
