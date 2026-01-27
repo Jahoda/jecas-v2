@@ -9,7 +9,7 @@ tags: ["hotova-reseni", "js", "scroll"]
 format: "html"
 ---
 
-<p>V JS stačí elementu, který se má odrolovat, nastavit vlastnost <code>scrollTop</code>/<code>scrollLeft</code> (pro odrolování shora, respektive zleva). Pro opačné strany (zdola, zprava) něco jako scrollBottom/scrollRight neexistuje, ale v podstatě není problém to dopočítat z výšky/šířky elementu). 
+<p>V JS stačí elementu, který se má odrolovat, nastavit vlastnost <code>scrollTop</code>/<code>scrollLeft</code> (pro odrolování shora, respektive zleva). Pro opačné strany (zdola, zprava) něco jako scrollBottom/scrollRight neexistuje, ale v podstatě není problém to dopočítat z výšky/šířky elementu). 
 
 <p>Nebo je možné použít metodu <code>scrollTo(X-souřadnice, Y-souřadnice)</code> (pro rolování celé stránky pomocí objektu <code>window</code>):
 <pre><code>// Odrolovat na 50 px zleva a 100 px shora
@@ -22,7 +22,7 @@ btn.onclick = function() { window.scrollTo(0, 20); };
 document.getElementById('odrolovani-btn1').appendChild(btn);
 </script>
 
-<p>Posouvání nějakého elementu (např. s <code>overflow: auto</code>) vypadá následovně.
+<p>Posouvání nějakého elementu (např. s <code>overflow: auto</code>) vypadá následovně.
 <pre><code>var element = document.getElementById("idecko");
 // Odrolovat na 50 px shora
 element.scrollTop = 50;</code></pre>
@@ -31,7 +31,7 @@ element.scrollTop = 50;</code></pre>
 
 <h2 id=odrolovano>O kolik je odrolováno</h2>
 <p>Prozradí logicky rovněž vlastnosti <code>scrollTop</code>/<code>scrollLeft</code> (přečtením namísto přenastavením).
-<p>Podobně jako u <a href=/baterka>baterky</a> je třeba sjednotit chování Chrome s ostatními prohlížeči pomocí:
+<p>Podobně jako u <a href=/baterka>baterky</a> je třeba sjednotit chování Chrome s ostatními prohlížeči pomocí:
 <pre><code>var hodnota = document.documentElement.scrollTop + document.body.scrollTop</code></pre>
 <p>Chrome potřebuje <code>document.body</code>.
 
@@ -45,7 +45,7 @@ document.getElementById('odrolovani-btn2').appendChild(btn2);
 
 <h2 id=offset>Na konkrétní značku…</h2>
 <p>Tohle byla celkem nuda. Zajímavější je rolovat na nějaké dynamické hodnoty, tj. na souřadnice různých elementů.
-<p>Ty lze získat z vlastností <code>offsetTop</code>/<code>offsetLeft</code>, které obsahují souřadnice elementu vůči nejbližšímu předkovi, který souřadnice <i>nuluje</i> (má CSS vlastnost <code>position</code> jinou než <code>static</code> (výchozí), tj. např. <code>relative</code>). <small>Dopočítat umístění vůči oknu u takového (zanořeného) elementu lze rekursí pomocí <code>offsetParent</code></small>.
+<p>Ty lze získat z vlastností <code>offsetTop</code>/<code>offsetLeft</code>, které obsahují souřadnice elementu vůči nejbližšímu předkovi, který souřadnice <i>nuluje</i> (má CSS vlastnost <code>position</code> jinou než <code>static</code> (výchozí), tj. např. <code>relative</code>). <small>Dopočítat umístění vůči oknu u takového (zanořeného) elementu lze rekursí pomocí <code>offsetParent</code></small>.
 
 <p>Finální kód pro odrolování např. na 5. položku seznamu může vypadat následovně.
 <pre><code>var seznam = document.getElementById("list");
