@@ -130,7 +130,7 @@ format: "html"
 <p>Výhody tohoto přístupu:</p>
 
 <ul>
-<li><b>Méně kódu</b> a <b>rychlejší vývoj</b> – není potřeba psát REST/GraphQL API pro CRUD operace</li>
+<li><b>Méně kódu</b> a <b>rychlejší vývoj</b> – není potřeba psát REST/GraphQL API pro CRUD operace (Create, Read, Update, Delete)</li>
 <li><b>Bezpečnost zaručená DB</b> – nelze obejít, i když frontend kód je kompromitován</li>
 <li><b>Real-time aktualizace</b> – snadná integrace s WebSockets/subscriptions</li>
 </ul>
@@ -240,9 +240,9 @@ const { data } = await supabase
 
 <h3 id="kdyz-potrebujete-backend">Kdy přidat backend (Edge Functions)</h3>
 
-<p><b>Většina aplikací může fungovat pouze s přímým přístupem z frontendu.</b> Supabase má vestavěné ochrany (rate limiting, query timeout, connection pooling), takže pro běžné CRUD operace nepotřebujete nic dalšího.</p>
+<p><b>Většina aplikací může fungovat pouze s přímým přístupem z frontendu.</b> Supabase má vestavěné ochrany (rate limiting, query timeout, connection pooling), takže pro běžné CRUD operace (čtení, zápis, úprava, mazání) nepotřebujete nic dalšího.</p>
 
-<p>Backend (nebo Supabase Edge Functions) přidejte pouze pro:</p>
+<p>Backend (nebo Supabase <b>Edge Functions</b> – serverless funkce běžící na edge serverech blízko uživatelům) přidejte pouze pro:</p>
 
 <ul>
 <li><b>Platby</b> – komunikace s platební bránou (Stripe, PayPal)</li>
@@ -645,7 +645,7 @@ CREATE POLICY user_insert_documents ON documents
 <li><code>FOR ALL</code> – platí pro všechny operace</li>
 </ul>
 
-<h3 id="using-vs-check">USING vs WITH CHECK</h3>
+<h3 id="using-vs-check">USING vs. WITH CHECK</h3>
 
 <ul>
 <li><b><code>USING</code></b> – definuje, které <i>existující</i> řádky jsou viditelné</li>
