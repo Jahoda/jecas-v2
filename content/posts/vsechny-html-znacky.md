@@ -252,7 +252,7 @@ format: "html"
 
 <li><code>&lt;strong></code></li>
 
-  <li><a href="/css-zaklady#style"><code>&lt;style></code></a></li>
+  <li><a href="/pripojeni-css#interni-stylesheet"><code>&lt;style></code></a></li>
 
   <li><a href="/horni-dolni-index"><code>&lt;sub></code></a></li>
   
