@@ -77,7 +77,7 @@ format: "html"
     varying vec3 vNorm;
     varying vec3 vWorldPos;
     void main() {
-      vNorm = normalize(uNormMat * aNorm);
+      vNorm = normalise(uNormMat * aNorm);
       vWorldPos = (uModel * vec4(aPos, 1.0)).xyz;
       gl_Position = uMVP * vec4(aPos, 1.0);
     }
@@ -89,13 +89,13 @@ format: "html"
     uniform vec3 uColor;
     uniform vec3 uEye;
     void main() {
-      vec3 n = normalize(vNorm);
-      vec3 light1 = normalize(vec3(3.0, 5.0, 4.0));
-      vec3 light2 = normalize(vec3(-2.0, 3.0, -1.0));
+      vec3 n = normalise(vNorm);
+      vec3 light1 = normalise(vec3(3.0, 5.0, 4.0));
+      vec3 light2 = normalise(vec3(-2.0, 3.0, -1.0));
       float diff = max(dot(n, light1), 0.0) * 0.7 + max(dot(n, light2), 0.0) * 0.3;
       float amb = 0.18;
-      vec3 viewDir = normalize(uEye - vWorldPos);
-      vec3 halfDir = normalize(light1 + viewDir);
+      vec3 viewDir = normalise(uEye - vWorldPos);
+      vec3 halfDir = normalise(light1 + viewDir);
       float spec = pow(max(dot(n, halfDir), 0.0), 40.0) * 0.5;
       vec3 col = uColor * (amb + diff) + vec3(1.0) * spec;
       col = pow(col, vec3(1.0/2.2));
@@ -325,7 +325,7 @@ format: "html"
       ];
     }
 
-    // Normalize vertices to unit sphere, scale
+    // Normalise vertices to unit sphere, scale
     const scale = 1.0;
     for (let i=0;i<vertices.length;i++) {
       const l = v3Len(vertices[i]) || 1;
