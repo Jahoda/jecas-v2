@@ -3,7 +3,7 @@ title: "Lazy loading"
 headline: null
 background: "#DF2824"
 color: "null"
-status: 0
+status: 1
 ---
 
 <p>Načítání různých věcí, až když jsou potřeba.</p>
