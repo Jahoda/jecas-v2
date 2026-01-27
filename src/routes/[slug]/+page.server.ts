@@ -11,6 +11,13 @@ import { groupByPageId } from '$lib/tags/tags';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
+// ISR: pages generated on first request, cached permanently until next deploy
+export const config = {
+	isr: {
+		expiration: false
+	}
+};
+
 export const load = (async ({ params }) => {
 	const slug = params.slug;
 
