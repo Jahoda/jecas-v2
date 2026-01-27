@@ -122,7 +122,7 @@ function genMulti() {
 
 <h2 id="kolo-stesti">Kolo štěstí</h2>
 
-<p>Zadejte položky (každou na nový řádek) a roztočte kolo.</p>
+<p>Zadejte položky (každou na nový řádek) a roztočte kolo.</p>
 
 <div class="live">
 <style>
