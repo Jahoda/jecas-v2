@@ -9,11 +9,11 @@ tags: ["css", "webove-animace"]
 format: "html"
 ---
 
-<p>CSS 3D transformace umožňují vytvářet pokročilé visuální efekty přímo v prohlížeči bez nutnosti používat JavaScript nebo externí knihovny. S pomocí těchto vlastností můžeme vytvářet realistické 3D efekty, které dříve vyžadovaly složité programování.</p>
+<p>CSS 3D transformace umožňují vytvářet pokročilé visuální efekty přímo v prohlížeči bez nutnosti používat JavaScript nebo externí knihovny. S pomocí těchto vlastností můžeme vytvářet realistické 3D efekty, které dříve vyžadovaly složité programování.</p>
 
 <h2 id="zakladni-principy">Základní principy</h2>
 
-<p>3D transformace fungují na principu transformační matice, která mění posici, rotaci a velikost elementů v trojrozměrném prostoru. Klíčové vlastnosti pro 3D transformace jsou:</p>
+<p>3D transformace fungují na principu transformační matice, která mění posici, rotaci a velikost elementů v trojrozměrném prostoru. Klíčové vlastnosti pro 3D transformace jsou:</p>
 
 <ul>
 <li><code>transform-style: preserve-3d</code> – zachovává 3D prostor</li>
@@ -23,15 +23,15 @@ format: "html"
 
 <h2 id="perspektiva">Perspektiva</h2>
 
-<p>Perspektiva je základním kamenem 3D transformací. Určuje, jak daleko je "oko" diváka od scény a vytváří iluzi hloubky v 2D prostoru.</p>
+<p>Perspektiva je základním kamenem 3D transformací. Určuje, jak daleko je „oko” diváka od scény a vytváří iluzi hloubky v 2D prostoru.</p>
 
 <h3 id="jak-perspektiva-funguje">Jak perspektiva funguje</h3>
 
-<p>Perspektiva funguje na principu <strong>konvergence rovnoběžných čar</strong>. V reálném světě se rovnoběžné čáry zdánlivě sbíhají v jednom bodě (úběžníku) na horizontu. CSS perspektiva simuluje tento efekt:</p>
+<p>Perspektiva funguje na principu <strong>konvergence rovnoběžných čar</strong>. V reálném světě se rovnoběžné čáry zdánlivě sbíhají v jednom bodě (úběžníku) na horizontu. CSS perspektiva simuluje tento efekt:</p>
 
 <ul>
-<li><strong>Nízká hodnota perspektivy</strong> (např. 200px) = "oko" je blízko scény = výrazný 3D efekt</li>
-<li><strong>Vysoká hodnota perspektivy</strong> (např. 2000px) = "oko" je daleko od scény = jemný 3D efekt</li>
+<li><strong>Nízká hodnota perspektivy</strong> (např. 200px) = „oko” je blízko scény = výrazný 3D efekt</li>
+<li><strong>Vysoká hodnota perspektivy</strong> (např. 2000px) = „oko” je daleko od scény = jemný 3D efekt</li>
 <li><strong>Žádná perspektiva</strong> = plochý 2D efekt bez hloubky</li>
 </ul>
 
@@ -110,7 +110,7 @@ format: "html"
       <div class="perspective-demo-small near">
         <div class="perspective-element-small">3D</div>
       </div>
-      <div class="perspective-description">Výrazný 3D efekt, "oko" je blízko scény</div>
+      <div class="perspective-description">Výrazný 3D efekt, „oko” je blízko scény</div>
     </div>
     
     <div class="perspective-example">
@@ -126,7 +126,7 @@ format: "html"
       <div class="perspective-demo-small far">
         <div class="perspective-element-small">3D</div>
       </div>
-      <div class="perspective-description">Jemný 3D efekt, "oko" je daleko</div>
+      <div class="perspective-description">Jemný 3D efekt, „oko” je daleko</div>
     </div>
     
     <div class="perspective-example">
@@ -151,17 +151,17 @@ format: "html"
 </thead>
 <tbody>
 <tr>
-<td>200-500px</td>
+<td>200–500px</td>
 <td>Dramatické efekty, hero sekce</td>
-<td>Výrazný 3D efekt, divák je "uvnitř" scény</td>
+<td>Výrazný 3D efekt, divák je „uvnitř” scény</td>
 </tr>
 <tr>
-<td>500-1000px</td>
+<td>500–1000px</td>
 <td>Karty, tlačítka, hover efekty</td>
 <td>Střední 3D efekt, přirozený vzhled</td>
 </tr>
 <tr>
-<td>1000-2000px</td>
+<td>1000–2000px</td>
 <td>Galerie, produkty, jemné animace</td>
 <td>Jemný 3D efekt, elegantní vzhled</td>
 </tr>
@@ -175,16 +175,16 @@ format: "html"
 
 <h4 id="proc-minimum-200px">Proč minimum 200px?</h4>
 
-<p>Hodnota 200px jako minimum byla zvolena z několika praktických důvodů:</p>
+<p>Hodnota 200px jako minimum byla zvolena z několika praktických důvodů:</p>
 
 <ul>
-<li><strong>Extrémní zkreslení</strong> - Pod 200px se 3D efekt stává příliš dramatickým a nepřirozeným</li>
-<li><strong>Čitelnost obsahu</strong> - Při velmi nízkých hodnotách se text a obrázky stávají nečitelnými</li>
-<li><strong>Uživatelská zkušenost</strong> - Příliš výrazný 3D efekt může být rušivý a nepříjemný</li>
-<li><strong>Performance</strong> - Velmi nízké hodnoty mohou způsobit problémy s vykreslováním</li>
+<li><strong>Extrémní zkreslení</strong> – Pod 200px se 3D efekt stává příliš dramatickým a nepřirozeným</li>
+<li><strong>Čitelnost obsahu</strong> – Při velmi nízkých hodnotách se text a obrázky stávají nečitelnými</li>
+<li><strong>Uživatelská zkušenost</strong> – Příliš výrazný 3D efekt může být rušivý a nepříjemný</li>
+<li><strong>Performance</strong> – Velmi nízké hodnoty mohou způsobit problémy s vykreslováním</li>
 </ul>
 
-<p>Technicky vzato, CSS perspektiva může být i 1px, ale prakticky se hodnoty pod 200px téměř nepoužívají, protože vytvářejí příliš extrémní efekt.</p>
+<p>Technicky vzato, CSS perspektiva může být i 1px, ale prakticky se hodnoty pod 200px téměř nepoužívají, protože vytvářejí příliš extrémní efekt.</p>
 
 <div class="live">
   <style>
@@ -278,12 +278,12 @@ format: "html"
 <p>Důležité je rozlišovat mezi těmito vlastnostmi:</p>
 
 <ul>
-<li><code>perspective</code> - nastavuje vzdálenost "oka" od scény</li>
-<li><code>transform-style: preserve-3d</code> - zachovává 3D prostor pro child elementy</li>
-<li><code>transform-origin</code> - určuje střed transformace (bod, kolem kterého se element otáčí)</li>
+<li><code>perspective</code> – nastavuje vzdálenost „oka” od scény</li>
+<li><code>transform-style: preserve-3d</code> – zachovává 3D prostor pro child elementy</li>
+<li><code>transform-origin</code> – určuje střed transformace (bod, kolem kterého se element otáčí)</li>
 </ul>
 
-<p>Bez <code>transform-style: preserve-3d</code> se child elementy "zploští" a ztratí 3D efekt, i když je nastavena perspektiva.</p>
+<p>Bez <code>transform-style: preserve-3d</code> se child elementy „zploští” a ztratí 3D efekt, i když je nastavena perspektiva.</p>
 
 <div class="live">
   <style>
@@ -481,7 +481,7 @@ format: "html"
       </div>
       
       <div class="demo-description">
-        Element si zachovává 3D efekt a otáčí se kolem nastaveného transform-origin bodu.
+        Element si zachovává 3D efekt a otáčí se kolem nastaveného transform-origin bodu.
       </div>
     </div>
     
@@ -516,7 +516,7 @@ format: "html"
       </div>
       
       <div class="demo-description">
-        Element se "zploští" a ztratí 3D efekt, i když má nastavenou perspektivu.
+        Element se „zploští” a ztratí 3D efekt, i když má nastavenou perspektivu.
       </div>
     </div>
   </div>
@@ -862,7 +862,7 @@ format: "html"
   transform: rotateZ(45deg);
 }</code></pre>
 
-<h3 id="posun-v-3d-prostoru">Posun v 3D prostoru</h3>
+<h3 id="posun-v-3d-prostoru">Posun v 3D prostoru</h3>
 
 <pre><code class="language-css">.translate-3d {
   transform: translate3d(100px, 50px, 200px);
@@ -872,7 +872,7 @@ format: "html"
   transform: translateZ(100px);
 }</code></pre>
 
-<h3 id="meritko-v-3d">Měřítko v 3D</h3>
+<h3 id="meritko-v-3d">Měřítko v 3D</h3>
 
 <pre><code class="language-css">.scale-3d {
   transform: scale3d(1.5, 1.5, 1.5);
@@ -1094,7 +1094,7 @@ format: "html"
 
 <h2 id="interaktivni-3d-ovladani">Interaktivní 3D ovládání</h2>
 
-<p>Vytvoříme 3D element, který reaguje na pohyb myši a vytváří realistický tilt efekt:</p>
+<p>Vytvoříme 3D element, který reaguje na pohyb myši a vytváří realistický tilt efekt:</p>
 
 <div class="live">
   <style>
@@ -1528,7 +1528,7 @@ container.addEventListener('mousemove', (e) => {
 
 <h2 id="3d-mobile-interface">3D Mobile Interface</h2>
 
-<p>Vytvoříme realistický 3D mobilní interface s animovanými aplikacemi a swipe efekty:</p>
+<p>Vytvoříme realistický 3D mobilní interface s animovanými aplikacemi a swipe efekty:</p>
 
 <div class="live">
   <style>
@@ -1802,7 +1802,7 @@ container.addEventListener('mousemove', (e) => {
 
 <h2 id="3d-particle-system">3D Particle System</h2>
 
-<p>Vytvoříme interaktivní 3D systém částic, který reaguje na pohyb myši a vytváří působivé visuální efekty:</p>
+<p>Vytvoříme interaktivní 3D systém částic, který reaguje na pohyb myši a vytváří působivé visuální efekty:</p>
 
 <div class="live">
   <style>
@@ -2089,7 +2089,7 @@ container.addEventListener('mousemove', (e) => {
 
 <h2 id="3d-hry-alternativy">3D transformace vs. herní engine</h2>
 
-<p>Zatímco CSS 3D transformace poskytují skvělé možnosti pro visuální efekty, pro skutečné hry existují lepší alternativy. Podíváme se na výhody a nevýhody různých přístupů:</p>
+<p>Zatímco CSS 3D transformace poskytují skvělé možnosti pro visuální efekty, pro skutečné hry existují lepší alternativy. Podíváme se na výhody a nevýhody různých přístupů:</p>
 
 <h3 id="css-3d-transformace">CSS 3D transformace pro hry</h3>
 
@@ -2288,10 +2288,10 @@ container.addEventListener('mousemove', (e) => {
             <h4>✅ Výhody</h4>
             <ul>
               <li>Pokročilá fyzika</li>
-              <li>3D modely a textury</li>
+              <li>3D modely a textury</li>
               <li>Zvukové systémy</li>
               <li>Kolizní detekce</li>
-              <li>Shadery a efekty</li>
+              <li>Shadery a efekty</li>
               <li>Multiplayer podpora</li>
             </ul>
           </div>
@@ -2345,12 +2345,12 @@ container.addEventListener('mousemove', (e) => {
 <p>CSS 3D transformace jsou ideální pro:</p>
 
 <ul>
-<li><strong>Webové hry</strong> - Jednoduché browser hry bez složité fyziky</li>
-<li><strong>Interaktivní presentace</strong> - Demonstrace konceptů a nápadů</li>
-<li><strong>UI/UX efekty</strong> - Hover animace a přechody</li>
-<li><strong>Prototypování</strong> - Rychlé testování nápadů</li>
-<li><strong>Edukační obsah</strong> - Visuální vysvětlení 3D konceptů</li>
-<li><strong>Mobilní aplikace</strong> - Lehké animace pro lepší UX</li>
+<li><strong>Webové hry</strong> – Jednoduché browser hry bez složité fyziky</li>
+<li><strong>Interaktivní presentace</strong> – Demonstrace konceptů a nápadů</li>
+<li><strong>UI/UX efekty</strong> – Hover animace a přechody</li>
+<li><strong>Prototypování</strong> – Rychlé testování nápadů</li>
+<li><strong>Edukační obsah</strong> – Visuální vysvětlení 3D konceptů</li>
+<li><strong>Mobilní aplikace</strong> – Lehké animace pro lepší UX</li>
 </ul>
 
 <h3 id="kdy-pouzit-engine">Kdy použít herní engine</h3>
@@ -2358,12 +2358,12 @@ container.addEventListener('mousemove', (e) => {
 <p>Herní engine je lepší volba pro:</p>
 
 <ul>
-<li><strong>Komplexní hry</strong> - Hry s pokročilou mechanikou</li>
-<li><strong>3D svět</strong> - Otevřené světy a prostředí</li>
-<li><strong>Multiplayer</strong> - Hry pro více hráčů</li>
-<li><strong>Fyzika</strong> - Realistické simulace</li>
-<li><strong>Zvuk</strong> - Hry vyžadující audio</li>
-<li><strong>Komerční produkty</strong> - Profesionální hry</li>
+<li><strong>Komplexní hry</strong> – Hry s pokročilou mechanikou</li>
+<li><strong>3D svět</strong> – Otevřené světy a prostředí</li>
+<li><strong>Multiplayer</strong> – Hry pro více hráčů</li>
+<li><strong>Fyzika</strong> – Realistické simulace</li>
+<li><strong>Zvuk</strong> – Hry vyžadující audio</li>
+<li><strong>Komerční produkty</strong> – Profesionální hry</li>
 </ul>
 
 <h3 id="alternativy">Alternativy pro webové hry</h3>
@@ -2511,7 +2511,7 @@ container.addEventListener('mousemove', (e) => {
         <div class="example-title">Webové aplikace</div>
         <div class="example-desc">
           Interaktivní presentace, produktové galerie, 
-          vzdělávací obsah s 3D efekty.
+          vzdělávací obsah s 3D efekty.
         </div>
         <div style="text-align: center;">
           <span class="tech-tag css">CSS 3D</span>
@@ -2536,8 +2536,8 @@ container.addEventListener('mousemove', (e) => {
         <div class="example-icon">🎯</div>
         <div class="example-title">Komplexní hry</div>
         <div class="example-desc">
-          šířkové hry, RPG, simulace s pokročilou fyzikou 
-          a 3D modely.
+          šířkové hry, RPG, simulace s pokročilou fyzikou 
+          a 3D modely.
         </div>
         <div style="text-align: center;">
           <span class="tech-tag unity">Unity</span>
@@ -2550,20 +2550,20 @@ container.addEventListener('mousemove', (e) => {
 
 <h3 id="zavěr">Závěr</h3>
 
-<p>CSS 3D transformace jsou skvělým nástrojem pro vytváření visuálně atraktivních webových prvků a jednoduchých interaktivních her. Jsou ideální pro:</p>
+<p>CSS 3D transformace jsou skvělým nástrojem pro vytváření visuálně atraktivních webových prvků a jednoduchých interaktivních her. Jsou ideální pro:</p>
 
 <ul>
-<li><strong>Rychlé prototypování</strong> - Testování nápadů bez složitého setupu</li>
-<li><strong>Webové presentace</strong> - Demonstrace konceptů a produktů</li>
-<li><strong>Jednoduché hry</strong> - Browser hry s omezenou funkcionalitou</li>
-<li><strong>UI/UX design</strong> - Moderní animace a přechody</li>
+<li><strong>Rychlé prototypování</strong> – Testování nápadů bez složitého setupu</li>
+<li><strong>Webové presentace</strong> – Demonstrace konceptů a produktů</li>
+<li><strong>Jednoduché hry</strong> – Browser hry s omezenou funkcionalitou</li>
+<li><strong>UI/UX design</strong> – Moderní animace a přechody</li>
 </ul>
 
-<p>Pro složitější hry a aplikace je však lepší zvážit specialisované herní enginy nebo 3D knihovny jako Three.js nebo Babylon.js. Ty poskytují mnohem více možností pro vytváření profesionálních herních zážitků.</p>
+<p>Pro složitější hry a aplikace je však lepší zvážit specialisované herní enginy nebo 3D knihovny jako Three.js nebo Babylon.js. Ty poskytují mnohem více možností pro vytváření profesionálních herních zážitků.</p>
 
-<h2 id="3d-galerie">3D galerie s hover efekty</h2>
+<h2 id="3d-galerie">3D galerie s hover efekty</h2>
 
-<p>Vytvoříme pokročilou 3D galerii, která kombinuje různé transformace a vytváří působivé visuální efekty:</p>
+<p>Vytvoříme pokročilou 3D galerii, která kombinuje různé transformace a vytváří působivé visuální efekty:</p>
 
 <div class="live">
   <style>

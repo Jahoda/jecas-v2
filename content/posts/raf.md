@@ -9,15 +9,15 @@ tags: ["js", "webove-animace"]
 format: "html"
 ---
 
-<p>V ideálním případě je dobré použít <b>animace vytvořené přímo v CSS</b> – pomocí <code>@keyframes</code> a vlastnosti <a href="/animation"><code>animation</code></a> či přes přechody <a href="/transition"><code>transition</code></a>.</p>
+<p>V ideálním případě je dobré použít <b>animace vytvořené přímo v CSS</b> – pomocí <code>@keyframes</code> a vlastnosti <a href="/animation"><code>animation</code></a> či přes přechody <a href="/transition"><code>transition</code></a>.</p>
 
 <p>Pro složitější animace nebo interaktivní prvky, na které je CSS krátké, je nutné <b>použít JavaScript</b>. Moderní alternativy zahrnují:</p>
 
 <ul>
   <li><b>CSS Animations</b> – pro jednoduché animace bez interakce</li>
-  <li><b>Web Animations API</b> – pro pokročilé animace s JavaScript kontrolou</li>
+  <li><b>Web Animations API</b> – pro pokročilé animace s JavaScript kontrolou</li>
   <li><b>requestAnimationFrame</b> – pro vlastní animační logiku</li>
-  <li><b>CSS Transforms s JavaScript</b> – pro kombinaci výkonu CSS a flexibility JS</li>
+  <li><b>CSS Transforms s JavaScript</b> – pro kombinaci výkonu CSS a flexibility JS</li>
 </ul>
 
 
@@ -54,7 +54,7 @@ animace();</code></pre>
 
 
 
-<p>Funkce <code>animace</code> se bude volat neustále v intervalu <code>1000 / 60</code>, což je cca každých <b>16 milisekund</b> (občas interval 16 ms z tohoto důvodu vidět ve zdrojových kódech).</p>
+<p>Funkce <code>animace</code> se bude volat neustále v intervalu <code>1000 / 60</code>, což je cca každých <b>16 milisekund</b> (občas interval 16 ms z tohoto důvodu vidět ve zdrojových kódech).</p>
 
 
 
@@ -67,13 +67,13 @@ animace();</code></pre>
   <li>
     <p>Interval přesně <b>neodpovídá frekvenci monitoru</b>. Pokud je frekvence jiná než 60 Hz, neodpovídá jeden krok animace úměrně stejné době zobrazení na monitoru.</p>
     
-    <p>Při nižší frekvenci monitoru logicky některé snímky vypadnou. Při vyšší, která nebude násobkem, potom některé kroky animace budou na více obnoveních a některé pouze na jednom.</p>
+    <p>Při nižší frekvenci monitoru logicky některé snímky vypadnou. Při vyšší, která nebude násobkem, potom některé kroky animace budou na více obnoveních a některé pouze na jednom.</p>
   </li>
   
   <li>
-    <p>Pro <b>dojem plynulosti</b> je důležitější <b>konsistentní počet <i>framů</i> než jejich vysoký počet</b>. Když se počet snímků najednou sníží z vysoké hodnoty, lidské oko to bude vnímat jako zaseknutí. Bude-li počet snímků nížší neustále, výsledný dojem bude plynulý.</p>
+    <p>Pro <b>dojem plynulosti</b> je důležitější <b>konsistentní počet <i>framů</i> než jejich vysoký počet</b>. Když se počet snímků najednou sníží z vysoké hodnoty, lidské oko to bude vnímat jako zaseknutí. Bude-li počet snímků nížší neustále, výsledný dojem bude plynulý.</p>
     
-    <p>Z tohoto důvodu mají některé počítačové hry tzv. <b>FPS lock</b> (zámek počtu snímků za sekundu) nastaven na stabilní hodnotu. Hra vypadá plynuleji při stabilních 30 FPS než při 60 FPS, které se občas propadnou na 40 FPS. Ne jinak je tomu u animací v prohlížeči…</p>
+    <p>Z tohoto důvodu mají některé počítačové hry tzv. <b>FPS lock</b> (zámek počtu snímků za sekundu) nastaven na stabilní hodnotu. Hra vypadá plynuleji při stabilních 30 FPS než při 60 FPS, které se občas propadnou na 40 FPS. Ne jinak je tomu u animací v prohlížeči…</p>
 
     <div class="external-content">
       <ul>
@@ -86,9 +86,9 @@ animace();</code></pre>
   <li>
     <p>U <b>animací</b> typicky <b>není tak podstatná doba běhu</b>, ale hlavně je užitečné, aby byly plynulé, když je návštěvník vidí.</p>
     
-    <p>Pokud je <b>záložka s animujícím se webem neaktivní</b>, je zbytečné, aby časovač běžel (dnešní prohlížeče zpravidla v takovém případě automaticky snižují četnost časovače).</p>
+    <p>Pokud je <b>záložka s animujícím se webem neaktivní</b>, je zbytečné, aby časovač běžel (dnešní prohlížeče zpravidla v takovém případě automaticky snižují četnost časovače).</p>
     
-    <p>Stejně tak v režimu úspory energie návštěvník ocení úspornější animaci s nižším FPS než přesně načasovanou animaci pomocí intervalu, která mu za chvíli vycucne baterii.</p>
+    <p>Stejně tak v režimu úspory energie návštěvník ocení úspornější animaci s nižším FPS než přesně načasovanou animaci pomocí intervalu, která mu za chvíli vycucne baterii.</p>
   </li>
 </ol>
 
@@ -100,7 +100,7 @@ animace();</code></pre>
 
 <h2 id="vysvetleni">Vysvětlení <code>requestAnimationFrame</code></h2>
 
-<p>Použití <code>requestAnimationFrame</code> přenese starosti ohledně intervalu spouštění animace na prohlížeč. Ten potom další krok animace spustí v okamžiku, <b>kdy uzná za vhodné</b>.</p>
+<p>Použití <code>requestAnimationFrame</code> přenese starosti ohledně intervalu spouštění animace na prohlížeč. Ten potom další krok animace spustí v okamžiku, <b>kdy uzná za vhodné</b>.</p>
 
 
 
@@ -108,7 +108,7 @@ animace();</code></pre>
 
 <h2 id="podpora">Podpora</h2>
 
-<p>Požadavek na snímek animace podporují všechny moderní prohlížeče včetně <b>Chrome</b>, <b>Firefoxu</b>, <b>Safari</b> a <b>Edge</b>. Podpora sahá až k <b>IE 10+</b>. V dnešní době již není potřeba používat prefixy ani polyfilly pro většinu aplikací.</p>
+<p>Požadavek na snímek animace podporují všechny moderní prohlížeče včetně <b>Chrome</b>, <b>Firefoxu</b>, <b>Safari</b> a <b>Edge</b>. Podpora sahá až k <b>IE 10+</b>. V dnešní době již není potřeba používat prefixy ani polyfilly pro většinu aplikací.</p>
 
 <p>V moderních prohlížečích stačí použít:</p>
 
@@ -233,9 +233,9 @@ element.animate([
   iterations: Infinity
 });</code></pre>
 
-<h3 id="css-custom-properties">CSS Custom Properties s JavaScript</h3>
+<h3 id="css-custom-properties">CSS Custom Properties s JavaScript</h3>
 
-<p>Kombinace CSS custom properties s JavaScript umožňuje plynulé animace:</p>
+<p>Kombinace CSS custom properties s JavaScript umožňuje plynulé animace:</p>
 
 <pre><code>// JavaScript
 const element = document.querySelector('.animated');
@@ -259,14 +259,14 @@ animate();</code></pre>
   transition: transform 0.1s ease-out;
 }</code></pre>
 
-<h2 id="kdy-pouzit">Kdy použít <code>requestAnimationFrame</code> v dnešní době?</h2>
+<h2 id="kdy-pouzit">Kdy použít <code>requestAnimationFrame</code> v dnešní době?</h2>
 
 <p>I když existují modernější alternativy, <code>requestAnimationFrame</code> zůstává užitečný pro specifické případy:</p>
 
 <h3 id="vlastni-animacni-logika">Vlastní animační logika</h3>
 
 <ul>
-  <li>Složitá matematika nebo logika v každém snímku</li>
+  <li>Složitá matematika nebo logika v každém snímku</li>
   <li>Animace založené na fyzice (gravitace, kolize, pružiny)</li>
   <li>Interaktivní animace reagující na vstup uživatele</li>
 </ul>
@@ -274,16 +274,16 @@ animate();</code></pre>
 <h3 id="vykonnostne-kriticke-aplikace">Výkonnostně kritické aplikace</h3>
 
 <ul>
-  <li>Hry v prohlížeči</li>
-  <li>Data visualisace s tisíci elementy</li>
+  <li>Hry v prohlížeči</li>
+  <li>Data visualisace s tisíci elementy</li>
   <li>Canvas animace</li>
   <li>WebGL aplikace</li>
 </ul>
 
-<h3 id="kombinace-s-css">Kombinace s CSS</h3>
+<h3 id="kombinace-s-css">Kombinace s CSS</h3>
 
 <ul>
-  <li>Ovlivňování CSS custom properties z JavaScriptu</li>
+  <li>Ovlivňování CSS custom properties z JavaScriptu</li>
   <li>Synchronisace více animací</li>
   <li>Animace závislé na scroll posici</li>
 </ul>
@@ -320,7 +320,7 @@ window.addEventListener('beforeunload', () => {
   transform: scale(1.1);
 }</code></pre>
 
-<p><b>Web Animations API</b> – pro pokročilé animace s JS kontrolou:</p>
+<p><b>Web Animations API</b> – pro pokročilé animace s JS kontrolou:</p>
 
 <pre><code>element.animate([
   { transform: 'translateX(0px)' },
@@ -329,7 +329,7 @@ window.addEventListener('beforeunload', () => {
 
 <p><b>Závěr:</b> <code>requestAnimationFrame</code> není zastaralý, ale je to nástroj pro specifické případy. Pro většinu animací jsou lepší CSS nebo Web Animations API, ale pro složité, interaktivní nebo výkonnostně kritické animace zůstává <code>requestAnimationFrame</code> nejlepší volbou.</p>
 
-<h2 id="performance-a-debugging">Performance a debugging</h2>
+<h2 id="performance-a-debugging">Performance a debugging</h2>
 
 <h3 id="mereni-fps">Měření FPS</h3>
 
@@ -360,14 +360,14 @@ measureFPS();</code></pre>
 <p>Moderní prohlížeče nabízejí nástroje pro analysu animací:</p>
 
 <ul>
-  <li><b>Chrome DevTools</b> – Performance tab s Frame timeline</li>
-  <li><b>Firefox DevTools</b> – Performance panel s Frame rate grafy</li>
+  <li><b>Chrome DevTools</b> – Performance tab s Frame timeline</li>
+  <li><b>Firefox DevTools</b> – Performance panel s Frame rate grafy</li>
   <li><b>Safari Web Inspector</b> – Timeline tab pro analysu animací</li>
 </ul>
 
 <h2 id="pokrocilé-techniky">Pokročilé techniky</h2>
 
-<h3 id="throttling">Throttling s requestAnimationFrame</h3>
+<h3 id="throttling">Throttling s requestAnimationFrame</h3>
 
 <p>Pro optimalisaci scroll nebo resize událostí:</p>
 
@@ -390,7 +390,7 @@ window.addEventListener('scroll', requestTick);</code></pre>
 
 <h3 id="batch-rendering">Batch rendering</h3>
 
-<p>Pro animace s mnoha elementy:</p>
+<p>Pro animace s mnoha elementy:</p>
 
 <pre><code>const elements = document.querySelectorAll('.animated');
 let currentIndex = 0;
@@ -412,7 +412,7 @@ function animateBatch() {
 
 animateBatch();</code></pre>
 
-<h2 id="efektivnější-alternativy">Efektivnější alternativy k <code>requestAnimationFrame</code></h2>
+<h2 id="efektivnější-alternativy">Efektivnější alternativy k <code>requestAnimationFrame</code></h2>
 
 <p>I když je <code>requestAnimationFrame</code> lepší než <code>setTimeout</code>, existují ještě efektivnější způsoby animování:</p>
 
@@ -434,7 +434,7 @@ animateBatch();</code></pre>
   <li>Nejlepší performance</li>
 </ul>
 
-<h3 id="web-animations-api-efektivni">Web Animations API – Moderní a efektivní</h3>
+<h3 id="web-animations-api-efektivni">Web Animations API – Moderní a efektivní</h3>
 
 <pre><code>element.animate([
   { transform: 'translateX(0px)' },
@@ -465,7 +465,7 @@ element.style.setProperty('--x', x + 'px');</code></pre>
 
 <h3 id="canvas-webgl">Canvas/WebGL – Pro složité animace</h3>
 
-<p>Canvas a WebGL animace také používají <code>requestAnimationFrame</code> pro synchronisaci s refresh rate monitoru, ale jsou efektivnější než DOM animace:</p>
+<p>Canvas a WebGL animace také používají <code>requestAnimationFrame</code> pro synchronisaci s refresh rate monitoru, ale jsou efektivnější než DOM animace:</p>
 
 <pre><code>const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -516,14 +516,14 @@ document.querySelectorAll('.lazy-animate').forEach(el => {
 
 <ul>
   <li><b>CSS</b> – pro jednoduché animace</li>
-  <li><b>Web Animations API</b> – pro složité animace s JS kontrolou</li>
+  <li><b>Web Animations API</b> – pro složité animace s JS kontrolou</li>
   <li><b>Canvas/WebGL + rAF</b> – pro hry, data visualisace nebo složité animace</li>
   <li><b>DOM + rAF</b> – pro vlastní logiku nebo interaktivní animace</li>
 </ul>
 
 <p><b>Závěr:</b> Pro většinu případů jsou CSS animace nejefektivnější. <code>requestAnimationFrame</code> je nejlepší volba pouze když potřebujete vlastní animační logiku nebo interaktivitu.</p>
 
-<h2 id="caste-problemy">Často se vyskytující problémy a řešení</h2>
+<h2 id="caste-problemy">Často se vyskytující problémy a řešení</h2>
 
 <h3 id="memory-leaks">Memory leaks</h3>
 
@@ -576,9 +576,9 @@ function stopAnimation() {
   requestAnimationFrame(animate);
 }</code></pre>
 
-<h3 id="konflikty-css">Konflikty s CSS animacemi</h3>
+<h3 id="konflikty-css">Konflikty s CSS animacemi</h3>
 
-<p>JavaScript animace mohou konfliktovat s CSS:</p>
+<p>JavaScript animace mohou konfliktovat s CSS:</p>
 
 <pre><code>// ❌ Konflikt
 element.style.transform = 'translateX(100px)'; // JS
@@ -750,8 +750,8 @@ document.querySelector('.scroll-button').addEventListener('click', () => {
 <h3 id="optimalisace">Optimalisace pro mobilní zařízení</h3>
 
 <ul>
-  <li>Používejte <code>transform</code> a <code>opacity</code> místo <code>left</code>/<code>top</code></li>
-  <li>Vyhýbejte se animacím <code>width</code>/<code>height</code> a <code>margin</code>/<code>padding</code></li>
+  <li>Používejte <code>transform</code> a <code>opacity</code> místo <code>left</code>/<code>top</code></li>
+  <li>Vyhýbejte se animacím <code>width</code>/<code>height</code> a <code>margin</code>/<code>padding</code></li>
   <li>Zvažte snížení FPS na 30 pro úsporu baterie</li>
   <li>Používejte <code>will-change</code> CSS vlastnost pro optimalisaci</li>
 </ul>

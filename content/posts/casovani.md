@@ -14,21 +14,21 @@ format: "html"
 <ol>
   <li>Použít <b>pohyblivý obrázek</b> GIF / video.</li>
   
-  <li>Použít CSS přechody <a href="/transition"><code>transition</code></a> nebo vlastnost <a href="/animation"><code>animation</code> s <code>@keyframes</code></a>. Tyto CSS animace potom případně <b>spouštět JavaScriptem</b>.</li>
+  <li>Použít CSS přechody <a href="/transition"><code>transition</code></a> nebo vlastnost <a href="/animation"><code>animation</code> s <code>@keyframes</code></a>. Tyto CSS animace potom případně <b>spouštět JavaScriptem</b>.</li>
   
-  <li>Celou animaci řídit JavaScriptem, který bude měnit CSS vlastnosti (např. umístění, rozměry, <a href="/opacity">průhlednost</a> a podobně) nebo třeba vypisovat nějaký obsah.</li>
+  <li>Celou animaci řídit JavaScriptem, který bude měnit CSS vlastnosti (např. umístění, rozměry, <a href="/opacity">průhlednost</a> a podobně) nebo třeba vypisovat nějaký obsah.</li>
 </ol>
 
 
 <h2 id="setinterval">Opakované spouštění <code>setInterval</code></h2>
 
-<p>První funkce slouží pro opakované spouštění libovolného JS kódu. Funkce <code>setInterval</code> má dva parametry, kde první je kód, který se má spustit, a druhý časová prodleva <b>v milisekundách</b>.</p>
+<p>První funkce slouží pro opakované spouštění libovolného JS kódu. Funkce <code>setInterval</code> má dva parametry, kde první je kód, který se má spustit, a druhý časová prodleva <b>v milisekundách</b>.</p>
 
 <p>Existuje několik způsobů, jak kód pro časovač zapsat.</p>
 
 <ol>
   <li>
-    <p>Nejjednodušší je místo prvního parametru napsat <b>řetězec s JS kódem</b>. Následující příklad do elementu s ID „vypsat“ zapíše každých 1000 milisekund (1 vteřina) tečku.</p>
+    <p>Nejjednodušší je místo prvního parametru napsat <b>řetězec s JS kódem</b>. Následující příklad do elementu s ID „vypsat“ zapíše každých 1000 milisekund (1 vteřina) tečku.</p>
     
     <pre><code>setInterval(
   "document.getElementById('vypsat').innerHTML += '.'", 
@@ -37,7 +37,7 @@ format: "html"
     
     <p><a href="https://kod.djpw.cz/lihb">Ukázka</a></p>
     
-    <p>Psaní kódu <b>do řetězce</b> ale není nic dobrého (jedná se o ekvivalent <code>eval</code>u). Proto je lepší se tomuto případu vyhnout. Kromě možných risik při <b>vyhodnocování</b> takového kódu si zbytečně snižujeme čitelnost, protože obsah v řetězci neumí většina editorů správně obarvit.</p>
+    <p>Psaní kódu <b>do řetězce</b> ale není nic dobrého (jedná se o ekvivalent <code>eval</code>u). Proto je lepší se tomuto případu vyhnout. Kromě možných risik při <b>vyhodnocování</b> takového kódu si zbytečně snižujeme čitelnost, protože obsah v řetězci neumí většina editorů správně obarvit.</p>
   </li>
   
   <li>
@@ -55,7 +55,7 @@ format: "html"
   </li>
   
   <li>
-    <p>Funkci si případně můžeme vytvořit samostatně a <code>setInterval</code>u předat jen její název:</p>
+    <p>Funkci si případně můžeme vytvořit samostatně a <code>setInterval</code>u předat jen její název:</p>
 
   
     <pre><code>function vypsat() {
@@ -73,7 +73,7 @@ var casovac = setInterval(vypsat, 1000);</code></pre>
 
 <h3 id="clearinterval">Zrušení intervalu <code>clearInterval</code></h3>
 
-<p>Pokud je <i>interval</i> v nějaké proměnné, jde ho na vyžádání zrušit:</p>
+<p>Pokud je <i>interval</i> v nějaké proměnné, jde ho na vyžádání zrušit:</p>
 
 <pre><code>clearInterval(casovac);</code></pre>
 
@@ -98,20 +98,20 @@ var casovac = setInterval(vypsat, 1000);</code></pre>
 
 <h3 id="cleartimeout">Zrušení timeoutu <code>clearTimeout</code></h3>
 
-<p>Pokud je <i>timeout</i> v nějaké proměnné, jde ho na vyžádání zrušit:</p>
+<p>Pokud je <i>timeout</i> v nějaké proměnné, jde ho na vyžádání zrušit:</p>
 
 <pre><code>clearTimeout(casovac);</code></pre>
 
 <p><a href="https://kod.djpw.cz/oihb">Ukázka</a></p>
 
-<p>Zajímavá je skutečnost, že je možné rušit rovněž <code>setInterval</code> pomocí <code>clearTimeout</code> a naopak.</p>
+<p>Zajímavá je skutečnost, že je možné rušit rovněž <code>setInterval</code> pomocí <code>clearTimeout</code> a naopak.</p>
 
 
 <h3 id="opakovane-timeout">Opakované spouštění <i>timeoutu</i></h3>
 
-<p>I pomocí <code>setTimeout</code> jde <i>nasimulovat</i> <code>setInterval</code>, tedy zajistit <b>opakované spouštění</b>. V případech, kdy chceme, aby další opakování <b>bylo závislé na tom předchozím</b>, je to i lepší volba.</p>
+<p>I pomocí <code>setTimeout</code> jde <i>nasimulovat</i> <code>setInterval</code>, tedy zajistit <b>opakované spouštění</b>. V případech, kdy chceme, aby další opakování <b>bylo závislé na tom předchozím</b>, je to i lepší volba.</p>
 
-<p>Celý princip spočívá v <b>rekursivním volání</b> <i>timeoutu</i>. Po provedení vlastní části kódu (vypsání) funkce <code>vypsat</code> zavolá pomocí <code>setTimeout</code> samu sebe.</p>
+<p>Celý princip spočívá v <b>rekursivním volání</b> <i>timeoutu</i>. Po provedení vlastní části kódu (vypsání) funkce <code>vypsat</code> zavolá pomocí <code>setTimeout</code> samu sebe.</p>
 
 <pre><code>function vypsat() {
   // samotný výpis
@@ -136,8 +136,8 @@ vypsat();</code></pre>
 <p>Ta se hodí hlavně pro vytváření animací, protože:</p>
 
 <ul>
-  <li>Automaticky se synchronisuje s obnovovací frekvencí obrazovky (obvykle 60 FPS).</li>
-  <li>Pozastavuje se, když je stránka v pozadí nebo není viditelná.</li>
+  <li>Automaticky se synchronisuje s obnovovací frekvencí obrazovky (obvykle 60 FPS).</li>
+  <li>Pozastavuje se, když je stránka v pozadí nebo není viditelná.</li>
   <li>Poskytuje plynulejší animace než <code>setInterval</code> nebo <code>setTimeout</code>.</li>
   <li>Optimalisuje výkon baterie na mobilních zařízeních.</li>
 </ul>
@@ -166,7 +166,7 @@ function animace() {
 
 requestAnimationFrame(animace);</code></pre>
 
-<p>Metodě <code>requestAnimationFrame</code> je možné jako druhý parametr předat element, kterého se akce v <i>časovači</i> bude týkat. V takovém případě se nemusí akce provádět, když je například element mimo viditelnou plochu.</p>
+<p>Metodě <code>requestAnimationFrame</code> je možné jako druhý parametr předat element, kterého se akce v <i>časovači</i> bude týkat. V takovém případě se nemusí akce provádět, když je například element mimo viditelnou plochu.</p>
 
 <h3 id="cancelanimationframe">Zrušení animace <code>cancelAnimationFrame</code></h3>
 
@@ -179,7 +179,7 @@ cancelAnimationFrame(animationId);</code></pre>
 
 <h2 id="animate">Metoda <code>animate</code></h2>
 
-<p>Moderní prohlížeče podporují nativní Web Animations API, které poskytuje metodu <code>element.animate()</code>. Tato metoda umožňuje vytvářet složité animace přímo v JavaScriptu bez nutnosti psát CSS <i>keyframes</i>.</p>
+<p>Moderní prohlížeče podporují nativní Web Animations API, které poskytuje metodu <code>element.animate()</code>. Tato metoda umožňuje vytvářet složité animace přímo v JavaScriptu bez nutnosti psát CSS <i>keyframes</i>.</p>
 
 <p>Základní syntaxe:</p>
 
@@ -199,7 +199,7 @@ element.animate([
 
 <p><a href="https://kod.djpw.cz/faod">Živá ukázka</a></p>
 
-<p>Pokročilejší animace s více vlastnostmi:</p>
+<p>Pokročilejší animace s více vlastnostmi:</p>
 
 <pre><code>element.animate([
   { 
@@ -216,21 +216,21 @@ element.animate([
   fill: 'forwards'
 });</code></pre>
 
-<p>Možnosti v <code>options</code> objektu:</p>
+<p>Možnosti v <code>options</code> objektu:</p>
 
 <ul>
-  <li><code>duration</code> — délka animace v milisekundách,</li>
+  <li><code>duration</code> — délka animace v milisekundách,</li>
   <li><code>delay</code> — zpoždění před začátkem animace,</li>
   <li><code>easing</code> — funkce pro plynulost animace,</li>
   <li><code>iterations</code> — počet opakování (Infinity pro nekonečné),</li>
   <li><code>direction</code> — směr animace (normal, reverse, alternate, alternate-reverse),</li>
-  <li><code>fill</code> — chování před a po animaci (none, forwards, backwards, both)</li>
+  <li><code>fill</code> — chování před a po animaci (none, forwards, backwards, both)</li>
 </ul>
 
 <p>Výhody <code>animate()</code> metody:</p>
 
 <ul>
-  <li>Nativní podpora v moderních prohlížečích.</li>
+  <li>Nativní podpora v moderních prohlížečích.</li>
   <li>Lepší výkon než manuální změny CSS vlastností.</li>
   <li>Možnost programově ovládat animace (pause, play, reverse).</li>
   <li>Automatická optimalisace prohlížečem.</li>
@@ -379,9 +379,9 @@ function changeDirection(value) {
 </script>
 </div>
 
-<h2 id="browser-tabs">Problém s neaktivními taby</h2>
+<h2 id="browser-tabs">Problém s neaktivními taby</h2>
 
-<p>Prohlížeče zpomalují nebo pozastavují JavaScript v neaktivních tabech, což ovlivňuje časování a animace.</p>
+<p>Prohlížeče zpomalují nebo pozastavují JavaScript v neaktivních tabech, což ovlivňuje časování a animace.</p>
 
 <p>Různé prohlížeče se chovají jinak, ale obecně jde vycházet z:</p>
 
@@ -391,7 +391,7 @@ function changeDirection(value) {
   <li>na mobilních zařízeních se pozastaví většina JavaScriptu</li>
 </ul>
 
-<p>Chování se může lišit i podle aktuálního <a href="/battery-api">stavu baterie</a> (úsporný režim apod.).</p>
+<p>Chování se může lišit i podle aktuálního <a href="/battery-api">stavu baterie</a> (úsporný režim apod.).</p>
 
 <p>Reagovat na neaktivní taby lze pomocí <code>visibilitychange</code>.</p>
 
@@ -471,7 +471,7 @@ setTimeout(() => {
 }, 1000);</code></pre>
 
 
-<h2 id="throttling-debouncing">Throttling a debouncing</h2>
+<h2 id="throttling-debouncing">Throttling a debouncing</h2>
 
 <p>Oba přístupy omezují frekvenci spouštění funkcí, čímž snižují náročnost, ale fungují jinak:</p>
 
@@ -508,7 +508,7 @@ window.addEventListener('scroll', throttle(() => {
 
 <h3 id="debouncing">Debouncing</h3>
 
-<p><b>Debouncing</b> (česky <i>odložení spuštění</i>) počká na konec série událostí a spustí funkci až po určité době klidu. Funkce se spustí pouze jednou po poslední události.</p>
+<p><b>Debouncing</b> (česky <i>odložení spuštění</i>) počká na konec série událostí a spustí funkci až po určité době klidu. Funkce se spustí pouze jednou po poslední události.</p>
 
 <pre><code>// Debouncing - počká na konec série událostí
 function debounce(func, delay) {
@@ -541,9 +541,9 @@ window.addEventListener('resize', debounce(() => {
 
 <ul>
   <li><code>setInterval</code>/<code>setTimeout</code> – pro jednoduché opakované akce, které nejsou visuální animace,</li>
-  <li><code>requestAnimationFrame</code> – pro plynulé visuální animace a hry,</li>
-  <li><code>element.animate()</code> – pro deklarativní animace s komplexními přechody,</li>
-  <li><b>CSS animace</b> – pro jednoduché přechody a animace, které nevyžadují JavaScript logiku,</li>
+  <li><code>requestAnimationFrame</code> – pro plynulé visuální animace a hry,</li>
+  <li><code>element.animate()</code> – pro deklarativní animace s komplexními přechody,</li>
+  <li><b>CSS animace</b> – pro jednoduché přechody a animace, které nevyžadují JavaScript logiku,</li>
   <li><b>Web Workers</b> – pro náročné výpočty bez blokování UI</li>
 </ul>
 
@@ -556,17 +556,17 @@ window.addEventListener('resize', debounce(() => {
   
   <li><a href="https://gist.github.com/paulirish/1579671">Polyfill pro starší prohlížeče</a> — <a href="https://gist.github.com/mrdoob/838785">zjednodušená podoba</a></li>
   
-  <li>MSDN: <a href="http://msdn.microsoft.com/en-us/library/ie/hh920765(v=vs.85).aspx">Timing control for script-based animations ("requestAnimationFrame")</a></li>
+  <li>MSDN: <a href="http://msdn.microsoft.com/en-us/library/ie/hh920765(v=vs.85).aspx">Timing control for script-based animations („requestAnimationFrame”)</a></li>
   
   <li>Paul Irish: <a href="http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/">requestAnimationFrame for Smart Animating</a></li>
   
   <li>Creative JS: <a href="http://creativejs.com/resources/requestanimationframe/">requestAnimationFrame</a></li>
   
-  <li>HTML5Rocks:<a href="http://updates.html5rocks.com/2014/05/Web-Animations---element-animate-is-now-in-Chrome-36">Web Animations - element.animate() is now in Chrome 36</a></li>
+  <li>HTML5Rocks:<a href="http://updates.html5rocks.com/2014/05/Web-Animations---element-animate-is-now-in-Chrome-36">Web Animations – element.animate() is now in Chrome 36</a></li>
   
   <li>GoSquared Blog: <a href="https://engineering.gosquared.com/optimising-60fps-everywhere-in-javascript">Optimising for 60fps everywhere</a></li>
   
   <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API">Web Animations API</a></li>
   
-  <li>Can I Use: <a href="https://caniuse.com/#feat=web-animation">Web Animations API browser support</a></li>
+  <li>Can I Use: <a href="https://caniuse.com/#feat=web-animation">Web Animations API browser support</a></li>
 </ul>
