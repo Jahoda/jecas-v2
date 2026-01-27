@@ -33,6 +33,7 @@ const REPLACEMENTS = {
 	symboliz: 'symbolis',
 	konverz: 'konvers',
 	databaz: 'databas',
+	databáz: 'databás',
 	prezent: 'present',
 	reverz: 'revers',
 	konzist: 'konsist',
