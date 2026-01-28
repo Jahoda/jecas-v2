@@ -73,7 +73,7 @@ format: "html"
 <p>Klíčové je, že <b>microtasky mají prioritu</b>. Pokud se během zpracování microtasku přidá další microtask, zpracuje se ještě před tím, než se prohlížeč dostane k dalšímu tasku.</p>
 
 
-<h2 id="interaktivni-demo">Interaktivní vizualizace</h2>
+<h2 id="interaktivni-demo">Interaktivní visualisace</h2>
 
 <p>Následující demo ukazuje, jak event loop zpracovává synchronní kód, microtasky a tasky krok za krokem:</p>
 
@@ -613,7 +613,7 @@ queueMicrotask(() => {
 
 <h3 id="realne-pouziti">Reálné použití queueMicrotask()</h3>
 
-<h4 id="batch-aktualizace">Batch aktualizace DOM</h4>
+<h4 id="batch-aktualisace">Batch aktualisace DOM</h4>
 
 <p>Seskupení více DOM operací do jedné, aby se stránka překreslila jen jednou:</p>
 
@@ -626,7 +626,7 @@ function scheduleUpdate(element, value) {
   if (!updatesPending) {
     updatesPending = true;
     queueMicrotask(() => {
-      // Provede všechny aktualizace najednou
+      // Provede všechny aktualisace najednou
       updates.forEach(({ element, value }) => {
         element.textContent = value;
       });
@@ -636,7 +636,7 @@ function scheduleUpdate(element, value) {
   }
 }
 
-// Použití - všechny tři aktualizace se provedou najednou
+// Použití - všechny tři aktualisace se provedou najednou
 scheduleUpdate(div1, 'hodnota 1');
 scheduleUpdate(div2, 'hodnota 2');
 scheduleUpdate(div3, 'hodnota 3');
@@ -761,7 +761,7 @@ setTimeout(() => {
 
 <h2 id="prakticke-vyuziti">Praktické využití</h2>
 
-<h3 id="aktualizace-stavu">Zajištění konzistentního stavu</h3>
+<h3 id="aktualisace-stavu">Zajištění konsistentního stavu</h3>
 
 <p>Microtasky se hodí, když potřebujete provést dokončovací logiku po synchronním kódu, ale ještě před renderingem:</p>
 
@@ -769,7 +769,7 @@ setTimeout(() => {
 element.dataset.loading = 'true';
 element.textContent = '';
 
-// V microtasku zajistíme konzistentní stav
+// V microtasku zajistíme konsistentní stav
 // před tím, než prohlížeč vykreslí změny
 queueMicrotask(() => {
   const data = cache.get('key');
@@ -800,7 +800,7 @@ queueMicrotask(() => {
     // Uložit změnu
     this.changes.push({ key, oldValue, newValue: value });
 
-    // Naplánovat batch aktualizaci
+    // Naplánovat batch aktualisaci
     if (!this.updatePending) {
       this.updatePending = true;
       queueMicrotask(() => {
@@ -858,13 +858,13 @@ console.log('Změny naplánované, ale ještě neprovedené');
 <p>V Node.js existuje také <code>process.nextTick()</code>, který má ještě vyšší prioritu než microtasky.</p>
 
 
-<h2 id="debugovani">Debugování a vizualizace</h2>
+<h2 id="debugovani">Debugování a visualisace</h2>
 
 <p>Pro pochopení pořadí vykonávání lze použít:</p>
 
 <ul>
   <li><b>Chrome DevTools</b> – Performance tab zobrazuje tasky a microtasky</li>
-  <li><b>Loupe</b> – vizualizační nástroj pro event loop (<a href="http://latentflip.com/loupe/">latentflip.com/loupe</a>)</li>
+  <li><b>Loupe</b> – visualisační nástroj pro event loop (<a href="http://latentflip.com/loupe/">latentflip.com/loupe</a>)</li>
   <li><b>Console logy</b> – nejjednodušší způsob sledování pořadí</li>
 </ul>
 
