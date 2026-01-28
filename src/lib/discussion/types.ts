@@ -5,6 +5,7 @@ export interface DiscussionComment {
 	author_name: string;
 	author_email?: string | null;
 	message: string;
+	likes: number;
 	is_approved: boolean;
 	created_at: string;
 	updated_at: string;

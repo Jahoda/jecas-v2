@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS comments (
     author_name VARCHAR(100) NOT NULL,
     author_email VARCHAR(255),
     message TEXT NOT NULL,
+    likes INTEGER DEFAULT 0,
     edit_token VARCHAR(64) NOT NULL,
     is_approved BOOLEAN DEFAULT false,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
@@ -74,4 +75,5 @@ COMMENT ON COLUMN comments.author_name IS 'Jméno autora komentáře';
 COMMENT ON COLUMN comments.author_email IS 'E-mail autora (volitelný, pro gravatar)';
 COMMENT ON COLUMN comments.message IS 'Text komentáře';
 COMMENT ON COLUMN comments.edit_token IS 'Token pro editaci/mazání komentáře autorem';
+COMMENT ON COLUMN comments.likes IS 'Počet lajků komentáře';
 COMMENT ON COLUMN comments.is_approved IS 'Zda byl komentář schválen moderátorem';

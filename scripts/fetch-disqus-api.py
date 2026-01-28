@@ -136,6 +136,7 @@ def main():
             'dislikes': dislikes,
             'slug': slug,
             'author_name': author.get('name', ''),
+            'created_at': post.get('createdAt', ''),
         }
 
     # E-maily statistiky
@@ -230,7 +231,32 @@ def main():
     sql_lines.append(f"-- Aktualizováno {len(author_emails)} unikátních autorů")
     sql_lines.append("")
 
-    # 3b. Reakce na články
+    # 3b. Liky komentářů
+    sql_lines.append("-- === LIKY KOMENTÁŘŮ ===")
+    sql_lines.append("-- Nejdřív přidejte sloupec (pokud ještě neexistuje):")
+    sql_lines.append("ALTER TABLE comments ADD COLUMN IF NOT EXISTS likes INTEGER DEFAULT 0;")
+    sql_lines.append("")
+    sql_lines.append("-- Aktualizace likes přes matchování slug + author_name + created_at")
+
+    likes_count = 0
+    for pid, p in post_data.items():
+        if p['likes'] > 0 and p['slug'] and p['author_name'] and p['created_at']:
+            slug = escape_sql(p['slug'])
+            name = escape_sql(p['author_name'])
+            created = p['created_at']
+            sql_lines.append(
+                f"UPDATE comments SET likes = {p['likes']} "
+                f"WHERE slug = '{slug}' "
+                f"AND lower(author_name) = lower('{name}') "
+                f"AND created_at = '{created}';"
+            )
+            likes_count += 1
+
+    sql_lines.append("")
+    sql_lines.append(f"-- Aktualizováno {likes_count} komentářů s liky")
+    sql_lines.append("")
+
+    # 3c. Reakce na články
     sql_lines.append("-- === REAKCE NA ČLÁNKY ===")
 
     # Mapování Disqus reaction types na naše types

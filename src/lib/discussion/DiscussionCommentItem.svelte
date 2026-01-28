@@ -154,6 +154,19 @@
 			<div
 				class="flex items-center gap-1 text-xs text-slate-500 transition-opacity dark:text-slate-400"
 			>
+				{#if comment.likes > 0}
+					<span
+						class="flex items-center gap-1 rounded-md px-2 py-1 text-slate-500 dark:text-slate-400"
+					>
+						<svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+							<path
+								d="M2 20h2V8H2v12zm20-11a2 2 0 00-2-2h-6.32l.95-4.57.03-.32a1.5 1.5 0 00-.44-1.06L13.17 0 6.59 6.59A2 2 0 006 8v10a2 2 0 002 2h9a2 2 0 001.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"
+							/>
+						</svg>
+						{comment.likes}
+					</span>
+				{/if}
+
 				<button
 					onclick={() => onReply(comment.id)}
 					class="rounded-md px-2 py-1 transition-colors hover:bg-slate-100 hover:text-blue-600 dark:hover:bg-slate-800 dark:hover:text-blue-400"
