@@ -437,6 +437,12 @@ int n = ThreadLocalRandom.current().nextInt(1, 11); // 1..10</code></pre>
 <p>V případě <b>PHP</b> je nutné vygenerovaná náhodná čísla někam ukládat – například do pole <code>$_SESSION</code>.</p>
 
 
+<h2 id="pseudonahodna-cisla">Pseudonáhodná vs. náhodná čísla</h2>
+
+<p>Většina funkcí v programovacích jazycích (jako <code>Math.random()</code> v JS nebo <code>rand</code> v Ruby) generuje <b>pseudonáhodná čísla</b>. Vypočítá je algoritmus, který z počáteční hodnoty (seed) vytváří posloupnost čísel, jež <em>vypadají</em> náhodně, ale jsou plně deterministická – ze stejného seedu vždy vznikne stejná sekvence.</p>
+
+<p>Pro běžné použití (hry, UI, simulace) to plně stačí. Tam, kde na náhodnosti záleží z hlediska <b>bezpečnosti</b> (tokeny, hesla, kryptografie), je potřeba použít kryptograficky bezpečný generátor – například <code>crypto.getRandomValues</code> v JavaScriptu nebo <code>random_int</code> v PHP. Tyto funkce čerpají entropii z operačního systému (šum hardwaru apod.) a jejich výstup nelze předpovědět.</p>
+
 <h2 id="vyuziti">Využití</h2>
 
 <p>Na základě vygenerování náhodného čísla se dá potom i <a href="/random">vypisovat náhodný obsah</a>. Náhodnost je také klíčová pro <a href="/bezpecne-heslo">generování bezpečných hesel</a>.</p>
