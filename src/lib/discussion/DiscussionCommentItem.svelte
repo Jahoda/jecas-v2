@@ -3,15 +3,29 @@
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import type { DiscussionComment } from './types';
 	import { isOwnComment, getToken, removeToken } from './commentTokens';
+	import DiscussionForm from './DiscussionForm.svelte';
 
 	interface Props {
 		comment: DiscussionComment;
+		slug: string;
+		replyToId: number | null;
 		onReply: (parentId: number) => void;
 		onDeleted: (id: number) => void;
 		onUpdated: (comment: DiscussionComment) => void;
+		onSubmitted: (comment: DiscussionComment, editToken: string) => void;
+		onCancelReply: () => void;
 	}
 
-	let { comment, onReply, onDeleted, onUpdated }: Props = $props();
+	let {
+		comment,
+		slug,
+		replyToId,
+		onReply,
+		onDeleted,
+		onUpdated,
+		onSubmitted,
+		onCancelReply
+	}: Props = $props();
 
 	let isOwn = $state(false);
 	let editing = $state(false);
@@ -82,82 +96,130 @@
 			saving = false;
 		}
 	}
+
+	let showReplyForm = $derived(replyToId === comment.id);
 </script>
 
-<div class="flex gap-3 text-sm" id="comment-{comment.id}">
-	<div class="flex h-9 w-9 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border bg-slate-50 dark:border-slate-600 dark:bg-slate-900">
-		<AvatarByName name={comment.author_name} />
-	</div>
+<article class="group" id="comment-{comment.id}">
+	<div class="flex gap-3">
+		<div class="flex-shrink-0">
+			<AvatarByName name={comment.author_name} />
+		</div>
 
-	<div class="flex min-w-0 flex-1 flex-col gap-1">
-		<div class="rounded-md bg-slate-50/80 p-3 shadow dark:bg-slate-800 dark:text-white {isOwn ? 'ring-1 ring-blue-300 dark:ring-blue-700' : ''}">
-			{#if editing}
-				<textarea
-					bind:value={editMessage}
-					class="w-full rounded border border-slate-300 bg-white p-2 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-					rows="3"
-				></textarea>
-				{#if error}
-					<p class="mt-1 text-xs text-red-500">{error}</p>
+		<div class="flex min-w-0 flex-1 flex-col gap-2">
+			<div class="flex items-center gap-2 text-sm">
+				<span class="font-semibold text-slate-900 dark:text-white">{comment.author_name}</span>
+				<span class="text-slate-400">·</span>
+				<CreatedAt date={new Date(comment.created_at)} small />
+				{#if isOwn}
+					<span
+						class="rounded-full bg-blue-100 px-2 py-0.5 text-xs text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
+						>Váš komentář</span
+					>
 				{/if}
-				<div class="mt-2 flex gap-2">
-					<button
-						onclick={saveEdit}
-						disabled={saving}
-						class="rounded bg-blue-600 px-3 py-1 text-xs text-white hover:bg-blue-700 disabled:opacity-50"
-					>
-						{saving ? 'Ukládám...' : 'Uložit'}
-					</button>
-					<button
-						onclick={cancelEdit}
-						class="rounded px-3 py-1 text-xs text-slate-500 hover:text-slate-700 dark:text-slate-400"
-					>
-						Zrušit
-					</button>
-				</div>
-			{:else}
-				<p class="break-words whitespace-pre-wrap">{comment.message}</p>
-			{/if}
-		</div>
-
-		<div class="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
-			<span class="font-medium text-slate-700 dark:text-slate-300">{comment.author_name}</span>
-			<CreatedAt date={new Date(comment.created_at)} small />
-
-			<button
-				onclick={() => onReply(comment.id)}
-				class="hover:text-blue-600 dark:hover:text-blue-400"
-			>
-				Odpovědět
-			</button>
-
-			{#if isOwn && !editing}
-				<button
-					onclick={startEdit}
-					class="hover:text-blue-600 dark:hover:text-blue-400"
-				>
-					Upravit
-				</button>
-				<button
-					onclick={handleDelete}
-					disabled={saving}
-					class="hover:text-red-600 dark:hover:text-red-400"
-				>
-					Smazat
-				</button>
-			{/if}
-
-			{#if error && !editing}
-				<span class="text-red-500">{error}</span>
-			{/if}
-		</div>
-
-		{#if comment.replies && comment.replies.length > 0}
-			<div class="mt-3 flex flex-col gap-3 border-l-2 border-slate-200 pl-4 dark:border-slate-700">
-				{#each comment.replies as reply (reply.id)}
-					<svelte:self comment={reply} {onReply} {onDeleted} {onUpdated} />
-				{/each}
 			</div>
-		{/if}
+
+			<div
+				class="rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+			>
+				{#if editing}
+					<textarea
+						bind:value={editMessage}
+						class="w-full resize-none rounded-lg border border-slate-300 bg-white p-3 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+						rows="3"
+					></textarea>
+					{#if error}
+						<p class="mt-2 text-xs text-red-500">{error}</p>
+					{/if}
+					<div class="mt-3 flex gap-2">
+						<button
+							onclick={saveEdit}
+							disabled={saving}
+							class="rounded-lg bg-blue-600 px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-blue-700 disabled:opacity-50"
+						>
+							{saving ? 'Ukládám...' : 'Uložit změny'}
+						</button>
+						<button
+							onclick={cancelEdit}
+							class="rounded-lg px-4 py-2 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-slate-700"
+						>
+							Zrušit
+						</button>
+					</div>
+				{:else}
+					<p class="whitespace-pre-wrap break-words leading-relaxed">{comment.message}</p>
+				{/if}
+			</div>
+
+			<div
+				class="flex items-center gap-1 text-xs text-slate-500 transition-opacity dark:text-slate-400"
+			>
+				<button
+					onclick={() => onReply(comment.id)}
+					class="rounded-md px-2 py-1 transition-colors hover:bg-slate-100 hover:text-blue-600 dark:hover:bg-slate-800 dark:hover:text-blue-400"
+				>
+					<span class="flex items-center gap-1">
+						<svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"
+							/>
+						</svg>
+						Odpovědět
+					</span>
+				</button>
+
+				{#if isOwn && !editing}
+					<button
+						onclick={startEdit}
+						class="rounded-md px-2 py-1 transition-colors hover:bg-slate-100 hover:text-blue-600 dark:hover:bg-slate-800 dark:hover:text-blue-400"
+					>
+						Upravit
+					</button>
+					<button
+						onclick={handleDelete}
+						disabled={saving}
+						class="rounded-md px-2 py-1 transition-colors hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20 dark:hover:text-red-400"
+					>
+						Smazat
+					</button>
+				{/if}
+
+				{#if error && !editing}
+					<span class="ml-2 text-red-500">{error}</span>
+				{/if}
+			</div>
+
+			{#if showReplyForm}
+				<div class="mt-2 rounded-lg border-l-2 border-blue-400 bg-blue-50/50 p-3 dark:bg-blue-900/10">
+					<DiscussionForm
+						{slug}
+						parentId={comment.id}
+						{onSubmitted}
+						onCancel={onCancelReply}
+						compact
+					/>
+				</div>
+			{/if}
+
+			{#if comment.replies && comment.replies.length > 0}
+				<div class="mt-3 flex flex-col gap-4 border-l-2 border-slate-200 pl-4 dark:border-slate-700">
+					{#each comment.replies as reply (reply.id)}
+						<svelte:self
+							comment={reply}
+							{slug}
+							{replyToId}
+							{onReply}
+							{onDeleted}
+							{onUpdated}
+							{onSubmitted}
+							{onCancelReply}
+						/>
+					{/each}
+				</div>
+			{/if}
+		</div>
 	</div>
-</div>
+</article>

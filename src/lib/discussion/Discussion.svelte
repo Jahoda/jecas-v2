@@ -71,6 +71,10 @@
 		replyTo = replyTo === parentId ? null : parentId;
 	}
 
+	function handleCancelReply() {
+		replyTo = null;
+	}
+
 	function handleSubmitted(comment: DiscussionComment, editToken: string) {
 		saveToken(comment.id, editToken);
 		// Add auto-approved comments to the tree immediately
@@ -123,43 +127,58 @@
 </script>
 
 <div id="{slug}-discussion" class="mt-8 scroll-mt-4">
-	<h2 class="mb-6 text-xl font-bold dark:text-white">
-		Diskuse {totalCount > 0 ? `(${totalCount})` : ''}
-	</h2>
+	<div class="mb-6 flex items-center gap-3">
+		<h2 class="text-xl font-bold dark:text-white">Diskuse</h2>
+		{#if totalCount > 0}
+			<span
+				class="rounded-full bg-slate-100 px-2.5 py-0.5 text-sm font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300"
+			>
+				{totalCount}
+			</span>
+		{/if}
+	</div>
 
 	{#if loading}
-		<div class="grid gap-4">
-			<div class="h-16 animate-pulse rounded bg-gray-100 dark:bg-slate-800"></div>
-			<div class="h-16 animate-pulse rounded bg-gray-100 dark:bg-slate-800"></div>
+		<div class="flex flex-col gap-4">
+			{#each [1, 2] as _}
+				<div class="flex gap-3">
+					<div class="h-9 w-9 animate-pulse rounded-full bg-slate-200 dark:bg-slate-700"></div>
+					<div class="flex-1">
+						<div class="h-4 w-24 animate-pulse rounded bg-slate-200 dark:bg-slate-700"></div>
+						<div class="mt-2 h-16 animate-pulse rounded-xl bg-slate-100 dark:bg-slate-800"></div>
+					</div>
+				</div>
+			{/each}
 		</div>
 	{:else}
 		{#if comments.length > 0}
-			<div class="mb-8 flex flex-col gap-4">
+			<div class="mb-8 flex flex-col gap-6">
 				{#each comments as comment (comment.id)}
 					<DiscussionCommentItem
 						{comment}
+						{slug}
+						replyToId={replyTo}
 						onReply={handleReply}
 						onDeleted={handleDeleted}
 						onUpdated={handleUpdated}
+						onSubmitted={handleSubmitted}
+						onCancelReply={handleCancelReply}
 					/>
-					{#if replyTo === comment.id}
-						<div class="ml-12 border-l-2 border-blue-300 pl-4 dark:border-blue-700">
-							<DiscussionForm
-								{slug}
-								parentId={comment.id}
-								onSubmitted={handleSubmitted}
-								onCancel={() => (replyTo = null)}
-							/>
-						</div>
-					{/if}
 				{/each}
 			</div>
 		{:else}
-			<p class="mb-6 text-sm text-slate-500 dark:text-slate-400">
-				Zatím žádné komentáře. Buďte první!
-			</p>
+			<div class="mb-8 rounded-xl bg-slate-50 p-6 text-center dark:bg-slate-800/50">
+				<p class="text-slate-500 dark:text-slate-400">
+					Zatím žádné komentáře. Buďte první, kdo přidá komentář!
+				</p>
+			</div>
 		{/if}
 
-		<DiscussionForm {slug} onSubmitted={handleSubmitted} />
+		<div class="border-t border-slate-200 pt-6 dark:border-slate-700">
+			<h3 class="mb-4 text-sm font-semibold text-slate-700 dark:text-slate-300">
+				Přidat komentář
+			</h3>
+			<DiscussionForm {slug} onSubmitted={handleSubmitted} />
+		</div>
 	{/if}
 </div>
