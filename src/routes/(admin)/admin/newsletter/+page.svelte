@@ -37,7 +37,7 @@
 			<p class="font-semibold">Chyba při načítání odběratelů:</p>
 			<p class="mt-2">{data.error}</p>
 			<p class="mt-2 text-sm">
-				Zkontrolujte, že máte v .env nastavené SUPABASE_URL a SUPABASE_SERVICE_KEY a restartujte dev
+				Zkontrolujte, že máte v .env nastavené PUBLIC_SUPABASE_URL a SUPABASE_SERVICE_KEY a restartujte dev
 				server.
 			</p>
 		</div>

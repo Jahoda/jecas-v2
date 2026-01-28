@@ -11,6 +11,7 @@
 const PAGES = {
   "/": `/`,
   "/admin": `/admin`,
+  "/admin/comments": `/admin/comments`,
   "/admin/login": `/admin/login`,
   "/admin/logout": `/admin/logout`,
   "/admin/newsletter": `/admin/newsletter`,
@@ -32,6 +33,22 @@ const PAGES = {
 const SERVERS = {
   "prerender /algolia": `/algolia`,
   "GET /algolia": `/algolia`,
+  "GET /api/admin/pending-comments": `/api/admin/pending-comments`,
+  "POST /api/comments/[slug]": (params: { slug: (string | number) }) => {
+    return `/api/comments/${params['slug']}`
+  },
+  "DELETE /api/comments/id/[id]": (params: { id: (string | number) }) => {
+    return `/api/comments/id/${params['id']}`
+  },
+  "PATCH /api/comments/id/[id]": (params: { id: (string | number) }) => {
+    return `/api/comments/id/${params['id']}`
+  },
+  "DELETE /api/comments/id/[id]/admin-delete": (params: { id: (string | number) }) => {
+    return `/api/comments/id/${params['id']}/admin-delete`
+  },
+  "PATCH /api/comments/id/[id]/approve": (params: { id: (string | number) }) => {
+    return `/api/comments/id/${params['id']}/approve`
+  },
   "GET /api/images/[slug]": (params: { slug: (string | number) }) => {
     return `/api/images/${params['slug']}`
   },
@@ -41,6 +58,9 @@ const SERVERS = {
   "GET /api/og": `/api/og`,
   "prerender /api/og/preview": `/api/og/preview`,
   "GET /api/og/preview": `/api/og/preview`,
+  "POST /api/reactions/[slug]": (params: { slug: (string | number) }) => {
+    return `/api/reactions/${params['slug']}`
+  },
   "POST /api/upload": `/api/upload`,
   "GET /preview/files/article/[slug]": (params: { slug: (string | number) }) => {
     return `/preview/files/article/${params['slug']}`
@@ -171,9 +191,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/admin': never, '/admin/login': never, '/admin/logout': never, '/admin/newsletter': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/prevod-svg': never, '/nastroje/vypocet-procent-sloupcu': never, '/preview/[slug]': 'slug' }
-  SERVERS: { 'prerender /algolia': never, 'GET /algolia': never, 'GET /api/images/[slug]': 'slug', 'GET /api/ip': never, 'POST /api/newsletter/subscribe': never, 'prerender /api/og': never, 'GET /api/og': never, 'prerender /api/og/preview': never, 'GET /api/og/preview': never, 'POST /api/upload': never, 'GET /preview/files/article/[slug]': 'slug', 'prerender /rss': never, 'GET /rss': never, 'prerender /sitemap.xml': never, 'GET /sitemap.xml': never }
+  PAGES: { '/': never, '/admin': never, '/admin/comments': never, '/admin/login': never, '/admin/logout': never, '/admin/newsletter': never, '/[slug]': 'slug', '/archiv': never, '/nastroje/preklady-prevod-textu': never, '/nastroje/prevod-svg': never, '/nastroje/vypocet-procent-sloupcu': never, '/preview/[slug]': 'slug' }
+  SERVERS: { 'prerender /algolia': never, 'GET /algolia': never, 'GET /api/admin/pending-comments': never, 'POST /api/comments/[slug]': 'slug', 'DELETE /api/comments/id/[id]': 'id', 'PATCH /api/comments/id/[id]': 'id', 'DELETE /api/comments/id/[id]/admin-delete': 'id', 'PATCH /api/comments/id/[id]/approve': 'id', 'GET /api/images/[slug]': 'slug', 'GET /api/ip': never, 'POST /api/newsletter/subscribe': never, 'prerender /api/og': never, 'GET /api/og': never, 'prerender /api/og/preview': never, 'GET /api/og/preview': never, 'POST /api/reactions/[slug]': 'slug', 'POST /api/upload': never, 'GET /preview/files/article/[slug]': 'slug', 'prerender /rss': never, 'GET /rss': never, 'prerender /sitemap.xml': never, 'GET /sitemap.xml': never }
   ACTIONS: { 'default /admin/login': never, 'default /admin/logout': never }
   LINKS: Record<string, never>
-  Params: { 'slug': never }
+  Params: { 'slug': never, 'id': never }
 }
