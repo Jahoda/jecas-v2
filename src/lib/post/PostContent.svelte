@@ -37,6 +37,19 @@
 		}
 	}
 
+	function executeInlineScripts() {
+		if (!postContent) return;
+		const scripts = postContent.querySelectorAll('script');
+		scripts.forEach((oldScript) => {
+			const newScript = document.createElement('script');
+			for (const attr of oldScript.attributes) {
+				newScript.setAttribute(attr.name, attr.value);
+			}
+			newScript.textContent = oldScript.textContent;
+			oldScript.replaceWith(newScript);
+		});
+	}
+
 	onMount(() => {
 		window.toggleClass = toggleClass;
 		window.toggle = toggle;
@@ -46,6 +59,7 @@
 	afterNavigate(() => {
 		applyCodeHighlighting();
 		attachLiveCode();
+		executeInlineScripts();
 	});
 </script>
 
