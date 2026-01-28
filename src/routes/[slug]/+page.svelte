@@ -3,7 +3,7 @@
 	import Container from '$lib/container/Container.svelte';
 	import PostContent from '$lib/post/PostContent.svelte';
 	import PostList from '$lib/post/PostList.svelte';
-	import PostComments from '$lib/postComments/PostComments.svelte';
+	import Discussion from '$lib/discussion/Discussion.svelte';
 	import PostToc from '$lib/toc/PostToc.svelte';
 	import PostNavigation from '$lib/postNavigation/PostNavigation.svelte';
 	import type { PageData } from './$types';
@@ -12,6 +12,8 @@
 	import { htmlToPlainText } from '$lib/xml/xml';
 	import { schemaScript } from '$lib/schemaScript/schemaScript';
 	import AnnotationLoader from '$lib/annotation/AnnotationLoader.svelte';
+	import { onMount } from 'svelte';
+	import { markAsVisited } from '$lib/visited/visitedPosts';
 
 	interface Props {
 		data: PageData;
@@ -20,6 +22,12 @@
 	let { data }: Props = $props();
 
 	let post = $derived(data.page || data.tag);
+
+	onMount(() => {
+		if (data.page?.url_slug) {
+			markAsVisited(data.page.url_slug);
+		}
+	});
 
 	const baseUrl = 'https://jecas.cz';
 	const pageUrl = $derived(data.page ? `${baseUrl}/${data.page.url_slug}` : baseUrl);
@@ -128,7 +136,7 @@
 					<PostNavigation prev={data.prevNextPosts.prev} next={data.prevNextPosts.next} />
 				{/if}
 				{#if post}
-					<PostComments slug={post.url_slug} />
+					<Discussion slug={post.url_slug} />
 				{/if}
 			</div>
 		{/if}

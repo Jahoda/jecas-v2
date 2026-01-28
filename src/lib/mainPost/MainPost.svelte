@@ -21,6 +21,7 @@
 		wordCount?: number | null;
 		lazy?: boolean;
 		headingLevel?: 'h1' | 'h2';
+		visited?: boolean;
 	}
 
 	let {
@@ -37,7 +38,8 @@
 		noImage = false,
 		wordCount = null,
 		lazy = true,
-		headingLevel = 'h2'
+		headingLevel = 'h2',
+		visited = false
 	}: Props = $props();
 
 	// Use slug for image if provided, otherwise fall back to href
@@ -125,6 +127,15 @@
 
 				{#if wordCount}
 					<ReadingTime {wordCount} />
+				{/if}
+
+				{#if visited}
+					<span class="flex items-center gap-1 text-xs opacity-60" title="Navštíveno">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-3.5 w-3.5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+						</svg>
+						Navštíveno
+					</span>
 				{/if}
 			</div>
 		</div>
