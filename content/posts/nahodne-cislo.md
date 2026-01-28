@@ -439,9 +439,9 @@ int n = ThreadLocalRandom.current().nextInt(1, 11); // 1..10</code></pre>
 
 <h2 id="pseudonahodna-cisla">Pseudonáhodná vs. náhodná čísla</h2>
 
-<p>Většina funkcí v programovacích jazycích (jako <code>Math.random()</code> v JS nebo <code>rand</code> v Ruby) generuje <b>pseudonáhodná čísla</b>. Vypočítá je algoritmus, který z počáteční hodnoty (seed) vytváří posloupnost čísel, jež <em>vypadají</em> náhodně, ale jsou plně deterministická – ze stejného seedu vždy vznikne stejná sekvence.</p>
+<p>Většina funkcí v programovacích jazycích (jako <code>Math.random()</code> v JS nebo <code>rand</code> v Ruby) generuje <b>pseudonáhodná čísla</b>. Vypočítá je algoritmus, který z počáteční hodnoty (seed) vytváří posloupnost čísel, jež <em>vypadají</em> náhodně, ale jsou plně deterministická – ze stejného seedu vždy vznikne stejná sekvence.</p>
 
-<p>Pro běžné použití (hry, UI, simulace) to plně stačí. Tam, kde na náhodnosti záleží z hlediska <b>bezpečnosti</b> (tokeny, hesla, kryptografie), je potřeba použít kryptograficky bezpečný generátor – například <code>crypto.getRandomValues</code> v JavaScriptu nebo <code>random_int</code> v PHP. Tyto funkce čerpají entropii z operačního systému (šum hardwaru apod.) a jejich výstup nelze předpovědět.</p>
+<p>Pro běžné použití (hry, UI, simulace) to plně stačí. Tam, kde na náhodnosti záleží z hlediska <b>bezpečnosti</b> (tokeny, hesla, kryptografie), je potřeba použít kryptograficky bezpečný generátor – například <code>crypto.getRandomValues</code> v JavaScriptu nebo <code>random_int</code> v PHP. Tyto funkce čerpají entropii z operačního systému (šum hardwaru apod.) a jejich výstup nelze předpovědět.</p>
 
 <h2 id="vyuziti">Využití</h2>
 
