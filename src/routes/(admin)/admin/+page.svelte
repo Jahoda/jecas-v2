@@ -32,6 +32,7 @@
 			Nový článek
 		</Button>
 		<Button href="/admin/newsletter">Newsletter</Button>
+		<Button href="/admin/comments">Komentáře</Button>
 		<Button href="/admin/logout">Logout</Button>
 		<Input
 			name="search"
