@@ -32,10 +32,46 @@
 	let editMessage = $state('');
 	let saving = $state(false);
 	let error = $state('');
+	let liked = $state(false);
+	let likesCount = $state(0);
+	let liking = $state(false);
 
 	$effect(() => {
 		isOwn = isOwnComment(comment.id);
+		likesCount = comment.likes;
+		try {
+			const stored = localStorage.getItem('comment_likes');
+			const ids: number[] = stored ? JSON.parse(stored) : [];
+			liked = ids.includes(comment.id);
+		} catch {
+			liked = false;
+		}
 	});
+
+	async function handleLike() {
+		if (liked || liking) return;
+		liking = true;
+		try {
+			const res = await fetch(`/api/comments/id/${comment.id}/like`, { method: 'POST' });
+			const data = await res.json();
+			if (data.success) {
+				likesCount = data.likes;
+				liked = true;
+				try {
+					const stored = localStorage.getItem('comment_likes');
+					const ids: number[] = stored ? JSON.parse(stored) : [];
+					ids.push(comment.id);
+					localStorage.setItem('comment_likes', JSON.stringify(ids));
+				} catch {
+					// ignore
+				}
+			}
+		} catch {
+			// ignore
+		} finally {
+			liking = false;
+		}
+	}
 
 	function startEdit() {
 		editMessage = comment.message;
@@ -154,18 +190,20 @@
 			<div
 				class="flex items-center gap-1 text-xs text-slate-500 transition-opacity dark:text-slate-400"
 			>
-				{#if comment.likes > 0}
-					<span
-						class="flex items-center gap-1 rounded-md px-2 py-1 text-slate-500 dark:text-slate-400"
-					>
-						<svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
-							<path
-								d="M2 20h2V8H2v12zm20-11a2 2 0 00-2-2h-6.32l.95-4.57.03-.32a1.5 1.5 0 00-.44-1.06L13.17 0 6.59 6.59A2 2 0 006 8v10a2 2 0 002 2h9a2 2 0 001.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"
-							/>
-						</svg>
-						{comment.likes}
-					</span>
-				{/if}
+				<button
+					onclick={handleLike}
+					disabled={liked || liking}
+					class="flex items-center gap-1 rounded-md px-2 py-1 transition-colors {liked ? 'text-blue-600 dark:text-blue-400' : 'hover:bg-slate-100 hover:text-blue-600 dark:hover:bg-slate-800 dark:hover:text-blue-400'} disabled:cursor-default"
+				>
+					<svg class="h-3.5 w-3.5" fill={liked ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor" stroke-width={liked ? '0' : '2'}>
+						<path
+							d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3H14zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"
+						/>
+					</svg>
+					{#if likesCount > 0}
+						{likesCount}
+					{/if}
+				</button>
 
 				<button
 					onclick={() => onReply(comment.id)}
