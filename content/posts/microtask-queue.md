@@ -6,6 +6,7 @@ date: "2026-01-28"
 last_modification: "2026-01-28"
 status: 1
 tags: ["js", "async", "js-udalosti", "webove-prohlizece"]
+social_text: "Jak v JS funguje queueMicrotask"
 format: "html"
 ---
 
