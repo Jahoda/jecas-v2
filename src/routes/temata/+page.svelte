@@ -31,15 +31,7 @@
 		},
 		{
 			name: 'JavaScript',
-			slugs: [
-				'js',
-				'ts',
-				'js-udalosti',
-				'js-ajax',
-				'js-vyber-elementu',
-				'regexp',
-				'async'
-			]
+			slugs: ['js', 'ts', 'js-udalosti', 'js-ajax', 'js-vyber-elementu', 'regexp', 'async']
 		},
 		{
 			name: 'Frameworky a knihovny',
@@ -66,16 +58,7 @@
 		},
 		{
 			name: 'Provoz a výkon',
-			slugs: [
-				'hosting',
-				'cloud',
-				'domeny',
-				'ftp',
-				'zrychlovani',
-				'lazy-loading',
-				'offline',
-				'seo'
-			]
+			slugs: ['hosting', 'cloud', 'domeny', 'ftp', 'zrychlovani', 'lazy-loading', 'offline', 'seo']
 		},
 		{
 			name: 'Bezpečnost',
@@ -83,15 +66,7 @@
 		},
 		{
 			name: 'Nástroje a workflow',
-			slugs: [
-				'git',
-				'produktivita',
-				'testovani',
-				'wysiwyg',
-				'tinymce',
-				'cms',
-				'wordpress'
-			]
+			slugs: ['git', 'produktivita', 'testovani', 'wysiwyg', 'tinymce', 'cms', 'wordpress']
 		},
 		{
 			name: 'Média a obsah',
@@ -99,17 +74,7 @@
 		},
 		{
 			name: 'Služby a platformy',
-			slugs: [
-				'google',
-				'ga',
-				'facebook',
-				'twitter',
-				'seznam',
-				'bing',
-				'apple',
-				'windows',
-				'mapy'
-			]
+			slugs: ['google', 'ga', 'facebook', 'twitter', 'seznam', 'bing', 'apple', 'windows', 'mapy']
 		},
 		{
 			name: 'Ostatní',
@@ -132,9 +97,7 @@
 		}
 	];
 
-	let tagsBySlug = $derived(
-		new Map(data.tags.map((tag) => [tag.url_slug, tag]))
-	);
+	let tagsBySlug = $derived(new Map(data.tags.map((tag) => [tag.url_slug, tag])));
 
 	let categoriesWithTags = $derived(
 		categories
@@ -149,9 +112,7 @@
 
 	let uncategorized = $derived(
 		data.tags.filter(
-			(tag) =>
-				(tag.count ?? 0) > 0 &&
-				!categories.some((cat) => cat.slugs.includes(tag.url_slug))
+			(tag) => (tag.count ?? 0) > 0 && !categories.some((cat) => cat.slugs.includes(tag.url_slug))
 		)
 	);
 </script>
