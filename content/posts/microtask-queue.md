@@ -9,17 +9,17 @@ tags: ["js", "async", "js-udalosti", "webove-prohlizece"]
 format: "html"
 ---
 
-<p>JavaScript je jednoduchý. Až na asynchronní kód. Ten je občas záhadný. Zejména pořadí, v jakém se jednotlivé části asynchronního kódu spouštějí.</p>
+<p>JavaScript je jednoduchý. Až na asynchronní kód. Ten je občas záhadný. Zejména pořadí, v jakém se jednotlivé části asynchronního kódu spouštějí.</p>
 
-<p>Klíčem k pochopení je znalost <b>event loopu</b> a rozdíl mezi <b>task queue</b> (někdy též <i>macro task queue</i>) a <b>microtask queue</b>.</p>
+<p>Klíčem k pochopení je znalost <b>event loopu</b> a rozdíl mezi <b>task queue</b> (někdy též <i>macro task queue</i>) a <b>microtask queue</b>.</p>
 
-<p><img src="/files/microtask-queue/event-loop.svg" alt="Diagram event loopu s microtask a task queue" class="border"></p>
+<p><img src="/files/microtask-queue/event-loop.svg" alt="Diagram event loopu s microtask a task queue" class="border"></p>
 
 <h2 id="event-loop">Event loop</h2>
 
-<p>JavaScript v prohlížeči běží na <b>hlavním vlákně</b>, kde v daném okamžiku může probíhat jen jedna operace. I když existují <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">Web Workers</a> pro práci na pozadí, hlavní vlákno zůstává jednovláknové.</p>
+<p>JavaScript v prohlížeči běží na <b>hlavním vlákně</b>, kde v daném okamžiku může probíhat jen jedna operace. I když existují <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">Web Workers</a> pro práci na pozadí, hlavní vlákno zůstává jednovláknové.</p>
 
-<p>Event loop je mechanismus, který umožňuje asynchronní chování JavaScriptu na hlavním vlákně. Neustále kontroluje, zda je <i>call stack</i> (zásobník volání) prázdný, a pokud ano, vezme další úlohu z fronty a provede ji.</p>
+<p>Event loop je mechanismus, který umožňuje asynchronní chování JavaScriptu na hlavním vlákně. Neustále kontroluje, zda je <i>call stack</i> (zásobník volání) prázdný, a pokud ano, vezme další úlohu z fronty a provede ji.</p>
 
 <p>Důležité je, že existují <b>dva typy front</b>:</p>
 
@@ -31,7 +31,7 @@ format: "html"
 
 <h2 id="microtask-queue">Microtask queue</h2>
 
-<p>Microtask queue je <b>prioritní fronta</b> pro operace, které mají být provedeny hned po dokončení aktuálně běžícího skriptu, ale ještě před tím, než prohlížeč provede další <i>rendering</i> nebo zpracuje další úlohu z <i>task queue</i>.</p>
+<p>Microtask queue je <b>prioritní fronta</b> pro operace, které mají být provedeny hned po dokončení aktuálně běžícího skriptu, ale ještě před tím, než prohlížeč provede další <i>rendering</i> nebo zpracuje další úlohu z <i>task queue</i>.</p>
 
 <h3 id="co-patri">Co patří do microtask queue?</h3>
 
@@ -50,11 +50,11 @@ format: "html"
 <p>Běžné asynchronní operace vytváří tasky (macro tasky):</p>
 
 <ul>
-  <li><code>setTimeout()</code> a <code>setInterval()</code></li>
+  <li><code>setTimeout()</code> a <code>setInterval()</code></li>
   <li><code>setImmediate()</code> (Node.js)</li>
   <li>I/O operace</li>
   <li>UI rendering</li>
-  <li>Uživatelské události (click, scroll, ...)</li>
+  <li>Uživatelské události (click, scroll, …)</li>
 </ul>
 
 
@@ -64,18 +64,18 @@ format: "html"
 
 <ol>
   <li>Provede se aktuální synchronní kód (call stack)</li>
-  <li>Když je call stack prázdný, zpracují se <b>všechny</b> microtasky z microtask queue</li>
+  <li>Když je call stack prázdný, zpracují se <b>všechny</b> microtasky z microtask queue</li>
   <li>Prohlížeč může provést rendering</li>
-  <li>Zpracuje se <b>jeden</b> task z task queue</li>
+  <li>Zpracuje se <b>jeden</b> task z task queue</li>
   <li>Celý cyklus se opakuje</li>
 </ol>
 
-<p>Klíčové je, že <b>microtasky mají prioritu</b>. Pokud se během zpracování microtasku přidá další microtask, zpracuje se ještě před tím, než se prohlížeč dostane k dalšímu tasku.</p>
+<p>Klíčové je, že <b>microtasky mají prioritu</b>. Pokud se během zpracování microtasku přidá další microtask, zpracuje se ještě před tím, než se prohlížeč dostane k dalšímu tasku.</p>
 
 
 <h2 id="interaktivni-demo">Interaktivní visualisace</h2>
 
-<p>Následující demo ukazuje, jak event loop zpracovává synchronní kód, microtasky a tasky krok za krokem:</p>
+<p>Následující demo ukazuje, jak event loop zpracovává synchronní kód, microtasky a tasky krok za krokem:</p>
 
 <style>
   .event-loop-demo {
@@ -265,7 +265,7 @@ format: "html"
     <button onclick="resetDemo()">↻ Reset</button>
   </div>
 
-  <div class="status" id="status">Připraveno - klikněte na "Spustit" nebo "Krok"</div>
+  <div class="status" id="status">Připraveno – klikněte na „Spustit” nebo „Krok”</div>
 
   <div class="queues">
     <div class="queue-box callstack">
@@ -506,7 +506,7 @@ if (document.readyState === 'loading') {
 }
 </script>
 
-<p>Demo ukazuje typický průběh zpracování kódu s <code>setTimeout</code>, <code>Promise</code> a <code>queueMicrotask</code>. Všimněte si, že microtasky se vždy zpracují před tasky!</p>
+<p>Demo ukazuje typický průběh zpracování kódu s <code>setTimeout</code>, <code>Promise</code> a <code>queueMicrotask</code>. Všimněte si, že microtasky se vždy zpracují před tasky!</p>
 
 
 <h2 id="priklad">Praktický příklad</h2>
@@ -549,20 +549,20 @@ console.log('6: synchronní konec');
 
 <ol>
   <li>
-    <p>Nejdříve se provede veškerý <b>synchronní kód</b> (řádky 1 a 6)</p>
+    <p>Nejdříve se provede veškerý <b>synchronní kód</b> (řádky 1 a 6)</p>
   </li>
   <li>
-    <p>Pak se zpracují <b>všechny microtasky</b> v pořadí, v jakém byly přidány (řádky 3, 5, 4)</p>
+    <p>Pak se zpracují <b>všechny microtasky</b> v pořadí, v jakém byly přidány (řádky 3, 5, 4)</p>
   </li>
   <li>
-    <p>Nakonec se zpracuje <b>macro task</b> z <code>setTimeout</code> (řádek 2)</p>
+    <p>Nakonec se zpracuje <b>macro task</b> z <code>setTimeout</code> (řádek 2)</p>
   </li>
 </ol>
 
 
-<h2 id="async-await">Async/await a microtasky</h2>
+<h2 id="async-await">Async/await a microtasky</h2>
 
-<p>Funkce označené jako <code>async</code> vždy vrací Promise. Klíčové slovo <code>await</code> pozastaví vykonávání funkce a pokračování funkce se zařadí jako microtask.</p>
+<p>Funkce označené jako <code>async</code> vždy vrací Promise. Klíčové slovo <code>await</code> pozastaví vykonávání funkce a pokračování funkce se zařadí jako microtask.</p>
 
 <pre><code>async function asyncFunkce() {
   console.log('1: start async funkce');
@@ -585,7 +585,7 @@ console.log('4: po volání');
 2: po await (microtask)
 </code></pre>
 
-<p>Kód po <code>await</code> se chová jako callback v <code>.then()</code> – je zařazen do microtask queue.</p>
+<p>Kód po <code>await</code> se chová jako callback v <code>.then()</code> – je zařazen do microtask queue.</p>
 
 
 <h2 id="queue-microtask">queueMicrotask()</h2>
@@ -597,7 +597,7 @@ console.log('4: po volání');
 });
 </code></pre>
 
-<p>Je to <b>čistší a efektivnější alternativa</b> k <code>Promise.resolve().then(...)</code>. Na rozdíl od Promise nevytváří zbytečný Promise objekt – jde přímo k věci.</p>
+<p>Je to <b>čistší a efektivnější alternativa</b> k <code>Promise.resolve().then(...)</code>. Na rozdíl od Promise nevytváří zbytečný Promise objekt – jde přímo k věci.</p>
 
 <pre><code>// Starý způsob - vytváří Promise objekt
 Promise.resolve().then(() => {
@@ -675,7 +675,7 @@ window.addEventListener('error', (e) => {
 
 <h4 id="plugin-hooks">Plugin/Hook systém</h4>
 
-<p>Umožnění pluginům reagovat na události v dalším microtasku:</p>
+<p>Umožnění pluginům reagovat na události v dalším microtasku:</p>
 
 <pre><code>class EventSystem {
   constructor() {
@@ -712,12 +712,12 @@ events.trigger('test');
 // Hook 2: test
 </code></pre>
 
-<p>Více informací: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/queueMicrotask">MDN - queueMicrotask()</a></p>
+<p>Více informací: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/queueMicrotask">MDN – queueMicrotask()</a></p>
 
 
 <h2 id="mutation-observer">MutationObserver</h2>
 
-<p><code>MutationObserver</code> slouží k pozorování změn v DOM stromu. Jeho callbacky se spouštějí jako microtasky:</p>
+<p><code>MutationObserver</code> slouží k pozorování změn v DOM stromu. Jeho callbacky se spouštějí jako microtasky:</p>
 
 <pre><code>const observer = new MutationObserver(() => {
   console.log('DOM se změnil (microtask)');
@@ -741,7 +741,7 @@ DOM se změnil (microtask)
 
 <h2 id="nekonecna-smycka">Pozor na nekonečnou smyčku</h2>
 
-<p>Protože se všechny microtasky zpracovávají před dalším taskem, může dojít k <b>zablokování event loopu</b>:</p>
+<p>Protože se všechny microtasky zpracovávají před dalším taskem, může dojít k <b>zablokování event loopu</b>:</p>
 
 <pre><code>function pridejMicrotask() {
   queueMicrotask(() => {
@@ -783,7 +783,7 @@ queueMicrotask(() => {
 
 <h3 id="debouncing">Debouncing pomocí microtasků</h3>
 
-<p>Občas je vhodné seskupit více operací do jedné. Například při sledování změn stavu v reactive frameworku:</p>
+<p>Občas je vhodné seskupit více operací do jedné. Například při sledování změn stavu v reactive frameworku:</p>
 
 <pre><code>class StateManager {
   constructor() {
@@ -848,7 +848,7 @@ console.log('Změny naplánované, ale ještě neprovedené');
 
 <h2 id="rozdily-prohlizecu">Rozdíly mezi prostředími</h2>
 
-<p>Implementace event loopu se mírně liší mezi prohlížečem a Node.js:</p>
+<p>Implementace event loopu se mírně liší mezi prohlížečem a Node.js:</p>
 
 <ul>
   <li><b>Prohlížeč</b> – zpracovává rendering mezi tasky</li>
@@ -858,12 +858,12 @@ console.log('Změny naplánované, ale ještě neprovedené');
 <p>V Node.js existuje také <code>process.nextTick()</code>, který má ještě vyšší prioritu než microtasky.</p>
 
 
-<h2 id="debugovani">Debugování a visualisace</h2>
+<h2 id="debugovani">Debugování a visualisace</h2>
 
 <p>Pro pochopení pořadí vykonávání lze použít:</p>
 
 <ul>
-  <li><b>Chrome DevTools</b> – Performance tab zobrazuje tasky a microtasky</li>
+  <li><b>Chrome DevTools</b> – Performance tab zobrazuje tasky a microtasky</li>
   <li><b>Loupe</b> – visualisační nástroj pro event loop (<a href="http://latentflip.com/loupe/">latentflip.com/loupe</a>)</li>
   <li><b>Console logy</b> – nejjednodušší způsob sledování pořadí</li>
 </ul>
@@ -879,25 +879,25 @@ console.log('Změny naplánované, ale ještě neprovedené');
     <p><b>Microtask queue</b> má prioritu před task queue (macro task queue)</p>
   </li>
   <li>
-    <p>Promises, <code>async/await</code>, <code>queueMicrotask()</code> a <code>MutationObserver</code> používají microtasky</p>
+    <p>Promises, <code>async/await</code>, <code>queueMicrotask()</code> a <code>MutationObserver</code> používají microtasky</p>
   </li>
   <li>
-    <p><code>setTimeout</code>, <code>setInterval</code> a události používají tasky</p>
+    <p><code>setTimeout</code>, <code>setInterval</code> a události používají tasky</p>
   </li>
   <li>
     <p>Všechny microtasky se zpracují před dalším taskem nebo renderingem</p>
   </li>
 </ul>
 
-<p>Pochopení microtask queue je klíčové pro psaní správného asynchronního kódu a debugování neočekávaného chování.</p>
+<p>Pochopení microtask queue je klíčové pro psaní správného asynchronního kódu a debugování neočekávaného chování.</p>
 
 
 <h2 id="odkazy">Odkazy jinam</h2>
 
 <ul>
-  <li>Jake Archibald: <a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/">Tasks, microtasks, queues and schedules</a> – podrobný článek s interaktivními příklady</li>
+  <li>Jake Archibald: <a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/">Tasks, microtasks, queues and schedules</a> – podrobný článek s interaktivními příklady</li>
 
   <li>MDN: <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide">Using microtasks in JavaScript</a> – oficiální dokumentace</li>
 
-  <li>Philip Roberts: <a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">What the heck is the event loop anyway?</a> – skvělá přednáška o event loopu</li>
+  <li>Philip Roberts: <a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ">What the heck is the event loop anyway?</a> – skvělá přednáška o event loopu</li>
 </ul>
