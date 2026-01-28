@@ -36,7 +36,7 @@ Náhledové obrázky se generují pomocí Python/Pillow. Obrázek musí být **2
 ### Styl obrázků
 
 - **Pozadí**: Tmavý gradient (slate/dark blue) - např. `#1e293b` až `#334155`
-- **Fonty**: Liberation Sans Bold nebo DejaVu Sans Bold
+- **Fonty**: Inter Bold (moderní geometrický sans-serif) — fallback: Liberation Sans Bold
 - **Barvy textu**: Bílá `#ffffff` nebo světle šedá `#94a3b8`
 - **Akcenty**: Použít barevné badge/tlačítka s `rounded_rectangle`
   - Zelená: `#059669` (pro pozitivní/GET)
@@ -66,9 +66,9 @@ for y in range(size):
 
 # Font (velikost × scale)
 try:
-    font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", 24 * scale)
+    font = ImageFont.truetype("/usr/share/fonts/truetype/inter/Inter-Bold.otf", 24 * scale)
 except:
-    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24 * scale)
+    font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", 24 * scale)
 
 # Badge s textem (souřadnice × scale)
 draw.rounded_rectangle([(20 * scale, 70 * scale), (180 * scale, 130 * scale)], radius=8 * scale, fill='#2563eb')
