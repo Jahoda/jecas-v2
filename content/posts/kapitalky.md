@@ -1,14 +1,14 @@
 ---
 title: "Kapitálky (small caps)"
-headline: "Kapitálky – CSS small caps a verzálky"
-description: "Co jsou kapitálky (small caps), jak se liší od verzálek a jak je použít v CSS pomocí font-variant a text-transform."
+headline: "Kapitálky – CSS small caps a versálky"
+description: "Co jsou kapitálky (small caps), jak se liší od versálek a jak je použít v CSS pomocí font-variant a text-transform."
 date: "2025-01-27"
 status: 1
 tags: ["css", "css-vlastnosti", "typografie"]
 format: "html"
 ---
 
-<p><b>Kapitálky</b> (anglicky <i>small caps</i>) jsou velká písmena zmenšená na výšku malých písmen. Na rozdíl od verzálek (běžných velkých písmen) mají kapitálky opticky vyvážené proporce a tloušťku tahů, takže v textu nepůsobí rušivě.</p>
+<p><b>Kapitálky</b> (anglicky <i>small caps</i>) jsou velká písmena zmenšená na výšku malých písmen. Na rozdíl od versálek (běžných velkých písmen) mají kapitálky opticky vyvážené proporce a tloušťku tahů, takže v textu nepůsobí rušivě.</p>
 
 <div class="live">
 <style>
@@ -16,19 +16,19 @@ format: "html"
 .demo-uc { text-transform: uppercase; font-size: 0.85em; }
 </style>
 <p style="font-size:1.3em"><span class="demo-sc">Toto jsou kapitálky</span></p>
-<p style="font-size:1.3em"><span class="demo-uc">Toto jsou verzálky</span></p>
+<p style="font-size:1.3em"><span class="demo-uc">Toto jsou versálky</span></p>
 <p style="font-size:1.3em">Toto je běžný text</p>
 </div>
 
 
-<h2 id="rozdil">Kapitálky vs. verzálky</h2>
+<h2 id="rozdil">Kapitálky vs. versálky</h2>
 
 <table>
   <thead>
     <tr>
       <th></th>
       <th>Kapitálky (small caps)</th>
-      <th>Verzálky (uppercase)</th>
+      <th>Versálky (uppercase)</th>
     </tr>
   </thead>
   <tbody>
@@ -40,7 +40,7 @@ format: "html"
     <tr>
       <td>Výška</td>
       <td>Výška minusek (x-height)</td>
-      <td>Plná výška verzálek</td>
+      <td>Plná výška versálek</td>
     </tr>
     <tr>
       <td>Čitelnost</td>
@@ -80,9 +80,9 @@ format: "html"
 <pre><code>font-variant-caps: small-caps;      /* malá → kapitálky */
 font-variant-caps: all-small-caps;   /* vše → kapitálky */
 font-variant-caps: petite-caps;      /* menší kapitálky */
-font-variant-caps: unicase;          /* mix verzálek a kapitálek */</code></pre>
+font-variant-caps: unicase;          /* mix versálek a kapitálek */</code></pre>
 
-<p>Tyto hodnoty fungují správně pouze u fontů, které obsahují skutečné kapitálkové glyfy (OpenType feature <code>smcp</code>). Pokud font kapitálky nemá, prohlížeč je simuluje zmenšením verzálek – výsledek bývá vizuálně méně kvalitní.</p>
+<p>Tyto hodnoty fungují správně pouze u fontů, které obsahují skutečné kapitálkové glyfy (OpenType feature <code>smcp</code>). Pokud font kapitálky nemá, prohlížeč je simuluje zmenšením versálek – výsledek bývá visuálně méně kvalitní.</p>
 
 
 <h2 id="pouziti">Kdy kapitálky použít</h2>
@@ -90,6 +90,6 @@ font-variant-caps: unicase;          /* mix verzálek a kapitálek */</code></pr
 <ul>
   <li><b>Jména autorů</b> – v bibliografiích a citacích</li>
   <li><b>Zkratky</b> – <span style="font-variant:small-caps">html</span>, <span style="font-variant:small-caps">css</span>, <span style="font-variant:small-caps">api</span> v běžném textu</li>
-  <li><b>Nadpisy a podnadpisy</b> – elegantní alternativa k verzálkám</li>
+  <li><b>Nadpisy a podnadpisy</b> – elegantní alternativa k versálkám</li>
   <li><b>Právní dokumenty</b> – zvýraznění klíčových pojmů</li>
 </ul>

@@ -383,7 +383,7 @@ format: "html"
         }
     });
 
-    // Aktualizace při změně
+    // Aktualisace při změně
     document.addEventListener('input', function(e) {
         if (e.target.closest('.qr-generator')) generateQR();
     });
@@ -391,7 +391,7 @@ format: "html"
         if (e.target.closest('.qr-generator')) generateQR();
     });
 
-    // Inicializace
+    // Inicialisace
     setTimeout(function() {
         var firstButton = document.querySelector('.qr-generator .controls button');
         if (firstButton) firstButton.classList.add('active');

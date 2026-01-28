@@ -17,13 +17,13 @@ format: "html"
 
 <ul>
   <li><b>Inter</b> – moderní bezpatkový font, výborný pro UI a weby</li>
-  <li><b>Roboto</b> – výchozí font Androidu, univerzální bezpatkový</li>
+  <li><b>Roboto</b> – výchozí font Androidu, universální bezpatkový</li>
   <li><b>Open Sans</b> – čitelný a neutrální, vhodný pro delší texty</li>
   <li><b>Lato</b> – polský font s plnou podporou středoevropských znaků</li>
   <li><b>Nunito</b> – zaoblený bezpatkový font, přátelský vzhled</li>
   <li><b>Source Sans 3</b> – od Adobe, profesionální bezpatkový</li>
   <li><b>Playfair Display</b> – elegantní patkový font pro nadpisy</li>
-  <li><b>Merriweather</b> – patkový font optimalizovaný pro obrazovky</li>
+  <li><b>Merriweather</b> – patkový font optimalisovaný pro obrazovky</li>
   <li><b>Fira Sans</b> – od Mozilly, moderní a čitelný</li>
 </ul>
 
