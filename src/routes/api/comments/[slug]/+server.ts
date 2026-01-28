@@ -1,11 +1,7 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { supabase } from '$lib/server/supabase';
-import { randomBytes, createHash } from 'crypto';
-
-function computeGravatarHash(email: string): string {
-	return createHash('md5').update(email.trim().toLowerCase()).digest('hex');
-}
+import { randomBytes } from 'crypto';
 
 // Rate limit: IP -> timestamp posledního komentáře
 const rateLimitMap = new Map<string, number>();
@@ -58,7 +54,7 @@ export const POST: RequestHandler = async ({ params, request, getClientAddress }
 
 		const edit_token = randomBytes(32).toString('hex');
 		const trimmedName = author_name.trim();
-		const gravatarHash = author_email ? computeGravatarHash(author_email) : null;
+		const trimmedEmail = author_email?.trim() || null;
 
 		// Check if user has existing approved comment (trusted user)
 		const { data: existingApproved } = await supabase
@@ -76,12 +72,12 @@ export const POST: RequestHandler = async ({ params, request, getClientAddress }
 				slug,
 				parent_id: parent_id || null,
 				author_name: trimmedName,
-				gravatar_hash: gravatarHash,
+				author_email: trimmedEmail,
 				message: message.trim(),
 				edit_token,
 				is_approved: autoApprove
 			})
-			.select('id, slug, parent_id, author_name, gravatar_hash, message, is_approved, created_at, updated_at')
+			.select('id, slug, parent_id, author_name, author_email, message, is_approved, created_at, updated_at')
 			.single();
 
 		if (error) {
