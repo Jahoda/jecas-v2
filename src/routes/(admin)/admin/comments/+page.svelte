@@ -16,11 +16,7 @@
 	async function approve(id: number) {
 		loading = id;
 		try {
-			const res = await fetch(`/api/comments/id/${id}/approve`, {
-				method: 'PATCH',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ password: getAdminPassword() })
-			});
+			const res = await fetch(`/api/comments/id/${id}/approve`, { method: 'PATCH' });
 			if (res.ok) {
 				await invalidateAll();
 			}
@@ -33,24 +29,13 @@
 		if (!confirm('Opravdu smazat tento komentář?')) return;
 		loading = id;
 		try {
-			const res = await fetch(`/api/comments/id/${id}/admin-delete`, {
-				method: 'DELETE',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ password: getAdminPassword() })
-			});
+			const res = await fetch(`/api/comments/id/${id}/admin-delete`, { method: 'DELETE' });
 			if (res.ok) {
 				await invalidateAll();
 			}
 		} finally {
 			loading = null;
 		}
-	}
-
-	function getAdminPassword(): string {
-		return document.cookie
-			.split('; ')
-			.find((row) => row.startsWith('admin_session='))
-			?.split('=')[1] ?? '';
 	}
 
 	function formatDate(date: string): string {

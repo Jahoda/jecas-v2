@@ -1,18 +1,16 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { supabase } from '$lib/server/supabase';
-import { ADMIN_PASSWORD } from '$env/static/private';
+import { isAuthenticated } from '$lib/auth/auth';
 
 // PATCH - Admin schválí komentář
-export const PATCH: RequestHandler = async ({ params, request }) => {
+export const PATCH: RequestHandler = async ({ params, cookies }) => {
 	const id = Number(params.id);
 	if (isNaN(id)) {
 		return json({ success: false, message: 'Neplatné ID komentáře' }, { status: 400 });
 	}
 
-	const { password } = await request.json().catch(() => ({ password: '' }));
-
-	if (password !== ADMIN_PASSWORD) {
+	if (!isAuthenticated(cookies)) {
 		return json({ success: false, message: 'Neautorizováno' }, { status: 401 });
 	}
 
