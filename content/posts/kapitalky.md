@@ -8,7 +8,7 @@ tags: ["css", "css-vlastnosti", "typografie"]
 format: "html"
 ---
 
-<p><b>Kapitálky</b> (anglicky <i>small caps</i>) jsou velká písmena zmenšená na výšku malých písmen. Na rozdíl od versálek (běžných velkých písmen) mají kapitálky opticky vyvážené proporce a tloušťku tahů, takže v textu nepůsobí rušivě.</p>
+<p><b>Kapitálky</b> (anglicky <i>small caps</i>) jsou velká písmena zmenšená na výšku malých písmen. Na rozdíl od versálek (běžných velkých písmen) mají kapitálky opticky vyvážené proporce a tloušťku tahů, takže v textu nepůsobí rušivě.</p>
 
 <div class="live">
 <style>
@@ -34,7 +34,7 @@ format: "html"
   <tbody>
     <tr>
       <td>Vzhled</td>
-      <td>Velká písmena o velikosti malých</td>
+      <td>Velká písmena o velikosti malých</td>
       <td>Plně velká písmena</td>
     </tr>
     <tr>
@@ -70,26 +70,26 @@ format: "html"
   font-variant: all-small-caps;
 }</code></pre>
 
-<p>Rozdíl mezi <code>small-caps</code> a <code>all-small-caps</code>: první převede pouze malá písmena na kapitálky (velká zůstanou velká), druhý převede všechna písmena na kapitálky.</p>
+<p>Rozdíl mezi <code>small-caps</code> a <code>all-small-caps</code>: první převede pouze malá písmena na kapitálky (velká zůstanou velká), druhý převede všechna písmena na kapitálky.</p>
 
 
 <h2 id="font-variant-caps">Pokročilé: font-variant-caps</h2>
 
-<p>CSS nabízí i detailnější vlastnost <code>font-variant-caps</code> s více hodnotami:</p>
+<p>CSS nabízí i detailnější vlastnost <code>font-variant-caps</code> s více hodnotami:</p>
 
 <pre><code>font-variant-caps: small-caps;      /* malá → kapitálky */
 font-variant-caps: all-small-caps;   /* vše → kapitálky */
 font-variant-caps: petite-caps;      /* menší kapitálky */
 font-variant-caps: unicase;          /* mix versálek a kapitálek */</code></pre>
 
-<p>Tyto hodnoty fungují správně pouze u fontů, které obsahují skutečné kapitálkové glyfy (OpenType feature <code>smcp</code>). Pokud font kapitálky nemá, prohlížeč je simuluje zmenšením versálek – výsledek bývá visuálně méně kvalitní.</p>
+<p>Tyto hodnoty fungují správně pouze u fontů, které obsahují skutečné kapitálkové glyfy (OpenType feature <code>smcp</code>). Pokud font kapitálky nemá, prohlížeč je simuluje zmenšením versálek – výsledek bývá visuálně méně kvalitní.</p>
 
 
 <h2 id="pouziti">Kdy kapitálky použít</h2>
 
 <ul>
-  <li><b>Jména autorů</b> – v bibliografiích a citacích</li>
-  <li><b>Zkratky</b> – <span style="font-variant:small-caps">html</span>, <span style="font-variant:small-caps">css</span>, <span style="font-variant:small-caps">api</span> v běžném textu</li>
-  <li><b>Nadpisy a podnadpisy</b> – elegantní alternativa k versálkám</li>
+  <li><b>Jména autorů</b> – v bibliografiích a citacích</li>
+  <li><b>Zkratky</b> – <span style="font-variant:small-caps">html</span>, <span style="font-variant:small-caps">css</span>, <span style="font-variant:small-caps">api</span> v běžném textu</li>
+  <li><b>Nadpisy a podnadpisy</b> – elegantní alternativa k versálkám</li>
   <li><b>Právní dokumenty</b> – zvýraznění klíčových pojmů</li>
 </ul>

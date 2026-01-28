@@ -9,11 +9,11 @@ tags: ["hotova-reseni", "produktivita"]
 format: "html"
 ---
 
-<p>QR code (zkratka z <i>Quick Response Code</i>) se používá hlavně pro <b>mobilní zařízení</b>. Jedná se o způsob, jak do grafické podoby uložit menší množství dat. Vzniklý obrázek potom člověk vyfotí fotoaparátem svého mobilního zařízení a speciální aplikací z obrázku získá potřebná strojově čitelná data.</p>
+<p>QR code (zkratka z <i>Quick Response Code</i>) se používá hlavně pro <b>mobilní zařízení</b>. Jedná se o způsob, jak do grafické podoby uložit menší množství dat. Vzniklý obrázek potom člověk vyfotí fotoaparátem svého mobilního zařízení a speciální aplikací z obrázku získá potřebná strojově čitelná data.</p>
 
-<p>Hlavní výhoda QR kódu je <b>pohodlné a rychlé získání</b> textových dat. Místo pomalého opisování textu na klávesnici dokáže v jednotkách sekund obsah získat a rozluštit software.</p>
+<p>Hlavní výhoda QR kódu je <b>pohodlné a rychlé získání</b> textových dat. Místo pomalého opisování textu na klávesnici dokáže v jednotkách sekund obsah získat a rozluštit software.</p>
 
-<p>Dnes většina chytrých telefonů umí QR kódy číst přímo ve vestavěné aplikaci Fotoaparát (iOS i Android), bez nutnosti instalovat speciální čtečku.</p>
+<p>Dnes většina chytrých telefonů umí QR kódy číst přímo ve vestavěné aplikaci Fotoaparát (iOS i Android), bez nutnosti instalovat speciální čtečku.</p>
 
 
 <div class="live">
@@ -39,7 +39,7 @@ format: "html"
 
 <h2 id="vytvor">Vytvoření QR code</h2>
   
-  <p>Vygenerujte si potřebný QR kód. Zadaná data se <b>nikam nepřenášejí</b> a neukládají. Kód se sestavuje přímo v prohlížeči.</p>
+  <p>Vygenerujte si potřebný QR kód. Zadaná data se <b>nikam nepřenášejí</b> a neukládají. Kód se sestavuje přímo v prohlížeči.</p>
 
 <p><b>Typ kódu</b>:</p>
   
@@ -143,7 +143,7 @@ format: "html"
 	    <div data-type="vcard">
 	        <table>
 	            <tr>
-	                <th><label for="vcard-name">Jméno a příjmení</label></th>
+	                <th><label for="vcard-name">Jméno a příjmení</label></th>
 	                <td><input type="text" name="vcard-name" id="vcard-name" placeholder="Jméno Příjmení"></td>
 	            </tr>
 	            <tr>
@@ -425,14 +425,14 @@ format: "html"
 
 
 
-<p>Na příkladu jednoduchého QR kódu stojí za povšimnutí velké čtverce ve třech rozích, které slouží jako <b>orientační body</b> pro snímací aplikaci. Zbytek jsou už potom <b>data</b>. Díky třem „kontrolním“ čtvercům v rozích jde určit orientaci kódu, takže není problém kód fotit klidně vzhůru nohama.</p>
+<p>Na příkladu jednoduchého QR kódu stojí za povšimnutí velké čtverce ve třech rozích, které slouží jako <b>orientační body</b> pro snímací aplikaci. Zbytek jsou už potom <b>data</b>. Díky třem „kontrolním“ čtvercům v rozích jde určit orientaci kódu, takže není problém kód fotit klidně vzhůru nohama.</p>
 
-<p>QR kód je také i tolerantní k chybám, může být v různých barvách nebo barevně <b>invertován</b>. I část výsledného obrázku může fungovat, což přináší možnost do obrázku například umístit <b>logo</b> nebo <b>lidsky čitelný text</b>.</p>
+<p>QR kód je také i tolerantní k chybám, může být v různých barvách nebo barevně <b>invertován</b>. I část výsledného obrázku může fungovat, což přináší možnost do obrázku například umístit <b>logo</b> nebo <b>lidsky čitelný text</b>.</p>
 
 <figure>
-  <img src="/files/qr/qr-logo.png" alt="QR kód s logem">
+  <img src="/files/qr/qr-logo.png" alt="QR kód s logem">
   <figcaption>
-    <p>Příklad invertovaného QR kódu s umístěním loga, který je stále funkční</p>
+    <p>Příklad invertovaného QR kódu s umístěním loga, který je stále funkční</p>
   </figcaption>
 </figure>
 
@@ -452,16 +452,16 @@ format: "html"
 
 <div class="external-content">
   <ul>
-    <li>Wikipedie: <a href="http://cs.wikipedia.org/wiki/QR_kód">QR kód</a> – obsahuje i detailní popis, jakým způsobem jsou data v obrázku uložena</li>
+    <li>Wikipedie: <a href="http://cs.wikipedia.org/wiki/QR_kód">QR kód</a> – obsahuje i detailní popis, jakým způsobem jsou data v obrázku uložena</li>
   </ul>
 </div>
 
 
 <h2 id="pocet-znaku">Počet znaků</h2>
 
-<p>Pokud se do obrázku zakóduje víc dat (delší text), bude jeho struktura <b>hustší</b>, což ztíží i převod obrázku na data.</p>
+<p>Pokud se do obrázku zakóduje víc dat (delší text), bude jeho struktura <b>hustší</b>, což ztíží i převod obrázku na data.</p>
 
-<p>Některé starší čtečky mohou mít s delšími kódy (například nad <b>300 znaků</b>) problémy. Většinou není nutné do kódu zapsat celé romány, ale používají se spíš odkazy na <b>webovou stránku</b>, kde je potom více obsahu.</p>
+<p>Některé starší čtečky mohou mít s delšími kódy (například nad <b>300 znaků</b>) problémy. Většinou není nutné do kódu zapsat celé romány, ale používají se spíš odkazy na <b>webovou stránku</b>, kde je potom více obsahu.</p>
 
 <h3 id="max">Maximální počet znaků</h3>
 
@@ -476,7 +476,7 @@ format: "html"
       <td>7 089</td>
     </tr>
     <tr>
-      <td>písmena a číslice</td>
+      <td>písmena a číslice</td>
       <td>4 296</td>
     </tr>
     <tr>
@@ -490,7 +490,7 @@ format: "html"
   </tbody>
 </table>
 
-<p>Jiný QR kód s delším textem (cca 120 znaků).</p>
+<p>Jiný QR kód s delším textem (cca 120 znaků).</p>
 
 <p><img src="/files/qr/qrcode-dlouhy.png" alt="Příklad QR kódu" class="border"></p>
 
@@ -537,7 +537,7 @@ format: "html"
 
 <p>Samotný e‑mail je možné rozpoznat automaticky.</p>
 
-<p>Pro vytvoření zprávy v e‑mailovém klientu použijte <code>mailto:</code> s parametry:</p>
+<p>Pro vytvoření zprávy v e‑mailovém klientu použijte <code>mailto:</code> s parametry:</p>
 
 <pre><code>mailto:mail@example.com?subject=P%C5%99edm%C4%9Bt&amp;body=Text</code></pre>
 
@@ -554,7 +554,7 @@ format: "html"
 
 <h3 id="sms">SMS</h3>
 
-<p>Pro připravení SMS zprávy je nejrozšířenější tvar <code>SMSTO:</code> nebo schéma <code>sms:</code> s parametry. Doporučení: používejte <code>sms:</code>.</p>
+<p>Pro připravení SMS zprávy je nejrozšířenější tvar <code>SMSTO:</code> nebo schéma <code>sms:</code> s parametry. Doporučení: používejte <code>sms:</code>.</p>
 
 <pre><code>sms:+420123456789?body=Text</code></pre>
 
@@ -579,7 +579,7 @@ END:VEVENT</code></pre>
 
 <h3 id="geo">Geolokace</h3>
 
-<p>Místo na mapě. Uvádí se v pořadí zeměpisná šířka, zeměpisná délka a volitelně nadmořská výška.</p>
+<p>Místo na mapě. Uvádí se v pořadí zeměpisná šířka, zeměpisná délka a volitelně nadmořská výška.</p>
 
 <pre><code>geo:50.0892069,14.4032178,400</code></pre>
 
@@ -588,7 +588,7 @@ END:VEVENT</code></pre>
 
 <ol>
   <li>
-    <p>Stačí kliknout pravým tlačítkem na místo a vybrat <i>Co je zde</i>:</p>
+    <p>Stačí kliknout pravým tlačítkem na místo a vybrat <i>Co je zde</i>:</p>
     
     <p><img src="/files/qr/mapy.png" alt="Co je zde?" class="border"></p>
     
@@ -624,9 +624,9 @@ END:VEVENT</code></pre>
 
 
 
-<h3 id="wifi">Připojení k Wi-Fi</h3>
+<h3 id="wifi">Připojení k Wi-Fi</h3>
 
-<p>Do QR kódu jde zachytit i přihlášení k Wi-Fi.</p>
+<p>Do QR kódu jde zachytit i přihlášení k Wi-Fi.</p>
 
 <pre><code>WIFI:T:WPA;S:Nazev;P:heslo;H:false;;</code></pre>
 
@@ -637,7 +637,7 @@ END:VEVENT</code></pre>
 
 <p>Docela užitečná je možnost vytvořit <b>celý kontakt</b>. Dá se zadat jméno, příjmení, telefonní čísla, e-mail, adresa nebo webová stránka.</p>
 
-<p>Může se hodit takový kód vytisknout na visitku, čímž si půjde pohodlně uložit kompletní kontakt. Jelikož visitky nebývají velké, je kvůli dobré čitelnosti lepší uvést jen nejnutnější údaje (např. jen jeden telefon nebo e-mail a podobně).</p>
+<p>Může se hodit takový kód vytisknout na visitku, čímž si půjde pohodlně uložit kompletní kontakt. Jelikož visitky nebývají velké, je kvůli dobré čitelnosti lepší uvést jen nejnutnější údaje (např. jen jeden telefon nebo e-mail a podobně).</p>
 
 <p>Používá se běžný formát <b>vCard</b> (doporučeno <code>VERSION:3.0</code> nebo <code>4.0</code>):</p>
 
@@ -674,7 +674,7 @@ END:VCARD</code></pre>
 
 <h3 id="qr-platba">QR platba</h3>
 
-<p>Pro elegantní placení prostřednictvím <b>mobilní bankovní aplikace</b> je užitečné generovat QR platební kód. Člověk tak nemusí z papírové faktury opisovat číslo účtu, banky, sumu a podobně. Nebo tyto údaje kopírovat z e-mailu nebo webové stránky.</p>
+<p>Pro elegantní placení prostřednictvím <b>mobilní bankovní aplikace</b> je užitečné generovat QR platební kód. Člověk tak nemusí z papírové faktury opisovat číslo účtu, banky, sumu a podobně. Nebo tyto údaje kopírovat z e-mailu nebo webové stránky.</p>
 
 <p>Kód pro platby může vypadat následovně:</p>
 
@@ -682,24 +682,24 @@ END:VCARD</code></pre>
 
 
 <ul>
-  <li><code>ACC</code> – číslo účtu v <a href="http://cs.wikipedia.org/wiki/International_Bank_Account_Number">IBAN</a> formátu (pokud ho neznáte, jde spočítat)</li>
-  <li><code>AM</code> – částka k platbě</li>
+  <li><code>ACC</code> – číslo účtu v <a href="http://cs.wikipedia.org/wiki/International_Bank_Account_Number">IBAN</a> formátu (pokud ho neznáte, jde spočítat)</li>
+  <li><code>AM</code> – částka k platbě</li>
   <li><code>CC</code> – měna</li>
   <li><code>DT</code> – datum splatnosti</li>
   <li><code>MSG</code> – zpráva pro příjemce</li>
-  <li><code>X-KS</code> – konstantní, <code>X-SS</code> – specifický a <code>X-VS</code> – variabilní symbol</li>
+  <li><code>X-KS</code> – konstantní, <code>X-SS</code> – specifický a <code>X-VS</code> – variabilní symbol</li>
 </ul>
 
 
 
 <div class="external-content"><ul>
-  <li><a href="https://qr-platba.cz/">QR platba</a> – více informací o placení pomocí QR kódu</li>
+  <li><a href="https://qr-platba.cz/">QR platba</a> – více informací o placení pomocí QR kódu</li>
 </ul></div>
 
 
 <h3 id="bitcoin">Bitcoin adresa</h3>
 
-<p>Pro zjednodušení platby v Bitcoinech používejte URI schéma <code>bitcoin:</code> s parametry:</p>
+<p>Pro zjednodušení platby v Bitcoinech používejte URI schéma <code>bitcoin:</code> s parametry:</p>
 
 <pre><code>bitcoin:{adresa}?amount={castka}&amp;label={zprava}</code></pre>
 
@@ -710,20 +710,20 @@ END:VCARD</code></pre>
 
 <h2 id="aplikace">Aplikace</h2>
 
-<p>Pro čtení QR kódu je nutná nějaká aplikace, co z obrázku vydoluje text.</p>
+<p>Pro čtení QR kódu je nutná nějaká aplikace, co z obrázku vydoluje text.</p>
 
 <p>Pro luštění kódu na počítači bez používání webkamery je ideální nástroj:</p>
 
 <div class="external-content">
   <ul>
-    <li><a href="https://zxing.org/w/decode.jspx">ZXing Decoder</a> – dekódování QR kódu z URL nebo nahraného obrázku v prohlížeči</li>
+    <li><a href="https://zxing.org/w/decode.jspx">ZXing Decoder</a> – dekódování QR kódu z URL nebo nahraného obrázku v prohlížeči</li>
   </ul>
 </div>
 
 
 <h3 id="mobilni">Mobilní aplikace</h3>
 
-<p>Na mobilních telefonech dnes QR kód zpravidla naskenujete přímo vestavěnou aplikací Fotoaparát (iOS i Android). Pro pokročilejší funkce je k disposici také Google Lens nebo řada QR čteček v obchodech s aplikacemi.</p>
+<p>Na mobilních telefonech dnes QR kód zpravidla naskenujete přímo vestavěnou aplikací Fotoaparát (iOS i Android). Pro pokročilejší funkce je k disposici také Google Lens nebo řada QR čteček v obchodech s aplikacemi.</p>
 
 
 <h2 id="generovani">PHP, JS, API generátory</h2>
@@ -732,23 +732,23 @@ END:VCARD</code></pre>
 
 
 
-<h3 id="js">Generování QR v JavaScriptu</h3>
+<h3 id="js">Generování QR v JavaScriptu</h3>
 
-<p>Generovat QR kód v JavaScriptu je výhodné – není nutné čekat na odpověď serveru a data se neposílají třetí straně. Výsledek lze vykreslit do <a href="/canvas"><code>&lt;canvas></code></a> nebo jako SVG.</p>
+<p>Generovat QR kód v JavaScriptu je výhodné – není nutné čekat na odpověď serveru a data se neposílají třetí straně. Výsledek lze vykreslit do <a href="/canvas"><code>&lt;canvas></code></a> nebo jako SVG.</p>
 
 <div class="external-content">
   <ul>
-    <li><a href="https://github.com/soldair/node-qrcode">qrcode</a> – spolehlivá JS/TS knihovna (Node i prohlížeč), podporuje UTF‑8</li>
-    <li><a href="https://github.com/kozakdenys/qr-code-styling">qr-code-styling</a> – generování stylovaných QR kódů s logem</li>
+    <li><a href="https://github.com/soldair/node-qrcode">qrcode</a> – spolehlivá JS/TS knihovna (Node i prohlížeč), podporuje UTF‑8</li>
+    <li><a href="https://github.com/kozakdenys/qr-code-styling">qr-code-styling</a> – generování stylovaných QR kódů s logem</li>
   </ul>
 </div>
 
 
 <h3 id="php">PHP generátor QR kódu</h3>
 
-<p>Pro PHP je dnes nejpoužívanější a aktivně udržovaná knihovna <a href="https://github.com/endroid/qr-code">endroid/qr-code</a> (composer balíček <code>endroid/qr-code</code>). Alternativou je <a href="https://github.com/chillerlan/php-qrcode">chillerlan/php-qrcode</a>.</p>
+<p>Pro PHP je dnes nejpoužívanější a aktivně udržovaná knihovna <a href="https://github.com/endroid/qr-code">endroid/qr-code</a> (composer balíček <code>endroid/qr-code</code>). Alternativou je <a href="https://github.com/chillerlan/php-qrcode">chillerlan/php-qrcode</a>.</p>
 
-<p><b>Poznámka</b>: po stažení archivu a spuštění na <a href="/localhost">localhostu</a> nemusí u dema čestina správně fungovat kvůli absenci HTML <code>&lt;meta></code> značky:</p>
+<p><b>Poznámka</b>: po stažení archivu a spuštění na <a href="/localhost">localhostu</a> nemusí u dema čestina správně fungovat kvůli absenci HTML <code>&lt;meta></code> značky:</p>
 
 <pre><code>&lt;meta charset="utf-8"></code></pre>
 

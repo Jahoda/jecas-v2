@@ -8,7 +8,7 @@ tags: ["pisma", "typografie"]
 format: "html"
 ---
 
-<p>Při výběru fontu pro český text je klíčová <b>plná podpora diakritiky</b> – háčků a čárek. Ne každý font obsahuje znaky jako ž, š, č, ř, ď, ť, ň, ú, ů nebo ě. Tady je přehled kvalitních písem, která čeština zvládají.</p>
+<p>Při výběru fontu pro český text je klíčová <b>plná podpora diakritiky</b> – háčků a čárek. Ne každý font obsahuje znaky jako ž, š, č, ř, ď, ť, ň, ú, ů nebo ě. Tady je přehled kvalitních písem, která čeština zvládají.</p>
 
 
 <h2 id="google-fonts">České fonty na Google Fonts</h2>
@@ -16,23 +16,23 @@ format: "html"
 <p><a href="https://fonts.google.com/?subset=latin-ext">Google Fonts</a> je největší zdroj bezplatných webových fontů. Pro české znaky je potřeba filtrovat podle sady <b>Latin Extended</b>. Mezi nejoblíbenější patří:</p>
 
 <ul>
-  <li><b>Inter</b> – moderní bezpatkový font, výborný pro UI a weby</li>
+  <li><b>Inter</b> – moderní bezpatkový font, výborný pro UI a weby</li>
   <li><b>Roboto</b> – výchozí font Androidu, universální bezpatkový</li>
-  <li><b>Open Sans</b> – čitelný a neutrální, vhodný pro delší texty</li>
-  <li><b>Lato</b> – polský font s plnou podporou středoevropských znaků</li>
+  <li><b>Open Sans</b> – čitelný a neutrální, vhodný pro delší texty</li>
+  <li><b>Lato</b> – polský font s plnou podporou středoevropských znaků</li>
   <li><b>Nunito</b> – zaoblený bezpatkový font, přátelský vzhled</li>
   <li><b>Source Sans 3</b> – od Adobe, profesionální bezpatkový</li>
   <li><b>Playfair Display</b> – elegantní patkový font pro nadpisy</li>
   <li><b>Merriweather</b> – patkový font optimalisovaný pro obrazovky</li>
-  <li><b>Fira Sans</b> – od Mozilly, moderní a čitelný</li>
+  <li><b>Fira Sans</b> – od Mozilly, moderní a čitelný</li>
 </ul>
 
-<p>Při připojování z Google Fonts stačí přidat parametr <code>&amp;subset=latin-ext</code> nebo ho vybrat v rozhraní:</p>
+<p>Při připojování z Google Fonts stačí přidat parametr <code>&amp;subset=latin-ext</code> nebo ho vybrat v rozhraní:</p>
 
 <pre><code>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;subset=latin-ext&amp;display=swap" rel="stylesheet"&gt;</code></pre>
 
 
-<h2 id="ceske-projekty">Česká a slovenská písma</h2>
+<h2 id="ceske-projekty">Česká a slovenská písma</h2>
 
 <p>Existuje několik fontů vytvořených přímo českými nebo slovenskými designéry:</p>
 
@@ -43,9 +43,9 @@ format: "html"
 </ul>
 
 
-<h2 id="systemove">Systémové fonty s češtinou</h2>
+<h2 id="systemove">Systémové fonty s češtinou</h2>
 
-<p>Všechny moderní operační systémy obsahují fonty s českou diakritikou. Pokud nepotřebujete vlastní font, system font stack je nejrychlejší volba:</p>
+<p>Všechny moderní operační systémy obsahují fonty s českou diakritikou. Pokud nepotřebujete vlastní font, system font stack je nejrychlejší volba:</p>
 
 <pre><code>font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;</code></pre>
 
@@ -60,7 +60,7 @@ format: "html"
 
 <h2 id="psaci-pismo">České psací písmo (script fonty)</h2>
 
-<p>Pro dekorativní účely se hodí psací fonty s českou diakritikou. Při výběru je nutné ověřit, že font obsahuje znaky ř, ž, š, č, ď, ť, ň, ú, ů, ě, í, á, é, ó, ý:</p>
+<p>Pro dekorativní účely se hodí psací fonty s českou diakritikou. Při výběru je nutné ověřit, že font obsahuje znaky ř, ž, š, č, ď, ť, ň, ú, ů, ě, í, á, é, ó, ý:</p>
 
 <ul>
   <li><b>Dancing Script</b> – kaligrafické psací písmo (Google Fonts)</li>
@@ -89,4 +89,4 @@ format: "html"
   font-display: swap;
 }</code></pre>
 
-<p>Hodnota <code>font-display: swap</code> zajistí, že se text zobrazí ihned systémovým fontem a po načtení se přepne na vlastní.</p>
+<p>Hodnota <code>font-display: swap</code> zajistí, že se text zobrazí ihned systémovým fontem a po načtení se přepne na vlastní.</p>
