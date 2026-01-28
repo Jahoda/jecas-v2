@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { supabase } from '$lib/supabase';
 	import type { DiscussionComment } from './types';
 	import DiscussionCommentItem from './DiscussionCommentItem.svelte';
 	import DiscussionForm from './DiscussionForm.svelte';
@@ -36,8 +37,13 @@
 
 	async function fetchComments() {
 		try {
-			const res = await fetch(`/api/comments/${slug}`);
-			const { comments: data } = await res.json();
+			const { data } = await supabase
+				.from('comments')
+				.select('id, slug, parent_id, author_name, message, is_approved, created_at, updated_at')
+				.eq('slug', slug)
+				.eq('is_approved', true)
+				.order('created_at', { ascending: true });
+
 			if (data) {
 				comments = buildTree(data as DiscussionComment[]);
 			}

@@ -3,25 +3,6 @@ import type { RequestHandler } from './$types';
 import { supabase } from '$lib/server/supabase';
 import { randomBytes } from 'crypto';
 
-// GET - Načte schválené komentáře pro článek
-export const GET: RequestHandler = async ({ params }) => {
-	const { slug } = params;
-
-	const { data, error } = await supabase
-		.from('comments')
-		.select('id, slug, parent_id, author_name, message, is_approved, created_at, updated_at')
-		.eq('slug', slug)
-		.eq('is_approved', true)
-		.order('created_at', { ascending: true });
-
-	if (error) {
-		console.error('Error fetching comments:', error);
-		return json({ comments: [] });
-	}
-
-	return json({ comments: data ?? [] });
-};
-
 // Rate limit: IP -> timestamp posledního komentáře
 const rateLimitMap = new Map<string, number>();
 const RATE_LIMIT_MS = 30_000;
