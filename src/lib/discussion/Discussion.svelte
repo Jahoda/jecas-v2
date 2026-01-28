@@ -73,7 +73,24 @@
 
 	function handleSubmitted(comment: DiscussionComment, editToken: string) {
 		saveToken(comment.id, editToken);
-		// Komentář čeká na schválení, nepřidáváme ho do stromu
+		// Add auto-approved comments to the tree immediately
+		if (comment.is_approved) {
+			if (comment.parent_id) {
+				// Add as reply
+				function addReply(list: DiscussionComment[]): DiscussionComment[] {
+					return list.map((c) => {
+						if (c.id === comment.parent_id) {
+							return { ...c, replies: [...(c.replies || []), { ...comment, replies: [] }] };
+						}
+						return { ...c, replies: addReply(c.replies || []) };
+					});
+				}
+				comments = addReply(comments);
+			} else {
+				// Add as root comment
+				comments = [...comments, { ...comment, replies: [] }];
+			}
+		}
 		replyTo = null;
 	}
 
@@ -105,7 +122,7 @@
 	);
 </script>
 
-<div class="mt-8">
+<div id="{slug}-discussion" class="mt-8 scroll-mt-4">
 	<h2 class="mb-6 text-xl font-bold dark:text-white">
 		Diskuse {totalCount > 0 ? `(${totalCount})` : ''}
 	</h2>
@@ -143,9 +160,6 @@
 			</p>
 		{/if}
 
-		<div class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800/50">
-			<h3 class="mb-3 text-sm font-medium dark:text-white">Napsat komentář</h3>
-			<DiscussionForm {slug} onSubmitted={handleSubmitted} />
-		</div>
+		<DiscussionForm {slug} onSubmitted={handleSubmitted} />
 	{/if}
 </div>

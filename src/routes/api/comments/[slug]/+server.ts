@@ -53,16 +53,27 @@ export const POST: RequestHandler = async ({ params, request, getClientAddress }
 		}
 
 		const edit_token = randomBytes(32).toString('hex');
+		const trimmedName = author_name.trim();
+
+		// Check if user has existing approved comment (trusted user)
+		const { data: existingApproved } = await supabase
+			.from('comments')
+			.select('id')
+			.ilike('author_name', trimmedName)
+			.eq('is_approved', true)
+			.limit(1);
+
+		const autoApprove = existingApproved && existingApproved.length > 0;
 
 		const { data, error } = await supabase
 			.from('comments')
 			.insert({
 				slug,
 				parent_id: parent_id || null,
-				author_name: author_name.trim(),
-				author_email: author_email?.trim() || null,
+				author_name: trimmedName,
 				message: message.trim(),
-				edit_token
+				edit_token,
+				is_approved: autoApprove
 			})
 			.select('id, slug, parent_id, author_name, message, is_approved, created_at, updated_at')
 			.single();
@@ -79,7 +90,7 @@ export const POST: RequestHandler = async ({ params, request, getClientAddress }
 
 		return json({
 			success: true,
-			message: 'Komentář byl odeslán ke schválení',
+			auto_approved: autoApprove,
 			comment: data,
 			edit_token
 		});

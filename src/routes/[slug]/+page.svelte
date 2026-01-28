@@ -110,6 +110,7 @@
 		tags={data.tags}
 		noImage={Boolean(data.tag)}
 		wordCount={'word_count' in post ? post.word_count : 0}
+		showCommentCount={!data.tag}
 	/>
 {/if}
 <Container verticalSpace>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { DiscussionComment } from './types';
 
 	interface Props {
@@ -11,12 +12,22 @@
 	let { slug, parentId = null, onSubmitted, onCancel }: Props = $props();
 
 	let authorName = $state('');
-	let authorEmail = $state('');
 	let message = $state('');
 	let honeypot = $state('');
 	let submitting = $state(false);
 	let error = $state('');
 	let success = $state('');
+
+	onMount(() => {
+		const saved = localStorage.getItem('comment_author');
+		if (saved) authorName = saved;
+	});
+
+	function saveAuthor() {
+		if (authorName.trim()) {
+			localStorage.setItem('comment_author', authorName.trim());
+		}
+	}
 
 	async function handleSubmit(e: Event) {
 		e.preventDefault();
@@ -31,7 +42,6 @@
 				body: JSON.stringify({
 					parent_id: parentId,
 					author_name: authorName,
-					author_email: authorEmail || undefined,
 					message,
 					honeypot
 				})
@@ -39,7 +49,10 @@
 			const data = await res.json();
 
 			if (data.success) {
-				success = data.message;
+				saveAuthor();
+				success = data.auto_approved
+					? 'Komentář byl přidán.'
+					: 'Komentář byl odeslán ke schválení.';
 				if (data.comment && data.edit_token) {
 					onSubmitted(data.comment, data.edit_token);
 				}
@@ -56,55 +69,46 @@
 </script>
 
 <form onsubmit={handleSubmit} class="flex flex-col gap-3">
-	<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
-		<div>
-			<label for="comment-name" class="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
-				Jméno <span class="text-red-500">*</span>
-			</label>
-			<input
-				id="comment-name"
-				type="text"
-				bind:value={authorName}
-				required
-				minlength="2"
-				maxlength="100"
-				placeholder="Vaše jméno"
-				class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-			/>
-		</div>
-		<div>
-			<label for="comment-email" class="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
-				E-mail <span class="text-xs text-slate-400">(volitelný)</span>
-			</label>
-			<input
-				id="comment-email"
-				type="email"
-				bind:value={authorEmail}
-				placeholder="Pro avatar"
-				class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-			/>
-		</div>
-	</div>
-
-	<!-- Honeypot - skryté pole proti botům -->
-	<div class="absolute -left-[9999px]" aria-hidden="true">
-		<input type="text" bind:value={honeypot} tabindex="-1" autocomplete="off" />
-	</div>
-
-	<div>
-		<label for="comment-message" class="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
-			Komentář <span class="text-red-500">*</span>
-		</label>
-		<textarea
-			id="comment-message"
+	<div class="flex gap-3">
+		<input
+			type="text"
+			bind:value={authorName}
+			required
+			minlength="2"
+			maxlength="100"
+			placeholder="Jméno"
+			class="w-32 flex-shrink-0 rounded-md border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+		/>
+		<input
+			type="text"
 			bind:value={message}
 			required
 			minlength="3"
 			maxlength="5000"
-			rows="4"
 			placeholder="Napište komentář..."
-			class="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-		></textarea>
+			class="min-w-0 flex-1 rounded-md border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+		/>
+		<button
+			type="submit"
+			disabled={submitting}
+			class="flex-shrink-0 rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+		>
+			{submitting ? '...' : parentId ? 'Odpovědět' : 'Odeslat'}
+		</button>
+		{#if onCancel}
+			<button
+				type="button"
+				onclick={onCancel}
+				class="text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400"
+			>
+				×
+			</button>
+		{/if}
+	</div>
+
+	<!-- Honeypot -->
+	<div class="absolute -left-[9999px]" aria-hidden="true">
+		<input type="text" bind:value={honeypot} tabindex="-1" autocomplete="off" />
 	</div>
 
 	{#if error}
@@ -113,23 +117,4 @@
 	{#if success}
 		<p class="text-sm text-green-600 dark:text-green-400">{success}</p>
 	{/if}
-
-	<div class="flex items-center gap-3">
-		<button
-			type="submit"
-			disabled={submitting}
-			class="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 disabled:opacity-50"
-		>
-			{submitting ? 'Odesílám...' : parentId ? 'Odpovědět' : 'Odeslat komentář'}
-		</button>
-		{#if onCancel}
-			<button
-				type="button"
-				onclick={onCancel}
-				class="text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400"
-			>
-				Zrušit
-			</button>
-		{/if}
-	</div>
 </form>

@@ -2,6 +2,7 @@
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import PostImage from '$lib/postImage/PostImage.svelte';
 	import ReadingTime from '$lib/readingTime/ReadingTime.svelte';
+	import CommentCount from '$lib/commentCount/CommentCount.svelte';
 	import type { Tag } from '$lib/tag/tags';
 	import Tags from '$lib/tags/Tags.svelte';
 	import { postGradient } from './postGradient';
@@ -20,6 +21,7 @@
 		isTag?: boolean;
 		wordCount?: number | null;
 		customImageUrl?: string | null;
+		showCommentCount?: boolean;
 	}
 
 	let {
@@ -34,7 +36,8 @@
 		background = null,
 		isTag = false,
 		wordCount = null,
-		customImageUrl = null
+		customImageUrl = null,
+		showCommentCount = false
 	}: Props = $props();
 
 	const imageUrl = $derived(customImageUrl || `/files/article/${href}.png`);
@@ -94,8 +97,15 @@
 					<Tags {tags} {small} />
 				{/if}
 
-				{#if wordCount}
-					<ReadingTime {wordCount} />
+				{#if wordCount || showCommentCount}
+					<div class="flex flex-wrap items-center gap-4">
+						{#if wordCount}
+							<ReadingTime {wordCount} />
+						{/if}
+						{#if showCommentCount && href}
+							<CommentCount slug={href} />
+						{/if}
+					</div>
 				{/if}
 			</div>
 		</div>

@@ -4,6 +4,7 @@
 
 	import Container from '$lib/container/Container.svelte';
 	import Logo from '$lib/logo/Logo.svelte';
+	import AdminBell from '$lib/adminBell/AdminBell.svelte';
 
 	const isHomepage = $derived($page.url.pathname === '/');
 </script>
@@ -25,6 +26,8 @@
 			<div class="flex-1"></div>
 
 			<Search />
+
+			<AdminBell />
 
 			<a
 				href="/kontakt"
