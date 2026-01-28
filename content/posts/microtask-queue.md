@@ -2,10 +2,10 @@
 title: "Microtask queue v JavaScriptu"
 headline: "Microtask queue v JavaScriptu"
 description: "Jak funguje microtask queue, event loop a v jakém pořadí se spouští asynchronní kód v JavaScriptu."
-date: "2025-12-12"
-last_modification: "2025-12-12"
+date: "2026-01-28"
+last_modification: "2026-01-28"
 status: 1
-tags: ["js", "async"]
+tags: ["js", "async", "js-udalosti", "webove-prohlizece"]
 format: "html"
 ---
 
@@ -761,15 +761,22 @@ setTimeout(() => {
 
 <h2 id="prakticke-vyuziti">Praktické využití</h2>
 
-<h3 id="aktualizace-stavu">Aktualizace stavu před renderingem</h3>
+<h3 id="aktualizace-stavu">Zajištění konzistentního stavu</h3>
 
-<p>Microtasky se hodí pro operace, které mají být provedeny před dalším renderingem stránky:</p>
+<p>Microtasky se hodí, když potřebujete provést dokončovací logiku po synchronním kódu, ale ještě před renderingem:</p>
 
-<pre><code>element.textContent = 'Načítání...';
+<pre><code>// Nastavíme více hodnot synchronně
+element.dataset.loading = 'true';
+element.textContent = '';
 
+// V microtasku zajistíme konzistentní stav
+// před tím, než prohlížeč vykreslí změny
 queueMicrotask(() => {
-  // Aktualizace dat před renderingem
-  element.textContent = nactiData();
+  const data = cache.get('key');
+  if (data) {
+    element.textContent = data;
+    element.dataset.loading = 'false';
+  }
 });
 </code></pre>
 
