@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { supabase } from '$lib/supabase';
 	import AvatarByName from '$lib/avatar/AvatarByName.svelte';
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import ShowAll from '$lib/showAll/ShowAll.svelte';
@@ -12,6 +11,7 @@
 		author_email: string | null;
 		message: string;
 		created_at: string;
+		article_title: string;
 	}
 
 	let comments = $state<LatestComment[]>([]);
@@ -19,13 +19,8 @@
 
 	async function fetchLatestComments() {
 		try {
-			const { data } = await supabase
-				.from('comments')
-				.select('id, slug, author_name, author_email, message, created_at')
-				.eq('is_approved', true)
-				.order('created_at', { ascending: false })
-				.limit(10);
-
+			const res = await fetch('/api/comments/latest');
+			const data = await res.json();
 			if (data) {
 				comments = data;
 			}
@@ -75,7 +70,7 @@
 								href="/{comment.slug}#{comment.slug}-discussion"
 								class="truncate text-blue-600 hover:underline dark:text-blue-400"
 							>
-								/{comment.slug}
+								{comment.article_title}
 							</a>
 
 							<CreatedAt date={new Date(comment.created_at)} small />
