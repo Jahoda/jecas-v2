@@ -40,7 +40,7 @@
 		error = '';
 
 		try {
-			const res = await fetch(`/api/comments/${comment.id}`, {
+			const res = await fetch(`/api/comments/id/${comment.id}`, {
 				method: 'PATCH',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ edit_token: getToken(comment.id), message: editMessage })
@@ -64,7 +64,7 @@
 		saving = true;
 
 		try {
-			const res = await fetch(`/api/comments/${comment.id}`, {
+			const res = await fetch(`/api/comments/id/${comment.id}`, {
 				method: 'DELETE',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ edit_token: getToken(comment.id) })
