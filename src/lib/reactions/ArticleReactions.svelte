@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { supabase } from '$lib/supabase';
 
 	interface Props {
 		slug: string;
@@ -36,17 +35,10 @@
 
 	async function fetchCounts() {
 		try {
-			const { data } = await supabase
-				.from('article_reactions')
-				.select('reaction')
-				.eq('slug', slug);
-
-			if (data) {
-				const c: Record<string, number> = { nice: 0, didnt_know: 0, use_it: 0 };
-				for (const row of data) {
-					c[row.reaction] = (c[row.reaction] || 0) + 1;
-				}
-				counts = c;
+			const res = await fetch(`/api/reactions/${slug}`);
+			const data = await res.json();
+			if (data.counts) {
+				counts = data.counts;
 			}
 		} catch {
 			// ignore

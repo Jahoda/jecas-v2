@@ -5,6 +5,28 @@ import { createHash } from 'crypto';
 
 const VALID_REACTIONS = ['nice', 'didnt_know', 'use_it'] as const;
 
+// GET - Načte počty reakcí pro článek
+export const GET: RequestHandler = async ({ params }) => {
+	const { slug } = params;
+
+	const { data, error } = await supabase
+		.from('article_reactions')
+		.select('reaction')
+		.eq('slug', slug);
+
+	if (error) {
+		console.error('Error fetching reactions:', error);
+		return json({ counts: { nice: 0, didnt_know: 0, use_it: 0 } });
+	}
+
+	const counts: Record<string, number> = { nice: 0, didnt_know: 0, use_it: 0 };
+	for (const row of data ?? []) {
+		counts[row.reaction] = (counts[row.reaction] || 0) + 1;
+	}
+
+	return json({ counts });
+};
+
 function hashIp(ip: string): string {
 	return createHash('sha256').update(ip + '_reaction_salt').digest('hex');
 }
