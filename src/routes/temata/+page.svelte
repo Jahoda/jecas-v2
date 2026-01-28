@@ -165,34 +165,36 @@
 </svelte:head>
 
 <Container verticalSpace>
-	<h1 class="mb-4 text-center text-3xl font-bold md:text-5xl">Témata</h1>
-	<p class="mx-auto mb-12 max-w-xl text-center text-slate-400">
-		Všechna témata na jednom místě. Klikni na téma a zobrazí se ti všechny související články.
-	</p>
+	<div class="mx-auto max-w-4xl">
+		<h1 class="mb-2 text-center text-3xl font-bold md:text-5xl">Témata</h1>
+		<p class="mb-10 text-center text-slate-400">
+			Články rozdělené podle zaměření
+		</p>
 
-	<div class="mx-auto max-w-4xl space-y-10">
-		{#each categoriesWithTags as category}
-			<section>
-				<h2 class="mb-4 text-xl font-bold text-slate-200">{category.name}</h2>
-				<div class="flex flex-wrap gap-2">
-					{#each category.tags as tag}
-						{#if tag}
+		<div class="space-y-8">
+			{#each categoriesWithTags as category}
+				<section class="rounded-2xl bg-white/5 p-6 dark:bg-white/[0.03]">
+					<h2 class="mb-4 text-lg font-bold text-white">{category.name}</h2>
+					<div class="flex flex-wrap gap-2">
+						{#each category.tags as tag}
+							{#if tag}
+								<TagBadge {tag} size="lg" showCount />
+							{/if}
+						{/each}
+					</div>
+				</section>
+			{/each}
+
+			{#if uncategorized.length > 0}
+				<section class="rounded-2xl bg-white/5 p-6 dark:bg-white/[0.03]">
+					<h2 class="mb-4 text-lg font-bold text-white">Další</h2>
+					<div class="flex flex-wrap gap-2">
+						{#each uncategorized as tag}
 							<TagBadge {tag} size="lg" showCount />
-						{/if}
-					{/each}
-				</div>
-			</section>
-		{/each}
-
-		{#if uncategorized.length > 0}
-			<section>
-				<h2 class="mb-4 text-xl font-bold text-slate-200">Další</h2>
-				<div class="flex flex-wrap gap-2">
-					{#each uncategorized as tag}
-						<TagBadge {tag} size="lg" showCount />
-					{/each}
-				</div>
-			</section>
-		{/if}
+						{/each}
+					</div>
+				</section>
+			{/if}
+		</div>
 	</div>
 </Container>

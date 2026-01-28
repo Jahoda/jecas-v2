@@ -36,6 +36,8 @@
 				<a rel="nofollow" href="/kontakt" class="underline hover:no-underline">kontakt</a>
 				<br />
 				<a href="/archiv" class="underline hover:no-underline">Seznam všech článků</a>
+				·
+				<a href="/temata" class="underline hover:no-underline">Témata</a>
 				<br />
 				2013–{new Date().getFullYear()}
 			</p>
