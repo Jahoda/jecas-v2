@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import AvatarByName from '$lib/avatar/AvatarByName.svelte';
 	import CreatedAt from '$lib/date/CreatedAt.svelte';
 	import ShowAll from '$lib/showAll/ShowAll.svelte';
@@ -14,35 +13,14 @@
 		article_title: string;
 	}
 
-	let comments = $state<LatestComment[]>([]);
-	let loading = $state(true);
-
-	async function fetchLatestComments() {
-		try {
-			const res = await fetch('/api/comments/latest');
-			const data = await res.json();
-			if (data) {
-				comments = data;
-			}
-		} catch {
-			// tiché selhání
-		} finally {
-			loading = false;
-		}
+	interface Props {
+		comments: LatestComment[];
 	}
 
-	onMount(() => {
-		fetchLatestComments();
-	});
+	let { comments }: Props = $props();
 </script>
 
-{#if loading}
-	<div class="grid gap-4">
-		<div class="h-20 animate-pulse rounded bg-gray-100 dark:bg-slate-800"></div>
-		<div class="h-20 animate-pulse rounded bg-gray-100 dark:bg-slate-800"></div>
-		<div class="h-20 animate-pulse rounded bg-gray-100 dark:bg-slate-800"></div>
-	</div>
-{:else if comments.length > 0}
+{#if comments.length > 0}
 	<div class="grid gap-4">
 		{#each comments as comment (comment.id)}
 			<div class="flex gap-4 text-sm">
