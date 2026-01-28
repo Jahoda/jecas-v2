@@ -4,6 +4,7 @@
 	import PostContent from '$lib/post/PostContent.svelte';
 	import PostList from '$lib/post/PostList.svelte';
 	import Discussion from '$lib/discussion/Discussion.svelte';
+	import ArticleReactions from '$lib/reactions/ArticleReactions.svelte';
 	import PostToc from '$lib/toc/PostToc.svelte';
 	import PostNavigation from '$lib/postNavigation/PostNavigation.svelte';
 	import type { PageData } from './$types';
@@ -136,6 +137,7 @@
 					<PostNavigation prev={data.prevNextPosts.prev} next={data.prevNextPosts.next} />
 				{/if}
 				{#if post}
+					<ArticleReactions slug={post.url_slug} />
 					<Discussion slug={post.url_slug} />
 				{/if}
 			</div>
