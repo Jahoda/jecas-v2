@@ -1,7 +1,7 @@
 ---
-title: "CSS 3 selektory"
-headline: "Seznam všech CSS 3 selektorů"
-description: "V CSS 3 je spousta selektorů, které s postupným mizením starších prohlížečů může dávat smysl znát."
+title: "CSS selektory – kompletní přehled"
+headline: "CSS selektory – kompletní přehled"
+description: "Seznam všech CSS selektorů s příklady: třídy, ID, pseudotřídy (:hover, :nth-child), pseudoelementy (::before), atributové a kombinátory."
 date: "2013-05-18"
 last_modification: "2013-05-18"
 status: 1
