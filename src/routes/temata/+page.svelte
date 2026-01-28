@@ -128,9 +128,7 @@
 <Container verticalSpace>
 	<div class="mx-auto max-w-4xl">
 		<h1 class="mb-2 text-center text-3xl font-bold md:text-5xl">Témata</h1>
-		<p class="mb-10 text-center text-slate-400">
-			Články rozdělené podle zaměření
-		</p>
+		<p class="mb-10 text-center text-slate-400">Články rozdělené podle zaměření</p>
 
 		<div class="space-y-6">
 			{#each categoriesWithTags as category}
