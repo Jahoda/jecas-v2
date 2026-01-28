@@ -2,9 +2,9 @@
 CREATE TABLE IF NOT EXISTS comment_likes (
     id BIGSERIAL PRIMARY KEY,
     comment_id BIGINT NOT NULL REFERENCES comments(id) ON DELETE CASCADE,
-    ip_hash VARCHAR(64) NOT NULL,
+    ip VARCHAR(45) NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-    UNIQUE(comment_id, ip_hash)
+    UNIQUE(comment_id, ip)
 );
 
 CREATE INDEX IF NOT EXISTS idx_comment_likes_comment ON comment_likes(comment_id);
@@ -33,6 +33,6 @@ FOR DELETE
 TO anon, authenticated
 USING (true);
 
-COMMENT ON TABLE comment_likes IS 'Liky komentářů (deduplikace přes IP hash)';
+COMMENT ON TABLE comment_likes IS 'Liky komentářů (deduplikace přes IP adresu)';
 COMMENT ON COLUMN comment_likes.comment_id IS 'ID komentáře';
-COMMENT ON COLUMN comment_likes.ip_hash IS 'SHA256 hash IP adresy se solí';
+COMMENT ON COLUMN comment_likes.ip IS 'IP adresa uživatele';
