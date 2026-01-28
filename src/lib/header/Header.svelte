@@ -27,13 +27,6 @@
 			<Search />
 
 			<a
-				href="/temata"
-				class="hover:bg-blue-dark dark:hover:bg-blue-dark/30 rounded-md px-4 py-2 transition-colors max-sm:hidden"
-			>
-				Témata
-			</a>
-
-			<a
 				href="/kontakt"
 				class="hover:bg-blue-dark dark:hover:bg-blue-dark/30 rounded-md px-4 py-2 transition-colors"
 			>

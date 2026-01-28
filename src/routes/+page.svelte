@@ -74,6 +74,12 @@
 			<div class="xlx:col-span-2">
 				<div class="grid grid-cols-1 gap-8">
 					<TagCloud tags={data.tags} />
+					<a
+						href="/temata"
+						class="block rounded-xl bg-gray-50 px-4 py-3 text-center text-sm font-medium text-slate-600 shadow transition-colors hover:bg-gray-100 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-slate-600"
+					>
+						Všechna témata →
+					</a>
 					<LatestComments />
 				</div>
 			</div>
