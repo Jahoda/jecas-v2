@@ -22,7 +22,7 @@
 <Container verticalSpace>
 	<div class="mx-auto max-w-md">
 		<div class="rounded-lg bg-white p-8 shadow-lg dark:bg-slate-800">
-			<h1 class="mb-6 text-center text-2xl font-bold">Admin Login</h1>
+			<h1 class="mb-6 text-center text-2xl font-bold dark:text-white">Přihlášení</h1>
 
 			{#if form?.error}
 				<div
@@ -32,20 +32,20 @@
 				</div>
 			{/if}
 
-			<form method="POST" use:enhance>
+			<form method="POST" use:enhance class="flex flex-col gap-4">
 				<input type="hidden" name="redirect" value={redirectTo} />
 
-				<div class="mb-6">
-					<Input
-						name="password"
-						type="password"
-						label="Password"
-						placeholder="Enter admin password"
-						required
-					/>
-				</div>
+				<Input name="name" type="text" label="Jméno" placeholder="Zadejte jméno" required />
 
-				<Button type="submit" large>Login</Button>
+				<Input
+					name="password"
+					type="password"
+					label="Heslo"
+					placeholder="Zadejte heslo"
+					required
+				/>
+
+				<Button type="submit" large>Přihlásit</Button>
 			</form>
 		</div>
 	</div>

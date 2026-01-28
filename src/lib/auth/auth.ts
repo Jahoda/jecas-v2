@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-import { ADMIN_PASSWORD } from '$env/static/private';
+import { ADMIN_PASSWORD, ADMIN_NAME } from '$env/static/private';
 import type { RequestEvent } from '@sveltejs/kit';
 
 const AUTH_COOKIE_NAME = 'admin_auth';
@@ -29,6 +29,8 @@ export function requireAuth(cookies: RequestEvent['cookies'], url: URL): void {
 	}
 }
 
-export function validatePassword(password: string): boolean {
-	return password === (ADMIN_PASSWORD || 'admin123');
+export function validateCredentials(name: string, password: string): boolean {
+	const validName = name === (ADMIN_NAME || 'admin');
+	const validPassword = password === (ADMIN_PASSWORD || 'admin123');
+	return validName && validPassword;
 }
