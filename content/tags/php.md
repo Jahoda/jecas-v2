@@ -1,6 +1,6 @@
 ---
 title: "PHP"
-headline: null
+headline: "PHP – serverový programovací jazyk pro web"
 background: "#9999CC"
 color: "null"
 status: 1

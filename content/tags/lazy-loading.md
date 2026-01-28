@@ -1,11 +1,11 @@
 ---
 title: "Lazy loading"
-headline: null
+headline: "Lazy loading – odložené načítání obsahu pro rychlejší web"
 background: "#DF2824"
 color: "null"
 status: 1
 ---
 
-<p>Načítání různých věcí, až když jsou potřeba.</p>
+<p>Lazy loading je technika odloženého načítání obsahu, až když je skutečně potřeba. Aby měl návštěvník dobrý <b>dojem z rychlosti načítání</b>, jde některé části stránky načítat až později.</p>
 
-<p>Aby měl návštěvník dobrý <b>dojem z rychlosti načítání</b>, jde některé části stránky načítat až později, když to vypadá, že je uživatel bude potřebovat.</p>
+<p>Pro obrázky stačí atribut <code>loading="lazy"</code>. Pro složitější scénáře se používá Intersection Observer API, které sleduje, kdy se element dostane do viditelné oblasti.</p>

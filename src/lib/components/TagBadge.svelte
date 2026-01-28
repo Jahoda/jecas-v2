@@ -26,6 +26,10 @@
 >
 	{tag.name}
 	{#if showCount && tag.usage_count}
-		<span class="ml-1 opacity-75">({tag.usage_count})</span>
+		<span
+			class="ml-1.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-black/20 px-1.5 text-xs"
+		>
+			{tag.usage_count}
+		</span>
 	{/if}
 </a>

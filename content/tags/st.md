@@ -1,9 +1,9 @@
 ---
 title: "Sublime Text"
-headline: null
-background: "null"
+headline: "Sublime Text – rychlý kódový editor"
+background: "#FF9800"
 color: "null"
 status: 1
 ---
 
-<p>Používání a vylepšování pokročilého editoru Sublime Text.</p>
+<p>Sublime Text je rychlý a rozšiřitelný textový editor pro programátory. Články o jeho nastavení, klávesových zkratkách, pluginech a efektivním používání při tvorbě webu.</p>
