@@ -49,18 +49,23 @@
 	});
 
 	async function handleLike() {
-		if (liked || liking) return;
+		if (liking) return;
 		liking = true;
 		try {
 			const res = await fetch(`/api/comments/id/${comment.id}/like`, { method: 'POST' });
 			const data = await res.json();
 			if (data.success) {
 				likesCount = data.likes;
-				liked = true;
+				liked = data.toggled === 'on';
 				try {
 					const stored = localStorage.getItem('comment_likes');
 					const ids: number[] = stored ? JSON.parse(stored) : [];
-					ids.push(comment.id);
+					if (data.toggled === 'on') {
+						if (!ids.includes(comment.id)) ids.push(comment.id);
+					} else {
+						const idx = ids.indexOf(comment.id);
+						if (idx !== -1) ids.splice(idx, 1);
+					}
 					localStorage.setItem('comment_likes', JSON.stringify(ids));
 				} catch {
 					// ignore
@@ -192,8 +197,8 @@
 			>
 				<button
 					onclick={handleLike}
-					disabled={liked || liking}
-					class="flex items-center gap-1 rounded-md px-2 py-1 transition-colors {liked ? 'text-blue-600 dark:text-blue-400' : 'hover:bg-slate-100 hover:text-blue-600 dark:hover:bg-slate-800 dark:hover:text-blue-400'} disabled:cursor-default"
+					disabled={liking}
+					class="flex items-center gap-1 rounded-md px-2 py-1 transition-colors {liked ? 'text-blue-600 dark:text-blue-400' : 'hover:bg-slate-100 hover:text-blue-600 dark:hover:bg-slate-800 dark:hover:text-blue-400'} disabled:opacity-50"
 				>
 					<svg class="h-3.5 w-3.5" fill={liked ? 'currentColor' : 'none'} viewBox="0 0 24 24" stroke="currentColor" stroke-width={liked ? '0' : '2'}>
 						<path
