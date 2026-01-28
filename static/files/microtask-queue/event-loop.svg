@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650">
+  <defs>
+    <style>
+      @media (prefers-color-scheme: light) {
+        .bg { fill: #f8fafc; }
+        .title { fill: #0f172a; }
+        .label { fill: #1e293b; }
+        .small-text { fill: #475569; }
+        .callstack-box { fill: #f0fdf4; stroke: #22c55e; }
+        .microtask-box { fill: #eff6ff; stroke: #3b82f6; }
+        .task-box { fill: #fff7ed; stroke: #f97316; }
+        .loop-outer { fill: #fefce8; stroke: #eab308; }
+        .loop-inner { fill: #facc15; }
+        .loop-text { fill: #422006; }
+        .bottom-bar { fill: #f1f5f9; stroke: #cbd5e1; }
+      }
+      @media (prefers-color-scheme: dark) {
+        .bg { fill: #0f172a; }
+        .title { fill: #e2e8f0; }
+        .label { fill: #e2e8f0; }
+        .small-text { fill: #94a3b8; }
+        .callstack-box { fill: #14532d; stroke: #22c55e; }
+        .microtask-box { fill: #1e3a5f; stroke: #3b82f6; }
+        .task-box { fill: #431407; stroke: #f97316; }
+        .loop-outer { fill: #422006; stroke: #eab308; }
+        .loop-inner { fill: #ca8a04; }
+        .loop-text { fill: #fef9c3; }
+        .bottom-bar { fill: #1e293b; stroke: #334155; }
+      }
+
+      .title { font: bold 28px system-ui, sans-serif; }
+      .label { font: bold 18px system-ui, sans-serif; }
+      .small-text { font: 14px system-ui, sans-serif; }
+
+      .callstack-box, .microtask-box, .task-box { stroke-width: 2.5; }
+      .callstack-item { fill: #22c55e; rx: 6; }
+      .callstack-text { fill: white; font: bold 14px system-ui, sans-serif; }
+      .microtask-item { fill: #3b82f6; rx: 6; }
+      .microtask-text { fill: white; font: 13px system-ui, sans-serif; }
+      .task-item { fill: #f97316; rx: 6; }
+      .task-text { fill: white; font: 13px system-ui, sans-serif; }
+      .loop-text { font: bold 16px system-ui, sans-serif; }
+
+      .arrow-microtask { stroke: #3b82f6; stroke-width: 2.5; fill: none; }
+      .arrow-task { stroke: #f97316; stroke-width: 2.5; fill: none; }
+      .arrow-return { stroke: #22c55e; stroke-width: 2.5; fill: none; stroke-dasharray: 6,4; }
+    </style>
+
+    <marker id="arr-micro" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#3b82f6"/>
+    </marker>
+    <marker id="arr-task" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#f97316"/>
+    </marker>
+    <marker id="arr-return" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#22c55e"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="650" class="bg" rx="0"/>
+
+  <!-- Title -->
+  <text x="450" y="42" text-anchor="middle" class="title">Event Loop s Microtask Queue</text>
+
+  <!-- Call Stack -->
+  <g>
+    <rect x="50" y="75" width="220" height="200" class="callstack-box" rx="10"/>
+    <text x="160" y="105" text-anchor="middle" class="label">Call Stack</text>
+    <text x="160" y="125" text-anchor="middle" class="small-text">(Synchronn&#237; k&#243;d)</text>
+
+    <rect x="70" y="145" width="180" height="38" class="callstack-item" rx="6"/>
+    <text x="160" y="169" text-anchor="middle" class="callstack-text">main()</text>
+
+    <rect x="70" y="193" width="180" height="38" class="callstack-item" rx="6" opacity="0.55"/>
+    <text x="160" y="217" text-anchor="middle" class="callstack-text">funkce()</text>
+  </g>
+
+  <!-- Event Loop -->
+  <g>
+    <ellipse cx="450" cy="310" rx="88" ry="62" class="loop-outer" stroke-width="3"/>
+    <ellipse cx="450" cy="310" rx="72" ry="48" class="loop-inner"/>
+    <text x="450" y="305" text-anchor="middle" class="loop-text">Event</text>
+    <text x="450" y="325" text-anchor="middle" class="loop-text">Loop &#8635;</text>
+  </g>
+
+  <!-- Microtask Queue -->
+  <g>
+    <rect x="650" y="75" width="210" height="220" class="microtask-box" rx="10"/>
+    <text x="755" y="105" text-anchor="middle" class="label">Microtask Queue</text>
+    <text x="755" y="125" text-anchor="middle" class="small-text">(Vysok&#225; priorita &#9312;)</text>
+
+    <rect x="670" y="145" width="170" height="30" class="microtask-item" rx="6"/>
+    <text x="755" y="165" text-anchor="middle" class="microtask-text">Promise.then()</text>
+
+    <rect x="670" y="183" width="170" height="30" class="microtask-item" rx="6"/>
+    <text x="755" y="203" text-anchor="middle" class="microtask-text">queueMicrotask()</text>
+
+    <rect x="670" y="221" width="170" height="30" class="microtask-item" rx="6"/>
+    <text x="755" y="241" text-anchor="middle" class="microtask-text">async/await</text>
+
+    <rect x="670" y="259" width="170" height="30" class="microtask-item" rx="6" opacity="0.5"/>
+    <text x="755" y="279" text-anchor="middle" class="microtask-text">MutationObserver</text>
+  </g>
+
+  <!-- Task Queue -->
+  <g>
+    <rect x="650" y="345" width="210" height="220" class="task-box" rx="10"/>
+    <text x="755" y="375" text-anchor="middle" class="label">Task Queue</text>
+    <text x="755" y="395" text-anchor="middle" class="small-text">(Macro Task &#9313;)</text>
+
+    <rect x="670" y="415" width="170" height="30" class="task-item" rx="6"/>
+    <text x="755" y="435" text-anchor="middle" class="task-text">setTimeout()</text>
+
+    <rect x="670" y="453" width="170" height="30" class="task-item" rx="6"/>
+    <text x="755" y="473" text-anchor="middle" class="task-text">setInterval()</text>
+
+    <rect x="670" y="491" width="170" height="30" class="task-item" rx="6"/>
+    <text x="755" y="511" text-anchor="middle" class="task-text">click, scroll...</text>
+
+    <rect x="670" y="529" width="170" height="30" class="task-item" rx="6" opacity="0.5"/>
+    <text x="755" y="549" text-anchor="middle" class="task-text">I/O operace</text>
+  </g>
+
+  <!-- Arrows -->
+  <!-- Call Stack -> Event Loop -->
+  <path d="M 270 175 L 362 275" class="arrow-return" marker-end="url(#arr-return)"/>
+  <text x="300" y="215" class="small-text" fill="#22c55e">pr&#225;zdn&#253;?</text>
+
+  <!-- Event Loop -> Microtask -->
+  <path d="M 538 290 L 645 195" class="arrow-microtask" marker-end="url(#arr-micro)"/>
+  <text x="578" y="232" class="small-text" fill="#3b82f6">priorita 1</text>
+
+  <!-- Event Loop -> Task -->
+  <path d="M 538 330 L 645 450" class="arrow-task" marker-end="url(#arr-task)"/>
+  <text x="578" y="400" class="small-text" fill="#f97316">priorita 2</text>
+
+  <!-- Return arrows (dashed) -->
+  <path d="M 650 165 Q 450 110 270 150" class="arrow-return" marker-end="url(#arr-return)"/>
+  <path d="M 650 435 Q 450 500 270 245" class="arrow-return" marker-end="url(#arr-return)"/>
+
+  <!-- Bottom bar -->
+  <rect x="50" y="590" width="800" height="45" class="bottom-bar" stroke-width="2" rx="8"/>
+  <text x="450" y="610" text-anchor="middle" class="label">Po&#345;ad&#237; vykon&#225;v&#225;n&#237;:</text>
+  <text x="450" y="628" text-anchor="middle" class="small-text">
+    <tspan fill="#22c55e">&#9312; Synchronn&#237; k&#243;d</tspan>
+    <tspan> &#8594; </tspan>
+    <tspan fill="#3b82f6">&#9313; V&#353;echny microtasky</tspan>
+    <tspan> &#8594; </tspan>
+    <tspan fill="#94a3b8">&#9314; Rendering</tspan>
+    <tspan> &#8594; </tspan>
+    <tspan fill="#f97316">&#9315; Jeden task</tspan>
+  </text>
+</svg>
