@@ -1,167 +1,154 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650">
   <defs>
     <style>
-      /* Podpora dark mode */
-      @media (prefers-color-scheme: dark) {
-        .title { fill: #e0e0e0; }
-        .label { fill: #e0e0e0; }
-        .small-text { fill: #b0b0b0; }
-        .box-bg { fill: #2a2a2a; }
-        .arrow-line { stroke: #666; }
-      }
       @media (prefers-color-scheme: light) {
-        .title { fill: #1a1a1a; }
-        .label { fill: #1a1a1a; }
-        .small-text { fill: #666; }
-        .box-bg { fill: #ffffff; }
-        .arrow-line { stroke: #999; }
+        .bg { fill: #f8fafc; }
+        .title { fill: #0f172a; }
+        .label { fill: #1e293b; }
+        .small-text { fill: #475569; }
+        .callstack-box { fill: #f0fdf4; stroke: #22c55e; }
+        .microtask-box { fill: #eff6ff; stroke: #3b82f6; }
+        .task-box { fill: #fff7ed; stroke: #f97316; }
+        .loop-outer { fill: #fefce8; stroke: #eab308; }
+        .loop-inner { fill: #facc15; }
+        .loop-text { fill: #422006; }
+        .bottom-bar { fill: #f1f5f9; stroke: #cbd5e1; }
+      }
+      @media (prefers-color-scheme: dark) {
+        .bg { fill: #0f172a; }
+        .title { fill: #e2e8f0; }
+        .label { fill: #e2e8f0; }
+        .small-text { fill: #94a3b8; }
+        .callstack-box { fill: #14532d; stroke: #22c55e; }
+        .microtask-box { fill: #1e3a5f; stroke: #3b82f6; }
+        .task-box { fill: #431407; stroke: #f97316; }
+        .loop-outer { fill: #422006; stroke: #eab308; }
+        .loop-inner { fill: #ca8a04; }
+        .loop-text { fill: #fef9c3; }
+        .bottom-bar { fill: #1e293b; stroke: #334155; }
       }
 
-      /* Obecné styly */
       .title { font: bold 28px system-ui, sans-serif; }
       .label { font: bold 18px system-ui, sans-serif; }
-      .label-medium { font: 16px system-ui, sans-serif; }
       .small-text { font: 14px system-ui, sans-serif; }
-      .priority { font: bold 24px system-ui, sans-serif; fill: white; }
 
-      /* Call Stack */
-      .callstack-box { fill: #f5f5f5; stroke: #4caf50; stroke-width: 3; }
-      .callstack-item { fill: #4caf50; stroke: #2e7d32; stroke-width: 2; }
-      .callstack-text { fill: white; font: 14px system-ui, sans-serif; }
-
-      /* Microtask Queue */
-      .microtask-box { fill: #e3f2fd; stroke: #1976d2; stroke-width: 3; }
-      .microtask-item { fill: #2196f3; stroke: #1565c0; stroke-width: 2; }
+      .callstack-box, .microtask-box, .task-box { stroke-width: 2.5; }
+      .callstack-item { fill: #22c55e; rx: 6; }
+      .callstack-text { fill: white; font: bold 14px system-ui, sans-serif; }
+      .microtask-item { fill: #3b82f6; rx: 6; }
       .microtask-text { fill: white; font: 13px system-ui, sans-serif; }
-      .microtask-priority { fill: #1976d2; font: bold 20px system-ui, sans-serif; }
-
-      /* Task Queue */
-      .task-box { fill: #fff8e1; stroke: #f57c00; stroke-width: 3; }
-      .task-item { fill: #ff9800; stroke: #e65100; stroke-width: 2; }
+      .task-item { fill: #f97316; rx: 6; }
       .task-text { fill: white; font: 13px system-ui, sans-serif; }
-      .task-priority { fill: #f57c00; font: bold 20px system-ui, sans-serif; }
+      .loop-text { font: bold 16px system-ui, sans-serif; }
 
-      /* Event Loop */
-      .loop-outer { fill: #fff3e0; stroke: #f57f17; stroke-width: 3; }
-      .loop-inner { fill: #ffc107; }
-      .loop-text { fill: #1a1a1a; font: bold 16px system-ui, sans-serif; }
-
-      /* Šipky */
-      .arrow-microtask { stroke: #1976d2; stroke-width: 3; fill: none; }
-      .arrow-task { stroke: #f57c00; stroke-width: 3; fill: none; }
-      .arrow-return { stroke: #4caf50; stroke-width: 3; fill: none; stroke-dasharray: 5,5; }
+      .arrow-microtask { stroke: #3b82f6; stroke-width: 2.5; fill: none; }
+      .arrow-task { stroke: #f97316; stroke-width: 2.5; fill: none; }
+      .arrow-return { stroke: #22c55e; stroke-width: 2.5; fill: none; stroke-dasharray: 6,4; }
     </style>
 
-    <!-- Arrow markers -->
-    <marker id="arrow-micro" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" fill="#1976d2" />
+    <marker id="arr-micro" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#3b82f6"/>
     </marker>
-    <marker id="arrow-task-marker" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" fill="#f57c00" />
+    <marker id="arr-task" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#f97316"/>
     </marker>
-    <marker id="arrow-return-marker" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" fill="#4caf50" />
+    <marker id="arr-return" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#22c55e"/>
     </marker>
   </defs>
 
-  <!-- Titulek -->
-  <text x="450" y="40" text-anchor="middle" class="title">Event Loop s Microtask Queue</text>
+  <!-- Background -->
+  <rect width="900" height="650" class="bg" rx="0"/>
 
-  <!-- Call Stack (vlevo nahoře) -->
-  <g id="callstack">
-    <rect x="50" y="80" width="200" height="200" class="callstack-box" rx="8"/>
-    <text x="150" y="110" text-anchor="middle" class="label">Call Stack</text>
-    <text x="150" y="132" text-anchor="middle" class="small-text">(Zásobník volání)</text>
+  <!-- Title -->
+  <text x="450" y="42" text-anchor="middle" class="title">Event Loop s Microtask Queue</text>
 
-    <!-- Stack položky -->
-    <rect x="70" y="155" width="160" height="38" class="callstack-item" rx="4"/>
-    <text x="150" y="179" text-anchor="middle" class="callstack-text">main()</text>
+  <!-- Call Stack -->
+  <g>
+    <rect x="50" y="75" width="220" height="200" class="callstack-box" rx="10"/>
+    <text x="160" y="105" text-anchor="middle" class="label">Call Stack</text>
+    <text x="160" y="125" text-anchor="middle" class="small-text">(Synchronn&#237; k&#243;d)</text>
 
-    <rect x="70" y="200" width="160" height="38" class="callstack-item" rx="4" opacity="0.6"/>
-    <text x="150" y="224" text-anchor="middle" class="callstack-text">funkce()</text>
+    <rect x="70" y="145" width="180" height="38" class="callstack-item" rx="6"/>
+    <text x="160" y="169" text-anchor="middle" class="callstack-text">main()</text>
+
+    <rect x="70" y="193" width="180" height="38" class="callstack-item" rx="6" opacity="0.55"/>
+    <text x="160" y="217" text-anchor="middle" class="callstack-text">funkce()</text>
   </g>
 
-  <!-- Event Loop (střed) -->
-  <g id="eventloop">
-    <ellipse cx="450" cy="320" rx="90" ry="65" class="loop-outer"/>
-    <ellipse cx="450" cy="320" rx="75" ry="52" class="loop-inner"/>
-    <text x="450" y="315" text-anchor="middle" class="loop-text">Event</text>
-    <text x="450" y="335" text-anchor="middle" class="loop-text">Loop</text>
-
-    <!-- Rotační šipky kolem event loop -->
-    <path d="M 450 255 Q 520 280 520 320" class="arrow-line" fill="none" stroke-width="2" opacity="0.4"/>
-    <path d="M 520 320 Q 520 360 450 385" class="arrow-line" fill="none" stroke-width="2" opacity="0.4"/>
+  <!-- Event Loop -->
+  <g>
+    <ellipse cx="450" cy="310" rx="88" ry="62" class="loop-outer" stroke-width="3"/>
+    <ellipse cx="450" cy="310" rx="72" ry="48" class="loop-inner"/>
+    <text x="450" y="305" text-anchor="middle" class="loop-text">Event</text>
+    <text x="450" y="325" text-anchor="middle" class="loop-text">Loop &#8635;</text>
   </g>
 
-  <!-- Microtask Queue (vpravo nahoře) -->
-  <g id="microtask">
-    <rect x="650" y="80" width="200" height="220" class="microtask-box" rx="8"/>
-    <text x="750" y="110" text-anchor="middle" class="label">Microtask Queue</text>
-    <text x="750" y="132" text-anchor="middle" class="small-text">(Vysoká priorita)</text>
-    <text x="830" y="110" text-anchor="middle" class="microtask-priority">①</text>
+  <!-- Microtask Queue -->
+  <g>
+    <rect x="650" y="75" width="210" height="220" class="microtask-box" rx="10"/>
+    <text x="755" y="105" text-anchor="middle" class="label">Microtask Queue</text>
+    <text x="755" y="125" text-anchor="middle" class="small-text">(Vysok&#225; priorita &#9312;)</text>
 
-    <!-- Microtask položky -->
-    <rect x="670" y="155" width="160" height="30" class="microtask-item" rx="4"/>
-    <text x="750" y="175" text-anchor="middle" class="microtask-text">Promise.then()</text>
+    <rect x="670" y="145" width="170" height="30" class="microtask-item" rx="6"/>
+    <text x="755" y="165" text-anchor="middle" class="microtask-text">Promise.then()</text>
 
-    <rect x="670" y="192" width="160" height="30" class="microtask-item" rx="4"/>
-    <text x="750" y="212" text-anchor="middle" class="microtask-text">queueMicrotask()</text>
+    <rect x="670" y="183" width="170" height="30" class="microtask-item" rx="6"/>
+    <text x="755" y="203" text-anchor="middle" class="microtask-text">queueMicrotask()</text>
 
-    <rect x="670" y="229" width="160" height="30" class="microtask-item" rx="4"/>
-    <text x="750" y="249" text-anchor="middle" class="microtask-text">async/await</text>
+    <rect x="670" y="221" width="170" height="30" class="microtask-item" rx="6"/>
+    <text x="755" y="241" text-anchor="middle" class="microtask-text">async/await</text>
 
-    <rect x="670" y="266" width="160" height="30" class="microtask-item" rx="4" opacity="0.5"/>
-    <text x="750" y="286" text-anchor="middle" class="microtask-text">MutationObserver</text>
+    <rect x="670" y="259" width="170" height="30" class="microtask-item" rx="6" opacity="0.5"/>
+    <text x="755" y="279" text-anchor="middle" class="microtask-text">MutationObserver</text>
   </g>
 
-  <!-- Task Queue (vpravo dole) -->
-  <g id="taskqueue">
-    <rect x="650" y="350" width="200" height="220" class="task-box" rx="8"/>
-    <text x="750" y="380" text-anchor="middle" class="label">Task Queue</text>
-    <text x="750" y="402" text-anchor="middle" class="small-text">(Macro Task)</text>
-    <text x="830" y="380" text-anchor="middle" class="task-priority">②</text>
+  <!-- Task Queue -->
+  <g>
+    <rect x="650" y="345" width="210" height="220" class="task-box" rx="10"/>
+    <text x="755" y="375" text-anchor="middle" class="label">Task Queue</text>
+    <text x="755" y="395" text-anchor="middle" class="small-text">(Macro Task &#9313;)</text>
 
-    <!-- Task položky -->
-    <rect x="670" y="425" width="160" height="30" class="task-item" rx="4"/>
-    <text x="750" y="445" text-anchor="middle" class="task-text">setTimeout()</text>
+    <rect x="670" y="415" width="170" height="30" class="task-item" rx="6"/>
+    <text x="755" y="435" text-anchor="middle" class="task-text">setTimeout()</text>
 
-    <rect x="670" y="462" width="160" height="30" class="task-item" rx="4"/>
-    <text x="750" y="482" text-anchor="middle" class="task-text">setInterval()</text>
+    <rect x="670" y="453" width="170" height="30" class="task-item" rx="6"/>
+    <text x="755" y="473" text-anchor="middle" class="task-text">setInterval()</text>
 
-    <rect x="670" y="499" width="160" height="30" class="task-item" rx="4"/>
-    <text x="750" y="519" text-anchor="middle" class="task-text">click, scroll...</text>
+    <rect x="670" y="491" width="170" height="30" class="task-item" rx="6"/>
+    <text x="755" y="511" text-anchor="middle" class="task-text">click, scroll...</text>
 
-    <rect x="670" y="536" width="160" height="30" class="task-item" rx="4" opacity="0.5"/>
-    <text x="750" y="556" text-anchor="middle" class="task-text">I/O operace</text>
+    <rect x="670" y="529" width="170" height="30" class="task-item" rx="6" opacity="0.5"/>
+    <text x="755" y="549" text-anchor="middle" class="task-text">I/O operace</text>
   </g>
 
-  <!-- Šipky -->
+  <!-- Arrows -->
   <!-- Call Stack -> Event Loop -->
-  <path d="M 250 180 L 360 280" class="arrow-return" marker-end="url(#arrow-return-marker)"/>
-  <text x="290" y="220" class="small-text" fill="#4caf50">prázdný?</text>
+  <path d="M 270 175 L 362 275" class="arrow-return" marker-end="url(#arr-return)"/>
+  <text x="300" y="215" class="small-text" fill="#22c55e">pr&#225;zdn&#253;?</text>
 
   <!-- Event Loop -> Microtask -->
-  <path d="M 540 300 L 645 200" class="arrow-microtask" marker-end="url(#arrow-micro)"/>
-  <text x="580" y="240" class="small-text" fill="#1976d2">priorita 1</text>
+  <path d="M 538 290 L 645 195" class="arrow-microtask" marker-end="url(#arr-micro)"/>
+  <text x="578" y="232" class="small-text" fill="#3b82f6">priorita 1</text>
 
   <!-- Event Loop -> Task -->
-  <path d="M 540 340 L 645 460" class="arrow-task" marker-end="url(#arrow-task-marker)"/>
-  <text x="580" y="410" class="small-text" fill="#f57c00">priorita 2</text>
+  <path d="M 538 330 L 645 450" class="arrow-task" marker-end="url(#arr-task)"/>
+  <text x="578" y="400" class="small-text" fill="#f97316">priorita 2</text>
 
-  <!-- Zpětné šipky (přerušované) -->
-  <path d="M 650 170 Q 450 120 250 150" class="arrow-return" marker-end="url(#arrow-return-marker)"/>
-  <path d="M 650 440 Q 450 500 250 250" class="arrow-return" marker-end="url(#arrow-return-marker)"/>
+  <!-- Return arrows (dashed) -->
+  <path d="M 650 165 Q 450 110 270 150" class="arrow-return" marker-end="url(#arr-return)"/>
+  <path d="M 650 435 Q 450 500 270 245" class="arrow-return" marker-end="url(#arr-return)"/>
 
-  <!-- Pořadí vykonávání (dole) -->
-  <rect x="50" y="590" width="800" height="45" fill="#f5f5f5" stroke="#ddd" stroke-width="2" rx="6"/>
-  <text x="450" y="610" text-anchor="middle" class="label">Pořadí vykonávání:</text>
+  <!-- Bottom bar -->
+  <rect x="50" y="590" width="800" height="45" class="bottom-bar" stroke-width="2" rx="8"/>
+  <text x="450" y="610" text-anchor="middle" class="label">Po&#345;ad&#237; vykon&#225;v&#225;n&#237;:</text>
   <text x="450" y="628" text-anchor="middle" class="small-text">
-    <tspan fill="#4caf50">①&nbsp;Synchronní&nbsp;kód</tspan>
-    <tspan> → </tspan>
-    <tspan fill="#1976d2">②&nbsp;Všechny&nbsp;microtasky</tspan>
-    <tspan> → </tspan>
-    <tspan fill="#666">③&nbsp;Rendering</tspan>
-    <tspan> → </tspan>
-    <tspan fill="#f57c00">④&nbsp;Jeden&nbsp;task</tspan>
+    <tspan fill="#22c55e">&#9312; Synchronn&#237; k&#243;d</tspan>
+    <tspan> &#8594; </tspan>
+    <tspan fill="#3b82f6">&#9313; V&#353;echny microtasky</tspan>
+    <tspan> &#8594; </tspan>
+    <tspan fill="#94a3b8">&#9314; Rendering</tspan>
+    <tspan> &#8594; </tspan>
+    <tspan fill="#f97316">&#9315; Jeden task</tspan>
   </text>
 </svg>
