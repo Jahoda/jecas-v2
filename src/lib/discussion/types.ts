@@ -3,6 +3,7 @@ export interface DiscussionComment {
 	slug: string;
 	parent_id: number | null;
 	author_name: string;
+	gravatar_hash?: string | null;
 	message: string;
 	is_approved: boolean;
 	created_at: string;

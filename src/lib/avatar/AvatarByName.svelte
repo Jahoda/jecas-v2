@@ -1,10 +1,11 @@
 <script lang="ts">
 	interface Props {
 		name: string;
+		gravatarHash?: string | null;
 		size?: 'sm' | 'md' | 'lg';
 	}
 
-	let { name, size = 'md' }: Props = $props();
+	let { name, gravatarHash = null, size = 'md' }: Props = $props();
 
 	// Predefined pleasant colors with good contrast for white text
 	const avatarColors = [
@@ -50,11 +51,33 @@
 		md: 'h-9 w-9 text-sm',
 		lg: 'h-12 w-12 text-base'
 	};
+
+	const sizePx = {
+		sm: 28,
+		md: 36,
+		lg: 48
+	};
+
+	let gravatarUrl = $derived(
+		gravatarHash ? `https://www.gravatar.com/avatar/${gravatarHash}?s=${sizePx[size] * 2}&d=404` : null
+	);
+
+	let imageError = $state(false);
+	let showGravatar = $derived(gravatarHash && !imageError);
 </script>
 
-<div
-	class="flex items-center justify-center rounded-full font-semibold uppercase text-white {sizeClasses[size]}"
-	style="background-color: {getColor(name)}"
->
-	{initials}
-</div>
+{#if showGravatar}
+	<img
+		src={gravatarUrl}
+		alt={name}
+		class="rounded-full object-cover {sizeClasses[size]}"
+		onerror={() => (imageError = true)}
+	/>
+{:else}
+	<div
+		class="flex items-center justify-center rounded-full font-semibold uppercase text-white {sizeClasses[size]}"
+		style="background-color: {getColor(name)}"
+	>
+		{initials}
+	</div>
+{/if}

@@ -39,7 +39,7 @@
 		try {
 			const { data } = await supabase
 				.from('comments')
-				.select('id, slug, parent_id, author_name, message, is_approved, created_at, updated_at')
+				.select('id, slug, parent_id, author_name, gravatar_hash, message, is_approved, created_at, updated_at')
 				.eq('slug', slug)
 				.eq('is_approved', true)
 				.order('created_at', { ascending: true });

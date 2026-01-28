@@ -14,6 +14,7 @@
 	let { slug, parentId = null, onSubmitted, onCancel, compact = false }: Props = $props();
 
 	let authorName = $state('');
+	let authorEmail = $state('');
 	let message = $state('');
 	let honeypot = $state('');
 	let submitting = $state(false);
@@ -21,13 +22,18 @@
 	let success = $state('');
 
 	onMount(() => {
-		const saved = localStorage.getItem('comment_author');
-		if (saved) authorName = saved;
+		const savedName = localStorage.getItem('comment_author');
+		const savedEmail = localStorage.getItem('comment_email');
+		if (savedName) authorName = savedName;
+		if (savedEmail) authorEmail = savedEmail;
 	});
 
 	function saveAuthor() {
 		if (authorName.trim()) {
 			localStorage.setItem('comment_author', authorName.trim());
+		}
+		if (authorEmail.trim()) {
+			localStorage.setItem('comment_email', authorEmail.trim());
 		}
 	}
 
@@ -44,6 +50,7 @@
 				body: JSON.stringify({
 					parent_id: parentId,
 					author_name: authorName,
+					author_email: authorEmail || undefined,
 					message,
 					honeypot
 				})
@@ -163,15 +170,24 @@
 
 			<div class="min-w-0 flex-1">
 				<div class="flex flex-col gap-3 rounded-xl bg-slate-50 p-4 dark:bg-slate-800">
-					<input
-						type="text"
-						bind:value={authorName}
-						required
-						minlength="2"
-						maxlength="100"
-						placeholder="Vaše jméno"
-						class="w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-					/>
+					<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+						<input
+							type="text"
+							bind:value={authorName}
+							required
+							minlength="2"
+							maxlength="100"
+							placeholder="Vaše jméno"
+							class="w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+						/>
+						<input
+							type="email"
+							bind:value={authorEmail}
+							maxlength="255"
+							placeholder="E-mail (pro Gravatar)"
+							class="w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+						/>
+					</div>
 					<textarea
 						bind:value={message}
 						required

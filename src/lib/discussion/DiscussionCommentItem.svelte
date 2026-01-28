@@ -103,7 +103,7 @@
 <article class="group" id="comment-{comment.id}">
 	<div class="flex gap-3">
 		<div class="flex-shrink-0">
-			<AvatarByName name={comment.author_name} />
+			<AvatarByName name={comment.author_name} gravatarHash={comment.gravatar_hash} />
 		</div>
 
 		<div class="flex min-w-0 flex-1 flex-col gap-2">

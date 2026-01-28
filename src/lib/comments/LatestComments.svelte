@@ -9,6 +9,7 @@
 		id: number;
 		slug: string;
 		author_name: string;
+		gravatar_hash: string | null;
 		message: string;
 		created_at: string;
 	}
@@ -20,7 +21,7 @@
 		try {
 			const { data } = await supabase
 				.from('comments')
-				.select('id, slug, author_name, message, created_at')
+				.select('id, slug, author_name, gravatar_hash, message, created_at')
 				.eq('is_approved', true)
 				.order('created_at', { ascending: false })
 				.limit(10);
@@ -54,7 +55,7 @@
 					<div
 						class="flex h-10 w-10 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border bg-slate-50 dark:border-slate-600 dark:bg-slate-900"
 					>
-						<AvatarByName name={comment.author_name} />
+						<AvatarByName name={comment.author_name} gravatarHash={comment.gravatar_hash} />
 					</div>
 				</div>
 				<div class="flex flex-col gap-2">
